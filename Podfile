@@ -1,4 +1,4 @@
-target 'SubtleAsianMatches' do
+target 'Pear' do
   use_frameworks!
 
   pod 'Firebase/Core'
