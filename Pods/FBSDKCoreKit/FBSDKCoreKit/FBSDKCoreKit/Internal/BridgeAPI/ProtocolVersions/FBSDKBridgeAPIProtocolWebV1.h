@@ -20,7 +20,6 @@
 
 #import "FBSDKBridgeAPIProtocol.h"
 
-NS_SWIFT_NAME(BridgeAPIProtocolWebV1)
 @interface FBSDKBridgeAPIProtocolWebV1 : NSObject <FBSDKBridgeAPIProtocol>
 
 @end

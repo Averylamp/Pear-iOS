@@ -20,7 +20,6 @@
 
 #import "FBSDKBridgeAPIRequest.h"
 
-NS_SWIFT_NAME(BridgeAPICrypto)
 @interface FBSDKBridgeAPICrypto : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;

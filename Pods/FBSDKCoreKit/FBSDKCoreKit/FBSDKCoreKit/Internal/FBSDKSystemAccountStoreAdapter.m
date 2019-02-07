@@ -114,7 +114,7 @@ static FBSDKSystemAccountStoreAdapter *_singletonInstance = nil;
                             defaultAudience:(NSString *)defaultAudience
                               isReauthorize:(BOOL)isReauthorize
                                       appID:(NSString *)appID
-                                    handler:(FBSDKOAuthTokenBlock)handler
+                                    handler:(FBSDKGraphRequestAccessToAccountsHandler)handler
 {
   if (appID == nil) {
     @throw [NSException exceptionWithName:NSInvalidArgumentException
@@ -167,7 +167,7 @@ static FBSDKSystemAccountStoreAdapter *_singletonInstance = nil;
 
 - (void)requestAccessToFacebookAccountStore:(NSDictionary *)options
                                    retrying:(BOOL)retrying
-                                    handler:(FBSDKOAuthTokenBlock)handler
+                                    handler:(FBSDKGraphRequestAccessToAccountsHandler)handler
 {
   if (!self.accountType) {
     if (handler) {
@@ -226,7 +226,7 @@ static FBSDKSystemAccountStoreAdapter *_singletonInstance = nil;
    }];
 }
 
-- (void)renewSystemAuthorization:(ACAccountStoreCredentialRenewalHandler)handler
+- (void)renewSystemAuthorization:(void(^)(ACAccountCredentialRenewResult, NSError *))handler
 {
   // if the slider has been set to off, renew calls to iOS simply hang, so we must
   // preemptively check for that condition.

@@ -26,9 +26,12 @@
 
 + (void)setAccessTokenCache:(NSObject<FBSDKAccessTokenCaching> *)accessTokenCache;
 
-@property (class, nonatomic, copy, readonly) NSString *graphAPIDebugParamValue;
++ (NSString *)graphAPIDebugParamValue;
+
++ (BOOL)isGraphErrorRecoveryDisabled;
 
 // used by Unity.
-@property (class, nonatomic, copy) NSString *userAgentSuffix;
++ (NSString *)userAgentSuffix;
++ (void)setUserAgentSuffix:(NSString *)suffix;
 
 @end

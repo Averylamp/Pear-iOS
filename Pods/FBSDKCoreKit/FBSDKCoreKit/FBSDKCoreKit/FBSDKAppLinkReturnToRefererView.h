@@ -25,8 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, FBSDKIncludeStatusBarInSize) {
     FBSDKIncludeStatusBarInSizeNever,
+    FBSDKIncludeStatusBarInSizeIOS7AndLater,
     FBSDKIncludeStatusBarInSizeAlways,
-} NS_SWIFT_NAME(FBAppLinkReturnToRefererView.StatusBarSizeInclude);
+};
 
 @class FBSDKAppLinkReturnToRefererView;
 @class FBSDKURL;
@@ -35,21 +36,18 @@ typedef NS_ENUM(NSUInteger, FBSDKIncludeStatusBarInSize) {
  Protocol that a class can implement in order to be notified when the user has navigated back
  to the referer of an App Link.
  */
-NS_SWIFT_NAME(AppLinkReturnToRefererViewDelegate)
 @protocol FBSDKAppLinkReturnToRefererViewDelegate <NSObject>
 
 /*!
  Called when the user has tapped inside the close button.
  */
-- (void)returnToRefererViewDidTapInsideCloseButton:(FBSDKAppLinkReturnToRefererView *)view
-NS_SWIFT_NAME(returnToRefererViewDidTapInsideCloseButton(_:));
+- (void)returnToRefererViewDidTapInsideCloseButton:(FBSDKAppLinkReturnToRefererView *)view;
 
 /*!
  Called when the user has tapped inside the App Link portion of the view.
  */
 - (void)returnToRefererViewDidTapInsideLink:(FBSDKAppLinkReturnToRefererView *)view
-                                       link:(FBSDKAppLink *)link
-NS_SWIFT_NAME(returnToRefererView(_:didTapInside:));
+                                       link:(FBSDKAppLink *)link;
 
 @end
 
@@ -61,7 +59,6 @@ NS_SWIFT_NAME(returnToRefererView(_:didTapInside:));
  referer data, it will have zero size and no UI will be displayed.
  */
 NS_EXTENSION_UNAVAILABLE_IOS("Not available in app extension")
-NS_SWIFT_NAME(FBAppLinkReturnToRefererView)
 @interface FBSDKAppLinkReturnToRefererView : UIView
 
 /*!
@@ -81,13 +78,12 @@ NS_SWIFT_NAME(FBAppLinkReturnToRefererView)
  size, for use in scenarios where the view might extend under the status bar on iOS 7 and
  above; this property has no effect on earlier versions of iOS.
  */
-@property (nonatomic, assign) FBSDKIncludeStatusBarInSize includeStatusBarInSize
-NS_SWIFT_NAME(statusBarSizeInclude);
+@property (nonatomic, assign) FBSDKIncludeStatusBarInSize includeStatusBarInSize;
 
 /*!
  Indicates whether the user has closed the view by clicking the close button.
  */
-@property (nonatomic, assign, getter=isClosed) BOOL closed;
+@property (nonatomic, assign) BOOL closed;
 
 @end
 

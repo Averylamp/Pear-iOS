@@ -25,7 +25,7 @@
 @interface FBSDKURLSessionTask ()
 
 @property (nonatomic, strong) NSURLSessionTask *task;
-@property (nonatomic, copy) FBSDKURLSessionTaskBlock handler;
+@property (nonatomic, copy) FBSDKURLSessionTaskHandler handler;
 @property (nonatomic, assign) uint64_t requestStartTime;
 @property (nonatomic, assign, readonly) NSUInteger loggerSerialNumber;
 
@@ -35,7 +35,7 @@
 
 - (instancetype)initWithRequest:(NSURLRequest *)request
                     fromSession:(NSURLSession *)session
-              completionHandler:(FBSDKURLSessionTaskBlock)handler
+              completionHandler:(FBSDKURLSessionTaskHandler)handler
 {
   if ((self = [super init])) {
     _requestStartTime = [FBSDKInternalUtility currentTimeInMilliseconds];
@@ -56,7 +56,7 @@
 
 #pragma mark - Logging and Completion
 
-- (void)logAndInvokeHandler:(FBSDKURLSessionTaskBlock)handler
+- (void)logAndInvokeHandler:(FBSDKURLSessionTaskHandler)handler
                       error:(NSError *)error {
   if (error) {
     NSString *logEntry = [NSString
@@ -71,7 +71,7 @@
   [self invokeHandler:handler error:error response:nil responseData:nil];
 }
 
-- (void)logAndInvokeHandler:(FBSDKURLSessionTaskBlock)handler
+- (void)logAndInvokeHandler:(FBSDKURLSessionTaskHandler)handler
                    response:(NSURLResponse *)response
                responseData:(NSData *)responseData {
   // Basic FBSDKURLSessionTask logging just prints out the URL.  FBSDKGraphRequest logging provides more details.
@@ -92,7 +92,7 @@
   [self invokeHandler:handler error:nil response:response responseData:responseData];
 }
 
-- (void)invokeHandler:(FBSDKURLSessionTaskBlock)handler
+- (void)invokeHandler:(FBSDKURLSessionTaskHandler)handler
                 error:(NSError *)error
              response:(NSURLResponse *)response
          responseData:(NSData *)responseData {

@@ -18,23 +18,19 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FBSDKAudioResourceLoader : NSObject
 
 + (instancetype)sharedLoader;
 
-- (BOOL)loadSound:(NSError *__autoreleasing *)errorRef;
+- (BOOL)loadSound:(NSError **)error;
 - (void)playSound;
 
 @end
 
 @interface FBSDKAudioResourceLoader (Subclass)
 
-@property (class, nonatomic, copy, nullable, readonly) NSString *name;
-@property (class, nonatomic, copy, nullable, readonly) NSData *data;
-@property (class, nonatomic, assign, readonly) NSUInteger version;
++ (NSString *)name;
++ (NSUInteger)version;
++ (NSData *)data;
 
 @end
-
-NS_ASSUME_NONNULL_END

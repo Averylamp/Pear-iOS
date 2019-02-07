@@ -22,7 +22,6 @@
 
 #import "FBSDKIcon.h"
 
-NS_SWIFT_NAME(FBButtonImpressionTracking)
 @protocol FBSDKButtonImpressionTracking <NSObject>
 
 @property (nonatomic, readonly, copy) NSDictionary<NSString *, id> *analyticsParameters;

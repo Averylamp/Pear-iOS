@@ -19,8 +19,7 @@
 #import <Accounts/Accounts.h>
 #import <Foundation/Foundation.h>
 
-typedef void (^FBSDKOAuthTokenBlock)(NSString *oauthToken, NSError *accountStoreError)
-NS_SWIFT_NAME(OAuthTokenBlock);
+typedef void (^FBSDKGraphRequestAccessToAccountsHandler)(NSString *oauthToken, NSError *accountStoreError);
 
 /*
  @class
@@ -29,7 +28,6 @@ NS_SWIFT_NAME(OAuthTokenBlock);
  consumption. If publicized, consider moving declarations to an internal only header and
  reconsider dispatching semantics.
  */
-NS_SWIFT_NAME(SystemAccountStoreAdapter)
 @interface FBSDKSystemAccountStoreAdapter : NSObject
 
 /*
@@ -66,13 +64,13 @@ NS_SWIFT_NAME(SystemAccountStoreAdapter)
                             defaultAudience:(NSString *)defaultAudience
                               isReauthorize:(BOOL)isReauthorize
                                       appID:(NSString *)appID
-                                    handler:(FBSDKOAuthTokenBlock)handler;
+                                    handler:(FBSDKGraphRequestAccessToAccountsHandler)handler;
 
 /*
   Sends a message to the device account store to renew the Facebook account credentials
 
  @param handler the handler that is invoked on completion
  */
-- (void)renewSystemAuthorization:(ACAccountStoreCredentialRenewalHandler)handler;
+- (void)renewSystemAuthorization:(void(^)(ACAccountCredentialRenewResult result, NSError *error))handler;
 
 @end

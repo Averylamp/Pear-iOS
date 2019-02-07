@@ -20,14 +20,11 @@
 
 #import <FBSDKCoreKit/FBSDKCopying.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 /**
   Extension protocol for NSMutableCopying that adds the mutableCopy method, which is implemented on NSObject.
 
  NSObject<NSCopying, NSMutableCopying> implicitly conforms to this protocol.
  */
-NS_SWIFT_NAME(MutableCopying)
 @protocol FBSDKMutableCopying <FBSDKCopying, NSMutableCopying>
 
 /**
@@ -37,5 +34,3 @@ NS_SWIFT_NAME(MutableCopying)
 - (id)mutableCopy;
 
 @end
-
-NS_ASSUME_NONNULL_END

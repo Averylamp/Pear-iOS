@@ -18,79 +18,76 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface NSError (FBSDKError)
 
-+ (NSError *)fbErrorWithCode:(NSInteger)code message:(nullable NSString *)message;
++ (NSError *)fbErrorWithCode:(NSInteger)code message:(NSString *)message;
 + (NSError *)fbErrorWithDomain:(NSErrorDomain)domain
                           code:(NSInteger)code
-                       message:(nullable NSString *)message;
+                       message:(NSString *)message;
 
 + (NSError *)fbErrorWithCode:(NSInteger)code
-                     message:(nullable NSString *)message
-             underlyingError:(nullable NSError *)underlyingError;
+                     message:(NSString *)message
+             underlyingError:(NSError *)underlyingError;
 
 + (NSError *)fbErrorWithDomain:(NSErrorDomain)domain
                           code:(NSInteger)code
-                       message:(nullable NSString *)message
-               underlyingError:(nullable NSError *)underlyingError;
+                       message:(NSString *)message
+               underlyingError:(NSError *)underlyingError;
 
 + (NSError *)fbErrorWithCode:(NSInteger)code
                     userInfo:(NSDictionary<NSErrorUserInfoKey, id> *)userInfo
-                     message:(nullable NSString *)message
-             underlyingError:(nullable NSError *)underlyingError;
+                     message:(NSString *)message
+             underlyingError:(NSError *)underlyingError;
 
 + (NSError *)fbErrorWithDomain:(NSErrorDomain)domain
                           code:(NSInteger)code
                       userInfo:(NSDictionary<NSErrorUserInfoKey, id> *)userInfo
-                       message:(nullable NSString *)message
-               underlyingError:(nullable NSError *)underlyingError;
+                       message:(NSString *)message
+               underlyingError:(NSError *)underlyingError;
 
 + (NSError *)fbInvalidArgumentErrorWithName:(NSString *)name
-                                      value:(nullable id)value
-                                    message:(nullable NSString *)message;
+                                      value:(id)value
+                                    message:(NSString *)message;
 
 + (NSError *)fbInvalidArgumentErrorWithDomain:(NSErrorDomain)domain
                                          name:(NSString *)name
-                                        value:(nullable id)value
-                                      message:(nullable NSString *)message;
+                                        value:(id)value
+                                      message:(NSString *)message;
 
 + (NSError *)fbInvalidArgumentErrorWithName:(NSString *)name
-                                      value:(nullable id)value
-                                    message:(nullable NSString *)message
-                            underlyingError:(nullable NSError *)underlyingError;
+                                      value:(id)value
+                                    message:(NSString *)message
+                            underlyingError:(NSError *)underlyingError;
 
 + (NSError *)fbInvalidArgumentErrorWithDomain:(NSErrorDomain)domain
                                          name:(NSString *)name
-                                        value:(nullable id)value
-                                      message:(nullable NSString *)message
-                              underlyingError:(nullable NSError *)underlyingError;
+                                        value:(id)value
+                                      message:(NSString *)message
+                              underlyingError:(NSError *)underlyingError;
 
 + (NSError *)fbInvalidCollectionErrorWithName:(NSString *)name
                                    collection:(id<NSFastEnumeration>)collection
                                          item:(id)item
-                                      message:(nullable NSString *)message;
+                                      message:(NSString *)message;
 
 + (NSError *)fbInvalidCollectionErrorWithName:(NSString *)name
                                    collection:(id<NSFastEnumeration>)collection
                                          item:(id)item
-                                      message:(nullable NSString *)message
-                              underlyingError:(nullable NSError *)underlyingError;
+                                      message:(NSString *)message
+                              underlyingError:(NSError *)underlyingError;
 
-+ (NSError *)fbRequiredArgumentErrorWithName:(NSString *)name message:(nullable NSString *)message;
++ (NSError *)fbRequiredArgumentErrorWithName:(NSString *)name message:(NSString *)message;
 + (NSError *)fbRequiredArgumentErrorWithDomain:(NSErrorDomain)domain
                                           name:(NSString *)name
-                                       message:(nullable NSString *)message;
+                                       message:(NSString *)message;
 
 + (NSError *)fbRequiredArgumentErrorWithName:(NSString *)name
-                                     message:(nullable NSString *)message
-                             underlyingError:(nullable NSError *)underlyingError;
+                                     message:(NSString *)message
+                             underlyingError:(NSError *)underlyingError;
 
 + (NSError *)fbUnknownErrorWithMessage:(NSString *)message;
 
-@property (nonatomic, assign, readonly, getter=isNetworkError) BOOL networkError;
+@property (nonatomic, assign, readonly, getter=isNetworkError) BOOL networkError
+NS_SWIFT_NAME(isNetworkError);
 
 @end
-
-NS_ASSUME_NONNULL_END

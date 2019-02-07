@@ -18,7 +18,8 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKShareKit (~> 4.37)
-  - FBSDKCoreKit (4.40.0)
+  - FBSDKCoreKit (4.40.0):
+    - Bolts (~> 1.9)
   - FBSDKLoginKit (4.40.0):
     - FBSDKCoreKit
   - FBSDKShareKit (4.40.0):
@@ -90,7 +91,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
-  - FBSDKCoreKit (from `https://github.com/facebook/facebook-objc-sdk.git`, branch `master`)
+  - FBSDKCoreKit
   - Firebase/Auth
   - Firebase/Core
   - SDWebImage
@@ -101,6 +102,7 @@ SPEC REPOS:
     - FacebookCore
     - FacebookLogin
     - FacebookShare
+    - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
     - Firebase
@@ -115,22 +117,12 @@ SPEC REPOS:
     - nanopb
     - SDWebImage
 
-EXTERNAL SOURCES:
-  FBSDKCoreKit:
-    :branch: master
-    :git: https://github.com/facebook/facebook-objc-sdk.git
-
-CHECKOUT OPTIONS:
-  FBSDKCoreKit:
-    :commit: 5c1c79c7bae69b5345cf78339d26351b64eaeeac
-    :git: https://github.com/facebook/facebook-objc-sdk.git
-
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: f8110969998fc170ab250fe5d1460f14d0ae1e9b
+  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
   FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
   FBSDKShareKit: 0e45916f4150da485928ae2a17ca021950b194f5
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
@@ -145,6 +137,6 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
 
-PODFILE CHECKSUM: 73ed7e97c8a43bf8cbe60bd18f618b5b54393108
+PODFILE CHECKSUM: 8bb202ef7c30a5dd4ff77625d431e3ccd876fc04
 
 COCOAPODS: 1.6.0

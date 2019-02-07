@@ -63,7 +63,7 @@ static const CGFloat FBSDKCloseButtonHeight = 12.0;
 
 - (void)commonInit {
     // Initialization code
-    _includeStatusBarInSize = FBSDKIncludeStatusBarInSizeAlways;
+    _includeStatusBarInSize = FBSDKIncludeStatusBarInSizeIOS7AndLater;
 
     // iOS 7 system blue color
     self.backgroundColor = [UIColor colorWithRed:0.0f green:122.0f / 255.0f blue:1.0f alpha:1.0f];
@@ -151,6 +151,11 @@ static const CGFloat FBSDKCloseButtonHeight = 12.0;
         case FBSDKIncludeStatusBarInSizeAlways:
             include = YES;
             break;
+        case FBSDKIncludeStatusBarInSizeIOS7AndLater: {
+            float systemVersion = [UIDevice currentDevice].systemVersion.floatValue;
+            include = (systemVersion >= 7.0);
+            break;
+        }
         case FBSDKIncludeStatusBarInSizeNever:
             include = NO;
             break;

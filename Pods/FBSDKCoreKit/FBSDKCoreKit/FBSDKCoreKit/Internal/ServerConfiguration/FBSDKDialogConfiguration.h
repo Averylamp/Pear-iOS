@@ -20,7 +20,6 @@
 
 #import <FBSDKCoreKit/FBSDKCopying.h>
 
-NS_SWIFT_NAME(DialogConfiguration)
 @interface FBSDKDialogConfiguration : NSObject <FBSDKCopying, NSSecureCoding>
 
 - (instancetype)init NS_UNAVAILABLE;

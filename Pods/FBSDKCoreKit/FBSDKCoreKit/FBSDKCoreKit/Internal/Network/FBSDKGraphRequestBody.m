@@ -18,7 +18,6 @@
 
 #import "FBSDKGraphRequestBody.h"
 
-#import "FBSDKConstants.h"
 #import "FBSDKCrypto.h"
 #import "FBSDKGraphRequestDataAttachment.h"
 #import "FBSDKLogger.h"
@@ -132,7 +131,7 @@
 - (void)_appendWithKey:(NSString *)key
               filename:(NSString *)filename
            contentType:(NSString *)contentType
-          contentBlock:(FBSDKCodeBlock)contentBlock
+          contentBlock:(void(^)(void))contentBlock
 {
   NSMutableArray *disposition = [[NSMutableArray alloc] init];
   [disposition addObject:@"Content-Disposition: form-data"];

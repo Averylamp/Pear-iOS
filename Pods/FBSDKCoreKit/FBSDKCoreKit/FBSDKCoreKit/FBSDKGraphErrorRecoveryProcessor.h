@@ -20,15 +20,12 @@
 
 #import "FBSDKConstants.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class FBSDKGraphErrorRecoveryProcessor;
 @class FBSDKGraphRequest;
 
 /**
   Defines a delegate for `FBSDKGraphErrorRecoveryProcessor`.
  */
-NS_SWIFT_NAME(GraphErrorRecoveryProcessorDelegate)
 @protocol FBSDKGraphErrorRecoveryProcessorDelegate<NSObject>
 
 /**
@@ -37,9 +34,7 @@ NS_SWIFT_NAME(GraphErrorRecoveryProcessorDelegate)
  @param didRecover YES if the recovery was successful.
  @param error the error that that was attempted to be recovered from.
  */
-- (void)processorDidAttemptRecovery:(FBSDKGraphErrorRecoveryProcessor *)processor
-                         didRecover:(BOOL)didRecover
-                              error:(nullable NSError *)error;
+- (void)processorDidAttemptRecovery:(FBSDKGraphErrorRecoveryProcessor *)processor didRecover:(BOOL)didRecover error:(NSError *)error;
 
 @optional
 /**
@@ -51,14 +46,9 @@ NS_SWIFT_NAME(GraphErrorRecoveryProcessorDelegate)
  if you want to prevent alerts of localized messages but otherwise perform retries and recoveries,
  you could return NO for errors where userInfo[FBSDKGraphRequestErrorKey] equal to FBSDKGraphRequestErrorOther
  */
-- (BOOL)processorWillProcessError:(FBSDKGraphErrorRecoveryProcessor *)processor
-                            error:(nullable NSError *)error;
+- (BOOL)processorWillProcessError:(FBSDKGraphErrorRecoveryProcessor *)processor error:(NSError *)error;
 
 @end
-
-NS_ASSUME_NONNULL_END
-
-NS_ASSUME_NONNULL_BEGIN
 
 /**
   Defines a type that can process Facebook NSErrors with best practices.
@@ -84,13 +74,12 @@ NS_ASSUME_NONNULL_BEGIN
  the `[FBSDKAccessToken currentAccessToken]` might still have been updated.
  .
  */
-NS_SWIFT_UNAVAILABLE("")
 @interface FBSDKGraphErrorRecoveryProcessor : NSObject
 
 /**
   Gets the delegate. Note this is a strong reference, and is nil'ed out after recovery is complete.
  */
-@property (nonatomic, strong, readonly, nullable) id<FBSDKGraphErrorRecoveryProcessorDelegate>delegate;
+@property (nonatomic, strong, readonly) id<FBSDKGraphErrorRecoveryProcessorDelegate>delegate;
 
 /**
   Attempts to process the error, return YES if the error can be processed.
@@ -98,17 +87,13 @@ NS_SWIFT_UNAVAILABLE("")
  @param request the related request that may be reissued.
  @param delegate the delegate that will be retained until recovery is complete.
  */
-- (BOOL)processError:(NSError *)error
-             request:(FBSDKGraphRequest *)request
-            delegate:(nullable id<FBSDKGraphErrorRecoveryProcessorDelegate>)delegate;
+- (BOOL)processError:(NSError *)error request:(FBSDKGraphRequest *)request delegate:(id<FBSDKGraphErrorRecoveryProcessorDelegate>) delegate;
 
 /**
   The callback for FBSDKErrorRecoveryAttempting
  @param didRecover if the recovery succeeded
  @param contextInfo unused
  */
-- (void)didPresentErrorWithRecovery:(BOOL)didRecover contextInfo:(nullable void *)contextInfo;
+- (void)didPresentErrorWithRecovery:(BOOL)didRecover contextInfo:(void *)contextInfo;
 
 @end
-
-NS_ASSUME_NONNULL_END

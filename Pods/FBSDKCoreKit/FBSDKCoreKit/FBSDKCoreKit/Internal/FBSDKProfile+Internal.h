@@ -18,13 +18,9 @@
 
 #import "FBSDKProfile.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface FBSDKProfile(Internal)
 
-+ (void)cacheProfile:(FBSDKProfile *)profile;
-+ (nullable FBSDKProfile *)fetchCachedProfile;
++ (void)cacheProfile:(FBSDKProfile *) profile;
++ (FBSDKProfile *)fetchCachedProfile;
 
 @end
-
-NS_ASSUME_NONNULL_END

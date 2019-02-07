@@ -33,10 +33,12 @@ NSString *const FBSDKAccessTokenDidChangeNotification = @"com.facebook.sdk.FBSDK
 
 #endif
 
-NSString *const FBSDKAccessTokenDidChangeUserIDKey = @"FBSDKAccessTokenDidChangeUserIDKey";
+NSString *const FBSDKAccessTokenDidChangeUserIDKey = @"FBSDKAccessTokenDidChangeUserID";
+NSString *const FBSDKAccessTokenDidChangeUserID = @"FBSDKAccessTokenDidChangeUserID";
 NSString *const FBSDKAccessTokenChangeNewKey = @"FBSDKAccessToken";
 NSString *const FBSDKAccessTokenChangeOldKey = @"FBSDKAccessTokenOld";
-NSString *const FBSDKAccessTokenDidExpireKey = @"FBSDKAccessTokenDidExpireKey";
+NSString *const FBSDKAccessTokenDidExpireKey = @"FBSDKAccessTokenDidExpire";
+NSString *const FBSDKAccessTokenDidExpire = @"FBSDKAccessTokenDidExpire";
 
 static FBSDKAccessToken *g_currentAccessToken;
 
@@ -77,7 +79,7 @@ static FBSDKAccessToken *g_currentAccessToken;
                              userID:(NSString *)userID
                      expirationDate:(NSDate *)expirationDate
                         refreshDate:(NSDate *)refreshDate
-           dataAccessExpirationDate:(NSDate *)dataAccessExpirationDate
+                  dataAccessExpirationDate:(NSDate *)dataAccessExpirationDate
 {
   if ((self = [super init])) {
     _tokenString = [tokenString copy];
@@ -120,7 +122,7 @@ static FBSDKAccessToken *g_currentAccessToken;
     [FBSDKInternalUtility dictionary:userInfo setObject:token forKey:FBSDKAccessTokenChangeNewKey];
     [FBSDKInternalUtility dictionary:userInfo setObject:g_currentAccessToken forKey:FBSDKAccessTokenChangeOldKey];
     // We set this flag also when the current Access Token was not valid, since there might be legacy code relying on it
-    if (![g_currentAccessToken.userID isEqualToString:token.userID] || !self.isCurrentAccessTokenActive) {
+    if (![g_currentAccessToken.userID isEqualToString:token.userID] || ![self currentAccessTokenIsActive]) {
       userInfo[FBSDKAccessTokenDidChangeUserIDKey] = @YES;
     }
 
@@ -139,22 +141,22 @@ static FBSDKAccessToken *g_currentAccessToken;
   }
 }
 
-+ (BOOL)isCurrentAccessTokenActive
++ (BOOL)currentAccessTokenIsActive
 {
   FBSDKAccessToken *currentAccessToken = [self currentAccessToken];
   return currentAccessToken != nil && !currentAccessToken.isExpired;
 }
 
-+ (void)refreshCurrentAccessToken:(FBSDKGraphRequestBlock)completionHandler
++ (void)refreshCurrentAccessToken:(FBSDKGraphRequestHandler)completionHandler
 {
   if ([FBSDKAccessToken currentAccessToken]) {
     FBSDKGraphRequestConnection *connection = [[FBSDKGraphRequestConnection alloc] init];
     [FBSDKGraphRequestPiggybackManager addRefreshPiggyback:connection permissionHandler:completionHandler];
     [connection start];
-  } else if (completionHandler) {
-    completionHandler(nil, nil, [NSError
-                                 fbErrorWithCode:FBSDKErrorAccessTokenRequired
-                                 message:@"No current access token to refresh"]);
+  } else {
+    if (completionHandler) {
+      completionHandler(nil, nil, [NSError fbErrorWithCode:FBSDKErrorAccessTokenRequired message:@"No current access token to refresh"]);
+    }
   }
 }
 

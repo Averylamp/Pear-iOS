@@ -22,7 +22,6 @@
 
 #import "FBSDKBridgeAPIProtocolType.h"
 
-NS_SWIFT_NAME(BridgeAPIRequest)
 @interface FBSDKBridgeAPIRequest : NSObject <FBSDKCopying>
 
 - (instancetype)init NS_UNAVAILABLE;

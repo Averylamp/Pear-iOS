@@ -99,7 +99,7 @@
 
 + (NSString *)advertiserID
 {
-  if (!FBSDKSettings.isAdvertiserIDCollectionEnabled) {
+  if (![[FBSDKSettings advertiserIDCollectionEnabled] boolValue]) {
     return nil;
   }
 

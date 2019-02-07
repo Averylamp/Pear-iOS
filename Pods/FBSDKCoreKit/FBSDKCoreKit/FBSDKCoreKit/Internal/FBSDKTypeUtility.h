@@ -18,7 +18,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_SWIFT_NAME(TypeUtility)
 @interface FBSDKTypeUtility : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;

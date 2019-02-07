@@ -28,16 +28,22 @@ NS_ASSUME_NONNULL_BEGIN
  @param error the error during the request, if any
 
  */
-typedef void (^FBSDKAppLinkBlock)(FBSDKAppLink * _Nullable appLink, NSError * _Nullable error)
-NS_SWIFT_NAME(AppLinkBlock);
+typedef void (^FBSDKAppLinkFromURLHandler)(FBSDKAppLink * _Nullable appLink, NSError * _Nullable error);
 
+
+/**
+ Describes the callback for appLinkFromURLInBackground.
+ @param appLinks the FBSDKAppLinks representing the deferred App Links
+ @param error the error during the request, if any
+ */
+typedef void (^FBSDKAppLinksFromURLArrayHandler)(NSDictionary<NSURL *, FBSDKAppLink *> * appLinks,
+                                                 NSError * _Nullable error);
 
 /*!
  Implement this protocol to provide an alternate strategy for resolving
  App Links that may include pre-fetching, caching, or querying for App Link
  data from an index provided by a service provider.
  */
-NS_SWIFT_NAME(AppLinkResolving)
 @protocol FBSDKAppLinkResolving <NSObject>
 
 /**
@@ -46,7 +52,7 @@ NS_SWIFT_NAME(AppLinkResolving)
  @param url The URL to resolve into an App Link.
  @param handler The completion block that will return an App Link for the given URL.
  */
-- (void)appLinkFromURL:(NSURL *)url handler:(FBSDKAppLinkBlock)handler
+- (void)appLinkFromURL:(NSURL *)url handler:(FBSDKAppLinkFromURLHandler)handler
 NS_EXTENSION_UNAVAILABLE_IOS("Not available in app extension");
 
 @end

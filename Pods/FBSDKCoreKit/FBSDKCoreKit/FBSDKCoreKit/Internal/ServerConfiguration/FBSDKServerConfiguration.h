@@ -43,7 +43,6 @@ typedef NS_OPTIONS(NSUInteger, FBSDKServerConfigurationSmartLoginOptions)
   FBSDKServerConfigurationSmartLoginOptionsRequireConfirmation  = 1 << 1,
 };
 
-NS_SWIFT_NAME(ServerConfiguration)
 @interface FBSDKServerConfiguration : NSObject <FBSDKCopying, NSSecureCoding>
 
 - (instancetype)init NS_UNAVAILABLE;

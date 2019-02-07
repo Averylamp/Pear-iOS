@@ -26,7 +26,6 @@ FOUNDATION_EXPORT NSString *const FBSDKBridgeAPIAppIDKey;
 FOUNDATION_EXPORT NSString *const FBSDKBridgeAPISchemeSuffixKey;
 FOUNDATION_EXPORT NSString *const FBSDKBridgeAPIVersionKey;
 
-NS_SWIFT_NAME(BridgeAPIProtocol)
 @protocol FBSDKBridgeAPIProtocol <NSObject>
 
 - (NSURL *)requestURLWithActionID:(NSString *)actionID

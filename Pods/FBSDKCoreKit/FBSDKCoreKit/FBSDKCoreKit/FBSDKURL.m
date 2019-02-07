@@ -110,15 +110,15 @@
     return self;
 }
 
-+ (instancetype)URLWithURL:(NSURL *)url {
++ (FBSDKURL *)URLWithURL:(NSURL *)url {
     return [[FBSDKURL alloc] initWithURL:url forOpenInboundURL:NO sourceApplication:nil forRenderBackToReferrerBar:NO];
 }
 
-+ (instancetype)URLWithInboundURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
++ (FBSDKURL *)URLWithInboundURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
     return [[FBSDKURL alloc] initWithURL:url forOpenInboundURL:YES sourceApplication:sourceApplication forRenderBackToReferrerBar:NO];
 }
 
-+ (instancetype)URLForRenderBackToReferrerBarURL:(NSURL *)url {
++ (FBSDKURL *)URLForRenderBackToReferrerBarURL:(NSURL *)url {
     return [[FBSDKURL alloc] initWithURL:url forOpenInboundURL:NO sourceApplication:nil forRenderBackToReferrerBar:YES];
 }
 

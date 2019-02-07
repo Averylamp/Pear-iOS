@@ -18,14 +18,12 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
+#import "FBSDKAccessTokenCaching.h"
 
-NS_SWIFT_NAME(MeasurementEventListener)
-@interface FBSDKMeasurementEventListener : NSObject
+FOUNDATION_EXPORT NSString *const FBSDKTokenInformationUUIDKey;
 
-@property (class, nonatomic, strong, readonly) FBSDKMeasurementEventListener *defaultListener
-NS_SWIFT_NAME(default);
+@interface FBSDKAccessTokenCacheV3 : NSObject<FBSDKAccessTokenCaching>
+
++ (FBSDKAccessToken *)accessTokenForV3Dictionary:(NSDictionary *)dictionary;
 
 @end
-
-NS_ASSUME_NONNULL_END
