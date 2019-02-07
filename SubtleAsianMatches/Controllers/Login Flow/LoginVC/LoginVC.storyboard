@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="euX-O2-YfI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LoginVC-->
+        <scene sceneID="hZI-VO-QmC">
+            <objects>
+                <viewController id="euX-O2-YfI" customClass="LoginVC" customModule="SubtleAsianMatches" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NnH-BA-M9i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMt-28-hEH">
+                                <rect key="frame" x="132.5" y="328.5" width="110" height="30"/>
+                                <state key="normal" title="FB Login Button"/>
+                                <connections>
+                                    <action selector="fbLoginTapped" destination="euX-O2-YfI" eventType="touchUpInside" id="m2i-5S-PGY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MMt-28-hEH" firstAttribute="centerY" secondItem="HDz-Nq-AxL" secondAttribute="centerY" id="O1T-F2-KLy"/>
+                            <constraint firstItem="MMt-28-hEH" firstAttribute="centerX" secondItem="HDz-Nq-AxL" secondAttribute="centerX" id="gOg-yW-YkG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HDz-Nq-AxL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N5S-rh-LSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="152"/>
+        </scene>
+    </scenes>
+</document>
