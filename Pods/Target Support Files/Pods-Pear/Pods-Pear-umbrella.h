@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_SubtleAsianMatchesVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_SubtleAsianMatchesVersionString[];
+FOUNDATION_EXPORT double Pods_PearVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_PearVersionString[];
 
