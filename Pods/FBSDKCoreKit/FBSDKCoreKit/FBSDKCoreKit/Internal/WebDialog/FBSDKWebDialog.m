@@ -29,6 +29,8 @@
 #define FBSDK_WEB_DIALOG_SHOW_ANIMATION_DURATION 0.2
 #define FBSDK_WEB_DIALOG_DISMISS_ANIMATION_DURATION 0.3
 
+typedef void (^FBSDKBoolBlock)(BOOL finished);
+
 static FBSDKWebDialog *g_currentDialog = nil;
 
 @interface FBSDKWebDialog () <FBSDKWebDialogViewDelegate>
@@ -281,18 +283,20 @@ static FBSDKWebDialog *g_currentDialog = nil;
 {
   CGRect applicationFrame = _dialogView.window.screen.bounds;
 
+  UIEdgeInsets insets = UIEdgeInsetsZero;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_11_0
   if (@available(iOS 11.0, *)) {
-    UIEdgeInsets insets = _dialogView.window.safeAreaInsets;
-    if (insets.top == 0.0) {
-      insets.top = [[UIApplication sharedApplication] statusBarFrame].size.height;
-    }
-    applicationFrame.origin.x += insets.left;
-    applicationFrame.origin.y += insets.top;
-    applicationFrame.size.width -= insets.left + insets.right;
-    applicationFrame.size.height -= insets.top + insets.bottom;
+    insets = _dialogView.window.safeAreaInsets;
   }
 #endif
+
+  if (insets.top == 0.0) {
+    insets.top = [[UIApplication sharedApplication] statusBarFrame].size.height;
+  }
+  applicationFrame.origin.x += insets.left;
+  applicationFrame.origin.y += insets.top;
+  applicationFrame.size.width -= insets.left + insets.right;
+  applicationFrame.size.height -= insets.top + insets.bottom;
 
   if ([FBSDKInternalUtility shouldManuallyAdjustOrientation]) {
     switch ([UIApplication sharedApplication].statusBarOrientation) {
@@ -312,7 +316,7 @@ static FBSDKWebDialog *g_currentDialog = nil;
 - (void)_updateViewsWithScale:(CGFloat)scale
                         alpha:(CGFloat)alpha
             animationDuration:(CFTimeInterval)animationDuration
-                   completion:(void(^)(BOOL finished))completion
+                   completion:(FBSDKBoolBlock)completion
 {
   CGAffineTransform transform;
   CGRect applicationFrame = [self _applicationFrameForOrientation];

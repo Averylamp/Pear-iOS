@@ -354,7 +354,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SubtleAsianMatches/Pods-SubtleAsianMatches-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SubtleAsianMatches/Pods-SubtleAsianMatches-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -385,7 +385,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SubtleAsianMatches/Pods-SubtleAsianMatches-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SubtleAsianMatches/Pods-SubtleAsianMatches-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		737516630A4CDF3817F580C1 /* [CP] Check Pods Manifest.lock */ = {

@@ -1,6 +1,6 @@
 {
   "name": "FBSDKCoreKit",
-  "version": "4.39.0",
+  "version": "4.40.0",
   "summary": "Official Facebook SDK for iOS to access Facebook Platform core features",
   "description": "The Facebook SDK for iOS CoreKit framework provides:\n* App Events (for App Analytics)\n* Graph API Access and Error Recovery\n* Working with Access Tokens and User Profiles",
   "homepage": "https://developers.facebook.com/docs/ios/",
@@ -15,7 +15,7 @@
   },
   "source": {
     "git": "https://github.com/facebook/facebook-objc-sdk.git",
-    "tag": "v4.39.0"
+    "tag": "v4.40.0"
   },
   "ios": {
     "weak_frameworks": [
@@ -29,11 +29,6 @@
       "Foundation",
       "AudioToolbox"
     ],
-    "dependencies": {
-      "Bolts": [
-        "~> 1.9"
-      ]
-    },
     "exclude_files": [
       "FBSDKCoreKit/FBSDKCoreKit/FBSDKDeviceButton.{h,m}",
       "FBSDKCoreKit/FBSDKCoreKit/FBSDKDeviceViewControllerBase.{h,m}",

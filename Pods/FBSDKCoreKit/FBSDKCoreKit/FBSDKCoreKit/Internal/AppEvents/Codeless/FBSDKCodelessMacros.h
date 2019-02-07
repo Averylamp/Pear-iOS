@@ -29,6 +29,7 @@
 #define CODELESS_MAPPING_MATCH_BITMASK_KEY      @"match_bitmask"
 #define CODELESS_MAPPING_ID_KEY                 @"id"
 #define CODELESS_MAPPING_INDEX_KEY              @"index"
+#define CODELESS_MAPPING_IS_USER_INPUT_KEY      @"is_user_input"
 #define CODELESS_MAPPING_SECTION_KEY            @"section"
 #define CODELESS_MAPPING_ROW_KEY                @"row"
 #define CODELESS_MAPPING_TEXT_KEY               @"text"
@@ -57,6 +58,12 @@
 
 #define CODELESS_INDEXING_ENDPOINT              @"app_indexing"
 #define CODELESS_INDEXING_SESSION_ENDPOINT      @"app_indexing_session"
+
+#define CODELESS_SETUP_ENABLED_FIELD            @"auto_event_setup_enabled"
+#define CODELESS_SETUP_ENABLED_KEY              @"codeless_setup_enabled"
+#define CODELESS_SETTING_KEY                    @"com.facebook.sdk:codelessSetting%@"
+#define CODELESS_SETTING_TIMESTAMP_KEY          @"codeless_setting_timestamp"
+#define CODELESS_SETTING_CACHE_TIMEOUT          (7 * 24 * 60 * 60)
 
 //  keys for view tree
 #define CODELESS_VIEW_TREE_CLASS_NAME_KEY       @"classname"
