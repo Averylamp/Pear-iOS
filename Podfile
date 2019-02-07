@@ -3,7 +3,7 @@ target 'Pear' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-  pod 'FBSDKCoreKit', :git => 'https://github.com/facebook/facebook-objc-sdk.git', :branch => 'master'
+  pod 'FBSDKCoreKit'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
