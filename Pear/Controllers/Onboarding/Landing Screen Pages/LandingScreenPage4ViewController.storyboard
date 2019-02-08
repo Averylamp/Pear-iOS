@@ -1,7 +1,66 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bth-Rz-F4e">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Landing Screen Page4 View Controller-->
+        <scene sceneID="oAW-6V-2yO">
+            <objects>
+                <viewController id="bth-Rz-F4e" customClass="LandingScreenPage4ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="edC-nK-Vk5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-page-1-image" translatesAutoresizingMaskIntoConstraints="NO" id="XLq-Qr-10g">
+                                <rect key="frame" x="80" y="50" width="215" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="PFS-Ag-V0j"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building a profile is fun and usually only takes a few minutes. You can send it to your friend to review" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpO-ve-skm">
+                                <rect key="frame" x="40" y="306" width="295" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's get going!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y11-Op-tpK">
+                                <rect key="frame" x="40" y="272.5" width="295" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y11-Op-tpK" firstAttribute="width" secondItem="DpO-ve-skm" secondAttribute="width" id="4RT-s5-8SJ"/>
+                            <constraint firstItem="XLq-Qr-10g" firstAttribute="centerY" secondItem="0OX-RQ-Jxu" secondAttribute="centerY" constant="-60" id="60W-6n-UsQ"/>
+                            <constraint firstItem="DpO-ve-skm" firstAttribute="top" secondItem="y11-Op-tpK" secondAttribute="bottom" constant="8" id="66f-U4-iF1"/>
+                            <constraint firstItem="0OX-RQ-Jxu" firstAttribute="bottom" secondItem="DpO-ve-skm" secondAttribute="bottom" constant="40" id="6X8-gE-ezu"/>
+                            <constraint firstItem="DpO-ve-skm" firstAttribute="leading" secondItem="0OX-RQ-Jxu" secondAttribute="leading" constant="40" id="Nbk-cY-3Ka"/>
+                            <constraint firstItem="XLq-Qr-10g" firstAttribute="leading" secondItem="0OX-RQ-Jxu" secondAttribute="leading" constant="80" id="RZx-74-6je"/>
+                            <constraint firstItem="DpO-ve-skm" firstAttribute="centerX" secondItem="0OX-RQ-Jxu" secondAttribute="centerX" id="dBN-Mh-RzU"/>
+                            <constraint firstItem="XLq-Qr-10g" firstAttribute="centerX" secondItem="0OX-RQ-Jxu" secondAttribute="centerX" id="gMV-Qe-DQI"/>
+                            <constraint firstItem="0OX-RQ-Jxu" firstAttribute="trailing" secondItem="DpO-ve-skm" secondAttribute="trailing" constant="40" id="nmA-Y5-kyk"/>
+                            <constraint firstItem="0OX-RQ-Jxu" firstAttribute="trailing" secondItem="XLq-Qr-10g" secondAttribute="trailing" constant="80" id="p5d-QJ-GNY"/>
+                            <constraint firstItem="y11-Op-tpK" firstAttribute="centerX" secondItem="DpO-ve-skm" secondAttribute="centerX" id="r1p-KO-pcW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0OX-RQ-Jxu"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="400"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ayA-JA-HfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="27.436281859070466"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-page-1-image" width="222" height="247"/>
+    </resources>
 </document>

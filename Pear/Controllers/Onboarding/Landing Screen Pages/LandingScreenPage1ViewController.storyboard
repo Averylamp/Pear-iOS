@@ -10,19 +10,47 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--LandingS-->
+        <!--Landing Screen Page1 View Controller-->
         <scene sceneID="ISt-g0-eI4">
             <objects>
-                <viewController id="oCr-aK-WuR" customClass="LandingS" sceneMemberID="viewController">
+                <viewController id="oCr-aK-WuR" customClass="LandingScreenPage1ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E9a-2q-htP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-page-1-image" translatesAutoresizingMaskIntoConstraints="NO" id="xS5-tb-URl">
+                                <rect key="frame" x="80" y="50" width="215" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="yUx-qV-fIy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A better way to meet new people nearby" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6v-sB-gv0">
+                                <rect key="frame" x="40" y="270" width="295" height="50.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xS5-tb-URl" firstAttribute="leading" secondItem="2fS-oP-FYH" secondAttribute="leading" constant="80" id="6DR-we-JOv"/>
+                            <constraint firstItem="xS5-tb-URl" firstAttribute="centerY" secondItem="2fS-oP-FYH" secondAttribute="centerY" constant="-60" id="909-xo-x8Q"/>
+                            <constraint firstItem="2fS-oP-FYH" firstAttribute="trailing" secondItem="xS5-tb-URl" secondAttribute="trailing" constant="80" id="CHJ-ba-RKH"/>
+                            <constraint firstItem="xS5-tb-URl" firstAttribute="centerX" secondItem="2fS-oP-FYH" secondAttribute="centerX" id="Wpe-IJ-J9N"/>
+                            <constraint firstItem="h6v-sB-gv0" firstAttribute="top" secondItem="xS5-tb-URl" secondAttribute="bottom" constant="40" id="cN0-oB-l8g"/>
+                            <constraint firstItem="2fS-oP-FYH" firstAttribute="trailing" secondItem="h6v-sB-gv0" secondAttribute="trailing" constant="40" id="s26-kj-QOX"/>
+                            <constraint firstItem="h6v-sB-gv0" firstAttribute="leading" secondItem="2fS-oP-FYH" secondAttribute="leading" constant="40" id="ufn-9f-iRh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2fS-oP-FYH"/>
                     </view>
+                    <size key="freeformSize" width="375" height="400"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxY-Ib-wMw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="27.436281859070466"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="onboarding-page-1-image" width="222" height="247"/>
+    </resources>
 </document>
