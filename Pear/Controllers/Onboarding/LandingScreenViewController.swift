@@ -66,6 +66,17 @@ extension LandingScreenViewController{
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
         pageControl.numberOfPages = numPages
+        
+        let pages: [UIViewController] = [LandingScreenPage1ViewController.instantiate(),
+                                         LandingScreenPage2ViewController.instantiate(),
+                                         LandingScreenPage3ViewController.instantiate(),
+                                         LandingScreenPage4ViewController.instantiate()]
+        
+        for i in 0..<pages.count{
+            pages[i].view.frame = CGRect(x: CGFloat(i) * scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+            scrollView.addSubview(pages[i].view)
+        }
+        
     }
     
     

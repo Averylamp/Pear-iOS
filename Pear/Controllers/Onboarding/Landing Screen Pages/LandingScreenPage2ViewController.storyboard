@@ -1,7 +1,66 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J9S-Kb-9hC">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Landing Screen Page2 View Controller-->
+        <scene sceneID="lEd-WC-G4d">
+            <objects>
+                <viewController id="J9S-Kb-9hC" customClass="LandingScreenPage2ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IGf-xm-3eN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-page-1-image" translatesAutoresizingMaskIntoConstraints="NO" id="a6m-dr-QZx">
+                                <rect key="frame" x="80" y="50" width="215" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="heb-mE-zU0"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Pear, profiles are written by people who you know you best." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ6-4J-Vnb">
+                                <rect key="frame" x="40" y="324" width="295" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover others through the eyes of their friends" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVC-Yx-AjV">
+                                <rect key="frame" x="40" y="265.5" width="295" height="50.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a6m-dr-QZx" firstAttribute="centerX" secondItem="6z2-r5-Eom" secondAttribute="centerX" id="1S3-IU-feW"/>
+                            <constraint firstItem="6z2-r5-Eom" firstAttribute="trailing" secondItem="dZ6-4J-Vnb" secondAttribute="trailing" constant="40" id="SeQ-mg-aez"/>
+                            <constraint firstItem="a6m-dr-QZx" firstAttribute="centerY" secondItem="6z2-r5-Eom" secondAttribute="centerY" constant="-60" id="VPe-nH-Dh1"/>
+                            <constraint firstItem="a6m-dr-QZx" firstAttribute="leading" secondItem="6z2-r5-Eom" secondAttribute="leading" constant="80" id="XVu-w5-UA3"/>
+                            <constraint firstItem="6z2-r5-Eom" firstAttribute="bottom" secondItem="dZ6-4J-Vnb" secondAttribute="bottom" constant="40" id="dV5-4r-ptK"/>
+                            <constraint firstItem="vVC-Yx-AjV" firstAttribute="width" secondItem="dZ6-4J-Vnb" secondAttribute="width" id="gjF-B4-W0i"/>
+                            <constraint firstItem="dZ6-4J-Vnb" firstAttribute="centerX" secondItem="6z2-r5-Eom" secondAttribute="centerX" id="hwL-Rg-H6b"/>
+                            <constraint firstItem="6z2-r5-Eom" firstAttribute="trailing" secondItem="a6m-dr-QZx" secondAttribute="trailing" constant="80" id="jVp-pJ-9br"/>
+                            <constraint firstItem="vVC-Yx-AjV" firstAttribute="centerX" secondItem="dZ6-4J-Vnb" secondAttribute="centerX" id="k21-ko-9GK"/>
+                            <constraint firstItem="dZ6-4J-Vnb" firstAttribute="top" secondItem="vVC-Yx-AjV" secondAttribute="bottom" constant="8" id="nHv-oW-gjm"/>
+                            <constraint firstItem="dZ6-4J-Vnb" firstAttribute="leading" secondItem="6z2-r5-Eom" secondAttribute="leading" constant="40" id="zuP-PN-LJj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6z2-r5-Eom"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="400"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AvO-JN-m8t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="55" y="30"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-page-1-image" width="222" height="247"/>
+    </resources>
 </document>
