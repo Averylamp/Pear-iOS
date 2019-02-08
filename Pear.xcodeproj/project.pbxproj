@@ -39,6 +39,7 @@
 		BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A30220E1C9400759A14 /* LandingScreenPage4ViewController.swift */; };
 		BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A31220E1C9400759A14 /* LandingScreenPage2ViewController.swift */; };
 		BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A32220E1C9400759A14 /* LandingScreenPage3ViewController.swift */; };
+		BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* Profile.swift */; };
@@ -84,6 +85,7 @@
 		BB986A30220E1C9400759A14 /* LandingScreenPage4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenPage4ViewController.swift; sourceTree = "<group>"; };
 		BB986A31220E1C9400759A14 /* LandingScreenPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenPage2ViewController.swift; sourceTree = "<group>"; };
 		BB986A32220E1C9400759A14 /* LandingScreenPage3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenPage3ViewController.swift; sourceTree = "<group>"; };
+		BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenPageViewController.swift; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 		BB986A25220E1BDD00759A14 /* Landing Screen Pages */ = {
 			isa = PBXGroup;
 			children = (
+				BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */,
 				BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */,
 				BB986A28220E1BFD00759A14 /* LandingScreenPage1ViewController.swift */,
 				BB986A2A220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard */,
@@ -479,6 +482,7 @@
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				60C131D821D343910093ECBA /* LoginVC.swift in Sources */,
+				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */,
 				BB18788D21E2B1B900964F26 /* SettingsMainViewController.swift in Sources */,
 				BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */,

@@ -54,6 +54,9 @@
                         <viewLayoutGuide key="safeArea" id="QIj-rj-H46"/>
                     </view>
                     <size key="freeformSize" width="375" height="400"/>
+                    <connections>
+                        <outlet property="imageView" destination="alK-a7-n2c" id="WVM-RV-DK6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2v-0a-w86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

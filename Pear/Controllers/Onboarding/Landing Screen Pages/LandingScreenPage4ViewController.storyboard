@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="180" id="PFS-Ag-V0j"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building a profile is fun and usually only takes a few minutes. You can send it to your friend to review" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpO-ve-skm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building a profile is fun and usually only takes a few minutes. You can send it to your friend to review." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpO-ve-skm">
                                 <rect key="frame" x="40" y="306" width="295" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -54,6 +54,9 @@
                         <viewLayoutGuide key="safeArea" id="0OX-RQ-Jxu"/>
                     </view>
                     <size key="freeformSize" width="375" height="400"/>
+                    <connections>
+                        <outlet property="imageView" destination="XLq-Qr-10g" id="Z3c-xJ-n1c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayA-JA-HfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LandingScreenPage4ViewController: UIViewController {
+class LandingScreenPage4ViewController: LandingScreenPageViewController {
 
     /// Factory method for creating this view controller.
     ///

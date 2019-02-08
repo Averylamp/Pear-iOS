@@ -8,8 +8,9 @@
 
 import UIKit
 
-class LandingScreenPage2ViewController: UIViewController {
+class LandingScreenPage2ViewController: LandingScreenPageViewController {
 
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
