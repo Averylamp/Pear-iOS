@@ -25,7 +25,10 @@ class LandingScreenViewController: UIViewController {
         return vc
     }
 
-    
+    let pages: [LandingScreenPageViewController] = [LandingScreenPage1ViewController.instantiate(),
+                                                    LandingScreenPage2ViewController.instantiate(),
+                                                    LandingScreenPage3ViewController.instantiate(),
+                                                    LandingScreenPage4ViewController.instantiate()]
     
 }
 
@@ -67,16 +70,13 @@ extension LandingScreenViewController{
         scrollView.isPagingEnabled = true
         pageControl.numberOfPages = numPages
         
-        let pages: [UIViewController] = [LandingScreenPage1ViewController.instantiate(),
-                                         LandingScreenPage2ViewController.instantiate(),
-                                         LandingScreenPage3ViewController.instantiate(),
-                                         LandingScreenPage4ViewController.instantiate()]
+
         
-        for i in 0..<pages.count{
-            pages[i].view.frame = CGRect(x: CGFloat(i) * scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
-            scrollView.addSubview(pages[i].view)
+        for i in 0..<self.pages.count{
+            self.pages[i].view.frame = CGRect(x: CGFloat(i) * scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+            scrollView.addSubview(self.pages[i].view)
         }
-        
+        scrollView.delegate = self
     }
     
     
@@ -102,4 +102,28 @@ private extension LandingScreenViewController{
 }
 
 
-
+// MARK: - UIScrollViewDelegate
+extension LandingScreenViewController: UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+        
+        let percentOffset: CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
+        
+        let minScaleSize: CGFloat = 0.6
+        if(percentOffset > 0 && percentOffset <= 0.25) {
+            pages[0].scaleImageView(percent: 1 - percentOffset)
+            pages[1].scaleImageView(percent: minScaleSize + percentOffset)
+        } else if(percentOffset > 0.25 && percentOffset <= 0.50) {
+            pages[1].scaleImageView(percent: 1.0 - (percentOffset - 0.25))
+            pages[2].scaleImageView(percent: minScaleSize + (percentOffset - 0.25))
+        } else if(percentOffset > 0.50 && percentOffset <= 0.75) {
+            pages[2].scaleImageView(percent: 1.0 - (percentOffset - 0.5))
+            pages[3].scaleImageView(percent: minScaleSize + (percentOffset - 0.5))
+        }else if(percentOffset > 0.75 && percentOffset <= 1) {
+            pages[3].scaleImageView(percent: 1.0 - (percentOffset - 0.75))
+        }
+    }
+    
+    
+}
