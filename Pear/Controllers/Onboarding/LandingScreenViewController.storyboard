@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bP-dS-bgj">
-                                <rect key="frame" x="0.0" y="10" width="375" height="667"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bP-dS-bgj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="507"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5aE-wz-PXH">
-                                <rect key="frame" x="168" y="474" width="39" height="37"/>
+                                <rect key="frame" x="168" y="470" width="39" height="37"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhD-Vv-GXK">
                                 <rect key="frame" x="20" y="587" width="335" height="60"/>
@@ -37,7 +37,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0e-kO-oji">
-                                <rect key="frame" x="20" y="519" width="335" height="60"/>
+                                <rect key="frame" x="20" y="515" width="335" height="60"/>
                                 <color key="backgroundColor" red="0.21176470588235294" green="0.8784313725490196" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="7lR-gx-kMu"/>
@@ -50,26 +50,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7bP-dS-bgj" firstAttribute="top" secondItem="im2-tZ-rGb" secondAttribute="top" id="5CF-Ta-ZpN"/>
                             <constraint firstItem="BhD-Vv-GXK" firstAttribute="centerX" secondItem="PoT-HI-Elf" secondAttribute="centerX" id="ABd-GM-PR1"/>
                             <constraint firstItem="s0e-kO-oji" firstAttribute="top" secondItem="5aE-wz-PXH" secondAttribute="bottom" constant="8" id="Cid-Xi-FPr"/>
                             <constraint firstItem="PoT-HI-Elf" firstAttribute="trailing" secondItem="BhD-Vv-GXK" secondAttribute="trailing" constant="20" id="FeQ-io-NXI"/>
-                            <constraint firstItem="BhD-Vv-GXK" firstAttribute="top" secondItem="s0e-kO-oji" secondAttribute="bottom" constant="8" id="G51-La-frm"/>
+                            <constraint firstItem="BhD-Vv-GXK" firstAttribute="top" secondItem="s0e-kO-oji" secondAttribute="bottom" constant="12" id="G51-La-frm"/>
                             <constraint firstItem="PoT-HI-Elf" firstAttribute="trailing" secondItem="s0e-kO-oji" secondAttribute="trailing" constant="20" id="Hdi-IR-gO9"/>
                             <constraint firstItem="7bP-dS-bgj" firstAttribute="width" secondItem="im2-tZ-rGb" secondAttribute="width" id="LGY-Sv-Fe4"/>
                             <constraint firstItem="PoT-HI-Elf" firstAttribute="bottom" secondItem="BhD-Vv-GXK" secondAttribute="bottom" constant="20" id="c7D-de-iv7"/>
-                            <constraint firstItem="7bP-dS-bgj" firstAttribute="centerY" secondItem="PoT-HI-Elf" secondAttribute="centerY" id="dLF-SP-rwC"/>
                             <constraint firstItem="BhD-Vv-GXK" firstAttribute="leading" secondItem="PoT-HI-Elf" secondAttribute="leading" constant="20" id="fmI-fe-gxa"/>
                             <constraint firstItem="7bP-dS-bgj" firstAttribute="centerX" secondItem="PoT-HI-Elf" secondAttribute="centerX" id="ina-sy-lM7"/>
                             <constraint firstItem="5aE-wz-PXH" firstAttribute="centerX" secondItem="PoT-HI-Elf" secondAttribute="centerX" id="jUV-1W-Vdd"/>
+                            <constraint firstItem="s0e-kO-oji" firstAttribute="top" secondItem="7bP-dS-bgj" secondAttribute="bottom" constant="8" id="nXf-V3-zNG"/>
                             <constraint firstItem="PoT-HI-Elf" firstAttribute="trailing" secondItem="BhD-Vv-GXK" secondAttribute="trailing" constant="20" id="pKS-WT-LVI"/>
                             <constraint firstItem="s0e-kO-oji" firstAttribute="leading" secondItem="PoT-HI-Elf" secondAttribute="leading" constant="20" id="pfH-Tx-hKo"/>
-                            <constraint firstItem="7bP-dS-bgj" firstAttribute="height" secondItem="im2-tZ-rGb" secondAttribute="height" id="utS-db-A9N"/>
                             <constraint firstItem="BhD-Vv-GXK" firstAttribute="leading" secondItem="PoT-HI-Elf" secondAttribute="leading" constant="20" id="z4a-MU-Xqo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PoT-HI-Elf"/>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="BhD-Vv-GXK" id="QA4-I4-fmP"/>
+                        <outlet property="pageControl" destination="5aE-wz-PXH" id="N5J-yg-O7Y"/>
                         <outlet property="scrollView" destination="7bP-dS-bgj" id="5lm-GB-nUA"/>
                         <outlet property="signupButton" destination="s0e-kO-oji" id="d5m-GM-fRk"/>
                     </connections>
