@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>966539270409-j4jclu8ng6cgqsikgg0i32pp2nuau1ug.apps.googleusercontent.com</string>
+	<string>318488906543-aebrcqi8n66ejvjh99krv580fq01rqo5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.966539270409-j4jclu8ng6cgqsikgg0i32pp2nuau1ug</string>
+	<string>com.googleusercontent.apps.318488906543-aebrcqi8n66ejvjh99krv580fq01rqo5</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD0IVja8N89gRv9nfcjWcpwZt0vspyhX8I</string>
+	<string>AIzaSyD363XyE4DuqV1CeRIlIp4RC821FT7fr9Q</string>
 	<key>GCM_SENDER_ID</key>
-	<string>966539270409</string>
+	<string>318488906543</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.sam.subtleasianmatches</string>
+	<string>com.pear.pear</string>
 	<key>PROJECT_ID</key>
-	<string>subtle-asian-datamatch</string>
+	<string>pear-5f60f</string>
 	<key>STORAGE_BUCKET</key>
-	<string>subtle-asian-datamatch.appspot.com</string>
+	<string>pear-5f60f.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:966539270409:ios:6444aa4ec03c419a</string>
+	<string>1:318488906543:ios:3b0b61253f7809c0</string>
 	<key>DATABASE_URL</key>
-	<string>https://subtle-asian-datamatch.firebaseio.com</string>
+	<string>https://pear-5f60f.firebaseio.com</string>
 </dict>
 </plist>
