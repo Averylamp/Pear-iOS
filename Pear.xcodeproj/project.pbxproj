@@ -31,6 +31,14 @@
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A22220E14F600759A14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB986A21220E14F600759A14 /* GoogleService-Info.plist */; };
+		BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */; };
+		BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A28220E1BFD00759A14 /* LandingScreenPage1ViewController.swift */; };
+		BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A2A220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard */; };
+		BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A2B220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard */; };
+		BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A2C220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard */; };
+		BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A30220E1C9400759A14 /* LandingScreenPage4ViewController.swift */; };
+		BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A31220E1C9400759A14 /* LandingScreenPage2ViewController.swift */; };
+		BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A32220E1C9400759A14 /* LandingScreenPage3ViewController.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* Profile.swift */; };
@@ -68,6 +76,14 @@
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A21220E14F600759A14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenPage1ViewController.storyboard; sourceTree = "<group>"; };
+		BB986A28220E1BFD00759A14 /* LandingScreenPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenPage1ViewController.swift; sourceTree = "<group>"; };
+		BB986A2A220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingScreenPage2ViewController.storyboard; sourceTree = "<group>"; };
+		BB986A2B220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingScreenPage3ViewController.storyboard; sourceTree = "<group>"; };
+		BB986A2C220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingScreenPage4ViewController.storyboard; sourceTree = "<group>"; };
+		BB986A30220E1C9400759A14 /* LandingScreenPage4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenPage4ViewController.swift; sourceTree = "<group>"; };
+		BB986A31220E1C9400759A14 /* LandingScreenPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenPage2ViewController.swift; sourceTree = "<group>"; };
+		BB986A32220E1C9400759A14 /* LandingScreenPage3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenPage3ViewController.swift; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -276,10 +292,26 @@
 		BB986A1C220E08B300759A14 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				BB986A25220E1BDD00759A14 /* Landing Screen Pages */,
 				BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */,
 				BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		BB986A25220E1BDD00759A14 /* Landing Screen Pages */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */,
+				BB986A28220E1BFD00759A14 /* LandingScreenPage1ViewController.swift */,
+				BB986A2A220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard */,
+				BB986A31220E1C9400759A14 /* LandingScreenPage2ViewController.swift */,
+				BB986A2B220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard */,
+				BB986A32220E1C9400759A14 /* LandingScreenPage3ViewController.swift */,
+				BB986A2C220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard */,
+				BB986A30220E1C9400759A14 /* LandingScreenPage4ViewController.swift */,
+			);
+			path = "Landing Screen Pages";
 			sourceTree = "<group>";
 		};
 		BBDF1FEB21E2B61F00520881 /* Navigation */ = {
@@ -352,9 +384,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB18789321E2B21800964F26 /* DiscoverMainViewController.storyboard in Resources */,
+				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */,
 				BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */,
+				BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */,
+				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
+				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				60C131CD21D342BD0093ECBA /* LaunchScreen.storyboard in Resources */,
@@ -441,6 +477,7 @@
 				600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */,
 				BBDF1FEF21E2D96D00520881 /* Profile.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
+				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				60C131D821D343910093ECBA /* LoginVC.swift in Sources */,
 				BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */,
 				BB18788D21E2B1B900964F26 /* SettingsMainViewController.swift in Sources */,
@@ -452,9 +489,12 @@
 				BB18788921E2B1AC00964F26 /* MatchesMainViewController.swift in Sources */,
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
 				60C131E421D345CE0093ECBA /* User.swift in Sources */,
+				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
+				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
 				BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */,
+				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
