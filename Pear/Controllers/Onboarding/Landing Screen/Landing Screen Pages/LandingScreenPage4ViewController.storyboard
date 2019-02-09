@@ -28,13 +28,16 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building a profile is fun and usually only takes a few minutes. You can send it to your friend to review." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpO-ve-skm">
-                                <rect key="frame" x="40" y="306" width="295" height="54"/>
+                                <rect key="frame" x="40" y="295" width="295" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="eno-OC-gmP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's get going!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y11-Op-tpK">
-                                <rect key="frame" x="40" y="272.5" width="295" height="25.5"/>
+                                <rect key="frame" x="40" y="261.5" width="295" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
