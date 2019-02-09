@@ -1,7 +1,104 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VX3-3W-6F2">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Get Started Short Input View Controller-->
+        <scene sceneID="hCj-zy-szu">
+            <objects>
+                <viewController id="VX3-3W-6F2" customClass="GetStartedShortInputViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6a8-IC-Gdp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPr-jd-5Kx">
+                                <rect key="frame" x="20" y="40" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GqF-bt-5Qp"/>
+                                    <constraint firstAttribute="width" constant="40" id="Jh7-pg-fEQ"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-back-button"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="VX3-3W-6F2" eventType="touchUpInside" id="nL0-9y-WVq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGV-eA-FLs">
+                                <rect key="frame" x="278" y="41.5" width="77" height="37"/>
+                                <state key="normal" image="onboarding-next-button"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="VX3-3W-6F2" eventType="touchUpInside" id="Rw3-1W-A70"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your name?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dz-br-sPG">
+                                <rect key="frame" x="30" y="100" width="315" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hge-oU-yC3">
+                                <rect key="frame" x="30" y="144" width="315" height="42"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D96-d9-9Hu">
+                                <rect key="frame" x="30" y="185" width="315" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="fjr-Qz-J3B"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xf2-15-aJx">
+                                <rect key="frame" x="305" y="145" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="C3r-4w-C5E"/>
+                                    <constraint firstAttribute="height" constant="40" id="IBS-tc-bro"/>
+                                </constraints>
+                                <state key="normal" title="x"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rx0-cX-Rj0" firstAttribute="trailing" secondItem="9dz-br-sPG" secondAttribute="trailing" constant="30" id="0ld-t3-2ku"/>
+                            <constraint firstItem="9dz-br-sPG" firstAttribute="top" secondItem="fPr-jd-5Kx" secondAttribute="bottom" constant="20" id="4eF-cZ-4lT"/>
+                            <constraint firstItem="fPr-jd-5Kx" firstAttribute="leading" secondItem="Rx0-cX-Rj0" secondAttribute="leading" constant="20" id="4en-ja-yJR"/>
+                            <constraint firstItem="9dz-br-sPG" firstAttribute="centerX" secondItem="Rx0-cX-Rj0" secondAttribute="centerX" id="4vN-5e-MO7"/>
+                            <constraint firstItem="9dz-br-sPG" firstAttribute="leading" secondItem="Rx0-cX-Rj0" secondAttribute="leading" constant="30" id="Cie-6g-TNq"/>
+                            <constraint firstItem="fPr-jd-5Kx" firstAttribute="top" secondItem="Rx0-cX-Rj0" secondAttribute="top" constant="20" id="DWh-Sp-qGJ"/>
+                            <constraint firstItem="D96-d9-9Hu" firstAttribute="top" secondItem="xf2-15-aJx" secondAttribute="bottom" id="Dg6-Fc-2zI"/>
+                            <constraint firstItem="D96-d9-9Hu" firstAttribute="bottom" secondItem="Hge-oU-yC3" secondAttribute="bottom" id="QiQ-X0-jB4"/>
+                            <constraint firstItem="Rx0-cX-Rj0" firstAttribute="trailing" secondItem="SGV-eA-FLs" secondAttribute="trailing" constant="20" id="TtP-hn-1vG"/>
+                            <constraint firstItem="D96-d9-9Hu" firstAttribute="centerX" secondItem="Hge-oU-yC3" secondAttribute="centerX" id="UDr-wq-pcn"/>
+                            <constraint firstItem="Hge-oU-yC3" firstAttribute="top" secondItem="9dz-br-sPG" secondAttribute="bottom" constant="20" id="WUF-VX-Qva"/>
+                            <constraint firstItem="Rx0-cX-Rj0" firstAttribute="trailing" secondItem="xf2-15-aJx" secondAttribute="trailing" constant="30" id="WmH-vV-hIl"/>
+                            <constraint firstItem="xf2-15-aJx" firstAttribute="centerY" secondItem="Hge-oU-yC3" secondAttribute="centerY" id="b8y-yE-vgZ"/>
+                            <constraint firstItem="Hge-oU-yC3" firstAttribute="width" secondItem="9dz-br-sPG" secondAttribute="width" id="gK0-vA-Opi"/>
+                            <constraint firstItem="D96-d9-9Hu" firstAttribute="width" secondItem="Hge-oU-yC3" secondAttribute="width" id="q5o-er-zqR"/>
+                            <constraint firstItem="SGV-eA-FLs" firstAttribute="centerY" secondItem="fPr-jd-5Kx" secondAttribute="centerY" id="uaI-di-Ch0"/>
+                            <constraint firstItem="Hge-oU-yC3" firstAttribute="centerX" secondItem="9dz-br-sPG" secondAttribute="centerX" id="viC-Ju-J9c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rx0-cX-Rj0"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="Hge-oU-yC3" id="lJ1-gW-Ldu"/>
+                        <outlet property="nextButton" destination="SGV-eA-FLs" id="RSR-bW-DdU"/>
+                        <outlet property="questionLabel" destination="9dz-br-sPG" id="qZg-1h-xYT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4zS-bQ-utu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="96" height="96"/>
+        <image name="onboarding-next-button" width="77" height="37"/>
+    </resources>
 </document>

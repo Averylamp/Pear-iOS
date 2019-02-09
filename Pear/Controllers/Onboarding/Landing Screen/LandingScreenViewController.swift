@@ -97,6 +97,13 @@ private extension LandingScreenViewController{
     
     @objc func signupButtonClicked(sender:UIButton){
         print("Signup Clicked")
+        let inputNameVC = GetStartedShortInputViewController.instantiate(question: "What is your name?", validateInput: { (input) -> String? in
+            return nil
+        }) { (name) in
+            print(name)
+            
+        }
+        self.navigationController?.pushViewController(inputNameVC, animated: true)
     }
     
     @objc func loginButtonClicked(sender:UIButton){
@@ -109,7 +116,6 @@ private extension LandingScreenViewController{
             scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width * CGFloat(sender.currentPage), y: 0), animated: true)
         }
     }
-    
 }
 
 
