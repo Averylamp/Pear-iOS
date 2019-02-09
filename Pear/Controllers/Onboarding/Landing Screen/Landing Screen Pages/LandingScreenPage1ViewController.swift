@@ -9,9 +9,6 @@
 import UIKit
 
 class LandingScreenPage1ViewController: LandingScreenPageViewController {
-
-    
-
     
     /// Factory method for creating this view controller.
     ///
