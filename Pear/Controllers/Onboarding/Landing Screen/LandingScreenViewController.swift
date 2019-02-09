@@ -45,6 +45,10 @@ extension LandingScreenViewController{
         
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.layoutIfNeeded()
+        super.viewDidAppear(animated)
+    }
 }
 
 // MARK: - Styling
@@ -69,6 +73,7 @@ extension LandingScreenViewController{
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
         pageControl.numberOfPages = numPages
+        pageControl.addTarget(self, action: #selector(LandingScreenViewController.pageControlChanged(sender:)), for: .valueChanged)
         
         for i in 0..<self.pages.count{
             self.addChild(self.pages[i])
@@ -98,6 +103,12 @@ private extension LandingScreenViewController{
         print("Login Clicked")
     }
     
+    @objc func pageControlChanged(sender: UIPageControl){
+        let pageIndex:Int = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
+        if sender.currentPage != pageIndex{
+            scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width * CGFloat(sender.currentPage), y: 0), animated: true)
+        }
+    }
     
 }
 
