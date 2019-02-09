@@ -70,11 +70,11 @@ extension LandingScreenViewController{
         scrollView.isPagingEnabled = true
         pageControl.numberOfPages = numPages
         
-
-        
         for i in 0..<self.pages.count{
+            self.addChild(self.pages[i])
             self.pages[i].view.frame = CGRect(x: CGFloat(i) * scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
             scrollView.addSubview(self.pages[i].view)
+            self.pages[i].didMove(toParent: self)
         }
         scrollView.delegate = self
     }

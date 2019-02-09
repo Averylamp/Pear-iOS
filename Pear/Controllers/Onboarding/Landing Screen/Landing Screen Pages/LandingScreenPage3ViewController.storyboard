@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ScO-Vu-CJF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ScO-Vu-CJF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,11 +13,15 @@
         <scene sceneID="daH-yd-G4G">
             <objects>
                 <viewController id="ScO-Vu-CJF" customClass="LandingScreenPage3ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OeP-Im-bcx"/>
+                        <viewControllerLayoutGuide type="bottom" id="t8x-vi-1iX"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bvG-MK-hzk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-page-1-image" translatesAutoresizingMaskIntoConstraints="NO" id="alK-a7-n2c">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-page-3-image" translatesAutoresizingMaskIntoConstraints="NO" id="alK-a7-n2c">
                                 <rect key="frame" x="80" y="50" width="215" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="X08-VL-2iD"/>
@@ -40,18 +43,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="i9a-fa-vad" firstAttribute="width" secondItem="sgU-9T-k6x" secondAttribute="width" id="0Hk-vf-LdH"/>
-                            <constraint firstItem="alK-a7-n2c" firstAttribute="centerY" secondItem="QIj-rj-H46" secondAttribute="centerY" constant="-60" id="14j-pA-CDs"/>
-                            <constraint firstItem="QIj-rj-H46" firstAttribute="trailing" secondItem="sgU-9T-k6x" secondAttribute="trailing" constant="40" id="68f-8q-RC9"/>
-                            <constraint firstItem="QIj-rj-H46" firstAttribute="bottom" secondItem="sgU-9T-k6x" secondAttribute="bottom" constant="40" id="IBA-OA-d1G"/>
-                            <constraint firstItem="sgU-9T-k6x" firstAttribute="centerX" secondItem="QIj-rj-H46" secondAttribute="centerX" id="MFn-Er-CtB"/>
-                            <constraint firstItem="QIj-rj-H46" firstAttribute="trailing" secondItem="alK-a7-n2c" secondAttribute="trailing" constant="80" id="VoH-Xd-XTN"/>
+                            <constraint firstItem="alK-a7-n2c" firstAttribute="centerY" secondItem="bvG-MK-hzk" secondAttribute="centerY" constant="-60" id="14j-pA-CDs"/>
+                            <constraint firstAttribute="trailing" secondItem="sgU-9T-k6x" secondAttribute="trailing" constant="40" id="68f-8q-RC9"/>
+                            <constraint firstItem="t8x-vi-1iX" firstAttribute="top" secondItem="sgU-9T-k6x" secondAttribute="bottom" constant="40" id="IBA-OA-d1G"/>
+                            <constraint firstItem="sgU-9T-k6x" firstAttribute="centerX" secondItem="bvG-MK-hzk" secondAttribute="centerX" id="MFn-Er-CtB"/>
+                            <constraint firstAttribute="trailing" secondItem="alK-a7-n2c" secondAttribute="trailing" constant="80" id="VoH-Xd-XTN"/>
                             <constraint firstItem="sgU-9T-k6x" firstAttribute="top" secondItem="i9a-fa-vad" secondAttribute="bottom" constant="8" id="WQ0-EO-eZ3"/>
-                            <constraint firstItem="sgU-9T-k6x" firstAttribute="leading" secondItem="QIj-rj-H46" secondAttribute="leading" constant="40" id="aL0-LI-wUT"/>
-                            <constraint firstItem="alK-a7-n2c" firstAttribute="leading" secondItem="QIj-rj-H46" secondAttribute="leading" constant="80" id="bwm-IB-wBy"/>
+                            <constraint firstItem="sgU-9T-k6x" firstAttribute="leading" secondItem="bvG-MK-hzk" secondAttribute="leading" constant="40" id="aL0-LI-wUT"/>
+                            <constraint firstItem="alK-a7-n2c" firstAttribute="leading" secondItem="bvG-MK-hzk" secondAttribute="leading" constant="80" id="bwm-IB-wBy"/>
                             <constraint firstItem="i9a-fa-vad" firstAttribute="centerX" secondItem="sgU-9T-k6x" secondAttribute="centerX" id="eG1-dm-xtB"/>
-                            <constraint firstItem="alK-a7-n2c" firstAttribute="centerX" secondItem="QIj-rj-H46" secondAttribute="centerX" id="ebh-mn-Dsw"/>
+                            <constraint firstItem="alK-a7-n2c" firstAttribute="centerX" secondItem="bvG-MK-hzk" secondAttribute="centerX" id="ebh-mn-Dsw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="QIj-rj-H46"/>
                     </view>
                     <size key="freeformSize" width="375" height="400"/>
                     <connections>
@@ -64,6 +66,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-page-1-image" width="222" height="247"/>
+        <image name="onboarding-page-3-image" width="337.5" height="387"/>
     </resources>
 </document>

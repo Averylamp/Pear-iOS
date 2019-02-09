@@ -22,7 +22,9 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 //        window?.rootViewController = LoginVC.instantiate(authAPI: FakeAuthAPI())
-        window?.rootViewController = LandingScreenViewController.instantiate()
+        let navController = UINavigationController(rootViewController: LandingScreenViewController.instantiate())
+        navController.isNavigationBarHidden = true
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
         FirebaseApp.configure()
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
