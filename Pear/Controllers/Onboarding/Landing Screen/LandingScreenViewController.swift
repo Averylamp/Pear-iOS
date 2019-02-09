@@ -97,12 +97,7 @@ private extension LandingScreenViewController{
     
     @objc func signupButtonClicked(sender:UIButton){
         print("Signup Clicked")
-        let inputNameVC = GetStartedShortInputViewController.instantiate(question: "What is your name?", validateInput: { (input) -> String? in
-            return nil
-        }) { (name) in
-            print(name)
-            
-        }
+        let inputNameVC = GetStartedYourNameViewController.instantiate(endorsement: Endorsement())
         self.navigationController?.pushViewController(inputNameVC, animated: true)
     }
     

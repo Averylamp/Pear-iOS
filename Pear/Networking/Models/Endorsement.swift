@@ -10,6 +10,11 @@ import UIKit
 
 class Endorsement {
     
+    var endorseeName: String?
+    var name: String?
     
-
+    init(){
+        
+    }
+    
 }
