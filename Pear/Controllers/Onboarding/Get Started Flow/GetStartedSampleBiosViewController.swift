@@ -10,6 +10,7 @@ import UIKit
 
 class GetStartedSampleBiosViewController: UIViewController {
     
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -18,6 +19,8 @@ class GetStartedSampleBiosViewController: UIViewController {
         let vc = storyboard.instantiateInitialViewController() as! GetStartedSampleBiosViewController
         return vc
     }
+    
+    
 }
 
 
