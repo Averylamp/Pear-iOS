@@ -46,7 +46,7 @@
                                 <rect key="frame" x="30" y="144" width="315" height="42"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtc-oT-Mg8">
                                 <rect key="frame" x="30" y="185" width="315" height="1"/>
@@ -89,7 +89,6 @@
                     <connections>
                         <outlet property="inputTextField" destination="R0e-w4-zqI" id="xAZ-xV-O9n"/>
                         <outlet property="nextButton" destination="tN0-Yn-GTg" id="efN-KA-SWI"/>
-                        <outlet property="questionLabel" destination="hRZ-ev-SgS" id="e2p-SV-UXS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7L-ig-Tae" userLabel="First Responder" sceneMemberID="firstResponder"/>
