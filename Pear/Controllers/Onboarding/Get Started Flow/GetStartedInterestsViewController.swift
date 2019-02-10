@@ -85,7 +85,8 @@ class GetStartedInterestsViewController: UIViewController {
                 self.endorsement.interests.append(button.titleLabel!.text!)
             }
         }
-        
+        let shortBioVC = GetStartedShortBioViewController.instantiate(endorsement: self.endorsement)
+        self.navigationController?.pushViewController(shortBioVC, animated: true)
     }
     
 }
