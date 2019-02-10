@@ -34,7 +34,7 @@ class GetStartedFriendNameViewController: UIViewController {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         if let userName = inputTextField.text{
             endorsement.name = userName
             let friendNameVC = GetStartedAgeViewController.instantiate(endorsement: self.endorsement)

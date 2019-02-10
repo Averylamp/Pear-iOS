@@ -27,7 +27,7 @@ class GetStartedYourNameViewController: UIViewController {
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         if let userName = inputTextField.text{
             endorsement.endorseeName = userName
             let friendNameVC = GetStartedFriendNameViewController.instantiate(endorsement: self.endorsement)

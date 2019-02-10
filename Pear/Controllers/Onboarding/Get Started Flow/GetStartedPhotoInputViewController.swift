@@ -28,7 +28,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
     }
     
 }

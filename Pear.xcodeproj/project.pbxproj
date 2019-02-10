@@ -20,6 +20,7 @@
 		60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */; };
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
+		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */; };
 		BB18788921E2B1AC00964F26 /* MatchesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18788821E2B1AC00964F26 /* MatchesMainViewController.swift */; };
 		BB18788B21E2B1B400964F26 /* ProfilesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18788A21E2B1B400964F26 /* ProfilesMainViewController.swift */; };
@@ -86,6 +87,7 @@
 		60C131EB21D348840093ECBA /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
 		BA268D5E8F23A5DE4CCFEE8C /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
+		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverMainViewController.swift; sourceTree = "<group>"; };
 		BB18788821E2B1AC00964F26 /* MatchesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesMainViewController.swift; sourceTree = "<group>"; };
 		BB18788A21E2B1B400964F26 /* ProfilesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesMainViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				60C131EB21D348840093ECBA /* UIViewController+Loading.swift */,
 				600FA61021D358B500A40EAC /* UIViewController+Alert.swift */,
 				BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */,
+				BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				60C131E421D345CE0093ECBA /* User.swift in Sources */,
+				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,

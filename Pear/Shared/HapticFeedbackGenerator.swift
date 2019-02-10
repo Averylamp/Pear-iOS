@@ -10,13 +10,7 @@ import UIKit
 
 class HapticFeedbackGenerator {
     
-    static let shared = HapticFeedbackGenerator()
-    
-    private init(){
-        
-    }
-    
-    func generateHapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle){
+    class func generateHapticFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle){
         let feedbackGenerator = UIImpactFeedbackGenerator.init(style: style)
         feedbackGenerator.impactOccurred()
     }

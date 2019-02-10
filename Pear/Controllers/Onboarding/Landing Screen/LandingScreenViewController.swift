@@ -59,12 +59,14 @@ extension LandingScreenViewController{
         signupButton.layer.shadowColor = UIColor.black.cgColor
         signupButton.layer.shadowOpacity = 0.4
         signupButton.layer.cornerRadius = 4
+        signupButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 1.0))
         
         loginButton.layer.shadowRadius = 1
         loginButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         loginButton.layer.shadowColor = UIColor.black.cgColor
         loginButton.layer.shadowOpacity = 0.4
         loginButton.layer.cornerRadius = 4
+        loginButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 1.0))
     }
     
     func setupScrollView(){
@@ -97,7 +99,7 @@ private extension LandingScreenViewController{
     
     @objc func signupButtonClicked(sender:UIButton){
         print("Signup Clicked")
-        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         let inputNameVC = GetStartedShortBioViewController.instantiate(endorsement: Endorsement())
         self.navigationController?.pushViewController(inputNameVC, animated: true)
     }
