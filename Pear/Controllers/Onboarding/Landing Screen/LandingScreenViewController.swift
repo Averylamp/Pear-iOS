@@ -54,13 +54,13 @@ extension LandingScreenViewController{
 // MARK: - Styling
 extension LandingScreenViewController{
     func styleButtons(){
-        signupButton.layer.shadowRadius = 3
+        signupButton.layer.shadowRadius = 1
         signupButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         signupButton.layer.shadowColor = UIColor.black.cgColor
         signupButton.layer.shadowOpacity = 0.4
         signupButton.layer.cornerRadius = 4
         
-        loginButton.layer.shadowRadius = 3
+        loginButton.layer.shadowRadius = 1
         loginButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         loginButton.layer.shadowColor = UIColor.black.cgColor
         loginButton.layer.shadowOpacity = 0.4

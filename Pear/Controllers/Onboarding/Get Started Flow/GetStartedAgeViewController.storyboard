@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hIb-C1-0tt">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Get Started Age View Controller-->
+        <scene sceneID="A3X-zO-eQA">
+            <objects>
+                <viewController id="hIb-C1-0tt" customClass="GetStartedAgeViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XO2-yK-MQS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9I-2u-syv">
+                                <rect key="frame" x="20" y="40" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6lO-sB-d6l"/>
+                                    <constraint firstAttribute="height" constant="40" id="8NF-UI-bpr"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-back-button"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="hIb-C1-0tt" eventType="touchUpInside" id="749-rY-EBL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3L-py-veU">
+                                <rect key="frame" x="278" y="41.5" width="77" height="37"/>
+                                <state key="normal" image="onboarding-next-button"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="hIb-C1-0tt" eventType="touchUpInside" id="GdW-rL-mOr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How old are they?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xvv-dV-nKy">
+                                <rect key="frame" x="30" y="100" width="315" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BM3-YV-E5Y">
+                                <rect key="frame" x="147.5" y="167.5" width="80" height="50"/>
+                                <color key="tintColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Lj3-jl-h8I"/>
+                                    <constraint firstAttribute="height" constant="50" id="po2-4f-gN0"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="numberPad"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="koz-AY-7uv">
+                                <rect key="frame" x="147.5" y="216.5" width="80" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Onv-H7-cCU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xvv-dV-nKy" firstAttribute="leading" secondItem="MeJ-Y0-Fah" secondAttribute="leading" constant="30" id="3vW-J5-1dV"/>
+                            <constraint firstItem="k3L-py-veU" firstAttribute="centerY" secondItem="u9I-2u-syv" secondAttribute="centerY" id="6M9-Fh-8q6"/>
+                            <constraint firstItem="koz-AY-7uv" firstAttribute="bottom" secondItem="BM3-YV-E5Y" secondAttribute="bottom" id="AJZ-Rl-7qo"/>
+                            <constraint firstItem="u9I-2u-syv" firstAttribute="top" secondItem="MeJ-Y0-Fah" secondAttribute="top" constant="20" id="AlW-sq-2jV"/>
+                            <constraint firstItem="Xvv-dV-nKy" firstAttribute="top" secondItem="u9I-2u-syv" secondAttribute="bottom" constant="20" id="AsJ-21-2df"/>
+                            <constraint firstItem="u9I-2u-syv" firstAttribute="leading" secondItem="MeJ-Y0-Fah" secondAttribute="leading" constant="20" id="N6h-P0-hi3"/>
+                            <constraint firstItem="BM3-YV-E5Y" firstAttribute="top" secondItem="Xvv-dV-nKy" secondAttribute="bottom" constant="40" id="ONd-X7-zo3"/>
+                            <constraint firstItem="MeJ-Y0-Fah" firstAttribute="trailing" secondItem="k3L-py-veU" secondAttribute="trailing" constant="20" id="SMa-xi-kRN"/>
+                            <constraint firstItem="koz-AY-7uv" firstAttribute="centerX" secondItem="BM3-YV-E5Y" secondAttribute="centerX" id="YVk-D0-Iix"/>
+                            <constraint firstItem="MeJ-Y0-Fah" firstAttribute="trailing" secondItem="Xvv-dV-nKy" secondAttribute="trailing" constant="30" id="ZK2-wP-tjV"/>
+                            <constraint firstItem="koz-AY-7uv" firstAttribute="width" secondItem="BM3-YV-E5Y" secondAttribute="width" id="d1I-ap-6j6"/>
+                            <constraint firstItem="BM3-YV-E5Y" firstAttribute="centerX" secondItem="Xvv-dV-nKy" secondAttribute="centerX" id="igb-AG-Iem"/>
+                            <constraint firstItem="Xvv-dV-nKy" firstAttribute="centerX" secondItem="MeJ-Y0-Fah" secondAttribute="centerX" id="pAe-BE-EWy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MeJ-Y0-Fah"/>
+                    </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="BM3-YV-E5Y" id="5Xz-tO-XUh"/>
+                        <outlet property="nextButton" destination="k3L-py-veU" id="JTi-LL-6le"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y2c-cs-ldF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="96" height="96"/>
+        <image name="onboarding-next-button" width="77" height="37"/>
+    </resources>
+</document>

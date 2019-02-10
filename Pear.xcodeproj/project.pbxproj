@@ -55,6 +55,12 @@
 		BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A52220F79F200759A14 /* GetStartedCreateAccountViewController.swift */; };
 		BB986A55220F7AC700759A14 /* GetStartedYourNameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A54220F7AC700759A14 /* GetStartedYourNameViewController.storyboard */; };
 		BB986A57220F807E00759A14 /* GetStartedFriendNameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A56220F807E00759A14 /* GetStartedFriendNameViewController.storyboard */; };
+		BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A58220FCDFE00759A14 /* GetStartedAgeViewController.storyboard */; };
+		BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A5A220FD0C600759A14 /* GetStartedInterestsViewController.storyboard */; };
+		BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A5C220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard */; };
+		BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */; };
+		BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */; };
+		BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* Profile.swift */; };
@@ -116,6 +122,12 @@
 		BB986A52220F79F200759A14 /* GetStartedCreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCreateAccountViewController.swift; sourceTree = "<group>"; };
 		BB986A54220F7AC700759A14 /* GetStartedYourNameViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedYourNameViewController.storyboard; sourceTree = "<group>"; };
 		BB986A56220F807E00759A14 /* GetStartedFriendNameViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedFriendNameViewController.storyboard; sourceTree = "<group>"; };
+		BB986A58220FCDFE00759A14 /* GetStartedAgeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedAgeViewController.storyboard; sourceTree = "<group>"; };
+		BB986A5A220FD0C600759A14 /* GetStartedInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedInterestsViewController.storyboard; sourceTree = "<group>"; };
+		BB986A5C220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedShortBioViewController.storyboard; sourceTree = "<group>"; };
+		BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSampleBiosViewController.storyboard; sourceTree = "<group>"; };
+		BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhotoInputViewController.storyboard; sourceTree = "<group>"; };
+		BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedCreateAccountViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -369,11 +381,17 @@
 				BB986A46220F799A00759A14 /* GetStartedFriendNameViewController.swift */,
 				BB986A56220F807E00759A14 /* GetStartedFriendNameViewController.storyboard */,
 				BB986A48220F79A500759A14 /* GetStartedAgeViewController.swift */,
+				BB986A58220FCDFE00759A14 /* GetStartedAgeViewController.storyboard */,
 				BB986A4A220F79B400759A14 /* GetStartedInterestsViewController.swift */,
+				BB986A5A220FD0C600759A14 /* GetStartedInterestsViewController.storyboard */,
 				BB986A4C220F79CA00759A14 /* GetStartedShortBioViewController.swift */,
+				BB986A5C220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard */,
 				BB986A4E220F79DC00759A14 /* GetStartedSampleBiosViewController.swift */,
+				BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */,
 				BB986A50220F79E800759A14 /* GetStartedPhotoInputViewController.swift */,
+				BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */,
 				BB986A52220F79F200759A14 /* GetStartedCreateAccountViewController.swift */,
+				BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */,
 			);
 			path = "Get Started Flow";
 			sourceTree = "<group>";
@@ -449,8 +467,11 @@
 			files = (
 				BB18789321E2B21800964F26 /* DiscoverMainViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
+				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedYourNameViewController.storyboard in Resources */,
 				60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */,
+				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
+				BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */,
 				BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */,
 				BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */,
 				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
@@ -458,9 +479,12 @@
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
+				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedFriendNameViewController.storyboard in Resources */,
+				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				60C131CD21D342BD0093ECBA /* LaunchScreen.storyboard in Resources */,
+				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BB986A22220E14F600759A14 /* GoogleService-Info.plist in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,

@@ -12,6 +12,7 @@ class Endorsement {
     
     var endorseeName: String?
     var name: String?
+    var age: Int?
     
     init(){
         
