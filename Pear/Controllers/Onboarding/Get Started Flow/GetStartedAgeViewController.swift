@@ -56,6 +56,19 @@ extension GetStartedAgeViewController{
             self.inputTextField.text = "22"            
         }
         self.inputTextField.becomeFirstResponder()
+        self.inputTextField.delegate = self
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+extension GetStartedAgeViewController: UITextFieldDelegate{
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if self.inputTextField.text!.count + string.count - range.length > 2 {
+            return false
+        }
+        return true
     }
     
 }
