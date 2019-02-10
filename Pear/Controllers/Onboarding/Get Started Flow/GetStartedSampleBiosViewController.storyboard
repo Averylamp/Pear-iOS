@@ -1,7 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wxd-F5-jP6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Get Started Sample Bios View Controller-->
+        <scene sceneID="4BU-eU-RPV">
+            <objects>
+                <viewController id="wxd-F5-jP6" customClass="GetStartedSampleBiosViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JOH-F7-qwc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg8-KI-T3v">
+                                <rect key="frame" x="20" y="40" width="26" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="JlD-Xc-zay"/>
+                                    <constraint firstAttribute="width" constant="26" id="qdx-Pp-lC0"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-close-button"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="wxd-F5-jP6" eventType="touchUpInside" id="wmm-ba-T58"/>
+                                    <action selector="closeButtonClicked:" destination="wxd-F5-jP6" eventType="touchUpInside" id="kJF-jr-GZY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check out some of our latest favorites" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1qi-N5-al0">
+                                <rect key="frame" x="54" y="40" width="267" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These profiles strike the right balance between real &amp; roast, and give people something to talk about." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0n-R7-zhA">
+                                <rect key="frame" x="40" y="111" width="295" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBs-hS-7bV">
+                                <rect key="frame" x="40" y="198.5" width="295" height="438.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="P0n-R7-zhA" firstAttribute="leading" secondItem="7Wq-hw-MAC" secondAttribute="leading" constant="40" id="0V5-6W-9eW"/>
+                            <constraint firstItem="wg8-KI-T3v" firstAttribute="leading" secondItem="7Wq-hw-MAC" secondAttribute="leading" constant="20" id="9YK-yr-QWU"/>
+                            <constraint firstItem="7Wq-hw-MAC" firstAttribute="bottom" secondItem="pBs-hS-7bV" secondAttribute="bottom" constant="30" id="AQ5-Ej-GDH"/>
+                            <constraint firstItem="1qi-N5-al0" firstAttribute="leading" secondItem="wg8-KI-T3v" secondAttribute="trailing" constant="8" id="CE1-ha-JuJ"/>
+                            <constraint firstItem="pBs-hS-7bV" firstAttribute="centerX" secondItem="7Wq-hw-MAC" secondAttribute="centerX" id="Efm-X8-MEi"/>
+                            <constraint firstItem="P0n-R7-zhA" firstAttribute="centerX" secondItem="7Wq-hw-MAC" secondAttribute="centerX" id="Gh8-RQ-ZqD"/>
+                            <constraint firstItem="7Wq-hw-MAC" firstAttribute="trailing" secondItem="pBs-hS-7bV" secondAttribute="trailing" constant="40" id="Ijy-wR-dUi"/>
+                            <constraint firstItem="1qi-N5-al0" firstAttribute="centerX" secondItem="7Wq-hw-MAC" secondAttribute="centerX" id="LF0-IT-AB2"/>
+                            <constraint firstItem="7Wq-hw-MAC" firstAttribute="trailing" secondItem="P0n-R7-zhA" secondAttribute="trailing" constant="40" id="NrP-Q0-7tB"/>
+                            <constraint firstItem="1qi-N5-al0" firstAttribute="top" secondItem="wg8-KI-T3v" secondAttribute="top" id="S2b-AJ-Idn"/>
+                            <constraint firstItem="P0n-R7-zhA" firstAttribute="top" secondItem="1qi-N5-al0" secondAttribute="bottom" constant="16" id="YKE-UY-oqu"/>
+                            <constraint firstItem="pBs-hS-7bV" firstAttribute="top" secondItem="P0n-R7-zhA" secondAttribute="bottom" constant="30" id="eaB-gK-Bsr"/>
+                            <constraint firstItem="wg8-KI-T3v" firstAttribute="top" secondItem="7Wq-hw-MAC" secondAttribute="top" constant="20" id="qKy-Et-PwC"/>
+                            <constraint firstItem="pBs-hS-7bV" firstAttribute="leading" secondItem="7Wq-hw-MAC" secondAttribute="leading" constant="40" id="x7W-rv-NF7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Wq-hw-MAC"/>
+                    </view>
+                    <connections>
+                        <outlet property="profileCardView" destination="pBs-hS-7bV" id="Ipb-yC-Okw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ees-sx-A1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-close-button" width="96" height="96"/>
+    </resources>
 </document>

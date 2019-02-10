@@ -42,6 +42,8 @@ class GetStartedShortBioViewController: UIViewController {
     
     
     @IBAction func sampleButtonClicked(_ sender: Any) {
+        let sampleBiosVC = GetStartedSampleBiosViewController.instantiate()
+        self.present(sampleBiosVC, animated: true, completion: nil)
     }
     
     
@@ -83,7 +85,7 @@ extension GetStartedShortBioViewController:UITextViewDelegate {
         self.textLengthLabel.text = "\(textView.text.count) / \(maxTextLength)"
         let textHeight = self.inputTextView.sizeThatFits(CGSize(width: self.inputTextView.frame.width, height: CGFloat.greatestFiniteMagnitude)).height
         let textPadding: CGFloat = 8.0
-        inputTextViewHeightConstraint.constant = max(40, textPadding + textHeight)
+        inputTextViewHeightConstraint.constant = max(34, textPadding + textHeight)
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }

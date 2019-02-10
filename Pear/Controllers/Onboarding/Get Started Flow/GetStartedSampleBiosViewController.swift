@@ -11,6 +11,7 @@ import UIKit
 class GetStartedSampleBiosViewController: UIViewController {
     
     
+    @IBOutlet weak var profileCardView: UIView!
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -20,6 +21,9 @@ class GetStartedSampleBiosViewController: UIViewController {
         return vc
     }
     
+    @IBAction func closeButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
 }
 
@@ -28,8 +32,12 @@ class GetStartedSampleBiosViewController: UIViewController {
 extension GetStartedSampleBiosViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+ 
+        self.profileCardView.layer.shadowRadius = 1
+        self.profileCardView.layer.shadowColor = UIColor.black.cgColor
+        self.profileCardView.layer.shadowOpacity = 0.3
+        self.profileCardView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.profileCardView.layer.cornerRadius = 10
     }
     
 }
