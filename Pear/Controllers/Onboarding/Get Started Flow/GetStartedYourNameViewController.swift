@@ -38,6 +38,9 @@ class GetStartedYourNameViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func clearButtonClicked(_ sender: Any) {
+        self.inputTextField.text = ""
+    }
 }
 
 // MARK: - Life Cycle
@@ -46,10 +49,9 @@ extension GetStartedYourNameViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.contentMode = .scaleAspectFit
-        self.nextButton.layer.shadowRadius = 3
-        self.nextButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.nextButton.layer.shadowOpacity = 0.4
-        self.nextButton.layer.shadowColor = UIColor.black.cgColor
+        if let endorseeName = self.endorsement.endorseeName{
+            self.inputTextField.text = endorseeName
+        }
     }
     
 }

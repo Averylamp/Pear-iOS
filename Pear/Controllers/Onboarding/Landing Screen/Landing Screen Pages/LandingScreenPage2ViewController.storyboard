@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="height" constant="180" id="heb-mE-zU0"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Pear, profiles are written by people who you know you best." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ6-4J-Vnb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Pear, profiles are written by people who know you best." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ6-4J-Vnb">
                                 <rect key="frame" x="40" y="283" width="295" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="77h-4e-TkD"/>

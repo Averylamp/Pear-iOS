@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="height" constant="180" id="PFS-Ag-V0j"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building a profile is fun and usually only takes a few minutes. You can send it to your friend to review." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpO-ve-skm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building a profile is fun and only takes a few minutes. You can send it to your friend to review." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpO-ve-skm">
                                 <rect key="frame" x="40" y="295" width="295" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="eno-OC-gmP"/>

@@ -33,11 +33,14 @@ class GetStartedFriendNameViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         if let userName = inputTextField.text{
             endorsement.name = userName
-            let friendNameVC = GetStartedFriendNameViewController.instantiate(endorsement: self.endorsement)
+            let friendNameVC = GetStartedAgeViewController.instantiate(endorsement: self.endorsement)
             self.navigationController?.pushViewController(friendNameVC, animated: true)
         }
     }
     
+    @IBAction func clearButtonClicked(_ sender: Any) {
+        self.inputTextField.text = ""
+    }
 }
 
 
@@ -46,10 +49,9 @@ extension GetStartedFriendNameViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.contentMode = .scaleAspectFit
-        self.nextButton.layer.shadowRadius = 3
-        self.nextButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.nextButton.layer.shadowOpacity = 0.4
-        self.nextButton.layer.shadowColor = UIColor.black.cgColor
+        if let name = self.endorsement.name{
+            self.inputTextField.text = name
+        }
     }
     
 }
