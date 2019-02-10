@@ -28,6 +28,7 @@
 		BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789421E2B21F00964F26 /* MatchesMainViewController.storyboard */; };
 		BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789621E2B22500964F26 /* ProfilesMainViewController.storyboard */; };
 		BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */; };
+		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A22220E14F600759A14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB986A21220E14F600759A14 /* GoogleService-Info.plist */; };
@@ -95,6 +96,7 @@
 		BB18789421E2B21F00964F26 /* MatchesMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MatchesMainViewController.storyboard; sourceTree = "<group>"; };
 		BB18789621E2B22500964F26 /* ProfilesMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfilesMainViewController.storyboard; sourceTree = "<group>"; };
 		BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMainViewController.storyboard; sourceTree = "<group>"; };
+		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A21220E14F600759A14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			children = (
 				60C131EB21D348840093ECBA /* UIViewController+Loading.swift */,
 				600FA61021D358B500A40EAC /* UIViewController+Alert.swift */,
+				BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				60C131E421D345CE0093ECBA /* User.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
+				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,

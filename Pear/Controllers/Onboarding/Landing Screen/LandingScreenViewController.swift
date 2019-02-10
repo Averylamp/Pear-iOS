@@ -97,6 +97,7 @@ private extension LandingScreenViewController{
     
     @objc func signupButtonClicked(sender:UIButton){
         print("Signup Clicked")
+        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
         let inputNameVC = GetStartedYourNameViewController.instantiate(endorsement: Endorsement())
         self.navigationController?.pushViewController(inputNameVC, animated: true)
     }

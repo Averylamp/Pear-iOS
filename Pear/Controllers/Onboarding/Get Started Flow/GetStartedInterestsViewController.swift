@@ -66,19 +66,21 @@ class GetStartedInterestsViewController: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
+        self.endorsement.interests = []
         for button in self.interestButtons{
-            self.endorsement.interests = []
             if button.isSelected{
                 self.endorsement.interests.append(button.titleLabel!.text!)
             }
         }
+        print(self.endorsement.interests)
         self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
+        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
+        self.endorsement.interests = []
         for button in self.interestButtons{
-            self.endorsement.interests = []
             if button.isSelected{
                 self.endorsement.interests.append(button.titleLabel!.text!)
             }
@@ -162,22 +164,29 @@ extension GetStartedInterestsViewController{
         
         for button in self.interestButtons{
             if self.endorsement.interests.contains(button.titleLabel!.text!){
-                self.interestButtonClicked(sender: button)
+                self.toggleInterestButton(button: button, initialization: true)
             }
         }
         
     }
     
-    @objc func interestButtonClicked(sender: UIButton){
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.95, alpha:1.00)
-            sender.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        }else{
-            sender.isSelected = true
-            sender.backgroundColor = UIColor(red:0.84, green:0.98, blue:0.93, alpha:1.00)
-            sender.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+    func toggleInterestButton(button:UIButton,  initialization: Bool = false){
+        if !initialization{
+            HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
         }
+        if button.isSelected {
+            button.isSelected = false
+            button.backgroundColor = UIColor(red:0.95, green:0.96, blue:0.95, alpha:1.00)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        }else{
+            button.isSelected = true
+            button.backgroundColor = UIColor(red:0.84, green:0.98, blue:0.93, alpha:1.00)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        }
+    }
+    
+    @objc func interestButtonClicked(sender: UIButton){
+        toggleInterestButton(button: sender)
     }
     
 }
