@@ -10,9 +10,8 @@ import UIKit
 
 class GetStartedSampleBiosViewController: UIViewController {
     
-    
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var profileCardView: UIView!
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -40,24 +39,52 @@ extension GetStartedSampleBiosViewController{
     
     func setupSampleProfiles(){
         let numProfiles = 5
+        pageControl.numberOfPages = numProfiles        
         for i in 0..<numProfiles {
-            let cardView = UIView(frame: CGRect(x: self.scrollView.frame.width * CGFloat(i) + 40, y: 0, width: self.scrollView.frame.width - 80, height: self.scrollView.frame.height))
+            let cardView = UIView(frame: CGRect(x: self.scrollView.frame.width * CGFloat(i) + 40, y: 10, width: self.scrollView.frame.width - 80, height: self.scrollView.frame.height - 20))
+            cardView.layer.cornerRadius = 10
             cardView.layer.shadowRadius = 3.0
             cardView.layer.shadowColor = UIColor.black.cgColor
             cardView.layer.shadowOpacity = 0.3
             cardView.layer.shadowOffset = CGSize(width: 1, height: 1)
-            cardView.layer.cornerRadius = 10
             cardView.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 10.0))
             self.scrollView.addSubview(cardView)
             
             let cardImageView = UIImageView(frame: CGRect(origin: CGPoint.zero, size: cardView.frame.size))
+            cardImageView.layer.cornerRadius = 10
             cardImageView.image = UIImage(named: "onboarding-sample-profile")
             cardImageView.contentMode = .scaleAspectFit
             cardView.addSubview(cardImageView)
         }
         
+        self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.isPagingEnabled = true
         self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * CGFloat(numProfiles), height: self.scrollView.frame.height)
+        self.scrollView.delegate = self
     }
     
+    
+    
+}
+
+
+// MARK: - @IBActions
+private extension GetStartedSampleBiosViewController{
+    
+    @objc func pageControlChanged(sender: UIPageControl){
+        let pageIndex:Int = Int(round(scrollView.contentOffset.x / scrollView.frame.width))
+        if sender.currentPage != pageIndex{
+            self.scrollView.setContentOffset(CGPoint(x: self.scrollView.frame.width * CGFloat(sender.currentPage), y: 0), animated: true)
+        }
+    }
+    
+}
+
+
+// MARK: - UIScrollViewDelegate
+extension GetStartedSampleBiosViewController: UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+    }
 }
