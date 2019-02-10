@@ -39,6 +39,9 @@ class GetStartedFriendNameViewController: UIViewController {
     }
     
     @IBAction func clearButtonClicked(_ sender: Any) {
+        if let userName = inputTextField.text{
+            endorsement.name = userName
+        }
         self.inputTextField.text = ""
     }
 }
@@ -52,6 +55,7 @@ extension GetStartedFriendNameViewController{
         if let name = self.endorsement.name{
             self.inputTextField.text = name
         }
+        self.inputTextField.becomeFirstResponder()
     }
     
 }

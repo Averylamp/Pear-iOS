@@ -34,6 +34,9 @@ class GetStartedAgeViewController: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
+        if let age = Int(self.inputTextField.text!){
+            self.endorsement.age = age
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -50,8 +53,9 @@ extension GetStartedAgeViewController{
         super.viewDidLoad()
         if let age = self.endorsement.age {
             self.inputTextField.text = "\(age)"
+        }else{
+            self.inputTextField.text = "22"            
         }
-        self.inputTextField.text = "22"
     }
     
 }
