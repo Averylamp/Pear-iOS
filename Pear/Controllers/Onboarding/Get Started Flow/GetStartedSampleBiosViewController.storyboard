@@ -26,25 +26,41 @@
                                 </constraints>
                                 <state key="normal" image="onboarding-close-button"/>
                                 <connections>
-                                    <action selector="backButtonClicked:" destination="wxd-F5-jP6" eventType="touchUpInside" id="wmm-ba-T58"/>
                                     <action selector="closeButtonClicked:" destination="wxd-F5-jP6" eventType="touchUpInside" id="kJF-jr-GZY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check out some of our latest favorites" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1qi-N5-al0">
-                                <rect key="frame" x="54" y="40" width="267" height="55"/>
+                                <rect key="frame" x="54" y="40" width="267" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fhT-vm-LoZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These profiles strike the right balance between real &amp; roast, and give people something to talk about." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0n-R7-zhA">
-                                <rect key="frame" x="40" y="111" width="295" height="57.5"/>
+                                <rect key="frame" x="40" y="116" width="295" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="lBe-ua-aph"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBs-hS-7bV">
-                                <rect key="frame" x="40" y="198.5" width="295" height="438.5"/>
+                                <rect key="frame" x="40" y="211" width="295" height="426"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-sample-profile" translatesAutoresizingMaskIntoConstraints="NO" id="tuW-lJ-cfF">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="426"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tuW-lJ-cfF" firstAttribute="width" secondItem="pBs-hS-7bV" secondAttribute="width" id="KtF-9r-QQC"/>
+                                    <constraint firstItem="tuW-lJ-cfF" firstAttribute="centerX" secondItem="pBs-hS-7bV" secondAttribute="centerX" id="SDE-UL-oHt"/>
+                                    <constraint firstItem="tuW-lJ-cfF" firstAttribute="height" secondItem="pBs-hS-7bV" secondAttribute="height" id="XDQ-no-MnQ"/>
+                                    <constraint firstItem="tuW-lJ-cfF" firstAttribute="centerY" secondItem="pBs-hS-7bV" secondAttribute="centerY" id="d2r-Xp-YNV"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,5 +93,6 @@
     </scenes>
     <resources>
         <image name="onboarding-close-button" width="96" height="96"/>
+        <image name="onboarding-sample-profile" width="786" height="1225"/>
     </resources>
 </document>

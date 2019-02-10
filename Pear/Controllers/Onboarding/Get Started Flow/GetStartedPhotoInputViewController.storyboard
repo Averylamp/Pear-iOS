@@ -1,7 +1,79 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ijs-Hi-GZa">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Get Started Photo Input View Controller-->
+        <scene sceneID="5DV-ei-9Pw">
+            <objects>
+                <viewController id="ijs-Hi-GZa" customClass="GetStartedPhotoInputViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4iY-vh-p2M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMg-Wn-52R">
+                                <rect key="frame" x="20" y="40" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="H3w-vg-mk0"/>
+                                    <constraint firstAttribute="width" constant="40" id="aFx-An-HbK"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-back-button"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="ijs-Hi-GZa" eventType="touchUpInside" id="iBC-5o-9Q1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBq-ic-iWO">
+                                <rect key="frame" x="278" y="41.5" width="77" height="37"/>
+                                <state key="normal" image="onboarding-next-button"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="ijs-Hi-GZa" eventType="touchUpInside" id="rN5-aB-FWw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Got pics?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p3V-KE-ipE">
+                                <rect key="frame" x="30" y="100" width="315" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profiles with at least 3 photos get more attention.  Flaunt your friend." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bd-gk-p5U">
+                                <rect key="frame" x="40" y="144" width="295" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lo8-ZS-yFe" firstAttribute="trailing" secondItem="p3V-KE-ipE" secondAttribute="trailing" constant="30" id="AI9-7t-NzO"/>
+                            <constraint firstItem="Lo8-ZS-yFe" firstAttribute="trailing" secondItem="dBq-ic-iWO" secondAttribute="trailing" constant="20" id="IfO-Ec-8pE"/>
+                            <constraint firstItem="Lo8-ZS-yFe" firstAttribute="trailing" secondItem="9bd-gk-p5U" secondAttribute="trailing" constant="40" id="VwV-9t-btE"/>
+                            <constraint firstItem="hMg-Wn-52R" firstAttribute="top" secondItem="Lo8-ZS-yFe" secondAttribute="top" constant="20" id="YvV-2X-dPb"/>
+                            <constraint firstItem="p3V-KE-ipE" firstAttribute="centerX" secondItem="Lo8-ZS-yFe" secondAttribute="centerX" id="brA-Zl-dYm"/>
+                            <constraint firstItem="p3V-KE-ipE" firstAttribute="leading" secondItem="Lo8-ZS-yFe" secondAttribute="leading" constant="30" id="k98-3O-d9T"/>
+                            <constraint firstItem="hMg-Wn-52R" firstAttribute="leading" secondItem="Lo8-ZS-yFe" secondAttribute="leading" constant="20" id="qKw-6K-wl1"/>
+                            <constraint firstItem="9bd-gk-p5U" firstAttribute="top" secondItem="p3V-KE-ipE" secondAttribute="bottom" constant="16" id="qUl-4X-he3"/>
+                            <constraint firstItem="dBq-ic-iWO" firstAttribute="centerY" secondItem="hMg-Wn-52R" secondAttribute="centerY" id="r2j-yI-3rt"/>
+                            <constraint firstItem="9bd-gk-p5U" firstAttribute="leading" secondItem="Lo8-ZS-yFe" secondAttribute="leading" constant="40" id="tIh-1A-0uD"/>
+                            <constraint firstItem="p3V-KE-ipE" firstAttribute="top" secondItem="hMg-Wn-52R" secondAttribute="bottom" constant="20" id="ubQ-5I-snD"/>
+                            <constraint firstItem="9bd-gk-p5U" firstAttribute="centerX" secondItem="Lo8-ZS-yFe" secondAttribute="centerX" id="zqp-c5-cbc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lo8-ZS-yFe"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zRC-PB-66M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="96" height="96"/>
+        <image name="onboarding-next-button" width="77" height="37"/>
+    </resources>
 </document>
