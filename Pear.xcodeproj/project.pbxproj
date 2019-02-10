@@ -41,8 +41,6 @@
 		BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A31220E1C9400759A14 /* LandingScreenPage2ViewController.swift */; };
 		BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A32220E1C9400759A14 /* LandingScreenPage3ViewController.swift */; };
 		BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */; };
-		BB986A3B220E6CE500759A14 /* GetStartedShortInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A3A220E6CE500759A14 /* GetStartedShortInputViewController.swift */; };
-		BB986A3D220E6CF700759A14 /* GetStartedShortInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A3C220E6CF700759A14 /* GetStartedShortInputViewController.storyboard */; };
 		BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */; };
 		BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */; };
 		BB986A43220F76BF00759A14 /* Endorsement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A42220F76BF00759A14 /* Endorsement.swift */; };
@@ -109,8 +107,6 @@
 		BB986A31220E1C9400759A14 /* LandingScreenPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenPage2ViewController.swift; sourceTree = "<group>"; };
 		BB986A32220E1C9400759A14 /* LandingScreenPage3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenPage3ViewController.swift; sourceTree = "<group>"; };
 		BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenPageViewController.swift; sourceTree = "<group>"; };
-		BB986A3A220E6CE500759A14 /* GetStartedShortInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedShortInputViewController.swift; sourceTree = "<group>"; };
-		BB986A3C220E6CF700759A14 /* GetStartedShortInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedShortInputViewController.storyboard; sourceTree = "<group>"; };
 		BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingNavigationViewController.swift; sourceTree = "<group>"; };
 		BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingNavigationViewController.storyboard; sourceTree = "<group>"; };
 		BB986A42220F76BF00759A14 /* Endorsement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endorsement.swift; sourceTree = "<group>"; };
@@ -377,8 +373,6 @@
 		BB986A39220E43A300759A14 /* Get Started Flow */ = {
 			isa = PBXGroup;
 			children = (
-				BB986A3A220E6CE500759A14 /* GetStartedShortInputViewController.swift */,
-				BB986A3C220E6CF700759A14 /* GetStartedShortInputViewController.storyboard */,
 				BB986A44220F793000759A14 /* GetStartedYourNameViewController.swift */,
 				BB986A54220F7AC700759A14 /* GetStartedYourNameViewController.storyboard */,
 				BB986A46220F799A00759A14 /* GetStartedFriendNameViewController.swift */,
@@ -478,7 +472,6 @@
 				BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */,
 				BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */,
 				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
-				BB986A3D220E6CF700759A14 /* GetStartedShortInputViewController.storyboard in Resources */,
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
@@ -584,7 +577,6 @@
 				BB18788D21E2B1B900964F26 /* SettingsMainViewController.swift in Sources */,
 				BB986A47220F799A00759A14 /* GetStartedFriendNameViewController.swift in Sources */,
 				BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */,
-				BB986A3B220E6CE500759A14 /* GetStartedShortInputViewController.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,
 				60C131E121D345630093ECBA /* Result.swift in Sources */,
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
