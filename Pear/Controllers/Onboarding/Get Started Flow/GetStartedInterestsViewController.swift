@@ -78,7 +78,7 @@ class GetStartedInterestsViewController: UIViewController {
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         self.endorsement.interests = []
         for button in self.interestButtons{
             if button.isSelected{
@@ -173,7 +173,7 @@ extension GetStartedInterestsViewController{
     
     func toggleInterestButton(button:UIButton,  initialization: Bool = false){
         if !initialization{
-            HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
+            HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         }
         if button.isSelected {
             button.isSelected = false
