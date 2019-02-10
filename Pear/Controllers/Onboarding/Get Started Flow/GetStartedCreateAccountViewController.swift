@@ -18,6 +18,11 @@ class GetStartedCreateAccountViewController: UIViewController {
         let vc = storyboard.instantiateInitialViewController() as! GetStartedCreateAccountViewController
         return vc
     }
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 

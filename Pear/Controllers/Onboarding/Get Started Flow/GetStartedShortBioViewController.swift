@@ -45,6 +45,7 @@ class GetStartedShortBioViewController: UIViewController {
     
     
     @IBAction func sampleButtonClicked(_ sender: Any) {
+        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         let sampleBiosVC = GetStartedSampleBiosViewController.instantiate()
         self.present(sampleBiosVC, animated: true, completion: nil)
     }
@@ -68,7 +69,7 @@ extension GetStartedShortBioViewController{
         self.samplesButton.layer.borderColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:1.00).cgColor
         self.samplesButton.layer.cornerRadius = 20.0
         self.samplesButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
-        self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 1.0))
+        self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
     }
     
 }
