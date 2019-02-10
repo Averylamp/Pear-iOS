@@ -26,6 +26,7 @@ class GetStartedAgeViewController: UIViewController {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
+        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
         if let age = Int(self.inputTextField.text!){
             self.endorsement.age = age
             let interestsVC = GetStartedInterestsViewController.instantiate(endorsement: self.endorsement)
@@ -42,8 +43,6 @@ class GetStartedAgeViewController: UIViewController {
     
     
     
-    
-    
 }
 
 
@@ -56,6 +55,7 @@ extension GetStartedAgeViewController{
         }else{
             self.inputTextField.text = "22"            
         }
+        self.inputTextField.becomeFirstResponder()
     }
     
 }

@@ -27,10 +27,14 @@ class GetStartedFriendNameViewController: UIViewController {
     
     
     @IBAction func backButtonClicked(_ sender: Any) {
+        if let userName = inputTextField.text{
+            endorsement.name = userName
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
+        HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
         if let userName = inputTextField.text{
             endorsement.name = userName
             let friendNameVC = GetStartedAgeViewController.instantiate(endorsement: self.endorsement)
@@ -39,9 +43,6 @@ class GetStartedFriendNameViewController: UIViewController {
     }
     
     @IBAction func clearButtonClicked(_ sender: Any) {
-        if let userName = inputTextField.text{
-            endorsement.name = userName
-        }
         self.inputTextField.text = ""
     }
 }
