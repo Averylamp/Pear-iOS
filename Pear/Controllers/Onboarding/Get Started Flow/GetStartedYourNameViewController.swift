@@ -35,6 +35,9 @@ class GetStartedYourNameViewController: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
+        if let userName = inputTextField.text{
+            endorsement.endorseeName = userName
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -52,6 +55,7 @@ extension GetStartedYourNameViewController{
         if let endorseeName = self.endorsement.endorseeName{
             self.inputTextField.text = endorseeName
         }
+        self.inputTextField.becomeFirstResponder()
     }
     
 }

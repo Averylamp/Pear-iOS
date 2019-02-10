@@ -13,7 +13,7 @@ class Endorsement {
     var endorseeName: String?
     var name: String?
     var age: Int?
-    
+    var interests: [String] = []
     init(){
         
     }
