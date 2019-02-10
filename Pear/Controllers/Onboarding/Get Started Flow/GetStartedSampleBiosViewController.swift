@@ -33,13 +33,13 @@ extension GetStartedSampleBiosViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        self.profileCardView.layer.shadowRadius = 2.0
+        self.profileCardView.layer.shadowRadius = 3.0
         self.profileCardView.layer.shadowColor = UIColor.black.cgColor
         self.profileCardView.layer.shadowOpacity = 0.3
         self.profileCardView.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.profileCardView.layer.cornerRadius = 10
         
-        self.profileCardView.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 1.0))
+        self.profileCardView.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 10.0))
     }
     
 }

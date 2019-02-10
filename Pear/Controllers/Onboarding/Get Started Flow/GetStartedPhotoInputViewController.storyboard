@@ -48,20 +48,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QY5-an-yaA">
+                                <rect key="frame" x="16" y="550.5" width="343" height="56.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QY5-an-yaA" secondAttribute="height" multiplier="1071:177" id="giH-sA-VTc"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-import-local-button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yg1-xg-Gmg">
+                                <rect key="frame" x="16" y="485.5" width="343" height="57"/>
+                                <state key="normal" image="onboarding-import-facebook-button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4r-ZM-O4V">
+                                <rect key="frame" x="16" y="421" width="343" height="56.5"/>
+                                <state key="normal" image="onboarding-import-instagram-button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Yg1-xg-Gmg" firstAttribute="height" secondItem="QY5-an-yaA" secondAttribute="height" id="2TX-1e-o0W"/>
+                            <constraint firstItem="Lo8-ZS-yFe" firstAttribute="bottom" secondItem="QY5-an-yaA" secondAttribute="bottom" constant="60" id="2rh-Ve-N4w"/>
+                            <constraint firstItem="Lo8-ZS-yFe" firstAttribute="trailing" secondItem="QY5-an-yaA" secondAttribute="trailing" constant="16" id="4Tr-EJ-5BR"/>
+                            <constraint firstItem="QY5-an-yaA" firstAttribute="top" secondItem="Yg1-xg-Gmg" secondAttribute="bottom" constant="8" id="5tn-Tz-DfZ"/>
+                            <constraint firstItem="I4r-ZM-O4V" firstAttribute="height" secondItem="Yg1-xg-Gmg" secondAttribute="height" id="6ca-88-Q4i"/>
                             <constraint firstItem="Lo8-ZS-yFe" firstAttribute="trailing" secondItem="p3V-KE-ipE" secondAttribute="trailing" constant="30" id="AI9-7t-NzO"/>
+                            <constraint firstItem="QY5-an-yaA" firstAttribute="centerX" secondItem="Lo8-ZS-yFe" secondAttribute="centerX" id="EA1-rg-yLU"/>
                             <constraint firstItem="Lo8-ZS-yFe" firstAttribute="trailing" secondItem="dBq-ic-iWO" secondAttribute="trailing" constant="20" id="IfO-Ec-8pE"/>
+                            <constraint firstItem="Yg1-xg-Gmg" firstAttribute="centerX" secondItem="QY5-an-yaA" secondAttribute="centerX" id="PHu-1C-tPd"/>
+                            <constraint firstItem="I4r-ZM-O4V" firstAttribute="width" secondItem="Yg1-xg-Gmg" secondAttribute="width" id="SfM-zo-Rcf"/>
                             <constraint firstItem="Lo8-ZS-yFe" firstAttribute="trailing" secondItem="9bd-gk-p5U" secondAttribute="trailing" constant="40" id="VwV-9t-btE"/>
                             <constraint firstItem="hMg-Wn-52R" firstAttribute="top" secondItem="Lo8-ZS-yFe" secondAttribute="top" constant="20" id="YvV-2X-dPb"/>
                             <constraint firstItem="p3V-KE-ipE" firstAttribute="centerX" secondItem="Lo8-ZS-yFe" secondAttribute="centerX" id="brA-Zl-dYm"/>
+                            <constraint firstItem="I4r-ZM-O4V" firstAttribute="centerX" secondItem="Yg1-xg-Gmg" secondAttribute="centerX" id="cQZ-2o-1pC"/>
+                            <constraint firstItem="Yg1-xg-Gmg" firstAttribute="top" secondItem="I4r-ZM-O4V" secondAttribute="bottom" constant="8" id="d3i-js-waY"/>
                             <constraint firstItem="p3V-KE-ipE" firstAttribute="leading" secondItem="Lo8-ZS-yFe" secondAttribute="leading" constant="30" id="k98-3O-d9T"/>
                             <constraint firstItem="hMg-Wn-52R" firstAttribute="leading" secondItem="Lo8-ZS-yFe" secondAttribute="leading" constant="20" id="qKw-6K-wl1"/>
                             <constraint firstItem="9bd-gk-p5U" firstAttribute="top" secondItem="p3V-KE-ipE" secondAttribute="bottom" constant="16" id="qUl-4X-he3"/>
                             <constraint firstItem="dBq-ic-iWO" firstAttribute="centerY" secondItem="hMg-Wn-52R" secondAttribute="centerY" id="r2j-yI-3rt"/>
                             <constraint firstItem="9bd-gk-p5U" firstAttribute="leading" secondItem="Lo8-ZS-yFe" secondAttribute="leading" constant="40" id="tIh-1A-0uD"/>
                             <constraint firstItem="p3V-KE-ipE" firstAttribute="top" secondItem="hMg-Wn-52R" secondAttribute="bottom" constant="20" id="ubQ-5I-snD"/>
+                            <constraint firstItem="QY5-an-yaA" firstAttribute="leading" secondItem="Lo8-ZS-yFe" secondAttribute="leading" constant="16" id="vll-Zs-6db"/>
+                            <constraint firstItem="Yg1-xg-Gmg" firstAttribute="width" secondItem="QY5-an-yaA" secondAttribute="width" id="wwR-UF-BFN"/>
                             <constraint firstItem="9bd-gk-p5U" firstAttribute="centerX" secondItem="Lo8-ZS-yFe" secondAttribute="centerX" id="zqp-c5-cbc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lo8-ZS-yFe"/>
@@ -74,6 +101,9 @@
     </scenes>
     <resources>
         <image name="onboarding-back-button" width="96" height="96"/>
+        <image name="onboarding-import-facebook-button" width="357" height="59"/>
+        <image name="onboarding-import-instagram-button" width="357" height="59"/>
+        <image name="onboarding-import-local-button" width="357" height="59"/>
         <image name="onboarding-next-button" width="77" height="37"/>
     </resources>
 </document>
