@@ -29,6 +29,8 @@ class GetStartedPhotoInputViewController: UIViewController {
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        let createAccountVC = GetStartedCreateAccountViewController.instantiate(endorsement: self.endorsement)
+        self.navigationController?.pushViewController(createAccountVC, animated: true)
     }
     
 }

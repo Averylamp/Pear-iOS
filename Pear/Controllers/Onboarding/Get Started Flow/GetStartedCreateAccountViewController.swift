@@ -10,12 +10,15 @@ import UIKit
 
 class GetStartedCreateAccountViewController: UIViewController {
     
+    var endorsement: Endorsement!
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate() -> GetStartedCreateAccountViewController {
+    class func instantiate(endorsement: Endorsement) -> GetStartedCreateAccountViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedCreateAccountViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedCreateAccountViewController
+        vc.endorsement = endorsement
         return vc
     }
     
