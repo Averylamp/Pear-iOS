@@ -38,6 +38,9 @@ class GetStartedShortBioViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.shared.generateHapticFeedback(style: .light)
         
+        let photoInputVC = GetStartedPhotoInputViewController.instantiate(endorsement: self.endorsement)
+        self.navigationController?.pushViewController(photoInputVC, animated: true)
+        
     }
     
     

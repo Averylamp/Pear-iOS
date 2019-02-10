@@ -33,7 +33,7 @@ extension GetStartedSampleBiosViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        self.profileCardView.layer.shadowRadius = 1
+        self.profileCardView.layer.shadowRadius = 1.5
         self.profileCardView.layer.shadowColor = UIColor.black.cgColor
         self.profileCardView.layer.shadowOpacity = 0.3
         self.profileCardView.layer.shadowOffset = CGSize(width: 1, height: 1)
