@@ -102,7 +102,7 @@ private extension LandingScreenViewController{
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
 //        let inputNameVC = GetStartedYourNameViewController.instantiate(endorsement: Endorsement())
 //        self.navigationController?.pushViewController(inputNameVC, animated: true)
-        let createAccount = GetStartedCreateAccountViewController.instantiate(endorsement: Endorsement.fakeUser())
+        let createAccount = GetStartedShortBioViewController.instantiate(endorsement: Endorsement.fakeUser())
         self.navigationController?.pushViewController(createAccount, animated: true)
 
     }

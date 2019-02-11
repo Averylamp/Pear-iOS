@@ -48,6 +48,7 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
                 Auth.auth().currentUser!.linkAndRetrieveData(with: credential) { (authData, error) in
                     if let error = error {
                         self.alert(title: "Auth Error", message: error.localizedDescription)
+
                     }
                     self.alert(title: "Done", message: "Nice job")
                     

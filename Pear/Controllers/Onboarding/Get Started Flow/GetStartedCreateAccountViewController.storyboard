@@ -29,13 +29,13 @@
                                     <action selector="backButtonClicked:" destination="X0s-rU-ATD" eventType="touchUpInside" id="EFI-Bw-Ddf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time for review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fL0-bJ-2JN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Let's make this official!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fL0-bJ-2JN">
                                 <rect key="frame" x="30" y="100" width="315" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account to save and review the profile you've started. You can also: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9L-qJ-eoa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Create an account to save and continue the profile you've started. You can also: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9L-qJ-eoa">
                                 <rect key="frame" x="40" y="144" width="295" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -58,11 +58,8 @@
                                     <action selector="facebookButtonClicked:" destination="X0s-rU-ATD" eventType="touchUpInside" id="yrx-wJ-cGz"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-other-things-to-do" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-Zt-EeW">
-                                <rect key="frame" x="30" y="202.5" width="315" height="179.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="dJh-Zt-EeW" secondAttribute="height" multiplier="1202:684" id="8uW-lP-XKc"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-other-things-to-do" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-Zt-EeW">
+                                <rect key="frame" x="60" y="192.5" width="255" height="263"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,7 +69,7 @@
                             <constraint firstItem="A9L-qJ-eoa" firstAttribute="leading" secondItem="Vkw-ec-uml" secondAttribute="leading" constant="40" id="IhT-IT-ndR"/>
                             <constraint firstItem="SNz-BR-aD3" firstAttribute="centerX" secondItem="FO4-aE-yJW" secondAttribute="centerX" id="J1A-w5-CnQ"/>
                             <constraint firstItem="A9L-qJ-eoa" firstAttribute="centerX" secondItem="Vkw-ec-uml" secondAttribute="centerX" id="LFy-nh-fHQ"/>
-                            <constraint firstItem="dJh-Zt-EeW" firstAttribute="leading" secondItem="ZbJ-1b-acQ" secondAttribute="leading" constant="30" id="M23-at-fiz"/>
+                            <constraint firstItem="dJh-Zt-EeW" firstAttribute="leading" secondItem="ZbJ-1b-acQ" secondAttribute="leading" constant="60" id="M23-at-fiz"/>
                             <constraint firstItem="Vkw-ec-uml" firstAttribute="trailing" secondItem="fL0-bJ-2JN" secondAttribute="trailing" constant="30" id="Pyp-mB-UiN"/>
                             <constraint firstItem="fL0-bJ-2JN" firstAttribute="leading" secondItem="Vkw-ec-uml" secondAttribute="leading" constant="30" id="SUz-N6-M61"/>
                             <constraint firstItem="A9L-qJ-eoa" firstAttribute="top" secondItem="fL0-bJ-2JN" secondAttribute="bottom" constant="16" id="Wru-LI-i7m"/>
@@ -81,14 +78,14 @@
                             <constraint firstItem="SNz-BR-aD3" firstAttribute="height" secondItem="FO4-aE-yJW" secondAttribute="height" id="Z5e-i7-w42"/>
                             <constraint firstItem="FO4-aE-yJW" firstAttribute="centerX" secondItem="Vkw-ec-uml" secondAttribute="centerX" id="cg4-Qn-Cfu"/>
                             <constraint firstItem="fL0-bJ-2JN" firstAttribute="centerX" secondItem="Vkw-ec-uml" secondAttribute="centerX" id="dob-LM-pIh"/>
+                            <constraint firstItem="SNz-BR-aD3" firstAttribute="top" secondItem="dJh-Zt-EeW" secondAttribute="bottom" constant="30" id="fm6-Nf-WrS"/>
                             <constraint firstItem="kT5-tj-M8v" firstAttribute="top" secondItem="Vkw-ec-uml" secondAttribute="top" constant="20" id="gXg-CL-Mln"/>
-                            <constraint firstItem="dJh-Zt-EeW" firstAttribute="centerX" secondItem="Vkw-ec-uml" secondAttribute="centerX" id="lzc-kl-mze"/>
-                            <constraint firstItem="Vkw-ec-uml" firstAttribute="trailing" secondItem="dJh-Zt-EeW" secondAttribute="trailing" constant="30" id="m0N-dw-Nha"/>
+                            <constraint firstItem="Vkw-ec-uml" firstAttribute="trailing" secondItem="dJh-Zt-EeW" secondAttribute="trailing" constant="60" id="m0N-dw-Nha"/>
                             <constraint firstItem="Vkw-ec-uml" firstAttribute="trailing" secondItem="FO4-aE-yJW" secondAttribute="trailing" constant="16" id="mGf-zM-lUn"/>
                             <constraint firstItem="Vkw-ec-uml" firstAttribute="trailing" secondItem="A9L-qJ-eoa" secondAttribute="trailing" constant="40" id="pHd-Pb-Xbv"/>
                             <constraint firstItem="kT5-tj-M8v" firstAttribute="leading" secondItem="Vkw-ec-uml" secondAttribute="leading" constant="20" id="pb6-43-AMt"/>
                             <constraint firstItem="FO4-aE-yJW" firstAttribute="top" secondItem="SNz-BR-aD3" secondAttribute="bottom" constant="8" id="qjE-c4-feh"/>
-                            <constraint firstItem="dJh-Zt-EeW" firstAttribute="top" secondItem="A9L-qJ-eoa" secondAttribute="bottom" constant="20" id="vqI-Se-TUA"/>
+                            <constraint firstItem="dJh-Zt-EeW" firstAttribute="top" secondItem="A9L-qJ-eoa" secondAttribute="bottom" constant="10" id="vqI-Se-TUA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vkw-ec-uml"/>
                     </view>
@@ -100,7 +97,7 @@
     </scenes>
     <resources>
         <image name="onboarding-back-button" width="96" height="96"/>
-        <image name="onboarding-other-things-to-do" width="601" height="342"/>
+        <image name="onboarding-other-things-to-do" width="295" height="244"/>
         <image name="onboarding-user-create-email" width="357" height="59"/>
         <image name="onboarding-user-create-facebook" width="357" height="59"/>
     </resources>

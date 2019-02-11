@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Get Started Do Dont View Controller-->
+        <scene sceneID="lu8-uo-eRW">
+            <objects>
+                <viewController id="CRb-QJ-Jxy" customClass="GetStartedDoDontViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CP3-nn-KZU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zr1-rc-spN">
+                                <rect key="frame" x="20" y="40" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Fbc-sC-Iou"/>
+                                    <constraint firstAttribute="width" constant="40" id="vJW-0L-Gk2"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-back-button"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="CRb-QJ-Jxy" eventType="touchUpInside" id="Tuq-f1-YBO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVt-c1-0BG">
+                                <rect key="frame" x="278" y="41.5" width="77" height="37"/>
+                                <state key="normal" image="onboarding-next-button"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="CRb-QJ-Jxy" eventType="touchUpInside" id="Zzp-Xg-35j"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share some hints" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="35k-Ib-YIu">
+                                <rect key="frame" x="30" y="100" width="315" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Should we bring up The Bachelor?  Ask them about their family? Talk to them about food?  Help us out!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyq-Ib-t5U">
+                                <rect key="frame" x="40" y="144" width="295" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkF-3g-o6x">
+                                <rect key="frame" x="65.5" y="217.5" width="244" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9vF-1o-376"/>
+                                </constraints>
+                                <state key="normal" title="Check out some samples" image="onboarding-icon-samples-stars">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OkF-3g-o6x" firstAttribute="top" secondItem="Gyq-Ib-t5U" secondAttribute="bottom" constant="16" id="42t-cs-aD4"/>
+                            <constraint firstItem="zr1-rc-spN" firstAttribute="leading" secondItem="GgP-pz-PSW" secondAttribute="leading" constant="20" id="4L7-NE-z6V"/>
+                            <constraint firstItem="zr1-rc-spN" firstAttribute="top" secondItem="GgP-pz-PSW" secondAttribute="top" constant="20" id="DpK-sl-Cjw"/>
+                            <constraint firstItem="Gyq-Ib-t5U" firstAttribute="leading" secondItem="GgP-pz-PSW" secondAttribute="leading" constant="40" id="GQ9-go-pgY"/>
+                            <constraint firstItem="35k-Ib-YIu" firstAttribute="top" secondItem="zr1-rc-spN" secondAttribute="bottom" constant="20" id="IGH-KH-uOf"/>
+                            <constraint firstItem="Gyq-Ib-t5U" firstAttribute="centerX" secondItem="GgP-pz-PSW" secondAttribute="centerX" id="LDi-e1-pzF"/>
+                            <constraint firstItem="Gyq-Ib-t5U" firstAttribute="top" secondItem="35k-Ib-YIu" secondAttribute="bottom" constant="16" id="MZp-1W-R5i"/>
+                            <constraint firstItem="NVt-c1-0BG" firstAttribute="centerY" secondItem="zr1-rc-spN" secondAttribute="centerY" id="Pi4-mQ-9vh"/>
+                            <constraint firstItem="GgP-pz-PSW" firstAttribute="trailing" secondItem="NVt-c1-0BG" secondAttribute="trailing" constant="20" id="Sc5-nU-Cyh"/>
+                            <constraint firstItem="OkF-3g-o6x" firstAttribute="centerX" secondItem="GgP-pz-PSW" secondAttribute="centerX" id="TFe-qk-3Cp"/>
+                            <constraint firstItem="35k-Ib-YIu" firstAttribute="leading" secondItem="GgP-pz-PSW" secondAttribute="leading" constant="30" id="XKq-iM-tmt"/>
+                            <constraint firstItem="35k-Ib-YIu" firstAttribute="centerX" secondItem="GgP-pz-PSW" secondAttribute="centerX" id="ZFs-Un-S5G"/>
+                            <constraint firstItem="GgP-pz-PSW" firstAttribute="trailing" secondItem="35k-Ib-YIu" secondAttribute="trailing" constant="30" id="bnj-zh-SCa"/>
+                            <constraint firstItem="GgP-pz-PSW" firstAttribute="trailing" secondItem="Gyq-Ib-t5U" secondAttribute="trailing" constant="40" id="y3Q-ps-wng"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GgP-pz-PSW"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRk-RO-G3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="96" height="96"/>
+        <image name="onboarding-icon-samples-stars" width="40" height="40"/>
+        <image name="onboarding-next-button" width="77" height="37"/>
+    </resources>
+</document>
