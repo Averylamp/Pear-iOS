@@ -39,6 +39,8 @@
 		BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E352210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift */; };
 		BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E3822113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard */; };
 		BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E3922113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift */; };
+		BB686E3D22120E64008A263C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E3C22120E64008A263C /* StringExtensions.swift */; };
+		BB686E3F22120F1A008A263C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E3E22120F1A008A263C /* Config.swift */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */; };
@@ -115,6 +117,8 @@
 		BB686E352210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedCreateAccountEmailPasswordViewController.swift; sourceTree = "<group>"; };
 		BB686E3822113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedValidatePhoneNumberCodeViewController.storyboard; sourceTree = "<group>"; };
 		BB686E3922113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedValidatePhoneNumberCodeViewController.swift; sourceTree = "<group>"; };
+		BB686E3C22120E64008A263C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		BB686E3E22120F1A008A263C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenPage1ViewController.storyboard; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 				600FA61021D358B500A40EAC /* UIViewController+Alert.swift */,
 				BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */,
 				BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */,
+				BB686E3C22120E64008A263C /* StringExtensions.swift */,
+				BB686E3E22120F1A008A263C /* Config.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -605,6 +611,7 @@
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
+				BB686E3F22120F1A008A263C /* Config.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedYourNameViewController.swift in Sources */,
 				60C131D821D343910093ECBA /* LoginVC.swift in Sources */,
@@ -632,6 +639,7 @@
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
+				BB686E3D22120E64008A263C /* StringExtensions.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,

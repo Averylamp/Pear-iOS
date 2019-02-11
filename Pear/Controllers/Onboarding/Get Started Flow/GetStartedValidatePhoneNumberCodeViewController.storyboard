@@ -41,6 +41,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="textFieldChanged:" destination="Ado-1d-w6I" eventType="editingDidEnd" id="z7R-7k-rGM"/>
+                                    <action selector="textFieldChanged:" destination="Ado-1d-w6I" eventType="editingChanged" id="znG-7J-fQv"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozt-TU-Vu3">
                                 <rect key="frame" x="0.0" y="148" width="375" height="70"/>
