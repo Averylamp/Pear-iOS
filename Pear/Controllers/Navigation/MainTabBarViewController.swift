@@ -15,7 +15,6 @@ class MainTabBarViewController: UITabBarController {
         let storyboard = UIStoryboard(name: String(describing: MainTabBarViewController.self), bundle: nil)
         let mainTabVC = storyboard.instantiateInitialViewController() as! MainTabBarViewController
         
-        let user = User.initFakeUser()
         
 //      Discovery
         let discoverVC = DiscoverMainViewController.instantiate()

@@ -14,7 +14,7 @@ struct SAMAuthAPI {
 
 extension SAMAuthAPI: AuthAPI {
     
-    func login(with method: LoginMethod, completion: @escaping (Result<User, AuthAPIError>) -> Void) {
+    func login(with method: LoginMethod, completion: @escaping (Result<PearUser, AuthAPIError>) -> Void) {
         
     }
 }

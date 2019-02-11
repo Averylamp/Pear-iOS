@@ -47,10 +47,16 @@
                                     <constraint firstAttribute="width" secondItem="FO4-aE-yJW" secondAttribute="height" multiplier="1071:177" id="Zph-Nf-kpy"/>
                                 </constraints>
                                 <state key="normal" image="onboarding-user-create-email"/>
+                                <connections>
+                                    <action selector="emailButtonClicked:" destination="X0s-rU-ATD" eventType="touchUpInside" id="IhQ-tS-vHG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNz-BR-aD3">
                                 <rect key="frame" x="16" y="485.5" width="343" height="57"/>
                                 <state key="normal" image="onboarding-user-create-facebook"/>
+                                <connections>
+                                    <action selector="facebookButtonClicked:" destination="X0s-rU-ATD" eventType="touchUpInside" id="yrx-wJ-cGz"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-other-things-to-do" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-Zt-EeW">
                                 <rect key="frame" x="30" y="202.5" width="315" height="179.5"/>

@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>318488906543-aebrcqi8n66ejvjh99krv580fq01rqo5.apps.googleusercontent.com</string>
+	<string>318488906543-3qge48b6ibtkp8g9gtm0sho8kqd7q6b7.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.318488906543-aebrcqi8n66ejvjh99krv580fq01rqo5</string>
+	<string>com.googleusercontent.apps.318488906543-3qge48b6ibtkp8g9gtm0sho8kqd7q6b7</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD363XyE4DuqV1CeRIlIp4RC821FT7fr9Q</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.pear.pear</string>
+	<string>com.pear.pearapp</string>
 	<key>PROJECT_ID</key>
 	<string>pear-5f60f</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:318488906543:ios:3b0b61253f7809c0</string>
+	<string>1:318488906543:ios:ec7c2c54d9a37049</string>
 	<key>DATABASE_URL</key>
 	<string>https://pear-5f60f.firebaseio.com</string>
 </dict>

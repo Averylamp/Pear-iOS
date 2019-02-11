@@ -21,7 +21,6 @@ extension AppDelegate: UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = LoginVC.instantiate(authAPI: FakeAuthAPI())
         let navController = LandingNavigationViewController.instantiate()
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
