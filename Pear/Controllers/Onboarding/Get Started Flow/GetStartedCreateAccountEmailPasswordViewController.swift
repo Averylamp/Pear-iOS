@@ -34,6 +34,12 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        if Config.shouldSkipLogin {
+            let phoneNumberVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(endorsement: self.endorsement)
+            self.navigationController?.pushViewController(phoneNumberVerificationVC, animated: true)
+        }
+        
+        
         if let userEmail = self.endorsement.userEmail, let password = self.firstPasswordTextField.text {
             if password.count < 8 {
                 self.alert(title: "Password not long enough", message: "Please choose a password with at least 8 characters")

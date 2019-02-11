@@ -38,13 +38,14 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
                     return
                 }
                 
+                guard let verificationID = verificationID else { return }
                 self.endorsement.userPhoneNumber = phoneNumber
                 print("Phone number validated")
                 // Sign in using the verificationID and the code sent to the user
                 // ...
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 
-                let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController.instantiate(endorsement: self.endorsement)
+                let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController.instantiate(endorsement: self.endorsement, verificationID: verificationID)
                 self.navigationController?.pushViewController(phoneNumberCodeVC, animated: true)
             }
         }
