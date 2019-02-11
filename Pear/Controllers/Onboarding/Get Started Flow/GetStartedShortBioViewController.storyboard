@@ -65,9 +65,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeh-pr-9R1">
-                                <rect key="frame" x="85.5" y="253.5" width="204" height="40"/>
+                                <rect key="frame" x="67.5" y="253.5" width="240" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EHt-sE-0qh"/>
+                                    <constraint firstAttribute="width" constant="240" id="cKh-Jl-uun"/>
                                 </constraints>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Check out some samples">
@@ -115,6 +116,7 @@
                         <outlet property="inputTextView" destination="rHP-8z-N7I" id="Hrt-gT-rUW"/>
                         <outlet property="inputTextViewHeightConstraint" destination="UoG-2u-T5k" id="sMT-V5-eHP"/>
                         <outlet property="samplesButton" destination="qeh-pr-9R1" id="STs-Yt-BLP"/>
+                        <outlet property="samplesButtonWidthConstraint" destination="cKh-Jl-uun" id="RiO-lj-ufo"/>
                         <outlet property="textLengthLabel" destination="QkO-ND-YLt" id="M0e-iT-cqD"/>
                     </connections>
                 </viewController>
