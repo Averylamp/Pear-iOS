@@ -16,6 +16,7 @@ class GetStartedShortBioViewController: UIViewController {
     @IBOutlet weak var inputTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textLengthLabel: UILabel!
     
+    @IBOutlet weak var samplesButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var inputTextView: UITextView!
     
     @IBOutlet weak var samplesButton: UIButton!
@@ -69,9 +70,18 @@ extension GetStartedShortBioViewController{
         self.samplesButton.layer.borderColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:1.00).cgColor
 
         self.samplesButton.layer.cornerRadius = 20.0
+        self.view.layoutIfNeeded()
+        let titleWidth = self.samplesButton.titleLabel!.frame.width
         let starsImage = UIImage(named: "onboarding-icon-samples-stars")
-        self.samplesButton.setImage(starsImage?.imageWith(newSize: CGSize(width: 24, height: 24)), for: .normal)
-        self.samplesButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        self.samplesButton.setImage(starsImage?.imageWith(newSize: CGSize(width: 20, height: 20)), for: .normal)
+        self.samplesButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
+        self.samplesButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
+        let imageWidth = self.samplesButton.imageView!.frame.width
+        let fullSamplesButtonWidth: CGFloat = titleWidth + imageWidth + 40
+        print("Width: \(fullSamplesButtonWidth)")
+        self.samplesButtonWidthConstraint.constant = fullSamplesButtonWidth
+        self.view.layoutIfNeeded()
+        
         self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
     }
     
