@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class User {
+class PearUser {
     
     let documentId: String
     let email: String
@@ -78,7 +78,7 @@ class User {
                   friendEndorsedProfileRefs: friendEndorsedProfileRefs ?? [])
     }
     
-    class func initFakeUser()->User{
+    class func initFakeUser()->PearUser{
         let fakeData: [String: Any?] = [
             UserKeys.documentId: "FakeId",
             UserKeys.email: "averylamp@gmail.com",
@@ -90,7 +90,7 @@ class User {
             UserKeys.endorsedProfileRefs: [Profile.initFakeProfile(),Profile.initFakeProfile(),Profile.initFakeProfile()],
             UserKeys.friendEndorsedProfileRefs: [Profile.initFakeProfile()]
         ]
-        return User(dictionary: fakeData)!
+        return PearUser(dictionary: fakeData)!
     }
     
     

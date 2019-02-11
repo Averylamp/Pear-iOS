@@ -12,9 +12,9 @@ struct FakeAuthAPI {}
 
 extension FakeAuthAPI: AuthAPI {
     
-    func login(with method: LoginMethod, completion: @escaping (Result<User, AuthAPIError>) -> Void) {
+    func login(with method: LoginMethod, completion: @escaping (Result<PearUser, AuthAPIError>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let user = User()
+            let user = PearUser()
             completion(.success(user))
         }
     }
