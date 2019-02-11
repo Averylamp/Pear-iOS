@@ -1,15 +1,15 @@
 
 //
-//  GetStartedShortBioViewController.swift
+//  GetStartedDoDontViewController.swift
 //  Pear
 //
-//  Created by Avery Lamp on 2/9/19.
+//  Created by Avery Lamp on 2/11/19.
 //  Copyright © 2019 sam. All rights reserved.
 //
 
 import UIKit
 
-class GetStartedShortBioViewController: UIViewController {
+class GetStartedDoDontViewController: UIViewController {
     
     var endorsement: Endorsement!
     
@@ -24,9 +24,9 @@ class GetStartedShortBioViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedShortBioViewController {
-        let storyboard = UIStoryboard(name: String(describing: GetStartedShortBioViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! GetStartedShortBioViewController
+    class func instantiate(endorsement: Endorsement) -> GetStartedDoDontViewController {
+        let storyboard = UIStoryboard(name: String(describing: GetStartedDoDontViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! GetStartedDoDontViewController
         vc.endorsement = endorsement
         return vc
     }
@@ -38,7 +38,7 @@ class GetStartedShortBioViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         
-        let photoInputVC = GetStartedDoDontViewController.instantiate(endorsement: self.endorsement)
+        let photoInputVC = GetStartedPhotoInputViewController.instantiate(endorsement: self.endorsement)
         self.navigationController?.pushViewController(photoInputVC, animated: true)
         
     }
@@ -55,7 +55,7 @@ class GetStartedShortBioViewController: UIViewController {
 
 
 // MARK: - Life Cycle
-extension GetStartedShortBioViewController{
+extension GetStartedDoDontViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.inputTextView.delegate = self
@@ -67,18 +67,15 @@ extension GetStartedShortBioViewController{
         
         self.samplesButton.layer.borderWidth = 1
         self.samplesButton.layer.borderColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:1.00).cgColor
-
         self.samplesButton.layer.cornerRadius = 20.0
-        let starsImage = UIImage(named: "onboarding-icon-samples-stars")
-        self.samplesButton.setImage(starsImage?.imageWith(newSize: CGSize(width: 24, height: 24)), for: .normal)
-        self.samplesButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        self.samplesButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
         self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
     }
     
 }
 
 // MARK: - UITextView Delegate
-extension GetStartedShortBioViewController:UITextViewDelegate {
+extension GetStartedDoDontViewController:UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView.text.count + text.count - range.length > maxTextLength {
