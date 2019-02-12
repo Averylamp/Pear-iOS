@@ -47,7 +47,7 @@ class GetStartedInterestsViewController: UIViewController {
         "Technology",
         "Music",
         "Gaming",
-        "Fasion",
+        "Fashion",
         "Movies",
         "Cars"
     ]

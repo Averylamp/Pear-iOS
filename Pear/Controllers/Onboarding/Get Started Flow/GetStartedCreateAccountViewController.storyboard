@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-other-things-to-do" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-Zt-EeW">
-                                <rect key="frame" x="60" y="192.5" width="255" height="263"/>
+                                <rect key="frame" x="60" y="192.5" width="255" height="244"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,7 +78,6 @@
                             <constraint firstItem="SNz-BR-aD3" firstAttribute="height" secondItem="FO4-aE-yJW" secondAttribute="height" id="Z5e-i7-w42"/>
                             <constraint firstItem="FO4-aE-yJW" firstAttribute="centerX" secondItem="Vkw-ec-uml" secondAttribute="centerX" id="cg4-Qn-Cfu"/>
                             <constraint firstItem="fL0-bJ-2JN" firstAttribute="centerX" secondItem="Vkw-ec-uml" secondAttribute="centerX" id="dob-LM-pIh"/>
-                            <constraint firstItem="SNz-BR-aD3" firstAttribute="top" secondItem="dJh-Zt-EeW" secondAttribute="bottom" constant="30" id="fm6-Nf-WrS"/>
                             <constraint firstItem="kT5-tj-M8v" firstAttribute="top" secondItem="Vkw-ec-uml" secondAttribute="top" constant="20" id="gXg-CL-Mln"/>
                             <constraint firstItem="Vkw-ec-uml" firstAttribute="trailing" secondItem="dJh-Zt-EeW" secondAttribute="trailing" constant="60" id="m0N-dw-Nha"/>
                             <constraint firstItem="Vkw-ec-uml" firstAttribute="trailing" secondItem="FO4-aE-yJW" secondAttribute="trailing" constant="16" id="mGf-zM-lUn"/>

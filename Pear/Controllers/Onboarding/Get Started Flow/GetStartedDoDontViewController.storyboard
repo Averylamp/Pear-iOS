@@ -36,20 +36,20 @@
                                     <action selector="nextButtonClicked:" destination="hsO-eP-Zhu" eventType="touchUpInside" id="6u7-sS-FYl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hype them up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XlG-fB-jrv">
-                                <rect key="frame" x="30" y="100" width="315" height="27.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share some hints" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XlG-fB-jrv">
+                                <rect key="frame" x="30" y="90" width="315" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good profiles help friends stand out and lead to fun &amp; interesting conversations." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-Yw-8Vy">
-                                <rect key="frame" x="40" y="143.5" width="295" height="38.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Should we bring up The Bachelor?  Ask them about their family? Talk to them about food? Help us out!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-Yw-8Vy">
+                                <rect key="frame" x="40" y="125.5" width="295" height="57.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Db5-Hg-hFx">
-                                <rect key="frame" x="67.5" y="202" width="240" height="40"/>
+                                <rect key="frame" x="67.5" y="193" width="240" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4Be-nd-OF7"/>
                                     <constraint firstAttribute="width" constant="240" id="hWV-yB-Do3"/>
@@ -63,14 +63,14 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hg-ug-CTH">
-                                <rect key="frame" x="0.0" y="262" width="375" height="405"/>
+                                <rect key="frame" x="0.0" y="243" width="375" height="424"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gbW-Sp-2JO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wr7-gK-k0S">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.85276371772300463" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="IQo-Pj-im3"/>
                                                 </constraints>
@@ -89,10 +89,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Db5-Hg-hFx" firstAttribute="top" secondItem="fT3-Yw-8Vy" secondAttribute="bottom" constant="20" id="1E2-lV-HEV"/>
+                            <constraint firstItem="Db5-Hg-hFx" firstAttribute="top" secondItem="fT3-Yw-8Vy" secondAttribute="bottom" constant="10" id="1E2-lV-HEV"/>
                             <constraint firstItem="XlG-fB-jrv" firstAttribute="centerX" secondItem="G71-ex-rp4" secondAttribute="centerX" id="1Qv-IL-fko"/>
                             <constraint firstItem="G71-ex-rp4" firstAttribute="trailing" secondItem="fT3-Yw-8Vy" secondAttribute="trailing" constant="40" id="3cS-Oy-lL6"/>
-                            <constraint firstItem="fT3-Yw-8Vy" firstAttribute="top" secondItem="XlG-fB-jrv" secondAttribute="bottom" constant="16" id="3kw-KR-mJt"/>
+                            <constraint firstItem="fT3-Yw-8Vy" firstAttribute="top" secondItem="XlG-fB-jrv" secondAttribute="bottom" constant="8" id="3kw-KR-mJt"/>
                             <constraint firstItem="7dd-td-X1n" firstAttribute="leading" secondItem="G71-ex-rp4" secondAttribute="leading" constant="20" id="6wi-Sh-0ur"/>
                             <constraint firstItem="G71-ex-rp4" firstAttribute="bottom" secondItem="5hg-ug-CTH" secondAttribute="bottom" id="7V6-d0-mdB"/>
                             <constraint firstItem="sN1-7f-pBc" firstAttribute="centerY" secondItem="7dd-td-X1n" secondAttribute="centerY" id="8sN-WR-mgL"/>
@@ -100,13 +100,13 @@
                             <constraint firstItem="XlG-fB-jrv" firstAttribute="leading" secondItem="G71-ex-rp4" secondAttribute="leading" constant="30" id="ESg-9b-atr"/>
                             <constraint firstItem="G71-ex-rp4" firstAttribute="trailing" secondItem="5hg-ug-CTH" secondAttribute="trailing" id="JQm-KZ-SVh"/>
                             <constraint firstItem="fT3-Yw-8Vy" firstAttribute="centerX" secondItem="G71-ex-rp4" secondAttribute="centerX" id="OWa-Vd-htz"/>
-                            <constraint firstItem="XlG-fB-jrv" firstAttribute="top" secondItem="7dd-td-X1n" secondAttribute="bottom" constant="20" id="OjA-eV-YAA"/>
+                            <constraint firstItem="XlG-fB-jrv" firstAttribute="top" secondItem="7dd-td-X1n" secondAttribute="bottom" constant="10" id="OjA-eV-YAA"/>
                             <constraint firstItem="7dd-td-X1n" firstAttribute="top" secondItem="G71-ex-rp4" secondAttribute="top" constant="20" id="RVO-t1-Jk8"/>
                             <constraint firstItem="G71-ex-rp4" firstAttribute="trailing" secondItem="sN1-7f-pBc" secondAttribute="trailing" constant="20" id="XrT-Ua-JZp"/>
                             <constraint firstItem="5hg-ug-CTH" firstAttribute="leading" secondItem="G71-ex-rp4" secondAttribute="leading" id="bQV-8R-KIB"/>
                             <constraint firstItem="G71-ex-rp4" firstAttribute="trailing" secondItem="XlG-fB-jrv" secondAttribute="trailing" constant="30" id="eiI-F9-XNn"/>
                             <constraint firstItem="fT3-Yw-8Vy" firstAttribute="leading" secondItem="G71-ex-rp4" secondAttribute="leading" constant="40" id="ib6-4g-et1"/>
-                            <constraint firstItem="5hg-ug-CTH" firstAttribute="top" secondItem="Db5-Hg-hFx" secondAttribute="bottom" constant="20" id="r6c-fE-FCd"/>
+                            <constraint firstItem="5hg-ug-CTH" firstAttribute="top" secondItem="Db5-Hg-hFx" secondAttribute="bottom" constant="10" id="r6c-fE-FCd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G71-ex-rp4"/>
                     </view>
@@ -114,6 +114,7 @@
                         <outlet property="samplesButton" destination="Db5-Hg-hFx" id="ZwA-o0-c8F"/>
                         <outlet property="samplesButtonWidthConstraint" destination="hWV-yB-Do3" id="H8J-cC-XbH"/>
                         <outlet property="scrollView" destination="5hg-ug-CTH" id="X6D-V6-OeM"/>
+                        <outlet property="scrollViewBottomConstraint" destination="7V6-d0-mdB" id="xjz-ku-JbE"/>
                         <outlet property="stackView" destination="gbW-Sp-2JO" id="d2D-DN-W0B"/>
                     </connections>
                 </viewController>
