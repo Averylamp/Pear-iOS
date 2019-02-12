@@ -27,9 +27,9 @@ class GetStartedDoDontViewController: UIViewController {
         "Talk about ...",
         "Say something about ...",
         "Comment on ...",
-        "Play ...",
-        "Eat ...",
         "Tell them ...",
+        "Pretend to ...",
+        "Give them ...",
     ]
     
     var doTextViewControllers: [ExpandingTextViewController] = []
@@ -233,10 +233,7 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
                     self.stackView.removeArrangedSubview(expandingTextViewController.view)
                     expandingTextViewController.view.removeFromSuperview()
                     if let index = self.doTextViewControllers.firstIndex(of: expandingTextViewController){
-                        print("Removed from array")
                         self.doTextViewControllers.remove(at: index)
-                    }else{
-                        print("not found to remove")
                     }
                 }
             }else if self.dontTextViewControllers.contains(expandingTextViewController){
@@ -252,10 +249,7 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
                     self.stackView.removeArrangedSubview(expandingTextViewController.view)
                     expandingTextViewController.view.removeFromSuperview()
                     if let index = self.dontTextViewControllers.firstIndex(of: expandingTextViewController){
-                        print("Removed from array")
                         self.dontTextViewControllers.remove(at: index)
-                    }else{
-                        print("not found to remove")
                     }
                 }
             }
@@ -264,19 +258,27 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
     }
     
     func seccondaryAccessoryButtonPressed(expandingTextViewController: ExpandingTextViewController, sender: UIButton) {
-        var expandingTextVCCollection = self.doTextViewControllers
-        if self.doTextViewControllers.contains(expandingTextViewController){
-            expandingTextVCCollection = self.doTextViewControllers
-        }else if self.dontTextViewControllers.contains(expandingTextViewController){
-            expandingTextVCCollection = self.dontTextViewControllers
-        }else{
-            return
-        }
         if sender.tag == 1 {
-            if expandingTextVCCollection.count > 1{
-                
-            }else{
-                expandingTextViewController.textView.text = ""
+            if self.doTextViewControllers.contains(expandingTextViewController){
+                if self.doTextViewControllers.count > 1 {
+                    self.stackView.removeArrangedSubview(expandingTextViewController.view)
+                    expandingTextViewController.view.removeFromSuperview()
+                    if let index = self.doTextViewControllers.firstIndex(of: expandingTextViewController){
+                        self.doTextViewControllers.remove(at: index)
+                    }
+                }else{
+                    expandingTextViewController.textView.text = ""
+                }
+            }else if self.dontTextViewControllers.contains(expandingTextViewController){
+                if self.dontTextViewControllers.count > 1 {
+                    self.stackView.removeArrangedSubview(expandingTextViewController.view)
+                    expandingTextViewController.view.removeFromSuperview()
+                    if let index = self.dontTextViewControllers.firstIndex(of: expandingTextViewController){
+                        self.dontTextViewControllers.remove(at: index)
+                    }
+                }else{
+                    expandingTextViewController.textView.text = ""
+                }
             }
         }
     }
