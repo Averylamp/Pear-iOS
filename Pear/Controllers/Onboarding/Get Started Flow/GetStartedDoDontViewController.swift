@@ -85,7 +85,6 @@ extension GetStartedDoDontViewController{
         self.samplesButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
         let imageWidth = self.samplesButton.imageView!.frame.width
         let fullSamplesButtonWidth: CGFloat = titleWidth + imageWidth + 40
-        print("Width: \(fullSamplesButtonWidth)")
         self.samplesButtonWidthConstraint.constant = fullSamplesButtonWidth
         self.view.layoutIfNeeded()
         self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
@@ -225,9 +224,7 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
                     expandingTextViewController.textView.text = ""
                 }else{
                     if self.doTextViewControllers.last == expandingTextViewController {
-                        self.doTextViewControllers[self.doTextViewControllers.count - 2].removeAllAccessoryButtons()
-                        self.doTextViewControllers[self.doTextViewControllers.count - 2].addAccessoryButton(image: UIImage(named: "onboarding-icon-plus")!, buttonType: .add)
-                        self.doTextViewControllers[self.doTextViewControllers.count - 2].addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
+                        self.resetButtonsAddClose(expandingTextVC: self.doTextViewControllers[self.doTextViewControllers.count - 2])
                     }
                     
                     self.stackView.removeArrangedSubview(expandingTextViewController.view)
@@ -241,9 +238,7 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
                     expandingTextViewController.textView.text = ""
                 }else{
                     if self.dontTextViewControllers.last == expandingTextViewController {
-                        self.dontTextViewControllers[self.dontTextViewControllers.count - 2].removeAllAccessoryButtons()
-                        self.dontTextViewControllers[self.dontTextViewControllers.count - 2].addAccessoryButton(image: UIImage(named: "onboarding-icon-plus")!, buttonType: .add)
-                        self.dontTextViewControllers[self.dontTextViewControllers.count - 2].addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
+                        self.resetButtonsAddClose(expandingTextVC: self.dontTextViewControllers[self.dontTextViewControllers.count - 2])
                     }
                     
                     self.stackView.removeArrangedSubview(expandingTextViewController.view)
@@ -257,10 +252,20 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
         }
     }
     
+    func resetButtonsAddClose(expandingTextVC: ExpandingTextViewController){
+        expandingTextVC.removeAllAccessoryButtons()
+        expandingTextVC.addAccessoryButton(image: UIImage(named: "onboarding-icon-plus")!, buttonType: .add)
+        expandingTextVC.addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
+    }
+    
     func seccondaryAccessoryButtonPressed(expandingTextViewController: ExpandingTextViewController, sender: UIButton) {
         if sender.tag == 1 {
             if self.doTextViewControllers.contains(expandingTextViewController){
                 if self.doTextViewControllers.count > 1 {
+                    if self.doTextViewControllers.last == expandingTextViewController {
+                        self.resetButtonsAddClose(expandingTextVC: self.doTextViewControllers[self.doTextViewControllers.count - 2])
+                    }
+                    
                     self.stackView.removeArrangedSubview(expandingTextViewController.view)
                     expandingTextViewController.view.removeFromSuperview()
                     if let index = self.doTextViewControllers.firstIndex(of: expandingTextViewController){
@@ -271,6 +276,10 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
                 }
             }else if self.dontTextViewControllers.contains(expandingTextViewController){
                 if self.dontTextViewControllers.count > 1 {
+                    if self.dontTextViewControllers.last == expandingTextViewController {
+                        self.resetButtonsAddClose(expandingTextVC: self.dontTextViewControllers[self.dontTextViewControllers.count - 2])
+                    }
+                    
                     self.stackView.removeArrangedSubview(expandingTextViewController.view)
                     expandingTextViewController.view.removeFromSuperview()
                     if let index = self.dontTextViewControllers.firstIndex(of: expandingTextViewController){
@@ -310,7 +319,6 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
         }
         if let nextTextView = nextTextView {
             nextTextView.becomeFirstResponder()
-            print(nextTextView.superview!.frame)
             self.scrollView.scrollRectToVisible(nextTextView.superview!.frame, animated: true)
         }else {
             expandingTextViewController.textView.resignFirstResponder()
