@@ -30,6 +30,14 @@
 		BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789621E2B22500964F26 /* ProfilesMainViewController.storyboard */; };
 		BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
+		BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */; };
+		BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */; };
+		BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */; };
+		BB56D23122142E7B00A652E7 /* ProfileDoDontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23022142E7B00A652E7 /* ProfileDoDontViewController.swift */; };
+		BB56D23322142E8F00A652E7 /* ProfileImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23222142E8F00A652E7 /* ProfileImageViewController.storyboard */; };
+		BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */; };
+		BB56D23722142EA700A652E7 /* ProfileAboutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */; };
+		BB56D23922142EB100A652E7 /* ProfileDoDontViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */; };
 		BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB686E2A2210BF34008A263C /* GoogleService-Info.plist */; };
 		BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */; };
 		BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E2E2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift */; };
@@ -116,6 +124,14 @@
 		BB18789621E2B22500964F26 /* ProfilesMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfilesMainViewController.storyboard; sourceTree = "<group>"; };
 		BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMainViewController.storyboard; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
+		BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
+		BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationViewController.swift; sourceTree = "<group>"; };
+		BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAboutViewController.swift; sourceTree = "<group>"; };
+		BB56D23022142E7B00A652E7 /* ProfileDoDontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoDontViewController.swift; sourceTree = "<group>"; };
+		BB56D23222142E8F00A652E7 /* ProfileImageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileImageViewController.storyboard; sourceTree = "<group>"; };
+		BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInformationViewController.storyboard; sourceTree = "<group>"; };
+		BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileAboutViewController.storyboard; sourceTree = "<group>"; };
+		BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDoDontViewController.storyboard; sourceTree = "<group>"; };
 		BB686E252210BE69008A263C /* Pear.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pear.entitlements; sourceTree = "<group>"; };
 		BB686E2A2210BF34008A263C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCreateAccountEmailViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				BB986A1C220E08B300759A14 /* Onboarding */,
+				BB56D22922142E2400A652E7 /* Profiles */,
 				BBDF1FEB21E2B61F00520881 /* Navigation */,
 				BB18788521E2B10400964F26 /* Login Flow */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
@@ -381,6 +398,21 @@
 				BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */,
 			);
 			path = "Settings Flow";
+			sourceTree = "<group>";
+		};
+		BB56D22922142E2400A652E7 /* Profiles */ = {
+			isa = PBXGroup;
+			children = (
+				BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */,
+				BB56D23222142E8F00A652E7 /* ProfileImageViewController.storyboard */,
+				BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */,
+				BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */,
+				BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */,
+				BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */,
+				BB56D23022142E7B00A652E7 /* ProfileDoDontViewController.swift */,
+				BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */,
+			);
+			path = Profiles;
 			sourceTree = "<group>";
 		};
 		BB986A1C220E08B300759A14 /* Onboarding */ = {
@@ -619,11 +651,13 @@
 			files = (
 				BB18789321E2B21800964F26 /* DiscoverMainViewController.storyboard in Resources */,
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
+				BB56D23922142EB100A652E7 /* ProfileDoDontViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedYourNameViewController.storyboard in Resources */,
 				60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
+				BB56D23722142EA700A652E7 /* ProfileAboutViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */,
 				BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */,
@@ -632,6 +666,8 @@
 				BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */,
 				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
+				BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */,
+				BB56D23322142E8F00A652E7 /* ProfileImageViewController.storyboard in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
@@ -727,6 +763,7 @@
 				BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
+				BB56D23122142E7B00A652E7 /* ProfileDoDontViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* Config.swift in Sources */,
@@ -750,9 +787,11 @@
 				BB18788921E2B1AC00964F26 /* MatchesMainViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
+				BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				60C131E421D345CE0093ECBA /* User.swift in Sources */,
+				BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */,
 				BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
@@ -761,6 +800,7 @@
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				BB686E3D22120E64008A263C /* StringExtensions.swift in Sources */,
+				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImageExtensions.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
