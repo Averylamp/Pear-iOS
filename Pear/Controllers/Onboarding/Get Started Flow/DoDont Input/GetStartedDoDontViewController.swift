@@ -46,18 +46,32 @@ class GetStartedDoDontViewController: UIViewController {
         return vc
     }
     
+    func saveDoDontListsTo(gettingStartedData: GetttingStartedData){
+        gettingStartedData.doList = []
+        gettingStartedData.dontList = []
+        for doTVC in self.doTextViewControllers {
+            if doTVC.textView.text.count >= 3 && !self.sampleStarters.contains(doTVC.textView.text) {
+                gettingStartedData.doList.append(doTVC.textView.text)
+            }
+        }
+        for dontTVC in self.dontTextViewControllers {
+            if dontTVC.textView.text.count >= 3 && !self.sampleStarters.contains(dontTVC.textView.text) {
+                gettingStartedData.dontList.append(dontTVC.textView.text)
+            }
+        }
+    }
+    
     @IBAction func backButtonClicked(_ sender: Any) {
+        saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
-        
+        saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
         let createAccountVC = GetStartedCreateAccountViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(createAccountVC, animated: true)
-        
     }
-    
     
     @IBAction func sampleButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
@@ -92,8 +106,39 @@ extension GetStartedDoDontViewController{
         self.addDoDontGroup()
         self.addKeyboardSizeNotifications()
         self.addDismissKeyboardOnViewClick()
+        self.restoreSavedState()
     }
     
+    func populateTVCWithText(text: String, tvc: ExpandingTextViewController){
+        tvc.textViewDidBeginEditing(tvc.textView)
+        tvc.textView.text = text
+        tvc.textViewDidChange(tvc.textView)
+        tvc.removeAllAccessoryButtons()
+        tvc.addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
+    }
+    
+    func restoreSavedState(){
+        for doText in self.gettingStartedData.doList{
+            if let lastTVC = self.doTextViewControllers.last, lastTVC.textView.text.count == 0 || self.sampleStarters.contains(lastTVC.textView.text){
+                populateTVCWithText(text: doText, tvc: lastTVC)
+                self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .doType)
+            }else{
+                self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .doType)
+                let lastTVC = self.doTextViewControllers.last!
+                populateTVCWithText(text: doText, tvc: lastTVC)
+            }
+        }
+        for dontText in self.gettingStartedData.dontList{
+            if let lastTVC = self.dontTextViewControllers.last, lastTVC.textView.text.count == 0 || self.sampleStarters.contains(lastTVC.textView.text) {
+                populateTVCWithText(text: dontText, tvc: lastTVC)
+                self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .dontType)
+            }else{
+                self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .dontType)
+                let lastTVC = self.dontTextViewControllers.last!
+                populateTVCWithText(text: dontText, tvc: lastTVC)
+            }
+        }
+    }
     
     func addDismissKeyboardOnViewClick(){
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GetStartedDoDontViewController.dismissKeyboard)))
@@ -113,7 +158,6 @@ extension GetStartedDoDontViewController{
         case dontType
     }
 
-    
     func addTitleLabelToStackView(stackView: UIStackView, type: DoType) {
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: self.stackView.frame.width, height: 34))
         titleView.translatesAutoresizingMaskIntoConstraints = false
@@ -145,7 +189,7 @@ extension GetStartedDoDontViewController{
         
     }
     
-    func addExpandingTextViewToStackView(stackView: UIStackView, type: DoType){
+    func addExpandingTextViewControllerToStackView(stackView: UIStackView, type: DoType){
         
         let expandingTextViewVC = ExpandingTextViewController.instantiate()
         expandingTextViewVC.delegate = self
@@ -190,14 +234,13 @@ extension GetStartedDoDontViewController{
             ])
         
         expandingTextViewVC.setPlaceholderText(text: self.sampleStarters[(self.doTextViewControllers.count + self.dontTextViewControllers.count) % self.sampleStarters.count])
-        
     }
     
     func addDoDontGroup(){
         self.addTitleLabelToStackView(stackView: self.stackView, type: .doType)
-        self.addExpandingTextViewToStackView(stackView: self.stackView, type: .doType)
+        self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .doType)
         self.addTitleLabelToStackView(stackView: self.stackView, type: .dontType)
-        self.addExpandingTextViewToStackView(stackView: self.stackView, type: .dontType)
+        self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .dontType)
     }
     
 }
@@ -209,9 +252,9 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
         if sender.tag == 0{
             // Add clicked
             if self.doTextViewControllers.contains(expandingTextViewController){
-                self.addExpandingTextViewToStackView(stackView: self.stackView, type: .doType)
+                self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .doType)
             }else if self.dontTextViewControllers.contains(expandingTextViewController){
-                self.addExpandingTextViewToStackView(stackView: self.stackView, type: .dontType)
+                self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .dontType)
             }
             expandingTextViewController.removeAllAccessoryButtons()
             expandingTextViewController.addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
@@ -341,7 +384,6 @@ extension GetStartedDoDontViewController{
     }
     @objc func keyboardWillHide(notification: Notification){
         let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
-        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         self.scrollViewBottomConstraint.constant = 0
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
