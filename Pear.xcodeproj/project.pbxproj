@@ -417,34 +417,17 @@
 		BB986A39220E43A300759A14 /* Get Started Flow */ = {
 			isa = PBXGroup;
 			children = (
-				BB986A44220F793000759A14 /* GetStartedYourNameViewController.swift */,
-				BB986A54220F7AC700759A14 /* GetStartedYourNameViewController.storyboard */,
-				BB986A46220F799A00759A14 /* GetStartedFriendNameViewController.swift */,
-				BB986A56220F807E00759A14 /* GetStartedFriendNameViewController.storyboard */,
-				BB986A48220F79A500759A14 /* GetStartedAgeViewController.swift */,
-				BB986A58220FCDFE00759A14 /* GetStartedAgeViewController.storyboard */,
-				BB986A4A220F79B400759A14 /* GetStartedInterestsViewController.swift */,
-				BB986A5A220FD0C600759A14 /* GetStartedInterestsViewController.storyboard */,
-				BB986A4C220F79CA00759A14 /* GetStartedShortBioViewController.swift */,
-				BB986A5C220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard */,
-				BB686E412212213A008A263C /* GetStartedDoDontViewController.swift */,
-				BB686E402212213A008A263C /* GetStartedDoDontViewController.storyboard */,
-				BB986A4E220F79DC00759A14 /* GetStartedSampleBiosViewController.swift */,
-				BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */,
-				BB986A50220F79E800759A14 /* GetStartedPhotoInputViewController.swift */,
-				BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */,
-				BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */,
-				BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */,
-				BB986A52220F79F200759A14 /* GetStartedCreateAccountViewController.swift */,
-				BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */,
-				BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */,
-				BB686E322210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard */,
-				BB686E352210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift */,
-				BB686E342210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard */,
-				BB686E2E2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift */,
-				BB686E302210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard */,
-				BB686E3922113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift */,
-				BB686E3822113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard */,
+				BBE8D01C2213E04600FD1355 /* User Name Input */,
+				BBE8D01D2213E09400FD1355 /* Endorsement Name Input */,
+				BBE8D01E2213E09F00FD1355 /* Age Input */,
+				BBE8D01F2213E0B200FD1355 /* Interests Input */,
+				BBE8D0202213E0BA00FD1355 /* Short Bio Input */,
+				BBE8D0212213E0C500FD1355 /* DoDont Input */,
+				BBE8D0222213E0D800FD1355 /* Sample Profiles */,
+				BBE8D0232213E0E000FD1355 /* Photo Input */,
+				BBE8D0242213E0ED00FD1355 /* Pick User Provider Screen */,
+				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
+				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 			);
 			path = "Get Started Flow";
 			sourceTree = "<group>";
@@ -456,6 +439,111 @@
 				BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BBE8D01C2213E04600FD1355 /* User Name Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A44220F793000759A14 /* GetStartedYourNameViewController.swift */,
+				BB986A54220F7AC700759A14 /* GetStartedYourNameViewController.storyboard */,
+			);
+			path = "User Name Input";
+			sourceTree = "<group>";
+		};
+		BBE8D01D2213E09400FD1355 /* Endorsement Name Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A46220F799A00759A14 /* GetStartedFriendNameViewController.swift */,
+				BB986A56220F807E00759A14 /* GetStartedFriendNameViewController.storyboard */,
+			);
+			path = "Endorsement Name Input";
+			sourceTree = "<group>";
+		};
+		BBE8D01E2213E09F00FD1355 /* Age Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A48220F79A500759A14 /* GetStartedAgeViewController.swift */,
+				BB986A58220FCDFE00759A14 /* GetStartedAgeViewController.storyboard */,
+			);
+			path = "Age Input";
+			sourceTree = "<group>";
+		};
+		BBE8D01F2213E0B200FD1355 /* Interests Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A4A220F79B400759A14 /* GetStartedInterestsViewController.swift */,
+				BB986A5A220FD0C600759A14 /* GetStartedInterestsViewController.storyboard */,
+			);
+			path = "Interests Input";
+			sourceTree = "<group>";
+		};
+		BBE8D0202213E0BA00FD1355 /* Short Bio Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A4C220F79CA00759A14 /* GetStartedShortBioViewController.swift */,
+				BB986A5C220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard */,
+			);
+			path = "Short Bio Input";
+			sourceTree = "<group>";
+		};
+		BBE8D0212213E0C500FD1355 /* DoDont Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB686E412212213A008A263C /* GetStartedDoDontViewController.swift */,
+				BB686E402212213A008A263C /* GetStartedDoDontViewController.storyboard */,
+			);
+			path = "DoDont Input";
+			sourceTree = "<group>";
+		};
+		BBE8D0222213E0D800FD1355 /* Sample Profiles */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A4E220F79DC00759A14 /* GetStartedSampleBiosViewController.swift */,
+				BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */,
+			);
+			path = "Sample Profiles";
+			sourceTree = "<group>";
+		};
+		BBE8D0232213E0E000FD1355 /* Photo Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A50220F79E800759A14 /* GetStartedPhotoInputViewController.swift */,
+				BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */,
+				BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */,
+				BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */,
+			);
+			path = "Photo Input";
+			sourceTree = "<group>";
+		};
+		BBE8D0242213E0ED00FD1355 /* Pick User Provider Screen */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A52220F79F200759A14 /* GetStartedCreateAccountViewController.swift */,
+				BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */,
+			);
+			path = "Pick User Provider Screen";
+			sourceTree = "<group>";
+		};
+		BBE8D0252213E0FD00FD1355 /* Create Email Account  */ = {
+			isa = PBXGroup;
+			children = (
+				BB686E352210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift */,
+				BB686E342210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard */,
+				BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */,
+				BB686E322210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard */,
+			);
+			path = "Create Email Account ";
+			sourceTree = "<group>";
+		};
+		BBE8D0262213E12500FD1355 /* Validate Phone Number */ = {
+			isa = PBXGroup;
+			children = (
+				BB686E2E2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift */,
+				BB686E302210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard */,
+				BB686E3922113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift */,
+				BB686E3822113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard */,
+			);
+			path = "Validate Phone Number";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
