@@ -13,30 +13,30 @@ class GetStartedAgeViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedAgeViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedAgeViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedAgeViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedAgeViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         if let age = Int(self.inputTextField.text!){
-            self.endorsement.age = age
-            let interestsVC = GetStartedInterestsViewController.instantiate(endorsement: self.endorsement)
+            self.gettingStartedData.age = age
+            let interestsVC = GetStartedInterestsViewController.instantiate(gettingStartedData: self.gettingStartedData)
             self.navigationController?.pushViewController(interestsVC, animated: true)
         }
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
         if let age = Int(self.inputTextField.text!){
-            self.endorsement.age = age
+            self.gettingStartedData.age = age
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -50,7 +50,7 @@ class GetStartedAgeViewController: UIViewController {
 extension GetStartedAgeViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let age = self.endorsement.age {
+        if let age = self.gettingStartedData.age {
             self.inputTextField.text = "\(age)"
         }else{
             self.inputTextField.text = "22"            

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Endorsement {
+class GetttingStartedData {
     
     var endorseeName: String?
     var name: String?
@@ -20,8 +20,8 @@ class Endorsement {
         
     }
  
-    class func fakeUser()->Endorsement{
-        let endorsement = Endorsement()
+    class func fakeUser()->GetttingStartedData{
+        let endorsement = GetttingStartedData()
         endorsement.name = "John Smith"
         endorsement.endorseeName = "Jane Doe"
         endorsement.age = 22

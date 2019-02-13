@@ -14,7 +14,7 @@ class GetStartedInterestsViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
     
     let interestStrings: [String] = [
         "Language",
@@ -58,34 +58,34 @@ class GetStartedInterestsViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedInterestsViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedInterestsViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedInterestsViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedInterestsViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
-        self.endorsement.interests = []
+        self.gettingStartedData.interests = []
         for button in self.interestButtons{
             if button.isSelected{
-                self.endorsement.interests.append(button.titleLabel!.text!)
+                self.gettingStartedData.interests.append(button.titleLabel!.text!)
             }
         }
-        print(self.endorsement.interests)
+        print(self.gettingStartedData.interests)
         self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
-        self.endorsement.interests = []
+        self.gettingStartedData.interests = []
         for button in self.interestButtons{
             if button.isSelected{
-                self.endorsement.interests.append(button.titleLabel!.text!)
+                self.gettingStartedData.interests.append(button.titleLabel!.text!)
             }
         }
-        let shortBioVC = GetStartedShortBioViewController.instantiate(endorsement: self.endorsement)
+        let shortBioVC = GetStartedShortBioViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(shortBioVC, animated: true)
     }
     
@@ -164,7 +164,7 @@ extension GetStartedInterestsViewController{
         self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: rowHeight * CGFloat(numRows) + 2.0 * buttonSpacing)
         
         for button in self.interestButtons{
-            if self.endorsement.interests.contains(button.titleLabel!.text!){
+            if self.gettingStartedData.interests.contains(button.titleLabel!.text!){
                 self.toggleInterestButton(button: button, initialization: true)
             }
         }

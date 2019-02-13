@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedPhotoInputViewController: UIViewController {
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
     
     @IBOutlet weak var welcomeTitleLabel: UILabel!
     
@@ -25,10 +25,10 @@ class GetStartedPhotoInputViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedPhotoInputViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedPhotoInputViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedPhotoInputViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedPhotoInputViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
@@ -39,7 +39,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
-        let createAccountVC = GetStartedCreateAccountViewController.instantiate(endorsement: self.endorsement)
+        let createAccountVC = GetStartedCreateAccountViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(createAccountVC, animated: true)
     }
     
@@ -74,6 +74,8 @@ extension GetStartedPhotoInputViewController{
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     }
+    
+    
     
 }
 
