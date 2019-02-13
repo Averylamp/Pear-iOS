@@ -18,9 +18,9 @@ class PearUser {
     let fbId: String
     let firebaseId: String
     
-    var personalProfileRef: Profile?
-    var friendEndorsedProfileRefs: Array<Profile> = []
-    var endorsedProfileRefs: Array<Profile> = []
+    var personalProfileRef: OldProfile?
+    var friendEndorsedProfileRefs: Array<OldProfile> = []
+    var endorsedProfileRefs: Array<OldProfile> = []
     
     init(){
         self.documentId = ""
@@ -37,9 +37,9 @@ class PearUser {
          lastName: String,
          fbId: String,
          firebaseId: String,
-         personalProfileRef: Profile? = nil,
-         endorsedProfileRefs: Array<Profile> = [],
-         friendEndorsedProfileRefs: Array<Profile> = []){
+         personalProfileRef: OldProfile? = nil,
+         endorsedProfileRefs: Array<OldProfile> = [],
+         friendEndorsedProfileRefs: Array<OldProfile> = []){
         self.documentId = documentId
         self.email = email
         self.firstName = firstName
@@ -63,9 +63,9 @@ class PearUser {
         else{
             return nil
         }
-        let personalProfileRef = dictionary[UserKeys.personalProfileRefs] as? Profile
-        let endorsedProfileRefs = dictionary[UserKeys.endorsedProfileRefs] as? Array<Profile>
-        let friendEndorsedProfileRefs = dictionary[UserKeys.friendEndorsedProfileRefs] as? Array<Profile>
+        let personalProfileRef = dictionary[UserKeys.personalProfileRefs] as? OldProfile
+        let endorsedProfileRefs = dictionary[UserKeys.endorsedProfileRefs] as? Array<OldProfile>
+        let friendEndorsedProfileRefs = dictionary[UserKeys.friendEndorsedProfileRefs] as? Array<OldProfile>
         
         self.init(documentId: documentId,
                   email: email,
@@ -86,9 +86,9 @@ class PearUser {
             UserKeys.lastName: "Lamp",
             UserKeys.fbId: "FakeId",
             UserKeys.firebaseId: "FakeId",
-            UserKeys.personalProfileRefs: [Profile.initFakeProfile()],
-            UserKeys.endorsedProfileRefs: [Profile.initFakeProfile(),Profile.initFakeProfile(),Profile.initFakeProfile()],
-            UserKeys.friendEndorsedProfileRefs: [Profile.initFakeProfile()]
+            UserKeys.personalProfileRefs: [OldProfile.initFakeProfile()],
+            UserKeys.endorsedProfileRefs: [OldProfile.initFakeProfile(),OldProfile.initFakeProfile(),OldProfile.initFakeProfile()],
+            UserKeys.friendEndorsedProfileRefs: [OldProfile.initFakeProfile()]
         ]
         return PearUser(dictionary: fakeData)!
     }

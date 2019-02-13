@@ -14,8 +14,13 @@ class GetttingStartedData {
     var name: String?
     var age: Int?
     var interests: [String] = []
+    var shortBio: String?
     var userEmail: String?
     var userPhoneNumber: String?
+    var doList: [String] = []
+    var dontList: [String] = []
+    var images: [UIImage] = []
+    
     init(){
         
     }

@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class Profile{
+class OldProfile{
     
     let active: Bool
     let age: Int
@@ -71,7 +71,7 @@ class Profile{
         self.init(active: active, age: age, documentId: documentId, endorsed: endorsed, ethnicities: ethnicities, gender: gender, locationCoordinate: locationCoordinate, profileFirstName: profileFirstName, profileLastName: profileLastName)
     }
     
-    class func initFakeProfile() -> Profile{
+    class func initFakeProfile() -> OldProfile{
         let fakeData: [String: Any?] = [
             ProfileKeys.age: 20,
             ProfileKeys.active: true,
@@ -85,7 +85,7 @@ class Profile{
         ]
         
         
-        return Profile(dictionary: fakeData)!
+        return OldProfile(dictionary: fakeData)!
     }
     
 }

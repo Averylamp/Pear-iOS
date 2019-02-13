@@ -33,12 +33,14 @@ class GetStartedPhotoInputViewController: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
+        self.gettingStartedData.images = self.images
         self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        self.gettingStartedData.images = self.images
         let createAccountVC = GetStartedCreateAccountViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(createAccountVC, animated: true)
     }
@@ -50,12 +52,16 @@ class GetStartedPhotoInputViewController: UIViewController {
 extension GetStartedPhotoInputViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.restoreGettingStartedState()
         self.stylizeProfileButton()
         self.setupCollectionView()
         imagePickerController.delegate = self
         self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GetStartedPhotoInputViewController.handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(self.longPressGestureRecognizer)
+    }
+    
+    func restoreGettingStartedState(){
+        self.images = self.gettingStartedData.images
     }
     
     

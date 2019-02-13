@@ -80,9 +80,11 @@
 		BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
-		BBDF1FEF21E2D96D00520881 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* Profile.swift */; };
+		BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* OldProfile.swift */; };
 		BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */; };
 		BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF221E2D9DC00520881 /* UserConstants.swift */; };
+		BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0272214022600FD1355 /* ProfileData.swift */; };
+		BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0292214023A00FD1355 /* EndorsementData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,9 +167,11 @@
 		BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
-		BBDF1FEE21E2D96D00520881 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		BBDF1FEE21E2D96D00520881 /* OldProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfile.swift; sourceTree = "<group>"; };
 		BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConstants.swift; sourceTree = "<group>"; };
 		BBDF1FF221E2D9DC00520881 /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
+		BBE8D0272214022600FD1355 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		BBE8D0292214023A00FD1355 /* EndorsementData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndorsementData.swift; sourceTree = "<group>"; };
 		F9A3EA5A3F2A7C79ED10C4C7 /* Pods_SubtleAsianMatches.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SubtleAsianMatches.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE81A12BBEE402D8392BD322 /* Pods-SubtleAsianMatches.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubtleAsianMatches.release.xcconfig"; path = "Pods/Target Support Files/Pods-SubtleAsianMatches/Pods-SubtleAsianMatches.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -301,7 +305,9 @@
 			children = (
 				60C131E321D345CE0093ECBA /* User.swift */,
 				BBDF1FF221E2D9DC00520881 /* UserConstants.swift */,
-				BBDF1FEE21E2D96D00520881 /* Profile.swift */,
+				BBDF1FEE21E2D96D00520881 /* OldProfile.swift */,
+				BBE8D0272214022600FD1355 /* ProfileData.swift */,
+				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
 				BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */,
 				BB986A42220F76BF00759A14 /* GetttingStartedData.swift */,
 			);
@@ -718,7 +724,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */,
-				BBDF1FEF21E2D96D00520881 /* Profile.swift in Sources */,
+				BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
@@ -747,6 +753,7 @@
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				60C131E421D345CE0093ECBA /* User.swift in Sources */,
+				BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
@@ -762,6 +769,7 @@
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
 				BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
+				BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */,
 				BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
