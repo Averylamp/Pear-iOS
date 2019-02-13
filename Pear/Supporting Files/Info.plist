@@ -72,5 +72,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>To find your latest and greatest photos!</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To find your latest and greatest photos!</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Quick!  Take a photo of them before they run away!</string>
 </dict>
 </plist>
