@@ -14,22 +14,22 @@ class GetStartedCreateAccountEmailViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedCreateAccountEmailViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedCreateAccountEmailViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedCreateAccountEmailViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedCreateAccountEmailViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
     
     @IBAction func backButtonClicked(_ sender: Any) {
         if let userName = inputTextField.text{
-            endorsement.name = userName
+            gettingStartedData.name = userName
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -38,8 +38,8 @@ class GetStartedCreateAccountEmailViewController: UIViewController {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         
         if let userEmail = inputTextField.text{
-            self.endorsement.userEmail = userEmail
-            let emailPasswordVC = GetStartedCreateAccountEmailPasswordViewController.instantiate(endorsement: endorsement)
+            self.gettingStartedData.userEmail = userEmail
+            let emailPasswordVC = GetStartedCreateAccountEmailPasswordViewController.instantiate(gettingStartedData: gettingStartedData)
             self.navigationController?.pushViewController(emailPasswordVC, animated: true)
         }
     }

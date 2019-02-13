@@ -12,16 +12,16 @@ import Firebase
 
 class GetStartedCreateAccountViewController: UIViewController {
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
     var authAPI: AuthAPI! =  FakeAuthAPI()
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedCreateAccountViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedCreateAccountViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedCreateAccountViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedCreateAccountViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
@@ -49,8 +49,8 @@ class GetStartedCreateAccountViewController: UIViewController {
                     }
                     
 //                    guard let user = authData?.user else{ return }
-                    let phoneNumberVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(endorsement: self.endorsement)
-                    self.navigationController?.pushViewController(phoneNumberVerificationVC, animated: true)
+                    let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData)
+                    self.navigationController?.pushViewController(photoInputVC, animated: true)
 
                 }
             case .cancelled:
@@ -62,7 +62,7 @@ class GetStartedCreateAccountViewController: UIViewController {
     }
     
     @IBAction func emailButtonClicked(_ sender: Any) {
-        let emailVC = GetStartedCreateAccountEmailViewController.instantiate(endorsement: self.endorsement)
+        let emailVC = GetStartedCreateAccountEmailViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(emailVC, animated: true)
     }
     

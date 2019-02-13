@@ -85,10 +85,7 @@ extension LandingScreenViewController{
         }
         scrollView.delegate = self
     }
-    
-    
 }
-
 
 // MARK: - @IBActions
 private extension LandingScreenViewController{
@@ -100,11 +97,8 @@ private extension LandingScreenViewController{
     @objc func signupButtonClicked(sender:UIButton){
         print("Signup Clicked")
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
-        let inputNameVC = GetStartedYourNameViewController.instantiate(endorsement: Endorsement())
+        let inputNameVC = GetStartedYourNameViewController.instantiate(gettingStartedData: GetttingStartedData())
         self.navigationController?.pushViewController(inputNameVC, animated: true)
-//        let createAccount = GetStartedShortBioViewController.instantiate(endorsement: Endorsement.fakeUser())
-//        self.navigationController?.pushViewController(createAccount, animated: true)
-
     }
     
     @objc func loginButtonClicked(sender:UIButton){
@@ -142,6 +136,5 @@ extension LandingScreenViewController: UIScrollViewDelegate{
             pages[3].scaleImageView(percent: 1.0 - ((percentOffset - 0.75) * 4 * scaleSize))
         }
     }
-    
     
 }

@@ -14,12 +14,12 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
-    var endorsement: Endorsement!
+    var endorsement: GetttingStartedData!
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedValidatePhoneNumberViewController {
+    class func instantiate(endorsement: GetttingStartedData) -> GetStartedValidatePhoneNumberViewController {
         
         let storyboard = UIStoryboard(name: String(describing: GetStartedValidatePhoneNumberViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedValidatePhoneNumberViewController

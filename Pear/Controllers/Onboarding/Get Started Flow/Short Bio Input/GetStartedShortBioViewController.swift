@@ -11,7 +11,7 @@ import UIKit
 
 class GetStartedShortBioViewController: UIViewController {
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
     
     @IBOutlet weak var inputTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textLengthLabel: UILabel!
@@ -25,10 +25,10 @@ class GetStartedShortBioViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedShortBioViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedShortBioViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedShortBioViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedShortBioViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
@@ -39,7 +39,7 @@ class GetStartedShortBioViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         
-        let photoInputVC = GetStartedDoDontViewController.instantiate(endorsement: self.endorsement)
+        let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(photoInputVC, animated: true)
         
     }

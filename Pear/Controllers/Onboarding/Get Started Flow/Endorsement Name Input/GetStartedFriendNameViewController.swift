@@ -13,22 +13,22 @@ class GetStartedFriendNameViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedFriendNameViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedFriendNameViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedFriendNameViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedFriendNameViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
     
     @IBAction func backButtonClicked(_ sender: Any) {
         if let userName = inputTextField.text{
-            endorsement.name = userName
+            gettingStartedData.name = userName
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -36,8 +36,8 @@ class GetStartedFriendNameViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         if let userName = inputTextField.text{
-            endorsement.name = userName
-            let friendNameVC = GetStartedAgeViewController.instantiate(endorsement: self.endorsement)
+            gettingStartedData.name = userName
+            let friendNameVC = GetStartedAgeViewController.instantiate(gettingStartedData: self.gettingStartedData)
             self.navigationController?.pushViewController(friendNameVC, animated: true)
         }
     }
@@ -53,7 +53,7 @@ extension GetStartedFriendNameViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.contentMode = .scaleAspectFit
-        if let name = self.endorsement.name{
+        if let name = self.gettingStartedData.name{
             self.inputTextField.text = name
         }
         self.inputTextField.becomeFirstResponder()

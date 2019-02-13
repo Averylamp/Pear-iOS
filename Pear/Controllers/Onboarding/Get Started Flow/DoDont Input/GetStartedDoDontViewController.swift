@@ -11,7 +11,7 @@ import UIKit
 
 class GetStartedDoDontViewController: UIViewController {
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
         
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var samplesButtonWidthConstraint: NSLayoutConstraint!
@@ -39,10 +39,10 @@ class GetStartedDoDontViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedDoDontViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedDoDontViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedDoDontViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedDoDontViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
@@ -53,7 +53,7 @@ class GetStartedDoDontViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         
-        let createAccountVC = GetStartedCreateAccountViewController.instantiate(endorsement: self.endorsement)
+        let createAccountVC = GetStartedCreateAccountViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(createAccountVC, animated: true)
         
     }

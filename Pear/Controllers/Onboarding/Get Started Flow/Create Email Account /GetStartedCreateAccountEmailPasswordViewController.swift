@@ -15,15 +15,15 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
     @IBOutlet weak var firstPasswordTextField: UITextField!
     @IBOutlet weak var emailLinkButton: UIButton!
     
-    var endorsement: Endorsement!
+    var gettingStartedData: GetttingStartedData!
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(endorsement: Endorsement) -> GetStartedCreateAccountEmailPasswordViewController {
+    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedCreateAccountEmailPasswordViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedCreateAccountEmailPasswordViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedCreateAccountEmailPasswordViewController
-        vc.endorsement = endorsement
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
@@ -35,12 +35,12 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         if Config.shouldSkipLogin {
-            let phoneNumberVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(endorsement: self.endorsement)
-            self.navigationController?.pushViewController(phoneNumberVerificationVC, animated: true)
+            let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData)
+            self.navigationController?.pushViewController(photoInputVC, animated: true)
         }
         
         
-        if let userEmail = self.endorsement.userEmail, let password = self.firstPasswordTextField.text {
+        if let userEmail = self.gettingStartedData.userEmail, let password = self.firstPasswordTextField.text {
             if password.count < 8 {
                 self.alert(title: "Password not long enough", message: "Please choose a password with at least 8 characters")
                 return
@@ -55,8 +55,8 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
 //                let credential = EmailAuthProvider.credential(withEmail: userEmail, password: password)
 //                guard let user = authResult?.user else { return }
                 
-                let phoneNumberVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(endorsement: self.endorsement)
-                self.navigationController?.pushViewController(phoneNumberVerificationVC, animated: true)
+                let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData)
+                self.navigationController?.pushViewController(photoInputVC, animated: true)
             }
         }
     }
