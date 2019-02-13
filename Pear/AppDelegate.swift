@@ -23,7 +23,7 @@ extension AppDelegate: UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navController = LandingNavigationViewController.instantiate()
 //        window?.rootViewController = navController
-        window?.rootViewController = GetStartedDoDontViewController.instantiate(endorsement: Endorsement.fakeUser())
+        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(endorsement: Endorsement.fakeUser())
         window?.makeKeyAndVisible()
         FirebaseApp.configure()
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -76,6 +76,8 @@
 		BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */; };
 		BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */; };
 		BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */; };
+		BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */; };
+		BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* Profile.swift */; };
@@ -159,6 +161,8 @@
 		BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSampleBiosViewController.storyboard; sourceTree = "<group>"; };
 		BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhotoInputViewController.storyboard; sourceTree = "<group>"; };
 		BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedCreateAccountViewController.storyboard; sourceTree = "<group>"; };
+		BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCollectionViewCell.swift; sourceTree = "<group>"; };
+		BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -429,6 +433,8 @@
 				BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */,
 				BB986A50220F79E800759A14 /* GetStartedPhotoInputViewController.swift */,
 				BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */,
+				BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */,
+				BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */,
 				BB986A52220F79F200759A14 /* GetStartedCreateAccountViewController.swift */,
 				BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */,
 				BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */,
@@ -632,6 +638,7 @@
 				BB686E3F22120F1A008A263C /* Config.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedYourNameViewController.swift in Sources */,
+				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				60C131D821D343910093ECBA /* LoginVC.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
@@ -656,6 +663,7 @@
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
+				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				BB686E3D22120E64008A263C /* StringExtensions.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,

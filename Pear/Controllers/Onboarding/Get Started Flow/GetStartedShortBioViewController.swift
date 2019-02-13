@@ -67,7 +67,7 @@ extension GetStartedShortBioViewController{
         self.textLengthLabel.text = "\(self.inputTextView.text.count) / \(maxTextLength)"
         
         self.samplesButton.layer.borderWidth = 1
-        self.samplesButton.layer.borderColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:1.00).cgColor
+        self.samplesButton.layer.borderColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:0.1).cgColor
         self.samplesButton.layer.cornerRadius = 20.0
         self.view.layoutIfNeeded()
         let titleWidth = self.samplesButton.titleLabel!.frame.width
