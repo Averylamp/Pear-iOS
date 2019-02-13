@@ -89,23 +89,17 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-add-image-dotted-rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="47j-E2-URe">
                                                     <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-add-photo-plus" translatesAutoresizingMaskIntoConstraints="NO" id="3J7-5A-lHH">
-                                                    <rect key="frame" x="33.5" y="33.5" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="7BG-Dk-Dbl"/>
-                                                        <constraint firstAttribute="width" constant="30" id="Je3-9G-Bvb"/>
-                                                    </constraints>
-                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="3J7-5A-lHH" firstAttribute="centerX" secondItem="9wy-q3-TnG" secondAttribute="centerX" id="6Uw-D9-4QS"/>
-                                            <constraint firstItem="3J7-5A-lHH" firstAttribute="centerY" secondItem="9wy-q3-TnG" secondAttribute="centerY" id="AAc-sl-7L7"/>
                                             <constraint firstItem="47j-E2-URe" firstAttribute="centerY" secondItem="9wy-q3-TnG" secondAttribute="centerY" id="ICA-xn-sKk"/>
                                             <constraint firstItem="47j-E2-URe" firstAttribute="width" secondItem="9wy-q3-TnG" secondAttribute="width" id="MZs-7d-ziG"/>
                                             <constraint firstItem="47j-E2-URe" firstAttribute="centerX" secondItem="9wy-q3-TnG" secondAttribute="centerX" id="V9P-b8-JAt"/>
                                             <constraint firstItem="47j-E2-URe" firstAttribute="height" secondItem="9wy-q3-TnG" secondAttribute="height" id="ZOD-n3-KDw"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="47j-E2-URe" id="XDZ-6y-N7X"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -146,7 +140,6 @@
     </scenes>
     <resources>
         <image name="onboarding-add-image-dotted-rectangle" width="110" height="110"/>
-        <image name="onboarding-add-photo-plus" width="29" height="29"/>
         <image name="onboarding-pear-circle-logo" width="95" height="95"/>
     </resources>
 </document>
