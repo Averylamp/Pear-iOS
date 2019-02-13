@@ -67,15 +67,29 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r4R-ks-lmm">
                                                     <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTv-H4-Roj">
+                                                    <rect key="frame" x="71" y="2" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="ipk-Yx-ONA"/>
+                                                        <constraint firstAttribute="width" constant="24" id="x0y-TD-86K"/>
+                                                    </constraints>
+                                                    <state key="normal" image="onboarding-close-button"/>
+                                                    <connections>
+                                                        <action selector="cancelButtonClicked:" destination="N3z-Dm-iG3" eventType="touchUpInside" id="a45-1a-0l5"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="r4R-ks-lmm" firstAttribute="width" secondItem="N3z-Dm-iG3" secondAttribute="width" id="Eax-p5-Si9"/>
+                                            <constraint firstAttribute="trailing" secondItem="dTv-H4-Roj" secondAttribute="trailing" constant="2" id="fXt-hl-965"/>
                                             <constraint firstItem="r4R-ks-lmm" firstAttribute="height" secondItem="N3z-Dm-iG3" secondAttribute="height" id="gXL-Sy-Ba2"/>
                                             <constraint firstItem="r4R-ks-lmm" firstAttribute="centerY" secondItem="N3z-Dm-iG3" secondAttribute="centerY" id="pCz-ev-Mfk"/>
+                                            <constraint firstItem="dTv-H4-Roj" firstAttribute="top" secondItem="N3z-Dm-iG3" secondAttribute="top" constant="2" id="uLZ-Sj-57k"/>
                                             <constraint firstItem="r4R-ks-lmm" firstAttribute="centerX" secondItem="N3z-Dm-iG3" secondAttribute="centerX" id="xdv-7w-HZx"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="cancelButton" destination="dTv-H4-Roj" id="dfC-OF-BD4"/>
                                             <outlet property="imageView" destination="r4R-ks-lmm" id="63n-pc-Xdx"/>
                                         </connections>
                                     </collectionViewCell>
@@ -140,6 +154,7 @@
     </scenes>
     <resources>
         <image name="onboarding-add-image-dotted-rectangle" width="110" height="110"/>
+        <image name="onboarding-close-button" width="96" height="96"/>
         <image name="onboarding-pear-circle-logo" width="95" height="95"/>
     </resources>
 </document>

@@ -166,7 +166,7 @@ extension GetStartedPhotoInputViewController{
 }
 
 // MARK: - UICollectionViewDataSource
-extension GetStartedPhotoInputViewController: UICollectionViewDataSource{
+extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageUploadCollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 9
     }
@@ -179,6 +179,8 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource{
             cell.imageView.contentMode = .scaleAspectFill
             cell.imageView.layer.cornerRadius = 3
             cell.imageView.clipsToBounds = true
+            cell.closeButtonDelegate = self
+            cell.cancelButton.tag = indexPath.item
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadAddCollectionViewCell", for: indexPath) as! ImageUploadAddCollectionViewCell
@@ -192,6 +194,10 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource{
         }
     }
     
+    func closeButtonClicked(tag: Int) {
+        self.images.remove(at: tag)
+        self.collectionView.reloadData()
+    }
     
 }
 
