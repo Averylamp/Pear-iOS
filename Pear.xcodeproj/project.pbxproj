@@ -465,6 +465,15 @@
 			path = "Profile DoDont";
 			sourceTree = "<group>";
 		};
+		BB75BFD322156B9700BAB800 /* Full Profile Review Page */ = {
+			isa = PBXGroup;
+			children = (
+				BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */,
+				BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */,
+			);
+			path = "Full Profile Review Page";
+			sourceTree = "<group>";
+		};
 		BB986A1C220E08B300759A14 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,8 +481,6 @@
 				BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */,
 				BB986A38220E439800759A14 /* Landing Screen */,
 				BB986A39220E43A300759A14 /* Get Started Flow */,
-				BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */,
-				BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -518,6 +525,7 @@
 				BBE8D0242213E0ED00FD1355 /* Pick User Provider Screen */,
 				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
+				BB75BFD322156B9700BAB800 /* Full Profile Review Page */,
 			);
 			path = "Get Started Flow";
 			sourceTree = "<group>";
