@@ -25,7 +25,7 @@ class GetttingStartedData {
  
     class func fakeData()->GetttingStartedData{
         let data = GetttingStartedData()
-        data.profileData = ProfileData.fakeProfile()
+        data.profileData = FakeProfileData.listOfFakeProfiles().randomElement()!
         data.userFirstName = data.profileData.endorsedFirstName
         data.userLastName = data.profileData.endorsedLastName
         data.userFullName = data.profileData.endorsedFullName
