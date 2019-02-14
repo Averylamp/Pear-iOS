@@ -20,10 +20,14 @@ class ProfileInformationViewController: UIViewController {
     var workPosition: String?
     var workCompany: String?
     
+    var profileInformationHeightConstriant: NSLayoutConstraint?
+    
     @IBOutlet weak var firstNameLabel: UILabel!
     
     @IBOutlet weak var endorseeLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
     
+    @IBOutlet weak var endorseeCircleView: UIView!
     
     /// Factory method for creating this view controller.
     ///
@@ -59,12 +63,20 @@ extension ProfileInformationViewController {
         self.firstNameLabel.text = self.firstName
         if let endorseeName = self.endorsedName{
             self.endorseeLabel.text = "Made by \(endorseeName)"
-            self.endorseeLabel.layer.cornerRadius = 15
-            self.endorseeLabel.layer.borderColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00).cgColor
-            self.endorseeLabel.layer.borderWidth = 1.0
+            self.endorseeCircleView.layer.cornerRadius = 18
+            self.endorseeCircleView.layer.borderColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00).cgColor
+            self.endorseeCircleView.layer.borderWidth = 1.0
         }
-        
-        
+        if let age = self.age{
+            self.ageLabel.text = "\(age)"
+        }
+    }
+    
+    func setHeightConstraint(constraint: NSLayoutConstraint){
+        self.profileInformationHeightConstriant = constraint
+        self.view.layoutIfNeeded()
+        constraint.constant = self.ageLabel.frame.origin.y + self.ageLabel.frame.height + 12
     }
 }
+
 
