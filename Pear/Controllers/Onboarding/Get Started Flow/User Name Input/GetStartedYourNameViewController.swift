@@ -13,7 +13,7 @@ class GetStartedYourNameViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
     
-    var gettingStartedDatta: GetttingStartedData!
+    var gettingStartedData: GetttingStartedData!
     
     /// Factory method for creating this view controller.
     ///
@@ -21,7 +21,7 @@ class GetStartedYourNameViewController: UIViewController {
     class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedYourNameViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedYourNameViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedYourNameViewController
-        vc.gettingStartedDatta = gettingStartedData
+        vc.gettingStartedData = gettingStartedData
         return vc
     }
     
@@ -29,15 +29,27 @@ class GetStartedYourNameViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         if let userName = inputTextField.text{
-            gettingStartedDatta.endorseeName = userName
-            let friendNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedDatta)
+            self.gettingStartedData.profileData.endorsedName = userName
+            self.gettingStartedData.userFullName = userName
+            let splitNames = userName.splitIntoFirstLastName()
+            self.gettingStartedData.userFirstName = splitNames.0
+            self.gettingStartedData.userLastName = splitNames.1
+            if splitNames.0.count < 1{
+                self.alert(title: "Name Missing", message: "Please enter your name")
+                return
+            }else if splitNames.1.count < 1{
+                self.alert(title: "Last Name Missing", message: "Please enter your last name.  Don't worry we won't show it to anyone.  If necessary feel free to use just a last initial.")
+                return
+            }
+            
+            let friendNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedData)
             self.navigationController?.pushViewController(friendNameVC, animated: true)
         }
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
         if let userName = inputTextField.text{
-            gettingStartedDatta.endorseeName = userName
+            self.gettingStartedData.profileData.endorsedName = userName
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -53,7 +65,7 @@ extension GetStartedYourNameViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.contentMode = .scaleAspectFit
-        if let endorseeName = self.gettingStartedDatta.endorseeName{
+        if let endorseeName = self.gettingStartedData.profileData.endorsedName{
             self.inputTextField.text = endorseeName
         }
         self.inputTextField.becomeFirstResponder()

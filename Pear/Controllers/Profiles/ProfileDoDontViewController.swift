@@ -79,19 +79,21 @@ extension ProfileDoDontViewController {
         self.lastItemView = containingView
         
         
+        let correctedText = String(text.prefix(1)).lowercased() + String(text.dropFirst())
+        
         switch type {
         case .doType:
             iconImageView.image = UIImage(named: "profile-icon-thumb-do")
             let fullDoText = NSMutableAttributedString()
             fullDoText.append(NSAttributedString(string: "Do ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)]))
-            fullDoText.append(NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
+            fullDoText.append(NSAttributedString(string: correctedText, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
             textLabel.attributedText = fullDoText
             break
         case .dontType:
             iconImageView.image = UIImage(named: "profile-icon-thumb-dont")
             let fullDoText = NSMutableAttributedString()
             fullDoText.append(NSAttributedString(string: "Don't ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .bold)]))
-            fullDoText.append(NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
+            fullDoText.append(NSAttributedString(string: correctedText, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
             textLabel.attributedText = fullDoText
             break
         }

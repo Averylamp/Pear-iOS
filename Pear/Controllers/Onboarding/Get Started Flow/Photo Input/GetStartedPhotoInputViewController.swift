@@ -32,15 +32,19 @@ class GetStartedPhotoInputViewController: UIViewController {
         return vc
     }
     
+    func saveImages(){
+        self.gettingStartedData.profileData.images = self.images
+    }
+    
     @IBAction func backButtonClicked(_ sender: Any) {
-        self.gettingStartedData.images = self.images
+        self.saveImages()
         self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
-        self.gettingStartedData.images = self.images
+        self.saveImages()
         let createAccountVC = GetStartedCreateAccountViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(createAccountVC, animated: true)
     }
@@ -61,7 +65,7 @@ extension GetStartedPhotoInputViewController{
     }
     
     func restoreGettingStartedState(){
-        self.images = self.gettingStartedData.images
+        self.images = self.gettingStartedData.profileData.images
     }
     
     

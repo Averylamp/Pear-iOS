@@ -32,14 +32,18 @@ class GetStartedShortBioViewController: UIViewController {
         return vc
     }
     
+    func saveBio(){
+        self.gettingStartedData.profileData.shortBio = inputTextView.text
+    }
+    
     @IBAction func backButtonClicked(_ sender: Any) {
-        self.gettingStartedData.shortBio = inputTextView.text
+        self.saveBio()
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
-        self.gettingStartedData.shortBio = inputTextView.text
+        self.saveBio()
         let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(photoInputVC, animated: true)
         
@@ -83,8 +87,8 @@ extension GetStartedShortBioViewController{
         self.view.layoutIfNeeded()
         self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
         
-        if let recoveredBioText = self.gettingStartedData.shortBio {
-            self.inputTextView.text = recoveredBioText
+        if self.gettingStartedData.profileData.shortBio != "" {
+            self.inputTextView.text = self.gettingStartedData.profileData.shortBio
             textViewDidChange(self.inputTextView)
         }
     }

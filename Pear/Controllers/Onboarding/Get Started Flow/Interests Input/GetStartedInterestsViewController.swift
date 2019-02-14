@@ -65,26 +65,24 @@ class GetStartedInterestsViewController: UIViewController {
         return vc
     }
     
-    @IBAction func backButtonClicked(_ sender: Any) {
-        self.gettingStartedData.interests = []
+    func saveInterests(){
+        self.gettingStartedData.profileData.interests = []
         for button in self.interestButtons{
             if button.isSelected{
-                self.gettingStartedData.interests.append(button.titleLabel!.text!)
+                self.gettingStartedData.profileData.interests.append(button.titleLabel!.text!)
             }
         }
-        print(self.gettingStartedData.interests)
+    }
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.saveInterests()
         self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
-        self.gettingStartedData.interests = []
-        for button in self.interestButtons{
-            if button.isSelected{
-                self.gettingStartedData.interests.append(button.titleLabel!.text!)
-            }
-        }
+        self.saveInterests()
         let shortBioVC = GetStartedShortBioViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(shortBioVC, animated: true)
     }
@@ -164,7 +162,7 @@ extension GetStartedInterestsViewController{
         self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: rowHeight * CGFloat(numRows) + 2.0 * buttonSpacing)
         
         for button in self.interestButtons{
-            if self.gettingStartedData.interests.contains(button.titleLabel!.text!){
+            if self.gettingStartedData.profileData.interests.contains(button.titleLabel!.text!){
                 self.toggleInterestButton(button: button, initialization: true)
             }
         }

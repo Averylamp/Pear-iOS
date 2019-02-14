@@ -47,16 +47,16 @@ class GetStartedDoDontViewController: UIViewController {
     }
     
     func saveDoDontListsTo(gettingStartedData: GetttingStartedData){
-        gettingStartedData.doList = []
-        gettingStartedData.dontList = []
+        gettingStartedData.profileData.doList = []
+        gettingStartedData.profileData.dontList = []
         for doTVC in self.doTextViewControllers {
             if doTVC.textView.text.count >= 3 && !self.sampleStarters.contains(doTVC.textView.text) {
-                gettingStartedData.doList.append(doTVC.textView.text)
+                gettingStartedData.profileData.doList.append(doTVC.textView.text)
             }
         }
         for dontTVC in self.dontTextViewControllers {
             if dontTVC.textView.text.count >= 3 && !self.sampleStarters.contains(dontTVC.textView.text) {
-                gettingStartedData.dontList.append(dontTVC.textView.text)
+                gettingStartedData.profileData.dontList.append(dontTVC.textView.text)
             }
         }
     }
@@ -69,6 +69,14 @@ class GetStartedDoDontViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
+        if self.gettingStartedData.profileData.doList.count == 0{
+            self.alert(title: "Incomplete Field", message: "Please add a Do for your friend")
+            return
+        }else if self.gettingStartedData.profileData.dontList.count == 0{
+            self.alert(title: "Incomplete Field", message: "Please add a Don't for your friend")
+            return
+        }
+        
         let createAccountVC = GetStartedCreateAccountViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(createAccountVC, animated: true)
     }
@@ -118,7 +126,7 @@ extension GetStartedDoDontViewController{
     }
     
     func restoreSavedState(){
-        for doText in self.gettingStartedData.doList{
+        for doText in self.gettingStartedData.profileData.doList{
             if let lastTVC = self.doTextViewControllers.last, lastTVC.textView.text.count == 0 || self.sampleStarters.contains(lastTVC.textView.text){
                 populateTVCWithText(text: doText, tvc: lastTVC)
                 self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .doType)
@@ -128,7 +136,7 @@ extension GetStartedDoDontViewController{
                 populateTVCWithText(text: doText, tvc: lastTVC)
             }
         }
-        for dontText in self.gettingStartedData.dontList{
+        for dontText in self.gettingStartedData.profileData.dontList{
             if let lastTVC = self.dontTextViewControllers.last, lastTVC.textView.text.count == 0 || self.sampleStarters.contains(lastTVC.textView.text) {
                 populateTVCWithText(text: dontText, tvc: lastTVC)
                 self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .dontType)

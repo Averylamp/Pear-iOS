@@ -29,12 +29,12 @@ class ProfileData {
     
     
     
-    init(gettingStartedData: GetttingStartedData){
+    init(){
         firstName = ""
         lastName = ""
         fullName = ""
         endorsedName = ""
-        age = 19
+        age = 0
         interests = []
         shortBio = ""
         doList = []
