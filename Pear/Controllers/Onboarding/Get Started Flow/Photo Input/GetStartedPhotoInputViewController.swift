@@ -38,6 +38,10 @@ class GetStartedPhotoInputViewController: UIViewController {
     
     @IBAction func backButtonClicked(_ sender: Any) {
         self.saveImages()
+        if self.gettingStartedData.profileData.images.count == 0 {
+            self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
+            return
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
