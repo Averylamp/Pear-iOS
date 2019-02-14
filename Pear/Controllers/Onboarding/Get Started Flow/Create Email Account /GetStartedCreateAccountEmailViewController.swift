@@ -26,22 +26,23 @@ class GetStartedCreateAccountEmailViewController: UIViewController {
         return vc
     }
     
+    func saveUserEmail(){
+        if let userEmail = inputTextField.text{
+            gettingStartedData.userEmail = userEmail
+        }
+    }
     
     @IBAction func backButtonClicked(_ sender: Any) {
-        if let userName = inputTextField.text{
-            gettingStartedData.name = userName
-        }
+        self.saveUserEmail()
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         
-        if let userEmail = inputTextField.text{
-            self.gettingStartedData.userEmail = userEmail
-            let emailPasswordVC = GetStartedCreateAccountEmailPasswordViewController.instantiate(gettingStartedData: gettingStartedData)
-            self.navigationController?.pushViewController(emailPasswordVC, animated: true)
-        }
+        self.saveUserEmail()
+        let emailPasswordVC = GetStartedCreateAccountEmailPasswordViewController.instantiate(gettingStartedData: gettingStartedData)
+        self.navigationController?.pushViewController(emailPasswordVC, animated: true)
     }
     
     @IBAction func clearButtonClicked(_ sender: Any) {

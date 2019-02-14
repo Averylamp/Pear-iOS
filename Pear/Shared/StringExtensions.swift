@@ -34,5 +34,15 @@ extension String {
         return String(self[start ..< end])
     }
     
+    func splitIntoFirstLastName() -> (String, String){
+        var components = self.split(separator: " ")
+        var firstName: String = ""
+        var lastName: String = ""
+        if components.count > 0{
+            firstName = String(components.removeFirst())
+            lastName = String(components.joined(separator: " "))
+        }
+        return (firstName, lastName)
+    }
     
 }

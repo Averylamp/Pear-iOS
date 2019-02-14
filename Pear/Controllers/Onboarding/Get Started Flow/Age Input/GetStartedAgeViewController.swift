@@ -25,18 +25,28 @@ class GetStartedAgeViewController: UIViewController {
         return vc
     }
     
+    func saveAge(){
+        if let ageText = self.inputTextField.text, let age = Int(ageText){
+            self.gettingStartedData.profileData.age = age
+        }
+    }
+    
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
-        if let age = Int(self.inputTextField.text!){
-            self.gettingStartedData.age = age
-            let interestsVC = GetStartedInterestsViewController.instantiate(gettingStartedData: self.gettingStartedData)
-            self.navigationController?.pushViewController(interestsVC, animated: true)
-        }
+        
+        self.saveAge()
+        if self.gettingStartedData.profileData.age < 18{
+            self.alert(title: "Underage", message: "You must be 18 to use this app.  Sorry :/")
+            return
+        }        
+        let interestsVC = GetStartedInterestsViewController.instantiate(gettingStartedData: self.gettingStartedData)
+        self.navigationController?.pushViewController(interestsVC, animated: true)
+        
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
         if let age = Int(self.inputTextField.text!){
-            self.gettingStartedData.age = age
+            self.saveAge()
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -50,11 +60,10 @@ class GetStartedAgeViewController: UIViewController {
 extension GetStartedAgeViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let age = self.gettingStartedData.age {
-            self.inputTextField.text = "\(age)"
-        }else{
-            self.inputTextField.text = "22"            
+        if self.gettingStartedData.profileData.age >= 18 {
+            self.inputTextField.text = "\(self.gettingStartedData.profileData.age)"
         }
+        
         self.inputTextField.becomeFirstResponder()
         self.inputTextField.delegate = self
     }

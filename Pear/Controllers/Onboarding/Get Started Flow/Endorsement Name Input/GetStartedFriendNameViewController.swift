@@ -28,7 +28,10 @@ class GetStartedFriendNameViewController: UIViewController {
     
     @IBAction func backButtonClicked(_ sender: Any) {
         if let userName = inputTextField.text{
-            gettingStartedData.name = userName
+            self.gettingStartedData.profileData.fullName = userName
+            let splitNames = userName.splitIntoFirstLastName()
+            self.gettingStartedData.profileData.firstName = splitNames.0
+            self.gettingStartedData.profileData.lastName = splitNames.1
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -36,7 +39,18 @@ class GetStartedFriendNameViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         if let userName = inputTextField.text{
-            gettingStartedData.name = userName
+            self.gettingStartedData.profileData.fullName = userName
+            let splitNames = userName.splitIntoFirstLastName()
+            self.gettingStartedData.profileData.firstName = splitNames.0
+            self.gettingStartedData.profileData.lastName = splitNames.1
+            if splitNames.0.count < 1{
+                self.alert(title: "Name Missing", message: "Please enter your name")
+                return
+            }else if splitNames.1.count < 1{
+                self.alert(title: "Last Name Missing", message: "Please enter your last name.  Don't worry we won't show it to anyone.  If necessary feel free to use just a last initial.")
+                return
+            }
+            
             let friendNameVC = GetStartedAgeViewController.instantiate(gettingStartedData: self.gettingStartedData)
             self.navigationController?.pushViewController(friendNameVC, animated: true)
         }
@@ -53,9 +67,7 @@ extension GetStartedFriendNameViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.contentMode = .scaleAspectFit
-        if let name = self.gettingStartedData.name{
-            self.inputTextField.text = name
-        }
+        self.inputTextField.text = self.gettingStartedData.profileData.fullName
         self.inputTextField.becomeFirstResponder()
     }
     
