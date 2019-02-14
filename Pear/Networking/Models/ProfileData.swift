@@ -15,7 +15,9 @@ class ProfileData {
     var firstName: String
     var lastName: String
     var fullName: String
-    var endorsedName: String? = nil
+    var endorsedFullName: String? = nil
+    var endorsedFirstName: String? = nil
+    var endorsedLastName: String? = nil
     var age: Int
     var interests: [String]
     var shortBio: String
@@ -33,7 +35,7 @@ class ProfileData {
         firstName = ""
         lastName = ""
         fullName = ""
-        endorsedName = ""
+        endorsedFullName = ""
         age = 0
         interests = []
         shortBio = ""
@@ -47,7 +49,7 @@ class ProfileData {
     init (  firstName: String,
             lastName: String,
             fullName: String,
-            endorsedName: String?,
+            endorsedFullName: String?,
             age: Int,
             interests: [String],
             shortBio: String,
@@ -61,7 +63,14 @@ class ProfileData {
         self.firstName = firstName
         self.lastName = lastName
         self.fullName = fullName
-        self.endorsedName = endorsedName
+        self.endorsedFullName = endorsedFullName
+        if let endorsedFullName = self.endorsedFullName{
+            let splitNames = endorsedFullName.splitIntoFirstLastName()
+            self.endorsedFirstName = splitNames.0
+            if splitNames.1.count > 0{
+                self.endorsedLastName = splitNames.1
+            }
+        }
         self.age = age
         self.interests = interests
         self.shortBio = shortBio
@@ -80,8 +89,8 @@ class ProfileData {
         let firstName = "Jacob"
         let lastName =  "Smith"
         let fullName =  "Jacob Smith"
-        let endorsedName = "Avery"
-        let age = 19
+        let endorsedName = "Avery Lamp"
+        let age = 23
         let interests = ["Cars", "Technology", "Coding", "Pizza", "Pasta"]
         let shortBio = """
         Start your engines ladies. This gent’s on the prowl. 🐈
@@ -96,7 +105,7 @@ class ProfileData {
         return ProfileData( firstName: firstName,
                             lastName: lastName,
                             fullName: fullName,
-                            endorsedName: endorsedName,
+                            endorsedFullName: endorsedName,
                             age: age,
                             interests: interests,
                             shortBio: shortBio,
