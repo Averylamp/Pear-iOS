@@ -97,7 +97,6 @@ extension GetStartedShortBioViewController{
         self.samplesButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
         let imageWidth = self.samplesButton.imageView!.frame.width
         let fullSamplesButtonWidth: CGFloat = titleWidth + imageWidth + 40
-        print("Width: \(fullSamplesButtonWidth)")
         self.samplesButtonWidthConstraint.constant = fullSamplesButtonWidth
         self.view.layoutIfNeeded()
         self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
