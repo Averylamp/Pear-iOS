@@ -474,6 +474,15 @@
 			path = "Full Profile Review Page";
 			sourceTree = "<group>";
 		};
+		BB75BFD422156BC900BAB800 /* Landing Screen View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */,
+				BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */,
+			);
+			path = "Landing Screen View Controller";
+			sourceTree = "<group>";
+		};
 		BB986A1C220E08B300759A14 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,8 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				BB986A25220E1BDD00759A14 /* Landing Screen Pages */,
-				BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */,
-				BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */,
+				BB75BFD422156BC900BAB800 /* Landing Screen View Controller */,
 			);
 			path = "Landing Screen";
 			sourceTree = "<group>";
