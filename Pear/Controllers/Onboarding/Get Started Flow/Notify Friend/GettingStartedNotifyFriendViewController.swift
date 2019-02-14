@@ -40,7 +40,7 @@ class GettingStartedNotifyFriendViewController: UIViewController {
     func saveProfileNumber(){
         if let phoneNumber = self.inputTextField.text{
             self.gettingStartedData.profileData.phoneNumber = phoneNumber
-        }        
+        }
     }
 }
 
@@ -48,7 +48,7 @@ extension GettingStartedNotifyFriendViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.stylize()
     }
     
     func stylize(){
