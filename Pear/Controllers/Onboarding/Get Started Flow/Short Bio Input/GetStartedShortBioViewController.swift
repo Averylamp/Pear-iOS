@@ -44,6 +44,21 @@ class GetStartedShortBioViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         self.saveBio()
+        if self.gettingStartedData.profileData.shortBio.count < 50 {
+            let alertController = UIAlertController(title: nil, message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?", preferredStyle: .alert)
+            let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
+            let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (action) in
+                let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData)
+                self.navigationController?.pushViewController(photoInputVC, animated: true)
+            }
+            
+            alertController.addAction(cancelButton)
+            alertController.addAction(continueButton)
+            self.present(alertController, animated: true, completion: nil)
+            return
+
+        }
+        
         let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(photoInputVC, animated: true)
         
