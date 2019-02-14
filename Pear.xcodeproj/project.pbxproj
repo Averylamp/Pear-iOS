@@ -407,18 +407,58 @@
 		BB56D22922142E2400A652E7 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				BB75BFCA22155F9100BAB800 /* Full Profile View */,
+				BB75BFCB22155FA400BAB800 /* Profile Image Slider */,
+				BB75BFCC22155FB100BAB800 /* Profile Info */,
+				BB75BFCD22155FBA00BAB800 /* Profile Bio */,
+				BB75BFCE22155FC000BAB800 /* Profile DoDont */,
+			);
+			path = Profiles;
+			sourceTree = "<group>";
+		};
+		BB75BFCA22155F9100BAB800 /* Full Profile View */ = {
+			isa = PBXGroup;
+			children = (
 				BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */,
 				BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */,
+			);
+			path = "Full Profile View";
+			sourceTree = "<group>";
+		};
+		BB75BFCB22155FA400BAB800 /* Profile Image Slider */ = {
+			isa = PBXGroup;
+			children = (
 				BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */,
 				BB56D23222142E8F00A652E7 /* ProfileImageViewController.storyboard */,
+			);
+			path = "Profile Image Slider";
+			sourceTree = "<group>";
+		};
+		BB75BFCC22155FB100BAB800 /* Profile Info */ = {
+			isa = PBXGroup;
+			children = (
 				BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */,
 				BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */,
+			);
+			path = "Profile Info";
+			sourceTree = "<group>";
+		};
+		BB75BFCD22155FBA00BAB800 /* Profile Bio */ = {
+			isa = PBXGroup;
+			children = (
 				BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */,
 				BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */,
+			);
+			path = "Profile Bio";
+			sourceTree = "<group>";
+		};
+		BB75BFCE22155FC000BAB800 /* Profile DoDont */ = {
+			isa = PBXGroup;
+			children = (
 				BB56D23022142E7B00A652E7 /* ProfileDoDontViewController.swift */,
 				BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */,
 			);
-			path = Profiles;
+			path = "Profile DoDont";
 			sourceTree = "<group>";
 		};
 		BB986A1C220E08B300759A14 /* Onboarding */ = {
