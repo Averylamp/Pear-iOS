@@ -49,7 +49,7 @@ extension FullProfileViewController{
     }
     
     func addSimpleCloseButton(closeAction: @escaping ()->Void){
-        let closeButton = UIButton(frame: CGRect(x: 10, y: 10, width: 26, height: 26))
+        let closeButton = UIButton(frame: CGRect(x: 20, y: 50, width: 36, height: 36))
         closeButton.setImage(UIImage(named: "onboarding-close-button"), for: .normal)
         self.view.addSubview(closeButton)
         closeButton.addTargetClosure { (sender) in
