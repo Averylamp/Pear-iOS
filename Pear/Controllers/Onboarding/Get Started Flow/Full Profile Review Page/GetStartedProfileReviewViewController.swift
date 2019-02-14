@@ -23,6 +23,10 @@ class GetStartedProfileReviewViewController: UIViewController {
         return vc
     }
     
+    @IBAction func continueButtonClicked(_ sender: Any) {
+        let notifyFriendVC = GettingStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedData)
+        self.navigationController?.pushViewController(notifyFriendVC, animated: true)
+    }
 }
 
 // MARK: - Life Cycle

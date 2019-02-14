@@ -493,6 +493,15 @@
 			path = "Landing Screen View Controller";
 			sourceTree = "<group>";
 		};
+		BB75BFDD2215801900BAB800 /* Notify Friend */ = {
+			isa = PBXGroup;
+			children = (
+				BB75BFD722156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift */,
+				BB75BFD522156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard */,
+			);
+			path = "Notify Friend";
+			sourceTree = "<group>";
+		};
 		BB986A1C220E08B300759A14 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,8 +553,7 @@
 				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 				BB75BFD322156B9700BAB800 /* Full Profile Review Page */,
-				BB75BFD722156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift */,
-				BB75BFD522156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard */,
+				BB75BFDD2215801900BAB800 /* Notify Friend */,
 			);
 			path = "Get Started Flow";
 			sourceTree = "<group>";
