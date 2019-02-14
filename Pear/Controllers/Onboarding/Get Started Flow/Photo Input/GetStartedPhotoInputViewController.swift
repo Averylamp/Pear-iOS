@@ -50,8 +50,8 @@ class GetStartedPhotoInputViewController: UIViewController {
             self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
             return
         }
-        let createAccountVC = GetStartedCreateAccountViewController.instantiate(gettingStartedData: self.gettingStartedData)
-        self.navigationController?.pushViewController(createAccountVC, animated: true)
+        let profileReviewVC = GetStartedProfileReviewViewController.instantiate(gettingStartedData: self.gettingStartedData)
+        self.navigationController?.pushViewController(profileReviewVC, animated: true)
     }
     
 }
@@ -62,11 +62,16 @@ extension GetStartedPhotoInputViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restoreGettingStartedState()
+        self.insertNamesIntoIntro()
         self.stylizeProfileButton()
         self.setupCollectionView()
         imagePickerController.delegate = self
         self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GetStartedPhotoInputViewController.handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(self.longPressGestureRecognizer)
+    }
+    func insertNamesIntoIntro(){
+        self.welcomeTitleLabel.text = "Welcome to Pear,\n\(self.gettingStartedData.userFirstName!)"
+        self.subtextLabel.text =  "Your profile for \(self.gettingStartedData.profileData.firstName) is coming along great. Help them strut their stuff by uploading a few photos."
     }
     
     func restoreGettingStartedState(){

@@ -56,6 +56,8 @@
 		BB686E45221231FA008A263C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E44221231FA008A263C /* UIImageExtensions.swift */; };
 		BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E4822126706008A263C /* ExpandingTextViewController.swift */; };
 		BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */; };
+		BB75BFD0221560ED00BAB800 /* GetStartedProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */; };
+		BB75BFD2221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */; };
@@ -153,6 +155,8 @@
 		BB686E44221231FA008A263C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		BB686E4822126706008A263C /* ExpandingTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextViewController.swift; sourceTree = "<group>"; };
 		BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingTextViewController.storyboard; sourceTree = "<group>"; };
+		BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedProfileReviewViewController.swift; sourceTree = "<group>"; };
+		BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedProfileReviewViewController.storyboard; sourceTree = "<group>"; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenPage1ViewController.storyboard; sourceTree = "<group>"; };
@@ -468,6 +472,8 @@
 				BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */,
 				BB986A38220E439800759A14 /* Landing Screen */,
 				BB986A39220E43A300759A14 /* Get Started Flow */,
+				BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */,
+				BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -716,6 +722,7 @@
 				BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */,
 				BB56D23322142E8F00A652E7 /* ProfileImageViewController.storyboard in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
+				BB75BFD2221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
@@ -821,6 +828,7 @@
 				60C131D821D343910093ECBA /* LoginVC.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
+				BB75BFD0221560ED00BAB800 /* GetStartedProfileReviewViewController.swift in Sources */,
 				BB986A4D220F79CA00759A14 /* GetStartedShortBioViewController.swift in Sources */,
 				BB986A43220F76BF00759A14 /* GetttingStartedData.swift in Sources */,
 				BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */,
