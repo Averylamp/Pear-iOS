@@ -38,6 +38,8 @@
 		BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */; };
 		BB56D23722142EA700A652E7 /* ProfileAboutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */; };
 		BB56D23922142EB100A652E7 /* ProfileDoDontViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */; };
+		BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */; };
+		BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */; };
 		BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB686E2A2210BF34008A263C /* GoogleService-Info.plist */; };
 		BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */; };
 		BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E2E2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift */; };
@@ -132,6 +134,8 @@
 		BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInformationViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileAboutViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDoDontViewController.storyboard; sourceTree = "<group>"; };
+		BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileViewController.storyboard; sourceTree = "<group>"; };
+		BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileViewController.swift; sourceTree = "<group>"; };
 		BB686E252210BE69008A263C /* Pear.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pear.entitlements; sourceTree = "<group>"; };
 		BB686E2A2210BF34008A263C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCreateAccountEmailViewController.swift; sourceTree = "<group>"; };
@@ -403,6 +407,8 @@
 		BB56D22922142E2400A652E7 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */,
+				BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */,
 				BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */,
 				BB56D23222142E8F00A652E7 /* ProfileImageViewController.storyboard */,
 				BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */,
@@ -653,6 +659,7 @@
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
 				BB56D23922142EB100A652E7 /* ProfileDoDontViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
+				BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */,
 				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedYourNameViewController.storyboard in Resources */,
 				60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */,
@@ -768,6 +775,7 @@
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* Config.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
+				BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedYourNameViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				60C131D821D343910093ECBA /* LoginVC.swift in Sources */,
