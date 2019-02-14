@@ -62,9 +62,14 @@ extension FullProfileViewController{
     }
     
     func addInformationVC(){
+        var endorsedName = self.profileData.endorsedFirstName!
+        if let endorsedLastName = self.profileData.endorsedLastName{
+            endorsedName = endorsedName + String(endorsedLastName.removeFirst()()) + "."
+        }
+        
         let profileInformationVC = ProfileInformationViewController.instantiate(firstName: self.profileData.firstName,
                                                                                 age: self.profileData.age,
-                                                                                endorsedName: self.profileData.endorsedName,
+                                                                                endorsedName: endorsedName,
                                                                                 locationData: self.profileData.locationData,
                                                                                 schoolName: self.profileData.schoolName,
                                                                                 workData: self.profileData.work)
