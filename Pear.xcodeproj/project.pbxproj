@@ -58,6 +58,10 @@
 		BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */; };
 		BB75BFD0221560ED00BAB800 /* GetStartedProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */; };
 		BB75BFD2221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */; };
+		BB75BFD622156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD522156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard */; };
+		BB75BFD822156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD722156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift */; };
+		BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD92215783A00BAB800 /* DiscoverySimpleScrollViewController.swift */; };
+		BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFDB2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */; };
@@ -157,6 +161,10 @@
 		BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingTextViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedProfileReviewViewController.storyboard; sourceTree = "<group>"; };
+		BB75BFD522156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GettingStartedNotifyFriendViewController.storyboard; sourceTree = "<group>"; };
+		BB75BFD722156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedNotifyFriendViewController.swift; sourceTree = "<group>"; };
+		BB75BFD92215783A00BAB800 /* DiscoverySimpleScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySimpleScrollViewController.swift; sourceTree = "<group>"; };
+		BB75BFDB2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverySimpleScrollViewController.storyboard; sourceTree = "<group>"; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenPage1ViewController.storyboard; sourceTree = "<group>"; };
@@ -377,6 +385,8 @@
 			children = (
 				BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */,
 				BB18789221E2B21800964F26 /* DiscoverMainViewController.storyboard */,
+				BB75BFD92215783A00BAB800 /* DiscoverySimpleScrollViewController.swift */,
+				BB75BFDB2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -534,6 +544,8 @@
 				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 				BB75BFD322156B9700BAB800 /* Full Profile Review Page */,
+				BB75BFD722156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift */,
+				BB75BFD522156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard */,
 			);
 			path = "Get Started Flow";
 			sourceTree = "<group>";
@@ -744,6 +756,7 @@
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedFriendNameViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
+				BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
@@ -752,6 +765,7 @@
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
 				BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */,
+				BB75BFD622156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +849,7 @@
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BB56D23122142E7B00A652E7 /* ProfileDoDontViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
+				BB75BFD822156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* Config.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
@@ -864,6 +879,7 @@
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				60C131E421D345CE0093ECBA /* User.swift in Sources */,
 				BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */,
+				BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */,
 				BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
