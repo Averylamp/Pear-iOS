@@ -52,7 +52,7 @@ extension GetStartedSampleBiosViewController{
             
             let cardImageView = UIImageView(frame: CGRect(origin: CGPoint.zero, size: cardView.frame.size))
             cardImageView.layer.cornerRadius = 10
-            cardImageView.image = UIImage(named: "onboarding-sample-profile")
+            cardImageView.image = UIImage(named: "onboarding-sample-profile-\((i % 3) + 1)")
             cardImageView.contentMode = .scaleAspectFit
             cardView.addSubview(cardImageView)
         }
