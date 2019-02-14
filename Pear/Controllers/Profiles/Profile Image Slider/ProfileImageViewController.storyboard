@@ -25,15 +25,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="CrG-GA-JGV">
-                                <rect key="frame" x="168" y="334" width="39" height="37"/>
+                                <rect key="frame" x="168" y="336" width="39" height="37"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="CrG-GA-JGV" firstAttribute="bottom" secondItem="8EH-pY-nq7" secondAttribute="bottom" constant="-2" id="0UF-87-Qub"/>
                             <constraint firstItem="8EH-pY-nq7" firstAttribute="height" secondItem="X69-pl-WTv" secondAttribute="height" id="IAr-Av-AYU"/>
                             <constraint firstItem="CrG-GA-JGV" firstAttribute="centerX" secondItem="X69-pl-WTv" secondAttribute="centerX" id="Pq7-BQ-ohZ"/>
                             <constraint firstItem="8EH-pY-nq7" firstAttribute="centerX" secondItem="X69-pl-WTv" secondAttribute="centerX" id="U5N-Ha-rSG"/>
-                            <constraint firstItem="He7-9h-PKs" firstAttribute="top" secondItem="CrG-GA-JGV" secondAttribute="bottom" constant="4" id="VMa-Fh-ya4"/>
                             <constraint firstItem="8EH-pY-nq7" firstAttribute="width" secondItem="X69-pl-WTv" secondAttribute="width" id="yTr-u6-vdj"/>
                             <constraint firstItem="8EH-pY-nq7" firstAttribute="centerY" secondItem="X69-pl-WTv" secondAttribute="centerY" id="ysb-By-fYO"/>
                         </constraints>

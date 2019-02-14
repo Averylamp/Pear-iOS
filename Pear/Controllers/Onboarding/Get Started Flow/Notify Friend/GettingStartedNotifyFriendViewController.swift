@@ -31,10 +31,10 @@ class GettingStartedNotifyFriendViewController: UIViewController {
     @IBAction func sendButton(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedback(style: .light)
         self.saveProfileNumber()
-        
-        let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData)
-        self.navigationController?.pushViewController(photoInputVC, animated: true)
-
+        var profiles = FakeProfileData.listOfFakeProfiles()
+        profiles.append(self.gettingStartedData.profileData)
+        let simpleDiscoveryVC = DiscoverySimpleScrollViewController.instantiate(profiles: profiles)
+        self.navigationController?.setViewControllers([simpleDiscoveryVC], animated: true)
     }
     
     func saveProfileNumber(){
@@ -54,7 +54,7 @@ extension GettingStartedNotifyFriendViewController{
     func stylize(){
         self.sendButton.layer.cornerRadius = 8
         self.readyTitleLabel.text = "Ready to send it to\n\(self.gettingStartedData.profileData.fullName)"
-        self.readySubtextLabel.text = "All profiles must be approved before appearing on Pear. \(self.gettingStartedData.profileData.firstName) will be able to see your responses, edit photos,  update basic info, and approve the profile."
+        self.readySubtextLabel.text = "All profiles must be approved before appearing on Pear. \(self.gettingStartedData.profileData.firstName) will be able to see your responses, edit photos, update basic info, and approve the profile."
         
     }
     

@@ -48,6 +48,44 @@ extension FullProfileViewController{
         self.addSeperator()
     }
     
+    func addSimpleCloseButton(closeAction: @escaping ()->Void){
+        let closeButton = UIButton(frame: CGRect(x: 10, y: 10, width: 26, height: 26))
+        closeButton.setImage(UIImage(named: "onboarding-close-button"), for: .normal)
+        self.view.addSubview(closeButton)
+        closeButton.addTargetClosure { (sender) in
+            closeAction()
+        }
+        
+    }
+    
+    func addButtonToStack(buttonTitle: String, buttonAction: ()->Void, buttonInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16), sectionHeight: CGFloat = 60){
+        self.addSeperator()
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = true
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = true
+        button.backgroundColor = UIColor(red:0.00, green:0.90, blue:0.62, alpha:1.00)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.layer.cornerRadius = 8
+        button.layer.shadowOffset = CGSize(width: 1, height: 1)
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowRadius = 3
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.setTitle(buttonTitle, for: .normal)
+        containerView.addSubview(button)
+        self.stackView.addSubview(containerView)
+        self.view.addConstraints([
+                NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: buttonInsets.left),
+                NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: -buttonInsets.right),
+                NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: buttonInsets.top),
+                NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -buttonInsets.bottom),
+                NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: sectionHeight),
+                NSLayoutConstraint(item: containerView, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: containerView, attribute: .centerX, relatedBy: .equal, toItem: self.stackView, attribute: .centerX, multiplier: 1.0, constant: 0),
+            ])
+        
+    }
+    
     func addProfileImageVC(){
         let profileImageVC = ProfileImageViewController.instantiate(images: self.profileData.images)
         self.addChild(profileImageVC)
