@@ -42,11 +42,10 @@ extension LandingScreenViewController{
         styleButtons()
         attachButtons()
         setupScrollView()
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        self.view.layoutIfNeeded()
+        self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * CGFloat(self.pages.count), height: self.scrollView.frame.height)
         super.viewDidAppear(animated)
     }
 }
@@ -70,20 +69,29 @@ extension LandingScreenViewController{
     }
     
     func setupScrollView(){
-        let numPages: Int  = 4
-        scrollView.contentSize = CGSize(width: self.view!.frame.width * CGFloat(numPages), height: scrollView.frame.size.height)
+        let numPages: Int  = self.pages.count
+        scrollView.contentSize = CGSize(width: self.scrollView.frame.width * CGFloat(numPages), height: scrollView.frame.size.height)
         scrollView.showsHorizontalScrollIndicator = false
+        
         scrollView.isPagingEnabled = true
         pageControl.numberOfPages = numPages
         pageControl.addTarget(self, action: #selector(LandingScreenViewController.pageControlChanged(sender:)), for: .valueChanged)
         
         for i in 0..<self.pages.count{
             self.addChild(self.pages[i])
-            self.pages[i].view.frame = CGRect(x: CGFloat(i) * scrollView.frame.width, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+            self.pages[i].view.translatesAutoresizingMaskIntoConstraints = false
             scrollView.addSubview(self.pages[i].view)
+            scrollView.addConstraints([
+                    NSLayoutConstraint(item: self.pages[i].view, attribute: .height, relatedBy: .equal, toItem: scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
+                    NSLayoutConstraint(item: self.pages[i].view, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
+                    NSLayoutConstraint(item: self.pages[i].view, attribute: .centerY, relatedBy: .equal, toItem: scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+                    NSLayoutConstraint(item: self.pages[i].view, attribute: .centerX, relatedBy: .equal, toItem: scrollView, attribute: .centerX, multiplier: 1 + CGFloat(i * 2), constant: 0.0)
+                ])
+            
             self.pages[i].didMove(toParent: self)
         }
         scrollView.delegate = self
+        self.view.layoutIfNeeded()
     }
 }
 
@@ -118,7 +126,8 @@ extension LandingScreenViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
         pageControl.currentPage = Int(pageIndex)
-        
+        print(self.scrollView.frame.size)
+        print(self.scrollView.contentSize)
         let percentOffset: CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
         
         let scaleSize: CGFloat = 0.6
