@@ -116,6 +116,7 @@
                         <outlet property="scrollView" destination="5hg-ug-CTH" id="X6D-V6-OeM"/>
                         <outlet property="scrollViewBottomConstraint" destination="7V6-d0-mdB" id="xjz-ku-JbE"/>
                         <outlet property="stackView" destination="gbW-Sp-2JO" id="d2D-DN-W0B"/>
+                        <outlet property="subtextLabel" destination="fT3-Yw-8Vy" id="ZkM-B4-hZ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUC-x5-pR4" userLabel="First Responder" sceneMemberID="firstResponder"/>

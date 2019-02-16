@@ -27,7 +27,7 @@
                                 <state key="normal" image="onboarding-back-button"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FQL-3m-hbe">
-                                <rect key="frame" x="121" y="35" width="133.5" height="26.5"/>
+                                <rect key="frame" x="116" y="35" width="143" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,6 +49,7 @@
                             <constraint firstItem="ndR-z5-Jlb" firstAttribute="trailing" secondItem="XU8-ea-pRY" secondAttribute="trailing" constant="8" id="NLa-5E-TG5"/>
                             <constraint firstItem="aae-W6-NNH" firstAttribute="leading" secondItem="ndR-z5-Jlb" secondAttribute="leading" constant="16" id="S2g-3U-jia"/>
                             <constraint firstItem="XU8-ea-pRY" firstAttribute="height" secondItem="aae-W6-NNH" secondAttribute="height" id="XdR-rg-UoV"/>
+                            <constraint firstItem="XU8-ea-pRY" firstAttribute="leading" secondItem="FQL-3m-hbe" secondAttribute="trailing" constant="4" id="eSb-G4-Xw1"/>
                             <constraint firstItem="aae-W6-NNH" firstAttribute="top" secondItem="ndR-z5-Jlb" secondAttribute="top" constant="8" id="rcl-dl-uLS"/>
                             <constraint firstItem="FQL-3m-hbe" firstAttribute="centerY" secondItem="aae-W6-NNH" secondAttribute="centerY" id="xN8-j3-hhM"/>
                             <constraint firstItem="XU8-ea-pRY" firstAttribute="centerY" secondItem="FQL-3m-hbe" secondAttribute="centerY" id="zfY-Xi-mdq"/>

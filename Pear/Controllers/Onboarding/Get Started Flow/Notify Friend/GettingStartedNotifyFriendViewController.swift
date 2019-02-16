@@ -49,7 +49,18 @@ extension GettingStartedNotifyFriendViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.stylize()
+        self.addDismissKeyboardOnViewClick()
     }
+    
+    func addDismissKeyboardOnViewClick(){
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GettingStartedNotifyFriendViewController.dismissKeyboard)))
+    }
+    
+    @objc func dismissKeyboard(){
+        self.inputTextField.resignFirstResponder()
+    }
+    
+
     
     func stylize(){
         self.sendButton.layer.cornerRadius = 8

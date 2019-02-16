@@ -105,6 +105,15 @@ extension GetStartedShortBioViewController{
             self.inputTextView.text = self.gettingStartedData.profileData.shortBio
             textViewDidChange(self.inputTextView)
         }
+        self.addDismissKeyboardOnViewClick()
+    }
+    
+    func addDismissKeyboardOnViewClick(){
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GetStartedShortBioViewController.dismissKeyboard)))
+    }
+    
+    @objc func dismissKeyboard(){
+        self.inputTextView.resignFirstResponder()
     }
 }
 

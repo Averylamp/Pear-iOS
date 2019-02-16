@@ -100,6 +100,7 @@ extension GetStartedInterestsViewController{
     
     
     func setupInterestButtons(){
+        self.view.layoutIfNeeded()
         let numRows = Int(ceil(Double(interestStrings.count) / 3.0))
         let sideOffset: CGFloat = 25
         let buttonSpacing: CGFloat = 8

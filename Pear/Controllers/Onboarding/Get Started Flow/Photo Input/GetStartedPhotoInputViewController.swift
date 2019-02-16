@@ -12,6 +12,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     
     var gettingStartedData: GetttingStartedData!
     
+    @IBOutlet weak var iconImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var welcomeTitleLabel: UILabel!
     
     @IBOutlet weak var subtextLabel: UILabel!
@@ -68,6 +69,10 @@ extension GetStartedPhotoInputViewController{
         imagePickerController.delegate = self
         self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GetStartedPhotoInputViewController.handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(self.longPressGestureRecognizer)
+        if self.view.frame.height < 600 {
+            self.iconImageViewWidthConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
     }
     func insertNamesIntoIntro(){
         self.welcomeTitleLabel.text = "Welcome to Pear,\n\(self.gettingStartedData.userFirstName!)"
@@ -81,8 +86,7 @@ extension GetStartedPhotoInputViewController{
     
     func stylizeProfileButton(){
         self.reviewProfileButton.layer.cornerRadius = 8
-        self.reviewProfileButton.layer.borderWidth = 1.0
-        self.reviewProfileButton.layer.borderColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:0.1).cgColor
+        self.reviewProfileButton.backgroundColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:0.1)
         self.reviewProfileButton.layer.shadowOpacity = 0.1
         self.reviewProfileButton.layer.shadowColor = UIColor.black.cgColor
         self.reviewProfileButton.layer.shadowRadius = 2
