@@ -23,6 +23,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     var images: [UIImage] = []
     let imagePickerController = UIImagePickerController()
     var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    var justMovedIndexPath: IndexPath?
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -73,6 +74,7 @@ extension GetStartedPhotoInputViewController{
             self.iconImageViewWidthConstraint.constant = 0
             self.view.layoutIfNeeded()
         }
+        
     }
     func insertNamesIntoIntro(){
         self.welcomeTitleLabel.text = "Welcome to Pear,\n\(self.gettingStartedData.userFirstName!)"
@@ -139,7 +141,6 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate{
         imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePickerController.allowsEditing = true
         self.present(imagePickerController, animated: true, completion: nil)
-
     }
     
 }
@@ -160,9 +161,22 @@ extension GetStartedPhotoInputViewController{
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let tempImage = self.images[sourceIndexPath.item]
-        self.images[sourceIndexPath.item] = self.images[destinationIndexPath.item]
-        self.images[destinationIndexPath.item] = tempImage
+        print("Moving item at index \(sourceIndexPath.item) to \(destinationIndexPath.item)")
+        if destinationIndexPath.item < sourceIndexPath.item{
+            let image = self.images.remove(at: sourceIndexPath.item)
+            self.images.insert(image, at: destinationIndexPath.item)
+        }else{
+            let image = self.images[sourceIndexPath.item]
+            self.images.insert(image, at: destinationIndexPath.item + 1)
+            self.images.remove(at: sourceIndexPath.item)
+        }
+        self.justMovedIndexPath = destinationIndexPath
+        var imageIndexPaths: [IndexPath] = []
+        for i in 0..<self.images.count{
+            imageIndexPaths.append(IndexPath(item: i, section: 0))
+        }
+        print(self.images)
+        self.collectionView.reloadItems(at: imageIndexPaths)
     }
     
     @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
@@ -201,6 +215,7 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageU
         
         if indexPath.item < self.images.count{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadCollectionViewCell", for: indexPath) as! ImageUploadCollectionViewCell
+            print("Reloading cell: \(indexPath.item)")
             cell.imageView.image = self.images[indexPath.item]
             cell.imageView.contentMode = .scaleAspectFill
             cell.imageView.layer.cornerRadius = 3
