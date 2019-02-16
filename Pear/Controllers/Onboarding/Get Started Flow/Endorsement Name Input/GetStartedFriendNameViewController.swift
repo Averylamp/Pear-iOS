@@ -46,11 +46,7 @@ class GetStartedFriendNameViewController: UIViewController {
             if splitNames.0.count < 1{
                 self.alert(title: "Name Missing", message: "Please enter your name")
                 return
-            }else if splitNames.1.count < 1{
-                self.alert(title: "Last Name Missing", message: "Please enter your last name.  Don't worry we won't show it to anyone.  If necessary feel free to use just a last initial.")
-                return
             }
-            
             let friendNameVC = GetStartedAgeViewController.instantiate(gettingStartedData: self.gettingStartedData)
             self.navigationController?.pushViewController(friendNameVC, animated: true)
         }
