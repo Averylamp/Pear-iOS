@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Pear," lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p3V-KE-ipE">
-                                <rect key="frame" x="20" y="136" width="335" height="27.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Welcome to Pear," lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p3V-KE-ipE">
+                                <rect key="frame" x="20" y="136" width="335" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your profile is coming along great. Help them strut their stuff by uploading a few photos." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bd-gk-p5U">
-                                <rect key="frame" x="20" y="179.5" width="335" height="38.5"/>
+                                <rect key="frame" x="20" y="178.5" width="335" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -38,9 +38,9 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSH-x6-HWS">
-                                <rect key="frame" x="20" y="577" width="335" height="70"/>
+                                <rect key="frame" x="20" y="592" width="335" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="gSU-Ex-q9s"/>
+                                    <constraint firstAttribute="height" constant="55" id="gSU-Ex-q9s"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Review Profile">
@@ -51,8 +51,11 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hkq-lK-kn9">
-                                <rect key="frame" x="20" y="238" width="335" height="319"/>
+                                <rect key="frame" x="20" y="237" width="335" height="335"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Hkq-lK-kn9" secondAttribute="height" multiplier="1:1" id="nTI-i5-kvs"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="ebH-a5-V3K">
                                     <size key="itemSize" width="97" height="97"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -145,6 +148,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Hkq-lK-kn9" id="P9y-pH-zd4"/>
+                        <outlet property="iconImageViewWidthConstraint" destination="IfS-Lh-Cfh" id="cav-zc-SgF"/>
                         <outlet property="reviewProfileButton" destination="eSH-x6-HWS" id="5DR-Qn-360"/>
                         <outlet property="subtextLabel" destination="9bd-gk-p5U" id="Y4r-5y-63i"/>
                         <outlet property="welcomeTitleLabel" destination="p3V-KE-ipE" id="r0m-yP-aNg"/>

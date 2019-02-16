@@ -126,8 +126,6 @@ extension LandingScreenViewController: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
         pageControl.currentPage = Int(pageIndex)
-        print(self.scrollView.frame.size)
-        print(self.scrollView.contentSize)
         let percentOffset: CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
         
         let scaleSize: CGFloat = 0.6

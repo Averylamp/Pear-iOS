@@ -18,6 +18,8 @@ class GetStartedDoDontViewController: UIViewController {
     @IBOutlet weak var samplesButton: UIButton!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var subtextLabel: UILabel!
+    
     let doDontTitleHeight: CGFloat = 34
     
     @IBOutlet weak var stackView: UIStackView!
@@ -154,6 +156,7 @@ extension GetStartedDoDontViewController{
     
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
+        self.subtextLabel.text = "Should we bring up The Bachelor?  Ask them about their family? Talk to them about food? Help us out!"
     }
     
     func addKeyboardSizeNotifications(){
@@ -386,6 +389,9 @@ extension GetStartedDoDontViewController{
         let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
         let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         self.scrollViewBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom
+        if self.scrollViewBottomConstraint.constant > 0 && self.view.frame.height < 600 {
+            self.subtextLabel.text = ""
+        }
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
         }

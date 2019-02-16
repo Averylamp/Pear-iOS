@@ -35,7 +35,7 @@ extension FullProfileViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.layoutIfNeeded()
         self.addProfileImageVC()
         self.addSeperator()
         self.addInformationVC()
