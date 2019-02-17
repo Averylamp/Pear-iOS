@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wxd-F5-jP6">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="wxd-F5-jP6" customClass="GetStartedSampleBiosViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JOH-F7-qwc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg8-KI-T3v">
@@ -29,8 +29,22 @@
                                     <action selector="closeButtonClicked:" destination="wxd-F5-jP6" eventType="touchUpInside" id="kJF-jr-GZY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These profiles strike the right balance between real &amp; roast, and give people something to talk about." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0n-R7-zhA">
+                                <rect key="frame" x="40" y="91" width="240" height="76.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAQ-cc-JHP">
+                                <rect key="frame" x="0.0" y="171.5" width="320" height="396.5"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HhH-KQ-OeJ">
+                                <rect key="frame" x="140.5" y="531" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check out some of our latest favorites" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1qi-N5-al0">
-                                <rect key="frame" x="54" y="40" width="267" height="60"/>
+                                <rect key="frame" x="54" y="23" width="212" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="fhT-vm-LoZ"/>
                                 </constraints>
@@ -38,23 +52,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="These profiles strike the right balance between real &amp; roast, and give people something to talk about." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0n-R7-zhA">
-                                <rect key="frame" x="40" y="116" width="295" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="lBe-ua-aph"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAQ-cc-JHP">
-                                <rect key="frame" x="0.0" y="211" width="375" height="436"/>
-                            </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="HhH-KQ-OeJ">
-                                <rect key="frame" x="168" y="630" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="currentPageIndicatorTintColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -63,16 +60,16 @@
                             <constraint firstItem="wg8-KI-T3v" firstAttribute="leading" secondItem="7Wq-hw-MAC" secondAttribute="leading" constant="20" id="9YK-yr-QWU"/>
                             <constraint firstItem="eAQ-cc-JHP" firstAttribute="leading" secondItem="7Wq-hw-MAC" secondAttribute="leading" id="BsK-5z-iwG"/>
                             <constraint firstItem="1qi-N5-al0" firstAttribute="leading" secondItem="wg8-KI-T3v" secondAttribute="trailing" constant="8" id="CE1-ha-JuJ"/>
+                            <constraint firstItem="1qi-N5-al0" firstAttribute="centerY" secondItem="wg8-KI-T3v" secondAttribute="centerY" id="Cxc-UB-MH4"/>
                             <constraint firstItem="P0n-R7-zhA" firstAttribute="centerX" secondItem="7Wq-hw-MAC" secondAttribute="centerX" id="Gh8-RQ-ZqD"/>
                             <constraint firstItem="1qi-N5-al0" firstAttribute="centerX" secondItem="7Wq-hw-MAC" secondAttribute="centerX" id="LF0-IT-AB2"/>
                             <constraint firstItem="7Wq-hw-MAC" firstAttribute="trailing" secondItem="P0n-R7-zhA" secondAttribute="trailing" constant="40" id="NrP-Q0-7tB"/>
-                            <constraint firstItem="1qi-N5-al0" firstAttribute="top" secondItem="wg8-KI-T3v" secondAttribute="top" id="S2b-AJ-Idn"/>
-                            <constraint firstItem="eAQ-cc-JHP" firstAttribute="top" secondItem="P0n-R7-zhA" secondAttribute="bottom" constant="30" id="VKg-be-v6q"/>
-                            <constraint firstItem="P0n-R7-zhA" firstAttribute="top" secondItem="1qi-N5-al0" secondAttribute="bottom" constant="16" id="YKE-UY-oqu"/>
+                            <constraint firstItem="eAQ-cc-JHP" firstAttribute="top" secondItem="P0n-R7-zhA" secondAttribute="bottom" constant="4" id="VKg-be-v6q"/>
+                            <constraint firstItem="P0n-R7-zhA" firstAttribute="top" secondItem="1qi-N5-al0" secondAttribute="bottom" constant="8" id="YKE-UY-oqu"/>
                             <constraint firstItem="7Wq-hw-MAC" firstAttribute="bottom" secondItem="HhH-KQ-OeJ" secondAttribute="bottom" id="nLS-f3-vLo"/>
                             <constraint firstItem="7Wq-hw-MAC" firstAttribute="trailing" secondItem="eAQ-cc-JHP" secondAttribute="trailing" id="oMQ-fp-sfC"/>
                             <constraint firstItem="wg8-KI-T3v" firstAttribute="top" secondItem="7Wq-hw-MAC" secondAttribute="top" constant="20" id="qKy-Et-PwC"/>
-                            <constraint firstItem="7Wq-hw-MAC" firstAttribute="bottom" secondItem="eAQ-cc-JHP" secondAttribute="bottom" constant="20" id="zoU-X4-fjQ"/>
+                            <constraint firstItem="7Wq-hw-MAC" firstAttribute="bottom" secondItem="eAQ-cc-JHP" secondAttribute="bottom" id="zoU-X4-fjQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Wq-hw-MAC"/>
                     </view>
