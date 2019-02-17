@@ -39,9 +39,10 @@ extension GetStartedSampleBiosViewController{
     
     func setupSampleProfiles(){
         let numProfiles = 5
+        self.view.layoutIfNeeded()
         pageControl.numberOfPages = numProfiles        
         for i in 0..<numProfiles {
-            let cardView = UIView(frame: CGRect(x: self.scrollView.frame.width * CGFloat(i) + 40, y: 10, width: self.scrollView.frame.width - 80, height: self.scrollView.frame.height - 20))
+            let cardView = UIView(frame: CGRect(x: self.scrollView.frame.width * CGFloat(i) + 40, y: 0, width: self.scrollView.frame.width - 80, height: self.scrollView.frame.height))
             cardView.layer.cornerRadius = 10
             cardView.layer.shadowRadius = 3.0
             cardView.layer.shadowColor = UIColor.black.cgColor
