@@ -22,8 +22,8 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navController = LandingNavigationViewController.instantiate()
-        window?.rootViewController = navController
-//        window?.rootViewController = GetStartedSampleBiosViewController.instantiate()
+//        window?.rootViewController = navController
+        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
         window?.makeKeyAndVisible()
         FirebaseApp.configure()
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
