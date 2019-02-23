@@ -105,6 +105,10 @@
 		BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF221E2D9DC00520881 /* UserConstants.swift */; };
 		BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0272214022600FD1355 /* ProfileData.swift */; };
 		BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0292214023A00FD1355 /* EndorsementData.swift */; };
+		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
+		BBFFBBDB222118B1002E1B54 /* ImageSizeRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageSizeRepresentation.swift */; };
+		BBFFBBDE22211A70002E1B54 /* ImageAllSizesRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageAllSizesRepresentation.swift */; };
+		BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDF22212E82002E1B54 /* ImageUploadAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +216,10 @@
 		BBDF1FF221E2D9DC00520881 /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
 		BBE8D0272214022600FD1355 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		BBE8D0292214023A00FD1355 /* EndorsementData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndorsementData.swift; sourceTree = "<group>"; };
+		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
+		BBFFBBDA222118B1002E1B54 /* ImageSizeRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeRepresentation.swift; sourceTree = "<group>"; };
+		BBFFBBDD22211A70002E1B54 /* ImageAllSizesRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAllSizesRepresentation.swift; sourceTree = "<group>"; };
+		BBFFBBDF22212E82002E1B54 /* ImageUploadAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadAPI.swift; sourceTree = "<group>"; };
 		F9A3EA5A3F2A7C79ED10C4C7 /* Pods_SubtleAsianMatches.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SubtleAsianMatches.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE81A12BBEE402D8392BD322 /* Pods-SubtleAsianMatches.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubtleAsianMatches.release.xcconfig"; path = "Pods/Target Support Files/Pods-SubtleAsianMatches/Pods-SubtleAsianMatches.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -327,6 +335,7 @@
 		60C131DC21D344E90093ECBA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BBFFBBD722211749002E1B54 /* ImagesAPI */,
 				60C131DD21D344EE0093ECBA /* AuthAPI */,
 			);
 			path = API;
@@ -351,6 +360,8 @@
 				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
 				BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */,
 				BB986A42220F76BF00759A14 /* GetttingStartedData.swift */,
+				BBFFBBDA222118B1002E1B54 /* ImageSizeRepresentation.swift */,
+				BBFFBBDD22211A70002E1B54 /* ImageAllSizesRepresentation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -684,6 +695,23 @@
 			path = "Validate Phone Number";
 			sourceTree = "<group>";
 		};
+		BBFFBBD722211749002E1B54 /* ImagesAPI */ = {
+			isa = PBXGroup;
+			children = (
+				BBFFBBD822211855002E1B54 /* ImageAPI.swift */,
+				BBFFBBDC222118D1002E1B54 /* Implementations */,
+			);
+			path = ImagesAPI;
+			sourceTree = "<group>";
+		};
+		BBFFBBDC222118D1002E1B54 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				BBFFBBDF22212E82002E1B54 /* ImageUploadAPI.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -900,6 +928,8 @@
 				BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
+				BBFFBBDB222118B1002E1B54 /* ImageSizeRepresentation.swift in Sources */,
+				BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */,
 				60C131E421D345CE0093ECBA /* User.swift in Sources */,
 				BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */,
 				BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */,
@@ -910,6 +940,7 @@
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
+				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButtonExtensions.swift in Sources */,
 				BB686E3D22120E64008A263C /* StringExtensions.swift in Sources */,
 				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
@@ -919,6 +950,7 @@
 				BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
+				BBFFBBDE22211A70002E1B54 /* ImageAllSizesRepresentation.swift in Sources */,
 				BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */,
