@@ -270,6 +270,17 @@ extension GetStartedPhotoInputViewController: UIImagePickerControllerDelegate, U
             print(pickedImage.size)
             self.images.append(pickedImage)
             self.collectionView.reloadData()
+            ImageUploadAPI.shared.uploadNewImage(with: pickedImage) { result in
+                print("Image upload returned")
+                switch result{
+                case .success( let imageAllSizesRepresentation):
+                    print("Finished properly")
+                    break
+                case .failure(let error):
+                    print(error)
+                }
+                
+            }
         }
         picker.dismiss(animated: true, completion: nil)
     }
