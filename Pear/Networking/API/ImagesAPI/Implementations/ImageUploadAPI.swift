@@ -80,11 +80,15 @@ class ImageUploadAPI:ImageAPI  {
                         guard let smallImageRep = small else { return }
                         guard let thumbImageRep = thumb else { return }
                         
-                        let allImageSizesRep  = ImageAllSizesRepresentation(original: originalImageRep,
+                        guard let allImageSizesRep  = ImageAllSizesRepresentation(original: originalImageRep,
                                                                             large: largeImageRep,
                                                                             medium: mediumImageRep,
                                                                             small: smallImageRep,
-                                                                            thumbnail: thumbImageRep)
+                                                                            thumbnail: thumbImageRep) else{
+                                                                                print("Mismatching image ids")
+                                                                                return
+                        }
+                        
                         completion(.success(allImageSizesRep))
 
                         
