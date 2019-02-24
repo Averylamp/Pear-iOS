@@ -106,6 +106,13 @@
 		BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */; };
 		BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */; };
 		BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD92223390A006B75A0 /* SF-Pro-Display-Regular.otf */; };
+		BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70ADD22233A76006B75A0 /* Nunito-Regular.ttf */; };
+		BBB70AE522233A77006B75A0 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70ADE22233A76006B75A0 /* Nunito-SemiBold.ttf */; };
+		BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70ADF22233A76006B75A0 /* Nunito-ExtraLight.ttf */; };
+		BBB70AE722233A77006B75A0 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE022233A76006B75A0 /* Nunito-ExtraBold.ttf */; };
+		BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE122233A76006B75A0 /* Nunito-Bold.ttf */; };
+		BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */; };
+		BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* OldProfile.swift */; };
@@ -225,6 +232,13 @@
 		BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		BBB70AD92223390A006B75A0 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		BBB70ADD22233A76006B75A0 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		BBB70ADE22233A76006B75A0 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		BBB70ADF22233A76006B75A0 /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
+		BBB70AE022233A76006B75A0 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		BBB70AE122233A76006B75A0 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
+		BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* OldProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfile.swift; sourceTree = "<group>"; };
@@ -637,6 +651,13 @@
 		BBB70AD4222336B7006B75A0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */,
+				BBB70AE122233A76006B75A0 /* Nunito-Bold.ttf */,
+				BBB70AE022233A76006B75A0 /* Nunito-ExtraBold.ttf */,
+				BBB70ADF22233A76006B75A0 /* Nunito-ExtraLight.ttf */,
+				BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */,
+				BBB70ADD22233A76006B75A0 /* Nunito-Regular.ttf */,
+				BBB70ADE22233A76006B75A0 /* Nunito-SemiBold.ttf */,
 				BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */,
 				BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */,
 				BBB70AD92223390A006B75A0 /* SF-Pro-Display-Regular.otf */,
@@ -852,10 +873,12 @@
 				60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
 				BB56D23722142EA700A652E7 /* ProfileAboutViewController.storyboard in Resources */,
+				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */,
 				BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */,
 				BB686E422212213A008A263C /* GetStartedDoDontViewController.storyboard in Resources */,
+				BBB70AE522233A77006B75A0 /* Nunito-SemiBold.ttf in Resources */,
 				BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */,
 				BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */,
 				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
@@ -868,16 +891,21 @@
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
+				BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */,
+				BBB70AE722233A77006B75A0 /* Nunito-ExtraBold.ttf in Resources */,
+				BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedFriendNameViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
+				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
 				60C131CD21D342BD0093ECBA /* LaunchScreen.storyboard in Resources */,
 				BB75BFDF2215845300BAB800 /* SummaryProfileViewController.storyboard in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */,
+				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
 				BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */,
