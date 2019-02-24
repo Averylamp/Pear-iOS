@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Get Started Your Name View Controller-->
         <scene sceneID="WSr-f2-d7c">
@@ -36,14 +41,14 @@
                                     <action selector="nextButtonClicked:" destination="Nfk-kT-InT" eventType="touchUpInside" id="Zmu-c1-VtK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your name?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wLx-As-bZM">
-                                <rect key="frame" x="30" y="100" width="315" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey there!  What's your first name?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wLx-As-bZM">
+                                <rect key="frame" x="50" y="100" width="275" height="33.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jane Doe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5TP-Gv-tsU">
-                                <rect key="frame" x="20" y="167.5" width="335" height="40"/>
+                                <rect key="frame" x="20" y="173.5" width="335" height="40"/>
                                 <color key="tintColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="06N-aF-XBb"/>
@@ -53,14 +58,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e16-WH-8Ul">
-                                <rect key="frame" x="0.0" y="206.5" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="212.5" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="EtY-Rb-IfH"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNn-Sl-5vv">
-                                <rect key="frame" x="319" y="174.5" width="26" height="26"/>
+                                <rect key="frame" x="319" y="180.5" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Lel-Rt-r4F"/>
                                     <constraint firstAttribute="width" constant="26" id="csi-s4-lFc"/>
@@ -76,7 +81,7 @@
                             <constraint firstItem="e16-WH-8Ul" firstAttribute="width" secondItem="soc-Ow-m9Z" secondAttribute="width" id="4M7-UF-Y4d"/>
                             <constraint firstItem="wj4-Zf-gro" firstAttribute="top" secondItem="Fv4-2C-F9d" secondAttribute="top" constant="20" id="5F3-aV-iqb"/>
                             <constraint firstItem="wLx-As-bZM" firstAttribute="centerX" secondItem="Fv4-2C-F9d" secondAttribute="centerX" id="66M-9q-BKd"/>
-                            <constraint firstItem="wLx-As-bZM" firstAttribute="leading" secondItem="Fv4-2C-F9d" secondAttribute="leading" constant="30" id="CwK-Dm-skz"/>
+                            <constraint firstItem="wLx-As-bZM" firstAttribute="leading" secondItem="Fv4-2C-F9d" secondAttribute="leading" constant="50" id="CwK-Dm-skz"/>
                             <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="mNn-Sl-5vv" secondAttribute="trailing" constant="30" id="Gk3-v0-tu8"/>
                             <constraint firstItem="9s5-SB-Zym" firstAttribute="centerY" secondItem="wj4-Zf-gro" secondAttribute="centerY" id="Jmq-cW-AE6"/>
                             <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="9s5-SB-Zym" secondAttribute="trailing" constant="20" id="WcA-ih-bmL"/>
@@ -86,7 +91,7 @@
                             <constraint firstItem="5TP-Gv-tsU" firstAttribute="centerX" secondItem="Fv4-2C-F9d" secondAttribute="centerX" id="gDG-t9-mUW"/>
                             <constraint firstItem="wLx-As-bZM" firstAttribute="top" secondItem="wj4-Zf-gro" secondAttribute="bottom" constant="20" id="pQl-3t-uiT"/>
                             <constraint firstItem="5TP-Gv-tsU" firstAttribute="top" secondItem="wLx-As-bZM" secondAttribute="bottom" constant="40" id="uMX-ce-J3Q"/>
-                            <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="wLx-As-bZM" secondAttribute="trailing" constant="30" id="vC9-My-P0e"/>
+                            <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="wLx-As-bZM" secondAttribute="trailing" constant="50" id="vC9-My-P0e"/>
                             <constraint firstItem="e16-WH-8Ul" firstAttribute="bottom" secondItem="5TP-Gv-tsU" secondAttribute="bottom" id="xZp-mh-BeE"/>
                             <constraint firstItem="5TP-Gv-tsU" firstAttribute="width" secondItem="soc-Ow-m9Z" secondAttribute="width" constant="-40" id="y9E-jS-b6u"/>
                         </constraints>
