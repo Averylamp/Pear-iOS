@@ -24,7 +24,7 @@ class ImageUploadAPI:ImageAPI  {
             "Content-Type": "application/json",
 //            "Content-Type": "application/x-www-form-urlencoded",
         ]
-        
+    
         let request = NSMutableURLRequest(url: NSURL(string: "\(Config.imageAPIHost)/upload_image")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 15.0)
@@ -42,6 +42,9 @@ class ImageUploadAPI:ImageAPI  {
                 } else {
                     let httpResponse = response as? HTTPURLResponse
                     print(httpResponse)
+                    if let data = data {
+                        
+                    }
                 }
             })
             
