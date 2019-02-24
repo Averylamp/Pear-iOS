@@ -8,5 +8,6 @@ target 'Pear' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'SDWebImage'
+  pod 'SwiftyJSON'
 
 end
