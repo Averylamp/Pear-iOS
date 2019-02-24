@@ -20,10 +20,11 @@ class GetStartedPhotoInputViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let betweenImageSpacing: CGFloat = 6
-    var images: [UIImage] = []
+    var images: [GettingStartedUIImage] = []
     let imagePickerController = UIImagePickerController()
     var longPressGestureRecognizer: UILongPressGestureRecognizer!
     var justMovedIndexPath: IndexPath?
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -267,10 +268,10 @@ extension GetStartedPhotoInputViewController: UIImagePickerControllerDelegate, U
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            print(pickedImage.size)
-            self.images.append(pickedImage)
+            let gettingStartedImage = pickedImage.gettingStartedImage()
+            self.images.append(gettingStartedImage)
             self.collectionView.reloadData()
-            ImageUploadAPI.shared.uploadNewImage(with: pickedImage) { result in
+            ImageUploadAPI.shared.uploadNewImage(with: gettingStartedImage) { result in
                 print("Image upload returned")
                 switch result{
                 case .success( let imageAllSizesRepresentation):
@@ -280,6 +281,7 @@ extension GetStartedPhotoInputViewController: UIImagePickerControllerDelegate, U
                 case .failure(let error):
                     print("Failed image api request")
                     print(error)
+                    break
                 }
                 
             }

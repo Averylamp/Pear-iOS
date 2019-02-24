@@ -16,7 +16,7 @@ class ImageAllSizesRepresentation{
     let small: ImageSizeRepresentation
     let thumbnail: ImageSizeRepresentation
     
-    init(original: ImageSizeRepresentation,
+    init?(original: ImageSizeRepresentation,
         large: ImageSizeRepresentation,
         medium: ImageSizeRepresentation,
         small: ImageSizeRepresentation,
@@ -27,7 +27,15 @@ class ImageAllSizesRepresentation{
         self.medium = medium
         self.small = small
         self.thumbnail = thumbnail
-
+        
+        if  large.imageID != original.imageID ||
+            medium.imageID != original.imageID ||
+            small.imageID != original.imageID ||
+            thumbnail.imageID != original.imageID {
+            return nil
+        }
+        
+        
     }
     
 }
