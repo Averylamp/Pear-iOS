@@ -35,13 +35,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey there!  What's your first name?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wLx-As-bZM">
-                                <rect key="frame" x="50" y="100" width="275" height="76.5"/>
+                                <rect key="frame" x="50" y="80" width="275" height="76.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jane Doe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5TP-Gv-tsU">
-                                <rect key="frame" x="20" y="216.5" width="335" height="40"/>
+                                <rect key="frame" x="20" y="196.5" width="335" height="40"/>
                                 <color key="tintColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="06N-aF-XBb"/>
@@ -51,14 +51,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e16-WH-8Ul">
-                                <rect key="frame" x="0.0" y="255.5" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="235.5" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="EtY-Rb-IfH"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNn-Sl-5vv">
-                                <rect key="frame" x="319" y="223.5" width="26" height="26"/>
+                                <rect key="frame" x="319" y="203.5" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Lel-Rt-r4F"/>
                                     <constraint firstAttribute="width" constant="26" id="csi-s4-lFc"/>
@@ -69,8 +69,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9s5-SB-Zym">
-                                <rect key="frame" x="149" y="430" width="77" height="37"/>
-                                <state key="normal" image="onboarding-next-button"/>
+                                <rect key="frame" x="20" y="297" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mtw-rf-Wur"/>
+                                </constraints>
+                                <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="nextButtonClicked:" destination="Nfk-kT-InT" eventType="touchUpInside" id="Zmu-c1-VtK"/>
                                 </connections>
@@ -82,17 +85,19 @@
                             <constraint firstItem="e16-WH-8Ul" firstAttribute="width" secondItem="soc-Ow-m9Z" secondAttribute="width" id="4M7-UF-Y4d"/>
                             <constraint firstItem="wj4-Zf-gro" firstAttribute="top" secondItem="Fv4-2C-F9d" secondAttribute="top" constant="20" id="5F3-aV-iqb"/>
                             <constraint firstItem="wLx-As-bZM" firstAttribute="centerX" secondItem="Fv4-2C-F9d" secondAttribute="centerX" id="66M-9q-BKd"/>
-                            <constraint firstItem="Fv4-2C-F9d" firstAttribute="bottom" secondItem="9s5-SB-Zym" secondAttribute="bottom" constant="200" id="849-3J-BWh"/>
+                            <constraint firstItem="Fv4-2C-F9d" firstAttribute="bottom" secondItem="9s5-SB-Zym" secondAttribute="bottom" constant="320" id="849-3J-BWh"/>
                             <constraint firstItem="wLx-As-bZM" firstAttribute="leading" secondItem="Fv4-2C-F9d" secondAttribute="leading" constant="50" id="CwK-Dm-skz"/>
                             <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="mNn-Sl-5vv" secondAttribute="trailing" constant="30" id="Gk3-v0-tu8"/>
+                            <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="9s5-SB-Zym" secondAttribute="trailing" constant="20" id="J9f-lF-Sx8"/>
                             <constraint firstItem="e16-WH-8Ul" firstAttribute="centerX" secondItem="5TP-Gv-tsU" secondAttribute="centerX" id="WqC-dT-m1P"/>
                             <constraint firstItem="mNn-Sl-5vv" firstAttribute="centerY" secondItem="5TP-Gv-tsU" secondAttribute="centerY" id="bZs-1s-7v4"/>
                             <constraint firstItem="wj4-Zf-gro" firstAttribute="leading" secondItem="Fv4-2C-F9d" secondAttribute="leading" constant="20" id="e6g-Mn-pgR"/>
                             <constraint firstItem="5TP-Gv-tsU" firstAttribute="centerX" secondItem="Fv4-2C-F9d" secondAttribute="centerX" id="gDG-t9-mUW"/>
-                            <constraint firstItem="wLx-As-bZM" firstAttribute="top" secondItem="wj4-Zf-gro" secondAttribute="bottom" constant="20" id="pQl-3t-uiT"/>
+                            <constraint firstItem="wLx-As-bZM" firstAttribute="top" secondItem="wj4-Zf-gro" secondAttribute="bottom" id="pQl-3t-uiT"/>
                             <constraint firstItem="5TP-Gv-tsU" firstAttribute="top" secondItem="wLx-As-bZM" secondAttribute="bottom" constant="40" id="uMX-ce-J3Q"/>
                             <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="wLx-As-bZM" secondAttribute="trailing" constant="50" id="vC9-My-P0e"/>
                             <constraint firstItem="e16-WH-8Ul" firstAttribute="bottom" secondItem="5TP-Gv-tsU" secondAttribute="bottom" id="xZp-mh-BeE"/>
+                            <constraint firstItem="9s5-SB-Zym" firstAttribute="leading" secondItem="Fv4-2C-F9d" secondAttribute="leading" constant="20" id="xea-PJ-KJf"/>
                             <constraint firstItem="5TP-Gv-tsU" firstAttribute="width" secondItem="soc-Ow-m9Z" secondAttribute="width" constant="-40" id="y9E-jS-b6u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fv4-2C-F9d"/>
@@ -100,6 +105,7 @@
                     <connections>
                         <outlet property="inputTextField" destination="5TP-Gv-tsU" id="yJ9-3K-hHZ"/>
                         <outlet property="nextButton" destination="9s5-SB-Zym" id="bsS-13-BK5"/>
+                        <outlet property="titleLabel" destination="wLx-As-bZM" id="mIc-0z-AWI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BcX-c2-DcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,6 +116,5 @@
     <resources>
         <image name="onboarding-back-button" width="96" height="96"/>
         <image name="onboarding-clear-text-button" width="96" height="96"/>
-        <image name="onboarding-next-button" width="77" height="37"/>
     </resources>
 </document>

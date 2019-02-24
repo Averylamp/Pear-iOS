@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Config{
     
@@ -14,14 +15,20 @@ class Config{
     
     static let imageAPIHost: URL = URL(string: "http://koala.mit.edu:1337")!
     
-    static let textFontRegular: String = "Nunita-Regular"
-    static let textFontBlack: String = "Nunita-Black"
-    static let textFontBold: String = "Nunita-Bold"
-    static let textFontExtraBold: String = "Nunita-ExtraBold"
-    static let textFontExtraLight: String = "Nunita-ExtraLight"
-    static let textFontLight: String = "Nunita-Light"
-    static let textFontSemiBold: String = "Nunita-SemiBold"
+    static let displayFontRegular: String = "SFProDisplay-Regular"
+    static let displayFontLight: String = "SFProDisplay-Light"
+    static let displayFontMedium: String = "SFProDisplay-Medium"
     
+    static let textFontRegular: String = "Nunito-Regular"
+    static let textFontBlack: String = "Nunito-Black"
+    static let textFontBold: String = "Nunito-Bold"
+    static let textFontExtraBold: String = "Nunito-ExtraBold"
+    static let textFontExtraLight: String = "Nunito-ExtraLight"
+    static let textFontLight: String = "Nunito-Light"
+    static let textFontSemiBold: String = "Nunito-SemiBold"
+    static let textFontColor: UIColor = UIColor(red:0.27, green:0.29, blue:0.33, alpha:1.00)
+    
+    static let nextButtonColor: UIColor = UIColor(red:0.27, green:0.29, blue:0.33, alpha:1.00)
     
     
 }
