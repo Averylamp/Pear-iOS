@@ -78,5 +78,9 @@
 	<string>To find your latest and greatest photos!</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Quick!  Take a photo of them before they run away!</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FredokaOne-Regular.ttf</string>
+	</array>
 </dict>
 </plist>

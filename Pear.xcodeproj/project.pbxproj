@@ -102,6 +102,7 @@
 		BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACC222334E6006B75A0 /* UserAPI.swift */; };
 		BBB70ACF222334FC006B75A0 /* UserCreateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACE222334FC006B75A0 /* UserCreateAPI.swift */; };
 		BBB70AD122233508006B75A0 /* UserProfileCreateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AD022233508006B75A0 /* UserProfileCreateAPI.swift */; };
+		BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* OldProfile.swift */; };
@@ -217,6 +218,7 @@
 		BBB70ACC222334E6006B75A0 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		BBB70ACE222334FC006B75A0 /* UserCreateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreateAPI.swift; sourceTree = "<group>"; };
 		BBB70AD022233508006B75A0 /* UserProfileCreateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCreateAPI.swift; sourceTree = "<group>"; };
+		BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* OldProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfile.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		60C131D421D3433B0093ECBA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BBB70AD4222336B7006B75A0 /* Fonts */,
 				BB686E2A2210BF34008A263C /* GoogleService-Info.plist */,
 				60C131CE21D342BD0093ECBA /* Info.plist */,
 				60C131C921D342BD0093ECBA /* Assets.xcassets */,
@@ -625,6 +628,14 @@
 			path = Implementations;
 			sourceTree = "<group>";
 		};
+		BBB70AD4222336B7006B75A0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		BBDF1FEB21E2B61F00520881 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -841,6 +852,7 @@
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
 				BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */,
 				BB56D23322142E8F00A652E7 /* ProfileImageViewController.storyboard in Resources */,
+				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BB75BFD2221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
