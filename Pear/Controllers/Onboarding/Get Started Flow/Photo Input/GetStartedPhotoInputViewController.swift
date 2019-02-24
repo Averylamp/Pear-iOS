@@ -275,8 +275,10 @@ extension GetStartedPhotoInputViewController: UIImagePickerControllerDelegate, U
                 switch result{
                 case .success( let imageAllSizesRepresentation):
                     print("Finished properly")
+                    print(imageAllSizesRepresentation)
                     break
                 case .failure(let error):
+                    print("Failed image api request")
                     print(error)
                 }
                 
