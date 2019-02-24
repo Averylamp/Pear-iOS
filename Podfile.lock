@@ -86,6 +86,7 @@ PODS:
   - SDWebImage (4.4.5):
     - SDWebImage/Core (= 4.4.5)
   - SDWebImage/Core (4.4.5)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - FacebookCore
@@ -95,6 +96,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - SDWebImage
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -116,6 +118,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - SDWebImage
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -136,7 +139,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 8bb202ef7c30a5dd4ff77625d431e3ccd876fc04
+PODFILE CHECKSUM: 16e7f5eed3e879668ca784eee6821d380ccd2595
 
 COCOAPODS: 1.6.0
