@@ -14,6 +14,7 @@ class GetStartedYourNameViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     
     var gettingStartedData: GetttingStartedData!
+    @IBOutlet weak var titleLabel: UILabel!
     
     /// Factory method for creating this view controller.
     ///
@@ -68,6 +69,21 @@ extension GetStartedYourNameViewController{
             self.inputTextField.text = endorseeName
         }
         self.inputTextField.becomeFirstResponder()
+        self.styleViews()
+    }
+    
+    func styleViews(){
+        self.titleLabel.font = UIFont(name: Config.displayFontRegular, size: 28)
+        self.titleLabel.textColor = Config.textFontColor
+        
+        self.nextButton.backgroundColor = Config.nextButtonColor
+        self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
+        self.nextButton.layer.shadowRadius = 1
+        self.nextButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
+        self.nextButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.nextButton.setTitleColor(UIColor.white, for: .normal)
+        self.nextButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        
     }
     
 }
