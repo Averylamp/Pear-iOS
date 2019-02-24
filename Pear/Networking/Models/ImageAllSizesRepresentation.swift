@@ -9,6 +9,7 @@
 
 
 class ImageAllSizesRepresentation{
+    let imageID: String
     let original: ImageSizeRepresentation
     let large: ImageSizeRepresentation
     let medium: ImageSizeRepresentation
@@ -20,11 +21,13 @@ class ImageAllSizesRepresentation{
         medium: ImageSizeRepresentation,
         small: ImageSizeRepresentation,
         thumbnail: ImageSizeRepresentation) {
+        self.imageID = original.imageID
         self.original = original
         self.large = large
         self.medium = medium
         self.small = small
         self.thumbnail = thumbnail
+
     }
     
 }

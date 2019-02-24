@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import SwiftyJSON
 
 class ImageUploadAPI:ImageAPI  {
     
@@ -22,7 +23,6 @@ class ImageUploadAPI:ImageAPI  {
         
         let headers:[String: String] = [
             "Content-Type": "application/json",
-//            "Content-Type": "application/x-www-form-urlencoded",
         ]
     
         let request = NSMutableURLRequest(url: NSURL(string: "\(Config.imageAPIHost)/upload_image")! as URL,
@@ -40,10 +40,56 @@ class ImageUploadAPI:ImageAPI  {
                 if (error != nil) {
                     print(error)
                 } else {
-                    let httpResponse = response as? HTTPURLResponse
-                    print(httpResponse)
-                    if let data = data {
+                    if let data = data, let json = JSON(rawValue: data), let sizeMap = json["size_map"].dictionary{
+                        var original: ImageSizeRepresentation? = nil
+                        var large: ImageSizeRepresentation? = nil
+                        var medium: ImageSizeRepresentation? = nil
+                        var small: ImageSizeRepresentation? = nil
+                        var thumb: ImageSizeRepresentation? = nil
+                        for (sizeType, sizeData) in sizeMap{
+                            if let imageID = sizeData["imageID"].string,
+                                let imageURL = sizeData["imageURL"].url,
+                                let imageSize = sizeData["imageSize"].dictionary,
+                                let imageWidth = imageSize["width"]?.int,
+                                let imageHeight = imageSize["height"]?.int{
+                                let imageSizeRep = ImageSizeRepresentation(imageID: imageID, imageSize: ImageSize(rawValue: sizeType) ?? .unknown, publicURL: imageURL, height: imageHeight, width: imageWidth)
+                                switch(sizeType){
+                                case "original":
+                                    original = imageSizeRep
+                                    break
+                                case "large":
+                                    large = imageSizeRep
+                                    break
+                                case "medium":
+                                    medium = imageSizeRep
+                                    break
+                                case "small":
+                                    small = imageSizeRep
+                                    break
+                                case "thumb":
+                                    thumb = imageSizeRep
+                                    break
+                                default:
+                                    print("Strange size detected")
+                                }
+                            }
+                        }
+                        guard let originalImageRep = original else { return }
+                        guard let largeImageRep = large else { return }
+                        guard let mediumImageRep = medium else { return }
+                        guard let smallImageRep = small else { return }
+                        guard let thumbImageRep = thumb else { return }
                         
+                        let allImageSizesRep  = ImageAllSizesRepresentation(original: originalImageRep,
+                                                                            large: largeImageRep,
+                                                                            medium: mediumImageRep,
+                                                                            small: smallImageRep,
+                                                                            thumbnail: thumbImageRep)
+                        completion(.success(allImageSizesRep))
+
+                        
+                        
+                        print(json)
                     }
                 }
             })
