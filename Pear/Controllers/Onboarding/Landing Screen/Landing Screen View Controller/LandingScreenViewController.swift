@@ -123,23 +123,29 @@ private extension LandingScreenViewController{
 
 // MARK: - UIScrollViewDelegate
 extension LandingScreenViewController: UIScrollViewDelegate{
+    
+    
+    /// Scroll View Did Scroll
+    ///
+    /// Used for realtime resizing of landing pages
+    ///
+    /// - Parameter scrollView: scrollView
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
         pageControl.currentPage = Int(pageIndex)
         let percentOffset: CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
         
-        let scaleSize: CGFloat = 0.6
         if(percentOffset > 0 && percentOffset <= 0.25) {
-            pages[0].scaleImageView(percent: 1 - ((percentOffset) * 4 * scaleSize))
-            pages[1].scaleImageView(percent: (1 - scaleSize) + ((percentOffset) * 4 * scaleSize))
+            pages[0].scaleImageView(percent: 1 - ((percentOffset) * 4))
+            pages[1].scaleImageView(percent: percentOffset * 4)
         } else if(percentOffset > 0.25 && percentOffset <= 0.50) {
-            pages[1].scaleImageView(percent: 1.0 - ((percentOffset - 0.25) * 4 * scaleSize))
-            pages[2].scaleImageView(percent: (1 - scaleSize) + ((percentOffset - 0.25) * 4 * scaleSize))
+            pages[1].scaleImageView(percent: 1 - (percentOffset - 0.25) * 4)
+            pages[2].scaleImageView(percent: (percentOffset - 0.25) * 4)
         } else if(percentOffset > 0.50 && percentOffset <= 0.75) {
-            pages[2].scaleImageView(percent: 1.0 - ((percentOffset - 0.5) * 4 * scaleSize))
-            pages[3].scaleImageView(percent: (1 - scaleSize) + ((percentOffset - 0.5) * 4 * scaleSize))
+            pages[2].scaleImageView(percent: 1 - (percentOffset - 0.5) * 4)
+            pages[3].scaleImageView(percent: (percentOffset - 0.5) * 4)
         }else if(percentOffset > 0.75 && percentOffset <= 1) {
-            pages[3].scaleImageView(percent: 1.0 - ((percentOffset - 0.75) * 4 * scaleSize))
+            pages[3].scaleImageView(percent: 1 - (percentOffset - 0.75) * 4)
         }
     }
     
