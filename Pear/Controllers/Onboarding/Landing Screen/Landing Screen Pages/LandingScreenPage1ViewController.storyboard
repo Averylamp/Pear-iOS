@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pct-xB-Fil"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="E9a-2q-htP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-page-1-image" translatesAutoresizingMaskIntoConstraints="NO" id="xS5-tb-URl">
