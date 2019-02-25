@@ -27,16 +27,28 @@ class GetStartedChooseGenderViewController: UIViewController {
         return vc
     }
     
-    @IBAction func createFriendProfileClicked(_ sender: Any) {
-        let seeSamplesVC = GetStartedSeeSamplesViewController.instantiate(gettingStartedData: self.gettingStartedData)
-        self.navigationController?.pushViewController(seeSamplesVC, animated: true)
+    @IBAction func chooseGenderButtonClicked(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            self.gettingStartedData.profileData.gender = GenderEnum.male
+        case 1:
+            self.gettingStartedData.profileData.gender = GenderEnum.female
+        case 2:
+            self.gettingStartedData.profileData.gender = GenderEnum.nonbinary
+        default:
+            break
+        }
+        
+        let ageVC = GetStartedAgeViewController.instantiate(gettingStartedData: self.gettingStartedData)
+        self.navigationController?.pushViewController(ageVC, animated: true)
     }
     
-    @IBAction func requestProfileClicked(_ sender: Any) {
-        
-        
-    }
     
+    
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
 }
 

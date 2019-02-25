@@ -490,6 +490,33 @@
 			path = "Settings Flow";
 			sourceTree = "<group>";
 		};
+		BB33E7542224A07C001BFA8F /* Choose Flow */ = {
+			isa = PBXGroup;
+			children = (
+				BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */,
+				BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */,
+			);
+			path = "Choose Flow";
+			sourceTree = "<group>";
+		};
+		BB33E7552224A088001BFA8F /* See Samples */ = {
+			isa = PBXGroup;
+			children = (
+				BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */,
+				BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */,
+			);
+			path = "See Samples";
+			sourceTree = "<group>";
+		};
+		BB33E7562224A095001BFA8F /* Gender Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */,
+				BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */,
+			);
+			path = "Gender Input";
+			sourceTree = "<group>";
+		};
 		BB56D22922142E2400A652E7 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,12 +655,9 @@
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 				BB75BFD322156B9700BAB800 /* Full Profile Review Page */,
 				BB75BFDD2215801900BAB800 /* Notify Friend */,
-				BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */,
-				BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */,
-				BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */,
-				BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */,
-				BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */,
-				BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */,
+				BB33E7542224A07C001BFA8F /* Choose Flow */,
+				BB33E7552224A088001BFA8F /* See Samples */,
+				BB33E7562224A095001BFA8F /* Gender Input */,
 			);
 			path = "Get Started Flow";
 			sourceTree = "<group>";
