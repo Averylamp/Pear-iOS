@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dy0-Y1-PAh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Get Started See Samples View Controller-->
+        <scene sceneID="NN4-an-zNI">
+            <objects>
+                <viewController id="Dy0-Y1-PAh" customClass="GetStartedSeeSamplesViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lYP-bT-LhD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUP-fc-km8">
+                                <rect key="frame" x="20" y="32" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="16g-vb-8fp"/>
+                                    <constraint firstAttribute="width" constant="40" id="cpn-Ei-Fjc"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-back-button"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="Dy0-Y1-PAh" eventType="touchUpInside" id="m6x-vg-Spx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cherry-picked Inspiration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tTF-Ut-PB6">
+                                <rect key="frame" x="50" y="275.5" width="275" height="76.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9u-VJ-mwO">
+                                <rect key="frame" x="20" y="519" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="WOD-tp-kk6"/>
+                                </constraints>
+                                <state key="normal" title="Build a profile for a friend"/>
+                                <connections>
+                                    <action selector="seeSamplesButtonClicked:" destination="Dy0-Y1-PAh" eventType="touchUpInside" id="bHt-lb-92d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqc-2p-z5W">
+                                <rect key="frame" x="172.5" y="577" width="30" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nHZ-OD-Q4Q"/>
+                                </constraints>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipButtonClicked:" destination="Dy0-Y1-PAh" eventType="touchUpInside" id="Wn7-fy-pxx"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-samples-cherry" translatesAutoresizingMaskIntoConstraints="NO" id="kfI-kC-DdE">
+                                <rect key="frame" x="147.5" y="179.5" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Dlh-Mr-rZc"/>
+                                    <constraint firstAttribute="height" constant="80" id="Ozq-7h-7MK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview three profiles that strike the right balance between real &amp; roast." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgE-Sg-UO2">
+                                <rect key="frame" x="30" y="372" width="315" height="41"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-stars" translatesAutoresizingMaskIntoConstraints="NO" id="fBj-Uu-fBq">
+                                <rect key="frame" x="28" y="529" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="eJD-zq-jKy"/>
+                                    <constraint firstAttribute="width" constant="30" id="zY7-TT-FkS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EgE-Sg-UO2" firstAttribute="leading" secondItem="dLc-aM-KSY" secondAttribute="leading" constant="30" id="2HU-b6-Qba"/>
+                            <constraint firstItem="OUP-fc-km8" firstAttribute="top" secondItem="dLc-aM-KSY" secondAttribute="top" constant="12" id="3dz-d4-Bfn"/>
+                            <constraint firstItem="fBj-Uu-fBq" firstAttribute="leading" secondItem="p9u-VJ-mwO" secondAttribute="leading" constant="8" id="436-oB-lgi"/>
+                            <constraint firstItem="OUP-fc-km8" firstAttribute="leading" secondItem="dLc-aM-KSY" secondAttribute="leading" constant="20" id="6gl-k7-GGF"/>
+                            <constraint firstItem="p9u-VJ-mwO" firstAttribute="leading" secondItem="dLc-aM-KSY" secondAttribute="leading" constant="20" id="8ZA-OK-uXA"/>
+                            <constraint firstItem="tTF-Ut-PB6" firstAttribute="top" secondItem="kfI-kC-DdE" secondAttribute="bottom" constant="16" id="8l7-UJ-dfb"/>
+                            <constraint firstItem="dLc-aM-KSY" firstAttribute="trailing" secondItem="tTF-Ut-PB6" secondAttribute="trailing" constant="50" id="9IC-Cs-01N"/>
+                            <constraint firstItem="tTF-Ut-PB6" firstAttribute="centerX" secondItem="dLc-aM-KSY" secondAttribute="centerX" id="KA4-5i-Plu"/>
+                            <constraint firstItem="kfI-kC-DdE" firstAttribute="centerX" secondItem="tTF-Ut-PB6" secondAttribute="centerX" id="PqN-pX-9Lc"/>
+                            <constraint firstItem="Tqc-2p-z5W" firstAttribute="centerX" secondItem="dLc-aM-KSY" secondAttribute="centerX" id="QBe-2I-CiP"/>
+                            <constraint firstItem="EgE-Sg-UO2" firstAttribute="top" secondItem="tTF-Ut-PB6" secondAttribute="bottom" constant="20" id="bFg-SK-rao"/>
+                            <constraint firstItem="tTF-Ut-PB6" firstAttribute="leading" secondItem="dLc-aM-KSY" secondAttribute="leading" constant="50" id="h77-H0-R6o"/>
+                            <constraint firstItem="tTF-Ut-PB6" firstAttribute="centerY" secondItem="dLc-aM-KSY" secondAttribute="centerY" constant="-30" id="j5V-YZ-QE3"/>
+                            <constraint firstItem="fBj-Uu-fBq" firstAttribute="centerY" secondItem="p9u-VJ-mwO" secondAttribute="centerY" id="lKl-lq-A9c"/>
+                            <constraint firstItem="dLc-aM-KSY" firstAttribute="trailing" secondItem="p9u-VJ-mwO" secondAttribute="trailing" constant="20" id="mb9-pY-sMl"/>
+                            <constraint firstItem="EgE-Sg-UO2" firstAttribute="centerX" secondItem="dLc-aM-KSY" secondAttribute="centerX" id="rIb-An-5mr"/>
+                            <constraint firstItem="Tqc-2p-z5W" firstAttribute="top" secondItem="p9u-VJ-mwO" secondAttribute="bottom" constant="8" id="shU-Zh-y2F"/>
+                            <constraint firstItem="dLc-aM-KSY" firstAttribute="bottom" secondItem="Tqc-2p-z5W" secondAttribute="bottom" constant="40" id="tEE-mb-6oh"/>
+                            <constraint firstItem="dLc-aM-KSY" firstAttribute="trailing" secondItem="EgE-Sg-UO2" secondAttribute="trailing" constant="30" id="ub6-49-Dge"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dLc-aM-KSY"/>
+                    </view>
+                    <connections>
+                        <outlet property="seeSamplesButton" destination="p9u-VJ-mwO" id="PdC-6o-akh"/>
+                        <outlet property="skipButton" destination="Tqc-2p-z5W" id="fnF-DR-ZdY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EWg-TR-MI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="96" height="96"/>
+        <image name="onboarding-icon-samples-cherry" width="74" height="74"/>
+        <image name="onboarding-icon-stars" width="32" height="32"/>
+    </resources>
+</document>

@@ -28,6 +28,8 @@ class Config{
     static let textFontSemiBold: String = "Nunito-SemiBold"
     static let textFontColor: UIColor = UIColor(red:0.27, green:0.29, blue:0.33, alpha:1.00)
     
+    static let inactiveTextFontColor: UIColor = UIColor(red:0.27, green:0.29, blue:0.33, alpha:0.3)
+    
     static let nextButtonColor: UIColor = UIColor(red:0.27, green:0.29, blue:0.33, alpha:1.00)
     
     

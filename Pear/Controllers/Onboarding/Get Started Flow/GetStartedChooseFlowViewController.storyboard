@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZJY-OA-SY8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Get Started Choose Flow View Controller-->
+        <scene sceneID="xAl-f7-ifP">
+            <objects>
+                <viewController id="ZJY-OA-SY8" customClass="GetStartedChooseFlowViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="poA-bi-Cq2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're verified! What next?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Niq-PB-fW6">
+                                <rect key="frame" x="50" y="100" width="275" height="157.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="787-pa-u83">
+                                <rect key="frame" x="20" y="495" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RLl-V8-h4O"/>
+                                </constraints>
+                                <state key="normal" title="Build a profile for a friend"/>
+                                <connections>
+                                    <action selector="createFriendProfileClicked:" destination="ZJY-OA-SY8" eventType="touchUpInside" id="DQR-pI-MLu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwQ-6p-KjH">
+                                <rect key="frame" x="20" y="557" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KFa-Sn-zfk"/>
+                                </constraints>
+                                <state key="normal" title="Request a profile from friends"/>
+                                <connections>
+                                    <action selector="requestProfileClicked:" destination="ZJY-OA-SY8" eventType="touchUpInside" id="dye-Pd-zNT"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-choose-flow-pear" translatesAutoresizingMaskIntoConstraints="NO" id="LaH-69-Z5p">
+                                <rect key="frame" x="117.5" y="273.5" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="R9w-lh-sdf"/>
+                                    <constraint firstAttribute="height" constant="140" id="rVY-LY-t9O"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-writing" translatesAutoresizingMaskIntoConstraints="NO" id="prd-1G-8fO">
+                                <rect key="frame" x="28" y="505" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Xhn-S6-56x"/>
+                                    <constraint firstAttribute="height" constant="30" id="hMj-vl-mOP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LaH-69-Z5p" firstAttribute="top" secondItem="Niq-PB-fW6" secondAttribute="bottom" constant="16" id="40C-Qd-XLd"/>
+                            <constraint firstItem="LaH-69-Z5p" firstAttribute="centerX" secondItem="e7g-T5-srf" secondAttribute="centerX" id="HNk-C3-vA6"/>
+                            <constraint firstItem="e7g-T5-srf" firstAttribute="bottom" secondItem="iwQ-6p-KjH" secondAttribute="bottom" constant="60" id="MTb-vB-wWo"/>
+                            <constraint firstItem="Niq-PB-fW6" firstAttribute="top" secondItem="e7g-T5-srf" secondAttribute="top" constant="80" id="QeU-P4-BLh"/>
+                            <constraint firstItem="LaH-69-Z5p" firstAttribute="centerY" secondItem="e7g-T5-srf" secondAttribute="centerY" id="SXR-9w-OVm"/>
+                            <constraint firstItem="iwQ-6p-KjH" firstAttribute="width" secondItem="787-pa-u83" secondAttribute="width" id="Sf9-TC-B1T"/>
+                            <constraint firstItem="prd-1G-8fO" firstAttribute="centerY" secondItem="787-pa-u83" secondAttribute="centerY" id="WDN-kA-UCx"/>
+                            <constraint firstItem="e7g-T5-srf" firstAttribute="trailing" secondItem="787-pa-u83" secondAttribute="trailing" constant="20" id="b8o-tn-I4Q"/>
+                            <constraint firstItem="787-pa-u83" firstAttribute="leading" secondItem="e7g-T5-srf" secondAttribute="leading" constant="20" id="fco-Xp-xbC"/>
+                            <constraint firstItem="prd-1G-8fO" firstAttribute="leading" secondItem="787-pa-u83" secondAttribute="leading" constant="8" id="jfY-Zb-Bs7"/>
+                            <constraint firstItem="Niq-PB-fW6" firstAttribute="leading" secondItem="e7g-T5-srf" secondAttribute="leading" constant="50" id="kdY-ur-ZJh"/>
+                            <constraint firstItem="iwQ-6p-KjH" firstAttribute="top" secondItem="787-pa-u83" secondAttribute="bottom" constant="12" id="mVh-dT-1WV"/>
+                            <constraint firstItem="iwQ-6p-KjH" firstAttribute="centerX" secondItem="e7g-T5-srf" secondAttribute="centerX" id="q6M-xV-rbf"/>
+                            <constraint firstItem="e7g-T5-srf" firstAttribute="trailing" secondItem="Niq-PB-fW6" secondAttribute="trailing" constant="50" id="q9y-jc-2Kz"/>
+                            <constraint firstItem="787-pa-u83" firstAttribute="centerX" secondItem="e7g-T5-srf" secondAttribute="centerX" id="r53-IB-i9L"/>
+                            <constraint firstItem="Niq-PB-fW6" firstAttribute="centerX" secondItem="e7g-T5-srf" secondAttribute="centerX" id="sVI-fR-L1K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e7g-T5-srf"/>
+                    </view>
+                    <connections>
+                        <outlet property="createFriendProfileButton" destination="787-pa-u83" id="iOh-r8-5Fy"/>
+                        <outlet property="requestProfileButton" destination="iwQ-6p-KjH" id="k2V-fh-obX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mze-fU-veI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-choose-flow-pear" width="125" height="125"/>
+        <image name="onboarding-icon-writing" width="32" height="32"/>
+    </resources>
+</document>
