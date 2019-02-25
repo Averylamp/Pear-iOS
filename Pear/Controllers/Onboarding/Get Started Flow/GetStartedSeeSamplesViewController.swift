@@ -27,11 +27,14 @@ class GetStartedSeeSamplesViewController: UIViewController {
     }
     
     @IBAction func seeSamplesButtonClicked(_ sender: Any) {
-        
+        let endorsementNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedData)
+        self.navigationController?.pushViewController(endorsementNameVC, animated: true)
     }
     
     @IBAction func skipButtonClicked(_ sender: Any) {
-        
+        let endorsementNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedData)
+        self.navigationController?.pushViewController(endorsementNameVC, animated: true)
+
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
