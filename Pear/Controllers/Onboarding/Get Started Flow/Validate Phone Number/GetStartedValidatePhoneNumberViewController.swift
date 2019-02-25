@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import NVActivityIndicatorView
 
 class GetStartedValidatePhoneNumberViewController: UIViewController {
     
@@ -42,7 +43,18 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
             self.nextButton.backgroundColor = UIColor.white
             self.nextButton.setTitleColor(Config.nextButtonColor, for: .normal)
             self.nextButton.isEnabled = false
+            let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40), type: NVActivityIndicatorType.ballScaleRippleMultiple, color: Config.textFontColor, padding: 0)
+            self.view.addSubview(activityIndicator)
+            activityIndicator.center = CGPoint(x: self.inputTextField.center.x, y: self.inputTextField.frame.origin.y + self.inputTextField.frame.height + 40)
+            activityIndicator.startAnimating()
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+                activityIndicator.stopAnimating()
+                UIView.animate(withDuration: 0.5, animations: {
+                    activityIndicator.alpha = 0.0
+                }, completion: { (finished) in
+                    activityIndicator.stopAnimating()
+                    activityIndicator.removeFromSuperview()
+                })
                 self.inputTextField.textColor = Config.textFontColor
                 self.inputTextField.isEnabled = true
                 self.nextButton.backgroundColor = Config.nextButtonColor
