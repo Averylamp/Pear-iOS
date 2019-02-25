@@ -39,17 +39,22 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func verificationViewClicked(_ sender: Any) {
-        self.hiddenInputField.becomeFirstResponder()
-    }
-    
-    
     @IBAction func resendCodeButtonClicked(_ sender: Any) {
         self.hiddenInputField.text = ""
         self.updateCodeNumberLabels()
         if let phoneNumber = self.gettingStartedData.userPhoneNumber{
             let fullPhoneNumber = "+1" + phoneNumber
+            HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+            self.hiddenInputField.isEnabled = false
+            self.resendCodeButton.setTitleColor(UIColor.darkGray, for: .normal)
+            self.resendCodeButton.backgroundColor = UIColor.lightGray
+            self.resendCodeButton.isEnabled = false
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+                self.resendCodeButton.isEnabled = true
+                self.hiddenInputField.isEnabled = true
+                self.resendCodeButton.setTitleColor(Config.textFontColor, for: .normal)
+                self.resendCodeButton.backgroundColor = UIColor.white
+
                 if let error = error {
                     HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
                     self.alert(title: "Error validating Phone Number", message: error.localizedDescription)
@@ -62,6 +67,7 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 
                 HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+                self.hiddenInputField.becomeFirstResponder()
             }
         }
 
