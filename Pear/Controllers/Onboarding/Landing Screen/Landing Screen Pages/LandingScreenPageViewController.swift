@@ -33,11 +33,12 @@ class LandingScreenPageViewController: UIViewController {
         }
         if let backgroundImageView = self.backgroundImageView{
             let minPercentBackground: CGFloat = 0.7
-            let rotationAmount: CGFloat = 0.2
+            let rotationAmount: CGFloat = 2.0
             if percent > minPercentBackground {
                 let scaleAmount = (percent - minPercentBackground) / (1 - minPercentBackground)
                 backgroundImageView.transform = CGAffineTransform(scaleX: scaleAmount, y: scaleAmount)
-                backgroundImageView.transform.rotated(by: (1 - percent) * rotationAmount)
+                let rotationAmount = before ? rotationAmount / 2 * percent - rotationAmount / 2 : rotationAmount / 2 + (1 - percent) * rotationAmount - rotationAmount / 2
+                backgroundImageView.transform = backgroundImageView.transform.rotated(by: rotationAmount)
             }else{
                 backgroundImageView.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
             }
