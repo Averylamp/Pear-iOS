@@ -44,6 +44,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
                 if let error = error {
                     self.alert(title: "Error validating Phone Number", message: error.localizedDescription)
+                    HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
                     return
                 }
                 
@@ -54,6 +55,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
                 // ...
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 
+                HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                 let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController.instantiate(gettingStartedData: self.gettingStartedData, verificationID: verificationID)
                 self.navigationController?.pushViewController(phoneNumberCodeVC, animated: true)
             }
@@ -96,8 +98,10 @@ extension GetStartedValidatePhoneNumberViewController{
         self.nextButton.layer.shadowRadius = 1
         self.nextButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
         self.nextButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.nextButton.layer.shadowOpacity = 1.0
         self.nextButton.setTitleColor(UIColor.white, for: .normal)
         self.nextButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        
         
     }
 
