@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import SwiftSpinner
 
 class GetStartedValidatePhoneNumberViewController: UIViewController {
     
@@ -34,7 +35,6 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        self.showLoadingIndicator()
         if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
             let fullPhoneNumber = "+1" + phoneNumber
             print("Verifying phone number")
@@ -43,7 +43,9 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
             self.nextButton.backgroundColor = UIColor.white
             self.nextButton.setTitleColor(Config.nextButtonColor, for: .normal)
             self.nextButton.isEnabled = false
+            SwiftSpinner.show("Verifying human qualities")
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+                SwiftSpinner.hide()
                 self.inputTextField.textColor = Config.textFontColor
                 self.inputTextField.isEnabled = true
                 self.nextButton.backgroundColor = Config.nextButtonColor

@@ -86,6 +86,7 @@ PODS:
   - SDWebImage (4.4.5):
     - SDWebImage/Core (= 4.4.5)
   - SDWebImage/Core (4.4.5)
+  - SwiftSpinner (1.6.2)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -96,6 +97,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - SDWebImage
+  - SwiftSpinner
   - SwiftyJSON
 
 SPEC REPOS:
@@ -118,6 +120,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - nanopb
     - SDWebImage
+    - SwiftSpinner
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -139,8 +142,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  SwiftSpinner: 3a4c6dea425e5a31b908a8b1dd5dcd1ad4d96340
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 16e7f5eed3e879668ca784eee6821d380ccd2595
+PODFILE CHECKSUM: c1e5f29ca006a1b5207879ce10c11d12530988dc
 
 COCOAPODS: 1.6.0
