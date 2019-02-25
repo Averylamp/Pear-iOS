@@ -28,10 +28,10 @@ class LandingScreenPage3ViewController: LandingScreenPageViewController {
             imageView.transform = CGAffineTransform(scaleX: percent, y: percent)
         }
         if let backgroundImageView = self.backgroundImageView{
-            let movementDistance: CGFloat = -200
-            let initialOffset: CGFloat = -70
+            let movementDistance: CGFloat = 200
+            let initialOffset: CGFloat = 70
             let fullDistance = before ? movementDistance / 2 * percent : movementDistance / 2 + (1 - percent) * movementDistance
-            backgroundImageView.transform = CGAffineTransform(translationX: 0, y: fullDistance + initialOffset)
+            backgroundImageView.transform = CGAffineTransform(translationX: 0, y: -fullDistance + initialOffset)
         }
 
     }
