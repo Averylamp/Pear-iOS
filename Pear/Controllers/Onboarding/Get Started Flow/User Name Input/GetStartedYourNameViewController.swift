@@ -41,7 +41,7 @@ class GetStartedYourNameViewController: UIViewController {
             self.gettingStartedData.profileData.endorsedFirstName = splitNames.0
             self.gettingStartedData.profileData.endorsedLastName = splitNames.1
             if splitNames.0.count < 1{
-                self.alert(title: "Name Missing", message: "Please enter your name")t
+                self.alert(title: "Name Missing", message: "Please enter your name")
                 return
             }
             
