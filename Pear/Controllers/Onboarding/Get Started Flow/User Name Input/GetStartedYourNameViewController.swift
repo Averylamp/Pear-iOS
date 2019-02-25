@@ -45,8 +45,8 @@ class GetStartedYourNameViewController: UIViewController {
                 return
             }
             
-            let friendNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedData)
-            self.navigationController?.pushViewController(friendNameVC, animated: true)
+            let phoneVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: self.gettingStartedData)
+            self.navigationController?.pushViewController(phoneVerificationVC, animated: true)
         }
     }
     
@@ -106,7 +106,6 @@ extension GetStartedYourNameViewController{
         let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let bottomSpacing: CGFloat = 20
         self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + bottomSpacing
-        print("Changing nextbuttton bottom constriant \(self.nextButtonBottomConstraint.constant)")
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
         }
