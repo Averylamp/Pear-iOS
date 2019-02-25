@@ -9,28 +9,66 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="FredokaOne-Regular.ttf">
+            <string>FredokaOne-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="hSW-1O-pdU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍐 Pear 🍐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYV-60-845">
-                                <rect key="frame" x="106" y="215.5" width="163" height="50"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="36"/>
-                                <nil key="textColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landing-pear-background-1" translatesAutoresizingMaskIntoConstraints="NO" id="QkO-pQ-wtV">
+                                <rect key="frame" x="0.0" y="113.5" width="375" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QkO-pQ-wtV" secondAttribute="height" multiplier="3:2" id="L3G-cP-DL2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landing-pear-1" translatesAutoresizingMaskIntoConstraints="NO" id="wSr-XD-J7k">
+                                <rect key="frame" x="80" y="143.5" width="215" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="Opb-PT-uxZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Celebrate your friends" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSG-5e-ZX3">
+                                <rect key="frame" x="40" y="423.5" width="295" height="26.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEAR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SX4-9j-l4b">
+                                <rect key="frame" x="40" y="371.5" width="295" height="44"/>
+                                <fontDescription key="fontDescription" name="FredokaOne-Regular" family="Fredoka One" pointSize="36"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.21176470589999999" green="0.87843137250000003" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pYV-60-845" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.7" id="UUx-3b-APl"/>
-                            <constraint firstItem="pYV-60-845" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="i4A-LC-f3Y"/>
+                            <constraint firstItem="SX4-9j-l4b" firstAttribute="top" secondItem="wSr-XD-J7k" secondAttribute="bottom" constant="8" id="Fdg-cm-Mfv"/>
+                            <constraint firstItem="eSG-5e-ZX3" firstAttribute="top" secondItem="SX4-9j-l4b" secondAttribute="bottom" constant="8" id="Jmb-4s-qB2"/>
+                            <constraint firstAttribute="trailing" secondItem="wSr-XD-J7k" secondAttribute="trailing" constant="80" id="K3i-WF-SEe"/>
+                            <constraint firstItem="SX4-9j-l4b" firstAttribute="width" secondItem="eSG-5e-ZX3" secondAttribute="width" id="SLX-mV-ytE"/>
+                            <constraint firstItem="wSr-XD-J7k" firstAttribute="centerY" secondItem="hSW-1O-pdU" secondAttribute="centerY" constant="-80" id="Yes-dG-Joh"/>
+                            <constraint firstItem="QkO-pQ-wtV" firstAttribute="width" secondItem="hSW-1O-pdU" secondAttribute="width" id="a2K-TK-nrd"/>
+                            <constraint firstItem="SX4-9j-l4b" firstAttribute="centerX" secondItem="eSG-5e-ZX3" secondAttribute="centerX" id="ghx-FK-PEW"/>
+                            <constraint firstItem="eSG-5e-ZX3" firstAttribute="centerX" secondItem="hSW-1O-pdU" secondAttribute="centerX" id="l8e-Ub-nKh"/>
+                            <constraint firstItem="wSr-XD-J7k" firstAttribute="leading" secondItem="hSW-1O-pdU" secondAttribute="leading" constant="80" id="lAJ-7w-yda"/>
+                            <constraint firstItem="eSG-5e-ZX3" firstAttribute="leading" secondItem="hSW-1O-pdU" secondAttribute="leading" constant="40" id="m5j-FE-sKL"/>
+                            <constraint firstItem="QkO-pQ-wtV" firstAttribute="bottom" secondItem="wSr-XD-J7k" secondAttribute="bottom" id="wrz-B6-Zuc"/>
+                            <constraint firstItem="wSr-XD-J7k" firstAttribute="centerX" secondItem="hSW-1O-pdU" secondAttribute="centerX" id="ygf-Bi-AWz"/>
+                            <constraint firstAttribute="trailing" secondItem="eSG-5e-ZX3" secondAttribute="trailing" constant="40" id="zKf-sd-3Kb"/>
+                            <constraint firstItem="QkO-pQ-wtV" firstAttribute="centerX" secondItem="hSW-1O-pdU" secondAttribute="centerX" id="zeo-Ve-FGi"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="LGK-2y-hgu"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -38,4 +76,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="landing-pear-1" width="220" height="220"/>
+        <image name="landing-pear-background-1" width="375" height="250"/>
+    </resources>
 </document>
