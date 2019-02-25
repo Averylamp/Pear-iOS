@@ -74,6 +74,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="400"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="F06-kP-JWE" id="UNq-Rp-MQS"/>
                         <outlet property="imageView" destination="a6m-dr-QZx" id="yhU-c1-Zqq"/>
                     </connections>
                 </viewController>

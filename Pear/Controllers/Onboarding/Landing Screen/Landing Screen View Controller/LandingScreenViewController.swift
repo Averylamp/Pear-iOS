@@ -136,16 +136,16 @@ extension LandingScreenViewController: UIScrollViewDelegate{
         let percentOffset: CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
         
         if(percentOffset > 0 && percentOffset <= 0.25) {
-            pages[0].scaleImageView(percent: 1 - ((percentOffset) * 4))
-            pages[1].scaleImageView(percent: percentOffset * 4)
+            pages[0].scaleImageView(percent: 1 - ((percentOffset) * 4), before: false)
+            pages[1].scaleImageView(percent: percentOffset * 4, before: true)
         } else if(percentOffset > 0.25 && percentOffset <= 0.50) {
-            pages[1].scaleImageView(percent: 1 - (percentOffset - 0.25) * 4)
-            pages[2].scaleImageView(percent: (percentOffset - 0.25) * 4)
+            pages[1].scaleImageView(percent: 1 - (percentOffset - 0.25) * 4, before: false)
+            pages[2].scaleImageView(percent: (percentOffset - 0.25) * 4, before: true)
         } else if(percentOffset > 0.50 && percentOffset <= 0.75) {
-            pages[2].scaleImageView(percent: 1 - (percentOffset - 0.5) * 4)
-            pages[3].scaleImageView(percent: (percentOffset - 0.5) * 4)
+            pages[2].scaleImageView(percent: 1 - (percentOffset - 0.5) * 4, before: false)
+            pages[3].scaleImageView(percent: (percentOffset - 0.5) * 4, before: true)
         }else if(percentOffset > 0.75 && percentOffset <= 1) {
-            pages[3].scaleImageView(percent: 1 - (percentOffset - 0.75) * 4)
+            pages[3].scaleImageView(percent: 1 - (percentOffset - 0.75) * 4, before: false)
         }
     }
     

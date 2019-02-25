@@ -20,6 +20,21 @@ class LandingScreenPage3ViewController: LandingScreenPageViewController {
         let vc = storyboard.instantiateInitialViewController() as! LandingScreenPage3ViewController
         return vc
     }
+    
+    override func scaleImageView(percent: CGFloat, before: Bool = true) {
+        let scaleSize: CGFloat = 0.6
+        let percent = 1 - (1 - percent) * scaleSize
+        if let imageView = self.imageView{
+            imageView.transform = CGAffineTransform(scaleX: percent, y: percent)
+        }
+        if let backgroundImageView = self.backgroundImageView{
+            let movementDistance: CGFloat = -200
+            let initialOffset: CGFloat = -70
+            let fullDistance = before ? movementDistance / 2 * percent : movementDistance / 2 + (1 - percent) * movementDistance
+            backgroundImageView.transform = CGAffineTransform(translationX: 0, y: fullDistance + initialOffset)
+        }
+
+    }
 
 }
 
@@ -31,5 +46,6 @@ extension LandingScreenPage3ViewController{
         
         // Do any additional setup after loading the view.
     }
+    
     
 }
