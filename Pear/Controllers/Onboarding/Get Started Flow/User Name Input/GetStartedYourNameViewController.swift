@@ -46,8 +46,8 @@ class GetStartedYourNameViewController: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
-        if let userName = inputTextField.text{
-            self.gettingStartedData.profileData.endorsedFullName = userName
+        if let userFirstName = inputTextField.text{
+            self.gettingStartedData.userFirstName = userFirstName
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -63,8 +63,8 @@ extension GetStartedYourNameViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.contentMode = .scaleAspectFit
-        if let endorseeName = self.gettingStartedData.profileData.endorsedFullName{
-            self.inputTextField.text = endorseeName
+        if let userFirstName = self.gettingStartedData.userFirstName{
+            self.inputTextField.text = userFirstName
         }
         self.inputTextField.becomeFirstResponder()
         self.styleViews()
@@ -75,15 +75,7 @@ extension GetStartedYourNameViewController{
         self.titleLabel.font = UIFont(name: Config.displayFontRegular, size: 28)
         self.titleLabel.textColor = Config.textFontColor
         
-        self.nextButton.backgroundColor = Config.nextButtonColor
-        self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
-        self.nextButton.layer.shadowRadius = 1
-        self.nextButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
-        self.nextButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.nextButton.layer.shadowOpacity = 1.0
-        self.nextButton.setTitleColor(UIColor.white, for: .normal)
-        self.nextButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
-        
+        self.nextButton.stylizeDarkColor()
     }
     
     func addKeyboardSizeNotifications(){

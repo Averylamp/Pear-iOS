@@ -38,14 +38,14 @@ class GetStartedFriendNameViewController: UIViewController {
                 return
             }
             
-            let phoneVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: self.gettingStartedData)
-            self.navigationController?.pushViewController(phoneVerificationVC, animated: true)
+            let chooseGenderVC = GetStartedChooseGenderViewController.instantiate(gettingStartedData: self.gettingStartedData)
+            self.navigationController?.pushViewController(chooseGenderVC, animated: true)
         }
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
         if let userName = inputTextField.text{
-            self.gettingStartedData.profileData.endorsedFullName = userName
+            self.gettingStartedData.profileData.endorsedFirstName = userName
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -73,14 +73,7 @@ extension GetStartedFriendNameViewController{
         self.titleLabel.font = UIFont(name: Config.displayFontRegular, size: 28)
         self.titleLabel.textColor = Config.textFontColor
         
-        self.nextButton.backgroundColor = Config.nextButtonColor
-        self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
-        self.nextButton.layer.shadowRadius = 1
-        self.nextButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
-        self.nextButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.nextButton.layer.shadowOpacity = 1.0
-        self.nextButton.setTitleColor(UIColor.white, for: .normal)
-        self.nextButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        self.nextButton.stylizeDarkColor()
         
     }
     
