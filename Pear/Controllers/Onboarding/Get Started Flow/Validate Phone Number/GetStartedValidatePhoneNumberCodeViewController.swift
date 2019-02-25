@@ -10,21 +10,17 @@ import UIKit
 import FirebaseAuth
 
 class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
-    
 
     @IBOutlet weak var hiddenInputField: UITextField!
-    
-    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var verificationView: UIView!
-    
     @IBOutlet weak var subtitleLabel: UILabel!
-    
+    @IBOutlet weak var resendCodeButton: UIButton!
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
     var numberLabels: [UILabel] = []
     var circleViews: [UIView] = []
     var gettingStartedData: GetttingStartedData!
     var verificationID: String!
-    
     var isVerifying: Bool = false
     
     /// Factory method for creating this view controller.
@@ -39,36 +35,6 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
         return vc
     }
 
-    @IBAction func nextButtonClicked(_ sender: Any) {
-        
-        
-//        // 3. Get Firebase Verify ID token.
-//        authData!.user.getIDTokenForcingRefresh(true) { token, error in
-//            if let error = error {
-//                self.alert(title: "Auth Error", message: error.localizedDescription)
-//                return
-//            }
-//
-//            guard let token = token else {
-//                self.alert(title: "Auth Error", message: "Unknown error occurred")
-//                return
-//            }
-//            // 4. Trade ID token for our own auth token.
-//            self.authAPI.login(with: .firebase(token: token)) { result in
-//                self.hideLoadingIndicator()
-//                switch result {
-//                case .success:
-//                    guard let user = authData?.user else { return }
-//
-//                    break
-//                case .failure(let error):
-//                    self.alert(title: "Auth Error", message: error.localizedDescription)
-//                }
-//            }
-//        }
-
-    }
-    
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -76,6 +42,32 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
     @IBAction func verificationViewClicked(_ sender: Any) {
         self.hiddenInputField.becomeFirstResponder()
     }
+    
+    
+    @IBAction func resendCodeButtonClicked(_ sender: Any) {
+        self.hiddenInputField.text = ""
+        self.updateCodeNumberLabels()
+        if let phoneNumber = self.gettingStartedData.userPhoneNumber{
+            let fullPhoneNumber = "+1" + phoneNumber
+            PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+                if let error = error {
+                    HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+                    self.alert(title: "Error validating Phone Number", message: error.localizedDescription)
+                    return
+                }
+                
+                guard let verificationID = verificationID else { return }
+                // Sign in using the verificationID and the code sent to the user
+                // ...
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                
+                HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+            }
+        }
+
+    }
+    
+    
 }
 
 
@@ -88,13 +80,25 @@ extension GetStartedValidatePhoneNumberCodeViewController{
         self.stylize()
         self.setupVerificationView()
         self.updateCodeNumberLabels()
+        self.addKeyboardSizeNotifications()
     }
+    
     
     func stylize(){
         if let phoneNumber = self.gettingStartedData.userPhoneNumber{
             self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
         }
+        
+        self.resendCodeButton.backgroundColor = UIColor.white
+        self.resendCodeButton.layer.cornerRadius = self.resendCodeButton.frame.height / 2.0
+        self.resendCodeButton.layer.shadowRadius = 1
+        self.resendCodeButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
+        self.resendCodeButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.resendCodeButton.layer.shadowOpacity = 1.0
+        self.resendCodeButton.setTitleColor(Config.textFontColor, for: .normal)
+        self.resendCodeButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
     }
+    
 
     func setupVerificationView(){
         let sideInsets: CGFloat = 30
@@ -119,6 +123,12 @@ extension GetStartedValidatePhoneNumberCodeViewController{
             self.verificationView.addSubview(numberLabel)
         }
     }
+    
+    func addKeyboardSizeNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedValidatePhoneNumberCodeViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedValidatePhoneNumberCodeViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+
     
 }
 
@@ -178,9 +188,30 @@ extension GetStartedValidatePhoneNumberCodeViewController: UITextFieldDelegate{
                 }
             }
         }
-        
-        
     }
 
+}
+
+// MARK: - Keybaord Size Notifications
+extension GetStartedValidatePhoneNumberCodeViewController{
+    
+    @objc func keyboardWillChange(notification: Notification){
+        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let bottomSpacing: CGFloat = 20
+        self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + bottomSpacing
+        
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification){
+        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        self.nextButtonBottomConstraint.constant = 0
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+    }
     
 }
