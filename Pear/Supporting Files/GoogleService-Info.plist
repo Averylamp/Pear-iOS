@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>318488906543-3qge48b6ibtkp8g9gtm0sho8kqd7q6b7.apps.googleusercontent.com</string>
+	<string>808130294159-q5r6qg4v9gld59h71cfubdm21k1ajalm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.318488906543-3qge48b6ibtkp8g9gtm0sho8kqd7q6b7</string>
+	<string>com.googleusercontent.apps.808130294159-q5r6qg4v9gld59h71cfubdm21k1ajalm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD363XyE4DuqV1CeRIlIp4RC821FT7fr9Q</string>
+	<string>AIzaSyBFrwz40lVGXq5DuRPvDNuoh_7QmNVRJV4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>318488906543</string>
+	<string>808130294159</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.pear.pearapp</string>
 	<key>PROJECT_ID</key>
-	<string>pear-5f60f</string>
+	<string>pear-59123</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pear-5f60f.appspot.com</string>
+	<string>pear-59123.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:318488906543:ios:ec7c2c54d9a37049</string>
+	<string>1:808130294159:ios:ec7c2c54d9a37049</string>
 	<key>DATABASE_URL</key>
-	<string>https://pear-5f60f.firebaseio.com</string>
+	<string>https://pear-59123.firebaseio.com</string>
 </dict>
 </plist>

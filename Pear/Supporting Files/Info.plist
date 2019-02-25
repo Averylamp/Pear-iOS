@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.318488906543-3qge48b6ibtkp8g9gtm0sho8kqd7q6b7</string>
+				<string>com.googleusercontent.apps.808130294159-q5r6qg4v9gld59h71cfubdm21k1ajalm</string>
 			</array>
 		</dict>
 	</array>
@@ -55,6 +55,26 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>To find your latest and greatest photos!</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Quick!  Take a photo of them before they run away!</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To find your latest and greatest photos!</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FredokaOne-Regular.ttf</string>
+		<string>SF-Pro-Display-Medium.otf</string>
+		<string>SF-Pro-Display-Regular.otf</string>
+		<string>SF-Pro-Display-Light.otf</string>
+		<string>Nunito-Black.tff</string>
+		<string>Nunito-Bold.tff</string>
+		<string>Nunito-ExtraBold.ttf</string>
+		<string>Nunito-ExtraLight.ttf</string>
+		<string>Nunito-Light.ttf</string>
+		<string>Nunito-Regular.ttf</string>
+		<string>Nunito-SemiBold.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -71,26 +91,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>To find your latest and greatest photos!</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To find your latest and greatest photos!</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Quick!  Take a photo of them before they run away!</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>FredokaOne-Regular.ttf</string>
-		<string>SF-Pro-Display-Medium.otf</string>
-		<string>SF-Pro-Display-Regular.otf</string>
-		<string>SF-Pro-Display-Light.otf</string>
-		<string>Nunito-Black.tff</string>
-		<string>Nunito-Bold.tff</string>
-		<string>Nunito-ExtraBold.ttf</string>
-		<string>Nunito-ExtraLight.ttf</string>
-		<string>Nunito-Light.ttf</string>
-		<string>Nunito-Regular.ttf</string>
-		<string>Nunito-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>
