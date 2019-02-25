@@ -52,7 +52,7 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
             self.resendCodeButton.isEnabled = false
             let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40), type: NVActivityIndicatorType.ballScaleRippleMultiple, color: Config.textFontColor, padding: 0)
             self.view.addSubview(activityIndicator)
-            activityIndicator.center = CGPoint(x: self.verificationView.center.x, y: self.verificationView.frame.origin.y + self.verificationView.frame.height + 40)
+            activityIndicator.center = CGPoint(x: self.view.center.x, y: self.verificationView.frame.origin.y + self.verificationView.frame.height + 40)
             activityIndicator.startAnimating()
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
                 activityIndicator.stopAnimating()
