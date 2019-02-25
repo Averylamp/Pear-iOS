@@ -42,7 +42,7 @@ class GetStartedShortBioViewController: UIViewController {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveBio()
         if self.gettingStartedData.profileData.shortBio.count < 50 {
             let alertController = UIAlertController(title: nil, message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?", preferredStyle: .alert)
@@ -66,7 +66,7 @@ class GetStartedShortBioViewController: UIViewController {
     
     
     @IBAction func sampleButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         let sampleBiosVC = GetStartedSampleBiosViewController.instantiate()
         self.present(sampleBiosVC, animated: true, completion: nil)
     }

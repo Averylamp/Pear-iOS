@@ -69,7 +69,7 @@ class GetStartedDoDontViewController: UIViewController {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
         if self.gettingStartedData.profileData.doList.count == 0{
             self.alert(title: "Incomplete Field", message: "Please add a Do for your friend")
@@ -84,7 +84,7 @@ class GetStartedDoDontViewController: UIViewController {
     }
     
     @IBAction func sampleButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         let sampleBiosVC = GetStartedSampleBiosViewController.instantiate()
         self.present(sampleBiosVC, animated: true, completion: nil)
     }

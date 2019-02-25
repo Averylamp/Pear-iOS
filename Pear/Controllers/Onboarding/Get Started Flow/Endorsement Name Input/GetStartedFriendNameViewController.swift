@@ -37,7 +37,7 @@ class GetStartedFriendNameViewController: UIViewController {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         if let userName = inputTextField.text{
             self.gettingStartedData.profileData.fullName = userName
             let splitNames = userName.splitIntoFirstLastName()
