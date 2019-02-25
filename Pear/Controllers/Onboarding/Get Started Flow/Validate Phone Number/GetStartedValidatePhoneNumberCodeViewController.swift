@@ -125,7 +125,7 @@ extension GetStartedValidatePhoneNumberCodeViewController{
         let fullUsableSpace: CGFloat = self.verificationView.frame.width - (2 * sideInsets)
         let lineWidth: CGFloat = (fullUsableSpace - (5 * numberSpacing) ) / 6.0
         for i in 0..<6{
-            let circleView = UIView(frame: CGRect(x: sideInsets + CGFloat(i) * ( lineWidth + numberSpacing) , y: self.verificationView.frame.height - 1, width: lineWidth, height: lineWidth))
+            let circleView = UIView(frame: CGRect(x: sideInsets + CGFloat(i) * ( lineWidth + numberSpacing) , y: 0, width: lineWidth, height: lineWidth))
             circleView.layer.cornerRadius = lineWidth / 2.0
             circleView.layer.borderWidth = 1
             circleView.layer.borderColor = UIColor(red:0.87, green:0.87, blue:0.87, alpha:1.00).cgColor
@@ -181,7 +181,10 @@ extension GetStartedValidatePhoneNumberCodeViewController: UITextFieldDelegate{
                     self.updateCodeNumberLabels()
                 }
                 HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-                self.alert(title: "Done", message: "Nice job")
+                self.gettingStartedData.phoneNumberVerified = true
+                
+                let chooseFlowVC = GetStartedChooseFlowViewController.instantiate(gettingStartedData: self.gettingStartedData)
+                self.navigationController?.setViewControllers([chooseFlowVC], animated: true)
             }
         }
         

@@ -16,7 +16,7 @@ class GetttingStartedData {
     var userLastName: String?
     var userEmail: String?
     var userPhoneNumber: String?
-    
+    var phoneNumberVerified: Bool = false
     init(){
         
     }

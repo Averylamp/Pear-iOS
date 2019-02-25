@@ -44,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozt-TU-Vu3">
-                                <rect key="frame" x="0.0" y="158.5" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="174.5" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Wdw-qx-9Se"/>
@@ -85,7 +85,7 @@
                             <constraint firstItem="Ozt-TU-Vu3" firstAttribute="centerX" secondItem="UjZ-k3-3y6" secondAttribute="centerX" id="TEZ-Lc-lsu"/>
                             <constraint firstItem="dJ9-P3-gJZ" firstAttribute="leading" secondItem="UjZ-k3-3y6" secondAttribute="leading" constant="20" id="VfV-pi-Wzs"/>
                             <constraint firstItem="Ozt-TU-Vu3" firstAttribute="width" secondItem="Bju-q8-n2T" secondAttribute="width" id="ZET-Kv-mx1"/>
-                            <constraint firstItem="Ozt-TU-Vu3" firstAttribute="top" secondItem="dIm-pp-vX7" secondAttribute="bottom" id="cVa-w2-AcW"/>
+                            <constraint firstItem="Ozt-TU-Vu3" firstAttribute="top" secondItem="dIm-pp-vX7" secondAttribute="bottom" constant="16" id="cVa-w2-AcW"/>
                             <constraint firstItem="dIm-pp-vX7" firstAttribute="centerX" secondItem="B8U-jo-Rza" secondAttribute="centerX" id="ho2-Kw-seH"/>
                             <constraint firstItem="UjZ-k3-3y6" firstAttribute="trailing" secondItem="B8U-jo-Rza" secondAttribute="trailing" constant="50" id="iOV-Ow-8Vp"/>
                             <constraint firstItem="dIm-pp-vX7" firstAttribute="width" secondItem="B8U-jo-Rza" secondAttribute="width" id="odf-1L-9yf"/>
