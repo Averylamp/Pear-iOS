@@ -15,6 +15,7 @@ class LandingScreenViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    var gettingStarted: Bool = false
     
     /// Factory method for creating this view controller.
     ///
@@ -109,9 +110,14 @@ private extension LandingScreenViewController{
     }
     
     @objc func signupButtonClicked(sender:UIButton){
+        guard !self.gettingStarted else { return }
+        self.gettingStarted = true
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         let inputNameVC = GetStartedYourNameViewController.instantiate(gettingStartedData: GetttingStartedData())
         self.navigationController?.pushViewController(inputNameVC, animated: true)
+        self.delay(delay: 1.0) {
+            self.gettingStarted = false
+        }
     }
     
     @objc func loginButtonClicked(sender:UIButton){

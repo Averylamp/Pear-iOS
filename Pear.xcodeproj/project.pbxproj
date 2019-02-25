@@ -33,6 +33,7 @@
 		BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */; };
 		BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */; };
 		BB33E74B2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */; };
+		BB33E74D22248B5A001BFA8F /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74C22248B5A001BFA8F /* UIViewControllerExtensions.swift */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
 		BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */; };
 		BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */; };
@@ -163,6 +164,7 @@
 		BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSeeSamplesViewController.swift; sourceTree = "<group>"; };
 		BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSeeSamplesViewController.storyboard; sourceTree = "<group>"; };
 		BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseFlowViewController.storyboard; sourceTree = "<group>"; };
+		BB33E74C22248B5A001BFA8F /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
 		BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationViewController.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				BB686E3C22120E64008A263C /* StringExtensions.swift */,
 				BB686E44221231FA008A263C /* UIImageExtensions.swift */,
 				BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */,
+				BB33E74C22248B5A001BFA8F /* UIViewControllerExtensions.swift */,
 				BB57151A22159D8F00EF9C4A /* UIButtonExtensions.swift */,
 				BB686E3E22120F1A008A263C /* Config.swift */,
 				BB686E4822126706008A263C /* ExpandingTextViewController.swift */,
@@ -1073,6 +1076,7 @@
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* UserProfileAPI.swift in Sources */,
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
+				BB33E74D22248B5A001BFA8F /* UIViewControllerExtensions.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageAllSizesRepresentation.swift in Sources */,
 				BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
