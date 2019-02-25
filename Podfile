@@ -9,6 +9,6 @@ target 'Pear' do
   pod 'FacebookShare'
   pod 'SDWebImage'
   pod 'SwiftyJSON'
-  pod 'SwiftSpinner'
+  pod 'NVActivityIndicatorView'
 
 end
