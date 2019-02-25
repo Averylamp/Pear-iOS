@@ -27,11 +27,13 @@ class GetStartedSeeSamplesViewController: UIViewController {
     }
     
     @IBAction func seeSamplesButtonClicked(_ sender: Any) {
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         let endorsementNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(endorsementNameVC, animated: true)
     }
     
     @IBAction func skipButtonClicked(_ sender: Any) {
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         let endorsementNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(endorsementNameVC, animated: true)
 

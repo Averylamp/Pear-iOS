@@ -26,12 +26,13 @@ class GetStartedChooseFlowViewController: UIViewController {
     }
     
     @IBAction func createFriendProfileClicked(_ sender: Any) {
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         let seeSamplesVC = GetStartedSeeSamplesViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(seeSamplesVC, animated: true)
     }
     
     @IBAction func requestProfileClicked(_ sender: Any) {
-        
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         
     }
     

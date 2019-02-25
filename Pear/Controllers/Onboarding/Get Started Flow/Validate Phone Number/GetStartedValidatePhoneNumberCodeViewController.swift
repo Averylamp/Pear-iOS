@@ -108,14 +108,7 @@ extension GetStartedValidatePhoneNumberCodeViewController{
             self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
         }
         
-        self.resendCodeButton.backgroundColor = UIColor.white
-        self.resendCodeButton.layer.cornerRadius = self.resendCodeButton.frame.height / 2.0
-        self.resendCodeButton.layer.shadowRadius = 1
-        self.resendCodeButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
-        self.resendCodeButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.resendCodeButton.layer.shadowOpacity = 1.0
-        self.resendCodeButton.setTitleColor(Config.textFontColor, for: .normal)
-        self.resendCodeButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        self.resendCodeButton.stylizeLightColor()
     }
     
 
@@ -182,6 +175,7 @@ extension GetStartedValidatePhoneNumberCodeViewController: UITextFieldDelegate{
                 }
                 HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                 self.gettingStartedData.phoneNumberVerified = true
+                
                 
                 let chooseFlowVC = GetStartedChooseFlowViewController.instantiate(gettingStartedData: self.gettingStartedData)
                 self.navigationController?.setViewControllers([chooseFlowVC], animated: true)

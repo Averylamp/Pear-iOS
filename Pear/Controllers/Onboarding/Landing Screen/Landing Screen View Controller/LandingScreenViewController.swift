@@ -54,24 +54,10 @@ extension LandingScreenViewController{
 // MARK: - Styling
 extension LandingScreenViewController{
     func styleButtons(){
-        signupButton.layer.shadowRadius = 1
-        signupButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        signupButton.layer.shadowColor = UIColor.black.cgColor
-        signupButton.layer.shadowOpacity = 0.4
-        signupButton.layer.cornerRadius = self.signupButton.frame.height / 2
-        signupButton.setTitleColor(UIColor.white, for: .normal)
-        signupButton.layer.backgroundColor = Config.textFontColor.cgColor
-        signupButton.titleLabel?.font = UIFont(name: Config.textFontExtraBold, size: 18)
-        signupButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
+        self.signupButton.stylizeDarkColor()
+        self.signupButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
         
-        loginButton.layer.shadowRadius = 1
-        loginButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        loginButton.layer.shadowColor = UIColor.black.cgColor
-        loginButton.layer.shadowOpacity = 0.4
-        loginButton.layer.cornerRadius = self.loginButton.frame.height / 2
-        loginButton.setTitleColor(Config.textFontColor, for: .normal)
-        loginButton.layer.backgroundColor = UIColor.white.cgColor
-        loginButton.titleLabel?.font = UIFont(name: Config.textFontExtraBold, size: 18)
+        self.loginButton.stylizeLightColor()
         loginButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
     }
     
