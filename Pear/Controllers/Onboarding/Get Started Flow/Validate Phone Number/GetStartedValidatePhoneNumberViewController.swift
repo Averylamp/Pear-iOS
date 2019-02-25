@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseAuth
-import SwiftSpinner
 
 class GetStartedValidatePhoneNumberViewController: UIViewController {
     
@@ -43,9 +42,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
             self.nextButton.backgroundColor = UIColor.white
             self.nextButton.setTitleColor(Config.nextButtonColor, for: .normal)
             self.nextButton.isEnabled = false
-            SwiftSpinner.show("Verifying human qualities")
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
-                SwiftSpinner.hide()
                 self.inputTextField.textColor = Config.textFontColor
                 self.inputTextField.isEnabled = true
                 self.nextButton.backgroundColor = Config.nextButtonColor
