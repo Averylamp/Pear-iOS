@@ -31,7 +31,7 @@
                                 </constraints>
                                 <state key="normal" image="onboarding-back-button"/>
                                 <connections>
-                                    <action selector="backButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="8CF-Sm-Cdp"/>
+                                    <action selector="backButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="vQZ-jC-zpI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They identify as..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rZr-Ry-rXd">
@@ -48,7 +48,7 @@
                                 </constraints>
                                 <state key="normal" title="Female"/>
                                 <connections>
-                                    <action selector="seeSamplesButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="u0c-6x-FJe"/>
+                                    <action selector="chooseGenderButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="myj-a7-rnQ"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender-female" translatesAutoresizingMaskIntoConstraints="NO" id="8X7-GA-Bmf">
@@ -66,7 +66,7 @@
                                 </constraints>
                                 <state key="normal" title="Male"/>
                                 <connections>
-                                    <action selector="seeSamplesButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="hLE-M4-GrL"/>
+                                    <action selector="chooseGenderButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="LT9-Rb-JZr"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender-male" translatesAutoresizingMaskIntoConstraints="NO" id="Icb-CL-gsL">
@@ -84,7 +84,7 @@
                                 </constraints>
                                 <state key="normal" title="Nonbinary"/>
                                 <connections>
-                                    <action selector="seeSamplesButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="z7J-tp-IHw"/>
+                                    <action selector="chooseGenderButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="iyM-N5-fqe"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender-nonbinary" translatesAutoresizingMaskIntoConstraints="NO" id="5ym-h2-pBl">
@@ -125,7 +125,6 @@
                         <outlet property="femaleButton" destination="u1t-Uo-F03" id="oca-mO-qoi"/>
                         <outlet property="maleButton" destination="s3y-yT-P1l" id="qIa-mx-ikF"/>
                         <outlet property="nonbinaryButton" destination="6wL-mM-6zf" id="vFO-A8-s1S"/>
-                        <outlet property="seeSamplesButton" destination="u1t-Uo-F03" id="PK4-nw-NPC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxH-gj-6qC" userLabel="First Responder" sceneMemberID="firstResponder"/>

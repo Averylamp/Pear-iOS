@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 import MapKit
 
+enum GenderEnum: String {
+    case male = "male"
+    case female = "female"
+    case nonbinary = "nonbinary"
+}
+
 class ProfileData {
     
     var firstName: String
@@ -18,6 +24,7 @@ class ProfileData {
     var endorsedFullName: String? = nil
     var endorsedFirstName: String? = nil
     var endorsedLastName: String? = nil
+    var gender: GenderEnum? = nil
     var age: Int
     var interests: [String]
     var shortBio: String
