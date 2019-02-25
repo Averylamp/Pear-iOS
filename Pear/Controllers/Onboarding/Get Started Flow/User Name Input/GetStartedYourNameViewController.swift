@@ -16,6 +16,9 @@ class GetStartedYourNameViewController: UIViewController {
     var gettingStartedData: GetttingStartedData!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -70,6 +73,7 @@ extension GetStartedYourNameViewController{
         }
         self.inputTextField.becomeFirstResponder()
         self.styleViews()
+        self.addKeyboardSizeNotifications()
     }
     
     func styleViews(){
@@ -84,6 +88,36 @@ extension GetStartedYourNameViewController{
         self.nextButton.setTitleColor(UIColor.white, for: .normal)
         self.nextButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
         
+    }
+    
+    func addKeyboardSizeNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedYourNameViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedYourNameViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+}
+
+// MARK: - Keybaord Size Notifications
+extension GetStartedYourNameViewController{
+    
+    @objc func keyboardWillChange(notification: Notification){
+        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let bottomSpacing: CGFloat = 20
+        self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + bottomSpacing
+        print("Changing nextbuttton bottom constriant \(self.nextButtonBottomConstraint.constant)")
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification){
+        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        self.nextButtonBottomConstraint.constant = 0
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
     }
     
 }
