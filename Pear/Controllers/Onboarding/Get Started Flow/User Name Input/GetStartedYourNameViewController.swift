@@ -85,6 +85,7 @@ extension GetStartedYourNameViewController{
         self.nextButton.layer.shadowRadius = 1
         self.nextButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
         self.nextButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.nextButton.layer.shadowOpacity = 1.0
         self.nextButton.setTitleColor(UIColor.white, for: .normal)
         self.nextButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
         

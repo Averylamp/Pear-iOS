@@ -17,9 +17,6 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     var gettingStartedData: GetttingStartedData!
-    var formattingPattern = "***-***-****"
-    var replacementChar: Character = "*"
-    
 
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
 
@@ -41,7 +38,17 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
         if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
             let fullPhoneNumber = "+1" + phoneNumber
             print("Verifying phone number")
+            self.inputTextField.textColor = UIColor.lightGray
+            self.inputTextField.isEnabled = false
+            self.nextButton.backgroundColor = UIColor.white
+            self.nextButton.setTitleColor(Config.nextButtonColor, for: .normal)
+            self.nextButton.isEnabled = false
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+                self.inputTextField.textColor = Config.textFontColor
+                self.inputTextField.isEnabled = true
+                self.nextButton.backgroundColor = Config.nextButtonColor
+                self.nextButton.setTitleColor(UIColor.white, for: .normal)
+                self.nextButton.isEnabled = true
                 if let error = error {
                     self.alert(title: "Error validating Phone Number", message: error.localizedDescription)
                     HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
@@ -92,6 +99,8 @@ extension GetStartedValidatePhoneNumberViewController{
         }else{
             self.titleLabel.text = "Hi!  To verify you, we need your phone #"
         }
+        
+        self.inputTextField.textColor = Config.textFontColor
         
         self.nextButton.backgroundColor = Config.nextButtonColor
         self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
