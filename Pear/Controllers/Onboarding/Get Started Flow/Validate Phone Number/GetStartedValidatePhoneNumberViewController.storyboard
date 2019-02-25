@@ -53,7 +53,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="phonePad" textContentType="tel"/>
                             </textField>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-eW-G7e">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-eW-G7e">
                                 <rect key="frame" x="0.0" y="215.5" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -103,6 +103,7 @@
                             <constraint firstItem="Fv1-5N-C2J" firstAttribute="top" secondItem="STQ-yZ-tvD" secondAttribute="bottom" constant="8" id="jMF-xs-Bj4"/>
                             <constraint firstItem="Ahu-RM-LPZ" firstAttribute="centerY" secondItem="jIS-bo-o7c" secondAttribute="centerY" id="m3q-hc-ei8"/>
                             <constraint firstItem="fIr-OA-8xf" firstAttribute="trailing" secondItem="jIS-bo-o7c" secondAttribute="trailing" constant="20" id="rGv-wU-ouC"/>
+                            <constraint firstItem="xg4-eW-G7e" firstAttribute="centerX" secondItem="fIr-OA-8xf" secondAttribute="centerX" id="rkj-EO-0B4"/>
                             <constraint firstItem="fIr-OA-8xf" firstAttribute="trailing" secondItem="vkl-tB-qxS" secondAttribute="trailing" constant="20" id="sBV-7g-KSu"/>
                             <constraint firstItem="5wb-Ds-Kgp" firstAttribute="leading" secondItem="fIr-OA-8xf" secondAttribute="leading" constant="16" id="wHt-fp-oz4"/>
                             <constraint firstItem="fIr-OA-8xf" firstAttribute="trailing" secondItem="Ahu-RM-LPZ" secondAttribute="trailing" constant="16" id="zMV-hf-76g"/>
