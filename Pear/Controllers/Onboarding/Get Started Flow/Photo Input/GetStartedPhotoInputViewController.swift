@@ -47,7 +47,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveImages()
         if self.gettingStartedData.profileData.images.count == 0 {
             self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")

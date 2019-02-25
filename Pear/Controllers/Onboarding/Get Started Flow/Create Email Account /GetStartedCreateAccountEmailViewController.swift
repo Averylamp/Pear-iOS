@@ -38,7 +38,7 @@ class GetStartedCreateAccountEmailViewController: UIViewController {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         
         self.saveUserEmail()
         let emailPasswordVC = GetStartedCreateAccountEmailPasswordViewController.instantiate(gettingStartedData: gettingStartedData)

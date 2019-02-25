@@ -32,7 +32,7 @@ class GetStartedAgeViewController: UIViewController {
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         
         self.saveAge()
         if self.gettingStartedData.profileData.age < 18{

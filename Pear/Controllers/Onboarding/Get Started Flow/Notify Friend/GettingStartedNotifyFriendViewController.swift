@@ -29,7 +29,7 @@ class GettingStartedNotifyFriendViewController: UIViewController {
     }
     
     @IBAction func sendButton(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveProfileNumber()
         var profiles = FakeProfileData.listOfFakeProfiles()
         profiles.append(self.gettingStartedData.profileData)

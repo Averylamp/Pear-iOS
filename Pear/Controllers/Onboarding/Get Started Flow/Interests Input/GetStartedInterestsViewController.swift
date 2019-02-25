@@ -81,7 +81,7 @@ class GetStartedInterestsViewController: UIViewController {
     
     
     @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveInterests()
         let shortBioVC = GetStartedShortBioViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(shortBioVC, animated: true)
@@ -172,7 +172,7 @@ extension GetStartedInterestsViewController{
     
     func toggleInterestButton(button:UIButton,  initialization: Bool = false){
         if !initialization{
-            HapticFeedbackGenerator.generateHapticFeedback(style: .light)
+            HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         }
         if button.isSelected {
             button.isSelected = false

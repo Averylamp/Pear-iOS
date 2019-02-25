@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Get Started Validate Phone Number Code View Controller-->
         <scene sceneID="tTb-3h-FoQ">
@@ -29,47 +37,63 @@
                                     <action selector="backButtonClicked:" destination="Ado-1d-w6I" eventType="touchUpInside" id="4PE-7x-tbZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verification Code sent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B8U-jo-Rza">
-                                <rect key="frame" x="30" y="100" width="315" height="28"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Woot! Enter the code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B8U-jo-Rza">
+                                <rect key="frame" x="50" y="88" width="275" height="38.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-IB-Ulf">
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-IB-Ulf">
                                 <rect key="frame" x="139" y="535" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
-                                <connections>
-                                    <action selector="textFieldChanged:" destination="Ado-1d-w6I" eventType="editingDidEnd" id="z7R-7k-rGM"/>
-                                    <action selector="textFieldChanged:" destination="Ado-1d-w6I" eventType="editingChanged" id="znG-7J-fQv"/>
-                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozt-TU-Vu3">
-                                <rect key="frame" x="0.0" y="148" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="158.5" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="Wdw-qx-9Se"/>
+                                    <constraint firstAttribute="height" constant="50" id="Wdw-qx-9Se"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sent to " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dIm-pp-vX7">
+                                <rect key="frame" x="50" y="138.5" width="275" height="20"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyY-LD-Kif">
+                                <rect key="frame" x="0.0" y="158.5" width="375" height="50"/>
+                                <connections>
+                                    <action selector="verificationViewClicked:" destination="Ado-1d-w6I" eventType="touchUpInside" id="xFz-eo-dEe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="B8U-jo-Rza" firstAttribute="top" secondItem="dJ9-P3-gJZ" secondAttribute="bottom" constant="20" id="3jf-5m-aBM"/>
+                            <constraint firstItem="B8U-jo-Rza" firstAttribute="top" secondItem="dJ9-P3-gJZ" secondAttribute="bottom" constant="8" id="3jf-5m-aBM"/>
                             <constraint firstItem="dJ9-P3-gJZ" firstAttribute="top" secondItem="UjZ-k3-3y6" secondAttribute="top" constant="20" id="8k3-U8-sve"/>
                             <constraint firstItem="B8U-jo-Rza" firstAttribute="centerX" secondItem="UjZ-k3-3y6" secondAttribute="centerX" id="GZU-xr-C7P"/>
+                            <constraint firstItem="FyY-LD-Kif" firstAttribute="centerX" secondItem="Ozt-TU-Vu3" secondAttribute="centerX" id="RpZ-jf-UrV"/>
+                            <constraint firstItem="FyY-LD-Kif" firstAttribute="width" secondItem="Ozt-TU-Vu3" secondAttribute="width" id="SE5-qO-fLM"/>
                             <constraint firstItem="Ozt-TU-Vu3" firstAttribute="centerX" secondItem="UjZ-k3-3y6" secondAttribute="centerX" id="TEZ-Lc-lsu"/>
                             <constraint firstItem="dJ9-P3-gJZ" firstAttribute="leading" secondItem="UjZ-k3-3y6" secondAttribute="leading" constant="20" id="VfV-pi-Wzs"/>
                             <constraint firstItem="Ozt-TU-Vu3" firstAttribute="width" secondItem="Bju-q8-n2T" secondAttribute="width" id="ZET-Kv-mx1"/>
-                            <constraint firstItem="Ozt-TU-Vu3" firstAttribute="top" secondItem="B8U-jo-Rza" secondAttribute="bottom" constant="20" id="en4-Nz-4EA"/>
-                            <constraint firstItem="UjZ-k3-3y6" firstAttribute="trailing" secondItem="B8U-jo-Rza" secondAttribute="trailing" constant="30" id="iOV-Ow-8Vp"/>
-                            <constraint firstItem="B8U-jo-Rza" firstAttribute="leading" secondItem="UjZ-k3-3y6" secondAttribute="leading" constant="30" id="sOu-tX-8jx"/>
+                            <constraint firstItem="FyY-LD-Kif" firstAttribute="height" secondItem="Ozt-TU-Vu3" secondAttribute="height" id="bm1-1j-NWx"/>
+                            <constraint firstItem="Ozt-TU-Vu3" firstAttribute="top" secondItem="dIm-pp-vX7" secondAttribute="bottom" id="cVa-w2-AcW"/>
+                            <constraint firstItem="dIm-pp-vX7" firstAttribute="centerX" secondItem="B8U-jo-Rza" secondAttribute="centerX" id="ho2-Kw-seH"/>
+                            <constraint firstItem="UjZ-k3-3y6" firstAttribute="trailing" secondItem="B8U-jo-Rza" secondAttribute="trailing" constant="50" id="iOV-Ow-8Vp"/>
+                            <constraint firstItem="dIm-pp-vX7" firstAttribute="width" secondItem="B8U-jo-Rza" secondAttribute="width" id="odf-1L-9yf"/>
+                            <constraint firstItem="FyY-LD-Kif" firstAttribute="centerY" secondItem="Ozt-TU-Vu3" secondAttribute="centerY" id="s91-ua-JAA"/>
+                            <constraint firstItem="B8U-jo-Rza" firstAttribute="leading" secondItem="UjZ-k3-3y6" secondAttribute="leading" constant="50" id="sOu-tX-8jx"/>
+                            <constraint firstItem="dIm-pp-vX7" firstAttribute="top" secondItem="B8U-jo-Rza" secondAttribute="bottom" constant="12" id="tx2-bf-oNQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UjZ-k3-3y6"/>
                     </view>
                     <connections>
                         <outlet property="hiddenInputField" destination="P6O-IB-Ulf" id="tK8-lK-opb"/>
+                        <outlet property="subtitleLabel" destination="dIm-pp-vX7" id="YhC-Hl-u1W"/>
                         <outlet property="verificationView" destination="Ozt-TU-Vu3" id="7Pf-ix-rKe"/>
                     </connections>
                 </viewController>
