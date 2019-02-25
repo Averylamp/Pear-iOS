@@ -141,7 +141,9 @@ extension LandingScreenViewController: UIScrollViewDelegate{
         pageControl.currentPage = Int(pageIndex)
         let percentOffset: CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
         
-        if(percentOffset > 0 && percentOffset <= 0.25) {
+        if (percentOffset < 0) {
+            pages[0].scaleImageView(percent: 1 + ((percentOffset) * 4), before: true)
+        }else if(percentOffset > 0 && percentOffset <= 0.25) {
             pages[0].scaleImageView(percent: 1 - ((percentOffset) * 4), before: false)
             pages[1].scaleImageView(percent: percentOffset * 4, before: true)
         } else if(percentOffset > 0.25 && percentOffset <= 0.50) {
@@ -152,6 +154,9 @@ extension LandingScreenViewController: UIScrollViewDelegate{
             pages[3].scaleImageView(percent: (percentOffset - 0.5) * 4, before: true)
         }else if(percentOffset > 0.75 && percentOffset <= 1) {
             pages[3].scaleImageView(percent: 1 - (percentOffset - 0.75) * 4, before: false)
+            if (percentOffset > 0.8) {
+                self.signupButtonClicked(sender: UIButton())
+            }
         }
     }
     
