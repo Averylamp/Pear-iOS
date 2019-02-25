@@ -37,14 +37,8 @@
                                     <action selector="backButtonClicked:" destination="DJh-4O-bGc" eventType="touchUpInside" id="ZRk-xi-uPn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi!  To verify you, we need your phone #" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fv1-5N-C2J">
-                                <rect key="frame" x="50" y="80" width="275" height="76.5"/>
-                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jIS-bo-o7c">
-                                <rect key="frame" x="44.5" y="176.5" width="310.5" height="40"/>
+                                <rect key="frame" x="44.5" y="208.5" width="310.5" height="40"/>
                                 <color key="tintColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tgN-Im-kcs"/>
@@ -54,14 +48,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="phonePad" textContentType="tel"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-eW-G7e">
-                                <rect key="frame" x="0.0" y="215.5" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="247.5" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="rRl-DJ-zcX"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahu-RM-LPZ">
-                                <rect key="frame" x="333" y="183.5" width="26" height="26"/>
+                                <rect key="frame" x="333" y="215.5" width="26" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="CMg-Kr-1Z1"/>
                                     <constraint firstAttribute="height" constant="26" id="VMB-ca-oH9"/>
@@ -69,7 +63,7 @@
                                 <state key="normal" image="onboarding-clear-text-button"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wb-Ds-Kgp">
-                                <rect key="frame" x="16" y="184.5" width="20.5" height="24"/>
+                                <rect key="frame" x="16" y="216.5" width="20.5" height="24"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -85,6 +79,19 @@
                                     <action selector="nextButtonClicked:" destination="DJh-4O-bGc" eventType="touchUpInside" id="g8g-UK-xdj"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-verify-phone-shield" translatesAutoresizingMaskIntoConstraints="NO" id="Bxt-aG-iHR">
+                                <rect key="frame" x="147.5" y="28" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Bxt-aG-iHR" secondAttribute="height" multiplier="1:1" id="Gop-Hj-D3r"/>
+                                    <constraint firstAttribute="width" constant="80" id="eUD-Cf-X1d"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi!  To verify you, we need your phone #" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fv1-5N-C2J">
+                                <rect key="frame" x="50" y="112" width="275" height="76.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -95,12 +102,14 @@
                             <constraint firstItem="Fv1-5N-C2J" firstAttribute="leading" secondItem="fIr-OA-8xf" secondAttribute="leading" constant="50" id="DmZ-JS-y0L"/>
                             <constraint firstItem="xg4-eW-G7e" firstAttribute="bottom" secondItem="jIS-bo-o7c" secondAttribute="bottom" id="Fjg-LN-Dsw"/>
                             <constraint firstItem="xg4-eW-G7e" firstAttribute="width" secondItem="iPH-Ya-bGf" secondAttribute="width" id="Lk4-tk-mAu"/>
+                            <constraint firstItem="Fv1-5N-C2J" firstAttribute="top" secondItem="Bxt-aG-iHR" secondAttribute="bottom" constant="4" id="OTv-bm-Vlt"/>
                             <constraint firstItem="STQ-yZ-tvD" firstAttribute="leading" secondItem="fIr-OA-8xf" secondAttribute="leading" constant="20" id="SbW-nI-ek3"/>
+                            <constraint firstItem="Bxt-aG-iHR" firstAttribute="centerX" secondItem="fIr-OA-8xf" secondAttribute="centerX" id="T8m-MZ-bwq"/>
                             <constraint firstItem="fIr-OA-8xf" firstAttribute="bottom" secondItem="vkl-tB-qxS" secondAttribute="bottom" constant="320" id="UWw-on-2hi"/>
                             <constraint firstItem="fIr-OA-8xf" firstAttribute="trailing" secondItem="Fv1-5N-C2J" secondAttribute="trailing" constant="50" id="Vcw-UB-5bK"/>
                             <constraint firstItem="vkl-tB-qxS" firstAttribute="leading" secondItem="fIr-OA-8xf" secondAttribute="leading" constant="20" id="bPq-Sz-vC8"/>
                             <constraint firstItem="STQ-yZ-tvD" firstAttribute="top" secondItem="fIr-OA-8xf" secondAttribute="top" constant="12" id="cSx-jt-ndt"/>
-                            <constraint firstItem="Fv1-5N-C2J" firstAttribute="top" secondItem="STQ-yZ-tvD" secondAttribute="bottom" constant="8" id="jMF-xs-Bj4"/>
+                            <constraint firstItem="Bxt-aG-iHR" firstAttribute="top" secondItem="fIr-OA-8xf" secondAttribute="top" constant="8" id="hlt-Cb-Ma6"/>
                             <constraint firstItem="Ahu-RM-LPZ" firstAttribute="centerY" secondItem="jIS-bo-o7c" secondAttribute="centerY" id="m3q-hc-ei8"/>
                             <constraint firstItem="fIr-OA-8xf" firstAttribute="trailing" secondItem="jIS-bo-o7c" secondAttribute="trailing" constant="20" id="rGv-wU-ouC"/>
                             <constraint firstItem="xg4-eW-G7e" firstAttribute="centerX" secondItem="fIr-OA-8xf" secondAttribute="centerX" id="rkj-EO-0B4"/>
@@ -126,5 +135,6 @@
     <resources>
         <image name="onboarding-back-button" width="96" height="96"/>
         <image name="onboarding-clear-text-button" width="14" height="14"/>
+        <image name="onboarding-verify-phone-shield" width="74" height="74"/>
     </resources>
 </document>
