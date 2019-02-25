@@ -32,15 +32,10 @@ class GetStartedYourNameViewController: UIViewController {
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        if let userName = inputTextField.text{
-            self.gettingStartedData.profileData.endorsedFullName = userName
-            self.gettingStartedData.userFullName = userName
-            let splitNames = userName.splitIntoFirstLastName()
-            self.gettingStartedData.userFirstName = splitNames.0
-            self.gettingStartedData.userLastName = splitNames.1
-            self.gettingStartedData.profileData.endorsedFirstName = splitNames.0
-            self.gettingStartedData.profileData.endorsedLastName = splitNames.1
-            if splitNames.0.count < 1{
+        if let userFirstName = inputTextField.text{
+            self.gettingStartedData.userFirstName = userFirstName
+            
+            if userFirstName.count < 1{
                 self.alert(title: "Name Missing", message: "Please enter your name")
                 return
             }
