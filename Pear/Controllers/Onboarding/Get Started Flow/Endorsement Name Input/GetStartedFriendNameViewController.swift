@@ -29,10 +29,18 @@ class GetStartedFriendNameViewController: UIViewController {
         return vc
     }
     
+    @discardableResult
+    func saveEndorsementFirstName() -> String?{
+        if let endorsementFirstName = inputTextField.text{
+            self.gettingStartedData.profileData.endorsedFirstName = endorsementFirstName
+            return endorsementFirstName
+        }
+        return nil
+    }
+    
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        if let endorseeFirstName = inputTextField.text{
-            self.gettingStartedData.profileData.endorsedFirstName = endorseeFirstName
+        if let endorseeFirstName = saveEndorsementFirstName(){
             if endorseeFirstName.count < 1{
                 self.alert(title: "Name Missing", message: "Please enter your name")
                 return
@@ -44,9 +52,7 @@ class GetStartedFriendNameViewController: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
-        if let userName = inputTextField.text{
-            self.gettingStartedData.profileData.endorsedFirstName = userName
-        }
+        self.saveEndorsementFirstName()
         self.navigationController?.popViewController(animated: true)
     }
     
