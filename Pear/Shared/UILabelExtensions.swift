@@ -52,4 +52,9 @@ extension UILabel {
         self.font = UIFont(name: Config.textFontSemiBold, size: 22)
         self.textColor = Config.textFontColor
     }
+    
+    func stylizeSubtitleLabelSmall(){
+        self.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        self.textColor = Config.textFontColor
+    }
 }
