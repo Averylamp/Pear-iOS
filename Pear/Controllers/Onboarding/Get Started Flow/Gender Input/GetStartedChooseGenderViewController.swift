@@ -28,16 +28,27 @@ class GetStartedChooseGenderViewController: UIViewController {
     }
     
     @IBAction func chooseGenderButtonClicked(_ sender: UIButton) {
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+        
         switch sender.tag {
         case 0:
             self.gettingStartedData.profileData.gender = GenderEnum.male
             self.maleButton.stylizeDarkColor()
+            self.femaleButton.stylizeLightColor()
+            self.nonbinaryButton.stylizeLightColor()
+
         case 1:
             self.gettingStartedData.profileData.gender = GenderEnum.female
             self.femaleButton.stylizeDarkColor()
+            self.maleButton.stylizeLightColor()
+            self.nonbinaryButton.stylizeLightColor()
+
         case 2:
             self.gettingStartedData.profileData.gender = GenderEnum.nonbinary
             self.nonbinaryButton.stylizeDarkColor()
+            self.maleButton.stylizeLightColor()
+            self.femaleButton.stylizeLightColor()
+
         default:
             break
         }

@@ -145,6 +145,9 @@ extension GetStartedValidatePhoneNumberViewController: UITextFieldDelegate{
         } else if string.count != 0 {
             if fullString.filter("0123456789".contains).count == 11 && "1" == fullString.filter("0123456789".contains).substring(toIndex: 1){
                 textField.text = String.formatPhoneNumber(phoneNumber: fullString.filter("0123456789".contains).substring(fromIndex: 1))
+                if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
+                    self.nextButtonClicked(self.nextButton)
+                }
             }else{
                 textField.text = String.formatPhoneNumber(phoneNumber: fullString)
             }

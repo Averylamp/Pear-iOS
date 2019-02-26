@@ -13,13 +13,14 @@ class GetStartedShortBioViewController: UIViewController {
     
     var gettingStartedData: GetttingStartedData!
     
-    @IBOutlet weak var inputTextViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textLengthLabel: UILabel!
-    
-    @IBOutlet weak var samplesButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var inputTextView: UITextView!
     
-    @IBOutlet weak var samplesButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    
     let maxTextLength: Int = 600
     
     /// Factory method for creating this view controller.
@@ -77,35 +78,33 @@ class GetStartedShortBioViewController: UIViewController {
 
 // MARK: - Life Cycle
 extension GetStartedShortBioViewController{
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.inputTextView.delegate = self
         self.inputTextView.becomeFirstResponder()
-        self.inputTextView.textContainerInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        self.inputTextView.isScrollEnabled = false
-        
-        self.textLengthLabel.text = "\(self.inputTextView.text.count) / \(maxTextLength)"
-        
-        self.samplesButton.layer.borderWidth = 1
-        self.samplesButton.layer.borderColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:0.1).cgColor
-        self.samplesButton.layer.cornerRadius = 20.0
-        self.view.layoutIfNeeded()
-        let titleWidth = self.samplesButton.titleLabel!.frame.width
-        let starsImage = UIImage(named: "onboarding-icon-samples-stars")
-        self.samplesButton.setImage(starsImage?.imageWith(newSize: CGSize(width: 20, height: 20)), for: .normal)
-        self.samplesButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
-        self.samplesButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
-        let imageWidth = self.samplesButton.imageView!.frame.width
-        let fullSamplesButtonWidth: CGFloat = titleWidth + imageWidth + 40
-        self.samplesButtonWidthConstraint.constant = fullSamplesButtonWidth
-        self.view.layoutIfNeeded()
-        self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
+        self.inputTextView.isScrollEnabled = true
         
         if self.gettingStartedData.profileData.shortBio != "" {
             self.inputTextView.text = self.gettingStartedData.profileData.shortBio
             textViewDidChange(self.inputTextView)
         }
+        
+        self.updateTextLabels()
         self.addDismissKeyboardOnViewClick()
+        self.addKeyboardSizeNotifications()
+        self.stylize()
+    }
+    
+    func stylize(){
+        self.nextButton.stylizeDarkColor()
+        self.titleLabel.stylizeTitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabel()
+        
+        self.inputTextView.layer.borderColor = Config.textFontColor.cgColor
+        self.inputTextView.layer.borderWidth = 1
+        self.inputTextView.layer.cornerRadius = 15
+        self.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     
     func addDismissKeyboardOnViewClick(){
@@ -127,15 +126,42 @@ extension GetStartedShortBioViewController:UITextViewDelegate {
         return true
     }
     
+    func updateTextLabels(){
+        self.textLengthLabel.text = "\(self.inputTextView.text.count) / \(maxTextLength)"
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
-        self.textLengthLabel.text = "\(textView.text.count) / \(maxTextLength)"
-        let textHeight = self.inputTextView.sizeThatFits(CGSize(width: self.inputTextView.frame.width, height: CGFloat.greatestFiniteMagnitude)).height
-        let textPadding: CGFloat = 8.0
-        inputTextViewHeightConstraint.constant = max(34, textPadding + textHeight)
-        UIView.animate(withDuration: 0.3) {
+        self.updateTextLabels()
+    }
+    
+}
+
+
+// MARK: - Keybaord Size Notifications
+extension GetStartedShortBioViewController{
+    
+    func addKeyboardSizeNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedShortBioViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedShortBioViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    @objc func keyboardWillChange(notification: Notification){
+        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let bottomSpacing: CGFloat = 20
+        self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + bottomSpacing
+        UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
         }
-        
+    }
+    
+    @objc func keyboardWillHide(notification: Notification){
+        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        self.nextButtonBottomConstraint.constant = 0
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
     }
     
 }
