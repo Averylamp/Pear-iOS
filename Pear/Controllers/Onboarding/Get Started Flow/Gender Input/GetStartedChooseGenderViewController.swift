@@ -31,10 +31,13 @@ class GetStartedChooseGenderViewController: UIViewController {
         switch sender.tag {
         case 0:
             self.gettingStartedData.profileData.gender = GenderEnum.male
+            self.maleButton.stylizeDarkColor()
         case 1:
             self.gettingStartedData.profileData.gender = GenderEnum.female
+            self.femaleButton.stylizeDarkColor()
         case 2:
             self.gettingStartedData.profileData.gender = GenderEnum.nonbinary
+            self.nonbinaryButton.stylizeDarkColor()
         default:
             break
         }
@@ -42,9 +45,6 @@ class GetStartedChooseGenderViewController: UIViewController {
         let ageVC = GetStartedAgeViewController.instantiate(gettingStartedData: self.gettingStartedData)
         self.navigationController?.pushViewController(ageVC, animated: true)
     }
-    
-    
-    
     
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -72,6 +72,20 @@ extension GetStartedChooseGenderViewController{
         
         self.nonbinaryButton.stylizeLightColor()
         self.nonbinaryButton.tag = 2
+        
+        if let previousGender = self.gettingStartedData.profileData.gender {
+            switch(previousGender){
+            case .male:
+                self.maleButton.stylizeDarkColor()
+                break
+            case .female:
+                self.femaleButton.stylizeDarkColor()
+                break
+            case .nonbinary:
+                self.nonbinaryButton.stylizeDarkColor()
+                break
+            }
+        }
     }
     
     

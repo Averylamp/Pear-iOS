@@ -29,26 +29,27 @@ class GetStartedYourNameViewController: UIViewController {
         return vc
     }
     
+    @discardableResult
+    func saveFirstName() -> String?{
+        if let userFirstName = inputTextField.text{
+            self.gettingStartedData.userFirstName = userFirstName
+            return userFirstName
+        }
+        return nil
+    }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        if let userFirstName = inputTextField.text{
-            self.gettingStartedData.userFirstName = userFirstName
-            
-            if userFirstName.count < 1{
-                self.alert(title: "Name Missing", message: "Please enter your name")
-                return
-            }
-            
+        if let userFirstName = self.saveFirstName(), userFirstName.count > 0{
             let phoneVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: self.gettingStartedData)
             self.navigationController?.pushViewController(phoneVerificationVC, animated: true)
+        }else{
+            self.alert(title: "Name Missing", message: "Please fill out your first name")
         }
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
-        if let userFirstName = inputTextField.text{
-            self.gettingStartedData.userFirstName = userFirstName
-        }
+        self.saveFirstName()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -67,11 +68,11 @@ extension GetStartedYourNameViewController{
             self.inputTextField.text = userFirstName
         }
         self.inputTextField.becomeFirstResponder()
-        self.styleViews()
+        self.stylize()
         self.addKeyboardSizeNotifications()
     }
     
-    func styleViews(){
+    func stylize(){
         self.titleLabel.font = UIFont(name: Config.displayFontRegular, size: 28)
         self.titleLabel.textColor = Config.textFontColor
         
