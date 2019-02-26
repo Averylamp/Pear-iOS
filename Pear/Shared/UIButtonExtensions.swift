@@ -49,7 +49,18 @@ extension UIButton {
     func stylizeDarkColor(){
         self.backgroundColor = Config.nextButtonColor
         self.layer.cornerRadius = self.frame.height / 2.0
-        self.layer.shadowRadius = 1
+        self.layer.shadowRadius = 2
+        self.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowOpacity = 1.0
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+    }
+    
+    func stylizeFacebookColor(){
+        self.backgroundColor = UIColor(red:0.21, green:0.35, blue:0.62, alpha:1.00)
+        self.layer.cornerRadius = self.frame.height / 2.0
+        self.layer.shadowRadius = 2
         self.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowOpacity = 1.0
@@ -60,7 +71,7 @@ extension UIButton {
     func stylizeLightColor(){
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = self.frame.height / 2.0
-        self.layer.shadowRadius = 1
+        self.layer.shadowRadius = 2
         self.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowOpacity = 1.0

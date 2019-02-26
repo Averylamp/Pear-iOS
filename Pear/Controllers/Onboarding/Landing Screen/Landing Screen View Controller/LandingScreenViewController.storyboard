@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="height" constant="50" id="4cn-a6-oKj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Got an account?  Log in here.">
+                                <state key="normal" title="Continue with Email">
                                     <color key="titleColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="height" constant="50" id="7lR-gx-kMu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Get Started">
+                                <state key="normal" title="Continue with Facebook">
                                     <color key="titleColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -70,10 +70,10 @@
                         <viewLayoutGuide key="safeArea" id="PoT-HI-Elf"/>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="BhD-Vv-GXK" id="QA4-I4-fmP"/>
+                        <outlet property="emailButton" destination="BhD-Vv-GXK" id="H6R-cX-daC"/>
+                        <outlet property="facebookButton" destination="s0e-kO-oji" id="qHZ-Fj-zgs"/>
                         <outlet property="pageControl" destination="5aE-wz-PXH" id="N5J-yg-O7Y"/>
                         <outlet property="scrollView" destination="7bP-dS-bgj" id="5lm-GB-nUA"/>
-                        <outlet property="signupButton" destination="s0e-kO-oji" id="d5m-GM-fRk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dK3-Gr-22I" userLabel="First Responder" sceneMemberID="firstResponder"/>
