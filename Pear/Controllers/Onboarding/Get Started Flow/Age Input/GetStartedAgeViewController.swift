@@ -72,16 +72,11 @@ extension GetStartedAgeViewController{
         self.inputTextField.becomeFirstResponder()
         self.inputTextField.delegate = self
         self.stylize()
+        self.addKeyboardSizeNotifications()
     }
     
     func stylize(){
-
         self.nextButton.stylizeDarkColor()
-    }
-    
-    func addKeyboardSizeNotifications(){
-        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedAgeViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedAgeViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
 }
@@ -100,6 +95,11 @@ extension GetStartedAgeViewController: UITextFieldDelegate{
 
 // MARK: - Keybaord Size Notifications
 extension GetStartedAgeViewController{
+    
+    func addKeyboardSizeNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedAgeViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedAgeViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
     
     @objc func keyboardWillChange(notification: Notification){
         let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
