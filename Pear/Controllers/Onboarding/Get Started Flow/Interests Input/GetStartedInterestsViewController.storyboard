@@ -59,6 +59,9 @@
                                     <constraint firstAttribute="height" constant="50" id="XAY-7C-p0V"/>
                                 </constraints>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="zwd-TQ-wlu" eventType="touchUpInside" id="CyA-eS-kbd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
