@@ -14,9 +14,7 @@ class GetStartedDoDontViewController: UIViewController {
     var gettingStartedData: GetttingStartedData!
         
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var samplesButtonWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var samplesButton: UIButton!
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var subtextLabel: UILabel!
     
@@ -98,21 +96,6 @@ extension GetStartedDoDontViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.samplesButton.layer.borderWidth = 1
-        self.samplesButton.layer.borderColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:0.1).cgColor
-        self.samplesButton.layer.cornerRadius = 20.0
-        self.view.layoutIfNeeded()
-        let titleWidth = self.samplesButton.titleLabel!.frame.width
-        let starsImage = UIImage(named: "onboarding-icon-samples-stars")
-        self.samplesButton.setImage(starsImage?.imageWith(newSize: CGSize(width: 20, height: 20)), for: .normal)
-        self.samplesButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 8)
-        self.samplesButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
-        let imageWidth = self.samplesButton.imageView!.frame.width
-        let fullSamplesButtonWidth: CGFloat = titleWidth + imageWidth + 40
-        self.samplesButtonWidthConstraint.constant = fullSamplesButtonWidth
-        self.view.layoutIfNeeded()
-        self.samplesButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
-        
         self.addDoDontGroup()
         self.addKeyboardSizeNotifications()
         self.addDismissKeyboardOnViewClick()
@@ -157,11 +140,6 @@ extension GetStartedDoDontViewController{
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
         self.subtextLabel.text = "Should we bring up The Bachelor?  Ask them about their family? Talk to them about food? Help us out!"
-    }
-    
-    func addKeyboardSizeNotifications(){
-        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedDoDontViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedDoDontViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
     enum DoType {
@@ -385,11 +363,16 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
 // MARK: - Keybaord Size Notifications
 extension GetStartedDoDontViewController{
     
+    func addKeyboardSizeNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedDoDontViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedDoDontViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+    }
+
     @objc func keyboardWillChange(notification: Notification){
         let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
         let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        self.scrollViewBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom
-        if self.scrollViewBottomConstraint.constant > 0 && self.view.frame.height < 600 {
+        self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom
+        if self.nextButtonBottomConstraint.constant > 0 && self.view.frame.height < 600 {
             self.subtextLabel.text = ""
         }
         UIView.animate(withDuration: duration) {
@@ -398,7 +381,7 @@ extension GetStartedDoDontViewController{
     }
     @objc func keyboardWillHide(notification: Notification){
         let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
-        self.scrollViewBottomConstraint.constant = 0
+        self.nextButtonBottomConstraint.constant = 0
         UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
         }

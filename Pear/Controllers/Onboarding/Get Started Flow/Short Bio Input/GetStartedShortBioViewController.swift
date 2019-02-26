@@ -99,13 +99,13 @@ extension GetStartedShortBioViewController{
     func stylize(){
         self.nextButton.stylizeDarkColor()
         self.titleLabel.stylizeTitleLabel()
-        self.subtitleLabel.stylizeSubtitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabelSmall()
         
         self.inputTextView.layer.borderColor = Config.textFontColor.cgColor
         self.inputTextView.layer.borderWidth = 1
         self.inputTextView.layer.cornerRadius = 15
         self.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        self.inputTextView.font = UIFont(name: Config.displayFontRegular, size: 16)
+        self.inputTextView.font = UIFont(name: Config.displayFontRegular, size: 17)
         self.inputTextView.textColor = Config.textFontColor
     }
     
