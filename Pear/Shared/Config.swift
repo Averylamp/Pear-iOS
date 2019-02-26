@@ -15,6 +15,8 @@ class Config{
     
     static let imageAPIHost: URL = URL(string: "http://koala.mit.edu:1337")!
     
+    static let logoFont: String = "FredokaOne-Regular"
+    
     static let displayFontRegular: String = "SFProDisplay-Regular"
     static let displayFontLight: String = "SFProDisplay-Light"
     static let displayFontMedium: String = "SFProDisplay-Medium"
