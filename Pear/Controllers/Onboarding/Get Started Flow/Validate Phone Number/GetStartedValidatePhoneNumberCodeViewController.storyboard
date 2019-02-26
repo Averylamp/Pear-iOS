@@ -57,7 +57,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKf-St-9De">
-                                <rect key="frame" x="20" y="297" width="335" height="50"/>
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LbA-bt-J6W"/>
@@ -79,7 +79,7 @@
                         <constraints>
                             <constraint firstItem="B8U-jo-Rza" firstAttribute="top" secondItem="dJ9-P3-gJZ" secondAttribute="bottom" constant="8" id="3jf-5m-aBM"/>
                             <constraint firstItem="dJ9-P3-gJZ" firstAttribute="top" secondItem="UjZ-k3-3y6" secondAttribute="top" constant="20" id="8k3-U8-sve"/>
-                            <constraint firstItem="UjZ-k3-3y6" firstAttribute="bottom" secondItem="QKf-St-9De" secondAttribute="bottom" constant="320" id="CTs-qm-jY4"/>
+                            <constraint firstItem="UjZ-k3-3y6" firstAttribute="bottom" secondItem="QKf-St-9De" secondAttribute="bottom" constant="20" id="CTs-qm-jY4"/>
                             <constraint firstItem="B8U-jo-Rza" firstAttribute="centerX" secondItem="UjZ-k3-3y6" secondAttribute="centerX" id="GZU-xr-C7P"/>
                             <constraint firstItem="QKf-St-9De" firstAttribute="leading" secondItem="UjZ-k3-3y6" secondAttribute="leading" constant="20" id="Pcu-hC-pCJ"/>
                             <constraint firstItem="Ozt-TU-Vu3" firstAttribute="centerX" secondItem="UjZ-k3-3y6" secondAttribute="centerX" id="TEZ-Lc-lsu"/>

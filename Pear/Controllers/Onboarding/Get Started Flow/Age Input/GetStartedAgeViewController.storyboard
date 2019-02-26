@@ -66,7 +66,7 @@
                                 <state key="normal" image="onboarding-clear-text-button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyq-sA-lOa">
-                                <rect key="frame" x="20" y="297" width="335" height="50"/>
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Ft1-wq-dA9"/>
@@ -90,7 +90,7 @@
                             <constraint firstItem="D0b-Au-U0H" firstAttribute="width" secondItem="lS3-E6-ASZ" secondAttribute="width" id="baf-Hd-jI2"/>
                             <constraint firstItem="D0b-Au-U0H" firstAttribute="bottom" secondItem="DCi-cF-Zf7" secondAttribute="bottom" id="bbM-Xa-Uzl"/>
                             <constraint firstItem="9ts-pD-bXX" firstAttribute="centerY" secondItem="DCi-cF-Zf7" secondAttribute="centerY" id="cBt-E2-DKt"/>
-                            <constraint firstItem="ExT-Ww-MCc" firstAttribute="bottom" secondItem="eyq-sA-lOa" secondAttribute="bottom" constant="320" id="eAw-S7-KpM"/>
+                            <constraint firstItem="ExT-Ww-MCc" firstAttribute="bottom" secondItem="eyq-sA-lOa" secondAttribute="bottom" constant="20" id="eAw-S7-KpM"/>
                             <constraint firstItem="DCi-cF-Zf7" firstAttribute="centerX" secondItem="ExT-Ww-MCc" secondAttribute="centerX" id="gNb-BB-b5i"/>
                             <constraint firstItem="ExT-Ww-MCc" firstAttribute="trailing" secondItem="eyq-sA-lOa" secondAttribute="trailing" constant="20" id="nmX-fE-Ddt"/>
                             <constraint firstItem="FjG-zE-9MY" firstAttribute="centerX" secondItem="ExT-Ww-MCc" secondAttribute="centerX" id="oCc-hJ-sGw"/>

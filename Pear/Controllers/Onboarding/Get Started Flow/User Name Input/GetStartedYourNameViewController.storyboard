@@ -69,7 +69,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9s5-SB-Zym">
-                                <rect key="frame" x="20" y="297" width="335" height="50"/>
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="mtw-rf-Wur"/>
@@ -86,7 +86,7 @@
                             <constraint firstItem="e16-WH-8Ul" firstAttribute="width" secondItem="soc-Ow-m9Z" secondAttribute="width" id="4M7-UF-Y4d"/>
                             <constraint firstItem="wj4-Zf-gro" firstAttribute="top" secondItem="Fv4-2C-F9d" secondAttribute="top" constant="12" id="5F3-aV-iqb"/>
                             <constraint firstItem="wLx-As-bZM" firstAttribute="centerX" secondItem="Fv4-2C-F9d" secondAttribute="centerX" id="66M-9q-BKd"/>
-                            <constraint firstItem="Fv4-2C-F9d" firstAttribute="bottom" secondItem="9s5-SB-Zym" secondAttribute="bottom" constant="320" id="849-3J-BWh"/>
+                            <constraint firstItem="Fv4-2C-F9d" firstAttribute="bottom" secondItem="9s5-SB-Zym" secondAttribute="bottom" constant="20" id="849-3J-BWh"/>
                             <constraint firstItem="wLx-As-bZM" firstAttribute="leading" secondItem="Fv4-2C-F9d" secondAttribute="leading" constant="50" id="CwK-Dm-skz"/>
                             <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="mNn-Sl-5vv" secondAttribute="trailing" constant="16" id="Gk3-v0-tu8"/>
                             <constraint firstItem="Fv4-2C-F9d" firstAttribute="trailing" secondItem="9s5-SB-Zym" secondAttribute="trailing" constant="20" id="J9f-lF-Sx8"/>
