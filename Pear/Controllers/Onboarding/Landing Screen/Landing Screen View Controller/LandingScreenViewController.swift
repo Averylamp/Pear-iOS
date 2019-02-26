@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import FacebookLogin
+import Firebase
 
 class LandingScreenViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var signupButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     
     var gettingStarted: Bool = false
@@ -40,9 +42,17 @@ extension LandingScreenViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        styleButtons()
-        attachButtons()
-        setupScrollView()
+        self.stylize()
+        self.attachButtons()
+        self.setupScrollView()
+    }
+    
+    func stylize(){
+        self.facebookButton.stylizeFacebookColor()
+        self.facebookButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
+        
+        self.emailButton.stylizeLightColor()
+        self.emailButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -53,13 +63,7 @@ extension LandingScreenViewController{
 
 // MARK: - Styling
 extension LandingScreenViewController{
-    func styleButtons(){
-        self.signupButton.stylizeDarkColor()
-        self.signupButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
-        
-        self.loginButton.stylizeLightColor()
-        loginButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
-    }
+
     
     func setupScrollView(){
         let numPages: Int  = self.pages.count
@@ -91,11 +95,45 @@ extension LandingScreenViewController{
 // MARK: - @IBActions
 private extension LandingScreenViewController{
     func attachButtons(){
-        signupButton.addTarget(self, action: #selector(LandingScreenViewController.signupButtonClicked(sender:)), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(LandingScreenViewController.loginButtonClicked(sender:)), for: .touchUpInside)
+        self.facebookButton.addTarget(self, action: #selector(LandingScreenViewController.facebookButtonClicked(sender:)), for: .touchUpInside)
+        self.emailButton.addTarget(self, action: #selector(LandingScreenViewController.emailButtonClicked(sender:)), for: .touchUpInside)
     }
     
-    @objc func signupButtonClicked(sender:UIButton){
+    
+    /// Handles Facebook Login
+    ///
+    /// - Parameter sender: Facebook Login Button
+    @objc func facebookButtonClicked(sender:UIButton){
+        let loginManager = LoginManager()
+        
+        // 1. Auth via Facebook.
+        loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
+            switch result {
+            case .success(_, _, let accessToken):
+                
+                // 2. Auth via Firebase.
+                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
+                Auth.auth().signInAndRetrieveData(with: credential) { authData, error in
+                    if let error = error {
+                        self.alert(title: "Auth Error", message: error.localizedDescription)
+                        return
+                    }
+                    
+                    //                    guard let user = authData?.user else{ return }
+//                    let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData)
+//                    self.navigationController?.pushViewController(photoInputVC, animated: true)
+                    
+                }
+            case .cancelled:
+                break
+            case .failed(let error):
+                break
+            }
+        }
+        
+    }
+    
+    @objc func emailButtonClicked(sender:UIButton){
         guard !self.gettingStarted else { return }
         self.gettingStarted = true
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
@@ -104,10 +142,6 @@ private extension LandingScreenViewController{
         self.delay(delay: 1.0) {
             self.gettingStarted = false
         }
-    }
-    
-    @objc func loginButtonClicked(sender:UIButton){
-
     }
     
     @objc func pageControlChanged(sender: UIPageControl){
@@ -147,7 +181,8 @@ extension LandingScreenViewController: UIScrollViewDelegate{
         }else if(percentOffset > 0.75 && percentOffset <= 1) {
             pages[3].scaleImageView(percent: 1 - (percentOffset - 0.75) * 4, before: false)
             if (percentOffset > 0.8) {
-                self.signupButtonClicked(sender: UIButton())
+                print("Autotrigger get started")
+//                self.signupButtonClicked(sender: UIButton())
             }
         }
     }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FacebookLogin
 import Firebase
 
 class GetStartedCreateAccountViewController: UIViewController {
@@ -30,35 +29,7 @@ class GetStartedCreateAccountViewController: UIViewController {
     }
     
     @IBAction func facebookButtonClicked(_ sender: Any) {
-        
-        showLoadingIndicator()
-        
-        let loginManager = LoginManager()
-        
-        // 1. Auth via Facebook.
-        loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
-            switch result {
-            case .success(_, _, let accessToken):
-                
-                // 2. Auth via Firebase.
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-                Auth.auth().signInAndRetrieveData(with: credential) { authData, error in
-                    if let error = error {
-                        self.alert(title: "Auth Error", message: error.localizedDescription)
-                        return
-                    }
-                    
-//                    guard let user = authData?.user else{ return }
-                    let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData)
-                    self.navigationController?.pushViewController(photoInputVC, animated: true)
 
-                }
-            case .cancelled:
-                break
-            case .failed(let error):
-                break
-            }
-        }
     }
     
     @IBAction func emailButtonClicked(_ sender: Any) {
