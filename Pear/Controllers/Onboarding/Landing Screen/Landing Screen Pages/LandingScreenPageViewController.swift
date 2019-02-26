@@ -14,11 +14,22 @@ class LandingScreenPageViewController: UIViewController {
     
     @IBOutlet weak var backgroundImageView: UIImageView?
     
+    @IBOutlet weak var titleLabel: UILabel?
+    @IBOutlet weak var subtitleLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.stylize()
+    }
+    
+    func stylize(){
+        if let titleLabel = self.titleLabel{
+            titleLabel.stylizeLogoLabel()
+        }
+        if let subtitleLabel = self.subtitleLabel{
+            subtitleLabel.stylizeSubtitleLabel()
+        }
     }
     
     

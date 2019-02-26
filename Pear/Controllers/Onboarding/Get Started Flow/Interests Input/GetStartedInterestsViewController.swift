@@ -14,6 +14,9 @@ class GetStartedInterestsViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
     var gettingStartedData: GetttingStartedData!
     
     let interestStrings: [String] = [
@@ -36,7 +39,7 @@ class GetStartedInterestsViewController: UIViewController {
         "Beauty",
         "Makeup",
         "Sci-Fi",
-        "Deaf",
+        "Science",
         "Coding",
         "Fantasy",
         "DIY",
@@ -94,8 +97,14 @@ class GetStartedInterestsViewController: UIViewController {
 extension GetStartedInterestsViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupInterestButtons()
-        // Do any additional setup after loading the view.
+        self.setupInterestButtons()
+        self.stylize()
+    }
+    
+    func stylize(){
+        self.titleLabel.stylizeTitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabel()
+        self.nextButton.stylizeDarkColor()
     }
     
     

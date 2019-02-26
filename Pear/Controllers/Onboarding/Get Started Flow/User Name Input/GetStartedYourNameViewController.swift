@@ -73,8 +73,7 @@ extension GetStartedYourNameViewController{
     }
     
     func stylize(){
-        self.titleLabel.font = UIFont(name: Config.displayFontRegular, size: 28)
-        self.titleLabel.textColor = Config.textFontColor
+        self.titleLabel.stylizeTitleLabel()
         
         self.nextButton.stylizeDarkColor()
     }

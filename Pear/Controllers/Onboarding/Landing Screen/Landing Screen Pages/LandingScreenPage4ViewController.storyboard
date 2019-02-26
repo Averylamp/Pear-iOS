@@ -81,6 +81,8 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="532-gc-eQD" id="P5B-Cm-TM6"/>
                         <outlet property="imageView" destination="oit-d7-Vse" id="7LD-hf-WOp"/>
+                        <outlet property="subtitleLabel" destination="0fU-uo-tEi" id="S6H-6S-N0q"/>
+                        <outlet property="titleLabel" destination="GU0-V3-MX1" id="fBf-Lu-MJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9b-Uu-eV6" userLabel="First Responder" sceneMemberID="firstResponder"/>

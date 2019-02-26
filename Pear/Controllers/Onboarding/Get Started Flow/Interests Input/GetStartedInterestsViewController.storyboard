@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Get Started Interests View Controller-->
         <scene sceneID="OoR-u1-NIh">
@@ -29,53 +37,55 @@
                                     <action selector="backButtonClicked:" destination="zwd-TQ-wlu" eventType="touchUpInside" id="RMl-0M-5ew"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bh6-El-bLj">
-                                <rect key="frame" x="278" y="41.5" width="77" height="37"/>
-                                <state key="normal" image="onboarding-next-button"/>
-                                <connections>
-                                    <action selector="nextButtonClicked:" destination="zwd-TQ-wlu" eventType="touchUpInside" id="u90-ba-HtY"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are they into?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uhS-72-1v4">
-                                <rect key="frame" x="30" y="100" width="315" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a few things. You'll be able to change this later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1P-6t-zDP">
-                                <rect key="frame" x="40" y="143.5" width="295" height="38.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Sm-rI-HBs">
-                                <rect key="frame" x="0.0" y="198" width="375" height="469"/>
+                                <rect key="frame" x="0.0" y="211" width="375" height="390"/>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey there!  What's your first name?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3yI-nq-wZx">
+                                <rect key="frame" x="50" y="88" width="275" height="76.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a few things." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1g-wh-uyv">
+                                <rect key="frame" x="50" y="176.5" width="275" height="26.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2i-hK-Iq2">
+                                <rect key="frame" x="20" y="609" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XAY-7C-p0V"/>
+                                </constraints>
+                                <state key="normal" title="Next"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="3yI-nq-wZx" firstAttribute="top" secondItem="mJ7-rn-XVP" secondAttribute="bottom" constant="8" id="0Ho-ea-SJe"/>
                             <constraint firstItem="mJ7-rn-XVP" firstAttribute="top" secondItem="0x8-sR-iLj" secondAttribute="top" constant="20" id="0aX-17-a7Q"/>
-                            <constraint firstItem="p1P-6t-zDP" firstAttribute="centerX" secondItem="0x8-sR-iLj" secondAttribute="centerX" id="DZS-on-Ork"/>
-                            <constraint firstItem="0x8-sR-iLj" firstAttribute="trailing" secondItem="uhS-72-1v4" secondAttribute="trailing" constant="30" id="Dwc-a2-kST"/>
-                            <constraint firstItem="uhS-72-1v4" firstAttribute="leading" secondItem="0x8-sR-iLj" secondAttribute="leading" constant="30" id="MCf-z9-zfz"/>
+                            <constraint firstItem="0x8-sR-iLj" firstAttribute="trailing" secondItem="b1g-wh-uyv" secondAttribute="trailing" constant="50" id="4pz-Ll-eWv"/>
+                            <constraint firstItem="u2i-hK-Iq2" firstAttribute="top" secondItem="1Sm-rI-HBs" secondAttribute="bottom" constant="8" id="DUh-WS-3D3"/>
+                            <constraint firstItem="0x8-sR-iLj" firstAttribute="trailing" secondItem="u2i-hK-Iq2" secondAttribute="trailing" constant="20" id="DqF-Vd-L8N"/>
+                            <constraint firstItem="1Sm-rI-HBs" firstAttribute="top" secondItem="b1g-wh-uyv" secondAttribute="bottom" constant="8" id="L1T-Ts-2NY"/>
                             <constraint firstItem="1Sm-rI-HBs" firstAttribute="width" secondItem="ExJ-D3-vz4" secondAttribute="width" id="UX5-6O-02O"/>
-                            <constraint firstItem="p1P-6t-zDP" firstAttribute="leading" secondItem="0x8-sR-iLj" secondAttribute="leading" constant="40" id="XSe-kG-RUl"/>
-                            <constraint firstItem="0x8-sR-iLj" firstAttribute="trailing" secondItem="bh6-El-bLj" secondAttribute="trailing" constant="20" id="YF9-W9-Uga"/>
-                            <constraint firstItem="p1P-6t-zDP" firstAttribute="top" secondItem="uhS-72-1v4" secondAttribute="bottom" constant="16" id="ZVg-Ve-Mgk"/>
-                            <constraint firstItem="uhS-72-1v4" firstAttribute="centerX" secondItem="0x8-sR-iLj" secondAttribute="centerX" id="bGa-jQ-r3h"/>
-                            <constraint firstItem="0x8-sR-iLj" firstAttribute="bottom" secondItem="1Sm-rI-HBs" secondAttribute="bottom" id="cYn-bv-prQ"/>
-                            <constraint firstItem="uhS-72-1v4" firstAttribute="top" secondItem="mJ7-rn-XVP" secondAttribute="bottom" constant="20" id="fI7-1Z-FKY"/>
+                            <constraint firstItem="0x8-sR-iLj" firstAttribute="bottom" secondItem="u2i-hK-Iq2" secondAttribute="bottom" constant="8" id="ZW4-0L-uF5"/>
                             <constraint firstItem="mJ7-rn-XVP" firstAttribute="leading" secondItem="0x8-sR-iLj" secondAttribute="leading" constant="20" id="fNl-64-uEb"/>
-                            <constraint firstItem="0x8-sR-iLj" firstAttribute="trailing" secondItem="p1P-6t-zDP" secondAttribute="trailing" constant="40" id="gmw-e5-Nvr"/>
+                            <constraint firstItem="0x8-sR-iLj" firstAttribute="trailing" secondItem="3yI-nq-wZx" secondAttribute="trailing" constant="50" id="m6g-QH-YFl"/>
+                            <constraint firstItem="3yI-nq-wZx" firstAttribute="leading" secondItem="0x8-sR-iLj" secondAttribute="leading" constant="50" id="sNH-eH-Qbu"/>
+                            <constraint firstItem="u2i-hK-Iq2" firstAttribute="leading" secondItem="0x8-sR-iLj" secondAttribute="leading" constant="20" id="si7-g0-3rH"/>
+                            <constraint firstItem="b1g-wh-uyv" firstAttribute="top" secondItem="3yI-nq-wZx" secondAttribute="bottom" constant="12" id="syG-Qq-222"/>
                             <constraint firstItem="1Sm-rI-HBs" firstAttribute="centerX" secondItem="0x8-sR-iLj" secondAttribute="centerX" id="vRt-6g-3CJ"/>
-                            <constraint firstItem="1Sm-rI-HBs" firstAttribute="top" secondItem="p1P-6t-zDP" secondAttribute="bottom" constant="16" id="wYp-PM-Z5V"/>
-                            <constraint firstItem="bh6-El-bLj" firstAttribute="centerY" secondItem="mJ7-rn-XVP" secondAttribute="centerY" id="yO6-O8-ENH"/>
+                            <constraint firstItem="b1g-wh-uyv" firstAttribute="leading" secondItem="0x8-sR-iLj" secondAttribute="leading" constant="50" id="xl7-jG-6wo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0x8-sR-iLj"/>
                     </view>
                     <connections>
-                        <outlet property="nextButton" destination="bh6-El-bLj" id="0Q6-hq-EU6"/>
+                        <outlet property="nextButton" destination="u2i-hK-Iq2" id="qCn-qK-WfE"/>
                         <outlet property="scrollView" destination="1Sm-rI-HBs" id="SZn-jq-5hr"/>
+                        <outlet property="subtitleLabel" destination="b1g-wh-uyv" id="DtR-yR-HPP"/>
+                        <outlet property="titleLabel" destination="3yI-nq-wZx" id="CfB-sN-79E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIA-kn-nbu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -85,6 +95,5 @@
     </scenes>
     <resources>
         <image name="onboarding-back-button" width="96" height="96"/>
-        <image name="onboarding-next-button" width="77" height="37"/>
     </resources>
 </document>
