@@ -84,7 +84,7 @@ extension LandingScreenViewController{
                     NSLayoutConstraint(item: self.pages[i].view, attribute: .centerY, relatedBy: .equal, toItem: scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
                     NSLayoutConstraint(item: self.pages[i].view, attribute: .centerX, relatedBy: .equal, toItem: scrollView, attribute: .centerX, multiplier: 1 + CGFloat(i * 2), constant: 0.0)
                 ])
-            
+            self.pages[i].view.alpha = 0.0
             self.pages[i].didMove(toParent: self)
         }
         scrollView.delegate = self
@@ -105,9 +105,11 @@ private extension LandingScreenViewController{
     /// - Parameter sender: Facebook Login Button
     @objc func facebookButtonClicked(sender:UIButton){
         let loginManager = LoginManager()
-        
+        self.delay(delay: 1.0) {
+            self.gettingStarted = false
+        }
         // 1. Auth via Facebook.
-        loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
+        loginManager.logIn(readPermissions: [.publicProfile, .email, .userBirthday, .userGender], viewController: self) { result in
             switch result {
             case .success(_, _, let accessToken):
                 
@@ -120,6 +122,8 @@ private extension LandingScreenViewController{
                     }
                     
                     //                    guard let user = authData?.user else{ return }
+                    let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: GetttingStartedData())
+                    self.navigationController?.pushViewController(phoneInputVC, animated: true)
 //                    let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData)
 //                    self.navigationController?.pushViewController(photoInputVC, animated: true)
                     
@@ -137,8 +141,8 @@ private extension LandingScreenViewController{
         guard !self.gettingStarted else { return }
         self.gettingStarted = true
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        let inputNameVC = GetStartedYourNameViewController.instantiate(gettingStartedData: GetttingStartedData())
-        self.navigationController?.pushViewController(inputNameVC, animated: true)
+        let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: GetttingStartedData())
+        self.navigationController?.pushViewController(phoneInputVC, animated: true)
         self.delay(delay: 1.0) {
             self.gettingStarted = false
         }

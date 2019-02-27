@@ -48,6 +48,13 @@
                                     <color key="titleColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-facebook" translatesAutoresizingMaskIntoConstraints="NO" id="NcB-e3-f4O">
+                                <rect key="frame" x="28" y="545" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="gT9-OV-EUr"/>
+                                    <constraint firstAttribute="height" constant="30" id="x99-7O-eoF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -58,7 +65,9 @@
                             <constraint firstItem="PoT-HI-Elf" firstAttribute="trailing" secondItem="s0e-kO-oji" secondAttribute="trailing" constant="20" id="Hdi-IR-gO9"/>
                             <constraint firstItem="7bP-dS-bgj" firstAttribute="width" secondItem="im2-tZ-rGb" secondAttribute="width" id="LGY-Sv-Fe4"/>
                             <constraint firstItem="s0e-kO-oji" firstAttribute="top" secondItem="7bP-dS-bgj" secondAttribute="bottom" constant="40" id="Oni-MP-HEy"/>
+                            <constraint firstItem="NcB-e3-f4O" firstAttribute="centerY" secondItem="s0e-kO-oji" secondAttribute="centerY" id="TGG-d5-3Kd"/>
                             <constraint firstItem="PoT-HI-Elf" firstAttribute="bottom" secondItem="BhD-Vv-GXK" secondAttribute="bottom" constant="20" id="c7D-de-iv7"/>
+                            <constraint firstItem="NcB-e3-f4O" firstAttribute="leading" secondItem="s0e-kO-oji" secondAttribute="leading" constant="8" id="cJu-UQ-D0I"/>
                             <constraint firstItem="BhD-Vv-GXK" firstAttribute="leading" secondItem="PoT-HI-Elf" secondAttribute="leading" constant="20" id="fmI-fe-gxa"/>
                             <constraint firstItem="7bP-dS-bgj" firstAttribute="centerX" secondItem="PoT-HI-Elf" secondAttribute="centerX" id="ina-sy-lM7"/>
                             <constraint firstItem="5aE-wz-PXH" firstAttribute="centerX" secondItem="PoT-HI-Elf" secondAttribute="centerX" id="jUV-1W-Vdd"/>
@@ -81,4 +90,7 @@
             <point key="canvasLocation" x="269.60000000000002" y="-131.78410794602701"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="onboarding-icon-facebook" width="32" height="32"/>
+    </resources>
 </document>
