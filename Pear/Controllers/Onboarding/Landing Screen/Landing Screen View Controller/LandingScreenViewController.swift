@@ -84,7 +84,6 @@ extension LandingScreenViewController{
                     NSLayoutConstraint(item: self.pages[i].view, attribute: .centerY, relatedBy: .equal, toItem: scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
                     NSLayoutConstraint(item: self.pages[i].view, attribute: .centerX, relatedBy: .equal, toItem: scrollView, attribute: .centerX, multiplier: 1 + CGFloat(i * 2), constant: 0.0)
                 ])
-            self.pages[i].view.alpha = 0.0
             self.pages[i].didMove(toParent: self)
         }
         scrollView.delegate = self

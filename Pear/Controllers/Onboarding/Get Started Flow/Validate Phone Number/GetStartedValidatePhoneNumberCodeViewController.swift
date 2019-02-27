@@ -83,12 +83,8 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
                 self.hiddenInputField.becomeFirstResponder()
             }
         }
-
     }
-    
-    
 }
-
 
 // MARK: - Life Cycle
 extension GetStartedValidatePhoneNumberCodeViewController{
@@ -102,7 +98,6 @@ extension GetStartedValidatePhoneNumberCodeViewController{
         self.addKeyboardSizeNotifications()
     }
     
-    
     func stylize(){
         if let phoneNumber = self.gettingStartedUserData.phoneNumber{
             self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
@@ -110,7 +105,6 @@ extension GetStartedValidatePhoneNumberCodeViewController{
         
         self.resendCodeButton.stylizeLightColor()
     }
-    
 
     func setupVerificationView(){
         let sideInsets: CGFloat = 30
@@ -140,7 +134,30 @@ extension GetStartedValidatePhoneNumberCodeViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(GetStartedValidatePhoneNumberCodeViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(GetStartedValidatePhoneNumberCodeViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
+    
+    func validatePhoneNumberCode(){
+        guard !isVerifying else { return }
+        guard let fullString = self.hiddenInputField.text else { return }
+        guard fullString.count == 6 else { return }
+        self.isVerifying = true
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: fullString)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authData, error) in
+            self.isVerifying = false
+            if let error = error {
+                HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+                self.alert(title: "Auth Error", message: error.localizedDescription)
+                self.hiddenInputField.text = ""
+                self.updateCodeNumberLabels()
+            }
+            HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+            self.gettingStartedUserData.phoneNumberVerified = true
+            
+            let chooseFlowVC = GetStartedChooseFlowViewController.instantiate(gettingStartedData: GettingStartedData())
+            self.navigationController?.setViewControllers([chooseFlowVC], animated: true)
+        }
 
+    }
     
 }
 
@@ -148,7 +165,6 @@ extension GetStartedValidatePhoneNumberCodeViewController{
 extension GetStartedValidatePhoneNumberCodeViewController: UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard !isVerifying else { return false }
         var fullString = textField.text ?? ""
         fullString.append(string.filter("0123456789".contains))
         if range.length == 1 && fullString.count > 0 {
@@ -162,29 +178,10 @@ extension GetStartedValidatePhoneNumberCodeViewController: UITextFieldDelegate{
         self.updateCodeNumberLabels()
         
         if fullString.count == 6 {
-            self.isVerifying = true
-            HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: fullString)
-            Auth.auth().signInAndRetrieveData(with: credential) { (authData, error) in
-                self.isVerifying = false
-                if let error = error {
-                    HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
-                    self.alert(title: "Auth Error", message: error.localizedDescription)
-                    self.hiddenInputField.text = ""
-                    self.updateCodeNumberLabels()
-                }
-                HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-                self.gettingStartedUserData.phoneNumberVerified = true
-                
-                
-                let chooseFlowVC = GetStartedChooseFlowViewController.instantiate(gettingStartedData: GettingStartedData())
-                self.navigationController?.setViewControllers([chooseFlowVC], animated: true)
-            }
+            self.validatePhoneNumberCode()
         }
-        
         return false
     }
-    
     
     func updateCodeNumberLabels(){
         if let text = self.hiddenInputField.text {
@@ -205,7 +202,6 @@ extension GetStartedValidatePhoneNumberCodeViewController: UITextFieldDelegate{
             }
         }
     }
-
 }
 
 // MARK: - Keybaord Size Notifications
