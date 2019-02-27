@@ -11,7 +11,7 @@ import UIKit
 class GettingStartedNotifyFriendViewController: UIViewController {
 
     
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     
     @IBOutlet weak var readyTitleLabel: UILabel!
     @IBOutlet weak var readySubtextLabel: UILabel!
@@ -21,7 +21,7 @@ class GettingStartedNotifyFriendViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GettingStartedNotifyFriendViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GettingStartedNotifyFriendViewController {
         let storyboard = UIStoryboard(name: String(describing: GettingStartedNotifyFriendViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GettingStartedNotifyFriendViewController
         vc.gettingStartedData = gettingStartedData

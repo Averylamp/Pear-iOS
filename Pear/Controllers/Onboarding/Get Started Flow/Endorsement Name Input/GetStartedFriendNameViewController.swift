@@ -13,7 +13,7 @@ class GetStartedFriendNameViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
     
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
@@ -22,7 +22,7 @@ class GetStartedFriendNameViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedFriendNameViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedFriendNameViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedFriendNameViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedFriendNameViewController
         vc.gettingStartedData = gettingStartedData

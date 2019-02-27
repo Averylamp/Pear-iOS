@@ -15,12 +15,12 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
     @IBOutlet weak var firstPasswordTextField: UITextField!
     @IBOutlet weak var emailLinkButton: UIButton!
     
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedCreateAccountEmailPasswordViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedCreateAccountEmailPasswordViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedCreateAccountEmailPasswordViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedCreateAccountEmailPasswordViewController
         vc.gettingStartedData = gettingStartedData

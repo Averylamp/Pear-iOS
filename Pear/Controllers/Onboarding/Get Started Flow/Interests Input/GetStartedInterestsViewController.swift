@@ -17,7 +17,7 @@ class GetStartedInterestsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     
     let interestStrings: [String] = [
         "Language",
@@ -61,7 +61,7 @@ class GetStartedInterestsViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedInterestsViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedInterestsViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedInterestsViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedInterestsViewController
         vc.gettingStartedData = gettingStartedData

@@ -10,13 +10,13 @@ import UIKit
 
 class GetStartedProfileReviewViewController: UIViewController {
 
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     
     @IBOutlet weak var profileReviewLabel: UILabel!
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedProfileReviewViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedProfileReviewViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedProfileReviewViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedProfileReviewViewController
         vc.gettingStartedData = gettingStartedData

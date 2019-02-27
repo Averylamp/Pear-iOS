@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedPhotoInputViewController: UIViewController {
     
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     
     @IBOutlet weak var iconImageViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var welcomeTitleLabel: UILabel!
@@ -28,7 +28,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedPhotoInputViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedPhotoInputViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedPhotoInputViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedPhotoInputViewController
         vc.gettingStartedData = gettingStartedData
@@ -117,6 +117,10 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate{
             }))
             
             alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+                self.openGallery()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Facebook", style: .default, handler: { _ in
                 self.openGallery()
             }))
             
