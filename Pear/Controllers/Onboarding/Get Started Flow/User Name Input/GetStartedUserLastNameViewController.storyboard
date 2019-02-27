@@ -15,10 +15,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Get Started Your Name View Controller-->
+        <!--Get Started User Last Name View Controller-->
         <scene sceneID="WSr-f2-d7c">
             <objects>
-                <viewController id="Nfk-kT-InT" customClass="GetStartedYourNameViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nfk-kT-InT" customClass="GetStartedUserLastNameViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="soc-Ow-m9Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
