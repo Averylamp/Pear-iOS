@@ -122,10 +122,10 @@ private extension LandingScreenViewController{
                     }
                     
                     //                    guard let user = authData?.user else{ return }
-                    let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: GetttingStartedData())
-                    self.navigationController?.pushViewController(phoneInputVC, animated: true)
-//                    let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData)
-//                    self.navigationController?.pushViewController(photoInputVC, animated: true)
+//                    let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: GetttingStartedData())
+//                    self.navigationController?.pushViewController(phoneInputVC, animated: true)
+                    let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GettingStartedData())
+                    self.navigationController?.pushViewController(photoInputVC, animated: true)
                     
                 }
             case .cancelled:
@@ -141,7 +141,7 @@ private extension LandingScreenViewController{
         guard !self.gettingStarted else { return }
         self.gettingStarted = true
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: GetttingStartedData())
+        let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: GettingStartedData())
         self.navigationController?.pushViewController(phoneInputVC, animated: true)
         self.delay(delay: 1.0) {
             self.gettingStarted = false

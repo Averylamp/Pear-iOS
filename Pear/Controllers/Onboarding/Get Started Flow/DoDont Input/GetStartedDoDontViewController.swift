@@ -11,7 +11,7 @@ import UIKit
 
 class GetStartedDoDontViewController: UIViewController {
     
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
         
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
@@ -39,14 +39,14 @@ class GetStartedDoDontViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedDoDontViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedDoDontViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedDoDontViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedDoDontViewController
         vc.gettingStartedData = gettingStartedData
         return vc
     }
     
-    func saveDoDontListsTo(gettingStartedData: GetttingStartedData){
+    func saveDoDontListsTo(gettingStartedData: GettingStartedData){
         gettingStartedData.profileData.doList = []
         gettingStartedData.profileData.dontList = []
         for doTVC in self.doTextViewControllers {

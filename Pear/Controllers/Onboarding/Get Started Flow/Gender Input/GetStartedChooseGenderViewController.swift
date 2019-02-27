@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedChooseGenderViewController: UIViewController {
     
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     
 
     @IBOutlet weak var maleButton: UIButton!
@@ -20,7 +20,7 @@ class GetStartedChooseGenderViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedChooseGenderViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedChooseGenderViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedChooseGenderViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedChooseGenderViewController
         vc.gettingStartedData = gettingStartedData

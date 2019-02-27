@@ -14,12 +14,12 @@ class GetStartedAgeViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData) -> GetStartedAgeViewController {
+    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedAgeViewController {
         let storyboard = UIStoryboard(name: String(describing: GetStartedAgeViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedAgeViewController
         vc.gettingStartedData = gettingStartedData

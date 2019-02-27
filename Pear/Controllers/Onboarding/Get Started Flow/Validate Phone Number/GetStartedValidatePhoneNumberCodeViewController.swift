@@ -20,14 +20,14 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
     
     var numberLabels: [UILabel] = []
     var circleViews: [UIView] = []
-    var gettingStartedData: GetttingStartedData!
+    var gettingStartedData: GettingStartedData!
     var verificationID: String!
     var isVerifying: Bool = false
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GetttingStartedData, verificationID: String) -> GetStartedValidatePhoneNumberCodeViewController {
+    class func instantiate(gettingStartedData: GettingStartedData, verificationID: String) -> GetStartedValidatePhoneNumberCodeViewController {
         
         let storyboard = UIStoryboard(name: String(describing: GetStartedValidatePhoneNumberCodeViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedValidatePhoneNumberCodeViewController

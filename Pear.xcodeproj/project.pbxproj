@@ -86,7 +86,7 @@
 		BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */; };
 		BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */; };
 		BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */; };
-		BB986A43220F76BF00759A14 /* GetttingStartedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A42220F76BF00759A14 /* GetttingStartedData.swift */; };
+		BB986A43220F76BF00759A14 /* GettingStartedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A42220F76BF00759A14 /* GettingStartedData.swift */; };
 		BB986A45220F793000759A14 /* GetStartedYourNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A44220F793000759A14 /* GetStartedYourNameViewController.swift */; };
 		BB986A47220F799A00759A14 /* GetStartedFriendNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A46220F799A00759A14 /* GetStartedFriendNameViewController.swift */; };
 		BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A48220F79A500759A14 /* GetStartedAgeViewController.swift */; };
@@ -220,7 +220,7 @@
 		BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenPageViewController.swift; sourceTree = "<group>"; };
 		BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingNavigationViewController.swift; sourceTree = "<group>"; };
 		BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingNavigationViewController.storyboard; sourceTree = "<group>"; };
-		BB986A42220F76BF00759A14 /* GetttingStartedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetttingStartedData.swift; sourceTree = "<group>"; };
+		BB986A42220F76BF00759A14 /* GettingStartedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedData.swift; sourceTree = "<group>"; };
 		BB986A44220F793000759A14 /* GetStartedYourNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedYourNameViewController.swift; sourceTree = "<group>"; };
 		BB986A46220F799A00759A14 /* GetStartedFriendNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedFriendNameViewController.swift; sourceTree = "<group>"; };
 		BB986A48220F79A500759A14 /* GetStartedAgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedAgeViewController.swift; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 				BBE8D0272214022600FD1355 /* ProfileData.swift */,
 				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
 				BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */,
-				BB986A42220F76BF00759A14 /* GetttingStartedData.swift */,
+				BB986A42220F76BF00759A14 /* GettingStartedData.swift */,
 				BBFFBBDA222118B1002E1B54 /* ImageSizeRepresentation.swift */,
 				BBFFBBDD22211A70002E1B54 /* ImageAllSizesRepresentation.swift */,
 			);
@@ -1063,7 +1063,7 @@
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
 				BB75BFD0221560ED00BAB800 /* GetStartedProfileReviewViewController.swift in Sources */,
 				BB986A4D220F79CA00759A14 /* GetStartedShortBioViewController.swift in Sources */,
-				BB986A43220F76BF00759A14 /* GetttingStartedData.swift in Sources */,
+				BB986A43220F76BF00759A14 /* GettingStartedData.swift in Sources */,
 				BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */,
 				BB18788D21E2B1B900964F26 /* SettingsMainViewController.swift in Sources */,
 				BB986A47220F799A00759A14 /* GetStartedFriendNameViewController.swift in Sources */,
