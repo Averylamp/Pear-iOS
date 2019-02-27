@@ -35,7 +35,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        return
+        
         if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
             let fullPhoneNumber = "+1" + phoneNumber
             print("Verifying phone number")
