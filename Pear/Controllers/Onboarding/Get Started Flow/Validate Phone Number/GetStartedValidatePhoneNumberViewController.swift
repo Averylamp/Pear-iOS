@@ -17,7 +17,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedUserData: GettingStartedUserData!
 
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
 
@@ -25,11 +25,11 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedValidatePhoneNumberViewController {
+    class func instantiate(gettingStartedUserData: GettingStartedUserData) -> GetStartedValidatePhoneNumberViewController {
         
         let storyboard = UIStoryboard(name: String(describing: GetStartedValidatePhoneNumberViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedValidatePhoneNumberViewController
-        vc.gettingStartedData = gettingStartedData
+        vc.gettingStartedUserData = gettingStartedUserData
         return vc
     }
     
@@ -68,14 +68,14 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
                 }
                 
                 guard let verificationID = verificationID else { return }
-                self.gettingStartedData.userPhoneNumber = phoneNumber
+                self.gettingStartedUserData.phoneNumber = phoneNumber
                 print("Phone number validated, \(fullPhoneNumber), \(phoneNumber)")
                 // Sign in using the verificationID and the code sent to the user
                 // ...
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 
                 HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-                let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController.instantiate(gettingStartedData: self.gettingStartedData, verificationID: verificationID)
+                let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController.instantiate(gettingStartedUserData: self.gettingStartedUserData, verificationID: verificationID)
                 self.navigationController?.pushViewController(phoneNumberCodeVC, animated: true)
             }
         }else{
@@ -106,7 +106,7 @@ extension GetStartedValidatePhoneNumberViewController{
     func styleViews(){
         self.titleLabel.font = UIFont(name: Config.displayFontRegular, size: 28)
         self.titleLabel.textColor = Config.textFontColor
-        if let firstName = self.gettingStartedData.userFirstName {
+        if let firstName = self.gettingStartedUserData.firstName {
             self.titleLabel.text = "Hi, \(firstName)!  To verify you, we need your phone #"
         }else{
             self.titleLabel.text = "Hi!  To verify you, we need your phone #"

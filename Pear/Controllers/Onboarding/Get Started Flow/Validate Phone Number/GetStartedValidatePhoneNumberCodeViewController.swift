@@ -20,18 +20,18 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
     
     var numberLabels: [UILabel] = []
     var circleViews: [UIView] = []
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedUserData: GettingStartedUserData!
     var verificationID: String!
     var isVerifying: Bool = false
     
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData, verificationID: String) -> GetStartedValidatePhoneNumberCodeViewController {
+    class func instantiate(gettingStartedUserData: GettingStartedUserData, verificationID: String) -> GetStartedValidatePhoneNumberCodeViewController {
         
         let storyboard = UIStoryboard(name: String(describing: GetStartedValidatePhoneNumberCodeViewController.self), bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as! GetStartedValidatePhoneNumberCodeViewController
-        vc.gettingStartedData = gettingStartedData
+        vc.gettingStartedUserData = gettingStartedUserData
         vc.verificationID = verificationID
         return vc
     }
@@ -43,7 +43,7 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
     @IBAction func resendCodeButtonClicked(_ sender: Any) {
         self.hiddenInputField.text = ""
         self.updateCodeNumberLabels()
-        if let phoneNumber = self.gettingStartedData.userPhoneNumber{
+        if let phoneNumber = self.gettingStartedUserData.phoneNumber{
             let fullPhoneNumber = "+1" + phoneNumber
             HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
             self.hiddenInputField.isEnabled = false
@@ -104,7 +104,7 @@ extension GetStartedValidatePhoneNumberCodeViewController{
     
     
     func stylize(){
-        if let phoneNumber = self.gettingStartedData.userPhoneNumber{
+        if let phoneNumber = self.gettingStartedUserData.phoneNumber{
             self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
         }
         
@@ -174,10 +174,10 @@ extension GetStartedValidatePhoneNumberCodeViewController: UITextFieldDelegate{
                     self.updateCodeNumberLabels()
                 }
                 HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-                self.gettingStartedData.phoneNumberVerified = true
+                self.gettingStartedUserData.phoneNumberVerified = true
                 
                 
-                let chooseFlowVC = GetStartedChooseFlowViewController.instantiate(gettingStartedData: self.gettingStartedData)
+                let chooseFlowVC = GetStartedChooseFlowViewController.instantiate(gettingStartedData: GettingStartedData())
                 self.navigationController?.setViewControllers([chooseFlowVC], animated: true)
             }
         }

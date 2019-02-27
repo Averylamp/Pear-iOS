@@ -2,18 +2,18 @@
 //  GetStartedYourNameViewController.swift
 //  Pear
 //
-//  Created by Avery Lamp on 2/9/19.
+//  Created by Avery Lamp on 2/26/19.
 //  Copyright © 2019 sam. All rights reserved.
 //
 
 import UIKit
 
-class GetStartedYourNameViewController: UIViewController {
+class GetStartedUserLastNameViewController: UIViewController {
 
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
     
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedUserData: GettingStartedUserData!
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
@@ -23,26 +23,26 @@ class GetStartedYourNameViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedYourNameViewController {
-        let storyboard = UIStoryboard(name: String(describing: GetStartedYourNameViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! GetStartedYourNameViewController
-        vc.gettingStartedData = gettingStartedData
+    class func instantiate(gettingStartedUserData: GettingStartedUserData) -> GetStartedUserLastNameViewController {
+        let storyboard = UIStoryboard(name: String(describing: GetStartedUserLastNameViewController.self), bundle: nil)
+        let vc = storyboard.instantiateInitialViewController() as! GetStartedUserLastNameViewController
+        vc.gettingStartedUserData = gettingStartedUserData
         return vc
     }
     
     @discardableResult
-    func saveFirstName() -> String?{
-        if let userFirstName = inputTextField.text{
-            self.gettingStartedData.userFirstName = userFirstName
-            return userFirstName
+    func saveLastName() -> String?{
+        if let userLastName = inputTextField.text{
+            self.gettingStartedUserData.lastName = userLastName
+            return userLastName
         }
         return nil
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        if let userFirstName = self.saveFirstName(), userFirstName.count > 0{
-            let phoneVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: self.gettingStartedData)
+        if let userFirstName = self.saveLastName(), userFirstName.count > 0{
+            let phoneVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedUserData: self.gettingStartedUserData)
             self.navigationController?.pushViewController(phoneVerificationVC, animated: true)
         }else{
             self.alert(title: "Name Missing", message: "Please fill out your first name")
@@ -50,7 +50,7 @@ class GetStartedYourNameViewController: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
-        self.saveFirstName()
+        self.saveLastName()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -60,13 +60,13 @@ class GetStartedYourNameViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension GetStartedYourNameViewController{
+extension GetStartedUserLastNameViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.contentMode = .scaleAspectFit
-        if let userFirstName = self.gettingStartedData.userFirstName{
-            self.inputTextField.text = userFirstName
+        if let userLastName = self.gettingStartedUserData.lastName{
+            self.inputTextField.text = userLastName
         }
         self.inputTextField.becomeFirstResponder()
         self.stylize()
@@ -80,15 +80,15 @@ extension GetStartedYourNameViewController{
     }
     
     func addKeyboardSizeNotifications(){
-        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedYourNameViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedYourNameViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedUserLastNameViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedUserLastNameViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
     
 }
 
 // MARK: - Keybaord Size Notifications
-extension GetStartedYourNameViewController{
+extension GetStartedUserLastNameViewController{
     
     @objc func keyboardWillChange(notification: Notification){
         let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
