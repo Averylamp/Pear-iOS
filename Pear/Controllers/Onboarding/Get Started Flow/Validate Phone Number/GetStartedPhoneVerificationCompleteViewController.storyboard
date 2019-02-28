@@ -26,17 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDr-ai-G3c">
-                                <rect key="frame" x="20" y="40" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="d2j-xf-Wb7"/>
-                                    <constraint firstAttribute="height" constant="40" id="mEJ-Rb-1gg"/>
-                                </constraints>
-                                <state key="normal" image="onboarding-back-button"/>
-                                <connections>
-                                    <action selector="backButtonClicked:" destination="ahq-E9-JM7" eventType="touchUpInside" id="Bzd-BU-9kh"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're Verified!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Ht-RM-4ld">
                                 <rect key="frame" x="50" y="114" width="275" height="39"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
@@ -86,7 +75,6 @@
                         <constraints>
                             <constraint firstItem="9Ht-RM-4ld" firstAttribute="top" secondItem="vKl-3O-j40" secondAttribute="bottom" constant="8" id="7Ac-NQ-Aql"/>
                             <constraint firstItem="92q-6d-7FT" firstAttribute="width" secondItem="fR7-zR-a2m" secondAttribute="width" id="Fxj-3P-lXA"/>
-                            <constraint firstItem="EDr-ai-G3c" firstAttribute="top" secondItem="1m2-3A-1GM" secondAttribute="top" constant="20" id="Ilz-CA-EYA"/>
                             <constraint firstItem="9Ht-RM-4ld" firstAttribute="centerX" secondItem="1m2-3A-1GM" secondAttribute="centerX" id="KzM-vw-MPr"/>
                             <constraint firstItem="92q-6d-7FT" firstAttribute="centerX" secondItem="1m2-3A-1GM" secondAttribute="centerX" id="NsL-9a-gPV"/>
                             <constraint firstItem="vKl-3O-j40" firstAttribute="centerX" secondItem="1m2-3A-1GM" secondAttribute="centerX" id="PfZ-Yl-h4e"/>
@@ -96,7 +84,6 @@
                             <constraint firstItem="9Ht-RM-4ld" firstAttribute="leading" secondItem="1m2-3A-1GM" secondAttribute="leading" constant="50" id="cvY-Z1-AB8"/>
                             <constraint firstItem="1m2-3A-1GM" firstAttribute="trailing" secondItem="zsX-g4-MEJ" secondAttribute="trailing" constant="20" id="fZq-UT-U6i"/>
                             <constraint firstItem="DaS-N6-6wv" firstAttribute="top" secondItem="9Ht-RM-4ld" secondAttribute="bottom" constant="12" id="gIE-G7-Ikb"/>
-                            <constraint firstItem="EDr-ai-G3c" firstAttribute="leading" secondItem="1m2-3A-1GM" secondAttribute="leading" constant="20" id="gSW-6h-osa"/>
                             <constraint firstItem="1m2-3A-1GM" firstAttribute="bottom" secondItem="zsX-g4-MEJ" secondAttribute="bottom" constant="20" id="ooT-az-wWS"/>
                             <constraint firstItem="vKl-3O-j40" firstAttribute="top" secondItem="1m2-3A-1GM" secondAttribute="top" constant="16" id="rKu-Sc-cjq"/>
                             <constraint firstItem="92q-6d-7FT" firstAttribute="top" secondItem="DaS-N6-6wv" secondAttribute="bottom" constant="16" id="wOz-0m-dbf"/>
@@ -118,7 +105,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="96" height="96"/>
         <image name="onboarding-icon-verify-phone-shield-complete" width="74" height="74"/>
     </resources>
 </document>

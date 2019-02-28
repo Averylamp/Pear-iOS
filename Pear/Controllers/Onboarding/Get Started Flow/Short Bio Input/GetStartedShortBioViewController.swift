@@ -116,6 +116,10 @@ extension GetStartedShortBioViewController {
         self.inputTextView.textColor = Config.textFontColor
     }
 
+}
+
+// MARK: - Dismiss First Responder on Click
+extension GetStartedShortBioViewController {
     func addDismissKeyboardOnViewClick() {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GetStartedShortBioViewController.dismissKeyboard)))
     }

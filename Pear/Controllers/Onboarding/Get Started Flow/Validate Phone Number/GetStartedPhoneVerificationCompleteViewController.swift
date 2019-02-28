@@ -24,10 +24,6 @@ class GetStartedPhoneVerificationCompleteViewController: UIViewController {
         return phoneVerificationCompleteVC
     }
 
-    @IBAction func backButtonClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         guard let startFriendProfileVC = GetStartedStartFriendProfileViewController.instantiate() else {

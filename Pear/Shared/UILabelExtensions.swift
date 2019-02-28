@@ -57,4 +57,9 @@ extension UILabel {
         self.font = UIFont(name: Config.textFontSemiBold, size: 17)
         self.textColor = Config.textFontColor
     }
+
+    func stylizeTextFieldTitle() {
+        self.font = UIFont(name: Config.displayFontRegular, size: 12)
+        self.textColor = UIColor(red: 0.26, green: 0.29, blue: 0.33, alpha: 1.00)
+    }
 }

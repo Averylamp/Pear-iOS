@@ -11,7 +11,11 @@ import UIKit
 class GetStartedStartFriendProfileViewController: UIViewController {
 
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
+
+    @IBOutlet weak var inputTextFieldContainerView: UIView!
     @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var inputTextFieldTitle: UILabel!
 
     var gettingStartedData: GettingStartedData!
     @IBOutlet weak var titleLabel: UILabel!
@@ -67,12 +71,15 @@ extension GetStartedStartFriendProfileViewController {
         super.viewDidLoad()
         self.stylize()
         self.addKeyboardSizeNotifications()
+        self.addDismissKeyboardOnViewClick()
     }
 
     func stylize() {
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
         self.nextButton.stylizeDarkColor()
+        self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
+        self.inputTextFieldTitle.stylizeTextFieldTitle()
     }
 
 }
@@ -97,8 +104,8 @@ extension GetStartedStartFriendProfileViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let targetFrame = targetFrameNSValue.cgRectValue
-            let keyboardBottomPadding: CGFloat = 20
-            self.bottomButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
+            let buttonHeight: CGFloat = self.skipButton.frame.origin.y + self.skipButton.frame.height - self.nextButton.frame.origin.y
+            self.bottomButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom - buttonHeight
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }
@@ -112,6 +119,19 @@ extension GetStartedStartFriendProfileViewController {
                 self.view.layoutIfNeeded()
             }
         }
+    }
+
+}
+
+// MARK: - Dismiss First Responder on Click
+extension GetStartedStartFriendProfileViewController {
+
+    func addDismissKeyboardOnViewClick() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GetStartedStartFriendProfileViewController.dismissKeyboard)))
+    }
+
+    @objc func dismissKeyboard() {
+        self.inputTextField.resignFirstResponder()
     }
 
 }

@@ -128,6 +128,8 @@
 		BBB70AEC2223C0CD006B75A0 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
 		BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */; };
+		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
+		BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418F2227E137009CEC4A /* UIView+Styling.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* OldProfile.swift */; };
@@ -269,6 +271,8 @@
 		BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
 		BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhoneVerificationCompleteViewController.storyboard; sourceTree = "<group>"; };
+		BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Styling.swift"; sourceTree = "<group>"; };
+		BBCF418F2227E137009CEC4A /* UIView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Styling.swift"; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* OldProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfile.swift; sourceTree = "<group>"; };
@@ -444,11 +448,13 @@
 			children = (
 				60C131EB21D348840093ECBA /* UIViewController+Loading.swift */,
 				600FA61021D358B500A40EAC /* UIViewController+Alert.swift */,
+				BBCF418F2227E137009CEC4A /* UIView+Styling.swift */,
 				BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */,
 				BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */,
 				BB686E3C22120E64008A263C /* StringExtensions.swift */,
 				BB686E44221231FA008A263C /* UIImageExtensions.swift */,
 				BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */,
+				BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */,
 				BB33E74C22248B5A001BFA8F /* UIViewControllerExtensions.swift */,
 				BB57151A22159D8F00EF9C4A /* UIButtonExtensions.swift */,
 				BB686E3E22120F1A008A263C /* Config.swift */,
@@ -1120,6 +1126,7 @@
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
 				BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */,
 				BB18788B21E2B1B400964F26 /* ProfilesMainViewController.swift in Sources */,
+				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
 				BB18788921E2B1AC00964F26 /* MatchesMainViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BB75BFE12215846300BAB800 /* SummaryProfileViewController.swift in Sources */,
@@ -1129,6 +1136,7 @@
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* UserCreateAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
+				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageSizeRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */,
 				60C131E421D345CE0093ECBA /* User.swift in Sources */,
