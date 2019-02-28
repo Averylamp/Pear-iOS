@@ -59,6 +59,8 @@
 	<string>To find your latest and greatest photos!</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Quick!  Take a photo of them before they run away!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To make better matches!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To find your latest and greatest photos!</string>
 	<key>UIAppFonts</key>
@@ -74,6 +76,10 @@
 		<string>Nunito-Light.ttf</string>
 		<string>Nunito-Regular.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

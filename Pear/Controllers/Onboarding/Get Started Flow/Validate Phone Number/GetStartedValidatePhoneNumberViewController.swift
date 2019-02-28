@@ -39,7 +39,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
 
         if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
             let fullPhoneNumber = "+1" + phoneNumber
-            print("Verifying phone number")
+            print("Verifying phone number: \(fullPhoneNumber)")
             self.inputTextField.textColor = UIColor.lightGray
             self.inputTextField.isEnabled = false
             self.nextButton.backgroundColor = UIColor.white
@@ -52,6 +52,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
             self.view.addSubview(activityIndicator)
             activityIndicator.center = CGPoint(x: self.view.center.x, y: self.inputTextFieldContainerView.frame.origin.y + self.inputTextFieldContainerView.frame.height + 40)
             activityIndicator.startAnimating()
+
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
                 activityIndicator.stopAnimating()
                 UIView.animate(withDuration: 0.5, animations: {
@@ -67,6 +68,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
                 self.nextButton.isEnabled = true
                 if let error = error {
                     self.alert(title: "Error validating Phone Number", message: error.localizedDescription)
+                    print(error)
                     HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
                     return
                 }

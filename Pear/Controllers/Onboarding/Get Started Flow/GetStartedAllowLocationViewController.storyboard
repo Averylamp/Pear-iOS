@@ -1,7 +1,91 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vdU-if-gwq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Get Started Allow Location View Controller-->
+        <scene sceneID="FYc-gG-Qvm">
+            <objects>
+                <viewController id="vdU-if-gwq" customClass="GetStartedAllowLocationViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t3V-8B-u3f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to verify your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xvk-n7-s8z">
+                                <rect key="frame" x="30" y="285.5" width="315" height="76.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This lets us securely surface nearby profiles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNi-hK-qO2">
+                                <rect key="frame" x="20" y="370" width="335" height="53"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-location" translatesAutoresizingMaskIntoConstraints="NO" id="Gsz-ud-p9A">
+                                <rect key="frame" x="157.5" y="217.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gsz-ud-p9A" secondAttribute="height" multiplier="1:1" id="CSx-ap-Keb"/>
+                                    <constraint firstAttribute="height" constant="60" id="EPi-Mz-Iv2"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwP-Nw-ojL">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9Xy-Fu-QfK"/>
+                                </constraints>
+                                <state key="normal" title="Enable Notifications"/>
+                                <connections>
+                                    <action selector="enableLocationClicked:" destination="vdU-if-gwq" eventType="touchUpInside" id="Eb5-I9-rd6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xvk-n7-s8z" firstAttribute="centerY" secondItem="cww-bI-b7B" secondAttribute="centerY" constant="-20" id="FK8-gD-sZk"/>
+                            <constraint firstAttribute="trailing" secondItem="xvk-n7-s8z" secondAttribute="trailing" constant="30" id="Fwn-Fq-jRX"/>
+                            <constraint firstItem="tNi-hK-qO2" firstAttribute="leading" secondItem="cww-bI-b7B" secondAttribute="leading" constant="20" id="GOV-FR-W2N"/>
+                            <constraint firstItem="tNi-hK-qO2" firstAttribute="top" secondItem="xvk-n7-s8z" secondAttribute="bottom" constant="8" id="Ia5-MQ-65W"/>
+                            <constraint firstItem="cww-bI-b7B" firstAttribute="trailing" secondItem="tNi-hK-qO2" secondAttribute="trailing" constant="20" id="JPq-e4-5d2"/>
+                            <constraint firstItem="xvk-n7-s8z" firstAttribute="top" secondItem="Gsz-ud-p9A" secondAttribute="bottom" constant="8" id="VF5-nQ-rij"/>
+                            <constraint firstItem="qwP-Nw-ojL" firstAttribute="leading" secondItem="cww-bI-b7B" secondAttribute="leading" constant="20" id="Yka-Qn-Vpv"/>
+                            <constraint firstItem="Gsz-ud-p9A" firstAttribute="centerX" secondItem="xvk-n7-s8z" secondAttribute="centerX" id="Zgp-cP-qa7"/>
+                            <constraint firstItem="xvk-n7-s8z" firstAttribute="leading" secondItem="t3V-8B-u3f" secondAttribute="leading" constant="30" id="fdb-pk-Tl3"/>
+                            <constraint firstItem="xvk-n7-s8z" firstAttribute="centerX" secondItem="cww-bI-b7B" secondAttribute="centerX" id="lxP-YP-DmK"/>
+                            <constraint firstItem="cww-bI-b7B" firstAttribute="trailing" secondItem="qwP-Nw-ojL" secondAttribute="trailing" constant="20" id="oqo-Sh-eGm"/>
+                            <constraint firstItem="cww-bI-b7B" firstAttribute="bottom" secondItem="qwP-Nw-ojL" secondAttribute="bottom" constant="20" id="pmo-xI-JSh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cww-bI-b7B"/>
+                    </view>
+                    <connections>
+                        <outlet property="enableLocationButton" destination="qwP-Nw-ojL" id="Dks-WK-c0W"/>
+                        <outlet property="subtitleLabel" destination="tNi-hK-qO2" id="BBU-bJ-ohA"/>
+                        <outlet property="titleLabel" destination="xvk-n7-s8z" id="oQs-bc-XNU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zmo-RL-jJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-icon-location" width="60" height="60"/>
+    </resources>
 </document>

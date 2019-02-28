@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FacebookCore
+import FirebaseAuth
 
 @UIApplicationMain
 final class AppDelegate: UIResponder {
@@ -33,4 +34,36 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         return SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
+
+}
+
+extension AppDelegate {
+
+    // Called when APNs has assigned the device a unique token
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // Convert token to string
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print("APNs device token: \(deviceTokenString)")
+
+        Auth.auth().setAPNSToken(deviceToken, type: .sandbox)
+    }
+
+    // Called when APNs failed to register the device for push notifications
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        // Print the error to console (you should alert the user that registration failed)
+        print("APNs registration failed: \(error)")
+    }
+
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification notification: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print("Received Remote Notification: \(notification)")
+        if Auth.auth().canHandleNotification(notification) {
+            print(notification)
+            completionHandler(.noData)
+            return
+        }
+        // This notification is not auth related, developer should handle it.
+    }
+
 }
