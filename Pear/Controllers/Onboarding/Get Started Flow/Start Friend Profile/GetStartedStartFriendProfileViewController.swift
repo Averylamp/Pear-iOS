@@ -109,7 +109,7 @@ extension GetStartedStartFriendProfileViewController {
             let targetFrame = targetFrameNSValue.cgRectValue
             var buttonHeight: CGFloat = self.skipButton.frame.origin.y + self.skipButton.frame.height - self.nextButton.frame.origin.y
             if self.view.frame.height > 600 {
-                buttonHeight = self.skipButton.frame.height + 20
+                buttonHeight = self.skipButton.frame.height - 12
             }
             self.bottomButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom - buttonHeight
             UIView.animate(withDuration: duration) {
