@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rHP-8z-N7I">
-                                <rect key="frame" x="16" y="223.5" width="343" height="361.5"/>
+                                <rect key="frame" x="16" y="185.5" width="343" height="399.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -44,8 +44,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good bios help friends stand out, leading to fun &amp; interesting conversations." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JK-lB-JVq">
-                                <rect key="frame" x="20" y="132.5" width="335" height="79"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good bios help friends stand out, leading to fun &amp; interesting conversations." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2JK-lB-JVq">
+                                <rect key="frame" x="18" y="126.5" width="339" height="53"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
                                 <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                             <constraint firstItem="mbn-Xm-5zG" firstAttribute="top" secondItem="rHP-8z-N7I" secondAttribute="bottom" constant="12" id="3sM-KW-Gby"/>
                             <constraint firstItem="z4Q-kC-dUT" firstAttribute="bottom" secondItem="mbn-Xm-5zG" secondAttribute="bottom" constant="20" id="560-80-pBt"/>
                             <constraint firstItem="wcw-2F-fuB" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" id="9Qn-z7-v1U"/>
-                            <constraint firstItem="2JK-lB-JVq" firstAttribute="top" secondItem="Dh4-oE-AMb" secondAttribute="bottom" constant="12" id="A8N-hc-shU"/>
+                            <constraint firstItem="2JK-lB-JVq" firstAttribute="top" secondItem="Dh4-oE-AMb" secondAttribute="bottom" constant="6" id="A8N-hc-shU"/>
                             <constraint firstItem="z4Q-kC-dUT" firstAttribute="trailing" secondItem="Dh4-oE-AMb" secondAttribute="trailing" constant="50" id="BB8-No-azx"/>
                             <constraint firstItem="Dh4-oE-AMb" firstAttribute="top" secondItem="wcw-2F-fuB" secondAttribute="bottom" constant="12" id="GjS-lo-vCa"/>
                             <constraint firstItem="mbn-Xm-5zG" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="20" id="Jk2-vf-Mve"/>
@@ -133,10 +133,10 @@
                             <constraint firstItem="rHP-8z-N7I" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="16" id="gsd-C0-0D3"/>
                             <constraint firstItem="Dh4-oE-AMb" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="50" id="qs1-R9-TaK"/>
                             <constraint firstItem="z4Q-kC-dUT" firstAttribute="trailing" secondItem="rHP-8z-N7I" secondAttribute="trailing" constant="16" id="thN-Xo-e5j"/>
-                            <constraint firstItem="2JK-lB-JVq" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="20" id="uXO-cZ-UZI"/>
+                            <constraint firstItem="2JK-lB-JVq" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="18" id="uXO-cZ-UZI"/>
                             <constraint firstItem="QkO-ND-YLt" firstAttribute="trailing" secondItem="rHP-8z-N7I" secondAttribute="trailing" constant="-8" id="vcd-Oo-xTo"/>
-                            <constraint firstItem="rHP-8z-N7I" firstAttribute="top" secondItem="2JK-lB-JVq" secondAttribute="bottom" constant="12" id="w81-PZ-mMd"/>
-                            <constraint firstItem="z4Q-kC-dUT" firstAttribute="trailing" secondItem="2JK-lB-JVq" secondAttribute="trailing" constant="20" id="yM2-P7-Kz9"/>
+                            <constraint firstItem="rHP-8z-N7I" firstAttribute="top" secondItem="2JK-lB-JVq" secondAttribute="bottom" constant="6" id="w81-PZ-mMd"/>
+                            <constraint firstItem="z4Q-kC-dUT" firstAttribute="trailing" secondItem="2JK-lB-JVq" secondAttribute="trailing" constant="18" id="yM2-P7-Kz9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z4Q-kC-dUT"/>
                     </view>

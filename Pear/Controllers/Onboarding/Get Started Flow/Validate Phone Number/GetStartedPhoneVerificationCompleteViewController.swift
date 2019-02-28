@@ -46,6 +46,8 @@ extension GetStartedPhoneVerificationCompleteViewController {
 
     func stylize() {
         self.nextButton.stylizeDarkColor()
+        self.titleLabel.stylizeTitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabel()
     }
 
 }

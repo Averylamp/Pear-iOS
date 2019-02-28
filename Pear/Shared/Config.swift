@@ -37,5 +37,5 @@ class Config {
 
     static let totalGettingStartedPagesNumber: CGFloat = 7.0
     static let progressBarAnimationDuration: Double = 0.4
-    static let progressBarAnimationDelay: Double = 1.0
+    static let progressBarAnimationDelay: Double = 0.0
 }

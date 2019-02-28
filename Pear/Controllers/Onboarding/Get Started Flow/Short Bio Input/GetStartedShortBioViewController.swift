@@ -116,11 +116,18 @@ extension GetStartedShortBioViewController {
         self.inputTextView.font = UIFont(name: Config.displayFontRegular, size: 17)
         self.inputTextView.textColor = Config.textFontColor
 
+        self.progressWidthConstraint.constant = 3.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        self.view.layoutIfNeeded()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
         self.progressWidthConstraint.constant = 4.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
         UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
-        }, completion: nil)    }
+        }, completion: nil)
+    }
 
 }
 
