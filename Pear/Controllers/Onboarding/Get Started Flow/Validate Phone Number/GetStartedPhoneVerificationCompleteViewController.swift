@@ -30,12 +30,11 @@ class GetStartedPhoneVerificationCompleteViewController: UIViewController {
 
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        guard let chooseFlowVC = GetStartedChooseFlowViewController.instantiate(gettingStartedData: GettingStartedData()) else {
+        guard let startFriendProfileVC = GetStartedStartFriendProfileViewController.instantiate() else {
             print("Failed to create Choose flow VC")
             return
         }
-        self.navigationController?.setViewControllers([chooseFlowVC], animated: true)
-
+        self.navigationController?.setViewControllers([startFriendProfileVC], animated: true)
     }
 }
 
@@ -46,6 +45,11 @@ extension GetStartedPhoneVerificationCompleteViewController {
         super.viewDidLoad()
 
         self.addKeyboardSizeNotifications()
+        self.stylize()
+    }
+
+    func stylize() {
+        self.nextButton.stylizeDarkColor()
     }
 
 }

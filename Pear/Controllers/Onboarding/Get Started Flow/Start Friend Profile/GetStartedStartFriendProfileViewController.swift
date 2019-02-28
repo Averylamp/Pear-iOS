@@ -8,24 +8,25 @@
 
 import UIKit
 
-class GetStartedFriendNameViewController: UIViewController {
+class GetStartedStartFriendProfileViewController: UIViewController {
 
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
 
     var gettingStartedData: GettingStartedData!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
 
-    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomButtonBottomConstraint: NSLayoutConstraint!
 
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedFriendNameViewController? {
-        let storyboard = UIStoryboard(name: String(describing: GetStartedFriendNameViewController.self), bundle: nil)
-        guard let endorsedFriendNameVC = storyboard.instantiateInitialViewController() as? GetStartedFriendNameViewController else { return nil }
-        endorsedFriendNameVC.gettingStartedData = gettingStartedData
-        return endorsedFriendNameVC
+    class func instantiate() -> GetStartedStartFriendProfileViewController? {
+        let storyboard = UIStoryboard(name: String(describing: GetStartedStartFriendProfileViewController.self), bundle: nil)
+        guard let startFriendProfileVC = storyboard.instantiateInitialViewController() as? GetStartedStartFriendProfileViewController else { return nil }
+        startFriendProfileVC.gettingStartedData = GettingStartedData()
+        return startFriendProfileVC
     }
 
     @discardableResult
@@ -53,52 +54,41 @@ class GetStartedFriendNameViewController: UIViewController {
         }
     }
 
-    @IBAction func backButtonClicked(_ sender: Any) {
-        self.saveEndorsementFirstName()
-        self.navigationController?.popViewController(animated: true)
+    @IBAction func skipProfileCreationButtonClicked(_ sender: Any) {
+
     }
 
-    @IBAction func clearButtonClicked(_ sender: Any) {
-        self.inputTextField.text = ""
-    }
 }
 
 // MARK: - Life Cycle
-extension GetStartedFriendNameViewController {
+extension GetStartedStartFriendProfileViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nextButton.contentMode = .scaleAspectFit
-        if let endorseeFirst = self.gettingStartedData.profileData.endorsedFirstName {
-            self.inputTextField.text = endorseeFirst
-        }
-        self.inputTextField.becomeFirstResponder()
-        self.styleViews()
+        self.stylize()
         self.addKeyboardSizeNotifications()
     }
 
-    func styleViews() {
-        self.titleLabel.font = UIFont(name: Config.displayFontRegular, size: 28)
-        self.titleLabel.textColor = Config.textFontColor
-
+    func stylize() {
+        self.titleLabel.stylizeTitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabel()
         self.nextButton.stylizeDarkColor()
-
     }
 
 }
 
 // MARK: - Keybaord Size Notifications
-extension GetStartedFriendNameViewController {
+extension GetStartedStartFriendProfileViewController {
 
     func addKeyboardSizeNotifications() {
         NotificationCenter.default
             .addObserver(self,
-                         selector: #selector(GetStartedFriendNameViewController.keyboardWillChange(notification:)),
+                         selector: #selector(GetStartedStartFriendProfileViewController.keyboardWillChange(notification:)),
                          name: UIWindow.keyboardWillChangeFrameNotification,
                          object: nil)
         NotificationCenter.default
             .addObserver(self,
-                         selector: #selector(GetStartedFriendNameViewController.keyboardWillHide(notification:)),
+                         selector: #selector(GetStartedStartFriendProfileViewController.keyboardWillHide(notification:)),
                          name: UIWindow.keyboardWillHideNotification,
                          object: nil)
     }
@@ -108,7 +98,7 @@ extension GetStartedFriendNameViewController {
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let targetFrame = targetFrameNSValue.cgRectValue
             let keyboardBottomPadding: CGFloat = 20
-            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
+            self.bottomButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }
@@ -117,7 +107,7 @@ extension GetStartedFriendNameViewController {
     @objc func keyboardWillHide(notification: Notification) {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             let keyboardBottomPadding: CGFloat = 20
-            self.nextButtonBottomConstraint.constant = keyboardBottomPadding
+            self.bottomButtonBottomConstraint.constant = keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }

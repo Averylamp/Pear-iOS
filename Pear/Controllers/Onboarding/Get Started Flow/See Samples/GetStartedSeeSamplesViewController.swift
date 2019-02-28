@@ -27,20 +27,20 @@ class GetStartedSeeSamplesViewController: UIViewController {
 
     @IBAction func seeSamplesButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        guard let endorsementNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-            print("Failed to create Endorsement Name VC")
-            return
-        }
-        self.navigationController?.pushViewController(endorsementNameVC, animated: true)
+//        guard let endorsementNameVC = GetStartedStartFriendProfileViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+//            print("Failed to create Endorsement Name VC")
+//            return
+//        }
+//        self.navigationController?.pushViewController(endorsementNameVC, animated: true)
     }
 
     @IBAction func skipButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        guard let endorsementNameVC = GetStartedFriendNameViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-            print("Failed to create Endorsement Name VC")
-            return
-        }
-        self.navigationController?.pushViewController(endorsementNameVC, animated: true)
+//        guard let endorsementNameVC = GetStartedStartFriendProfileViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+//            print("Failed to create Endorsement Name VC")
+//            return
+//        }
+//        self.navigationController?.pushViewController(endorsementNameVC, animated: true)
 
     }
 
