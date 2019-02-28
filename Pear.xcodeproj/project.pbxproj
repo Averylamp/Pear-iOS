@@ -562,6 +562,24 @@
 			path = Profiles;
 			sourceTree = "<group>";
 		};
+		BB6C065022280FCA007A5C96 /* Allow Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */,
+				BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */,
+			);
+			path = "Allow Notifications";
+			sourceTree = "<group>";
+		};
+		BB6C065122280FD7007A5C96 /* Allow Location */ = {
+			isa = PBXGroup;
+			children = (
+				BB6C06482227F750007A5C96 /* GetStartedAllowLocationViewController.swift */,
+				BB6C064C2227F762007A5C96 /* GetStartedAllowLocationViewController.storyboard */,
+			);
+			path = "Allow Location";
+			sourceTree = "<group>";
+		};
 		BB75BFCA22155F9100BAB800 /* Full Profile View */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,10 +709,8 @@
 				BBE8D0242213E0ED00FD1355 /* Pick User Provider Screen */,
 				BB75BFD322156B9700BAB800 /* Full Profile Review Page */,
 				BB33E7552224A088001BFA8F /* See Samples */,
-				BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */,
-				BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */,
-				BB6C06482227F750007A5C96 /* GetStartedAllowLocationViewController.swift */,
-				BB6C064C2227F762007A5C96 /* GetStartedAllowLocationViewController.storyboard */,
+				BB6C065022280FCA007A5C96 /* Allow Notifications */,
+				BB6C065122280FD7007A5C96 /* Allow Location */,
 				BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */,
 				BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */,
 			);
