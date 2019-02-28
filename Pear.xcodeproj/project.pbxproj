@@ -126,6 +126,8 @@
 		BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */; };
 		BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */; };
 		BBB70AEC2223C0CD006B75A0 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */; };
+		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
+		BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* OldProfile.swift */; };
@@ -265,6 +267,8 @@
 		BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
 		BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
+		BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhoneVerificationCompleteViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* OldProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfile.swift; sourceTree = "<group>"; };
@@ -658,7 +662,7 @@
 				BBE8D01E2213E09F00FD1355 /* Age Input */,
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 				BB33E7542224A07C001BFA8F /* Choose Flow */,
-				BBE8D01D2213E09400FD1355 /* Endorsement Name Input */,
+				BBE8D01D2213E09400FD1355 /* Friend Name Input */,
 				BB33E7562224A095001BFA8F /* Gender Input */,
 				BBE8D01F2213E0B200FD1355 /* Interests Input */,
 				BBE8D0202213E0BA00FD1355 /* Short Bio Input */,
@@ -744,13 +748,13 @@
 			path = "User Name Input";
 			sourceTree = "<group>";
 		};
-		BBE8D01D2213E09400FD1355 /* Endorsement Name Input */ = {
+		BBE8D01D2213E09400FD1355 /* Friend Name Input */ = {
 			isa = PBXGroup;
 			children = (
 				BB986A46220F799A00759A14 /* GetStartedFriendNameViewController.swift */,
 				BB986A56220F807E00759A14 /* GetStartedFriendNameViewController.storyboard */,
 			);
-			path = "Endorsement Name Input";
+			path = "Friend Name Input";
 			sourceTree = "<group>";
 		};
 		BBE8D01E2213E09F00FD1355 /* Age Input */ = {
@@ -839,6 +843,8 @@
 				BB686E302210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard */,
 				BB686E3922113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift */,
 				BB686E3822113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard */,
+				BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */,
+				BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */,
 			);
 			path = "Validate Phone Number";
 			sourceTree = "<group>";
@@ -935,6 +941,7 @@
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
 				60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */,
+				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
 				BB56D23722142EA700A652E7 /* ProfileAboutViewController.storyboard in Resources */,
 				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
@@ -1092,6 +1099,7 @@
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
+				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				60C131D821D343910093ECBA /* LoginVC.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
