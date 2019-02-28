@@ -110,7 +110,7 @@ extension GetStartedDoDontViewController {
     func stylize() {
         self.nextButton.stylizeDarkColor()
         self.titleLabel.stylizeTitleLabel()
-        self.subtitleLabel.stylizeSubtitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabelSmall()
     }
 
     func populateTVCWithText(text: String, tvc: ExpandingTextViewController) {
