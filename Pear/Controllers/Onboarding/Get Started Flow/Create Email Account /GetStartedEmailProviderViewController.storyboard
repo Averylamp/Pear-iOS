@@ -40,7 +40,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="sexypear@getpear.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5TP-Gv-tsU">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="coolpear11@getpear.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5TP-Gv-tsU">
                                 <rect key="frame" x="20" y="176.5" width="335" height="40"/>
                                 <color key="tintColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

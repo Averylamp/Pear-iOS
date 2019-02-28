@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good bios help friends stand out, leading to fun &amp; interesting conversations." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JK-lB-JVq">
-                                <rect key="frame" x="50" y="154.5" width="275" height="79"/>
+                                <rect key="frame" x="20" y="154.5" width="335" height="79"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
                                 <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -97,10 +97,10 @@
                             <constraint firstItem="rHP-8z-N7I" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="16" id="gsd-C0-0D3"/>
                             <constraint firstItem="Dh4-oE-AMb" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="50" id="qs1-R9-TaK"/>
                             <constraint firstItem="z4Q-kC-dUT" firstAttribute="trailing" secondItem="rHP-8z-N7I" secondAttribute="trailing" constant="16" id="thN-Xo-e5j"/>
-                            <constraint firstItem="2JK-lB-JVq" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="50" id="uXO-cZ-UZI"/>
+                            <constraint firstItem="2JK-lB-JVq" firstAttribute="leading" secondItem="z4Q-kC-dUT" secondAttribute="leading" constant="20" id="uXO-cZ-UZI"/>
                             <constraint firstItem="QkO-ND-YLt" firstAttribute="trailing" secondItem="rHP-8z-N7I" secondAttribute="trailing" constant="-8" id="vcd-Oo-xTo"/>
                             <constraint firstItem="rHP-8z-N7I" firstAttribute="top" secondItem="2JK-lB-JVq" secondAttribute="bottom" constant="12" id="w81-PZ-mMd"/>
-                            <constraint firstItem="z4Q-kC-dUT" firstAttribute="trailing" secondItem="2JK-lB-JVq" secondAttribute="trailing" constant="50" id="yM2-P7-Kz9"/>
+                            <constraint firstItem="z4Q-kC-dUT" firstAttribute="trailing" secondItem="2JK-lB-JVq" secondAttribute="trailing" constant="20" id="yM2-P7-Kz9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z4Q-kC-dUT"/>
                     </view>

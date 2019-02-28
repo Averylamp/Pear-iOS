@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your friend's first name?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ngk-SP-s43">
-                                <rect key="frame" x="50" y="80" width="275" height="76.5"/>
+                                <rect key="frame" x="20" y="80" width="335" height="76.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                             <constraint firstItem="H2I-sl-K6n" firstAttribute="width" secondItem="2Zv-g2-nIA" secondAttribute="width" constant="-40" id="2DN-8K-Cft"/>
                             <constraint firstItem="ngk-SP-s43" firstAttribute="top" secondItem="Lxa-Im-GsX" secondAttribute="bottom" constant="8" id="96Y-fl-5UO"/>
                             <constraint firstItem="m4f-Rk-jnF" firstAttribute="centerX" secondItem="JKI-uo-syP" secondAttribute="centerX" id="CvZ-AI-y24"/>
-                            <constraint firstItem="ngk-SP-s43" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="50" id="Eku-Fn-DM1"/>
+                            <constraint firstItem="ngk-SP-s43" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="20" id="Eku-Fn-DM1"/>
                             <constraint firstItem="H2I-sl-K6n" firstAttribute="top" secondItem="ngk-SP-s43" secondAttribute="bottom" constant="20" id="Kuy-ug-Y9m"/>
                             <constraint firstItem="Lxa-Im-GsX" firstAttribute="top" secondItem="JKI-uo-syP" secondAttribute="top" constant="12" id="L5n-pH-QsW"/>
                             <constraint firstItem="ngk-SP-s43" firstAttribute="centerX" secondItem="JKI-uo-syP" secondAttribute="centerX" id="L6K-KA-WLW"/>
@@ -95,7 +95,7 @@
                             <constraint firstItem="Lxa-Im-GsX" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="20" id="cIo-s9-qe3"/>
                             <constraint firstItem="oYR-wz-gEf" firstAttribute="width" secondItem="2Zv-g2-nIA" secondAttribute="width" id="g3W-7u-Xnx"/>
                             <constraint firstItem="oYR-wz-gEf" firstAttribute="centerX" secondItem="H2I-sl-K6n" secondAttribute="centerX" id="lr3-ea-T7J"/>
-                            <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="ngk-SP-s43" secondAttribute="trailing" constant="50" id="nKX-qx-w0v"/>
+                            <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="ngk-SP-s43" secondAttribute="trailing" constant="20" id="nKX-qx-w0v"/>
                             <constraint firstItem="H2I-sl-K6n" firstAttribute="centerX" secondItem="JKI-uo-syP" secondAttribute="centerX" id="sBx-T0-0L0"/>
                             <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="m4f-Rk-jnF" secondAttribute="trailing" constant="20" id="tkd-VV-TuZ"/>
                             <constraint firstItem="m4f-Rk-jnF" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="20" id="to6-kZ-Qcy"/>

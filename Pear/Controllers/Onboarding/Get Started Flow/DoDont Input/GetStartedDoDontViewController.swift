@@ -14,10 +14,12 @@ class GetStartedDoDontViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var subtextLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
 
     let doDontTitleHeight: CGFloat = 34
+    let keyboardBottomPadding: CGFloat = 10
 
     @IBOutlet weak var stackView: UIStackView!
 
@@ -107,6 +109,8 @@ extension GetStartedDoDontViewController {
 
     func stylize() {
         self.nextButton.stylizeDarkColor()
+        self.titleLabel.stylizeTitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabel()
     }
 
     func populateTVCWithText(text: String, tvc: ExpandingTextViewController) {
@@ -146,7 +150,6 @@ extension GetStartedDoDontViewController {
 
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
-        self.subtextLabel.text = "Should we bring up The Bachelor?  Ask them about their family? Talk to them about food? Help us out!"
     }
 
     enum DoType {
@@ -395,10 +398,9 @@ extension GetStartedDoDontViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let targetFrame = targetFrameNSValue.cgRectValue
-            let keyboardBottomPadding: CGFloat = 10
             self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
-            if self.nextButtonBottomConstraint.constant > 0 && self.view.frame.height < 600 {
-                self.subtextLabel.text = ""
+            if self.nextButtonBottomConstraint.constant > self.keyboardBottomPadding && self.view.frame.height < 600 {
+                self.subtitleLabel.text = ""
             }
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
@@ -407,8 +409,10 @@ extension GetStartedDoDontViewController {
     }
     @objc func keyboardWillHide(notification: Notification) {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-            let keyboardBottomPadding: CGFloat = 10
-            self.nextButtonBottomConstraint.constant = keyboardBottomPadding
+            if self.nextButtonBottomConstraint.constant > self.keyboardBottomPadding && self.view.frame.height < 600 {
+                self.subtitleLabel.text = "Should we ask about their family? Talk about food? Help us out!"
+            }
+            self.nextButtonBottomConstraint.constant = self.keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }

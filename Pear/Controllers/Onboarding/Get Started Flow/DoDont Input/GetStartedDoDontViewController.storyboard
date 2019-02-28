@@ -43,7 +43,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Should we ask about their family? Talk about food? Help us out!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fT3-Yw-8Vy">
-                                <rect key="frame" x="40" y="139.5" width="295" height="38.5"/>
+                                <rect key="frame" x="20" y="139.5" width="335" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XlG-fB-jrv" firstAttribute="centerX" secondItem="G71-ex-rp4" secondAttribute="centerX" id="1Qv-IL-fko"/>
-                            <constraint firstItem="G71-ex-rp4" firstAttribute="trailing" secondItem="fT3-Yw-8Vy" secondAttribute="trailing" constant="40" id="3cS-Oy-lL6"/>
+                            <constraint firstItem="G71-ex-rp4" firstAttribute="trailing" secondItem="fT3-Yw-8Vy" secondAttribute="trailing" constant="20" id="3cS-Oy-lL6"/>
                             <constraint firstItem="fT3-Yw-8Vy" firstAttribute="top" secondItem="XlG-fB-jrv" secondAttribute="bottom" constant="8" id="3kw-KR-mJt"/>
                             <constraint firstItem="7dd-td-X1n" firstAttribute="leading" secondItem="G71-ex-rp4" secondAttribute="leading" constant="20" id="6wi-Sh-0ur"/>
                             <constraint firstItem="tgd-1Y-rYX" firstAttribute="top" secondItem="5hg-ug-CTH" secondAttribute="bottom" constant="8" id="99b-PR-dTi"/>
@@ -103,7 +103,7 @@
                             <constraint firstItem="5hg-ug-CTH" firstAttribute="top" secondItem="fT3-Yw-8Vy" secondAttribute="bottom" constant="8" id="XXq-5W-kW1"/>
                             <constraint firstItem="5hg-ug-CTH" firstAttribute="leading" secondItem="G71-ex-rp4" secondAttribute="leading" id="bQV-8R-KIB"/>
                             <constraint firstItem="G71-ex-rp4" firstAttribute="trailing" secondItem="XlG-fB-jrv" secondAttribute="trailing" constant="30" id="eiI-F9-XNn"/>
-                            <constraint firstItem="fT3-Yw-8Vy" firstAttribute="leading" secondItem="G71-ex-rp4" secondAttribute="leading" constant="40" id="ib6-4g-et1"/>
+                            <constraint firstItem="fT3-Yw-8Vy" firstAttribute="leading" secondItem="G71-ex-rp4" secondAttribute="leading" constant="20" id="ib6-4g-et1"/>
                             <constraint firstItem="XlG-fB-jrv" firstAttribute="top" secondItem="Ycg-vo-mO5" secondAttribute="bottom" constant="8" id="r7h-04-ytZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G71-ex-rp4"/>
@@ -113,7 +113,8 @@
                         <outlet property="nextButtonBottomConstraint" destination="Fg9-Ne-cqW" id="WbN-mV-xPR"/>
                         <outlet property="scrollView" destination="5hg-ug-CTH" id="X6D-V6-OeM"/>
                         <outlet property="stackView" destination="gbW-Sp-2JO" id="d2D-DN-W0B"/>
-                        <outlet property="subtextLabel" destination="fT3-Yw-8Vy" id="ZkM-B4-hZ8"/>
+                        <outlet property="subtitleLabel" destination="fT3-Yw-8Vy" id="fEN-qn-hXN"/>
+                        <outlet property="titleLabel" destination="XlG-fB-jrv" id="LQT-bW-b7B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUC-x5-pR4" userLabel="First Responder" sceneMemberID="firstResponder"/>

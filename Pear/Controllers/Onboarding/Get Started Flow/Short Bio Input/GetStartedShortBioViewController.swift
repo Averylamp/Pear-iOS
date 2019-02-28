@@ -20,6 +20,7 @@ class GetStartedShortBioViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
 
+    let keyboardBottomPadding: CGFloat = 10
     let maxTextLength: Int = 600
 
     /// Factory method for creating this view controller.
@@ -87,7 +88,6 @@ extension GetStartedShortBioViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.inputTextView.delegate = self
-        self.inputTextView.becomeFirstResponder()
         self.inputTextView.isScrollEnabled = true
 
         if self.gettingStartedData.profileData.shortBio != "" {
@@ -163,8 +163,9 @@ extension GetStartedShortBioViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let targetFrame = targetFrameNSValue.cgRectValue
-            let keyboardBottomPadding: CGFloat = 10
             self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
+            self.subtitleLabel.text = ""
+
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }
@@ -172,8 +173,8 @@ extension GetStartedShortBioViewController {
     }
     @objc func keyboardWillHide(notification: Notification) {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-            let keyboardBottomPadding: CGFloat = 10
-            self.nextButtonBottomConstraint.constant = keyboardBottomPadding
+            self.subtitleLabel.text = "Good bios help friends stand out, leading to fun & interesting conversations."
+            self.nextButtonBottomConstraint.constant = self.keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }

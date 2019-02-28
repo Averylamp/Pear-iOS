@@ -109,6 +109,7 @@ extension GetStartedValidatePhoneNumberCodeViewController {
     }
 
     func setupVerificationView() {
+        self.view.layoutIfNeeded()
         let sideInsets: CGFloat = 30
         let numberSpacing: CGFloat = 4
         let fullUsableSpace: CGFloat = self.verificationView.frame.width - (2 * sideInsets)
