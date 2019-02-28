@@ -85,18 +85,24 @@ extension ExpandingTextViewController {
             textViewRightAccessoryConstraint =
                 NSLayoutConstraint(item: self.textView, attribute: .right, relatedBy: .equal, toItem: accessoryButton, attribute: .left, multiplier: 1.0, constant: 0.0)
             self.primaryAccessoryButtonRightConstraint =
-                NSLayoutConstraint(item: accessoryButton, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: -accessoryButtonRightOffset)
+                NSLayoutConstraint(item: accessoryButton, attribute: .right, relatedBy: .equal,
+                                   toItem: self.view, attribute: .right, multiplier: 1.0, constant: -accessoryButtonRightOffset)
             self.view.addConstraints([
                     self.textViewRightAccessoryConstraint!,
-                    NSLayoutConstraint(item: accessoryButton, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-                    NSLayoutConstraint(item: accessoryButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
-                    NSLayoutConstraint(item: accessoryButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
+                    NSLayoutConstraint(item: accessoryButton, attribute: .centerY, relatedBy: .equal,
+                                       toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+                    NSLayoutConstraint(item: accessoryButton, attribute: .width, relatedBy: .equal,
+                                       toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
+                    NSLayoutConstraint(item: accessoryButton, attribute: .height, relatedBy: .equal,
+                                       toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
                     self.primaryAccessoryButtonRightConstraint!
                 ])
             UIView.animate(withDuration: self.animationDuration) {
                 self.view.layoutIfNeeded()
             }
-        } else if secondaryAccessoryButton == nil, let primaryAccessoryButton = self.primaryAccessoryButton, let primaryAccessoryButtonRightConstraint = self.primaryAccessoryButtonRightConstraint {
+        } else if secondaryAccessoryButton == nil,
+            let primaryAccessoryButton = self.primaryAccessoryButton,
+            let primaryAccessoryButtonRightConstraint = self.primaryAccessoryButtonRightConstraint {
             secondaryAccessoryButton = UIButton()
             accessoryButton = secondaryAccessoryButton
             guard let accessoryButton = accessoryButton else { return }
@@ -105,11 +111,16 @@ extension ExpandingTextViewController {
             self.view.addSubview(accessoryButton)
             primaryAccessoryButtonRightConstraint.isActive = false
             self.view.addConstraints([
-                NSLayoutConstraint(item: primaryAccessoryButton, attribute: .right, relatedBy: .equal, toItem: accessoryButton, attribute: .left, multiplier: 1.0, constant: -8.0),
-                NSLayoutConstraint(item: accessoryButton, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: accessoryButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
-                NSLayoutConstraint(item: accessoryButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
-                NSLayoutConstraint(item: accessoryButton, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: -accessoryButtonRightOffset)
+                NSLayoutConstraint(item: primaryAccessoryButton, attribute: .right, relatedBy: .equal,
+                                   toItem: accessoryButton, attribute: .left, multiplier: 1.0, constant: -8.0),
+                NSLayoutConstraint(item: accessoryButton, attribute: .centerY, relatedBy: .equal,
+                                   toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: accessoryButton, attribute: .width, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
+                NSLayoutConstraint(item: accessoryButton, attribute: .height, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
+                NSLayoutConstraint(item: accessoryButton, attribute: .right, relatedBy: .equal,
+                                   toItem: self.view, attribute: .right, multiplier: 1.0, constant: -accessoryButtonRightOffset)
                 ])
         }
 
@@ -157,7 +168,8 @@ extension ExpandingTextViewController {
         }
 
         if removedAccessory {
-            self.textViewRightConstraint = NSLayoutConstraint(item: self.textView, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0)
+            self.textViewRightConstraint = NSLayoutConstraint(item: self.textView, attribute: .right, relatedBy: .equal,
+                                                              toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0)
             self.view.addConstraint(self.textViewRightConstraint!)
             UIView.animate(withDuration: self.animationDuration) {
                 self.view.layoutIfNeeded()

@@ -4,8 +4,10 @@ disabled_rules:
 excluded:
   - Pods
 
-line_length: 200
-
+line_length:
+  warning: 180 
+  error: 240
+  ignores_interpolated_strings: true
 function_body_length: 100
 cyclomatic_complexity: 20
 file_length: 600

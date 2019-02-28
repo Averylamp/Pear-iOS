@@ -58,21 +58,33 @@ extension ProfileDoDontViewController {
         containingView.addSubview(textLabel)
         let iconSize: CGFloat = 24
         self.view.addConstraints([
-            NSLayoutConstraint(item: containingView, attribute: .left, relatedBy: .equal, toItem: self.view, attribute: .left, multiplier: 1.0, constant: 30),
-            NSLayoutConstraint(item: containingView, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: -30),
-            NSLayoutConstraint(item: iconImageView, attribute: .left, relatedBy: .equal, toItem: containingView, attribute: .left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: iconImageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: iconSize),
-            NSLayoutConstraint(item: iconImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: iconSize),
-            NSLayoutConstraint(item: iconImageView, attribute: .right, relatedBy: .equal, toItem: textLabel, attribute: .left, multiplier: 1.0, constant: -12),
-            NSLayoutConstraint(item: iconImageView, attribute: .top, relatedBy: .equal, toItem: textLabel, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: textLabel, attribute: .right, relatedBy: .equal, toItem: containingView, attribute: .right, multiplier: 1.0, constant: itemSpacing),
-            NSLayoutConstraint(item: textLabel, attribute: .bottom, relatedBy: .equal, toItem: containingView, attribute: .bottom, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: textLabel, attribute: .top, relatedBy: .equal, toItem: containingView, attribute: .top, multiplier: 1.0, constant: itemSpacing)
+            NSLayoutConstraint(item: containingView, attribute: .left, relatedBy: .equal,
+                               toItem: self.view, attribute: .left, multiplier: 1.0, constant: 30),
+            NSLayoutConstraint(item: containingView, attribute: .right, relatedBy: .equal,
+                               toItem: self.view, attribute: .right, multiplier: 1.0, constant: -30),
+            NSLayoutConstraint(item: iconImageView, attribute: .left, relatedBy: .equal,
+                               toItem: containingView, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: iconImageView, attribute: .width, relatedBy: .equal,
+                               toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: iconSize),
+            NSLayoutConstraint(item: iconImageView, attribute: .height, relatedBy: .equal,
+                               toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: iconSize),
+            NSLayoutConstraint(item: iconImageView, attribute: .right, relatedBy: .equal,
+                               toItem: textLabel, attribute: .left, multiplier: 1.0, constant: -12),
+            NSLayoutConstraint(item: iconImageView, attribute: .top, relatedBy: .equal,
+                               toItem: textLabel, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: textLabel, attribute: .right, relatedBy: .equal,
+                               toItem: containingView, attribute: .right, multiplier: 1.0, constant: itemSpacing),
+            NSLayoutConstraint(item: textLabel, attribute: .bottom, relatedBy: .equal,
+                               toItem: containingView, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: textLabel, attribute: .top, relatedBy: .equal,
+                               toItem: containingView, attribute: .top, multiplier: 1.0, constant: itemSpacing)
             ])
         if let lastItemView = self.lastItemView {
-            self.view.addConstraint(NSLayoutConstraint(item: containingView, attribute: .top, relatedBy: .equal, toItem: lastItemView, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+            self.view.addConstraint(NSLayoutConstraint(item: containingView, attribute: .top, relatedBy: .equal,
+                                                       toItem: lastItemView, attribute: .bottom, multiplier: 1.0, constant: 0.0))
         } else {
-            self.view.addConstraint(NSLayoutConstraint(item: containingView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0))
+            self.view.addConstraint(NSLayoutConstraint(item: containingView, attribute: .top, relatedBy: .equal,
+                                                       toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0))
         }
         self.lastItemView = containingView
 

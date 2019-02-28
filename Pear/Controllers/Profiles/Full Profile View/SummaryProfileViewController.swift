@@ -51,8 +51,10 @@ extension SummaryProfileViewController {
         profileImageVC.didMove(toParent: self)
         profileImageVC.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
-            NSLayoutConstraint(item: profileImageVC.view, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: profileImageVC.view, attribute: .height, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0)])
+            NSLayoutConstraint(item: profileImageVC.view, attribute: .width, relatedBy: .equal,
+                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: profileImageVC.view, attribute: .height, relatedBy: .equal,
+                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0)])
 
         self.view.layoutIfNeeded()
     }
@@ -74,9 +76,11 @@ extension SummaryProfileViewController {
             profileInformationVC.didMove(toParent: self)
             profileInformationVC.view.translatesAutoresizingMaskIntoConstraints = false
             let profileInformationHeightConstraint =
-                NSLayoutConstraint(item: profileInformationVC.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+                NSLayoutConstraint(item: profileInformationVC.view, attribute: .height, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
             self.view.addConstraints([
-                NSLayoutConstraint(item: profileInformationVC.view, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: profileInformationVC.view, attribute: .width, relatedBy: .equal,
+                                   toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
                 profileInformationHeightConstraint
                 ])
             profileInformationVC.setHeightConstraint(constraint: profileInformationHeightConstraint)
@@ -93,9 +97,11 @@ extension SummaryProfileViewController {
             profileDoDontVC.didMove(toParent: self)
             profileDoDontVC.view.translatesAutoresizingMaskIntoConstraints = false
             let profileDoDontHeightConstraint =
-                NSLayoutConstraint(item: profileDoDontVC.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+                NSLayoutConstraint(item: profileDoDontVC.view, attribute: .height, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
             self.view.addConstraints([
-                NSLayoutConstraint(item: profileDoDontVC.view, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: profileDoDontVC.view, attribute: .width, relatedBy: .equal,
+                                   toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
                 profileDoDontHeightConstraint
                 ])
             profileDoDontVC.setHeightConstraint(constraint: profileDoDontHeightConstraint)
@@ -111,8 +117,10 @@ extension SummaryProfileViewController {
         seperatorView.backgroundColor = self.seperatorViewColor
         self.stackView.addArrangedSubview(seperatorView)
         self.view.addConstraints([
-            NSLayoutConstraint(item: seperatorView, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: seperatorView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0)
+            NSLayoutConstraint(item: seperatorView, attribute: .width, relatedBy: .equal,
+                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: seperatorView, attribute: .height, relatedBy: .equal,
+                               toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0)
             ])
     }
 

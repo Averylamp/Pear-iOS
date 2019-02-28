@@ -77,7 +77,8 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
 
                 HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-                guard let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController.instantiate(gettingStartedUserData: self.gettingStartedUserData, verificationID: verificationID) else {
+                guard let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController
+                    .instantiate(gettingStartedUserData: self.gettingStartedUserData, verificationID: verificationID) else {
                     print("Failed to create Phone Number Code VC")
                     return
                 }

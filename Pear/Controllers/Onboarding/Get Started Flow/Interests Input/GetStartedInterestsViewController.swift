@@ -134,7 +134,8 @@ extension GetStartedInterestsViewController {
                 self.scrollView.addSubview(centerButton)
                 centerButton.setTitle(interestStrings[itemNumber * 3 + 1], for: .normal)
                 centerButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-                centerButton.frame = CGRect(x: sideOffset + (buttonWidth + buttonSpacing), y: buttonSpacing + rowHeight * CGFloat(itemNumber), width: buttonWidth, height: buttonHeight)
+                centerButton.frame = CGRect(x: sideOffset + (buttonWidth + buttonSpacing), y: buttonSpacing + rowHeight * CGFloat(itemNumber),
+                                            width: buttonWidth, height: buttonHeight)
                 centerButton.titleLabel?.minimumScaleFactor = 0.5
                 centerButton.titleLabel?.adjustsFontSizeToFitWidth = true
                 centerButton.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.95, alpha: 1.00)
@@ -151,7 +152,8 @@ extension GetStartedInterestsViewController {
                 self.scrollView.addSubview(rightButton)
                 rightButton.setTitle(interestStrings[itemNumber * 3 + 2], for: .normal)
                 rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-                rightButton.frame = CGRect(x: sideOffset + (buttonWidth + buttonSpacing) * 2, y: buttonSpacing + rowHeight * CGFloat(itemNumber), width: buttonWidth, height: buttonHeight)
+                rightButton.frame = CGRect(x: sideOffset + (buttonWidth + buttonSpacing) * 2, y: buttonSpacing + rowHeight * CGFloat(itemNumber),
+                                           width: buttonWidth, height: buttonHeight)
                 rightButton.titleLabel?.minimumScaleFactor = 0.5
                 rightButton.titleLabel?.adjustsFontSizeToFitWidth = true
                 rightButton.backgroundColor = UIColor(red: 0.95, green: 0.96, blue: 0.95, alpha: 1.00)

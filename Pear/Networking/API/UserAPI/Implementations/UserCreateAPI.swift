@@ -22,6 +22,7 @@ class UserCreateAPI: UserAPI {
 
     }
 
+    // swiftlint:disable:next line_length
     static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput) {\n  createUser(userInput: $userInput) {\n    success\n    message\n    user {\n      _id\n      deactivated\n      firebaseToken\n      firebaseAuthID\n      facebookId\n      facebookAccessToken\n      email\n      phoneNumber\n      phoneNumberVerified\n      firstName\n      lastName\n      thumbnailURL\n      gender\n      locationName\n      locationCoordinates\n      school\n      schoolEmail\n      schoolEmailVerified\n      birthdate\n      age\n      profile_ids\n\n      endorsedProfile_ids\n\n      userPreferences {\n        seekingGender\n      }\n      userStatData {\n        totalNumberOfMatches\n        totalNumberOfMatches\n      }\n      userDemographics {\n        ethnicities\n      }\n      userMatches_id\n      discovery_id\n      pearPoints\n    }\n  }\n}\n"
 
     func convertUserDataToQueryVariable(userData: GettingStartedUserData) throws -> Data {
@@ -30,7 +31,7 @@ class UserCreateAPI: UserAPI {
             let email = userData.email,
             let age = userData.age,
             let phoneNumber = userData.phoneNumber else {
-                throw UserCreationError.invalidVariables
+                throw UserCreationError.invalidVariablester
         }
 
         var variablesDictionary: [String: Any] = [
@@ -92,8 +93,8 @@ class UserCreateAPI: UserAPI {
                     print(error as Any)
                     return
                 } else {
-                    print(response)
-                    print(data)
+                    print(response as Any)
+                    print(data as Any)
                     if let data = data, let json = try? JSON(data: data) {
                         print(json)
                     } else {
