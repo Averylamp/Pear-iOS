@@ -8,8 +8,7 @@
 
 import Foundation
 
-
-struct ProfileKeys{
+struct ProfileKeys {
     static let age = "age"
     static let active = "active"
     static let documentId = "documentId"

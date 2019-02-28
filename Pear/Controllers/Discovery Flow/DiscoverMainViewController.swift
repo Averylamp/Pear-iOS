@@ -9,24 +9,22 @@
 import UIKit
 
 class DiscoverMainViewController: UIViewController {
-    
-    class func instantiate() ->DiscoverMainViewController{
+
+    class func instantiate() -> DiscoverMainViewController? {
         let storyboard = UIStoryboard(name: String(describing: DiscoverMainViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! DiscoverMainViewController
-        return vc
+        guard let discoverVC = storyboard.instantiateInitialViewController() as? DiscoverMainViewController else { return nil }
+        return discoverVC
     }
-    
+
 }
 
-
 // MARK: - Life Cycle
-extension DiscoverMainViewController{
+extension DiscoverMainViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         // Do any additional setup after loading the view.
     }
-    
+
 }

@@ -10,5 +10,5 @@ import UIKit
 
 class ImageUploadAddCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    
+
 }

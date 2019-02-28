@@ -1,0 +1,16 @@
+
+
+disabled_rules: 
+excluded:
+  - Pods
+
+line_length: 200
+
+function_body_length: 100
+cyclomatic_complexity: 20
+file_length: 600
+
+type_name:
+  max_length:
+    warning: 60
+    error: 80

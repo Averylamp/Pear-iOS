@@ -15,22 +15,19 @@ class GetStartedEmailProviderViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-    
-    
-    
+
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate() -> GetStartedEmailProviderViewController {
+    class func instantiate() -> GetStartedEmailProviderViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedEmailProviderViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! GetStartedEmailProviderViewController
-        return vc
+        guard let emailProviderVC = storyboard.instantiateInitialViewController() as? GetStartedEmailProviderViewController else { return nil }
+        return emailProviderVC
     }
-    
-    
+
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        if let email = self.inputTextField.text{
+        if let email = self.inputTextField.text {
             // After asking the user for their email.
             Auth.auth().fetchSignInMethods(forEmail: email) { signInMethods, error in
                 // This returns the same array as fetchProviders(forEmail:completion:) but for email
@@ -39,104 +36,107 @@ class GetStartedEmailProviderViewController: UIViewController {
                 // 'emailLink' if the user previously signed in with an email/link
                 // 'password' if the user has a password.
                 // A user could have both.
-                if (error != nil) {
+                if error != nil {
                     // Handle error case.
                     self.alert(title: "Email error", message: "Error signing up by email")
                     return
                 }
-                
+
                 guard let signInMethods = signInMethods else { return }
-                
-                
+
                 var emailPasswordUsed: Bool = false
                 var emailLinkUsed: Bool = false
                 var facebookUsed: Bool = false
-                if (signInMethods.contains(EmailPasswordAuthSignInMethod)) {
+                if signInMethods.contains(EmailPasswordAuthSignInMethod) {
                     // User can sign in with email/password.
                     emailPasswordUsed = true
                     print("Email Password combo")
                 }
-                if (signInMethods.contains(EmailLinkAuthSignInMethod)) {
+                if signInMethods.contains(EmailLinkAuthSignInMethod) {
                     print("Email Password combo")
                     emailLinkUsed = true
                     // User can sign in with email/link.
                 }
-                if (signInMethods.contains(FacebookAuthSignInMethod)){
+                if signInMethods.contains(FacebookAuthSignInMethod) {
                     facebookUsed = true
                     print("User previously signed up with facebook")
                     // Facebook signup detected
                 }
-                
-                if (!emailPasswordUsed && !emailLinkUsed && !facebookUsed){
-                    
-                }else{
-                    
-                    
+
+                if !emailPasswordUsed && !emailLinkUsed && !facebookUsed {
+
+                } else {
+
                 }
-                
+
             }
-            
-            
-            
+
 //            let phoneVerificationVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedData: self.gettingStartedData)
 //            self.navigationController?.pushViewController(phoneVerificationVC, animated: true)
-        }else{
+        } else {
             self.alert(title: "Email Missing", message: "Please fill out your email")
         }
     }
-    
+
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
     @IBAction func clearButtonClicked(_ sender: Any) {
         self.inputTextField.text = ""
     }
 }
 
 // MARK: - Life Cycle
-extension GetStartedEmailProviderViewController{
-    
+extension GetStartedEmailProviderViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.inputTextField.becomeFirstResponder()
         self.stylize()
         self.addKeyboardSizeNotifications()
     }
-    
-    func stylize(){
+
+    func stylize() {
         self.titleLabel.stylizeTitleLabel()
-        
+
         self.nextButton.stylizeDarkColor()
     }
-    
-    func addKeyboardSizeNotifications(){
-        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedEmailProviderViewController.keyboardWillChange(notification:)), name: UIWindow.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(GetStartedEmailProviderViewController.keyboardWillHide(notification:)), name: UIWindow.keyboardWillHideNotification, object: nil)
-    }
-    
-    
+
 }
 
 // MARK: - Keybaord Size Notifications
-extension GetStartedEmailProviderViewController{
-    
-    @objc func keyboardWillChange(notification: Notification){
-        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
-        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let bottomSpacing: CGFloat = 20
-        self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + bottomSpacing
-        UIView.animate(withDuration: duration) {
-            self.view.layoutIfNeeded()
+extension GetStartedEmailProviderViewController {
+
+    func addKeyboardSizeNotifications() {
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(GetStartedEmailProviderViewController.keyboardWillChange(notification:)),
+                         name: UIWindow.keyboardWillChangeFrameNotification,
+                         object: nil)
+        NotificationCenter.default
+            .addObserver(self,
+                         selector: #selector(GetStartedEmailProviderViewController.keyboardWillHide(notification:)),
+                         name: UIWindow.keyboardWillHideNotification,
+                         object: nil)
+    }
+
+    @objc func keyboardWillChange(notification: Notification) {
+        if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+            let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let targetFrame = targetFrameNSValue.cgRectValue
+            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom
+            UIView.animate(withDuration: duration) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
-    
-    @objc func keyboardWillHide(notification: Notification){
-        let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
-        self.nextButtonBottomConstraint.constant = 20
-        UIView.animate(withDuration: duration) {
-            self.view.layoutIfNeeded()
+    @objc func keyboardWillHide(notification: Notification) {
+        if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+            self.nextButtonBottomConstraint.constant = 0
+            UIView.animate(withDuration: duration) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
-    
 }

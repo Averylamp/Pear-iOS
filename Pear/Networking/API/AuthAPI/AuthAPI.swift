@@ -17,4 +17,3 @@ enum AuthAPIError: Error {
 protocol AuthAPI {
     func login(with method: LoginMethod, completion: @escaping (Result<PearUser, AuthAPIError>) -> Void)
 }
-

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-typealias UIButtonTargetClosure = (UIButton) -> ()
+typealias UIButtonTargetClosure = (UIButton) -> Void
 
 class ClosureWrapper: NSObject {
     let closure: UIButtonTargetClosure
@@ -19,11 +19,11 @@ class ClosureWrapper: NSObject {
 }
 
 extension UIButton {
-    
+
     private struct AssociatedKeys {
         static var targetClosure = "targetClosure"
     }
-    
+
     private var targetClosure: UIButtonTargetClosure? {
         get {
             guard let closureWrapper = objc_getAssociatedObject(self, &AssociatedKeys.targetClosure) as? ClosureWrapper else { return nil }
@@ -34,19 +34,18 @@ extension UIButton {
             objc_setAssociatedObject(self, &AssociatedKeys.targetClosure, ClosureWrapper(newValue), objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-    
+
     func addTargetClosure(closure: @escaping UIButtonTargetClosure) {
         targetClosure = closure
         addTarget(self, action: #selector(UIButton.closureAction), for: .touchUpInside)
     }
-    
+
     @objc func closureAction() {
         guard let targetClosure = targetClosure else { return }
         targetClosure(self)
     }
-    
-    
-    func stylizeDarkColor(){
+
+    func stylizeDarkColor() {
         self.backgroundColor = Config.nextButtonColor
         self.layer.cornerRadius = self.frame.height / 2.0
         self.layer.shadowRadius = 2
@@ -56,9 +55,9 @@ extension UIButton {
         self.setTitleColor(UIColor.white, for: .normal)
         self.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
     }
-    
-    func stylizeFacebookColor(){
-        self.backgroundColor = UIColor(red:0.21, green:0.35, blue:0.62, alpha:1.00)
+
+    func stylizeFacebookColor() {
+        self.backgroundColor = UIColor(red: 0.21, green: 0.35, blue: 0.62, alpha: 1.00)
         self.layer.cornerRadius = self.frame.height / 2.0
         self.layer.shadowRadius = 2
         self.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
@@ -67,8 +66,8 @@ extension UIButton {
         self.setTitleColor(UIColor.white, for: .normal)
         self.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
     }
-    
-    func stylizeLightColor(){
+
+    func stylizeLightColor() {
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = self.frame.height / 2.0
         self.layer.shadowRadius = 2
@@ -78,6 +77,5 @@ extension UIButton {
         self.setTitleColor(Config.textFontColor, for: .normal)
         self.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
     }
-    
 
 }

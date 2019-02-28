@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 extension UILabel {
-    
+
     @IBInspectable var kerning: Float {
         get {
-            var range = NSMakeRange(0, (text ?? "").count)
+            var range = NSRange(location: 0, length: (text ?? "").count)
             guard let kern = attributedText?.attribute(NSAttributedString.Key.kern, at: 0, effectiveRange: &range),
                 let value = kern as? NSNumber
                 else {
@@ -22,8 +22,8 @@ extension UILabel {
             return value.floatValue
         }
         set {
-            var attText:NSMutableAttributedString
-            
+            var attText: NSMutableAttributedString
+
             if let attributedText = attributedText {
                 attText = NSMutableAttributedString(attributedString: attributedText)
             } else if let text = text {
@@ -31,29 +31,29 @@ extension UILabel {
             } else {
                 attText = NSMutableAttributedString(string: "")
             }
-            
-            let range = NSMakeRange(0, attText.length)
+
+            let range = NSRange(location: 0, length: attText.length)
             attText.addAttribute(NSAttributedString.Key.kern, value: NSNumber(value: newValue), range: range)
             self.attributedText = attText
         }
     }
-    
-    func stylizeLogoLabel(){
+
+    func stylizeLogoLabel() {
         self.font = UIFont(name: Config.logoFont, size: 32)
         self.kerning = 3.0
     }
-    
-    func stylizeTitleLabel(){
+
+    func stylizeTitleLabel() {
         self.font = UIFont(name: Config.displayFontRegular, size: 28)
         self.textColor = Config.textFontColor
     }
-    
-    func stylizeSubtitleLabel(){
+
+    func stylizeSubtitleLabel() {
         self.font = UIFont(name: Config.textFontSemiBold, size: 22)
         self.textColor = Config.textFontColor
     }
-    
-    func stylizeSubtitleLabelSmall(){
+
+    func stylizeSubtitleLabelSmall() {
         self.font = UIFont(name: Config.textFontSemiBold, size: 17)
         self.textColor = Config.textFontColor
     }
