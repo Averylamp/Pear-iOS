@@ -11,10 +11,16 @@ import UIKit
 class GetStartedAgeViewController: UIViewController {
 
     @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var inputTextFieldTitle: UILabel!
+    @IBOutlet weak var inputTextFieldContainerView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
 
     var gettingStartedData: GettingStartedData!
+
+    @IBOutlet weak var firstTitleLabel: UILabel!
+    @IBOutlet weak var secondTitleLabel: UILabel!
 
     /// Factory method for creating this view controller.
     ///
@@ -77,6 +83,9 @@ extension GetStartedAgeViewController {
 
     func stylize() {
         self.nextButton.stylizeDarkColor()
+        self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
+        self.inputTextFieldTitle.stylizeTextFieldTitle()
+        self.inputTextField.stylizeGettingStarted()
     }
 
 }

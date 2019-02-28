@@ -15,6 +15,7 @@ class GetStartedInterestsViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
 
     var gettingStartedData: GettingStartedData!
 
