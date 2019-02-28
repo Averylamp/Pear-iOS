@@ -143,6 +143,9 @@ extension GetStartedNotifyFriendViewController {
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let targetFrame = targetFrameNSValue.cgRectValue
             let keyboardBottomPadding: CGFloat = 20
+            if self.view.frame.height < 600 && targetFrame.height > 0 {
+                self.subtitleLabel.text = ""
+            }
             self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
@@ -152,6 +155,7 @@ extension GetStartedNotifyFriendViewController {
     @objc func keyboardWillHide(notification: Notification) {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             let keyboardBottomPadding: CGFloat = 20
+            self.subtitleLabel.text = "We'll send them a link to the profile so they can approve it."
             self.nextButtonBottomConstraint.constant = keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()

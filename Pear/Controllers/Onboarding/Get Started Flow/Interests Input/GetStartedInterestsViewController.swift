@@ -104,6 +104,12 @@ extension GetStartedInterestsViewController {
         self.subtitleLabel.stylizeSubtitleLabel()
         self.nextButton.stylizeDarkColor()
 
+        self.progressWidthConstraint.constant = 2.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        self.view.layoutIfNeeded()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
         self.progressWidthConstraint.constant = 3.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
         UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {

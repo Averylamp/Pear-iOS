@@ -51,11 +51,17 @@ class GetStartedPhotoInputViewController: UIViewController {
             self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
             return
         }
-        guard let profileReviewVC = GetStartedProfileReviewViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-            print("Failed to create profile Review VC")
+        
+        guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+            print("Failed to create Notify Friend VC")
             return
         }
-        self.navigationController?.pushViewController(profileReviewVC, animated: true)
+        self.navigationController?.pushViewController(notifyFriendVC, animated: true)
+//        guard let profileReviewVC = GetStartedProfileReviewViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+//            print("Failed to create profile Review VC")
+//            return
+//        }
+//        self.navigationController?.pushViewController(profileReviewVC, animated: true)
     }
 
 }
@@ -77,11 +83,18 @@ extension GetStartedPhotoInputViewController {
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
 
+        self.progressWidthConstraint.constant = 5.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        self.view.layoutIfNeeded()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
         self.progressWidthConstraint.constant = 6.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
         UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
-        }, completion: nil)    }
+        }, completion: nil)
+    }
 
     func restoreGettingStartedState() {
         self.images = self.gettingStartedData.profileData.images
