@@ -31,7 +31,7 @@ class UserCreateAPI: UserAPI {
             let email = userData.email,
             let age = userData.age,
             let phoneNumber = userData.phoneNumber else {
-                throw UserCreationError.invalidVariablester
+                throw UserCreationError.invalidVariables
         }
 
         var variablesDictionary: [String: Any] = [

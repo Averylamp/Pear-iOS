@@ -165,7 +165,10 @@ extension GetStartedShortBioViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let targetFrame = targetFrameNSValue.cgRectValue
-            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
+            self.nextButtonBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
+            if self.view.frame.height < 600 && targetFrame.height > 0 {
+                self.nextButtonBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom - self.nextButton.frame.height
+            }
             self.subtitleLabel.text = ""
 
             UIView.animate(withDuration: duration) {
