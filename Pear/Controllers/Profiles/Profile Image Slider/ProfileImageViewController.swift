@@ -50,10 +50,14 @@ extension ProfileImageViewController {
             self.scrollView.addSubview(imageView)
 
             self.scrollView.addConstraints([
-                    NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self.scrollView, attribute: .centerX, multiplier: 1 + CGFloat(imageNumber * 2), constant: 0.0),
-                    NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self.scrollView, attribute: .centerY, multiplier: 1, constant: 0.0),
-                    NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: self.scrollView, attribute: .width, multiplier: 1, constant: 0.0),
-                    NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: self.scrollView, attribute: .height, multiplier: 1, constant: 0.0)
+                    NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal,
+                                       toItem: self.scrollView, attribute: .centerX, multiplier: 1 + CGFloat(imageNumber * 2), constant: 0.0),
+                    NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal,
+                                       toItem: self.scrollView, attribute: .centerY, multiplier: 1, constant: 0.0),
+                    NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal,
+                                       toItem: self.scrollView, attribute: .width, multiplier: 1, constant: 0.0),
+                    NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal,
+                                       toItem: self.scrollView, attribute: .height, multiplier: 1, constant: 0.0)
                 ])
         }
 

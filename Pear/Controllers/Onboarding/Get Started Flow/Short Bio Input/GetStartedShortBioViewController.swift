@@ -46,7 +46,9 @@ class GetStartedShortBioViewController: UIViewController {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveBio()
         if self.gettingStartedData.profileData.shortBio.count < 50 {
-            let alertController = UIAlertController(title: nil, message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?", preferredStyle: .alert)
+            let alertController = UIAlertController(title: nil,
+                                                    message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?",
+                                                    preferredStyle: .alert)
             let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
             let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
                 if let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData) {

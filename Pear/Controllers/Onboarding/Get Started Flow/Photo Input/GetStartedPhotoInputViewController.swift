@@ -142,7 +142,9 @@ extension GetStartedPhotoInputViewController {
         return indexPath.item < self.images.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt originalIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
+    func collectionView(_ collectionView: UICollectionView,
+                        targetIndexPathForMoveFromItemAt originalIndexPath: IndexPath,
+                        toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
         if proposedIndexPath.item >= self.images.count {
             return originalIndexPath
         }

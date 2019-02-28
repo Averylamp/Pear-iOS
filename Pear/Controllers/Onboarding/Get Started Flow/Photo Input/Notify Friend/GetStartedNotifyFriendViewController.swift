@@ -29,15 +29,13 @@ class GetStartedNotifyFriendViewController: UIViewController {
     }
 
     @IBAction func nextButtonClicked(_ sender: Any) {
-        
-        
+
     }
-    
-    
+
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
 }
 
 extension GetStartedNotifyFriendViewController {

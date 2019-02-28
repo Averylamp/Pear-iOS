@@ -653,22 +653,21 @@
 		BB986A39220E43A300759A14 /* Get Started Flow */ = {
 			isa = PBXGroup;
 			children = (
+				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
 				BBE8D01C2213E04600FD1355 /* User Name Input */,
-				BBE8D01D2213E09400FD1355 /* Endorsement Name Input */,
 				BBE8D01E2213E09F00FD1355 /* Age Input */,
+				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
+				BB33E7542224A07C001BFA8F /* Choose Flow */,
+				BBE8D01D2213E09400FD1355 /* Endorsement Name Input */,
+				BB33E7562224A095001BFA8F /* Gender Input */,
 				BBE8D01F2213E0B200FD1355 /* Interests Input */,
 				BBE8D0202213E0BA00FD1355 /* Short Bio Input */,
 				BBE8D0212213E0C500FD1355 /* DoDont Input */,
 				BBE8D0222213E0D800FD1355 /* Sample Profiles */,
 				BBE8D0232213E0E000FD1355 /* Photo Input */,
 				BBE8D0242213E0ED00FD1355 /* Pick User Provider Screen */,
-				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
-				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 				BB75BFD322156B9700BAB800 /* Full Profile Review Page */,
-				BB75BFDD2215801900BAB800 /* Notify Friend */,
-				BB33E7542224A07C001BFA8F /* Choose Flow */,
 				BB33E7552224A088001BFA8F /* See Samples */,
-				BB33E7562224A095001BFA8F /* Gender Input */,
 			);
 			path = "Get Started Flow";
 			sourceTree = "<group>";
@@ -802,6 +801,7 @@
 		BBE8D0232213E0E000FD1355 /* Photo Input */ = {
 			isa = PBXGroup;
 			children = (
+				BB75BFDD2215801900BAB800 /* Notify Friend */,
 				BB986A50220F79E800759A14 /* GetStartedPhotoInputViewController.swift */,
 				BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */,
 				BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */,

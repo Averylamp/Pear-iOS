@@ -57,7 +57,10 @@ extension FullProfileViewController {
 
     }
 
-    func addButtonToStack(buttonTitle: String, buttonAction: () -> Void, buttonInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16), sectionHeight: CGFloat = 60) {
+    func addButtonToStack(buttonTitle: String,
+                          buttonAction: () -> Void,
+                          buttonInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16),
+                          sectionHeight: CGFloat = 60) {
         self.addSeperator()
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = true
@@ -74,13 +77,20 @@ extension FullProfileViewController {
         containerView.addSubview(button)
         self.stackView.addSubview(containerView)
         self.view.addConstraints([
-                NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: buttonInsets.left),
-                NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: -buttonInsets.right),
-                NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: buttonInsets.top),
-                NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -buttonInsets.bottom),
-                NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: sectionHeight),
-                NSLayoutConstraint(item: containerView, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0),
-                NSLayoutConstraint(item: containerView, attribute: .centerX, relatedBy: .equal, toItem: self.stackView, attribute: .centerX, multiplier: 1.0, constant: 0)
+                NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal,
+                                   toItem: containerView, attribute: .left, multiplier: 1.0, constant: buttonInsets.left),
+                NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal,
+                                   toItem: containerView, attribute: .right, multiplier: 1.0, constant: -buttonInsets.right),
+                NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal,
+                                   toItem: containerView, attribute: .top, multiplier: 1.0, constant: buttonInsets.top),
+                NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal,
+                                   toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -buttonInsets.bottom),
+                NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: sectionHeight),
+                NSLayoutConstraint(item: containerView, attribute: .width, relatedBy: .equal,
+                                   toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0),
+                NSLayoutConstraint(item: containerView, attribute: .centerX, relatedBy: .equal,
+                                   toItem: self.stackView, attribute: .centerX, multiplier: 1.0, constant: 0)
             ])
 
     }
@@ -95,8 +105,10 @@ extension FullProfileViewController {
         profileImageVC.didMove(toParent: self)
         profileImageVC.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.addConstraints([
-            NSLayoutConstraint(item: profileImageVC.view, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: profileImageVC.view, attribute: .height, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0)])
+            NSLayoutConstraint(item: profileImageVC.view, attribute: .width, relatedBy: .equal,
+                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: profileImageVC.view, attribute: .height, relatedBy: .equal,
+                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0)])
 
         self.view.layoutIfNeeded()
     }
@@ -121,7 +133,8 @@ extension FullProfileViewController {
                 NSLayoutConstraint(item: profileInformationVC.view, attribute: .height, relatedBy: .equal,
                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
             self.view.addConstraints([
-                NSLayoutConstraint(item: profileInformationVC.view, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: profileInformationVC.view, attribute: .width, relatedBy: .equal,
+                                   toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
                 profileInformationHeightConstraint
                 ])
             profileInformationVC.setHeightConstraint(constraint: profileInformationHeightConstraint)
@@ -179,8 +192,10 @@ extension FullProfileViewController {
         seperatorView.backgroundColor = self.seperatorViewColor
         self.stackView.addArrangedSubview(seperatorView)
         self.view.addConstraints([
-                NSLayoutConstraint(item: seperatorView, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-                NSLayoutConstraint(item: seperatorView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0)
+                NSLayoutConstraint(item: seperatorView, attribute: .width, relatedBy: .equal,
+                                   toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: seperatorView, attribute: .height, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0)
             ])
     }
 
@@ -195,13 +210,20 @@ extension FullProfileViewController {
         titleLabel.textColor = UIColor(red: 0.60, green: 0.60, blue: 0.60, alpha: 1.00)
         self.stackView.addArrangedSubview(titleView)
         self.view.addConstraints([
-            NSLayoutConstraint(item: titleView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30),
-            NSLayoutConstraint(item: titleView, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: titleView, attribute: .centerX, relatedBy: .equal, toItem: self.stackView, attribute: .centerX, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: titleView, attribute: .left, multiplier: 1.0, constant: 30),
-            NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: titleView, attribute: .right, multiplier: 1.0, constant: -30),
-            NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: titleView, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal, toItem: titleView, attribute: .bottom, multiplier: 1.0, constant: 0)
+            NSLayoutConstraint(item: titleView, attribute: .height, relatedBy: .equal,
+                               toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30),
+            NSLayoutConstraint(item: titleView, attribute: .width, relatedBy: .equal,
+                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: titleView, attribute: .centerX, relatedBy: .equal,
+                               toItem: self.stackView, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
+                               toItem: titleView, attribute: .left, multiplier: 1.0, constant: 30),
+            NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
+                               toItem: titleView, attribute: .right, multiplier: 1.0, constant: -30),
+            NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
+                               toItem: titleView, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal,
+                               toItem: titleView, attribute: .bottom, multiplier: 1.0, constant: 0)
             ])
 
     }
