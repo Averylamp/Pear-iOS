@@ -19,6 +19,7 @@ class GetStartedShortBioViewController: UIViewController {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
 
     let keyboardBottomPadding: CGFloat = 10
     let maxTextLength: Int = 600

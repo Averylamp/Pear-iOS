@@ -13,12 +13,10 @@ class GetStartedPhotoInputViewController: UIViewController {
     var gettingStartedData: GettingStartedData!
 
     @IBOutlet weak var nextButton: UIButton!
-
     @IBOutlet weak var collectionView: UICollectionView!
-
     @IBOutlet weak var titleLabel: UILabel!
-
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
 
     let betweenImageSpacing: CGFloat = 6
     var images: [GettingStartedUIImage] = []
