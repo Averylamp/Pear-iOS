@@ -38,6 +38,17 @@
                                     <action selector="skipProfileCreationButtonClicked:" destination="7lB-4Y-Kb1" eventType="touchUpInside" id="F84-R8-UTr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRI-ui-DmX">
+                                <rect key="frame" x="20" y="535" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="As4-pu-PIY"/>
+                                </constraints>
+                                <state key="normal" title="Begin"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="7lB-4Y-Kb1" eventType="touchUpInside" id="qT1-4E-vIy"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your friend's profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nLZ-bu-Vmu">
                                 <rect key="frame" x="20" y="134" width="335" height="39"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
@@ -57,21 +68,38 @@
                                     <constraint firstAttribute="width" constant="70" id="Nw0-pe-CVc"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRI-ui-DmX">
-                                <rect key="frame" x="20" y="535" width="335" height="50"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOr-wa-2g6">
+                                <rect key="frame" x="20" y="218" width="335" height="70"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XAg-3T-EiL">
+                                        <rect key="frame" x="10" y="19.5" width="319" height="46.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Their First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63K-8D-4xg">
+                                        <rect key="frame" x="10" y="6" width="76" height="13.5"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                        <color key="textColor" red="0.2627450980392157" green="0.29411764705882354" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="As4-pu-PIY"/>
+                                    <constraint firstAttribute="bottom" secondItem="XAg-3T-EiL" secondAttribute="bottom" constant="4" id="BeF-pj-SBx"/>
+                                    <constraint firstAttribute="height" constant="70" id="Jtz-uN-TF2"/>
+                                    <constraint firstItem="63K-8D-4xg" firstAttribute="leading" secondItem="yOr-wa-2g6" secondAttribute="leading" constant="10" id="Pia-dz-OoM"/>
+                                    <constraint firstItem="XAg-3T-EiL" firstAttribute="top" secondItem="63K-8D-4xg" secondAttribute="bottom" id="lFL-Qp-3Tp"/>
+                                    <constraint firstItem="63K-8D-4xg" firstAttribute="top" secondItem="yOr-wa-2g6" secondAttribute="top" constant="6" id="pP3-7B-wh8"/>
+                                    <constraint firstAttribute="trailing" secondItem="XAg-3T-EiL" secondAttribute="trailing" constant="6" id="x9d-ff-auG"/>
+                                    <constraint firstItem="63K-8D-4xg" firstAttribute="leading" secondItem="XAg-3T-EiL" secondAttribute="leading" id="zTV-h6-nYr"/>
                                 </constraints>
-                                <state key="normal" title="Begin"/>
-                                <connections>
-                                    <action selector="nextButtonClicked:" destination="7lB-4Y-Kb1" eventType="touchUpInside" id="qT1-4E-vIy"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nLZ-bu-Vmu" firstAttribute="top" secondItem="WGZ-zO-rkj" secondAttribute="bottom" constant="8" id="41X-aJ-983"/>
+                            <constraint firstItem="yOr-wa-2g6" firstAttribute="top" secondItem="iUI-7v-Iex" secondAttribute="bottom" constant="12" id="6RT-95-zRL"/>
                             <constraint firstItem="iUI-7v-Iex" firstAttribute="top" secondItem="nLZ-bu-Vmu" secondAttribute="bottom" constant="12" id="79p-pd-YY4"/>
                             <constraint firstItem="m4f-Rk-jnF" firstAttribute="top" secondItem="SRI-ui-DmX" secondAttribute="bottom" constant="12" id="C4O-JB-A2A"/>
                             <constraint firstItem="m4f-Rk-jnF" firstAttribute="centerX" secondItem="JKI-uo-syP" secondAttribute="centerX" id="CvZ-AI-y24"/>
@@ -81,7 +109,9 @@
                             <constraint firstItem="JKI-uo-syP" firstAttribute="bottom" secondItem="m4f-Rk-jnF" secondAttribute="bottom" constant="20" id="TF8-cw-cSp"/>
                             <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="nLZ-bu-Vmu" secondAttribute="trailing" constant="20" id="Zfv-9y-ELT"/>
                             <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="SRI-ui-DmX" secondAttribute="trailing" constant="20" id="bAd-ll-DOQ"/>
+                            <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="yOr-wa-2g6" secondAttribute="trailing" constant="20" id="bQX-L0-Wh1"/>
                             <constraint firstItem="WGZ-zO-rkj" firstAttribute="top" secondItem="JKI-uo-syP" secondAttribute="top" constant="16" id="dcd-es-Pb8"/>
+                            <constraint firstItem="yOr-wa-2g6" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="20" id="k9k-Mh-G1b"/>
                             <constraint firstItem="SRI-ui-DmX" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="20" id="kMZ-bm-YJ5"/>
                             <constraint firstItem="iUI-7v-Iex" firstAttribute="centerX" secondItem="nLZ-bu-Vmu" secondAttribute="centerX" id="m9v-B6-y1n"/>
                             <constraint firstItem="SRI-ui-DmX" firstAttribute="centerX" secondItem="JKI-uo-syP" secondAttribute="centerX" id="qWa-vR-cHg"/>
@@ -93,7 +123,11 @@
                     </view>
                     <connections>
                         <outlet property="bottomButtonBottomConstraint" destination="TF8-cw-cSp" id="FJV-na-rVQ"/>
+                        <outlet property="inputTextField" destination="XAg-3T-EiL" id="kmh-oW-n7B"/>
+                        <outlet property="inputTextFieldContainerView" destination="yOr-wa-2g6" id="hFL-Ha-OGT"/>
+                        <outlet property="inputTextFieldTitle" destination="63K-8D-4xg" id="Anr-Ez-jNU"/>
                         <outlet property="nextButton" destination="SRI-ui-DmX" id="Wf4-RQ-S56"/>
+                        <outlet property="skipButton" destination="m4f-Rk-jnF" id="Jq1-n1-X1U"/>
                         <outlet property="subtitleLabel" destination="iUI-7v-Iex" id="QoB-BI-jOd"/>
                         <outlet property="titleLabel" destination="nLZ-bu-Vmu" id="g9q-cw-tld"/>
                     </connections>
