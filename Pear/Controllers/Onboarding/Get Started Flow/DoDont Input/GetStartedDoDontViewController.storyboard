@@ -79,6 +79,9 @@
                                     <constraint firstAttribute="height" constant="50" id="gHw-iQ-5eC"/>
                                 </constraints>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="hsO-eP-Zhu" eventType="touchUpInside" id="UuJ-xb-7fy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,6 +109,7 @@
                         <viewLayoutGuide key="safeArea" id="G71-ex-rp4"/>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="tgd-1Y-rYX" id="VMk-B0-TAf"/>
                         <outlet property="nextButtonBottomConstraint" destination="Fg9-Ne-cqW" id="WbN-mV-xPR"/>
                         <outlet property="scrollView" destination="5hg-ug-CTH" id="X6D-V6-OeM"/>
                         <outlet property="stackView" destination="gbW-Sp-2JO" id="d2D-DN-W0B"/>

@@ -12,13 +12,16 @@ class GetStartedPhotoInputViewController: UIViewController {
 
     var gettingStartedData: GettingStartedData!
 
-    @IBOutlet weak var iconImageViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var welcomeTitleLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
 
-    @IBOutlet weak var subtextLabel: UILabel!
-    @IBOutlet weak var reviewProfileButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
 
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
+    
+    
     let betweenImageSpacing: CGFloat = 6
     var images: [GettingStartedUIImage] = []
     let imagePickerController = UIImagePickerController()
@@ -66,35 +69,21 @@ extension GetStartedPhotoInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restoreGettingStartedState()
-        self.insertNamesIntoIntro()
-        self.stylizeProfileButton()
         self.setupCollectionView()
         imagePickerController.delegate = self
         self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GetStartedPhotoInputViewController.handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(self.longPressGestureRecognizer)
-        if self.view.frame.height < 600 {
-            self.iconImageViewWidthConstraint.constant = 0
-            self.view.layoutIfNeeded()
-        }
-
+        self.stylize()
     }
-    func insertNamesIntoIntro() {
-        self.welcomeTitleLabel.text = "Welcome to Pear,\n\(self.gettingStartedData.userFirstName!)"
-        self.subtextLabel.text =  "Your profile for \(self.gettingStartedData.profileData.firstName) is coming along great. Help them strut their stuff by uploading a few photos."
+
+    func stylize() {
+        self.nextButton.stylizeDarkColor()
+        self.titleLabel.stylizeTitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabel()
     }
 
     func restoreGettingStartedState() {
         self.images = self.gettingStartedData.profileData.images
-    }
-
-    func stylizeProfileButton() {
-        self.reviewProfileButton.layer.cornerRadius = 8
-        self.reviewProfileButton.backgroundColor = UIColor(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.1)
-        self.reviewProfileButton.layer.shadowOpacity = 0.1
-        self.reviewProfileButton.layer.shadowColor = UIColor.black.cgColor
-        self.reviewProfileButton.layer.shadowRadius = 2
-        self.reviewProfileButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-
     }
 
     func setupCollectionView() {
@@ -142,7 +131,7 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
 
     func openGallery() {
         imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
-        imagePickerController.allowsEditing = true
+        imagePickerController.allowsEditing = false
         self.present(imagePickerController, animated: true, completion: nil)
     }
 

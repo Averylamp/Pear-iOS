@@ -163,7 +163,8 @@ extension GetStartedShortBioViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let targetFrame = targetFrameNSValue.cgRectValue
-            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom
+            let keyboardBottomPadding: CGFloat = 10
+            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }
@@ -171,7 +172,8 @@ extension GetStartedShortBioViewController {
     }
     @objc func keyboardWillHide(notification: Notification) {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-            self.nextButtonBottomConstraint.constant = 0
+            let keyboardBottomPadding: CGFloat = 10
+            self.nextButtonBottomConstraint.constant = keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }
