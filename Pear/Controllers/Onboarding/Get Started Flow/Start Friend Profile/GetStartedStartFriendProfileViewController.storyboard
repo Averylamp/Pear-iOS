@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7lB-4Y-Kb1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Get Started Start Friend Profile View Controller-->
+        <scene sceneID="ZLX-Xi-2e0">
+            <objects>
+                <viewController id="7lB-4Y-Kb1" customClass="GetStartedStartFriendProfileViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Zv-g2-nIA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4f-Rk-jnF">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kFo-Np-emN"/>
+                                </constraints>
+                                <state key="normal" title="I don't want to make a profile">
+                                    <color key="titleColor" red="0.76078431372549016" green="0.76862745098039209" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipProfileCreationButtonClicked:" destination="7lB-4Y-Kb1" eventType="touchUpInside" id="F84-R8-UTr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your friend's profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nLZ-bu-Vmu">
+                                <rect key="frame" x="20" y="134" width="335" height="39"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They'll have to approve it later" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iUI-7v-Iex">
+                                <rect key="frame" x="20" y="185" width="335" height="21"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-pear-friends" translatesAutoresizingMaskIntoConstraints="NO" id="WGZ-zO-rkj">
+                                <rect key="frame" x="152.5" y="36" width="70" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="60D-3b-qpZ"/>
+                                    <constraint firstAttribute="width" constant="70" id="Nw0-pe-CVc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRI-ui-DmX">
+                                <rect key="frame" x="20" y="535" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="As4-pu-PIY"/>
+                                </constraints>
+                                <state key="normal" title="Begin"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="7lB-4Y-Kb1" eventType="touchUpInside" id="qT1-4E-vIy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nLZ-bu-Vmu" firstAttribute="top" secondItem="WGZ-zO-rkj" secondAttribute="bottom" constant="8" id="41X-aJ-983"/>
+                            <constraint firstItem="iUI-7v-Iex" firstAttribute="top" secondItem="nLZ-bu-Vmu" secondAttribute="bottom" constant="12" id="79p-pd-YY4"/>
+                            <constraint firstItem="m4f-Rk-jnF" firstAttribute="top" secondItem="SRI-ui-DmX" secondAttribute="bottom" constant="12" id="C4O-JB-A2A"/>
+                            <constraint firstItem="m4f-Rk-jnF" firstAttribute="centerX" secondItem="JKI-uo-syP" secondAttribute="centerX" id="CvZ-AI-y24"/>
+                            <constraint firstItem="nLZ-bu-Vmu" firstAttribute="top" secondItem="WGZ-zO-rkj" secondAttribute="bottom" constant="8" id="Jf1-WP-e7d"/>
+                            <constraint firstItem="WGZ-zO-rkj" firstAttribute="centerX" secondItem="JKI-uo-syP" secondAttribute="centerX" id="LSa-Ek-US6"/>
+                            <constraint firstItem="nLZ-bu-Vmu" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="20" id="Mgh-iW-kxG"/>
+                            <constraint firstItem="JKI-uo-syP" firstAttribute="bottom" secondItem="m4f-Rk-jnF" secondAttribute="bottom" constant="20" id="TF8-cw-cSp"/>
+                            <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="nLZ-bu-Vmu" secondAttribute="trailing" constant="20" id="Zfv-9y-ELT"/>
+                            <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="SRI-ui-DmX" secondAttribute="trailing" constant="20" id="bAd-ll-DOQ"/>
+                            <constraint firstItem="WGZ-zO-rkj" firstAttribute="top" secondItem="JKI-uo-syP" secondAttribute="top" constant="16" id="dcd-es-Pb8"/>
+                            <constraint firstItem="SRI-ui-DmX" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="20" id="kMZ-bm-YJ5"/>
+                            <constraint firstItem="iUI-7v-Iex" firstAttribute="centerX" secondItem="nLZ-bu-Vmu" secondAttribute="centerX" id="m9v-B6-y1n"/>
+                            <constraint firstItem="SRI-ui-DmX" firstAttribute="centerX" secondItem="JKI-uo-syP" secondAttribute="centerX" id="qWa-vR-cHg"/>
+                            <constraint firstItem="iUI-7v-Iex" firstAttribute="width" secondItem="nLZ-bu-Vmu" secondAttribute="width" id="ro3-1K-e52"/>
+                            <constraint firstItem="JKI-uo-syP" firstAttribute="trailing" secondItem="m4f-Rk-jnF" secondAttribute="trailing" constant="20" id="tkd-VV-TuZ"/>
+                            <constraint firstItem="m4f-Rk-jnF" firstAttribute="leading" secondItem="JKI-uo-syP" secondAttribute="leading" constant="20" id="to6-kZ-Qcy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JKI-uo-syP"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomButtonBottomConstraint" destination="TF8-cw-cSp" id="FJV-na-rVQ"/>
+                        <outlet property="nextButton" destination="SRI-ui-DmX" id="Wf4-RQ-S56"/>
+                        <outlet property="subtitleLabel" destination="iUI-7v-Iex" id="QoB-BI-jOd"/>
+                        <outlet property="titleLabel" destination="nLZ-bu-Vmu" id="g9q-cw-tld"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h2M-uT-tEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-icon-pear-friends" width="97.75" height="109"/>
+    </resources>
+</document>
