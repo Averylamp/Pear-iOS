@@ -10,6 +10,9 @@ import UIKit
 
 class GetStartedWaitlistViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -27,7 +30,12 @@ extension GetStartedWaitlistViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.stylize()
+    }
+
+    func stylize() {
+        self.titleLabel.stylizeTitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabel()
     }
 
 }

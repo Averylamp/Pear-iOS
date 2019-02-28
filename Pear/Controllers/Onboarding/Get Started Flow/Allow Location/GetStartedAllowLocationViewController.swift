@@ -52,6 +52,12 @@ class GetStartedAllowLocationViewController: UIViewController {
                 UIApplication.shared.keyWindow!.rootViewController?.present(alert, animated: true, completion: nil)
             }
 
+        } else if status == .authorizedWhenInUse {
+            guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
+                print("Failed to initialize waitlist VC")
+                return
+            }
+            self.navigationController?.setViewControllers([waitlistVC], animated: true)
         }
 
     }
