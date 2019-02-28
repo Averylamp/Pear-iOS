@@ -17,11 +17,9 @@ class GetStartedPhotoInputViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     @IBOutlet weak var subtitleLabel: UILabel!
-    
-    
-    
+
     let betweenImageSpacing: CGFloat = 6
     var images: [GettingStartedUIImage] = []
     let imagePickerController = UIImagePickerController()
@@ -120,7 +118,7 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
     func openCamera() {
         if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             imagePickerController.sourceType = UIImagePickerController.SourceType.camera
-            imagePickerController.allowsEditing = true
+            imagePickerController.allowsEditing = false
             self.present(imagePickerController, animated: true, completion: nil)
         } else {
             let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)

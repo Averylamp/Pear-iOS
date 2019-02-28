@@ -24,7 +24,7 @@ class GetStartedProfileReviewViewController: UIViewController {
     }
 
     @IBAction func continueButtonClicked(_ sender: Any) {
-        guard let notifyFriendVC = GettingStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+        guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
             print("Failed to create Notify Friend VC")
             return
         }

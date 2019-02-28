@@ -71,8 +71,8 @@
 		BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */; };
 		BB75BFD0221560ED00BAB800 /* GetStartedProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */; };
 		BB75BFD2221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */; };
-		BB75BFD622156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD522156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard */; };
-		BB75BFD822156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD722156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift */; };
+		BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */; };
+		BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */; };
 		BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD92215783A00BAB800 /* DiscoverySimpleScrollViewController.swift */; };
 		BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFDB2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard */; };
 		BB75BFDF2215845300BAB800 /* SummaryProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */; };
@@ -210,8 +210,8 @@
 		BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingTextViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFCF221560ED00BAB800 /* GetStartedProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BB75BFD1221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedProfileReviewViewController.storyboard; sourceTree = "<group>"; };
-		BB75BFD522156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GettingStartedNotifyFriendViewController.storyboard; sourceTree = "<group>"; };
-		BB75BFD722156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedNotifyFriendViewController.swift; sourceTree = "<group>"; };
+		BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedNotifyFriendViewController.storyboard; sourceTree = "<group>"; };
+		BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedNotifyFriendViewController.swift; sourceTree = "<group>"; };
 		BB75BFD92215783A00BAB800 /* DiscoverySimpleScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySimpleScrollViewController.swift; sourceTree = "<group>"; };
 		BB75BFDB2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverySimpleScrollViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryProfileViewController.storyboard; sourceTree = "<group>"; };
@@ -608,8 +608,8 @@
 		BB75BFDD2215801900BAB800 /* Notify Friend */ = {
 			isa = PBXGroup;
 			children = (
-				BB75BFD722156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift */,
-				BB75BFD522156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard */,
+				BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */,
+				BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */,
 			);
 			path = "Notify Friend";
 			sourceTree = "<group>";
@@ -979,7 +979,7 @@
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
 				BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */,
 				BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */,
-				BB75BFD622156C7E00BAB800 /* GettingStartedNotifyFriendViewController.storyboard in Resources */,
+				BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1086,7 +1086,7 @@
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BB56D23122142E7B00A652E7 /* ProfileDoDontViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
-				BB75BFD822156C9800BAB800 /* GettingStartedNotifyFriendViewController.swift in Sources */,
+				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* Config.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
