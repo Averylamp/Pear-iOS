@@ -80,6 +80,8 @@ extension GetStartedStartFriendProfileViewController {
         self.nextButton.stylizeDarkColor()
         self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
         self.inputTextFieldTitle.stylizeTextFieldTitle()
+        self.inputTextField.stylizeInputTextField()
+
     }
 
 }

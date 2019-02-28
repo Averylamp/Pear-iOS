@@ -115,7 +115,12 @@ extension GetStartedShortBioViewController {
         self.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         self.inputTextView.font = UIFont(name: Config.displayFontRegular, size: 17)
         self.inputTextView.textColor = Config.textFontColor
-    }
+
+        self.view.layoutIfNeeded()
+        self.progressWidthConstraint.constant = 4.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)    }
 
 }
 

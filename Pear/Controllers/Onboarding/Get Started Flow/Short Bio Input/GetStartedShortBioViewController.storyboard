@@ -94,9 +94,10 @@
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wyd-NL-ROU" userLabel="Progress View">
-                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="49" width="0.0" height="1"/>
                                         <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" id="JRe-St-mrt"/>
                                             <constraint firstAttribute="height" constant="1" id="MSN-fn-PvC"/>
                                         </constraints>
                                     </view>
@@ -110,7 +111,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Wrr-Qd-7av" secondAttribute="trailing" constant="16" id="Iq7-D6-GR7"/>
                                     <constraint firstItem="Wyd-NL-ROU" firstAttribute="leading" secondItem="wcw-2F-fuB" secondAttribute="leading" id="Oh2-Nw-PhT"/>
                                     <constraint firstItem="gek-Ba-d8L" firstAttribute="centerX" secondItem="wcw-2F-fuB" secondAttribute="centerX" id="RG2-oY-yhH"/>
-                                    <constraint firstItem="Wyd-NL-ROU" firstAttribute="width" secondItem="wcw-2F-fuB" secondAttribute="width" id="fDx-J2-kLP" userLabel="Progress View Width Constraint"/>
                                     <constraint firstAttribute="bottom" secondItem="Wyd-NL-ROU" secondAttribute="bottom" id="fgU-X7-bow"/>
                                     <constraint firstItem="gek-Ba-d8L" firstAttribute="height" secondItem="wcw-2F-fuB" secondAttribute="height" constant="-10" id="imL-Zx-Wwd"/>
                                     <constraint firstAttribute="height" constant="50" id="q9z-Hf-RTK"/>
@@ -144,7 +144,7 @@
                         <outlet property="inputTextView" destination="rHP-8z-N7I" id="Hrt-gT-rUW"/>
                         <outlet property="nextButton" destination="mbn-Xm-5zG" id="dPo-Un-m4y"/>
                         <outlet property="nextButtonBottomConstraint" destination="560-80-pBt" id="ddd-1E-0JD"/>
-                        <outlet property="progressWidthConstraint" destination="fDx-J2-kLP" id="nqx-vy-ZJh"/>
+                        <outlet property="progressWidthConstraint" destination="JRe-St-mrt" id="Dx9-ou-EPA"/>
                         <outlet property="subtitleLabel" destination="2JK-lB-JVq" id="yeU-GC-xbt"/>
                         <outlet property="textLengthLabel" destination="QkO-ND-YLt" id="M0e-iT-cqD"/>
                         <outlet property="titleLabel" destination="Dh4-oE-AMb" id="lDj-wB-yjm"/>

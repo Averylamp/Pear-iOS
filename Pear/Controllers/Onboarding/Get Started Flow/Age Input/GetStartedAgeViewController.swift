@@ -85,8 +85,13 @@ extension GetStartedAgeViewController {
         self.nextButton.stylizeDarkColor()
         self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
         self.inputTextFieldTitle.stylizeTextFieldTitle()
-        self.inputTextField.stylizeGettingStarted()
-    }
+        self.inputTextField.stylizeInputTextField()
+
+        self.view.layoutIfNeeded()
+        self.progressWidthConstraint.constant = 2.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)    }
 
 }
 

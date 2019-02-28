@@ -10,6 +10,8 @@ import UIKit
 
 class GetStartedChooseGenderViewController: UIViewController {
 
+    @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
+
     var gettingStartedData: GettingStartedData!
 
     @IBOutlet weak var maleButton: UIButton!
@@ -95,6 +97,13 @@ extension GetStartedChooseGenderViewController {
                 self.nonbinaryButton.stylizeDarkColor()
             }
         }
+
+        self.view.layoutIfNeeded()
+        self.progressWidthConstraint.constant = 1.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+
     }
 
 }

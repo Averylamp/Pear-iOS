@@ -12,6 +12,8 @@ import NVActivityIndicatorView
 
 class GetStartedValidatePhoneNumberViewController: UIViewController {
 
+    @IBOutlet weak var inputTextFieldTitle: UILabel!
+    @IBOutlet weak var inputTextFieldContainerView: UIView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
 
@@ -48,7 +50,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
                                                             color: Config.textFontColor,
                                                             padding: 0)
             self.view.addSubview(activityIndicator)
-            activityIndicator.center = CGPoint(x: self.view.center.x, y: self.inputTextField.frame.origin.y + self.inputTextField.frame.height + 40)
+            activityIndicator.center = CGPoint(x: self.view.center.x, y: self.inputTextFieldContainerView.frame.origin.y + self.inputTextFieldContainerView.frame.height + 40)
             activityIndicator.startAnimating()
             PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
                 activityIndicator.stopAnimating()
@@ -103,31 +105,24 @@ extension GetStartedValidatePhoneNumberViewController {
         super.viewDidLoad()
         self.inputTextField.becomeFirstResponder()
         self.inputTextField.delegate = self
-        self.styleViews()
+        self.stylize()
         self.addKeyboardSizeNotifications()
 
     }
 
-    func styleViews() {
-        self.titleLabel.font = UIFont(name: Config.displayFontRegular, size: 28)
-        self.titleLabel.textColor = Config.textFontColor
+    func stylize() {
+        self.titleLabel.stylizeTitleLabel()
         if let firstName = self.gettingStartedUserData.firstName {
             self.titleLabel.text = "Hi, \(firstName)!  To verify you, we need your phone #"
         } else {
             self.titleLabel.text = "Hi!  To verify you, we need your phone #"
         }
 
-        self.inputTextField.textColor = Config.textFontColor
+        self.nextButton.stylizeDarkColor()
 
-        self.nextButton.backgroundColor = Config.nextButtonColor
-        self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
-        self.nextButton.layer.shadowRadius = 1
-        self.nextButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
-        self.nextButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.nextButton.layer.shadowOpacity = 1.0
-        self.nextButton.setTitleColor(UIColor.white, for: .normal)
-        self.nextButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
-
+        self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
+        self.inputTextFieldTitle.stylizeTextFieldTitle()
+        self.inputTextField.stylizeInputTextField()
     }
 
 }

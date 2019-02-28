@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class GetStartedNotifyFriendViewController: UIViewController {
 
@@ -15,7 +16,11 @@ class GetStartedNotifyFriendViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+
+    @IBOutlet weak var inputTextFieldContainerView: UIView!
     @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var inputTextFieldTitle: UILabel!
+
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
 
     /// Factory method for creating this view controller.
@@ -29,7 +34,27 @@ class GetStartedNotifyFriendViewController: UIViewController {
     }
 
     @IBAction func nextButtonClicked(_ sender: Any) {
+        if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
+            let fullPhoneNumber = "+1" + phoneNumber
+            print("Verifying phone number")
+            self.inputTextField.textColor = UIColor.lightGray
+            self.inputTextField.isEnabled = false
+            self.nextButton.backgroundColor = UIColor.white
+            self.nextButton.setTitleColor(Config.nextButtonColor, for: .normal)
+            self.nextButton.isEnabled = false
+            let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                            type: NVActivityIndicatorType.ballScaleRippleMultiple,
+                                                            color: Config.textFontColor,
+                                                            padding: 0)
+            self.view.addSubview(activityIndicator)
+            activityIndicator.center = CGPoint(x: self.view.center.x, y: self.inputTextField.frame.origin.y + self.inputTextField.frame.height + 40)
+            activityIndicator.startAnimating()
 
+            self.delay(delay: 4.0) {
+                self.alert(title: "Just Kidding!", message: "We didn't actually text your friend, don't worry")
+//                let notificationVC =
+            }
+        }
     }
 
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -42,6 +67,9 @@ extension GetStartedNotifyFriendViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.inputTextField.delegate = self
+
         self.stylize()
         self.addKeyboardSizeNotifications()
     }
@@ -50,6 +78,10 @@ extension GetStartedNotifyFriendViewController {
         self.nextButton.stylizeLightColor()
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
+
+        self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
+        self.inputTextField.stylizeInputTextField()
+        self.inputTextFieldTitle.stylizeTextFieldTitle()
     }
 
 }
@@ -77,6 +109,17 @@ extension GetStartedNotifyFriendViewController: UITextFieldDelegate {
         return false
     }
 
+}
+
+// MARK: - Dismiss First Responder on Click
+extension GetStartedNotifyFriendViewController {
+    func addDismissKeyboardOnViewClick() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GetStartedNotifyFriendViewController.dismissKeyboard)))
+    }
+
+    @objc func dismissKeyboard() {
+        self.inputTextField.resignFirstResponder()
+    }
 }
 
 // MARK: - Keybaord Size Notifications
