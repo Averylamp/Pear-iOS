@@ -47,12 +47,15 @@ class GetStartedNotifyFriendViewController: UIViewController {
                                                             color: Config.textFontColor,
                                                             padding: 0)
             self.view.addSubview(activityIndicator)
-            activityIndicator.center = CGPoint(x: self.view.center.x, y: self.inputTextField.frame.origin.y + self.inputTextField.frame.height + 40)
+            activityIndicator.center = CGPoint(x: self.view.center.x, y: self.inputTextFieldContainerView.frame.origin.y + self.inputTextFieldContainerView.frame.height + 40)
             activityIndicator.startAnimating()
 
-            self.delay(delay: 4.0) {
-                self.alert(title: "Just Kidding!", message: "We didn't actually text your friend, don't worry")
-//                let notificationVC =
+            self.delay(delay: 2.0) {
+                guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.profileData.firstName) else {
+                    print("Failed to create Allow Notifications VC")
+                    return
+                }
+                self.navigationController?.pushViewController(allowNotificationVC, animated: true)
             }
         }
     }
@@ -75,13 +78,18 @@ extension GetStartedNotifyFriendViewController {
     }
 
     func stylize() {
-        self.nextButton.stylizeLightColor()
+        self.nextButton.stylizeLight()
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
 
         self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
         self.inputTextField.stylizeInputTextField()
         self.inputTextFieldTitle.stylizeTextFieldTitle()
+
+        if let friendFirstName = self.gettingStartedData.profileData.endorsedFirstName {
+            self.nextButton.setTitle("Send to \(friendFirstName)", for: .normal)
+            self.subtitleLabel.text = "We'll send \(friendFirstName) a link to the profile so they can approve it."
+        }
     }
 
 }
@@ -107,6 +115,7 @@ extension GetStartedNotifyFriendViewController: UITextFieldDelegate {
             }
         }
         return false
+
     }
 
 }
@@ -155,7 +164,12 @@ extension GetStartedNotifyFriendViewController {
     @objc func keyboardWillHide(notification: Notification) {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             let keyboardBottomPadding: CGFloat = 20
-            self.subtitleLabel.text = "We'll send them a link to the profile so they can approve it."
+
+            if let friendFirstName = self.gettingStartedData.profileData.endorsedFirstName {
+                self.subtitleLabel.text = "We'll send \(friendFirstName) a link to the profile so they can approve it."
+            } else {
+                self.subtitleLabel.text = "We'll send them a link to the profile so they can approve it."
+            }
             self.nextButtonBottomConstraint.constant = keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()

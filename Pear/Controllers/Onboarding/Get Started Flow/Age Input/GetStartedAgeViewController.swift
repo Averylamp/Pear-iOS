@@ -82,7 +82,7 @@ extension GetStartedAgeViewController {
     }
 
     func stylize() {
-        self.nextButton.stylizeDarkColor()
+        self.nextButton.stylizeDark()
         self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
         self.inputTextFieldTitle.stylizeTextFieldTitle()
         self.inputTextField.stylizeInputTextField()

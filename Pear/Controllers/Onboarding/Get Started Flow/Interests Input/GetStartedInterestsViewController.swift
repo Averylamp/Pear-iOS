@@ -102,7 +102,7 @@ extension GetStartedInterestsViewController {
     func stylize() {
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
-        self.nextButton.stylizeDarkColor()
+        self.nextButton.stylizeDark()
 
         self.progressWidthConstraint.constant = 2.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
         self.view.layoutIfNeeded()

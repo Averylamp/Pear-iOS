@@ -118,7 +118,7 @@ extension GetStartedValidatePhoneNumberViewController {
             self.titleLabel.text = "Hi!  To verify you, we need your phone #"
         }
 
-        self.nextButton.stylizeDarkColor()
+        self.nextButton.stylizeDark()
 
         self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
         self.inputTextFieldTitle.stylizeTextFieldTitle()

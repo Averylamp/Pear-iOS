@@ -105,7 +105,7 @@ extension GetStartedValidatePhoneNumberCodeViewController {
             self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
         }
 
-        self.resendCodeButton.stylizeLightColor()
+        self.resendCodeButton.stylizeLight()
     }
 
     func setupVerificationView() {

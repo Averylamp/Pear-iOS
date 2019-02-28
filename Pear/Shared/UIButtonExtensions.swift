@@ -45,7 +45,7 @@ extension UIButton {
         targetClosure(self)
     }
 
-    func stylizeDarkColor() {
+    func stylizeDark() {
         self.backgroundColor = Config.nextButtonColor
         self.layer.cornerRadius = self.frame.height / 2.0
         self.layer.shadowRadius = 2
@@ -67,7 +67,7 @@ extension UIButton {
         self.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
     }
 
-    func stylizeLightColor() {
+    func stylizeLight() {
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = self.frame.height / 2.0
         self.layer.shadowRadius = 3
@@ -76,6 +76,28 @@ extension UIButton {
         self.layer.shadowOpacity = 1.0
         self.setTitleColor(Config.textFontColor, for: .normal)
         self.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+    }
+
+    func stylizeAllowFeature() {
+        self.backgroundColor = UIColor.white
+        self.layer.cornerRadius = self.frame.height / 2.0
+        self.layer.shadowRadius = 1
+        self.layer.shadowColor = UIColor(white: 0.0, alpha: 0.25).cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowOpacity = 1.0
+        self.layer.borderWidth = 1
+        self.layer.borderColor = Config.textFontColor.cgColor
+        self.setTitleColor(Config.textFontColor, for: .normal)
+        self.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+
+    }
+
+    func stylizeSubtle() {
+        self.backgroundColor = nil
+        self.setTitleColor(UIColor(red: 0.77, green: 0.78, blue: 0.79, alpha: 1.00), for: .normal)
+        self.layer.shadowOpacity = 0.0
+        self.layer.borderWidth = 0
+        self.titleLabel?.font = UIFont(name: Config.textFontRegular, size: 17)
     }
 
 }
