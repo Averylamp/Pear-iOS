@@ -10,24 +10,22 @@ import UIKit
 
 class LandingScreenPage2ViewController: LandingScreenPageViewController {
 
-    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate() -> LandingScreenPage2ViewController {
+    class func instantiate() -> LandingScreenPage2ViewController? {
         let storyboard = UIStoryboard(name: String(describing: LandingScreenPage2ViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! LandingScreenPage2ViewController
-        return vc
+        guard let landingPage2 = storyboard.instantiateInitialViewController() as? LandingScreenPage2ViewController else { return nil }
+        return landingPage2
     }
 
-    
 }
 
 // MARK: - Life Cycle
-extension LandingScreenPage2ViewController{
-    
+extension LandingScreenPage2ViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-   
+
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIViewController {
-    
+
     /// Presents a `UIAlertController` popup with `.alert` style, with a default "Ok" button that dismisses the popup.
     ///
     /// - Parameters:

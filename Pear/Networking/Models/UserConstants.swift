@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserKeys{
+struct UserKeys {
     static let documentId = "documentId"
     static let email = "email"
     static let firstName = "firstName"

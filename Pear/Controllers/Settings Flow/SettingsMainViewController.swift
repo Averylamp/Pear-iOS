@@ -9,22 +9,22 @@
 import UIKit
 
 class SettingsMainViewController: UIViewController {
-    
-    class func instantiate()-> SettingsMainViewController{
+
+    class func instantiate() -> SettingsMainViewController? {
         let storyboard = UIStoryboard(name: String(describing: SettingsMainViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! SettingsMainViewController
-        return vc
+        guard let settingsVC = storyboard.instantiateInitialViewController() as? SettingsMainViewController else { return nil }
+        return settingsVC
     }
-    
+
 }
 
 // MARK: - Life Cycle
-extension SettingsMainViewController{
-    
+extension SettingsMainViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
-    
+
 }

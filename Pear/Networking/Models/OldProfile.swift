@@ -9,20 +9,19 @@
 import Foundation
 import MapKit
 
-class OldProfile{
-    
+class OldProfile {
+
     let active: Bool
     let age: Int
     let documentId: String
     let endorsed: Bool
-    let ethnicities: Array<String>
+    let ethnicities: [String]
     let gender: String
     let locationCoordinate: CLLocationCoordinate2D
     let profileFirstName: String
     let profileLastName: String
-    
-    
-    init(){
+
+    init() {
         self.active = false
         self.age = 0
         self.documentId = ""
@@ -33,16 +32,16 @@ class OldProfile{
         self.profileFirstName = ""
         self.profileLastName = ""
     }
-    
+
     init(active: Bool,
          age: Int,
          documentId: String,
          endorsed: Bool,
-         ethnicities: Array<String>,
+         ethnicities: [String],
          gender: String,
          locationCoordinate: CLLocationCoordinate2D,
          profileFirstName: String,
-         profileLastName: String){
+         profileLastName: String) {
         self.active = active
         self.age = age
         self.documentId = documentId
@@ -53,25 +52,33 @@ class OldProfile{
         self.profileFirstName = profileFirstName
         self.profileLastName = profileLastName
     }
-    
+
     convenience init?(dictionary: [String: Any?]) {
         guard
             let active = dictionary[ProfileKeys.active] as? Bool,
             let age = dictionary[ProfileKeys.age] as? Int,
             let documentId = dictionary[ProfileKeys.documentId] as? String,
             let endorsed = dictionary[ProfileKeys.endorsed] as? Bool,
-            let ethnicities = dictionary[ProfileKeys.ethnicities] as? Array<String>,
+            let ethnicities = dictionary[ProfileKeys.ethnicities] as? [String],
             let gender = dictionary[ProfileKeys.gender] as? String,
             let locationCoordinate = dictionary[ProfileKeys.locationCoordinate] as? CLLocationCoordinate2D,
             let profileFirstName = dictionary[ProfileKeys.profileFirstName] as? String,
             let profileLastName = dictionary[ProfileKeys.profileLastName] as? String
-        else{
+        else {
             return nil
         }
-        self.init(active: active, age: age, documentId: documentId, endorsed: endorsed, ethnicities: ethnicities, gender: gender, locationCoordinate: locationCoordinate, profileFirstName: profileFirstName, profileLastName: profileLastName)
+        self.init(active: active,
+                  age: age,
+                  documentId: documentId,
+                  endorsed: endorsed,
+                  ethnicities: ethnicities,
+                  gender: gender,
+                  locationCoordinate: locationCoordinate,
+                  profileFirstName: profileFirstName,
+                  profileLastName: profileLastName)
     }
-    
-    class func initFakeProfile() -> OldProfile{
+
+    class func initFakeProfile() -> OldProfile {
         let fakeData: [String: Any?] = [
             ProfileKeys.age: 20,
             ProfileKeys.active: true,
@@ -83,11 +90,8 @@ class OldProfile{
             ProfileKeys.profileFirstName: "Avery",
             ProfileKeys.profileLastName: "Lamp"
         ]
-        
-        
+
         return OldProfile(dictionary: fakeData)!
     }
-    
+
 }
-
-

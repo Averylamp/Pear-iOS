@@ -16,13 +16,13 @@ extension UIImage {
         }
         return image
     }
-    
-    func gettingStartedImage() -> GettingStartedUIImage{
+
+    func gettingStartedImage() -> GettingStartedUIImage {
         return GettingStartedUIImage(data: self.pngData()!)!
     }
 }
 
-class GettingStartedUIImage: UIImage{
+class GettingStartedUIImage: UIImage {
     var imageSizesRepresentation: ImageAllSizesRepresentation?
-    
+
 }

@@ -10,18 +10,18 @@ import UIKit
 
 class MatchesMainViewController: UIViewController {
 
-    class func instantiate()->MatchesMainViewController{
+    class func instantiate() -> MatchesMainViewController? {
         let storyboard = UIStoryboard(name: String(describing: MatchesMainViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! MatchesMainViewController
-        return vc
+        guard let matchesVC = storyboard.instantiateInitialViewController() as? MatchesMainViewController else { return nil }
+        return matchesVC
     }
-    
+
 }
 
 // MARK: - Life Cycle
-extension MatchesMainViewController{
+extension MatchesMainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
 }

@@ -10,5 +10,5 @@ target 'Pear' do
   pod 'SDWebImage'
   pod 'SwiftyJSON'
   pod 'NVActivityIndicatorView'
-
+  pod 'SwiftLint'
 end

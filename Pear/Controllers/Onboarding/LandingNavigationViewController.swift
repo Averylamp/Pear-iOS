@@ -9,21 +9,24 @@
 import UIKit
 
 class LandingNavigationViewController: UINavigationController {
-    
+
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate() -> LandingNavigationViewController {
+    class func instantiate() -> LandingNavigationViewController? {
         let storyboard = UIStoryboard(name: String(describing: LandingNavigationViewController.self), bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as! LandingNavigationViewController
-        vc.viewControllers = [LandingScreenViewController.instantiate()]
-        return vc
+        guard let landingNavigationVC = storyboard.instantiateInitialViewController() as? LandingNavigationViewController else { return nil }
+        landingNavigationVC.viewControllers = []
+        guard let landingScreenVC = LandingScreenViewController.instantiate() else { return nil }
+        landingNavigationVC.viewControllers.append(landingScreenVC)
+
+        return landingNavigationVC
     }
 }
 
 // MARK: - Life Cycle
 extension LandingNavigationViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

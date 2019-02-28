@@ -11,7 +11,7 @@ import Foundation
 struct FakeAuthAPI {}
 
 extension FakeAuthAPI: AuthAPI {
-    
+
     func login(with method: LoginMethod, completion: @escaping (Result<PearUser, AuthAPIError>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let user = PearUser()
