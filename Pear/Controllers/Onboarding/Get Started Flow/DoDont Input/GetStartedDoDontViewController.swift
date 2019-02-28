@@ -399,6 +399,9 @@ extension GetStartedDoDontViewController {
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let targetFrame = targetFrameNSValue.cgRectValue
             self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
+            if self.view.frame.height < 600 && targetFrame.height > 0 {
+                self.nextButtonBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom - self.nextButton.frame.height
+            }
             if self.nextButtonBottomConstraint.constant > self.keyboardBottomPadding && self.view.frame.height < 600 {
                 self.subtitleLabel.text = ""
             }
