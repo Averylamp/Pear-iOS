@@ -61,6 +61,9 @@
                                     <constraint firstAttribute="height" constant="50" id="84W-IK-0or"/>
                                 </constraints>
                                 <state key="normal" title="Enable Notifications"/>
+                                <connections>
+                                    <action selector="enableNotificationsClicked:" destination="V1a-Ei-bVC" eventType="touchUpInside" id="3V3-jr-urw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

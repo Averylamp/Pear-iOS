@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class GetStartedAllowNotificationsViewController: UIViewController {
 
@@ -28,6 +29,43 @@ class GetStartedAllowNotificationsViewController: UIViewController {
         return allowNotificationsVC
     }
 
+    @IBAction func enableNotificationsClicked(_ sender: Any) {
+        // iOS 12 support
+        if #available(iOS 12, *) {
+            UNUserNotificationCenter.current()
+                .requestAuthorization(
+                    options: [.badge, .alert, .sound, .provisional, .providesAppNotificationSettings, .criticalAlert]) { (_, error) in
+                DispatchQueue.main.sync {
+                    UIApplication.shared.registerForRemoteNotifications()
+                    if let error = error {
+                        print(error)
+                    }
+                    guard let allowLocationVC = GetStartedAllowLocationViewController.instantiate() else {
+                        print("Failed to create Allow Location VC")
+                        return
+                    }
+                    self.navigationController?.pushViewController(allowLocationVC, animated: true)
+                }
+            }
+
+        } else if #available(iOS 11, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (_, error) in
+                DispatchQueue.main.sync {
+                    UIApplication.shared.registerForRemoteNotifications()
+                    if let error = error {
+                        print(error)
+                    }
+                    guard let allowLocationVC = GetStartedAllowLocationViewController.instantiate() else {
+                        print("Failed to create Allow Location VC")
+                        return
+                    }
+                    self.navigationController?.pushViewController(allowLocationVC, animated: true)
+                }
+            }
+        }
+
+    }
+
 }
 
 // MARK: - Life Cycle
@@ -37,6 +75,7 @@ extension GetStartedAllowNotificationsViewController {
         super.viewDidLoad()
 
         self.stylize()
+
     }
 
     func stylize() {
@@ -47,6 +86,7 @@ extension GetStartedAllowNotificationsViewController {
         if let friendName = self.friendName {
             self.subtitleLabel.text = "You'll be able to pear \(friendName) with potential matches, and more!"
         }
+
     }
 
 }
