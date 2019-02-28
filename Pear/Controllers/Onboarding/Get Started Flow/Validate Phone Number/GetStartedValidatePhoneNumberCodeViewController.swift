@@ -138,6 +138,9 @@ extension GetStartedValidatePhoneNumberCodeViewController {
         guard let fullString = self.hiddenInputField.text else { return }
         guard fullString.count == 6 else { return }
         self.isVerifying = true
+        for codeLabel in self.numberLabels {
+            codeLabel.textColor = UIColor.lightGray
+        }
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: fullString)
         Auth.auth().signInAndRetrieveData(with: credential) { (_, error) in
@@ -151,11 +154,11 @@ extension GetStartedValidatePhoneNumberCodeViewController {
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
             self.gettingStartedUserData.phoneNumberVerified = true
 
-            guard let chooseFlowVC = GetStartedChooseFlowViewController.instantiate(gettingStartedData: GettingStartedData()) else {
-                print("Failed to create Choose flow VC")
+            guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
+                print("Failed to create Verification Complete VC")
                 return
             }
-            self.navigationController?.setViewControllers([chooseFlowVC], animated: true)
+            self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
         }
 
     }
