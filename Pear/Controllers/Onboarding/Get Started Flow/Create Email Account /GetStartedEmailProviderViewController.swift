@@ -100,7 +100,7 @@ extension GetStartedEmailProviderViewController {
     func stylize() {
         self.titleLabel.stylizeTitleLabel()
 
-        self.nextButton.stylizeDarkColor()
+        self.nextButton.stylizeDark()
     }
 
 }

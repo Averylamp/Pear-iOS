@@ -82,7 +82,7 @@ extension LandingScreenViewController {
         self.facebookButton.stylizeFacebookColor()
         self.facebookButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
 
-        self.emailButton.stylizeLightColor()
+        self.emailButton.stylizeLight()
         self.emailButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
     }
 

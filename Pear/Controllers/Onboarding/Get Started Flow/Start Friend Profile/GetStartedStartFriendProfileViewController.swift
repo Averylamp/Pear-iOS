@@ -77,7 +77,8 @@ extension GetStartedStartFriendProfileViewController {
     func stylize() {
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
-        self.nextButton.stylizeDarkColor()
+        self.nextButton.stylizeDark()
+        self.skipButton.stylizeSubtle()
         self.inputTextFieldContainerView.stylizeInputTextFieldContainer()
         self.inputTextFieldTitle.stylizeTextFieldTitle()
         self.inputTextField.stylizeInputTextField()
@@ -106,7 +107,10 @@ extension GetStartedStartFriendProfileViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let targetFrame = targetFrameNSValue.cgRectValue
-            let buttonHeight: CGFloat = self.skipButton.frame.origin.y + self.skipButton.frame.height - self.nextButton.frame.origin.y
+            var buttonHeight: CGFloat = self.skipButton.frame.origin.y + self.skipButton.frame.height - self.nextButton.frame.origin.y
+            if self.view.frame.height > 600 {
+                buttonHeight = self.skipButton.frame.height + 12
+            }
             self.bottomButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom - buttonHeight
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()

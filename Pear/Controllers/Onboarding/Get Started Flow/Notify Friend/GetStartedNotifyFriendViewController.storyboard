@@ -49,7 +49,7 @@
                                 <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-leaf" translatesAutoresizingMaskIntoConstraints="NO" id="tJo-KH-Ag2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-notify-friend" translatesAutoresizingMaskIntoConstraints="NO" id="tJo-KH-Ag2">
                                 <rect key="frame" x="157.5" y="28" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tJo-KH-Ag2" secondAttribute="height" multiplier="1:1" id="9Ip-Te-eIC"/>
@@ -62,7 +62,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JSv-bs-4iM"/>
                                 </constraints>
-                                <state key="normal" title="Send code"/>
+                                <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="nextButtonClicked:" destination="4y9-g9-KBp" eventType="touchUpInside" id="Aui-mc-skJ"/>
                                 </connections>
@@ -152,7 +152,7 @@
     </scenes>
     <resources>
         <image name="onboarding-back-button" width="30" height="30"/>
-        <image name="onboarding-icon-leaf" width="48" height="48"/>
+        <image name="onboarding-icon-notify-friend" width="60" height="60"/>
         <image name="onboarding-icon-us-flag" width="20" height="20.25"/>
     </resources>
 </document>

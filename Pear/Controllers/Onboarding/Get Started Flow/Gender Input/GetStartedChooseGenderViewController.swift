@@ -34,21 +34,21 @@ class GetStartedChooseGenderViewController: UIViewController {
         switch sender.tag {
         case 0:
             self.gettingStartedData.profileData.gender = GenderEnum.male
-            self.maleButton.stylizeDarkColor()
-            self.femaleButton.stylizeLightColor()
-            self.nonbinaryButton.stylizeLightColor()
+            self.maleButton.stylizeDark()
+            self.femaleButton.stylizeLight()
+            self.nonbinaryButton.stylizeLight()
 
         case 1:
             self.gettingStartedData.profileData.gender = GenderEnum.female
-            self.femaleButton.stylizeDarkColor()
-            self.maleButton.stylizeLightColor()
-            self.nonbinaryButton.stylizeLightColor()
+            self.femaleButton.stylizeDark()
+            self.maleButton.stylizeLight()
+            self.nonbinaryButton.stylizeLight()
 
         case 2:
             self.gettingStartedData.profileData.gender = GenderEnum.nonbinary
-            self.nonbinaryButton.stylizeDarkColor()
-            self.maleButton.stylizeLightColor()
-            self.femaleButton.stylizeLightColor()
+            self.nonbinaryButton.stylizeDark()
+            self.maleButton.stylizeLight()
+            self.femaleButton.stylizeLight()
 
         default:
             break
@@ -78,23 +78,23 @@ extension GetStartedChooseGenderViewController {
 
     func stylize() {
 
-        self.maleButton.stylizeLightColor()
+        self.maleButton.stylizeLight()
         self.maleButton.tag = 0
 
-        self.femaleButton.stylizeLightColor()
+        self.femaleButton.stylizeLight()
         self.femaleButton.tag = 1
 
-        self.nonbinaryButton.stylizeLightColor()
+        self.nonbinaryButton.stylizeLight()
         self.nonbinaryButton.tag = 2
 
         if let previousGender = self.gettingStartedData.profileData.gender {
             switch previousGender {
             case .male:
-                self.maleButton.stylizeDarkColor()
+                self.maleButton.stylizeDark()
             case .female:
-                self.femaleButton.stylizeDarkColor()
+                self.femaleButton.stylizeDark()
             case .nonbinary:
-                self.nonbinaryButton.stylizeDarkColor()
+                self.nonbinaryButton.stylizeDark()
             }
         }
 

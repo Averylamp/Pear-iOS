@@ -51,7 +51,7 @@ class GetStartedPhotoInputViewController: UIViewController {
             self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
             return
         }
-        
+
         guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
             print("Failed to create Notify Friend VC")
             return
@@ -79,7 +79,7 @@ extension GetStartedPhotoInputViewController {
     }
 
     func stylize() {
-        self.nextButton.stylizeDarkColor()
+        self.nextButton.stylizeDark()
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
 
