@@ -64,17 +64,17 @@ extension LandingScreenViewController {
         self.stylize()
         self.attachButtons()
         self.setupScrollView()
-        var gsUD = GettingStartedUserData(firstName: "Avery", lastName: "Lamp", email: "averylamp@gmail.com", age: 21, phoneNumber: "973873825", firebaseAuthToken: "Fake Token")
-        UserCreateAPI.shared.createNewUser(with: gsUD) { (result) in
-            switch result {
-            case .success(let success):
-                print(success)
-
-            case .failure(let error):
-                print(error)
-            }
-
-        }
+//        var gsUD = GettingStartedUserData(firstName: "Avery", lastName: "Lamp", email: "averylamp@gmail.com", age: 21, phoneNumber: "973873825", firebaseAuthToken: "Fake Token")
+//        UserCreateAPI.shared.createNewUser(with: gsUD) { (result) in
+//            switch result {
+//            case .success(let success):
+//                print(success)
+//
+//            case .failure(let error):
+//                print(error)
+//            }
+//
+//        }
 
     }
 

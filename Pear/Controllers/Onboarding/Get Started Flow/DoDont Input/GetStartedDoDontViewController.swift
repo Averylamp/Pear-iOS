@@ -14,8 +14,8 @@ class GetStartedDoDontViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-
     @IBOutlet weak var subtextLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
 
     let doDontTitleHeight: CGFloat = 34
 
@@ -75,11 +75,11 @@ class GetStartedDoDontViewController: UIViewController {
             return
         }
 
-        guard let createAccountVC = GetStartedCreateAccountViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-            print("Failed to created Create Account VC")
+        guard let photoUploadVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+            print("Failed to create Photo Input VC")
             return
         }
-        self.navigationController?.pushViewController(createAccountVC, animated: true)
+        self.navigationController?.pushViewController(photoUploadVC, animated: true)
     }
 
     @IBAction func sampleButtonClicked(_ sender: Any) {
@@ -102,6 +102,11 @@ extension GetStartedDoDontViewController {
         self.addKeyboardSizeNotifications()
         self.addDismissKeyboardOnViewClick()
         self.restoreSavedState()
+        self.stylize()
+    }
+
+    func stylize() {
+        self.nextButton.stylizeDarkColor()
     }
 
     func populateTVCWithText(text: String, tvc: ExpandingTextViewController) {
@@ -390,7 +395,8 @@ extension GetStartedDoDontViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 let targetFrame = targetFrameNSValue.cgRectValue
-            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom
+            let keyboardBottomPadding: CGFloat = 10
+            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
             if self.nextButtonBottomConstraint.constant > 0 && self.view.frame.height < 600 {
                 self.subtextLabel.text = ""
             }
@@ -401,7 +407,8 @@ extension GetStartedDoDontViewController {
     }
     @objc func keyboardWillHide(notification: Notification) {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-            self.nextButtonBottomConstraint.constant = 0
+            let keyboardBottomPadding: CGFloat = 10
+            self.nextButtonBottomConstraint.constant = keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }
