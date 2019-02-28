@@ -149,10 +149,11 @@
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ta2-qc-wTR" userLabel="Progress View">
-                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="49" width="0.0" height="1"/>
                                         <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="4zr-Qt-CHj"/>
+                                            <constraint firstAttribute="width" id="HAT-T4-x13"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -167,7 +168,6 @@
                                     <constraint firstItem="1eZ-Em-SF4" firstAttribute="centerY" secondItem="bgU-2g-VV2" secondAttribute="centerY" id="ghr-pi-9k6"/>
                                     <constraint firstItem="huy-u0-EQn" firstAttribute="centerY" secondItem="bgU-2g-VV2" secondAttribute="centerY" id="mtJ-v2-vtk"/>
                                     <constraint firstItem="huy-u0-EQn" firstAttribute="height" secondItem="bgU-2g-VV2" secondAttribute="height" constant="-10" id="ncC-OI-KkL"/>
-                                    <constraint firstItem="ta2-qc-wTR" firstAttribute="width" secondItem="bgU-2g-VV2" secondAttribute="width" id="qGJ-hE-Mf8" userLabel="Progress View Width Constraint"/>
                                     <constraint firstItem="1eZ-Em-SF4" firstAttribute="leading" secondItem="bgU-2g-VV2" secondAttribute="leading" constant="12" id="vsh-6B-AI1"/>
                                 </constraints>
                             </view>
@@ -197,7 +197,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Hkq-lK-kn9" id="P9y-pH-zd4"/>
                         <outlet property="nextButton" destination="eSH-x6-HWS" id="re2-nb-Zku"/>
-                        <outlet property="progressWidthConstraint" destination="qGJ-hE-Mf8" id="VeZ-E4-IV5"/>
+                        <outlet property="progressWidthConstraint" destination="HAT-T4-x13" id="uet-I2-TvQ"/>
                         <outlet property="subtitleLabel" destination="s1A-Za-I96" id="pkg-RO-UMI"/>
                         <outlet property="titleLabel" destination="bub-op-HQu" id="TYp-9t-hbc"/>
                     </connections>

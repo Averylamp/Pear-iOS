@@ -11,7 +11,7 @@ import UIKit
 
 extension UITextField {
 
-    func stylizeGettingStarted() {
+    func stylizeInputTextField() {
         self.font = UIFont(name: Config.displayFontRegular, size: 18)
         self.textColor = Config.textFontColor
         self.tintColor = Config.textFontColor

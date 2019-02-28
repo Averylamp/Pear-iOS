@@ -112,7 +112,12 @@ extension GetStartedDoDontViewController {
         self.nextButton.stylizeDarkColor()
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabelSmall()
-    }
+
+        self.view.layoutIfNeeded()
+        self.progressWidthConstraint.constant = 5.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)    }
 
     func populateTVCWithText(text: String, tvc: ExpandingTextViewController) {
         tvc.textViewDidBeginEditing(tvc.textView)
