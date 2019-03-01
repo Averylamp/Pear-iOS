@@ -27,20 +27,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're Verified!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Ht-RM-4ld">
-                                <rect key="frame" x="50" y="114" width="275" height="39"/>
+                                <rect key="frame" x="20" y="150" width="335" height="39"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92q-6d-7FT">
-                                <rect key="frame" x="0.0" y="201.5" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="241.5" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="p1x-Fl-Mrl"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This helps prevent fake accounts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DaS-N6-6wv">
-                                <rect key="frame" x="50" y="165" width="275" height="20.5"/>
+                                <rect key="frame" x="20" y="205" width="335" height="20.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                 <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="one-time-code"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-verify-phone-shield-complete" translatesAutoresizingMaskIntoConstraints="NO" id="vKl-3O-j40">
-                                <rect key="frame" x="152.5" y="36" width="70" height="70"/>
+                                <rect key="frame" x="152.5" y="60" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="cDw-i6-TnP"/>
                                     <constraint firstAttribute="width" constant="70" id="hGn-dz-dUO"/>
@@ -73,19 +73,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9Ht-RM-4ld" firstAttribute="top" secondItem="vKl-3O-j40" secondAttribute="bottom" constant="8" id="7Ac-NQ-Aql"/>
+                            <constraint firstItem="9Ht-RM-4ld" firstAttribute="top" secondItem="vKl-3O-j40" secondAttribute="bottom" constant="20" id="7Ac-NQ-Aql"/>
                             <constraint firstItem="92q-6d-7FT" firstAttribute="width" secondItem="fR7-zR-a2m" secondAttribute="width" id="Fxj-3P-lXA"/>
-                            <constraint firstItem="9Ht-RM-4ld" firstAttribute="centerX" secondItem="1m2-3A-1GM" secondAttribute="centerX" id="KzM-vw-MPr"/>
                             <constraint firstItem="92q-6d-7FT" firstAttribute="centerX" secondItem="1m2-3A-1GM" secondAttribute="centerX" id="NsL-9a-gPV"/>
                             <constraint firstItem="vKl-3O-j40" firstAttribute="centerX" secondItem="1m2-3A-1GM" secondAttribute="centerX" id="PfZ-Yl-h4e"/>
                             <constraint firstItem="zsX-g4-MEJ" firstAttribute="leading" secondItem="1m2-3A-1GM" secondAttribute="leading" constant="20" id="SOt-hk-UPu"/>
-                            <constraint firstItem="1m2-3A-1GM" firstAttribute="trailing" secondItem="9Ht-RM-4ld" secondAttribute="trailing" constant="50" id="Sl9-aC-eDR"/>
+                            <constraint firstItem="1m2-3A-1GM" firstAttribute="trailing" secondItem="9Ht-RM-4ld" secondAttribute="trailing" constant="20" id="Sl9-aC-eDR"/>
                             <constraint firstItem="zsX-g4-MEJ" firstAttribute="centerX" secondItem="1m2-3A-1GM" secondAttribute="centerX" id="cpG-62-U03"/>
-                            <constraint firstItem="9Ht-RM-4ld" firstAttribute="leading" secondItem="1m2-3A-1GM" secondAttribute="leading" constant="50" id="cvY-Z1-AB8"/>
+                            <constraint firstItem="9Ht-RM-4ld" firstAttribute="leading" secondItem="1m2-3A-1GM" secondAttribute="leading" constant="20" id="cvY-Z1-AB8"/>
                             <constraint firstItem="1m2-3A-1GM" firstAttribute="trailing" secondItem="zsX-g4-MEJ" secondAttribute="trailing" constant="20" id="fZq-UT-U6i"/>
-                            <constraint firstItem="DaS-N6-6wv" firstAttribute="top" secondItem="9Ht-RM-4ld" secondAttribute="bottom" constant="12" id="gIE-G7-Ikb"/>
+                            <constraint firstItem="DaS-N6-6wv" firstAttribute="top" secondItem="9Ht-RM-4ld" secondAttribute="bottom" constant="16" id="gIE-G7-Ikb"/>
+                            <constraint firstItem="vKl-3O-j40" firstAttribute="top" secondItem="1m2-3A-1GM" secondAttribute="top" constant="40" id="oeD-6D-H8d"/>
                             <constraint firstItem="1m2-3A-1GM" firstAttribute="bottom" secondItem="zsX-g4-MEJ" secondAttribute="bottom" constant="20" id="ooT-az-wWS"/>
-                            <constraint firstItem="vKl-3O-j40" firstAttribute="top" secondItem="1m2-3A-1GM" secondAttribute="top" constant="16" id="rKu-Sc-cjq"/>
                             <constraint firstItem="92q-6d-7FT" firstAttribute="top" secondItem="DaS-N6-6wv" secondAttribute="bottom" constant="16" id="wOz-0m-dbf"/>
                             <constraint firstItem="DaS-N6-6wv" firstAttribute="width" secondItem="9Ht-RM-4ld" secondAttribute="width" id="was-8N-TMk"/>
                             <constraint firstItem="DaS-N6-6wv" firstAttribute="centerX" secondItem="9Ht-RM-4ld" secondAttribute="centerX" id="wgR-xu-WEn"/>

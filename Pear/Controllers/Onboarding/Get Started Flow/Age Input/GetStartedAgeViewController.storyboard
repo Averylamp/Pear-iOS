@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They are..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FjG-zE-9MY">
-                                <rect key="frame" x="50" y="78" width="275" height="38.5"/>
+                                <rect key="frame" x="50" y="86" width="275" height="38.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCM-Fb-M7m">
-                                <rect key="frame" x="20" y="120.5" width="335" height="60"/>
+                                <rect key="frame" x="20" y="128.5" width="335" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dT-56-WSW">
                                         <rect key="frame" x="10" y="20" width="319" height="36"/>
@@ -126,7 +126,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="years old." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8LB-f3-rJf">
-                                <rect key="frame" x="50" y="184.5" width="275" height="38.5"/>
+                                <rect key="frame" x="50" y="192.5" width="275" height="38.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -139,7 +139,7 @@
                             <constraint firstItem="wCM-Fb-M7m" firstAttribute="leading" secondItem="ExT-Ww-MCc" secondAttribute="leading" constant="20" id="BIJ-I0-MTZ"/>
                             <constraint firstItem="FjG-zE-9MY" firstAttribute="leading" secondItem="ExT-Ww-MCc" secondAttribute="leading" constant="50" id="Exp-FJ-6Uo"/>
                             <constraint firstItem="ExT-Ww-MCc" firstAttribute="trailing" secondItem="FjG-zE-9MY" secondAttribute="trailing" constant="50" id="M3W-Su-ftd"/>
-                            <constraint firstItem="FjG-zE-9MY" firstAttribute="top" secondItem="wkl-0n-H90" secondAttribute="bottom" constant="8" id="OdI-88-Aoi"/>
+                            <constraint firstItem="FjG-zE-9MY" firstAttribute="top" secondItem="wkl-0n-H90" secondAttribute="bottom" constant="16" id="OdI-88-Aoi"/>
                             <constraint firstItem="8LB-f3-rJf" firstAttribute="top" secondItem="wCM-Fb-M7m" secondAttribute="bottom" constant="4" id="T73-WM-ePX"/>
                             <constraint firstItem="wkl-0n-H90" firstAttribute="leading" secondItem="ExT-Ww-MCc" secondAttribute="leading" id="alw-83-4SS"/>
                             <constraint firstItem="ExT-Ww-MCc" firstAttribute="trailing" secondItem="wCM-Fb-M7m" secondAttribute="trailing" constant="20" id="bJH-H3-aVq"/>
