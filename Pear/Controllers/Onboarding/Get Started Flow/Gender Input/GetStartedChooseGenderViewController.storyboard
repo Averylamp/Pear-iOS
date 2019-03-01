@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They identify as..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rZr-Ry-rXd">
-                                <rect key="frame" x="30" y="78" width="315" height="38.5"/>
+                                <rect key="frame" x="30" y="86" width="315" height="38.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -148,7 +148,7 @@
                             <constraint firstItem="KUf-OX-MdF" firstAttribute="trailing" secondItem="6wL-mM-6zf" secondAttribute="trailing" constant="20" id="AKd-yL-bCK"/>
                             <constraint firstItem="JTr-49-a0m" firstAttribute="top" secondItem="KUf-OX-MdF" secondAttribute="top" id="Dhe-eK-DiF"/>
                             <constraint firstItem="KUf-OX-MdF" firstAttribute="trailing" secondItem="rZr-Ry-rXd" secondAttribute="trailing" constant="30" id="KGa-aN-wgh"/>
-                            <constraint firstItem="rZr-Ry-rXd" firstAttribute="top" secondItem="JTr-49-a0m" secondAttribute="bottom" constant="8" id="MAv-7c-zfW"/>
+                            <constraint firstItem="rZr-Ry-rXd" firstAttribute="top" secondItem="JTr-49-a0m" secondAttribute="bottom" constant="16" id="MAv-7c-zfW"/>
                             <constraint firstItem="rZr-Ry-rXd" firstAttribute="leading" secondItem="KUf-OX-MdF" secondAttribute="leading" constant="30" id="O1b-h2-ldl"/>
                             <constraint firstItem="6wL-mM-6zf" firstAttribute="leading" secondItem="KUf-OX-MdF" secondAttribute="leading" constant="20" id="OJh-Zh-E8a"/>
                             <constraint firstItem="8X7-GA-Bmf" firstAttribute="leading" secondItem="u1t-Uo-F03" secondAttribute="leading" constant="8" id="QoF-fg-RiZ"/>

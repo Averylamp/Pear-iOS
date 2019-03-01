@@ -53,6 +53,7 @@
 		BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */; };
 		BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */; };
 		BB57151B22159D8F00EF9C4A /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButtonExtensions.swift */; };
+		BB610E9522289C4800901FC3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E9422289C4800901FC3 /* Colors.swift */; };
 		BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB686E2A2210BF34008A263C /* GoogleService-Info.plist */; };
 		BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */; };
 		BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E2E2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift */; };
@@ -201,6 +202,7 @@
 		BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileViewController.swift; sourceTree = "<group>"; };
 		BB57151A22159D8F00EF9C4A /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		BB610E9422289C4800901FC3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BB686E252210BE69008A263C /* Pear.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pear.entitlements; sourceTree = "<group>"; };
 		BB686E2A2210BF34008A263C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCreateAccountEmailViewController.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */,
 				BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */,
 				BB33E74C22248B5A001BFA8F /* UIViewControllerExtensions.swift */,
+				BB610E9422289C4800901FC3 /* Colors.swift */,
 				BB57151A22159D8F00EF9C4A /* UIButtonExtensions.swift */,
 				BB686E3E22120F1A008A263C /* Config.swift */,
 				BB686E4822126706008A263C /* ExpandingTextViewController.swift */,
@@ -1204,6 +1207,7 @@
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButtonExtensions.swift in Sources */,
 				BB686E3D22120E64008A263C /* StringExtensions.swift in Sources */,
+				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
 				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImageExtensions.swift in Sources */,
