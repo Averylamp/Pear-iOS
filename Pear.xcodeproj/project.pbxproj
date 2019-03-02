@@ -33,7 +33,7 @@
 		BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */; };
 		BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */; };
 		BB33E74B2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */; };
-		BB33E74D22248B5A001BFA8F /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74C22248B5A001BFA8F /* UIViewControllerExtensions.swift */; };
+		BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */; };
 		BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */; };
 		BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */; };
 		BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */; };
@@ -52,8 +52,10 @@
 		BB56D23922142EB100A652E7 /* ProfileDoDontViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */; };
 		BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */; };
 		BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */; };
-		BB57151B22159D8F00EF9C4A /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButtonExtensions.swift */; };
+		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB610E9522289C4800901FC3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E9422289C4800901FC3 /* Colors.swift */; };
+		BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */; };
+		BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */; };
 		BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB686E2A2210BF34008A263C /* GoogleService-Info.plist */; };
 		BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */; };
 		BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E2E2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift */; };
@@ -63,11 +65,11 @@
 		BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E352210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift */; };
 		BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E3822113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard */; };
 		BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E3922113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift */; };
-		BB686E3D22120E64008A263C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E3C22120E64008A263C /* StringExtensions.swift */; };
+		BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E3C22120E64008A263C /* String+Helpers.swift */; };
 		BB686E3F22120F1A008A263C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E3E22120F1A008A263C /* Config.swift */; };
 		BB686E422212213A008A263C /* GetStartedDoDontViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E402212213A008A263C /* GetStartedDoDontViewController.storyboard */; };
 		BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E412212213A008A263C /* GetStartedDoDontViewController.swift */; };
-		BB686E45221231FA008A263C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E44221231FA008A263C /* UIImageExtensions.swift */; };
+		BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E44221231FA008A263C /* UIImage+Helpers.swift */; };
 		BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E4822126706008A263C /* ExpandingTextViewController.swift */; };
 		BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */; };
 		BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */; };
@@ -132,7 +134,7 @@
 		BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE122233A76006B75A0 /* Nunito-Bold.ttf */; };
 		BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */; };
 		BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */; };
-		BBB70AEC2223C0CD006B75A0 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */; };
+		BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
 		BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */; };
 		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
@@ -182,7 +184,7 @@
 		BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSeeSamplesViewController.swift; sourceTree = "<group>"; };
 		BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSeeSamplesViewController.storyboard; sourceTree = "<group>"; };
 		BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseFlowViewController.storyboard; sourceTree = "<group>"; };
-		BB33E74C22248B5A001BFA8F /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseGenderViewController.swift; sourceTree = "<group>"; };
 		BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseGenderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedEmailProviderViewController.swift; sourceTree = "<group>"; };
@@ -201,8 +203,10 @@
 		BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDoDontViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileViewController.swift; sourceTree = "<group>"; };
-		BB57151A22159D8F00EF9C4A /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
 		BB610E9422289C4800901FC3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styling.swift"; sourceTree = "<group>"; };
+		BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Kerning.swift"; sourceTree = "<group>"; };
 		BB686E252210BE69008A263C /* Pear.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pear.entitlements; sourceTree = "<group>"; };
 		BB686E2A2210BF34008A263C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCreateAccountEmailViewController.swift; sourceTree = "<group>"; };
@@ -213,11 +217,11 @@
 		BB686E352210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedCreateAccountEmailPasswordViewController.swift; sourceTree = "<group>"; };
 		BB686E3822113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedValidatePhoneNumberCodeViewController.storyboard; sourceTree = "<group>"; };
 		BB686E3922113C99008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedValidatePhoneNumberCodeViewController.swift; sourceTree = "<group>"; };
-		BB686E3C22120E64008A263C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		BB686E3C22120E64008A263C /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		BB686E3E22120F1A008A263C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		BB686E402212213A008A263C /* GetStartedDoDontViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedDoDontViewController.storyboard; sourceTree = "<group>"; };
 		BB686E412212213A008A263C /* GetStartedDoDontViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedDoDontViewController.swift; sourceTree = "<group>"; };
-		BB686E44221231FA008A263C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		BB686E44221231FA008A263C /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
 		BB686E4822126706008A263C /* ExpandingTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextViewController.swift; sourceTree = "<group>"; };
 		BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingTextViewController.storyboard; sourceTree = "<group>"; };
 		BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedAllowNotificationsViewController.swift; sourceTree = "<group>"; };
@@ -282,7 +286,7 @@
 		BBB70AE122233A76006B75A0 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
 		BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
-		BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styling.swift"; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
 		BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhoneVerificationCompleteViewController.storyboard; sourceTree = "<group>"; };
 		BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Styling.swift"; sourceTree = "<group>"; };
@@ -358,6 +362,7 @@
 				BB686E252210BE69008A263C /* Pear.entitlements */,
 				60C131C221D342BC0093ECBA /* AppDelegate.swift */,
 				60C131EA21D348120093ECBA /* Shared */,
+				BB610E98222A1E4B00901FC3 /* Styling */,
 				60C131D621D343610093ECBA /* Networking */,
 				60C131D521D343560093ECBA /* Controllers */,
 				60C131D421D3433B0093ECBA /* Supporting Files */,
@@ -460,21 +465,16 @@
 		60C131EA21D348120093ECBA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BB610E9B222A1EDB00901FC3 /* Controllers */,
+				BB686E3E22120F1A008A263C /* Config.swift */,
 				60C131EB21D348840093ECBA /* UIViewController+Loading.swift */,
 				600FA61021D358B500A40EAC /* UIViewController+Alert.swift */,
-				BBCF418F2227E137009CEC4A /* UIView+Styling.swift */,
-				BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */,
-				BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */,
-				BB686E3C22120E64008A263C /* StringExtensions.swift */,
-				BB686E44221231FA008A263C /* UIImageExtensions.swift */,
-				BBB70AEB2223C0CC006B75A0 /* UILabelExtensions.swift */,
-				BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */,
-				BB33E74C22248B5A001BFA8F /* UIViewControllerExtensions.swift */,
-				BB610E9422289C4800901FC3 /* Colors.swift */,
-				BB57151A22159D8F00EF9C4A /* UIButtonExtensions.swift */,
-				BB686E3E22120F1A008A263C /* Config.swift */,
-				BB686E4822126706008A263C /* ExpandingTextViewController.swift */,
-				BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */,
+				BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */,
+				BB686E3C22120E64008A263C /* String+Helpers.swift */,
+				BB686E44221231FA008A263C /* UIImage+Helpers.swift */,
+				BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */,
+				BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */,
+				BB610E9C222A1EF500901FC3 /* Expanding Text View Controller */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -563,6 +563,36 @@
 				BB75BFCE22155FC000BAB800 /* Profile DoDont */,
 			);
 			path = Profiles;
+			sourceTree = "<group>";
+		};
+		BB610E98222A1E4B00901FC3 /* Styling */ = {
+			isa = PBXGroup;
+			children = (
+				BB610E9422289C4800901FC3 /* Colors.swift */,
+				BBCF418F2227E137009CEC4A /* UIView+Styling.swift */,
+				BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */,
+				BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */,
+				BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */,
+			);
+			path = Styling;
+			sourceTree = "<group>";
+		};
+		BB610E9B222A1EDB00901FC3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */,
+				BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BB610E9C222A1EF500901FC3 /* Expanding Text View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB686E4822126706008A263C /* ExpandingTextViewController.swift */,
+				BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */,
+			);
+			path = "Expanding Text View Controller";
 			sourceTree = "<group>";
 		};
 		BB6C065022280FCA007A5C96 /* Allow Notifications */ = {
@@ -1146,8 +1176,9 @@
 				BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */,
 				BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
+				BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,
-				BBB70AEC2223C0CD006B75A0 /* UILabelExtensions.swift in Sources */,
+				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BB56D23122142E7B00A652E7 /* ProfileDoDontViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
@@ -1184,6 +1215,7 @@
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BB75BFE12215846300BAB800 /* SummaryProfileViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* UserProfileCreateAPI.swift in Sources */,
+				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
 				BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
@@ -1205,19 +1237,19 @@
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
-				BB57151B22159D8F00EF9C4A /* UIButtonExtensions.swift in Sources */,
-				BB686E3D22120E64008A263C /* StringExtensions.swift in Sources */,
+				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
+				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
 				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
-				BB686E45221231FA008A263C /* UIImageExtensions.swift in Sources */,
+				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
 				BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* UserProfileAPI.swift in Sources */,
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
-				BB33E74D22248B5A001BFA8F /* UIViewControllerExtensions.swift in Sources */,
+				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageAllSizesRepresentation.swift in Sources */,
 				BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
