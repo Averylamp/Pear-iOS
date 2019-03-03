@@ -907,8 +907,8 @@
 		BBE8D0252213E0FD00FD1355 /* Create Email Account  */ = {
 			isa = PBXGroup;
 			children = (
-				BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */,
 				BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */,
+				BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */,
 				BB686E2C2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift */,
 				BB686E322210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard */,
 				BB686E352210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift */,

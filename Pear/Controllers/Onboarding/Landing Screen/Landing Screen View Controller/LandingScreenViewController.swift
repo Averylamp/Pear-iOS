@@ -8,6 +8,7 @@
 
 import UIKit
 import FacebookLogin
+import FBSDKCoreKit
 import Firebase
 
 class LandingScreenViewController: UIViewController {
@@ -143,23 +144,85 @@ private extension LandingScreenViewController {
         // 1. Auth via Facebook.
         loginManager.logIn(readPermissions: [.publicProfile, .email, .userBirthday, .userGender], viewController: self) { result in
             switch result {
-            case .success(_, _, let accessToken):
 
-                // 2. Auth via Firebase.
-                let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-                Auth.auth().signInAndRetrieveData(with: credential) { _, error in
-                    if let error = error {
-                        self.alert(title: "Auth Error", message: error.localizedDescription)
-                        return
-                    }
+            case .success(let grantedPermissions, let deniedPermissions, let accessToken):
+                print(grantedPermissions)
+                print(deniedPermissions)
 
-                    //                    guard let user = authData?.user else{ return }
-                    guard let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedUserData: GettingStartedUserData()) else {
-                        print("Failed to create Phone Number VC")
-                        return
-                    }
-                    self.navigationController?.pushViewController(phoneInputVC, animated: true)
+                var permissions: [String] = ["id", "first_name", "last_name", "picture.width(1000).height(1000)"]
+
+                if  grantedPermissions.contains("email") {
+                    permissions.append("email")
                 }
+                if  grantedPermissions.contains("user_birthday") {
+                    permissions.append("birthday")
+                }
+                if  grantedPermissions.contains("user_gender") {
+                    permissions.append("gender")
+                }
+
+                // Fetch All other User Profile Data available
+                let userInfoRequest = FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": permissions.joined(separator: ",")])
+                userInfoRequest?.start(completionHandler: { (_, result, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+
+                    if let result = result as? [String: Any] {
+                        print(result)
+                        print(type(of: result))
+                        let gettingStartedUser = GettingStartedUserData()
+                        guard   let firstName = result["first_name"],
+                                let lastName = result["last_name"],
+                                let fbid = result["id"] else {
+                                    print(error)
+                                    print("Failed to get basic data")
+                                    return
+                        }
+
+                        print(firstName)
+                        print(lastName)
+                        gettingStartedUser.firstName = firstName as? String
+                        gettingStartedUser.lastName = lastName as? String
+                        gettingStartedUser.facebookId = "\(fbid)"
+                        gettingStartedUser.facebookAccessToken = accessToken.authenticationToken
+
+//                        if let email = result["email"] as? String {
+//                            gettingStartedUser.email = email
+//                        }
+
+                        if let gender = result["gender"] as? String {
+                            gettingStartedUser.gender = GenderEnum(rawValue: gender)
+                        }
+
+                        if let birthdayString = result["birthday"] as? String {
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "MM/dd/yyyy"
+                            if let birthdate = dateFormatter.date(from: birthdayString) {
+                                gettingStartedUser.birthdate = birthdate
+
+                                if let age = Calendar.current.dateComponents([.year], from: birthdate, to: Date()).year {
+                                    gettingStartedUser.age = age
+                                }
+
+                            }
+                        }
+                        print(gettingStartedUser)
+                        // 2. Auth via Firebase.
+                        let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
+                        Auth.auth().signInAndRetrieveData(with: credential) { _, error in
+                            if let error = error {
+                                self.alert(title: "Auth Error", message: error.localizedDescription)
+                                return
+                            }
+
+                            if let nextVC = gettingStartedUser.getNextInputViewController() {
+                                self.navigationController?.pushViewController(nextVC, animated: true)
+                            }
+                        }
+                    }
+                })
             case .cancelled:
                 break
             case .failed:
@@ -173,7 +236,7 @@ private extension LandingScreenViewController {
         guard !self.gettingStarted else { return }
         self.gettingStarted = true
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        guard let emailProviderVC = GetStartedEmailProviderViewController.instantiate() else {
+        guard let emailProviderVC = GetStartedEmailProviderViewController.instantiate(gettingStartedUserData: GettingStartedUserData()) else {
             print("Failed to create Email Provider VC")
             return
         }

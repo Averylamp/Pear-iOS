@@ -16,12 +16,15 @@ class GetStartedEmailProviderViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
 
+    var gettingStartedUserData: GettingStartedUserData!
+
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate() -> GetStartedEmailProviderViewController? {
+    class func instantiate(gettingStartedUserData: GettingStartedUserData) -> GetStartedEmailProviderViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedEmailProviderViewController.self), bundle: nil)
         guard let emailProviderVC = storyboard.instantiateInitialViewController() as? GetStartedEmailProviderViewController else { return nil }
+        emailProviderVC.gettingStartedUserData = gettingStartedUserData
         return emailProviderVC
     }
 
@@ -36,13 +39,27 @@ class GetStartedEmailProviderViewController: UIViewController {
                 // 'emailLink' if the user previously signed in with an email/link
                 // 'password' if the user has a password.
                 // A user could have both.
+
+                self.gettingStartedUserData.email = email
+
                 if error != nil {
                     // Handle error case.
                     self.alert(title: "Email error", message: "Error signing up by email")
                     return
                 }
 
-                guard let signInMethods = signInMethods else { return }
+                guard let signInMethods = signInMethods else {
+                    if self.gettingStartedUserData.facebookId != nil, let nextInputVC = self.gettingStartedUserData.getNextInputViewController() {
+                        self.navigationController?.pushViewController(nextInputVC, animated: true)
+                        return
+                    }
+                    return
+                }
+
+                if self.gettingStartedUserData.facebookId != nil, let nextInputVC = self.gettingStartedUserData.getNextInputViewController() {
+                    self.navigationController?.pushViewController(nextInputVC, animated: true)
+                    return
+                }
 
                 var emailPasswordUsed: Bool = false
                 var emailLinkUsed: Bool = false
@@ -125,7 +142,8 @@ extension GetStartedEmailProviderViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
             let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let targetFrame = targetFrameNSValue.cgRectValue
-            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom
+            let keyboardBottomPadding: CGFloat = 20
+            self.nextButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
             UIView.animate(withDuration: duration) {
                 self.view.layoutIfNeeded()
             }
