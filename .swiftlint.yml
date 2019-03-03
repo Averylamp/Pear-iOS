@@ -9,7 +9,7 @@ line_length:
   error: 240
   ignores_interpolated_strings: true
 function_body_length: 100
-cyclomatic_complexity: 20
+cyclomatic_complexity: 24
 file_length: 600
 
 type_name:

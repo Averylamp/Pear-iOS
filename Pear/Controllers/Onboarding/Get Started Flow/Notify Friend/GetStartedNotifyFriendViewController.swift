@@ -35,7 +35,6 @@ class GetStartedNotifyFriendViewController: UIViewController {
 
     @IBAction func nextButtonClicked(_ sender: Any) {
         if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
-            let fullPhoneNumber = "+1" + phoneNumber
             print("Verifying phone number")
             self.inputTextField.textColor = UIColor.lightGray
             self.inputTextField.isEnabled = false

@@ -48,9 +48,9 @@ class LandingScreenViewController: UIViewController {
         }
 
         landingScreenVC.pages = [page1VC,
-                                                        page2VC,
-                                                        page3VC,
-                                                        page4VC]
+                                 page2VC,
+                                 page3VC,
+                                 page4VC]
         return landingScreenVC
     }
 
@@ -65,17 +65,6 @@ extension LandingScreenViewController {
         self.stylize()
         self.attachButtons()
         self.setupScrollView()
-//        var gsUD = GettingStartedUserData(firstName: "Avery", lastName: "Lamp", email: "averylamp@gmail.com", age: 21, phoneNumber: "973873825", firebaseAuthToken: "Fake Token")
-//        UserCreateAPI.shared.createNewUser(with: gsUD) { (result) in
-//            switch result {
-//            case .success(let success):
-//                print(success)
-//
-//            case .failure(let error):
-//                print(error)
-//            }
-//
-//        }
 
     }
 
@@ -110,14 +99,14 @@ extension LandingScreenViewController {
             self.pages[pageNumber].view.translatesAutoresizingMaskIntoConstraints = false
             scrollView.addSubview(self.pages[pageNumber].view)
             scrollView.addConstraints([
-                    NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .height, relatedBy: .equal,
-                                       toItem: scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
-                    NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .width, relatedBy: .equal,
-                                       toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
-                    NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .centerY, relatedBy: .equal,
-                                       toItem: scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-                    NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .centerX, relatedBy: .equal,
-                                       toItem: scrollView, attribute: .centerX, multiplier: 1 + CGFloat(pageNumber * 2), constant: 0.0)
+                NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .height, relatedBy: .equal,
+                                   toItem: scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .width, relatedBy: .equal,
+                                   toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .centerY, relatedBy: .equal,
+                                   toItem: scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .centerX, relatedBy: .equal,
+                                   toItem: scrollView, attribute: .centerX, multiplier: 1 + CGFloat(pageNumber * 2), constant: 0.0)
                 ])
             self.pages[pageNumber].didMove(toParent: self)
         }
@@ -174,11 +163,11 @@ private extension LandingScreenViewController {
                         print(type(of: result))
                         let gettingStartedUser = GettingStartedUserData()
                         guard   let firstName = result["first_name"],
-                                let lastName = result["last_name"],
-                                let fbid = result["id"] else {
-                                    print(error)
-                                    print("Failed to get basic data")
-                                    return
+                            let lastName = result["last_name"],
+                            let fbid = result["id"] else {
+                                print(error as Any)
+                                print("Failed to get basic data")
+                                return
                         }
 
                         print(firstName)
@@ -188,9 +177,9 @@ private extension LandingScreenViewController {
                         gettingStartedUser.facebookId = "\(fbid)"
                         gettingStartedUser.facebookAccessToken = accessToken.authenticationToken
 
-//                        if let email = result["email"] as? String {
-//                            gettingStartedUser.email = email
-//                        }
+                        if let email = result["email"] as? String {
+                            gettingStartedUser.email = email
+                        }
 
                         if let gender = result["gender"] as? String {
                             gettingStartedUser.gender = GenderEnum(rawValue: gender)
@@ -211,10 +200,38 @@ private extension LandingScreenViewController {
                         print(gettingStartedUser)
                         // 2. Auth via Firebase.
                         let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
+                        gettingStartedUser.primaryAuth = credential
                         Auth.auth().signInAndRetrieveData(with: credential) { _, error in
                             if let error = error {
                                 self.alert(title: "Auth Error", message: error.localizedDescription)
                                 return
+                            }
+                            guard let user = Auth.auth().currentUser else {
+                                print("Failed to log in user")
+                                return
+                            }
+
+                            gettingStartedUser.firebaseAuthID = user.uid
+
+                            var facebookLogin = false
+                            var emailLogin = false
+                            var phoneLogin = false
+
+                            user.providerData.forEach({ (userInfo) in
+                                print(userInfo.providerID)
+                                if userInfo.providerID == FacebookAuthProviderID {
+                                    print("Facebook Found")
+                                    facebookLogin = true
+                                } else if userInfo.providerID == EmailAuthProviderID {
+                                    print("Email Found")
+                                    emailLogin = true
+                                } else if userInfo.providerID == PhoneAuthProviderID {
+                                    print("Phone Found")
+                                    phoneLogin = true
+                                }
+                           })
+                            if (facebookLogin && phoneLogin) || (emailLogin && phoneLogin) {
+                                print("Probably already created account")
                             }
 
                             if let nextVC = gettingStartedUser.getNextInputViewController() {
@@ -282,7 +299,7 @@ extension LandingScreenViewController: UIScrollViewDelegate {
             pages[3].scaleImageView(percent: 1 - (percentOffset - 0.75) * 4, before: false)
             if percentOffset > 0.8 {
                 print("Autotrigger get started")
-//                self.signupButtonClicked(sender: UIButton())
+                //                self.signupButtonClicked(sender: UIButton())
             }
         }
     }

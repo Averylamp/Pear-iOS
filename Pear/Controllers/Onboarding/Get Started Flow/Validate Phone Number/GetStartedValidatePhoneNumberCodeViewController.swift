@@ -77,6 +77,7 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
                 }
 
                 guard let verificationID = verificationID else { return }
+
                 // Sign in using the verificationID and the code sent to the user
                 // ...
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
@@ -143,22 +144,43 @@ extension GetStartedValidatePhoneNumberCodeViewController {
         }
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: fullString)
-        Auth.auth().signInAndRetrieveData(with: credential) { (_, error) in
-            self.isVerifying = false
-            if let error = error {
-                HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
-                self.alert(title: "Auth Error", message: error.localizedDescription)
-                self.hiddenInputField.text = ""
-                self.updateCodeNumberLabels()
-            }
-            HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-            self.gettingStartedUserData.phoneNumberVerified = true
+        if let user = Auth.auth().currentUser {
+            user.linkAndRetrieveData(with: credential) { (_, error) in
+                if let error = error {
+                    HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+                    self.alert(title: "Auth Error", message: error.localizedDescription)
+                    self.hiddenInputField.text = ""
+                    self.updateCodeNumberLabels()
+                } else {
+                    HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+                    self.gettingStartedUserData.phoneNumberVerified = true
+                    user.getIDToken(completion: { (authToken, error) in
+                        if let error = error {
+                            print("Error getting token: \(error)")
+                        }
+                        if let authToken = authToken {
+                            self.gettingStartedUserData.firebaseToken = authToken
+                            print(self.gettingStartedUserData)
+                            UserCreateAPI.shared.createNewUser(with: self.gettingStartedUserData, completion: { (result) in
+                                print("Create User API Called")
+                                switch result {
+                                case .success(let pearUser):
+                                    print(pearUser)
+                                    guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
+                                        print("Failed to create Verification Complete VC")
+                                        return
+                                    }
+                                    self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
+                                case .failure(let error):
+                                    print(error)
+                                }
+                            })
 
-            guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
-                print("Failed to create Verification Complete VC")
-                return
+                        }
+                    })
+
+                }
             }
-            self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
         }
 
     }
