@@ -21,6 +21,7 @@ class GettingStartedUserData: CustomStringConvertible {
     var birthdate: Date?
     var phoneNumber: String?
     var phoneNumberVerified: Bool = false
+    var primaryAuth: AuthCredential?
     var firebaseToken: String?
     var firebaseAuthID: String?
     var facebookId: String?
@@ -90,7 +91,6 @@ class GettingStartedUserData: CustomStringConvertible {
         if self.age  == nil {
             print("User Åge Missing")
             print("RED FLAGSS")
-            self.age = 21
         }
 
         if self.birthdate  == nil {

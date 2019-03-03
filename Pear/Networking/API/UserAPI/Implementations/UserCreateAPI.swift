@@ -30,26 +30,24 @@ class UserCreateAPI: UserAPI {
             let lastName = userData.lastName,
             let email = userData.email,
             let age = userData.age,
-            let phoneNumber = userData.phoneNumber else {
+            let phoneNumber = userData.phoneNumber,
+            let firebaseUID = userData.firebaseAuthID,
+            let firebaseToken = userData.firebaseToken else {
                 throw UserCreationError.invalidVariables
         }
 
         var variablesDictionary: [String: Any] = [
             "firstName": firstName,
             "lastName": lastName,
+            "age": age,
             "email": email,
             "emailVerified": userData.emailVerified,
-            "age": age,
             "phoneNumber": phoneNumber,
-            "phoneNumberVerified": userData.phoneNumberVerified
+            "phoneNumberVerified": userData.phoneNumberVerified,
+            "firebaseAuthID": firebaseUID,
+            "firebaseToken": firebaseToken
         ]
 
-        if let firebaseToken = userData.firebaseToken {
-            variablesDictionary["firebaseToken"] = firebaseToken
-        }
-        if let firebaseAuthID = userData.firebaseAuthID {
-            variablesDictionary["firebaseAuthID"] = firebaseAuthID
-        }
         if let facebookId = userData.facebookId {
             variablesDictionary["facebookId"] = facebookId
         }
