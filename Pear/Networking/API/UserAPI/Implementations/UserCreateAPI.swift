@@ -54,9 +54,9 @@ class UserCreateAPI: UserAPI {
         if let facebookAccessToken = userData.facebookAccessToken {
             variablesDictionary["facebookAccessToken"] = facebookAccessToken
         }
-        if let birthdate = userData.birthdate {
-            variablesDictionary["birthdate"] = Int(birthdate.timeIntervalSince1970)
-        }
+//        if let birthdate = userData.birthdate {
+//            variablesDictionary["birthdate"] = Int(birthdate.timeIntervalSince1970)
+//        }
 
         let fullDictionary: [String: Any] = [
             "query": UserCreateAPI.createUserQuery,
