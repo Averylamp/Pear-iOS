@@ -145,7 +145,7 @@
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* OldProfile.swift */; };
 		BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */; };
-		BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF221E2D9DC00520881 /* UserConstants.swift */; };
+		BBDF1FF321E2D9DC00520881 /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF221E2D9DC00520881 /* PearUserConstants.swift */; };
 		BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0272214022600FD1355 /* ProfileData.swift */; };
 		BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0292214023A00FD1355 /* EndorsementData.swift */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
@@ -299,7 +299,7 @@
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* OldProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfile.swift; sourceTree = "<group>"; };
 		BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConstants.swift; sourceTree = "<group>"; };
-		BBDF1FF221E2D9DC00520881 /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
+		BBDF1FF221E2D9DC00520881 /* PearUserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
 		BBE8D0272214022600FD1355 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		BBE8D0292214023A00FD1355 /* EndorsementData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndorsementData.swift; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
@@ -444,7 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				60C131E321D345CE0093ECBA /* PearUser.swift */,
-				BBDF1FF221E2D9DC00520881 /* UserConstants.swift */,
+				BBDF1FF221E2D9DC00520881 /* PearUserConstants.swift */,
 				BBDF1FEE21E2D96D00520881 /* OldProfile.swift */,
 				BBE8D0272214022600FD1355 /* ProfileData.swift */,
 				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
@@ -1259,7 +1259,7 @@
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
 				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageAllSizesRepresentation.swift in Sources */,
-				BBDF1FF321E2D9DC00520881 /* UserConstants.swift in Sources */,
+				BBDF1FF321E2D9DC00520881 /* PearUserConstants.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */,
 				BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */,
