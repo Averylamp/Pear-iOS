@@ -11,6 +11,7 @@ import SwiftyJSON
 
 enum UserCreationError: Error {
     case invalidVariables
+    case failedDeserialization
     case graphQLError(message: String)
 }
 
@@ -62,9 +63,19 @@ extension PearUserAPI {
                     return
                 } else {
                     if let data = data, let json = try? JSON(data: data) {
+
                         print(json)
+                        let pearUser = try? JSONDecoder().decode(PearUser.self, from: data)
+                        guard let unwrappedPearUser = pearUser else {
+                            print("Failed to deserialize: \(error as Any)")
+                            completion(.failure(error!))
+                            return
+                        }
+                        completion(.success(unwrappedPearUser))
                     } else {
                         print("Failed Conversions")
+                        completion(.failure(UserCreationError.failedDeserialization))
+                        return
                     }
                 }
             }
