@@ -33,7 +33,7 @@ class PearUser: Codable {
     var schoolEmailVerified: String?
     var birthdate: Date?
     var age: Int
-
+    
     //    var profileIDs: []
     //    var profileObjs: [String?]
     //    var endorsedProfileIDs: []
@@ -46,14 +46,14 @@ class PearUser: Codable {
     //    var discoveryIDs: String?
     //    var discoveryObj: String?
     //    var pearPoints: String?
-
+    
     // swiftlint:disable:next line_length
     static let graphQLUserFields: String = "user { _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender locationName locationCoordinates school schoolEmail schoolEmailVerified birthdate age profile_ids endorsedProfile_ids userPreferences {   seekingGender } userStats {   totalNumberOfMatches   totalNumberOfMatches } userDemographics {   ethnicities } userMatches_id discovery_id pearPoints    }"
-
+    
     init() {
         fatalError("Should never be called to generate")
     }
-
+    
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: PearUserKeys.self)
         print(values)
@@ -80,9 +80,9 @@ class PearUser: Codable {
         self.birthdate = try? values.decode(Date.self, forKey: .birthdate)
         self.age = try values.decode(Int.self, forKey: .age)
     }
-
+    
 }
 
 extension PearUser {
-
+    
 }

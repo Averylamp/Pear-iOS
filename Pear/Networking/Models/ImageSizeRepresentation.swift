@@ -18,13 +18,13 @@ enum ImageSize: String {
 }
 
 class ImageSizeRepresentation {
-
+    
     let imageSize: ImageSize
     let publicURL: URL
     let imageID: String
     let height: Int
     let width: Int
-
+    
     init(imageID: String, imageSize: ImageSize, publicURL: URL, height: Int, width: Int) {
         self.imageID = imageID
         self.imageSize = imageSize
@@ -32,5 +32,5 @@ class ImageSizeRepresentation {
         self.height = height
         self.width = width
     }
-
+    
 }

@@ -11,7 +11,7 @@ import UIKit
 import FirebaseAuth
 
 class GettingStartedUserData: CustomStringConvertible {
-
+    
     var firstName: String?
     var lastName: String?
     var email: String?
@@ -26,7 +26,7 @@ class GettingStartedUserData: CustomStringConvertible {
     var firebaseAuthID: String?
     var facebookId: String?
     var facebookAccessToken: String?
-
+    
     init(   firstName: String?,
             lastName: String?,
             email: String?,
@@ -40,9 +40,9 @@ class GettingStartedUserData: CustomStringConvertible {
         self.phoneNumber = phoneNumber
         self.firebaseAuthID = firebaseAuthToken
     }
-
+    
     init() {
-
+        
     }
     var description: String {
         return "**** GettingStartedUserData\n " + """
@@ -61,9 +61,9 @@ class GettingStartedUserData: CustomStringConvertible {
         facebookAccessToken: \(String(describing: facebookAccessToken)),
         """
     }
-
+    
     func getNextInputViewController() -> UIViewController? {
-
+        
         if self.email == nil {
             guard let emailInputVC = GetStartedEmailProviderViewController.instantiate(gettingStartedUserData: self) else {
                 print("Failed to create Email Provider VC")
@@ -71,7 +71,7 @@ class GettingStartedUserData: CustomStringConvertible {
             }
             return emailInputVC
         }
-
+        
         if self.firstName == nil {
             guard let userFirstNameVC = GetStartedUserFirstNameViewController.instantiate(gettingStartedUserData: self) else {
                 print("Failed to start User First Name VC: ")
@@ -79,7 +79,7 @@ class GettingStartedUserData: CustomStringConvertible {
             }
             return userFirstNameVC
         }
-
+        
         if self.lastName == nil {
             guard let userLastNameVC = GetStartedUserLastNameViewController.instantiate(gettingStartedUserData: self) else {
                 print("Failed to start User Last Name VC: ")
@@ -87,17 +87,17 @@ class GettingStartedUserData: CustomStringConvertible {
             }
             return userLastNameVC
         }
-
+        
         if self.age  == nil {
             print("User Åge Missing")
             print("RED FLAGSS")
         }
-
+        
         if self.birthdate  == nil {
             print("User Birthday Missing")
             print("RED FLAGSS")
         }
-
+        
         if self.phoneNumber == nil {
             guard let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedUserData: self) else {
                 print("Failed to create Phone Number VC")
@@ -105,8 +105,8 @@ class GettingStartedUserData: CustomStringConvertible {
             }
             return phoneInputVC
         }
-
+        
         return nil
     }
-
+    
 }

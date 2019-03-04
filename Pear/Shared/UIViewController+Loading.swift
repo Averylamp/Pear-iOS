@@ -9,12 +9,12 @@
 import UIKit
 
 extension UIViewController {
-
+    
     func showLoadingIndicator() {
-
+        
     }
-
+    
     func hideLoadingIndicator() {
-
+        
     }
 }

@@ -9,15 +9,15 @@
 import UIKit
 
 class HapticFeedbackGenerator {
-
+    
     class func generateHapticFeedbackImpact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let feedbackGenerator = UIImpactFeedbackGenerator.init(style: style)
         feedbackGenerator.impactOccurred()
     }
-
+    
     class func generateHapticFeedbackNotification(style: UINotificationFeedbackGenerator.FeedbackType) {
         let feedbackGenerator = UINotificationFeedbackGenerator.init()
         feedbackGenerator.notificationOccurred(style)
     }
-
+    
 }
