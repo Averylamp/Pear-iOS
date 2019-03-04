@@ -1,6 +1,7 @@
 
 
 disabled_rules: 
+  - trailing_whitespace
 excluded:
   - Pods
 
@@ -11,7 +12,6 @@ line_length:
 function_body_length: 100
 cyclomatic_complexity: 24
 file_length: 600
-
 type_name:
   max_length:
     warning: 60
