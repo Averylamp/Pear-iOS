@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 
 class OldProfile {
-
+    
     let active: Bool
     let age: Int
     let documentId: String
@@ -20,7 +20,7 @@ class OldProfile {
     let locationCoordinate: CLLocationCoordinate2D
     let profileFirstName: String
     let profileLastName: String
-
+    
     init() {
         self.active = false
         self.age = 0
@@ -32,7 +32,7 @@ class OldProfile {
         self.profileFirstName = ""
         self.profileLastName = ""
     }
-
+    
     init(active: Bool,
          age: Int,
          documentId: String,
@@ -52,7 +52,7 @@ class OldProfile {
         self.profileFirstName = profileFirstName
         self.profileLastName = profileLastName
     }
-
+    
     convenience init?(dictionary: [String: Any?]) {
         guard
             let active = dictionary[ProfileKeys.active] as? Bool,
@@ -64,8 +64,8 @@ class OldProfile {
             let locationCoordinate = dictionary[ProfileKeys.locationCoordinate] as? CLLocationCoordinate2D,
             let profileFirstName = dictionary[ProfileKeys.profileFirstName] as? String,
             let profileLastName = dictionary[ProfileKeys.profileLastName] as? String
-        else {
-            return nil
+            else {
+                return nil
         }
         self.init(active: active,
                   age: age,
@@ -77,7 +77,7 @@ class OldProfile {
                   profileFirstName: profileFirstName,
                   profileLastName: profileLastName)
     }
-
+    
     class func initFakeProfile() -> OldProfile {
         let fakeData: [String: Any?] = [
             ProfileKeys.age: 20,
@@ -90,8 +90,8 @@ class OldProfile {
             ProfileKeys.profileFirstName: "Avery",
             ProfileKeys.profileLastName: "Lamp"
         ]
-
+        
         return OldProfile(dictionary: fakeData)!
     }
-
+    
 }

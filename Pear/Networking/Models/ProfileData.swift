@@ -17,7 +17,7 @@ enum GenderEnum: String {
 }
 
 class ProfileData {
-
+    
     var firstName: String
     var lastName: String
     var fullName: String
@@ -35,7 +35,7 @@ class ProfileData {
     var locationData: LocationData?
     var schoolName: String?
     var work: WorkData?
-
+    
     init() {
         firstName = ""
         lastName = ""
@@ -49,7 +49,7 @@ class ProfileData {
         images = []
         phoneNumber = ""
     }
-
+    
     init (  firstName: String,
             lastName: String,
             fullName: String,
@@ -86,13 +86,13 @@ class ProfileData {
         self.schoolName = schoolName
         self.work = workData
     }
-
+    
 }
 
 class WorkData {
     let workCompany: String
     let workPosition: String
-
+    
     init(workCompany: String,
          workPosition: String) {
         self.workCompany = workCompany
@@ -103,7 +103,7 @@ class WorkData {
 class LocationData {
     let locationString: String
     let locationCoordinate: CLLocationCoordinate2D
-
+    
     init(   locationString: String,
             locationCoordinate: CLLocationCoordinate2D) {
         self.locationString = locationString
@@ -112,7 +112,7 @@ class LocationData {
 }
 
 class FakeProfileData {
-
+    
     class func listOfFakeProfiles() -> [ProfileData] {
         return [FakeProfileData.fakeProfileJacob(),
                 FakeProfileData.fakeProfileCory(),
@@ -121,9 +121,9 @@ class FakeProfileData {
                 FakeProfileData.fakeProfileShane(),
                 FakeProfileData.fakeProfileBrooke()]
     }
-
+    
     class func fakeProfileJacob() -> ProfileData {
-
+        
         let firstName = "Jacob"
         let lastName =  "Smith"
         let fullName =  "Jacob Smith"
@@ -156,9 +156,9 @@ class FakeProfileData {
                             images: images,
                             phoneNumber: phoneNumber)
     }
-
+    
     class func fakeProfileCory() -> ProfileData {
-
+        
         let firstName =  "Cory"
         let lastName =  "Westbrook"
         let fullName =  "Cory Westbrook"
@@ -183,7 +183,7 @@ class FakeProfileData {
                             images: images,
                             phoneNumber: phoneNumber)
     }
-
+    
     class func fakeProfileErika() -> ProfileData {
         let firstName = "Erika"
         let lastName = "Green"
@@ -211,7 +211,7 @@ class FakeProfileData {
                             images: images,
                             phoneNumber: phoneNumber)
     }
-
+    
     class func fakeProfileLexi() -> ProfileData {
         let firstName =  "Lexi"
         let lastName =  "Amaya"
@@ -238,7 +238,7 @@ class FakeProfileData {
                             images: images,
                             phoneNumber: phoneNumber)
     }
-
+    
     class func fakeProfileShane() -> ProfileData {
         let firstName = "Shane"
         let lastName = "Dara"
@@ -266,7 +266,7 @@ class FakeProfileData {
                             images: images,
                             phoneNumber: phoneNumber)
     }
-
+    
     class func fakeProfileBrooke() -> ProfileData {
         let firstName =  "Brooke"
         let lastName =  "Wilder"

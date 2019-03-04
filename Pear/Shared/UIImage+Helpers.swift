@@ -16,7 +16,7 @@ extension UIImage {
         }
         return image
     }
-
+    
     func gettingStartedImage() -> GettingStartedUIImage {
         return GettingStartedUIImage(data: self.pngData()!)!
     }
@@ -24,5 +24,5 @@ extension UIImage {
 
 class GettingStartedUIImage: UIImage {
     var imageSizesRepresentation: ImageAllSizesRepresentation?
-
+    
 }

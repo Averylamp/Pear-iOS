@@ -9,7 +9,7 @@
 import UIKit
 
 class GettingStartedData {
-
+    
     var profileData = ProfileData()
     var userFullName: String?
     var userFirstName: String?
@@ -18,9 +18,9 @@ class GettingStartedData {
     var userPhoneNumber: String?
     var phoneNumberVerified: Bool = false
     init() {
-
+        
     }
-
+    
     class func fakeData() -> GettingStartedData {
         let data = GettingStartedData()
         data.profileData = FakeProfileData.listOfFakeProfiles().randomElement()!
@@ -31,5 +31,5 @@ class GettingStartedData {
         data.userPhoneNumber = "+1 1234567890"
         return data
     }
-
+    
 }

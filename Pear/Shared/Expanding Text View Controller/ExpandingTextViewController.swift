@@ -16,10 +16,10 @@ protocol ExpandingTextViewControllerDelegate: class {
 }
 
 class ExpandingTextViewController: UIViewController {
-
+    
     @IBOutlet weak var textView: UITextView!
     weak var delegate: ExpandingTextViewControllerDelegate?
-
+    
     var viewHeightConstraint: NSLayoutConstraint?
     var animationDuration: Double = 0.3
     var minTextViewSize: CGFloat = 34
@@ -30,14 +30,14 @@ class ExpandingTextViewController: UIViewController {
     var tag: Int = 0
     var accessoryViewSize: CGFloat = 28
     var accessoryButtonRightOffset: CGFloat = 16
-
+    
     @IBOutlet var textViewRightConstraint: NSLayoutConstraint!
     var textViewRightAccessoryConstraint: NSLayoutConstraint?
-
+    
     var primaryAccessoryButton: UIButton?
     var primaryAccessoryButtonRightConstraint: NSLayoutConstraint?
     var secondaryAccessoryButton: UIButton?
-
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -46,7 +46,7 @@ class ExpandingTextViewController: UIViewController {
         guard let expandingTextVC = storyboard.instantiateInitialViewController() as? ExpandingTextViewController else { return nil }
         return expandingTextVC
     }
-
+    
     func setPlaceholderText(text: String) {
         textView.text = text
         placeholderText = text
@@ -59,9 +59,9 @@ extension ExpandingTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
-
+        
     }
-
+    
 }
 
 enum ButtonType {
@@ -71,7 +71,7 @@ enum ButtonType {
 
 // MARK: - Accessory Buttons
 extension ExpandingTextViewController {
-
+    
     func addAccessoryButton(image: UIImage, buttonType: ButtonType) {
         var accessoryButton: UIButton?
         if primaryAccessoryButton == nil {
@@ -88,14 +88,14 @@ extension ExpandingTextViewController {
                 NSLayoutConstraint(item: accessoryButton, attribute: .right, relatedBy: .equal,
                                    toItem: self.view, attribute: .right, multiplier: 1.0, constant: -accessoryButtonRightOffset)
             self.view.addConstraints([
-                    self.textViewRightAccessoryConstraint!,
-                    NSLayoutConstraint(item: accessoryButton, attribute: .centerY, relatedBy: .equal,
-                                       toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-                    NSLayoutConstraint(item: accessoryButton, attribute: .width, relatedBy: .equal,
-                                       toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
-                    NSLayoutConstraint(item: accessoryButton, attribute: .height, relatedBy: .equal,
-                                       toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
-                    self.primaryAccessoryButtonRightConstraint!
+                self.textViewRightAccessoryConstraint!,
+                NSLayoutConstraint(item: accessoryButton, attribute: .centerY, relatedBy: .equal,
+                                   toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: accessoryButton, attribute: .width, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
+                NSLayoutConstraint(item: accessoryButton, attribute: .height, relatedBy: .equal,
+                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: accessoryViewSize),
+                self.primaryAccessoryButtonRightConstraint!
                 ])
             UIView.animate(withDuration: self.animationDuration) {
                 self.view.layoutIfNeeded()
@@ -123,7 +123,7 @@ extension ExpandingTextViewController {
                                    toItem: self.view, attribute: .right, multiplier: 1.0, constant: -accessoryButtonRightOffset)
                 ])
         }
-
+        
         // Style button
         if let accessoryButton = accessoryButton {
             accessoryButton.setImage(image, for: .normal)
@@ -132,23 +132,23 @@ extension ExpandingTextViewController {
                 accessoryButton.tag = 0
             case .close:
                 accessoryButton.tag = 1
-
+                
             }
         }
     }
-
+    
     @objc func primaryAccessoryButtonClicked(sender: UIButton) {
         if let delegate = self.delegate {
             delegate.primaryAccessoryButtonPressed(expandingTextViewController: self, sender: sender)
         }
     }
-
+    
     @objc func secondaryAccessoryButtonClicked(sender: UIButton) {
         if let delegate = self.delegate {
             delegate.seccondaryAccessoryButtonPressed(expandingTextViewController: self, sender: sender)
         }
     }
-
+    
     func removeAllAccessoryButtons() {
         var removedAccessory = false
         if let primaryAccessory = self.primaryAccessoryButton,
@@ -166,7 +166,7 @@ extension ExpandingTextViewController {
             self.secondaryAccessoryButton = nil
             removedAccessory = true
         }
-
+        
         if removedAccessory {
             self.textViewRightConstraint = NSLayoutConstraint(item: self.textView, attribute: .right, relatedBy: .equal,
                                                               toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0)
@@ -176,12 +176,12 @@ extension ExpandingTextViewController {
             }
         }
     }
-
+    
 }
 
 // MARK: - UITextViewDelegate
 extension ExpandingTextViewController: UITextViewDelegate {
-
+    
     func textViewDidChange(_ textView: UITextView) {
         if let viewHeightConstraint = self.viewHeightConstraint {
             let textHeight = self.textView.sizeThatFits(CGSize(width: self.textView.frame.width, height: CGFloat.greatestFiniteMagnitude)).height
@@ -194,21 +194,21 @@ extension ExpandingTextViewController: UITextViewDelegate {
             delegate.textViewDidChange(expandingTextViewController: self)
         }
     }
-
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if let placeholderText = self.placeholderText, textView.text == placeholderText {
             textView.text = ""
             textView.textColor = textColor
         }
     }
-
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         if let placeholderText = self.placeholderText, textView.text == "" {
             textView.text = placeholderText
             textView.textColor = placeholderTextColor
         }
     }
-
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n", let delegate = self.delegate {
             delegate.returnKeyPressed(expandingTextViewController: self)
@@ -216,5 +216,5 @@ extension ExpandingTextViewController: UITextViewDelegate {
         }
         return true
     }
-
+    
 }
