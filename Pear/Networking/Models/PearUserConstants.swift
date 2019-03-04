@@ -8,47 +8,48 @@
 
 import Foundation
 
-struct PearUserKeys {
-    static let deactivated = "deactivated"
-    static let firebaseToken = "firebaseToken"
-    static let firebaseAuthID = "firebaseAuthID"
-    static let facebookId = "facebookId"
-    static let facebookAccessToken = "facebookAccessToken"
-    static let email = "email"
-    static let emailVerified = "emailVerified"
-    static let phoneNumber = "phoneNumber"
-    static let phoneNumberVerified = "phoneNumberVerified"
-    static let firstName = "firstName"
-    static let lastName = "lastName"
-    static let fullName = "fullName"
-    static let thumbnailURL = "thumbnailURL"
-    static let gender = "gender"
-    static let locationName = "locationName"
-    static let locationCoordinates = "locationCoordinates"
-    static let school = "school"
-    static let schoolEmail = "schoolEmail"
-    static let schoolEmailVerified = "schoolEmailVerified"
-    static let birthdate = "birthdate"
-    static let age = "age"
-    static let profile_ids = "profile_ids"
-    static let profile_objs = "profile_objs"
-    static let endorsedProfile_ids = "endorsedProfile_ids"
-    static let endorsedProfile_objs = "endorsedProfile_objs"
-    
-    static let userPreferences = "userPreferences"
-    
-    static let userStats = "userStats"
-    
-    static let userDemographics = "userDemographics"
-    
-    static let userMatches_id = "userMatches_id"
-    static let userMatches = "userMatches"
-    static let discovery_id = "discovery_id"
-    static let discovery_obj = "discovery_obj"
-    static let pearPoints = "pearPoints"
+enum PearUserKeys: String, CodingKey {
+    case documentID = "_id"
+    case deactivated
+    case firebaseToken
+    case firebaseAuthID
+    case facebookId
+    case facebookAccessToken
+    case email
+    case emailVerified
+    case phoneNumber
+    case phoneNumberVerified
+    case firstName
+    case lastName
+    case fullName
+    case thumbnailURL
+    case gender
+    case locationName
+    case locationCoordinates
+    case school
+    case schoolEmail
+    case schoolEmailVerified
+    case birthdate
+    case age
+    case profileIDs = "profile_ids"
+    case profileObjs = "profile_objs"
+    case endorsedProfileIDs = "endorsedProfile_ids"
+    case endorsedProfileObjs = "endorsedProfile_objs"
+
+    case userPreferences
+
+    case userStats
+
+    case userDemographics
+
+    case userMatchesID = "userMatches_id"
+    case userMatches
+    case discoveryIDs = "discovery_id"
+    case discoveryObj = "discovery_obj"
+    case pearPoints
 }
 
-struct PearUserStatsKeys{
+struct PearUserStatsKeys {
     static let totalNumberOfMatchRequests = "totalNumberOfMatchRequests"
     static let totalNumberOfMatches = "totalNumberOfMatches"
     static let totalNumberOfProfilesCreated = "totalNumberOfProfilesCreated"
@@ -59,7 +60,7 @@ struct PearUserStatsKeys{
     static let conversationTotalNumberHundredMessages = "conversationTotalNumberHundredMessages"
 }
 
-struct PearUserDemographicsKeys{
+struct PearUserDemographicsKeys {
     static let ethnicities = "ethnicities"
     static let religion = "religion"
     static let political = "political"
@@ -68,7 +69,7 @@ struct PearUserDemographicsKeys{
     static let height = "height"
 }
 
-struct PearPreferencesKeys{
+struct PearPreferencesKeys {
     static let ethnicities = "ethnicities"
     static let seekingGender = "seekingGender"
     static let seekingReason = "seekingReason"
