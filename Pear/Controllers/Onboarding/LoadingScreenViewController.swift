@@ -67,21 +67,24 @@ extension LoadingScreenViewController {
 
     func continueToLandingScreen() {
         print("Continuing to Landing Screen")
-        guard let loadingScreenVC = LandingScreenViewController.instantiate() else {
-            print("Failed to create Landing Screen VC")
-            return
+        DispatchQueue.main.async {
+            guard let loadingScreenVC = LandingScreenViewController.instantiate() else {
+                print("Failed to create Landing Screen VC")
+                return
+            }
+            self.navigationController?.setViewControllers([loadingScreenVC], animated: true)
         }
-        self.navigationController?.setViewControllers([loadingScreenVC], animated: true)
     }
 
     func continueToMainScreen() {
         print("Continuing to Main Screen")
-        guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
-            print("Failed to create Landing Screen VC")
-            return
+        DispatchQueue.main.async {
+            guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
+                print("Failed to create Landing Screen VC")
+                return
+            }
+            self.navigationController?.setViewControllers([waitlistVC], animated: true)
         }
-        self.navigationController?.setViewControllers([waitlistVC], animated: true)
-
     }
 
 }
