@@ -60,7 +60,7 @@ extension PearUserAPI {
             let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
                 if let error = error {
                     print(error as Any)
-                    returnyt
+                    return
                 } else {
                     if  let data = data,
                         let json = try? JSON(data: data),

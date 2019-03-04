@@ -86,8 +86,8 @@
 		BB75BFDF2215845300BAB800 /* SummaryProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */; };
 		BB75BFE12215846300BAB800 /* SummaryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */; };
 		BB75BFE3221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */; };
-		BB796F86222D9C2500E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F84222D9C2500E31C7F /* PearUser.swift */; };
-		BB796F87222D9C2500E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F85222D9C2500E31C7F /* PearUserConstants.swift */; };
+		BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F88222DB19300E31C7F /* PearUserConstants.swift */; };
+		BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F89222DB19300E31C7F /* PearUser.swift */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */; };
@@ -240,8 +240,8 @@
 		BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryProfileViewController.swift; sourceTree = "<group>"; };
 		BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryProfileSummaryTableViewCell.swift; sourceTree = "<group>"; };
-		BB796F84222D9C2500E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PearUser.swift; path = NetworkPlayground.playground/Sources/PearUser.swift; sourceTree = SOURCE_ROOT; };
-		BB796F85222D9C2500E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PearUserConstants.swift; path = NetworkPlayground.playground/Sources/PearUserConstants.swift; sourceTree = SOURCE_ROOT; };
+		BB796F88222DB19300E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
+		BB796F89222DB19300E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenPage1ViewController.storyboard; sourceTree = "<group>"; };
@@ -443,8 +443,8 @@
 		60C131E221D345C00093ECBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BB796F84222D9C2500E31C7F /* PearUser.swift */,
-				BB796F85222D9C2500E31C7F /* PearUserConstants.swift */,
+				BB796F89222DB19300E31C7F /* PearUser.swift */,
+				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
 				BBDF1FEE21E2D96D00520881 /* OldProfile.swift */,
 				BBE8D0272214022600FD1355 /* ProfileData.swift */,
 				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
@@ -1179,7 +1179,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB796F86222D9C2500E31C7F /* PearUser.swift in Sources */,
 				600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */,
 				BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */,
 				BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */,
@@ -1192,8 +1191,10 @@
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
+				BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */,
 				BB686E3F22120F1A008A263C /* Config.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
+				BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */,
 				BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
@@ -1249,7 +1250,6 @@
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
 				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
-				BB796F87222D9C2500E31C7F /* PearUserConstants.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
