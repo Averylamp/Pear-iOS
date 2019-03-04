@@ -21,6 +21,7 @@ class LandingScreenViewController: UIViewController {
     var gettingStarted: Bool = false
 
     var pages: [LandingScreenPageViewController] = []
+
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.

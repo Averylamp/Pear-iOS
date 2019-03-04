@@ -13,6 +13,7 @@ class Config {
 
     static let shouldSkipLogin: Bool = false
 
+    static let devGraphQLHost: URL = URL(string: "http://66.31.16.203:1234/graphql")!
     static let graphQLHost: URL = URL(string: "http://66.31.16.203:1234/graphql")!
     static let imageAPIHost: URL = URL(string: "http://koala.mit.edu:1337")!
 

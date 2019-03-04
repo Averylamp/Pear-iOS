@@ -16,7 +16,7 @@
 		60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C131DA21D343B20093ECBA /* LoginVC.storyboard */; };
 		60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131DE21D344F80093ECBA /* AuthAPI.swift */; };
 		60C131E121D345630093ECBA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E021D345630093ECBA /* Result.swift */; };
-		60C131E421D345CE0093ECBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E321D345CE0093ECBA /* User.swift */; };
+		60C131E421D345CE0093ECBA /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E321D345CE0093ECBA /* PearUser.swift */; };
 		60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */; };
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
@@ -121,7 +121,7 @@
 		BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */; };
 		BBB70ACB222334E0006B75A0 /* UserProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACA222334E0006B75A0 /* UserProfileAPI.swift */; };
 		BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACC222334E6006B75A0 /* UserAPI.swift */; };
-		BBB70ACF222334FC006B75A0 /* UserCreateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACE222334FC006B75A0 /* UserCreateAPI.swift */; };
+		BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */; };
 		BBB70AD122233508006B75A0 /* UserProfileCreateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AD022233508006B75A0 /* UserProfileCreateAPI.swift */; };
 		BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */; };
 		BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */; };
@@ -135,6 +135,8 @@
 		BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */; };
 		BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */; };
 		BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */; };
+		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
+		BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
 		BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */; };
 		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
@@ -166,7 +168,7 @@
 		60C131DA21D343B20093ECBA /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
 		60C131DE21D344F80093ECBA /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		60C131E021D345630093ECBA /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		60C131E321D345CE0093ECBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		60C131E321D345CE0093ECBA /* PearUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthAPI.swift; sourceTree = "<group>"; };
 		60C131EB21D348840093ECBA /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
@@ -273,7 +275,7 @@
 		BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB70ACA222334E0006B75A0 /* UserProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAPI.swift; sourceTree = "<group>"; };
 		BBB70ACC222334E6006B75A0 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
-		BBB70ACE222334FC006B75A0 /* UserCreateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreateAPI.swift; sourceTree = "<group>"; };
+		BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserAPI.swift; sourceTree = "<group>"; };
 		BBB70AD022233508006B75A0 /* UserProfileCreateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCreateAPI.swift; sourceTree = "<group>"; };
 		BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
 		BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
@@ -287,6 +289,8 @@
 		BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
 		BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styling.swift"; sourceTree = "<group>"; };
+		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
+		BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
 		BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhoneVerificationCompleteViewController.storyboard; sourceTree = "<group>"; };
 		BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Styling.swift"; sourceTree = "<group>"; };
@@ -439,7 +443,7 @@
 		60C131E221D345C00093ECBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				60C131E321D345CE0093ECBA /* User.swift */,
+				60C131E321D345CE0093ECBA /* PearUser.swift */,
 				BBDF1FF221E2D9DC00520881 /* UserConstants.swift */,
 				BBDF1FEE21E2D96D00520881 /* OldProfile.swift */,
 				BBE8D0272214022600FD1355 /* ProfileData.swift */,
@@ -701,6 +705,8 @@
 			children = (
 				BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */,
 				BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */,
+				BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */,
+				BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */,
 				BB986A38220E439800759A14 /* Landing Screen */,
 				BB986A39220E43A300759A14 /* Get Started Flow */,
 			);
@@ -779,7 +785,7 @@
 		BBB70AD22223351B006B75A0 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				BBB70ACE222334FC006B75A0 /* UserCreateAPI.swift */,
+				BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1035,6 +1041,7 @@
 				BB686E422212213A008A263C /* GetStartedDoDontViewController.storyboard in Resources */,
 				BBB70AE522233A77006B75A0 /* Nunito-SemiBold.ttf in Resources */,
 				BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */,
+				BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */,
 				BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */,
 				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
@@ -1219,12 +1226,12 @@
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
 				BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
-				BBB70ACF222334FC006B75A0 /* UserCreateAPI.swift in Sources */,
+				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageSizeRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */,
-				60C131E421D345CE0093ECBA /* User.swift in Sources */,
+				60C131E421D345CE0093ECBA /* PearUser.swift in Sources */,
 				BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */,
 				BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */,
 				BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */,
@@ -1239,6 +1246,7 @@
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
+				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
 				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,

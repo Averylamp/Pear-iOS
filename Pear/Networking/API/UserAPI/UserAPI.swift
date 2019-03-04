@@ -10,4 +10,5 @@ import Foundation
 
 protocol UserAPI {
     func createNewUser(with gettingStartedUserData: GettingStartedUserData, completion: @escaping (Result<PearUser, Error>) -> Void)
+    func getUser(uid: String, token: String, completion: @escaping (Result<PearUser, Error>) -> Void)
 }
