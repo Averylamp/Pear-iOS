@@ -16,7 +16,6 @@
 		60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C131DA21D343B20093ECBA /* LoginVC.storyboard */; };
 		60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131DE21D344F80093ECBA /* AuthAPI.swift */; };
 		60C131E121D345630093ECBA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E021D345630093ECBA /* Result.swift */; };
-		60C131E421D345CE0093ECBA /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E321D345CE0093ECBA /* PearUser.swift */; };
 		60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */; };
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
@@ -87,6 +86,8 @@
 		BB75BFDF2215845300BAB800 /* SummaryProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */; };
 		BB75BFE12215846300BAB800 /* SummaryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */; };
 		BB75BFE3221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */; };
+		BB796F86222D9C2500E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F84222D9C2500E31C7F /* PearUser.swift */; };
+		BB796F87222D9C2500E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F85222D9C2500E31C7F /* PearUserConstants.swift */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */; };
@@ -145,7 +146,6 @@
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FEE21E2D96D00520881 /* OldProfile.swift */; };
 		BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */; };
-		BBDF1FF321E2D9DC00520881 /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF221E2D9DC00520881 /* PearUserConstants.swift */; };
 		BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0272214022600FD1355 /* ProfileData.swift */; };
 		BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0292214023A00FD1355 /* EndorsementData.swift */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
@@ -168,7 +168,6 @@
 		60C131DA21D343B20093ECBA /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
 		60C131DE21D344F80093ECBA /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		60C131E021D345630093ECBA /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		60C131E321D345CE0093ECBA /* PearUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthAPI.swift; sourceTree = "<group>"; };
 		60C131EB21D348840093ECBA /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
@@ -241,6 +240,8 @@
 		BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryProfileViewController.swift; sourceTree = "<group>"; };
 		BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryProfileSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		BB796F84222D9C2500E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PearUser.swift; path = NetworkPlayground.playground/Sources/PearUser.swift; sourceTree = SOURCE_ROOT; };
+		BB796F85222D9C2500E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PearUserConstants.swift; path = NetworkPlayground.playground/Sources/PearUserConstants.swift; sourceTree = SOURCE_ROOT; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenPage1ViewController.storyboard; sourceTree = "<group>"; };
@@ -299,7 +300,6 @@
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FEE21E2D96D00520881 /* OldProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProfile.swift; sourceTree = "<group>"; };
 		BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConstants.swift; sourceTree = "<group>"; };
-		BBDF1FF221E2D9DC00520881 /* PearUserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
 		BBE8D0272214022600FD1355 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		BBE8D0292214023A00FD1355 /* EndorsementData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndorsementData.swift; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
@@ -443,8 +443,8 @@
 		60C131E221D345C00093ECBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				60C131E321D345CE0093ECBA /* PearUser.swift */,
-				BBDF1FF221E2D9DC00520881 /* PearUserConstants.swift */,
+				BB796F84222D9C2500E31C7F /* PearUser.swift */,
+				BB796F85222D9C2500E31C7F /* PearUserConstants.swift */,
 				BBDF1FEE21E2D96D00520881 /* OldProfile.swift */,
 				BBE8D0272214022600FD1355 /* ProfileData.swift */,
 				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
@@ -1179,6 +1179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB796F86222D9C2500E31C7F /* PearUser.swift in Sources */,
 				600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */,
 				BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */,
 				BBDF1FEF21E2D96D00520881 /* OldProfile.swift in Sources */,
@@ -1231,7 +1232,6 @@
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageSizeRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */,
-				60C131E421D345CE0093ECBA /* PearUser.swift in Sources */,
 				BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */,
 				BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */,
 				BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */,
@@ -1249,6 +1249,7 @@
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
 				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
+				BB796F87222D9C2500E31C7F /* PearUserConstants.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
@@ -1259,7 +1260,6 @@
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
 				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageAllSizesRepresentation.swift in Sources */,
-				BBDF1FF321E2D9DC00520881 /* PearUserConstants.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */,
 				BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */,

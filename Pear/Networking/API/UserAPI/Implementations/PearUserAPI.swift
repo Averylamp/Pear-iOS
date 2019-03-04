@@ -27,9 +27,9 @@ class PearUserAPI: UserAPI {
         "Content-Type": "application/json"
     ]
 
-    static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput) {\n  createUser(userInput: $userInput) {\n    success\n    message\n  \(PearUser.graphQLUserFields)    }\n}\n"
+    static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput) {createUser(userInput: $userInput) {  success  message\(PearUser.graphQLUserFields) }}"
 
-    static let getUserQuery: String = "mutation GetUser($userInput: GetUserInput) {\n  getUser(userInput:$userInput){\n    success\n    message\n   \(PearUser.graphQLUserFields)   }\n}\n"
+    static let getUserQuery: String = "mutation GetUser($userInput: GetUserInput) {getUser(userInput:$userInput){  success  message \(PearUser.graphQLUserFields) }}"
 }
 
 // MARK: - Routes
@@ -60,18 +60,33 @@ extension PearUserAPI {
             let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
                 if let error = error {
                     print(error as Any)
-                    return
+                    returnyt
                 } else {
-                    if let data = data, let json = try? JSON(data: data) {
+                    if  let data = data,
+                        let json = try? JSON(data: data),
+                        let getUserResponse = json["data"]["getUser"].dictionary,
+                        let success = getUserResponse["success"]?.bool,
+                        let message = getUserResponse["message"]?.string,
+                        let pearUserDictionary = try? getUserResponse["user"]?.dictionaryObject,
+                        let pearUserData = try? getUserResponse["user"]?.rawData() {
+                        do {
+                            print(pearUserDictionary)
+                            let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData!)
 
-                        print(json)
-                        let pearUser = try? JSONDecoder().decode(PearUser.self, from: data)
-                        guard let unwrappedPearUser = pearUser else {
-                            print("Failed to deserialize: \(error as Any)")
-                            completion(.failure(error!))
-                            return
+                        } catch {
+                            print("Error: \(error)")
                         }
-                        completion(.success(unwrappedPearUser))
+//                        guard let unwrappedPearUser = pearUser else {
+//                            print("Failed to deserialize: \(error as Any)")
+//                            if let error = error {
+//                                completion(.failure(error))
+//                            } else {
+//                                completion(.failure(UserCreationError.failedDeserialization))
+//                            }
+//                            return
+//                        }
+//                        completion(.success(unwrappedPearUser))
+                        completion(.failure(UserCreationError.failedDeserialization))
                     } else {
                         print("Failed Conversions")
                         completion(.failure(UserCreationError.failedDeserialization))
