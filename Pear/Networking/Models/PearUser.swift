@@ -8,11 +8,12 @@
 
 import Foundation
 import Firebase
+import SwiftyJSON
 
 class PearUser {
 
     // swiftlint:disable:next line_length
-    static let graphQLUserFields: String = "user {\n      _id\n      deactivated\n      firebaseToken\n      firebaseAuthID\n      facebookId\n      facebookAccessToken\n      email\n      phoneNumber\n      phoneNumberVerified\n      firstName\n      lastName\n      thumbnailURL\n      gender\n      locationName\n      locationCoordinates\n      school\n      schoolEmail\n      schoolEmailVerified\n      birthdate\n      age\n      profile_ids\n\n      endorsedProfile_ids\n\n      userPreferences {\n        seekingGender\n      }\n      userStats {\n        totalNumberOfMatches\n        totalNumberOfMatches\n      }\n      userDemographics {\n        ethnicities\n      }\n      userMatches_id\n      discovery_id\n      pearPoints\n    }\n"
+    static let graphQLUserFields: String = "user { _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email phoneNumber phoneNumberVerified firstName lastName thumbnailURL gender locationName locationCoordinates school schoolEmail schoolEmailVerified birthdate age profile_ids endorsedProfile_ids userPreferences {   seekingGender } userStats {   totalNumberOfMatches   totalNumberOfMatches } userDemographics {   ethnicities } userMatches_id discovery_id pearPoints    }"
 
     let documentId: String
     let email: String
@@ -57,18 +58,18 @@ class PearUser {
 
     convenience init?(dictionary: [String: Any?]) {
         guard
-            let documentId = dictionary[UserKeys.documentId] as? String,
-            let email = dictionary[UserKeys.email] as? String,
-            let firstName = dictionary[UserKeys.firstName] as? String,
-            let lastName = dictionary[UserKeys.lastName] as? String,
-            let fbId = dictionary[UserKeys.fbId] as? String,
-            let firebaseId = dictionary[UserKeys.firebaseId] as? String
-        else {
-            return nil
+            let documentId = dictionary[PearUserKeys.documentId] as? String,
+            let email = dictionary[PearUserKeys.email] as? String,
+            let firstName = dictionary[PearUserKeys.firstName] as? String,
+            let lastName = dictionary[PearUserKeys.lastName] as? String,
+            let fbId = dictionary[PearUserKeys.fbId] as? String,
+            let firebaseId = dictionary[PearUserKeys.firebaseId] as? String
+            else {
+                return nil
         }
-        let personalProfileRef = dictionary[UserKeys.personalProfileRefs] as? OldProfile
-        let endorsedProfileRefs = dictionary[UserKeys.endorsedProfileRefs] as? [OldProfile]
-        let friendEndorsedProfileRefs = dictionary[UserKeys.friendEndorsedProfileRefs] as? [OldProfile]
+        let personalProfileRef = dictionary[PearUserKeys.personalProfileRefs] as? OldProfile
+        let endorsedProfileRefs = dictionary[PearUserKeys.endorsedProfileRefs] as? [OldProfile]
+        let friendEndorsedProfileRefs = dictionary[PearUserKeys.friendEndorsedProfileRefs] as? [OldProfile]
 
         self.init(documentId: documentId,
                   email: email,
@@ -80,18 +81,22 @@ class PearUser {
                   endorsedProfileRefs: endorsedProfileRefs ?? [],
                   friendEndorsedProfileRefs: friendEndorsedProfileRefs ?? [])
     }
+    
+    convenience init?(json: JSON){
+        
+    }
 
     class func initFakeUser() -> PearUser {
         let fakeData: [String: Any?] = [
-            UserKeys.documentId: "FakeId",
-            UserKeys.email: "averylamp@gmail.com",
-            UserKeys.firstName: "Avery",
-            UserKeys.lastName: "Lamp",
-            UserKeys.fbId: "FakeId",
-            UserKeys.firebaseId: "FakeId",
-            UserKeys.personalProfileRefs: [OldProfile.initFakeProfile()],
-            UserKeys.endorsedProfileRefs: [OldProfile.initFakeProfile(), OldProfile.initFakeProfile(), OldProfile.initFakeProfile()],
-            UserKeys.friendEndorsedProfileRefs: [OldProfile.initFakeProfile()]
+            PearUserKeys.documentId: "FakeId",
+            PearUserKeys.email: "averylamp@gmail.com",
+            PearUserKeys.firstName: "Avery",
+            PearUserKeys.lastName: "Lamp",
+            PearUserKeys.fbId: "FakeId",
+            PearUserKeys.firebaseId: "FakeId",
+            PearUserKeys.personalProfileRefs: [OldProfile.initFakeProfile()],
+            PearUserKeys.endorsedProfileRefs: [OldProfile.initFakeProfile(), OldProfile.initFakeProfile(), OldProfile.initFakeProfile()],
+            PearUserKeys.friendEndorsedProfileRefs: [OldProfile.initFakeProfile()]
         ]
         return PearUser(dictionary: fakeData)!
     }
