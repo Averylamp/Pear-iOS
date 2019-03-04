@@ -1,15 +1,18 @@
 //
-//  User.swift
-//  SubtleAsianMatches
+//  PearUser.swift
+//  Pear
 //
-//  Created by Kelvin Lau on 2018-12-26.
-//  Copyright © 2018 sam. All rights reserved.
+//  Created by Avery Lamp on 2019-3-4.
+//  Copyright © 2019 Pear. All rights reserved.
 //
 
 import Foundation
 import Firebase
 
 class PearUser {
+
+    // swiftlint:disable:next line_length
+    static let graphQLUserFields: String = "user {\n      _id\n      deactivated\n      firebaseToken\n      firebaseAuthID\n      facebookId\n      facebookAccessToken\n      email\n      phoneNumber\n      phoneNumberVerified\n      firstName\n      lastName\n      thumbnailURL\n      gender\n      locationName\n      locationCoordinates\n      school\n      schoolEmail\n      schoolEmailVerified\n      birthdate\n      age\n      profile_ids\n\n      endorsedProfile_ids\n\n      userPreferences {\n        seekingGender\n      }\n      userStats {\n        totalNumberOfMatches\n        totalNumberOfMatches\n      }\n      userDemographics {\n        ethnicities\n      }\n      userMatches_id\n      discovery_id\n      pearPoints\n    }\n"
 
     let documentId: String
     let email: String

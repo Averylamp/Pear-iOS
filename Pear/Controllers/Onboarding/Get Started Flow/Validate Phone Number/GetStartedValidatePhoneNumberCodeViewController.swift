@@ -161,7 +161,7 @@ extension GetStartedValidatePhoneNumberCodeViewController {
                         if let authToken = authToken {
                             self.gettingStartedUserData.firebaseToken = authToken
                             print(self.gettingStartedUserData)
-                            UserCreateAPI.shared.createNewUser(with: self.gettingStartedUserData, completion: { (result) in
+                            PearUserAPI.shared.createNewUser(with: self.gettingStartedUserData, completion: { (result) in
                                 print("Create User API Called")
                                 switch result {
                                 case .success(let pearUser):

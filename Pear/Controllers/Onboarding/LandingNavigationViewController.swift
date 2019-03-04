@@ -17,8 +17,8 @@ class LandingNavigationViewController: UINavigationController {
         let storyboard = UIStoryboard(name: String(describing: LandingNavigationViewController.self), bundle: nil)
         guard let landingNavigationVC = storyboard.instantiateInitialViewController() as? LandingNavigationViewController else { return nil }
         landingNavigationVC.viewControllers = []
-        guard let landingScreenVC = LandingScreenViewController.instantiate() else { return nil }
-        landingNavigationVC.viewControllers.append(landingScreenVC)
+        guard let loadingScreenVC = LoadingScreenViewController.instantiate() else { return nil }
+        landingNavigationVC.viewControllers.append(loadingScreenVC)
 
         return landingNavigationVC
     }
@@ -30,6 +30,6 @@ extension LandingNavigationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
+
 }
