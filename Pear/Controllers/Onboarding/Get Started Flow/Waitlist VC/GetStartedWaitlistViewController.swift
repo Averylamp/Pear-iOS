@@ -24,7 +24,7 @@ class GetStartedWaitlistViewController: UIViewController {
     }
 
     @IBAction func createFriendsProfileClicked(_ sender: Any) {
-        guard let startFriendProfileVC = GetStartedStartFriendProfileViewController.instantiate() else{
+        guard let startFriendProfileVC = GetStartedStartFriendProfileViewController.instantiate() else {
             print("Failed to create Start Friend Profile VC")
             return
         }

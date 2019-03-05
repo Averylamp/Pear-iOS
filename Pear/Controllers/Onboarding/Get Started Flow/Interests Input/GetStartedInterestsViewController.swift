@@ -17,7 +17,7 @@ class GetStartedInterestsViewController: UIViewController {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
 
     let interestStrings: [String] = [
         "Language",
@@ -60,7 +60,7 @@ class GetStartedInterestsViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedInterestsViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedInterestsViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedInterestsViewController.self), bundle: nil)
         guard let interestsVC = storyboard.instantiateInitialViewController() as? GetStartedInterestsViewController else { return nil }
         interestsVC.gettingStartedData = gettingStartedData
@@ -68,9 +68,9 @@ class GetStartedInterestsViewController: UIViewController {
     }
 
     func saveInterests() {
-        self.gettingStartedData.profileData.interests = []
+        self.gettingStartedData.profileInterests = []
         for button in self.interestButtons where button.isSelected {
-            self.gettingStartedData.profileData.interests.append(button.titleLabel!.text!)
+            self.gettingStartedData.profileInterests.append(button.titleLabel!.text!)
         }
     }
 
@@ -182,7 +182,7 @@ extension GetStartedInterestsViewController {
         self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: rowHeight * CGFloat(numRows) + 2.0 * buttonSpacing)
 
         for button in self.interestButtons {
-            if self.gettingStartedData.profileData.interests.contains(button.titleLabel!.text!) {
+            if self.gettingStartedData.profileInterests.contains(button.titleLabel!.text!) {
                 self.toggleInterestButton(button: button, initialization: true)
             }
         }

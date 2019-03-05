@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedShortBioViewController: UIViewController {
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
 
     @IBOutlet weak var textLengthLabel: UILabel!
     @IBOutlet weak var inputTextView: UITextView!
@@ -27,7 +27,7 @@ class GetStartedShortBioViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedShortBioViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedShortBioViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedShortBioViewController.self), bundle: nil)
         guard let shortBioVC = storyboard.instantiateInitialViewController() as? GetStartedShortBioViewController else { return nil }
         shortBioVC.gettingStartedData = gettingStartedData
@@ -35,7 +35,7 @@ class GetStartedShortBioViewController: UIViewController {
     }
 
     func saveBio() {
-        self.gettingStartedData.profileData.shortBio = inputTextView.text
+        self.gettingStartedData.profileBio = inputTextView.text
     }
 
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -46,7 +46,7 @@ class GetStartedShortBioViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveBio()
-        if self.gettingStartedData.profileData.shortBio.count < 50 {
+        if let profileBio = self.gettingStartedData.profileBio, profileBio.count < 50 {
             let alertController = UIAlertController(title: nil,
                                                     message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?",
                                                     preferredStyle: .alert)
@@ -93,8 +93,8 @@ extension GetStartedShortBioViewController {
         self.inputTextView.delegate = self
         self.inputTextView.isScrollEnabled = true
 
-        if self.gettingStartedData.profileData.shortBio != "" {
-            self.inputTextView.text = self.gettingStartedData.profileData.shortBio
+        if let profileBio = self.gettingStartedData.profileBio, profileBio != "" {
+            self.inputTextView.text = profileBio
             textViewDidChange(self.inputTextView)
         }
 
