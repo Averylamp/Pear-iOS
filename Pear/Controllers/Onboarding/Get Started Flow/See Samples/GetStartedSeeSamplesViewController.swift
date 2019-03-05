@@ -63,18 +63,18 @@ extension GetStartedSeeSamplesViewController {
 
         self.seeSamplesButton.backgroundColor = UIColor.white
         self.seeSamplesButton.layer.cornerRadius = self.seeSamplesButton.frame.height / 2.0
-        self.seeSamplesButton.layer.borderColor = Config.nextButtonColor.cgColor
+        self.seeSamplesButton.layer.borderColor = StylingConfig.nextButtonColor.cgColor
         self.seeSamplesButton.layer.borderWidth = 1
         self.seeSamplesButton.layer.shadowRadius = 1
         self.seeSamplesButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
         self.seeSamplesButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.seeSamplesButton.layer.shadowOpacity = 1.0
-        self.seeSamplesButton.setTitleColor(Config.nextButtonColor, for: .normal)
-        self.seeSamplesButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        self.seeSamplesButton.setTitleColor(StylingConfig.nextButtonColor, for: .normal)
+        self.seeSamplesButton.titleLabel?.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
         self.seeSamplesButton.setTitle("View Samples", for: .normal)
 
-        self.skipButton.setTitleColor(Config.inactiveTextFontColor, for: .normal)
-        self.skipButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        self.skipButton.setTitleColor(StylingConfig.inactiveTextFontColor, for: .normal)
+        self.skipButton.titleLabel?.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
         self.skipButton.setTitle("Skip", for: .normal)
     }
 

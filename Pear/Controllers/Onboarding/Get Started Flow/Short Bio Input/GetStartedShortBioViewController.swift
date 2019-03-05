@@ -109,22 +109,22 @@ extension GetStartedShortBioViewController {
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabelSmall()
 
-        self.inputTextView.layer.borderColor = Config.textFontColor.cgColor
+        self.inputTextView.layer.borderColor = StylingConfig.textFontColor.cgColor
         self.inputTextView.layer.borderWidth = 1
         self.inputTextView.layer.cornerRadius = 15
         self.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        self.inputTextView.font = UIFont(name: Config.displayFontRegular, size: 17)
-        self.inputTextView.textColor = Config.textFontColor
+        self.inputTextView.font = UIFont(name: StylingConfig.displayFontRegular, size: 17)
+        self.inputTextView.textColor = StylingConfig.textFontColor
 
-        self.progressWidthConstraint.constant = 3.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = 3.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         self.view.layoutIfNeeded()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
-        self.progressWidthConstraint.constant = 4.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
-        UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+        self.progressWidthConstraint.constant = 4.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }

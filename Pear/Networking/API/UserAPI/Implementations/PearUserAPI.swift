@@ -36,7 +36,7 @@ class PearUserAPI: UserAPI {
 extension PearUserAPI {
     
     func getUser(uid: String, token: String, completion: @escaping (Result<PearUser, Error>) -> Void) {
-        let request = NSMutableURLRequest(url: NSURL(string: "\(Config.graphQLHost)")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 15.0)
         request.httpMethod = "POST"
@@ -60,37 +60,29 @@ extension PearUserAPI {
             let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
                 if let error = error {
                     print(error as Any)
+                    completion(.failure(error))
                     return
                 } else {
                     if  let data = data,
                         let json = try? JSON(data: data),
-                        let getUserResponse = json["data"]["getUser"].dictionary,
-                        let success = getUserResponse["success"]?.bool,
-                        let message = getUserResponse["message"]?.string,
-                        let pearUserDictionary = try? getUserResponse["user"]?.dictionaryObject,
-                        let pearUserData = try? getUserResponse["user"]?.rawData() {
+                        let getUserResponse = json["data"]["getUser"].dictionary {
                         do {
-                            print(pearUserDictionary)
-                            let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData!)
-                            completion(.success(pearUser))
-                            return
+                            let pearUserData = try getUserResponse["user"]?.rawData()
+                            if let pearUserData = pearUserData {
+                                let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
+                                print("Successfully found Pear User")
+                                completion(.success(pearUser))
+                                return
+                            } else {
+                                print("Failed to get Pear User Data")
+                                completion(.failure(UserCreationError.failedDeserialization))
+                                return
+                            }
                         } catch {
                             print("Error: \(error)")
                             completion(.failure(error))
                             return
                         }
-                        //                        guard let unwrappedPearUser = pearUser else {
-                        //                            print("Failed to deserialize: \(error as Any)")
-                        //                            if let error = error {
-                        //                                completion(.failure(error))
-                        //                            } else {
-                        //                                completion(.failure(UserCreationError.failedDeserialization))
-                        //                            }
-                        //                            return
-                        //                        }
-                        //                        completion(.success(unwrappedPearUser))
-                        completion(.failure(UserCreationError.failedDeserialization))
-                        return
                     } else {
                         print("Failed Conversions")
                         completion(.failure(UserCreationError.failedDeserialization))
@@ -110,7 +102,7 @@ extension PearUserAPI {
     }
     
     func createNewUser(with gettingStartedUserData: GettingStartedUserData, completion: @escaping (Result<PearUser, Error>) -> Void) {
-        let request = NSMutableURLRequest(url: NSURL(string: "\(Config.graphQLHost)")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 15.0)
         request.httpMethod = "POST"
@@ -120,19 +112,39 @@ extension PearUserAPI {
             let queryData = try convertUserDataToQueryVariable(userData: gettingStartedUserData)
             request.httpBody = queryData
             
-            let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+            let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
                 if let error = error {
                     print(error as Any)
+                    completion(.failure(error))
                     return
                 } else {
-                    print(response as Any)
-                    print(data as Any)
-                    if let data = data, let json = try? JSON(data: data) {
-                        print(json)
+                    if  let data = data,
+                        let json = try? JSON(data: data),
+                        let getUserResponse = json["data"]["createUser"].dictionary {
+                        do {
+                            let pearUserData = try getUserResponse["user"]?.rawData()
+                            if let pearUserData = pearUserData {
+                                let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
+                                print("Successfully found Pear User")
+                                completion(.success(pearUser))
+                                return
+                            } else {
+                                print("Failed to get Pear User Data")
+                                completion(.failure(UserCreationError.failedDeserialization))
+                                return
+                            }
+                        } catch {
+                            print("Error: \(error)")
+                            completion(.failure(error))
+                            return
+                        }
                     } else {
                         print("Failed Conversions")
+                        completion(.failure(UserCreationError.failedDeserialization))
+                        return
                     }
                 }
+
             }
             dataTask.resume()
         } catch let error as UserCreationError {

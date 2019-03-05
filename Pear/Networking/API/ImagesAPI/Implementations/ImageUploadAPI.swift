@@ -24,7 +24,7 @@ class ImageUploadAPI: ImageAPI {
             "Content-Type": "application/json"
         ]
 
-        let request = NSMutableURLRequest(url: NSURL(string: "\(Config.imageAPIHost)/upload_image")! as URL,
+        let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.imageAPIHost)/upload_image")! as URL,
                                           cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: 15.0)
         request.httpMethod = "POST"

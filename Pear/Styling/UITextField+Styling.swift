@@ -12,9 +12,9 @@ import UIKit
 extension UITextField {
     
     func stylizeInputTextField() {
-        self.font = UIFont(name: Config.displayFontRegular, size: 18)
-        self.textColor = Config.textFontColor
-        self.tintColor = Config.textFontColor
+        self.font = UIFont(name: StylingConfig.displayFontRegular, size: 18)
+        self.textColor = StylingConfig.textFontColor
+        self.tintColor = StylingConfig.textFontColor
     }
     
 }
