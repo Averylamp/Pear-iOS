@@ -33,7 +33,7 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
 
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        if Config.shouldSkipLogin {
+        if StylingConfig.shouldSkipLogin {
             guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
                 print("Failed to Create Photo Input VC")
                 return

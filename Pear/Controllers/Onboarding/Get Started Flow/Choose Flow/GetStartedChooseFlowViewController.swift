@@ -54,14 +54,14 @@ extension GetStartedChooseFlowViewController {
 
         self.createFriendProfileButton.backgroundColor = UIColor.white
         self.createFriendProfileButton.layer.cornerRadius = self.createFriendProfileButton.frame.height / 2.0
-        self.createFriendProfileButton.layer.borderColor = Config.nextButtonColor.cgColor
+        self.createFriendProfileButton.layer.borderColor = StylingConfig.nextButtonColor.cgColor
         self.createFriendProfileButton.layer.borderWidth = 1
         self.createFriendProfileButton.layer.shadowRadius = 1
         self.createFriendProfileButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
         self.createFriendProfileButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.createFriendProfileButton.layer.shadowOpacity = 1.0
-        self.createFriendProfileButton.setTitleColor(Config.nextButtonColor, for: .normal)
-        self.createFriendProfileButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        self.createFriendProfileButton.setTitleColor(StylingConfig.nextButtonColor, for: .normal)
+        self.createFriendProfileButton.titleLabel?.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
 
         self.requestProfileButton.backgroundColor = UIColor.white
         self.requestProfileButton.layer.cornerRadius = self.createFriendProfileButton.frame.height / 2.0
@@ -69,8 +69,8 @@ extension GetStartedChooseFlowViewController {
         self.requestProfileButton.layer.shadowColor = UIColor(white: 0.0, alpha: 0.15).cgColor
         self.requestProfileButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.requestProfileButton.layer.shadowOpacity = 1.0
-        self.requestProfileButton.setTitleColor(Config.nextButtonColor, for: .normal)
-        self.requestProfileButton.titleLabel?.font = UIFont(name: Config.textFontSemiBold, size: 17)
+        self.requestProfileButton.setTitleColor(StylingConfig.nextButtonColor, for: .normal)
+        self.requestProfileButton.titleLabel?.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
 
     }
 

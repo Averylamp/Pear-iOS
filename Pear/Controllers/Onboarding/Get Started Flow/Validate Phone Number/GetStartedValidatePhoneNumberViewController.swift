@@ -43,11 +43,11 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
             self.inputTextField.textColor = UIColor.lightGray
             self.inputTextField.isEnabled = false
             self.nextButton.backgroundColor = UIColor.white
-            self.nextButton.setTitleColor(Config.nextButtonColor, for: .normal)
+            self.nextButton.setTitleColor(StylingConfig.nextButtonColor, for: .normal)
             self.nextButton.isEnabled = false
             let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
                                                             type: NVActivityIndicatorType.ballScaleRippleMultiple,
-                                                            color: Config.textFontColor,
+                                                            color: StylingConfig.textFontColor,
                                                             padding: 0)
             self.view.addSubview(activityIndicator)
             activityIndicator.center = CGPoint(x: self.view.center.x, y: self.inputTextFieldContainerView.frame.origin.y + self.inputTextFieldContainerView.frame.height + 40)
@@ -61,9 +61,9 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
                     activityIndicator.stopAnimating()
                     activityIndicator.removeFromSuperview()
                 })
-                self.inputTextField.textColor = Config.textFontColor
+                self.inputTextField.textColor = StylingConfig.textFontColor
                 self.inputTextField.isEnabled = true
-                self.nextButton.backgroundColor = Config.nextButtonColor
+                self.nextButton.backgroundColor = StylingConfig.nextButtonColor
                 self.nextButton.setTitleColor(UIColor.white, for: .normal)
                 self.nextButton.isEnabled = true
                 if let error = error {

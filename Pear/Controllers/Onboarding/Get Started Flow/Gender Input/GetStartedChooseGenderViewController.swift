@@ -98,15 +98,15 @@ extension GetStartedChooseGenderViewController {
             }
         }
 
-        self.progressWidthConstraint.constant = 0.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = 0.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         self.view.layoutIfNeeded()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
-        self.progressWidthConstraint.constant = 1.0 / Config.totalGettingStartedPagesNumber * self.view.frame.width
-        UIView.animate(withDuration: Config.progressBarAnimationDuration, delay: Config.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+        self.progressWidthConstraint.constant = 1.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }

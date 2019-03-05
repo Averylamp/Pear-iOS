@@ -51,7 +51,7 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
             self.resendCodeButton.isEnabled = false
             let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
                                                             type: NVActivityIndicatorType.ballScaleRippleMultiple,
-                                                            color: Config.textFontColor,
+                                                            color: StylingConfig.textFontColor,
                                                             padding: 0)
             self.view.addSubview(activityIndicator)
             activityIndicator.center = CGPoint(x: self.view.center.x, y: self.verificationView.frame.origin.y + self.verificationView.frame.height + 40)
@@ -67,7 +67,7 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
 
                 self.resendCodeButton.isEnabled = true
                 self.hiddenInputField.isEnabled = true
-                self.resendCodeButton.setTitleColor(Config.textFontColor, for: .normal)
+                self.resendCodeButton.setTitleColor(StylingConfig.textFontColor, for: .normal)
                 self.resendCodeButton.backgroundColor = UIColor.white
 
                 if let error = error {
@@ -125,8 +125,8 @@ extension GetStartedValidatePhoneNumberCodeViewController {
             self.verificationView.addSubview(circleView)
 
             let numberLabel = UILabel(frame: CGRect(x: circleView.frame.origin.x, y: circleView.frame.origin.y, width: circleView.frame.width, height: circleView.frame.height))
-            numberLabel.font = UIFont(name: Config.displayFontMedium, size: 26)
-            numberLabel.textColor = Config.textFontColor
+            numberLabel.font = UIFont(name: StylingConfig.displayFontMedium, size: 26)
+            numberLabel.textColor = StylingConfig.textFontColor
             numberLabel.tag = codeItemNumber
             numberLabel.textAlignment = .center
             self.numberLabels.append(numberLabel)
@@ -166,13 +166,18 @@ extension GetStartedValidatePhoneNumberCodeViewController {
                                 switch result {
                                 case .success(let pearUser):
                                     print(pearUser)
-                                    guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
-                                        print("Failed to create Verification Complete VC")
-                                        return
+                                    DispatchQueue.main.async {
+                                        guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
+                                            print("Failed to create Verification Complete VC")
+                                            return
+                                        }
+                                        self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
                                     }
-                                    self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
                                 case .failure(let error):
                                     print(error)
+                                    DispatchQueue.main.async {
+                                        self.alert(title: "Error creating User", message: error.localizedDescription)
+                                    }
                                 }
                             })
 
@@ -214,15 +219,15 @@ extension GetStartedValidatePhoneNumberCodeViewController: UITextFieldDelegate {
             for labelNumber in 0 ..< self.numberLabels.count {
                 if labelNumber < text.count {
                     self.numberLabels[labelNumber].text = text[labelNumber..<labelNumber+1]
-                    self.numberLabels[labelNumber].textColor = Config.textFontColor
+                    self.numberLabels[labelNumber].textColor = StylingConfig.textFontColor
                     self.circleViews[labelNumber].layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.87, alpha: 1.00).cgColor
                 } else if labelNumber == text.count {
                     self.numberLabels[labelNumber].text = ""
-                    self.numberLabels[labelNumber].textColor = Config.textFontColor
+                    self.numberLabels[labelNumber].textColor = StylingConfig.textFontColor
                     self.circleViews[labelNumber].layer.borderColor = UIColor(red: 0.26, green: 0.29, blue: 0.33, alpha: 1.00).cgColor
                 } else {
                     self.numberLabels[labelNumber].text = ""
-                    self.numberLabels[labelNumber].textColor = Config.textFontColor
+                    self.numberLabels[labelNumber].textColor = StylingConfig.textFontColor
                     self.circleViews[labelNumber].layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.87, alpha: 1.00).cgColor
                 }
             }
