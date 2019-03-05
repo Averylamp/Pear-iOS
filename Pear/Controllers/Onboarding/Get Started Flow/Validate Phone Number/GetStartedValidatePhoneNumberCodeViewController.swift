@@ -166,6 +166,7 @@ extension GetStartedValidatePhoneNumberCodeViewController {
                                 switch result {
                                 case .success(let pearUser):
                                     print(pearUser)
+                                    DataStore.shared.currentPearUser = pearUser
                                     DispatchQueue.main.async {
                                         guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
                                             print("Failed to create Verification Complete VC")

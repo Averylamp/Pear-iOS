@@ -10,4 +10,13 @@ import Foundation
 
 class DataStore {
     
+    static let shared = DataStore()
+    
+    var currentPearUser: PearUser? = nil
+    
+    
+    private init() {
+        
+    }
+
 }
