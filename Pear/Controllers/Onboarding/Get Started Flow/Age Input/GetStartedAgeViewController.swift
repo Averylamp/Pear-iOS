@@ -17,7 +17,7 @@ class GetStartedAgeViewController: UIViewController {
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
 
     @IBOutlet weak var firstTitleLabel: UILabel!
     @IBOutlet weak var secondTitleLabel: UILabel!
@@ -25,7 +25,7 @@ class GetStartedAgeViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedAgeViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedAgeViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedAgeViewController.self), bundle: nil)
         guard let ageVC = storyboard.instantiateInitialViewController() as? GetStartedAgeViewController else { return nil }
         ageVC.gettingStartedData = gettingStartedData
@@ -35,7 +35,7 @@ class GetStartedAgeViewController: UIViewController {
     @discardableResult
     func saveAge() -> Int? {
         if let ageText = self.inputTextField.text, let age = Int(ageText) {
-            self.gettingStartedData.profileData.age = age
+            self.gettingStartedData.profileAge = age
             return age
         }
         return nil
@@ -71,8 +71,8 @@ class GetStartedAgeViewController: UIViewController {
 extension GetStartedAgeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.gettingStartedData.profileData.age >= 18 {
-            self.inputTextField.text = "\(self.gettingStartedData.profileData.age)"
+        if let profileAge = self.gettingStartedData.profileAge, profileAge >= 18 {
+            self.inputTextField.text = "\(profileAge)"
         }
 
         self.inputTextField.becomeFirstResponder()

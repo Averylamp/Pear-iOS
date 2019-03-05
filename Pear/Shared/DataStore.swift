@@ -12,8 +12,7 @@ class DataStore {
     
     static let shared = DataStore()
     
-    var currentPearUser: PearUser? = nil
-    
+    var currentPearUser: PearUser?
     
     private init() {
         

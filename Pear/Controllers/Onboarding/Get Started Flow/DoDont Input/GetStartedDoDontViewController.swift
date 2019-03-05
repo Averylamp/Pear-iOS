@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedDoDontViewController: UIViewController {
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
@@ -40,24 +40,24 @@ class GetStartedDoDontViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedDoDontViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedDoDontViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedDoDontViewController.self), bundle: nil)
         guard let doDontVC = storyboard.instantiateInitialViewController() as? GetStartedDoDontViewController else { return nil }
         doDontVC.gettingStartedData = gettingStartedData
         return doDontVC
     }
 
-    func saveDoDontListsTo(gettingStartedData: GettingStartedData) {
-        gettingStartedData.profileData.doList = []
-        gettingStartedData.profileData.dontList = []
+    func saveDoDontListsTo(gettingStartedData: GettingStartedUserProfileData) {
+        gettingStartedData.profileDos = []
+        gettingStartedData.profileDonts = []
         for doTVC in self.doTextViewControllers {
             if doTVC.textView.text.count >= 3 && !self.sampleStarters.contains(doTVC.textView.text) {
-                gettingStartedData.profileData.doList.append(doTVC.textView.text)
+                gettingStartedData.profileDos.append(doTVC.textView.text)
             }
         }
         for dontTVC in self.dontTextViewControllers {
             if dontTVC.textView.text.count >= 3 && !self.sampleStarters.contains(dontTVC.textView.text) {
-                gettingStartedData.profileData.dontList.append(dontTVC.textView.text)
+                gettingStartedData.profileDonts.append(dontTVC.textView.text)
             }
         }
     }
@@ -70,10 +70,10 @@ class GetStartedDoDontViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
-        if self.gettingStartedData.profileData.doList.count == 0 {
+        if self.gettingStartedData.profileDos.count == 0 {
             self.alert(title: "Incomplete Field", message: "Please add a Do for your friend")
             return
-        } else if self.gettingStartedData.profileData.dontList.count == 0 {
+        } else if self.gettingStartedData.profileDonts.count == 0 {
             self.alert(title: "Incomplete Field", message: "Please add a Don't for your friend")
             return
         }
@@ -135,7 +135,7 @@ extension GetStartedDoDontViewController {
     }
 
     func restoreSavedState() {
-        for doText in self.gettingStartedData.profileData.doList {
+        for doText in self.gettingStartedData.profileDos {
             if let lastTVC = self.doTextViewControllers.last, lastTVC.textView.text.count == 0 || self.sampleStarters.contains(lastTVC.textView.text) {
                 populateTVCWithText(text: doText, tvc: lastTVC)
                 self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .doType)
@@ -145,7 +145,7 @@ extension GetStartedDoDontViewController {
                 populateTVCWithText(text: doText, tvc: lastTVC)
             }
         }
-        for dontText in self.gettingStartedData.profileData.dontList {
+        for dontText in self.gettingStartedData.profileDonts {
             if let lastTVC = self.dontTextViewControllers.last, lastTVC.textView.text.count == 0 || self.sampleStarters.contains(lastTVC.textView.text) {
                 populateTVCWithText(text: dontText, tvc: lastTVC)
                 self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .dontType)

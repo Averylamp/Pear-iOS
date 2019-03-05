@@ -15,12 +15,12 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
     @IBOutlet weak var firstPasswordTextField: UITextField!
     @IBOutlet weak var emailLinkButton: UIButton!
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserData!
 
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedCreateAccountEmailPasswordViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserData) -> GetStartedCreateAccountEmailPasswordViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedCreateAccountEmailPasswordViewController.self), bundle: nil)
         guard let emailPasswordVC = storyboard.instantiateInitialViewController() as? GetStartedCreateAccountEmailPasswordViewController else { return nil }
         emailPasswordVC.gettingStartedData = gettingStartedData
@@ -34,14 +34,14 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         if StylingConfig.shouldSkipLogin {
-            guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-                print("Failed to Create Photo Input VC")
-                return
-            }
-            self.navigationController?.pushViewController(photoInputVC, animated: true)
+//            guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+//                print("Failed to Create Photo Input VC")
+//                return
+//            }
+//            self.navigationController?.pushViewController(photoInputVC, animated: true)
         }
 
-        if let userEmail = self.gettingStartedData.userEmail, let password = self.firstPasswordTextField.text {
+        if let userEmail = self.gettingStartedData.email, let password = self.firstPasswordTextField.text {
             if password.count < 8 {
                 self.alert(title: "Password not long enough", message: "Please choose a password with at least 8 characters")
                 return
@@ -56,11 +56,11 @@ class GetStartedCreateAccountEmailPasswordViewController: UIViewController {
 //                let credential = EmailAuthProvider.credential(withEmail: userEmail, password: password)
 //                guard let user = authResult?.user else { return }
 
-                guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-                    print("Failed to create Photo Input VC")
-                    return
-                }
-                self.navigationController?.pushViewController(photoInputVC, animated: true)
+//                guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+//                    print("Failed to create Photo Input VC")
+//                    return
+//                }
+//                self.navigationController?.pushViewController(photoInputVC, animated: true)
             }
         }
     }

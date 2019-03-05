@@ -14,12 +14,12 @@ class GetStartedCreateAccountEmailViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var inputTextField: UITextField!
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
 
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedCreateAccountEmailViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedCreateAccountEmailViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedCreateAccountEmailViewController.self), bundle: nil)
         guard let createAccountEmailVC = storyboard.instantiateInitialViewController() as? GetStartedCreateAccountEmailViewController else { return nil }
         createAccountEmailVC.gettingStartedData = gettingStartedData
@@ -27,9 +27,9 @@ class GetStartedCreateAccountEmailViewController: UIViewController {
     }
 
     func saveUserEmail() {
-        if let userEmail = inputTextField.text {
-            gettingStartedData.userEmail = userEmail
-        }
+//        if let userEmail = inputTextField.text {
+//            gettingStartedData.userEmail = userEmail
+//        }
     }
 
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -41,11 +41,11 @@ class GetStartedCreateAccountEmailViewController: UIViewController {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
 
         self.saveUserEmail()
-        guard let emailPasswordVC = GetStartedCreateAccountEmailPasswordViewController.instantiate(gettingStartedData: gettingStartedData) else {
-            print("Failed to create Email Password VC")
-            return
-        }
-        self.navigationController?.pushViewController(emailPasswordVC, animated: true)
+//        guard let emailPasswordVC = GetStartedCreateAccountEmailPasswordViewController.instantiate(gettingStartedData: gettingStartedData) else {
+//            print("Failed to create Email Password VC")
+//            return
+//        }
+//        self.navigationController?.pushViewController(emailPasswordVC, animated: true)
     }
 
     @IBAction func clearButtonClicked(_ sender: Any) {

@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedPhotoInputViewController: UIViewController {
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
 
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,7 +27,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedPhotoInputViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedPhotoInputViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedPhotoInputViewController.self), bundle: nil)
         guard let photoInputVC = storyboard.instantiateInitialViewController() as? GetStartedPhotoInputViewController else { return nil }
         photoInputVC.gettingStartedData = gettingStartedData
@@ -35,7 +35,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     }
 
     func saveImages() {
-        self.gettingStartedData.profileData.images = self.images
+        self.gettingStartedData.profileImages = self.images
     }
 
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -47,7 +47,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveImages()
-        if self.gettingStartedData.profileData.images.count == 0 {
+        if self.gettingStartedData.profileImages.count == 0 {
             self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
             return
         }
@@ -97,7 +97,7 @@ extension GetStartedPhotoInputViewController {
     }
 
     func restoreGettingStartedState() {
-        self.images = self.gettingStartedData.profileData.images
+        self.images = self.gettingStartedData.profileImages
     }
 
     func setupCollectionView() {

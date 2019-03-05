@@ -11,13 +11,13 @@ import Firebase
 
 class GetStartedCreateAccountViewController: UIViewController {
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
     var authAPI: AuthAPI! =  FakeAuthAPI()
 
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedCreateAccountViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedCreateAccountViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedCreateAccountViewController.self), bundle: nil)
         guard let createAccountVC = storyboard.instantiateInitialViewController() as? GetStartedCreateAccountViewController else { return nil }
         createAccountVC.gettingStartedData = gettingStartedData

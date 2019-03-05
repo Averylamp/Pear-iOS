@@ -17,7 +17,7 @@ class GetStartedStartFriendProfileViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var inputTextFieldTitle: UILabel!
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
 
@@ -29,22 +29,22 @@ class GetStartedStartFriendProfileViewController: UIViewController {
     class func instantiate() -> GetStartedStartFriendProfileViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedStartFriendProfileViewController.self), bundle: nil)
         guard let startFriendProfileVC = storyboard.instantiateInitialViewController() as? GetStartedStartFriendProfileViewController else { return nil }
-        startFriendProfileVC.gettingStartedData = GettingStartedData()
+        startFriendProfileVC.gettingStartedData = GettingStartedUserProfileData()
         return startFriendProfileVC
     }
 
     @discardableResult
-    func saveEndorsementFirstName() -> String? {
-        if let endorsementFirstName = inputTextField.text {
-            self.gettingStartedData.profileData.endorsedFirstName = endorsementFirstName
-            return endorsementFirstName
+    func saveProfileFirstName() -> String? {
+        if let profileFirstName = inputTextField.text {
+            self.gettingStartedData.profileFirstName = profileFirstName
+            return profileFirstName
         }
         return nil
     }
 
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        if let endorseeFirstName = saveEndorsementFirstName() {
+        if let endorseeFirstName = saveProfileFirstName() {
             if endorseeFirstName.count < 1 {
                 self.alert(title: "Name Missing", message: "Please enter your name")
                 return

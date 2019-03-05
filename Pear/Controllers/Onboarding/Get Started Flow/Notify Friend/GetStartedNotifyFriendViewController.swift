@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 
 class GetStartedNotifyFriendViewController: UIViewController {
 
-    var gettingStartedData: GettingStartedData!
+    var gettingStartedData: GettingStartedUserProfileData!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -26,7 +26,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedData) -> GetStartedNotifyFriendViewController? {
+    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedNotifyFriendViewController? {
         let storyboard = UIStoryboard(name: String(describing: GetStartedNotifyFriendViewController.self), bundle: nil)
         guard let notifyFriendVC = storyboard.instantiateInitialViewController() as? GetStartedNotifyFriendViewController else { return nil }
         notifyFriendVC.gettingStartedData = gettingStartedData
@@ -50,7 +50,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
             activityIndicator.startAnimating()
 
             self.delay(delay: 2.0) {
-                guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.profileData.firstName) else {
+                guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.profileFirstName) else {
                     print("Failed to create Allow Notifications VC")
                     return
                 }
@@ -85,9 +85,9 @@ extension GetStartedNotifyFriendViewController {
         self.inputTextField.stylizeInputTextField()
         self.inputTextFieldTitle.stylizeTextFieldTitle()
 
-        if let friendFirstName = self.gettingStartedData.profileData.endorsedFirstName {
-            self.nextButton.setTitle("Send to \(friendFirstName)", for: .normal)
-            self.subtitleLabel.text = "We'll send \(friendFirstName) a link to the profile so they can approve it."
+        if let profileFirstName = self.gettingStartedData.profileFirstName {
+            self.nextButton.setTitle("Send to \(profileFirstName)", for: .normal)
+            self.subtitleLabel.text = "We'll send \(profileFirstName) a link to the profile so they can approve it."
         }
     }
 
@@ -164,8 +164,8 @@ extension GetStartedNotifyFriendViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             let keyboardBottomPadding: CGFloat = 20
 
-            if let friendFirstName = self.gettingStartedData.profileData.endorsedFirstName {
-                self.subtitleLabel.text = "We'll send \(friendFirstName) a link to the profile so they can approve it."
+            if let profileFirstName = self.gettingStartedData.profileFirstName {
+                self.subtitleLabel.text = "We'll send \(profileFirstName) a link to the profile so they can approve it."
             } else {
                 self.subtitleLabel.text = "We'll send them a link to the profile so they can approve it."
             }
