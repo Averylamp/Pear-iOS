@@ -12,7 +12,8 @@ class GetStartedWaitlistViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-
+    @IBOutlet weak var createProfileButton: UIButton!
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -22,6 +23,13 @@ class GetStartedWaitlistViewController: UIViewController {
         return waitlistVC
     }
 
+    @IBAction func createFriendsProfileClicked(_ sender: Any) {
+        guard let startFriendProfileVC = GetStartedStartFriendProfileViewController.instantiate() else{
+            print("Failed to create Start Friend Profile VC")
+            return
+        }
+        self.navigationController?.setViewControllers([startFriendProfileVC], animated: true)
+    }
 }
 
 // MARK: - Life Cycle
@@ -36,6 +44,7 @@ extension GetStartedWaitlistViewController {
     func stylize() {
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
+        self.createProfileButton.stylizeDark()
     }
 
 }

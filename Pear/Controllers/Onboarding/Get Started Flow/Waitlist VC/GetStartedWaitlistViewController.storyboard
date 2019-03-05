@@ -44,24 +44,39 @@
                                     <constraint firstAttribute="height" constant="240" id="iyb-xW-YNb"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgB-4l-n13">
+                                <rect key="frame" x="20" y="587" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aTb-M4-x3d"/>
+                                </constraints>
+                                <state key="normal" title="Create a friend's profile"/>
+                                <connections>
+                                    <action selector="createFriendsProfileClicked:" destination="dAK-8m-ObK" eventType="touchUpInside" id="haw-Gc-RZf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Y2i-XW-RhW" firstAttribute="trailing" secondItem="wel-wP-f4l" secondAttribute="trailing" constant="40" id="4fG-HR-xWi"/>
                             <constraint firstItem="hFE-7i-5Sy" firstAttribute="centerY" secondItem="Y2i-XW-RhW" secondAttribute="centerY" constant="-20" id="B56-Fg-pTV"/>
+                            <constraint firstItem="WgB-4l-n13" firstAttribute="leading" secondItem="Y2i-XW-RhW" secondAttribute="leading" constant="20" id="JzY-AV-yUZ"/>
                             <constraint firstItem="RsK-Dh-W6k" firstAttribute="leading" secondItem="Y2i-XW-RhW" secondAttribute="leading" constant="20" id="UQV-lv-sH7"/>
                             <constraint firstItem="wel-wP-f4l" firstAttribute="centerX" secondItem="hFE-7i-5Sy" secondAttribute="centerX" id="Uxr-zb-kml"/>
                             <constraint firstItem="Y2i-XW-RhW" firstAttribute="trailing" secondItem="RsK-Dh-W6k" secondAttribute="trailing" constant="20" id="X4N-X6-aYC"/>
                             <constraint firstItem="hFE-7i-5Sy" firstAttribute="top" secondItem="wel-wP-f4l" secondAttribute="bottom" constant="8" id="YLy-Sn-AkL"/>
                             <constraint firstItem="hFE-7i-5Sy" firstAttribute="centerX" secondItem="Y2i-XW-RhW" secondAttribute="centerX" id="aoN-4w-LJg"/>
                             <constraint firstItem="hFE-7i-5Sy" firstAttribute="leading" secondItem="vkz-ch-O5w" secondAttribute="leading" constant="30" id="d6b-Yn-ZX1"/>
+                            <constraint firstItem="Y2i-XW-RhW" firstAttribute="trailing" secondItem="WgB-4l-n13" secondAttribute="trailing" constant="20" id="lqt-6A-HEB"/>
                             <constraint firstItem="wel-wP-f4l" firstAttribute="leading" secondItem="Y2i-XW-RhW" secondAttribute="leading" constant="40" id="p43-Wk-t4Q"/>
                             <constraint firstItem="RsK-Dh-W6k" firstAttribute="top" secondItem="hFE-7i-5Sy" secondAttribute="bottom" constant="8" id="rZL-xH-VGL"/>
                             <constraint firstAttribute="trailing" secondItem="hFE-7i-5Sy" secondAttribute="trailing" constant="30" id="y28-md-vuL"/>
+                            <constraint firstItem="Y2i-XW-RhW" firstAttribute="bottom" secondItem="WgB-4l-n13" secondAttribute="bottom" constant="30" id="yIj-oP-j7S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y2i-XW-RhW"/>
                     </view>
                     <connections>
+                        <outlet property="createProfileButton" destination="WgB-4l-n13" id="ITX-Ne-9Zl"/>
                         <outlet property="subtitleLabel" destination="RsK-Dh-W6k" id="7kN-Vc-1QV"/>
                         <outlet property="titleLabel" destination="hFE-7i-5Sy" id="knB-gV-Wty"/>
                     </connections>

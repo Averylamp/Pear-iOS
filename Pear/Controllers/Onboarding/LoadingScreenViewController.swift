@@ -48,6 +48,7 @@ extension LoadingScreenViewController {
                             switch result {
                             case .success(let pearUser):
                                 print("Got Existing Pear User \(pearUser)")
+                                DataStore.shared.currentPearUser = pearUser
                                 self.continueToMainScreen()
                             case .failure(let error):
                                 print("Error getting Pear User: \(error)")
