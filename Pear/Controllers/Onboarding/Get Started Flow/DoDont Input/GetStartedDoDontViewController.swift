@@ -231,9 +231,9 @@ toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0)
 
             expandingTextViewVC.animationDuration = 0.1
 
-            expandingTextViewVC.textView.font = UIFont.systemFont(ofSize: 18)
+            expandingTextViewVC.textView.font = UIFont(name: StylingConfig.displayFontRegular, size: 18)
             expandingTextViewVC.textView.isScrollEnabled = false
-            expandingTextViewVC.textView.textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 8)
+            expandingTextViewVC.textView.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 8)
             expandingTextViewVC.textView.tintColor = UIColor.darkGray
 
             expandingTextViewVC.viewHeightConstraint = expandingTextViewHeightConstraint
@@ -255,7 +255,7 @@ toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0)
                 ])
 
             expandingTextViewVC.setPlaceholderText(text: self.sampleStarters[(self.doTextViewControllers.count + self.dontTextViewControllers.count) % self.sampleStarters.count])
-            expandingTextViewVC.permanentTextLabel.font = UIFont.systemFont(ofSize: 18)
+            expandingTextViewVC.permanentTextLabel.font = UIFont(name: StylingConfig.displayFontMedium, size: 18)
             if type == .doType {
                 expandingTextViewVC.permanentTextLabel.text = "Do"
             } else if type == .dontType {
