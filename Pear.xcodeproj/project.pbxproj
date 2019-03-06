@@ -92,6 +92,7 @@
 		BB75BFE3221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */; };
 		BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F88222DB19300E31C7F /* PearUserConstants.swift */; };
 		BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F89222DB19300E31C7F /* PearUser.swift */; };
+		BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */; };
 		BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
@@ -1116,6 +1117,7 @@
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
 				BB6C064D2227F762007A5C96 /* GetStartedAllowLocationViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
+				BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
 				BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */,
 				BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */,
