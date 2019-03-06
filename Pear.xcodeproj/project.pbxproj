@@ -250,6 +250,7 @@
 		BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryProfileSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		BB796F88222DB19300E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
 		BB796F89222DB19300E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
+		BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitVibeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
@@ -844,8 +845,9 @@
 				BBB70ADD22233A76006B75A0 /* Nunito-Regular.ttf */,
 				BBB70ADE22233A76006B75A0 /* Nunito-SemiBold.ttf */,
 				BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */,
-				BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */,
 				BBB70AD92223390A006B75A0 /* SF-Pro-Display-Regular.otf */,
+				BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */,
+				BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */,
 				BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */,
 			);
 			path = Fonts;

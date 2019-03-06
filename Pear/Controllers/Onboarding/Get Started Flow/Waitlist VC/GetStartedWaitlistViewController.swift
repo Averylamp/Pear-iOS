@@ -24,6 +24,7 @@ class GetStartedWaitlistViewController: UIViewController {
     }
 
     @IBAction func createFriendsProfileClicked(_ sender: Any) {
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         guard let startFriendProfileVC = GetStartedStartFriendProfileViewController.instantiate() else {
             print("Failed to create Start Friend Profile VC")
             return

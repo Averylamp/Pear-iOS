@@ -26,7 +26,8 @@ class GetStartedVibeViewController: UIViewController {
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
     let pageNumber: CGFloat = 4.0
     
-    let betweenVibeSpacing: CGFloat = 8
+    let betweenVibeSpacing: CGFloat = 12
+    var selectedItems: [IndexPath] = []
     
     /// Factory method for creating this view controller.
     ///
@@ -138,6 +139,36 @@ extension GetStartedVibeViewController {
 
 // MARK: - Collection View Delegate/Data Source
 extension GetStartedVibeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if self.selectedItems.contains(indexPath), let index = self.selectedItems.firstIndex(of: indexPath) {
+            HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+            self.selectedItems.remove(at: index)
+            self.collectionView.reloadItems(at: [indexPath])
+        } else {
+            if self.selectedItems.count < 3 {
+                HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+                self.selectedItems.append(indexPath)
+                self.collectionView.reloadItems(at: [indexPath])
+            } else {
+                HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+            }
+        }
+        
+        switch self.selectedItems.count {
+        case 0:
+            self.subtitleLabel.text = "Select up to three"
+        case 1:
+            self.subtitleLabel.text = "Select up to two more"
+        case 2:
+            self.subtitleLabel.text = "Select up to one more"
+        case 3:
+            self.subtitleLabel.text = "Awesome! Continue?"
+        default:
+            break
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.fruitVibes.count
     }
@@ -145,16 +176,9 @@ extension GetStartedVibeViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let fruitVibeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FruitVibeCollectionViewCell", for: indexPath) as? FruitVibeCollectionViewCell {
             let fruit = self.fruitVibes[indexPath.item]
-            fruitVibeCell.layer.borderColor = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1.00).cgColor
-            fruitVibeCell.layer.borderWidth = 2
-            fruitVibeCell.layer.cornerRadius = 12
-            fruitVibeCell.imageView.image = fruit.image
-            fruitVibeCell.imageView.contentMode = .scaleAspectFit
-            fruitVibeCell.vibeLabel.text = fruit.text
-            fruitVibeCell.vibeLabel.textColor = fruit.textColor
-            fruitVibeCell.vibeLabel.font = UIFont(name: StylingConfig.displayFontMedium, size: 17)
-            fruitVibeCell.vibeLabel.adjustsFontSizeToFitWidth = true
-            fruitVibeCell.vibeLabel.textAlignment = .center
+            fruitVibeCell.tag = indexPath.item
+            fruitVibeCell.setSelected(selected: self.selectedItems.contains(indexPath))
+            fruitVibeCell.setFruitVibe(fruit: fruit)
             return fruitVibeCell
         } else {
             return UICollectionViewCell()
@@ -163,7 +187,7 @@ extension GetStartedVibeViewController: UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let vibeWidth: CGFloat = (collectionView.frame.size.width  - betweenVibeSpacing) / 2.0
-        return CGSize(width: vibeWidth, height: 80)
+        return CGSize(width: vibeWidth, height: 110)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

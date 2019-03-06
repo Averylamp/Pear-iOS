@@ -22,29 +22,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9dL-C1-zVy">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <rect key="frame" x="8" y="0.0" width="367" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-je-UgX">
+                                <rect key="frame" x="8" y="30" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NF4-pY-HT1" firstAttribute="top" secondItem="9dL-C1-zVy" secondAttribute="bottom" id="69Z-ht-cvr"/>
                             <constraint firstItem="9dL-C1-zVy" firstAttribute="top" secondItem="b1N-rm-ucb" secondAttribute="bottom" id="CKM-3e-4SO"/>
+                            <constraint firstItem="VQ8-je-UgX" firstAttribute="leading" secondItem="yvE-fE-JsW" secondAttribute="leading" constant="8" id="KHe-ML-2CH"/>
                             <constraint firstAttribute="trailing" secondItem="9dL-C1-zVy" secondAttribute="trailing" id="Kpr-8D-5G0"/>
-                            <constraint firstItem="9dL-C1-zVy" firstAttribute="leading" secondItem="yvE-fE-JsW" secondAttribute="leading" id="NKv-P7-cZu"/>
+                            <constraint firstItem="9dL-C1-zVy" firstAttribute="leading" secondItem="VQ8-je-UgX" secondAttribute="trailing" id="LeO-Pc-Esu"/>
+                            <constraint firstItem="VQ8-je-UgX" firstAttribute="centerY" secondItem="yvE-fE-JsW" secondAttribute="centerY" id="k11-x4-mA9"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="60"/>
                     <connections>
+                        <outlet property="permanentTextLabel" destination="VQ8-je-UgX" id="Zr7-dx-gXG"/>
                         <outlet property="textView" destination="9dL-C1-zVy" id="Bdh-8g-vFy"/>
                         <outlet property="textViewRightConstraint" destination="Kpr-8D-5G0" id="Lgp-Sj-1FN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUz-dD-HTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="-340"/>
+            <point key="canvasLocation" x="216.80000000000001" y="-340.02998500749629"/>
         </scene>
     </scenes>
 </document>
