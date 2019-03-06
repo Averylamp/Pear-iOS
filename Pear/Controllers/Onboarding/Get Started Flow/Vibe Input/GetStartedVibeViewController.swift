@@ -26,6 +26,8 @@ class GetStartedVibeViewController: UIViewController {
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
     let pageNumber: CGFloat = 4.0
     
+    let betweenVibeSpacing: CGFloat = 8
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -58,7 +60,7 @@ extension GetStartedVibeViewController {
         super.viewDidLoad()
         self.setupCollectionView()
         self.stylize()
-        }
+    }
     
     func stylize() {
         self.titleLabel.stylizeTitleLabel()
@@ -79,6 +81,9 @@ extension GetStartedVibeViewController {
     }
     
     func setupCollectionView() {
+        self.fruitVibes = self.allFruitVibes()
+        self.collectionView.showsHorizontalScrollIndicator = false
+        self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     }
@@ -90,29 +95,41 @@ extension GetStartedVibeViewController {
     
     func allFruitVibes() -> [FruitVibe] {
         var fruitVibes: [FruitVibe] = []
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-apple")!, text: "Forbidden Fruit",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-apple")!,
+                                    text: "Forbidden Fruit",
                                     textColor: UIColor(red: 0.00, green: 0.62, blue: 0.59, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-coconut")!, text: "Coco-nuts",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-coconut")!,
+                                    text: "Coco-nuts",
                                     textColor: UIColor(red: 0.51, green: 0.33, blue: 0.35, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-avocado")!, text: "Extra Like Guac",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-avocado")!,
+                                    text: "Extra Like Guac",
                                     textColor: UIColor(red: 0.00, green: 0.62, blue: 0.59, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-bananas")!, text: "BANANAS!",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-bananas")!,
+                                    text: "BANANAS!",
                                     textColor: UIColor(red: 0.88, green: 0.72, blue: 0.04, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-cherry")!, text: "Cherry Bomb",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-cherry")!,
+                                    text: "Cherry Bomb",
                                     textColor: UIColor(red: 0.67, green: 0.24, blue: 0.33, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-grapes")!, text: "Grapeful",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-grapes")!,
+                                    text: "Grapeful",
                                     textColor: UIColor(red: 0.35, green: 0.29, blue: 0.50, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-kiwi")!, text: "Klutzy Kiwi",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-kiwi")!,
+                                    text: "Klutzy Kiwi",
                                     textColor: UIColor(red: 0.64, green: 0.42, blue: 0.42, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-lemon")!, text: "Zesty",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-lemon")!,
+                                    text: "Zesty",
                                     textColor: UIColor(red: 0.76, green: 0.66, blue: 0.09, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-pepper")!, text: "Spicy",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-pepper")!,
+                                    text: "Spicy",
                                     textColor: UIColor(red: 0.79, green: 0.31, blue: 0.40, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-raddish")!, text: "Baddest Radish",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-raddish")!,
+                                    text: "Baddest Radish",
                                     textColor: UIColor(red: 0.79, green: 0.31, blue: 0.40, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-strawberry")!, text: "Fruity Cutie",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-strawberry")!,
+                                    text: "Fruity Cutie",
                                     textColor: UIColor(red: 0.85, green: 0.34, blue: 0.42, alpha: 1.00)))
-        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-watermelon")!, text: "Just Add Water",
+        fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-watermelon")!,
+                                    text: "Just Add Water",
                                     textColor: UIColor(red: 0.85, green: 0.34, blue: 0.42, alpha: 1.00)))
         
         return fruitVibes
@@ -120,7 +137,7 @@ extension GetStartedVibeViewController {
 }
 
 // MARK: - Collection View Delegate/Data Source
-extension GetStartedVibeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension GetStartedVibeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.fruitVibes.count
     }
@@ -128,6 +145,9 @@ extension GetStartedVibeViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let fruitVibeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FruitVibeCollectionViewCell", for: indexPath) as? FruitVibeCollectionViewCell {
             let fruit = self.fruitVibes[indexPath.item]
+            fruitVibeCell.layer.borderColor = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1.00).cgColor
+            fruitVibeCell.layer.borderWidth = 2
+            fruitVibeCell.layer.cornerRadius = 12
             fruitVibeCell.imageView.image = fruit.image
             fruitVibeCell.imageView.contentMode = .scaleAspectFit
             fruitVibeCell.vibeLabel.text = fruit.text
@@ -141,4 +161,17 @@ extension GetStartedVibeViewController: UICollectionViewDataSource, UICollection
         }
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let vibeWidth: CGFloat = (collectionView.frame.size.width  - betweenVibeSpacing) / 2.0
+        return CGSize(width: vibeWidth, height: 80)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return betweenVibeSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return betweenVibeSpacing
+    }
+    
 }
