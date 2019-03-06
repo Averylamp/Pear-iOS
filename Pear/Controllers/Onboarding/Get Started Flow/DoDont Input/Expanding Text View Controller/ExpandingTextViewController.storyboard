@@ -21,14 +21,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9dL-C1-zVy">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="asdf" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9dL-C1-zVy">
                                 <rect key="frame" x="8" y="0.0" width="367" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-je-UgX">
-                                <rect key="frame" x="8" y="30" width="0.0" height="0.0"/>
+                                <rect key="frame" x="8" y="6" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                             <constraint firstItem="VQ8-je-UgX" firstAttribute="leading" secondItem="yvE-fE-JsW" secondAttribute="leading" constant="8" id="KHe-ML-2CH"/>
                             <constraint firstAttribute="trailing" secondItem="9dL-C1-zVy" secondAttribute="trailing" id="Kpr-8D-5G0"/>
                             <constraint firstItem="9dL-C1-zVy" firstAttribute="leading" secondItem="VQ8-je-UgX" secondAttribute="trailing" id="LeO-Pc-Esu"/>
-                            <constraint firstItem="VQ8-je-UgX" firstAttribute="centerY" secondItem="yvE-fE-JsW" secondAttribute="centerY" id="k11-x4-mA9"/>
+                            <constraint firstItem="VQ8-je-UgX" firstAttribute="top" secondItem="9dL-C1-zVy" secondAttribute="top" constant="6" id="RrS-uW-Jsg"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="60"/>
