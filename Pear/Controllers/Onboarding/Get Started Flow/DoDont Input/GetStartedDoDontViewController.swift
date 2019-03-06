@@ -210,12 +210,10 @@ extension GetStartedDoDontViewController {
             self.addChild(expandingTextViewVC)
             if type == .doType {
                 expandingTextViewVC.tag = doTextViewControllers.count
-                expandingTextViewVC.permanentTextLabel.text = "Do"
                 self.stackView.insertArrangedSubview(expandingTextViewVC.view, at: 2 + self.doTextViewControllers.count)
                 doTextViewControllers.append(expandingTextViewVC)
             } else {
                 expandingTextViewVC.tag = dontTextViewControllers.count
-                expandingTextViewVC.permanentTextLabel.text = "Don't"
                 dontTextViewControllers.append(expandingTextViewVC)
                 self.stackView.addArrangedSubview(expandingTextViewVC.view)
             }
@@ -257,6 +255,12 @@ toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0)
                 ])
 
             expandingTextViewVC.setPlaceholderText(text: self.sampleStarters[(self.doTextViewControllers.count + self.dontTextViewControllers.count) % self.sampleStarters.count])
+            expandingTextViewVC.permanentTextLabel.font = UIFont.systemFont(ofSize: 18)
+            if type == .doType {
+                expandingTextViewVC.permanentTextLabel.text = "Do"
+            } else if type == .dontType {
+                expandingTextViewVC.permanentTextLabel.text = "Don't"
+            }
         } else {
             print("Failed to create ExpandingTextVC")
         }
