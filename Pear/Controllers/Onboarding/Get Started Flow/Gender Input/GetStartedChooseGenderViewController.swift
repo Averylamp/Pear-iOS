@@ -11,7 +11,8 @@ import UIKit
 class GetStartedChooseGenderViewController: UIViewController {
 
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-
+    let pageNumber: CGFloat = 1.0
+    
     var gettingStartedData: GettingStartedUserProfileData!
 
     @IBOutlet weak var maleButton: UIButton!
@@ -98,14 +99,14 @@ extension GetStartedChooseGenderViewController {
             }
         }
 
-        self.progressWidthConstraint.constant = 0.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         self.view.layoutIfNeeded()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
-        self.progressWidthConstraint.constant = 1.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)

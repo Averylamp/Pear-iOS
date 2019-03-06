@@ -16,7 +16,7 @@ class GetStartedInterestsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-
+    let pageNumber: CGFloat  = 3.0
     var gettingStartedData: GettingStartedUserProfileData!
 
     let interestStrings: [String] = [
@@ -104,19 +104,19 @@ extension GetStartedInterestsViewController {
         self.subtitleLabel.stylizeSubtitleLabel()
         self.nextButton.stylizeDark()
 
-        self.progressWidthConstraint.constant = 2.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = (pageNumber - 1) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         self.view.layoutIfNeeded()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
-        self.progressWidthConstraint.constant = 3.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-
+    
     func setupInterestButtons() {
         self.view.layoutIfNeeded()
         let numRows = Int(ceil(Double(interestStrings.count) / 3.0))
