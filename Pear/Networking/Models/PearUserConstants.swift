@@ -3,7 +3,7 @@
 //  SubtleAsianMatches
 //
 //  Created by Avery on 1/6/19.
-//  Copyright © 2019 sam. All rights reserved.
+//  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
 import Foundation

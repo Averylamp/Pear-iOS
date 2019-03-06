@@ -3,7 +3,7 @@
 //  Pear
 //
 //  Created by Avery Lamp on 3/1/19.
-//  Copyright © 2019 sam. All rights reserved.
+//  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
 import Foundation
