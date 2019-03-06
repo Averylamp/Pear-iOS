@@ -176,9 +176,9 @@
                     <connections>
                         <outlet property="collectionView" destination="vLy-kh-8Qs" id="oci-4n-IYy"/>
                         <outlet property="nextButton" destination="iwd-5V-s1Q" id="ykW-26-Lqe"/>
-                        <outlet property="progressWidthConstraint" destination="PPH-1m-oN4" id="5dD-le-ahf"/>
-                        <outlet property="subtitleLabel" destination="zbj-GR-6k1" id="w44-cP-jY3"/>
-                        <outlet property="titleLabel" destination="48L-7q-XRn" id="eAa-Pc-GbA"/>
+                        <outlet property="progressWidthConstraint" destination="PPH-1m-oN4" id="oz8-25-xPR"/>
+                        <outlet property="subtitleLabel" destination="zbj-GR-6k1" id="sc1-Sq-b1I"/>
+                        <outlet property="titleLabel" destination="48L-7q-XRn" id="MIR-1g-OTc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9a-Yt-J17" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -18,6 +18,7 @@ class GetStartedDoDontViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
+    let pageNumber: CGFloat = 6.0
 
     let doDontTitleHeight: CGFloat = 34
     let keyboardBottomPadding: CGFloat = 10
@@ -113,14 +114,14 @@ extension GetStartedDoDontViewController {
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabelSmall()
 
-        self.progressWidthConstraint.constant = 4.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = (pageNumber - 1) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         self.view.layoutIfNeeded()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
-        self.progressWidthConstraint.constant = 5.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)

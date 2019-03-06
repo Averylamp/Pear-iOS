@@ -23,6 +23,7 @@ class GetStartedShortBioViewController: UIViewController {
 
     let keyboardBottomPadding: CGFloat = 10
     let maxTextLength: Int = 600
+    let pageNumber: CGFloat = 5.0
 
     /// Factory method for creating this view controller.
     ///
@@ -116,14 +117,14 @@ extension GetStartedShortBioViewController {
         self.inputTextView.font = UIFont(name: StylingConfig.displayFontRegular, size: 17)
         self.inputTextView.textColor = StylingConfig.textFontColor
 
-        self.progressWidthConstraint.constant = 3.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = (pageNumber - 1) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         self.view.layoutIfNeeded()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
-        self.progressWidthConstraint.constant = 4.0 / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)

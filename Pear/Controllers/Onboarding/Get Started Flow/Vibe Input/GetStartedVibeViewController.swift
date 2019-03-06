@@ -21,6 +21,11 @@ class GetStartedVibeViewController: UIViewController {
     var gettingStartedProfileData: GettingStartedUserProfileData!
     var fruitVibes: [FruitVibe] = []
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
+    let pageNumber: CGFloat = 4.0
+    
     /// Factory method for creating this view controller.
     ///
     /// - Returns: Returns an instance of this view controller.
@@ -53,10 +58,24 @@ extension GetStartedVibeViewController {
         super.viewDidLoad()
         self.setupCollectionView()
         self.stylize()
-    }
+        }
     
     func stylize() {
+        self.titleLabel.stylizeTitleLabel()
+        self.subtitleLabel.stylizeSubtitleLabel()
         self.nextButton.stylizeDark()
+        self.progressWidthConstraint.constant = (pageNumber - 1) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        self.view.layoutIfNeeded()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.view.layoutIfNeeded()
+        self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+        UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
     }
     
     func setupCollectionView() {
