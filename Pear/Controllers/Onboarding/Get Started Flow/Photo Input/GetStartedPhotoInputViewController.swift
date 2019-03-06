@@ -20,7 +20,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     let pageNumber: CGFloat = 7.0
     
     let betweenImageSpacing: CGFloat = 6
-    var images: [GettingStartedUIImage] = []
+    var images: [GettingStartedUIImageContainer] = []
     let imagePickerController = UIImagePickerController()
     var longPressGestureRecognizer: UILongPressGestureRecognizer!
     var justMovedIndexPath: IndexPath?
@@ -225,7 +225,7 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageU
                 return UICollectionViewCell()
             }
             print("Reloading cell: \(indexPath.item)")
-            cell.imageView.image = self.images[indexPath.item]
+            cell.imageView.image = self.images[indexPath.item].image
             cell.imageView.contentMode = .scaleAspectFill
             cell.imageView.layer.cornerRadius = 3
             cell.imageView.clipsToBounds = true
@@ -279,12 +279,12 @@ extension GetStartedPhotoInputViewController: UIImagePickerControllerDelegate, U
             let gettingStartedImage = pickedImage.gettingStartedImage()
             self.images.append(gettingStartedImage)
             self.collectionView.reloadData()
-            ImageUploadAPI.shared.uploadNewImage(with: gettingStartedImage) { result in
+            ImageUploadAPI.shared.uploadNewImage(with: gettingStartedImage.image) { result in
                 print("Image upload returned")
                 switch result {
                 case .success( let imageAllSizesRepresentation):
                     print("Finished properly")
-                    print(imageAllSizesRepresentation)
+                    gettingStartedImage.imageSizesRepresentation = imageAllSizesRepresentation
                 case .failure(let error):
                     print("Failed image api request")
                     print(error)

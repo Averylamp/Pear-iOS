@@ -74,7 +74,7 @@ extension GetStartedAllowLocationViewController {
     }
 
     func stylize() {
-        self.enableLocationButton.stylizeAllowFeature()
+        self.enableLocationButton.stylizeDark()
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()
     }

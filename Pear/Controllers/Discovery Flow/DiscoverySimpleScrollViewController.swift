@@ -70,7 +70,7 @@ extension DiscoverySimpleScrollViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoveryProfileSummaryTVC", for: indexPath) as? DiscoveryProfileSummaryTableViewCell
             else { return UITableViewCell() }
         let profileData = self.profiles[indexPath.row]
-        cell.profileImageView.image = profileData.images.first
+//        cell.profileImageView.image = profileData.images.first
         cell.profileNameLabel.text = profileData.firstName
         if let endorseeFirstName = profileData.endorsedFirstName {
             var endorsedName = endorseeFirstName

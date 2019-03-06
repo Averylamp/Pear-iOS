@@ -61,6 +61,10 @@ class GetStartedVibeViewController: UIViewController {
         self.navigationController?.pushViewController(shortBioVC, animated: true)
     }
     
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.saveVibes()
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - Life Cycle
@@ -70,6 +74,7 @@ extension GetStartedVibeViewController {
         super.viewDidLoad()
         self.setupCollectionView()
         self.stylize()
+        self.restoreState()
     }
     
     func stylize() {
@@ -78,6 +83,24 @@ extension GetStartedVibeViewController {
         self.nextButton.stylizeDark()
         self.progressWidthConstraint.constant = (pageNumber - 1) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
         self.view.layoutIfNeeded()
+    }
+    
+    func restoreState() {
+        var needsReload: Bool = false
+        for vibe in self.gettingStartedProfileData.profileVibes {
+            if let firstIndex = self.fruitVibes.firstIndex(where: { (fruitVibe) -> Bool in
+                return fruitVibe.text.lowercased() == vibe
+            }) {
+                needsReload = true
+                let selectedIndex = IndexPath(item: firstIndex, section: 0)
+                self.selectedItems.append(selectedIndex)
+            }
+            
+        }
+        if needsReload {
+            self.collectionView.reloadData()
+            self.updateSubtitleLabel()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -163,7 +186,10 @@ extension GetStartedVibeViewController: UICollectionViewDataSource, UICollection
                 HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
             }
         }
-        
+        self.updateSubtitleLabel()
+    }
+    
+    func updateSubtitleLabel() {
         switch self.selectedItems.count {
         case 0:
             self.subtitleLabel.text = "Select up to three"
