@@ -37,6 +37,7 @@ class ExpandingTextViewController: UIViewController {
     var primaryAccessoryButton: UIButton?
     var primaryAccessoryButtonRightConstraint: NSLayoutConstraint?
     var secondaryAccessoryButton: UIButton?
+    @IBOutlet weak var permanentTextLabel: UILabel!
     
     /// Factory method for creating this view controller.
     ///

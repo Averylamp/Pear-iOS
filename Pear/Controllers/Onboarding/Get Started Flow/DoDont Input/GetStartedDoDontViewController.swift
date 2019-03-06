@@ -210,10 +210,12 @@ extension GetStartedDoDontViewController {
             self.addChild(expandingTextViewVC)
             if type == .doType {
                 expandingTextViewVC.tag = doTextViewControllers.count
+                expandingTextViewVC.permanentTextLabel.text = "Do"
                 self.stackView.insertArrangedSubview(expandingTextViewVC.view, at: 2 + self.doTextViewControllers.count)
                 doTextViewControllers.append(expandingTextViewVC)
             } else {
                 expandingTextViewVC.tag = dontTextViewControllers.count
+                expandingTextViewVC.permanentTextLabel.text = "Don't"
                 dontTextViewControllers.append(expandingTextViewVC)
                 self.stackView.addArrangedSubview(expandingTextViewVC.view)
             }
@@ -233,7 +235,7 @@ toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0)
 
             expandingTextViewVC.textView.font = UIFont.systemFont(ofSize: 18)
             expandingTextViewVC.textView.isScrollEnabled = false
-            expandingTextViewVC.textView.textContainerInset = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 8)
+            expandingTextViewVC.textView.textContainerInset = UIEdgeInsets(top: 8, left: 4, bottom: 8, right: 8)
             expandingTextViewVC.textView.tintColor = UIColor.darkGray
 
             expandingTextViewVC.viewHeightConstraint = expandingTextViewHeightConstraint

@@ -18,6 +18,7 @@ class StylingConfig {
     static let displayFontRegular: String = "SFProDisplay-Regular"
     static let displayFontLight: String = "SFProDisplay-Light"
     static let displayFontMedium: String = "SFProDisplay-Medium"
+    static let displayFontBold: String = "SFProDisplay-Bold"
     
     static let textFontRegular: String = "Nunito-Regular"
     static let textFontBlack: String = "Nunito-Black"
