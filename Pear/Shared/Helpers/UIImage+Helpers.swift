@@ -17,12 +17,16 @@ extension UIImage {
         return image
     }
     
-    func gettingStartedImage() -> GettingStartedUIImage {
-        return GettingStartedUIImage(data: self.pngData()!)!
+    func gettingStartedImage() -> GettingStartedUIImageContainer {
+        return GettingStartedUIImageContainer(image: self)
     }
 }
 
-class GettingStartedUIImage: UIImage {
+class GettingStartedUIImageContainer {
     var imageSizesRepresentation: ImageAllSizesRepresentation?
+    var image: UIImage
     
+    init(image: UIImage) {
+        self.image = image
+    }
 }

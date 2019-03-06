@@ -42,21 +42,21 @@ extension SummaryProfileViewController {
     }
 
     func addProfileImageVC() {
-        guard let profileImageVC = ProfileImageViewController.instantiate(images: [self.profileData.images.first!]) else {
-            print("Failed to create profile Image VC")
-            return
-        }
-        self.addChild(profileImageVC)
-        self.stackView.addArrangedSubview(profileImageVC.view)
-        profileImageVC.didMove(toParent: self)
-        profileImageVC.view.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addConstraints([
-            NSLayoutConstraint(item: profileImageVC.view, attribute: .width, relatedBy: .equal,
-                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: profileImageVC.view, attribute: .height, relatedBy: .equal,
-                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0)])
-
-        self.view.layoutIfNeeded()
+//        guard let profileImageVC = ProfileImageViewController.instantiate(images: [self.profileData.images.first!]) else {
+//            print("Failed to create profile Image VC")
+//            return
+//        }
+//        self.addChild(profileImageVC)
+//        self.stackView.addArrangedSubview(profileImageVC.view)
+//        profileImageVC.didMove(toParent: self)
+//        profileImageVC.view.translatesAutoresizingMaskIntoConstraints = false
+//        self.view.addConstraints([
+//            NSLayoutConstraint(item: profileImageVC.view, attribute: .width, relatedBy: .equal,
+//                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+//            NSLayoutConstraint(item: profileImageVC.view, attribute: .height, relatedBy: .equal,
+//                               toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0)])
+//
+//        self.view.layoutIfNeeded()
     }
 
     func addInformationVC() {

@@ -79,7 +79,7 @@ extension GetStartedAllowNotificationsViewController {
     }
 
     func stylize() {
-        self.enableNotificationsButton.stylizeAllowFeature()
+        self.enableNotificationsButton.stylizeDark()
         self.skipButton.stylizeSubtle()
         self.titleLabel.stylizeTitleLabel()
         self.subtitleLabel.stylizeSubtitleLabel()

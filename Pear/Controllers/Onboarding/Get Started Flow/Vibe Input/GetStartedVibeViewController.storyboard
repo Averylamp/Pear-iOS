@@ -62,7 +62,7 @@
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonClicked:" destination="edP-mN-poh" eventType="touchUpInside" id="LIc-AQ-KeX"/>
+                                            <action selector="backButtonClicked:" destination="edP-mN-poh" eventType="touchUpInside" id="Tzi-g0-7hB"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-vibes" translatesAutoresizingMaskIntoConstraints="NO" id="IlF-Ih-PSe" userLabel="Center Icon">

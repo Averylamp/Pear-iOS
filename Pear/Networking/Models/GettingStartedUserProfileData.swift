@@ -20,7 +20,7 @@ class GettingStartedUserProfileData: CustomStringConvertible {
     var profileBio: String?
     var profileDos: [String] = []
     var profileDonts: [String] = []
-    var profileImages: [GettingStartedUIImage] = []
+    var profileImages: [GettingStartedUIImageContainer] = []
     
     init() {
         
