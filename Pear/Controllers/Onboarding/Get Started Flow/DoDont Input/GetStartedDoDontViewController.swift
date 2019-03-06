@@ -26,13 +26,13 @@ class GetStartedDoDontViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
 
     let sampleStarters: [String] = [
-        "Ask about ...",
-        "Talk about ...",
-        "Say something about ...",
-        "Comment on ...",
-        "Tell them ...",
-        "Pretend to ...",
-        "Give them ..."
+        "ask about ...",
+        "talk about ...",
+        "say something about ...",
+        "comment on ...",
+        "tell them ...",
+        "pretend to ...",
+        "give them ..."
     ]
 
     var doTextViewControllers: [ExpandingTextViewController] = []
@@ -371,6 +371,9 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
             expandingTextViewController.primaryAccessoryButton == nil {
             expandingTextViewController.addAccessoryButton(image: UIImage(named: "onboarding-icon-plus")!, buttonType: .add)
             expandingTextViewController.addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
+            expandingTextViewController.textView.text = expandingTextViewController.textView.text
+                .substring(toIndex: 1).lowercased() + expandingTextViewController.textView.text
+                    .substring(fromIndex: 1)
         }
     }
 
