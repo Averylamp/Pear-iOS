@@ -82,11 +82,11 @@ class GetStartedInterestsViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveInterests()
-        guard let shortBioVC = GetStartedShortBioViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-            print("Failed to create short Bio VC")
+        guard let vibesVC = GetStartedVibeViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+            print("Failed to create vibes VC")
             return
         }
-        self.navigationController?.pushViewController(shortBioVC, animated: true)
+        self.navigationController?.pushViewController(vibesVC, animated: true)
     }
 
 }

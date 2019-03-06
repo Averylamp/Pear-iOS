@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GettingStartedUserProfileData {
+class GettingStartedUserProfileData: CustomStringConvertible {
     
     var profileFirstName: String?
     var profilePhoneNumber: String?
@@ -23,6 +23,23 @@ class GettingStartedUserProfileData {
     var profileImages: [GettingStartedUIImage] = []
     
     init() {
+        
+    }
+    
+    var description: String {
+        return "**** GettingStartedUserProfileData\n" + """
+        profileFirstName: \(String(describing: profileFirstName)),
+        profilePhoneNumber: \(String(describing: profilePhoneNumber)),
+        phoneNumberVerified: \(String(describing: phoneNumberVerified)),
+        profileGender: \(String(describing: profileGender)),
+        profileAge: \(String(describing: profileAge)),
+        profileInterests: \(String(describing: profileInterests)),
+        profileVibes: \(String(describing: profileVibes)),
+        profileBio: \(String(describing: profileBio)),
+        profileDos: \(String(describing: profileDos)),
+        profileDonts: \(String(describing: profileDonts)),
+        profileImages: \(String(describing: profileImages)),
+        """
         
     }
     
