@@ -129,7 +129,7 @@
 		BBB70ACB222334E0006B75A0 /* UserProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACA222334E0006B75A0 /* UserProfileAPI.swift */; };
 		BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACC222334E6006B75A0 /* UserAPI.swift */; };
 		BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */; };
-		BBB70AD122233508006B75A0 /* UserProfileCreateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AD022233508006B75A0 /* UserProfileCreateAPI.swift */; };
+		BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AD022233508006B75A0 /* PearProfileAPI.swift */; };
 		BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */; };
 		BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */; };
 		BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */; };
@@ -288,7 +288,7 @@
 		BBB70ACA222334E0006B75A0 /* UserProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAPI.swift; sourceTree = "<group>"; };
 		BBB70ACC222334E6006B75A0 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserAPI.swift; sourceTree = "<group>"; };
-		BBB70AD022233508006B75A0 /* UserProfileCreateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCreateAPI.swift; sourceTree = "<group>"; };
+		BBB70AD022233508006B75A0 /* PearProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearProfileAPI.swift; sourceTree = "<group>"; };
 		BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
 		BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
@@ -360,7 +360,9 @@
 				04881204A105416849AC5EDB /* Pods */,
 				4D239BA3ACACC4B97DA94F43 /* Frameworks */,
 			);
+			indentWidth = 3;
 			sourceTree = "<group>";
+			tabWidth = 3;
 		};
 		60C131C021D342BC0093ECBA /* Products */ = {
 			isa = PBXGroup;
@@ -830,7 +832,7 @@
 		BBB70AD322233528006B75A0 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				BBB70AD022233508006B75A0 /* UserProfileCreateAPI.swift */,
+				BBB70AD022233508006B75A0 /* PearProfileAPI.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1023,7 +1025,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = sam;
+				ORGANIZATIONNAME = "Setup and Matchmake Inc.";
 				TargetAttributes = {
 					60C131BE21D342BC0093ECBA = {
 						CreatedOnToolsVersion = 10.1;
@@ -1264,7 +1266,7 @@
 				BB18788921E2B1AC00964F26 /* MatchesMainViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BB75BFE12215846300BAB800 /* SummaryProfileViewController.swift in Sources */,
-				BBB70AD122233508006B75A0 /* UserProfileCreateAPI.swift in Sources */,
+				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
 				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
 				BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */,
