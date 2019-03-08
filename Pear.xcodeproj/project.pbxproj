@@ -360,9 +360,9 @@
 				04881204A105416849AC5EDB /* Pods */,
 				4D239BA3ACACC4B97DA94F43 /* Frameworks */,
 			);
-			indentWidth = 3;
+			indentWidth = 2;
 			sourceTree = "<group>";
-			tabWidth = 3;
+			tabWidth = 2;
 		};
 		60C131C021D342BC0093ECBA /* Products */ = {
 			isa = PBXGroup;
