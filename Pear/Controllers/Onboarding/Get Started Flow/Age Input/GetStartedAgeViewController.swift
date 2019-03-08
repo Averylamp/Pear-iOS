@@ -35,7 +35,7 @@ class GetStartedAgeViewController: UIViewController {
     @discardableResult
     func saveAge() -> Int? {
         if let ageText = self.inputTextField.text, let age = Int(ageText) {
-            self.gettingStartedData.profileAge = age
+            self.gettingStartedData.age = age
             return age
         }
         return nil
@@ -71,7 +71,7 @@ class GetStartedAgeViewController: UIViewController {
 extension GetStartedAgeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let profileAge = self.gettingStartedData.profileAge, profileAge >= 18 {
+        if let profileAge = self.gettingStartedData.age, profileAge >= 18 {
             self.inputTextField.text = "\(profileAge)"
         }
 

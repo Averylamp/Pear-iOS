@@ -36,7 +36,7 @@ class GetStartedShortBioViewController: UIViewController {
     }
 
     func saveBio() {
-        self.gettingStartedData.profileBio = inputTextView.text
+        self.gettingStartedData.bio = inputTextView.text
     }
 
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -47,7 +47,7 @@ class GetStartedShortBioViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveBio()
-        if let profileBio = self.gettingStartedData.profileBio, profileBio.count < 50 {
+        if let profileBio = self.gettingStartedData.bio, profileBio.count < 50 {
             let alertController = UIAlertController(title: nil,
                                                     message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?",
                                                     preferredStyle: .alert)
@@ -94,7 +94,7 @@ extension GetStartedShortBioViewController {
         self.inputTextView.delegate = self
         self.inputTextView.isScrollEnabled = true
 
-        if let profileBio = self.gettingStartedData.profileBio, profileBio != "" {
+        if let profileBio = self.gettingStartedData.bio, profileBio != "" {
             self.inputTextView.text = profileBio
             textViewDidChange(self.inputTextView)
         }

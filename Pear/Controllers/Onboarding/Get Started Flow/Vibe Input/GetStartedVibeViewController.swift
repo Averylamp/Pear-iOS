@@ -40,17 +40,17 @@ class GetStartedVibeViewController: UIViewController {
     }
     
     func saveVibes() {
-        self.gettingStartedProfileData.profileVibes = []
+        self.gettingStartedProfileData.vibes = []
         for indexPath in self.selectedItems {
             let fruitVibe = self.fruitVibes[indexPath.item]
-            self.gettingStartedProfileData.profileVibes.append(fruitVibe.text.lowercased())
+            self.gettingStartedProfileData.vibes.append(fruitVibe.text.lowercased())
         }
     }
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveVibes()
-        if self.gettingStartedProfileData.profileVibes.count == 0 {
+        if self.gettingStartedProfileData.vibes.count == 0 {
             self.alert(title: "Missing Vibe", message: "Your friend is missing their vibes!  Please choose one!")
             return
         }
@@ -87,7 +87,7 @@ extension GetStartedVibeViewController {
     
     func restoreState() {
         var needsReload: Bool = false
-        for vibe in self.gettingStartedProfileData.profileVibes {
+        for vibe in self.gettingStartedProfileData.vibes {
             if let firstIndex = self.fruitVibes.firstIndex(where: { (fruitVibe) -> Bool in
                 return fruitVibe.text.lowercased() == vibe
             }) {

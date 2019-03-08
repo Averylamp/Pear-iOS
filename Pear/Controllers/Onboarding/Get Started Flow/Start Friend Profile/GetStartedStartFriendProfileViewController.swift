@@ -36,7 +36,7 @@ class GetStartedStartFriendProfileViewController: UIViewController {
     @discardableResult
     func saveProfileFirstName() -> String? {
         if let profileFirstName = inputTextField.text {
-            self.gettingStartedData.profileFirstName = profileFirstName
+            self.gettingStartedData.firstName = profileFirstName
             return profileFirstName
         }
         return nil

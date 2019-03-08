@@ -50,7 +50,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
             activityIndicator.startAnimating()
             
             self.delay(delay: 2.0) {
-                guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.profileFirstName) else {
+                guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
                     print("Failed to create Allow Notifications VC")
                     return
                 }
@@ -86,7 +86,7 @@ extension GetStartedNotifyFriendViewController {
         self.inputTextField.stylizeInputTextField()
         self.inputTextFieldTitle.stylizeTextFieldTitle()
         
-        if let profileFirstName = self.gettingStartedData.profileFirstName {
+        if let profileFirstName = self.gettingStartedData.firstName {
             self.nextButton.setTitle("Send to \(profileFirstName)", for: .normal)
             self.subtitleLabel.text = "We'll send \(profileFirstName) a link to the profile so they can approve it."
         }
@@ -165,7 +165,7 @@ extension GetStartedNotifyFriendViewController {
         if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             let keyboardBottomPadding: CGFloat = 20
             
-            if let profileFirstName = self.gettingStartedData.profileFirstName {
+            if let profileFirstName = self.gettingStartedData.firstName {
                 self.subtitleLabel.text = "We'll send \(profileFirstName) a link to the profile so they can approve it."
             } else {
                 self.subtitleLabel.text = "We'll send them a link to the profile so they can approve it."
