@@ -10,6 +10,6 @@ import Foundation
 
 class PearDetachedProfile: GettingStartedUserProfileData {
   
-  static let graphQLDetachedProfileFields = "{ _id creatorUser_id firstName phoneNumber age gender interests vibes bio dos donts images matchingDemographics matchingPreferencees }"
+  static let graphQLDetachedProfileFields = "{ _id creatorUser_id firstName phoneNumber age gender interests vibes bio dos donts imageIDs images \(GraphQLQueryStrings.imageSizesFull) matchingDemographics \(GraphQLQueryStrings.matchingDemographicsFull) matchingPreferences \(GraphQLQueryStrings.matchingPreferencesFull) }"
   
 }

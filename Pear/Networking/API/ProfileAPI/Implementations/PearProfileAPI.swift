@@ -27,9 +27,10 @@ class PearProfileAPI: ProfileAPI {
     "Content-Type": "application/json"
   ]
   
-  // swiftlint:disable:next line_length
-  static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile { creatorUser_id bio phoneNumber }}}"
+  static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile \(PearDetachedProfile.graphQLDetachedProfileFields) }}"
   
+  static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLDetachedProfileFields) }"
+
 }
 
 // MARK: Routes
@@ -101,6 +102,68 @@ extension PearProfileAPI {
     }
     
   }
+  
+  func checkDetachedProfiles(phoneNumber: String, completion: @escaping(Result<[PearDetachedProfile], Error>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    
+    request.allHTTPHeaderFields = defaultHeaders
+//    request.addValue(phoneNumber, forHTTPHeaderField: "phoneNumber")
+    do {
+      
+      let fullDictionary: [String: Any] = [
+        "query": PearProfileAPI.findDetachedProfilesQuery,
+        "variables": [
+          "phoneNumber": phoneNumber
+        ]
+      ]
+      
+      print(fullDictionary)
+      
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          completion(.failure(error))
+          return
+        } else {
+          if  let data = data,
+            let json = try? JSON(data: data) {
+            print(json)
+            if let profiles = json.array {
+              print("\(profiles.count) Detached profiles found matching your phone number")
+            }
+            do {
+              
+            } catch {
+              print("Error: \(error)")
+              completion(.failure(error))
+              return
+            }
+          } else {
+            print("Failed Conversions")
+            completion(.failure(UserCreationError.failedDeserialization))
+            return
+          }
+        }
+      }
+      dataTask.resume()
+    } catch let error as UserCreationError {
+      
+      print("Invalid variables for user creation error")
+      completion(.failure(error))
+    } catch {
+      print(error)
+      completion(.failure(error))
+    }
+
+  }
+  
 }
 
 // MARK: Create Detached Profile Endpoint Helpers
