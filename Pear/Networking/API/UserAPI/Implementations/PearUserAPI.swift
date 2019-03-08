@@ -20,16 +20,16 @@ class PearUserAPI: UserAPI {
    static let shared = PearUserAPI()
    
    private init() {
-      
+      fatalError("Please only use the singleton of this object")
    }
    
    let defaultHeaders: [String: String] = [
       "Content-Type": "application/json"
    ]
    
-   static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput) {createUser(userInput: $userInput) { success message \(PearUser.graphQLUserFields) }}"
+   static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput) {createUser(userInput: $userInput) { success message user \(PearUser.graphQLUserFields) }}"
    
-   static let getUserQuery: String = "mutation GetUser($userInput: GetUserInput) {getUser(userInput:$userInput){ success message \(PearUser.graphQLUserFields) }}"
+   static let getUserQuery: String = "mutation GetUser($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLUserFields) }}"
 }
 
 // MARK: - Routes

@@ -68,9 +68,9 @@ class GetStartedInterestsViewController: UIViewController {
     }
 
     func saveInterests() {
-        self.gettingStartedData.profileInterests = []
+        self.gettingStartedData.interests = []
         for button in self.interestButtons where button.isSelected {
-            self.gettingStartedData.profileInterests.append(button.titleLabel!.text!)
+            self.gettingStartedData.interests.append(button.titleLabel!.text!)
         }
     }
 
@@ -182,7 +182,7 @@ extension GetStartedInterestsViewController {
         self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width, height: rowHeight * CGFloat(numRows) + 2.0 * buttonSpacing)
 
         for button in self.interestButtons {
-            if self.gettingStartedData.profileInterests.contains(button.titleLabel!.text!) {
+            if self.gettingStartedData.interests.contains(button.titleLabel!.text!) {
                 self.toggleInterestButton(button: button, initialization: true)
             }
         }

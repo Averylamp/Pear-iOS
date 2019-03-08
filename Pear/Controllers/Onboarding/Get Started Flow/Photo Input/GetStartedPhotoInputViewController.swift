@@ -36,7 +36,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     }
 
     func saveImages() {
-        self.gettingStartedData.profileImages = self.images
+        self.gettingStartedData.images = self.images
     }
 
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -48,7 +48,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveImages()
-        if self.gettingStartedData.profileImages.count == 0 {
+        if self.gettingStartedData.images.count == 0 {
             self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
             return
         }
@@ -98,7 +98,7 @@ extension GetStartedPhotoInputViewController {
     }
 
     func restoreGettingStartedState() {
-        self.images = self.gettingStartedData.profileImages
+        self.images = self.gettingStartedData.images
     }
 
     func setupCollectionView() {

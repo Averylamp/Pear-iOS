@@ -1,5 +1,5 @@
 //
-//  Endorsement.swift
+//  GettingStartedUserProfileData.swift
 //  Pear
 //
 //  Created by Avery Lamp on 2/9/19.
@@ -9,38 +9,36 @@
 import UIKit
 
 class GettingStartedUserProfileData: CustomStringConvertible {
+  
+  var firstName: String?
+  var phoneNumber: String?
+  var age: Int?
+  var gender: GenderEnum?
+  var interests: [String] = []
+  var vibes: [String] = []
+  var bio: String?
+  var dos: [String] = []
+  var donts: [String] = []
+  var images: [GettingStartedUIImageContainer] = []
+  
+  init() {
     
-    var profileFirstName: String?
-    var profilePhoneNumber: String?
-   var profileAge: Int?
-    var profileGender: GenderEnum?
-   
-    var profileInterests: [String] = []
-    var profileVibes: [String] = []
-    var profileBio: String?
-    var profileDos: [String] = []
-    var profileDonts: [String] = []
-   
-   var profileImages: [GettingStartedUIImageContainer] = []
+  }
+  
+  var description: String {
+    return "**** GettingStartedUserProfileData\n" + """
+    profileFirstName: \(String(describing: firstName)),
+    profilePhoneNumber: \(String(describing: phoneNumber)),
+    profileGender: \(String(describing: gender)),
+    profileAge: \(String(describing: age)),
+    profileInterests: \(String(describing: interests)),
+    profileVibes: \(String(describing: vibes)),
+    profileBio: \(String(describing: bio)),
+    profileDos: \(String(describing: dos)),
+    profileDonts: \(String(describing: donts)),
+    profileImages: \(String(describing: images)),
+    """
     
-    init() {
-        
-    }
-    
-    var description: String {
-        return "**** GettingStartedUserProfileData\n" + """
-        profileFirstName: \(String(describing: profileFirstName)),
-        profilePhoneNumber: \(String(describing: profilePhoneNumber)),
-        profileGender: \(String(describing: profileGender)),
-        profileAge: \(String(describing: profileAge)),
-        profileInterests: \(String(describing: profileInterests)),
-        profileVibes: \(String(describing: profileVibes)),
-        profileBio: \(String(describing: profileBio)),
-        profileDos: \(String(describing: profileDos)),
-        profileDonts: \(String(describing: profileDonts)),
-        profileImages: \(String(describing: profileImages)),
-        """
-        
-    }
-    
+  }
+  
 }

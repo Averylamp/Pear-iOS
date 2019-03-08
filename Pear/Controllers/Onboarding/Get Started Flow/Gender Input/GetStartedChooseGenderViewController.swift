@@ -34,19 +34,19 @@ class GetStartedChooseGenderViewController: UIViewController {
 
         switch sender.tag {
         case 0:
-            self.gettingStartedData.profileGender = GenderEnum.male
+            self.gettingStartedData.gender = GenderEnum.male
             self.maleButton.stylizeDark()
             self.femaleButton.stylizeLight()
             self.nonbinaryButton.stylizeLight()
 
         case 1:
-            self.gettingStartedData.profileGender = GenderEnum.female
+            self.gettingStartedData.gender = GenderEnum.female
             self.femaleButton.stylizeDark()
             self.maleButton.stylizeLight()
             self.nonbinaryButton.stylizeLight()
 
         case 2:
-            self.gettingStartedData.profileGender = GenderEnum.nonbinary
+            self.gettingStartedData.gender = GenderEnum.nonbinary
             self.nonbinaryButton.stylizeDark()
             self.maleButton.stylizeLight()
             self.femaleButton.stylizeLight()
@@ -88,7 +88,7 @@ extension GetStartedChooseGenderViewController {
         self.nonbinaryButton.stylizeLight()
         self.nonbinaryButton.tag = 2
 
-        if let previousGender = self.gettingStartedData.profileGender {
+        if let previousGender = self.gettingStartedData.gender {
             switch previousGender {
             case .male:
                 self.maleButton.stylizeDark()
