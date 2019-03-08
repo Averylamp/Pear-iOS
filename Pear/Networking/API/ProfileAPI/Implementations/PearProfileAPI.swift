@@ -11,6 +11,7 @@ import SwiftyJSON
 
 enum ProfileCreationError: Error {
   case invalidVariables
+  case userNotLoggedIn
   case failedDeserialization
   case graphQLError(message: String)
 }
@@ -20,7 +21,6 @@ class PearProfileAPI: ProfileAPI {
   static let shared = PearProfileAPI()
   
   private init() {
-    fatalError("Please only use the singleton of this object")
   }
   
   let defaultHeaders: [String: String] = [
@@ -47,9 +47,11 @@ extension PearProfileAPI {
       let fullDictionary: [String: Any] = [
         "query": PearProfileAPI.createNewDetachedProfileQuery,
         "variables": [
-          "userInput": try converUserProfileDataToQueryVariable(userProfileData: gettingStartedUserProfileData)
+          "detachedProfileInput": try converUserProfileDataToQueryVariable(userProfileData: gettingStartedUserProfileData)
         ]
       ]
+      
+      print(fullDictionary)
       
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
@@ -62,8 +64,8 @@ extension PearProfileAPI {
           return
         } else {
           if  let data = data,
-            let json = try? JSON(data: data),
-            let getUserResponse = json["data"]["getUser"].dictionary {
+            let json = try? JSON(data: data) {
+              print(json)
             do {
 //              let pearUserData = try getUserResponse["user"]?.rawData()
 //              if let pearUserData = pearUserData {
@@ -121,18 +123,23 @@ extension PearProfileAPI {
         .filter({ $0.imageSizesRepresentation != nil })
         .map({ $0.imageSizesRepresentation! }))
     
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      throw ProfileCreationError.userNotLoggedIn
+    }
+    
     let variablesDictionary: [String: Any] = [
+      "creatorUser_id": userID,
       "firstName": firstName,
       "phoneNumber": phoneNumber,
       "age": age,
-      "gender": gender,
+      "gender": gender.rawValue,
       "interests": userProfileData.interests,
       "vibes": userProfileData.vibes,
       "bio": bio,
       "dos": userProfileData.dos,
       "donts": userProfileData.donts,
       "imageIDs": imageIDs,
-      "imageSizes": imageSizes
+      "images": imageSizes
     ]
     
     return variablesDictionary

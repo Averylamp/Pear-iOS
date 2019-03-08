@@ -20,7 +20,7 @@ class PearUserAPI: UserAPI {
    static let shared = PearUserAPI()
    
    private init() {
-      fatalError("Please only use the singleton of this object")
+
    }
    
    let defaultHeaders: [String: String] = [
