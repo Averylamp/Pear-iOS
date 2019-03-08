@@ -11,5 +11,5 @@ import Foundation
 protocol ProfileAPI {
   func createNewDetachedProfile(gettingStartedUserProfileData: GettingStartedUserProfileData,
                                 completion: @escaping(Result<PearDetachedProfile, Error>) -> Void)
-  
+  func checkDetachedProfiles(phoneNumber: String, completion: @escaping(Result<[PearDetachedProfile], Error>) -> Void)
 }
