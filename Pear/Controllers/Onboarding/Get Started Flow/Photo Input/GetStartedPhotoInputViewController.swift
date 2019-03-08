@@ -48,10 +48,10 @@ class GetStartedPhotoInputViewController: UIViewController {
     @IBAction func nextButtonClicked(_ sender: Any) {
         HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
         self.saveImages()
-        if self.gettingStartedData.images.count == 0 {
-            self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
-            return
-        }
+//        if self.gettingStartedData.images.count == 0 {
+//            self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
+//            return
+//        }
 
         guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
             print("Failed to create Notify Friend VC")
