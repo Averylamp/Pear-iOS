@@ -109,8 +109,15 @@ extension PearUserAPI {
       request.allHTTPHeaderFields = defaultHeaders
       
       do {
-         let queryData = try convertUserDataToQueryVariable(userData: gettingStartedUserData)
-         request.httpBody = queryData
+        let fullDictionary: [String: Any] = [
+          "query": PearUserAPI.createUserQuery,
+          "variables": [
+            "userInput": try convertUserDataToQueryVariable(userData: gettingStartedUserData)
+          ]
+        ]
+        
+        let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+         request.httpBody = data
          
          let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
             print("Data task returned")
@@ -167,7 +174,7 @@ extension PearUserAPI {
 // MARK: - Create User Endpoint Helpers
 extension PearUserAPI {
    
-   func convertUserDataToQueryVariable(userData: GettingStartedUserData) throws -> Data {
+  func convertUserDataToQueryVariable(userData: GettingStartedUserData) throws -> [String: Any] {
       guard
       let age = userData.age,
       let birthdate = userData.birthdate,
@@ -209,16 +216,7 @@ extension PearUserAPI {
       if let thumbnailURL = userData.thumbnailURL {
          variablesDictionary["thumbnailURL"] = thumbnailURL
       }
-      
-      let fullDictionary: [String: Any] = [
-         "query": PearUserAPI.createUserQuery,
-         "variables": [
-            "userInput": variablesDictionary
-         ]
-      ]
-      print(fullDictionary)
-      
-      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      return data
+    
+      return variablesDictionary
    }
 }
