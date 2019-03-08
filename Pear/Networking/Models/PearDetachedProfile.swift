@@ -12,7 +12,4 @@ class PearDetachedProfile: GettingStartedUserProfileData {
   
   static let graphQLDetachedProfileFields = "{ _id creatorUser_id firstName phoneNumber age gender interests vibes bio dos donts images matchingDemographics matchingPreferencees }"
   
-  
-  
-  
 }

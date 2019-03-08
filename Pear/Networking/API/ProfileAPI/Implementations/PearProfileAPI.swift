@@ -36,6 +36,106 @@ class PearProfileAPI: ProfileAPI {
 extension PearProfileAPI {
   func createNewDetachedProfile(gettingStartedUserProfileData: GettingStartedUserProfileData,
                                 completion: @escaping (Result<PearDetachedProfile, Error>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    request.allHTTPHeaderFields = defaultHeaders
+    
+    do {
+      
+      let fullDictionary: [String: Any] = [
+        "query": PearProfileAPI.createNewDetachedProfileQuery,
+        "variables": [
+          "userInput": try converUserProfileDataToQueryVariable(userProfileData: gettingStartedUserProfileData)
+        ]
+      ]
+      
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          completion(.failure(error))
+          return
+        } else {
+          if  let data = data,
+            let json = try? JSON(data: data),
+            let getUserResponse = json["data"]["getUser"].dictionary {
+            do {
+//              let pearUserData = try getUserResponse["user"]?.rawData()
+//              if let pearUserData = pearUserData {
+//                let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
+//                print("Successfully found Pear User")
+//                completion(.success(pearUser))
+//                return
+//              } else {
+//                print("Failed to get Pear User Data")
+//                completion(.failure(UserCreationError.failedDeserialization))
+//                return
+//              }
+            } catch {
+              print("Error: \(error)")
+              completion(.failure(error))
+              return
+            }
+          } else {
+            print("Failed Conversions")
+            completion(.failure(UserCreationError.failedDeserialization))
+            return
+          }
+        }
+      }
+      dataTask.resume()
+    } catch let error as UserCreationError {
+      
+      print("Invalid variables for user creation error")
+      completion(.failure(error))
+    } catch {
+      print(error)
+      completion(.failure(error))
+    }
     
   }
+}
+
+// MARK: Create Detached Profile Endpoint Helpers
+extension PearProfileAPI {
+  
+  func converUserProfileDataToQueryVariable(userProfileData: GettingStartedUserProfileData) throws -> [String: Any] {
+    
+    guard
+   
+      let firstName = userProfileData.firstName,
+      let phoneNumber = userProfileData.phoneNumber,
+      let age = userProfileData.age,
+      let gender = userProfileData.gender,
+      let bio = userProfileData.bio else {
+        throw ProfileCreationError.invalidVariables
+    }
+
+    let (imageIDs, imageSizes) = ImageAllSizesRepresentation
+      .convertArrayToDatabaseFormat(images: userProfileData.images
+        .filter({ $0.imageSizesRepresentation != nil })
+        .map({ $0.imageSizesRepresentation! }))
+    
+    let variablesDictionary: [String: Any] = [
+      "firstName": firstName,
+      "phoneNumber": phoneNumber,
+      "age": age,
+      "gender": gender,
+      "interests": userProfileData.interests,
+      "vibes": userProfileData.vibes,
+      "bio": bio,
+      "dos": userProfileData.dos,
+      "donts": userProfileData.donts,
+      "imageIDs": imageIDs,
+      "imageSizes": imageSizes
+    ]
+    
+    return variablesDictionary
+  }
+  
 }

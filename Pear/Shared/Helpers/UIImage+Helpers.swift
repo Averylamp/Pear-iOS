@@ -29,4 +29,5 @@ class GettingStartedUIImageContainer {
     init(image: UIImage) {
         self.image = image
     }
+  
 }
