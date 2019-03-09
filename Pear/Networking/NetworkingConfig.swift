@@ -9,11 +9,13 @@
 import Foundation
 
 class NetworkingConfig {
-    
-    #if DEBUG
-    static let devGraphQLHost: URL = URL(string: "http://66.31.16.203:1234/graphql")!
-    static let graphQLHost: URL = URL(string: "http://66.31.16.203:1234/graphql")!
-    static let imageAPIHost: URL = URL(string: "http://66.31.16.203:1337")!
-    #endif
-    
+  
+  //  static let host: String = "sloths.mit.edu"
+    static let host: String = "koala.mit.edu"
+//  static let host: String = "66.31.16.203"
+  
+  static let devGraphQLHost: URL = URL(string: "http://\(host):1234/graphql")!
+  static let graphQLHost: URL = URL(string: "http://\(host):1234/graphql")!
+  static let imageAPIHost: URL = URL(string: "http://\(host):1337")!
+  
 }

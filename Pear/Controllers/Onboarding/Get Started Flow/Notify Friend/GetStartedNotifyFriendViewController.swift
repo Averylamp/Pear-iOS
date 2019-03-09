@@ -67,8 +67,16 @@ class GetStartedNotifyFriendViewController: UIViewController {
         case .failure(let error):
           print(error)
           DispatchQueue.main.async {
-            self.alert(title: "Error Sending Profile", message: error.localizedDescription)
+            guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
+              print("Failed to create Allow Notifications VC")
+              return
+            }
+            self.navigationController?.pushViewController(allowNotificationVC, animated: true)
           }
+
+//          DispatchQueue.main.async {
+//            self.alert(title: "Error Sending Profile", message: error.localizedDescription)
+//          }
           
         }
       }

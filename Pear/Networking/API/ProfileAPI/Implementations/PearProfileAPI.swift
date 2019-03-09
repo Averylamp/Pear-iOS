@@ -79,6 +79,7 @@ extension PearProfileAPI {
 //                completion(.failure(UserCreationError.failedDeserialization))
 //                return
 //              }
+              completion(.failure(UserCreationError.failedDeserialization))
             } catch {
               print("Error: \(error)")
               completion(.failure(error))
