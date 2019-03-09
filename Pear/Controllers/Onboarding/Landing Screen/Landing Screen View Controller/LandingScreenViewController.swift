@@ -132,8 +132,12 @@ private extension LandingScreenViewController {
     self.delay(delay: 1.0) {
       self.gettingStarted = false
     }
+    
+//    Request more permissions when allowed
+//        loginManager.logIn(readPermissions: [.publicProfile, .email, .userBirthday, .userGender], viewController: self) { result in
+    
     // 1. Auth via Facebook.
-    loginManager.logIn(readPermissions: [.publicProfile, .email, .userBirthday, .userGender], viewController: self) { result in
+    loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
       switch result {
         
       case .success(let grantedPermissions, let deniedPermissions, let accessToken):
