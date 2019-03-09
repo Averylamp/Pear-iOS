@@ -9,10 +9,10 @@
 import UIKit
 
 extension UIView {
-    
-    func stylizeInputTextFieldContainer() {
-        self.layer.cornerRadius = 8
-        self.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.87, alpha: 1.00).cgColor
-        self.layer.borderWidth = 1
-    }
+  
+  func stylizeInputTextFieldContainer() {
+    self.layer.cornerRadius = 8
+    self.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.87, alpha: 1.00).cgColor
+    self.layer.borderWidth = 1
+  }
 }

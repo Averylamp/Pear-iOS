@@ -133,8 +133,8 @@ private extension LandingScreenViewController {
       self.gettingStarted = false
     }
     
-//    Request more permissions when allowed
-//        loginManager.logIn(readPermissions: [.publicProfile, .email, .userBirthday, .userGender], viewController: self) { result in
+    //    Request more permissions when allowed
+    //        loginManager.logIn(readPermissions: [.publicProfile, .email, .userBirthday, .userGender], viewController: self) { result in
     
     // 1. Auth via Facebook.
     loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in

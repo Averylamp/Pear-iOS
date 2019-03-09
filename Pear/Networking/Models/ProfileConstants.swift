@@ -9,13 +9,13 @@
 import Foundation
 
 struct ProfileKeys {
-    static let age = "age"
-    static let active = "active"
-    static let documentId = "documentId"
-    static let endorsed = "endorsed"
-    static let ethnicities = "ethnicities"
-    static let gender = "gender"
-    static let locationCoordinate = "locationCoordinate"
-    static let profileFirstName = "profileFirstName"
-    static let profileLastName = "profileLastName"
+  static let age = "age"
+  static let active = "active"
+  static let documentId = "documentId"
+  static let endorsed = "endorsed"
+  static let ethnicities = "ethnicities"
+  static let gender = "gender"
+  static let locationCoordinate = "locationCoordinate"
+  static let profileFirstName = "profileFirstName"
+  static let profileLastName = "profileLastName"
 }

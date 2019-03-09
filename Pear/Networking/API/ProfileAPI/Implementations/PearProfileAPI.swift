@@ -30,7 +30,7 @@ class PearProfileAPI: ProfileAPI {
   static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile \(PearDetachedProfile.graphQLDetachedProfileFields) }}"
   
   static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLDetachedProfileFields) }"
-
+  
 }
 
 // MARK: Routes
@@ -66,19 +66,19 @@ extension PearProfileAPI {
         } else {
           if  let data = data,
             let json = try? JSON(data: data) {
-              print(json)
+            print(json)
             do {
-//              let pearUserData = try getUserResponse["user"]?.rawData()
-//              if let pearUserData = pearUserData {
-//                let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
-//                print("Successfully found Pear User")
-//                completion(.success(pearUser))
-//                return
-//              } else {
-//                print("Failed to get Pear User Data")
-//                completion(.failure(UserCreationError.failedDeserialization))
-//                return
-//              }
+              //              let pearUserData = try getUserResponse["user"]?.rawData()
+              //              if let pearUserData = pearUserData {
+              //                let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
+              //                print("Successfully found Pear User")
+              //                completion(.success(pearUser))
+              //                return
+              //              } else {
+              //                print("Failed to get Pear User Data")
+              //                completion(.failure(UserCreationError.failedDeserialization))
+              //                return
+              //              }
               completion(.failure(UserCreationError.failedDeserialization))
             } catch {
               print("Error: \(error)")
@@ -111,7 +111,7 @@ extension PearProfileAPI {
     request.httpMethod = "POST"
     
     request.allHTTPHeaderFields = defaultHeaders
-//    request.addValue(phoneNumber, forHTTPHeaderField: "phoneNumber")
+    //    request.addValue(phoneNumber, forHTTPHeaderField: "phoneNumber")
     do {
       
       let fullDictionary: [String: Any] = [
@@ -162,7 +162,7 @@ extension PearProfileAPI {
       print(error)
       completion(.failure(error))
     }
-
+    
   }
   
 }
@@ -173,7 +173,7 @@ extension PearProfileAPI {
   func converUserProfileDataToQueryVariable(userProfileData: GettingStartedUserProfileData) throws -> [String: Any] {
     
     guard
-   
+      
       let firstName = userProfileData.firstName,
       let phoneNumber = userProfileData.phoneNumber,
       let age = userProfileData.age,
@@ -181,7 +181,7 @@ extension PearProfileAPI {
       let bio = userProfileData.bio else {
         throw ProfileCreationError.invalidVariables
     }
-
+    
     let (imageIDs, imageSizes) = ImageAllSizesRepresentation
       .convertArrayToDatabaseFormat(images: userProfileData.images
         .filter({ $0.imageSizesRepresentation != nil })

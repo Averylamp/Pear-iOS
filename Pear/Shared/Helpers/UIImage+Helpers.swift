@@ -9,25 +9,25 @@
 import UIKit
 
 extension UIImage {
-    func imageWith(newSize: CGSize) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: newSize)
-        let image = renderer.image { _ in
-            self.draw(in: CGRect.init(origin: CGPoint.zero, size: newSize))
-        }
-        return image
+  func imageWith(newSize: CGSize) -> UIImage {
+    let renderer = UIGraphicsImageRenderer(size: newSize)
+    let image = renderer.image { _ in
+      self.draw(in: CGRect.init(origin: CGPoint.zero, size: newSize))
     }
-    
-    func gettingStartedImage() -> GettingStartedUIImageContainer {
-        return GettingStartedUIImageContainer(image: self)
-    }
+    return image
+  }
+  
+  func gettingStartedImage() -> GettingStartedUIImageContainer {
+    return GettingStartedUIImageContainer(image: self)
+  }
 }
 
 class GettingStartedUIImageContainer {
-    var imageSizesRepresentation: ImageAllSizesRepresentation?
-    var image: UIImage
-    
-    init(image: UIImage) {
-        self.image = image
-    }
+  var imageSizesRepresentation: ImageAllSizesRepresentation?
+  var image: UIImage
+  
+  init(image: UIImage) {
+    self.image = image
+  }
   
 }

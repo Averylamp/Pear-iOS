@@ -73,10 +73,10 @@ class GetStartedNotifyFriendViewController: UIViewController {
             }
             self.navigationController?.pushViewController(allowNotificationVC, animated: true)
           }
-
-//          DispatchQueue.main.async {
-//            self.alert(title: "Error Sending Profile", message: error.localizedDescription)
-//          }
+          
+          //          DispatchQueue.main.async {
+          //            self.alert(title: "Error Sending Profile", message: error.localizedDescription)
+          //          }
           
         }
       }

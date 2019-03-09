@@ -9,199 +9,199 @@
 import UIKit
 
 class GetStartedShortBioViewController: UIViewController {
-
-    var gettingStartedData: GettingStartedUserProfileData!
-
-    @IBOutlet weak var textLengthLabel: UILabel!
-    @IBOutlet weak var inputTextView: UITextView!
-
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-
-    let keyboardBottomPadding: CGFloat = 10
-    let maxTextLength: Int = 600
-    let pageNumber: CGFloat = 5.0
-
-    /// Factory method for creating this view controller.
-    ///
-    /// - Returns: Returns an instance of this view controller.
-    class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedShortBioViewController? {
-        let storyboard = UIStoryboard(name: String(describing: GetStartedShortBioViewController.self), bundle: nil)
-        guard let shortBioVC = storyboard.instantiateInitialViewController() as? GetStartedShortBioViewController else { return nil }
-        shortBioVC.gettingStartedData = gettingStartedData
-        return shortBioVC
-    }
-
-    func saveBio() {
-        self.gettingStartedData.bio = inputTextView.text
-    }
-
-    @IBAction func backButtonClicked(_ sender: Any) {
-        self.saveBio()
-        self.navigationController?.popViewController(animated: true)
-    }
-
-    @IBAction func nextButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        self.saveBio()
-        if let profileBio = self.gettingStartedData.bio, profileBio.count < 50 {
-            let alertController = UIAlertController(title: nil,
-                                                    message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?",
-                                                    preferredStyle: .alert)
-            let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
-            let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
-                if let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData) {
-                    self.navigationController?.pushViewController(photoInputVC, animated: true)
-                } else {
-                    print("Failed to create photoInputVC")
-                }
-            }
-
-            alertController.addAction(cancelButton)
-            alertController.addAction(continueButton)
-            self.present(alertController, animated: true, completion: nil)
-            return
-
-        }
-
+  
+  var gettingStartedData: GettingStartedUserProfileData!
+  
+  @IBOutlet weak var textLengthLabel: UILabel!
+  @IBOutlet weak var inputTextView: UITextView!
+  
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var subtitleLabel: UILabel!
+  @IBOutlet weak var nextButton: UIButton!
+  @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
+  
+  let keyboardBottomPadding: CGFloat = 10
+  let maxTextLength: Int = 600
+  let pageNumber: CGFloat = 5.0
+  
+  /// Factory method for creating this view controller.
+  ///
+  /// - Returns: Returns an instance of this view controller.
+  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedShortBioViewController? {
+    let storyboard = UIStoryboard(name: String(describing: GetStartedShortBioViewController.self), bundle: nil)
+    guard let shortBioVC = storyboard.instantiateInitialViewController() as? GetStartedShortBioViewController else { return nil }
+    shortBioVC.gettingStartedData = gettingStartedData
+    return shortBioVC
+  }
+  
+  func saveBio() {
+    self.gettingStartedData.bio = inputTextView.text
+  }
+  
+  @IBAction func backButtonClicked(_ sender: Any) {
+    self.saveBio()
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  @IBAction func nextButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.saveBio()
+    if let profileBio = self.gettingStartedData.bio, profileBio.count < 50 {
+      let alertController = UIAlertController(title: nil,
+                                              message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?",
+                                              preferredStyle: .alert)
+      let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
+      let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
         if let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData) {
-            self.navigationController?.pushViewController(photoInputVC, animated: true)
+          self.navigationController?.pushViewController(photoInputVC, animated: true)
         } else {
-            print("Failed to create photoInputVC")
+          print("Failed to create photoInputVC")
         }
-
+      }
+      
+      alertController.addAction(cancelButton)
+      alertController.addAction(continueButton)
+      self.present(alertController, animated: true, completion: nil)
+      return
+      
     }
-
-    @IBAction func sampleButtonClicked(_ sender: Any) {
-        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-        guard let sampleBiosVC = GetStartedSampleBiosViewController.instantiate() else {
-            print("Failed to create Sample Bios VC")
-            return
-        }
-        self.present(sampleBiosVC, animated: true, completion: nil)
+    
+    if let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData) {
+      self.navigationController?.pushViewController(photoInputVC, animated: true)
+    } else {
+      print("Failed to create photoInputVC")
     }
-
+    
+  }
+  
+  @IBAction func sampleButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let sampleBiosVC = GetStartedSampleBiosViewController.instantiate() else {
+      print("Failed to create Sample Bios VC")
+      return
+    }
+    self.present(sampleBiosVC, animated: true, completion: nil)
+  }
+  
 }
 
 // MARK: - Life Cycle
 extension GetStartedShortBioViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.inputTextView.delegate = self
-        self.inputTextView.isScrollEnabled = true
-
-        if let profileBio = self.gettingStartedData.bio, profileBio != "" {
-            self.inputTextView.text = profileBio
-            textViewDidChange(self.inputTextView)
-        }
-
-        self.updateTextLabels()
-        self.addDismissKeyboardOnViewClick()
-        self.addKeyboardSizeNotifications()
-        self.stylize()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.inputTextView.delegate = self
+    self.inputTextView.isScrollEnabled = true
+    
+    if let profileBio = self.gettingStartedData.bio, profileBio != "" {
+      self.inputTextView.text = profileBio
+      textViewDidChange(self.inputTextView)
     }
-
-    func stylize() {
-        self.nextButton.stylizeDark()
-        self.titleLabel.stylizeTitleLabel()
-        self.subtitleLabel.stylizeSubtitleLabelSmall()
-
-        self.inputTextView.layer.borderColor = StylingConfig.textFontColor.cgColor
-        self.inputTextView.layer.borderWidth = 1
-        self.inputTextView.layer.cornerRadius = 15
-        self.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        self.inputTextView.font = UIFont(name: StylingConfig.displayFontRegular, size: 17)
-        self.inputTextView.textColor = StylingConfig.textFontColor
-
-        self.progressWidthConstraint.constant = (pageNumber - 1) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
-        self.view.layoutIfNeeded()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.view.layoutIfNeeded()
-        self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
-        UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-    }
-
+    
+    self.updateTextLabels()
+    self.addDismissKeyboardOnViewClick()
+    self.addKeyboardSizeNotifications()
+    self.stylize()
+  }
+  
+  func stylize() {
+    self.nextButton.stylizeDark()
+    self.titleLabel.stylizeTitleLabel()
+    self.subtitleLabel.stylizeSubtitleLabelSmall()
+    
+    self.inputTextView.layer.borderColor = StylingConfig.textFontColor.cgColor
+    self.inputTextView.layer.borderWidth = 1
+    self.inputTextView.layer.cornerRadius = 15
+    self.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    self.inputTextView.font = UIFont(name: StylingConfig.displayFontRegular, size: 17)
+    self.inputTextView.textColor = StylingConfig.textFontColor
+    
+    self.progressWidthConstraint.constant = (pageNumber - 1) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+    self.view.layoutIfNeeded()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.view.layoutIfNeeded()
+    self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+    UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+      self.view.layoutIfNeeded()
+    }, completion: nil)
+  }
+  
 }
 
 // MARK: - Dismiss First Responder on Click
 extension GetStartedShortBioViewController {
-    func addDismissKeyboardOnViewClick() {
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GetStartedShortBioViewController.dismissKeyboard)))
-    }
-
-    @objc func dismissKeyboard() {
-        self.inputTextView.resignFirstResponder()
-    }
+  func addDismissKeyboardOnViewClick() {
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(GetStartedShortBioViewController.dismissKeyboard)))
+  }
+  
+  @objc func dismissKeyboard() {
+    self.inputTextView.resignFirstResponder()
+  }
 }
 
 // MARK: - UITextView Delegate
 extension GetStartedShortBioViewController: UITextViewDelegate {
-
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if textView.text.count + text.count - range.length > maxTextLength {
-            return false
-        }
-        return true
+  
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    if textView.text.count + text.count - range.length > maxTextLength {
+      return false
     }
-
-    func updateTextLabels() {
-        self.textLengthLabel.text = "\(self.inputTextView.text.count) / \(maxTextLength)"
-    }
-
-    func textViewDidChange(_ textView: UITextView) {
-        self.updateTextLabels()
-    }
-
+    return true
+  }
+  
+  func updateTextLabels() {
+    self.textLengthLabel.text = "\(self.inputTextView.text.count) / \(maxTextLength)"
+  }
+  
+  func textViewDidChange(_ textView: UITextView) {
+    self.updateTextLabels()
+  }
+  
 }
 
 // MARK: - Keybaord Size Notifications
 extension GetStartedShortBioViewController {
-
-    func addKeyboardSizeNotifications() {
-        NotificationCenter.default
-            .addObserver(self,
-                         selector: #selector(GetStartedShortBioViewController.keyboardWillChange(notification:)),
-                         name: UIWindow.keyboardWillChangeFrameNotification,
-                         object: nil)
-        NotificationCenter.default
-            .addObserver(self,
-                         selector: #selector(GetStartedShortBioViewController.keyboardWillHide(notification:)),
-                         name: UIWindow.keyboardWillHideNotification,
-                         object: nil)
+  
+  func addKeyboardSizeNotifications() {
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(GetStartedShortBioViewController.keyboardWillChange(notification:)),
+                   name: UIWindow.keyboardWillChangeFrameNotification,
+                   object: nil)
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(GetStartedShortBioViewController.keyboardWillHide(notification:)),
+                   name: UIWindow.keyboardWillHideNotification,
+                   object: nil)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+      let targetFrame = targetFrameNSValue.cgRectValue
+      self.nextButtonBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
+      if self.view.frame.height < 600 && targetFrame.height > 0 {
+        self.nextButtonBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom - self.nextButton.frame.height
+      }
+      self.subtitleLabel.text = ""
+      
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
     }
-
-    @objc func keyboardWillChange(notification: Notification) {
-        if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-            let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let targetFrame = targetFrameNSValue.cgRectValue
-            self.nextButtonBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
-            if self.view.frame.height < 600 && targetFrame.height > 0 {
-                self.nextButtonBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom - self.nextButton.frame.height
-            }
-            self.subtitleLabel.text = ""
-
-            UIView.animate(withDuration: duration) {
-                self.view.layoutIfNeeded()
-            }
-        }
+  }
+  @objc func keyboardWillHide(notification: Notification) {
+    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+      self.subtitleLabel.text = "Good bios help friends stand out, leading to fun & interesting conversations."
+      self.nextButtonBottomConstraint.constant = self.keyboardBottomPadding
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
     }
-    @objc func keyboardWillHide(notification: Notification) {
-        if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-            self.subtitleLabel.text = "Good bios help friends stand out, leading to fun & interesting conversations."
-            self.nextButtonBottomConstraint.constant = self.keyboardBottomPadding
-            UIView.animate(withDuration: duration) {
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-
+  }
+  
 }
