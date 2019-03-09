@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DkV-s7-e0g">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Get Started Birthdate View Controller-->
+        <scene sceneID="RP4-r0-Ok9">
+            <objects>
+                <viewController id="DkV-s7-e0g" customClass="GetStartedBirthdateViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mfk-W9-HSM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjM-ws-b27">
+                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="-94676399.288192749">
+                                    <!--1998-01-01 05:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="31554000">
+                                    <!--2002-01-01 05:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYr-Hc-cck" userLabel="Back Button">
+                                <rect key="frame" x="16" y="36" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="5IB-G3-OUz"/>
+                                    <constraint firstAttribute="height" constant="40" id="5hR-Kf-xRS"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-back-button">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="DkV-s7-e0g" eventType="touchUpInside" id="e52-fl-yKc"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-age" translatesAutoresizingMaskIntoConstraints="NO" id="Xcj-Jj-oYt" userLabel="Center Icon">
+                                <rect key="frame" x="162.5" y="31" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xcj-Jj-oYt" secondAttribute="height" multiplier="1:1" id="7Va-N1-Pf8"/>
+                                    <constraint firstAttribute="width" constant="50" id="G4W-os-b3R"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdd-cM-qob">
+                                <rect key="frame" x="20" y="391" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lCA-ll-JbZ"/>
+                                </constraints>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="DkV-s7-e0g" eventType="touchUpInside" id="QrE-Ti-Xei"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When's your birthday?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gjj-0Y-zYR">
+                                <rect key="frame" x="30" y="101" width="315" height="38.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Wdd-cM-qob" firstAttribute="centerX" secondItem="iEi-wO-VJO" secondAttribute="centerX" id="4Zs-qy-aOP"/>
+                            <constraint firstItem="gjj-0Y-zYR" firstAttribute="top" secondItem="Xcj-Jj-oYt" secondAttribute="bottom" constant="20" id="4ip-Lu-qBt"/>
+                            <constraint firstItem="Xcj-Jj-oYt" firstAttribute="centerY" secondItem="TYr-Hc-cck" secondAttribute="centerY" id="5Vv-ek-LUQ"/>
+                            <constraint firstItem="iEi-wO-VJO" firstAttribute="bottom" secondItem="IjM-ws-b27" secondAttribute="bottom" id="96R-SE-f8a"/>
+                            <constraint firstItem="IjM-ws-b27" firstAttribute="top" secondItem="Wdd-cM-qob" secondAttribute="bottom" constant="10" id="Gyd-mE-V1q"/>
+                            <constraint firstItem="iEi-wO-VJO" firstAttribute="trailing" secondItem="Wdd-cM-qob" secondAttribute="trailing" constant="20" id="HEb-L2-ALi"/>
+                            <constraint firstItem="IjM-ws-b27" firstAttribute="leading" secondItem="mfk-W9-HSM" secondAttribute="leading" id="HPY-xc-EW5"/>
+                            <constraint firstItem="gjj-0Y-zYR" firstAttribute="leading" secondItem="iEi-wO-VJO" secondAttribute="leading" constant="30" id="LVH-1S-a6e"/>
+                            <constraint firstItem="TYr-Hc-cck" firstAttribute="leading" secondItem="iEi-wO-VJO" secondAttribute="leading" constant="16" id="LgG-ld-mt0"/>
+                            <constraint firstItem="Wdd-cM-qob" firstAttribute="leading" secondItem="iEi-wO-VJO" secondAttribute="leading" constant="20" id="SrQ-kH-Vca"/>
+                            <constraint firstItem="iEi-wO-VJO" firstAttribute="trailing" secondItem="IjM-ws-b27" secondAttribute="trailing" id="g9J-JX-cqj"/>
+                            <constraint firstItem="Xcj-Jj-oYt" firstAttribute="centerX" secondItem="iEi-wO-VJO" secondAttribute="centerX" id="i9O-hj-20S"/>
+                            <constraint firstItem="iEi-wO-VJO" firstAttribute="trailing" secondItem="gjj-0Y-zYR" secondAttribute="trailing" constant="30" id="jWO-zJ-jsA"/>
+                            <constraint firstItem="TYr-Hc-cck" firstAttribute="top" secondItem="iEi-wO-VJO" secondAttribute="top" constant="16" id="ss2-30-o5e"/>
+                            <constraint firstItem="gjj-0Y-zYR" firstAttribute="centerX" secondItem="iEi-wO-VJO" secondAttribute="centerX" id="xjV-ti-s27"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iEi-wO-VJO"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="IjM-ws-b27" id="Sby-pq-rep"/>
+                        <outlet property="nextButton" destination="Wdd-cM-qob" id="yda-0I-cbA"/>
+                        <outlet property="titleLabel" destination="gjj-0Y-zYR" id="iVs-7h-3ub"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A9O-Bx-2vD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="30" height="30"/>
+        <image name="onboarding-icon-age" width="32" height="32"/>
+    </resources>
+</document>
