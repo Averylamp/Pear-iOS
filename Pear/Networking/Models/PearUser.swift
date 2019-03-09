@@ -34,20 +34,7 @@ class PearUser: Codable, CustomStringConvertible {
   var schoolEmailVerified: String?
   var birthdate: Date?
   var age: Int
-  
-  //    var profileIDs: []
-  //    var profileObjs: [String?]
-  //    var endorsedProfileIDs: []
-  //    var endorsedProfileObjs: [String?]
-  //    var userPreferences: String?
-  //    var userStats: String?
-  //    var userDemographics: String?
-  //    var userMatchesID: String?
-  //    var userMatches: String?
-  //    var discoveryIDs: String?
-  //    var discoveryObj: String?
-  //    var pearPoints: String?
-  
+
   // swiftlint:disable:next line_length
   static let graphQLUserFields: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender locationName locationCoordinates school schoolEmail schoolEmailVerified birthdate age profile_ids endorsedProfile_ids matchingPreferences { seekingGender } userStats { totalNumberOfMatches totalNumberOfMatches } matchingDemographics { ethnicities } userMatches_id discoveryQueue_id pearPoints }"
   

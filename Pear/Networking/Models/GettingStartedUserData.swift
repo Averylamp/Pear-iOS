@@ -76,14 +76,20 @@ class GettingStartedUserData: CustomStringConvertible {
       return userLastNameVC
     }
     
-    if self.age  == nil {
-      print("User Åge Missing")
-      print("RED FLAGSS")
+    if self.age  == nil || self.birthdate  == nil {
+      guard let birthdateVC = GetStartedBirthdateViewController.instantiate(gettingStartedUserData: self) else {
+        print("Failed to start Birthdate VC")
+        return nil
+      }
+      return birthdateVC
     }
     
-    if self.birthdate  == nil {
-      print("User Birthday Missing")
-      print("RED FLAGSS")
+    if self.gender == nil {
+      guard let genderVC = GetStartedUserGenderViewController.instantiate(gettingStartedData: self) else {
+        print("Failed to start Gender VC")
+        return nil
+      }
+      return genderVC
     }
     
     if self.phoneNumber == nil {
