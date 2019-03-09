@@ -22,9 +22,9 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
   var dos: [String]
   var donts: [String]
   var imageIDs: [String]
-//  var images: String!
+  //  var images: String!
   
-    static let graphQLDetachedProfileFields = "{ _id creatorUser_id firstName phoneNumber age gender interests vibes bio dos donts imageIDs images \(GraphQLQueryStrings.imageSizesFull) matchingDemographics \(GraphQLQueryStrings.matchingDemographicsFull) matchingPreferences \(GraphQLQueryStrings.matchingPreferencesFull) }"
+  static let graphQLDetachedProfileFields = "{ _id creatorUser_id firstName phoneNumber age gender interests vibes bio dos donts imageIDs images \(GraphQLQueryStrings.imageSizesFull) matchingDemographics \(GraphQLQueryStrings.matchingDemographicsFull) matchingPreferences \(GraphQLQueryStrings.matchingPreferencesFull) }"
   
   var description: String {
     return "**** Pear Detached Profile **** \n" + """

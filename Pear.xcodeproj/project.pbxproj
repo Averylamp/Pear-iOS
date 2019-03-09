@@ -607,8 +607,8 @@
 			children = (
 				BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */,
 				BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */,
-				BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */,
 				BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */,
+				BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */,
 			);
 			path = "Gender Input";
 			sourceTree = "<group>";
