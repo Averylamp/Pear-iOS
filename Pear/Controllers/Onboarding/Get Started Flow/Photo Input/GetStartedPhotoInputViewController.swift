@@ -122,9 +122,9 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
                 self.openGallery()
             }))
 
-            alert.addAction(UIAlertAction(title: "Facebook", style: .default, handler: { _ in
-                self.openGallery()
-            }))
+//            alert.addAction(UIAlertAction(title: "Facebook", style: .default, handler: { _ in
+//                self.openGallery()
+//            }))
 
             alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
 
