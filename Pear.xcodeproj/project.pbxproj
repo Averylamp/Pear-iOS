@@ -20,6 +20,7 @@
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
+		BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */; };
 		BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16B7222EE6D200915C1C /* DataStore.swift */; };
 		BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */; };
 		BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BD222F20CD00915C1C /* GetStartedVibeViewController.swift */; };
@@ -184,6 +185,7 @@
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
 		BA268D5E8F23A5DE4CCFEE8C /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
+		BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfileConstants.swift; sourceTree = "<group>"; };
 		BB0F16B7222EE6D200915C1C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConfig.swift; sourceTree = "<group>"; };
 		BB0F16BD222F20CD00915C1C /* GetStartedVibeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedVibeViewController.swift; sourceTree = "<group>"; };
@@ -470,8 +472,9 @@
 			isa = PBXGroup;
 			children = (
 				BB796F89222DB19300E31C7F /* PearUser.swift */,
-				BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */,
 				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
+				BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */,
+				BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */,
 				BBE8D0272214022600FD1355 /* ProfileData.swift */,
 				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
 				BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */,
@@ -1319,6 +1322,7 @@
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
+				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
