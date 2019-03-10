@@ -25,18 +25,18 @@ class GetStartedWaitlistViewController: UIViewController {
   
   @IBAction func createFriendsProfileClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let startFriendProfileVC = GetStartedStartFriendProfileViewController.instantiate() else {
-      print("Failed to create Start Friend Profile VC")
-      return
-    }
-    self.navigationController?.setViewControllers([startFriendProfileVC], animated: true)
-    //      let gsupd = GettingStartedUserProfileData()
-    //      gsupd.fakePopulate()
-    //      guard let imageVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: gsupd) else {
-    //        print("Faield to create image vc")
-    //        return
-    //      }
-    //      self.navigationController?.setViewControllers([imageVC], animated: true)
+//    guard let startFriendProfileVC = GetStartedStartFriendProfileViewController.instantiate() else {
+//      print("Failed to create Start Friend Profile VC")
+//      return
+//    }
+//    self.navigationController?.setViewControllers([startFriendProfileVC], animated: true)
+          let gsupd = GettingStartedUserProfileData()
+          gsupd.fakePopulate()
+          guard let imageVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: gsupd) else {
+            print("Faield to create image vc")
+            return
+          }
+          self.navigationController?.setViewControllers([imageVC], animated: true)
   }
 }
 

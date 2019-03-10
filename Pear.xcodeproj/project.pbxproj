@@ -52,14 +52,10 @@
 		BB3F4AEB2234259D00F99C8E /* GetStartedUserGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */; };
 		BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
-		BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */; };
 		BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */; };
 		BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */; };
-		BB56D23122142E7B00A652E7 /* ProfileDoDontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23022142E7B00A652E7 /* ProfileDoDontViewController.swift */; };
-		BB56D23322142E8F00A652E7 /* ProfileImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23222142E8F00A652E7 /* ProfileImageViewController.storyboard */; };
 		BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */; };
 		BB56D23722142EA700A652E7 /* ProfileAboutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */; };
-		BB56D23922142EB100A652E7 /* ProfileDoDontViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */; };
 		BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */; };
 		BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
@@ -132,6 +128,16 @@
 		BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */; };
 		BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */; };
 		BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */; };
+		BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */; };
+		BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */; };
+		BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */; };
+		BBA2B42C223504E200D8C27B /* ProfileBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */; };
+		BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B42F223504FE00D8C27B /* ProfileImageViewController.swift */; };
+		BBA2B4322235051400D8C27B /* ProfileDoDontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4312235051400D8C27B /* ProfileDoDontViewController.swift */; };
+		BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */; };
+		BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */; };
+		BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B437223505F000D8C27B /* ProfileImageViewController.storyboard */; };
+		BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */; };
 		BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */; };
 		BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */; };
 		BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */; };
@@ -218,14 +224,10 @@
 		BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedUserGenderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedUserGenderViewController.swift; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
-		BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationViewController.swift; sourceTree = "<group>"; };
 		BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAboutViewController.swift; sourceTree = "<group>"; };
-		BB56D23022142E7B00A652E7 /* ProfileDoDontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoDontViewController.swift; sourceTree = "<group>"; };
-		BB56D23222142E8F00A652E7 /* ProfileImageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileImageViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInformationViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileAboutViewController.storyboard; sourceTree = "<group>"; };
-		BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDoDontViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileViewController.swift; sourceTree = "<group>"; };
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
@@ -299,6 +301,16 @@
 		BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhotoInputViewController.storyboard; sourceTree = "<group>"; };
 		BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedCreateAccountViewController.storyboard; sourceTree = "<group>"; };
 		BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Helpers.swift"; sourceTree = "<group>"; };
+		BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileStackViewController.swift; sourceTree = "<group>"; };
+		BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileStackViewController.storyboard; sourceTree = "<group>"; };
+		BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDemographicsViewController.swift; sourceTree = "<group>"; };
+		BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBioViewController.swift; sourceTree = "<group>"; };
+		BBA2B42F223504FE00D8C27B /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
+		BBA2B4312235051400D8C27B /* ProfileDoDontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoDontViewController.swift; sourceTree = "<group>"; };
+		BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDemographicsViewController.storyboard; sourceTree = "<group>"; };
+		BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileBioViewController.storyboard; sourceTree = "<group>"; };
+		BBA2B437223505F000D8C27B /* ProfileImageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileImageViewController.storyboard; sourceTree = "<group>"; };
+		BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDoDontViewController.storyboard; sourceTree = "<group>"; };
 		BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
@@ -633,6 +645,14 @@
 				BB75BFCC22155FB100BAB800 /* Profile Info */,
 				BB75BFCD22155FBA00BAB800 /* Profile Bio */,
 				BB75BFCE22155FC000BAB800 /* Profile DoDont */,
+				BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */,
+				BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */,
+				BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */,
+				BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */,
+				BBA2B42F223504FE00D8C27B /* ProfileImageViewController.swift */,
+				BBA2B437223505F000D8C27B /* ProfileImageViewController.storyboard */,
+				BBA2B4312235051400D8C27B /* ProfileDoDontViewController.swift */,
+				BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -702,6 +722,8 @@
 				BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */,
 				BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */,
 				BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */,
+				BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */,
+				BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */,
 			);
 			path = "Full Profile View";
 			sourceTree = "<group>";
@@ -709,8 +731,6 @@
 		BB75BFCB22155FA400BAB800 /* Profile Image Slider */ = {
 			isa = PBXGroup;
 			children = (
-				BB56D22A22142E5F00A652E7 /* ProfileImageViewController.swift */,
-				BB56D23222142E8F00A652E7 /* ProfileImageViewController.storyboard */,
 			);
 			path = "Profile Image Slider";
 			sourceTree = "<group>";
@@ -736,8 +756,6 @@
 		BB75BFCE22155FC000BAB800 /* Profile DoDont */ = {
 			isa = PBXGroup;
 			children = (
-				BB56D23022142E7B00A652E7 /* ProfileDoDontViewController.swift */,
-				BB56D23822142EB100A652E7 /* ProfileDoDontViewController.storyboard */,
 			);
 			path = "Profile DoDont";
 			sourceTree = "<group>";
@@ -1097,8 +1115,9 @@
 			files = (
 				BB18789321E2B21800964F26 /* DiscoverMainViewController.storyboard in Resources */,
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
-				BB56D23922142EB100A652E7 /* ProfileDoDontViewController.storyboard in Resources */,
+				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
+				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
 				BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */,
 				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
@@ -1122,10 +1141,10 @@
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
 				BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */,
 				BB33E74B2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard in Resources */,
-				BB56D23322142E8F00A652E7 /* ProfileImageViewController.storyboard in Resources */,
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
 				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
+				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
 				BB75BFD2221560FD00BAB800 /* GetStartedProfileReviewViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
@@ -1138,6 +1157,7 @@
 				BBB70AE722233A77006B75A0 /* Nunito-ExtraBold.ttf in Resources */,
 				BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedStartFriendProfileViewController.storyboard in Resources */,
+				BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */,
@@ -1152,6 +1172,7 @@
 				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
 				BB6C064D2227F762007A5C96 /* GetStartedAllowLocationViewController.storyboard in Resources */,
+				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
 				BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
@@ -1264,10 +1285,11 @@
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
-				BB56D23122142E7B00A652E7 /* ProfileDoDontViewController.swift in Sources */,
+				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
+				BBA2B4322235051400D8C27B /* ProfileDoDontViewController.swift in Sources */,
 				BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */,
 				BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* StylingConfig.swift in Sources */,
@@ -1306,7 +1328,6 @@
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
 				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
-				BB56D22B22142E5F00A652E7 /* ProfileImageViewController.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
@@ -1331,6 +1352,7 @@
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */,
+				BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */,
 				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
 				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
@@ -1343,11 +1365,13 @@
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */,
+				BBA2B42C223504E200D8C27B /* ProfileBioViewController.swift in Sources */,
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
 				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageAllSizesRepresentation.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */,
+				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
 				BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */,
 				BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */,
 			);
