@@ -114,76 +114,76 @@ extension FullProfileViewController {
   }
   
   func addInformationVC() {
-    var endorsedName = self.profileData.endorsedFirstName!
-    if let endorsedLastName = self.profileData.endorsedLastName {
-      endorsedName += " " + String(endorsedLastName.prefix(1)) + "."
-    }
-    
-    if let profileInformationVC = ProfileInformationViewController.instantiate(firstName: self.profileData.firstName,
-                                                                               age: self.profileData.age,
-                                                                               endorsedName: endorsedName,
-                                                                               locationData: self.profileData.locationData,
-                                                                               schoolName: self.profileData.schoolName,
-                                                                               workData: self.profileData.work) {
-      self.addChild(profileInformationVC)
-      self.stackView.addArrangedSubview(profileInformationVC.view)
-      profileInformationVC.didMove(toParent: self)
-      profileInformationVC.view.translatesAutoresizingMaskIntoConstraints = false
-      let profileInformationHeightConstraint =
-        NSLayoutConstraint(item: profileInformationVC.view, attribute: .height, relatedBy: .equal,
-                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
-      self.view.addConstraints([
-        NSLayoutConstraint(item: profileInformationVC.view, attribute: .width, relatedBy: .equal,
-                           toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-        profileInformationHeightConstraint
-        ])
-      profileInformationVC.setHeightConstraint(constraint: profileInformationHeightConstraint)
-    } else {
-      print("Failed to create proile info VC")
-    }
+//    var endorsedName = self.profileData.endorsedFirstName!
+//    if let endorsedLastName = self.profileData.endorsedLastName {
+//      endorsedName += " " + String(endorsedLastName.prefix(1)) + "."
+//    }
+//    
+//    if let profileInformationVC = ProfileInformationViewController.instantiate(firstName: self.profileData.firstName,
+//                                                                               age: self.profileData.age,
+//                                                                               endorsedName: endorsedName,
+//                                                                               locationData: self.profileData.locationData,
+//                                                                               schoolName: self.profileData.schoolName,
+//                                                                               workData: self.profileData.work) {
+//      self.addChild(profileInformationVC)
+//      self.stackView.addArrangedSubview(profileInformationVC.view)
+//      profileInformationVC.didMove(toParent: self)
+//      profileInformationVC.view.translatesAutoresizingMaskIntoConstraints = false
+//      let profileInformationHeightConstraint =
+//        NSLayoutConstraint(item: profileInformationVC.view, attribute: .height, relatedBy: .equal,
+//                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+//      self.view.addConstraints([
+//        NSLayoutConstraint(item: profileInformationVC.view, attribute: .width, relatedBy: .equal,
+//                           toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+//        profileInformationHeightConstraint
+//        ])
+//      profileInformationVC.setHeightConstraint(constraint: profileInformationHeightConstraint)
+//    } else {
+//      print("Failed to create proile info VC")
+//    }
     
   }
   
   func addBioVC() {
-    guard let profileInformationVC = ProfileAboutViewController.instantiate(aboutBio: self.profileData.shortBio) else {
-      print("Failed to create Proile Information VC")
-      return
-    }
-    self.addChild(profileInformationVC)
-    self.stackView.addArrangedSubview(profileInformationVC.view)
-    profileInformationVC.didMove(toParent: self)
-    profileInformationVC.view.translatesAutoresizingMaskIntoConstraints = false
-    let profileShortBioHeightConstraint =
-      NSLayoutConstraint(item: profileInformationVC.view, attribute: .height, relatedBy: .equal,
-                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
-    self.view.addConstraints([
-      NSLayoutConstraint(item: profileInformationVC.view, attribute: .width, relatedBy: .equal,
-                         toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-      profileShortBioHeightConstraint
-      ])
-    profileInformationVC.setHeightConstraint(constraint: profileShortBioHeightConstraint)
+//    guard let profileInformationVC = ProfileAboutViewController.instantiate(aboutBio: self.profileData.shortBio) else {
+//      print("Failed to create Proile Information VC")
+//      return
+//    }
+//    self.addChild(profileInformationVC)
+//    self.stackView.addArrangedSubview(profileInformationVC.view)
+//    profileInformationVC.didMove(toParent: self)
+//    profileInformationVC.view.translatesAutoresizingMaskIntoConstraints = false
+//    let profileShortBioHeightConstraint =
+//      NSLayoutConstraint(item: profileInformationVC.view, attribute: .height, relatedBy: .equal,
+//                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+//    self.view.addConstraints([
+//      NSLayoutConstraint(item: profileInformationVC.view, attribute: .width, relatedBy: .equal,
+//                         toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+//      profileShortBioHeightConstraint
+//      ])
+//    profileInformationVC.setHeightConstraint(constraint: profileShortBioHeightConstraint)
     
   }
   
   func addDoDontVC() {
-    if let profileDoDontVC = ProfileDoDontViewController.instantiate(doStrings: self.profileData.doList, dontStrings: self.profileData.dontList) {
-      self.addChild(profileDoDontVC)
-      self.stackView.addArrangedSubview(profileDoDontVC.view)
-      profileDoDontVC.didMove(toParent: self)
-      profileDoDontVC.view.translatesAutoresizingMaskIntoConstraints = false
-      let profileDoDontHeightConstraint =
-        NSLayoutConstraint(item: profileDoDontVC.view, attribute: .height, relatedBy: .equal,
-                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
-      self.view.addConstraints([
-        NSLayoutConstraint(item: profileDoDontVC.view, attribute: .width, relatedBy: .equal,
-                           toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-        profileDoDontHeightConstraint
-        ])
-      profileDoDontVC.setHeightConstraint(constraint: profileDoDontHeightConstraint)
-    } else {
-      print("Failed to create Do Dont VC")
-    }
-    
+//    if let profileDoDontVC = ProfileDoDontViewController.instantiate(doStrings: self.profileData.doList, dontStrings: self.profileData.dontList) {
+//      self.addChild(profileDoDontVC)
+//      self.stackView.addArrangedSubview(profileDoDontVC.view)
+//      profileDoDontVC.didMove(toParent: self)
+//      profileDoDontVC.view.translatesAutoresizingMaskIntoConstraints = false
+//      let profileDoDontHeightConstraint =
+//        NSLayoutConstraint(item: profileDoDontVC.view, attribute: .height, relatedBy: .equal,
+//                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+//      self.view.addConstraints([
+//        NSLayoutConstraint(item: profileDoDontVC.view, attribute: .width, relatedBy: .equal,
+//                           toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+//        profileDoDontHeightConstraint
+//        ])
+//      profileDoDontVC.setHeightConstraint(constraint: profileDoDontHeightConstraint)
+//    } else {
+//      print("Failed to create Do Dont VC")
+//    }
+//
   }
   
   func addSeperator() {

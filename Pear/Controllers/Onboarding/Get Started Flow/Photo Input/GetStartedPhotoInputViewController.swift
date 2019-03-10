@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedPhotoInputViewController: UIViewController {
   
-  var gettingStartedData: GettingStartedUserProfileData!
+  var gettingStartedUserProfileData: GettingStartedUserProfileData!
   
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var collectionView: UICollectionView!
@@ -31,12 +31,12 @@ class GetStartedPhotoInputViewController: UIViewController {
   class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedPhotoInputViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedPhotoInputViewController.self), bundle: nil)
     guard let photoInputVC = storyboard.instantiateInitialViewController() as? GetStartedPhotoInputViewController else { return nil }
-    photoInputVC.gettingStartedData = gettingStartedData
+    photoInputVC.gettingStartedUserProfileData = gettingStartedData
     return photoInputVC
   }
   
   func saveImages() {
-    self.gettingStartedData.images = self.images
+    self.gettingStartedUserProfileData.images = self.images
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -52,12 +52,18 @@ class GetStartedPhotoInputViewController: UIViewController {
     //            self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
     //            return
     //        }
-    
-    guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-      print("Failed to create Notify Friend VC")
+
+    guard let profileReviewVC = FullProfileStackViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
+      print("Failed to create Full VC")
       return
     }
-    self.navigationController?.pushViewController(notifyFriendVC, animated: true)
+    self.navigationController?.pushViewController(profileReviewVC, animated: true)
+    
+//    guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+//      print("Failed to create Notify Friend VC")
+//      return
+//    }
+//    self.navigationController?.pushViewController(notifyFriendVC, animated: true)
     //        guard let profileReviewVC = GetStartedProfileReviewViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
     //            print("Failed to create profile Review VC")
     //            return
@@ -98,7 +104,7 @@ extension GetStartedPhotoInputViewController {
   }
   
   func restoreGettingStartedState() {
-    self.images = self.gettingStartedData.images
+    self.images = self.gettingStartedUserProfileData.images
   }
   
   func setupCollectionView() {
