@@ -52,10 +52,6 @@
 		BB3F4AEB2234259D00F99C8E /* GetStartedUserGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */; };
 		BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
-		BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */; };
-		BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */; };
-		BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */; };
-		BB56D23722142EA700A652E7 /* ProfileAboutViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */; };
 		BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */; };
 		BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
@@ -224,10 +220,6 @@
 		BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedUserGenderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedUserGenderViewController.swift; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
-		BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformationViewController.swift; sourceTree = "<group>"; };
-		BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAboutViewController.swift; sourceTree = "<group>"; };
-		BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInformationViewController.storyboard; sourceTree = "<group>"; };
-		BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileAboutViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileViewController.swift; sourceTree = "<group>"; };
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
@@ -641,9 +633,6 @@
 			isa = PBXGroup;
 			children = (
 				BB75BFCA22155F9100BAB800 /* Full Profile View */,
-				BB75BFCB22155FA400BAB800 /* Profile Image Slider */,
-				BB75BFCC22155FB100BAB800 /* Profile Info */,
-				BB75BFCD22155FBA00BAB800 /* Profile Bio */,
 				BB75BFCE22155FC000BAB800 /* Profile DoDont */,
 				BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */,
 				BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */,
@@ -726,31 +715,6 @@
 				BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */,
 			);
 			path = "Full Profile View";
-			sourceTree = "<group>";
-		};
-		BB75BFCB22155FA400BAB800 /* Profile Image Slider */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Profile Image Slider";
-			sourceTree = "<group>";
-		};
-		BB75BFCC22155FB100BAB800 /* Profile Info */ = {
-			isa = PBXGroup;
-			children = (
-				BB56D22C22142E6700A652E7 /* ProfileInformationViewController.swift */,
-				BB56D23422142E9C00A652E7 /* ProfileInformationViewController.storyboard */,
-			);
-			path = "Profile Info";
-			sourceTree = "<group>";
-		};
-		BB75BFCD22155FBA00BAB800 /* Profile Bio */ = {
-			isa = PBXGroup;
-			children = (
-				BB56D22E22142E7300A652E7 /* ProfileAboutViewController.swift */,
-				BB56D23622142EA700A652E7 /* ProfileAboutViewController.storyboard */,
-			);
-			path = "Profile Bio";
 			sourceTree = "<group>";
 		};
 		BB75BFCE22155FC000BAB800 /* Profile DoDont */ = {
@@ -1125,7 +1089,6 @@
 				60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
-				BB56D23722142EA700A652E7 /* ProfileAboutViewController.storyboard in Resources */,
 				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
@@ -1139,7 +1102,6 @@
 				BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */,
 				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
-				BB56D23522142E9C00A652E7 /* ProfileInformationViewController.storyboard in Resources */,
 				BB33E74B2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard in Resources */,
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
 				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
@@ -1334,7 +1296,6 @@
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageSizeRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */,
-				BB56D22D22142E6700A652E7 /* ProfileInformationViewController.swift in Sources */,
 				BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */,
 				BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
@@ -1354,7 +1315,6 @@
 				BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */,
 				BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */,
 				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
-				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
