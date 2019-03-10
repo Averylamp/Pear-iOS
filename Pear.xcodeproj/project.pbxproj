@@ -131,6 +131,7 @@
 		BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */; };
 		BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */; };
 		BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */; };
+		BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */; };
 		BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */; };
 		BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */; };
 		BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */; };
@@ -297,6 +298,7 @@
 		BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSampleBiosViewController.storyboard; sourceTree = "<group>"; };
 		BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhotoInputViewController.storyboard; sourceTree = "<group>"; };
 		BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedCreateAccountViewController.storyboard; sourceTree = "<group>"; };
+		BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Helpers.swift"; sourceTree = "<group>"; };
 		BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0F16B7222EE6D200915C1C /* DataStore.swift */,
+				BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */,
 				BB610E9B222A1EDB00901FC3 /* Generators */,
 				BB0F16BA222EE73F00915C1C /* UX */,
 				BB0F16B9222EE72800915C1C /* Helpers */,
@@ -1330,6 +1333,7 @@
 				BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */,
 				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
 				BB56D22F22142E7300A652E7 /* ProfileAboutViewController.swift in Sources */,
+				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
