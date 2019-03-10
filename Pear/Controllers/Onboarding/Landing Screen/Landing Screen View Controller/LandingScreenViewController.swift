@@ -218,33 +218,46 @@ private extension LandingScreenViewController {
                 print("Failed to log in user")
                 return
               }
-              
-              gettingStartedUser.firebaseAuthID = user.uid
-              
-              var facebookLogin = false
-              var emailLogin = false
-              var phoneLogin = false
-              
-              user.providerData.forEach({ (userInfo) in
-                print(userInfo.providerID)
-                if userInfo.providerID == FacebookAuthProviderID {
-                  print("Facebook Found")
-                  facebookLogin = true
-                } else if userInfo.providerID == EmailAuthProviderID {
-                  print("Email Found")
-                  emailLogin = true
-                } else if userInfo.providerID == PhoneAuthProviderID {
-                  print("Phone Found")
-                  phoneLogin = true
+                            
+              DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+                DispatchQueue.main.async {
+                  guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
+                    print("Failed to create Landing Screen VC")
+                    return
+                  }
+                  self.navigationController?.setViewControllers([waitlistVC], animated: true)
+                }
+              }, userNotFoundCompletion: {
+                gettingStartedUser.firebaseAuthID = user.uid
+                
+                var facebookLogin = false
+                var emailLogin = false
+                var phoneLogin = false
+                
+                user.providerData.forEach({ (userInfo) in
+                  print(userInfo.providerID)
+                  if userInfo.providerID == FacebookAuthProviderID {
+                    print("Facebook Found")
+                    facebookLogin = true
+                  } else if userInfo.providerID == EmailAuthProviderID {
+                    print("Email Found")
+                    emailLogin = true
+                  } else if userInfo.providerID == PhoneAuthProviderID {
+                    print("Phone Found")
+                    phoneLogin = true
+                  }
+                })
+                if (facebookLogin && phoneLogin) || (emailLogin && phoneLogin) {
+                  print("Probably already created account")
+                }
+                
+                DispatchQueue.main.async {
+                  if let nextVC = gettingStartedUser.getNextInputViewController() {
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                  }                  
                 }
               })
-              if (facebookLogin && phoneLogin) || (emailLogin && phoneLogin) {
-                print("Probably already created account")
-              }
               
-              if let nextVC = gettingStartedUser.getNextInputViewController() {
-                self.navigationController?.pushViewController(nextVC, animated: true)
-              }
             }
           }
         })

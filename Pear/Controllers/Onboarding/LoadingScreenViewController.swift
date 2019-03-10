@@ -28,42 +28,11 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.checkForExistingUser()
-  }
-  
-  func checkForExistingUser() {
-    
-    if let currentUser = Auth.auth().currentUser {
-      let uid = currentUser.uid
-      currentUser.getIDToken { (token, error) in
-        if let error = error {
-          print("Error getting token: \(error)")
-          self.continueToLandingScreen()
-          return
-        }
-        if let token = token {
-          PearUserAPI.shared.getUser(uid: uid,
-                                     token: token,
-                                     completion: { (result) in
-                                      switch result {
-                                      case .success(let pearUser):
-                                        print("Got Existing Pear User \(String(describing: pearUser))")
-                                        DataStore.shared.currentPearUser = pearUser
-                                        self.continueToMainScreen()
-                                      case .failure(let error):
-                                        print("Error getting Pear User: \(error)")
-                                        self.continueToLandingScreen()
-                                      }
-          })
-          
-        } else {
-          print("No token found")
-          self.continueToLandingScreen()
-        }
-      }
-    } else {
+    DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+      self.continueToMainScreen()
+    }, userNotFoundCompletion: {
       self.continueToLandingScreen()
-    }
+    })
   }
   
   func checkForDetachedProfiles() {

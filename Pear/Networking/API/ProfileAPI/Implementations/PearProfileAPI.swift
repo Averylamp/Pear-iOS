@@ -9,10 +9,11 @@
 import Foundation
 import SwiftyJSON
 
-enum ProfileCreationError: Error {
+enum DetachedProfileError: Error {
   case invalidVariables
   case userNotLoggedIn
   case failedDeserialization
+  case noDetachedProfilesFound
   case graphQLError(message: String)
 }
 
@@ -136,10 +137,24 @@ extension PearProfileAPI {
           if  let data = data,
             let json = try? JSON(data: data) {
             print(json)
-            if let profiles = json.array {
-              print("\(profiles.count) Detached profiles found matching your phone number")
-            }
             do {
+              if let profiles = json["data"]["findDetachedProfiles"].array {
+                var detachedProfiles: [PearDetachedProfile] = []
+                print("\(profiles.count) Detached profiles found matching your phone number")
+                for profile in profiles {
+                  let pearDetachedProfileData = try profile.rawData()
+                  let pearDetachedUser = try JSONDecoder().decode(PearDetachedProfile.self, from: pearDetachedProfileData)
+                  detachedProfiles.append(pearDetachedUser)
+                }
+                if detachedProfiles.count > 0 {
+                  completion(.success(detachedProfiles))
+                } else {
+                  completion(.failure(DetachedProfileError.failedDeserialization))
+                }
+                
+              } else {
+                completion(.failure(DetachedProfileError.noDetachedProfilesFound))
+              }
               
             } catch {
               print("Error: \(error)")
@@ -148,15 +163,15 @@ extension PearProfileAPI {
             }
           } else {
             print("Failed Conversions")
-            completion(.failure(UserCreationError.failedDeserialization))
+            completion(.failure(DetachedProfileError.failedDeserialization))
             return
           }
         }
       }
       dataTask.resume()
-    } catch let error as UserCreationError {
+    } catch let error as DetachedProfileError {
       
-      print("Invalid variables for user creation error")
+      print("Invalid variables for detached profile error")
       completion(.failure(error))
     } catch {
       print(error)
@@ -179,7 +194,7 @@ extension PearProfileAPI {
       let age = userProfileData.age,
       let gender = userProfileData.gender,
       let bio = userProfileData.bio else {
-        throw ProfileCreationError.invalidVariables
+        throw DetachedProfileError.invalidVariables
     }
     
     let (imageIDs, imageSizes) = ImageAllSizesRepresentation
@@ -188,7 +203,7 @@ extension PearProfileAPI {
         .map({ $0.imageSizesRepresentation! }))
     
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
-      throw ProfileCreationError.userNotLoggedIn
+      throw DetachedProfileError.userNotLoggedIn
     }
     
     let variablesDictionary: [String: Any] = [
