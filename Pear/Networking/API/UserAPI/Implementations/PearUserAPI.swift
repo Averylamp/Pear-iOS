@@ -9,12 +9,6 @@
 import Foundation
 import SwiftyJSON
 
-enum UserCreationError: Error {
-  case invalidVariables
-  case failedDeserialization
-  case graphQLError(message: String)
-}
-
 class PearUserAPI: UserAPI {
   
   static let shared = PearUserAPI()
@@ -35,7 +29,7 @@ class PearUserAPI: UserAPI {
 // MARK: - Routes
 extension PearUserAPI {
   
-  func getUser(uid: String, token: String, completion: @escaping (Result<PearUser, Error>) -> Void) {
+  func getUser(uid: String, token: String, completion: @escaping (Result<PearUser, UserAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -60,7 +54,7 @@ extension PearUserAPI {
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
         if let error = error {
           print(error as Any)
-          completion(.failure(error))
+          completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
           if  let data = data,
@@ -79,33 +73,33 @@ extension PearUserAPI {
                 return
               } else {
                 print("Failed to get Pear User Data")
-                completion(.failure(UserCreationError.failedDeserialization))
+                completion(.failure(UserAPIError.failedDeserialization))
                 return
               }
             } catch {
               print("Error: \(error)")
-              completion(.failure(error))
+              completion(.failure(UserAPIError.unknownError(error: error)))
               return
             }
           } else {
             print("Failed Conversions")
-            completion(.failure(UserCreationError.failedDeserialization))
+            completion(.failure(UserAPIError.failedDeserialization))
             return
           }
         }
       }
       dataTask.resume()
-    } catch let error as UserCreationError {
+    } catch let error as UserAPIError {
       
       print("Invalid variables for user creation error")
       completion(.failure(error))
     } catch {
       print(error)
-      completion(.failure(error))
+      completion(.failure(UserAPIError.unknownError(error: error)))
     }
   }
   
-  func createNewUser(with gettingStartedUserData: GettingStartedUserData, completion: @escaping (Result<PearUser, Error>) -> Void) {
+  func createNewUser(with gettingStartedUserData: GettingStartedUserData, completion: @escaping (Result<PearUser, UserAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -127,7 +121,7 @@ extension PearUserAPI {
         print("Data task returned")
         if let error = error {
           print(error as Any)
-          completion(.failure(error))
+          completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
           if  let data = data,
@@ -146,30 +140,30 @@ extension PearUserAPI {
                 return
               } else {
                 print("Failed to get Pear User Data")
-                completion(.failure(UserCreationError.failedDeserialization))
+                completion(.failure(UserAPIError.failedDeserialization))
                 return
               }
             } catch {
               print("Error: \(error)")
-              completion(.failure(error))
+              completion(.failure(UserAPIError.unknownError(error: error)))
               return
             }
           } else {
             print("Failed Conversions")
-            completion(.failure(UserCreationError.failedDeserialization))
+            completion(.failure(UserAPIError.failedDeserialization))
             return
           }
         }
         
       }
       dataTask.resume()
-    } catch let error as UserCreationError {
+    } catch let error as UserAPIError {
       
       print("Invalid variables for user creation error")
       completion(.failure(error))
     } catch {
       print(error)
-      completion(.failure(error))
+      completion(.failure(UserAPIError.unknownError(error: error)))
     }
   }
   
@@ -190,7 +184,7 @@ extension PearUserAPI {
       let firebaseToken = userData.firebaseToken,
       let firebaseAuthID = userData.firebaseAuthID
       else {
-        throw UserCreationError.invalidVariables
+        throw UserAPIError.invalidVariables
     }
     
     var variablesDictionary: [String: Any] = [
