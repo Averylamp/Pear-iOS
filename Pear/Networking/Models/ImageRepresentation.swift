@@ -17,16 +17,14 @@ enum ImageSize: String {
   case unknown
 }
 
-class ImageSizeRepresentation {
+class ImageRepresentation {
   
   let imageSize: ImageSize
   let imageURL: String
-  let imageID: String
   let height: Int
   let width: Int
   
-  init(imageID: String, imageSize: ImageSize, publicURL: String, height: Int, width: Int) {
-    self.imageID = imageID
+  init(imageSize: ImageSize, publicURL: String, height: Int, width: Int) {
     self.imageSize = imageSize
     self.imageURL = publicURL
     self.height = height
@@ -36,11 +34,8 @@ class ImageSizeRepresentation {
   func toDatabaseFormat() -> [String: Any] {
     return [
       "imageURL": imageURL,
-      "imageID": imageID,
-      "imageSize": [
-        "width": width,
-        "height": height
-      ]
+      "width": width,
+      "height": height
     ]
   }
   

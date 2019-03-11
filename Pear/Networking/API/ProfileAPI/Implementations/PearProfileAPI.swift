@@ -197,7 +197,7 @@ extension PearProfileAPI {
         throw DetachedProfileError.invalidVariables
     }
     
-    let (imageIDs, imageSizes) = ImageAllSizesRepresentation
+    let (imageIDs, imageSizes) = ImageContainer
       .convertArrayToDatabaseFormat(images: userProfileData.images
         .filter({ $0.imageSizesRepresentation != nil })
         .map({ $0.imageSizesRepresentation! }))
