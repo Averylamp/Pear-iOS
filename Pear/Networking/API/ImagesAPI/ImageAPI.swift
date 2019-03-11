@@ -13,5 +13,5 @@ enum ImageAPIError: Error {
 }
 
 protocol ImageAPI {
-  func uploadNewImage(with image: UIImage, completion: @escaping (Result<ImageAllSizesRepresentation, ImageAPIError>) -> Void)
+  func uploadNewImage(with image: UIImage, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void)
 }

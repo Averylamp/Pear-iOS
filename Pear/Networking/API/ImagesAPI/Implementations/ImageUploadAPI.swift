@@ -18,7 +18,7 @@ class ImageUploadAPI: ImageAPI {
     
   }
   
-  func uploadNewImage(with image: UIImage, completion: @escaping (Result<ImageAllSizesRepresentation, ImageAPIError>) -> Void) {
+  func uploadNewImage(with image: UIImage, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
     
     let headers: [String: String] = [
       "Content-Type": "application/json"
@@ -42,11 +42,11 @@ class ImageUploadAPI: ImageAPI {
             print(error as Any)
           } else {
             if let data = data, let json = JSON(rawValue: data), let sizeMap = json["size_map"].dictionary {
-              var original: ImageSizeRepresentation?
-              var large: ImageSizeRepresentation?
-              var medium: ImageSizeRepresentation?
-              var small: ImageSizeRepresentation?
-              var thumb: ImageSizeRepresentation?
+              var original: ImageRepresentation?
+              var large: ImageRepresentation?
+              var medium: ImageRepresentation?
+              var small: ImageRepresentation?
+              var thumb: ImageRepresentation?
               for (sizeType, sizeData) in sizeMap {
                 if let imageID = sizeData["imageID"].string,
                   let imageURL = sizeData["imageURL"].string,
@@ -54,7 +54,7 @@ class ImageUploadAPI: ImageAPI {
                   let imageWidth = imageSize["width"]?.int,
                   let imageHeight = imageSize["height"]?.int {
                   let imageSizeRep =
-                    ImageSizeRepresentation(imageID: imageID,
+                    ImageRepresentation(imageID: imageID,
                                             imageSize: ImageSize(rawValue: sizeType) ?? .unknown,
                                             publicURL: imageURL,
                                             height: imageHeight,
@@ -81,7 +81,7 @@ class ImageUploadAPI: ImageAPI {
               guard let smallImageRep = small else { return }
               guard let thumbImageRep = thumb else { return }
               
-              guard let allImageSizesRep  = ImageAllSizesRepresentation(original: originalImageRep,
+              guard let allImageSizesRep  = ImageContainer(original: originalImageRep,
                                                                         large: largeImageRep,
                                                                         medium: mediumImageRep,
                                                                         small: smallImageRep,
