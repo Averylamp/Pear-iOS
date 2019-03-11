@@ -6,7 +6,19 @@
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
-class ImageContainer {
+enum ImageContainerCodingKeys: String, CodingKey {
+  case imageID
+  case original
+  case large
+  case medium
+  case small
+  case thumbnail
+}
+
+class ImageContainer: Codable {
+  
+  static let graphQLImageFields: String = "{ imageID original \(ImageRepresentation.graphQLImageRepresentationFields) large \(ImageRepresentation.graphQLImageRepresentationFields) medium \(ImageRepresentation.graphQLImageRepresentationFields) small \(ImageRepresentation.graphQLImageRepresentationFields) thumbnail \(ImageRepresentation.graphQLImageRepresentationFields)}"
+  
   let imageID: String
   let original: ImageRepresentation
   let large: ImageRepresentation
@@ -15,11 +27,11 @@ class ImageContainer {
   let thumbnail: ImageRepresentation
   
   init(imageID: String,
-        original: ImageRepresentation,
-        large: ImageRepresentation,
-        medium: ImageRepresentation,
-        small: ImageRepresentation,
-        thumbnail: ImageRepresentation) {
+       original: ImageRepresentation,
+       large: ImageRepresentation,
+       medium: ImageRepresentation,
+       small: ImageRepresentation,
+       thumbnail: ImageRepresentation) {
     self.imageID = imageID
     self.original = original
     self.large = large
@@ -40,4 +52,15 @@ class ImageContainer {
     
     return imageContainerRepresentation
   }
+  
+  required init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: ImageContainerCodingKeys.self)
+    self.imageID = try values.decode( String.self, forKey: .imageID)
+    self.original = try values.decode( ImageRepresentation.self, forKey: .original)
+    self.large = try values.decode( ImageRepresentation.self, forKey: .large)
+    self.medium = try values.decode( ImageRepresentation.self, forKey: .medium)
+    self.small = try values.decode( ImageRepresentation.self, forKey: .small)
+    self.thumbnail = try values.decode( ImageRepresentation.self, forKey: .thumbnail)
+  }
+  
 }

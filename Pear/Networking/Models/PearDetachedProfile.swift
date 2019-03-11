@@ -21,10 +21,9 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
   var bio: String!
   var dos: [String]
   var donts: [String]
-  var imageIDs: [String]
-  //  var images: String!
+    var images: [ImageContainer]
   
-  static let graphQLDetachedProfileFields = "{ _id creatorUser_id firstName phoneNumber age gender interests vibes bio dos donts imageIDs images \(GraphQLQueryStrings.imageSizesFull) matchingDemographics \(GraphQLQueryStrings.matchingDemographicsFull) matchingPreferences \(GraphQLQueryStrings.matchingPreferencesFull) }"
+  static let graphQLDetachedProfileFields = "{ _id creatorUser_id firstName phoneNumber age gender interests vibes bio dos donts images \(ImageContainer.graphQLImageFields) matchingDemographics \(GraphQLQueryStrings.matchingDemographicsFull) matchingPreferences \(GraphQLQueryStrings.matchingPreferencesFull) }"
   
   var description: String {
     return "**** Pear Detached Profile **** \n" + """
@@ -39,7 +38,7 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
     bio: \(String(describing: bio)),
     dos: \(String(describing: dos)),
     donts: \(String(describing: donts)),
-    imageIDs: \(String(describing: imageIDs)),
+    images: \(String(describing: images)),
     """
     
   }
@@ -62,7 +61,8 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
     self.bio = try values.decode(String.self, forKey: .bio)
     self.dos = try values.decode([String].self, forKey: .dos)
     self.donts = try values.decode([String].self, forKey: .donts)
-    self.imageIDs = try values.decode([String].self, forKey: .imageIDs)
+    self.images = []
+//    self.images = try values.decode([String].self, forKey: .imageIDs)
     
   }
   

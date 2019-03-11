@@ -45,15 +45,15 @@ class ImageUploadAPI: ImageAPI {
             
               guard let imageID = returnData["imageID"]?.string,
               let originalImageDictionary = returnData["original"]?.dictionaryObject,
-              let originalImage = ImageRepresentation(dictionary: originalImageDictionary, imageSize: .original),
+              let originalImage = ImageRepresentation(dictionary: originalImageDictionary),
               let largeImageDictionary = returnData["large"]?.dictionaryObject,
-              let largeImage = ImageRepresentation(dictionary: largeImageDictionary, imageSize: .large),
+              let largeImage = ImageRepresentation(dictionary: largeImageDictionary),
               let mediumImageDictionary = returnData["medium"]?.dictionaryObject,
-              let mediumImage = ImageRepresentation(dictionary: mediumImageDictionary, imageSize: .medium),
+              let mediumImage = ImageRepresentation(dictionary: mediumImageDictionary),
               let smallImageDictionary = returnData["small"]?.dictionaryObject,
-              let smallImage = ImageRepresentation(dictionary: smallImageDictionary, imageSize: .small),
+              let smallImage = ImageRepresentation(dictionary: smallImageDictionary),
               let thumbnailImageDictionary = returnData["thumbnail"]?.dictionaryObject,
-                let thumbnailImage = ImageRepresentation(dictionary: thumbnailImageDictionary, imageSize: .thumbnail) else {
+                let thumbnailImage = ImageRepresentation(dictionary: thumbnailImageDictionary) else {
                   print("Missing required field for image deserialization")
                   completion(.failure(ImageAPIError.failedDeserialization))
                   return
