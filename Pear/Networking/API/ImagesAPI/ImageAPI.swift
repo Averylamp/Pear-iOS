@@ -9,6 +9,7 @@
 import UIKit
 
 enum ImageAPIError: Error {
+  case failedDeserialization
   case unknown
 }
 

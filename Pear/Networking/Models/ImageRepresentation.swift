@@ -24,11 +24,22 @@ class ImageRepresentation {
   let height: Int
   let width: Int
   
-  init(imageSize: ImageSize, publicURL: String, height: Int, width: Int) {
+  init(imageSize: ImageSize, imageURL: String, height: Int, width: Int) {
     self.imageSize = imageSize
-    self.imageURL = publicURL
+    self.imageURL = imageURL
     self.height = height
     self.width = width
+  }
+  
+  convenience init?(dictionary: [String: Any], imageSize: ImageSize) {
+    guard let imageURL = dictionary["imageURL"] as?  String,
+      let width = dictionary["width"] as? Int,
+      let height = dictionary["height"] as? Int else {
+        print("Failed to create Image Representation from dictionary")
+        return nil
+    }
+    
+    self.init(imageSize: imageSize, imageURL: imageURL, height: height, width: width)
   }
   
   func toDatabaseFormat() -> [String: Any] {

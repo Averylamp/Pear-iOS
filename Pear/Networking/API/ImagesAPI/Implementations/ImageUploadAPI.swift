@@ -41,58 +41,29 @@ class ImageUploadAPI: ImageAPI {
           if error != nil {
             print(error as Any)
           } else {
-            if let data = data, let json = JSON(rawValue: data), let sizeMap = json["size_map"].dictionary {
-              var original: ImageRepresentation?
-              var large: ImageRepresentation?
-              var medium: ImageRepresentation?
-              var small: ImageRepresentation?
-              var thumb: ImageRepresentation?
-              for (sizeType, sizeData) in sizeMap {
-                if let imageID = sizeData["imageID"].string,
-                  let imageURL = sizeData["imageURL"].string,
-                  let imageSize = sizeData["imageSize"].dictionary,
-                  let imageWidth = imageSize["width"]?.int,
-                  let imageHeight = imageSize["height"]?.int {
-                  let imageSizeRep =
-                    ImageRepresentation(imageID: imageID,
-                                            imageSize: ImageSize(rawValue: sizeType) ?? .unknown,
-                                            publicURL: imageURL,
-                                            height: imageHeight,
-                                            width: imageWidth)
-                  switch sizeType {
-                  case "original":
-                    original = imageSizeRep
-                  case "large":
-                    large = imageSizeRep
-                  case "medium":
-                    medium = imageSizeRep
-                  case "small":
-                    small = imageSizeRep
-                  case "thumb":
-                    thumb = imageSizeRep
-                  default:
-                    print("Strange size detected")
-                  }
-                }
-              }
-              guard let originalImageRep = original else { return }
-              guard let largeImageRep = large else { return }
-              guard let mediumImageRep = medium else { return }
-              guard let smallImageRep = small else { return }
-              guard let thumbImageRep = thumb else { return }
-              
-              guard let allImageSizesRep  = ImageContainer(original: originalImageRep,
-                                                                        large: largeImageRep,
-                                                                        medium: mediumImageRep,
-                                                                        small: smallImageRep,
-                                                                        thumbnail: thumbImageRep) else {
-                                                                          print("Mismatching image ids")
-                                                                          return
+            if let data = data, let json = JSON(rawValue: data), let returnData = json["size_map"].dictionary {
+            
+              guard let imageID = returnData["imageID"]?.string,
+              let originalImageDictionary = returnData["original"]?.dictionaryObject,
+              let originalImage = ImageRepresentation(dictionary: originalImageDictionary, imageSize: .original),
+              let largeImageDictionary = returnData["large"]?.dictionaryObject,
+              let largeImage = ImageRepresentation(dictionary: largeImageDictionary, imageSize: .large),
+              let mediumImageDictionary = returnData["medium"]?.dictionaryObject,
+              let mediumImage = ImageRepresentation(dictionary: mediumImageDictionary, imageSize: .medium),
+              let smallImageDictionary = returnData["small"]?.dictionaryObject,
+              let smallImage = ImageRepresentation(dictionary: smallImageDictionary, imageSize: .small),
+              let thumbnailImageDictionary = returnData["thumbnail"]?.dictionaryObject,
+                let thumbnailImage = ImageRepresentation(dictionary: thumbnailImageDictionary, imageSize: .thumbnail) else {
+                  print("Missing required field for image deserialization")
+                  completion(.failure(ImageAPIError.failedDeserialization))
+                  return
               }
               
-              completion(.success(allImageSizesRep))
+              let imageContainer = ImageContainer(imageID: imageID, original: originalImage, large: largeImage, medium: mediumImage, small: smallImage, thumbnail: thumbnailImage)
               
               print(json)
+              completion(.success(imageContainer))
+              return
             }
           }
         })

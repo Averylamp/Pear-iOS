@@ -80,7 +80,7 @@ extension PearProfileAPI {
               //                completion(.failure(UserCreationError.failedDeserialization))
               //                return
               //              }
-              completion(.failure(UserCreationError.failedDeserialization))
+              completion(.failure(UserAPIError.failedDeserialization))
             } catch {
               print("Error: \(error)")
               completion(.failure(error))
@@ -88,13 +88,13 @@ extension PearProfileAPI {
             }
           } else {
             print("Failed Conversions")
-            completion(.failure(UserCreationError.failedDeserialization))
+            completion(.failure(UserAPIError.failedDeserialization))
             return
           }
         }
       }
       dataTask.resume()
-    } catch let error as UserCreationError {
+    } catch let error as UserAPIError {
       
       print("Invalid variables for user creation error")
       completion(.failure(error))
@@ -197,11 +197,11 @@ extension PearProfileAPI {
         throw DetachedProfileError.invalidVariables
     }
     
-    let (imageIDs, imageSizes) = ImageContainer
-      .convertArrayToDatabaseFormat(images: userProfileData.images
-        .filter({ $0.imageSizesRepresentation != nil })
-        .map({ $0.imageSizesRepresentation! }))
-    
+//    let (imageIDs, imageSizes) = ImageContainer
+//      .convertArrayToDatabaseFormat(images: userProfileData.images
+//        .filter({ $0.imageSizesRepresentation != nil })
+//        .map({ $0.imageSizesRepresentation! }))
+//    
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       throw DetachedProfileError.userNotLoggedIn
     }
@@ -216,9 +216,8 @@ extension PearProfileAPI {
       "vibes": userProfileData.vibes,
       "bio": bio,
       "dos": userProfileData.dos,
-      "donts": userProfileData.donts,
-      "imageIDs": imageIDs,
-      "images": imageSizes
+      "donts": userProfileData.donts
+//      "images"
     ]
     
     return variablesDictionary
