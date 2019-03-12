@@ -10,17 +10,17 @@ import UIKit
 
 class FullProfileStackViewController: UIViewController {
   
-  var userProfileData: GettingStartedUserProfileData!
+  var fullProfileData: FullProfileDisplayData!
   
   @IBOutlet var stackView: UIStackView!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(userProfileData: GettingStartedUserProfileData) -> FullProfileStackViewController? {
+  class func instantiate(userFullProfileData: FullProfileDisplayData) -> FullProfileStackViewController? {
     let storyboard = UIStoryboard(name: String(describing: FullProfileStackViewController.self), bundle: nil)
     guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? FullProfileStackViewController else { return nil }
-    profileStackViewVC.userProfileData = userProfileData
+    profileStackViewVC.fullProfileData = userFullProfileData
     return profileStackViewVC
   }
   
@@ -40,42 +40,46 @@ extension FullProfileStackViewController {
     }
     let creatorFirstName = user.firstName
     
-    self.addDemographcsVC()
-    if 0 < self.userProfileData.images.count {
-      self.addImageVC(image: self.userProfileData.images[0].image)
+    self.addDemographcsVC(firstName: self.fullProfileData.firstName,
+                          age: self.fullProfileData.age,
+                          gender: self.fullProfileData.gender)
+    if 0 < self.fullProfileData.rawImages.count {
+      self.addImageVC(image: self.fullProfileData.rawImages[0])
     }
-    self.addBioVC(bioText: self.userProfileData.bio!, creatorFirstName: creatorFirstName)
-    if 1 < self.userProfileData.images.count {
-      self.addImageVC(image: self.userProfileData.images[1].image)
+    self.addBioVC(bioText: self.fullProfileData.bio!, creatorFirstName: creatorFirstName)
+    if 1 < self.fullProfileData.rawImages.count {
+      self.addImageVC(image: self.fullProfileData.rawImages[1])
     }
-    self.addInterestsVC(interests: self.userProfileData.interests)
-    if 2 < self.userProfileData.images.count {
-      self.addImageVC(image: self.userProfileData.images[2].image)
+    self.addInterestsVC(interests: self.fullProfileData.interests)
+    if 2 < self.fullProfileData.rawImages.count {
+      self.addImageVC(image: self.fullProfileData.rawImages[2])
     }
     
-    let doContent = self.userProfileData.dos.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
+    let doContent = self.fullProfileData.dos.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
     self.addDoDontVC(doDontType: .doType, doDontContent: doContent)
-    if 3 < self.userProfileData.images.count {
-      self.addImageVC(image: self.userProfileData.images[3].image)
+    if 3 < self.fullProfileData.rawImages.count {
+      self.addImageVC(image: self.fullProfileData.rawImages[3])
     }
-    let dontContent = self.userProfileData.donts.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
+    let dontContent = self.fullProfileData.donts.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
     self.addDoDontVC(doDontType: .dontType, doDontContent: dontContent)
-    if 4 < self.userProfileData.images.count {
-      self.addImageVC(image: self.userProfileData.images[4].image)
+    if 4 < self.fullProfileData.rawImages.count {
+      self.addImageVC(image: self.fullProfileData.rawImages[4])
     }
     
-    if 5 < self.userProfileData.images.count {
-      self.addImageVC(image: self.userProfileData.images[5].image)
+    if 5 < self.fullProfileData.rawImages.count {
+      self.addImageVC(image: self.fullProfileData.rawImages[5])
     }
     
   }
   
-  func addDemographcsVC() {
-    guard let demographicsVC = ProfileDemographicsViewController.instantiate(firstName: userProfileData.firstName!,
-                                                                             age: userProfileData.age!,
-                                                                             gender: userProfileData.gender!) else {
-      print("Failed to create Demographics VC")
-      return
+  func addDemographcsVC(firstName: String,
+                        age: Int,
+                        gender: String) {
+    guard let demographicsVC = ProfileDemographicsViewController.instantiate(firstName: firstName,
+                                                                             age: age,
+                                                                             gender: gender) else {
+                                                                              print("Failed to create Demographics VC")
+                                                                              return
     }
     
     self.addChild(demographicsVC)
@@ -122,5 +126,5 @@ extension FullProfileStackViewController {
     self.stackView.addArrangedSubview(doDontVC.view)
     doDontVC.didMove(toParent: self)
   }
-
+  
 }

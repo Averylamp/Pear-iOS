@@ -51,7 +51,9 @@ extension FullProfileReviewViewController {
   }
   
   func addFullStackVC() {
-    guard let fullProfileStackVC = FullProfileStackViewController.instantiate(userProfileData: self.gettingStartedUserProfileData) else {
+    guard let creatorFirstName = DataStore.shared.currentPearUser?.firstName,
+      let fullProfileData = try? FullProfileDisplayData(gsup: self.gettingStartedUserProfileData, creatorFirstName: creatorFirstName),
+      let fullProfileStackVC = FullProfileStackViewController.instantiate(userFullProfileData: fullProfileData) else {
       print("Failed to create full profiles stack VC")
       return
     }

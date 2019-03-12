@@ -15,13 +15,13 @@ class ProfileDemographicsViewController: UIViewController {
   
   var firstName: String!
   var age: Int!
-  var gender: GenderEnum!
+  var gender: String!
   var locationName: String?
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(firstName: String, age: Int, gender: GenderEnum, locationName: String? = nil) -> ProfileDemographicsViewController? {
+  class func instantiate(firstName: String, age: Int, gender: String, locationName: String? = nil) -> ProfileDemographicsViewController? {
     let storyboard = UIStoryboard(name: String(describing: ProfileDemographicsViewController.self), bundle: nil)
     guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? ProfileDemographicsViewController else { return nil }
     profileStackViewVC.firstName = firstName
@@ -46,9 +46,9 @@ extension ProfileDemographicsViewController {
     self.firstNameLabel.text = self.firstName
     
     let ageIcon = createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age"))
-    let genderIcon = createTagView(text: self.gender.rawValue, image: nil)
+    let genderIcon = createTagView(text: self.gender, image: nil)
     
-    var tagViews = [ageIcon, genderIcon, createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age")), createTagView(text: self.gender.rawValue, image: nil), createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age")), createTagView(text: self.gender.rawValue, image: nil), createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age")), createTagView(text: self.gender.rawValue, image: nil) ]
+    var tagViews = [ageIcon, genderIcon]
     
     if let locationName = self.locationName {
       let locationTagView = createTagView(text: locationName, image: nil)

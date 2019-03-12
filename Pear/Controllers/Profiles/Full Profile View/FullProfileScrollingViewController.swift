@@ -40,7 +40,8 @@ extension FullProfileScrollingViewController {
   }
   
   func addFullStackVC() {
-    guard let fullProfileStackVC = FullProfileStackViewController.instantiate(userProfileData: self.userProfileData) else {
+    guard  let fullProfileDisplayData = try? FullProfileDisplayData(gsup: self.userProfileData, creatorFirstName: ""),
+      let fullProfileStackVC = FullProfileStackViewController.instantiate(userFullProfileData: fullProfileDisplayData) else {
       print("Failed to create full profiles stack VC")
       return
     }

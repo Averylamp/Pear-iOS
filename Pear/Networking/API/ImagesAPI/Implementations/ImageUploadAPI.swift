@@ -47,6 +47,7 @@ class ImageUploadAPI: ImageAPI {
                 print(json)
                 let returnData = try json["size_map"].rawData()
                 let imageContainer = try JSONDecoder().decode(ImageContainer.self, from: returnData)
+                imageContainer.uploadedByUser = userID
                 completion(.success(imageContainer))
               } catch {
                 completion(.failure(ImageAPIError.unknownError(error: error)))
