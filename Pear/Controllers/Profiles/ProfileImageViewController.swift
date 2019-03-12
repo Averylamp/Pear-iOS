@@ -10,15 +10,16 @@ import UIKit
 
 class ProfileImageViewController: UIViewController {
   
-  var userProfileData: GettingStartedUserProfileData!
+  var image: UIImage!
+  @IBOutlet var imageView: UIImageView!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserProfileData: GettingStartedUserProfileData) -> ProfileImageViewController? {
-    let storyboard = UIStoryboard(name: String(describing: FullProfileStackViewController.self), bundle: nil)
+  class func instantiate(image: UIImage) -> ProfileImageViewController? {
+    let storyboard = UIStoryboard(name: String(describing: ProfileImageViewController.self), bundle: nil)
     guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? ProfileImageViewController else { return nil }
-    profileStackViewVC.userProfileData = gettingStartedUserProfileData
+    profileStackViewVC.image = image
     return profileStackViewVC
   }
   
@@ -30,6 +31,14 @@ extension ProfileImageViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.stylize()
+  }
+  
+  func stylize() {
+    self.imageView.contentMode = .scaleAspectFit
+    self.imageView.image = self.image
+    self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView, attribute: .width, relatedBy: .equal,
+                                                    toItem: self.imageView, attribute: .height, multiplier: 1.0, constant: 0.0))
   }
   
 }

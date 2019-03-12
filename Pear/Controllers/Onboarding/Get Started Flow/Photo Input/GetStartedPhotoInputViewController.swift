@@ -53,8 +53,8 @@ class GetStartedPhotoInputViewController: UIViewController {
     //            return
     //        }
 
-    guard let profileReviewVC = FullProfileStackViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
-      print("Failed to create Full VC")
+    guard let profileReviewVC = FullProfileScrollingViewController.instantiate(userProfileData: self.gettingStartedUserProfileData) else {
+      print("Failed to create scrolling Full VC")
       return
     }
     self.navigationController?.pushViewController(profileReviewVC, animated: true)
