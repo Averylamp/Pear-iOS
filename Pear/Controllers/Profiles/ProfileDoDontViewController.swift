@@ -53,6 +53,7 @@ extension ProfileDoDontViewController {
     self.view.layoutIfNeeded()
     self.stylize()
     self.addDoDontContent()
+    self.scrollView.delegate = self
   }
   
   func stylize() {
@@ -82,18 +83,16 @@ extension ProfileDoDontViewController {
                            toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: contentContainerView, attribute: .centerX, relatedBy: .equal,
                            toItem: self.scrollView, attribute: .centerX, multiplier: 1.0 + (2.0 * itemNumber), constant: 0.0),
-        NSLayoutConstraint(item: contentContainerView, attribute: .top, relatedBy: .equal,
-                           toItem: self.scrollView, attribute: .top, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: contentContainerView, attribute: .bottom, relatedBy: .equal,
-                           toItem: self.scrollView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        NSLayoutConstraint(item: contentContainerView, attribute: .centerY, relatedBy: .equal,
+                           toItem: self.scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: contentContainerView, attribute: .height, relatedBy: .equal,
+                           toItem: self.scrollView, attribute: .height, multiplier: 1.0, constant: 0.0)
         ])
       itemNumber += 1.0
     }
     
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * itemNumber, height: 0)
-    print(self.intrinsicContentHeights)
-
-//    self.scrollView.delegate = self
+    self.scrollViewHeightConstraint.constant = self.intrinsicContentHeights.first!
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -159,13 +158,13 @@ extension ProfileDoDontViewController {
       NSLayoutConstraint(item: writtenByImage, attribute: .left, relatedBy: .equal,
                          toItem: containerView, attribute: .left, multiplier: 1.0, constant: indentWidth),
       NSLayoutConstraint(item: writtenByImage, attribute: .right, relatedBy: .equal,
-                         toItem: writtenByLabel, attribute: .left, multiplier: 1.0, constant: -8),
+                         toItem: writtenByLabel, attribute: .left, multiplier: 1.0, constant: -16),
       NSLayoutConstraint(item: writtenByImage, attribute: .centerY, relatedBy: .equal,
                          toItem: writtenByLabel, attribute: .centerY, multiplier: 1.0, constant: 0.0)
       ])
     
     let containerSize = CGSize(width: self.view.frame.width - (2 * indentWidth), height: CGFloat.infinity)
-    let intrinsicContentHeight: CGFloat = contentTextLabel.sizeThatFits(containerSize).height + 8
+    let intrinsicContentHeight: CGFloat = contentTextLabel.sizeThatFits(containerSize).height + 16
       + writtenByLabel.sizeThatFits(containerSize).height
     
     return (containerView, intrinsicContentHeight)
@@ -177,7 +176,14 @@ extension ProfileDoDontViewController {
 extension ProfileDoDontViewController: UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    print(scrollView.contentOffset.x)
+    let pageIndex: Int = Int(floor(scrollView.contentOffset.x / scrollView.frame.width))
+    let pagePercentage: CGFloat = scrollView.contentOffset.x.truncatingRemainder(dividingBy: scrollView.frame.width) / scrollView.frame.width
+    if pageIndex < self.intrinsicContentHeights.count - 1 && pageIndex >= 0 {
+      let newScrollViewHeight = self.intrinsicContentHeights[pageIndex] * (1 - pagePercentage) +
+        self.intrinsicContentHeights[pageIndex + 1] * pagePercentage
+      self.scrollViewHeightConstraint.constant = newScrollViewHeight + 15
+      self.view.layoutIfNeeded()
+    }
   }
   
 }

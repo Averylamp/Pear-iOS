@@ -49,7 +49,9 @@ class GettingStartedUserProfileData: CustomStringConvertible {
     self.vibes = ["forbidden fruit", "coco-nuts"]
     // swiftlint:disable:next line_length
     self.bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    self.dos = ["take him to eat ramen", "feed him tasty food. Japanese, Italian, and Chipotle", "take him to the movies. His favorite series of movies is the Marvel series"]
+    self.dos = ["take him to eat ramen", "take him to the movies. His favorite series of movies is the Marvel series",
+                "feed him tasty food. Japanese, Italian, and Chipotle", "take him to eat ramen",
+                "take him to the movies. His favorite series of movies is the Marvel series. His favorite movie within the Marvel series is all of them because they are good."]
     self.donts = ["feed him vegetables", "make him sleep on time"]
     
     if let image = ImageContainer.fakeImage() {
