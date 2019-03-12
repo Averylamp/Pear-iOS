@@ -34,9 +34,10 @@ class PearUser: Codable, CustomStringConvertible {
   var schoolEmailVerified: String?
   var birthdate: Date?
   var age: Int
+  var userProfiles: [PearUserProfile] = []
+  var displayedImages: [ImageContainer] = []
   
-  // swiftlint:disable:next line_length
-  static let graphQLUserFields: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender locationName locationCoordinates school schoolEmail schoolEmailVerified birthdate age profile_ids endorsedProfile_ids matchingPreferences { seekingGender } userStats { totalNumberOfMatches totalNumberOfMatches } matchingDemographics { ethnicities } userMatches_id discoveryQueue_id pearPoints }"
+  static let graphQLUserFields: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender locationName locationCoordinates school schoolEmail schoolEmailVerified birthdate age profile_ids profileObjs \(PearUserProfile.graphQLUserProfileFields) displayedImages \(ImageContainer.graphQLImageFields) endorsedProfile_ids matchingPreferences { seekingGender } userStats { totalNumberOfMatches totalNumberOfMatches } matchingDemographics { ethnicities } userMatches_id discoveryQueue_id pearPoints }"
   
   init() {
     fatalError("Should never be called to generate")
@@ -70,6 +71,12 @@ class PearUser: Codable, CustomStringConvertible {
       self.birthdate = Date(timeIntervalSince1970: birthdateNumberValue / 1000)
     }
     self.age = try values.decode(Int.self, forKey: .age)
+    if let profiles = try? values.decode([PearUserProfile].self, forKey: .profileObjs) {
+      self.userProfiles = profiles
+    }
+    if let images = try? values.decode([ImageContainer].self, forKey: .displayedImages) {
+      self.displayedImages = images
+    }
     
   }
   

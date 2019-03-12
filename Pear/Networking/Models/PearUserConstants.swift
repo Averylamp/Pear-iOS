@@ -40,6 +40,7 @@ enum PearUserKeys: String, CodingKey {
   case matchingPreferences
   
   case userStats
+  case displayedImages = "displayedImages"
   
   case userMatchesID = "userMatches_id"
   case userMatches

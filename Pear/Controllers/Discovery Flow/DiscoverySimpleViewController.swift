@@ -36,6 +36,7 @@ extension DiscoverySimpleViewController {
     super.viewDidLoad()
     self.stylize()
     self.checkForDetachedProfiles()
+    self.refreshFeed()
   }
   
   func stylize() {
@@ -59,4 +60,17 @@ extension DiscoverySimpleViewController {
       })
   }
   
+  func refreshFeed() {
+    if let userID = DataStore.shared.currentPearUser?.documentID {
+      PearProfileAPI.shared.getDiscoveryFeed(user_id: userID, completion: { (result) in
+        switch result {
+        case .success(let feedObjects):
+          print("Found \(feedObjects.count) Feed Objects")
+        case .failure(let error):
+          print("Error fetching feed:\(error)")
+        }
+      })
+      
+    }
+  }
 }
