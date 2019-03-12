@@ -65,7 +65,6 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
     self.donts = try values.decode([String].self, forKey: .donts)
     let images = try values.decode([ImageContainer].self, forKey: .images)
     self.images = images
-    
   }
   
 }
