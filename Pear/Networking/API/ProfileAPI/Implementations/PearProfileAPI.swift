@@ -178,7 +178,7 @@ extension PearProfileAPI {
     request.httpMethod = "POST"
     
     request.allHTTPHeaderFields = defaultHeaders
-
+    
     do {
       
       let fullDictionary: [String: Any] = [
@@ -245,7 +245,7 @@ extension PearProfileAPI {
         "query": PearProfileAPI.fetchCurrentFeedQuery,
         "variables": [
           "user_id": user_id
-          ]
+        ]
       ]
       print(fullDictionary)
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
@@ -261,14 +261,24 @@ extension PearProfileAPI {
           if  let data = data,
             let json = try? JSON(data: data) {
             print("Retreived Feed")
-            print(json)
-//            if let success = json["data"]["approveNewDetachedProfile"]["success"].bool {
-//              completion(.success(success))
-//              return
-//            } else {
-//              completion(.failure(DetachedProfileError.unknown))
-//            }
-            
+            if let discoveryUsers = json["data"]["getDiscoveryFeed"]["currentDiscoveryItems"].array {
+              print("\(discoveryUsers.count) Users found in feed")
+              var allFullProfiles: [FullProfileDisplayData] = []
+              for userData in discoveryUsers {
+                do {
+                  if let userRawData = try? userData["user"].rawData() {
+                    print(userData["user"])
+                    let pearUser = try JSONDecoder().decode(PearUser.self, from: userRawData)
+                    for profile in pearUser.userProfiles {
+                      allFullProfiles.append(FullProfileDisplayData(user: pearUser, profile: profile))
+                    }
+                  }
+                } catch {
+                  print("Failed to deserialize pear user from feed: \(error)")
+                }
+              }
+              completion(.success(allFullProfiles))
+            }            
           } else {
             print("Failed Conversions")
             completion(.failure(DetachedProfileError.failedDeserialization))

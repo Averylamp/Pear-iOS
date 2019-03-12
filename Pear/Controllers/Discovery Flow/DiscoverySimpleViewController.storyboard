@@ -75,13 +75,35 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="360" id="dpC-89-kHb">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="360"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimpleDiscoveryTVC" rowHeight="300" id="dpC-89-kHb" customClass="DiscoverySimpleTableViewCell" customModule="Pear" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dpC-89-kHb" id="X8o-go-E0H">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="359.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wco-BN-SMz">
+                                                    <rect key="frame" x="45" y="21" width="285" height="258"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1q-cx-Lh6">
+                                                    <rect key="frame" x="45" y="21" width="285" height="258"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Wco-BN-SMz" firstAttribute="top" secondItem="X8o-go-E0H" secondAttribute="topMargin" constant="10" id="7Ua-JL-DeN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wco-BN-SMz" secondAttribute="bottom" constant="10" id="9Dd-ox-XW1"/>
+                                                <constraint firstItem="W1q-cx-Lh6" firstAttribute="height" secondItem="Wco-BN-SMz" secondAttribute="height" id="AH3-ad-y2Q"/>
+                                                <constraint firstItem="Wco-BN-SMz" firstAttribute="leading" secondItem="X8o-go-E0H" secondAttribute="leadingMargin" constant="30" id="F7R-Xz-nNU"/>
+                                                <constraint firstItem="W1q-cx-Lh6" firstAttribute="centerY" secondItem="Wco-BN-SMz" secondAttribute="centerY" id="KYo-AB-Njt"/>
+                                                <constraint firstItem="W1q-cx-Lh6" firstAttribute="centerX" secondItem="Wco-BN-SMz" secondAttribute="centerX" id="YzC-4p-TV6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wco-BN-SMz" secondAttribute="trailing" constant="30" id="eBR-yV-NAK"/>
+                                                <constraint firstItem="W1q-cx-Lh6" firstAttribute="width" secondItem="Wco-BN-SMz" secondAttribute="width" id="qj5-aA-tP5"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="firstImageView" destination="W1q-cx-Lh6" id="Owo-Qg-ocx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

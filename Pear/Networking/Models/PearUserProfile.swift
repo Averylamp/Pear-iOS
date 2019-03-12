@@ -34,7 +34,7 @@ class PearUserProfile: Codable, CustomStringConvertible {
   var dos: [String]
   var donts: [String]
   
-static let graphQLUserProfileFields = "{ _id creatorUser_id creatorFirstName interests vibes bio dos donts }"
+  static let graphQLUserProfileFields = "{ _id creatorUser_id creatorFirstName interests vibes bio dos donts }"
   
   var description: String {
     return "**** Pear Detached Profile **** \n" + """
