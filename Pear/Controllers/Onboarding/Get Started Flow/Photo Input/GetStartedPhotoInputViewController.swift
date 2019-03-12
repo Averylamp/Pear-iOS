@@ -48,27 +48,12 @@ class GetStartedPhotoInputViewController: UIViewController {
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveImages()
-    //        if self.gettingStartedData.images.count == 0 {
-    //            self.alert(title: "Missing 🎑", message: "Please add at least one image of your friend")
-    //            return
-    //        }
-
-    guard let profileReviewVC = FullProfileScrollingViewController.instantiate(userProfileData: self.gettingStartedUserProfileData) else {
+    guard let profileReviewVC = FullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
       print("Failed to create scrolling Full VC")
       return
     }
     self.navigationController?.pushViewController(profileReviewVC, animated: true)
-    
-//    guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedUserProfileData) else {
-//      print("Failed to create Notify Friend VC")
-//      return
-//    }
-//    self.navigationController?.pushViewController(notifyFriendVC, animated: true)
-    //        guard let profileReviewVC = GetStartedProfileReviewViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-    //            print("Failed to create profile Review VC")
-    //            return
-    //        }
-    //        self.navigationController?.pushViewController(profileReviewVC, animated: true)
+
   }
   
 }
