@@ -35,7 +35,7 @@
 		BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */; };
 		BB1C67102237205700D75848 /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C670F2237205700D75848 /* Encoding.swift */; };
 		BB1C67122237824800D75848 /* FullProfileScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67112237824800D75848 /* FullProfileScrollingViewController.swift */; };
-		BB1C67142237825100D75848 /* FullProfileScrollingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67132237825100D75848 /* FullProfileScrollingView.storyboard */; };
+		BB1C67142237825100D75848 /* FullProfileScrollingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67132237825100D75848 /* FullProfileScrollingViewController.storyboard */; };
 		BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */; };
 		BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */; };
 		BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */; };
@@ -206,7 +206,7 @@
 		BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMainViewController.storyboard; sourceTree = "<group>"; };
 		BB1C670F2237205700D75848 /* Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoding.swift; sourceTree = "<group>"; };
 		BB1C67112237824800D75848 /* FullProfileScrollingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileScrollingViewController.swift; sourceTree = "<group>"; };
-		BB1C67132237825100D75848 /* FullProfileScrollingView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollingView.storyboard; sourceTree = "<group>"; };
+		BB1C67132237825100D75848 /* FullProfileScrollingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollingViewController.storyboard; sourceTree = "<group>"; };
 		BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseFlowViewController.swift; sourceTree = "<group>"; };
 		BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSeeSamplesViewController.swift; sourceTree = "<group>"; };
 		BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSeeSamplesViewController.storyboard; sourceTree = "<group>"; };
@@ -719,7 +719,7 @@
 				BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */,
 				BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */,
 				BB1C67112237824800D75848 /* FullProfileScrollingViewController.swift */,
-				BB1C67132237825100D75848 /* FullProfileScrollingView.storyboard */,
+				BB1C67132237825100D75848 /* FullProfileScrollingViewController.storyboard */,
 				BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */,
 				BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */,
 			);
@@ -1142,7 +1142,7 @@
 				BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */,
 				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
-				BB1C67142237825100D75848 /* FullProfileScrollingView.storyboard in Resources */,
+				BB1C67142237825100D75848 /* FullProfileScrollingViewController.storyboard in Resources */,
 				BB6C064D2227F762007A5C96 /* GetStartedAllowLocationViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
