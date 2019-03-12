@@ -60,7 +60,9 @@ class GetStartedStartFriendProfileViewController: UIViewController {
   }
   
   @IBAction func skipProfileCreationButtonClicked(_ sender: Any) {
-    
+    if let waitlistVC = LoadingScreenViewController.getWaitlistVC() {
+      self.navigationController?.setViewControllers([waitlistVC], animated: true)
+    }
   }
   
 }
