@@ -21,6 +21,12 @@ class DiscoverySimpleViewController: UIViewController {
     return discoverySimpleVC
   }
   
+  @IBAction func createButtonClicked(_ sender: Any) {
+    if let waitlistVC = LoadingScreenViewController.getWaitlistVC() {
+      self.navigationController?.setViewControllers([waitlistVC], animated: true)
+    }
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -40,6 +46,14 @@ extension DiscoverySimpleViewController {
   func checkForDetachedProfiles() {
     DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
       print("\(detachedProfiles.count) Detached Profiles Found")
+      
+      if let firstDetachedProfile = detachedProfiles.first {
+        guard let detachedProfileApprovalVC = DetachedProfileApprovalViewController.instantiate(detachedProfile: firstDetachedProfile) else {
+          print("Failed to create detached profile vc")
+          return
+        }
+        self.present(detachedProfileApprovalVC, animated: true, completion: nil)
+      }
     }, detachedProfilesNotFound: {
       print("No detached Profiles Found")
       })

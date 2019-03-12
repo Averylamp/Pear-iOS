@@ -7,9 +7,20 @@
 //
 
 import Foundation
+enum DetachedProfileError: Error {
+  case invalidVariables
+  case userNotLoggedIn
+  case failedDeserialization
+  case noDetachedProfilesFound
+  case graphQLError(message: String)
+  case unknown
+  case unknownError(error: Error)
+}
 
 protocol ProfileAPI {
   func createNewDetachedProfile(gettingStartedUserProfileData: GettingStartedUserProfileData,
-                                completion: @escaping(Result<PearDetachedProfile, Error>) -> Void)
-  func checkDetachedProfiles(phoneNumber: String, completion: @escaping(Result<[PearDetachedProfile], Error>) -> Void)
+                                completion: @escaping(Result<PearDetachedProfile, DetachedProfileError>) -> Void)
+  func checkDetachedProfiles(phoneNumber: String, completion: @escaping(Result<[PearDetachedProfile], DetachedProfileError>) -> Void)
+  func attachDetachedProfile(user_id: String, detachedProfile_id: String, creatorUser_id: String,
+                             completion: @escaping(Result<Bool, DetachedProfileError>) -> Void)
 }
