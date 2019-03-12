@@ -17,10 +17,10 @@ class FullProfileStackViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserProfileData: GettingStartedUserProfileData) -> FullProfileStackViewController? {
+  class func instantiate(userProfileData: GettingStartedUserProfileData) -> FullProfileStackViewController? {
     let storyboard = UIStoryboard(name: String(describing: FullProfileStackViewController.self), bundle: nil)
     guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? FullProfileStackViewController else { return nil }
-    profileStackViewVC.userProfileData = gettingStartedUserProfileData
+    profileStackViewVC.userProfileData = userProfileData
     return profileStackViewVC
   }
   
@@ -35,6 +35,7 @@ extension FullProfileStackViewController {
   
   func stylize() {
     self.addDemographcsVC()
+    self.addImageVC(image: self.userProfileData.images[0].image)
     self.addDemographcsVC()
     self.addDemographcsVC()
     self.addDemographcsVC()
@@ -51,6 +52,14 @@ extension FullProfileStackViewController {
     
     self.stackView.addArrangedSubview(demographicsVC.view)
     
+  }
+  
+  func addImageVC(image: UIImage) {
+    guard let imageVC = ProfileImageViewController.instantiate(image: image) else {
+      print("Failed to create Image VC")
+      return
+    }
+    self.stackView.addArrangedSubview(imageVC.view)
   }
 
 }
