@@ -52,11 +52,14 @@ extension FullProfileStackViewController {
     if 2 < self.userProfileData.images.count {
       self.addImageVC(image: self.userProfileData.images[2].image)
     }
-    self.addDemographcsVC()
+    
+    let doContent = self.userProfileData.dos.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
+    self.addDoDontVC(doDontType: .doType, doDontContent: doContent)
     if 3 < self.userProfileData.images.count {
       self.addImageVC(image: self.userProfileData.images[3].image)
     }
-    self.addDemographcsVC()
+    let dontContent = self.userProfileData.donts.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
+    self.addDoDontVC(doDontType: .dontType, doDontContent: dontContent)
     if 4 < self.userProfileData.images.count {
       self.addImageVC(image: self.userProfileData.images[4].image)
     }
@@ -75,8 +78,9 @@ extension FullProfileStackViewController {
       return
     }
     
+    self.addChild(demographicsVC)
     self.stackView.addArrangedSubview(demographicsVC.view)
-    
+    demographicsVC.didMove(toParent: self)
   }
   
   func addImageVC(image: UIImage) {
@@ -84,7 +88,9 @@ extension FullProfileStackViewController {
       print("Failed to create Image VC")
       return
     }
+    self.addChild(imageVC)
     self.stackView.addArrangedSubview(imageVC.view)
+    imageVC.didMove(toParent: self)
   }
   
   func addBioVC(bioText: String, creatorFirstName: String) {
@@ -92,7 +98,9 @@ extension FullProfileStackViewController {
       print("Failed to create bio VC")
       return
     }
+    self.addChild(bioVC)
     self.stackView.addArrangedSubview(bioVC.view)
+    bioVC.didMove(toParent: self)
   }
   
   func addInterestsVC(interests: [String]) {
@@ -100,7 +108,19 @@ extension FullProfileStackViewController {
       print("Failed to create Interests VC")
       return
     }
+    self.addChild(interestsVC)
     self.stackView.addArrangedSubview(interestsVC.view)
+    interestsVC.didMove(toParent: self)
+  }
+  
+  func addDoDontVC(doDontType: DoDontType, doDontContent: [DoDontContent]) {
+    guard let doDontVC = ProfileDoDontViewController.instantiate(doDontType: doDontType, doDontContent: doDontContent) else {
+      print("Failed to instantiate Do Dont VC")
+      return
+    }
+    self.addChild(doDontVC)
+    self.stackView.addArrangedSubview(doDontVC.view)
+    doDontVC.didMove(toParent: self)
   }
 
 }

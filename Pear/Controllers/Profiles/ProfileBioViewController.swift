@@ -39,7 +39,7 @@ extension ProfileBioViewController {
   
   func stylize() {
     self.bioLabel.stylizeBioLabel()
-    self.creatorLabel.stylizeBioCreatorLabel()
+    self.creatorLabel.stylizeCreatorLabel()
     
     self.bioLabel.text = self.bioText
     self.creatorLabel.text = "Written by \(self.creatorFirstName!)"

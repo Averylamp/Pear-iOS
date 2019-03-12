@@ -166,12 +166,7 @@ extension GetStartedDoDontViewController {
     self.view.endEditing(true)
   }
   
-  enum DoType {
-    case doType
-    case dontType
-  }
-  
-  func addTitleLabelToStackView(stackView: UIStackView, type: DoType) {
+  func addTitleLabelToStackView(stackView: UIStackView, type: DoDontType) {
     let titleView = UIView(frame: CGRect(x: 0, y: 0, width: self.stackView.frame.width, height: 34))
     titleView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -202,7 +197,7 @@ extension GetStartedDoDontViewController {
     
   }
   
-  func addExpandingTextViewControllerToStackView(stackView: UIStackView, type: DoType) {
+  func addExpandingTextViewControllerToStackView(stackView: UIStackView, type: DoDontType) {
     
     if let expandingTextViewVC = ExpandingTextViewController.instantiate() {
       

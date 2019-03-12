@@ -48,7 +48,7 @@ extension ProfileDemographicsViewController {
     let ageIcon = createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age"))
     let genderIcon = createTagView(text: self.gender.rawValue, image: nil)
     
-    var tagViews = [ageIcon, genderIcon]
+    var tagViews = [ageIcon, genderIcon, createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age")), createTagView(text: self.gender.rawValue, image: nil), createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age")), createTagView(text: self.gender.rawValue, image: nil), createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age")), createTagView(text: self.gender.rawValue, image: nil) ]
     
     if let locationName = self.locationName {
       let locationTagView = createTagView(text: locationName, image: nil)

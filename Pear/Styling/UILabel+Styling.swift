@@ -39,7 +39,11 @@ extension UILabel {
   func stylizeBioLabel() {
     self.stylizeSubtitleLabel()
   }
-  func stylizeBioCreatorLabel() {
+  func stylizeCreatorLabel() {
+    self.stylizeSubtitleLabel()
+  }
+  
+  func stylizeDoDontLabel() {
     self.stylizeSubtitleLabel()
   }
   

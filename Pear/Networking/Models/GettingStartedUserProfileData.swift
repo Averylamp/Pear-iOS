@@ -49,7 +49,7 @@ class GettingStartedUserProfileData: CustomStringConvertible {
     self.vibes = ["forbidden fruit", "coco-nuts"]
     // swiftlint:disable:next line_length
     self.bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    self.dos = ["take him to eat ramen", "feed him tasty food", "take him to the movies"]
+    self.dos = ["take him to eat ramen", "feed him tasty food. Japanese, Italian, and Chipotle", "take him to the movies. His favorite series of movies is the Marvel series"]
     self.donts = ["feed him vegetables", "make him sleep on time"]
     
     if let image = ImageContainer.fakeImage() {
@@ -68,17 +68,17 @@ class GettingStartedUserProfileData: CustomStringConvertible {
       self.images.append(fakeImage)
     }
     if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-1")!)
+      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-shane-1")!)
       fakeImage.imageContainer = image
       self.images.append(fakeImage)
     }
     if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-2")!)
+      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-shane-2")!)
       fakeImage.imageContainer = image
       self.images.append(fakeImage)
     }
     if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-3")!)
+      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-shane-3")!)
       fakeImage.imageContainer = image
       self.images.append(fakeImage)
     }
