@@ -34,11 +34,6 @@ extension FullProfileStackViewController {
   }
   
   func stylize() {
-    guard let user = DataStore.shared.currentPearUser else {
-      print("Failed to find pear user")
-      return
-    }
-    let creatorFirstName = user.firstName
     
     self.addDemographcsVC(firstName: self.fullProfileData.firstName,
                           age: self.fullProfileData.age,
@@ -48,7 +43,7 @@ extension FullProfileStackViewController {
     } else if 0 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[0])
     }
-    self.addBioVC(bioText: self.fullProfileData.bio!, creatorFirstName: creatorFirstName)
+    self.addBioVC(bioText: self.fullProfileData.bio!, creatorFirstName: self.fullProfileData.creatorFirstName)
     if 1 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[1])
     } else if 1 < self.fullProfileData.imageContainers.count {
@@ -61,14 +56,14 @@ extension FullProfileStackViewController {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
     }
     
-    let doContent = self.fullProfileData.dos.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
+    let doContent = self.fullProfileData.dos.map { DoDontContent.init(phrase: $0, creatorName: self.fullProfileData.creatorFirstName)}
     self.addDoDontVC(doDontType: .doType, doDontContent: doContent)
     if 3 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[3])
     } else if 3 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
     }
-    let dontContent = self.fullProfileData.donts.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
+    let dontContent = self.fullProfileData.donts.map { DoDontContent.init(phrase: $0, creatorName: self.fullProfileData.creatorFirstName)}
     self.addDoDontVC(doDontType: .dontType, doDontContent: dontContent)
     if 4 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[4])
