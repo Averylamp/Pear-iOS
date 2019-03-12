@@ -38,7 +38,7 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
     bio: \(String(describing: bio)),
     dos: \(String(describing: dos)),
     donts: \(String(describing: donts)),
-    images: \(images.count) found),
+    images: \(images.count) found,
     """
     
   }
