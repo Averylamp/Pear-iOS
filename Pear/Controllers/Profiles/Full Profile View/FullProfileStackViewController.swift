@@ -45,29 +45,41 @@ extension FullProfileStackViewController {
                           gender: self.fullProfileData.gender)
     if 0 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[0])
+    } else if 0 < self.fullProfileData.imageContainers.count {
+      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[0])
     }
     self.addBioVC(bioText: self.fullProfileData.bio!, creatorFirstName: creatorFirstName)
     if 1 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[1])
+    } else if 1 < self.fullProfileData.imageContainers.count {
+      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[1])
     }
     self.addInterestsVC(interests: self.fullProfileData.interests)
     if 2 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[2])
+    } else if 2 < self.fullProfileData.imageContainers.count {
+      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
     }
     
     let doContent = self.fullProfileData.dos.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
     self.addDoDontVC(doDontType: .doType, doDontContent: doContent)
     if 3 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[3])
+    } else if 3 < self.fullProfileData.imageContainers.count {
+      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
     }
     let dontContent = self.fullProfileData.donts.map { DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}
     self.addDoDontVC(doDontType: .dontType, doDontContent: dontContent)
     if 4 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[4])
+    } else if 4 < self.fullProfileData.imageContainers.count {
+      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[4])
     }
     
     if 5 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[5])
+    } else if 5 < self.fullProfileData.imageContainers.count {
+      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[5])
     }
     
   }
@@ -89,6 +101,16 @@ extension FullProfileStackViewController {
   
   func addImageVC(image: UIImage) {
     guard let imageVC = ProfileImageViewController.instantiate(image: image) else {
+      print("Failed to create Image VC")
+      return
+    }
+    self.addChild(imageVC)
+    self.stackView.addArrangedSubview(imageVC.view)
+    imageVC.didMove(toParent: self)
+  }
+  
+  func addImageVC(imageContainer: ImageContainer) {
+    guard let imageVC = ProfileImageViewController.instantiate(imageContainer: imageContainer) else {
       print("Failed to create Image VC")
       return
     }

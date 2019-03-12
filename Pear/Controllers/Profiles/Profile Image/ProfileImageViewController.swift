@@ -12,7 +12,7 @@ import SDWebImage
 class ProfileImageViewController: UIViewController {
   
   var image: UIImage?
-  var imageURL: String?
+  var imageContainer: ImageContainer?
   @IBOutlet var imageView: UIImageView!
   
   /// Factory method for creating this view controller.
@@ -28,10 +28,10 @@ class ProfileImageViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(imageURL: String) -> ProfileImageViewController? {
+  class func instantiate(imageContainer: ImageContainer) -> ProfileImageViewController? {
     let storyboard = UIStoryboard(name: String(describing: ProfileImageViewController.self), bundle: nil)
     guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? ProfileImageViewController else { return nil }
-    profileStackViewVC.imageURL = imageURL
+    profileStackViewVC.imageContainer = imageContainer
     return profileStackViewVC
   }
   
@@ -52,8 +52,8 @@ extension ProfileImageViewController {
     self.imageView.clipsToBounds = true
     if let image = self.image {
       self.imageView.image = image
-    } else if let imageString = self.imageURL,
-      let imageURL = URL(string: imageString) {
+    } else if let imageContainer = self.imageContainer,
+      let imageURL = URL(string: imageContainer.large.imageURL) {
       self.imageView.sd_setImage(with: imageURL, completed: nil)
     }
     self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView, attribute: .width, relatedBy: .equal,
