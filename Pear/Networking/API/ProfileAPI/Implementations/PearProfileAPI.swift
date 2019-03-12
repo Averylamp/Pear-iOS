@@ -9,14 +9,6 @@
 import Foundation
 import SwiftyJSON
 
-enum DetachedProfileError: Error {
-  case invalidVariables
-  case userNotLoggedIn
-  case failedDeserialization
-  case noDetachedProfilesFound
-  case graphQLError(message: String)
-}
-
 class PearProfileAPI: ProfileAPI {
   
   static let shared = PearProfileAPI()
@@ -32,12 +24,15 @@ class PearProfileAPI: ProfileAPI {
   
   static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLDetachedProfileFields) }"
   
+  // swiftlint:disable:next line_length
+  static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
+  
 }
 
 // MARK: Routes
 extension PearProfileAPI {
   func createNewDetachedProfile(gettingStartedUserProfileData: GettingStartedUserProfileData,
-                                completion: @escaping (Result<PearDetachedProfile, Error>) -> Void) {
+                                completion: @escaping (Result<PearDetachedProfile, DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -62,7 +57,7 @@ extension PearProfileAPI {
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
         if let error = error {
           print(error as Any)
-          completion(.failure(error))
+          completion(.failure(DetachedProfileError.unknownError(error: error)))
           return
         } else {
           if  let data = data,
@@ -80,15 +75,15 @@ extension PearProfileAPI {
               //                completion(.failure(UserCreationError.failedDeserialization))
               //                return
               //              }
-              completion(.failure(UserAPIError.failedDeserialization))
+              completion(.failure(DetachedProfileError.failedDeserialization))
             } catch {
               print("Error: \(error)")
-              completion(.failure(error))
+              completion(.failure(DetachedProfileError.unknownError(error: error)))
               return
             }
           } else {
             print("Failed Conversions")
-            completion(.failure(UserAPIError.failedDeserialization))
+            completion(.failure(DetachedProfileError.failedDeserialization))
             return
           }
         }
@@ -97,15 +92,15 @@ extension PearProfileAPI {
     } catch let error as UserAPIError {
       
       print("Invalid variables for user creation error")
-      completion(.failure(error))
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
     } catch {
       print(error)
-      completion(.failure(error))
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
     
   }
   
-  func checkDetachedProfiles(phoneNumber: String, completion: @escaping(Result<[PearDetachedProfile], Error>) -> Void) {
+  func checkDetachedProfiles(phoneNumber: String, completion: @escaping(Result<[PearDetachedProfile], DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -130,7 +125,7 @@ extension PearProfileAPI {
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
         if let error = error {
           print(error as Any)
-          completion(.failure(error))
+          completion(.failure(DetachedProfileError.unknownError(error: error)))
           return
         } else {
           if  let data = data,
@@ -152,7 +147,7 @@ extension PearProfileAPI {
               }
             } catch {
               print("Error: \(error)")
-              completion(.failure(error))
+              completion(.failure(DetachedProfileError.unknownError(error: error)))
               return
             }
           } else {
@@ -166,10 +161,70 @@ extension PearProfileAPI {
     } catch let error as DetachedProfileError {
       
       print("Invalid variables for detached profile error")
-      completion(.failure(error))
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
     } catch {
       print(error)
-      completion(.failure(error))
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
+    }
+    
+  }
+  
+  func attachDetachedProfile(user_id: String, detachedProfile_id: String, creatorUser_id: String,
+                             completion: @escaping(Result<Bool, DetachedProfileError>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    
+    request.allHTTPHeaderFields = defaultHeaders
+
+    do {
+      
+      let fullDictionary: [String: Any] = [
+        "query": PearProfileAPI.attachDetachedProfileQuery,
+        "variables": [
+          "user_id": user_id,
+          "detachedProfile_id": detachedProfile_id,
+          "creatorUser_id": creatorUser_id
+        ]
+      ]
+      print(fullDictionary)
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          completion(.failure(DetachedProfileError.unknownError(error: error)))
+          return
+        } else {
+          if  let data = data,
+            let json = try? JSON(data: data) {
+            print("Finished Attaching")
+            print(json)
+            if let success = json["data"]["approveNewDetachedProfile"]["success"].bool {
+              completion(.success(success))
+              return
+            } else {
+              completion(.failure(DetachedProfileError.unknown))
+            }
+            
+          } else {
+            print("Failed Conversions")
+            completion(.failure(DetachedProfileError.failedDeserialization))
+            return
+          }
+        }
+      }
+      dataTask.resume()
+    } catch let error as DetachedProfileError {
+      
+      print("Invalid variables for detached profile error")
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
+    } catch {
+      print(error)
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
     
   }

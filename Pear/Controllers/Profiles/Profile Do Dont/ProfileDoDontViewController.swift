@@ -32,10 +32,10 @@ class ProfileDoDontViewController: UIViewController {
   var intrinsicContentHeights: [CGFloat] = []
   var doDontType: DoDontType!
   var doDontContent: [DoDontContent] = []
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  
   class func instantiate(doDontType: DoDontType, doDontContent: [DoDontContent]) -> ProfileDoDontViewController? {
     let storyboard = UIStoryboard(name: String(describing: ProfileDoDontViewController.self), bundle: nil)
     guard let doDontVC = storyboard.instantiateInitialViewController() as? ProfileDoDontViewController else { return nil }

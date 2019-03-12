@@ -34,31 +34,47 @@ extension LoadingScreenViewController {
       self.continueToLandingScreen()
     })
   }
+
+  static func getLandingScreen() -> UIViewController? {
+    guard let landingScreenVC = LandingScreenViewController.instantiate() else {
+      print("Failed to create Landing Screen VC")
+      return nil
+    }
+    return landingScreenVC
+  }
   
   func continueToLandingScreen() {
     print("Continuing to Landing Screen")
     DispatchQueue.main.async {
-      guard let loadingScreenVC = LandingScreenViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
-        return
+      if let landingVC = LoadingScreenViewController.getLandingScreen() {
+        self.navigationController?.setViewControllers([landingVC], animated: true)
       }
-      self.navigationController?.setViewControllers([loadingScreenVC], animated: true)
     }
+  }
+  
+  static func getMainScreenVC() -> UIViewController? {
+    guard let discoveryVC = DiscoverySimpleViewController.instantiate() else {
+      print("Failed to create Simple Discovery VC")
+      return nil
+    }
+    return discoveryVC
+  }
+  
+  static func getWaitlistVC() -> UIViewController? {
+    guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
+      print("Failed to create Landing Screen VC")
+      return nil
+    }
+    return waitlistVC
   }
   
   func continueToMainScreen() {
     print("Continuing to Main Screen")
     DispatchQueue.main.async {
-      guard let discoveryVC = DiscoverySimpleViewController.instantiate() else {
-        print("Failed to create Simple Discovery VC")
-        return
+      if let mainVC = LoadingScreenViewController.getMainScreenVC() {
+        self.navigationController?.setViewControllers([mainVC], animated: true)
       }
-      self.navigationController?.setViewControllers([discoveryVC], animated: true)
-//      guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
-//        print("Failed to create Landing Screen VC")
-//        return
-//      }
-//      self.navigationController?.setViewControllers([waitlistVC], animated: true)
+
     }
   }
   
