@@ -10,9 +10,9 @@ import UIKit
 
 enum ImageAPIError: Error {
   case failedDeserialization
-  case unknown
+  case unknownError(error: Error)
 }
 
 protocol ImageAPI {
-  func uploadNewImage(with image: UIImage, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void)
+  func uploadNewImage(with image: UIImage, userID: String, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void)
 }

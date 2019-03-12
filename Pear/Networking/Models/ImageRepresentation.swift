@@ -73,7 +73,11 @@ class ImageRepresentation: Codable {
   }
   
   func encode(to encoder: Encoder) throws {
-    
+    var container = encoder.container(keyedBy: ImageRepresentationCodingKeys.self)
+    try container.encode(self.imageType.rawValue, forKey: .imageType)
+    try container.encode(self.imageURL, forKey: .imageURL)
+    try container.encode(self.height, forKey: .height)
+    try container.encode(self.width, forKey: .width)
   }
   
 }

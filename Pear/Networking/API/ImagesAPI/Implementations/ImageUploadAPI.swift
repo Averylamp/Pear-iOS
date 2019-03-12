@@ -18,7 +18,7 @@ class ImageUploadAPI: ImageAPI {
     
   }
   
-  func uploadNewImage(with image: UIImage, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
+  func uploadNewImage(with image: UIImage, userID: String, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
     
     let headers: [String: String] = [
       "Content-Type": "application/json"
@@ -38,41 +38,29 @@ class ImageUploadAPI: ImageAPI {
       let session = URLSession.shared
       let dataTask = session
         .dataTask(with: request as URLRequest, completionHandler: { (data, _, error) -> Void in
-          if error != nil {
+          if let error = error {
             print(error as Any)
+            completion(.failure(ImageAPIError.unknownError(error: error)))
           } else {
-            if let data = data, let json = JSON(rawValue: data), let returnData = json["size_map"].dictionary {
-            
-              guard let imageID = returnData["imageID"]?.string,
-              let originalImageDictionary = returnData["original"]?.dictionaryObject,
-              let originalImage = ImageRepresentation(dictionary: originalImageDictionary),
-              let largeImageDictionary = returnData["large"]?.dictionaryObject,
-              let largeImage = ImageRepresentation(dictionary: largeImageDictionary),
-              let mediumImageDictionary = returnData["medium"]?.dictionaryObject,
-              let mediumImage = ImageRepresentation(dictionary: mediumImageDictionary),
-              let smallImageDictionary = returnData["small"]?.dictionaryObject,
-              let smallImage = ImageRepresentation(dictionary: smallImageDictionary),
-              let thumbnailImageDictionary = returnData["thumbnail"]?.dictionaryObject,
-                let thumbnailImage = ImageRepresentation(dictionary: thumbnailImageDictionary) else {
-                  print("Missing required field for image deserialization")
-                  completion(.failure(ImageAPIError.failedDeserialization))
-                  return
+            if let data = data, let json = JSON(rawValue: data) {
+              do {
+                print(json)
+                let returnData = try json["size_map"].rawData()
+                let imageContainer = try JSONDecoder().decode(ImageContainer.self, from: returnData)
+                completion(.success(imageContainer))
+              } catch {
+                completion(.failure(ImageAPIError.unknownError(error: error)))
               }
-              
-              let imageContainer = ImageContainer(imageID: imageID, original: originalImage, large: largeImage, medium: mediumImage, small: smallImage, thumbnail: thumbnailImage)
-              
-              print(json)
-              completion(.success(imageContainer))
-              return
+            } else {
+              completion(.failure(ImageAPIError.failedDeserialization))
             }
           }
         })
       
       dataTask.resume()
     } catch {
-      //            completion( .failure(error))
+      completion(.failure(ImageAPIError.unknownError(error: error)))
     }
-    
   }
   
 }
