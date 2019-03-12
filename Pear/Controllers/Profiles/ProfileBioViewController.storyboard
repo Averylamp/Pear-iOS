@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Cg-L3-c7R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4Cg-L3-c7R">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +13,10 @@
         <scene sceneID="NAF-GZ-CEA">
             <objects>
                 <viewController id="4Cg-L3-c7R" customClass="ProfileBioViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8jL-NW-GoY"/>
+                        <viewControllerLayoutGuide type="bottom" id="IGs-be-DlD"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eWw-dT-yeD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,12 +60,11 @@ Except watching movies and drinking copious amounts of boba. If you like either 
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Pbc-yQ-Ien" firstAttribute="trailing" secondItem="ko6-Ff-fHM" secondAttribute="trailing" constant="20" id="7o7-qr-qqE"/>
-                            <constraint firstItem="ko6-Ff-fHM" firstAttribute="leading" secondItem="Pbc-yQ-Ien" secondAttribute="leading" constant="20" id="Zl4-3g-PVf"/>
-                            <constraint firstItem="ko6-Ff-fHM" firstAttribute="top" secondItem="Pbc-yQ-Ien" secondAttribute="top" id="h1x-pX-TLp"/>
-                            <constraint firstItem="Pbc-yQ-Ien" firstAttribute="bottom" secondItem="ko6-Ff-fHM" secondAttribute="bottom" id="lmU-Wa-DIo"/>
+                            <constraint firstAttribute="trailing" secondItem="ko6-Ff-fHM" secondAttribute="trailing" constant="20" id="7o7-qr-qqE"/>
+                            <constraint firstItem="ko6-Ff-fHM" firstAttribute="leading" secondItem="eWw-dT-yeD" secondAttribute="leading" constant="20" id="Zl4-3g-PVf"/>
+                            <constraint firstItem="ko6-Ff-fHM" firstAttribute="top" secondItem="8jL-NW-GoY" secondAttribute="bottom" id="h1x-pX-TLp"/>
+                            <constraint firstItem="IGs-be-DlD" firstAttribute="top" secondItem="ko6-Ff-fHM" secondAttribute="bottom" id="lmU-Wa-DIo"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Pbc-yQ-Ien"/>
                     </view>
                     <size key="freeformSize" width="375" height="240"/>
                     <connections>

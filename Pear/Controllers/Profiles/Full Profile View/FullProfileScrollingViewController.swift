@@ -13,6 +13,8 @@ class FullProfileScrollingViewController: UIViewController {
   @IBOutlet var scrollView: UIScrollView!
   var userProfileData: GettingStartedUserProfileData!
   
+  var fullStackView: UIStackView?
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -46,6 +48,9 @@ extension FullProfileScrollingViewController {
     self.addChild(fullProfileStackVC)
     self.scrollView.addSubview(fullProfileStackVC.view)
     fullProfileStackVC.view.translatesAutoresizingMaskIntoConstraints = false
+    if let fullStackView = fullProfileStackVC.view as? UIStackView {
+      self.fullStackView = fullStackView
+    }
     self.scrollView.addConstraints([
         NSLayoutConstraint(item: fullProfileStackVC.view, attribute: .centerX, relatedBy: .equal,
                            toItem: self.scrollView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
