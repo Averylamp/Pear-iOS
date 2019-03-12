@@ -36,6 +36,8 @@
 		BB1C67102237205700D75848 /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C670F2237205700D75848 /* Encoding.swift */; };
 		BB1C67122237824800D75848 /* FullProfileScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67112237824800D75848 /* FullProfileScrollingViewController.swift */; };
 		BB1C67142237825100D75848 /* FullProfileScrollingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67132237825100D75848 /* FullProfileScrollingViewController.storyboard */; };
+		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
+		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
 		BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */; };
 		BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */; };
 		BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */; };
@@ -207,6 +209,8 @@
 		BB1C670F2237205700D75848 /* Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoding.swift; sourceTree = "<group>"; };
 		BB1C67112237824800D75848 /* FullProfileScrollingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileScrollingViewController.swift; sourceTree = "<group>"; };
 		BB1C67132237825100D75848 /* FullProfileScrollingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollingViewController.storyboard; sourceTree = "<group>"; };
+		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
+		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
 		BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseFlowViewController.swift; sourceTree = "<group>"; };
 		BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSeeSamplesViewController.swift; sourceTree = "<group>"; };
 		BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSeeSamplesViewController.storyboard; sourceTree = "<group>"; };
@@ -644,6 +648,8 @@
 				BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */,
 				BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */,
 				BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */,
+				BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */,
+				BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */,
 				BBA2B42F223504FE00D8C27B /* ProfileImageViewController.swift */,
 				BBA2B437223505F000D8C27B /* ProfileImageViewController.storyboard */,
 				BBA2B4312235051400D8C27B /* ProfileDoDontViewController.swift */,
@@ -1121,6 +1127,7 @@
 				BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedStartFriendProfileViewController.storyboard in Resources */,
 				BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */,
+				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */,
@@ -1243,6 +1250,7 @@
 			files = (
 				600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */,
 				BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */,
+				BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
 				BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,

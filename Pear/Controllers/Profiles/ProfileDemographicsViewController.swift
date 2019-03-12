@@ -57,7 +57,7 @@ extension ProfileDemographicsViewController {
     
     for tagView in tagViews {
       tagView.layer.cornerRadius = 25
-      tagView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
+      tagView.backgroundColor = Colors.tagBubbleColor
       self.stackView.addArrangedSubview(tagView)
     }
     
