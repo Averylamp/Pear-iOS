@@ -35,4 +35,19 @@ extension UILabel {
     self.font = UIFont(name: StylingConfig.displayFontRegular, size: 12)
     self.textColor = UIColor(red: 0.26, green: 0.29, blue: 0.33, alpha: 1.00)
   }
+  
+  func stylizeBioLabel() {
+    self.stylizeSubtitleLabel()
+  }
+  func stylizeBioCreatorLabel() {
+    self.stylizeSubtitleLabel()
+  }
+  
+  func stylizeTagViewLabel() {
+    self.stylizeSubtitleLabel()
+  }
+  
+  func stylizeProfileSectionTitleLabel() {
+    self.stylizeSubtitleLabel()
+  }
 }

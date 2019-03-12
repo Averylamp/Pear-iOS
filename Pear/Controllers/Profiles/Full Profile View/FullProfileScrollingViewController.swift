@@ -30,6 +30,11 @@ extension FullProfileScrollingViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.addFullStackVC()
+    self.stylize()
+  }
+  
+  func stylize() {
+    self.view.backgroundColor = Colors.fullProfileBackgroundColor
   }
   
   func addFullStackVC() {

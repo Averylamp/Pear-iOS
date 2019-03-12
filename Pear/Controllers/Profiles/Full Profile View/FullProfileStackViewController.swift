@@ -34,12 +34,37 @@ extension FullProfileStackViewController {
   }
   
   func stylize() {
+    guard let user = DataStore.shared.currentPearUser else {
+      print("Failed to find pear user")
+      return
+    }
+    let creatorFirstName = user.firstName
+    
     self.addDemographcsVC()
-    self.addImageVC(image: self.userProfileData.images[0].image)
+    if 0 < self.userProfileData.images.count {
+      self.addImageVC(image: self.userProfileData.images[0].image)
+    }
+    self.addBioVC(bioText: self.userProfileData.bio!, creatorFirstName: creatorFirstName)
+    if 1 < self.userProfileData.images.count {
+      self.addImageVC(image: self.userProfileData.images[1].image)
+    }
     self.addDemographcsVC()
+    if 2 < self.userProfileData.images.count {
+      self.addImageVC(image: self.userProfileData.images[2].image)
+    }
     self.addDemographcsVC()
+    if 3 < self.userProfileData.images.count {
+      self.addImageVC(image: self.userProfileData.images[3].image)
+    }
     self.addDemographcsVC()
-    self.addDemographcsVC()
+    if 4 < self.userProfileData.images.count {
+      self.addImageVC(image: self.userProfileData.images[4].image)
+    }
+    
+    if 5 < self.userProfileData.images.count {
+      self.addImageVC(image: self.userProfileData.images[5].image)
+    }
+    
   }
   
   func addDemographcsVC() {
@@ -60,6 +85,14 @@ extension FullProfileStackViewController {
       return
     }
     self.stackView.addArrangedSubview(imageVC.view)
+  }
+  
+  func addBioVC(bioText: String, creatorFirstName: String) {
+    guard let bioVC = ProfileBioViewController.instantiate(bioText: bioText, creatorFirstName: creatorFirstName) else {
+      print("Failed to create bio VC")
+      return
+    }
+    self.stackView.addArrangedSubview(bioVC.view)
   }
 
 }

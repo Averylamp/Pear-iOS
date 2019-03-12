@@ -14,7 +14,7 @@
         <scene sceneID="YIA-N5-4Co">
             <objects>
                 <viewController id="nEr-Cf-1ur" customClass="FullProfileStackViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
-                    <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" id="Naf-oi-zsh">
+                    <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" id="Naf-oi-zsh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <viewLayoutGuide key="safeArea" id="FWg-6b-oQh"/>

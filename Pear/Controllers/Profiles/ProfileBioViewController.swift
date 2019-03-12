@@ -10,16 +10,21 @@ import UIKit
 
 class ProfileBioViewController: UIViewController {
   
-  var userProfileData: GettingStartedUserProfileData!
+  @IBOutlet weak var bioLabel: UILabel!
+  @IBOutlet weak var creatorLabel: UILabel!
+  
+  var bioText: String!
+  var creatorFirstName: String!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserProfileData: GettingStartedUserProfileData) -> ProfileBioViewController? {
-    let storyboard = UIStoryboard(name: String(describing: FullProfileStackViewController.self), bundle: nil)
-    guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? ProfileBioViewController else { return nil }
-    profileStackViewVC.userProfileData = gettingStartedUserProfileData
-    return profileStackViewVC
+  class func instantiate(bioText: String, creatorFirstName: String) -> ProfileBioViewController? {
+    let storyboard = UIStoryboard(name: String(describing: ProfileBioViewController.self), bundle: nil)
+    guard let bioVC = storyboard.instantiateInitialViewController() as? ProfileBioViewController else { return nil }
+    bioVC.bioText = bioText
+    bioVC.creatorFirstName = creatorFirstName
+    return bioVC
   }
   
 }
@@ -29,6 +34,15 @@ extension ProfileBioViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.stylize()
+  }
+  
+  func stylize() {
+    self.bioLabel.stylizeBioLabel()
+    self.creatorLabel.stylizeBioCreatorLabel()
+    
+    self.bioLabel.text = self.bioText
+    self.creatorLabel.text = "Written by \(self.creatorFirstName!)"
     
   }
   

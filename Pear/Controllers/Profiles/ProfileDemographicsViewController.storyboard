@@ -17,30 +17,29 @@
                         <viewControllerLayoutGuide type="top" id="qcT-pg-5dR"/>
                         <viewControllerLayoutGuide type="bottom" id="6P1-tn-ZSs"/>
                     </layoutGuides>
-                    <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" id="c6a-HQ-6cq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                    <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" id="c6a-HQ-6cq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="k8c-zi-aui">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKJ-Fi-ar0">
-                                        <rect key="frame" x="8" y="4" width="359" height="42"/>
+                                        <rect key="frame" x="16" y="4" width="343" height="54"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="PKJ-Fi-ar0" secondAttribute="trailing" constant="8" id="0Sq-Uh-4E2"/>
+                                    <constraint firstAttribute="trailing" secondItem="PKJ-Fi-ar0" secondAttribute="trailing" constant="16" id="0Sq-Uh-4E2"/>
                                     <constraint firstAttribute="bottom" secondItem="PKJ-Fi-ar0" secondAttribute="bottom" constant="4" id="KJu-6h-4rh"/>
-                                    <constraint firstItem="PKJ-Fi-ar0" firstAttribute="leading" secondItem="k8c-zi-aui" secondAttribute="leading" constant="8" id="hcE-fl-FDG"/>
+                                    <constraint firstItem="PKJ-Fi-ar0" firstAttribute="leading" secondItem="k8c-zi-aui" secondAttribute="leading" constant="16" id="hcE-fl-FDG"/>
                                     <constraint firstItem="PKJ-Fi-ar0" firstAttribute="top" secondItem="k8c-zi-aui" secondAttribute="top" constant="4" id="t0X-ZS-rN8"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1OV-ap-Hxt">
-                                <rect key="frame" x="0.0" y="50" width="375" height="50"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OV-ap-Hxt">
+                                <rect key="frame" x="0.0" y="74" width="375" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="zXz-pl-NMJ">
                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
@@ -58,7 +57,6 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="zXz-pl-NMJ" secondAttribute="trailing" id="58e-kJ-4L1"/>
                                     <constraint firstAttribute="height" secondItem="zXz-pl-NMJ" secondAttribute="height" id="7gY-ep-c08"/>
@@ -68,12 +66,8 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="1OV-ap-Hxt" firstAttribute="top" secondItem="k8c-zi-aui" secondAttribute="bottom" id="82s-jH-GlN"/>
-                            <constraint firstItem="6P1-tn-ZSs" firstAttribute="top" secondItem="1OV-ap-Hxt" secondAttribute="bottom" id="YaI-Pg-GTF"/>
-                        </constraints>
                     </stackView>
-                    <size key="freeformSize" width="375" height="100"/>
+                    <size key="freeformSize" width="375" height="124"/>
                     <connections>
                         <outlet property="firstNameLabel" destination="PKJ-Fi-ar0" id="7jG-eK-fI4"/>
                         <outlet property="stackView" destination="zXz-pl-NMJ" id="kHA-VK-J5e"/>

@@ -640,7 +640,6 @@
 			isa = PBXGroup;
 			children = (
 				BB75BFCA22155F9100BAB800 /* Full Profile View */,
-				BB75BFCE22155FC000BAB800 /* Profile DoDont */,
 				BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */,
 				BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */,
 				BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */,
@@ -724,13 +723,6 @@
 				BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */,
 			);
 			path = "Full Profile View";
-			sourceTree = "<group>";
-		};
-		BB75BFCE22155FC000BAB800 /* Profile DoDont */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Profile DoDont";
 			sourceTree = "<group>";
 		};
 		BB75BFD322156B9700BAB800 /* Full Profile Review Page */ = {

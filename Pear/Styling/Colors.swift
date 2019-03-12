@@ -18,4 +18,7 @@ class Colors {
   
   /// Shadow Color
   static let shadowColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
+  
+  /// Full Profile Background Color
+  static let fullProfileBackgroundColor: UIColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
 }

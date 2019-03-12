@@ -16,7 +16,7 @@ class ProfileDoDontViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(gettingStartedUserProfileData: GettingStartedUserProfileData) -> ProfileDoDontViewController? {
-    let storyboard = UIStoryboard(name: String(describing: FullProfileStackViewController.self), bundle: nil)
+    let storyboard = UIStoryboard(name: String(describing: ProfileDoDontViewController.self), bundle: nil)
     guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? ProfileDoDontViewController else { return nil }
     profileStackViewVC.userProfileData = gettingStartedUserProfileData
     return profileStackViewVC
@@ -26,10 +26,8 @@ class ProfileDoDontViewController: UIViewController {
 
 // MARK: - Life Cycle
 extension ProfileDoDontViewController {
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
   }
   
 }
