@@ -35,21 +35,6 @@ extension LoadingScreenViewController {
     })
   }
   
-  func checkForDetachedProfiles() {
-    if let user = DataStore.shared.currentPearUser {
-      PearProfileAPI.shared.checkDetachedProfiles(phoneNumber: user.phoneNumber) { (result) in
-        switch result {
-        case .success(let detachedProfiles):
-          print(detachedProfiles)
-          
-        case .failure(let error):
-          print("Error checking for Detached Profiles: \(error)")
-        }
-      }
-      
-    }
-  }
-  
   func continueToLandingScreen() {
     print("Continuing to Landing Screen")
     DispatchQueue.main.async {
@@ -63,13 +48,17 @@ extension LoadingScreenViewController {
   
   func continueToMainScreen() {
     print("Continuing to Main Screen")
-    self.checkForDetachedProfiles()
     DispatchQueue.main.async {
-      guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
+      guard let discoveryVC = DiscoverySimpleViewController.instantiate() else {
+        print("Failed to create Simple Discovery VC")
         return
       }
-      self.navigationController?.setViewControllers([waitlistVC], animated: true)
+      self.navigationController?.setViewControllers([discoveryVC], animated: true)
+//      guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
+//        print("Failed to create Landing Screen VC")
+//        return
+//      }
+//      self.navigationController?.setViewControllers([waitlistVC], animated: true)
     }
   }
   
