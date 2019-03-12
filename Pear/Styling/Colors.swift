@@ -21,4 +21,7 @@ class Colors {
   
   /// Full Profile Background Color
   static let fullProfileBackgroundColor: UIColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
+  
+  /// Tag Bubble Color
+  static let tagBubbleColor: UIColor = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1.00)
 }

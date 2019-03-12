@@ -48,7 +48,7 @@ extension FullProfileStackViewController {
     if 1 < self.userProfileData.images.count {
       self.addImageVC(image: self.userProfileData.images[1].image)
     }
-    self.addDemographcsVC()
+    self.addInterestsVC(interests: self.userProfileData.interests)
     if 2 < self.userProfileData.images.count {
       self.addImageVC(image: self.userProfileData.images[2].image)
     }
@@ -93,6 +93,14 @@ extension FullProfileStackViewController {
       return
     }
     self.stackView.addArrangedSubview(bioVC.view)
+  }
+  
+  func addInterestsVC(interests: [String]) {
+    guard let interestsVC = ProfileInterestsViewController.instantiate(interests: interests) else {
+      print("Failed to create Interests VC")
+      return
+    }
+    self.stackView.addArrangedSubview(interestsVC.view)
   }
 
 }

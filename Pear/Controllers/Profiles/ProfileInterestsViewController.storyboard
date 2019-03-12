@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5bM-1s-b8E">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Interests View Controller-->
+        <scene sceneID="cps-E3-NaW">
+            <objects>
+                <viewController id="5bM-1s-b8E" customClass="ProfileInterestsViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vqT-qq-6Vv"/>
+                        <viewControllerLayoutGuide type="bottom" id="9v6-h2-nmD"/>
+                    </layoutGuides>
+                    <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" id="L8v-cu-SPt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="2iP-ma-13O">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4M7-c0-w42">
+                                        <rect key="frame" x="16" y="4" width="343" height="116"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="4M7-c0-w42" secondAttribute="bottom" constant="4" id="BKn-p8-oAA"/>
+                                    <constraint firstAttribute="trailing" secondItem="4M7-c0-w42" secondAttribute="trailing" constant="16" id="ImC-SE-Ckq"/>
+                                    <constraint firstItem="4M7-c0-w42" firstAttribute="leading" secondItem="2iP-ma-13O" secondAttribute="leading" constant="16" id="Iun-hS-JYQ"/>
+                                    <constraint firstItem="4M7-c0-w42" firstAttribute="top" secondItem="2iP-ma-13O" secondAttribute="top" constant="4" id="yJd-ZU-XYo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="S3K-Fh-aw4"/>
+                    </stackView>
+                    <size key="freeformSize" width="375" height="124"/>
+                    <connections>
+                        <outlet property="interestsTitleLabel" destination="4M7-c0-w42" id="jUv-Ql-FkG"/>
+                        <outlet property="verticalStackView" destination="L8v-cu-SPt" id="oNX-hm-Geg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fj1-bY-9qz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="132.23388305847078"/>
+        </scene>
+    </scenes>
+</document>
