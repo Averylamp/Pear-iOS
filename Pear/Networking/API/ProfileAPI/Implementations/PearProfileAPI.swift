@@ -49,7 +49,7 @@ extension PearProfileAPI {
       let fullDictionary: [String: Any] = [
         "query": PearProfileAPI.createNewDetachedProfileQuery,
         "variables": [
-          "detachedProfileInput": try converUserProfileDataToQueryVariable(userProfileData: gettingStartedUserProfileData)
+          "detachedProfileInput": try convertUserProfileDataToQueryVariable(userProfileData: gettingStartedUserProfileData)
         ]
       ]
       
@@ -139,6 +139,7 @@ extension PearProfileAPI {
             print(json)
             do {
               if let profiles = json["data"]["findDetachedProfiles"].array {
+                
                 var detachedProfiles: [PearDetachedProfile] = []
                 print("\(profiles.count) Detached profiles found matching your phone number")
                 for profile in profiles {
@@ -146,16 +147,10 @@ extension PearProfileAPI {
                   let pearDetachedUser = try JSONDecoder().decode(PearDetachedProfile.self, from: pearDetachedProfileData)
                   detachedProfiles.append(pearDetachedUser)
                 }
-                if detachedProfiles.count > 0 {
-                  completion(.success(detachedProfiles))
-                } else {
-                  completion(.failure(DetachedProfileError.failedDeserialization))
-                }
-                
+                completion(.success(detachedProfiles))
               } else {
                 completion(.failure(DetachedProfileError.noDetachedProfilesFound))
               }
-              
             } catch {
               print("Error: \(error)")
               completion(.failure(error))
@@ -185,7 +180,7 @@ extension PearProfileAPI {
 // MARK: Create Detached Profile Endpoint Helpers
 extension PearProfileAPI {
   
-  func converUserProfileDataToQueryVariable(userProfileData: GettingStartedUserProfileData) throws -> [String: Any] {
+  func convertUserProfileDataToQueryVariable(userProfileData: GettingStartedUserProfileData) throws -> [String: Any] {
     
     guard
       
@@ -197,11 +192,12 @@ extension PearProfileAPI {
         throw DetachedProfileError.invalidVariables
     }
     
-//    let (imageIDs, imageSizes) = ImageContainer
-//      .convertArrayToDatabaseFormat(images: userProfileData.images
-//        .filter({ $0.imageSizesRepresentation != nil })
-//        .map({ $0.imageSizesRepresentation! }))
-//    
+    let imageContainer = userProfileData.images
+      .filter({ $0.imageContainer != nil })
+      .map({ $0.imageContainer!.dictionary })
+      .filter({$0 != nil})
+    
+    print(imageContainer)
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       throw DetachedProfileError.userNotLoggedIn
     }
@@ -216,8 +212,8 @@ extension PearProfileAPI {
       "vibes": userProfileData.vibes,
       "bio": bio,
       "dos": userProfileData.dos,
-      "donts": userProfileData.donts
-//      "images"
+      "donts": userProfileData.donts,
+      "images": imageContainer
     ]
     
     return variablesDictionary

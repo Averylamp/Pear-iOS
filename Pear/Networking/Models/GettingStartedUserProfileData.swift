@@ -52,6 +52,13 @@ class GettingStartedUserProfileData: CustomStringConvertible {
     self.dos = ["take him to eat ramen", "feed him tasty food", "take him to the movies"]
     self.donts = ["feed him vegetables", "make him sleep on time"]
     
+    if let image = ImageContainer.fakeImage() {
+      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-1")!)
+      fakeImage.imageContainer = image
+      self.images.append(fakeImage)
+      
+    }
+    
   }
   
 }

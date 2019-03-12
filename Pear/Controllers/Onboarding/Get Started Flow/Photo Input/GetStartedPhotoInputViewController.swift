@@ -281,16 +281,16 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegateFlowLayout
 extension GetStartedPhotoInputViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-    if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+    if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage, let userID = DataStore.shared.currentPearUser?.documentID {
       let gettingStartedImage = pickedImage.gettingStartedImage()
       self.images.append(gettingStartedImage)
       self.collectionView.reloadData()
-      ImageUploadAPI.shared.uploadNewImage(with: gettingStartedImage.image) { result in
+      ImageUploadAPI.shared.uploadNewImage(with: gettingStartedImage.image, userID: userID) { result in
         print("Image upload returned")
         switch result {
         case .success( let imageAllSizesRepresentation):
           print("Finished properly")
-          gettingStartedImage.imageSizesRepresentation = imageAllSizesRepresentation
+          gettingStartedImage.imageContainer = imageAllSizesRepresentation
         case .failure(let error):
           print("Failed image api request")
           print(error)

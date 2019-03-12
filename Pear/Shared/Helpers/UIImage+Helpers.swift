@@ -23,7 +23,7 @@ extension UIImage {
 }
 
 class GettingStartedUIImageContainer {
-  var imageSizesRepresentation: ImageContainer?
+  var imageContainer: ImageContainer?
   var image: UIImage
   
   init(image: UIImage) {
