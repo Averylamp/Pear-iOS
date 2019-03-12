@@ -61,7 +61,7 @@ class ImageContainer: Codable {
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: ImageContainerCodingKeys.self)
     self.imageID = try values.decode( String.self, forKey: .imageID)
-    self.uploadedByUser = try values.decode( String.self, forKey: .uploadedByUser)
+    self.uploadedByUser = try? values.decode( String.self, forKey: .uploadedByUser)
     self.original = try values.decode( ImageRepresentation.self, forKey: .original)
     self.large = try values.decode( ImageRepresentation.self, forKey: .large)
     self.medium = try values.decode( ImageRepresentation.self, forKey: .medium)

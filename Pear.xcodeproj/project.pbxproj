@@ -170,6 +170,7 @@
 		BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0292214023A00FD1355 /* EndorsementData.swift */; };
 		BBECBEB12237BA05008E8E91 /* FullProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */; };
 		BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */; };
+		BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
@@ -346,6 +347,7 @@
 		BBE8D0292214023A00FD1355 /* EndorsementData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndorsementData.swift; sourceTree = "<group>"; };
 		BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileReviewViewController.storyboard; sourceTree = "<group>"; };
+		BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 				BB796F89222DB19300E31C7F /* PearUser.swift */,
 				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
 				BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */,
+				BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */,
 				BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */,
 				BBE8D0272214022600FD1355 /* ProfileData.swift */,
 				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
@@ -1298,6 +1301,7 @@
 				BB75BFE3221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift in Sources */,
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
+				BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */,
 				BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */,
 				BB18788B21E2B1B400964F26 /* ProfilesMainViewController.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,

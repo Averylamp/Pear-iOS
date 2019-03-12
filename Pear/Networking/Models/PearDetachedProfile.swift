@@ -7,11 +7,11 @@
 //
 
 import Foundation
-
 class PearDetachedProfile: Codable, CustomStringConvertible {
   
   var documentID: String!
   var creatorUserID: String!
+  var creatorFirstName: String!
   var firstName: String!
   var phoneNumber: String!
   var age: Int!
@@ -23,12 +23,13 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
   var donts: [String]
   var images: [ImageContainer]
   
-  static let graphQLDetachedProfileFields = "{ _id creatorUser_id firstName phoneNumber age gender interests vibes bio dos donts images \(ImageContainer.graphQLImageFields) matchingDemographics \(GraphQLQueryStrings.matchingDemographicsFull) matchingPreferences \(GraphQLQueryStrings.matchingPreferencesFull) }"
+  static let graphQLDetachedProfileFields = "{ _id creatorUser_id creatorFirstName firstName phoneNumber age gender interests vibes bio dos donts images \(ImageContainer.graphQLImageFields) matchingDemographics \(GraphQLQueryStrings.matchingDemographicsFull) matchingPreferences \(GraphQLQueryStrings.matchingPreferencesFull) }"
   
   var description: String {
     return "**** Pear Detached Profile **** \n" + """
     documentID: \(String(describing: documentID)),
     creatorUserID: \(String(describing: creatorUserID)),
+    creatorFirstName: \(String(describing: creatorFirstName)),
     firstName: \(String(describing: firstName)),
     phoneNumber: \(String(describing: phoneNumber)),
     age: \(String(describing: age)),
@@ -52,6 +53,7 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
     print(values)
     self.documentID = try values.decode(String.self, forKey: .documentID)
     self.creatorUserID = try values.decode(String.self, forKey: .creatorUserID)
+    self.creatorFirstName = try values.decode(String.self, forKey: .creatorFirstName)
     self.firstName = try values.decode(String.self, forKey: .firstName)
     self.phoneNumber = try values.decode(String.self, forKey: .phoneNumber)
     self.age = try values.decode(Int.self, forKey: .age)
