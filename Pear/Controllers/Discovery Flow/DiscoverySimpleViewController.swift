@@ -11,6 +11,7 @@ import UIKit
 class DiscoverySimpleViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
+  var fullProfiles: [FullProfileDisplayData] = []
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -41,6 +42,7 @@ extension DiscoverySimpleViewController {
   
   func stylize() {
     tableView.separatorStyle = .none
+    tableView.delegate = self
     
   }
   
@@ -66,6 +68,11 @@ extension DiscoverySimpleViewController {
         switch result {
         case .success(let feedObjects):
           print("Found \(feedObjects.count) Feed Objects")
+          self.fullProfiles = feedObjects
+          DispatchQueue.main.async {
+            print("Reloading data for table")
+            self.tableView.reloadData()
+          }
         case .failure(let error):
           print("Error fetching feed:\(error)")
         }
@@ -73,4 +80,39 @@ extension DiscoverySimpleViewController {
       
     }
   }
+}
+
+extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSource {
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.fullProfiles.count
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 300
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoverySimpleTableViewCell else {
+      return UITableViewCell()
+    }
+    print("creating cell")
+    let fullProfile = self.fullProfiles[indexPath.row]
+    cell.firstImageView.image = nil
+    if let imageContainer = fullProfile.imageContainers.first,
+      let imageURL = URL(string: imageContainer.medium.imageURL) {
+      cell.firstImageView.sd_setImage(with: imageURL, completed: nil)
+    }
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let fullProfile = self.fullProfiles[indexPath.row]
+    guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
+      print("Failed to create full profile Scroll View")
+      return
+    }
+    self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+  }
+  
 }

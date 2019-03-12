@@ -32,7 +32,7 @@ enum PearUserKeys: String, CodingKey {
   case birthdate
   case age
   case profileIDs = "profile_ids"
-  case profileObjs = "profile_objs"
+  case profileObjs = "profileObjs"
   case endorsedProfileIDs = "endorsedProfile_ids"
   case endorsedProfileObjs = "endorsedProfile_objs"
   

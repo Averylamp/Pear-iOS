@@ -82,4 +82,15 @@ class FullProfileDisplayData {
     self.imageContainers = pdp.images
   }
   
+  convenience init (user: PearUser, profile: PearUserProfile) {
+    self.init(creatorFirstName: profile.creatorFirstName,
+              firstName: user.firstName,
+              age: user.age,
+              gender: user.gender!,
+              interests: profile.interests,
+              vibes: profile.vibes,
+              bio: profile.bio,
+              dos: profile.dos,
+              donts: profile.donts)
+  }
 }

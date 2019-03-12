@@ -71,12 +71,10 @@ class PearUser: Codable, CustomStringConvertible {
       self.birthdate = Date(timeIntervalSince1970: birthdateNumberValue / 1000)
     }
     self.age = try values.decode(Int.self, forKey: .age)
-    if let profiles = try? values.decode([PearUserProfile].self, forKey: .profileObjs) {
-      self.userProfiles = profiles
-    }
-    if let images = try? values.decode([ImageContainer].self, forKey: .displayedImages) {
-      self.displayedImages = images
-    }
+    let profiles = try values.decode([PearUserProfile].self, forKey: .profileObjs)
+    self.userProfiles = profiles
+    let images = try values.decode([ImageContainer].self, forKey: .displayedImages)
+    self.displayedImages = images
     
   }
   
