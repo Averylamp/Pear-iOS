@@ -1,7 +1,82 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tns-Tj-5Ab">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Profile Do Dont View Controller-->
+        <scene sceneID="R3f-AT-hCo">
+            <objects>
+                <viewController id="tns-Tj-5Ab" customClass="ProfileDoDontViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZxO-wo-LRl"/>
+                        <viewControllerLayoutGuide type="bottom" id="VWS-Hu-dqy"/>
+                    </layoutGuides>
+                    <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" id="Amx-4P-xls">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Yzj-YS-ktJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEU-Ht-yCj">
+                                        <rect key="frame" x="62" y="4" width="297" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-icon-do" translatesAutoresizingMaskIntoConstraints="NO" id="PWM-Qe-l4h">
+                                        <rect key="frame" x="8" y="21" width="46" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="PWM-Qe-l4h" secondAttribute="height" multiplier="1:1" id="Hgj-Ca-Pah"/>
+                                            <constraint firstAttribute="width" constant="46" id="eCO-uU-en9"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hEU-Ht-yCj" firstAttribute="leading" secondItem="PWM-Qe-l4h" secondAttribute="trailing" constant="8" id="6PH-WW-iIz"/>
+                                    <constraint firstItem="PWM-Qe-l4h" firstAttribute="leading" secondItem="Yzj-YS-ktJ" secondAttribute="leading" constant="8" id="We5-Ox-KVh"/>
+                                    <constraint firstItem="hEU-Ht-yCj" firstAttribute="top" secondItem="Yzj-YS-ktJ" secondAttribute="top" constant="4" id="ZLQ-gI-MSL"/>
+                                    <constraint firstItem="PWM-Qe-l4h" firstAttribute="centerY" secondItem="hEU-Ht-yCj" secondAttribute="centerY" id="j6l-oF-bGW"/>
+                                    <constraint firstAttribute="bottom" secondItem="hEU-Ht-yCj" secondAttribute="bottom" constant="4" id="kBI-MG-y9u"/>
+                                    <constraint firstAttribute="trailing" secondItem="hEU-Ht-yCj" secondAttribute="trailing" constant="16" id="zru-S6-Qj1"/>
+                                </constraints>
+                            </view>
+                            <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0w-vx-wtg">
+                                <rect key="frame" x="0.0" y="100" width="375" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="Fez-G5-Oco"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="e0w-vx-wtg" firstAttribute="trailing" secondItem="cRm-Jy-mUF" secondAttribute="trailing" id="3wx-vM-ZFZ"/>
+                            <constraint firstItem="e0w-vx-wtg" firstAttribute="leading" secondItem="cRm-Jy-mUF" secondAttribute="leading" id="7Rg-2K-CxW"/>
+                            <constraint firstItem="VWS-Hu-dqy" firstAttribute="top" secondItem="e0w-vx-wtg" secondAttribute="bottom" id="Anv-bL-F64"/>
+                            <constraint firstItem="e0w-vx-wtg" firstAttribute="width" secondItem="Amx-4P-xls" secondAttribute="width" id="w19-GX-iWW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cRm-Jy-mUF"/>
+                    </stackView>
+                    <size key="freeformSize" width="375" height="260"/>
+                    <connections>
+                        <outlet property="scrollView" destination="e0w-vx-wtg" id="DXA-IY-qfH"/>
+                        <outlet property="scrollViewHeightConstraint" destination="Fez-G5-Oco" id="nmr-p2-RTS"/>
+                        <outlet property="titleImageView" destination="PWM-Qe-l4h" id="rKh-l3-HiC"/>
+                        <outlet property="titleLabel" destination="hEU-Ht-yCj" id="Ey3-Mv-ZrY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="idr-7D-BBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="132.23388305847078"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="profile-icon-do" width="48" height="48"/>
+    </resources>
 </document>
