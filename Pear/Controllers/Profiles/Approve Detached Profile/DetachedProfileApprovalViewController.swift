@@ -33,18 +33,21 @@ class DetachedProfileApprovalViewController: UIViewController {
       PearProfileAPI.shared.attachDetachedProfile(user_id: currentUserID,
                                                   detachedProfile_id: detachedProfile.documentID,
                                                   creatorUser_id: detachedProfile.creatorUserID) { (result) in
-        switch result {
-        case .success(let success):
-          print("Successfully attached detached profile: \(success)")
-          if success {
-            self.dismiss(animated: true, completion: nil)
-          } else {
-            self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
+        DispatchQueue.main.async {
+          
+          switch result {
+          case .success(let success):
+            print("Successfully attached detached profile: \(success)")
+            if success {
+              self.dismiss(animated: true, completion: nil)
+            } else {
+              self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
+            }
+          case .failure(let error):
+            print("Failed to attach detached profile: \(error)")
           }
-        case .failure(let error):
-          print("Failed to attach detached profile: \(error)")
         }
-                                                    
+        
       }
     }
   }
@@ -62,9 +65,9 @@ extension DetachedProfileApprovalViewController {
   
   func addFullStackVC() {
     guard let fullProfileStackVC = FullProfileStackViewController
-        .instantiate(userFullProfileData: FullProfileDisplayData(pdp: self.detachedProfile)) else {
-          print("Failed to create full profiles stack VC")
-          return
+      .instantiate(userFullProfileData: FullProfileDisplayData(pdp: self.detachedProfile)) else {
+        print("Failed to create full profiles stack VC")
+        return
     }
     
     self.addChild(fullProfileStackVC)

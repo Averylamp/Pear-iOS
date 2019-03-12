@@ -173,6 +173,7 @@
 		BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */; };
 		BBECBEC22237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEC12237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard */; };
 		BBECBEC52237E6AA008E8E91 /* DetachedProfileApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEC42237E6AA008E8E91 /* DetachedProfileApprovalViewController.swift */; };
+		BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
@@ -352,6 +353,7 @@
 		BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverySimpleViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEC12237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetachedProfileApprovalViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEC42237E6AA008E8E91 /* DetachedProfileApprovalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetachedProfileApprovalViewController.swift; sourceTree = "<group>"; };
+		BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserProfile.swift; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			children = (
 				BB796F89222DB19300E31C7F /* PearUser.swift */,
 				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
+				BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */,
 				BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */,
 				BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */,
 				BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */,
@@ -1371,6 +1374,7 @@
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
+				BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */,
 				BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */,

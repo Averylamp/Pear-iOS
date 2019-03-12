@@ -27,6 +27,7 @@ class PearProfileAPI: ProfileAPI {
   // swiftlint:disable:next line_length
   static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
   
+  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLUserFields) } }}"
 }
 
 // MARK: Routes
@@ -209,6 +210,64 @@ extension PearProfileAPI {
             } else {
               completion(.failure(DetachedProfileError.unknown))
             }
+            
+          } else {
+            print("Failed Conversions")
+            completion(.failure(DetachedProfileError.failedDeserialization))
+            return
+          }
+        }
+      }
+      dataTask.resume()
+    } catch let error as DetachedProfileError {
+      
+      print("Invalid variables for detached profile error")
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
+    } catch {
+      print(error)
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
+    }
+    
+  }
+  
+  func getDiscoveryFeed(user_id: String,
+                        completion: @escaping(Result<[FullProfileDisplayData], DetachedProfileError>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    
+    request.allHTTPHeaderFields = defaultHeaders
+    
+    do {
+      
+      let fullDictionary: [String: Any] = [
+        "query": PearProfileAPI.fetchCurrentFeedQuery,
+        "variables": [
+          "user_id": user_id
+          ]
+      ]
+      print(fullDictionary)
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          completion(.failure(DetachedProfileError.unknownError(error: error)))
+          return
+        } else {
+          if  let data = data,
+            let json = try? JSON(data: data) {
+            print("Retreived Feed")
+            print(json)
+//            if let success = json["data"]["approveNewDetachedProfile"]["success"].bool {
+//              completion(.success(success))
+//              return
+//            } else {
+//              completion(.failure(DetachedProfileError.unknown))
+//            }
             
           } else {
             print("Failed Conversions")
