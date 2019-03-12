@@ -173,6 +173,8 @@
 		BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */; };
 		BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */; };
 		BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */; };
+		BBECBEC02237D9A5008E8E91 /* DetachedProfileApprovalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEBF2237D9A5008E8E91 /* DetachedProfileApprovalViewController.swift */; };
+		BBECBEC22237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEC12237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
@@ -352,6 +354,8 @@
 		BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
 		BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySimpleViewController.swift; sourceTree = "<group>"; };
 		BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverySimpleViewController.storyboard; sourceTree = "<group>"; };
+		BBECBEBF2237D9A5008E8E91 /* DetachedProfileApprovalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetachedProfileApprovalViewController.swift; path = Pear/Controllers/DetachedProfileApprovalViewController.swift; sourceTree = SOURCE_ROOT; };
+		BBECBEC12237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetachedProfileApprovalViewController.storyboard; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
@@ -443,6 +447,8 @@
 			children = (
 				BB986A1C220E08B300759A14 /* Onboarding */,
 				BB56D22922142E2400A652E7 /* Profiles */,
+				BBECBEBF2237D9A5008E8E91 /* DetachedProfileApprovalViewController.swift */,
+				BBECBEC12237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard */,
 				BBDF1FEB21E2B61F00520881 /* Navigation */,
 				BB18788521E2B10400964F26 /* Login Flow */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
@@ -657,16 +663,11 @@
 			isa = PBXGroup;
 			children = (
 				BB75BFCA22155F9100BAB800 /* Full Profile View */,
-				BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */,
-				BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */,
-				BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */,
-				BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */,
-				BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */,
-				BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */,
-				BBA2B42F223504FE00D8C27B /* ProfileImageViewController.swift */,
-				BBA2B437223505F000D8C27B /* ProfileImageViewController.storyboard */,
-				BBA2B4312235051400D8C27B /* ProfileDoDontViewController.swift */,
-				BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */,
+				BBECBEBA2237D940008E8E91 /* Profile Demographics */,
+				BBECBEBB2237D94B008E8E91 /* Profile Bio */,
+				BBECBEBC2237D955008E8E91 /* Profile Interests */,
+				BBECBEBD2237D960008E8E91 /* Profile Image */,
+				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -1013,6 +1014,51 @@
 			path = "Validate Phone Number";
 			sourceTree = "<group>";
 		};
+		BBECBEBA2237D940008E8E91 /* Profile Demographics */ = {
+			isa = PBXGroup;
+			children = (
+				BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */,
+				BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */,
+			);
+			path = "Profile Demographics";
+			sourceTree = "<group>";
+		};
+		BBECBEBB2237D94B008E8E91 /* Profile Bio */ = {
+			isa = PBXGroup;
+			children = (
+				BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */,
+				BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */,
+			);
+			path = "Profile Bio";
+			sourceTree = "<group>";
+		};
+		BBECBEBC2237D955008E8E91 /* Profile Interests */ = {
+			isa = PBXGroup;
+			children = (
+				BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */,
+				BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */,
+			);
+			path = "Profile Interests";
+			sourceTree = "<group>";
+		};
+		BBECBEBD2237D960008E8E91 /* Profile Image */ = {
+			isa = PBXGroup;
+			children = (
+				BBA2B42F223504FE00D8C27B /* ProfileImageViewController.swift */,
+				BBA2B437223505F000D8C27B /* ProfileImageViewController.storyboard */,
+			);
+			path = "Profile Image";
+			sourceTree = "<group>";
+		};
+		BBECBEBE2237D967008E8E91 /* Profile Do Dont */ = {
+			isa = PBXGroup;
+			children = (
+				BBA2B4312235051400D8C27B /* ProfileDoDontViewController.swift */,
+				BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */,
+			);
+			path = "Profile Do Dont";
+			sourceTree = "<group>";
+		};
 		BBFFBBD722211749002E1B54 /* ImagesAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,6 +1194,7 @@
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */,
+				BBECBEC22237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
 				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
@@ -1342,6 +1389,7 @@
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
+				BBECBEC02237D9A5008E8E91 /* DetachedProfileApprovalViewController.swift in Sources */,
 				BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */,
 				BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */,
 				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,

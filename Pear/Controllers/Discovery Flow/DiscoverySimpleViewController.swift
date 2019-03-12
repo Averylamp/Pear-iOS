@@ -10,6 +10,7 @@ import UIKit
 
 class DiscoverySimpleViewController: UIViewController {
 
+  @IBOutlet weak var tableView: UITableView!
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -32,6 +33,7 @@ extension DiscoverySimpleViewController {
   }
   
   func stylize() {
+    tableView.separatorStyle = .none
     
   }
   

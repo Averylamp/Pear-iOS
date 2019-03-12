@@ -95,6 +95,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c3E-IM-EAx"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="VgD-Ez-iF8" id="gAP-UI-fUn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8D-w7-i9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
