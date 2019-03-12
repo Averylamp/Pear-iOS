@@ -21,9 +21,7 @@ enum PearDetachedProfileKeys: String, CodingKey {
   case bio
   case dos
   case donts
-  case imageIDs
   case images
   case matchingDemographics
   case matchingPreferences
-  
 }

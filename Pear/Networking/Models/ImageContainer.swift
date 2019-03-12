@@ -9,6 +9,7 @@
 import Foundation
 
 enum ImageContainerCodingKeys: String, CodingKey {
+  case images
   case imageID
   case uploadedByUser = "uploadedByUser_id"
   case original
@@ -20,7 +21,7 @@ enum ImageContainerCodingKeys: String, CodingKey {
 
 class ImageContainer: Codable {
   
-  static let graphQLImageFields: String = "{ imageID original \(ImageRepresentation.graphQLImageRepresentationFields) large \(ImageRepresentation.graphQLImageRepresentationFields) medium \(ImageRepresentation.graphQLImageRepresentationFields) small \(ImageRepresentation.graphQLImageRepresentationFields) thumbnail \(ImageRepresentation.graphQLImageRepresentationFields)}"
+  static let graphQLImageFields: String = "{ imageID uploadedByUser_id original \(ImageRepresentation.graphQLImageRepresentationFields) large \(ImageRepresentation.graphQLImageRepresentationFields) medium \(ImageRepresentation.graphQLImageRepresentationFields) small \(ImageRepresentation.graphQLImageRepresentationFields) thumbnail \(ImageRepresentation.graphQLImageRepresentationFields)}"
   
   let imageID: String
   var uploadedByUser: String?

@@ -16,3 +16,6 @@ type_name:
   max_length:
     warning: 60
     error: 80
+
+identifier_name:
+  allowed_symbols: "_id"

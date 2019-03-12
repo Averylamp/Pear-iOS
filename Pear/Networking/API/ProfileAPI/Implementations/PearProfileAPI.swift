@@ -121,9 +121,7 @@ extension PearProfileAPI {
           "phoneNumber": phoneNumber
         ]
       ]
-      
-      print(fullDictionary)
-      
+            
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
@@ -197,7 +195,6 @@ extension PearProfileAPI {
       .map({ $0.imageContainer!.dictionary })
       .filter({$0 != nil})
     
-    print(imageContainer)
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       throw DetachedProfileError.userNotLoggedIn
     }
