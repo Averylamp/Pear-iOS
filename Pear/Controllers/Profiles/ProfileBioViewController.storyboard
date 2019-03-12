@@ -1,7 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Cg-L3-c7R">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Profile Bio View Controller-->
+        <scene sceneID="NAF-GZ-CEA">
+            <objects>
+                <viewController id="4Cg-L3-c7R" customClass="ProfileBioViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eWw-dT-yeD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ko6-Ff-fHM">
+                                <rect key="frame" x="20" y="0.0" width="335" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxT-jV-Llj">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="211.5"/>
+                                        <string key="text">Like bad girls? Sammi’s bad at everything. 
+ 
+Except watching movies and drinking copious amounts of boba. If you like either of those things, she’s the one!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vet-ng-HXm">
+                                        <rect key="frame" x="38" y="219.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-icon-creator-leaf" translatesAutoresizingMaskIntoConstraints="NO" id="m88-Qf-uDv">
+                                        <rect key="frame" x="0.0" y="215" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="MCM-st-OgQ"/>
+                                            <constraint firstAttribute="width" secondItem="m88-Qf-uDv" secondAttribute="height" multiplier="1:1" id="z25-mA-oro"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="m88-Qf-uDv" firstAttribute="centerY" secondItem="vet-ng-HXm" secondAttribute="centerY" id="4BS-MO-twq"/>
+                                    <constraint firstItem="m88-Qf-uDv" firstAttribute="leading" secondItem="ko6-Ff-fHM" secondAttribute="leading" id="TXg-Mm-Dq8"/>
+                                    <constraint firstItem="bxT-jV-Llj" firstAttribute="top" secondItem="ko6-Ff-fHM" secondAttribute="top" id="YFz-iW-tp0"/>
+                                    <constraint firstAttribute="bottom" secondItem="vet-ng-HXm" secondAttribute="bottom" id="aZw-zr-OM0"/>
+                                    <constraint firstItem="vet-ng-HXm" firstAttribute="top" secondItem="bxT-jV-Llj" secondAttribute="bottom" constant="8" id="b40-6h-TAw"/>
+                                    <constraint firstItem="bxT-jV-Llj" firstAttribute="leading" secondItem="ko6-Ff-fHM" secondAttribute="leading" id="dCj-cu-446"/>
+                                    <constraint firstItem="vet-ng-HXm" firstAttribute="leading" secondItem="m88-Qf-uDv" secondAttribute="trailing" constant="8" id="fwl-Lg-eMP"/>
+                                    <constraint firstAttribute="trailing" secondItem="bxT-jV-Llj" secondAttribute="trailing" id="nnp-Vl-O3z"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Pbc-yQ-Ien" firstAttribute="trailing" secondItem="ko6-Ff-fHM" secondAttribute="trailing" constant="20" id="7o7-qr-qqE"/>
+                            <constraint firstItem="ko6-Ff-fHM" firstAttribute="leading" secondItem="Pbc-yQ-Ien" secondAttribute="leading" constant="20" id="Zl4-3g-PVf"/>
+                            <constraint firstItem="ko6-Ff-fHM" firstAttribute="top" secondItem="Pbc-yQ-Ien" secondAttribute="top" id="h1x-pX-TLp"/>
+                            <constraint firstItem="Pbc-yQ-Ien" firstAttribute="bottom" secondItem="ko6-Ff-fHM" secondAttribute="bottom" id="lmU-Wa-DIo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pbc-yQ-Ien"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="240"/>
+                    <connections>
+                        <outlet property="bioLabel" destination="bxT-jV-Llj" id="mq1-uf-4Bs"/>
+                        <outlet property="creatorLabel" destination="vet-ng-HXm" id="tVo-Ue-eC9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RbW-o4-kNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="132.23388305847078"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="profile-icon-creator-leaf" width="32" height="32"/>
+    </resources>
 </document>
