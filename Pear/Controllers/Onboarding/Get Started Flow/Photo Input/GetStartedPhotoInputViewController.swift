@@ -53,17 +53,17 @@ class GetStartedPhotoInputViewController: UIViewController {
     //            return
     //        }
 
-//    guard let profileReviewVC = FullProfileStackViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
-//      print("Failed to create Full VC")
-//      return
-//    }
-//    self.navigationController?.pushViewController(profileReviewVC, animated: true)
-    
-    guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedUserProfileData) else {
-      print("Failed to create Notify Friend VC")
+    guard let profileReviewVC = FullProfileStackViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
+      print("Failed to create Full VC")
       return
     }
-    self.navigationController?.pushViewController(notifyFriendVC, animated: true)
+    self.navigationController?.pushViewController(profileReviewVC, animated: true)
+    
+//    guard let notifyFriendVC = GetStartedNotifyFriendViewController.instantiate(gettingStartedData: self.gettingStartedUserProfileData) else {
+//      print("Failed to create Notify Friend VC")
+//      return
+//    }
+//    self.navigationController?.pushViewController(notifyFriendVC, animated: true)
     //        guard let profileReviewVC = GetStartedProfileReviewViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
     //            print("Failed to create profile Review VC")
     //            return

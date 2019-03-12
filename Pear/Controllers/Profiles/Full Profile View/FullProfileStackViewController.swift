@@ -12,6 +12,8 @@ class FullProfileStackViewController: UIViewController {
   
   var userProfileData: GettingStartedUserProfileData!
   
+  @IBOutlet var stackView: UIStackView!
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -28,6 +30,26 @@ class FullProfileStackViewController: UIViewController {
 extension FullProfileStackViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.stylize()
+  }
+  
+  func stylize() {
+    self.addDemographcsVC()
+    self.addDemographcsVC()
+    self.addDemographcsVC()
+    self.addDemographcsVC()
+    self.addDemographcsVC()
+  }
+  
+  func addDemographcsVC() {
+    guard let demographicsVC = ProfileDemographicsViewController.instantiate(firstName: userProfileData.firstName!,
+                                                                             age: userProfileData.age!,
+                                                                             gender: userProfileData.gender!) else {
+      print("Failed to create Demographics VC")
+      return
+    }
+    
+    self.stackView.addArrangedSubview(demographicsVC.view)
     
   }
 
