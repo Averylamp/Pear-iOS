@@ -83,21 +83,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wco-BN-SMz">
-                                                    <rect key="frame" x="45" y="21" width="285" height="258"/>
+                                                    <rect key="frame" x="31" y="15" width="313" height="270"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1q-cx-Lh6">
-                                                    <rect key="frame" x="45" y="21" width="285" height="258"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1q-cx-Lh6">
+                                                    <rect key="frame" x="31" y="15" width="313" height="270"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Wco-BN-SMz" firstAttribute="top" secondItem="X8o-go-E0H" secondAttribute="topMargin" constant="10" id="7Ua-JL-DeN"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Wco-BN-SMz" secondAttribute="bottom" constant="10" id="9Dd-ox-XW1"/>
+                                                <constraint firstItem="Wco-BN-SMz" firstAttribute="top" secondItem="X8o-go-E0H" secondAttribute="topMargin" constant="4" id="7Ua-JL-DeN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wco-BN-SMz" secondAttribute="bottom" constant="4" id="9Dd-ox-XW1"/>
                                                 <constraint firstItem="W1q-cx-Lh6" firstAttribute="height" secondItem="Wco-BN-SMz" secondAttribute="height" id="AH3-ad-y2Q"/>
-                                                <constraint firstItem="Wco-BN-SMz" firstAttribute="leading" secondItem="X8o-go-E0H" secondAttribute="leadingMargin" constant="30" id="F7R-Xz-nNU"/>
+                                                <constraint firstItem="Wco-BN-SMz" firstAttribute="leading" secondItem="X8o-go-E0H" secondAttribute="leadingMargin" constant="16" id="F7R-Xz-nNU"/>
                                                 <constraint firstItem="W1q-cx-Lh6" firstAttribute="centerY" secondItem="Wco-BN-SMz" secondAttribute="centerY" id="KYo-AB-Njt"/>
                                                 <constraint firstItem="W1q-cx-Lh6" firstAttribute="centerX" secondItem="Wco-BN-SMz" secondAttribute="centerX" id="YzC-4p-TV6"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Wco-BN-SMz" secondAttribute="trailing" constant="30" id="eBR-yV-NAK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wco-BN-SMz" secondAttribute="trailing" constant="16" id="eBR-yV-NAK"/>
                                                 <constraint firstItem="W1q-cx-Lh6" firstAttribute="width" secondItem="Wco-BN-SMz" secondAttribute="width" id="qj5-aA-tP5"/>
                                             </constraints>
                                         </tableViewCellContentView>
