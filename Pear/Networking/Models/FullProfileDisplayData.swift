@@ -92,5 +92,6 @@ class FullProfileDisplayData {
               bio: profile.bio,
               dos: profile.dos,
               donts: profile.donts)
+    self.imageContainers = user.displayedImages
   }
 }

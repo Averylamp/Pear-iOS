@@ -43,7 +43,7 @@ extension DiscoverySimpleViewController {
   func stylize() {
     tableView.separatorStyle = .none
     tableView.delegate = self
-    
+    tableView.dataSource = self   
   }
   
   func checkForDetachedProfiles() {
