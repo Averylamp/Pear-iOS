@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEU-Ht-yCj">
-                                        <rect key="frame" x="62" y="4" width="297" height="80"/>
+                                        <rect key="frame" x="62" y="12" width="297" height="64"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -41,9 +41,9 @@
                                 <constraints>
                                     <constraint firstItem="hEU-Ht-yCj" firstAttribute="leading" secondItem="PWM-Qe-l4h" secondAttribute="trailing" constant="8" id="6PH-WW-iIz"/>
                                     <constraint firstItem="PWM-Qe-l4h" firstAttribute="leading" secondItem="Yzj-YS-ktJ" secondAttribute="leading" constant="8" id="We5-Ox-KVh"/>
-                                    <constraint firstItem="hEU-Ht-yCj" firstAttribute="top" secondItem="Yzj-YS-ktJ" secondAttribute="top" constant="4" id="ZLQ-gI-MSL"/>
+                                    <constraint firstItem="hEU-Ht-yCj" firstAttribute="top" secondItem="Yzj-YS-ktJ" secondAttribute="top" constant="12" id="ZLQ-gI-MSL"/>
                                     <constraint firstItem="PWM-Qe-l4h" firstAttribute="centerY" secondItem="hEU-Ht-yCj" secondAttribute="centerY" id="j6l-oF-bGW"/>
-                                    <constraint firstAttribute="bottom" secondItem="hEU-Ht-yCj" secondAttribute="bottom" constant="4" id="kBI-MG-y9u"/>
+                                    <constraint firstAttribute="bottom" secondItem="hEU-Ht-yCj" secondAttribute="bottom" constant="12" id="kBI-MG-y9u"/>
                                     <constraint firstAttribute="trailing" secondItem="hEU-Ht-yCj" secondAttribute="trailing" constant="16" id="zru-S6-Qj1"/>
                                 </constraints>
                             </view>

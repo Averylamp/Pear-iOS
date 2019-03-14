@@ -60,9 +60,9 @@ extension ProfileInterestsViewController {
       NSLayoutConstraint(item: horizontalStackView, attribute: .right, relatedBy: .equal,
                          toItem: stackViewContainer, attribute: .right, multiplier: 1.0, constant: -16),
       NSLayoutConstraint(item: horizontalStackView, attribute: .top, relatedBy: .equal,
-                         toItem: stackViewContainer, attribute: .top, multiplier: 1.0, constant: 4),
+                         toItem: stackViewContainer, attribute: .top, multiplier: 1.0, constant: 8),
       NSLayoutConstraint(item: horizontalStackView, attribute: .bottom, relatedBy: .equal,
-                         toItem: stackViewContainer, attribute: .bottom, multiplier: 1.0, constant: -4)
+                         toItem: stackViewContainer, attribute: .bottom, multiplier: 1.0, constant: -8)
       ])
     
     self.verticalStackView.addArrangedSubview(stackViewContainer)
