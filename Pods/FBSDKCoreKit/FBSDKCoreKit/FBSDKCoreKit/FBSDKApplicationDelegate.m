@@ -199,10 +199,12 @@ typedef void (^FBSDKAuthenticationCompletionHandler)(NSURL *_Nullable callbackUR
         [_safariViewController.presentingViewController dismissViewControllerAnimated:YES
                                                                            completion:completePendingOpenURLBlock];
         _safariViewController = nil;
-    } else if (@available(iOS 11.0, *)) {
-        if (_authenticationSession != nil) {
-            [_authenticationSession cancel];
-            _authenticationSession = nil;
+    } else {
+        if (@available(iOS 11.0, *)) {
+            if (_authenticationSession != nil) {
+                [_authenticationSession cancel];
+                _authenticationSession = nil;
+            }
         }
         completePendingOpenURLBlock();
     }
@@ -224,7 +226,7 @@ typedef void (^FBSDKAuthenticationCompletionHandler)(NSURL *_Nullable callbackUR
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (_isAppLaunched) {
+    if ([self isAppLaunched]) {
         return NO;
     }
 
@@ -279,15 +281,6 @@ typedef void (^FBSDKAuthenticationCompletionHandler)(NSURL *_Nullable callbackUR
     // within the app delegate's lifecycle like openURL, in which case there
     // might have been a "didBecomeActive" event pending that we want to ignore.
     BOOL notExpectingBackground = !_expectingBackground && !_safariViewController && !_isDismissingSafariViewController && !_isRequestingSFAuthenticationSession;
-#if !TARGET_OS_TV
-    if (@available(iOS 11.0, *)) {
-        if (notExpectingBackground && _authenticationSessionCompletionHandler != nil) {
-            _authenticationSessionCompletionHandler(nil, nil);
-        }
-
-        notExpectingBackground = notExpectingBackground && !_authenticationSession;
-    }
-#endif
     if (notExpectingBackground) {
         _active = YES;
 #if !TARGET_OS_TV
@@ -584,6 +577,11 @@ typedef void (^FBSDKAuthenticationCompletionHandler)(NSURL *_Nullable callbackUR
         params[@"marketing_lib_included"] = @1;
     }
     [FBSDKAppEvents logEvent:@"fb_sdk_initialize" parameters:params];
+}
+
+// Wrapping this makes it mockable and enables testability
+- (BOOL)isAppLaunched {
+  return _isAppLaunched;
 }
 
 #pragma mark -- (non-tvos)

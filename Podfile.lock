@@ -5,6 +5,9 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - Fabric (1.9.0)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.37)
@@ -18,64 +21,64 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKShareKit (~> 4.37)
-  - FBSDKCoreKit (4.40.0):
+  - FBSDKCoreKit (4.41.0):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.40.0):
+  - FBSDKLoginKit (4.41.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.40.0):
+  - FBSDKShareKit (4.41.0):
     - FBSDKCoreKit
-  - Firebase/Auth (5.17.0):
+  - Firebase/Auth (5.18.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (= 5.3.1)
-  - Firebase/Core (5.17.0):
+    - FirebaseAuth (= 5.4.0)
+  - Firebase/Core (5.18.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.6.0)
-  - Firebase/CoreOnly (5.17.0):
-    - FirebaseCore (= 5.3.0)
-  - FirebaseAnalytics (5.6.0):
+    - FirebaseAnalytics (= 5.7.0)
+  - Firebase/CoreOnly (5.18.0):
+    - FirebaseCore (= 5.3.1)
+  - FirebaseAnalytics (5.7.0):
     - FirebaseCore (~> 5.3)
-    - FirebaseInstanceID (~> 3.5)
-    - GoogleAppMeasurement (= 5.6.0)
+    - FirebaseInstanceID (~> 3.6)
+    - GoogleAppMeasurement (= 5.7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseAuth (5.3.1):
+  - FirebaseAuth (5.4.0):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseAuthInterop (1.0.0)
-  - FirebaseCore (5.3.0):
+  - FirebaseCore (5.3.1):
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseInstanceID (3.5.0):
-    - FirebaseCore (~> 5.3)
-    - GoogleUtilities/Environment (~> 5.3)
-    - GoogleUtilities/UserDefaults (~> 5.3)
-  - GoogleAppMeasurement (5.6.0):
+  - FirebaseInstanceID (3.7.0):
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/UserDefaults (~> 5.2)
+  - GoogleAppMeasurement (5.7.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - GoogleUtilities/AppDelegateSwizzler (5.3.7):
+  - GoogleUtilities/AppDelegateSwizzler (5.5.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.3.7)
-  - GoogleUtilities/Logger (5.3.7):
+  - GoogleUtilities/Environment (5.5.0)
+  - GoogleUtilities/Logger (5.5.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.3.7):
+  - GoogleUtilities/MethodSwizzler (5.5.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.3.7):
+  - GoogleUtilities/Network (5.5.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.3.7)"
-  - GoogleUtilities/Reachability (5.3.7):
+  - "GoogleUtilities/NSData+zlib (5.5.0)"
+  - GoogleUtilities/Reachability (5.5.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.3.7):
+  - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
   - nanopb (0.3.901):
@@ -89,10 +92,12 @@ PODS:
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
-  - SwiftLint (0.30.1)
+  - SwiftLint (0.31.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -107,6 +112,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Bolts
+    - Crashlytics
+    - Fabric
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -130,27 +137,29 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
-  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
-  FBSDKShareKit: 0e45916f4150da485928ae2a17ca021950b194f5
-  Firebase: 59d557e064217fab6a03ff00baa73c06e73832e6
-  FirebaseAnalytics: 75e4bbc6417d190cc98ec1f17c41a4fad4c2c976
-  FirebaseAuth: 0f61e1329237da5682c49c9abd135e8f9d07a151
+  FBSDKCoreKit: 974810fe3806173f3777c68062fa8ed6fa59b59d
+  FBSDKLoginKit: 159a5c2eebe6a0774c3b128f5085128679233d2b
+  FBSDKShareKit: 79dfd0c51f1a241f33e219fcc39e7cc69534b900
+  Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
+  FirebaseAnalytics: 23851fe602c872130a2c5c55040b302120346cc2
+  FirebaseAuth: d85d052354447f30b4b2a805ab91b511458b56a6
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
-  FirebaseCore: c0c4befb82374d6aef64d800e569f47625352edc
-  FirebaseInstanceID: 4522aad88f69297622062c0e9ffccdee3dd9b151
-  GoogleAppMeasurement: 008e04ecd8efedd97a693aea8634aefe220bd26e
-  GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
+  FirebaseCore: 52f851b30e11360f1e67cf04b1edfebf0a47a2d3
+  FirebaseInstanceID: bd6fc5a258884e206fd5c474ebe4f5b00e21770e
+  GoogleAppMeasurement: 6cf307834da065863f9faf4c0de0a936d81dd832
+  GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
-  SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: a33aa80c24e3a6d28e8375714cfb4b1b8663996b
+PODFILE CHECKSUM: b69ff7b0b031902b52dbf275b56745aa2ff22cb8
 
 COCOAPODS: 1.6.0
