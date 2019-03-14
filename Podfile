@@ -7,6 +7,8 @@ target 'Pear' do
   pod 'FBSDKCoreKit'
   pod 'FacebookCore'
   pod 'FacebookLogin'
+  pod 'Fabric'
+  pod 'Crashlytics'
   pod 'FacebookShare'
   pod 'SDWebImage'
   pod 'SwiftyJSON'
