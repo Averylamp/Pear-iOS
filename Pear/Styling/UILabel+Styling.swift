@@ -33,25 +33,33 @@ extension UILabel {
   
   func stylizeTextFieldTitle() {
     self.font = UIFont(name: StylingConfig.displayFontRegular, size: 12)
-    self.textColor = UIColor(red: 0.26, green: 0.29, blue: 0.33, alpha: 1.00)
+    self.textColor = StylingConfig.textFontColor
   }
   
   func stylizeBioLabel() {
-    self.stylizeSubtitleLabel()
+    self.font = UIFont(name: StylingConfig.textFontSemiBold, size: 22)
+    self.textColor = StylingConfig.textFontColor
   }
-  func stylizeCreatorLabel() {
-    self.stylizeSubtitleLabel()
+  func stylizeCreatorLabel(preText: String, boldText: String) {
+    let preText = NSMutableAttributedString(string: preText, attributes: [NSAttributedString.Key.font: UIFont(name: StylingConfig.textFontRegular, size: 16) as Any])
+    let boldText = NSAttributedString(string: boldText, attributes: [NSAttributedString.Key.font: UIFont(name: StylingConfig.textFontBold, size: 16) as Any])
+    preText.append(boldText)
+    self.attributedText = preText
+    self.textColor = StylingConfig.textFontColor
   }
   
   func stylizeDoDontLabel() {
-    self.stylizeSubtitleLabel()
+    self.font = UIFont(name: StylingConfig.textFontSemiBold, size: 22)
+    self.textColor = StylingConfig.textFontColor
   }
   
   func stylizeTagViewLabel() {
-    self.stylizeSubtitleLabel()
+    self.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
+    self.textColor = StylingConfig.textFontColor
   }
   
   func stylizeProfileSectionTitleLabel() {
-    self.stylizeSubtitleLabel()
+    self.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
+    self.textColor = StylingConfig.textFontColor
   }
 }

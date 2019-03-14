@@ -25,17 +25,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4M7-c0-w42">
-                                        <rect key="frame" x="16" y="4" width="343" height="116"/>
+                                        <rect key="frame" x="16" y="12" width="343" height="100"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="4M7-c0-w42" secondAttribute="bottom" constant="4" id="BKn-p8-oAA"/>
+                                    <constraint firstAttribute="bottom" secondItem="4M7-c0-w42" secondAttribute="bottom" constant="12" id="BKn-p8-oAA"/>
                                     <constraint firstAttribute="trailing" secondItem="4M7-c0-w42" secondAttribute="trailing" constant="16" id="ImC-SE-Ckq"/>
                                     <constraint firstItem="4M7-c0-w42" firstAttribute="leading" secondItem="2iP-ma-13O" secondAttribute="leading" constant="16" id="Iun-hS-JYQ"/>
-                                    <constraint firstItem="4M7-c0-w42" firstAttribute="top" secondItem="2iP-ma-13O" secondAttribute="top" constant="4" id="yJd-ZU-XYo"/>
+                                    <constraint firstItem="4M7-c0-w42" firstAttribute="top" secondItem="2iP-ma-13O" secondAttribute="top" constant="12" id="yJd-ZU-XYo"/>
                                 </constraints>
                             </view>
                         </subviews>
