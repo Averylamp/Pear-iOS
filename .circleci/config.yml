@@ -8,6 +8,7 @@ jobs:
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
+      BUNDLER_VERSION: 2.0.1
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
