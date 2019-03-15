@@ -64,7 +64,6 @@ extension DiscoverySimpleViewController {
           print("Found \(feedObjects.count) Feed Objects")
           self.fullProfiles = feedObjects
           DispatchQueue.main.async {
-            print("Reloading data for table")
             self.tableView.reloadData()
           }
         case .failure(let error):
