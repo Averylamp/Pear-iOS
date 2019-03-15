@@ -27,6 +27,10 @@ extension AppDelegate: UIApplicationDelegate {
     //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()
     FirebaseApp.configure()
+    
+//    Forces Remote config fetch
+    print(DataStore.shared.remoteConfig.configSettings)
+    
     SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     return true
   }
