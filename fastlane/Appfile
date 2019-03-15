@@ -1,0 +1,8 @@
+app_identifier("com.getpear.pear") # The bundle identifier of your app
+apple_id("avery@getpear.com") # Your Apple email address
+
+itc_team_id("119925599") # App Store Connect Team ID
+team_id("9ST4X5576Q") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
