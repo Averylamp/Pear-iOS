@@ -147,6 +147,7 @@ extension GetStartedValidatePhoneNumberCodeViewController {
     if let user = Auth.auth().currentUser {
       user.linkAndRetrieveData(with: credential) { (_, error) in
         if let error = error {
+          print(error)
           HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
           guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
             print("Failed to create Verification Complete VC")

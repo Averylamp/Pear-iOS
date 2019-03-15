@@ -161,6 +161,7 @@
 		BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */; };
 		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
 		BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418F2227E137009CEC4A /* UIView+Styling.swift */; };
+		BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2842D223BFC1000AC6E30 /* PearUITests.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */; };
@@ -186,6 +187,16 @@
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
 		BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDF22212E82002E1B54 /* ImageUploadAPI.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BBD28430223BFC1000AC6E30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60C131B721D342BC0093ECBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60C131BE21D342BC0093ECBA;
+			remoteInfo = Pear;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		09F2A601FD4959E3CE62AF67 /* Pods-SubtleAsianMatches.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SubtleAsianMatches.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SubtleAsianMatches/Pods-SubtleAsianMatches.debug.xcconfig"; sourceTree = "<group>"; };
@@ -348,6 +359,9 @@
 		BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhoneVerificationCompleteViewController.storyboard; sourceTree = "<group>"; };
 		BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Styling.swift"; sourceTree = "<group>"; };
 		BBCF418F2227E137009CEC4A /* UIView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Styling.swift"; sourceTree = "<group>"; };
+		BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD2842D223BFC1000AC6E30 /* PearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUITests.swift; sourceTree = "<group>"; };
+		BBD2842F223BFC1000AC6E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConstants.swift; sourceTree = "<group>"; };
@@ -385,6 +399,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BBD28428223BFC1000AC6E30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -412,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				60C131C121D342BC0093ECBA /* Pear */,
+				BBD2842C223BFC1000AC6E30 /* PearUITests */,
 				60C131C021D342BC0093ECBA /* Products */,
 				04881204A105416849AC5EDB /* Pods */,
 				4D239BA3ACACC4B97DA94F43 /* Frameworks */,
@@ -424,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				60C131BF21D342BC0093ECBA /* Pear.app */,
+				BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -889,6 +912,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		BBD2842C223BFC1000AC6E30 /* PearUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BBD2842D223BFC1000AC6E30 /* PearUITests.swift */,
+				BBD2842F223BFC1000AC6E30 /* Info.plist */,
+			);
+			path = PearUITests;
+			sourceTree = "<group>";
+		};
 		BBDF1FEB21E2B61F00520881 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1126,6 +1158,24 @@
 			productReference = 60C131BF21D342BC0093ECBA /* Pear.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BBD2842A223BFC1000AC6E30 /* PearUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBD28434223BFC1000AC6E30 /* Build configuration list for PBXNativeTarget "PearUITests" */;
+			buildPhases = (
+				BBD28427223BFC1000AC6E30 /* Sources */,
+				BBD28428223BFC1000AC6E30 /* Frameworks */,
+				BBD28429223BFC1000AC6E30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBD28431223BFC1000AC6E30 /* PBXTargetDependency */,
+			);
+			name = PearUITests;
+			productName = PearUITests;
+			productReference = BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1147,6 +1197,10 @@
 							};
 						};
 					};
+					BBD2842A223BFC1000AC6E30 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 60C131BE21D342BC0093ECBA;
+					};
 				};
 			};
 			buildConfigurationList = 60C131BA21D342BC0093ECBA /* Build configuration list for PBXProject "Pear" */;
@@ -1163,6 +1217,7 @@
 			projectRoot = "";
 			targets = (
 				60C131BE21D342BC0093ECBA /* Pear */,
+				BBD2842A223BFC1000AC6E30 /* PearUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1243,6 +1298,13 @@
 				BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */,
 				BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */,
 				BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBD28429223BFC1000AC6E30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1473,7 +1535,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BBD28427223BFC1000AC6E30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BBD28431223BFC1000AC6E30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60C131BE21D342BC0093ECBA /* Pear */;
+			targetProxy = BBD28430223BFC1000AC6E30 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		60C131CB21D342BD0093ECBA /* LaunchScreen.storyboard */ = {
@@ -1649,6 +1727,46 @@
 			};
 			name = Release;
 		};
+		BBD28432223BFC1000AC6E30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				INFOPLIST_FILE = PearUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pear;
+			};
+			name = Debug;
+		};
+		BBD28433223BFC1000AC6E30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				INFOPLIST_FILE = PearUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pear;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1666,6 +1784,15 @@
 			buildConfigurations = (
 				60C131D221D342BD0093ECBA /* Debug */,
 				60C131D321D342BD0093ECBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBD28434223BFC1000AC6E30 /* Build configuration list for PBXNativeTarget "PearUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBD28432223BFC1000AC6E30 /* Debug */,
+				BBD28433223BFC1000AC6E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -22,4 +22,9 @@ platform :ios do
     build_app(workspace: "Pear.xcworkspace", scheme: "Pear")
     upload_to_testflight
   end
+  desc "Runs UI Tests"
+  lane :tests do
+    run_tests(scheme: "Pear")
+  end
+
 end
