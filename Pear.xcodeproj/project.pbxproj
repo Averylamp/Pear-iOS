@@ -176,6 +176,10 @@
 		BBECBEC9223846C8008E8E91 /* DiscoverySimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEC8223846C8008E8E91 /* DiscoverySimpleTableViewCell.swift */; };
 		BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */; };
 		BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBECF223848E6008E8E91 /* FullProfileScrollViewController.swift */; };
+		BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */; };
+		BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */; };
+		BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */; };
+		BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
@@ -358,6 +362,10 @@
 		BBECBEC8223846C8008E8E91 /* DiscoverySimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySimpleTableViewCell.swift; sourceTree = "<group>"; };
 		BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollViewController.storyboard; sourceTree = "<group>"; };
 		BBECBECF223848E6008E8E91 /* FullProfileScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullProfileScrollViewController.swift; sourceTree = "<group>"; };
+		BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTabViewController.swift; sourceTree = "<group>"; };
+		BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
+		BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsTabViewController.storyboard; sourceTree = "<group>"; };
+		BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeTabViewController.storyboard; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
@@ -451,6 +459,7 @@
 				BB56D22922142E2400A652E7 /* Profiles */,
 				BBDF1FEB21E2B61F00520881 /* Navigation */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
+				BBF694EE223B7E3600E13ABB /* Temporary Tabs */,
 				BB18788F21E2B1E200964F26 /* Matches Flow */,
 				BB18789021E2B1E900964F26 /* Profiles Flow */,
 				BB18789121E2B1F500964F26 /* Settings Flow */,
@@ -1062,6 +1071,17 @@
 			path = "Full Profile Scroll";
 			sourceTree = "<group>";
 		};
+		BBF694EE223B7E3600E13ABB /* Temporary Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */,
+				BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */,
+				BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */,
+				BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */,
+			);
+			path = "Temporary Tabs";
+			sourceTree = "<group>";
+		};
 		BBFFBBD722211749002E1B54 /* ImagesAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1186,7 +1206,9 @@
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
+				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
 				BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */,
+				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
 				BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */,
 				BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */,
@@ -1366,6 +1388,7 @@
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
 				BB6C06492227F750007A5C96 /* GetStartedAllowLocationViewController.swift in Sources */,
+				BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */,
 				BB3F219A2226765C00DC4489 /* GettingStartedUserData.swift in Sources */,
 				BB986A4D220F79CA00759A14 /* GetStartedShortBioViewController.swift in Sources */,
 				BB986A43220F76BF00759A14 /* GettingStartedUserProfileData.swift in Sources */,
@@ -1439,6 +1462,7 @@
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
+				BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */,
 				BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */,
 				BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */,
 				BB1C67122237824800D75848 /* FullProfileScrollingViewController.swift in Sources */,
