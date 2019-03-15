@@ -13,6 +13,12 @@ enum FullProfileError: Error {
   case conversionError
 }
 
+enum FullProfileOrigin {
+  case gettingStartedProfile
+  case detachedProfile
+  case userProfile
+}
+
 class FullProfileDisplayData {
   
   var creatorFirstName: String!
@@ -26,6 +32,7 @@ class FullProfileDisplayData {
   var donts: [String]
   var imageContainers: [ImageContainer] = []
   var rawImages: [UIImage] = []
+  var profileOrigin: FullProfileOrigin?
   
   init (creatorFirstName: String!,
         firstName: String!,
@@ -67,6 +74,7 @@ class FullProfileDisplayData {
               dos: gsup.dos,
               donts: gsup.donts)
     self.rawImages = gsup.images.map({ $0.image })
+    self.profileOrigin = .gettingStartedProfile
   }
   
   convenience init (pdp: PearDetachedProfile) {
@@ -80,6 +88,7 @@ class FullProfileDisplayData {
               dos: pdp.dos,
               donts: pdp.donts)
     self.imageContainers = pdp.images
+    self.profileOrigin = .detachedProfile
   }
   
   convenience init (user: PearUser, profile: PearUserProfile) {
@@ -93,5 +102,6 @@ class FullProfileDisplayData {
               dos: profile.dos,
               donts: profile.donts)
     self.imageContainers = user.displayedImages
+    self.profileOrigin = .userProfile
   }
 }
