@@ -38,7 +38,9 @@ extension FriendsTabViewController {
     
     if let user = DataStore.shared.currentPearUser {
       for userProfile in user.endorsedProfiles {
-        self.userProfiles.append(FullProfileDisplayData(user: user, profile: userProfile))
+        if let fullProfile = try? FullProfileDisplayData(user: user, profiles: [userProfile]) {
+          self.userProfiles.append(fullProfile)
+        }
       }
       for detachedProfile in user.detachedProfiles {
         self.userProfiles.append(FullProfileDisplayData(pdp: detachedProfile))
@@ -79,7 +81,9 @@ extension FriendsTabViewController: UITableViewDelegate, UITableViewDataSource {
         cell.profileFirstImageView.sd_setImage(with: imageURL, completed: nil)
       }
       cell.subtextLabel.stylizeSubtitleLabel()
-      cell.subtextLabel.text = "Made by \(profileData.creatorFirstName!)"
+      if let originalCreatorName = profileData.originalCreatorName {
+        cell.subtextLabel.text = "Made by \(originalCreatorName)"
+      }
       if let statusLabel = cell.statusLabel, let profileOrigin = profileData.profileOrigin {
         if profileOrigin == .detachedProfile {
           statusLabel.text = "Status: Not Accepted"

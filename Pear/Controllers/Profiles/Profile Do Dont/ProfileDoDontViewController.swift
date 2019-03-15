@@ -20,8 +20,6 @@ struct DoDontContent {
 
 class ProfileDoDontViewController: UIViewController {
   
-  var userProfileData: GettingStartedUserProfileData!
-  
   @IBOutlet weak var titleImageView: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
   
@@ -67,6 +65,10 @@ extension ProfileDoDontViewController {
       self.titleImageView.image = UIImage(named: "profile-icon-dont")
       self.titleLabel.text = "Dont's"
     }
+    
+    self.scrollView.isPagingEnabled = true
+    self.scrollView.showsHorizontalScrollIndicator = true
+    self.scrollView.showsVerticalScrollIndicator = false
   }
   
   func addDoDontContent() {
@@ -139,7 +141,7 @@ extension ProfileDoDontViewController {
       NSLayoutConstraint(item: writtenByLabel, attribute: .top, relatedBy: .equal,
                          toItem: contentTextLabel, attribute: .bottom, multiplier: 1.0, constant: 12.0),
       NSLayoutConstraint(item: writtenByLabel, attribute: .bottom, relatedBy: .equal,
-                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -8.0)
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -16.0)
       
       ])
     
@@ -164,7 +166,7 @@ extension ProfileDoDontViewController {
       ])
     
     let containerSize = CGSize(width: self.view.frame.width - (2 * indentWidth), height: CGFloat.infinity)
-    let intrinsicContentHeight: CGFloat = contentTextLabel.sizeThatFits(containerSize).height + 20
+    let intrinsicContentHeight: CGFloat = contentTextLabel.sizeThatFits(containerSize).height + 28
       + writtenByLabel.sizeThatFits(containerSize).height
     
     return (containerView, intrinsicContentHeight)

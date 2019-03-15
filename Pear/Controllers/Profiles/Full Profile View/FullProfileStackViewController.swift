@@ -43,7 +43,7 @@ extension FullProfileStackViewController {
     } else if 0 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[0])
     }
-    self.addBioVC(bioText: self.fullProfileData.bio!, creatorFirstName: self.fullProfileData.creatorFirstName)
+    self.addBioVC(bioContent: self.fullProfileData.bio)
     if 1 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[1])
     } else if 1 < self.fullProfileData.imageContainers.count {
@@ -56,15 +56,14 @@ extension FullProfileStackViewController {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
     }
     
-    let doContent = self.fullProfileData.dos.map { DoDontContent.init(phrase: $0, creatorName: self.fullProfileData.creatorFirstName)}
-    self.addDoDontVC(doDontType: .doType, doDontContent: doContent)
+    self.addDoDontVC(doDontType: .doType, doDontContent: fullProfileData.dos)
     if 3 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[3])
     } else if 3 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
     }
-    let dontContent = self.fullProfileData.donts.map { DoDontContent.init(phrase: $0, creatorName: self.fullProfileData.creatorFirstName)}
-    self.addDoDontVC(doDontType: .dontType, doDontContent: dontContent)
+    
+    self.addDoDontVC(doDontType: .dontType, doDontContent: fullProfileData.donts)
     if 4 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[4])
     } else if 4 < self.fullProfileData.imageContainers.count {
@@ -114,8 +113,8 @@ extension FullProfileStackViewController {
     imageVC.didMove(toParent: self)
   }
   
-  func addBioVC(bioText: String, creatorFirstName: String) {
-    guard let bioVC = ProfileBioViewController.instantiate(bioText: bioText, creatorFirstName: creatorFirstName) else {
+  func addBioVC(bioContent: [BioContent]) {
+    guard let bioVC = ProfileBioViewController.instantiate(bioContent: bioContent) else {
       print("Failed to create bio VC")
       return
     }
