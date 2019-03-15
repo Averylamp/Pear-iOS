@@ -56,7 +56,6 @@ class PearUserProfile: Codable, CustomStringConvertible {
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: PearDetachedProfileKeys.self)
-    print(values)
     self.documentID = try values.decode(String.self, forKey: .documentID)
     self.creatorUserID = try values.decode(String.self, forKey: .creatorUserID)
     self.creatorFirstName = try values.decode(String.self, forKey: .creatorFirstName)

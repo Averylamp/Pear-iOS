@@ -47,7 +47,6 @@ class PearUser: Codable, CustomStringConvertible {
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: PearUserKeys.self)
-    print(values)
     self.documentID = try values.decode(String.self, forKey: .documentID)
     self.deactivated = try values.decode(Bool.self, forKey: .deactivated)
     self.firebaseToken = try values.decode(String.self, forKey: .firebaseToken)
@@ -108,6 +107,9 @@ class PearUser: Codable, CustomStringConvertible {
     schoolEmailVerified: \(String(describing: schoolEmailVerified)),
     birthdate: \(String(describing: birthdate)),
     age: \(String(describing: age)),
+    \(self.userProfiles.count) User Profiles Found,
+    \(self.endorsedProfiles.count) Endorsed Profiles Found,
+    \(self.detachedProfiles.count) Detached Profiles Found,
     """
   }
 }

@@ -48,6 +48,12 @@ class GetStartedPhotoInputViewController: UIViewController {
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveImages()
+    
+    if self.gettingStartedUserProfileData.images.count == 0 {
+      self.alert(title: "Please Upload 🎑", message: "You must upload at least one image")
+      return
+    }
+    
     guard let profileReviewVC = FullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
       print("Failed to create scrolling Full VC")
       return

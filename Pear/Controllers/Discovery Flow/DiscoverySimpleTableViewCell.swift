@@ -10,6 +10,7 @@ import UIKit
 
 class DiscoverySimpleTableViewCell: UITableViewCell {
 
+  @IBOutlet weak var cardView: UIView!
   @IBOutlet weak var firstImageView: UIImageView!
   
   override func awakeFromNib() {
