@@ -13,13 +13,38 @@
         <scene sceneID="Yzy-J7-fm8">
             <objects>
                 <viewController id="LmC-B9-Q5i" customClass="ProfileImageViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
-                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="9sa-zh-M2f">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XSu-NY-zrm"/>
+                        <viewControllerLayoutGuide type="bottom" id="O5o-4g-jT2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xyO-cf-16v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="31Q-7w-aTe">
+                                <rect key="frame" x="169" y="169" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qAi-Cg-doH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qAi-Cg-doH" secondAttribute="height" multiplier="1:1" id="MPn-Ic-Fxl"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="31Q-7w-aTe" firstAttribute="centerX" secondItem="xyO-cf-16v" secondAttribute="centerX" id="2eg-hx-p9t"/>
+                            <constraint firstItem="31Q-7w-aTe" firstAttribute="centerY" secondItem="xyO-cf-16v" secondAttribute="centerY" id="Eu8-Ix-fFe"/>
+                            <constraint firstItem="qAi-Cg-doH" firstAttribute="centerY" secondItem="xyO-cf-16v" secondAttribute="centerY" id="SlH-2W-M9A"/>
+                            <constraint firstItem="qAi-Cg-doH" firstAttribute="centerX" secondItem="xyO-cf-16v" secondAttribute="centerX" id="Sve-Hn-wXp"/>
+                            <constraint firstItem="qAi-Cg-doH" firstAttribute="width" secondItem="xyO-cf-16v" secondAttribute="width" id="dEk-n7-Lvi"/>
+                            <constraint firstItem="qAi-Cg-doH" firstAttribute="height" secondItem="xyO-cf-16v" secondAttribute="height" id="fc1-bG-QoL"/>
+                        </constraints>
+                    </view>
                     <size key="freeformSize" width="375" height="375"/>
                     <connections>
-                        <outlet property="imageView" destination="9sa-zh-M2f" id="YDa-qc-xPO"/>
+                        <outlet property="imageView" destination="qAi-Cg-doH" id="CNj-o7-R8U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fk6-RJ-dJb" userLabel="First Responder" sceneMemberID="firstResponder"/>

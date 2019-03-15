@@ -166,7 +166,6 @@ extension GetStartedPhotoInputViewController {
   }
   
   func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-    print("Moving item at index \(sourceIndexPath.item) to \(destinationIndexPath.item)")
     if destinationIndexPath.item < sourceIndexPath.item {
       let image = self.images.remove(at: sourceIndexPath.item)
       self.images.insert(image, at: destinationIndexPath.item)
@@ -180,7 +179,6 @@ extension GetStartedPhotoInputViewController {
     for imageNumber in 0..<self.images.count {
       imageIndexPaths.append(IndexPath(item: imageNumber, section: 0))
     }
-    print(self.images)
     self.collectionView.reloadItems(at: imageIndexPaths)
   }
   
@@ -221,7 +219,6 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageU
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadCollectionViewCell", for: indexPath) as? ImageUploadCollectionViewCell else {
         return UICollectionViewCell()
       }
-      print("Reloading cell: \(indexPath.item)")
       cell.imageView.image = self.images[indexPath.item].image
       cell.imageView.contentMode = .scaleAspectFill
       cell.imageView.layer.cornerRadius = 3

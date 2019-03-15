@@ -44,7 +44,6 @@ class ImageUploadAPI: ImageAPI {
           } else {
             if let data = data, let json = JSON(rawValue: data) {
               do {
-                print(json)
                 let returnData = try json["size_map"].rawData()
                 let imageContainer = try JSONDecoder().decode(ImageContainer.self, from: returnData)
                 imageContainer.uploadedByUser = userID
