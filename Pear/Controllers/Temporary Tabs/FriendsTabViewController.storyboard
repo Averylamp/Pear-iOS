@@ -17,9 +17,30 @@
                     <view key="view" contentMode="scaleToFill" id="dKu-mO-miE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULb-3B-Lvy">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AI2-o5-wWj"/>
+                                </constraints>
+                                <state key="normal" title="Create a profile for a friend"/>
+                                <connections>
+                                    <action selector="createFriendProfileButtonClicked:" destination="vOf-S4-6q3" eventType="touchUpInside" id="vj0-os-ND6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wkT-Wy-p4M" firstAttribute="trailing" secondItem="ULb-3B-Lvy" secondAttribute="trailing" constant="20" id="XpV-mg-YDd"/>
+                            <constraint firstItem="ULb-3B-Lvy" firstAttribute="leading" secondItem="wkT-Wy-p4M" secondAttribute="leading" constant="20" id="gl4-bi-Bah"/>
+                            <constraint firstItem="wkT-Wy-p4M" firstAttribute="bottom" secondItem="ULb-3B-Lvy" secondAttribute="bottom" constant="20" id="pmF-jS-Aaf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wkT-Wy-p4M"/>
                     </view>
+                    <connections>
+                        <outlet property="createFriendProfileButton" destination="ULb-3B-Lvy" id="AvI-sV-Cex"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mmb-1I-cHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

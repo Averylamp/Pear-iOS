@@ -433,6 +433,7 @@
 				60C131C221D342BC0093ECBA /* AppDelegate.swift */,
 				60C131EA21D348120093ECBA /* Shared */,
 				BB610E98222A1E4B00901FC3 /* Styling */,
+				60C131E221D345C00093ECBA /* Models */,
 				60C131D621D343610093ECBA /* Networking */,
 				60C131D521D343560093ECBA /* Controllers */,
 				60C131D421D3433B0093ECBA /* Supporting Files */,
@@ -472,7 +473,6 @@
 			children = (
 				BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */,
 				60C131E021D345630093ECBA /* Result.swift */,
-				60C131E221D345C00093ECBA /* Models */,
 				60C131DC21D344E90093ECBA /* API */,
 			);
 			path = Networking;

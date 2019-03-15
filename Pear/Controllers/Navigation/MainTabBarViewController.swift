@@ -22,13 +22,13 @@ class MainTabBarViewController: UITabBarController {
 
       //      Matches
       if let friendsTabVC = FriendsTabViewController.instantiate() {
-        friendsTabVC.tabBarItem = UITabBarItem(title: "Matches", image: UIImage(named: "tab-icon-matches"), selectedImage: nil)
+        friendsTabVC.tabBarItem = UITabBarItem(title: "Friends", image: UIImage(named: "tab-icon-matches"), selectedImage: nil)
         mainTabVC.addChild(friendsTabVC)
       }
       
       //      Profiles
       if let meTabVC = MeTabViewController.instantiate() {
-        meTabVC.tabBarItem =  UITabBarItem(title: "Profiles", image: UIImage(named: "tab-icon-profiles"), selectedImage: nil)
+        meTabVC.tabBarItem =  UITabBarItem(title: "Me", image: UIImage(named: "tab-icon-profiles"), selectedImage: nil)
         mainTabVC.addChild(meTabVC)
       }
       
