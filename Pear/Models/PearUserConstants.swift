@@ -34,7 +34,9 @@ enum PearUserKeys: String, CodingKey {
   case profileIDs = "profile_ids"
   case profileObjs = "profileObjs"
   case endorsedProfileIDs = "endorsedProfile_ids"
-  case endorsedProfileObjs = "endorsedProfile_objs"
+  case endorsedProfileObjs = "endorsedProfileObjs"
+  case detachedProfileIDs = "detachedProfile_ids"
+  case detachedProfileObjs = "detachedProfileObjs"
   
   case matchingDemographics
   case matchingPreferences
