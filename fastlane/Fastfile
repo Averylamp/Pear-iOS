@@ -26,7 +26,7 @@ platform :ios do
     upload_to_testflight
   end
   desc "Runs UI Tests"
-  lane :tests do
+  lane :test do
     run_tests(scheme: "Pear")
   end
 
