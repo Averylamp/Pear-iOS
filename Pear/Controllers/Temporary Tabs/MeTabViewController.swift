@@ -80,4 +80,14 @@ extension MeTabViewController: UITableViewDelegate, UITableViewDataSource {
     }
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let fullProfile = self.userProfiles[indexPath.row]
+    guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
+      print("Failed to create full profile Scroll View")
+      return
+    }
+    self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+  }
+
+  
 }
