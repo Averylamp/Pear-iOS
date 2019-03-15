@@ -57,6 +57,7 @@
 		BB3F4AEB2234259D00F99C8E /* GetStartedUserGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */; };
 		BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
+		BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB541B41223B5AA0002239C8 /* RemoteConfig.plist */; };
 		BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */; };
 		BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
@@ -239,6 +240,7 @@
 		BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedUserGenderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedUserGenderViewController.swift; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
+		BB541B41223B5AA0002239C8 /* RemoteConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfig.plist; sourceTree = "<group>"; };
 		BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileViewController.swift; sourceTree = "<group>"; };
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 			children = (
 				BB0F16B7222EE6D200915C1C /* DataStore.swift */,
 				BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */,
+				BB541B41223B5AA0002239C8 /* RemoteConfig.plist */,
 				BB610E9B222A1EDB00901FC3 /* Generators */,
 				BB0F16BA222EE73F00915C1C /* UX */,
 				BB0F16B9222EE72800915C1C /* Helpers */,
@@ -1174,6 +1177,7 @@
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
+				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
 				BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */,
 				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
