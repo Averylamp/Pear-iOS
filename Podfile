@@ -9,6 +9,7 @@ target 'Pear' do
   pod 'FacebookLogin'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'Firebase/Performance'
   pod 'FacebookShare'
   pod 'SDWebImage'
   pod 'SwiftyJSON'

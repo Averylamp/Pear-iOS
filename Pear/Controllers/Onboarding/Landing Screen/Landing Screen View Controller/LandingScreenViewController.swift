@@ -8,6 +8,7 @@
 
 import UIKit
 import FacebookLogin
+import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
 import SwiftyJSON
@@ -124,150 +125,180 @@ private extension LandingScreenViewController {
     self.emailButton.addTarget(self, action: #selector(LandingScreenViewController.emailButtonClicked(sender:)), for: .touchUpInside)
   }
   
+  func loginWithFacebook() {
+    let trace = Performance.startTrace(name: "Login With Facebook")
+    // 1. Auth via Facebook.
+    
+    let loginManager = LoginManager()
+    
+    loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
+      switch result {
+      case .success:
+        trace?.incrementMetric("Facebook Login Successful", by: 1)
+        self.handleSuccessfulFacebookLogin(successResult: result, trace: trace)
+      case .cancelled:
+        trace?.incrementMetric("Facebook Login Cancelled", by: 1)
+        trace?.stop()
+      case .failed:
+        trace?.incrementMetric("Facebook Login Failed", by: 1)
+        trace?.stop()
+      }
+    }
+  }
+  
+  func handleSuccessfulFacebookLogin(successResult: LoginResult,
+                                     trace: Trace? = nil) {
+    switch successResult {
+    case .success(let grantedPermissions, let deniedPermissions, let accessToken):
+      print(grantedPermissions)
+      print(deniedPermissions)
+      
+      let gettingStartedUser = GettingStartedUserData()
+      // 2. Auth via Firebase.
+      let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
+      gettingStartedUser.primaryAuth = credential
+      gettingStartedUser.facebookAccessToken = accessToken.authenticationToken
+      if let fbUserID = accessToken.userId {
+        gettingStartedUser.facebookId = fbUserID
+      }
+      Auth.auth().signInAndRetrieveData(with: credential) { _, error in
+        if let error = error {
+          self.alert(title: "Auth Error", message: error.localizedDescription)
+          trace?.incrementMetric("Firebase/Facebook Login Unsuccessful", by: 1)
+          trace?.stop()
+          return
+        }
+        guard let user = Auth.auth().currentUser else {
+          trace?.incrementMetric("Firebase/Facebook Login Unsuccessful", by: 1)
+          trace?.stop()
+          print("Failed to log in user")
+          return
+        }
+        trace?.incrementMetric("Firebase/Facebook Login Successful", by: 1)
+        
+        DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+          trace?.incrementMetric("Firebase Existing User Check Successful", by: 1)
+          trace?.stop()
+          DispatchQueue.main.async {
+            guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+              print("Failed to create Landing Screen VC")
+              return
+            }
+            self.navigationController?.setViewControllers([mainVC], animated: true)
+          }
+        }, userNotFoundCompletion: {
+          trace?.incrementMetric("Firebase Existing User Check Unsuccessful", by: 1)
+          trace?.stop()
+          gettingStartedUser.firebaseAuthID = user.uid
+          
+          var facebookLogin = false
+          var emailLogin = false
+          var phoneLogin = false
+          
+          user.providerData.forEach({ (userInfo) in
+            print(userInfo.providerID)
+            if userInfo.providerID == FacebookAuthProviderID {
+              print("Facebook Found")
+              facebookLogin = true
+            } else if userInfo.providerID == EmailAuthProviderID {
+              print("Email Found")
+              emailLogin = true
+            } else if userInfo.providerID == PhoneAuthProviderID {
+              print("Phone Found")
+              phoneLogin = true
+            }
+          })
+          if (facebookLogin && phoneLogin) || (emailLogin && phoneLogin) {
+            print("Probably already created account")
+          }
+          var permissions: [String] = ["id", "first_name", "last_name", "picture.width(300).height(300)"]
+          
+          if  grantedPermissions.contains("email") {
+            permissions.append("email")
+          }
+          if  grantedPermissions.contains("user_birthday") {
+            permissions.append("birthday")
+          }
+          if  grantedPermissions.contains("user_gender") {
+            permissions.append("gender")
+          }
+          
+          self.userGraphRequest(gettingStartedUser: gettingStartedUser, permissions: permissions, trace: trace, completion: { (fbGraphFilledGSUser  ) in
+            DispatchQueue.main.async {
+              if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
+                self.navigationController?.pushViewController(nextVC, animated: true)
+              }
+            }
+          })
+        })
+        
+      }
+    default:
+      break
+    }
+  }
+  
+  func userGraphRequest(gettingStartedUser: GettingStartedUserData, permissions: [String], trace: Trace?, completion: @escaping (GettingStartedUserData) -> Void) {
+    
+    // Fetch All other User Profile Data available
+    let userInfoRequest = FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": permissions.joined(separator: ",")])
+    userInfoRequest?.start(completionHandler: { (_, result, error) in
+      if let error = error {
+        print(error)
+        trace?.incrementMetric("Facebook Graph Request Unsuccessful", by: 1)
+        trace?.stop()
+        completion(gettingStartedUser)
+        return
+      }
+      trace?.incrementMetric("Facebook Graph Request Successful", by: 1)
+      if let result = result as? [String: Any] {
+        print(result)
+        print(type(of: result))
+        
+        guard   let firstName = result["first_name"],
+          let lastName = result["last_name"],
+          let fbid = result["id"] else {
+            print(error as Any)
+            print("Failed to get basic data")
+            return
+        }
+        
+        gettingStartedUser.firstName = firstName as? String
+        gettingStartedUser.lastName = lastName as? String
+        gettingStartedUser.facebookId = "\(fbid)"
+        
+        if let email = result["email"] as? String {
+          gettingStartedUser.email = email
+        }
+        if let gender = result["gender"] as? String {
+          gettingStartedUser.gender = GenderEnum(rawValue: gender)
+        }
+        if let birthdayString = result["birthday"] as? String {
+          let dateFormatter = DateFormatter()
+          dateFormatter.dateFormat = "MM/dd/yyyy"
+          if let birthdate = dateFormatter.date(from: birthdayString) {
+            gettingStartedUser.birthdate = birthdate
+            if let age = Calendar.current.dateComponents([.year], from: birthdate, to: Date()).year {
+              gettingStartedUser.age = age
+            }
+          }
+        }
+        if  let thumbnailUrl = JSON(result)["picture"]["data"]["url"].string {
+          gettingStartedUser.thumbnailURL = thumbnailUrl
+        }
+        completion(gettingStartedUser)
+      }
+    })
+  }
+  
   /// Handles Facebook Login
   ///
   /// - Parameter sender: Facebook Login Button
   @objc func facebookButtonClicked(sender: UIButton) {
-    let loginManager = LoginManager()
     self.delay(delay: 1.0) {
       self.gettingStarted = false
     }
-    
-    //    Request more permissions when allowed
-    //        loginManager.logIn(readPermissions: [.publicProfile, .email, .userBirthday, .userGender], viewController: self) { result in
-    
-    // 1. Auth via Facebook.
-    loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
-      switch result {
-        
-      case .success(let grantedPermissions, let deniedPermissions, let accessToken):
-        print(grantedPermissions)
-        print(deniedPermissions)
-        
-        var permissions: [String] = ["id", "first_name", "last_name", "picture.width(300).height(300)"]
-        
-        if  grantedPermissions.contains("email") {
-          permissions.append("email")
-        }
-        if  grantedPermissions.contains("user_birthday") {
-          permissions.append("birthday")
-        }
-        if  grantedPermissions.contains("user_gender") {
-          permissions.append("gender")
-        }
-        
-        // Fetch All other User Profile Data available
-        let userInfoRequest = FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": permissions.joined(separator: ",")])
-        userInfoRequest?.start(completionHandler: { (_, result, error) in
-          if let error = error {
-            print(error)
-            return
-          }
-          
-          if let result = result as? [String: Any] {
-            print(result)
-            print(type(of: result))
-            let gettingStartedUser = GettingStartedUserData()
-            guard   let firstName = result["first_name"],
-              let lastName = result["last_name"],
-              let fbid = result["id"] else {
-                print(error as Any)
-                print("Failed to get basic data")
-                return
-            }
-            
-            gettingStartedUser.firstName = firstName as? String
-            gettingStartedUser.lastName = lastName as? String
-            gettingStartedUser.facebookId = "\(fbid)"
-            gettingStartedUser.facebookAccessToken = accessToken.authenticationToken
-            
-            if let email = result["email"] as? String {
-              gettingStartedUser.email = email
-            }
-            
-            if let gender = result["gender"] as? String {
-              gettingStartedUser.gender = GenderEnum(rawValue: gender)
-            }
-            
-            if let birthdayString = result["birthday"] as? String {
-              let dateFormatter = DateFormatter()
-              dateFormatter.dateFormat = "MM/dd/yyyy"
-              if let birthdate = dateFormatter.date(from: birthdayString) {
-                gettingStartedUser.birthdate = birthdate
-                
-                if let age = Calendar.current.dateComponents([.year], from: birthdate, to: Date()).year {
-                  gettingStartedUser.age = age
-                }
-                
-              }
-            }
-            
-            if  let thumbnailUrl = JSON(result)["picture"]["data"]["url"].string {
-              gettingStartedUser.thumbnailURL = thumbnailUrl
-            }
-            
-            // 2. Auth via Firebase.
-            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-            gettingStartedUser.primaryAuth = credential
-            Auth.auth().signInAndRetrieveData(with: credential) { _, error in
-              if let error = error {
-                self.alert(title: "Auth Error", message: error.localizedDescription)
-                return
-              }
-              guard let user = Auth.auth().currentUser else {
-                print("Failed to log in user")
-                return
-              }
-                            
-              DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
-                DispatchQueue.main.async {
-                  guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
-                    print("Failed to create Landing Screen VC")
-                    return
-                  }
-                  self.navigationController?.setViewControllers([waitlistVC], animated: true)
-                }
-              }, userNotFoundCompletion: {
-                gettingStartedUser.firebaseAuthID = user.uid
-                
-                var facebookLogin = false
-                var emailLogin = false
-                var phoneLogin = false
-                
-                user.providerData.forEach({ (userInfo) in
-                  print(userInfo.providerID)
-                  if userInfo.providerID == FacebookAuthProviderID {
-                    print("Facebook Found")
-                    facebookLogin = true
-                  } else if userInfo.providerID == EmailAuthProviderID {
-                    print("Email Found")
-                    emailLogin = true
-                  } else if userInfo.providerID == PhoneAuthProviderID {
-                    print("Phone Found")
-                    phoneLogin = true
-                  }
-                })
-                if (facebookLogin && phoneLogin) || (emailLogin && phoneLogin) {
-                  print("Probably already created account")
-                }
-                
-                DispatchQueue.main.async {
-                  if let nextVC = gettingStartedUser.getNextInputViewController() {
-                    self.navigationController?.pushViewController(nextVC, animated: true)
-                  }                  
-                }
-              })
-              
-            }
-          }
-        })
-      case .cancelled:
-        break
-      case .failed:
-        break
-      }
-    }
-    
+    self.loginWithFacebook()
   }
   
   @objc func emailButtonClicked(sender: UIButton) {
