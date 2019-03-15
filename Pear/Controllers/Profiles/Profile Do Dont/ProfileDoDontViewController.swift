@@ -94,7 +94,7 @@ extension ProfileDoDontViewController {
     }
     
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * itemNumber, height: 0)
-    self.scrollViewHeightConstraint.constant = self.intrinsicContentHeights.first!
+    self.scrollViewHeightConstraint.constant = self.intrinsicContentHeights.first! + 24
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -171,7 +171,6 @@ extension ProfileDoDontViewController {
     
     return (containerView, intrinsicContentHeight)
   }
-  
 }
 
 // MARK: - ScrollViewDelegate
@@ -183,9 +182,8 @@ extension ProfileDoDontViewController: UIScrollViewDelegate {
     if pageIndex < self.intrinsicContentHeights.count - 1 && pageIndex >= 0 {
       let newScrollViewHeight = self.intrinsicContentHeights[pageIndex] * (1 - pagePercentage) +
         self.intrinsicContentHeights[pageIndex + 1] * pagePercentage
-      self.scrollViewHeightConstraint.constant = newScrollViewHeight + 40
+      self.scrollViewHeightConstraint.constant = newScrollViewHeight + 24
       self.view.layoutIfNeeded()
     }
   }
-  
 }
