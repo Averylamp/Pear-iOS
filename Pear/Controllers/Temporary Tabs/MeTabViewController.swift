@@ -68,6 +68,7 @@ extension MeTabViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMadeByTVC", for: indexPath) as? ProfileMadeByTableViewCell {
       let profileData = self.userProfiles[indexPath.row]
+      cell.selectionStyle = .none
       cell.profileFirstImageView.clipsToBounds = true
       cell.profileFirstImageView.contentMode = .scaleAspectFill
       cell.profileFirstImageView.image = nil

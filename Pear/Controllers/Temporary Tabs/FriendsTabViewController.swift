@@ -54,7 +54,6 @@ extension FriendsTabViewController {
   
   func stylize() {
     self.createFriendProfileButton.stylizeDark()
-    
   }
   
 }
@@ -81,9 +80,7 @@ extension FriendsTabViewController: UITableViewDelegate, UITableViewDataSource {
         cell.profileFirstImageView.sd_setImage(with: imageURL, completed: nil)
       }
       cell.subtextLabel.stylizeSubtitleLabel()
-      if let originalCreatorName = profileData.originalCreatorName {
-        cell.subtextLabel.text = "Made by \(originalCreatorName)"
-      }
+      cell.subtextLabel.text = "Made for \(profileData.firstName!)"
       if let statusLabel = cell.statusLabel, let profileOrigin = profileData.profileOrigin {
         if profileOrigin == .detachedProfile {
           statusLabel.text = "Status: Not Accepted"
