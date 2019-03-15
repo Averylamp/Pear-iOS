@@ -58,12 +58,5 @@ extension FullProfileScrollViewController {
                          toItem: self.scrollView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
       ])
     fullProfileStackVC.didMove(toParent: self)
-    
-    let topSpacerView = UIView()
-    topSpacerView.translatesAutoresizingMaskIntoConstraints = false
-    topSpacerView.addConstraint(NSLayoutConstraint(item: topSpacerView, attribute: .height, relatedBy: .equal,
-                                                   toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 20))
-    fullProfileStackVC.stackView.insertArrangedSubview(topSpacerView, at: 0)
-    
   }
 }

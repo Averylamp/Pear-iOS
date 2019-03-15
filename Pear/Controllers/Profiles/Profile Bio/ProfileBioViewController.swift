@@ -50,11 +50,7 @@ extension ProfileBioViewController {
     
     self.scrollView.contentSize = CGSize(width: self.view.frame.width * CGFloat(self.intrinsicContentHeights.count),
                                          height: 0)
-    print(self.scrollView.contentSize)
     self.scrollViewDidScroll(self.scrollView)
-    self.delay(delay: 5) {
-      print(self.scrollView.contentSize)
-    }
   }
   
   func stylize() {
@@ -86,7 +82,7 @@ extension ProfileBioViewController {
     }
     
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * itemNumber, height: 0)
-    self.scrollViewHeightConstraint.constant = self.intrinsicContentHeights.first!
+    self.scrollViewHeightConstraint.constant = self.intrinsicContentHeights.first! + 40
   }
   
   func createBioContentItem(bioText: String, creatorName: String) -> (view: UIView, intrinsicHeight: CGFloat) {
@@ -148,7 +144,6 @@ extension ProfileBioViewController {
     
     return (containerView, intrinsicContentHeight)
   }
-  
 }
 
 // MARK: - ScrollViewDelegate
