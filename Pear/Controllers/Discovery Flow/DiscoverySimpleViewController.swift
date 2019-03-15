@@ -83,15 +83,17 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 300
+    return 360
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoverySimpleTableViewCell else {
       return UITableViewCell()
     }
-    print("creating cell")
     let fullProfile = self.fullProfiles[indexPath.row]
+    cell.selectionStyle = .none
+    cell.cardView.layer.cornerRadius = 8
+    cell.cardView.clipsToBounds = true
     cell.firstImageView.image = nil
     if let imageContainer = fullProfile.imageContainers.first,
       let imageURL = URL(string: imageContainer.medium.imageURL) {
