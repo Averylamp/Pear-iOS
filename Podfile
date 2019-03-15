@@ -10,6 +10,7 @@ target 'Pear' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'Firebase/Performance'
+  pod 'Firebase/RemoteConfig'
   pod 'FacebookShare'
   pod 'SDWebImage'
   pod 'SwiftyJSON'

@@ -38,6 +38,9 @@ PODS:
   - Firebase/Performance (5.18.0):
     - Firebase/Core
     - FirebasePerformance (= 2.2.3)
+  - Firebase/RemoteConfig (5.18.0):
+    - Firebase/Core
+    - FirebaseRemoteConfig (= 3.1.0)
   - FirebaseABTesting (2.0.0):
     - FirebaseCore (~> 5.0)
     - Protobuf (~> 3.5)
@@ -136,6 +139,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Performance
+  - Firebase/RemoteConfig
   - NVActivityIndicatorView
   - SDWebImage
   - SwiftLint
@@ -202,6 +206,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 537c712c839b79fc55822b04545c075e4dfb295b
+PODFILE CHECKSUM: 4fc7816da44b80ea053402ab80a7aa66106abc37
 
 COCOAPODS: 1.6.0
