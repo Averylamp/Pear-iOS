@@ -4,7 +4,7 @@ version: 2
 jobs:
   build:
     macos:
-      xcode: "10.1..0"
+      xcode: "10.1.0"
     working_directory: /Users/avery/Pear/pear-ios
     environment:
       FL_OUTPUT_DIR: output
