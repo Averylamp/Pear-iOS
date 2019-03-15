@@ -38,7 +38,9 @@ extension MeTabViewController {
     
     if let user = DataStore.shared.currentPearUser {
       for userProfile in user.userProfiles {
-        self.userProfiles.append(FullProfileDisplayData(user: user, profile: userProfile))
+        if let fullProfile = try? FullProfileDisplayData(user: user, profiles: [userProfile]) {
+          self.userProfiles.append(fullProfile)
+        }
       }
     }
     
@@ -73,7 +75,9 @@ extension MeTabViewController: UITableViewDelegate, UITableViewDataSource {
         cell.profileFirstImageView.sd_setImage(with: imageURL, completed: nil)
       }
       cell.subtextLabel.stylizeSubtitleLabel()
-      cell.subtextLabel.text = "Made by \(profileData.creatorFirstName!)"
+      if let originalCreatorName = profileData.originalCreatorName {
+        cell.subtextLabel.text = "Made by \(originalCreatorName)"
+      }
       return cell
     } else {
       return UITableViewCell()
@@ -88,6 +92,5 @@ extension MeTabViewController: UITableViewDelegate, UITableViewDataSource {
     }
     self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
   }
-
   
 }

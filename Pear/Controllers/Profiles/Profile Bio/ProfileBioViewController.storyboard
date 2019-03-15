@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4Cg-L3-c7R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oyj-16-F2Y">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,74 +10,53 @@
     </dependencies>
     <scenes>
         <!--Profile Bio View Controller-->
-        <scene sceneID="NAF-GZ-CEA">
+        <scene sceneID="rxj-yu-SaC">
             <objects>
-                <viewController id="4Cg-L3-c7R" customClass="ProfileBioViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oyj-16-F2Y" customClass="ProfileBioViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8jL-NW-GoY"/>
-                        <viewControllerLayoutGuide type="bottom" id="IGs-be-DlD"/>
+                        <viewControllerLayoutGuide type="top" id="okr-aP-YEY"/>
+                        <viewControllerLayoutGuide type="bottom" id="zdt-TE-Fag"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eWw-dT-yeD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view key="view" contentMode="scaleToFill" id="pis-cb-xLy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ko6-Ff-fHM">
-                                <rect key="frame" x="20" y="0.0" width="335" height="240"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARY-y7-cr4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxT-jV-Llj">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="191.5"/>
-                                        <string key="text">Like bad girls? Sammi’s bad at everything. 
- 
-Except watching movies and drinking copious amounts of boba. If you like either of those things, she’s the one!</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vet-ng-HXm">
-                                        <rect key="frame" x="38" y="207.5" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-icon-creator-leaf" translatesAutoresizingMaskIntoConstraints="NO" id="m88-Qf-uDv">
-                                        <rect key="frame" x="0.0" y="203" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="MCM-st-OgQ"/>
-                                            <constraint firstAttribute="width" secondItem="m88-Qf-uDv" secondAttribute="height" multiplier="1:1" id="z25-mA-oro"/>
-                                        </constraints>
-                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qe-v1-Jpd" userLabel="contentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="m88-Qf-uDv" firstAttribute="centerY" secondItem="vet-ng-HXm" secondAttribute="centerY" id="4BS-MO-twq"/>
-                                    <constraint firstItem="m88-Qf-uDv" firstAttribute="leading" secondItem="ko6-Ff-fHM" secondAttribute="leading" id="TXg-Mm-Dq8"/>
-                                    <constraint firstItem="bxT-jV-Llj" firstAttribute="top" secondItem="ko6-Ff-fHM" secondAttribute="top" id="YFz-iW-tp0"/>
-                                    <constraint firstAttribute="bottom" secondItem="vet-ng-HXm" secondAttribute="bottom" constant="12" id="aZw-zr-OM0"/>
-                                    <constraint firstItem="vet-ng-HXm" firstAttribute="top" secondItem="bxT-jV-Llj" secondAttribute="bottom" constant="16" id="b40-6h-TAw"/>
-                                    <constraint firstItem="bxT-jV-Llj" firstAttribute="leading" secondItem="ko6-Ff-fHM" secondAttribute="leading" id="dCj-cu-446"/>
-                                    <constraint firstItem="vet-ng-HXm" firstAttribute="leading" secondItem="m88-Qf-uDv" secondAttribute="trailing" constant="8" id="fwl-Lg-eMP"/>
-                                    <constraint firstAttribute="trailing" secondItem="bxT-jV-Llj" secondAttribute="trailing" id="nnp-Vl-O3z"/>
+                                    <constraint firstAttribute="height" constant="260" id="Da8-ZO-ot9"/>
+                                    <constraint firstItem="4qe-v1-Jpd" firstAttribute="leading" secondItem="ARY-y7-cr4" secondAttribute="leading" id="L1y-qL-zyo"/>
+                                    <constraint firstItem="4qe-v1-Jpd" firstAttribute="centerX" secondItem="ARY-y7-cr4" secondAttribute="centerX" id="gJE-M1-Sd2"/>
+                                    <constraint firstItem="4qe-v1-Jpd" firstAttribute="centerY" secondItem="ARY-y7-cr4" secondAttribute="centerY" id="kTn-6T-qDB"/>
+                                    <constraint firstAttribute="trailing" secondItem="4qe-v1-Jpd" secondAttribute="trailing" id="paF-gJ-mvO"/>
+                                    <constraint firstItem="4qe-v1-Jpd" firstAttribute="top" secondItem="ARY-y7-cr4" secondAttribute="top" id="tFF-e2-8sr"/>
+                                    <constraint firstAttribute="bottom" secondItem="4qe-v1-Jpd" secondAttribute="bottom" id="tRf-aM-hPL"/>
                                 </constraints>
-                            </view>
+                            </scrollView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ko6-Ff-fHM" secondAttribute="trailing" constant="20" id="7o7-qr-qqE"/>
-                            <constraint firstItem="ko6-Ff-fHM" firstAttribute="leading" secondItem="eWw-dT-yeD" secondAttribute="leading" constant="20" id="Zl4-3g-PVf"/>
-                            <constraint firstItem="ko6-Ff-fHM" firstAttribute="top" secondItem="8jL-NW-GoY" secondAttribute="bottom" id="h1x-pX-TLp"/>
-                            <constraint firstItem="IGs-be-DlD" firstAttribute="top" secondItem="ko6-Ff-fHM" secondAttribute="bottom" id="lmU-Wa-DIo"/>
+                            <constraint firstAttribute="trailing" secondItem="ARY-y7-cr4" secondAttribute="trailing" id="KQ1-d2-k51"/>
+                            <constraint firstItem="ARY-y7-cr4" firstAttribute="width" secondItem="pis-cb-xLy" secondAttribute="width" id="Kit-RV-qpR"/>
+                            <constraint firstItem="ARY-y7-cr4" firstAttribute="height" secondItem="pis-cb-xLy" secondAttribute="height" id="VmU-FI-Urk"/>
+                            <constraint firstItem="ARY-y7-cr4" firstAttribute="centerY" secondItem="pis-cb-xLy" secondAttribute="centerY" id="mLy-lL-E88"/>
+                            <constraint firstItem="ARY-y7-cr4" firstAttribute="leading" secondItem="pis-cb-xLy" secondAttribute="leading" id="xVE-EE-LMt"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="375" height="240"/>
+                    <size key="freeformSize" width="375" height="260"/>
                     <connections>
-                        <outlet property="bioLabel" destination="bxT-jV-Llj" id="mq1-uf-4Bs"/>
-                        <outlet property="creatorLabel" destination="vet-ng-HXm" id="tVo-Ue-eC9"/>
+                        <outlet property="scrollView" destination="ARY-y7-cr4" id="iL9-j0-m4N"/>
+                        <outlet property="scrollViewHeightConstraint" destination="Da8-ZO-ot9" id="Bg7-wg-Tj6"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RbW-o4-kNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GWO-fn-1mv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="132.23388305847078"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="profile-icon-creator-leaf" width="32" height="32"/>
-    </resources>
 </document>

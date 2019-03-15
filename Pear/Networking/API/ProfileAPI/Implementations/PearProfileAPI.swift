@@ -259,8 +259,9 @@ extension PearProfileAPI {
                 do {
                   if let userRawData = try? userData["user"].rawData() {
                     let pearUser = try JSONDecoder().decode(PearUser.self, from: userRawData)
-                    for profile in pearUser.userProfiles {
-                      allFullProfiles.append(FullProfileDisplayData(user: pearUser, profile: profile))
+                    if pearUser.userProfiles.count > 0,
+                      let fullProfile = try? FullProfileDisplayData(user: pearUser, profiles: pearUser.userProfiles) {
+                      allFullProfiles.append(fullProfile)
                     }
                   }
                 } catch {
