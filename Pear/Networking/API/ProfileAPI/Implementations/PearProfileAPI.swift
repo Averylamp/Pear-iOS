@@ -49,8 +49,6 @@ extension PearProfileAPI {
         ]
       ]
       
-      print(fullDictionary)
-      
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
@@ -63,7 +61,6 @@ extension PearProfileAPI {
         } else {
           if  let data = data,
             let json = try? JSON(data: data) {
-            print(json)
             do {
               //              let pearUserData = try getUserResponse["user"]?.rawData()
               //              if let pearUserData = pearUserData {
@@ -108,7 +105,6 @@ extension PearProfileAPI {
     request.httpMethod = "POST"
     
     request.allHTTPHeaderFields = defaultHeaders
-    //    request.addValue(phoneNumber, forHTTPHeaderField: "phoneNumber")
     do {
       
       let fullDictionary: [String: Any] = [
@@ -131,7 +127,6 @@ extension PearProfileAPI {
         } else {
           if  let data = data,
             let json = try? JSON(data: data) {
-            print(json)
             do {
               if let profiles = json["data"]["findDetachedProfiles"].array {
                 
@@ -189,7 +184,6 @@ extension PearProfileAPI {
           "creatorUser_id": creatorUser_id
         ]
       ]
-      print(fullDictionary)
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
@@ -202,8 +196,7 @@ extension PearProfileAPI {
         } else {
           if  let data = data,
             let json = try? JSON(data: data) {
-            print("Finished Attaching")
-            print(json)
+            print("Finished Attaching Detached Profile")
             if let success = json["data"]["approveNewDetachedProfile"]["success"].bool {
               completion(.success(success))
               return
@@ -247,7 +240,6 @@ extension PearProfileAPI {
           "user_id": user_id
         ]
       ]
-      print(fullDictionary)
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
@@ -262,12 +254,10 @@ extension PearProfileAPI {
             let json = try? JSON(data: data) {
             print("Retreived Feed")
             if let discoveryUsers = json["data"]["getDiscoveryFeed"]["currentDiscoveryItems"].array {
-              print("\(discoveryUsers.count) Users found in feed")
               var allFullProfiles: [FullProfileDisplayData] = []
               for userData in discoveryUsers {
                 do {
                   if let userRawData = try? userData["user"].rawData() {
-                    print(userData["user"])
                     let pearUser = try JSONDecoder().decode(PearUser.self, from: userRawData)
                     for profile in pearUser.userProfiles {
                       allFullProfiles.append(FullProfileDisplayData(user: pearUser, profile: profile))

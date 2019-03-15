@@ -35,9 +35,11 @@ class PearUser: Codable, CustomStringConvertible {
   var birthdate: Date?
   var age: Int
   var userProfiles: [PearUserProfile] = []
+  var endorsedProfiles: [PearUserProfile] = []
+  var detachedProfiles: [PearDetachedProfile] = []
   var displayedImages: [ImageContainer] = []
   
-  static let graphQLUserFields: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender locationName locationCoordinates school schoolEmail schoolEmailVerified birthdate age profile_ids profileObjs \(PearUserProfile.graphQLUserProfileFields) displayedImages \(ImageContainer.graphQLImageFields) endorsedProfile_ids matchingPreferences { seekingGender } userStats { totalNumberOfMatches totalNumberOfMatches } matchingDemographics { ethnicities } userMatches_id discoveryQueue_id pearPoints }"
+  static let graphQLUserFields: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender locationName locationCoordinates school schoolEmail schoolEmailVerified birthdate age profile_ids profileObjs \(PearUserProfile.graphQLUserProfileFields) endorsedProfileObjs \(PearUserProfile.graphQLUserProfileFields) detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFields)) displayedImages \(ImageContainer.graphQLImageFields) endorsedProfile_ids matchingPreferences { seekingGender } userStats { totalNumberOfMatches totalNumberOfMatches } matchingDemographics { ethnicities } userMatches_id discoveryQueue_id pearPoints }"
   
   init() {
     fatalError("Should never be called to generate")
@@ -71,8 +73,12 @@ class PearUser: Codable, CustomStringConvertible {
       self.birthdate = Date(timeIntervalSince1970: birthdateNumberValue / 1000)
     }
     self.age = try values.decode(Int.self, forKey: .age)
-    let profiles = try values.decode([PearUserProfile].self, forKey: .profileObjs)
-    self.userProfiles = profiles
+    let userProfiles = try values.decode([PearUserProfile].self, forKey: .profileObjs)
+    self.userProfiles = userProfiles
+    let endorsedProfiles = try values.decode([PearUserProfile].self, forKey: .endorsedProfileObjs)
+    self.endorsedProfiles = endorsedProfiles
+    let detachedProfiles = try values.decode([PearDetachedProfile].self, forKey: .detachedProfileObjs)
+    self.detachedProfiles = detachedProfiles
     let images = try values.decode([ImageContainer].self, forKey: .displayedImages)
     self.displayedImages = images
     

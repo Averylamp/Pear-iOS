@@ -58,10 +58,6 @@ extension PearUserAPI {
           return
         } else {
           if  let data = data,
-            let json = try? JSON(data: data) {
-            print(json)
-          }
-          if  let data = data,
             let json = try? JSON(data: data),
             let getUserResponse = json["data"]["getUser"].dictionary {
             do {
@@ -124,10 +120,6 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-          if  let data = data,
-            let json = try? JSON(data: data) {
-            print(json)
-          }
           if  let data = data,
             let json = try? JSON(data: data),
             let getUserResponse = json["data"]["createUser"].dictionary {
