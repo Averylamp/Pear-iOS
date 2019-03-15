@@ -5,7 +5,6 @@ jobs:
   build:
     macos:
       xcode: "10.1.0"
-    working_directory: /Users/avery/pear-ios
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
