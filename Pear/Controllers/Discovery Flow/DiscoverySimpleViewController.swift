@@ -21,13 +21,7 @@ class DiscoverySimpleViewController: UIViewController {
     
     return discoverySimpleVC
   }
-  
-  @IBAction func createButtonClicked(_ sender: Any) {
-    if let waitlistVC = LoadingScreenViewController.getWaitlistVC() {
-      self.navigationController?.setViewControllers([waitlistVC], animated: true)
-    }
-  }
-  
+
 }
 
 // MARK: - Life Cycle

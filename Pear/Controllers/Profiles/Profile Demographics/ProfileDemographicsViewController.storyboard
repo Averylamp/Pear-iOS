@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKJ-Fi-ar0">
-                                        <rect key="frame" x="16" y="4" width="343" height="54"/>
+                                        <rect key="frame" x="16" y="16" width="343" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -33,9 +33,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PKJ-Fi-ar0" secondAttribute="trailing" constant="16" id="0Sq-Uh-4E2"/>
-                                    <constraint firstAttribute="bottom" secondItem="PKJ-Fi-ar0" secondAttribute="bottom" constant="4" id="KJu-6h-4rh"/>
+                                    <constraint firstAttribute="bottom" secondItem="PKJ-Fi-ar0" secondAttribute="bottom" constant="12" id="KJu-6h-4rh"/>
                                     <constraint firstItem="PKJ-Fi-ar0" firstAttribute="leading" secondItem="k8c-zi-aui" secondAttribute="leading" constant="16" id="hcE-fl-FDG"/>
-                                    <constraint firstItem="PKJ-Fi-ar0" firstAttribute="top" secondItem="k8c-zi-aui" secondAttribute="top" constant="4" id="t0X-ZS-rN8"/>
+                                    <constraint firstItem="PKJ-Fi-ar0" firstAttribute="top" secondItem="k8c-zi-aui" secondAttribute="top" constant="16" id="t0X-ZS-rN8"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OV-ap-Hxt">
@@ -60,7 +60,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="zXz-pl-NMJ" secondAttribute="trailing" id="58e-kJ-4L1"/>
                                     <constraint firstAttribute="height" secondItem="zXz-pl-NMJ" secondAttribute="height" id="7gY-ep-c08"/>
-                                    <constraint firstAttribute="bottom" secondItem="zXz-pl-NMJ" secondAttribute="bottom" id="AEE-Ph-Bka"/>
+                                    <constraint firstAttribute="bottom" secondItem="zXz-pl-NMJ" secondAttribute="bottom" constant="8" id="AEE-Ph-Bka"/>
                                     <constraint firstItem="zXz-pl-NMJ" firstAttribute="top" secondItem="1OV-ap-Hxt" secondAttribute="top" id="IkH-h9-wNg"/>
                                     <constraint firstItem="zXz-pl-NMJ" firstAttribute="leading" secondItem="1OV-ap-Hxt" secondAttribute="leading" id="Vk1-yb-uYS"/>
                                 </constraints>

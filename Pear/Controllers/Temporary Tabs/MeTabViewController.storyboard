@@ -17,9 +17,30 @@
                     <view key="view" contentMode="scaleToFill" id="g2f-wp-L8o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zV9-fG-U7M">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vfa-g9-bHN"/>
+                                </constraints>
+                                <state key="normal" title="Request a profile"/>
+                                <connections>
+                                    <action selector="requestProfileButtonClicked:" destination="Epp-Ix-2Bq" eventType="touchUpInside" id="4E1-Mx-mlk"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YBi-ol-4bB" firstAttribute="bottom" secondItem="zV9-fG-U7M" secondAttribute="bottom" constant="20" id="IY5-NM-KG3"/>
+                            <constraint firstItem="YBi-ol-4bB" firstAttribute="trailing" secondItem="zV9-fG-U7M" secondAttribute="trailing" constant="20" id="PF9-gm-mls"/>
+                            <constraint firstItem="zV9-fG-U7M" firstAttribute="leading" secondItem="YBi-ol-4bB" secondAttribute="leading" constant="20" id="YpU-Sx-ob3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YBi-ol-4bB"/>
                     </view>
+                    <connections>
+                        <outlet property="requestProfileButton" destination="zV9-fG-U7M" id="Vot-Sq-N92"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2k-eC-OOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
