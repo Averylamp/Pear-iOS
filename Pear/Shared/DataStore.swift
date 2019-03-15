@@ -22,7 +22,6 @@ class DataStore {
     self.remoteConfig.setDefaults(fromPlist: "RemoteConfig")
     self.remoteConfig.fetch { (status, error) in
       if let error = error {
-        debugPrint("Error fetching remote config: \(error)")
         print("Error fetching remote config: \(error)")
         return
       }

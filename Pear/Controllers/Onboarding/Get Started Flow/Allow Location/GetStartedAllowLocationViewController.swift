@@ -53,11 +53,11 @@ class GetStartedAllowLocationViewController: UIViewController {
       }
       
     } else if status == .authorizedWhenInUse {
-      guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
-        print("Failed to initialize waitlist VC")
+      guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+        print("Failed to initialize main VC")
         return
       }
-      self.navigationController?.setViewControllers([waitlistVC], animated: true)
+      self.navigationController?.setViewControllers([mainVC], animated: true)
     }
     
   }

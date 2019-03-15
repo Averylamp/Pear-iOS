@@ -41,7 +41,7 @@ extension LoadingScreenViewController {
       self.continueToLandingScreen()
     })
   }
-
+  
   static func getLandingScreen() -> UIViewController? {
     guard let landingScreenVC = LandingScreenViewController.instantiate() else {
       print("Failed to create Landing Screen VC")
@@ -60,11 +60,19 @@ extension LoadingScreenViewController {
   }
   
   static func getMainScreenVC() -> UIViewController? {
-    guard let discoveryVC = DiscoverySimpleViewController.instantiate() else {
-      print("Failed to create Simple Discovery VC")
-      return nil
+    if DataStore.shared.remoteConfig.configValue(forKey: "waitlist_enabled").boolValue {
+      guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
+        print("Failed to create Waitlist VC")
+        return nil
+      }
+      return waitlistVC
+    } else {
+      guard let mainVC = MainTabBarViewController.instantiate() else {
+        print("Failed to create Simple Discovery VC")
+        return nil
+      }
+      return mainVC
     }
-    return discoveryVC
   }
   
   static func getWaitlistVC() -> UIViewController? {
@@ -81,7 +89,6 @@ extension LoadingScreenViewController {
       if let mainVC = LoadingScreenViewController.getMainScreenVC() {
         self.navigationController?.setViewControllers([mainVC], animated: true)
       }
-
     }
   }
   
