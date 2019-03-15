@@ -12,8 +12,6 @@
 		60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131C221D342BC0093ECBA /* AppDelegate.swift */; };
 		60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60C131C921D342BD0093ECBA /* Assets.xcassets */; };
 		60C131CD21D342BD0093ECBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C131CB21D342BD0093ECBA /* LaunchScreen.storyboard */; };
-		60C131D821D343910093ECBA /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131D721D343910093ECBA /* LoginVC.swift */; };
-		60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C131DA21D343B20093ECBA /* LoginVC.storyboard */; };
 		60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131DE21D344F80093ECBA /* AuthAPI.swift */; };
 		60C131E121D345630093ECBA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E021D345630093ECBA /* Result.swift */; };
 		60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */; };
@@ -194,8 +192,6 @@
 		60C131C921D342BD0093ECBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60C131CC21D342BD0093ECBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60C131CE21D342BD0093ECBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60C131D721D343910093ECBA /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		60C131DA21D343B20093ECBA /* LoginVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginVC.storyboard; sourceTree = "<group>"; };
 		60C131DE21D344F80093ECBA /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		60C131E021D345630093ECBA /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthAPI.swift; sourceTree = "<group>"; };
@@ -454,7 +450,6 @@
 				BB986A1C220E08B300759A14 /* Onboarding */,
 				BB56D22922142E2400A652E7 /* Profiles */,
 				BBDF1FEB21E2B61F00520881 /* Navigation */,
-				BB18788521E2B10400964F26 /* Login Flow */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
 				BB18788F21E2B1E200964F26 /* Matches Flow */,
 				BB18789021E2B1E900964F26 /* Profiles Flow */,
@@ -472,15 +467,6 @@
 				60C131DC21D344E90093ECBA /* API */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		60C131D921D3439D0093ECBA /* LoginVC */ = {
-			isa = PBXGroup;
-			children = (
-				60C131D721D343910093ECBA /* LoginVC.swift */,
-				60C131DA21D343B20093ECBA /* LoginVC.storyboard */,
-			);
-			path = LoginVC;
 			sourceTree = "<group>";
 		};
 		60C131DC21D344E90093ECBA /* API */ = {
@@ -576,14 +562,6 @@
 				BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */,
 			);
 			path = "Vibe Input";
-			sourceTree = "<group>";
-		};
-		BB18788521E2B10400964F26 /* Login Flow */ = {
-			isa = PBXGroup;
-			children = (
-				60C131D921D3439D0093ECBA /* LoginVC */,
-			);
-			path = "Login Flow";
 			sourceTree = "<group>";
 		};
 		BB18788E21E2B1D900964F26 /* Discovery Flow */ = {
@@ -1182,7 +1160,6 @@
 				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
-				60C131DB21D343B20093ECBA /* LoginVC.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
 				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
@@ -1386,7 +1363,6 @@
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
-				60C131D821D343910093ECBA /* LoginVC.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
 				BB6C06492227F750007A5C96 /* GetStartedAllowLocationViewController.swift in Sources */,
