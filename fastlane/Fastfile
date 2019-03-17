@@ -29,5 +29,10 @@ platform :ios do
   lane :test do
     run_tests(scheme: "Pear")
   end
+  lane: release do
+    increment_build_number
+    build_all(workspace: "Pear.xcworkspace", scheme: "Pear")
+    upload_to_testflight
+  end
 
 end
