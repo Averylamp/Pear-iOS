@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class GetStartedInterestsViewController: UIViewController {
   
@@ -19,7 +20,9 @@ class GetStartedInterestsViewController: UIViewController {
   let pageNumber: CGFloat  = 3.0
   var gettingStartedData: GettingStartedUserProfileData!
   
-  let interestStrings: [String] = [
+  var interestStrings: [String] = []
+  
+  static let defaultInterestStrings: [String] = [
     "Language",
     "Pets",
     "Nature",
@@ -64,6 +67,13 @@ class GetStartedInterestsViewController: UIViewController {
     let storyboard = UIStoryboard(name: String(describing: GetStartedInterestsViewController.self), bundle: nil)
     guard let interestsVC = storyboard.instantiateInitialViewController() as? GetStartedInterestsViewController else { return nil }
     interestsVC.gettingStartedData = gettingStartedData
+    let cloudInterestsData =  DataStore.shared.remoteConfig.configValue(forKey: "interests_values").dataValue
+    if let cloudInterests = try? JSON(data: cloudInterestsData).array,
+      let interestStrings = cloudInterests?.compactMap({ $0.string }) {
+      interestsVC.interestStrings = interestStrings
+    } else {
+      interestsVC.interestStrings = GetStartedInterestsViewController.defaultInterestStrings
+    }
     return interestsVC
   }
   

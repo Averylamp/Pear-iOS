@@ -131,7 +131,8 @@ private extension LandingScreenViewController {
     
     let loginManager = LoginManager()
     
-    loginManager.logIn(readPermissions: [.publicProfile, .email, .userBirthday, .userGender], viewController: self) { result in
+//   [.publicProfile, .email, .userBirthday, .userGender]
+    loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
       switch result {
       case .success:
         trace?.incrementMetric("Facebook Login Successful", by: 1)

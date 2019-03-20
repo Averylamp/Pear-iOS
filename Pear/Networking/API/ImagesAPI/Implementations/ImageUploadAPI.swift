@@ -21,12 +21,13 @@ class ImageUploadAPI: ImageAPI {
   func uploadNewImage(with image: UIImage, userID: String, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
     
     let headers: [String: String] = [
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "x-api-key": NetworkingConfig.imageAPIKey
     ]
     
-    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.imageAPIHost)/upload_image")! as URL,
+    let request = NSMutableURLRequest(url: NetworkingConfig.imageAPIHost as URL,
                                       cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
+                                      timeoutInterval: 25.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = headers
     let imageString: String = image.jpegData(compressionQuality: 0.8)!.base64EncodedString()
@@ -46,6 +47,7 @@ class ImageUploadAPI: ImageAPI {
               do {
                 let returnData = try json["size_map"].rawData()
                 let imageContainer = try JSONDecoder().decode(ImageContainer.self, from: returnData)
+                print(imageContainer)
                 imageContainer.uploadedByUser = userID
                 completion(.success(imageContainer))
               } catch {
