@@ -16,6 +16,6 @@ class NetworkingConfig {
   
   static let devGraphQLHost: URL = URL(string: "http://\(host):1234/graphql")!
   static let graphQLHost: URL = URL(string: "http://\(host):1234/graphql")!
-  static let imageAPIHost: URL = URL(string: "http://\(host):1337")!
-  
+  static let imageAPIHost: URL = URL(string: "https://u6qoh0vm77.execute-api.us-east-1.amazonaws.com/default/imageCompressorUploader")!
+  static let imageAPIKey: String = "3gIpimRUcE54l1Vmq4DL56eJVGUDiymf92TH9YBJ"
 }
