@@ -19,7 +19,7 @@ enum ImageContainerCodingKeys: String, CodingKey {
   case thumbnail
 }
 
-class ImageContainer: Codable {
+class ImageContainer: Codable, CustomStringConvertible {
   
   static let graphQLImageFields: String = "{ imageID uploadedByUser_id original \(ImageRepresentation.graphQLImageRepresentationFields) large \(ImageRepresentation.graphQLImageRepresentationFields) medium \(ImageRepresentation.graphQLImageRepresentationFields) small \(ImageRepresentation.graphQLImageRepresentationFields) thumbnail \(ImageRepresentation.graphQLImageRepresentationFields)}"
   
@@ -30,6 +30,18 @@ class ImageContainer: Codable {
   let medium: ImageRepresentation
   let small: ImageRepresentation
   let thumbnail: ImageRepresentation
+  
+  var description: String {
+    return "**** Image Container **** \n" + """
+    imageID: \(String(describing: self.imageID)),
+    uploadedByUser: \(String(describing: self.uploadedByUser)),
+    original: \(String(describing: self.original)),
+    large: \(String(describing: self.large)),
+    medium: \(String(describing: self.medium)),
+    small: \(String(describing: self.small)),
+    thumbnail: \(String(describing: self.thumbnail)),
+    """
+  }
   
   init(imageID: String,
        original: ImageRepresentation,

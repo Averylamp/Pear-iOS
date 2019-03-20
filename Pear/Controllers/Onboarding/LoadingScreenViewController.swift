@@ -92,4 +92,24 @@ extension LoadingScreenViewController {
     }
   }
   
+  func testImageUpload() {
+    if let testImage = UIImage(named: "sample-profile-brooke-1") {
+      let testUserID = "5c82162afec46c84e924a332"
+      ImageUploadAPI.shared.uploadNewImage(with: testImage, userID: testUserID) { (result) in
+        print("Image upload returned")
+        switch result {
+        case .success( let imageAllSizesRepresentation):
+          print("Finished Image Test Successfully")
+          print(imageAllSizesRepresentation)
+        case .failure(let error):
+          print("Failed image api request")
+          print(error)
+        }
+      }
+    } else {
+      fatalError("Failed to create image for image upload test")
+    }
+    
+  }
+  
 }
