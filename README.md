@@ -10,5 +10,5 @@ To install dependencies run:
 
 We are also using Fastlane to manage build uploads
 To deploy a new beta build:
-`fastlane beta`
+`bundle exec fastlane beta`
 

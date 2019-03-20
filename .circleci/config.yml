@@ -1,41 +1,50 @@
 # .circleci/config.yml
-
 version: 2
 jobs:
-  build:
+  build-and-test:
     macos:
-      xcode: "10.1.0"
+      xcode: "9.0"
+    working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
-      BUNDLER_VERSION: 2.0.1
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+      - run: bundle install
       - run:
-          name: Configure Bundler
-          command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            sudo gem install bundler
-      - run:
-          name: Fetch CocoaPods Specs
-          command: |
-            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-      - run:
-          name: Install CocoaPods
-          command: pod install --verbose
-      - restore_cache:
-          key: 1-gems-{{ checksum "Gemfile.lock" }}
-      - run: bundle check || bundle install --path vendor/bundle
-      - save_cache:
-          key: 1-gems-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-      - run:
-          name: fastlane
+          name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
           path: output
       - store_test_results:
           path: output/scan
+
+  adhoc:
+    macos:
+      xcode: "9.0"
+    working_directory: /Users/distiller/project
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: adhoc
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout
+      - run: bundle install
+      - run:
+          name: Fastlane
+          command: bundle exec fastlane $FASTLANE_LANE
+      - store_artifacts:
+          path: output
+
+workflows:
+  version: 2
+  build-test-adhoc:
+    jobs:
+      - build-and-test
+      - adhoc:
+          filters:
+            branches:
+              only: development
+          requires:
+            - build-and-test
