@@ -13,8 +13,8 @@ jobs:
       - checkout
 
       - run: sudo gem update --system
+      - run: which bundler
       - run: echo | sudo gem uninstall -I bundler
-      - run: sudo rm /usr/local/bin/bundle
       - run: sudo rm /usr/local/bin/bundler
       - run: sudo gem install bundler
 
