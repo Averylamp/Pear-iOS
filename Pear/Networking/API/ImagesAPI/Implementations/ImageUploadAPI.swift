@@ -58,7 +58,6 @@ class ImageUploadAPI: ImageAPI {
             print(error as Any)
             completion(.failure(ImageAPIError.unknownError(error: error)))
           } else {
-            print(data)
             if let data = data {
               do {
                 let imageContainer = try JSONDecoder().decode(ImageContainer.self, from: data)

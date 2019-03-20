@@ -1,0 +1,12 @@
+//
+//  Debug.xcconfig
+//  Pear
+//
+//  Created by Avery Lamp on 3/20/19.
+//  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"
