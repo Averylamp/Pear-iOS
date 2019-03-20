@@ -20,6 +20,21 @@ class ImageUploadAPI: ImageAPI {
   
   func uploadNewImage(with image: UIImage, userID: String, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
     
+    var scaleRatio: CGFloat = 1.0
+    if image.size.width > image.size.height {
+      scaleRatio = image.size.height > 1700 ? 1700 / image.size.height : scaleRatio
+    } else {
+      scaleRatio = image.size.width > 1700 ? 1700 / image.size.width : scaleRatio
+    }
+    
+    let finalImage: UIImage!
+    if scaleRatio < 1.0 {
+      finalImage = image.imageWith(newSize: CGSize(width: image.size.width * scaleRatio,
+                                                  height: image.size.height * scaleRatio))
+    } else {
+      finalImage = image
+    }
+    
     let headers: [String: String] = [
       "Content-Type": "application/json",
       "x-api-key": NetworkingConfig.imageAPIKey
@@ -30,7 +45,7 @@ class ImageUploadAPI: ImageAPI {
                                       timeoutInterval: 25.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = headers
-    let imageString: String = image.jpegData(compressionQuality: 0.8)!.base64EncodedString()
+    let imageString: String = finalImage.jpegData(compressionQuality: 0.8)!.base64EncodedString()
     do {
       
       request.httpBody = try JSONSerialization
