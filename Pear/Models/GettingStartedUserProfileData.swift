@@ -58,33 +58,7 @@ class GettingStartedUserProfileData: CustomStringConvertible {
       let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-1")!)
       fakeImage.imageContainer = image
       self.images.append(fakeImage)
-    }
-    if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-2")!)
-      fakeImage.imageContainer = image
-      self.images.append(fakeImage)
-    }
-    if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-3")!)
-      fakeImage.imageContainer = image
-      self.images.append(fakeImage)
-    }
-    if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-shane-1")!)
-      fakeImage.imageContainer = image
-      self.images.append(fakeImage)
-    }
-    if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-shane-2")!)
-      fakeImage.imageContainer = image
-      self.images.append(fakeImage)
-    }
-    if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-shane-3")!)
-      fakeImage.imageContainer = image
-      self.images.append(fakeImage)
-    }
-    
+    }    
   }
   
 }

@@ -24,7 +24,7 @@ enum ImageRepresentationCodingKeys: String, CodingKey {
   case imageType
 }
 
-class ImageRepresentation: Codable {
+class ImageRepresentation: Codable, CustomStringConvertible {
   
   static let graphQLImageRepresentationFields: String = "{ imageURL imageType width height }"
   
@@ -32,6 +32,15 @@ class ImageRepresentation: Codable {
   let imageURL: String
   let height: Int
   let width: Int
+  
+  var description: String {
+    return "Image Representation\n" + """
+    -  imageType: \(String(describing: imageType)),
+    -  imageURL: \(String(describing: imageURL)),
+    -  height: \(String(describing: height)),
+    -  width: \(String(describing: width)),
+    """
+  }
   
   init(imageType: ImageType, imageURL: String, height: Int, width: Int) {
     self.imageType = imageType
