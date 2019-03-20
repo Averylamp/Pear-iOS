@@ -3,7 +3,7 @@ version: 2
 jobs:
   build-and-test:
     macos:
-      xcode: "9.0"
+      xcode: "10.1.0"
     working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: output
@@ -12,8 +12,6 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo gem update --system
-      - run: which bundler
       - run: echo | sudo gem uninstall -I bundler
       - run:
           name: Set Ruby Version
@@ -21,8 +19,8 @@ jobs:
       - run: sudo gem update --system
       - run: sudo gem install --force bundler
       - run: bundler --version
-
       - run: bundle install
+
       - run:
           name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE
