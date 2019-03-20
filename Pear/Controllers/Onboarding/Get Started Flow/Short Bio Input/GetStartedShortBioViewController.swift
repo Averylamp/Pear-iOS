@@ -53,6 +53,9 @@ class GetStartedShortBioViewController: UIViewController {
                                               preferredStyle: .alert)
       let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
       let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
+        if self.gettingStartedData.bio?.count == 0 {
+          self.gettingStartedData.bio = " "
+        }
         if let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData) {
           self.navigationController?.pushViewController(photoInputVC, animated: true)
         } else {
