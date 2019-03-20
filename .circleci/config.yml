@@ -11,6 +11,17 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
+
+      - run: sudo gem update --system
+      - run: which bundler
+      - run: echo | sudo gem uninstall -I bundler
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      - run: sudo gem update --system
+      - run: sudo gem install bundler
+      - run: bundler --version
+
       - run: bundle install
       - run:
           name: Fastlane
