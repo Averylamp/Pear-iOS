@@ -24,9 +24,10 @@ jobs:
           name: Fetch CocoaPods Specs
           command: |
             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      - run: Pod deintegrate
       - run:
           name: Install CocoaPods
-          command: pod install --verbose
+          command: pod install
 
       - run:
           name: Fastlane
