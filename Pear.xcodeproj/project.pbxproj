@@ -162,6 +162,7 @@
 		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
 		BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418F2227E137009CEC4A /* UIView+Styling.swift */; };
 		BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2842D223BFC1000AC6E30 /* PearUITests.swift */; };
+		BBDEAB6D2241C2C90052D5E9 /* DevConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */; };
@@ -361,6 +362,7 @@
 		BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD2842D223BFC1000AC6E30 /* PearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUITests.swift; sourceTree = "<group>"; };
 		BBD2842F223BFC1000AC6E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConfig.swift; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConstants.swift; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 		60C131EA21D348120093ECBA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */,
 				BB0F16B7222EE6D200915C1C /* DataStore.swift */,
 				BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */,
 				BB541B41223B5AA0002239C8 /* RemoteConfig.plist */,
@@ -557,7 +560,6 @@
 				553C491FB7886E551D250B07 /* Pods-Pear.debug.xcconfig */,
 				6B3954D4C40EC4F3A394B11A /* Pods-Pear.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1476,6 +1478,7 @@
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
+				BBDEAB6D2241C2C90052D5E9 /* DevConfig.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
