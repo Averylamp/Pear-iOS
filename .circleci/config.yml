@@ -15,6 +15,7 @@ jobs:
       - run: sudo gem update --system
       - run: which bundler
       - run: echo | sudo gem uninstall -I bundler
+      - run: gem sources -a http://rubygems.org
       - run: sudo gem update --system
       - run: sudo gem install bundler
       - run: bundler --version
