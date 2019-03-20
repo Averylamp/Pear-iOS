@@ -21,10 +21,6 @@ jobs:
       - run: bundle install
 
       - run:
-          name: Install CocoaPods
-          command: pod install
-
-      - run:
           name: Fastlane
           command: bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
