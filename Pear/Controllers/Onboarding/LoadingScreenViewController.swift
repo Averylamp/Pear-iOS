@@ -29,7 +29,6 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.testImageUpload()
     DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
       self.continueToMainScreen()
     }, userNotFoundCompletion: {
@@ -88,8 +87,26 @@ extension LoadingScreenViewController {
     }
   }
   
-  func testChat(){
-    
+  func testChat() {
+    let chat = Firestore.firestore().collection("chats").document("DZxANxQpVXZSrcpKJpHG")
+    chat.getDocument { (document, error) in
+      if let error = error {
+        print("Error fetching test Chat object: \(error)")
+        return
+      }
+      
+      if let document = document,
+        let documentData = document.data() {
+        print(documentData)
+        do {
+          let chatObject = try Chat(dictionary: documentData)
+          print(chatObject)
+        } catch {
+          print("Error deserializing chat object")
+          print(error)
+        }
+      }
+    }
   }
   
   func testImageUpload() {
