@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebasePerformance
+import CodableFirebase
 
 class LoadingScreenViewController: UIViewController {
   
@@ -96,10 +97,11 @@ extension LoadingScreenViewController {
       }
       
       if let document = document,
-        let documentData = document.data() {
+        var documentData = document.data() {
+        documentData["documentID"] = document.documentID
         print(documentData)
         do {
-          let chatObject = try Chat(dictionary: documentData)
+          let chatObject = try FirestoreDecoder().decode(Chat.self, from: documentData)
           print(chatObject)
         } catch {
           print("Error deserializing chat object")

@@ -7,6 +7,12 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import CodableFirebase
+
+enum MessageDecodingError: Error {
+  case enumDecodingError
+}
 
 enum MessageType: String, Codable {
   case SERVER_MESSAGE
@@ -42,12 +48,12 @@ class Message: Codable, CustomStringConvertible {
   
   var description: String {
     return "**** Message ****\n" + """
-    documentID: \(String(describing: self.documentID)),
+    documentID: \(String(describing: self.documentID!)),
     senderID: \(String(describing: self.senderID)),
-    type: \(String(describing: self.type)),
-    contentType: \(String(describing: self.contentType)),
-    content: \(String(describing: self.content)),
-    timestamp: \(String(describing: self.timestamp)),
+    type: \(String(describing: self.type!)),
+    contentType: \(String(describing: self.contentType!)),
+    content: \(String(describing: self.content!)),
+    timestamp: \(String(describing: self.timestamp!)),
     """
   }
   
@@ -56,10 +62,12 @@ class Message: Codable, CustomStringConvertible {
    
     self.documentID = try values.decode(String.self, forKey: .documentID)
     self.senderID = try? values.decode(String.self, forKey: .senderID)
-    self.type = try values.decode(MessageType.self, forKey: .type)
-    self.contentType = try values.decode(MessageContentType.self, forKey: .contentType)
+    guard let type = MessageType.init(rawValue: try values.decode(String.self, forKey: .type)) else { throw MessageDecodingError.enumDecodingError }
+    self.type = type
+    guard let contentType = MessageContentType.init(rawValue: try values.decode(String.self, forKey: .contentType)) else { throw MessageDecodingError.enumDecodingError }
+    self.contentType = contentType
     self.content = try values.decode(String.self, forKey: .content)
-    self.timestamp = try values.decode(Date.self, forKey: .timestamp)
+    self.timestamp = try values.decode(Timestamp.self, forKey: .timestamp).dateValue()
     
   }
   
