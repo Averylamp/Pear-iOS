@@ -3,6 +3,7 @@ target 'Pear' do
   use_frameworks!
   inhibit_all_warnings!
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'FBSDKCoreKit'
   pod 'FacebookCore'
