@@ -56,7 +56,6 @@
 		BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB541B41223B5AA0002239C8 /* RemoteConfig.plist */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB5F5311223BA57700C25861 /* ProfileMadeByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5F5310223BA57700C25861 /* ProfileMadeByTableViewCell.swift */; };
-		BB610E9522289C4800901FC3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E9422289C4800901FC3 /* Colors.swift */; };
 		BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */; };
 		BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */; };
 		BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB686E2A2210BF34008A263C /* GoogleService-Info.plist */; };
@@ -91,6 +90,9 @@
 		BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11A22437B64001320B0 /* SharedModel.swift */; };
 		BB94C12522438502001320B0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12422438502001320B0 /* Message.swift */; };
 		BB94C12722438F00001320B0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12622438F00001320B0 /* Chat.swift */; };
+		BB94C12D2243C558001320B0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12C2243C558001320B0 /* R.generated.swift */; };
+		BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB94C12E2243C687001320B0 /* Colors.xcassets */; };
+		BB94C1312243C73B001320B0 /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB94C1302243C73B001320B0 /* Strings.strings */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */; };
@@ -247,7 +249,6 @@
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
 		BB58D48F22425D4500A6A910 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		BB5F5310223BA57700C25861 /* ProfileMadeByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMadeByTableViewCell.swift; sourceTree = "<group>"; };
-		BB610E9422289C4800901FC3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styling.swift"; sourceTree = "<group>"; };
 		BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Kerning.swift"; sourceTree = "<group>"; };
 		BB686E252210BE69008A263C /* Pear.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pear.entitlements; sourceTree = "<group>"; };
@@ -283,6 +284,9 @@
 		BB94C11A22437B64001320B0 /* SharedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
 		BB94C12422438502001320B0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BB94C12622438F00001320B0 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		BB94C12C2243C558001320B0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		BB94C12E2243C687001320B0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BB94C1302243C73B001320B0 /* Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenPage1ViewController.storyboard; sourceTree = "<group>"; };
@@ -518,10 +522,12 @@
 		60C131EA21D348120093ECBA /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BB94C12C2243C558001320B0 /* R.generated.swift */,
 				BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */,
 				BB0F16B7222EE6D200915C1C /* DataStore.swift */,
 				BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */,
 				BB541B41223B5AA0002239C8 /* RemoteConfig.plist */,
+				BB94C1302243C73B001320B0 /* Strings.strings */,
 				BB610E9B222A1EDB00901FC3 /* Generators */,
 				BB0F16BA222EE73F00915C1C /* UX */,
 				BB0F16B9222EE72800915C1C /* Helpers */,
@@ -665,11 +671,11 @@
 			isa = PBXGroup;
 			children = (
 				BB686E3E22120F1A008A263C /* StylingConfig.swift */,
-				BB610E9422289C4800901FC3 /* Colors.swift */,
 				BBCF418F2227E137009CEC4A /* UIView+Styling.swift */,
 				BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */,
 				BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */,
 				BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */,
+				BB94C12E2243C687001320B0 /* Colors.xcassets */,
 			);
 			path = Styling;
 			sourceTree = "<group>";
@@ -1203,6 +1209,7 @@
 			buildConfigurationList = 60C131D121D342BD0093ECBA /* Build configuration list for PBXNativeTarget "Pear" */;
 			buildPhases = (
 				A223920FD41CB9AC36FF0600 /* [CP] Check Pods Manifest.lock */,
+				BB94C1292243C465001320B0 /* ShellScript */,
 				60C131BB21D342BC0093ECBA /* Sources */,
 				60C131BC21D342BC0093ECBA /* Frameworks */,
 				60C131BD21D342BC0093ECBA /* Resources */,
@@ -1323,6 +1330,7 @@
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
+				BB94C1312243C73B001320B0 /* Strings.strings in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
 				BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */,
@@ -1337,6 +1345,7 @@
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
+				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
 				BBECBEC22237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
 				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
@@ -1391,6 +1400,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -1416,6 +1426,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -1486,6 +1497,25 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect .\nswiftlint lint .\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		BB94C1292243C465001320B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1512,6 +1542,7 @@
 				BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */,
 				BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* StylingConfig.swift in Sources */,
+				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
@@ -1574,7 +1605,6 @@
 				BBECBEC52237E6AA008E8E91 /* DetachedProfileApprovalViewController.swift in Sources */,
 				BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */,
 				BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */,
-				BB610E9522289C4800901FC3 /* Colors.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
 				BBECBEB12237BA05008E8E91 /* FullProfileReviewViewController.swift in Sources */,

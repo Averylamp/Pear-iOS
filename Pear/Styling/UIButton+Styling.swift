@@ -12,14 +12,14 @@ import UIKit
 extension UIButton {
   
   func stylizeDark() {
-    self.backgroundColor = Colors.brandPrimaryLight
-    self.layer.shadowColor = Colors.shadowColor.cgColor
+    self.backgroundColor = R.color.brandPrimaryLight()!
+    self.layer.shadowColor = R.color.shadowColor()!.cgColor
     self.layer.shadowOpacity = 1
     self.layer.shadowRadius = 1
     self.layer.shadowOffset = CGSize(width: 0, height: 1)
     self.layer.cornerRadius = self.frame.height / 2.0
     self.layer.borderWidth = 2
-    self.layer.borderColor = Colors.brandPrimaryDark.cgColor
+    self.layer.borderColor = R.color.brandPrimaryDark()!.cgColor
     
     self.setTitleColor(UIColor.white, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
@@ -40,7 +40,7 @@ extension UIButton {
     self.layer.shadowOffset = CGSize(width: 1, height: 1)
     self.layer.shadowOpacity = 1.0
     self.setTitleColor(StylingConfig.textFontColor, for: .normal)
-    self.setTitleColor(Colors.brandPrimaryDark, for: .normal)
+    self.setTitleColor(R.color.brandPrimaryDark()!, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
   }
   

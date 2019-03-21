@@ -4,6 +4,8 @@ disabled_rules:
   - trailing_whitespace
 excluded:
   - Pods
+  - R.generated.swift
+
 
 line_length:
   warning: 180 

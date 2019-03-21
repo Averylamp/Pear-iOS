@@ -166,6 +166,9 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.6.1)
   - NVActivityIndicatorView/Presenter (4.6.1)
   - Protobuf (3.7.0)
+  - R.swift (5.0.2):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.0)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
@@ -186,6 +189,7 @@ DEPENDENCIES:
   - Firebase/Performance
   - Firebase/RemoteConfig
   - NVActivityIndicatorView
+  - R.swift
   - SDWebImage
   - SwiftLint
   - SwiftyJSON
@@ -223,6 +227,8 @@ SPEC REPOS:
     - nanopb
     - NVActivityIndicatorView
     - Protobuf
+    - R.swift
+    - R.swift.Library
     - SDWebImage
     - SwiftLint
     - SwiftyJSON
@@ -259,10 +265,12 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
+  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: ca08584c812d001403ef89f159890a66f0e09c7c
+PODFILE CHECKSUM: 0f9fabb5d979244df8fd56ef91731062b4ea9d94
 
 COCOAPODS: 1.6.1

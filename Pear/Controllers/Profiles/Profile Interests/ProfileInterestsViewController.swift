@@ -75,7 +75,7 @@ extension ProfileInterestsViewController {
       self.lastStackView.addArrangedSubview(interestTag)
       self.view.layoutIfNeeded()
       interestTag.layer.cornerRadius = interestTag.frame.height / 2
-      interestTag.backgroundColor = Colors.tagBubbleColor
+      interestTag.backgroundColor = R.color.tagBubbleColor()!
       if self.lastStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).width >= self.lastStackView.frame.width {
         self.lastStackView.removeArrangedSubview(interestTag)
         let placeholderView = UIView()
