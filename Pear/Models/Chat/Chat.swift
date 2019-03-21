@@ -7,16 +7,22 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import CodableFirebase
+
+enum ChatDecodingError: Error {
+  case enumDecodingError
+}
 
 enum ChatType: String, Codable {
-  case MATCH
-  case ENDORSEMENT
+  case match = "MATCH"
+  case endorsement = "ENDORSEMENT"
 }
 
 enum ChatKeys: String, CodingKey {
   case documentID
   case type
-  case mongoDocumentID = "mondoDocument_id"
+  case mongoDocumentID = "mongoDocument_id"
   case lastActivity
   case messages
   case firstPersonID = "firstPerson_id"
@@ -39,28 +45,28 @@ class Chat: Codable, CustomStringConvertible {
   
   var description: String {
     return "**** Chat ****\n" + """
-    documentID: \(String(describing: self.documentID)),
-    type: \(String(describing: self.type)),
-    mongoDocumentID: \(String(describing: self.mongoDocumentID)),
-    lastActivity: \(String(describing: self.lastActivity)),
+    documentID: \(String(describing: self.documentID!)),
+    type: \(String(describing: self.type!)),
+    mongoDocumentID: \(String(describing: self.mongoDocumentID!)),
+    lastActivity: \(String(describing: self.lastActivity!)),
     messageCount: \(String(describing: self.messages.count)),
-    firstPersonID: \(String(describing: self.firstPersonID)),
-    secondPersonID: \(String(describing: self.secondPersonID)),
-    firstPersonLastOpened: \(String(describing: self.firstPersonLastOpened)),
-    secondPersonLastOpened: \(String(describing: self.secondPersonLastOpened)),
+    firstPersonID: \(String(describing: self.firstPersonID!)),
+    secondPersonID: \(String(describing: self.secondPersonID!)),
+    firstPersonLastOpened: \(String(describing: self.firstPersonLastOpened!)),
+    secondPersonLastOpened: \(String(describing: self.secondPersonLastOpened!)),
     """
   }
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: ChatKeys.self)
     self.documentID = try values.decode(String.self, forKey: .documentID)
-    self.type = try values.decode(ChatType.self, forKey: .type)
+    guard let type = ChatType.init(rawValue: try values.decode(String.self, forKey: .type)) else { throw ChatDecodingError.enumDecodingError}
+    self.type = type
     self.mongoDocumentID = try values.decode(String.self, forKey: .mongoDocumentID)
-    self.lastActivity = try values.decode(Date.self, forKey: .lastActivity)
+    self.lastActivity = try values.decode(Timestamp.self, forKey: .lastActivity).dateValue()
     self.firstPersonID = try values.decode(String.self, forKey: .firstPersonID)
     self.secondPersonID = try values.decode(String.self, forKey: .secondPersonID)
-    self.firstPersonLastOpened = try values.decode(Date.self, forKey: .firstPersonLastOpened)
-    self.secondPersonLastOpened = try values.decode(Date.self, forKey: .secondPersonLastOpened)
-    
+    self.firstPersonLastOpened = try values.decode(Timestamp.self, forKey: .firstPersonLastOpened).dateValue()
+    self.secondPersonLastOpened = try values.decode(Timestamp.self, forKey: .secondPersonLastOpened).dateValue()
   }
 }
