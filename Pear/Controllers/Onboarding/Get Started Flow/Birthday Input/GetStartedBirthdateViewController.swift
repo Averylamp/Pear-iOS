@@ -11,7 +11,7 @@ import UIKit
 class GetStartedBirthdateViewController: UIViewController {
   
   @IBOutlet weak var datePicker: UIDatePicker!
-  var gettingStartedUserData: GettingStartedUserData!
+  var gettingStartedUserData: UserCreationData!
   @IBOutlet weak var titleLabel: UILabel!
   
   @IBOutlet weak var nextButton: UIButton!
@@ -19,7 +19,7 @@ class GetStartedBirthdateViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserData: GettingStartedUserData) -> GetStartedBirthdateViewController? {
+  class func instantiate(gettingStartedUserData: UserCreationData) -> GetStartedBirthdateViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedBirthdateViewController.self), bundle: nil)
     guard let userFirstNameVC = storyboard.instantiateInitialViewController() as? GetStartedBirthdateViewController else { return nil }
     userFirstNameVC.gettingStartedUserData = gettingStartedUserData

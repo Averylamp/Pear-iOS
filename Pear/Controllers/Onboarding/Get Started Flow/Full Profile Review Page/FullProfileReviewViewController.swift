@@ -14,12 +14,12 @@ class FullProfileReviewViewController: UIViewController {
   let pageNumber: CGFloat  = 8.0
   
   @IBOutlet weak var scrollView: UIScrollView!
-  var gettingStartedUserProfileData: GettingStartedUserProfileData!
+  var gettingStartedUserProfileData: UserProfileCreationData!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserProfileData: GettingStartedUserProfileData) -> FullProfileReviewViewController? {
+  class func instantiate(gettingStartedUserProfileData: UserProfileCreationData) -> FullProfileReviewViewController? {
     let storyboard = UIStoryboard(name: String(describing: FullProfileReviewViewController.self), bundle: nil)
     guard let fullProfileReviewVC = storyboard.instantiateInitialViewController() as? FullProfileReviewViewController else { return nil }
     fullProfileReviewVC.gettingStartedUserProfileData = gettingStartedUserProfileData

@@ -32,7 +32,7 @@ class PearProfileAPI: ProfileAPI {
 
 // MARK: Routes
 extension PearProfileAPI {
-  func createNewDetachedProfile(gettingStartedUserProfileData: GettingStartedUserProfileData,
+  func createNewDetachedProfile(gettingStartedUserProfileData: UserProfileCreationData,
                                 completion: @escaping (Result<PearDetachedProfile, DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
@@ -294,7 +294,7 @@ extension PearProfileAPI {
 // MARK: Create Detached Profile Endpoint Helpers
 extension PearProfileAPI {
   
-  func convertUserProfileDataToQueryVariable(userProfileData: GettingStartedUserProfileData) throws -> [String: Any] {
+  func convertUserProfileDataToQueryVariable(userProfileData: UserProfileCreationData) throws -> [String: Any] {
     
     guard
       

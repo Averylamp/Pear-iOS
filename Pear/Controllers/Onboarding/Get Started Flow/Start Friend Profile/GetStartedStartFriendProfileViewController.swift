@@ -17,7 +17,7 @@ class GetStartedStartFriendProfileViewController: UIViewController {
   @IBOutlet weak var inputTextField: UITextField!
   @IBOutlet weak var inputTextFieldTitle: UILabel!
   
-  var gettingStartedData: GettingStartedUserProfileData!
+  var gettingStartedData: UserProfileCreationData!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   
@@ -29,7 +29,7 @@ class GetStartedStartFriendProfileViewController: UIViewController {
   class func instantiate() -> GetStartedStartFriendProfileViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedStartFriendProfileViewController.self), bundle: nil)
     guard let startFriendProfileVC = storyboard.instantiateInitialViewController() as? GetStartedStartFriendProfileViewController else { return nil }
-    startFriendProfileVC.gettingStartedData = GettingStartedUserProfileData()
+    startFriendProfileVC.gettingStartedData = UserProfileCreationData()
     if DevConfig.devMode {
       startFriendProfileVC.gettingStartedData.fakePopulate()
     }

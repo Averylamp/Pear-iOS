@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 
-class GettingStartedUserData: CustomStringConvertible {
+class UserCreationData: CustomStringConvertible {
   
   var firstName: String?
   var lastName: String?

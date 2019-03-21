@@ -16,12 +16,12 @@ class GetStartedEmailProviderViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
   
-  var gettingStartedUserData: GettingStartedUserData!
+  var gettingStartedUserData: UserCreationData!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserData: GettingStartedUserData) -> GetStartedEmailProviderViewController? {
+  class func instantiate(gettingStartedUserData: UserCreationData) -> GetStartedEmailProviderViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedEmailProviderViewController.self), bundle: nil)
     guard let emailProviderVC = storyboard.instantiateInitialViewController() as? GetStartedEmailProviderViewController else { return nil }
     emailProviderVC.gettingStartedUserData = gettingStartedUserData

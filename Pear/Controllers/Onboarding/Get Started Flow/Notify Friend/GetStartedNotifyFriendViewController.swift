@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 
 class GetStartedNotifyFriendViewController: UIViewController {
   
-  var gettingStartedData: GettingStartedUserProfileData!
+  var gettingStartedData: UserProfileCreationData!
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
@@ -26,7 +26,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedNotifyFriendViewController? {
+  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedNotifyFriendViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedNotifyFriendViewController.self), bundle: nil)
     guard let notifyFriendVC = storyboard.instantiateInitialViewController() as? GetStartedNotifyFriendViewController else { return nil }
     notifyFriendVC.gettingStartedData = gettingStartedData

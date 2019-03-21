@@ -16,6 +16,6 @@ enum UserAPIError: Error {
 }
 
 protocol UserAPI {
-  func createNewUser(with gettingStartedUserData: GettingStartedUserData, completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
+  func createNewUser(with gettingStartedUserData: UserCreationData, completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
   func getUser(uid: String, token: String, completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
 }

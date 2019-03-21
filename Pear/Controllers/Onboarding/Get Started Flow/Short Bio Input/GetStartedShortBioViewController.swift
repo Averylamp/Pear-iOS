@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedShortBioViewController: UIViewController {
   
-  var gettingStartedData: GettingStartedUserProfileData!
+  var gettingStartedData: UserProfileCreationData!
   
   @IBOutlet weak var textLengthLabel: UILabel!
   @IBOutlet weak var inputTextView: UITextView!
@@ -28,7 +28,7 @@ class GetStartedShortBioViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedShortBioViewController? {
+  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedShortBioViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedShortBioViewController.self), bundle: nil)
     guard let shortBioVC = storyboard.instantiateInitialViewController() as? GetStartedShortBioViewController else { return nil }
     shortBioVC.gettingStartedData = gettingStartedData

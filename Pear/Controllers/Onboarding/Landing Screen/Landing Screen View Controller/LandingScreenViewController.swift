@@ -154,7 +154,7 @@ private extension LandingScreenViewController {
       print(grantedPermissions)
       print(deniedPermissions)
       
-      let gettingStartedUser = GettingStartedUserData()
+      let gettingStartedUser = UserCreationData()
       // 2. Auth via Firebase.
       let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
       gettingStartedUser.primaryAuth = credential
@@ -239,7 +239,7 @@ private extension LandingScreenViewController {
     }
   }
   
-  func userGraphRequest(gettingStartedUser: GettingStartedUserData, permissions: [String], trace: Trace?, completion: @escaping (GettingStartedUserData) -> Void) {
+  func userGraphRequest(gettingStartedUser: UserCreationData, permissions: [String], trace: Trace?, completion: @escaping (UserCreationData) -> Void) {
     
     // Fetch All other User Profile Data available
     let userInfoRequest = FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": permissions.joined(separator: ",")])
@@ -306,7 +306,7 @@ private extension LandingScreenViewController {
     guard !self.gettingStarted else { return }
     self.gettingStarted = true
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let emailProviderVC = GetStartedEmailProviderViewController.instantiate(gettingStartedUserData: GettingStartedUserData()) else {
+    guard let emailProviderVC = GetStartedEmailProviderViewController.instantiate(gettingStartedUserData: UserCreationData()) else {
       print("Failed to create Email Provider VC")
       return
     }
