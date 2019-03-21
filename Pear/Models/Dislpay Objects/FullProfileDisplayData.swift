@@ -54,7 +54,7 @@ class FullProfileDisplayData {
     self.donts = donts
   }
   
-  convenience init (gsup: GettingStartedUserProfileData, creatorFirstName: String) throws {
+  convenience init (gsup: UserProfileCreationData, creatorFirstName: String) throws {
     guard let firstName = gsup.firstName,
       let age = gsup.age,
       let gender = gsup.gender,

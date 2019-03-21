@@ -18,7 +18,7 @@ class GetStartedVibeViewController: UIViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var nextButton: UIButton!
-  var gettingStartedProfileData: GettingStartedUserProfileData!
+  var gettingStartedProfileData: UserProfileCreationData!
   var fruitVibes: [FruitVibe] = []
   
   @IBOutlet weak var titleLabel: UILabel!
@@ -32,7 +32,7 @@ class GetStartedVibeViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedVibeViewController? {
+  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedVibeViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedVibeViewController.self), bundle: nil)
     guard let interestsVC = storyboard.instantiateInitialViewController() as? GetStartedVibeViewController else { return nil }
     interestsVC.gettingStartedProfileData = gettingStartedData

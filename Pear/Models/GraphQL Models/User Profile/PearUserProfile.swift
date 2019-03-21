@@ -8,21 +8,6 @@
 
 import Foundation
 
-enum PearUserProfileKeys: String, CodingKey {
-  
-  case documentID = "_id"
-  case creatorUserID = "creatorUser_id"
-  case creatorFirstName
-  case interests
-  case vibes
-  case bio
-  case dos
-  case donts
-  case images
-  case matchingDemographics
-  case matchingPreferences
-}
-
 class PearUserProfile: Codable, CustomStringConvertible {
   
   var documentID: String!

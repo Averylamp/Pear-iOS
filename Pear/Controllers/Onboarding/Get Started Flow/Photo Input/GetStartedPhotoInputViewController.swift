@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedPhotoInputViewController: UIViewController {
   
-  var gettingStartedUserProfileData: GettingStartedUserProfileData!
+  var gettingStartedUserProfileData: UserProfileCreationData!
   
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var collectionView: UICollectionView!
@@ -28,7 +28,7 @@ class GetStartedPhotoInputViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedPhotoInputViewController? {
+  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedPhotoInputViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedPhotoInputViewController.self), bundle: nil)
     guard let photoInputVC = storyboard.instantiateInitialViewController() as? GetStartedPhotoInputViewController else { return nil }
     photoInputVC.gettingStartedUserProfileData = gettingStartedData

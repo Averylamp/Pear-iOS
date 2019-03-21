@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GettingStartedUserProfileData: CustomStringConvertible {
+class UserProfileCreationData: CustomStringConvertible {
   
   var firstName: String?
   var phoneNumber: String?

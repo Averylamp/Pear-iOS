@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedSeeSamplesViewController: UIViewController {
   
-  var gettingStartedData: GettingStartedUserProfileData!
+  var gettingStartedData: UserProfileCreationData!
   
   @IBOutlet weak var seeSamplesButton: UIButton!
   @IBOutlet weak var skipButton: UIButton!
@@ -18,7 +18,7 @@ class GetStartedSeeSamplesViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedSeeSamplesViewController? {
+  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedSeeSamplesViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedSeeSamplesViewController.self), bundle: nil)
     guard let seeSamplesVC = storyboard.instantiateInitialViewController() as? GetStartedSeeSamplesViewController else { return nil }
     seeSamplesVC.gettingStartedData = gettingStartedData

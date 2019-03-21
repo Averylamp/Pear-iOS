@@ -18,7 +18,7 @@ class GetStartedInterestsViewController: UIViewController {
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
   let pageNumber: CGFloat  = 3.0
-  var gettingStartedData: GettingStartedUserProfileData!
+  var gettingStartedData: UserProfileCreationData!
   
   var interestStrings: [String] = []
   
@@ -63,7 +63,7 @@ class GetStartedInterestsViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedInterestsViewController? {
+  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedInterestsViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedInterestsViewController.self), bundle: nil)
     guard let interestsVC = storyboard.instantiateInitialViewController() as? GetStartedInterestsViewController else { return nil }
     interestsVC.gettingStartedData = gettingStartedData

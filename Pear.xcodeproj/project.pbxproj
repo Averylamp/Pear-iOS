@@ -32,8 +32,6 @@
 		BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789621E2B22500964F26 /* ProfilesMainViewController.storyboard */; };
 		BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */; };
 		BB1C67102237205700D75848 /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C670F2237205700D75848 /* Encoding.swift */; };
-		BB1C67122237824800D75848 /* FullProfileScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67112237824800D75848 /* FullProfileScrollingViewController.swift */; };
-		BB1C67142237825100D75848 /* FullProfileScrollingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67132237825100D75848 /* FullProfileScrollingViewController.storyboard */; };
 		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
 		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
 		BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */; };
@@ -45,7 +43,7 @@
 		BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */; };
 		BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */; };
 		BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */; };
-		BB3F219A2226765C00DC4489 /* GettingStartedUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* GettingStartedUserData.swift */; };
+		BB3F219A2226765C00DC4489 /* UserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* UserCreationData.swift */; };
 		BB3F219D22267B8000DC4489 /* GetStartedUserLastNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F219B22267B8000DC4489 /* GetStartedUserLastNameViewController.swift */; };
 		BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F219C22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard */; };
 		BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */; };
@@ -56,8 +54,6 @@
 		BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
 		BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB541B41223B5AA0002239C8 /* RemoteConfig.plist */; };
-		BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */; };
-		BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB5F5311223BA57700C25861 /* ProfileMadeByTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5F5310223BA57700C25861 /* ProfileMadeByTableViewCell.swift */; };
 		BB610E9522289C4800901FC3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E9422289C4800901FC3 /* Colors.swift */; };
@@ -87,15 +83,12 @@
 		BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */; };
 		BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */; };
 		BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */; };
-		BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD92215783A00BAB800 /* DiscoverySimpleScrollViewController.swift */; };
-		BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFDB2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard */; };
-		BB75BFDF2215845300BAB800 /* SummaryProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */; };
-		BB75BFE12215846300BAB800 /* SummaryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */; };
-		BB75BFE3221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */; };
 		BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F88222DB19300E31C7F /* PearUserConstants.swift */; };
 		BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F89222DB19300E31C7F /* PearUser.swift */; };
 		BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */; };
 		BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */; };
+		BB94C11822437AF4001320B0 /* PearUserProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11722437AF4001320B0 /* PearUserProfileConstants.swift */; };
+		BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11A22437B64001320B0 /* SharedModel.swift */; };
 		BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */; };
 		BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */; };
 		BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */; };
@@ -109,7 +102,7 @@
 		BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */; };
 		BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */; };
 		BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */; };
-		BB986A43220F76BF00759A14 /* GettingStartedUserProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A42220F76BF00759A14 /* GettingStartedUserProfileData.swift */; };
+		BB986A43220F76BF00759A14 /* UserProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A42220F76BF00759A14 /* UserProfileCreationData.swift */; };
 		BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A44220F793000759A14 /* GetStartedUserFirstNameViewController.swift */; };
 		BB986A47220F799A00759A14 /* GetStartedStartFriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A46220F799A00759A14 /* GetStartedStartFriendProfileViewController.swift */; };
 		BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB986A48220F79A500759A14 /* GetStartedAgeViewController.swift */; };
@@ -165,9 +158,6 @@
 		BBDEAB6D2241C2C90052D5E9 /* DevConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
-		BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */; };
-		BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0272214022600FD1355 /* ProfileData.swift */; };
-		BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8D0292214023A00FD1355 /* EndorsementData.swift */; };
 		BBECBEB12237BA05008E8E91 /* FullProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */; };
 		BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */; };
 		BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */; };
@@ -230,8 +220,6 @@
 		BB18789621E2B22500964F26 /* ProfilesMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfilesMainViewController.storyboard; sourceTree = "<group>"; };
 		BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsMainViewController.storyboard; sourceTree = "<group>"; };
 		BB1C670F2237205700D75848 /* Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoding.swift; sourceTree = "<group>"; };
-		BB1C67112237824800D75848 /* FullProfileScrollingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileScrollingViewController.swift; sourceTree = "<group>"; };
-		BB1C67132237825100D75848 /* FullProfileScrollingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollingViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
 		BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseFlowViewController.swift; sourceTree = "<group>"; };
@@ -243,7 +231,7 @@
 		BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseGenderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedEmailProviderViewController.swift; sourceTree = "<group>"; };
 		BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedEmailProviderViewController.storyboard; sourceTree = "<group>"; };
-		BB3F21992226765C00DC4489 /* GettingStartedUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedUserData.swift; sourceTree = "<group>"; };
+		BB3F21992226765C00DC4489 /* UserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationData.swift; sourceTree = "<group>"; };
 		BB3F219B22267B8000DC4489 /* GetStartedUserLastNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedUserLastNameViewController.swift; sourceTree = "<group>"; };
 		BB3F219C22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedUserLastNameViewController.storyboard; sourceTree = "<group>"; };
 		BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfile.swift; sourceTree = "<group>"; };
@@ -254,8 +242,6 @@
 		BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedUserGenderViewController.swift; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
 		BB541B41223B5AA0002239C8 /* RemoteConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfig.plist; sourceTree = "<group>"; };
-		BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileViewController.storyboard; sourceTree = "<group>"; };
-		BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileViewController.swift; sourceTree = "<group>"; };
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
 		BB58D48F22425D4500A6A910 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		BB5F5310223BA57700C25861 /* ProfileMadeByTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMadeByTableViewCell.swift; sourceTree = "<group>"; };
@@ -287,15 +273,12 @@
 		BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedWaitlistViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedNotifyFriendViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedNotifyFriendViewController.swift; sourceTree = "<group>"; };
-		BB75BFD92215783A00BAB800 /* DiscoverySimpleScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySimpleScrollViewController.swift; sourceTree = "<group>"; };
-		BB75BFDB2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverySimpleScrollViewController.storyboard; sourceTree = "<group>"; };
-		BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SummaryProfileViewController.storyboard; sourceTree = "<group>"; };
-		BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryProfileViewController.swift; sourceTree = "<group>"; };
-		BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryProfileSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		BB796F88222DB19300E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
 		BB796F89222DB19300E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitVibeCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB94C11722437AF4001320B0 /* PearUserProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserProfileConstants.swift; sourceTree = "<group>"; };
+		BB94C11A22437B64001320B0 /* SharedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
 		BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BB986A26220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenPage1ViewController.storyboard; sourceTree = "<group>"; };
@@ -309,7 +292,7 @@
 		BB986A36220E21CB00759A14 /* LandingScreenPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenPageViewController.swift; sourceTree = "<group>"; };
 		BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingNavigationViewController.swift; sourceTree = "<group>"; };
 		BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingNavigationViewController.storyboard; sourceTree = "<group>"; };
-		BB986A42220F76BF00759A14 /* GettingStartedUserProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedUserProfileData.swift; sourceTree = "<group>"; };
+		BB986A42220F76BF00759A14 /* UserProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCreationData.swift; sourceTree = "<group>"; };
 		BB986A44220F793000759A14 /* GetStartedUserFirstNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedUserFirstNameViewController.swift; sourceTree = "<group>"; };
 		BB986A46220F799A00759A14 /* GetStartedStartFriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedStartFriendProfileViewController.swift; sourceTree = "<group>"; };
 		BB986A48220F79A500759A14 /* GetStartedAgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedAgeViewController.swift; sourceTree = "<group>"; };
@@ -369,9 +352,6 @@
 		BBDEAB6F224258B20052D5E9 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
-		BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConstants.swift; sourceTree = "<group>"; };
-		BBE8D0272214022600FD1355 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
-		BBE8D0292214023A00FD1355 /* EndorsementData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndorsementData.swift; sourceTree = "<group>"; };
 		BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileReviewViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
@@ -513,19 +493,10 @@
 		60C131E221D345C00093ECBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BB796F89222DB19300E31C7F /* PearUser.swift */,
-				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
-				BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */,
-				BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */,
-				BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */,
-				BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */,
-				BBE8D0272214022600FD1355 /* ProfileData.swift */,
-				BBE8D0292214023A00FD1355 /* EndorsementData.swift */,
-				BBDF1FF021E2D9D400520881 /* ProfileConstants.swift */,
-				BB986A42220F76BF00759A14 /* GettingStartedUserProfileData.swift */,
-				BB3F21992226765C00DC4489 /* GettingStartedUserData.swift */,
-				BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */,
-				BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */,
+				BB94C11E22437BF0001320B0 /* GraphQL Models */,
+				BB94C11D22437BDC001320B0 /* Creation Models */,
+				BB94C11F22437BFE001320B0 /* Dislpay Objects */,
+				BB94C11A22437B64001320B0 /* SharedModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -600,12 +571,7 @@
 			children = (
 				BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */,
 				BB18789221E2B21800964F26 /* DiscoverMainViewController.storyboard */,
-				BB75BFD92215783A00BAB800 /* DiscoverySimpleScrollViewController.swift */,
-				BB75BFDB2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard */,
-				BB75BFE2221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift */,
-				BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */,
-				BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */,
-				BBECBEC8223846C8008E8E91 /* DiscoverySimpleTableViewCell.swift */,
+				BB94C12222437CF1001320B0 /* Simple Discovery */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -751,14 +717,7 @@
 		BB75BFCA22155F9100BAB800 /* Full Profile View */ = {
 			isa = PBXGroup;
 			children = (
-				BB56D23C2214BB9800A652E7 /* FullProfileViewController.swift */,
-				BB56D23A2214BB8900A652E7 /* FullProfileViewController.storyboard */,
-				BB75BFE02215846300BAB800 /* SummaryProfileViewController.swift */,
-				BB75BFDE2215845300BAB800 /* SummaryProfileViewController.storyboard */,
-				BB1C67112237824800D75848 /* FullProfileScrollingViewController.swift */,
-				BB1C67132237825100D75848 /* FullProfileScrollingViewController.storyboard */,
-				BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */,
-				BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */,
+				BB94C12122437C78001320B0 /* Stack Full Profile */,
 			);
 			path = "Full Profile View";
 			sourceTree = "<group>";
@@ -788,6 +747,89 @@
 				BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */,
 			);
 			path = "Notify Friend";
+			sourceTree = "<group>";
+		};
+		BB94C11522437AC5001320B0 /* Detached Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */,
+				BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */,
+			);
+			path = "Detached Profile";
+			sourceTree = "<group>";
+		};
+		BB94C11622437AD3001320B0 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				BB796F89222DB19300E31C7F /* PearUser.swift */,
+				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		BB94C11922437B04001320B0 /* User Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */,
+				BB94C11722437AF4001320B0 /* PearUserProfileConstants.swift */,
+			);
+			path = "User Profile";
+			sourceTree = "<group>";
+		};
+		BB94C11C22437B7A001320B0 /* Image Container */ = {
+			isa = PBXGroup;
+			children = (
+				BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */,
+				BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */,
+			);
+			path = "Image Container";
+			sourceTree = "<group>";
+		};
+		BB94C11D22437BDC001320B0 /* Creation Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A42220F76BF00759A14 /* UserProfileCreationData.swift */,
+				BB3F21992226765C00DC4489 /* UserCreationData.swift */,
+			);
+			path = "Creation Models";
+			sourceTree = "<group>";
+		};
+		BB94C11E22437BF0001320B0 /* GraphQL Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB94C11622437AD3001320B0 /* User */,
+				BB94C11922437B04001320B0 /* User Profile */,
+				BB94C11522437AC5001320B0 /* Detached Profile */,
+				BB94C11C22437B7A001320B0 /* Image Container */,
+			);
+			path = "GraphQL Models";
+			sourceTree = "<group>";
+		};
+		BB94C11F22437BFE001320B0 /* Dislpay Objects */ = {
+			isa = PBXGroup;
+			children = (
+				BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */,
+			);
+			path = "Dislpay Objects";
+			sourceTree = "<group>";
+		};
+		BB94C12122437C78001320B0 /* Stack Full Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */,
+				BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */,
+			);
+			path = "Stack Full Profile";
+			sourceTree = "<group>";
+		};
+		BB94C12222437CF1001320B0 /* Simple Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */,
+				BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */,
+				BBECBEC8223846C8008E8E91 /* DiscoverySimpleTableViewCell.swift */,
+			);
+			path = "Simple Discovery";
 			sourceTree = "<group>";
 		};
 		BB986A1C220E08B300759A14 /* Onboarding */ = {
@@ -1239,7 +1281,6 @@
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
 				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
-				BB56D23B2214BB8900A652E7 /* FullProfileViewController.storyboard in Resources */,
 				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
@@ -1282,19 +1323,16 @@
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
-				BB75BFDC2215784800BAB800 /* DiscoverySimpleScrollViewController.storyboard in Resources */,
 				BBECBEC22237D9CD008E8E91 /* DetachedProfileApprovalViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
 				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
 				60C131CD21D342BD0093ECBA /* LaunchScreen.storyboard in Resources */,
-				BB75BFDF2215845300BAB800 /* SummaryProfileViewController.storyboard in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */,
 				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
-				BB1C67142237825100D75848 /* FullProfileScrollingViewController.storyboard in Resources */,
 				BB6C064D2227F762007A5C96 /* GetStartedAllowLocationViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
@@ -1451,7 +1489,6 @@
 				BB686E3F22120F1A008A263C /* StylingConfig.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */,
-				BB56D23D2214BB9800A652E7 /* FullProfileViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
@@ -1459,9 +1496,9 @@
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
 				BB6C06492227F750007A5C96 /* GetStartedAllowLocationViewController.swift in Sources */,
 				BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */,
-				BB3F219A2226765C00DC4489 /* GettingStartedUserData.swift in Sources */,
+				BB3F219A2226765C00DC4489 /* UserCreationData.swift in Sources */,
 				BB986A4D220F79CA00759A14 /* GetStartedShortBioViewController.swift in Sources */,
-				BB986A43220F76BF00759A14 /* GettingStartedUserProfileData.swift in Sources */,
+				BB986A43220F76BF00759A14 /* UserProfileCreationData.swift in Sources */,
 				BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */,
 				BB18788D21E2B1B900964F26 /* SettingsMainViewController.swift in Sources */,
 				BB986A47220F799A00759A14 /* GetStartedStartFriendProfileViewController.swift in Sources */,
@@ -1471,17 +1508,16 @@
 				BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */,
 				BB1C67102237205700D75848 /* Encoding.swift in Sources */,
 				60C131E121D345630093ECBA /* Result.swift in Sources */,
-				BB75BFE3221586EA00BAB800 /* DiscoveryProfileSummaryTableViewCell.swift in Sources */,
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
 				BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */,
 				BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */,
 				BB18788B21E2B1B400964F26 /* ProfilesMainViewController.swift in Sources */,
+				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
 				BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */,
 				BB18788921E2B1AC00964F26 /* MatchesMainViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
-				BB75BFE12215846300BAB800 /* SummaryProfileViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
@@ -1494,8 +1530,6 @@
 				BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */,
-				BB75BFDA2215783A00BAB800 /* DiscoverySimpleScrollViewController.swift in Sources */,
-				BBE8D02A2214023A00FD1355 /* EndorsementData.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB5F5311223BA57700C25861 /* ProfileMadeByTableViewCell.swift in Sources */,
@@ -1532,12 +1566,10 @@
 				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
-				BBE8D0282214022600FD1355 /* ProfileData.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
 				BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */,
-				BBDF1FF121E2D9D400520881 /* ProfileConstants.swift in Sources */,
 				BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */,
-				BB1C67122237824800D75848 /* FullProfileScrollingViewController.swift in Sources */,
+				BB94C11822437AF4001320B0 /* PearUserProfileConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

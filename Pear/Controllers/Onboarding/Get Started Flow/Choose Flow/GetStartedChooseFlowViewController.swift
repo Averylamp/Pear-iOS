@@ -10,7 +10,7 @@ import UIKit
 
 class GetStartedChooseFlowViewController: UIViewController {
   
-  var gettingStartedData: GettingStartedUserProfileData!
+  var gettingStartedData: UserProfileCreationData!
   
   @IBOutlet weak var createFriendProfileButton: UIButton!
   @IBOutlet weak var requestProfileButton: UIButton!
@@ -18,7 +18,7 @@ class GetStartedChooseFlowViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedChooseFlowViewController? {
+  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedChooseFlowViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedChooseFlowViewController.self), bundle: nil)
     guard let chooseFlowVC = storyboard.instantiateInitialViewController() as? GetStartedChooseFlowViewController else { return nil }
     chooseFlowVC.gettingStartedData = gettingStartedData

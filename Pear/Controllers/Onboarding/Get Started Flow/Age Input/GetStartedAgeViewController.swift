@@ -17,7 +17,7 @@ class GetStartedAgeViewController: UIViewController {
   @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
   let pageNumber: CGFloat = 2.0
-  var gettingStartedData: GettingStartedUserProfileData!
+  var gettingStartedData: UserProfileCreationData!
   
   @IBOutlet weak var firstTitleLabel: UILabel!
   @IBOutlet weak var secondTitleLabel: UILabel!
@@ -25,7 +25,7 @@ class GetStartedAgeViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: GettingStartedUserProfileData) -> GetStartedAgeViewController? {
+  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedAgeViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedAgeViewController.self), bundle: nil)
     guard let ageVC = storyboard.instantiateInitialViewController() as? GetStartedAgeViewController else { return nil }
     ageVC.gettingStartedData = gettingStartedData
