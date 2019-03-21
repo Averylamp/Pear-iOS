@@ -136,7 +136,8 @@ private extension LandingScreenViewController {
       switch result {
       case .success:
         trace?.incrementMetric("Facebook Login Successful", by: 1)
-        self.handleSuccessfulFacebookLogin(successResult: result, trace: trace)
+        trace?.stop()
+        self.handleSuccessfulFacebookLogin(successResult: result)
       case .cancelled:
         trace?.incrementMetric("Facebook Login Cancelled", by: 1)
         trace?.stop()
@@ -147,12 +148,12 @@ private extension LandingScreenViewController {
     }
   }
   
-  func handleSuccessfulFacebookLogin(successResult: LoginResult,
-                                     trace: Trace? = nil) {
+  func handleSuccessfulFacebookLogin(successResult: LoginResult) {
     switch successResult {
     case .success(let grantedPermissions, let deniedPermissions, let accessToken):
       print(grantedPermissions)
       print(deniedPermissions)
+      let firebaseFacebookLogin = Performance.startTrace(name: "Firebase Facebook Login")
       
       let gettingStartedUser = UserCreationData()
       // 2. Auth via Firebase.
@@ -165,21 +166,23 @@ private extension LandingScreenViewController {
       Auth.auth().signInAndRetrieveData(with: credential) { _, error in
         if let error = error {
           self.alert(title: "Auth Error", message: error.localizedDescription)
-          trace?.incrementMetric("Firebase/Facebook Login Unsuccessful", by: 1)
-          trace?.stop()
+          firebaseFacebookLogin?.incrementMetric("Firebase Facebook Login Unsuccessful", by: 1)
+          firebaseFacebookLogin?.stop()
           return
         }
         guard let user = Auth.auth().currentUser else {
-          trace?.incrementMetric("Firebase/Facebook Login Unsuccessful", by: 1)
-          trace?.stop()
+          firebaseFacebookLogin?.incrementMetric("Firebase Facebook Login Unsuccessful", by: 1)
+          firebaseFacebookLogin?.stop()
           print("Failed to log in user")
           return
         }
-        trace?.incrementMetric("Firebase/Facebook Login Successful", by: 1)
+        firebaseFacebookLogin?.incrementMetric("Firebase/Facebook Login Successful", by: 1)
+        firebaseFacebookLogin?.stop()
         
+        let facebookLoginExistingUserTrace = Performance.startTrace(name: "Facebook Login Check User")
         DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
-          trace?.incrementMetric("Firebase Existing User Check Successful", by: 1)
-          trace?.stop()
+          facebookLoginExistingUserTrace?.incrementMetric("Facebook Found Existing User", by: 1)
+          facebookLoginExistingUserTrace?.stop()
           DispatchQueue.main.async {
             guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
               print("Failed to create Landing Screen VC")
@@ -188,8 +191,8 @@ private extension LandingScreenViewController {
             self.navigationController?.setViewControllers([mainVC], animated: true)
           }
         }, userNotFoundCompletion: {
-          trace?.incrementMetric("Firebase Existing User Check Unsuccessful", by: 1)
-          trace?.stop()
+          facebookLoginExistingUserTrace?.incrementMetric("Facebook Existing User Not Found", by: 1)
+          facebookLoginExistingUserTrace?.stop()
           gettingStartedUser.firebaseAuthID = user.uid
           
           var facebookLogin = false
@@ -223,8 +226,9 @@ private extension LandingScreenViewController {
           if  grantedPermissions.contains("user_gender") {
             permissions.append("gender")
           }
-          
-          self.userGraphRequest(gettingStartedUser: gettingStartedUser, permissions: permissions, trace: trace, completion: { (fbGraphFilledGSUser  ) in
+          self.userGraphRequest(gettingStartedUser: gettingStartedUser,
+                                permissions: permissions,
+                                completion: { (fbGraphFilledGSUser  ) in
             DispatchQueue.main.async {
               if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
                 self.navigationController?.pushViewController(nextVC, animated: true)
@@ -239,8 +243,8 @@ private extension LandingScreenViewController {
     }
   }
   
-  func userGraphRequest(gettingStartedUser: UserCreationData, permissions: [String], trace: Trace?, completion: @escaping (UserCreationData) -> Void) {
-    
+  func userGraphRequest(gettingStartedUser: UserCreationData, permissions: [String], completion: @escaping (UserCreationData) -> Void) {
+    let trace = Performance.startTrace(name: "Facebook Graph Request")
     // Fetch All other User Profile Data available
     let userInfoRequest = FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": permissions.joined(separator: ",")])
     userInfoRequest?.start(completionHandler: { (_, result, error) in
@@ -251,7 +255,7 @@ private extension LandingScreenViewController {
         completion(gettingStartedUser)
         return
       }
-      trace?.incrementMetric("Facebook Graph Request Successful", by: 1)
+      
       if let result = result as? [String: Any] {
         print(result)
         print(type(of: result))
@@ -269,12 +273,15 @@ private extension LandingScreenViewController {
         gettingStartedUser.facebookId = "\(fbid)"
         
         if let email = result["email"] as? String {
+          trace?.incrementMetric("Facebook Graph Request Found Email", by: 1)
           gettingStartedUser.email = email
         }
         if let gender = result["gender"] as? String {
+          trace?.incrementMetric("Facebook Graph Request Found Gender", by: 1)
           gettingStartedUser.gender = GenderEnum(rawValue: gender)
         }
         if let birthdayString = result["birthday"] as? String {
+          trace?.incrementMetric("Facebook Graph Request Found Birthday", by: 1)
           let dateFormatter = DateFormatter()
           dateFormatter.dateFormat = "MM/dd/yyyy"
           if let birthdate = dateFormatter.date(from: birthdayString) {
@@ -285,8 +292,11 @@ private extension LandingScreenViewController {
           }
         }
         if  let thumbnailUrl = JSON(result)["picture"]["data"]["url"].string {
+          trace?.incrementMetric("Facebook Graph Request Found Thumbnail", by: 1)
           gettingStartedUser.thumbnailURL = thumbnailUrl
         }
+        trace?.incrementMetric("Facebook Graph Request Successful", by: 1)
+        trace?.stop()
         completion(gettingStartedUser)
       }
     })
