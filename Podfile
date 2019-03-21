@@ -19,4 +19,9 @@ target 'Pear' do
   pod 'SwiftLint'
   pod 'CodableFirebase'
   pod 'R.swift'
+ 
+  target 'PearTests' do
+    inherit! :search_paths
+  end
+
 end

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "08306F45D3679899EDF7D493B331B28F"
+               BlueprintIdentifier = "33C3597A24AC0C1491E4D4EB3F229A5E"
                BuildableName = "Pods_Pear.framework"
                BlueprintName = "Pods-Pear"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -49,6 +49,16 @@
                BlueprintIdentifier = "BBD2842A223BFC1000AC6E30"
                BuildableName = "PearUITests.xctest"
                BlueprintName = "PearUITests"
+               ReferencedContainer = "container:Pear.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BB1435FD2243D25700B8C3EB"
+               BuildableName = "PearTests.xctest"
+               BlueprintName = "PearTests"
                ReferencedContainer = "container:Pear.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -28,11 +28,11 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKShareKit (~> 4.37)
-  - FBSDKCoreKit (4.41.2):
+  - FBSDKCoreKit (4.42.0):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.41.2):
+  - FBSDKLoginKit (4.42.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.41.2):
+  - FBSDKShareKit (4.42.0):
     - FBSDKCoreKit
   - Firebase/Auth (5.19.0):
     - Firebase/CoreOnly
@@ -166,7 +166,7 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.6.1)
   - NVActivityIndicatorView/Presenter (4.6.1)
   - Protobuf (3.7.0)
-  - R.swift (5.0.2):
+  - R.swift (5.0.3):
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.0)
   - SDWebImage (4.4.6):
@@ -242,9 +242,9 @@ SPEC CHECKSUMS:
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: 559246ca24848bf7254695476df425b88651dcb3
-  FBSDKLoginKit: 48f1758be0779ac5d2ef1b50ddfa75f8ad683180
-  FBSDKShareKit: 96723a1d2e68f732385ec9ca74ae5d1bdba3c473
+  FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
+  FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
+  FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
@@ -265,12 +265,12 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
-  R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 0f9fabb5d979244df8fd56ef91731062b4ea9d94
+PODFILE CHECKSUM: 3c107aff2685e98365dae8778fa5519c08672483
 
 COCOAPODS: 1.6.1
