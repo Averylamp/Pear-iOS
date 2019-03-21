@@ -29,15 +29,10 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    let trace = Performance.startTrace(name: "Loading Screen Existing User")
+    self.testImageUpload()
     DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
-      trace?.incrementMetric("existingUser", by: 1)
-      trace?.stop()
       self.continueToMainScreen()
     }, userNotFoundCompletion: {
-      trace?.incrementMetric("noExistingUser", by: 1)
-      trace?.stop()
       self.continueToLandingScreen()
     })
   }
