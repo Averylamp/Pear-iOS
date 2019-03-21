@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import SwiftyJSON
+import FirebasePerformance
 
 class ImageUploadAPI: ImageAPI {
   
@@ -19,7 +20,7 @@ class ImageUploadAPI: ImageAPI {
   }
   
   func uploadNewImage(with image: UIImage, userID: String, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
-    
+    let trace = Performance.startTrace(name: "Image Upload")
     var scaleRatio: CGFloat = 1.0
     if image.size.width > image.size.height {
       scaleRatio = image.size.height > 1700 ? 1700 / image.size.height : scaleRatio
@@ -29,6 +30,7 @@ class ImageUploadAPI: ImageAPI {
     
     let finalImage: UIImage!
     if scaleRatio < 1.0 {
+      trace?.incrementMetric("Image Resized", by: 1)
       finalImage = image.imageWith(newSize: CGSize(width: image.size.width * scaleRatio,
                                                   height: image.size.height * scaleRatio))
     } else {
@@ -56,17 +58,26 @@ class ImageUploadAPI: ImageAPI {
         .dataTask(with: request as URLRequest, completionHandler: { (data, _, error) -> Void in
           if let error = error {
             print(error as Any)
+            trace?.incrementMetric("Image Upload Error", by: 1)
+            trace?.stop()
             completion(.failure(ImageAPIError.unknownError(error: error)))
           } else {
+            trace?.incrementMetric("Image Request Successful", by: 1)
             if let data = data {
               do {
                 let imageContainer = try JSONDecoder().decode(ImageContainer.self, from: data)
                 imageContainer.uploadedByUser = userID
+                trace?.incrementMetric("Image Decoding Successful", by: 1)
+                trace?.stop()
                 completion(.success(imageContainer))
               } catch {
+                trace?.incrementMetric("Image Decoding Unsuccessful", by: 1)
+                trace?.stop()
                 completion(.failure(ImageAPIError.unknownError(error: error)))
               }
             } else {
+              trace?.incrementMetric("Image Request Data Missing", by: 1)
+              trace?.stop()
               completion(.failure(ImageAPIError.failedDeserialization))
             }
           }
