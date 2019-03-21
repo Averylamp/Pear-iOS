@@ -11,6 +11,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.2):
     - BoringSSL-GRPC/Interface (= 0.0.2)
   - BoringSSL-GRPC/Interface (0.0.2)
+  - CodableFirebase (0.2.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
@@ -172,6 +173,7 @@ PODS:
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
+  - CodableFirebase
   - Crashlytics
   - Fabric
   - FacebookCore
@@ -192,6 +194,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Bolts
     - BoringSSL-GRPC
+    - CodableFirebase
     - Crashlytics
     - Fabric
     - FacebookCore
@@ -227,6 +230,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
+  CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
@@ -259,6 +263,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 73d9b55b7991fc8483ffb75f95dd16d292646591
+PODFILE CHECKSUM: ca08584c812d001403ef89f159890a66f0e09c7c
 
 COCOAPODS: 1.6.1
