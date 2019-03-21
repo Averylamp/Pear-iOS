@@ -35,6 +35,7 @@ extension LoadingScreenViewController {
     }, userNotFoundCompletion: {
       self.continueToLandingScreen()
     })
+    self.testChat()
   }
   
   static func getLandingScreen() -> UIViewController? {
@@ -85,6 +86,10 @@ extension LoadingScreenViewController {
         self.navigationController?.setViewControllers([mainVC], animated: true)
       }
     }
+  }
+  
+  func testChat(){
+    
   }
   
   func testImageUpload() {
