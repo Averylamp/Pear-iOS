@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import CodableFirebase
 
 extension Encodable {
   var dictionary: [String: Any]? {
@@ -27,3 +29,8 @@ extension Decodable {
     self = decodedObject
   }
 }
+
+extension DocumentReference: DocumentReferenceType {}
+extension GeoPoint: GeoPointType {}
+extension FieldValue: FieldValueType {}
+extension Timestamp: TimestampType {}

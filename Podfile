@@ -17,4 +17,5 @@ target 'Pear' do
   pod 'SwiftyJSON'
   pod 'NVActivityIndicatorView'
   pod 'SwiftLint'
+  pod 'CodableFirebase'
 end
