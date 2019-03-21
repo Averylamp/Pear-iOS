@@ -19,7 +19,10 @@ class ImageUploadAPI: ImageAPI {
     
   }
   
-  func uploadNewImage(with image: UIImage, userID: String, completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
+  func uploadNewImage(with image: UIImage,
+                      userID: String,
+                      test: Bool,
+                      completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
     let trace = Performance.startTrace(name: "Image Upload")
     var scaleRatio: CGFloat = 1.0
     if image.size.width > image.size.height {
@@ -49,9 +52,13 @@ class ImageUploadAPI: ImageAPI {
     request.allHTTPHeaderFields = headers
     let imageString: String = finalImage.jpegData(compressionQuality: 0.8)!.base64EncodedString()
     do {
+      var payload = ["image": imageString]
+      if test {
+        payload["dev"] = "true"
+      }
       
       request.httpBody = try JSONSerialization
-        .data(withJSONObject: ["image": imageString], options: .prettyPrinted)
+        .data(withJSONObject: payload, options: .prettyPrinted)
       
       let session = URLSession.shared
       let dataTask = session

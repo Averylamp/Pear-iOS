@@ -273,7 +273,7 @@ extension GetStartedPhotoInputViewController: UIImagePickerControllerDelegate, U
       let gettingStartedImage = pickedImage.gettingStartedImage()
       self.images.append(gettingStartedImage)
       self.collectionView.reloadData()
-      ImageUploadAPI.shared.uploadNewImage(with: gettingStartedImage.image, userID: userID) { result in
+      ImageUploadAPI.shared.uploadNewImage(with: gettingStartedImage.image, userID: userID, test: false) { result in
         switch result {
         case .success( let imageAllSizesRepresentation):
           print("Uploaded Image Successfully")
