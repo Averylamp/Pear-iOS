@@ -17,12 +17,14 @@
 		60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */; };
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
+		71BF428C336127273FE71237 /* Pods_PearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D42F99EE22CDFC180834C07 /* Pods_PearTests.framework */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */; };
 		BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16B7222EE6D200915C1C /* DataStore.swift */; };
 		BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */; };
 		BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BD222F20CD00915C1C /* GetStartedVibeViewController.swift */; };
 		BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0F16BF222F20E500915C1C /* GetStartedVibeViewController.storyboard */; };
+		BB1436012243D25800B8C3EB /* PearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1436002243D25800B8C3EB /* PearTests.swift */; };
 		BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */; };
 		BB18788921E2B1AC00964F26 /* MatchesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18788821E2B1AC00964F26 /* MatchesMainViewController.swift */; };
 		BB18788B21E2B1B400964F26 /* ProfilesMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18788A21E2B1B400964F26 /* ProfilesMainViewController.swift */; };
@@ -34,6 +36,7 @@
 		BB1C67102237205700D75848 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C670F2237205700D75848 /* Coding.swift */; };
 		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
 		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
+		BB30B4582243D8D000B2845C /* ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB30B4572243D8D000B2845C /* ImageAPITests.swift */; };
 		BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */; };
 		BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */; };
 		BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */; };
@@ -184,6 +187,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BB1436032243D25800B8C3EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60C131B721D342BC0093ECBA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60C131BE21D342BC0093ECBA;
+			remoteInfo = Pear;
+		};
 		BBD28430223BFC1000AC6E30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 60C131B721D342BC0093ECBA /* Project object */;
@@ -195,7 +205,10 @@
 
 /* Begin PBXFileReference section */
 		049F1D3517D151987D993AD1 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
+		15157AB8CC22059034A976AE /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.debug.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3EE85D22AD1E2717BD1E270E /* Pods-Pear.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.development.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.development.xcconfig"; sourceTree = "<group>"; };
+		5380BAFE868E7D9D0B84B2E4 /* Pods-PearTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.development.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.development.xcconfig"; sourceTree = "<group>"; };
+		5D42F99EE22CDFC180834C07 /* Pods_PearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		600FA61021D358B500A40EAC /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		60C131BF21D342BC0093ECBA /* Pear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C131C221D342BC0093ECBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +221,7 @@
 		60C131EB21D348840093ECBA /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
 		6D7D813A7D99E3659D0800A1 /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FDA256F3956028C276F7E9F /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.release.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D7B5360DD6C2E85008926B8 /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.debug.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfileConstants.swift; sourceTree = "<group>"; };
@@ -215,6 +229,9 @@
 		BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConfig.swift; sourceTree = "<group>"; };
 		BB0F16BD222F20CD00915C1C /* GetStartedVibeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedVibeViewController.swift; sourceTree = "<group>"; };
 		BB0F16BF222F20E500915C1C /* GetStartedVibeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedVibeViewController.storyboard; sourceTree = "<group>"; };
+		BB1435FE2243D25700B8C3EB /* PearTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1436002243D25800B8C3EB /* PearTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearTests.swift; sourceTree = "<group>"; };
+		BB1436022243D25800B8C3EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverMainViewController.swift; sourceTree = "<group>"; };
 		BB18788821E2B1AC00964F26 /* MatchesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesMainViewController.swift; sourceTree = "<group>"; };
 		BB18788A21E2B1B400964F26 /* ProfilesMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesMainViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +243,7 @@
 		BB1C670F2237205700D75848 /* Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding.swift; sourceTree = "<group>"; };
 		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
+		BB30B4572243D8D000B2845C /* ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPITests.swift; sourceTree = "<group>"; };
 		BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseFlowViewController.swift; sourceTree = "<group>"; };
 		BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSeeSamplesViewController.swift; sourceTree = "<group>"; };
 		BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSeeSamplesViewController.storyboard; sourceTree = "<group>"; };
@@ -390,6 +408,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB1435FB2243D25700B8C3EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71BF428C336127273FE71237 /* Pods_PearTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBD28428223BFC1000AC6E30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -405,6 +431,7 @@
 			children = (
 				60C131C121D342BC0093ECBA /* Pear */,
 				BBD2842C223BFC1000AC6E30 /* PearUITests */,
+				BB1435FF2243D25800B8C3EB /* PearTests */,
 				60C131C021D342BC0093ECBA /* Products */,
 				82F6D7E984C2057ACDA63923 /* Pods */,
 				E21ED8C32F797E6A60D2BE4E /* Frameworks */,
@@ -418,6 +445,7 @@
 			children = (
 				60C131BF21D342BC0093ECBA /* Pear.app */,
 				BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */,
+				BB1435FE2243D25700B8C3EB /* PearTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -541,6 +569,9 @@
 				8D7B5360DD6C2E85008926B8 /* Pods-Pear.debug.xcconfig */,
 				3EE85D22AD1E2717BD1E270E /* Pods-Pear.development.xcconfig */,
 				049F1D3517D151987D993AD1 /* Pods-Pear.release.xcconfig */,
+				15157AB8CC22059034A976AE /* Pods-PearTests.debug.xcconfig */,
+				5380BAFE868E7D9D0B84B2E4 /* Pods-PearTests.development.xcconfig */,
+				6FDA256F3956028C276F7E9F /* Pods-PearTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -575,6 +606,16 @@
 				BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */,
 			);
 			path = "Vibe Input";
+			sourceTree = "<group>";
+		};
+		BB1435FF2243D25800B8C3EB /* PearTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB1436002243D25800B8C3EB /* PearTests.swift */,
+				BB30B4572243D8D000B2845C /* ImageAPITests.swift */,
+				BB1436022243D25800B8C3EB /* Info.plist */,
+			);
+			path = PearTests;
 			sourceTree = "<group>";
 		};
 		BB18788E21E2B1D900964F26 /* Discovery Flow */ = {
@@ -1197,6 +1238,7 @@
 			isa = PBXGroup;
 			children = (
 				6D7D813A7D99E3659D0800A1 /* Pods_Pear.framework */,
+				5D42F99EE22CDFC180834C07 /* Pods_PearTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1225,6 +1267,25 @@
 			productName = SubtleAsianMatches;
 			productReference = 60C131BF21D342BC0093ECBA /* Pear.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BB1435FD2243D25700B8C3EB /* PearTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB1436082243D25800B8C3EB /* Build configuration list for PBXNativeTarget "PearTests" */;
+			buildPhases = (
+				816C6CFC6AB0C02CC9318F6D /* [CP] Check Pods Manifest.lock */,
+				BB1435FA2243D25700B8C3EB /* Sources */,
+				BB1435FB2243D25700B8C3EB /* Frameworks */,
+				BB1435FC2243D25700B8C3EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB1436042243D25800B8C3EB /* PBXTargetDependency */,
+			);
+			name = PearTests;
+			productName = PearTests;
+			productReference = BB1435FE2243D25700B8C3EB /* PearTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		BBD2842A223BFC1000AC6E30 /* PearUITests */ = {
 			isa = PBXNativeTarget;
@@ -1265,6 +1326,10 @@
 							};
 						};
 					};
+					BB1435FD2243D25700B8C3EB = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 60C131BE21D342BC0093ECBA;
+					};
 					BBD2842A223BFC1000AC6E30 = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 60C131BE21D342BC0093ECBA;
@@ -1286,6 +1351,7 @@
 			targets = (
 				60C131BE21D342BC0093ECBA /* Pear */,
 				BBD2842A223BFC1000AC6E30 /* PearUITests */,
+				BB1435FD2243D25700B8C3EB /* PearTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1367,6 +1433,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB1435FC2243D25700B8C3EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBD28429223BFC1000AC6E30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1437,6 +1510,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		816C6CFC6AB0C02CC9318F6D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PearTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A223920FD41CB9AC36FF0600 /* [CP] Check Pods Manifest.lock */ = {
@@ -1629,6 +1724,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB1435FA2243D25700B8C3EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB30B4582243D8D000B2845C /* ImageAPITests.swift in Sources */,
+				BB1436012243D25800B8C3EB /* PearTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBD28427223BFC1000AC6E30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1640,6 +1744,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BB1436042243D25800B8C3EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60C131BE21D342BC0093ECBA /* Pear */;
+			targetProxy = BB1436032243D25800B8C3EB /* PBXContainerItemProxy */;
+		};
 		BBD28431223BFC1000AC6E30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 60C131BE21D342BC0093ECBA /* Pear */;
@@ -1821,6 +1930,174 @@
 			};
 			name = Release;
 		};
+		BB1436052243D25800B8C3EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15157AB8CC22059034A976AE /* Pods-PearTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CodableFirebase/CodableFirebase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookCore/FacebookCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookLogin/FacebookLogin.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare/FacebookShare.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/Protobuf.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift.Library/Rswift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
+				);
+				INFOPLIST_FILE = PearTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
+			};
+			name = Debug;
+		};
+		BB1436062243D25800B8C3EB /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5380BAFE868E7D9D0B84B2E4 /* Pods-PearTests.development.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CodableFirebase/CodableFirebase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookCore/FacebookCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookLogin/FacebookLogin.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare/FacebookShare.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/Protobuf.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift.Library/Rswift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
+				);
+				INFOPLIST_FILE = PearTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
+			};
+			name = Development;
+		};
+		BB1436072243D25800B8C3EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FDA256F3956028C276F7E9F /* Pods-PearTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CodableFirebase/CodableFirebase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookCore/FacebookCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookLogin/FacebookLogin.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare/FacebookShare.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/Protobuf.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift.Library/Rswift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
+				);
+				INFOPLIST_FILE = PearTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
+			};
+			name = Release;
+		};
 		BB58D48C22425D2F00A6A910 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1984,6 +2261,16 @@
 				60C131D221D342BD0093ECBA /* Debug */,
 				BB58D48D22425D2F00A6A910 /* Development */,
 				60C131D321D342BD0093ECBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB1436082243D25800B8C3EB /* Build configuration list for PBXNativeTarget "PearTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB1436052243D25800B8C3EB /* Debug */,
+				BB1436062243D25800B8C3EB /* Development */,
+				BB1436072243D25800B8C3EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
