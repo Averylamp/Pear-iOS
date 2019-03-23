@@ -20,7 +20,7 @@ enum ChatType: String, Codable {
 }
 
 enum ChatKeys: String, CodingKey {
-  case documentID
+  case documentID = "document_id"
   case type
   case mongoDocumentID = "mongoDocument_id"
   case lastActivity
@@ -42,6 +42,9 @@ class Chat: Codable, CustomStringConvertible {
   let secondPersonID: String!
   let firstPersonLastOpened: Date!
   let secondPersonLastOpened: Date!
+  
+  static let messageBatchSizePaginated: Int = 60
+  static let messageBatchSizeInitial: Int = 30
   
   var description: String {
     return "**** Chat ****\n" + """
@@ -68,5 +71,61 @@ class Chat: Codable, CustomStringConvertible {
     self.secondPersonID = try values.decode(String.self, forKey: .secondPersonID)
     self.firstPersonLastOpened = try values.decode(Timestamp.self, forKey: .firstPersonLastOpened).dateValue()
     self.secondPersonLastOpened = try values.decode(Timestamp.self, forKey: .secondPersonLastOpened).dateValue()
+    self.initialMessagesFetch()
   }
+  
+}
+
+// MARK: - Message Fetching
+extension Chat {
+  
+  func getMessageQuery(batchSize: Int, fromMessage: Message?) -> Query {
+    if let message = self.messages.first {
+      return Firestore.firestore().collection("/chats/\(self.documentID!)/messages")
+        .order(by: MessageKeys.timestamp.stringValue, descending: true)
+        .order(by: MessageKeys.documentID.stringValue, descending: true)
+        .start(at: [Timestamp(date: message.timestamp), message.documentID])
+        .limit(to: Chat.messageBatchSizeInitial)
+    } else {
+      return Firestore.firestore().collection("/chats/\(self.documentID!)/messages")
+        .order(by: "timestamp", descending: true)
+        .limit(to: Chat.messageBatchSizeInitial)
+    }
+    
+  }
+  
+  func initialMessagesFetch() {
+    let messageQuery = getMessageQuery(batchSize: Chat.messageBatchSizeInitial, fromMessage: nil)
+    self.fetchMessageQuery(query: messageQuery)
+  }
+  
+  func fetchEarlierMessages() {
+    let messageQuery = getMessageQuery(batchSize: Chat.messageBatchSizePaginated, fromMessage: self.messages.first)
+    self.fetchMessageQuery(query: messageQuery)
+  }
+  
+  func fetchMessageQuery(query: Query) {
+    query.getDocuments { (snapshot, error) in
+      if let error = error {
+        print("Error getting message query documents: \(error)")
+        return
+      }
+      
+      if let snapshot = snapshot {
+        for document in snapshot.documents {
+          do {
+            print(document.data())
+            let message = try FirestoreDecoder().decode(Message.self, from: document.data())
+            print(message)
+          } catch {
+            print("Error Deserializing Message Object")
+            print(error)
+          }
+        }
+      }
+      
+    }
+    
+  }
+  
 }
