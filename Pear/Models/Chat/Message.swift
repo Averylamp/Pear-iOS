@@ -29,7 +29,7 @@ enum MessageContentType: String, Codable {
 }
 
 enum MessageKeys: String, CodingKey {
-  case documentID
+  case documentID = "document_id"
   case senderID = "sender_id"
   case type
   case contentType
