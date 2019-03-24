@@ -149,14 +149,12 @@ extension GetStartedValidatePhoneNumberCodeViewController {
         if let error = error {
           print(error)
           HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
-          guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
-            print("Failed to create Verification Complete VC")
-            return
+          DispatchQueue.main.async {
+            print(error.localizedDescription)
+            self.alert(title: "Auth Error", message: "We are currently having issues authenticating your profile:")
+            self.hiddenInputField.text = ""
+            self.updateCodeNumberLabels()
           }
-          self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
-          //                    self.alert(title: "Auth Error", message: error.localizedDescription)
-          //                    self.hiddenInputField.text = ""
-          //                    self.updateCodeNumberLabels()
         } else {
           HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
           self.gettingStartedUserData.phoneNumberVerified = true
@@ -183,13 +181,10 @@ extension GetStartedValidatePhoneNumberCodeViewController {
                 case .failure(let error):
                   print(error)
                   DispatchQueue.main.async {
-                    //                                        self.alert(title: "Error creating User", message: error.localizedDescription)
-                    guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
-                      print("Failed to create Verification Complete VC")
-                      return
-                    }
-                    self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
-                    
+                    self.hiddenInputField.text = ""
+                    self.updateCodeNumberLabels()
+                    self.alert(title: "Error creating User",
+                               message: "Unfortunately we are unable to create your user at this time, please try again later")
                   }
                 }
               })

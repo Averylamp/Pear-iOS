@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+enum ChatAPIError: Error {
+  case failedDeserialization
+  case unknownError(error: Error)
+  case firebaseError(error: Error)
+}
+
+protocol ChatAPI {
+//  func getAllChatsForUser(user_id: String, completion: @escaping (Result<[Chat], ChatAPIError>) -> Void)
+  func getFirebaseChatObject(firebaseDocumentID: String, completion: @escaping (Result<Chat, ChatAPIError>) -> Void)
+}

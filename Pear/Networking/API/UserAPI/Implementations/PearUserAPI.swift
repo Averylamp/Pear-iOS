@@ -47,6 +47,8 @@ extension PearUserAPI {
           ]
         ]
       ]
+      print(request)
+      print(fullDictionary)
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
@@ -61,6 +63,7 @@ extension PearUserAPI {
             let json = try? JSON(data: data),
             let getUserResponse = json["data"]["getUser"].dictionary {
             do {
+              print(json)
               let pearUserData = try getUserResponse["user"]?.rawData()
               if let pearUserData = pearUserData {
                 let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
@@ -79,6 +82,10 @@ extension PearUserAPI {
             }
           } else {
             print("Failed Conversions")
+            if  let data = data,
+              let json = try? JSON(data: data) {
+              print(json)
+            }
             completion(.failure(UserAPIError.failedDeserialization))
             return
           }
@@ -132,11 +139,13 @@ extension PearUserAPI {
                 return
               } else {
                 print("Failed to get Pear User Data")
+                print(json)
                 completion(.failure(UserAPIError.failedDeserialization))
                 return
               }
             } catch {
               print("Error: \(error)")
+              print(json)
               completion(.failure(UserAPIError.unknownError(error: error)))
               return
             }

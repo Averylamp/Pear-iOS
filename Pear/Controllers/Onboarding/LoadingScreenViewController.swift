@@ -89,26 +89,16 @@ extension LoadingScreenViewController {
   }
   
   func testChat() {
-    let chat = Firestore.firestore().collection("chats").document("DZxANxQpVXZSrcpKJpHG")
-    chat.getDocument { (document, error) in
-      if let error = error {
-        print("Error fetching test Chat object: \(error)")
-        return
-      }
-      
-      if let document = document,
-        var documentData = document.data() {
-        documentData["documentID"] = document.documentID
-        print(documentData)
-        do {
-          let chatObject = try FirestoreDecoder().decode(Chat.self, from: documentData)
-          print(chatObject)
-        } catch {
-          print("Error deserializing chat object")
-          print(error)
-        }
+    
+    PearChatAPI.shared.getAllChatsForUser(user_id: "5c82162afec46c84e924a337") { (result) in
+      switch result {
+      case .success(let chats):
+        print(chats)
+      case .failure(let error):
+        print(error)
       }
     }
+    
   }
   
   func testImageUpload() {
