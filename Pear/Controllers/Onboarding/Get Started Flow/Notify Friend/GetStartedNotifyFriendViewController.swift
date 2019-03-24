@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import MessageUI
 
 class GetStartedNotifyFriendViewController: UIViewController {
   
@@ -52,35 +53,50 @@ class GetStartedNotifyFriendViewController: UIViewController {
                                           self.inputTextFieldContainerView.frame.height + 40)
       activityIndicator.startAnimating()
       
-      PearProfileAPI.shared.createNewDetachedProfile(gettingStartedUserProfileData: self.gettingStartedData) { (result) in
-        print("Create Detached Profile Called")
-        switch result {
-        case .success(let detachedProfile):
-          print(detachedProfile)
-          DispatchQueue.main.async {
-            guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
-              print("Failed to create Allow Notifications VC")
-              return
-            }
-            self.navigationController?.pushViewController(allowNotificationVC, animated: true)
-          }
-        case .failure(let error):
-          print(error)
-          DispatchQueue.main.async {
-            guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
-              print("Failed to create Allow Notifications VC")
-              return
-            }
-            self.navigationController?.pushViewController(allowNotificationVC, animated: true)
-          }
-          
-          //          DispatchQueue.main.async {
-          //            self.alert(title: "Error Sending Profile", message: error.localizedDescription)
-          //          }
-          
+      if MFMessageComposeViewController.canSendText() {
+        let messageVC = MFMessageComposeViewController()
+        messageVC.messageComposeDelegate = self
+        
+        messageVC.recipients = [phoneNumber]
+        messageVC.body = "Hey! I made you a profile on Pear.  Let's find you a date.\n"
+        
+        self.present(messageVC, animated: true) {
+          activityIndicator.stopAnimating()
         }
+      } else {
+        createDetachedProfile()
       }
-      
+    }
+  }
+  
+  func createDetachedProfile() {
+    PearProfileAPI.shared.createNewDetachedProfile(gettingStartedUserProfileData: self.gettingStartedData) { (result) in
+      print("Create Detached Profile Called")
+      switch result {
+      case .success(let detachedProfile):
+        print(detachedProfile)
+        DispatchQueue.main.async {
+          //            guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
+          //              print("Failed to create Allow Notifications VC")
+          //              return
+          //            }
+          //            self.navigationController?.pushViewController(allowNotificationVC, animated: true)
+        }
+      case .failure(let error):
+        print(error)
+        DispatchQueue.main.async {
+          guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
+            print("Failed to create Allow Notifications VC")
+            return
+          }
+          self.navigationController?.pushViewController(allowNotificationVC, animated: true)
+        }
+        
+        //          DispatchQueue.main.async {
+        //            self.alert(title: "Error Sending Profile", message: error.localizedDescription)
+        //          }
+        
+      }
     }
   }
   
@@ -202,4 +218,35 @@ extension GetStartedNotifyFriendViewController {
     }
   }
   
+}
+
+extension GetStartedNotifyFriendViewController: MFMessageComposeViewControllerDelegate {
+  
+  func dismissMessageVC(controller: MFMessageComposeViewController) {
+    controller.dismiss(animated: true) {
+      DispatchQueue.main.async {
+        self.alert(title: "Tell your friend",
+                   message: "You must let your friend know of their profile, and they must accept it to continue")
+        self.inputTextField.isEnabled = true
+        self.inputTextField.stylizeInputTextField()
+        self.nextButton.isEnabled = true
+        self.nextButton.stylizeLight()
+      }
+    }
+  }
+  
+  func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+    switch result {
+    case .cancelled:
+      self.dismissMessageVC(controller: controller)
+    case .failed:
+      self.dismissMessageVC(controller: controller)
+    case .sent:
+      controller.dismiss(animated: true) {
+        DispatchQueue.main.async {
+          self.createDetachedProfile()
+        }
+      }
+    }
+  }
 }
