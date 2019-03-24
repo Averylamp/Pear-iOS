@@ -30,11 +30,17 @@ class ImageUploadAPI: ImageAPI {
       scaleRatio = image.size.width > 1700 ? 1700 / image.size.width : scaleRatio
     }
     
+    let orientationUp = (image.imageOrientation == .up ||
+      image.imageOrientation == .down ||
+      image.imageOrientation == .upMirrored ||
+      image.imageOrientation == .downMirrored) ? true : false
+    
     let finalImage: UIImage!
     if scaleRatio < 1.0 ,
-      let resizedImage = image.resizeImageUsingVImage(size: CGSize(width: image.size.width * scaleRatio,
-                                                                   height: image.size.height * scaleRatio)) {
-      print("Scaling Image")
+      let resizedImage = image
+        .resizeImageUsingVImage(size: CGSize(width: (orientationUp ? image.size.width : image.size.height) * scaleRatio,
+                                             height: (orientationUp ? image.size.height: image.size.width)  * scaleRatio)) {
+      print("Scaling Image from : \(image.size) to \(resizedImage.size)")
       trace?.incrementMetric("Image Resized", by: 1)
       finalImage = resizedImage
     } else {

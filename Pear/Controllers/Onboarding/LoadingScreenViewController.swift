@@ -36,7 +36,6 @@ extension LoadingScreenViewController {
       self.continueToLandingScreen()
     })
     self.testChat()
-    self.testImageUpload()
   }
   
   static func getLandingScreen() -> UIViewController? {
