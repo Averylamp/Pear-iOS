@@ -47,7 +47,7 @@ extension PearUserAPI {
           ]
         ]
       ]
-
+      
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
@@ -58,43 +58,27 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-          if  let data = data,
-            let json = try? JSON(data: data),
-            let getUserResponse = json["data"]["getUser"].dictionary {
+          let helperResult = APIHelpers.interpretGraphQLResponse(data: data, functionName: "getUser", objectName: "user")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
+            print("Failed to Get User: \(helperResult)")
+            completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Get User: \(message ?? "")")
+            completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
+          case .foundObjectData(let objectData):
             do {
-              print(json)
-              let pearUserData = try getUserResponse["user"]?.rawData()
-              if let pearUserData = pearUserData {
-                let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
-                print("Successfully found Pear User")
-                completion(.success(pearUser))
-                return
-              } else {
-                print("Failed to get Pear User Data")
-                completion(.failure(UserAPIError.failedDeserialization))
-                return
-              }
+              let pearUser = try JSONDecoder().decode(PearUser.self, from: objectData)
+              print("Successfully found Pear User")
+              completion(.success(pearUser))
             } catch {
-              print("Error: \(error)")
-              completion(.failure(UserAPIError.unknownError(error: error)))
-              return
+              print("Deserialization Error: \(error)")
+              completion(.failure(UserAPIError.failedDeserialization))
             }
-          } else {
-            print("Failed Conversions")
-            if  let data = data,
-              let json = try? JSON(data: data) {
-              print(json)
-            }
-            completion(.failure(UserAPIError.failedDeserialization))
-            return
           }
         }
       }
       dataTask.resume()
-    } catch let error as UserAPIError {
-      
-      print("Invalid variables for user creation error")
-      completion(.failure(error))
     } catch {
       print(error)
       completion(.failure(UserAPIError.unknownError(error: error)))
@@ -127,39 +111,25 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-          if  let data = data,
-            let json = try? JSON(data: data),
-            let getUserResponse = json["data"]["createUser"].dictionary {
+          let helperResult = APIHelpers.interpretGraphQLResponse(data: data, functionName: "createUser", objectName: "user")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
+            print("Failed to Create User: \(helperResult)")
+            completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Create User: \(message ?? "")")
+            completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
+          case .foundObjectData(let objectData):
             do {
-              let pearUserData = try getUserResponse["user"]?.rawData()
-              if let pearUserData = pearUserData {
-                let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
-                print("Successfully found Pear User")
-                completion(.success(pearUser))
-                return
-              } else {
-                print("Failed to get Pear User Data")
-                print(json)
-                completion(.failure(UserAPIError.failedDeserialization))
-                return
-              }
+              let pearUser = try JSONDecoder().decode(PearUser.self, from: objectData)
+              print("Successfully found Pear User")
+              completion(.success(pearUser))
             } catch {
-              print("Error: \(error)")
-              print(json)
-              completion(.failure(UserAPIError.unknownError(error: error)))
-              return
+              print("Deserialization Error: \(error)")
+              completion(.failure(UserAPIError.failedDeserialization))
             }
-          } else {
-            print("Failed Create User Conversions")
-            if  let data = data,
-            let json = try? JSON(data: data) {
-              print(json)
-            }
-            completion(.failure(UserAPIError.failedDeserialization))
-            return
           }
         }
-        
       }
       dataTask.resume()
     } catch let error as UserAPIError {
@@ -222,6 +192,7 @@ extension PearUserAPI {
     
     let defaultCoordinates: [Double] = [42.3601, -71.0589]
     variablesDictionary["location"] = defaultCoordinates
+    variablesDictionary["locationName"] = "Boston Area"
     
     return variablesDictionary
   }

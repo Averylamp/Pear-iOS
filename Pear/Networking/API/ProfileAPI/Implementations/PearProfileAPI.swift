@@ -59,38 +59,27 @@ extension PearProfileAPI {
           completion(.failure(DetachedProfileError.unknownError(error: error)))
           return
         } else {
-          if  let data = data,
-            let json = try? JSON(data: data) {
+          let helperResult = APIHelpers.interpretGraphQLResponse(data: data, functionName: "createDetachedProfile", objectName: "detachedProfile")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
+            print("Failed to Create User: \(helperResult)")
+            completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Create User: \(message ?? "")")
+            completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
+          case .foundObjectData(let objectData):
             do {
-              //              let pearUserData = try getUserResponse["user"]?.rawData()
-              //              if let pearUserData = pearUserData {
-              //                let pearUser = try JSONDecoder().decode(PearUser.self, from: pearUserData)
-              //                print("Successfully found Pear User")
-              //                completion(.success(pearUser))
-              //                return
-              //              } else {
-              //                print("Failed to get Pear User Data")
-              //                completion(.failure(UserCreationError.failedDeserialization))
-              //                return
-              //              }
-              completion(.failure(DetachedProfileError.failedDeserialization))
+              let detachedProfile = try JSONDecoder().decode(PearDetachedProfile.self, from: objectData)
+              print("Successfully found Detached Profile")
+              completion(.success(detachedProfile))
             } catch {
-              print("Error: \(error)")
-              completion(.failure(DetachedProfileError.unknownError(error: error)))
-              return
+              print("Deserialization Error: \(error)")
+              completion(.failure(DetachedProfileError.failedDeserialization))
             }
-          } else {
-            print("Failed Conversions")
-            completion(.failure(DetachedProfileError.failedDeserialization))
-            return
           }
         }
       }
       dataTask.resume()
-    } catch let error as UserAPIError {
-      
-      print("Invalid variables for user creation error")
-      completion(.failure(DetachedProfileError.unknownError(error: error)))
     } catch {
       print(error)
       completion(.failure(DetachedProfileError.unknownError(error: error)))
@@ -129,7 +118,6 @@ extension PearProfileAPI {
             let json = try? JSON(data: data) {
             do {
               if let profiles = json["data"]["findDetachedProfiles"].array {
-                
                 var detachedProfiles: [PearDetachedProfile] = []
                 print("\(profiles.count) Detached profiles found matching your phone number")
                 for profile in profiles {
@@ -154,10 +142,6 @@ extension PearProfileAPI {
         }
       }
       dataTask.resume()
-    } catch let error as DetachedProfileError {
-      
-      print("Invalid variables for detached profile error")
-      completion(.failure(DetachedProfileError.unknownError(error: error)))
     } catch {
       print(error)
       completion(.failure(DetachedProfileError.unknownError(error: error)))
@@ -212,10 +196,6 @@ extension PearProfileAPI {
         }
       }
       dataTask.resume()
-    } catch let error as DetachedProfileError {
-      
-      print("Invalid variables for detached profile error")
-      completion(.failure(DetachedProfileError.unknownError(error: error)))
     } catch {
       print(error)
       completion(.failure(DetachedProfileError.unknownError(error: error)))
@@ -266,6 +246,7 @@ extension PearProfileAPI {
                   }
                 } catch {
                   print("Failed to deserialize pear user from feed: \(error)")
+                  print(userData)
                 }
               }
               completion(.success(allFullProfiles))
@@ -318,7 +299,7 @@ extension PearProfileAPI {
       throw DetachedProfileError.userNotLoggedIn
     }
     
-    let variablesDictionary: [String: Any] = [
+    var variablesDictionary: [String: Any] = [
       "creatorUser_id": userID,
       "creatorFirstName": creatorFirstName,
       "firstName": firstName,
@@ -332,6 +313,10 @@ extension PearProfileAPI {
       "donts": userProfileData.donts,
       "images": imageContainer
     ]
+    
+    let defaultCoordinates: [Double] = [42.3601, -71.0589]
+    variablesDictionary["location"] = defaultCoordinates
+    variablesDictionary["locationName"] = "Boston Area"
     
     return variablesDictionary
   }

@@ -23,6 +23,7 @@
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
 		BB0628C722463B12000D9B12 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C622463B12000D9B12 /* Match.swift */; };
 		BB0628C922464278000D9B12 /* MatchedPearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C822464278000D9B12 /* MatchedPearUser.swift */; };
+		BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */; };
 		BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */; };
 		BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16B7222EE6D200915C1C /* DataStore.swift */; };
 		BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */; };
@@ -231,6 +232,7 @@
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C622463B12000D9B12 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		BB0628C822464278000D9B12 /* MatchedPearUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedPearUser.swift; sourceTree = "<group>"; };
+		BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelpers.swift; sourceTree = "<group>"; };
 		BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfileConstants.swift; sourceTree = "<group>"; };
 		BB0F16B7222EE6D200915C1C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConfig.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				BBFFBBD722211749002E1B54 /* ImagesAPI */,
 				BB0628C0224634A4000D9B12 /* ChatAPI */,
 				60C131DD21D344EE0093ECBA /* AuthAPI */,
+				BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1744,6 +1747,7 @@
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
 				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */,
+				BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
 				BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */,
