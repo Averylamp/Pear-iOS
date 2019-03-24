@@ -28,7 +28,7 @@ class ImageAPITests: XCTestCase {
     let promise = expectation(description: "Upload Successful")
     if let testImage = R.image.sampleProfileErika1() {
       let testUserID = "5c82162afec46c84e924a332"
-      ImageUploadAPI.shared.uploadNewImage(with: testImage, userID: testUserID, test: true) { (result) in
+      ImageUploadAPI.shared.uploadNewImage(with: testImage, userID: testUserID) { (result) in
         print("Image upload returned")
         switch result {
         case .success:

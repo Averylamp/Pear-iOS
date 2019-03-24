@@ -38,7 +38,7 @@ class ImageRepresentation: Codable, CustomStringConvertible {
     -  imageType: \(String(describing: imageType)),
     -  imageURL: \(String(describing: imageURL)),
     -  height: \(String(describing: height)),
-    -  width: \(String(describing: width)),
+    -  width: \(String(describing: width))
     """
   }
   

@@ -36,6 +36,7 @@ extension LoadingScreenViewController {
       self.continueToLandingScreen()
     })
     self.testChat()
+    self.testImageUpload()
   }
   
   static func getLandingScreen() -> UIViewController? {
@@ -104,7 +105,7 @@ extension LoadingScreenViewController {
   func testImageUpload() {
     if let testImage = UIImage(named: "sample-profile-brooke-1") {
       let testUserID = "5c82162afec46c84e924a332"
-      ImageUploadAPI.shared.uploadNewImage(with: testImage, userID: testUserID, test: true) { (result) in
+      ImageUploadAPI.shared.uploadNewImage(with: testImage, userID: testUserID) { (result) in
         print("Image upload returned")
         switch result {
         case .success( let imageAllSizesRepresentation):

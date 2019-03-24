@@ -21,7 +21,6 @@ class ImageUploadAPI: ImageAPI {
   
   func uploadNewImage(with image: UIImage,
                       userID: String,
-                      test: Bool,
                       completion: @escaping (Result<ImageContainer, ImageAPIError>) -> Void) {
     let trace = Performance.startTrace(name: "Image Upload")
     var scaleRatio: CGFloat = 1.0
@@ -32,10 +31,12 @@ class ImageUploadAPI: ImageAPI {
     }
     
     let finalImage: UIImage!
-    if scaleRatio < 1.0 {
+    if scaleRatio < 1.0 ,
+      let resizedImage = image.resizeImageUsingVImage(size: CGSize(width: image.size.width * scaleRatio,
+                                                                   height: image.size.height * scaleRatio)) {
+      print("Scaling Image")
       trace?.incrementMetric("Image Resized", by: 1)
-      finalImage = image.imageWith(newSize: CGSize(width: image.size.width * scaleRatio,
-                                                  height: image.size.height * scaleRatio))
+      finalImage = resizedImage
     } else {
       finalImage = image
     }
@@ -52,10 +53,7 @@ class ImageUploadAPI: ImageAPI {
     request.allHTTPHeaderFields = headers
     let imageString: String = finalImage.jpegData(compressionQuality: 0.8)!.base64EncodedString()
     do {
-      var payload = ["image": imageString]
-      if test {
-        payload["dev"] = "true"
-      }
+      let payload = ["image": imageString]
       
       request.httpBody = try JSONSerialization
         .data(withJSONObject: payload, options: .prettyPrinted)
@@ -64,7 +62,7 @@ class ImageUploadAPI: ImageAPI {
       let dataTask = session
         .dataTask(with: request as URLRequest, completionHandler: { (data, _, error) -> Void in
           if let error = error {
-            print(error as Any)
+            print("Image Upload Error: \(error)")
             trace?.incrementMetric("Image Upload Error", by: 1)
             trace?.stop()
             completion(.failure(ImageAPIError.unknownError(error: error)))
