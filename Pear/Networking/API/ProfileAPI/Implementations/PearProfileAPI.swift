@@ -246,7 +246,7 @@ extension PearProfileAPI {
                   }
                 } catch {
                   print("Failed to deserialize pear user from feed: \(error)")
-                  print(userData)
+//                  print(userData)
                 }
               }
               completion(.success(allFullProfiles))
