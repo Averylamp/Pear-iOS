@@ -220,6 +220,9 @@ extension PearUserAPI {
       variablesDictionary["thumbnailURL"] = thumbnailURL
     }
     
+    let defaultCoordinates: [Double] = [42.3601, -71.0589]
+    variablesDictionary["location"] = defaultCoordinates
+    
     return variablesDictionary
   }
 }

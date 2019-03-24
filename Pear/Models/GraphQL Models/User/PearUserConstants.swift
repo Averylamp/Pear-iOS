@@ -24,66 +24,27 @@ enum PearUserKeys: String, CodingKey {
   case fullName
   case thumbnailURL
   case gender
-  case locationName
-  case locationCoordinates
+  case birthdate
+  case age
+
   case school
   case schoolEmail
   case schoolEmailVerified
-  case birthdate
-  case age
+
+  case isSeeking
+  case pearPoints
+
+  case displayedImages
+  case bankImages
+
   case profileObjs = "profileObjs"
   case endorsedProfileObjs = "endorsedProfileObjs"
   case detachedProfileObjs = "detachedProfileObjs"
   
-  case requestedMatches
-  case currentMatches
-  
   case matchingDemographics
   case matchingPreferences
   
-  case userStats
-  case displayedImages = "displayedImages"
-  
-  case userMatchesID = "userMatches_id"
-  case userMatches
-  case discoveryIDs = "discovery_id"
-  case discoveryObj = "discovery_obj"
-  case pearPoints
-}
+  case requestedMatches
+  case currentMatches
 
-struct PearUserStatsKeys {
-  static let totalNumberOfMatchRequests = "totalNumberOfMatchRequests"
-  static let totalNumberOfMatches = "totalNumberOfMatches"
-  static let totalNumberOfProfilesCreated = "totalNumberOfProfilesCreated"
-  static let totalNumberOfEndorsementsCreated = "totalNumberOfEndorsementsCreated"
-  static let conversationTotalNumber = "conversationTotalNumber"
-  static let conversationTotalNumberFirstMessage = "conversationTotalNumberFirstMessage"
-  static let conversationTotalNumberTenMessages = "conversationTotalNumberTenMessages"
-  static let conversationTotalNumberHundredMessages = "conversationTotalNumberHundredMessages"
-}
-
-struct PearUserDemographicsKeys {
-  static let ethnicities = "ethnicities"
-  static let religion = "religion"
-  static let political = "political"
-  static let smoking = "smoking"
-  static let drinking = "drinking"
-  static let height = "height"
-}
-
-struct PearPreferencesKeys {
-  static let ethnicities = "ethnicities"
-  static let seekingGender = "seekingGender"
-  static let seekingReason = "seekingReason"
-  static let reasonDealbreaker = "reasonDealbreaker"
-  static let seekingEthnicity = "seekingEthnicity"
-  static let ethnicityDealbreaker = "ethnicityDealbreaker"
-  static let maxDistance = "maxDistance"
-  static let distanceDealbreaker = "distanceDealbreaker"
-  static let minAgeRange = "minAgeRange"
-  static let maxAgeRange = "maxAgeRange"
-  static let ageDealbreaker = "ageDealbreaker"
-  static let minHeightRange = "minHeightRange"
-  static let maxHeightRange = "maxHeightRange"
-  static let heightDealbreaker = "heightDealbreaker"
 }
