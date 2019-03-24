@@ -58,7 +58,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
         messageVC.messageComposeDelegate = self
         
         messageVC.recipients = [phoneNumber]
-        messageVC.body = "Hey! I made you a profile on Pear.  Let's find you a date.\n"
+        messageVC.body = "Hey! I made you a profile on Pear 🍐.  Let's find you a date 😉."
         
         self.present(messageVC, animated: true) {
           activityIndicator.stopAnimating()
