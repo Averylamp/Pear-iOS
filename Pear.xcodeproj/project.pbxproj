@@ -20,6 +20,9 @@
 		71BF428C336127273FE71237 /* Pods_PearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D42F99EE22CDFC180834C07 /* Pods_PearTests.framework */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
+		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
+		BB0628C722463B12000D9B12 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C622463B12000D9B12 /* Match.swift */; };
+		BB0628C922464278000D9B12 /* MatchedPearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C822464278000D9B12 /* MatchedPearUser.swift */; };
 		BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */; };
 		BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16B7222EE6D200915C1C /* DataStore.swift */; };
 		BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */; };
@@ -226,6 +229,9 @@
 		8D7B5360DD6C2E85008926B8 /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.debug.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
+		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
+		BB0628C622463B12000D9B12 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		BB0628C822464278000D9B12 /* MatchedPearUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedPearUser.swift; sourceTree = "<group>"; };
 		BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfileConstants.swift; sourceTree = "<group>"; };
 		BB0F16B7222EE6D200915C1C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConfig.swift; sourceTree = "<group>"; };
@@ -583,8 +589,17 @@
 			isa = PBXGroup;
 			children = (
 				BB0628C1224634B9000D9B12 /* ChatAPI.swift */,
+				BB0628C52246352F000D9B12 /* Implementations */,
 			);
 			path = ChatAPI;
+			sourceTree = "<group>";
+		};
+		BB0628C52246352F000D9B12 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				BB0628C32246352B000D9B12 /* PearChatAPI.swift */,
+			);
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 		BB0F16B9222EE72800915C1C /* Helpers */ = {
@@ -824,6 +839,7 @@
 		BB94C11622437AD3001320B0 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				BB0628C822464278000D9B12 /* MatchedPearUser.swift */,
 				BB796F89222DB19300E31C7F /* PearUser.swift */,
 				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
 			);
@@ -900,6 +916,7 @@
 			children = (
 				BB94C12422438502001320B0 /* Message.swift */,
 				BB94C12622438F00001320B0 /* Chat.swift */,
+				BB0628C622463B12000D9B12 /* Match.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1639,6 +1656,7 @@
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
+				BB0628C922464278000D9B12 /* MatchedPearUser.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
@@ -1646,6 +1664,7 @@
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
 				BBA2B4322235051400D8C27B /* ProfileDoDontViewController.swift in Sources */,
 				BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */,
+				BB0628C722463B12000D9B12 /* Match.swift in Sources */,
 				BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* StylingConfig.swift in Sources */,
 				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
@@ -1655,6 +1674,7 @@
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
+				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
 				BB6C06492227F750007A5C96 /* GetStartedAllowLocationViewController.swift in Sources */,
 				BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */,

@@ -31,12 +31,12 @@ enum PearUserKeys: String, CodingKey {
   case schoolEmailVerified
   case birthdate
   case age
-  case profileIDs = "profile_ids"
   case profileObjs = "profileObjs"
-  case endorsedProfileIDs = "endorsedProfile_ids"
   case endorsedProfileObjs = "endorsedProfileObjs"
-  case detachedProfileIDs = "detachedProfile_ids"
   case detachedProfileObjs = "detachedProfileObjs"
+  
+  case requestedMatches
+  case currentMatches
   
   case matchingDemographics
   case matchingPreferences

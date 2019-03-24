@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import SwiftyJSON
 
-class PearUser: Codable, CustomStringConvertible {
+class PearUser: Decodable, CustomStringConvertible {
   
   var documentID: String
   var deactivated: Bool
@@ -39,7 +39,10 @@ class PearUser: Codable, CustomStringConvertible {
   var detachedProfiles: [PearDetachedProfile] = []
   var displayedImages: [ImageContainer] = []
   
-  static let graphQLUserFields: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender locationName locationCoordinates school schoolEmail schoolEmailVerified birthdate age profile_ids profileObjs \(PearUserProfile.graphQLUserProfileFields) endorsedProfileObjs \(PearUserProfile.graphQLUserProfileFields) detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFields)) displayedImages \(ImageContainer.graphQLImageFields) endorsedProfile_ids matchingPreferences { seekingGender } userStats { totalNumberOfMatches totalNumberOfMatches } matchingDemographics { ethnicities } userMatches_id discoveryQueue_id pearPoints }"
+  var requestedMatches: [Match] = []
+  var currentMatches: [Match] = []
+  
+  static let graphQLUserFields: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender school schoolEmail schoolEmailVerified birthdate age profileObjs \(PearUserProfile.graphQLUserProfileFields) endorsedProfileObjs \(PearUserProfile.graphQLUserProfileFields) detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFields)) displayedImages \(ImageContainer.graphQLImageFields) requestedMatches \(Match.graphQLMatchFields) currentMatches \(Match.graphQLMatchFields) matchingPreferences { seekingGender } matchingDemographics { ethnicities } pearPoints }"
   
   init() {
     fatalError("Should never be called to generate")
@@ -72,15 +75,14 @@ class PearUser: Codable, CustomStringConvertible {
       self.birthdate = Date(timeIntervalSince1970: birthdateNumberValue / 1000)
     }
     self.age = try values.decode(Int.self, forKey: .age)
-    let userProfiles = try values.decode([PearUserProfile].self, forKey: .profileObjs)
-    self.userProfiles = userProfiles
-    let endorsedProfiles = try values.decode([PearUserProfile].self, forKey: .endorsedProfileObjs)
-    self.endorsedProfiles = endorsedProfiles
-    let detachedProfiles = try values.decode([PearDetachedProfile].self, forKey: .detachedProfileObjs)
-    self.detachedProfiles = detachedProfiles
-    let images = try values.decode([ImageContainer].self, forKey: .displayedImages)
-    self.displayedImages = images
     
+    self.userProfiles = try values.decode([PearUserProfile].self, forKey: .profileObjs)
+    self.endorsedProfiles = try values.decode([PearUserProfile].self, forKey: .endorsedProfileObjs)
+    self.detachedProfiles = try values.decode([PearDetachedProfile].self, forKey: .detachedProfileObjs)
+    self.displayedImages = try values.decode([ImageContainer].self, forKey: .displayedImages)
+    
+    self.requestedMatches = try values.decode([Match].self, forKey: .requestedMatches)
+    self.currentMatches = try values.decode([Match].self, forKey: .currentMatches)
   }
   
   var description: String {
