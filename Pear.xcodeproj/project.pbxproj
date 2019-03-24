@@ -54,7 +54,6 @@
 		BB3F219D22267B8000DC4489 /* GetStartedUserLastNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F219B22267B8000DC4489 /* GetStartedUserLastNameViewController.swift */; };
 		BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F219C22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard */; };
 		BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */; };
-		BB3F4AE32232835300F99C8E /* GraphQLQueryStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE22232835200F99C8E /* GraphQLQueryStrings.swift */; };
 		BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE42233973400F99C8E /* GetStartedBirthdateViewController.swift */; };
 		BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F4AE62233973F00F99C8E /* GetStartedBirthdateViewController.storyboard */; };
 		BB3F4AEB2234259D00F99C8E /* GetStartedUserGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */; };
@@ -265,7 +264,6 @@
 		BB3F219B22267B8000DC4489 /* GetStartedUserLastNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedUserLastNameViewController.swift; sourceTree = "<group>"; };
 		BB3F219C22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedUserLastNameViewController.storyboard; sourceTree = "<group>"; };
 		BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfile.swift; sourceTree = "<group>"; };
-		BB3F4AE22232835200F99C8E /* GraphQLQueryStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLQueryStrings.swift; sourceTree = "<group>"; };
 		BB3F4AE42233973400F99C8E /* GetStartedBirthdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedBirthdateViewController.swift; sourceTree = "<group>"; };
 		BB3F4AE62233973F00F99C8E /* GetStartedBirthdateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedBirthdateViewController.storyboard; sourceTree = "<group>"; };
 		BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedUserGenderViewController.storyboard; sourceTree = "<group>"; };
@@ -521,7 +519,6 @@
 				BBFFBBD722211749002E1B54 /* ImagesAPI */,
 				BB0628C0224634A4000D9B12 /* ChatAPI */,
 				60C131DD21D344EE0093ECBA /* AuthAPI */,
-				BB3F4AE22232835200F99C8E /* GraphQLQueryStrings.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1719,7 +1716,6 @@
 				BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */,
 				BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
-				BB3F4AE32232835300F99C8E /* GraphQLQueryStrings.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,

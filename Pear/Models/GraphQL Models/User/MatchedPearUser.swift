@@ -18,14 +18,14 @@ class MatchedPearUser: Decodable, CustomStringConvertible {
   var fullName: String
   var thumbnailURL: String?
   var gender: String?
-  var locationName: String?
-  var locationCoordinates: String?
   var school: String?
-  var birthdate: Date?
-  var age: Int
+  
+  var matchingDemographics: MatchingDemographics!
+  var matchingPreferences: MatchingPreferences!
+  
   var userProfiles: [PearUserProfile] = []
   
-  static let graphQLMatchedUserFields: String = "{ _id deactivated firstName lastName fullName thumbnailURL gender school birthdate age profileObjs \(PearUserProfile.graphQLUserProfileFields) displayedImages \(ImageContainer.graphQLImageFields) matchingPreferences { seekingGender } pearPoints }"
+  static let graphQLMatchedUserFields: String = "{ _id deactivated firstName lastName fullName thumbnailURL gender school birthdate age profileObjs \(PearUserProfile.graphQLUserProfileFields) displayedImages \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) pearPoints }"
   
   init() {
     fatalError("Should never be called to generate")
@@ -39,14 +39,10 @@ class MatchedPearUser: Decodable, CustomStringConvertible {
     self.fullName = try values.decode(String.self, forKey: .fullName)
     self.thumbnailURL = try? values.decode(String.self, forKey: .thumbnailURL)
     self.gender = try? values.decode(String.self, forKey: .gender)
-    self.locationName = try? values.decode(String.self, forKey: .locationName)
-    self.locationCoordinates = try? values.decode(String.self, forKey: .locationCoordinates)
     self.school = try? values.decode(String.self, forKey: .school)
-    let birthdateValue = try? values.decode(String.self, forKey: .birthdate)
-    if let birthdateValue = birthdateValue, let birthdateNumberValue = Double(birthdateValue) {
-      self.birthdate = Date(timeIntervalSince1970: birthdateNumberValue / 1000)
-    }
-    self.age = try values.decode(Int.self, forKey: .age)
+    
+    self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
+    self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)
     
     self.userProfiles = try values.decode([PearUserProfile].self, forKey: .profileObjs)
   }
@@ -59,11 +55,7 @@ class MatchedPearUser: Decodable, CustomStringConvertible {
     fullName: \(String(describing: fullName)),
     thumbnailURL: \(String(describing: thumbnailURL)),
     gender: \(String(describing: gender)),
-    locationName: \(String(describing: locationName)),
-    locationCoordinates: \(String(describing: locationCoordinates)),
     school: \(String(describing: school)),
-    birthdate: \(String(describing: birthdate)),
-    age: \(String(describing: age)),
     \(self.userProfiles.count) User Profiles Found,
     """
   }
