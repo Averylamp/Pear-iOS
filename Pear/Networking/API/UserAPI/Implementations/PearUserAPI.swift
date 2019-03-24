@@ -47,8 +47,7 @@ extension PearUserAPI {
           ]
         ]
       ]
-      print(request)
-      print(fullDictionary)
+
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
@@ -102,7 +101,8 @@ extension PearUserAPI {
     }
   }
   
-  func createNewUser(with gettingStartedUserData: UserCreationData, completion: @escaping (Result<PearUser, UserAPIError>) -> Void) {
+  func createNewUser(with gettingStartedUserData: UserCreationData,
+                     completion: @escaping (Result<PearUser, UserAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -150,7 +150,11 @@ extension PearUserAPI {
               return
             }
           } else {
-            print("Failed Conversions")
+            print("Failed Create User Conversions")
+            if  let data = data,
+            let json = try? JSON(data: data) {
+              print(json)
+            }
             completion(.failure(UserAPIError.failedDeserialization))
             return
           }
