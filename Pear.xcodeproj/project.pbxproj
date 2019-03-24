@@ -1284,8 +1284,8 @@
 				60C131BC21D342BC0093ECBA /* Frameworks */,
 				60C131BD21D342BC0093ECBA /* Resources */,
 				BB3442A722275D280021764A /* Run Script */,
-				BB21DBF2223B15BE003EDC35 /* ShellScript */,
 				53D03AA00D21DBC6410616B1 /* [CP] Embed Pods Frameworks */,
+				BB08B88F2247C431005A3EA9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1584,7 +1584,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BB21DBF2223B15BE003EDC35 /* ShellScript */ = {
+		BB08B88F2247C431005A3EA9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1600,7 +1600,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" ee26fab1735734612f46c7976608c6fae6215421 b9ccaccfad2fa96ed70ef7b3bebed3ad831e3df6a577450e024da0724dd918bd\n";
 		};
 		BB3442A722275D280021764A /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1923,7 +1923,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1946,7 +1947,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2198,7 +2199,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

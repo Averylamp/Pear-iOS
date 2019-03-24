@@ -36,11 +36,27 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>9</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>ee26fab1735734612f46c7976608c6fae6215421</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>2258474404196000</string>
 	<key>FacebookDisplayName</key>
 	<string>Pear</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class GetStartedBirthdateViewController: UIViewController {
   
   @IBOutlet weak var datePicker: UIDatePicker!

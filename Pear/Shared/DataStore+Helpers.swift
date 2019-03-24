@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseAuth
 import FirebasePerformance
+import Crashlytics
 
 extension DataStore {
   
@@ -33,6 +34,11 @@ extension DataStore {
               case .success(let pearUser):
                 print("Got Existing Pear User \(String(describing: pearUser))")
                 DataStore.shared.currentPearUser = pearUser
+                
+                Crashlytics.sharedInstance().setUserEmail(pearUser.email)
+                Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
+                Crashlytics.sharedInstance().setUserName(pearUser.fullName)
+                
                 trace?.incrementMetric("Existing User Found", by: 1)
                 trace?.stop()
                 pearUserFoundCompletion()

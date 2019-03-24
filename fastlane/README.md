@@ -25,7 +25,7 @@ Push a new beta build to TestFlight
 ```
 fastlane ios test
 ```
-Runs UI Tests
+Runs Tests
 ### ios release
 ```
 fastlane ios release
