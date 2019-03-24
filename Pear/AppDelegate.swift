@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FacebookCore
 import FirebaseAuth
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 final class AppDelegate: UIResponder {
@@ -30,7 +32,8 @@ extension AppDelegate: UIApplicationDelegate {
     
 //    Forces Remote config fetch
     print(DataStore.shared.remoteConfig.configSettings)
-    
+    Fabric.with([Crashlytics.self])
+
     SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     return true
   }
