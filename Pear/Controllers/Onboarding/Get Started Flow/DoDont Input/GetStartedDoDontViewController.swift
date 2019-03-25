@@ -215,12 +215,12 @@ extension GetStartedDoDontViewController {
       let initialHeight: CGFloat = 42
       expandingTextViewVC.minTextViewSize = initialHeight
       let expandingTextViewHeightConstraint =
-        NSLayoutConstraint(item: expandingTextViewVC.view, attribute: .height, relatedBy: .equal,
+        NSLayoutConstraint(item: expandingTextViewVC.view!, attribute: .height, relatedBy: .equal,
                            toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: initialHeight)
       
       self.stackView.addConstraints([
         expandingTextViewHeightConstraint,
-        NSLayoutConstraint(item: expandingTextViewVC.view, attribute: .width, relatedBy: .equal,
+        NSLayoutConstraint(item: expandingTextViewVC.view!, attribute: .width, relatedBy: .equal,
                            toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0)
         ])
       

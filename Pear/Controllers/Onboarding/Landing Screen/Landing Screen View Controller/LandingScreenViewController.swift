@@ -102,13 +102,13 @@ extension LandingScreenViewController {
       self.pages[pageNumber].view.translatesAutoresizingMaskIntoConstraints = false
       scrollView.addSubview(self.pages[pageNumber].view)
       scrollView.addConstraints([
-        NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .height, relatedBy: .equal,
+        NSLayoutConstraint(item: self.pages[pageNumber].view!, attribute: .height, relatedBy: .equal,
                            toItem: scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .width, relatedBy: .equal,
+        NSLayoutConstraint(item: self.pages[pageNumber].view!, attribute: .width, relatedBy: .equal,
                            toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .centerY, relatedBy: .equal,
+        NSLayoutConstraint(item: self.pages[pageNumber].view!, attribute: .centerY, relatedBy: .equal,
                            toItem: scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: self.pages[pageNumber].view, attribute: .centerX, relatedBy: .equal,
+        NSLayoutConstraint(item: self.pages[pageNumber].view!, attribute: .centerX, relatedBy: .equal,
                            toItem: scrollView, attribute: .centerX, multiplier: 1 + CGFloat(pageNumber * 2), constant: 0.0)
         ])
       self.pages[pageNumber].didMove(toParent: self)

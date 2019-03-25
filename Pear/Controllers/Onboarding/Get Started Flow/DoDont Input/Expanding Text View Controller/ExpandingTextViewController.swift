@@ -84,7 +84,7 @@ extension ExpandingTextViewController {
       self.view.addSubview(accessoryButton)
       textViewRightConstraint.isActive = false
       textViewRightAccessoryConstraint =
-        NSLayoutConstraint(item: self.textView, attribute: .right, relatedBy: .equal, toItem: accessoryButton, attribute: .left, multiplier: 1.0, constant: 0.0)
+        NSLayoutConstraint(item: self.textView!, attribute: .right, relatedBy: .equal, toItem: accessoryButton, attribute: .left, multiplier: 1.0, constant: 0.0)
       self.primaryAccessoryButtonRightConstraint =
         NSLayoutConstraint(item: accessoryButton, attribute: .right, relatedBy: .equal,
                            toItem: self.view, attribute: .right, multiplier: 1.0, constant: -accessoryButtonRightOffset)
@@ -169,7 +169,7 @@ extension ExpandingTextViewController {
     }
     
     if removedAccessory {
-      self.textViewRightConstraint = NSLayoutConstraint(item: self.textView, attribute: .right, relatedBy: .equal,
+      self.textViewRightConstraint = NSLayoutConstraint(item: self.textView!, attribute: .right, relatedBy: .equal,
                                                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0)
       self.view.addConstraint(self.textViewRightConstraint!)
       UIView.animate(withDuration: self.animationDuration) {

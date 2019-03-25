@@ -36,6 +36,8 @@ class DataStore {
         print("Remote Config fetching not fetched yet")
       case .throttled:
         print("Remote Config fetching throttled")
+      @unknown default:
+        fatalError()
       }
     }
   }

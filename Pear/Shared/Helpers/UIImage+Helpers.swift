@@ -29,7 +29,7 @@ extension UIImage {
                                       renderingIntent: CGColorRenderingIntent.defaultIntent)
     var sourceBuffer = vImage_Buffer()
     defer {
-      free(sourceBuffer.data)
+        free(sourceBuffer.data)
     }
     var error = vImageBuffer_InitWithCGImage(&sourceBuffer, &format, nil, cgImage, numericCast(kvImageNoFlags))
     guard error == kvImageNoError else { return nil }
