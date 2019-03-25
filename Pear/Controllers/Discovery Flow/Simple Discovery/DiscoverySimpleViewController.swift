@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Crashlytics
 
 class DiscoverySimpleViewController: UIViewController {
 
@@ -103,7 +102,6 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    Crashlytics.sharedInstance().crash()
     let fullProfile = self.fullProfiles[indexPath.row]
     guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
       print("Failed to create full profile Scroll View")

@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Sentry
 
 class PearProfileAPI: ProfileAPI {
   
@@ -28,6 +29,19 @@ class PearProfileAPI: ProfileAPI {
   static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
   
   static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLUserFields) } }}"
+ 
+  func generateSentryEvent(level: SentrySeverity = .warning,
+                           message: String,
+                           tags: [String: String] = [:],
+                           paylod: [String: Any] = [:]) {
+    let userErrorEvent = Event(level: level)
+    userErrorEvent.message = message
+    var allTags: [String: String] = ["API": "PearProfileAPI"]
+    tags.forEach({ allTags[$0.key] = $0.value })
+    userErrorEvent.tags = allTags
+    userErrorEvent.extra = paylod
+    Client.shared?.send(event: userErrorEvent, completion: nil)
+  }
 }
 
 // MARK: Routes
@@ -59,13 +73,15 @@ extension PearProfileAPI {
           completion(.failure(DetachedProfileError.unknownError(error: error)))
           return
         } else {
-          let helperResult = APIHelpers.interpretGraphQLResponse(data: data, functionName: "createDetachedProfile", objectName: "detachedProfile")
+          let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "createDetachedProfile", objectName: "detachedProfile")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
             print("Failed to Create User: \(helperResult)")
+            self.generateSentryEvent(level: .error, message: "GraphQL Error: \(helperResult)", tags: ["function": "createDetachedProfile"], paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
+            self.generateSentryEvent(level: .error, message: message ?? "Failed to create user", tags: ["function": "createDetachedProfile"], paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -74,6 +90,10 @@ extension PearProfileAPI {
               completion(.success(detachedProfile))
             } catch {
               print("Deserialization Error: \(error)")
+              self.generateSentryEvent(level: .error,
+                                       message: "DeserializationError: \(error.localizedDescription)",
+                                       tags: ["function": "createDetachedProfile"],
+                                       paylod: fullDictionary)
               completion(.failure(DetachedProfileError.failedDeserialization))
             }
           }
@@ -82,6 +102,10 @@ extension PearProfileAPI {
       dataTask.resume()
     } catch {
       print(error)
+      self.generateSentryEvent(level: .error,
+                               message: error.localizedDescription,
+                               tags: ["function": "createDetachedProfile"],
+                               paylod: [:])
       completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
     
@@ -131,11 +155,15 @@ extension PearProfileAPI {
               }
             } catch {
               print("Error: \(error)")
+              self.generateSentryEvent(level: .error, message: error.localizedDescription,
+                                       tags: ["function": "findDetachedProfiles"], paylod: fullDictionary)
               completion(.failure(DetachedProfileError.unknownError(error: error)))
               return
             }
           } else {
             print("Failed Conversions")
+            self.generateSentryEvent(level: .error, message: "Failed to convert inputs", 
+                                     tags: ["function": "findDetachedProfiles"], paylod: [:])
             completion(.failure(DetachedProfileError.failedDeserialization))
             return
           }
@@ -144,6 +172,8 @@ extension PearProfileAPI {
       dataTask.resume()
     } catch {
       print(error)
+      self.generateSentryEvent(level: .error, message: error.localizedDescription,
+                               tags: ["function": "findDetachedProfiles"], paylod: [:])
       completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
     
@@ -178,26 +208,29 @@ extension PearProfileAPI {
           completion(.failure(DetachedProfileError.unknownError(error: error)))
           return
         } else {
-          if  let data = data,
-            let json = try? JSON(data: data) {
-            print("Finished Attaching Detached Profile")
-            if let success = json["data"]["approveNewDetachedProfile"]["success"].bool {
-              completion(.success(success))
-              return
-            } else {
-              completion(.failure(DetachedProfileError.unknown))
-            }
-            
-          } else {
-            print("Failed Conversions")
-            completion(.failure(DetachedProfileError.failedDeserialization))
-            return
+          let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "approveNewDetachedProfile")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
+            print("Failed to Approve Detached Profile: \(helperResult)")
+            self.generateSentryEvent(level: .error, message: "GraphQL Error: \(helperResult)",
+              tags: ["function": "approveNewDetachedProfile"], paylod: fullDictionary)
+            completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Approve Detached Profile: \(message ?? "")")
+            self.generateSentryEvent(level: .error, message: message ?? "Failed to Approve Detached Profile",
+                                     tags: ["function": "approveNewDetachedProfile"], paylod: fullDictionary)
+            completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
+          case .success(let message):
+            print("Successfully attached Detached Profile: \(message)")
+            completion(.success(true))
           }
         }
       }
       dataTask.resume()
     } catch {
       print(error)
+      self.generateSentryEvent(level: .error, message: "Unknown Error: \(error.localizedDescription)",
+        tags: ["function": "approveNewDetachedProfile"], paylod: [:])
       completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
     
@@ -246,7 +279,6 @@ extension PearProfileAPI {
                   }
                 } catch {
                   print("Failed to deserialize pear user from feed: \(error)")
-//                  print(userData)
                 }
               }
               completion(.success(allFullProfiles))

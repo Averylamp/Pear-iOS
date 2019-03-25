@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Sentry
 
 class PearUserAPI: UserAPI {
   
@@ -24,6 +25,20 @@ class PearUserAPI: UserAPI {
   static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput) {createUser(userInput: $userInput) { success message user \(PearUser.graphQLUserFields) }}"
   
   static let getUserQuery: String = "query GetUser($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLUserFields) }}"
+  
+  func generateSentryEvent(level: SentrySeverity = .warning,
+                           message: String,
+                           tags: [String: String] = [:],
+                           paylod: [String: Any] = [:]) {
+    let userErrorEvent = Event(level: level)
+    userErrorEvent.message = message
+    var allTags: [String: String] = ["API": "PearUserAPI"]
+    tags.forEach({ allTags[$0.key] = $0.value })
+    userErrorEvent.tags = allTags
+    userErrorEvent.extra = paylod
+    Client.shared?.send(event: userErrorEvent, completion: nil)
+  }
+  
 }
 
 // MARK: - Routes
@@ -58,7 +73,7 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-          let helperResult = APIHelpers.interpretGraphQLResponse(data: data, functionName: "getUser", objectName: "user")
+          let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "getUser", objectName: "user")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
             print("Failed to Get User: \(helperResult)")
@@ -111,7 +126,7 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-          let helperResult = APIHelpers.interpretGraphQLResponse(data: data, functionName: "createUser", objectName: "user")
+          let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "createUser", objectName: "user")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
             print("Failed to Create User: \(helperResult)")

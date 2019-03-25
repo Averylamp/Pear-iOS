@@ -38,6 +38,8 @@ extension AppDelegate: UIApplicationDelegate {
     do {
       Client.shared = try Client(dsn: "https://8383e222e5e946cf8017740102da428e@sentry.io/1423458")
       try Client.shared?.startCrashHandler()
+      Client.shared?.trackMemoryPressureAsEvent()
+      
     } catch let error {
       print("\(error)")
     }
