@@ -68,8 +68,9 @@ class GetStartedInterestsViewController: UIViewController {
     guard let interestsVC = storyboard.instantiateInitialViewController() as? GetStartedInterestsViewController else { return nil }
     interestsVC.gettingStartedData = gettingStartedData
     let cloudInterestsData =  DataStore.shared.remoteConfig.configValue(forKey: "interests_values").dataValue
-    if let cloudInterests = try? JSON(data: cloudInterestsData).array,
-      let interestStrings = cloudInterests?.compactMap({ $0.string }) {
+    if let cloudJSON = try? JSON(data: cloudInterestsData),
+      let cloudInterests = cloudJSON.array {
+      let interestStrings = cloudInterests.compactMap({$0.string})
       interestsVC.interestStrings = interestStrings
     } else {
       interestsVC.interestStrings = GetStartedInterestsViewController.defaultInterestStrings

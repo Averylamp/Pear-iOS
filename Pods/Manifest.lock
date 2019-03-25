@@ -172,6 +172,9 @@ PODS:
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
+  - Sentry (4.3.1):
+    - Sentry/Core (= 4.3.1)
+  - Sentry/Core (4.3.1)
   - SwiftLint (0.31.0)
   - SwiftyJSON (4.2.0)
 
@@ -191,6 +194,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - R.swift
   - SDWebImage
+  - Sentry
   - SwiftLint
   - SwiftyJSON
 
@@ -230,6 +234,7 @@ SPEC REPOS:
     - R.swift
     - R.swift.Library
     - SDWebImage
+    - Sentry
     - SwiftLint
     - SwiftyJSON
 
@@ -268,9 +273,10 @@ SPEC CHECKSUMS:
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  Sentry: 5267d493a398663538317e4dcc438c12c66202ed
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: f943ac6901974d1d39e46882065e0fcfa356784e
+PODFILE CHECKSUM: b5e3d235a43374cd4a7105f3b6fd02b698c9e480
 
 COCOAPODS: 1.6.1

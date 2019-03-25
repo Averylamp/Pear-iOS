@@ -12,6 +12,7 @@ import FacebookCore
 import FirebaseAuth
 import Fabric
 import Crashlytics
+import Sentry
 
 @UIApplicationMain
 final class AppDelegate: UIResponder {
@@ -33,6 +34,13 @@ extension AppDelegate: UIApplicationDelegate {
 //    Forces Remote config fetch
     print(DataStore.shared.remoteConfig.configSettings)
     Fabric.with([Crashlytics.self])
+    
+    do {
+      Client.shared = try Client(dsn: "https://8383e222e5e946cf8017740102da428e@sentry.io/1423458")
+      try Client.shared?.startCrashHandler()
+    } catch let error {
+      print("\(error)")
+    }
 
     SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     return true

@@ -84,7 +84,7 @@ extension Chat {
       return Firestore.firestore().collection("/chats/\(self.documentID!)/messages")
         .order(by: MessageKeys.timestamp.stringValue, descending: true)
         .order(by: MessageKeys.documentID.stringValue, descending: true)
-        .start(at: [Timestamp(date: message.timestamp), message.documentID])
+        .start(at: [Timestamp(date: message.timestamp), message.documentID!])
         .limit(to: Chat.messageBatchSizeInitial)
     } else {
       return Firestore.firestore().collection("/chats/\(self.documentID!)/messages")

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BDD4EC4C94811718703A279 /* Pods_Pear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D7D813A7D99E3659D0800A1 /* Pods_Pear.framework */; };
+		465C43FA96FC9A67BB7C573B /* Pods_PearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D006C0A39326CBF34EC187F4 /* Pods_PearTests.framework */; };
 		600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600FA61021D358B500A40EAC /* UIViewController+Alert.swift */; };
 		60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131C221D342BC0093ECBA /* AppDelegate.swift */; };
 		60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60C131C921D342BD0093ECBA /* Assets.xcassets */; };
@@ -17,7 +17,7 @@
 		60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */; };
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
-		71BF428C336127273FE71237 /* Pods_PearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D42F99EE22CDFC180834C07 /* Pods_PearTests.framework */; };
+		86FDE6B440CCB525DFFBBB9B /* Pods_Pear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22874DF95B65F32D1CBE26DA /* Pods_Pear.framework */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
@@ -208,11 +208,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		049F1D3517D151987D993AD1 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
-		15157AB8CC22059034A976AE /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.debug.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3EE85D22AD1E2717BD1E270E /* Pods-Pear.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.development.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.development.xcconfig"; sourceTree = "<group>"; };
-		5380BAFE868E7D9D0B84B2E4 /* Pods-PearTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.development.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.development.xcconfig"; sourceTree = "<group>"; };
-		5D42F99EE22CDFC180834C07 /* Pods_PearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22874DF95B65F32D1CBE26DA /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D47863B21245FF828FFB2B6 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
+		4D15343B7073EF3BB5BF63DD /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.debug.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
 		600FA61021D358B500A40EAC /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		60C131BF21D342BC0093ECBA /* Pear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C131C221D342BC0093ECBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -224,9 +222,9 @@
 		60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthAPI.swift; sourceTree = "<group>"; };
 		60C131EB21D348840093ECBA /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
-		6D7D813A7D99E3659D0800A1 /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FDA256F3956028C276F7E9F /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.release.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
-		8D7B5360DD6C2E85008926B8 /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.debug.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
+		7388C83F8FDD5EE107025C91 /* Pods-PearTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.development.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.development.xcconfig"; sourceTree = "<group>"; };
+		91EE66963235611BC434CCE5 /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.debug.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD54D4220366B1B629168A8C /* Pods-Pear.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.development.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.development.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
@@ -405,6 +403,8 @@
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
 		BBFFBBDF22212E82002E1B54 /* ImageUploadAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadAPI.swift; sourceTree = "<group>"; };
+		D006C0A39326CBF34EC187F4 /* Pods_PearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C78EDE4D7E0B9A500DD15A /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.release.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,7 +412,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BDD4EC4C94811718703A279 /* Pods_Pear.framework in Frameworks */,
+				86FDE6B440CCB525DFFBBB9B /* Pods_Pear.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +420,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71BF428C336127273FE71237 /* Pods_PearTests.framework in Frameworks */,
+				465C43FA96FC9A67BB7C573B /* Pods_PearTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +434,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		529EAF2D61F5948C1C035E18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22874DF95B65F32D1CBE26DA /* Pods_Pear.framework */,
+				D006C0A39326CBF34EC187F4 /* Pods_PearTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		60C131B621D342BC0093ECBA = {
 			isa = PBXGroup;
 			children = (
@@ -442,7 +451,7 @@
 				BB1435FF2243D25800B8C3EB /* PearTests */,
 				60C131C021D342BC0093ECBA /* Products */,
 				82F6D7E984C2057ACDA63923 /* Pods */,
-				E21ED8C32F797E6A60D2BE4E /* Frameworks */,
+				529EAF2D61F5948C1C035E18 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -575,12 +584,12 @@
 		82F6D7E984C2057ACDA63923 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8D7B5360DD6C2E85008926B8 /* Pods-Pear.debug.xcconfig */,
-				3EE85D22AD1E2717BD1E270E /* Pods-Pear.development.xcconfig */,
-				049F1D3517D151987D993AD1 /* Pods-Pear.release.xcconfig */,
-				15157AB8CC22059034A976AE /* Pods-PearTests.debug.xcconfig */,
-				5380BAFE868E7D9D0B84B2E4 /* Pods-PearTests.development.xcconfig */,
-				6FDA256F3956028C276F7E9F /* Pods-PearTests.release.xcconfig */,
+				4D15343B7073EF3BB5BF63DD /* Pods-Pear.debug.xcconfig */,
+				AD54D4220366B1B629168A8C /* Pods-Pear.development.xcconfig */,
+				2D47863B21245FF828FFB2B6 /* Pods-Pear.release.xcconfig */,
+				91EE66963235611BC434CCE5 /* Pods-PearTests.debug.xcconfig */,
+				7388C83F8FDD5EE107025C91 /* Pods-PearTests.development.xcconfig */,
+				F4C78EDE4D7E0B9A500DD15A /* Pods-PearTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1262,15 +1271,6 @@
 			path = Implementations;
 			sourceTree = "<group>";
 		};
-		E21ED8C32F797E6A60D2BE4E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6D7D813A7D99E3659D0800A1 /* Pods_Pear.framework */,
-				5D42F99EE22CDFC180834C07 /* Pods_PearTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1278,14 +1278,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60C131D121D342BD0093ECBA /* Build configuration list for PBXNativeTarget "Pear" */;
 			buildPhases = (
-				A223920FD41CB9AC36FF0600 /* [CP] Check Pods Manifest.lock */,
+				BA6BF0F7902E31ADE8278443 /* [CP] Check Pods Manifest.lock */,
 				BB94C1292243C465001320B0 /* ShellScript */,
 				60C131BB21D342BC0093ECBA /* Sources */,
 				60C131BC21D342BC0093ECBA /* Frameworks */,
 				60C131BD21D342BC0093ECBA /* Resources */,
 				BB3442A722275D280021764A /* Run Script */,
-				53D03AA00D21DBC6410616B1 /* [CP] Embed Pods Frameworks */,
 				BB08B88F2247C431005A3EA9 /* ShellScript */,
+				BB23A412224961AA00DA0075 /* ShellScript */,
+				BD48D58A717171826EB7A25D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1300,7 +1301,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB1436082243D25800B8C3EB /* Build configuration list for PBXNativeTarget "PearTests" */;
 			buildPhases = (
-				816C6CFC6AB0C02CC9318F6D /* [CP] Check Pods Manifest.lock */,
+				D94098255B435B84D846872D /* [CP] Check Pods Manifest.lock */,
 				BB1435FA2243D25700B8C3EB /* Sources */,
 				BB1435FB2243D25700B8C3EB /* Frameworks */,
 				BB1435FC2243D25700B8C3EB /* Resources */,
@@ -1345,6 +1346,7 @@
 				TargetAttributes = {
 					60C131BE21D342BC0093ECBA = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1356,10 +1358,12 @@
 					};
 					BB1435FD2243D25700B8C3EB = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 60C131BE21D342BC0093ECBA;
 					};
 					BBD2842A223BFC1000AC6E30 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 60C131BE21D342BC0093ECBA;
 					};
 				};
@@ -1478,91 +1482,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		53D03AA00D21DBC6410616B1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		816C6CFC6AB0C02CC9318F6D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PearTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A223920FD41CB9AC36FF0600 /* [CP] Check Pods Manifest.lock */ = {
+		BA6BF0F7902E31ADE8278443 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1602,6 +1522,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" ee26fab1735734612f46c7976608c6fae6215421 b9ccaccfad2fa96ed70ef7b3bebed3ad831e3df6a577450e024da0724dd918bd\n";
 		};
+		BB23A412224961AA00DA0075 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which sentry-cli >/dev/null; then\nexport SENTRY_ORG=setup-and-matchmake-inc\nexport SENTRY_PROJECT=pear\nexport SENTRY_AUTH_TOKEN=\"602ec7c2764146e29de4ec0c60c6fb6acece827d74be480e8e6b2b06ad8d22fc\"\nERROR=$(sentry-cli upload-dif \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi\n";
+		};
 		BB3442A722275D280021764A /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1638,6 +1575,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		BD48D58A717171826EB7A25D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D94098255B435B84D846872D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PearTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1918,7 +1941,7 @@
 		};
 		60C131D221D342BD0093ECBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D7B5360DD6C2E85008926B8 /* Pods-Pear.debug.xcconfig */;
+			baseConfigurationReference = 4D15343B7073EF3BB5BF63DD /* Pods-Pear.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
@@ -1934,7 +1957,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1942,7 +1965,7 @@
 		};
 		60C131D321D342BD0093ECBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 049F1D3517D151987D993AD1 /* Pods-Pear.release.xcconfig */;
+			baseConfigurationReference = 2D47863B21245FF828FFB2B6 /* Pods-Pear.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
@@ -1957,7 +1980,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1965,7 +1988,7 @@
 		};
 		BB1436052243D25800B8C3EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15157AB8CC22059034A976AE /* Pods-PearTests.debug.xcconfig */;
+			baseConfigurationReference = 91EE66963235611BC434CCE5 /* Pods-PearTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2013,7 +2036,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
 			};
@@ -2021,7 +2044,7 @@
 		};
 		BB1436062243D25800B8C3EB /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5380BAFE868E7D9D0B84B2E4 /* Pods-PearTests.development.xcconfig */;
+			baseConfigurationReference = 7388C83F8FDD5EE107025C91 /* Pods-PearTests.development.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2069,7 +2092,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
 			};
@@ -2077,7 +2100,7 @@
 		};
 		BB1436072243D25800B8C3EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FDA256F3956028C276F7E9F /* Pods-PearTests.release.xcconfig */;
+			baseConfigurationReference = F4C78EDE4D7E0B9A500DD15A /* Pods-PearTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2125,7 +2148,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
 			};
@@ -2194,7 +2217,7 @@
 		};
 		BB58D48D22425D2F00A6A910 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EE85D22AD1E2717BD1E270E /* Pods-Pear.development.xcconfig */;
+			baseConfigurationReference = AD54D4220366B1B629168A8C /* Pods-Pear.development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
@@ -2210,7 +2233,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2230,7 +2253,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Pear;
 			};
@@ -2250,7 +2273,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Pear;
 			};
@@ -2270,7 +2293,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Pear;
 			};
