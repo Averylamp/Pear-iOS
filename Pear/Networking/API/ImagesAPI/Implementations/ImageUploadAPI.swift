@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import SwiftyJSON
 import FirebasePerformance
+import Sentry
 
 class ImageUploadAPI: ImageAPI {
   
@@ -17,6 +18,19 @@ class ImageUploadAPI: ImageAPI {
   
   private init() {
     
+  }
+  
+  func generateSentryEvent(level: SentrySeverity = .warning,
+                           message: String,
+                           tags: [String: String] = [:],
+                           paylod: [String: Any] = [:]) {
+    let iamgeErrorEvent = Event(level: level)
+    iamgeErrorEvent.message = message
+    var allTags: [String: String] = ["API": "ImageUploadAPI"]
+    tags.forEach({ allTags[$0.key] = $0.value })
+    iamgeErrorEvent.tags = allTags
+    iamgeErrorEvent.extra = paylod
+    Client.shared?.send(event: iamgeErrorEvent, completion: nil)
   }
   
   func uploadNewImage(with image: UIImage,
@@ -71,6 +85,7 @@ class ImageUploadAPI: ImageAPI {
             print("Image Upload Error: \(error)")
             trace?.incrementMetric("Image Upload Error", by: 1)
             trace?.stop()
+            self.generateSentryEvent(level: .error, message: error.localizedDescription, tags: [:], paylod: payload)
             completion(.failure(ImageAPIError.unknownError(error: error)))
           } else {
             trace?.incrementMetric("Image Request Successful", by: 1)
@@ -84,6 +99,7 @@ class ImageUploadAPI: ImageAPI {
               } catch {
                 trace?.incrementMetric("Image Decoding Unsuccessful", by: 1)
                 trace?.stop()
+                self.generateSentryEvent(level: .error, message: error.localizedDescription, tags: [:], paylod: payload)
                 completion(.failure(ImageAPIError.unknownError(error: error)))
               }
             } else {
@@ -96,6 +112,7 @@ class ImageUploadAPI: ImageAPI {
       
       dataTask.resume()
     } catch {
+      self.generateSentryEvent(level: .error, message: error.localizedDescription, tags: [:])
       completion(.failure(ImageAPIError.unknownError(error: error)))
     }
   }

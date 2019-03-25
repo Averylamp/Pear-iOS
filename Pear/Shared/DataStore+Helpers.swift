@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebasePerformance
 import Crashlytics
+import Sentry
 
 extension DataStore {
   
@@ -38,7 +39,12 @@ extension DataStore {
                 Crashlytics.sharedInstance().setUserEmail(pearUser.email)
                 Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
                 Crashlytics.sharedInstance().setUserName(pearUser.fullName)
-                
+                Client.shared?.extra = [
+                  "email": pearUser.email,
+                  "firebaseAuthID": pearUser.firebaseAuthID,
+                  "fullName": pearUser.fullName,
+                  "userDocumentID": pearUser.documentID
+                ]
                 trace?.incrementMetric("Existing User Found", by: 1)
                 trace?.stop()
                 pearUserFoundCompletion()
