@@ -12,8 +12,8 @@ class NetworkingConfig {
   
   // swiftlint : disable: next line
   static let secureHTTPs = "https"
-  //  static let host: String = "sloths.mit.edu"
-  static let host: String = "koala.mit.edu"
+    static let host: String = "sloths.mit.edu"
+//  static let host: String = "koala.mit.edu"
 //    static let host: String = "66.31.16.203"
   
   static let devGraphQLHost: URL = URL(string: "\(secureHTTPs)://\(host)/graphql")!

@@ -168,6 +168,7 @@ private extension LandingScreenViewController {
           self.alert(title: "Auth Error", message: error.localizedDescription)
           firebaseFacebookLogin?.incrementMetric("Firebase Facebook Login Unsuccessful", by: 1)
           firebaseFacebookLogin?.stop()
+          print("Failed to log in user")
           return
         }
         guard let user = Auth.auth().currentUser else {
@@ -215,6 +216,12 @@ private extension LandingScreenViewController {
           if (facebookLogin && phoneLogin) || (emailLogin && phoneLogin) {
             print("Probably already created account")
           }
+          
+          if !phoneLogin {
+            print("Attached phone number not found")
+            gettingStartedUser.phoneNumber = nil
+          }
+          
           var permissions: [String] = ["id", "first_name", "last_name", "picture.width(300).height(300)"]
           
           if  grantedPermissions.contains("email") {
