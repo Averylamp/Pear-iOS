@@ -146,12 +146,20 @@ extension GetStartedValidatePhoneNumberCodeViewController {
     let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: fullString)
     if let user = Auth.auth().currentUser {
       user.linkAndRetrieveData(with: credential) { (_, error) in
-        if let error = error {
+        self.isVerifying = false
+        if let error = error as NSError? {
           print(error)
           HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
           DispatchQueue.main.async {
             print(error.localizedDescription)
-            self.alert(title: "Auth Error", message: "We are currently having issues authenticating your profile:")
+            
+            if error.code == 17025 {
+              self.alert(title: "Auth Error", message: "This phone number already associated with another account")
+            } else if error.code == 17044 {
+              self.alert(title: "Auth Error", message: "Incorrect code")
+            } else {
+              self.alert(title: "Auth Error", message: "We are currently having issues authenticating your profile")
+            }
             self.hiddenInputField.text = ""
             self.updateCodeNumberLabels()
           }
@@ -194,6 +202,8 @@ extension GetStartedValidatePhoneNumberCodeViewController {
           
         }
       }
+    } else {
+      self.isVerifying = false
     }
     
   }
