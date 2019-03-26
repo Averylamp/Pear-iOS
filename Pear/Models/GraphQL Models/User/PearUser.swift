@@ -50,7 +50,9 @@ class PearUser: Decodable, CustomStringConvertible {
   var requestedMatches: [Match] = []
   var currentMatches: [Match] = []
   
-  static let graphQLUserFields: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) pearPoints profileObjs \(PearUserProfile.graphQLUserProfileFields) endorsedProfileObjs \(PearUserProfile.graphQLUserProfileFields) detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFields))  requestedMatches \(Match.graphQLMatchFields) currentMatches \(Match.graphQLMatchFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+  static let graphQLUserFieldsAll: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) pearPoints profileObjs \(PearUserProfile.graphQLUserProfileFields) endorsedProfileObjs \(PearUserProfile.graphQLUserProfileFields) detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFields))  requestedMatches \(Match.graphQLMatchFields) currentMatches \(Match.graphQLMatchFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+  static let graphQLUserFieldsUserOnly: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) pearPoints matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+  static let graphQLUserFieldsMatchingUser: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields)  pearPoints profileObjs \(PearUserProfile.graphQLUserProfileFields)  matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
   
   init() {
     fatalError("Should never be called to generate")
@@ -89,15 +91,26 @@ class PearUser: Decodable, CustomStringConvertible {
     self.displayedImages = try values.decode([ImageContainer].self, forKey: .displayedImages)
     self.bankImages = try values.decode([ImageContainer].self, forKey: .bankImages)
     
-    self.userProfiles = try values.decode([PearUserProfile].self, forKey: .profileObjs)
-    self.endorsedProfiles = try values.decode([PearUserProfile].self, forKey: .endorsedProfileObjs)
-    self.detachedProfiles = try values.decode([PearDetachedProfile].self, forKey: .detachedProfileObjs)
+    if let userProfiles = try? values.decode([PearUserProfile].self, forKey: .profileObjs) {
+      self.userProfiles = userProfiles
+    }
+    if let endorsedProfiles = try? values.decode([PearUserProfile].self, forKey: .endorsedProfileObjs) {
+      self.endorsedProfiles = endorsedProfiles
+    }
+    if let detachedProfiles = try? values.decode([PearDetachedProfile].self, forKey: .detachedProfileObjs) {
+      self.detachedProfiles = detachedProfiles
+    }
     
     self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
     self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)
     
-    self.requestedMatches = try values.decode([Match].self, forKey: .requestedMatches)
-    self.currentMatches = try values.decode([Match].self, forKey: .currentMatches)
+    if let requestedMatches = try? values.decode([Match].self, forKey: .requestedMatches) {
+      self.requestedMatches = requestedMatches
+    }
+    if let currentMatches = try? values.decode([Match].self, forKey: .currentMatches) {
+      self.currentMatches = currentMatches
+    }
+
   }
   
   var description: String {
