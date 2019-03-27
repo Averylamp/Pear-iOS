@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FacebookCore
-import FirebaseAuth
+import FacebookLogin
 import Fabric
 import Crashlytics
 import Sentry
@@ -24,14 +24,9 @@ final class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-    window = UIWindow(frame: UIScreen.main.bounds)
-    let navController = LandingNavigationViewController.instantiate()
-    window?.rootViewController = navController
-    //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
-    window?.makeKeyAndVisible()
     FirebaseApp.configure()
     
-//    Forces Remote config fetch
+    //    Forces Remote config fetch
     print(DataStore.shared.remoteConfig.configSettings)
     Fabric.with([Crashlytics.self])
     
@@ -43,9 +38,30 @@ extension AppDelegate: UIApplicationDelegate {
     } catch let error {
       print("\(error)")
     }
-
+    
     SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+    
+    if CommandLine.arguments.contains("--uitesting") {
+      resetState()
+    }
+    
+    window = UIWindow(frame: UIScreen.main.bounds)
+    let navController = LandingNavigationViewController.instantiate()
+    window?.rootViewController = navController
+    //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
+    window?.makeKeyAndVisible()
     return true
+  }
+  
+  func resetState() {
+    let defaultsName = Bundle.main.bundleIdentifier!
+    UserDefaults.standard.removePersistentDomain(forName: defaultsName)
+    do {
+      try Auth.auth().signOut()
+    } catch {
+      print("Failed Firebase Auth")
+    }
+    LoginManager().logOut()
   }
   
   func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
