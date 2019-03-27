@@ -8,9 +8,9 @@
 
 import UIKit
 
-class GetStartedPhotoInputViewController: UIViewController {
+class ApproveDetachedProfilePhotosViewController: UIViewController {
   
-  var gettingStartedUserProfileData: UserProfileCreationData!
+  var detachedProfile: PearDetachedProfile!
   
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var collectionView: UICollectionView!
@@ -28,20 +28,20 @@ class GetStartedPhotoInputViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedPhotoInputViewController? {
-    let storyboard = UIStoryboard(name: String(describing: GetStartedPhotoInputViewController.self), bundle: nil)
-    guard let photoInputVC = storyboard.instantiateInitialViewController() as? GetStartedPhotoInputViewController else { return nil }
-    photoInputVC.gettingStartedUserProfileData = gettingStartedData
+  class func instantiate(detachedProfile: PearDetachedProfile, displayedImages:[GettingStartedUIImageContainer]) -> ApproveDetachedProfilePhotosViewController? {
+    let storyboard = UIStoryboard(name: String(describing: ApproveDetachedProfilePhotosViewController.self), bundle: nil)
+    guard let photoInputVC = storyboard.instantiateInitialViewController() as? ApproveDetachedProfilePhotosViewController else { return nil }
+    photoInputVC.detachedProfile = detachedProfile
+    photoInputVC.images = displayedImages
     return photoInputVC
   }
   
   func saveImages() {
-    self.gettingStartedUserProfileData.images = self.images
+//    self.detachedProfile.images = self.images.compactMap({ $0.imageContainer })
+    // TODO: Image Update Here
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    self.saveImages()
-    
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -49,29 +49,29 @@ class GetStartedPhotoInputViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveImages()
     
-    if self.gettingStartedUserProfileData.images.count == 0 {
+    if self.detachedProfile.images.count == 0 {
       self.alert(title: "Please Upload 🎑", message: "You must upload at least one image")
       return
     }
     
-    guard let profileReviewVC = FullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
-      print("Failed to create scrolling Full VC")
-      return
-    }
-    self.navigationController?.pushViewController(profileReviewVC, animated: true)
+//    guard let profileReviewVC = FullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.detachedProfile) else {
+//      print("Failed to create scrolling Full VC")
+//      return
+//    }
+//    self.navigationController?.pushViewController(profileReviewVC, animated: true)
 
   }
   
 }
 
 // MARK: - Life Cycle
-extension GetStartedPhotoInputViewController {
+extension ApproveDetachedProfilePhotosViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.restoreGettingStartedState()
     self.setupCollectionView()
     imagePickerController.delegate = self
-    self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GetStartedPhotoInputViewController.handleLongGesture(gesture:)))
+    self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ApproveDetachedProfilePhotosViewController.handleLongGesture(gesture:)))
     self.collectionView.addGestureRecognizer(self.longPressGestureRecognizer)
     self.stylize()
   }
@@ -95,7 +95,7 @@ extension GetStartedPhotoInputViewController {
   }
   
   func restoreGettingStartedState() {
-    self.images = self.gettingStartedUserProfileData.images
+    self.images = self.detachedProfile.images.map({ $0.gettingStartedImageContainer(size: .thumbnail) })
   }
   
   func setupCollectionView() {
@@ -106,7 +106,7 @@ extension GetStartedPhotoInputViewController {
 }
 
 // MARK: - UICollectionViewDelegate
-extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
+extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if indexPath.item >= self.images.count {
@@ -119,9 +119,9 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
         self.openGallery()
       }))
       
-      //            alert.addAction(UIAlertAction(title: "Facebook", style: .default, handler: { _ in
-      //                self.openGallery()
-      //            }))
+      alert.addAction(UIAlertAction(title: "Suggested by Friends", style: .default, handler: { _ in
+          self.openPhotoBank()
+      }))
       
       alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
       
@@ -147,10 +147,14 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
     self.present(imagePickerController, animated: true, completion: nil)
   }
   
+  func openPhotoBank(){
+    self.alert(title: "Feature Unavailable", message: "This feature is currently unavailable, but will be released soon")
+  }
+  
 }
 
 // MARK: - UICollectionViewDelegate Reordering
-extension GetStartedPhotoInputViewController {
+extension ApproveDetachedProfilePhotosViewController {
   
   func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
     return indexPath.item < self.images.count
@@ -208,7 +212,7 @@ extension GetStartedPhotoInputViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageUploadCollectionViewDelegate {
+extension ApproveDetachedProfilePhotosViewController: UICollectionViewDataSource, ImageUploadCollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 6
   }
@@ -219,7 +223,13 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageU
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadCollectionViewCell", for: indexPath) as? ImageUploadCollectionViewCell else {
         return UICollectionViewCell()
       }
-      cell.imageView.image = self.images[indexPath.item].image
+      
+      if let image = self.images[indexPath.row].image {
+        cell.imageView.image = image
+      }else if let urlString = self.images[indexPath.row].imageContainer?.thumbnail.imageURL,  let imageURL = URL(string: urlString) {
+        cell.imageView.image = nil
+        cell.imageView.sd_setImage(with: imageURL, placeholderImage: nil, options: .highPriority, progress: nil, completed: nil)
+      }
       cell.imageView.contentMode = .scaleAspectFill
       cell.imageView.layer.cornerRadius = 3
       cell.imageView.clipsToBounds = true
@@ -248,7 +258,7 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageU
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension GetStartedPhotoInputViewController: UICollectionViewDelegateFlowLayout {
+extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let sideLength: CGFloat = (collectionView.frame.size.width  - ( 2 * betweenImageSpacing)) / 3.0
@@ -266,7 +276,7 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegateFlowLayout
 }
 
 // MARK: - UIPickerControllerDelegate
-extension GetStartedPhotoInputViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ApproveDetachedProfilePhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
     if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage, let userID = DataStore.shared.currentPearUser?.documentID {

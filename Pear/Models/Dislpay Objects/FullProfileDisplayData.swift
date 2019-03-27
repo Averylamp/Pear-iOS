@@ -73,7 +73,7 @@ class FullProfileDisplayData {
               dos: gsup.dos.map({DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}),
               donts: gsup.donts.map({DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}))
     self.originalCreatorName = creatorFirstName
-    self.rawImages = gsup.images.map({ $0.image })
+    self.rawImages = gsup.images.compactMap({ $0.image })
     self.profileOrigin = .gettingStartedProfile
   }
   
