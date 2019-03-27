@@ -1,5 +1,5 @@
 //
-//  MatchedPearUser.swift
+//  MatchingPearUser.swift
 //  Pear
 //
 //  Created by Avery Lamp on 3/23/19.
@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 import SwiftyJSON
 
-class MatchedPearUser: Decodable, CustomStringConvertible {
+class MatchingPearUser: Decodable, CustomStringConvertible {
   
   var documentID: String
   var firstName: String
@@ -24,8 +24,9 @@ class MatchedPearUser: Decodable, CustomStringConvertible {
   var matchingPreferences: MatchingPreferences!
   
   var userProfiles: [PearUserProfile] = []
+  var images: [ImageContainer] = []
   
-  static let graphQLMatchedUserFields: String = "{ _id deactivated firstName lastName fullName thumbnailURL gender school birthdate age profileObjs \(PearUserProfile.graphQLUserProfileFields) displayedImages \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) pearPoints }"
+  static let graphQLMatchedUserFieldsAll: String = "{ _id deactivated firstName lastName fullName thumbnailURL gender school birthdate age profileObjs \(PearUserProfile.graphQLUserProfileFieldsAll) displayedImages \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) pearPoints }"
   
   init() {
     fatalError("Should never be called to generate")
@@ -45,6 +46,8 @@ class MatchedPearUser: Decodable, CustomStringConvertible {
     self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)
     
     self.userProfiles = try values.decode([PearUserProfile].self, forKey: .profileObjs)
+    self.images = try values.decode([ImageContainer].self, forKey: .displayedImages)
+
   }
   
   var description: String {

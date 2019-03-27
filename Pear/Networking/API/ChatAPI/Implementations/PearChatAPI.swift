@@ -78,7 +78,7 @@ extension PearChatAPI {
               return
             }
           } else {
-            print("Failed Conversions")
+            print("Failed Chats Conversions")
             completion(.failure(ChatAPIError.failedDeserialization))
             return
           }

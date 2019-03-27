@@ -77,6 +77,40 @@ class FullProfileDisplayData {
     self.profileOrigin = .gettingStartedProfile
   }
   
+  convenience init (matchingUser: MatchingPearUser) {
+    var interests: [String] = []
+    var vibes: [String] = []
+    var bioContent: [BioContent] = []
+    var doContent: [DoDontContent] = []
+    var dontContent: [DoDontContent] = []
+    
+    for profile in matchingUser.userProfiles {
+      profile.interests.forEach({
+        if !interests.contains($0) {
+          interests.append($0)
+        }
+      })
+      profile.vibes.forEach({
+        if !vibes.contains($0) {
+          vibes.append($0)
+        }
+      })
+      bioContent.append(BioContent.init(bio: profile.bio, creatorName: profile.creatorFirstName))
+      doContent.append(contentsOf: profile.dos.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
+      dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
+    }
+    self.init(firstName: matchingUser.firstName,
+              age: matchingUser.matchingDemographics.age,
+              gender: matchingUser.matchingDemographics.gender.rawValue,
+              interests: interests,
+              vibes: vibes,
+              bio: bioContent,
+              dos: doContent,
+              donts: dontContent)
+    
+    self.imageContainers = matchingUser.images
+  }
+  
   convenience init (pdp: PearDetachedProfile) {
     self.init(firstName: pdp.firstName,
               age: pdp.age,

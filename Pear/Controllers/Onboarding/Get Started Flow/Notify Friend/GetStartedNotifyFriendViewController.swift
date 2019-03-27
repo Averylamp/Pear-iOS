@@ -37,6 +37,12 @@ class GetStartedNotifyFriendViewController: UIViewController {
   @IBAction func nextButtonClicked(_ sender: Any) {
     if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
       print("Verifying phone number")
+      
+      if let userPhoneNumber = DataStore.shared.currentPearUser?.phoneNumber, phoneNumber == userPhoneNumber {
+        self.alert(title: "Friend Approval Required", message: "You must send the profile to your friend for approval")
+        return
+      }
+      
       self.gettingStartedData.phoneNumber = phoneNumber
       self.inputTextField.textColor = UIColor.lightGray
       self.inputTextField.isEnabled = false
