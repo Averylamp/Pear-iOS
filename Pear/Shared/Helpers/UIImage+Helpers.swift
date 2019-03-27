@@ -59,17 +59,8 @@ extension UIImage {
     return resizedImage
   }
   
-  func gettingStartedImage() -> GettingStartedUIImageContainer {
-    return GettingStartedUIImageContainer(image: self)
+  func gettingStartedImage(size: ImageType? = nil) -> GettingStartedUIImageContainer {
+    return GettingStartedUIImageContainer(image: self, imageSize: size)
   }
 }
 
-class GettingStartedUIImageContainer {
-  var imageContainer: ImageContainer?
-  var image: UIImage
-  
-  init(image: UIImage) {
-    self.image = image
-  }
-  
-}

@@ -30,17 +30,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODI-3H-cEt">
-                                <rect key="frame" x="30" y="732" width="354" height="50"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="QLI-HM-6SR"/>
-                                </constraints>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <action selector="nextButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="bcI-M5-vga"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMl-Hv-pPE">
                                 <rect key="frame" x="30" y="792" width="354" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,15 +41,35 @@
                                     <action selector="skipButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="F8S-bX-B1y"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODI-3H-cEt">
+                                <rect key="frame" x="30" y="732" width="354" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QLI-HM-6SR"/>
+                                </constraints>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="bcI-M5-vga"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fireworks-icon" translatesAutoresizingMaskIntoConstraints="NO" id="VlL-Dh-foD">
+                                <rect key="frame" x="137" y="242.5" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="IfP-RH-OQA"/>
+                                    <constraint firstAttribute="width" secondItem="VlL-Dh-foD" secondAttribute="height" multiplier="1:1" id="gMR-dn-BQ5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="bottom" secondItem="ZMl-Hv-pPE" secondAttribute="bottom" constant="20" id="0HC-zb-HNB"/>
+                            <constraint firstItem="VlL-Dh-foD" firstAttribute="centerX" secondItem="gQ4-0s-yY9" secondAttribute="centerX" id="1Vf-1D-Nem"/>
                             <constraint firstItem="ODI-3H-cEt" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="30" id="2S4-uD-feh"/>
                             <constraint firstItem="ZMl-Hv-pPE" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="30" id="6Pq-kg-g2h"/>
                             <constraint firstItem="13a-lb-DzA" firstAttribute="centerX" secondItem="gQ4-0s-yY9" secondAttribute="centerX" id="JNx-Bc-qKY"/>
                             <constraint firstItem="nvd-2p-GUa" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="40" id="KfR-hU-1cf"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="ODI-3H-cEt" secondAttribute="trailing" constant="30" id="RdE-46-tBD"/>
+                            <constraint firstItem="13a-lb-DzA" firstAttribute="top" secondItem="VlL-Dh-foD" secondAttribute="bottom" constant="40" id="W0d-pl-HIJ"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="ZMl-Hv-pPE" secondAttribute="trailing" constant="30" id="Yac-i7-5Jy"/>
                             <constraint firstItem="ZMl-Hv-pPE" firstAttribute="top" secondItem="ODI-3H-cEt" secondAttribute="bottom" constant="10" id="eXk-v2-wrU"/>
                             <constraint firstItem="nvd-2p-GUa" firstAttribute="centerX" secondItem="13a-lb-DzA" secondAttribute="centerX" id="goQ-y9-6IH"/>
@@ -82,4 +91,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fireworks-icon" width="640" height="640"/>
+    </resources>
 </document>

@@ -55,7 +55,7 @@ class UserProfileCreationData: CustomStringConvertible {
     self.donts = ["feed him vegetables", "make him sleep on time"]
     
     if let image = ImageContainer.fakeImage() {
-      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-1")!)
+      let fakeImage = GettingStartedUIImageContainer(image: UIImage(named: "sample-profile-brooke-1")!, imageSize: .original)
       fakeImage.imageContainer = image
       self.images.append(fakeImage)
     }    

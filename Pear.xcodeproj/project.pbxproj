@@ -143,10 +143,10 @@
 		BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */; };
 		BBA2E1E8224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2E1E7224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift */; };
 		BBA2E1EA224B23970088A7A7 /* ApproveDetachedProfileFoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2E1E9224B23970088A7A7 /* ApproveDetachedProfileFoundViewController.swift */; };
-		BBA2E1EC224B23AE0088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2E1EB224B23AE0088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.swift */; };
 		BBA2E1EE224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2E1ED224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard */; };
 		BBA2E1F0224B2E980088A7A7 /* ApproveDetachedProfileNavigationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2E1EF224B2E980088A7A7 /* ApproveDetachedProfileNavigationViewController.storyboard */; };
-		BBA2E1F2224B2EB90088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2E1F1224B2EB90088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.storyboard */; };
+		BBA2E1F9224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2E1F7224B3AA50088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard */; };
+		BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2E1F8224B3AA50088A7A7 /* ApproveDetachedProfilePhotosViewController.swift */; };
 		BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */; };
 		BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */; };
 		BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */; };
@@ -361,10 +361,10 @@
 		BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDoDontViewController.storyboard; sourceTree = "<group>"; };
 		BBA2E1E7224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveDetachedProfileNavigationViewController.swift; sourceTree = "<group>"; };
 		BBA2E1E9224B23970088A7A7 /* ApproveDetachedProfileFoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveDetachedProfileFoundViewController.swift; sourceTree = "<group>"; };
-		BBA2E1EB224B23AE0088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveDetachedProfilePhotoUpdateViewController.swift; sourceTree = "<group>"; };
 		BBA2E1ED224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveDetachedProfileFoundViewController.storyboard; sourceTree = "<group>"; };
 		BBA2E1EF224B2E980088A7A7 /* ApproveDetachedProfileNavigationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveDetachedProfileNavigationViewController.storyboard; sourceTree = "<group>"; };
-		BBA2E1F1224B2EB90088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveDetachedProfilePhotoUpdateViewController.storyboard; sourceTree = "<group>"; };
+		BBA2E1F7224B3AA50088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ApproveDetachedProfilePhotosViewController.storyboard; sourceTree = "<group>"; };
+		BBA2E1F8224B3AA50088A7A7 /* ApproveDetachedProfilePhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveDetachedProfilePhotosViewController.swift; sourceTree = "<group>"; };
 		BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
@@ -1040,8 +1040,8 @@
 		BBA2E1F6224B31030088A7A7 /* Update Photos */ = {
 			isa = PBXGroup;
 			children = (
-				BBA2E1EB224B23AE0088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.swift */,
-				BBA2E1F1224B2EB90088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.storyboard */,
+				BBA2E1F8224B3AA50088A7A7 /* ApproveDetachedProfilePhotosViewController.swift */,
+				BBA2E1F7224B3AA50088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard */,
 			);
 			path = "Update Photos";
 			sourceTree = "<group>";
@@ -1483,6 +1483,7 @@
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
+				BBA2E1F9224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard in Resources */,
 				BB94C1312243C73B001320B0 /* Strings.strings in Resources */,
 				BB18789521E2B21F00964F26 /* MatchesMainViewController.storyboard in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
@@ -1514,7 +1515,6 @@
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
 				BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
-				BBA2E1F2224B2EB90088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.storyboard in Resources */,
 				BB986A20220E08ED00759A14 /* LandingScreenViewController.storyboard in Resources */,
 				BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */,
 				BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */,
@@ -1774,6 +1774,7 @@
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
 				BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */,
+				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
 				BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */,
 				BB18788B21E2B1B400964F26 /* ProfilesMainViewController.swift in Sources */,
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
@@ -1801,7 +1802,6 @@
 				BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
-				BBA2E1EC224B23AE0088A7A7 /* ApproveDetachedProfilePhotoUpdateViewController.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
