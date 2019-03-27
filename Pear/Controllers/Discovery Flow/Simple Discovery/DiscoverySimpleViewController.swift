@@ -45,14 +45,14 @@ extension DiscoverySimpleViewController {
       print("\(detachedProfiles.count) Detached Profiles Found")
       
       if let firstDetachedProfile = detachedProfiles.first {
-        guard let detachedProfileApprovalVC = DetachedProfileApprovalViewController.instantiate(detachedProfile: firstDetachedProfile) else {
-          print("Failed to create detached profile vc")
+        guard let detachedProfileApprovalVC = ApproveDetachedProfileNavigationViewController.instantiate(detachedProfile: firstDetachedProfile) else {
+          print("Failed to create detached profile navigation vc")
           return
         }
         self.present(detachedProfileApprovalVC, animated: true, completion: nil)
       }
     }, detachedProfilesNotFound: {
-      print("No detached Profiles Found")
+      print("No detached Profiles Found for user")
       })
   }
   

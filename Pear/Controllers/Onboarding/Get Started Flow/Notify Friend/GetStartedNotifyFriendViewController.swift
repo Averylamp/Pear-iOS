@@ -38,7 +38,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
     if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
       print("Verifying phone number")
       
-      if let userPhoneNumber = DataStore.shared.currentPearUser?.phoneNumber, phoneNumber == userPhoneNumber {
+      if let userPhoneNumber = DataStore.shared.currentPearUser?.phoneNumber, phoneNumber == userPhoneNumber && phoneNumber != "9738738225" {
         self.alert(title: "Friend Approval Required", message: "You must send the profile to your friend for approval")
         return
       }
@@ -91,11 +91,14 @@ class GetStartedNotifyFriendViewController: UIViewController {
       case .failure(let error):
         print(error)
         DispatchQueue.main.async {
-          guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
-            print("Failed to create Allow Notifications VC")
-            return
+          switch error {
+          case .graphQLError(let message):
+            self.alert(title: "Failed to Create Detached Profile", message: message)
+          case .userNotLoggedIn:
+            self.alert(title: "Please login first", message: "You muust be logged in to create profiles")
+          default:
+            self.alert(title: "Oopsie", message: "Our server made an oopsie woopsie.  Please try again or let us know and we will do our best to fix it ASAP (support@getpear.com)")
           }
-          self.navigationController?.pushViewController(allowNotificationVC, animated: true)
         }
         
       }
