@@ -12,7 +12,6 @@ class ApproveDetachedProfileViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
   
-  @IBOutlet weak var titleLabel: UILabel!
   var detachedProfile: PearDetachedProfile!
   /// Factory method for creating this view controller.
   ///
@@ -26,6 +25,12 @@ class ApproveDetachedProfileViewController: UIViewController {
   
   @objc func skipButtonClicked(sender: UIButton) {
     self.dismiss(animated: true, completion: nil)
+  }
+  
+  @IBAction func backButtonClicked(_ sender: Any) {
+    
+    self.navigationController?.popViewController(animated: true)
+    
   }
   
   @objc func saveButtonClicked(sender: UIButton) {
@@ -146,8 +151,6 @@ extension ApproveDetachedProfileViewController {
   }
   
   func stylize() {
-    self.titleLabel.stylizeTitleLabel()
-    self.titleLabel.text = "\(detachedProfile.creatorFirstName!) Created a Profile for You!"
     
   }
   

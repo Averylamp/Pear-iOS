@@ -98,22 +98,22 @@ class ImageContainer: Codable, CustomStringConvertible {
     return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
   }
   
-  func gettingStartedImageContainer(size: ImageType?)->GettingStartedUIImageContainer {
+  func gettingStartedImageContainer(size: ImageType? = nil) -> GettingStartedUIImageContainer {
     guard let size = size else {
       return GettingStartedUIImageContainer(container: self)
     }
     var cacheImageURL: URL?
     switch size {
     case .original:
-      cacheImageURL = URL(string:self.original.imageURL)
+      cacheImageURL = URL(string: self.original.imageURL)
     case .large:
-      cacheImageURL = URL(string:self.large.imageURL)
+      cacheImageURL = URL(string: self.large.imageURL)
     case .medium:
-      cacheImageURL = URL(string:self.medium.imageURL)
+      cacheImageURL = URL(string: self.medium.imageURL)
     case .small:
-      cacheImageURL = URL(string:self.small.imageURL)
+      cacheImageURL = URL(string: self.small.imageURL)
     case .thumbnail:
-      cacheImageURL = URL(string:self.thumbnail.imageURL)
+      cacheImageURL = URL(string: self.thumbnail.imageURL)
     case .unknown:
       return GettingStartedUIImageContainer(container: self)
     }
@@ -170,8 +170,6 @@ extension ImageContainer {
   
 }
 
-
-
 class GettingStartedUIImageContainer {
   var imageContainer: ImageContainer?
   var image: UIImage?
@@ -182,18 +180,17 @@ class GettingStartedUIImageContainer {
     self.loadedImageSize = imageSize
   }
   
-  
   /// Creates an image Container
   ///
   /// - Parameters:
   ///   - container: The Image Container to transform
   ///   - imageURL: An option imageURL to provide to start caching an image
   ///   - imageSize: An optional descriptor for the cached image, used to decide upon reloading
-  init(container: ImageContainer, imageURL: URL? = nil, imageSize: ImageType? = nil){
+  init(container: ImageContainer, imageURL: URL? = nil, imageSize: ImageType? = nil) {
     self.imageContainer = container
-    if let imageURL = imageURL{
+    if let imageURL = imageURL {
       SDWebImageDownloader.shared()
-        .downloadImage(with: imageURL, options: .highPriority, progress: nil) { (image, data, error, finished) in
+        .downloadImage(with: imageURL, options: .highPriority, progress: nil) { (image, _, _, _) in
           if let image = image {
             self.loadedImageSize = imageSize
             self.image = image

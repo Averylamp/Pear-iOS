@@ -8,6 +8,8 @@
 
 import UIKit
 import SDWebImage
+import FirebaseAuth
+import NVActivityIndicatorView
 
 class ApproveDetachedProfileFoundViewController: UIViewController {
 
@@ -20,8 +22,9 @@ class ApproveDetachedProfileFoundViewController: UIViewController {
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var skipButton: UIButton!
   
-  var imageContainers: [GettingStartedUIImageContainer] = []
+  var imageContainers: (displayedImages: [GettingStartedUIImageContainer], imageBank: [GettingStartedUIImageContainer])?
   var loadedImageContainersFromUser = false
+  var hasClickedNext = false
   
   /// Factory method for creating this view controller.
   ///
@@ -35,10 +38,25 @@ class ApproveDetachedProfileFoundViewController: UIViewController {
   }
   
   @IBAction func nextButtonClicked(_ sender: Any) {
-    
+    guard let imageContainers = self.imageContainers else {
+      if hasClickedNext {
+        return
+      }
+      hasClickedNext = true
+      let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                      type: NVActivityIndicatorType.ballScaleRippleMultiple,
+                                                      color: StylingConfig.textFontColor,
+                                                      padding: 0)
+      self.view.addSubview(activityIndicator)
+      activityIndicator.center = CGPoint(x: self.view.center.x,
+                                         y: self.nextButton.frame.origin.y - 40)
+      activityIndicator.startAnimating()
+      return
+    }
     guard let updatePhotosVC = ApproveDetachedProfilePhotosViewController
       .instantiate(detachedProfile: self.detachedProfile,
-                   displayedImages: imageContainers) else {
+                   displayedImages: imageContainers.displayedImages,
+                   imageBank: imageContainers.imageBank) else {
       print("Failed to instantiate Update Photos VC")
       return
     }
@@ -55,7 +73,7 @@ extension ApproveDetachedProfileFoundViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.loadUserImages()
     self.stylize()
   }
   
@@ -67,5 +85,45 @@ extension ApproveDetachedProfileFoundViewController {
     
     self.subtitleLabel.text = "\(self.detachedProfile.creatorFirstName!) started a profile for you. Choose your profile photos and see what they wrote."
   }
-  
+
+  func loadUserImages() {
+    if let currentUser = Auth.auth().currentUser {
+      let uid = currentUser.uid
+      currentUser.getIDToken { (token, error) in
+        if let error = error {
+          print(error)
+          return
+        }
+        if let token = token {
+          PearImageAPI.shared.getImages(uid: uid, token: token, completion: { (result) in
+            switch result {
+            case .success(let foundImages):
+              var foundDisplayedImageContainers = foundImages.displayedImages
+              if foundDisplayedImageContainers.count < 6 {
+                foundDisplayedImageContainers
+                  .append(contentsOf: Array(self.detachedProfile.images.prefix(6 - foundDisplayedImageContainers.count)))
+              }
+              var foundBankImages = foundImages.imageBank
+              foundBankImages.append(contentsOf: self.detachedProfile.images)
+              let displayedImagesContainers = foundDisplayedImageContainers.map({ $0.gettingStartedImageContainer(size: .thumbnail) })
+              let bankImages = foundBankImages.map({ $0.gettingStartedImageContainer() })
+              self.imageContainers = (displayedImages: displayedImagesContainers, imageBank: bankImages)
+              print("Successfully loaded \(displayedImagesContainers.count) Displayed Images, \(bankImages.count) Bank Images")
+              
+            case .failure(let error):
+              print(error)
+              self.imageContainers = (displayedImages: self.detachedProfile.images.map({ $0.gettingStartedImageContainer(size: .thumbnail )}),
+                                      imageBank: self.detachedProfile.images.map({ $0.gettingStartedImageContainer(size: .thumbnail )}))
+            }
+            
+            if self.hasClickedNext {
+              DispatchQueue.main.async {
+                self.nextButtonClicked(self.nextButton as Any)
+              }
+            }
+          })
+        }
+      }
+    }
+  }
 }

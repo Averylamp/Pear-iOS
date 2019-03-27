@@ -194,7 +194,7 @@
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
-		BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDF22212E82002E1B54 /* ImageUploadAPI.swift */; };
+		BBFFBBE022212E82002E1B54 /* PearImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDF22212E82002E1B54 /* PearImageAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -416,7 +416,7 @@
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
-		BBFFBBDF22212E82002E1B54 /* ImageUploadAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadAPI.swift; sourceTree = "<group>"; };
+		BBFFBBDF22212E82002E1B54 /* PearImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearImageAPI.swift; sourceTree = "<group>"; };
 		D006C0A39326CBF34EC187F4 /* Pods_PearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C78EDE4D7E0B9A500DD15A /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.release.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1319,7 +1319,7 @@
 		BBFFBBDC222118D1002E1B54 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				BBFFBBDF22212E82002E1B54 /* ImageUploadAPI.swift */,
+				BBFFBBDF22212E82002E1B54 /* PearImageAPI.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1794,7 +1794,7 @@
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,
-				BBFFBBE022212E82002E1B54 /* ImageUploadAPI.swift in Sources */,
+				BBFFBBE022212E82002E1B54 /* PearImageAPI.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB5F5311223BA57700C25861 /* ProfileMadeByTableViewCell.swift in Sources */,

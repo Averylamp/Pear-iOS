@@ -18,47 +18,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gr-le-2A1">
-                                <rect key="frame" x="20" y="36" width="335" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJj-a8-mpA">
-                                <rect key="frame" x="0.0" y="64.5" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="69" width="375" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="JOC-lE-ERX"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRc-8w-TN2">
-                                <rect key="frame" x="0.0" y="65.5" width="375" height="601.5"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-cd-zR3" userLabel="Header Container">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2D-4i-d94" userLabel="Back Button">
+                                        <rect key="frame" x="12" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="AyA-qs-u3Q"/>
+                                            <constraint firstAttribute="height" constant="40" id="NDL-Da-Ddl"/>
+                                        </constraints>
+                                        <state key="normal" image="onboarding-back-button">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="JAC-qd-e6P" eventType="touchUpInside" id="S8J-6K-pIK"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="approval-person" translatesAutoresizingMaskIntoConstraints="NO" id="lP8-q5-Ooo" userLabel="Center Icon">
+                                        <rect key="frame" x="167.5" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lP8-q5-Ooo" secondAttribute="height" multiplier="1:1" id="fbX-Hi-hZS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFs-tK-yYE" userLabel="Progress View">
+                                        <rect key="frame" x="0.0" y="49" width="0.0" height="1"/>
+                                        <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" id="Gth-1v-ZBo"/>
+                                            <constraint firstAttribute="height" constant="1" id="Jno-A3-8OK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="H2D-4i-d94" firstAttribute="centerY" secondItem="UDg-cd-zR3" secondAttribute="centerY" id="3o5-eV-0DG"/>
+                                    <constraint firstAttribute="bottom" secondItem="pFs-tK-yYE" secondAttribute="bottom" id="5bd-zl-DaH"/>
+                                    <constraint firstItem="lP8-q5-Ooo" firstAttribute="centerX" secondItem="UDg-cd-zR3" secondAttribute="centerX" id="EOI-Ka-uU4"/>
+                                    <constraint firstItem="lP8-q5-Ooo" firstAttribute="height" secondItem="UDg-cd-zR3" secondAttribute="height" constant="-10" id="Scw-dF-QL6"/>
+                                    <constraint firstItem="lP8-q5-Ooo" firstAttribute="centerY" secondItem="UDg-cd-zR3" secondAttribute="centerY" id="WBS-Gn-e3C"/>
+                                    <constraint firstItem="pFs-tK-yYE" firstAttribute="leading" secondItem="UDg-cd-zR3" secondAttribute="leading" id="XMv-3R-CQ8"/>
+                                    <constraint firstItem="H2D-4i-d94" firstAttribute="leading" secondItem="UDg-cd-zR3" secondAttribute="leading" constant="12" id="hvP-q9-Dc2"/>
+                                    <constraint firstAttribute="height" constant="50" id="tHU-Yi-t91"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4gr-le-2A1" firstAttribute="leading" secondItem="7UY-Tn-1Ai" secondAttribute="leading" constant="20" id="4vm-7c-hya"/>
                             <constraint firstItem="dJj-a8-mpA" firstAttribute="width" secondItem="JIB-RH-I7D" secondAttribute="width" id="9WY-aL-FBa"/>
                             <constraint firstItem="IRc-8w-TN2" firstAttribute="leading" secondItem="7UY-Tn-1Ai" secondAttribute="leading" id="DE6-RD-v1E"/>
-                            <constraint firstItem="4gr-le-2A1" firstAttribute="top" secondItem="7UY-Tn-1Ai" secondAttribute="top" constant="16" id="HER-Ic-P1i"/>
+                            <constraint firstItem="IRc-8w-TN2" firstAttribute="top" secondItem="UDg-cd-zR3" secondAttribute="bottom" id="ETs-F2-f9d"/>
                             <constraint firstItem="7UY-Tn-1Ai" firstAttribute="bottom" secondItem="IRc-8w-TN2" secondAttribute="bottom" id="NJh-IX-UKl"/>
+                            <constraint firstItem="UDg-cd-zR3" firstAttribute="top" secondItem="7UY-Tn-1Ai" secondAttribute="top" id="SWN-me-stF"/>
+                            <constraint firstItem="UDg-cd-zR3" firstAttribute="leading" secondItem="7UY-Tn-1Ai" secondAttribute="leading" id="TPE-CR-ciF"/>
                             <constraint firstItem="7UY-Tn-1Ai" firstAttribute="trailing" secondItem="IRc-8w-TN2" secondAttribute="trailing" id="Tn9-H5-V5d"/>
-                            <constraint firstItem="dJj-a8-mpA" firstAttribute="top" secondItem="4gr-le-2A1" secondAttribute="bottom" constant="8" id="UGE-Ct-ZdI"/>
-                            <constraint firstItem="4gr-le-2A1" firstAttribute="centerX" secondItem="7UY-Tn-1Ai" secondAttribute="centerX" id="cRy-sU-c9I"/>
-                            <constraint firstItem="7UY-Tn-1Ai" firstAttribute="trailing" secondItem="4gr-le-2A1" secondAttribute="trailing" constant="20" id="ecq-xJ-8P3"/>
                             <constraint firstItem="dJj-a8-mpA" firstAttribute="centerX" secondItem="7UY-Tn-1Ai" secondAttribute="centerX" id="fxf-5e-S7x"/>
+                            <constraint firstItem="UDg-cd-zR3" firstAttribute="trailing" secondItem="7UY-Tn-1Ai" secondAttribute="trailing" id="pg0-DS-Ylg"/>
                             <constraint firstItem="IRc-8w-TN2" firstAttribute="top" secondItem="dJj-a8-mpA" secondAttribute="bottom" id="xMy-7M-EOD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7UY-Tn-1Ai"/>
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="IRc-8w-TN2" id="6Th-Eb-g7P"/>
-                        <outlet property="titleLabel" destination="4gr-le-2A1" id="ag0-yL-Ql7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yco-Hj-ZhL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202" y="-310"/>
+            <point key="canvasLocation" x="200.80000000000001" y="-310.79460269865069"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="approval-person" width="160" height="160"/>
+        <image name="onboarding-back-button" width="120" height="120"/>
+    </resources>
 </document>
