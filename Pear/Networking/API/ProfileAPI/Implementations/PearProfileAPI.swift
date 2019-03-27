@@ -21,15 +21,15 @@ class PearProfileAPI: ProfileAPI {
     "Content-Type": "application/json"
   ]
   
-  static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile \(PearDetachedProfile.graphQLDetachedProfileFields) }}"
+  static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile \(PearDetachedProfile.graphQLDetachedProfileFieldsAll) }}"
   
-  static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLDetachedProfileFields) }"
+  static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLDetachedProfileFieldsAll) }"
   
   // swiftlint:disable:next line_length
   static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
   
-  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLUserFieldsAll) } }}"
- 
+  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) } }}"
+  
   func generateSentryEvent(level: SentrySeverity = .warning,
                            message: String,
                            tags: [String: String] = [:],
@@ -92,8 +92,8 @@ extension PearProfileAPI {
               print("Deserialization Error: \(error)")
               self.generateSentryEvent(level: .error,
                                        message: "DeserializationError: \(error.localizedDescription)",
-                                       tags: ["function": "createDetachedProfile"],
-                                       paylod: fullDictionary)
+                tags: ["function": "createDetachedProfile"],
+                paylod: fullDictionary)
               completion(.failure(DetachedProfileError.failedDeserialization))
             }
           }
@@ -161,7 +161,7 @@ extension PearProfileAPI {
               return
             }
           } else {
-            print("Failed Conversions")
+            print("Failed Detached Profile Conversions")
             self.generateSentryEvent(level: .error, message: "Failed to convert inputs", 
                                      tags: ["function": "findDetachedProfiles"], paylod: [:])
             completion(.failure(DetachedProfileError.failedDeserialization))
@@ -221,7 +221,7 @@ extension PearProfileAPI {
                                      tags: ["function": "approveNewDetachedProfile"], paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
           case .success(let message):
-            print("Successfully attached Detached Profile: \(message)")
+            print("Successfully attached Detached Profile: \(String(describing: message))")
             completion(.success(true))
           }
         }
@@ -270,12 +270,11 @@ extension PearProfileAPI {
               var allFullProfiles: [FullProfileDisplayData] = []
               for userData in discoveryUsers {
                 do {
-                  if let userRawData = try? userData["user"].rawData() {
-                    let pearUser = try JSONDecoder().decode(PearUser.self, from: userRawData)
-                    if pearUser.userProfiles.count > 0,
-                      let fullProfile = try? FullProfileDisplayData(user: pearUser, profiles: pearUser.userProfiles) {
-                      allFullProfiles.append(fullProfile)
-                    }
+                  let userRawData = try userData["user"].rawData()
+                  let matchingPearUser = try JSONDecoder().decode(MatchingPearUser.self, from: userRawData)
+                  if matchingPearUser.userProfiles.count > 0 {
+                    let fullProfile = FullProfileDisplayData(matchingUser: matchingPearUser)
+                    allFullProfiles.append(fullProfile)
                   }
                 } catch {
                   print("Failed to deserialize pear user from feed: \(error)")
@@ -284,7 +283,7 @@ extension PearProfileAPI {
               completion(.success(allFullProfiles))
             }            
           } else {
-            print("Failed Conversions")
+            print("Failed Discovery Feed Conversions")
             completion(.failure(DetachedProfileError.failedDeserialization))
             return
           }

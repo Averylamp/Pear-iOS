@@ -61,7 +61,7 @@ class Match: Decodable, CustomStringConvertible {
     """
   }
   
-  static let graphQLMatchFields = "{ _id sentByUser \(MatchedPearUser.graphQLMatchedUserFields) sentForUser \(MatchedPearUser.graphQLMatchedUserFields) receivedByUser \(MatchedPearUser.graphQLMatchedUserFields) sentForUserStatus sentForUserStatusLastUpdated receivedByUserStatus receivedByUserStatusLastUpdated firebaseChatDocumentID }"
+  static let graphQLMatchFields = "{ _id sentByUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) sentForUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) receivedByUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) sentForUserStatus sentForUserStatusLastUpdated receivedByUserStatus receivedByUserStatusLastUpdated firebaseChatDocumentID }"
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: MatchKeys.self)

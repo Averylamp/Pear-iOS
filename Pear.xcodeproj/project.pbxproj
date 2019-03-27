@@ -22,7 +22,7 @@
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
 		BB0628C722463B12000D9B12 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C622463B12000D9B12 /* Match.swift */; };
-		BB0628C922464278000D9B12 /* MatchedPearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C822464278000D9B12 /* MatchedPearUser.swift */; };
+		BB0628C922464278000D9B12 /* MatchingPearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C822464278000D9B12 /* MatchingPearUser.swift */; };
 		BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */; };
 		BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */; };
 		BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16B7222EE6D200915C1C /* DataStore.swift */; };
@@ -229,7 +229,7 @@
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C622463B12000D9B12 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
-		BB0628C822464278000D9B12 /* MatchedPearUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedPearUser.swift; sourceTree = "<group>"; };
+		BB0628C822464278000D9B12 /* MatchingPearUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingPearUser.swift; sourceTree = "<group>"; };
 		BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelpers.swift; sourceTree = "<group>"; };
 		BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfileConstants.swift; sourceTree = "<group>"; };
 		BB0F16B7222EE6D200915C1C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
@@ -848,7 +848,7 @@
 		BB94C11622437AD3001320B0 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				BB0628C822464278000D9B12 /* MatchedPearUser.swift */,
+				BB0628C822464278000D9B12 /* MatchingPearUser.swift */,
 				BB796F89222DB19300E31C7F /* PearUser.swift */,
 				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
 			);
@@ -1679,7 +1679,7 @@
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
-				BB0628C922464278000D9B12 /* MatchedPearUser.swift in Sources */,
+				BB0628C922464278000D9B12 /* MatchingPearUser.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
