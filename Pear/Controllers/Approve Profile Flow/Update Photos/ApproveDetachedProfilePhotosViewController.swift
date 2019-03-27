@@ -18,7 +18,7 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat = 7.0
+  let pageNumber: CGFloat = 1.0
   
   let betweenImageSpacing: CGFloat = 6
   var originalDetachedProfileImages: [ImageContainer] = []
@@ -119,14 +119,14 @@ extension ApproveDetachedProfilePhotosViewController {
     self.titleLabel.stylizeTitleLabel()
     self.subtitleLabel.stylizeSubtitleLabel()
     
-    self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+    self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalProfileApprovalPagesNumber * self.view.frame.width
     self.view.layoutIfNeeded()
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.view.layoutIfNeeded()
-    self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
+    self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalProfileApprovalPagesNumber * self.view.frame.width
     UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
       self.view.layoutIfNeeded()
     }, completion: nil)

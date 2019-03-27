@@ -34,6 +34,7 @@ class StylingConfig {
   static let nextButtonColor: UIColor = UIColor(red: 0.27, green: 0.29, blue: 0.33, alpha: 1.00)
   
   static let totalGettingStartedPagesNumber: CGFloat = 9.0
+  static let totalProfileApprovalPagesNumber: CGFloat = 4.0
   static let progressBarAnimationDuration: Double = 0.4
   static let progressBarAnimationDelay: Double = 0.0
   

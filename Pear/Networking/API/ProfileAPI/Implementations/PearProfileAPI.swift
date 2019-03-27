@@ -29,6 +29,7 @@ class PearProfileAPI: ProfileAPI {
   static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
   
   static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) } }}"
+  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) }"
   
   func generateSentryEvent(level: SentrySeverity = .warning,
                            message: String,
@@ -295,6 +296,73 @@ extension PearProfileAPI {
       completion(.failure(DetachedProfileError.unknownError(error: error)))
     } catch {
       print(error)
+      completion(.failure(DetachedProfileError.unknownError(error: error)))
+    }
+  }
+  
+  func getMatchingUser(user_id: String,
+                       completion: @escaping(Result<FullProfileDisplayData, DetachedProfileError>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    
+    request.allHTTPHeaderFields = defaultHeaders
+    
+    do {
+      
+      let fullDictionary: [String: Any] = [
+        "query": PearProfileAPI.fetchMatchingUserQuery,
+        "variables": [
+          "user_id": user_id
+        ]
+      ]
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          completion(.failure(DetachedProfileError.unknownError(error: error)))
+          return
+        } else {
+          let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "user", objectName: "user")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
+            print("Failed to Fetch User: \(helperResult)")
+            self.generateSentryEvent(level: .error, message: "GraphQL Error: \(helperResult)", tags: ["function": "user"], paylod: fullDictionary)
+            completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Create User: \(message ?? "")")
+            self.generateSentryEvent(level: .error, message: message ?? "Failed to Get user", tags: ["function": "user"], paylod: fullDictionary)
+            completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
+          case .foundObjectData(let objectData):
+            do {
+              let matchingPearUser = try JSONDecoder().decode(MatchingPearUser.self, from: objectData)
+              if matchingPearUser.userProfiles.count > 0 {
+                let fullProfile = FullProfileDisplayData(matchingUser: matchingPearUser)
+                completion(.success(fullProfile))
+              } else {
+                completion(.failure(DetachedProfileError.unknown))
+              }
+              print("Successfully found Detached Profile")
+            } catch {
+              print("Deserialization Error: \(error)")
+              self.generateSentryEvent(level: .error,
+                                       message: "DeserializationError: \(error.localizedDescription)",
+                tags: ["function": "user"],
+                paylod: fullDictionary)
+              completion(.failure(DetachedProfileError.failedDeserialization))
+            }
+          }
+        }
+      }
+      dataTask.resume()
+    } catch {
+      print(error)
+      self.generateSentryEvent(level: .error, message: "Unknown Error: \(error.localizedDescription)",
+        tags: ["function": "user"], paylod: [:])
       completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
     

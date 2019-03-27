@@ -93,7 +93,6 @@
 		BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F89222DB19300E31C7F /* PearUser.swift */; };
 		BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */; };
 		BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */; };
-		BB94C11822437AF4001320B0 /* PearUserProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11722437AF4001320B0 /* PearUserProfileConstants.swift */; };
 		BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11A22437B64001320B0 /* SharedModel.swift */; };
 		BB94C12522438502001320B0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12422438502001320B0 /* Message.swift */; };
 		BB94C12722438F00001320B0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12622438F00001320B0 /* Chat.swift */; };
@@ -311,7 +310,6 @@
 		BB796F89222DB19300E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitVibeCollectionViewCell.swift; sourceTree = "<group>"; };
-		BB94C11722437AF4001320B0 /* PearUserProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserProfileConstants.swift; sourceTree = "<group>"; };
 		BB94C11A22437B64001320B0 /* SharedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
 		BB94C12422438502001320B0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BB94C12622438F00001320B0 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
@@ -873,7 +871,6 @@
 			isa = PBXGroup;
 			children = (
 				BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */,
-				BB94C11722437AF4001320B0 /* PearUserProfileConstants.swift */,
 			);
 			path = "User Profile";
 			sourceTree = "<group>";
@@ -1834,7 +1831,6 @@
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
 				BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */,
 				BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */,
-				BB94C11822437AF4001320B0 /* PearUserProfileConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
