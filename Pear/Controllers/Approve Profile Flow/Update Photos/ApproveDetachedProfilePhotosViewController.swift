@@ -130,7 +130,7 @@ extension ApproveDetachedProfilePhotosViewController {
       self.view.layoutIfNeeded()
     }, completion: nil)
   }
-  t
+  
   func setupCollectionView() {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
