@@ -125,7 +125,6 @@ extension PearProfileAPI {
         "variables": [
           "phoneNumber": phoneNumber
         ]
-        
       ]
       
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)

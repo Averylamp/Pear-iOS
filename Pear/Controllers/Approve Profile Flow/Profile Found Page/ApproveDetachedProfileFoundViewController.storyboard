@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wXA-gq-gcr">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Approve Detached Profile Found View Controller-->
+        <scene sceneID="rM3-Vr-rPw">
+            <objects>
+                <viewController id="wXA-gq-gcr" customClass="ApproveDetachedProfileFoundViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7EW-dV-Wys">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good news!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13a-lb-DzA">
+                                <rect key="frame" x="161.5" y="422.5" width="91" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Someone has started a profile for you.  Choose your profile photos and see what they wrote." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvd-2p-GUa">
+                                <rect key="frame" x="40" y="473.5" width="334" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODI-3H-cEt">
+                                <rect key="frame" x="30" y="732" width="354" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QLI-HM-6SR"/>
+                                </constraints>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="bcI-M5-vga"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMl-Hv-pPE">
+                                <rect key="frame" x="30" y="792" width="354" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XV6-Vt-aX3"/>
+                                </constraints>
+                                <state key="normal" title="Skip for now"/>
+                                <connections>
+                                    <action selector="skipButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="F8S-bX-B1y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gQ4-0s-yY9" firstAttribute="bottom" secondItem="ZMl-Hv-pPE" secondAttribute="bottom" constant="20" id="0HC-zb-HNB"/>
+                            <constraint firstItem="ODI-3H-cEt" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="30" id="2S4-uD-feh"/>
+                            <constraint firstItem="ZMl-Hv-pPE" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="30" id="6Pq-kg-g2h"/>
+                            <constraint firstItem="13a-lb-DzA" firstAttribute="centerX" secondItem="gQ4-0s-yY9" secondAttribute="centerX" id="JNx-Bc-qKY"/>
+                            <constraint firstItem="nvd-2p-GUa" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="40" id="KfR-hU-1cf"/>
+                            <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="ODI-3H-cEt" secondAttribute="trailing" constant="30" id="RdE-46-tBD"/>
+                            <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="ZMl-Hv-pPE" secondAttribute="trailing" constant="30" id="Yac-i7-5Jy"/>
+                            <constraint firstItem="ZMl-Hv-pPE" firstAttribute="top" secondItem="ODI-3H-cEt" secondAttribute="bottom" constant="10" id="eXk-v2-wrU"/>
+                            <constraint firstItem="nvd-2p-GUa" firstAttribute="centerX" secondItem="13a-lb-DzA" secondAttribute="centerX" id="goQ-y9-6IH"/>
+                            <constraint firstItem="13a-lb-DzA" firstAttribute="centerY" secondItem="gQ4-0s-yY9" secondAttribute="centerY" constant="-20" id="gto-a1-ppa"/>
+                            <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="nvd-2p-GUa" secondAttribute="trailing" constant="40" id="jz4-wO-k4B"/>
+                            <constraint firstItem="nvd-2p-GUa" firstAttribute="top" secondItem="13a-lb-DzA" secondAttribute="bottom" constant="30" id="vBc-qK-x1u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gQ4-0s-yY9"/>
+                    </view>
+                    <connections>
+                        <outlet property="nextButton" destination="ODI-3H-cEt" id="sA1-ZO-Xu7"/>
+                        <outlet property="skipButton" destination="ZMl-Hv-pPE" id="ee9-o2-kBI"/>
+                        <outlet property="subtitleLabel" destination="nvd-2p-GUa" id="8p6-HO-yJO"/>
+                        <outlet property="titleLabel" destination="13a-lb-DzA" id="Qzd-Tl-ZjC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6On-TU-cFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>

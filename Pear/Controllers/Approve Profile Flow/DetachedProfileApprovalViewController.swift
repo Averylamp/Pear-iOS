@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetachedProfileApprovalViewController: UIViewController {
+class ApproveDetachedProfileViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
   
@@ -17,9 +17,9 @@ class DetachedProfileApprovalViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(detachedProfile: PearDetachedProfile) -> DetachedProfileApprovalViewController? {
-    let storyboard = UIStoryboard(name: String(describing: DetachedProfileApprovalViewController.self), bundle: nil)
-    guard let doDontVC = storyboard.instantiateInitialViewController() as? DetachedProfileApprovalViewController else { return nil }
+  class func instantiate(detachedProfile: PearDetachedProfile) -> ApproveDetachedProfileViewController? {
+    let storyboard = UIStoryboard(name: String(describing: ApproveDetachedProfileViewController.self), bundle: nil)
+    guard let doDontVC = storyboard.instantiateInitialViewController() as? ApproveDetachedProfileViewController else { return nil }
     doDontVC.detachedProfile = detachedProfile
     return doDontVC
   }
@@ -55,7 +55,7 @@ class DetachedProfileApprovalViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension DetachedProfileApprovalViewController {
+extension ApproveDetachedProfileViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -78,7 +78,7 @@ extension DetachedProfileApprovalViewController {
     continueContainerView.translatesAutoresizingMaskIntoConstraints = false
     
     let continueButton = UIButton()
-    continueButton.addTarget(self, action: #selector(DetachedProfileApprovalViewController.saveButtonClicked(sender:)), for: .touchUpInside)
+    continueButton.addTarget(self, action: #selector(ApproveDetachedProfileViewController.saveButtonClicked(sender:)), for: .touchUpInside)
     continueButton.stylizeDark()
     continueButton.layer.cornerRadius = 25
     continueButton.setTitle("Save & Share", for: .normal)
@@ -113,7 +113,7 @@ extension DetachedProfileApprovalViewController {
     
     let skipButton = UIButton()
     skipButton.addTarget(self,
-                         action: #selector(DetachedProfileApprovalViewController.skipButtonClicked(sender:)), for: .touchUpInside)
+                         action: #selector(ApproveDetachedProfileViewController.skipButtonClicked(sender:)), for: .touchUpInside)
     skipButton.stylizeSubtle()
     skipButton.setTitle("Skip adding profile", for: .normal)
     skipButton.translatesAutoresizingMaskIntoConstraints = false
