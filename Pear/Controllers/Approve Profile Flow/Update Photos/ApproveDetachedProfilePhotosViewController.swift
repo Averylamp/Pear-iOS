@@ -28,6 +28,7 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
   var longPressGestureRecognizer: UILongPressGestureRecognizer!
   var justMovedIndexPath: IndexPath?
   var hasClickedNext = false
+  var imageReplacementIndexPath: IndexPath?
   
   /// Factory method for creating this view controller.
   ///
@@ -142,6 +143,11 @@ extension ApproveDetachedProfilePhotosViewController {
 extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if indexPath.item >= self.images.count {
+      self.imageReplacementIndexPath = nil
+    } else {
+      self.imageReplacementIndexPath = indexPath
+    }
     let title = indexPath.item >= self.images.count ? "Add Image" : "Replace Image"
     let subtitle = indexPath.item >= self.images.count ? "" : "You can only replace images"
     
@@ -323,14 +329,19 @@ extension ApproveDetachedProfilePhotosViewController: UIImagePickerControllerDel
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
     if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage, let userID = DataStore.shared.currentPearUser?.documentID {
-      let gettingStartedImage = pickedImage.gettingStartedImage(size: .original)
-      self.images.append(gettingStartedImage)
+      let loadingImageContainer = pickedImage.gettingStartedImage(size: .original)
+      if let replacementIndex = self.imageReplacementIndexPath {
+        self.images.remove(at: replacementIndex.row)
+        self.images.insert(loadingImageContainer, at: replacementIndex.row)
+      } else {
+        self.images.append(loadingImageContainer)
+      }
       self.collectionView.reloadData()
       PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
         switch result {
         case .success( let imageAllSizesRepresentation):
           print("Uploaded Image Successfully")
-          gettingStartedImage.imageContainer = imageAllSizesRepresentation
+          loadingImageContainer.imageContainer = imageAllSizesRepresentation
           if self.hasClickedNext {
             DispatchQueue.main.async {
               self.nextButtonClicked(self.nextButton as Any)              
