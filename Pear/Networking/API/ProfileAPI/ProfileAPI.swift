@@ -25,4 +25,6 @@ protocol ProfileAPI {
                              completion: @escaping(Result<Bool, DetachedProfileError>) -> Void)
   func getDiscoveryFeed(user_id: String,
                         completion: @escaping(Result<[FullProfileDisplayData], DetachedProfileError>) -> Void)
+  func getMatchingUser(user_id: String,
+                       completion: @escaping(Result<FullProfileDisplayData, DetachedProfileError>) -> Void)
 }

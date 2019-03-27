@@ -11,6 +11,8 @@ import UIKit
 class ApproveDetachedProfileViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
+  let pageNumber: CGFloat = 2.0
   
   var detachedProfile: PearDetachedProfile!
   /// Factory method for creating this view controller.
@@ -151,7 +153,17 @@ extension ApproveDetachedProfileViewController {
   }
   
   func stylize() {
-    
+    self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalProfileApprovalPagesNumber * self.view.frame.width
+    self.view.layoutIfNeeded()
+
+  }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.view.layoutIfNeeded()
+    self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalProfileApprovalPagesNumber * self.view.frame.width
+    UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
+      self.view.layoutIfNeeded()
+    }, completion: nil)
   }
   
 }

@@ -11,6 +11,7 @@ import Foundation
 class PearUserProfile: Codable, CustomStringConvertible {
   
   var documentID: String!
+  var ownerUserID: String!
   var creatorUserID: String!
   var creatorFirstName: String!
   var interests: [String]
@@ -19,7 +20,9 @@ class PearUserProfile: Codable, CustomStringConvertible {
   var dos: [String]
   var donts: [String]
   
-  static let graphQLUserProfileFieldsAll = "{ _id creatorUser_id creatorFirstName interests vibes bio dos donts }"
+  var fullOwnerDisplay: FullProfileDisplayData?
+  
+  static let graphQLUserProfileFieldsAll = "{ _id creatorUser_id user_id creatorFirstName interests vibes bio dos donts }"
   
   var description: String {
     return "**** Pear Detached Profile **** \n" + """
@@ -38,11 +41,25 @@ class PearUserProfile: Codable, CustomStringConvertible {
   init() {
     fatalError("Should never be called to generate")
   }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: PearDetachedProfileKeys.self)
+    try container.encode(self.documentID, forKey: .documentID)
+    try container.encode(self.creatorUserID, forKey: .creatorUserID)
+    try container.encode(self.ownerUserID, forKey: .ownerUserID)
+    try container.encode(self.creatorFirstName, forKey: .creatorFirstName)
+    try container.encode(self.interests, forKey: .interests)
+    try container.encode(self.vibes, forKey: .vibes)
+    try container.encode(self.bio, forKey: .bio)
+    try container.encode(self.dos, forKey: .dos)
+    try container.encode(self.donts, forKey: .donts)
+  }
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: PearDetachedProfileKeys.self)
     self.documentID = try values.decode(String.self, forKey: .documentID)
     self.creatorUserID = try values.decode(String.self, forKey: .creatorUserID)
+    self.ownerUserID = try values.decode(String.self, forKey: .ownerUserID)
     self.creatorFirstName = try values.decode(String.self, forKey: .creatorFirstName)
     self.interests = try values.decode([String].self, forKey: .interests)
     self.vibes = try values.decode([String].self, forKey: .vibes)
