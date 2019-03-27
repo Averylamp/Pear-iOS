@@ -180,6 +180,7 @@
 		BBECBEC9223846C8008E8E91 /* DiscoverySimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEC8223846C8008E8E91 /* DiscoverySimpleTableViewCell.swift */; };
 		BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */; };
 		BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBECF223848E6008E8E91 /* FullProfileScrollViewController.swift */; };
+		BBF09A6B224AF69F00BC82B9 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */; };
 		BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */; };
 		BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */; };
 		BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */; };
@@ -395,6 +396,7 @@
 		BBECBEC8223846C8008E8E91 /* DiscoverySimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySimpleTableViewCell.swift; sourceTree = "<group>"; };
 		BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollViewController.storyboard; sourceTree = "<group>"; };
 		BBECBECF223848E6008E8E91 /* FullProfileScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullProfileScrollViewController.swift; sourceTree = "<group>"; };
+		BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
 		BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsTabViewController.storyboard; sourceTree = "<group>"; };
@@ -1054,6 +1056,7 @@
 			children = (
 				BBD2842D223BFC1000AC6E30 /* PearUITests.swift */,
 				BBD2842F223BFC1000AC6E30 /* Info.plist */,
+				BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */,
 			);
 			path = PearUITests;
 			sourceTree = "<group>";
@@ -1793,6 +1796,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */,
+				BBF09A6B224AF69F00BC82B9 /* ScreenshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
