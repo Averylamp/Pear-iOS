@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ijs-Hi-GZa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ijs-Hi-GZa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Get Started Photo Input View Controller-->
+        <!--Approve Detached Profile Photos View Controller-->
         <scene sceneID="5DV-ei-9Pw">
             <objects>
-                <viewController id="ijs-Hi-GZa" customClass="GetStartedPhotoInputViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ijs-Hi-GZa" customClass="ApproveDetachedProfilePhotosViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4iY-vh-p2M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextButtonClicked:" destination="ijs-Hi-GZa" eventType="touchUpInside" id="cOj-gQ-3LK"/>
+                                    <action selector="nextButtonClicked:" destination="ijs-Hi-GZa" eventType="touchUpInside" id="WZa-JK-7jU"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hkq-lK-kn9">
@@ -104,13 +104,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Got pics?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bub-op-HQu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bub-op-HQu">
                                 <rect key="frame" x="20" y="82" width="335" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload some flattering photos of your friend!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s1A-Za-I96">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can change these anytime." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s1A-Za-I96">
                                 <rect key="frame" x="20" y="118" width="335" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -129,7 +129,7 @@
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonClicked:" destination="ijs-Hi-GZa" eventType="touchUpInside" id="91D-RK-Tf1"/>
+                                            <action selector="backButtonClicked:" destination="ijs-Hi-GZa" eventType="touchUpInside" id="uSF-M0-Bex"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-camera" translatesAutoresizingMaskIntoConstraints="NO" id="huy-u0-EQn" userLabel="Center Icon">
@@ -138,16 +138,6 @@
                                             <constraint firstAttribute="width" secondItem="huy-u0-EQn" secondAttribute="height" multiplier="1:1" id="OfW-vg-NSs"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6h-Yq-M6j" userLabel="Extra Button">
-                                        <rect key="frame" x="319" y="5" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="LcD-Id-kUy"/>
-                                            <constraint firstAttribute="width" constant="40" id="mNP-Op-tJv"/>
-                                        </constraints>
-                                        <state key="normal" image="onboarding-close-button">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ta2-qc-wTR" userLabel="Progress View">
                                         <rect key="frame" x="0.0" y="49" width="0.0" height="1"/>
                                         <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -162,8 +152,6 @@
                                     <constraint firstItem="ta2-qc-wTR" firstAttribute="leading" secondItem="bgU-2g-VV2" secondAttribute="leading" id="2ba-og-aKs"/>
                                     <constraint firstAttribute="height" constant="50" id="Irk-4z-18y"/>
                                     <constraint firstAttribute="bottom" secondItem="ta2-qc-wTR" secondAttribute="bottom" id="RHp-wW-Hrr"/>
-                                    <constraint firstItem="V6h-Yq-M6j" firstAttribute="centerY" secondItem="bgU-2g-VV2" secondAttribute="centerY" id="YmX-rc-teS"/>
-                                    <constraint firstAttribute="trailing" secondItem="V6h-Yq-M6j" secondAttribute="trailing" constant="16" id="cdY-Nc-TMT"/>
                                     <constraint firstItem="huy-u0-EQn" firstAttribute="centerX" secondItem="bgU-2g-VV2" secondAttribute="centerX" id="g1p-2H-uDO"/>
                                     <constraint firstItem="1eZ-Em-SF4" firstAttribute="centerY" secondItem="bgU-2g-VV2" secondAttribute="centerY" id="ghr-pi-9k6"/>
                                     <constraint firstItem="huy-u0-EQn" firstAttribute="centerY" secondItem="bgU-2g-VV2" secondAttribute="centerY" id="mtJ-v2-vtk"/>
@@ -195,11 +183,11 @@
                         <viewLayoutGuide key="safeArea" id="Lo8-ZS-yFe"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="Hkq-lK-kn9" id="P9y-pH-zd4"/>
-                        <outlet property="nextButton" destination="eSH-x6-HWS" id="re2-nb-Zku"/>
-                        <outlet property="progressWidthConstraint" destination="HAT-T4-x13" id="uet-I2-TvQ"/>
-                        <outlet property="subtitleLabel" destination="s1A-Za-I96" id="pkg-RO-UMI"/>
-                        <outlet property="titleLabel" destination="bub-op-HQu" id="TYp-9t-hbc"/>
+                        <outlet property="collectionView" destination="Hkq-lK-kn9" id="83S-I2-AIB"/>
+                        <outlet property="nextButton" destination="eSH-x6-HWS" id="ceq-lb-Sj1"/>
+                        <outlet property="progressWidthConstraint" destination="HAT-T4-x13" id="nFR-mf-Jls"/>
+                        <outlet property="subtitleLabel" destination="s1A-Za-I96" id="LD3-2d-ibN"/>
+                        <outlet property="titleLabel" destination="bub-op-HQu" id="ha9-BY-w6v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRC-PB-66M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,9 +196,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-add-image-dotted-rectangle" width="110" height="110"/>
-        <image name="onboarding-back-button" width="30" height="30"/>
-        <image name="onboarding-close-button" width="30" height="30"/>
-        <image name="onboarding-icon-camera" width="32" height="32"/>
+        <image name="onboarding-add-image-dotted-rectangle" width="330" height="330"/>
+        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-close-button" width="120" height="120"/>
+        <image name="onboarding-icon-camera" width="160" height="160"/>
     </resources>
 </document>

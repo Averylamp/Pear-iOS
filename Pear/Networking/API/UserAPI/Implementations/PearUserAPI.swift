@@ -64,7 +64,6 @@ extension PearUserAPI {
       ]
       
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
       request.httpBody = data
       
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in

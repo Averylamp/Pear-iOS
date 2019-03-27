@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class ApproveDetachedProfilePhotosViewController: UIViewController {
   
@@ -20,25 +21,27 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
   let pageNumber: CGFloat = 7.0
   
   let betweenImageSpacing: CGFloat = 6
+  var originalDetachedProfileImages: [ImageContainer] = []
   var images: [GettingStartedUIImageContainer] = []
+  var imageBank: [GettingStartedUIImageContainer] = []
   let imagePickerController = UIImagePickerController()
   var longPressGestureRecognizer: UILongPressGestureRecognizer!
   var justMovedIndexPath: IndexPath?
+  var hasClickedNext = false
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(detachedProfile: PearDetachedProfile, displayedImages:[GettingStartedUIImageContainer]) -> ApproveDetachedProfilePhotosViewController? {
+  class func instantiate(detachedProfile: PearDetachedProfile,
+                         displayedImages: [GettingStartedUIImageContainer],
+                         imageBank: [GettingStartedUIImageContainer]) -> ApproveDetachedProfilePhotosViewController? {
     let storyboard = UIStoryboard(name: String(describing: ApproveDetachedProfilePhotosViewController.self), bundle: nil)
     guard let photoInputVC = storyboard.instantiateInitialViewController() as? ApproveDetachedProfilePhotosViewController else { return nil }
     photoInputVC.detachedProfile = detachedProfile
+    photoInputVC.originalDetachedProfileImages = detachedProfile.images
     photoInputVC.images = displayedImages
+    photoInputVC.imageBank = imageBank
     return photoInputVC
-  }
-  
-  func saveImages() {
-//    self.detachedProfile.images = self.images.compactMap({ $0.imageContainer })
-    // TODO: Image Update Here
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -47,28 +50,62 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
   
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    self.saveImages()
     
-    if self.detachedProfile.images.count == 0 {
-      self.alert(title: "Please Upload 🎑", message: "You must upload at least one image")
+    if self.images.compactMap({ $0.imageContainer }).count != self.images.count {
+      if self.hasClickedNext {
+        return
+      }
+      self.hasClickedNext = true
+      let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                      type: NVActivityIndicatorType.ballScaleRippleMultiple,
+                                                      color: StylingConfig.textFontColor,
+                                                      padding: 0)
+      self.view.addSubview(activityIndicator)
+      activityIndicator.center = CGPoint(x: self.view.center.x,
+                                         y: self.nextButton.frame.origin.y - 40)
+      activityIndicator.startAnimating()
       return
     }
     
-//    guard let profileReviewVC = FullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.detachedProfile) else {
-//      print("Failed to create scrolling Full VC")
-//      return
-//    }
-//    self.navigationController?.pushViewController(profileReviewVC, animated: true)
-
+    self.detachedProfile.images = self.images.compactMap({ $0.imageContainer })
+    if let userID = DataStore.shared.currentPearUser?.documentID {
+      PearImageAPI.shared.updateImages(userID: userID,
+                                       displayedImages: self.detachedProfile.images,
+                                       additionalImages: self.originalDetachedProfileImages) { (result) in
+                                        DispatchQueue.main.async {
+                                          switch result {
+                                          case .success(let success):
+                                            if success {
+                                              print("Successfully updated User's Images")
+                                              if self.detachedProfile.images.count == 0 {
+                                                self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
+                                                return
+                                              }
+                                              guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
+                                                print("Failed to create Approve Detached Profile VC")
+                                                return
+                                              }
+                                              self.navigationController?.pushViewController(profileApprovalVC, animated: true)
+                                            } else {
+                                              print("Failure updating User's Images")
+                                              self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
+                                            }
+                                          case .failure(let error):
+                                            print(error)
+                                            self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
+                                          }
+                                          self.hasClickedNext = false
+                                        }
+      }
+      
+    }
   }
-  
 }
 
 // MARK: - Life Cycle
 extension ApproveDetachedProfilePhotosViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.restoreGettingStartedState()
     self.setupCollectionView()
     imagePickerController.delegate = self
     self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ApproveDetachedProfilePhotosViewController.handleLongGesture(gesture:)))
@@ -93,11 +130,7 @@ extension ApproveDetachedProfilePhotosViewController {
       self.view.layoutIfNeeded()
     }, completion: nil)
   }
-  
-  func restoreGettingStartedState() {
-    self.images = self.detachedProfile.images.map({ $0.gettingStartedImageContainer(size: .thumbnail) })
-  }
-  
+  t
   func setupCollectionView() {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
@@ -109,24 +142,25 @@ extension ApproveDetachedProfilePhotosViewController {
 extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if indexPath.item >= self.images.count {
-      let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-      alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-        self.openCamera()
-      }))
-      
-      alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-        self.openGallery()
-      }))
-      
-      alert.addAction(UIAlertAction(title: "Suggested by Friends", style: .default, handler: { _ in
-          self.openPhotoBank()
-      }))
-      
-      alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-      
-      self.present(alert, animated: true, completion: nil)
-    }
+    let title = indexPath.item >= self.images.count ? "Add Image" : "Replace Image"
+    let subtitle = indexPath.item >= self.images.count ? "" : "You can only replace images"
+    
+    let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+      self.openCamera()
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+      self.openGallery()
+    }))
+    
+    alert.addAction(UIAlertAction(title: "Suggested by Friends", style: .default, handler: { _ in
+      self.openPhotoBank()
+    }))
+    
+    alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+    
+    self.present(alert, animated: true, completion: nil)
   }
   
   func openCamera() {
@@ -147,7 +181,7 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
     self.present(imagePickerController, animated: true, completion: nil)
   }
   
-  func openPhotoBank(){
+  func openPhotoBank() {
     self.alert(title: "Feature Unavailable", message: "This feature is currently unavailable, but will be released soon")
   }
   
@@ -223,13 +257,22 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDataSource
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadCollectionViewCell", for: indexPath) as? ImageUploadCollectionViewCell else {
         return UICollectionViewCell()
       }
-      
+      cell.cancelButton.isHidden = true
       if let image = self.images[indexPath.row].image {
         cell.imageView.image = image
-      }else if let urlString = self.images[indexPath.row].imageContainer?.thumbnail.imageURL,  let imageURL = URL(string: urlString) {
+      } else if let urlString = self.images[indexPath.row].imageContainer?.thumbnail.imageURL, let imageURL = URL(string: urlString) {
         cell.imageView.image = nil
         cell.imageView.sd_setImage(with: imageURL, placeholderImage: nil, options: .highPriority, progress: nil, completed: nil)
       }
+      if let imageID = self.images[indexPath.row].imageContainer?.imageID,
+        self.originalDetachedProfileImages.contains(where: { $0.imageID == imageID }) {
+        cell.imageView.layer.borderColor = R.color.brandPrimaryDark()?.cgColor
+        cell.imageView.layer.borderWidth = 3
+      } else {
+        cell.imageView.layer.borderColor = nil
+        cell.imageView.layer.borderWidth = 0
+      }
+      
       cell.imageView.contentMode = .scaleAspectFill
       cell.imageView.layer.cornerRadius = 3
       cell.imageView.clipsToBounds = true
@@ -283,11 +326,16 @@ extension ApproveDetachedProfilePhotosViewController: UIImagePickerControllerDel
       let gettingStartedImage = pickedImage.gettingStartedImage(size: .original)
       self.images.append(gettingStartedImage)
       self.collectionView.reloadData()
-      ImageUploadAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
+      PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
         switch result {
         case .success( let imageAllSizesRepresentation):
           print("Uploaded Image Successfully")
           gettingStartedImage.imageContainer = imageAllSizesRepresentation
+          if self.hasClickedNext {
+            DispatchQueue.main.async {
+              self.nextButtonClicked(self.nextButton as Any)              
+            }
+          }
         case .failure:
           print("Failed Uploading Image")
         }

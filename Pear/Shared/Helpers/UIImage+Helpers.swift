@@ -63,4 +63,3 @@ extension UIImage {
     return GettingStartedUIImageContainer(image: self, imageSize: size)
   }
 }
-
