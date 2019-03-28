@@ -96,6 +96,7 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
     cell.firstImageView.image = nil
     if let imageContainer = fullProfile.imageContainers.first,
       let imageURL = URL(string: imageContainer.medium.imageURL) {
+      print("Image URL Loading: \(imageURL)")
       cell.firstImageView.sd_setImage(with: imageURL, completed: nil)
     }
     return cell
