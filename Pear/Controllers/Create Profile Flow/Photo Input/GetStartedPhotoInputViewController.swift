@@ -124,7 +124,9 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
         self.imagePickerController.maxNumberOfSelections = 6 - self.images.count
       }
       self.imagePickerController.takePhotos = true
-      bs_presentImagePickerController(self.imagePickerController, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (assets) in
+      bs_presentImagePickerController(self.imagePickerController, animated: true, select: { (_) in
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+      }, deselect: nil, cancel: nil, finish: { (assets) in
         DispatchQueue.main.async {
           self.newPicturesSelected(assets: assets)
           self.imagePickerController = BSImagePickerViewController()
@@ -200,7 +202,7 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageU
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if indexPath.item < self.images.count {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadCollectionViewCell", for: indexPath) as? ImageUploadCollectionViewCell else {
         return UICollectionViewCell()

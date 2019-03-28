@@ -144,6 +144,7 @@ extension ApproveDetachedProfilePhotosViewController {
 extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if indexPath.item >= self.images.count {
       self.imageReplacementIndexPath = nil
     } else {
@@ -160,7 +161,10 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
         self.imagePickerController.maxNumberOfSelections = 6 - self.images.count
       }
       self.imagePickerController.takePhotos = true
-      bs_presentImagePickerController(self.imagePickerController, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (assets) in
+      
+      bs_presentImagePickerController(self.imagePickerController, animated: true, select: { (_) in
+          HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+      }, deselect: nil, cancel: nil, finish: { (assets) in
         DispatchQueue.main.async {
           self.newPicturesSelected(assets: assets)
           self.imagePickerController = BSImagePickerViewController()
