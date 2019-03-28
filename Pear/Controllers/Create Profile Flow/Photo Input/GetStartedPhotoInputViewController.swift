@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import QBImagePickerController
+import BSImagePicker
+import Photos
 
 class GetStartedPhotoInputViewController: UIViewController {
   
@@ -22,9 +23,10 @@ class GetStartedPhotoInputViewController: UIViewController {
   
   let betweenImageSpacing: CGFloat = 6
   var images: [GettingStartedUIImageContainer] = []
-  var imagePickerController = QBImagePickerController()
+  var imagePickerController = BSImagePickerViewController()
   var longPressGestureRecognizer: UILongPressGestureRecognizer!
   var justMovedIndexPath: IndexPath?
+  var imageReplacementIndexPath: IndexPath?
   
   /// Factory method for creating this view controller.
   ///
@@ -55,7 +57,7 @@ class GetStartedPhotoInputViewController: UIViewController {
       return
     }
     self.navigationController?.pushViewController(profileReviewVC, animated: true)
-
+    
   }
   
 }
@@ -70,7 +72,6 @@ extension GetStartedPhotoInputViewController {
     self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GetStartedPhotoInputViewController.handleLongGesture(gesture:)))
     self.collectionView.addGestureRecognizer(self.longPressGestureRecognizer)
     self.stylize()
-    self.configureImagePickerController()
   }
   
   func stylize() {
@@ -93,6 +94,7 @@ extension GetStartedPhotoInputViewController {
   
   func restoreGettingStartedState() {
     self.images = self.gettingStartedUserProfileData.images
+    
   }
   
   func setupCollectionView() {
@@ -107,68 +109,28 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if indexPath.item >= self.images.count {
-      let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-      alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-        self.openCamera()
-      }))
-      
-      alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-        self.openGallery()
-      }))
-      
-      alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-      
-      self.present(alert, animated: true, completion: nil)
-    }
-  }
-  
-  func configureImagePickerController() {
-    imagePickerController.delegate = self
-    imagePickerController.allowsMultipleSelection = true
-    imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
-    imagePickerController.mediaType = .image
-    imagePickerController.prompt = "Pick Some Images For Your Friend~"
-  }
-  
-  func newPicturesSelected(assets: [Any]) {
-    print("\(assets.count) Selected Assets")
-    for asset in assets {
-      print(asset)
-//      asset.fetchOriginalImage { (image, _) in
-//        if let pickedImage = image, let userID = DataStore.shared.currentPearUser?.documentID {
-//          print("Adding image to set")
-//          print(pickedImage.size)
-//          let gettingStartedImage = pickedImage.gettingStartedImage(size: .original)
-//          self.images.append(gettingStartedImage)
-//          self.collectionView.reloadData()
-//          PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
-//            switch result {
-//            case .success( let imageAllSizesRepresentation):
-//              print("Uploaded Image Successfully")
-//              gettingStartedImage.imageContainer = imageAllSizesRepresentation
-//            case .failure:
-//              print("Failed Uploading Image")
-//            }
-//          }
-//        }
-      }
-    }
-  
-  func openCamera() {
-    if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
-      self.imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
-      self.present(self.imagePickerController, animated: true, completion: nil)
+      self.imageReplacementIndexPath = nil
     } else {
-      let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-      self.present(alert, animated: true, completion: nil)
+      self.imageReplacementIndexPath = indexPath
     }
+    self.pickImage()
   }
   
-  func openGallery() {
-    self.imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
-    self.present(self.imagePickerController, animated: true, completion: nil)
-    
+  func pickImage() {
+    if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+      if self.imageReplacementIndexPath != nil {
+        self.imagePickerController.maxNumberOfSelections = 6 - self.images.count + 1
+      } else {
+        self.imagePickerController.maxNumberOfSelections = 6 - self.images.count
+      }
+      self.imagePickerController.takePhotos = true
+      bs_presentImagePickerController(self.imagePickerController, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (assets) in
+        DispatchQueue.main.async {
+          self.newPicturesSelected(assets: assets)
+          self.imagePickerController = BSImagePickerViewController()
+        }
+      }, completion: nil)
+    }
   }
   
 }
@@ -290,15 +252,53 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegateFlowLayout
 }
 
 // MARK: QBImagePickerControllerDelegate
-extension GetStartedPhotoInputViewController: QBImagePickerControllerDelegate {
+extension GetStartedPhotoInputViewController {
   
-  func qb_imagePickerControllerDidCancel(_ imagePickerController: QBImagePickerController!) {
-    imagePickerController.dismiss(animated: true, completion: nil)
+  func newPicturesSelected(assets: [PHAsset]) {
+    print("\(assets.count) Selected Assets")
+    for asset in assets {
+      print(asset)
+      if let pickedImage = self.getUIImage(asset: asset),
+        let userID = DataStore.shared.currentPearUser?.documentID {
+        print("Adding image to set")
+        print(pickedImage.size)
+        let loadingImageContainer = pickedImage.gettingStartedImage(size: .original)
+        if let replacementIndex = self.imageReplacementIndexPath {
+          self.images.remove(at: replacementIndex.row)
+          self.images.insert(loadingImageContainer, at: replacementIndex.row)
+          self.imageReplacementIndexPath = nil
+        } else {
+          self.images.append(loadingImageContainer)
+        }
+        self.collectionView.reloadData()
+        PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
+          switch result {
+          case .success( let imageAllSizesRepresentation):
+            print("Uploaded Image Successfully")
+            loadingImageContainer.imageContainer = imageAllSizesRepresentation
+
+          case .failure:
+            print("Failed Uploading Image")
+          }
+          
+        }
+      }
+    }
   }
   
-  func qb_imagePickerController(_ imagePickerController: QBImagePickerController!, didFinishPickingAssets assets: [Any]!) {
-    print(assets)
-    imagePickerController.dismiss(animated: true, completion: nil)
+  func getUIImage(asset: PHAsset) -> UIImage? {
+    
+    var img: UIImage?
+    let manager = PHImageManager.default()
+    let options = PHImageRequestOptions()
+    options.version = .original
+    options.isSynchronous = true
+    manager.requestImageData(for: asset, options: options) { data, _, _, _ in
+      if let data = data {
+        img = UIImage(data: data)
+      }
+    }
+    return img
   }
   
 }
