@@ -23,7 +23,7 @@ class GetStartedShortBioViewController: UIViewController {
   
   let keyboardBottomPadding: CGFloat = 40
   let maxTextLength: Int = 600
-  let pageNumber: CGFloat = 5.0
+  let pageNumber: CGFloat = 6.0
   
   /// Factory method for creating this view controller.
   ///
