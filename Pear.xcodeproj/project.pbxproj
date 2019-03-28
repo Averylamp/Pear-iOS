@@ -508,7 +508,7 @@
 		60C131D521D343560093ECBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BB986A1C220E08B300759A14 /* Landing */,
+				BB986A1C220E08B300759A14 /* Landing Screen */,
 				BBE5BFAF224D0BBC00D99217 /* Create User Flow */,
 				BB986A39220E43A300759A14 /* Create Profile Flow */,
 				BB56D22922142E2400A652E7 /* Profiles */,
@@ -930,7 +930,7 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		BB986A1C220E08B300759A14 /* Landing */ = {
+		BB986A1C220E08B300759A14 /* Landing Screen */ = {
 			isa = PBXGroup;
 			children = (
 				BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */,
@@ -939,7 +939,7 @@
 				BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */,
 				BB986A38220E439800759A14 /* Landing Screen */,
 			);
-			path = Landing;
+			path = "Landing Screen";
 			sourceTree = "<group>";
 		};
 		BB986A25220E1BDD00759A14 /* Landing Screen Pages */ = {
@@ -1995,7 +1995,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2271,7 +2271,7 @@
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
