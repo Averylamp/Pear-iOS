@@ -3,7 +3,7 @@
 disabled_rules: 
   - trailing_whitespace
 excluded:
-  - Pods
+  - Pods**
   - R.generated.swift
 
 

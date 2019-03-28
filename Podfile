@@ -20,6 +20,7 @@ target 'Pear' do
   pod 'CodableFirebase'
   pod 'R.swift'
   pod 'Sentry' 
+  pod 'DKImagePickerController'
 
   target 'PearTests' do
     inherit! :search_paths
