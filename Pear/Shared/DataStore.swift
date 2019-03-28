@@ -18,6 +18,7 @@ class DataStore {
   var remoteConfig: RemoteConfig
   
   private init() {
+
     self.remoteConfig = RemoteConfig.remoteConfig()
     self.remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: true)
     self.remoteConfig.setDefaults(fromPlist: "RemoteConfig")
