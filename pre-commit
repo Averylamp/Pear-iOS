@@ -7,15 +7,32 @@
 #
 # To enable this hook, rename this file to "pre-commit".
 
-
+SWIFT_LINT_YAML=.swiftlint.yml
+EXCLUDED=($(sed -nE '/excluded:/,/(^$|:$)/p' ${SWIFT_LINT_YAML} | grep -v ':' | grep -v -e '^[[:space:]]*$' | sed -e 's/  - //g'))
 # Function to add files to Lint
+contains () {
+    local seeking=$1
+    local in=1
+    for element in "${EXCLUDED[@]}"; do
+        if [ "$seeking" != "${seeking%$element*}" ]; then
+            in=0
+            break
+        fi
+    done
+    return $in
+}
+
 function addFilesToLint {
     filename=""
     count=$2
     for item in $1
     do
       if [[ $item == *".swift"* ]]; then
+        if contains $item; then
+          continue
+        fi
         filename+="$item"
+        echo $filename
         export SCRIPT_INPUT_FILE_$count="$filename"
         count=$((count + 1))
         filename=""
@@ -102,6 +119,3 @@ EOF
 fi
 
 # If there are whitespace errors, print the offending file names and fail.
-
-
-

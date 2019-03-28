@@ -14,6 +14,51 @@ PODS:
   - CodableFirebase (0.2.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
+  - CropViewController (2.4.0)
+  - DKCamera (1.6.4)
+  - DKImagePickerController (4.1.4):
+    - DKImagePickerController/Camera (= 4.1.4)
+    - DKImagePickerController/Core (= 4.1.4)
+    - DKImagePickerController/ImageDataManager (= 4.1.4)
+    - DKImagePickerController/InlineCamera (= 4.1.4)
+    - DKImagePickerController/PhotoEditor (= 4.1.4)
+    - DKImagePickerController/PhotoGallery (= 4.1.4)
+    - DKImagePickerController/Resource (= 4.1.4)
+  - DKImagePickerController/Camera (4.1.4):
+    - DKCamera
+    - DKImagePickerController/Core
+  - DKImagePickerController/Core (4.1.4):
+    - DKImagePickerController/ImageDataManager
+    - DKImagePickerController/Resource
+  - DKImagePickerController/ImageDataManager (4.1.4)
+  - DKImagePickerController/InlineCamera (4.1.4):
+    - DKCamera
+    - DKImagePickerController/Core
+  - DKImagePickerController/PhotoEditor (4.1.4):
+    - CropViewController (~> 2.4)
+    - DKImagePickerController/Core
+  - DKImagePickerController/PhotoGallery (4.1.4):
+    - DKImagePickerController/Core
+    - DKPhotoGallery
+  - DKImagePickerController/Resource (4.1.4)
+  - DKPhotoGallery (0.0.12):
+    - DKPhotoGallery/Core (= 0.0.12)
+    - DKPhotoGallery/Model (= 0.0.12)
+    - DKPhotoGallery/Preview (= 0.0.12)
+    - DKPhotoGallery/Resource (= 0.0.12)
+    - SDWebImage/GIF
+  - DKPhotoGallery/Core (0.0.12):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Preview
+    - SDWebImage/GIF
+  - DKPhotoGallery/Model (0.0.12):
+    - SDWebImage/GIF
+  - DKPhotoGallery/Preview (0.0.12):
+    - DKPhotoGallery/Model
+    - DKPhotoGallery/Resource
+    - SDWebImage/GIF
+  - DKPhotoGallery/Resource (0.0.12):
+    - SDWebImage/GIF
   - Fabric (1.9.0)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
@@ -109,6 +154,7 @@ PODS:
     - GoogleUtilities/Environment (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - Protobuf (~> 3.5)
+  - FLAnimatedImage (1.0.12)
   - GoogleAppMeasurement (5.8.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -172,6 +218,9 @@ PODS:
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
+  - SDWebImage/GIF (4.4.6):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
   - Sentry (4.3.1):
     - Sentry/Core (= 4.3.1)
   - Sentry/Core (4.3.1)
@@ -181,6 +230,7 @@ PODS:
 DEPENDENCIES:
   - CodableFirebase
   - Crashlytics
+  - DKImagePickerController
   - Fabric
   - FacebookCore
   - FacebookLogin
@@ -204,6 +254,10 @@ SPEC REPOS:
     - BoringSSL-GRPC
     - CodableFirebase
     - Crashlytics
+    - CropViewController
+    - DKCamera
+    - DKImagePickerController
+    - DKPhotoGallery
     - Fabric
     - FacebookCore
     - FacebookLogin
@@ -221,6 +275,7 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebasePerformance
     - FirebaseRemoteConfig
+    - FLAnimatedImage
     - GoogleAppMeasurement
     - GoogleToolboxForMac
     - GoogleUtilities
@@ -243,6 +298,10 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
   CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  CropViewController: a090820b15fc3da68e694d7c192a4708c576828b
+  DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
+  DKImagePickerController: 1b21dd7ba0eb488ef0869d1eb6f23b3534b69bb5
+  DKPhotoGallery: 1b4d65d9a485dfdd2002f22daa5b955eafb350ea
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
@@ -260,6 +319,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
   FirebasePerformance: 25ecee2a260bcf398d7f32d6f4804438df953100
   FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
@@ -277,6 +337,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: b5e3d235a43374cd4a7105f3b6fd02b698c9e480
+PODFILE CHECKSUM: 498ef2978ffdf62a3c4299213379220d1c59c826
 
 COCOAPODS: 1.6.1
