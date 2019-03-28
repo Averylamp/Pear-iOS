@@ -79,11 +79,12 @@ class GetStartedDoDontViewController: UIViewController {
       return
     }
     
-    guard let photoUploadVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-      print("Failed to create Photo Input VC")
+    guard let shortBioVC = GetStartedShortBioViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+      print("Failed to create short Bio VC")
       return
     }
-    self.navigationController?.pushViewController(photoUploadVC, animated: true)
+    self.navigationController?.pushViewController(shortBioVC, animated: true)
+    
   }
   
   @IBAction func sampleButtonClicked(_ sender: Any) {

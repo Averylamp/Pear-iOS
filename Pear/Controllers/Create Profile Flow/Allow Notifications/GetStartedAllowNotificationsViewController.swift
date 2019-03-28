@@ -66,6 +66,14 @@ class GetStartedAllowNotificationsViewController: UIViewController {
     
   }
   
+  @IBAction func skipNotificationsClicked(_ sender: Any) {
+    guard let allowLocationVC = GetStartedAllowLocationViewController.instantiate() else {
+      print("Failed to create Allow Location VC")
+      return
+    }
+    self.navigationController?.pushViewController(allowLocationVC, animated: true)
+  }
+  
 }
 
 // MARK: - Life Cycle
