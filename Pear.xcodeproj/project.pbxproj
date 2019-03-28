@@ -42,10 +42,8 @@
 		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
 		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
 		BB30B4582243D8D000B2845C /* ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB30B4572243D8D000B2845C /* ImageAPITests.swift */; };
-		BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */; };
 		BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */; };
 		BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */; };
-		BB33E74B2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */; };
 		BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */; };
 		BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */; };
 		BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */; };
@@ -257,10 +255,8 @@
 		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
 		BB30B4572243D8D000B2845C /* ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPITests.swift; sourceTree = "<group>"; };
-		BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseFlowViewController.swift; sourceTree = "<group>"; };
 		BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSeeSamplesViewController.swift; sourceTree = "<group>"; };
 		BB33E7482223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSeeSamplesViewController.storyboard; sourceTree = "<group>"; };
-		BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseFlowViewController.storyboard; sourceTree = "<group>"; };
 		BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseGenderViewController.swift; sourceTree = "<group>"; };
 		BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseGenderViewController.storyboard; sourceTree = "<group>"; };
@@ -512,7 +508,9 @@
 		60C131D521D343560093ECBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BB986A1C220E08B300759A14 /* Onboarding */,
+				BB986A1C220E08B300759A14 /* Landing */,
+				BBE5BFAF224D0BBC00D99217 /* Create User Flow */,
+				BB986A39220E43A300759A14 /* Create Profile Flow */,
 				BB56D22922142E2400A652E7 /* Profiles */,
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
 				BBDF1FEB21E2B61F00520881 /* Navigation */,
@@ -701,15 +699,6 @@
 				BB18789821E2B22C00964F26 /* SettingsMainViewController.storyboard */,
 			);
 			path = "Settings Flow";
-			sourceTree = "<group>";
-		};
-		BB33E7542224A07C001BFA8F /* Choose Flow */ = {
-			isa = PBXGroup;
-			children = (
-				BB33E7442223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift */,
-				BB33E74A2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard */,
-			);
-			path = "Choose Flow";
 			sourceTree = "<group>";
 		};
 		BB33E7552224A088001BFA8F /* See Samples */ = {
@@ -941,7 +930,7 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		BB986A1C220E08B300759A14 /* Onboarding */ = {
+		BB986A1C220E08B300759A14 /* Landing */ = {
 			isa = PBXGroup;
 			children = (
 				BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */,
@@ -949,9 +938,8 @@
 				BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */,
 				BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */,
 				BB986A38220E439800759A14 /* Landing Screen */,
-				BB986A39220E43A300759A14 /* Get Started Flow */,
 			);
-			path = Onboarding;
+			path = Landing;
 			sourceTree = "<group>";
 		};
 		BB986A25220E1BDD00759A14 /* Landing Screen Pages */ = {
@@ -979,14 +967,9 @@
 			path = "Landing Screen";
 			sourceTree = "<group>";
 		};
-		BB986A39220E43A300759A14 /* Get Started Flow */ = {
+		BB986A39220E43A300759A14 /* Create Profile Flow */ = {
 			isa = PBXGroup;
 			children = (
-				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
-				BBE8D01C2213E04600FD1355 /* User Name Input */,
-				BB3F4AE82233974C00F99C8E /* Birthday Input */,
-				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
-				BB33E7542224A07C001BFA8F /* Choose Flow */,
 				BBE8D01D2213E09400FD1355 /* Start Friend Profile */,
 				BB33E7562224A095001BFA8F /* Gender Input */,
 				BBE8D01E2213E09F00FD1355 /* Age Input */,
@@ -1004,7 +987,7 @@
 				BB6C065122280FD7007A5C96 /* Allow Location */,
 				BB6C06522228111B007A5C96 /* Waitlist VC */,
 			);
-			path = "Get Started Flow";
+			path = "Create Profile Flow";
 			sourceTree = "<group>";
 		};
 		BBA2E1F3224B30DD0088A7A7 /* Navigation Controller */ = {
@@ -1113,6 +1096,17 @@
 				BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BBE5BFAF224D0BBC00D99217 /* Create User Flow */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
+				BBE8D01C2213E04600FD1355 /* User Name Input */,
+				BB3F4AE82233974C00F99C8E /* Birthday Input */,
+				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
+			);
+			path = "Create User Flow";
 			sourceTree = "<group>";
 		};
 		BBE8D01C2213E04600FD1355 /* User Name Input */ = {
@@ -1471,7 +1465,6 @@
 				BB986A2E220E1C8D00759A14 /* LandingScreenPage3ViewController.storyboard in Resources */,
 				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
-				BB33E74B2223EF25001BFA8F /* GetStartedChooseFlowViewController.storyboard in Resources */,
 				BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */,
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
 				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
@@ -1590,7 +1583,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which sentry-cli >/dev/null; then\nexport SENTRY_ORG=setup-and-matchmake-inc\nexport SENTRY_PROJECT=pear\nexport SENTRY_AUTH_TOKEN=\"602ec7c2764146e29de4ec0c60c6fb6acece827d74be480e8e6b2b06ad8d22fc\"\nERROR=$(sentry-cli upload-dif \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi\n";
+			shellScript = "if which sentry-cli >/dev/null; then\nexport SENTRY_ORG=setup-and-matchmake-pear\nexport SENTRY_PROJECT=pear\nexport SENTRY_AUTH_TOKEN=\"602ec7c2764146e29de4ec0c60c6fb6acece827d74be480e8e6b2b06ad8d22fc\"\nERROR=$(sentry-cli upload-dif \"$DWARF_DSYM_FOLDER_PATH\" 2>&1 >/dev/null)\nif [ ! $? -eq 0 ]; then\necho \"warning: sentry-cli - $ERROR\"\nfi\nelse\necho \"warning: sentry-cli not installed, download from https://github.com/getsentry/sentry-cli/releases\"\nfi\n";
 		};
 		BB3442A722275D280021764A /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1772,7 +1765,6 @@
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
 				BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */,
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
-				BB33E7452223EEEF001BFA8F /* GetStartedChooseFlowViewController.swift in Sources */,
 				BB18788B21E2B1B400964F26 /* ProfilesMainViewController.swift in Sources */,
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,

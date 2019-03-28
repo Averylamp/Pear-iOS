@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebasePerformance
 import Crashlytics
 import Sentry
+import UserNotifications
 
 extension DataStore {
   
@@ -40,10 +41,10 @@ extension DataStore {
                 Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
                 Crashlytics.sharedInstance().setUserName(pearUser.fullName)
                 Client.shared?.extra = [
-                  "email": pearUser.email,
-                  "firebaseAuthID": pearUser.firebaseAuthID,
-                  "fullName": pearUser.fullName,
-                  "userDocumentID": pearUser.documentID
+                  "email": pearUser.email!,
+                  "firebaseAuthID": pearUser.firebaseAuthID!,
+                  "fullName": pearUser.fullName!,
+                  "userDocumentID": pearUser.documentID!
                 ]
                 trace?.incrementMetric("Existing User Found", by: 1)
                 trace?.stop()
@@ -89,6 +90,34 @@ extension DataStore {
       detachedProfilesNotFound()
       return
     }
+  }
+  
+  func checkForNotificationsEnabled(completion: @escaping  (Bool) -> Void) {
+    if #available(iOS 12, *) {
+      UNUserNotificationCenter.current()
+        .requestAuthorization(
+        options: [.badge, .alert, .sound, .provisional, .providesAppNotificationSettings, .criticalAlert]) { (result, error) in
+          DispatchQueue.main.sync {
+            UIApplication.shared.registerForRemoteNotifications()
+            if let error = error {
+              print(error)
+            }
+            completion(result)
+          }
+      }
+      
+    } else if #available(iOS 11, *) {
+      UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (result, error) in
+        DispatchQueue.main.sync {
+          UIApplication.shared.registerForRemoteNotifications()
+          if let error = error {
+            print(error)
+          }
+          completion(result)
+        }
+      }
+    }
+    
   }
   
 }

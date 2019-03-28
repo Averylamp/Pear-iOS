@@ -18,7 +18,7 @@ class GetStartedVibeViewController: UIViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var nextButton: UIButton!
-  var gettingStartedProfileData: UserProfileCreationData!
+  var gettingStartedData: UserProfileCreationData!
   var fruitVibes: [FruitVibe] = []
   
   @IBOutlet weak var titleLabel: UILabel!
@@ -35,30 +35,30 @@ class GetStartedVibeViewController: UIViewController {
   class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedVibeViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedVibeViewController.self), bundle: nil)
     guard let interestsVC = storyboard.instantiateInitialViewController() as? GetStartedVibeViewController else { return nil }
-    interestsVC.gettingStartedProfileData = gettingStartedData
+    interestsVC.gettingStartedData = gettingStartedData
     return interestsVC
   }
   
   func saveVibes() {
-    self.gettingStartedProfileData.vibes = []
+    self.gettingStartedData.vibes = []
     for indexPath in self.selectedItems {
       let fruitVibe = self.fruitVibes[indexPath.item]
-      self.gettingStartedProfileData.vibes.append(fruitVibe.text.lowercased())
+      self.gettingStartedData.vibes.append(fruitVibe.text.lowercased())
     }
   }
   
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveVibes()
-    if self.gettingStartedProfileData.vibes.count == 0 {
+    if self.gettingStartedData.vibes.count == 0 {
       self.alert(title: "Missing Vibe", message: "Your friend is missing their vibes!  Please choose one!")
       return
     }
-    guard let shortBioVC = GetStartedShortBioViewController.instantiate(gettingStartedData: self.gettingStartedProfileData) else {
-      print("Failed to create short Bio VC")
+    guard let doDontVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+      print("Failed to create photoInputVC")
       return
     }
-    self.navigationController?.pushViewController(shortBioVC, animated: true)
+    self.navigationController?.pushViewController(doDontVC, animated: true)
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -87,7 +87,7 @@ extension GetStartedVibeViewController {
   
   func restoreState() {
     var needsReload: Bool = false
-    for vibe in self.gettingStartedProfileData.vibes {
+    for vibe in self.gettingStartedData.vibes {
       if let firstIndex = self.fruitVibes.firstIndex(where: { (fruitVibe) -> Bool in
         return fruitVibe.text.lowercased() == vibe
       }) {

@@ -70,12 +70,6 @@ class GetStartedShortBioViewController: UIViewController {
       
     }
     
-    if let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData) {
-      self.navigationController?.pushViewController(photoInputVC, animated: true)
-    } else {
-      print("Failed to create photoInputVC")
-    }
-    
   }
   
   @IBAction func sampleButtonClicked(_ sender: Any) {
