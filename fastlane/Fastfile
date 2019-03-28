@@ -33,7 +33,7 @@ platform :ios do
         "Build Date" => Time.new.to_s,
         "Built by" => "Fastlane",
       },
-      
+
       default_payloads: [:git_branch, :git_author, :last_git_commit], # Optional, lets you specify a whitelist of default payloads to include. Pass an empty array to suppress all the default payloads.
             # Don't add this key, or pass nil, if you want all the default payloads. The available default payloads are: `lane`, `test_result`, `git_branch`, `git_author`, `last_git_commit`, `last_git_commit_hash`.
       attachment_properties: { # Optional, lets you specify any other properties available for attachments in the slack API (see https://api.slack.com/docs/attachments).
