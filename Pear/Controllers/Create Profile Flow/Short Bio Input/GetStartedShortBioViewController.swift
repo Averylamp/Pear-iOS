@@ -21,7 +21,7 @@ class GetStartedShortBioViewController: UIViewController {
   @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
   
-  let keyboardBottomPadding: CGFloat = 10
+  let keyboardBottomPadding: CGFloat = 40
   let maxTextLength: Int = 600
   let pageNumber: CGFloat = 5.0
   

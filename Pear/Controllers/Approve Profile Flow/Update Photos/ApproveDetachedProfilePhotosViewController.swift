@@ -73,30 +73,30 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
       PearImageAPI.shared.updateImages(userID: userID,
                                        displayedImages: self.detachedProfile.images,
                                        additionalImages: self.originalDetachedProfileImages) { (result) in
-                                        DispatchQueue.main.async {
-                                          switch result {
-                                          case .success(let success):
-                                            if success {
-                                              print("Successfully updated User's Images")
-                                              if self.detachedProfile.images.count == 0 {
-                                                self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
-                                                return
-                                              }
-                                              guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
-                                                print("Failed to create Approve Detached Profile VC")
-                                                return
-                                              }
-                                              self.navigationController?.pushViewController(profileApprovalVC, animated: true)
-                                            } else {
-                                              print("Failure updating User's Images")
-                                              self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
-                                            }
-                                          case .failure(let error):
-                                            print(error)
-                                            self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
-                                          }
-                                          self.hasClickedNext = false
-                                        }
+        DispatchQueue.main.async {
+          switch result {
+          case .success(let success):
+            if success {
+              print("Successfully updated User's Images")
+              if self.detachedProfile.images.count == 0 {
+                self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
+                return
+              }
+              guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
+                print("Failed to create Approve Detached Profile VC")
+                return
+              }
+              self.navigationController?.pushViewController(profileApprovalVC, animated: true)
+            } else {
+              print("Failure updating User's Images")
+              self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
+            }
+          case .failure(let error):
+            print(error)
+            self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
+          }
+          self.hasClickedNext = false
+        }
       }
       
     }
