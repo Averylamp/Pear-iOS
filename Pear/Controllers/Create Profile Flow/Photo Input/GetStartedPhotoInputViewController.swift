@@ -49,11 +49,6 @@ class GetStartedPhotoInputViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveImages()
     
-    if self.gettingStartedUserProfileData.images.count == 0 {
-      self.alert(title: "Please Upload 🎑", message: "You must upload at least one image")
-      return
-    }
-    
     guard let profileReviewVC = FullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
       print("Failed to create scrolling Full VC")
       return
@@ -118,10 +113,6 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
       alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
         self.openGallery()
       }))
-      
-      //            alert.addAction(UIAlertAction(title: "Facebook", style: .default, handler: { _ in
-      //                self.openGallery()
-      //            }))
       
       alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
       
