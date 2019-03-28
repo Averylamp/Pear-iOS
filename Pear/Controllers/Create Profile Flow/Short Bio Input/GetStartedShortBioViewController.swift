@@ -47,29 +47,36 @@ class GetStartedShortBioViewController: UIViewController {
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveBio()
-    if let profileBio = self.gettingStartedData.bio, profileBio.count < 50 {
-      let alertController = UIAlertController(title: nil,
-                                              message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?",
-                                              preferredStyle: .alert)
-      let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
-      let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
-        if self.gettingStartedData.bio?.count == 0 {
-          self.gettingStartedData.bio = " "
+    if let profileBio = self.gettingStartedData.bio {
+      if profileBio.count < 50 {
+        let alertController = UIAlertController(title: nil,
+                                                message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?",
+                                                preferredStyle: .alert)
+        let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
+        let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
+          if self.gettingStartedData.bio?.count == 0 {
+            self.gettingStartedData.bio = " "
+          }
+          DispatchQueue.main.async {
+            guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+              print("Failed to create photoInputVC")
+              return
+            }
+            self.navigationController?.pushViewController(photoInputVC, animated: true)
+          }
         }
-        if let photoInputVC = GetStartedDoDontViewController.instantiate(gettingStartedData: self.gettingStartedData) {
-          self.navigationController?.pushViewController(photoInputVC, animated: true)
-        } else {
+        
+        alertController.addAction(cancelButton)
+        alertController.addAction(continueButton)
+        self.present(alertController, animated: true, completion: nil)
+      } else {
+        guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
           print("Failed to create photoInputVC")
+          return
         }
+        self.navigationController?.pushViewController(photoInputVC, animated: true)
       }
-      
-      alertController.addAction(cancelButton)
-      alertController.addAction(continueButton)
-      self.present(alertController, animated: true, completion: nil)
-      return
-      
     }
-    
   }
   
   @IBAction func sampleButtonClicked(_ sender: Any) {
@@ -151,7 +158,12 @@ extension GetStartedShortBioViewController: UITextViewDelegate {
   }
   
   func updateTextLabels() {
-    self.textLengthLabel.text = "\(self.inputTextView.text.count) / \(maxTextLength)"
+    if self.inputTextView.text.count > 500 {
+      self.textLengthLabel.text = "\(self.inputTextView.text.count) / \(maxTextLength)"
+      self.textLengthLabel.isHidden = false
+    } else {
+      self.textLengthLabel.isHidden = true
+    }
   }
   
   func textViewDidChange(_ textView: UITextView) {
@@ -184,8 +196,6 @@ extension GetStartedShortBioViewController {
       if self.view.frame.height < 600 && targetFrame.height > 0 {
         self.nextButtonBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom - self.nextButton.frame.height
       }
-      self.subtitleLabel.text = ""
-      
       UIView.animate(withDuration: duration) {
         self.view.layoutIfNeeded()
       }
@@ -193,7 +203,6 @@ extension GetStartedShortBioViewController {
   }
   @objc func keyboardWillHide(notification: Notification) {
     if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      self.subtitleLabel.text = "Good bios help friends stand out, leading to fun & interesting conversations."
       self.nextButtonBottomConstraint.constant = self.keyboardBottomPadding
       UIView.animate(withDuration: duration) {
         self.view.layoutIfNeeded()
