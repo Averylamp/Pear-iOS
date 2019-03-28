@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import QBImagePickerController
 
 class ApproveDetachedProfilePhotosViewController: UIViewController {
   
@@ -24,7 +25,7 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
   var originalDetachedProfileImages: [ImageContainer] = []
   var images: [GettingStartedUIImageContainer] = []
   var imageBank: [GettingStartedUIImageContainer] = []
-  let imagePickerController = UIImagePickerController()
+  let imagePickerController = QBImagePickerController()
   var longPressGestureRecognizer: UILongPressGestureRecognizer!
   var justMovedIndexPath: IndexPath?
   var hasClickedNext = false
@@ -73,30 +74,30 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
       PearImageAPI.shared.updateImages(userID: userID,
                                        displayedImages: self.detachedProfile.images,
                                        additionalImages: self.originalDetachedProfileImages) { (result) in
-        DispatchQueue.main.async {
-          switch result {
-          case .success(let success):
-            if success {
-              print("Successfully updated User's Images")
-              if self.detachedProfile.images.count == 0 {
-                self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
-                return
-              }
-              guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
-                print("Failed to create Approve Detached Profile VC")
-                return
-              }
-              self.navigationController?.pushViewController(profileApprovalVC, animated: true)
-            } else {
-              print("Failure updating User's Images")
-              self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
-            }
-          case .failure(let error):
-            print(error)
-            self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
-          }
-          self.hasClickedNext = false
-        }
+                                        DispatchQueue.main.async {
+                                          switch result {
+                                          case .success(let success):
+                                            if success {
+                                              print("Successfully updated User's Images")
+                                              if self.detachedProfile.images.count == 0 {
+                                                self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
+                                                return
+                                              }
+                                              guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
+                                                print("Failed to create Approve Detached Profile VC")
+                                                return
+                                              }
+                                              self.navigationController?.pushViewController(profileApprovalVC, animated: true)
+                                            } else {
+                                              print("Failure updating User's Images")
+                                              self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
+                                            }
+                                          case .failure(let error):
+                                            print(error)
+                                            self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
+                                          }
+                                          self.hasClickedNext = false
+                                        }
       }
       
     }
@@ -108,10 +109,18 @@ extension ApproveDetachedProfilePhotosViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setupCollectionView()
-    imagePickerController.delegate = self
     self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ApproveDetachedProfilePhotosViewController.handleLongGesture(gesture:)))
     self.collectionView.addGestureRecognizer(self.longPressGestureRecognizer)
     self.stylize()
+    self.configureImagePickerController()
+  }
+  
+  func configureImagePickerController() {
+    imagePickerController.delegate = self
+    imagePickerController.allowsMultipleSelection = true
+    imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
+    imagePickerController.mediaType = .image
+    imagePickerController.prompt = "Update your Profile Images~"
   }
   
   func stylize() {
@@ -171,9 +180,8 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   
   func openCamera() {
     if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
-      imagePickerController.sourceType = UIImagePickerController.SourceType.camera
-      imagePickerController.allowsEditing = false
-      self.present(imagePickerController, animated: true, completion: nil)
+      self.imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
+      self.present(self.imagePickerController, animated: true, completion: nil)
     } else {
       let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -182,13 +190,48 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   }
   
   func openGallery() {
-    imagePickerController.sourceType = UIImagePickerController.SourceType.photoLibrary
-    imagePickerController.allowsEditing = false
-    self.present(imagePickerController, animated: true, completion: nil)
+    self.imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
+    self.present(self.imagePickerController, animated: true, completion: nil)
+    
   }
-  
   func openPhotoBank() {
     self.alert(title: "Feature Unavailable", message: "This feature is currently unavailable, but will be released soon")
+  }
+  
+  func newPicturesSelected(assets: [Any]) {
+    print("\(assets.count) Selected Assets")
+//    for asset in assets {
+//      print(asset)
+//      asset.fetchOriginalImage { (image, _) in
+//        if let pickedImage = image, let userID = DataStore.shared.currentPearUser?.documentID {
+//          print("Adding image to set")
+//          print(pickedImage.size)
+//          let loadingImageContainer = pickedImage.gettingStartedImage(size: .original)
+//          if let replacementIndex = self.imageReplacementIndexPath {
+//            self.images.remove(at: replacementIndex.row)
+//            self.images.insert(loadingImageContainer, at: replacementIndex.row)
+//          } else {
+//            self.images.append(loadingImageContainer)
+//          }
+//          self.collectionView.reloadData()
+//          PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
+//            switch result {
+//            case .success( let imageAllSizesRepresentation):
+//              print("Uploaded Image Successfully")
+//              loadingImageContainer.imageContainer = imageAllSizesRepresentation
+//              if self.hasClickedNext {
+//                DispatchQueue.main.async {
+//                  self.nextButtonClicked(self.nextButton as Any)
+//                }
+//              }
+//            case .failure:
+//              print("Failed Uploading Image")
+//            }
+//          }
+//        }
+//      }
+//    }
+    
   }
   
 }
@@ -324,36 +367,16 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegateFl
   
 }
 
-// MARK: - UIPickerControllerDelegate
-extension ApproveDetachedProfilePhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+// MARK: QBImagePickerControllerDelegate
+extension ApproveDetachedProfilePhotosViewController: QBImagePickerControllerDelegate {
   
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-    if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage, let userID = DataStore.shared.currentPearUser?.documentID {
-      let loadingImageContainer = pickedImage.gettingStartedImage(size: .original)
-      if let replacementIndex = self.imageReplacementIndexPath {
-        self.images.remove(at: replacementIndex.row)
-        self.images.insert(loadingImageContainer, at: replacementIndex.row)
-      } else {
-        self.images.append(loadingImageContainer)
-      }
-      self.collectionView.reloadData()
-      PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
-        switch result {
-        case .success( let imageAllSizesRepresentation):
-          print("Uploaded Image Successfully")
-          loadingImageContainer.imageContainer = imageAllSizesRepresentation
-          if self.hasClickedNext {
-            DispatchQueue.main.async {
-              self.nextButtonClicked(self.nextButton as Any)              
-            }
-          }
-        case .failure:
-          print("Failed Uploading Image")
-        }
-        
-      }
-    }
-    picker.dismiss(animated: true, completion: nil)
+  func qb_imagePickerControllerDidCancel(_ imagePickerController: QBImagePickerController!) {
+    imagePickerController.dismiss(animated: true, completion: nil)
+  }
+  
+  func qb_imagePickerController(_ imagePickerController: QBImagePickerController!, didFinishPickingAssets assets: [Any]!) {
+    print(assets)
+    imagePickerController.dismiss(animated: true, completion: nil)
   }
   
 }

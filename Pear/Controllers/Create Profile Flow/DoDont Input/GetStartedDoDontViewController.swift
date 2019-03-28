@@ -18,7 +18,7 @@ class GetStartedDoDontViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat = 6.0
+  let pageNumber: CGFloat = 5.0
   
   let doDontTitleHeight: CGFloat = 34
   let keyboardBottomPadding: CGFloat = 10

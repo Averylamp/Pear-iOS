@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DKImagePickerController
+import QBImagePickerController
 
 class GetStartedPhotoInputViewController: UIViewController {
   
@@ -22,7 +22,7 @@ class GetStartedPhotoInputViewController: UIViewController {
   
   let betweenImageSpacing: CGFloat = 6
   var images: [GettingStartedUIImageContainer] = []
-  let imagePickerController = DKImagePickerController()
+  var imagePickerController = QBImagePickerController()
   var longPressGestureRecognizer: UILongPressGestureRecognizer!
   var justMovedIndexPath: IndexPath?
   
@@ -123,48 +123,41 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
   }
   
   func configureImagePickerController() {
-    
-    imagePickerController.showsCancelButton = true
-    imagePickerController.maxSelectableCount = 6 - self.images.count
-    imagePickerController.singleSelect = false
-    imagePickerController.autoCloseOnSingleSelect = false
-    imagePickerController.assetType = .allPhotos
-    imagePickerController.didSelectAssets = newPicturesSelected(assets:)
+    imagePickerController.delegate = self
+    imagePickerController.allowsMultipleSelection = true
+    imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
+    imagePickerController.mediaType = .image
+    imagePickerController.prompt = "Pick Some Images For Your Friend~"
   }
   
-  func newPicturesSelected(assets: [DKAsset]) {
+  func newPicturesSelected(assets: [Any]) {
     print("\(assets.count) Selected Assets")
     for asset in assets {
       print(asset)
-      asset.fetchOriginalImage { (image, _) in
-        if let pickedImage = image, let userID = DataStore.shared.currentPearUser?.documentID {
-          print("Adding image to set")
-          print(pickedImage.size)
-          let gettingStartedImage = pickedImage.gettingStartedImage(size: .original)
-          self.images.append(gettingStartedImage)
-          self.collectionView.reloadData()
-          PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
-            switch result {
-            case .success( let imageAllSizesRepresentation):
-              print("Uploaded Image Successfully")
-              gettingStartedImage.imageContainer = imageAllSizesRepresentation
-            case .failure:
-              print("Failed Uploading Image")
-            }
-          }
-        }
+//      asset.fetchOriginalImage { (image, _) in
+//        if let pickedImage = image, let userID = DataStore.shared.currentPearUser?.documentID {
+//          print("Adding image to set")
+//          print(pickedImage.size)
+//          let gettingStartedImage = pickedImage.gettingStartedImage(size: .original)
+//          self.images.append(gettingStartedImage)
+//          self.collectionView.reloadData()
+//          PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
+//            switch result {
+//            case .success( let imageAllSizesRepresentation):
+//              print("Uploaded Image Successfully")
+//              gettingStartedImage.imageContainer = imageAllSizesRepresentation
+//            case .failure:
+//              print("Failed Uploading Image")
+//            }
+//          }
+//        }
       }
     }
-    
-  }
   
   func openCamera() {
     if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
-      imagePickerController.setSelectedAssets(assets: [])
-      imagePickerController.sourceType = .camera
-      imagePickerController.maxSelectableCount = 6 - self.images.count
-
-      self.present(imagePickerController, animated: true, completion: nil)
+      self.imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
+      self.present(self.imagePickerController, animated: true, completion: nil)
     } else {
       let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -173,11 +166,9 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
   }
   
   func openGallery() {
-    imagePickerController.setSelectedAssets(assets: [])
-    imagePickerController.sourceType = .photo
-    imagePickerController.maxSelectableCount = 6 - self.images.count
-
-    self.present(imagePickerController, animated: true, completion: nil)
+    self.imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
+    self.present(self.imagePickerController, animated: true, completion: nil)
+    
   }
   
 }
@@ -294,6 +285,20 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegateFlowLayout
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return betweenImageSpacing
+  }
+  
+}
+
+// MARK: QBImagePickerControllerDelegate
+extension GetStartedPhotoInputViewController: QBImagePickerControllerDelegate {
+  
+  func qb_imagePickerControllerDidCancel(_ imagePickerController: QBImagePickerController!) {
+    imagePickerController.dismiss(animated: true, completion: nil)
+  }
+  
+  func qb_imagePickerController(_ imagePickerController: QBImagePickerController!, didFinishPickingAssets assets: [Any]!) {
+    print(assets)
+    imagePickerController.dismiss(animated: true, completion: nil)
   }
   
 }
