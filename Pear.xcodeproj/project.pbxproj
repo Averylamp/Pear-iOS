@@ -18,6 +18,8 @@
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
 		86FDE6B440CCB525DFFBBB9B /* Pods_Pear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22874DF95B65F32D1CBE26DA /* Pods_Pear.framework */; };
+		9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */; };
+		9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
@@ -227,6 +229,8 @@
 		60C131EB21D348840093ECBA /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
 		7388C83F8FDD5EE107025C91 /* Pods-PearTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.development.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.development.xcconfig"; sourceTree = "<group>"; };
+		9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionBlockViewController.swift; sourceTree = "<group>"; };
+		9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionBlockViewController.storyboard; sourceTree = "<group>"; };
 		91EE66963235611BC434CCE5 /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.debug.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD54D4220366B1B629168A8C /* Pods-Pear.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.development.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.development.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
@@ -508,6 +512,7 @@
 		60C131D521D343560093ECBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9101E0C7224DD371009646AB /* Version Block Screen */,
 				BB986A1C220E08B300759A14 /* Landing Screen */,
 				BBE5BFAF224D0BBC00D99217 /* Create User Flow */,
 				BB986A39220E43A300759A14 /* Create Profile Flow */,
@@ -603,6 +608,15 @@
 				F4C78EDE4D7E0B9A500DD15A /* Pods-PearTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9101E0C7224DD371009646AB /* Version Block Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */,
+				9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */,
+			);
+			path = "Version Block Screen";
 			sourceTree = "<group>";
 		};
 		BB0628C0224634A4000D9B12 /* ChatAPI */ = {
@@ -1457,6 +1471,7 @@
 				BB18789721E2B22500964F26 /* ProfilesMainViewController.storyboard in Resources */,
 				BB686E422212213A008A263C /* GetStartedDoDontViewController.storyboard in Resources */,
 				BBB70AE522233A77006B75A0 /* Nunito-SemiBold.ttf in Resources */,
+				9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */,
 				BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */,
 				BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */,
 				BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */,
@@ -1616,7 +1631,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1748,6 +1763,7 @@
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
+				9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */,
 				BB6C06492227F750007A5C96 /* GetStartedAllowLocationViewController.swift in Sources */,
 				BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */,
 				BB3F219A2226765C00DC4489 /* UserCreationData.swift in Sources */,

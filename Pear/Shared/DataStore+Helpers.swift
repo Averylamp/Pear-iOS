@@ -15,6 +15,51 @@ import UserNotifications
 
 extension DataStore {
   
+  func getVersionNumber(versionSufficientCompletion: @escaping (Bool) -> Void) {
+    if let lastFetchTime = self.remoteConfig.lastFetchTime,
+      lastFetchTime > Date(timeIntervalSinceNow: 0) {
+      self.compareVersionNumber(completion: versionSufficientCompletion)
+    } else {
+      self.reloadRemoteConfig { (reloadedCompletion) in
+        if reloadedCompletion {
+          print("Reloaded Remote Config")
+          self.compareVersionNumber(completion: versionSufficientCompletion)
+        } else {
+          versionSufficientCompletion(true)
+        }
+      }
+    }
+  }
+  
+  func compareVersionNumber(completion: @escaping(Bool) -> Void) {
+    if let minVersion = self.remoteConfig.configValue(forKey: "min_version").numberValue?.intValue,
+      let minMajor = self.remoteConfig.configValue(forKey: "min_major").numberValue?.intValue,
+      let minMinor = self.remoteConfig.configValue(forKey: "min_minor").numberValue?.intValue,
+      let deviceVersionStr = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String {
+      let deviceVersionArr = deviceVersionStr.components(separatedBy: ".").map {Int($0)}
+      let deviceVersion = deviceVersionArr[0]
+      let deviceMajor = deviceVersionArr[1]
+      let deviceMinor = deviceVersionArr[2]
+      if let deviceVersion = deviceVersion, let deviceMajor = deviceMajor, let deviceMinor = deviceMinor {
+        completion(compareVersionArrays(a: [deviceVersion, deviceMajor, deviceMinor], b: [minVersion, minMajor, minMinor]))
+      } else {
+        completion(true)
+      }
+    } else {
+      completion(true)
+    }
+  }
+  
+  // is a at least b
+  // swiftlint:disable identifier_name
+  func compareVersionArrays(a: [Int], b: [Int]) -> Bool {
+    for i in 0..<min(a.count, b.count) where a[i] != b[i] {
+      return a[i] > b[i]
+    }
+    return true
+  }
+  // swiftlint:enable identifier_name
+  
   func checkForExistingUser(pearUserFoundCompletion: @escaping () -> Void, userNotFoundCompletion: @escaping () -> Void) {
     let trace = Performance.startTrace(name: "Loading Screen Existing User")
     if let currentUser = Auth.auth().currentUser {
