@@ -18,9 +18,8 @@ class DataStore {
   var remoteConfig: RemoteConfig
   
   private init() {
-
     self.remoteConfig = RemoteConfig.remoteConfig()
-    self.remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: true)
+    self.remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: DevConfig.devMode)
     self.remoteConfig.setDefaults(fromPlist: "RemoteConfig")
     self.remoteConfig.fetch { (status, error) in
       if let error = error {

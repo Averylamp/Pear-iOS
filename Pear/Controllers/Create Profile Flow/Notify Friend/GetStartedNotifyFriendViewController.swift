@@ -58,6 +58,10 @@ class GetStartedNotifyFriendViewController: UIViewController {
                                          y: self.inputTextFieldContainerView.frame.origin.y +
                                           self.inputTextFieldContainerView.frame.height + 40)
       activityIndicator.startAnimating()
+      if DevConfig.devMode {
+        self.createDetachedProfile()
+        return
+      }
       
       if MFMessageComposeViewController.canSendText() {
         let messageVC = MFMessageComposeViewController()

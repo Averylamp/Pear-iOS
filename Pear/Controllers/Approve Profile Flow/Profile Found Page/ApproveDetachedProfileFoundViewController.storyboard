@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good news!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13a-lb-DzA">
-                                <rect key="frame" x="161.5" y="422.5" width="91" height="21"/>
+                                <rect key="frame" x="161.5" y="402.5" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Someone has started a profile for you.  Choose your profile photos and see what they wrote." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvd-2p-GUa">
-                                <rect key="frame" x="40" y="473.5" width="334" height="61"/>
+                                <rect key="frame" x="40" y="453.5" width="334" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fireworks-icon" translatesAutoresizingMaskIntoConstraints="NO" id="VlL-Dh-foD">
-                                <rect key="frame" x="137" y="242.5" width="140" height="140"/>
+                                <rect key="frame" x="137" y="222.5" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="IfP-RH-OQA"/>
                                     <constraint firstAttribute="width" secondItem="VlL-Dh-foD" secondAttribute="height" multiplier="1:1" id="gMR-dn-BQ5"/>
@@ -73,7 +73,7 @@
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="ZMl-Hv-pPE" secondAttribute="trailing" constant="30" id="Yac-i7-5Jy"/>
                             <constraint firstItem="ZMl-Hv-pPE" firstAttribute="top" secondItem="ODI-3H-cEt" secondAttribute="bottom" constant="10" id="eXk-v2-wrU"/>
                             <constraint firstItem="nvd-2p-GUa" firstAttribute="centerX" secondItem="13a-lb-DzA" secondAttribute="centerX" id="goQ-y9-6IH"/>
-                            <constraint firstItem="13a-lb-DzA" firstAttribute="centerY" secondItem="gQ4-0s-yY9" secondAttribute="centerY" constant="-20" id="gto-a1-ppa"/>
+                            <constraint firstItem="13a-lb-DzA" firstAttribute="centerY" secondItem="gQ4-0s-yY9" secondAttribute="centerY" constant="-40" id="gto-a1-ppa"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="nvd-2p-GUa" secondAttribute="trailing" constant="40" id="jz4-wO-k4B"/>
                             <constraint firstItem="nvd-2p-GUa" firstAttribute="top" secondItem="13a-lb-DzA" secondAttribute="bottom" constant="30" id="vBc-qK-x1u"/>
                         </constraints>
