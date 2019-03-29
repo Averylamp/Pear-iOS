@@ -8,7 +8,8 @@
 
 import UIKit
 import NVActivityIndicatorView
-import QBImagePickerController
+import BSImagePicker
+import Photos
 
 class ApproveDetachedProfilePhotosViewController: UIViewController {
   
@@ -25,7 +26,7 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
   var originalDetachedProfileImages: [ImageContainer] = []
   var images: [GettingStartedUIImageContainer] = []
   var imageBank: [GettingStartedUIImageContainer] = []
-  let imagePickerController = QBImagePickerController()
+  var imagePickerController = BSImagePickerViewController()
   var longPressGestureRecognizer: UILongPressGestureRecognizer!
   var justMovedIndexPath: IndexPath?
   var hasClickedNext = false
@@ -74,30 +75,30 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
       PearImageAPI.shared.updateImages(userID: userID,
                                        displayedImages: self.detachedProfile.images,
                                        additionalImages: self.originalDetachedProfileImages) { (result) in
-                                        DispatchQueue.main.async {
-                                          switch result {
-                                          case .success(let success):
-                                            if success {
-                                              print("Successfully updated User's Images")
-                                              if self.detachedProfile.images.count == 0 {
-                                                self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
-                                                return
-                                              }
-                                              guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
-                                                print("Failed to create Approve Detached Profile VC")
-                                                return
-                                              }
-                                              self.navigationController?.pushViewController(profileApprovalVC, animated: true)
-                                            } else {
-                                              print("Failure updating User's Images")
-                                              self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
-                                            }
-                                          case .failure(let error):
-                                            print(error)
-                                            self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
-                                          }
-                                          self.hasClickedNext = false
-                                        }
+        DispatchQueue.main.async {
+          switch result {
+          case .success(let success):
+            if success {
+              print("Successfully updated User's Images")
+              if self.detachedProfile.images.count == 0 {
+                self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
+                return
+              }
+              guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
+                print("Failed to create Approve Detached Profile VC")
+                return
+              }
+              self.navigationController?.pushViewController(profileApprovalVC, animated: true)
+            } else {
+              print("Failure updating User's Images")
+              self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
+            }
+          case .failure(let error):
+            print(error)
+            self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
+          }
+          self.hasClickedNext = false
+        }
       }
       
     }
@@ -112,15 +113,6 @@ extension ApproveDetachedProfilePhotosViewController {
     self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ApproveDetachedProfilePhotosViewController.handleLongGesture(gesture:)))
     self.collectionView.addGestureRecognizer(self.longPressGestureRecognizer)
     self.stylize()
-    self.configureImagePickerController()
-  }
-  
-  func configureImagePickerController() {
-    imagePickerController.delegate = self
-    imagePickerController.allowsMultipleSelection = true
-    imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
-    imagePickerController.mediaType = .image
-    imagePickerController.prompt = "Update your Profile Images~"
   }
   
   func stylize() {
@@ -152,36 +144,41 @@ extension ApproveDetachedProfilePhotosViewController {
 extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if indexPath.item >= self.images.count {
       self.imageReplacementIndexPath = nil
     } else {
       self.imageReplacementIndexPath = indexPath
     }
-    let title = indexPath.item >= self.images.count ? "Add Image" : "Replace Image"
-    let subtitle = indexPath.item >= self.images.count ? "" : "You can only replace images"
-    
-    let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .actionSheet)
-    alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-      self.openCamera()
-    }))
-    
-    alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-      self.openGallery()
-    }))
-    
-    alert.addAction(UIAlertAction(title: "Suggested by Friends", style: .default, handler: { _ in
-      self.openPhotoBank()
-    }))
-    
-    alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-    
-    self.present(alert, animated: true, completion: nil)
+    self.pickImage()
+  }
+  
+  func pickImage() {
+    if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+      if self.imageReplacementIndexPath != nil {
+        self.imagePickerController.maxNumberOfSelections = 6 - self.images.count + 1
+      } else {
+        self.imagePickerController.maxNumberOfSelections = 6 - self.images.count
+      }
+      self.imagePickerController.takePhotos = true
+      
+      bs_presentImagePickerController(self.imagePickerController, animated: true, select: { (_) in
+          HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+      }, deselect: nil, cancel: nil, finish: { (assets) in
+        DispatchQueue.main.async {
+          self.newPicturesSelected(assets: assets)
+          self.imagePickerController = BSImagePickerViewController()
+        }
+      }, completion: nil)
+    }
   }
   
   func openCamera() {
     if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
-      self.imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
-      self.present(self.imagePickerController, animated: true, completion: nil)
+      self.imagePickerController.maxNumberOfSelections = 6 - self.images.count
+      bs_presentImagePickerController(self.imagePickerController, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (assets) in
+        self.newPicturesSelected(assets: assets)
+      }, completion: nil)
     } else {
       let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -190,48 +187,16 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   }
   
   func openGallery() {
-    self.imagePickerController.maximumNumberOfSelection = UInt(6 - self.images.count)
-    self.present(self.imagePickerController, animated: true, completion: nil)
-    
+    self.imagePickerController.maxNumberOfSelections = 6 - self.images.count
+    bs_presentImagePickerController(self.imagePickerController, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (assets) in
+      DispatchQueue.main.async {
+        self.newPicturesSelected(assets: assets)
+      }
+    }, completion: nil)
   }
+
   func openPhotoBank() {
     self.alert(title: "Feature Unavailable", message: "This feature is currently unavailable, but will be released soon")
-  }
-  
-  func newPicturesSelected(assets: [Any]) {
-    print("\(assets.count) Selected Assets")
-//    for asset in assets {
-//      print(asset)
-//      asset.fetchOriginalImage { (image, _) in
-//        if let pickedImage = image, let userID = DataStore.shared.currentPearUser?.documentID {
-//          print("Adding image to set")
-//          print(pickedImage.size)
-//          let loadingImageContainer = pickedImage.gettingStartedImage(size: .original)
-//          if let replacementIndex = self.imageReplacementIndexPath {
-//            self.images.remove(at: replacementIndex.row)
-//            self.images.insert(loadingImageContainer, at: replacementIndex.row)
-//          } else {
-//            self.images.append(loadingImageContainer)
-//          }
-//          self.collectionView.reloadData()
-//          PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
-//            switch result {
-//            case .success( let imageAllSizesRepresentation):
-//              print("Uploaded Image Successfully")
-//              loadingImageContainer.imageContainer = imageAllSizesRepresentation
-//              if self.hasClickedNext {
-//                DispatchQueue.main.async {
-//                  self.nextButtonClicked(self.nextButton as Any)
-//                }
-//              }
-//            case .failure:
-//              print("Failed Uploading Image")
-//            }
-//          }
-//        }
-//      }
-//    }
-    
   }
   
 }
@@ -368,15 +333,55 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegateFl
 }
 
 // MARK: QBImagePickerControllerDelegate
-extension ApproveDetachedProfilePhotosViewController: QBImagePickerControllerDelegate {
+extension ApproveDetachedProfilePhotosViewController {
   
-  func qb_imagePickerControllerDidCancel(_ imagePickerController: QBImagePickerController!) {
-    imagePickerController.dismiss(animated: true, completion: nil)
+  func newPicturesSelected(assets: [PHAsset]) {
+    print("\(assets.count) Selected Assets")
+    for asset in assets {
+      print(asset)
+      if let pickedImage = self.getUIImage(asset: asset),
+        let userID = DataStore.shared.currentPearUser?.documentID {
+        print("Adding image to set")
+        print(pickedImage.size)
+        let loadingImageContainer = pickedImage.gettingStartedImage(size: .original)
+        if let replacementIndex = self.imageReplacementIndexPath {
+          self.images.remove(at: replacementIndex.row)
+          self.images.insert(loadingImageContainer, at: replacementIndex.row)
+        } else {
+          self.images.append(loadingImageContainer)
+        }
+        self.collectionView.reloadData()
+        PearImageAPI.shared.uploadNewImage(with: pickedImage, userID: userID) { result in
+          switch result {
+          case .success( let imageAllSizesRepresentation):
+            print("Uploaded Image Successfully")
+            loadingImageContainer.imageContainer = imageAllSizesRepresentation
+            if self.hasClickedNext {
+              DispatchQueue.main.async {
+                self.nextButtonClicked(self.nextButton as Any)
+              }
+            }
+          case .failure:
+            print("Failed Uploading Image")
+          }
+        }
+      }
+    }
   }
   
-  func qb_imagePickerController(_ imagePickerController: QBImagePickerController!, didFinishPickingAssets assets: [Any]!) {
-    print(assets)
-    imagePickerController.dismiss(animated: true, completion: nil)
+  func getUIImage(asset: PHAsset) -> UIImage? {
+    
+    var img: UIImage?
+    let manager = PHImageManager.default()
+    let options = PHImageRequestOptions()
+    options.version = .current
+    options.isSynchronous = true
+    manager.requestImageData(for: asset, options: options) { data, _, _, _ in
+      if let data = data {
+        img = UIImage(data: data)
+      }
+    }
+    return img
   }
   
 }

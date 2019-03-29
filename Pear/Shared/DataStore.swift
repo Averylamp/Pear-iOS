@@ -23,7 +23,7 @@ class DataStore {
   }
   
   func reloadRemoteConfig(completion: ((Bool) -> Void)? = nil) {
-    self.remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: true)
+    self.remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: DevConfig.devMode)
     self.remoteConfig.setDefaults(fromPlist: "RemoteConfig")
     self.remoteConfig.fetch { (status, error) in
       if let error = error {

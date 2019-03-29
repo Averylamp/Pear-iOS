@@ -20,10 +20,9 @@ enum FullProfileOrigin {
   case userProfile
 }
 
-class FullProfileDisplayData {
+class FullProfileDisplayData: Equatable {
   
   var originalCreatorName: String?
-  
   var firstName: String!
   var age: Int!
   var gender: String!
@@ -165,4 +164,13 @@ class FullProfileDisplayData {
     self.imageContainers = user.displayedImages
     self.profileOrigin = .userProfile
   }
+  
+  static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
+    return lhs.originalCreatorName == rhs.originalCreatorName &&
+    lhs.firstName == rhs.firstName &&
+    lhs.age == rhs.age &&
+    lhs.gender == rhs.gender
+    
+  }
+  
 }

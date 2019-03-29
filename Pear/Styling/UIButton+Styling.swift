@@ -26,7 +26,7 @@ extension UIButton {
   }
   
   func stylizeFacebookColor() {
-    self.backgroundColor = UIColor(red: 0.21, green: 0.35, blue: 0.62, alpha: 1.00)
+    self.backgroundColor = R.color.facebookColor()
     self.layer.cornerRadius = self.frame.height / 2.0
     self.setTitleColor(UIColor.white, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)

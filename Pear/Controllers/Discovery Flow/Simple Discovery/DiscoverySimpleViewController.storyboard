@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JZe-kz-mxa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JZe-kz-mxa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,14 +71,19 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wco-BN-SMz">
                                                     <rect key="frame" x="31" y="15" width="313" height="270"/>
                                                     <subviews>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Dp1-Ls-SRL">
+                                                            <rect key="frame" x="138" y="116.5" width="37" height="37"/>
+                                                            <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </activityIndicatorView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1q-cx-Lh6">
                                                             <rect key="frame" x="0.0" y="0.0" width="313" height="270"/>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="Dp1-Ls-SRL" firstAttribute="centerX" secondItem="Wco-BN-SMz" secondAttribute="centerX" id="3yF-8C-tFJ"/>
                                                         <constraint firstItem="W1q-cx-Lh6" firstAttribute="width" secondItem="Wco-BN-SMz" secondAttribute="width" id="5mY-eu-oId"/>
                                                         <constraint firstItem="W1q-cx-Lh6" firstAttribute="centerY" secondItem="Wco-BN-SMz" secondAttribute="centerY" id="HZT-PH-Pb8"/>
+                                                        <constraint firstItem="Dp1-Ls-SRL" firstAttribute="centerY" secondItem="Wco-BN-SMz" secondAttribute="centerY" id="WIw-kL-NW9"/>
                                                         <constraint firstItem="W1q-cx-Lh6" firstAttribute="centerX" secondItem="Wco-BN-SMz" secondAttribute="centerX" id="hep-xr-MLL"/>
                                                         <constraint firstItem="W1q-cx-Lh6" firstAttribute="height" secondItem="Wco-BN-SMz" secondAttribute="height" id="r4O-iV-r2U"/>
                                                     </constraints>
@@ -121,6 +126,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dicovery-icon-pear" width="125" height="125"/>
+        <image name="dicovery-icon-pear" width="500" height="500"/>
     </resources>
 </document>

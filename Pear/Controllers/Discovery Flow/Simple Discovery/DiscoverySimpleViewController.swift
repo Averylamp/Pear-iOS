@@ -33,6 +33,10 @@ extension DiscoverySimpleViewController {
     self.checkForDetachedProfiles()
     self.refreshFeed()
   }
+  override func viewDidAppear(_ animated: Bool) {
+    self.checkForDetachedProfiles()
+    self.refreshFeed()
+  }
   
   func stylize() {
     tableView.separatorStyle = .none
@@ -56,15 +60,32 @@ extension DiscoverySimpleViewController {
       })
   }
   
+  func newItemsFound(fullProfileData: [FullProfileDisplayData], otherFullProfileData: [FullProfileDisplayData]) -> Bool {
+    var newItems = false
+    for prof1 in fullProfileData {
+      var foundMatch = false
+      for prof2 in otherFullProfileData where prof1 == prof2 {
+          foundMatch = true
+      }
+      if !foundMatch {
+        newItems = true
+      }
+    }
+    return newItems
+  }
+  
   func refreshFeed() {
     if let userID = DataStore.shared.currentPearUser?.documentID {
       PearProfileAPI.shared.getDiscoveryFeed(user_id: userID, completion: { (result) in
         switch result {
         case .success(let feedObjects):
+          
           print("Found \(feedObjects.count) Feed Objects")
-          self.fullProfiles = feedObjects
-          DispatchQueue.main.async {
-            self.tableView.reloadData()
+          if self.newItemsFound(fullProfileData: feedObjects, otherFullProfileData: self.fullProfiles) {
+            self.fullProfiles = feedObjects
+            DispatchQueue.main.async {
+              self.tableView.reloadData()
+            }
           }
         case .failure(let error):
           print("Error fetching feed:\(error)")
@@ -92,12 +113,16 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
     let fullProfile = self.fullProfiles[indexPath.row]
     cell.selectionStyle = .none
     cell.cardView.layer.cornerRadius = 8
+    cell.cardView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
+    cell.cardView.layer.borderWidth = 2
     cell.cardView.clipsToBounds = true
     cell.firstImageView.image = nil
     if let imageContainer = fullProfile.imageContainers.first,
       let imageURL = URL(string: imageContainer.medium.imageURL) {
-      print("Image URL Loading: \(imageURL)")
-      cell.firstImageView.sd_setImage(with: imageURL, completed: nil)
+      cell.firstImageView.sd_setImage(with: imageURL) { (_, _, _, _) in
+        cell.cardView.layer.borderColor = nil
+        cell.cardView.layer.borderWidth = 0
+      }
     }
     return cell
   }

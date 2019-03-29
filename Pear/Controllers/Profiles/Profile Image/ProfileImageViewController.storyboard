@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LmC-B9-Q5i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LmC-B9-Q5i">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,7 +28,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qAi-Cg-doH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="qAi-Cg-doH" secondAttribute="height" multiplier="1:1" id="MPn-Ic-Fxl"/>
+                                    <constraint firstAttribute="width" secondItem="qAi-Cg-doH" secondAttribute="height" multiplier="1:1" id="cyr-mX-3tZ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -39,12 +39,13 @@
                             <constraint firstItem="qAi-Cg-doH" firstAttribute="centerY" secondItem="xyO-cf-16v" secondAttribute="centerY" id="SlH-2W-M9A"/>
                             <constraint firstItem="qAi-Cg-doH" firstAttribute="centerX" secondItem="xyO-cf-16v" secondAttribute="centerX" id="Sve-Hn-wXp"/>
                             <constraint firstItem="qAi-Cg-doH" firstAttribute="width" secondItem="xyO-cf-16v" secondAttribute="width" id="dEk-n7-Lvi"/>
-                            <constraint firstItem="qAi-Cg-doH" firstAttribute="height" secondItem="xyO-cf-16v" secondAttribute="height" id="fc1-bG-QoL"/>
+                            <constraint firstItem="qAi-Cg-doH" firstAttribute="height" secondItem="xyO-cf-16v" secondAttribute="height" priority="999" id="fc1-bG-QoL"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="375"/>
                     <connections>
                         <outlet property="imageView" destination="qAi-Cg-doH" id="CNj-o7-R8U"/>
+                        <outlet property="imageViewAspectConstraint" destination="cyr-mX-3tZ" id="VHM-d1-VWq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fk6-RJ-dJb" userLabel="First Responder" sceneMemberID="firstResponder"/>

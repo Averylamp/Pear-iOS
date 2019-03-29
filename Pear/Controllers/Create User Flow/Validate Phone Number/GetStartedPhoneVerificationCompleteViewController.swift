@@ -26,11 +26,20 @@ class GetStartedPhoneVerificationCompleteViewController: UIViewController {
   
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let mainScreenVC = LoadingScreenViewController.getMainScreenVC() else {
-      print("Failed to create Choose flow VC")
-      return
+    if DataStore.shared.remoteConfig.configValue(forKey: "discovery_first").boolValue {
+      guard let mainScreenVC = LoadingScreenViewController.getMainScreenVC() else {
+        print("Go to Main VC")
+        return
+      }
+      self.navigationController?.setViewControllers([mainScreenVC], animated: true)
+      
+    } else {
+      guard let mainScreenVC = GetStartedStartFriendProfileViewController.instantiate() else {
+        print("Failed to Start Friend Profile VC")
+        return
+      }
+      self.navigationController?.setViewControllers([mainScreenVC], animated: true)
     }
-    self.navigationController?.setViewControllers([mainScreenVC], animated: true)
   }
 }
 

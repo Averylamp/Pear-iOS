@@ -38,6 +38,7 @@ class ApproveDetachedProfileFoundViewController: UIViewController {
   }
   
   @IBAction func nextButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     guard let imageContainers = self.imageContainers else {
       if hasClickedNext {
         return
