@@ -30,12 +30,37 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
-      self.continueToMainScreen()
-    }, userNotFoundCompletion: {
-      self.continueToLandingScreen()
+    DataStore.shared.getVersionNumber(versionSufficientCompletion: { (result) in
+      print("*****compared version numbers*****")
+      print(result)
+      if !result {
+        self.continueToVersionBlockScreen()
+      } else {
+        DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+          self.continueToMainScreen()
+        }, userNotFoundCompletion: {
+          self.continueToLandingScreen()
+        })
+        self.testChat()
+      }
     })
-    self.testChat()
+  }
+  
+  static func getVersionBlockScreen() -> UIViewController? {
+    guard let versionBlockVC = VersionBlockViewController.instantiate() else {
+      print("Failed to create Version Block VC")
+      return nil
+    }
+    return versionBlockVC
+  }
+  
+  func continueToVersionBlockScreen() {
+    print("Continuing to version block screen")
+    DispatchQueue.main.async {
+      if let versionBlockVC = LoadingScreenViewController.getVersionBlockScreen() {
+        self.navigationController?.setViewControllers([versionBlockVC], animated: true)
+      }
+    }
   }
   
   static func getLandingScreen() -> UIViewController? {
