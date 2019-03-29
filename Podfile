@@ -20,7 +20,7 @@ target 'Pear' do
   pod 'CodableFirebase'
   pod 'R.swift'
   pod 'Sentry' 
-  pod 'QBImagePickerController'
+  pod 'BSImagePicker'
 
 
   target 'PearTests' do

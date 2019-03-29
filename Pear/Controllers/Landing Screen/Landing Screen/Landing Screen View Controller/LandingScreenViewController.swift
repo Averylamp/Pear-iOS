@@ -11,6 +11,7 @@ import FacebookLogin
 import FBSDKCoreKit
 import Firebase
 import SwiftyJSON
+import NVActivityIndicatorView
 
 class LandingScreenViewController: UIViewController {
   
@@ -20,8 +21,13 @@ class LandingScreenViewController: UIViewController {
   @IBOutlet weak var pageControl: UIPageControl!
   
   var gettingStarted: Bool = false
+  var isLoggingIntoFacebook: Bool = false
   
   var pages: [LandingScreenPageViewController] = []
+  let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                     type: NVActivityIndicatorType.ballScaleRippleMultiple,
+                                                     color: StylingConfig.textFontColor,
+                                                     padding: 0)
   
   /// Factory method for creating this view controller.
   ///
@@ -124,7 +130,33 @@ private extension LandingScreenViewController {
     self.emailButton.addTarget(self, action: #selector(LandingScreenViewController.emailButtonClicked(sender:)), for: .touchUpInside)
   }
   
+  func stylizeFacebookButton(isEnabled: Bool) {
+    self.isLoggingIntoFacebook = !isEnabled
+    if self.isLoggingIntoFacebook {
+      if self.activityIndicatorView.superview == nil {
+        self.view.addSubview(self.activityIndicatorView)
+        print("Adding activity indicator")
+        self.activityIndicatorView.center.y = self.facebookButton.frame.origin.y - 50
+        self.activityIndicatorView.center.x = self.facebookButton.center.x
+        self.activityIndicatorView.tintColor = R.color.facebookColorSelected()
+        self.activityIndicatorView.startAnimating()
+      }
+      self.facebookButton.backgroundColor = R.color.facebookColorSelected()
+      self.facebookButton.isEnabled = false
+    } else {
+      self.facebookButton.isEnabled = true
+      self.facebookButton.stylizeFacebookColor()
+      if self.activityIndicatorView.superview != nil {
+        self.activityIndicatorView.removeFromSuperview()
+      }
+    }
+  }
+  
   func loginWithFacebook() {
+    if self.isLoggingIntoFacebook {
+      return
+    }
+    self.stylizeFacebookButton(isEnabled: false)
     let trace = Performance.startTrace(name: "Login With Facebook")
     // 1. Auth via Facebook.
     
@@ -140,9 +172,11 @@ private extension LandingScreenViewController {
       case .cancelled:
         trace?.incrementMetric("Facebook Login Cancelled", by: 1)
         trace?.stop()
+        self.stylizeFacebookButton(isEnabled: true)
       case .failed:
         trace?.incrementMetric("Facebook Login Failed", by: 1)
         trace?.stop()
+        self.stylizeFacebookButton(isEnabled: true)
       }
     }
   }
@@ -167,6 +201,7 @@ private extension LandingScreenViewController {
           self.alert(title: "Auth Error", message: error.localizedDescription)
           firebaseFacebookLogin?.incrementMetric("Firebase Facebook Login Unsuccessful", by: 1)
           firebaseFacebookLogin?.stop()
+          self.stylizeFacebookButton(isEnabled: true)
           print("Failed to log in user")
           return
         }
@@ -174,6 +209,7 @@ private extension LandingScreenViewController {
           firebaseFacebookLogin?.incrementMetric("Firebase Facebook Login Unsuccessful", by: 1)
           firebaseFacebookLogin?.stop()
           print("Failed to log in user")
+          self.stylizeFacebookButton(isEnabled: true)
           return
         }
         firebaseFacebookLogin?.incrementMetric("Firebase/Facebook Login Successful", by: 1)
@@ -186,8 +222,10 @@ private extension LandingScreenViewController {
           DispatchQueue.main.async {
             guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
               print("Failed to create Landing Screen VC")
+              self.stylizeFacebookButton(isEnabled: true)
               return
             }
+            self.stylizeFacebookButton(isEnabled: true)
             self.navigationController?.setViewControllers([mainVC], animated: true)
           }
         }, userNotFoundCompletion: {
@@ -237,6 +275,7 @@ private extension LandingScreenViewController {
                                 completion: { (fbGraphFilledGSUser  ) in
             DispatchQueue.main.async {
               if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
+                self.stylizeFacebookButton(isEnabled: true)
                 self.navigationController?.pushViewController(nextVC, animated: true)
               }
             }
@@ -245,7 +284,7 @@ private extension LandingScreenViewController {
         
       }
     default:
-      break
+      self.stylizeFacebookButton(isEnabled: true)
     }
   }
   

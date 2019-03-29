@@ -15,6 +15,7 @@ class ProfileImageViewController: UIViewController {
   var imageContainer: ImageContainer?
   @IBOutlet var imageView: UIImageView!
   
+  @IBOutlet weak var imageViewAspectConstraint: NSLayoutConstraint!
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -50,14 +51,19 @@ extension ProfileImageViewController {
     
     self.imageView.contentMode = .scaleAspectFill
     self.imageView.clipsToBounds = true
+    self.view.layoutIfNeeded()
+    var aspectRatio: CGFloat = 1
     if let image = self.image {
       self.imageView.image = image
+      aspectRatio = image.size.height / image.size.width
     } else if let imageContainer = self.imageContainer,
       let imageURL = URL(string: imageContainer.large.imageURL) {
       self.imageView.sd_setImage(with: imageURL, completed: nil)
+      aspectRatio = CGFloat(imageContainer.large.height) / CGFloat(imageContainer.large.width)
     }
-    self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView!, attribute: .width, relatedBy: .equal,
-                                                    toItem: self.imageView, attribute: .height, multiplier: 1.0, constant: 0.0))
+    self.imageViewAspectConstraint.isActive = false
+    self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView!, attribute: .height, relatedBy: .equal,
+                                                    toItem: self.imageView, attribute: .width, multiplier: aspectRatio, constant: 0.0))
   }
   
 }
