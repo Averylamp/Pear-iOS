@@ -95,7 +95,7 @@ extension ProfileBioViewController {
     
     let contentTextLabel = UILabel()
     contentTextLabel.numberOfLines = 0
-    contentTextLabel.text = bioText
+    contentTextLabel.text = "\"" + bioText + "\""
     contentTextLabel.stylizeDoDontLabel()
     contentTextLabel.translatesAutoresizingMaskIntoConstraints = false
     containerView.addSubview(contentTextLabel)
