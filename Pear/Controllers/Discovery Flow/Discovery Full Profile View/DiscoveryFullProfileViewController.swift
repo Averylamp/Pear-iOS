@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Sentry
 
 class DiscoveryFullProfileViewController: UIViewController {
 
@@ -43,6 +44,7 @@ class DiscoveryFullProfileViewController: UIViewController {
           if !blockedUsers.contains(userID) {
             blockedUsers.append(userID)
           }
+          NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
           DataStore.shared.saveListToDefaults(list: blockedUsers, type: .blockedUsers)
         }
         self.navigationController?.popViewController(animated: true)
@@ -51,6 +53,11 @@ class DiscoveryFullProfileViewController: UIViewController {
     }
     let reportAction = UIAlertAction(title: "Report User", style: .destructive) { (_) in
       DispatchQueue.main.async {
+        if let userID = self.fullProfileData.userID {
+          let reportEvent = Event(level: .info)
+          reportEvent.extra = ["reportedUserID": userID]
+          Client.shared?.send(event: reportEvent, completion: nil)
+        }
         self.alert(title: "User Reported", message: "Thank you for your report and making Pear a safe place")
       }
     }
