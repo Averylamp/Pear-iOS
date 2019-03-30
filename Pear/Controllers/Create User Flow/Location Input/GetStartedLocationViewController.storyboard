@@ -27,19 +27,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to verify your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zuc-q7-q9D">
-                                <rect key="frame" x="30" y="291" width="315" height="65.5"/>
+                                <rect key="frame" x="30" y="285.5" width="315" height="76.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This lets us securely surface nearby profiles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQp-n4-cXy">
-                                <rect key="frame" x="20" y="364.5" width="335" height="51.5"/>
+                                <rect key="frame" x="20" y="370" width="335" height="53"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
                                 <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-location" translatesAutoresizingMaskIntoConstraints="NO" id="dMJ-2A-hUM">
-                                <rect key="frame" x="157.5" y="223" width="60" height="60"/>
+                                <rect key="frame" x="157.5" y="217.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="9TM-Ag-JIi"/>
                                     <constraint firstAttribute="width" secondItem="dMJ-2A-hUM" secondAttribute="height" multiplier="1:1" id="qVk-6E-Ms4"/>
@@ -51,7 +51,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uvv-1m-MPF"/>
                                 </constraints>
-                                <state key="normal" title="Enable Notifications"/>
+                                <state key="normal" title="Enable Location"/>
                                 <connections>
                                     <action selector="enableLocationClicked:" destination="D7H-U0-SA3" eventType="touchUpInside" id="QCW-TK-9KW"/>
                                 </connections>
