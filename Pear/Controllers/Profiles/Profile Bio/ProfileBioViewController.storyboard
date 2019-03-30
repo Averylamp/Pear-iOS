@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oyj-16-F2Y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oyj-16-F2Y">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,18 +38,26 @@
                                     <constraint firstAttribute="bottom" secondItem="4qe-v1-Jpd" secondAttribute="bottom" id="tRf-aM-hPL"/>
                                 </constraints>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AvL-kg-M9P">
+                                <rect key="frame" x="187.5" y="0.0" width="0.0" height="0.0"/>
+                                <color key="pageIndicatorTintColor" white="0.10000000000000001" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.5" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ARY-y7-cr4" secondAttribute="trailing" id="KQ1-d2-k51"/>
                             <constraint firstItem="ARY-y7-cr4" firstAttribute="width" secondItem="pis-cb-xLy" secondAttribute="width" id="Kit-RV-qpR"/>
+                            <constraint firstItem="AvL-kg-M9P" firstAttribute="top" secondItem="pis-cb-xLy" secondAttribute="top" id="SAz-vh-fIL"/>
                             <constraint firstItem="ARY-y7-cr4" firstAttribute="height" secondItem="pis-cb-xLy" secondAttribute="height" id="VmU-FI-Urk"/>
                             <constraint firstItem="ARY-y7-cr4" firstAttribute="centerY" secondItem="pis-cb-xLy" secondAttribute="centerY" id="mLy-lL-E88"/>
+                            <constraint firstItem="AvL-kg-M9P" firstAttribute="centerX" secondItem="pis-cb-xLy" secondAttribute="centerX" id="n9Q-Zj-vmK"/>
                             <constraint firstItem="ARY-y7-cr4" firstAttribute="leading" secondItem="pis-cb-xLy" secondAttribute="leading" id="xVE-EE-LMt"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="260"/>
                     <connections>
+                        <outlet property="pageControl" destination="AvL-kg-M9P" id="9NB-k4-g3q"/>
                         <outlet property="scrollView" destination="ARY-y7-cr4" id="iL9-j0-m4N"/>
                         <outlet property="scrollViewHeightConstraint" destination="Da8-ZO-ot9" id="Bg7-wg-Tj6"/>
                     </connections>

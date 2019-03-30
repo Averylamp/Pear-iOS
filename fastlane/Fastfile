@@ -22,7 +22,7 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     increment_build_number
-    build_app(workspace: "Pear.xcworkspace", scheme: "Pear")
+    build_app(workspace: "Pear.xcworkspace", scheme: "Production")
     upload_to_testflight
     slack(
       slack_url: "https://hooks.slack.com/services/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",
@@ -45,11 +45,11 @@ platform :ios do
   end
   desc "Runs Tests"
   lane :test do
-    run_tests(scheme: "Pear")
+    run_tests(scheme: "Production")
   end
   lane :release do
     increment_build_number
-    build_all(workspace: "Pear.xcworkspace", scheme: "Pear")
+    build_all(workspace: "Pear.xcworkspace", scheme: "Production")
     upload_to_testflight
   end
 

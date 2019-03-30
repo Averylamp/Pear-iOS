@@ -143,7 +143,6 @@ extension PearProfileAPI {
             do {
               if let profiles = json["data"]["findDetachedProfiles"].array {
                 var detachedProfiles: [PearDetachedProfile] = []
-                print("\(profiles.count) Detached profiles found matching your phone number")
                 for profile in profiles {
                   let pearDetachedProfileData = try profile.rawData()
                   let pearDetachedUser = try JSONDecoder().decode(PearDetachedProfile.self, from: pearDetachedProfileData)
