@@ -55,6 +55,8 @@ class DiscoveryFullProfileViewController: UIViewController {
       DispatchQueue.main.async {
         if let userID = self.fullProfileData.userID {
           let reportEvent = Event(level: .info)
+          reportEvent.tags = ["reportedUserID": userID]
+          reportEvent.message = "User Reported For Misconduct"
           reportEvent.extra = ["reportedUserID": userID]
           Client.shared?.send(event: reportEvent, completion: nil)
         }

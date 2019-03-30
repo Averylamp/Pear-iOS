@@ -119,7 +119,6 @@ extension DataStore {
       PearProfileAPI.shared.checkDetachedProfiles(phoneNumber: user.phoneNumber) { (result) in
         switch result {
         case .success(let detachedProfiles):
-          print(detachedProfiles)
           detachedProfilesFound(detachedProfiles)
           return
         case .failure(let error):
