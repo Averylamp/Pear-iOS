@@ -19,11 +19,18 @@ class DataStore {
   
   private init() {
     self.remoteConfig = RemoteConfig.remoteConfig()
+    self.reloadRemoteConfig()
+  }
+  
+  func reloadRemoteConfig(completion: ((Bool) -> Void)? = nil) {
     self.remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: DevConfig.devMode)
     self.remoteConfig.setDefaults(fromPlist: "RemoteConfig")
     self.remoteConfig.fetch { (status, error) in
       if let error = error {
         print("Error fetching remote config: \(error)")
+        if let completion = completion {
+          completion(false)
+        }
         return
       }
       switch status {
@@ -39,7 +46,10 @@ class DataStore {
       @unknown default:
         fatalError()
       }
+      
+      if let completion = completion {
+        completion(status == .success)
+      }
     }
   }
-  
 }
