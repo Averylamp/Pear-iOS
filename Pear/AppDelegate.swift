@@ -27,6 +27,7 @@ extension AppDelegate: UIApplicationDelegate {
     FirebaseApp.configure()
     
     //    Forces Remote config fetch
+    print(DataStore.shared.remoteConfig.configSettings)
     Fabric.with([Crashlytics.self])
     
     do {
