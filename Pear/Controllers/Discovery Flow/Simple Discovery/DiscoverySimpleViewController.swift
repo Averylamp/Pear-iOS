@@ -58,6 +58,7 @@ extension DiscoverySimpleViewController {
                          selector: #selector(DiscoverySimpleViewController.reloadeFullDataIfNeeded),
                          userInfo: nil,
                          repeats: true)
+    self.registerNotifications()
   }
   
   func stylize() {
@@ -73,11 +74,11 @@ extension DiscoverySimpleViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.reloadeFullDataIfNeeded()
-    self.registerNotifications()
+    print("View appearing")
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    self.deregisterNotifications()
+    print("View dissappearing")
   }
   
   func registerNotifications() {
@@ -87,20 +88,12 @@ extension DiscoverySimpleViewController {
                    name: .refreshDiscoveryFeed, object: nil)
   }
   
-  func deregisterNotifications() {
-    NotificationCenter.default.removeObserver(self, name: .refreshDiscoveryFeed, object: nil)
-  }
-  
   @objc func didRecieveRefreshFeedNotification() {
-    self.forceFullDataReload()
+    print("Received Refresh notification")
+    self.fullDataReload()
   }
   
   @objc func refreshControlChanged(sender: UIRefreshControl) {
-    self.forceFullDataReload()
-  }
-  
-  func forceFullDataReload() {
-    self.lastRefreshTime = Date(timeIntervalSinceNow: -self.minRefreshTime - 10)
     self.fullDataReload()
   }
   
@@ -115,14 +108,10 @@ extension DiscoverySimpleViewController {
   func fullDataReload() {
     print("Discovery Full Reload")
     self.lastRefreshTime = Date()
-    self.refreshSkipped()
-    self.checkForDetachedProfiles()
-    self.refreshFeed()
-  }
-  
-  func refreshSkipped() {
     self.blockedUsers = DataStore.shared.fetchListFromDefaults(type: .blockedUsers)
     self.skippedDetachedProfiles = DataStore.shared.fetchListFromDefaults(type: .skippedDetachedProfiles)
+    self.checkForDetachedProfiles()
+    self.refreshFeed()
   }
   
   func checkForDetachedProfiles() {
@@ -161,9 +150,15 @@ extension DiscoverySimpleViewController {
         switch result {
         case .success(let feedObjects):
           
+          let newFeed = feedObjects.filter({
+            if let userID = $0.userID {
+              return !self.blockedUsers.contains(userID)
+            }
+            return true
+          })
           print("Found \(feedObjects.count) Feed Objects")
-          if self.newItemsFound(fullProfileData: feedObjects, otherFullProfileData: self.fullProfiles) {
-            self.fullProfiles = feedObjects
+          if self.newItemsFound(fullProfileData: newFeed, otherFullProfileData: self.fullProfiles) {
+            self.fullProfiles = newFeed
             DispatchQueue.main.async {
               self.tableView.reloadData()
             }
