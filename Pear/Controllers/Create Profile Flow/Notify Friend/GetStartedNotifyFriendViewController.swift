@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import MessageUI
+import ContactsUI
 
 class GetStartedNotifyFriendViewController: UIViewController {
   
@@ -111,6 +112,12 @@ class GetStartedNotifyFriendViewController: UIViewController {
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
+  }
+  
+  @IBAction func contactsButtonClicked(_ sender: Any) {
+    let cnPicker = CNContactPickerViewController()
+    cnPicker.delegate = self
+    self.present(cnPicker, animated: true, completion: nil)
   }
   
 }
@@ -260,4 +267,38 @@ extension GetStartedNotifyFriendViewController: MFMessageComposeViewControllerDe
       fatalError()
     }
   }
+}
+
+extension GetStartedNotifyFriendViewController: CNContactPickerDelegate {
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+    if contact.phoneNumbers.count > 0 {
+      var phoneNumber = contact.phoneNumbers[0].value.stringValue
+      phoneNumber = phoneNumber.filter("0123456789".contains)
+      if phoneNumber.count == 11 && phoneNumber[0] == "1" {
+        phoneNumber = phoneNumber[1..<11]
+      }
+      if phoneNumber.count != 10 {
+        let alert = UIAlertController(title: "Not a Valid Number", message: "Contact must have a valid US phone number", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        DispatchQueue.main.async {
+          self.present(alert, animated: true)
+        }
+      } else {
+        self.inputTextField.text = phoneNumber
+        self.textField(self.inputTextField, shouldChangeCharactersIn: NSRange(location: 0, length: phoneNumber.count), replacementString: phoneNumber)
+      }
+    } else {
+      let alert = UIAlertController(title: "No Phone Number", message: "This contact does not have a valid phone number", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      DispatchQueue.main.async {
+        self.present(alert, animated: true)
+      }
+    }
+  }
+  
+  func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+    print("Cancel Contact Picker")
+  }
+  
 }
