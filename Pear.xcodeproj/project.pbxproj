@@ -173,6 +173,8 @@
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */; };
+		BBE5BFBC224F600E00D99217 /* DiscoveryFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */; };
+		BBE5BFBD224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */; };
 		BBECBEB12237BA05008E8E91 /* FullProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */; };
 		BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */; };
 		BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */; };
@@ -396,6 +398,8 @@
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+UserDefaults.swift"; sourceTree = "<group>"; };
+		BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFullProfileViewController.swift; sourceTree = "<group>"; };
+		BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileReviewViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
@@ -678,6 +682,7 @@
 			children = (
 				BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */,
 				BB18789221E2B21800964F26 /* DiscoverMainViewController.storyboard */,
+				BBE5BFBE224F619200D99217 /* Discovery Full Profile View */,
 				BB94C12222437CF1001320B0 /* Simple Discovery */,
 			);
 			path = "Discovery Flow";
@@ -743,12 +748,12 @@
 			isa = PBXGroup;
 			children = (
 				BB75BFCA22155F9100BAB800 /* Full Profile View */,
+				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 				BBECBEBA2237D940008E8E91 /* Profile Demographics */,
 				BBECBEBB2237D94B008E8E91 /* Profile Bio */,
 				BBECBEBC2237D955008E8E91 /* Profile Interests */,
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
-				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -1116,6 +1121,15 @@
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 			);
 			path = "Create User Flow";
+			sourceTree = "<group>";
+		};
+		BBE5BFBE224F619200D99217 /* Discovery Full Profile View */ = {
+			isa = PBXGroup;
+			children = (
+				BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */,
+				BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */,
+			);
+			path = "Discovery Full Profile View";
 			sourceTree = "<group>";
 		};
 		BBE8D01C2213E04600FD1355 /* User Name Input */ = {
@@ -1486,6 +1500,7 @@
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
 				BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */,
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
+				BBE5BFBD224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard in Resources */,
 				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
@@ -1705,7 +1720,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1768,6 +1783,7 @@
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
+				BBE5BFBC224F600E00D99217 /* DiscoveryFullProfileViewController.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
 				BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */,

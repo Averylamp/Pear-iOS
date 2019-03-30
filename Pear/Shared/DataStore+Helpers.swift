@@ -114,7 +114,7 @@ extension DataStore {
     }
   }
   
-  func checkForDetachedProfiles(detachedProfilesFound: @escaping ([PearDetachedProfile]) -> Void, detachedProfilesNotFound: @escaping () -> Void) {
+  func checkForDetachedProfiles(detachedProfilesFound: @escaping ([PearDetachedProfile]) -> Void) {
     if let user = DataStore.shared.currentPearUser {
       PearProfileAPI.shared.checkDetachedProfiles(phoneNumber: user.phoneNumber) { (result) in
         switch result {
@@ -124,12 +124,12 @@ extension DataStore {
           return
         case .failure(let error):
           print("Error checking for Detached Profiles: \(error)")
-          detachedProfilesNotFound()
+          detachedProfilesFound([])
           return
         }
       }
     } else {
-      detachedProfilesNotFound()
+      detachedProfilesFound([])
       return
     }
   }

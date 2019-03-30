@@ -8,10 +8,20 @@
 
 import UIKit
 
-class DiscoverySimpleViewController: UIViewController {
+extension Notification.Name {
+  static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
+}
 
+class DiscoverySimpleViewController: UIViewController {
+  
   @IBOutlet weak var tableView: UITableView!
   var fullProfiles: [FullProfileDisplayData] = []
+  var blockedUsers: [String] = []
+  var skippedDetachedProfiles: [String] = []
+  var lastRefreshTime: Date = Date()
+  let minRefreshTime: Double = 60 // Minimum time to wait before refreshing feed
+  private let refreshControl = UIRefreshControl()
+  private var refreshTimer: Timer = Timer()
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -21,7 +31,7 @@ class DiscoverySimpleViewController: UIViewController {
     
     return discoverySimpleVC
   }
-
+  
 }
 
 // MARK: - Life Cycle
@@ -29,35 +39,106 @@ extension DiscoverySimpleViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.setup()
     self.stylize()
-    self.checkForDetachedProfiles()
-    self.refreshFeed()
+    self.fullDataReload()
   }
+  
+  func setup() {
+    tableView.separatorStyle = .none
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.refreshControl = refreshControl
+    self.refreshControl
+      .addTarget(self,
+                 action: #selector(DiscoverySimpleViewController.refreshControlChanged(sender:)),
+                 for: .valueChanged)
+    self.refreshTimer = Timer.scheduledTimer(timeInterval: 10,
+                         target: self,
+                         selector: #selector(DiscoverySimpleViewController.reloadeFullDataIfNeeded),
+                         userInfo: nil,
+                         repeats: true)
+  }
+  
+  func stylize() {
+    if let refreshFont = UIFont(name: R.font.nunitoRegular.fontName, size: 14) {
+      
+      self.refreshControl
+        .attributedTitle = NSAttributedString(string: "Finding Your Latest Matches...",
+                                              attributes: [NSAttributedString.Key.font: refreshFont,
+                                                           NSAttributedString.Key.foregroundColor: UIColor(white: 0.7, alpha: 1.0)])
+    }
+  }
+  
   override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.reloadeFullDataIfNeeded()
+    self.registerNotifications()
+  }
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    self.deregisterNotifications()
+  }
+  
+  func registerNotifications() {
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(DiscoverySimpleViewController.didRecieveRefreshFeedNotification),
+                   name: .refreshDiscoveryFeed, object: nil)
+  }
+  
+  func deregisterNotifications() {
+    NotificationCenter.default.removeObserver(self, name: .refreshDiscoveryFeed, object: nil)
+  }
+  
+  @objc func didRecieveRefreshFeedNotification() {
+    self.forceFullDataReload()
+  }
+  
+  @objc func refreshControlChanged(sender: UIRefreshControl) {
+    self.forceFullDataReload()
+  }
+  
+  func forceFullDataReload() {
+    self.lastRefreshTime = Date(timeIntervalSinceNow: -self.minRefreshTime - 10)
+    self.fullDataReload()
+  }
+  
+  @objc func reloadeFullDataIfNeeded() {
+    if lastRefreshTime < Date(timeIntervalSinceNow: -self.minRefreshTime) {
+      self.fullDataReload()
+    } else {
+      print("Discovery Reload not needed")
+    }
+  }
+  
+  func fullDataReload() {
+    print("Discovery Full Reload")
+    self.lastRefreshTime = Date()
+    self.refreshSkipped()
     self.checkForDetachedProfiles()
     self.refreshFeed()
   }
   
-  func stylize() {
-    tableView.separatorStyle = .none
-    tableView.delegate = self
-    tableView.dataSource = self   
+  func refreshSkipped() {
+    self.blockedUsers = DataStore.shared.fetchListFromDefaults(type: .blockedUsers)
+    self.skippedDetachedProfiles = DataStore.shared.fetchListFromDefaults(type: .skippedDetachedProfiles)
   }
   
   func checkForDetachedProfiles() {
     DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
       print("\(detachedProfiles.count) Detached Profiles Found")
-      
-      if let firstDetachedProfile = detachedProfiles.first {
-        guard let detachedProfileApprovalVC = ApproveDetachedProfileNavigationViewController.instantiate(detachedProfile: firstDetachedProfile) else {
-          print("Failed to create detached profile navigation vc")
+      for detachedProfile in detachedProfiles
+        where !self.skippedDetachedProfiles.contains(detachedProfile.creatorUserID) {
+          guard let detachedProfileApprovalVC = ApproveDetachedProfileNavigationViewController
+            .instantiate(detachedProfile: detachedProfile) else {
+              print("Failed to create detached profile navigation vc")
+              return
+          }
+          self.present(detachedProfileApprovalVC, animated: true, completion: nil)
           return
-        }
-        self.present(detachedProfileApprovalVC, animated: true, completion: nil)
       }
-    }, detachedProfilesNotFound: {
-      print("No detached Profiles Found for user")
-      })
+    })
   }
   
   func newItemsFound(fullProfileData: [FullProfileDisplayData], otherFullProfileData: [FullProfileDisplayData]) -> Bool {
@@ -65,7 +146,7 @@ extension DiscoverySimpleViewController {
     for prof1 in fullProfileData {
       var foundMatch = false
       for prof2 in otherFullProfileData where prof1 == prof2 {
-          foundMatch = true
+        foundMatch = true
       }
       if !foundMatch {
         newItems = true
@@ -89,6 +170,9 @@ extension DiscoverySimpleViewController {
           }
         case .failure(let error):
           print("Error fetching feed:\(error)")
+        }
+        DispatchQueue.main.async {
+          self.refreshControl.endRefreshing()
         }
       })
       
@@ -129,7 +213,7 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let fullProfile = self.fullProfiles[indexPath.row]
-    guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
+    guard let fullProfileScrollVC = DiscoveryFullProfileViewController.instantiate(fullProfileData: fullProfile) else {
       print("Failed to create full profile Scroll View")
       return
     }
