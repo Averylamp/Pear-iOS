@@ -45,8 +45,20 @@ extension ProfileDemographicsViewController {
     self.firstNameLabel.stylizeTitleLabel()
     self.firstNameLabel.text = self.firstName
     
+    var genderText = ""
+    switch self.gender {
+    case "male":
+      genderText = "Male"
+    case "female":
+      genderText = "Female"
+    case "nonbinary":
+      genderText = "Non-binary"
+    default:
+      print("gender was not one of male, female, nonbinary")
+    }
+    
     let ageIcon = createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age"))
-    let genderIcon = createTagView(text: self.gender, image: nil)
+    let genderIcon = createTagView(text: genderText, image: nil)
     
     var tagViews = [ageIcon, genderIcon]
     
