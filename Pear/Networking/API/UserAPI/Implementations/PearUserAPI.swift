@@ -84,7 +84,8 @@ extension PearUserAPI {
             do {
               let pearUser = try JSONDecoder().decode(PearUser.self, from: objectData)
               print("Successfully found Pear User")
-              completion(.success(pearUser))
+              completion(.failure(UserAPIError.failedDeserialization))
+//              completion(.success(pearUser))
             } catch {
               print("Deserialization Error: \(error)")
               completion(.failure(UserAPIError.failedDeserialization))
