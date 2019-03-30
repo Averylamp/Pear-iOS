@@ -30,18 +30,16 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    DataStore.shared.getVersionNumber(versionSufficientCompletion: { (result) in
-      print("*****compared version numbers*****")
-      print(result)
-      if !result {
-        self.continueToVersionBlockScreen()
-      } else {
+    DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
+      if versionIsSufficient {
         DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
           self.continueToMainScreen()
         }, userNotFoundCompletion: {
           self.continueToLandingScreen()
         })
         self.testChat()
+      } else {
+        self.continueToVersionBlockScreen()
       }
     })
   }

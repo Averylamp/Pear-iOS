@@ -17,7 +17,7 @@ extension DataStore {
   
   func getVersionNumber(versionSufficientCompletion: @escaping (Bool) -> Void) {
     if let lastFetchTime = self.remoteConfig.lastFetchTime,
-      lastFetchTime > Date(timeIntervalSinceNow: 0) {
+      lastFetchTime > Date(timeIntervalSinceNow: -12 * 60 * 60) {
       self.compareVersionNumber(completion: versionSufficientCompletion)
     } else {
       self.reloadRemoteConfig { (reloadedCompletion) in
@@ -36,12 +36,9 @@ extension DataStore {
       let minMajor = self.remoteConfig.configValue(forKey: "min_major").numberValue?.intValue,
       let minMinor = self.remoteConfig.configValue(forKey: "min_minor").numberValue?.intValue,
       let deviceVersionStr = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String {
-      let deviceVersionArr = deviceVersionStr.components(separatedBy: ".").map {Int($0)}
-      let deviceVersion = deviceVersionArr[0]
-      let deviceMajor = deviceVersionArr[1]
-      let deviceMinor = deviceVersionArr[2]
-      if let deviceVersion = deviceVersion, let deviceMajor = deviceMajor, let deviceMinor = deviceMinor {
-        completion(compareVersionArrays(a: [deviceVersion, deviceMajor, deviceMinor], b: [minVersion, minMajor, minMinor]))
+      let deviceVersionArr = deviceVersionStr.components(separatedBy: ".").compactMap({Int($0)})
+      if deviceVersionArr.count == 3 {
+        completion(compareVersionArrays(a: deviceVersionArr, b: [minVersion, minMajor, minMinor]))
       } else {
         completion(true)
       }
