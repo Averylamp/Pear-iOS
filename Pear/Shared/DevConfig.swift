@@ -10,6 +10,6 @@ import Foundation
 
 class DevConfig {
   
-  static let devMode: Bool = false
+  static let devMode: Bool = true
   
 }

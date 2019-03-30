@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D7H-U0-SA3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Get Started Location View Controller-->
+        <scene sceneID="Ove-pm-T5g">
+            <objects>
+                <viewController id="D7H-U0-SA3" customClass="GetStartedLocationViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LNx-BY-FMb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We need to verify your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zuc-q7-q9D">
+                                <rect key="frame" x="30" y="291" width="315" height="65.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This lets us securely surface nearby profiles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQp-n4-cXy">
+                                <rect key="frame" x="20" y="364.5" width="335" height="51.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-location" translatesAutoresizingMaskIntoConstraints="NO" id="dMJ-2A-hUM">
+                                <rect key="frame" x="157.5" y="223" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="9TM-Ag-JIi"/>
+                                    <constraint firstAttribute="width" secondItem="dMJ-2A-hUM" secondAttribute="height" multiplier="1:1" id="qVk-6E-Ms4"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iY-5p-Msp">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="uvv-1m-MPF"/>
+                                </constraints>
+                                <state key="normal" title="Enable Notifications"/>
+                                <connections>
+                                    <action selector="enableLocationClicked:" destination="D7H-U0-SA3" eventType="touchUpInside" id="QCW-TK-9KW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zuc-q7-q9D" firstAttribute="centerX" secondItem="WVT-aF-jn6" secondAttribute="centerX" id="CM0-eh-8Cd"/>
+                            <constraint firstItem="dMJ-2A-hUM" firstAttribute="centerX" secondItem="Zuc-q7-q9D" secondAttribute="centerX" id="D8R-DK-M2I"/>
+                            <constraint firstItem="QQp-n4-cXy" firstAttribute="leading" secondItem="WVT-aF-jn6" secondAttribute="leading" constant="20" id="Ir4-4I-BKU"/>
+                            <constraint firstItem="WVT-aF-jn6" firstAttribute="bottom" secondItem="7iY-5p-Msp" secondAttribute="bottom" constant="20" id="K7q-9u-Qgl"/>
+                            <constraint firstAttribute="trailing" secondItem="Zuc-q7-q9D" secondAttribute="trailing" constant="30" id="LjO-wa-obt"/>
+                            <constraint firstItem="WVT-aF-jn6" firstAttribute="trailing" secondItem="QQp-n4-cXy" secondAttribute="trailing" constant="20" id="QLd-IU-jf6"/>
+                            <constraint firstItem="Zuc-q7-q9D" firstAttribute="leading" secondItem="LNx-BY-FMb" secondAttribute="leading" constant="30" id="cNQ-dB-7N6"/>
+                            <constraint firstItem="WVT-aF-jn6" firstAttribute="trailing" secondItem="7iY-5p-Msp" secondAttribute="trailing" constant="20" id="dUm-fk-Zs3"/>
+                            <constraint firstItem="7iY-5p-Msp" firstAttribute="leading" secondItem="WVT-aF-jn6" secondAttribute="leading" constant="20" id="hIc-75-jx0"/>
+                            <constraint firstItem="Zuc-q7-q9D" firstAttribute="top" secondItem="dMJ-2A-hUM" secondAttribute="bottom" constant="8" id="mYw-Hg-zNE"/>
+                            <constraint firstItem="QQp-n4-cXy" firstAttribute="top" secondItem="Zuc-q7-q9D" secondAttribute="bottom" constant="8" id="ppF-3V-j22"/>
+                            <constraint firstItem="Zuc-q7-q9D" firstAttribute="centerY" secondItem="WVT-aF-jn6" secondAttribute="centerY" constant="-20" id="tmZ-GX-W1W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WVT-aF-jn6"/>
+                    </view>
+                    <connections>
+                        <outlet property="enableLocationButton" destination="7iY-5p-Msp" id="OC2-S7-jOS"/>
+                        <outlet property="subtitleLabel" destination="QQp-n4-cXy" id="mxj-fT-RVz"/>
+                        <outlet property="titleLabel" destination="Zuc-q7-q9D" id="hxg-7z-8yQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzU-MF-Z0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-icon-location" width="240" height="240"/>
+    </resources>
+</document>
