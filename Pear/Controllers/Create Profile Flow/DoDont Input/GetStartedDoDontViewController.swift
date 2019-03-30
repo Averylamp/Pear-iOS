@@ -71,14 +71,10 @@ class GetStartedDoDontViewController: UIViewController {
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
-    if self.gettingStartedData.dos.count == 0 {
-      self.alert(title: "Incomplete Field", message: "Please add a Do for your friend")
-      return
-    } else if self.gettingStartedData.donts.count == 0 {
-      self.alert(title: "Incomplete Field", message: "Please add a Don't for your friend")
+    if self.gettingStartedData.dos.count + self.gettingStartedData.donts.count == 0 {
+      self.alert(title: "Incomplete Field", message: "Please add either a Do or Don't for your friend")
       return
     }
-    
     guard let shortBioVC = GetStartedShortBioViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
       print("Failed to create short Bio VC")
       return

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FXP-xj-bEJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FXP-xj-bEJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -99,7 +99,7 @@
                                             <action selector="backButtonClicked:" destination="FXP-xj-bEJ" eventType="touchUpInside" id="Hmx-93-kfq"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender-pear" translatesAutoresizingMaskIntoConstraints="NO" id="dlX-cp-uNy">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender" translatesAutoresizingMaskIntoConstraints="NO" id="dlX-cp-uNy">
                                         <rect key="frame" x="167.5" y="5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dlX-cp-uNy" secondAttribute="height" multiplier="1:1" id="llg-ff-4Wj"/>
@@ -179,11 +179,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="30" height="30"/>
-        <image name="onboarding-close-button" width="30" height="30"/>
-        <image name="onboarding-icon-gender-female" width="32" height="32"/>
-        <image name="onboarding-icon-gender-male" width="32" height="32"/>
-        <image name="onboarding-icon-gender-nonbinary" width="32" height="32"/>
-        <image name="onboarding-icon-gender-pear" width="32" height="32"/>
+        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-close-button" width="120" height="120"/>
+        <image name="onboarding-icon-gender" width="512" height="512"/>
+        <image name="onboarding-icon-gender-female" width="128" height="128"/>
+        <image name="onboarding-icon-gender-male" width="128" height="128"/>
+        <image name="onboarding-icon-gender-nonbinary" width="128" height="128"/>
     </resources>
 </document>

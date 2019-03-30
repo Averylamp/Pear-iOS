@@ -26,6 +26,7 @@ class ProfileDoDontViewController: UIViewController {
   @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
   
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var pageControl: UIPageControl!
   
   var intrinsicContentHeights: [CGFloat] = []
   var doDontType: DoDontType!
@@ -69,6 +70,8 @@ extension ProfileDoDontViewController {
     self.scrollView.isPagingEnabled = true
     self.scrollView.showsHorizontalScrollIndicator = true
     self.scrollView.showsVerticalScrollIndicator = false
+    pageControl.numberOfPages = self.doDontContent.count
+    
   }
   
   func addDoDontContent() {
@@ -123,6 +126,7 @@ extension ProfileDoDontViewController {
     contentTextLabel.text = fullContentText
     contentTextLabel.stylizeDoDontLabel()
     contentTextLabel.translatesAutoresizingMaskIntoConstraints = false
+    contentTextLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
     containerView.addSubview(contentTextLabel)
     containerView.addConstraints([
       NSLayoutConstraint(item: contentTextLabel, attribute: .left, relatedBy: .equal,
@@ -136,6 +140,7 @@ extension ProfileDoDontViewController {
     let writtenByLabel = UILabel()
     writtenByLabel.stylizeCreatorLabel(preText: "Written by ", boldText: creatorName)
     writtenByLabel.translatesAutoresizingMaskIntoConstraints = false
+    writtenByLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
     containerView.addSubview(writtenByLabel)
     containerView.addConstraints([
       NSLayoutConstraint(item: writtenByLabel, attribute: .top, relatedBy: .equal,
@@ -178,6 +183,7 @@ extension ProfileDoDontViewController: UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let pageIndex: Int = Int(floor(scrollView.contentOffset.x / scrollView.frame.width))
+    self.pageControl.currentPage = pageIndex
     let pagePercentage: CGFloat = scrollView.contentOffset.x.truncatingRemainder(dividingBy: scrollView.frame.width) / scrollView.frame.width
     if pageIndex < self.intrinsicContentHeights.count - 1 && pageIndex >= 0 {
       let newScrollViewHeight = self.intrinsicContentHeights[pageIndex] * (1 - pagePercentage) +

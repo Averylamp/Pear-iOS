@@ -170,9 +170,11 @@
 		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
 		BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418F2227E137009CEC4A /* UIView+Styling.swift */; };
 		BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2842D223BFC1000AC6E30 /* PearUITests.swift */; };
-		BBDEAB6D2241C2C90052D5E9 /* DevConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
+		BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */; };
+		BBE5BFBC224F600E00D99217 /* DiscoveryFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */; };
+		BBE5BFBD224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */; };
 		BBECBEB12237BA05008E8E91 /* FullProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */; };
 		BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */; };
 		BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */; };
@@ -391,11 +393,13 @@
 		BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD2842D223BFC1000AC6E30 /* PearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUITests.swift; sourceTree = "<group>"; };
 		BBD2842F223BFC1000AC6E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConfig.swift; sourceTree = "<group>"; };
 		BBDEAB6E224258A40052D5E9 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		BBDEAB6F224258B20052D5E9 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
+		BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+UserDefaults.swift"; sourceTree = "<group>"; };
+		BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFullProfileViewController.swift; sourceTree = "<group>"; };
+		BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileReviewViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
@@ -417,6 +421,8 @@
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
 		BBFFBBDF22212E82002E1B54 /* PearImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearImageAPI.swift; sourceTree = "<group>"; };
 		BE94EED5E96263243AE645E1 /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFFC3C4994205C2FDE8557D6 /* Pods-PearTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.production.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.production.xcconfig"; sourceTree = "<group>"; };
+		F9DB93D56577FA076EE4C5E8 /* Pods-Pear.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.production.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.production.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -576,9 +582,9 @@
 			isa = PBXGroup;
 			children = (
 				BB94C12C2243C558001320B0 /* R.generated.swift */,
-				BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */,
 				BB0F16B7222EE6D200915C1C /* DataStore.swift */,
 				BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */,
+				BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */,
 				BB541B41223B5AA0002239C8 /* RemoteConfig.plist */,
 				BB94C1302243C73B001320B0 /* Strings.strings */,
 				BB610E9B222A1EDB00901FC3 /* Generators */,
@@ -597,6 +603,8 @@
 				7E6324F2DEE18BCF51851AE6 /* Pods-PearTests.debug.xcconfig */,
 				85A2E5452E51D136FF448912 /* Pods-PearTests.development.xcconfig */,
 				B28FAF81EFEF83BC0C029B2C /* Pods-PearTests.release.xcconfig */,
+				F9DB93D56577FA076EE4C5E8 /* Pods-Pear.production.xcconfig */,
+				EFFC3C4994205C2FDE8557D6 /* Pods-PearTests.production.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -683,6 +691,7 @@
 			children = (
 				BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */,
 				BB18789221E2B21800964F26 /* DiscoverMainViewController.storyboard */,
+				BBE5BFBE224F619200D99217 /* Discovery Full Profile View */,
 				BB94C12222437CF1001320B0 /* Simple Discovery */,
 			);
 			path = "Discovery Flow";
@@ -748,12 +757,12 @@
 			isa = PBXGroup;
 			children = (
 				BB75BFCA22155F9100BAB800 /* Full Profile View */,
+				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 				BBECBEBA2237D940008E8E91 /* Profile Demographics */,
 				BBECBEBB2237D94B008E8E91 /* Profile Bio */,
 				BBECBEBC2237D955008E8E91 /* Profile Interests */,
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
-				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -1112,6 +1121,15 @@
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 			);
 			path = "Create User Flow";
+			sourceTree = "<group>";
+		};
+		BBE5BFBE224F619200D99217 /* Discovery Full Profile View */ = {
+			isa = PBXGroup;
+			children = (
+				BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */,
+				BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */,
+			);
+			path = "Discovery Full Profile View";
 			sourceTree = "<group>";
 		};
 		BBE8D01C2213E04600FD1355 /* User Name Input */ = {
@@ -1482,6 +1500,7 @@
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
 				BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */,
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
+				BBE5BFBD224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard in Resources */,
 				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
@@ -1557,6 +1576,7 @@
 				"${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -1567,6 +1587,8 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
+				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
@@ -1587,6 +1609,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -1597,6 +1620,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
@@ -1765,8 +1790,10 @@
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
+				BBE5BFBC224F600E00D99217 /* DiscoveryFullProfileViewController.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
+				BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
 				9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */,
 				BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */,
@@ -1798,7 +1825,6 @@
 				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
 				BB94C12722438F00001320B0 /* Chat.swift in Sources */,
-				BBDEAB6D2241C2C90052D5E9 /* DevConfig.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
@@ -2016,7 +2042,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 19;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2040,7 +2066,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2050,6 +2076,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2112,62 +2139,6 @@
 			};
 			name = Debug;
 		};
-		BB1436062243D25800B8C3EB /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85A2E5452E51D136FF448912 /* Pods-PearTests.development.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ST4X5576Q;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CodableFirebase/CodableFirebase.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookCore/FacebookCore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookLogin/FacebookLogin.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare/FacebookShare.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/Protobuf.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift.Library/Rswift.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
-					"$(inherited)",
-					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
-					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
-				);
-				INFOPLIST_FILE = PearTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
-			};
-			name = Development;
-		};
 		BB1436072243D25800B8C3EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B28FAF81EFEF83BC0C029B2C /* Pods-PearTests.release.xcconfig */;
@@ -2224,7 +2195,47 @@
 			};
 			name = Release;
 		};
-		BB58D48C22425D2F00A6A910 /* Development */ = {
+		BBD28432223BFC1000AC6E30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				INFOPLIST_FILE = PearUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pear;
+			};
+			name = Debug;
+		};
+		BBD28433223BFC1000AC6E30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				INFOPLIST_FILE = PearUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pear;
+			};
+			name = Release;
+		};
+		BBE5BFB6224F5BCB00D99217 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2283,16 +2294,16 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Development;
+			name = Production;
 		};
-		BB58D48D22425D2F00A6A910 /* Development */ = {
+		BBE5BFB7224F5BCB00D99217 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0588A438EAC24C20459D873C /* Pods-Pear.development.xcconfig */;
+			baseConfigurationReference = F9DB93D56577FA076EE4C5E8 /* Pods-Pear.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 19;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2303,13 +2314,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Development;
+			name = Production;
 		};
-		BB58D48E22425D2F00A6A910 /* Development */ = {
+		BBE5BFB8224F5BCB00D99217 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -2327,47 +2339,63 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Pear;
 			};
-			name = Development;
+			name = Production;
 		};
-		BBD28432223BFC1000AC6E30 /* Debug */ = {
+		BBE5BFB9224F5BCB00D99217 /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFFC3C4994205C2FDE8557D6 /* Pods-PearTests.production.xcconfig */;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
-				INFOPLIST_FILE = PearUITests/Info.plist;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CodableFirebase/CodableFirebase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookCore/FacebookCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookLogin/FacebookLogin.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare/FacebookShare.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/Protobuf.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift.Library/Rswift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
+				);
+				INFOPLIST_FILE = PearTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Pear;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
 			};
-			name = Debug;
-		};
-		BBD28433223BFC1000AC6E30 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ST4X5576Q;
-				INFOPLIST_FILE = PearUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Pear;
-			};
-			name = Release;
+			name = Production;
 		};
 /* End XCBuildConfiguration section */
 
@@ -2376,7 +2404,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60C131CF21D342BD0093ECBA /* Debug */,
-				BB58D48C22425D2F00A6A910 /* Development */,
+				BBE5BFB6224F5BCB00D99217 /* Production */,
 				60C131D021D342BD0093ECBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2386,7 +2414,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60C131D221D342BD0093ECBA /* Debug */,
-				BB58D48D22425D2F00A6A910 /* Development */,
+				BBE5BFB7224F5BCB00D99217 /* Production */,
 				60C131D321D342BD0093ECBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2396,7 +2424,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB1436052243D25800B8C3EB /* Debug */,
-				BB1436062243D25800B8C3EB /* Development */,
+				BBE5BFB9224F5BCB00D99217 /* Production */,
 				BB1436072243D25800B8C3EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2406,7 +2434,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BBD28432223BFC1000AC6E30 /* Debug */,
-				BB58D48E22425D2F00A6A910 /* Development */,
+				BBE5BFB8224F5BCB00D99217 /* Production */,
 				BBD28433223BFC1000AC6E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
