@@ -20,6 +20,7 @@ class ProfileBioViewController: UIViewController {
   var intrinsicContentHeights: [CGFloat] = []
   @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
   
+  @IBOutlet weak var pageControl: UIPageControl!
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -57,6 +58,7 @@ extension ProfileBioViewController {
     self.scrollView.isPagingEnabled = true
     self.scrollView.showsHorizontalScrollIndicator = true
     self.scrollView.showsVerticalScrollIndicator = false
+    pageControl.numberOfPages = self.bioContent.count
   }
   
   func addBioContent() {
@@ -151,6 +153,7 @@ extension ProfileBioViewController: UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let pageIndex: Int = Int(floor(scrollView.contentOffset.x / scrollView.frame.width))
+    self.pageControl.currentPage = pageIndex
     let pagePercentage: CGFloat = scrollView.contentOffset.x.truncatingRemainder(dividingBy: scrollView.frame.width) / scrollView.frame.width
     if pageIndex < self.intrinsicContentHeights.count - 1 && pageIndex >= 0 {
       let newScrollViewHeight = self.intrinsicContentHeights[pageIndex] * (1 - pagePercentage) +
