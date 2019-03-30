@@ -197,7 +197,7 @@
 		0364108DC2AA4D989897DE1308894C50 /* health_check_client.h in Copy ../../src/core/ext/filters/client_channel/health Private Headers */ = {isa = PBXBuildFile; fileRef = 175703ABE07308022739B93CBBF92394 /* health_check_client.h */; };
 		037C965F69D01939312611BEAA54CC4F /* GPBProtocolBuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3516E9F859C1135883669DE5F25410B3 /* GPBProtocolBuffers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		038DDA3C4C6B28A970CA20E80FC81C56 /* client_auth_filter.cc in Sources */ = {isa = PBXBuildFile; fileRef = C26546894EEDB168205E74832791CA32 /* client_auth_filter.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_16BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		038DEAEFBABB54F1A6768CAE2E9728B6 /* Pods-Pear-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D5C74246A9D8B60E79E632CCE93DFA /* Pods-Pear-dummy.m */; };
+		038DEAEFBABB54F1A6768CAE2E9728B6 /* Pods-Pear-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E4BD7946065886AA6E70181C9076B5 /* Pods-Pear-dummy.m */; };
 		038EA5D99BD1C362993B2C0950562CB9 /* status.nanopb.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BB871BBD0CAF3F77D49B36F2F299653 /* status.nanopb.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		03A00FAA8EF3060B68825CAE7839FC19 /* UIImageView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EB34DA421A1EAFA950611C29CB7554F /* UIImageView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03AF14FF5A0CF20CB15F55E1229F5409 /* subchannel_index.h in Headers */ = {isa = PBXBuildFile; fileRef = D86FB0EDA47EB86ABFE828762C6C21AA /* subchannel_index.h */; };
@@ -2146,7 +2146,7 @@
 		789D5046D372C186FD8E6BA75571F8BD /* p_ec.c in Sources */ = {isa = PBXBuildFile; fileRef = 9A633BF44659F21A737B34F5E7A98E32 /* p_ec.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		78AE12C8ADBEE8ABB7214CAD5FF6FA0D /* jwt_credentials.h in Copy ../../src/core/lib/security/credentials/jwt Private Headers */ = {isa = PBXBuildFile; fileRef = 0C2A5A26DD44E6EA2D96A286EDE4F5A0 /* jwt_credentials.h */; };
 		78B331DA744B15FB844B52DB610B0608 /* crypto.c in Sources */ = {isa = PBXBuildFile; fileRef = DEB2AB5CF632DCAA7B5A2C7AB2C1171F /* crypto.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		78B57DC562F2318D18F6271B7C47E311 /* Pods-Pear-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F8583FD2912FCE7021848FDB047CEB3 /* Pods-Pear-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78B57DC562F2318D18F6271B7C47E311 /* Pods-Pear-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6140411B5574605AAED571D211D2F4F /* Pods-Pear-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78D9D48016EC9D5F74B37395C893643C /* connectivity_state.h in Headers */ = {isa = PBXBuildFile; fileRef = 42D29A84EEE03364434C432FDDF0517D /* connectivity_state.h */; };
 		78E34B6DB472A6BAF067BDD441566C98 /* FIRSignUpNewUserResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D52B05DE22D584175DD5C58C292F64 /* FIRSignUpNewUserResponse.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		78E8D210009C9C7722CA8DEA2030B63C /* byte_buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CBA5EE743142DED9BB832DCC387D820 /* byte_buffer.h */; };
@@ -2984,7 +2984,7 @@
 		A790B6EAE122FBC84B39ED3264B52DA5 /* ev_epollex_linux.h in Copy ../../src/core/lib/iomgr Private Headers */ = {isa = PBXBuildFile; fileRef = 8EC8FB84308CF8B7BCD3757C26B2B57A /* ev_epollex_linux.h */; };
 		A7912EB80A91AB012C33C7C6FF48473F /* sockaddr_windows.h in Headers */ = {isa = PBXBuildFile; fileRef = 859F1F61F982335F38765BDA30FA8844 /* sockaddr_windows.h */; };
 		A79396BD31D21711DAA70C0AD680EC05 /* FIRAuthDefaultUIDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2027120EF57EE2C09FE508430AD5E6C1 /* FIRAuthDefaultUIDelegate.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		A7978656FD46EBDCCB235AC480F3F853 /* Pods-PearTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8ADA50247CAB982560B3DE1DEF7DF4 /* Pods-PearTests-dummy.m */; };
+		A7978656FD46EBDCCB235AC480F3F853 /* Pods-PearTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9AC18CAF1DABC413E46CD69C457346 /* Pods-PearTests-dummy.m */; };
 		A79AB726A16043E21EBE1A1A75F1057B /* auth_context.h in Headers */ = {isa = PBXBuildFile; fileRef = D73FF50A9C82643281147C948B799456 /* auth_context.h */; };
 		A79BB1FEB3C75DD5DCF8CAA675116E39 /* p_ed25519_asn1.c in Sources */ = {isa = PBXBuildFile; fileRef = CF91FCC4EBC10821D147B338B661BCB2 /* p_ed25519_asn1.c */; settings = {COMPILER_FLAGS = "-DOPENSSL_NO_ASM -GCC_WARN_INHIBIT_ALL_WARNINGS -w -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A79C58FBA26BE093972D1A694A438861 /* cycleclock.cc in Sources */ = {isa = PBXBuildFile; fileRef = FA354E551B7B8EADEBC2E9AE34AA1083 /* cycleclock.cc */; settings = {COMPILER_FLAGS = "$(inherited) -Wreorder -Werror=reorder $(inherited) -Wno-comma -Wno-range-loop-analysis -Wno-shorten-64-to-32 -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -4319,7 +4319,7 @@
 		F739B046598A8F8C9CCDE838006F42D7 /* UserProfile.PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192462CC54D0F0FAD9CFEE05AE390B08 /* UserProfile.PictureView.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F7561794036D421956EAD4123675D0C7 /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EBC494C3447167A5CE20D5707DE4CC4 /* CameraCell.xib */; };
 		F7561DA3472DC18DD34F8945D53894A0 /* FBSDKShareVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD53DF17F19EB3289AEBFE2C0CD3F58 /* FBSDKShareVideo.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		F756A151FD60E117968C471DFAE6E535 /* Pods-PearTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D85670EB964C7DD6466AFBE7AA48F00 /* Pods-PearTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F756A151FD60E117968C471DFAE6E535 /* Pods-PearTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 38C72A4DD7596DDD356064DA8F3D5050 /* Pods-PearTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7587B5F39D78AB123AC462B300A07AB /* frame.h in Copy ../../src/core/ext/transport/chttp2/transport Private Headers */ = {isa = PBXBuildFile; fileRef = 7E3D57D7F343B24AE524C13E60687969 /* frame.h */; };
 		F768C6DD06157C707D659CCC24327289 /* varint.cc in Sources */ = {isa = PBXBuildFile; fileRef = 3E645DB2C86F6F83952275A7868E5E6E /* varint.cc */; settings = {COMPILER_FLAGS = "-DGRPC_ARES=0 -DPB_FIELD_16BIT -DGRPC_SHADOW_BORINGSSL_SYMBOLS -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F778E72C731C8A6A0CE5B0679247F1F4 /* SentryCrashReportConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B289E449379CB621E436BBAC66754F /* SentryCrashReportConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -7837,6 +7837,7 @@
 		0371BD36BB66A2E783D27BFF8E736CDC /* SentryCrashStackCursor_Backtrace.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashStackCursor_Backtrace.c; path = Sources/SentryCrash/Recording/Tools/SentryCrashStackCursor_Backtrace.c; sourceTree = "<group>"; };
 		03757EF8BF11B5626BB288B8A42C7BF2 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDWebImage.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0387A5C8CE6589CAF1FBED5784849E5D /* GPBUnknownFieldSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBUnknownFieldSet.m; path = objectivec/GPBUnknownFieldSet.m; sourceTree = "<group>"; };
+		03AA7D33DAAE286EEAEB5FD58871CB06 /* Pods-Pear-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pear-acknowledgements.plist"; sourceTree = "<group>"; };
 		03B131394DB2FDA456B76222CB3FD31C /* tcp_server_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = tcp_server_windows.cc; path = src/core/lib/iomgr/tcp_server_windows.cc; sourceTree = "<group>"; };
 		03C7B45DEAE804E22EE186BA26005139 /* client_callback.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = client_callback.h; path = include/grpcpp/impl/codegen/client_callback.h; sourceTree = "<group>"; };
 		03C8056AFE03C17FCB42FC4B9BAD7D14 /* time_zone_format.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = time_zone_format.cc; path = "Firestore/third_party/abseil-cpp/absl/time/internal/cctz/src/time_zone_format.cc"; sourceTree = "<group>"; };
@@ -7915,6 +7916,7 @@
 		09B0045B8209EC21A2BC30D4CC9225C9 /* ssl_session_openssl.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = ssl_session_openssl.cc; path = src/core/tsi/ssl/session_cache/ssl_session_openssl.cc; sourceTree = "<group>"; };
 		09C77FAF41FE7B5503D19E6206D5AE15 /* security_handshaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = security_handshaker.h; path = src/core/lib/security/transport/security_handshaker.h; sourceTree = "<group>"; };
 		09E13143B8E2AF79E215667AE8E4E22A /* byte_buffer.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = byte_buffer.cc; path = src/core/lib/surface/byte_buffer.cc; sourceTree = "<group>"; };
+		09E4BD7946065886AA6E70181C9076B5 /* Pods-Pear-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pear-dummy.m"; sourceTree = "<group>"; };
 		09E5C071E012842EB925B9B936E2EEC5 /* Protobuf-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Protobuf-umbrella.h"; sourceTree = "<group>"; };
 		09F29E67AF90FFD87341F3A5AFE874DE /* two_level_iterator.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = two_level_iterator.cc; path = table/two_level_iterator.cc; sourceTree = "<group>"; };
 		09F7D62A1A2856A6951B6F8A262F1EBD /* FBSDKShareExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKShareExtension.m; path = FBSDKShareKit/FBSDKShareKit/Internal/FBSDKShareExtension.m; sourceTree = "<group>"; };
@@ -7998,6 +8000,7 @@
 		0FB6A57DB331815A5BFFFC4D69EBD8EC /* grpc_unary_call.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = grpc_unary_call.h; path = Firestore/core/src/firebase/firestore/remote/grpc_unary_call.h; sourceTree = "<group>"; };
 		0FC7BD9D3DCA7EE773B43ED1DB55B193 /* digestsign.c */ = {isa = PBXFileReference; includeInIndex = 1; name = digestsign.c; path = crypto/evp/digestsign.c; sourceTree = "<group>"; };
 		0FCFE64167EF6520E1D11826B5CCE6ED /* FBSDKAppEventsState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppEventsState.h; path = FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsState.h; sourceTree = "<group>"; };
+		0FFA900D1759818D9E4DCE9DA19C4567 /* Pods-PearTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PearTests.production.xcconfig"; sourceTree = "<group>"; };
 		0FFF7180AB01A5F299D3C703CCC5A5A4 /* BSImagePicker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = BSImagePicker.bundle; path = "BSImagePicker-BSImagePicker.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1008C4F0F35759EAA6DEDBF818DBCA75 /* FirebaseAuth.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FirebaseAuth.modulemap; sourceTree = "<group>"; };
 		100B2B04E39B3F6E2504699754D30DCE /* FBSDKLikeObjectType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLikeObjectType.h; path = FBSDKShareKit/FBSDKShareKit/FBSDKLikeObjectType.h; sourceTree = "<group>"; };
@@ -8191,7 +8194,6 @@
 		1D09D3B480C9196A7CA19D60702FCAD1 /* FBSDKURLSessionTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKURLSessionTask.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKURLSessionTask.h; sourceTree = "<group>"; };
 		1D128E86A2567E29634C3DDD62BAAC37 /* FIRVerifyCustomTokenResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRVerifyCustomTokenResponse.h; path = Firebase/Auth/Source/RPCs/FIRVerifyCustomTokenResponse.h; sourceTree = "<group>"; };
 		1D544DB1E104AFE8C6CC509819717C78 /* wakeup_fd_pipe.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = wakeup_fd_pipe.cc; path = src/core/lib/iomgr/wakeup_fd_pipe.cc; sourceTree = "<group>"; };
-		1D85670EB964C7DD6466AFBE7AA48F00 /* Pods-PearTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PearTests-umbrella.h"; sourceTree = "<group>"; };
 		1D981FD9C15C0819523DB2F6EC9B0782 /* Latlng.pbobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Latlng.pbobjc.h; path = Firestore/Protos/objc/google/type/Latlng.pbobjc.h; sourceTree = "<group>"; };
 		1DA278B8E6207EA16E6A4575F5F5F689 /* FIRAuthKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAuthKeychain.h; path = Firebase/Auth/Source/FIRAuthKeychain.h; sourceTree = "<group>"; };
 		1DAE2160BC66A2C76AAA913480BCEF45 /* SentryDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryDefines.h; path = Sources/Sentry/include/SentryDefines.h; sourceTree = "<group>"; };
@@ -8207,6 +8209,7 @@
 		1E8D3C55923994B7E894075EF71D28FE /* GPBRootObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBRootObject.h; path = objectivec/GPBRootObject.h; sourceTree = "<group>"; };
 		1E91DCC626FA31DF58AFBC637B6C29CB /* arena.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = arena.h; path = src/core/lib/gpr/arena.h; sourceTree = "<group>"; };
 		1EA04678D18790D97D3F25D159D14907 /* channel_argument_option.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = channel_argument_option.cc; path = src/cpp/server/channel_argument_option.cc; sourceTree = "<group>"; };
+		1EA4A8A0B983D20FE9C187050A269FB5 /* Pods-PearTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PearTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1EA795F70F8373F53BDE4CAD98B31ED2 /* d1_both.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = d1_both.cc; path = ssl/d1_both.cc; sourceTree = "<group>"; };
 		1EB745B006790C8DF0A94901D6CE5F3C /* port_example.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = port_example.h; path = port/port_example.h; sourceTree = "<group>"; };
 		1ECCD7E3C77231C1F9992322FE19E3FF /* tcp_client.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tcp_client.h; path = src/core/lib/iomgr/tcp_client.h; sourceTree = "<group>"; };
@@ -8271,7 +8274,6 @@
 		22954C1B58D0817817E948C30F032625 /* FIREmailLinkSignInRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIREmailLinkSignInRequest.h; path = Firebase/Auth/Source/RPCs/FIREmailLinkSignInRequest.h; sourceTree = "<group>"; };
 		22A820EFDC92B7945BB88BB0F261E56F /* timers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = timers.h; path = src/core/lib/profiling/timers.h; sourceTree = "<group>"; };
 		22B9ADD12E73E126832E47D9FABF2D64 /* alts_iovec_record_protocol.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = alts_iovec_record_protocol.cc; path = src/core/tsi/alts/zero_copy_frame_protector/alts_iovec_record_protocol.cc; sourceTree = "<group>"; };
-		22D5C74246A9D8B60E79E632CCE93DFA /* Pods-Pear-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pear-dummy.m"; sourceTree = "<group>"; };
 		22D98E0BAA23887C62DA855C4729A952 /* channel_trace.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = channel_trace.cc; path = src/core/lib/channel/channel_trace.cc; sourceTree = "<group>"; };
 		22E56B24B0D7D58D7D157E431D1FAA58 /* GPBCodedInputStream_PackagePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBCodedInputStream_PackagePrivate.h; path = objectivec/GPBCodedInputStream_PackagePrivate.h; sourceTree = "<group>"; };
 		23057583B4AC3EFAFC51F3E9E857BF25 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -8321,7 +8323,6 @@
 		262010A930E53A8C8F296604AD63530F /* cpu-aarch64-fuchsia.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "cpu-aarch64-fuchsia.c"; path = "crypto/cpu-aarch64-fuchsia.c"; sourceTree = "<group>"; };
 		2626424590C3E5B210D3D40C84D5E3DB /* FBSDKAppLinkReturnToRefererView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKAppLinkReturnToRefererView.h; path = FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkReturnToRefererView.h; sourceTree = "<group>"; };
 		2635A940F6459B95834CD02BCD0F3713 /* ev_epollex_linux.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = ev_epollex_linux.cc; path = src/core/lib/iomgr/ev_epollex_linux.cc; sourceTree = "<group>"; };
-		26407D608E598A3C8E4953C75D4F57CC /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
 		2652DC31B8A8C9966DB18031EEDD2BD0 /* SDWebImageCodersManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCodersManager.h; path = SDWebImage/SDWebImageCodersManager.h; sourceTree = "<group>"; };
 		2652F0E260642F45D4DDAC99CE14F351 /* add.c */ = {isa = PBXFileReference; includeInIndex = 1; name = add.c; path = crypto/fipsmodule/bn/add.c; sourceTree = "<group>"; };
 		2659936BE23BBC363F629879C411FD86 /* type_traits.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = type_traits.h; path = Firestore/core/src/firebase/firestore/util/type_traits.h; sourceTree = "<group>"; };
@@ -8391,7 +8392,6 @@
 		2A4ED8F35DB4A844092405F539F1CD73 /* gethostname_fallback.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = gethostname_fallback.cc; path = src/core/lib/iomgr/gethostname_fallback.cc; sourceTree = "<group>"; };
 		2A5E13EF56C786DE0B796339EA1FAF6C /* FIRFirestoreErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRFirestoreErrors.h; path = Firestore/Source/Public/FIRFirestoreErrors.h; sourceTree = "<group>"; };
 		2A8A69400DFFC764F3BFCD2D88751FD4 /* charconv_bigint.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = charconv_bigint.cc; path = "Firestore/third_party/abseil-cpp/absl/strings/internal/charconv_bigint.cc"; sourceTree = "<group>"; };
-		2A8ADA50247CAB982560B3DE1DEF7DF4 /* Pods-PearTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PearTests-dummy.m"; sourceTree = "<group>"; };
 		2A8CFDB720672FB9CA2C468594BA5803 /* bad_any_cast.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = bad_any_cast.cc; path = "Firestore/third_party/abseil-cpp/absl/types/bad_any_cast.cc"; sourceTree = "<group>"; };
 		2AAE05DB6A6C8834EAD8F341CDD0FEEE /* aes.c */ = {isa = PBXFileReference; includeInIndex = 1; name = aes.c; path = crypto/fipsmodule/aes/aes.c; sourceTree = "<group>"; };
 		2AB56AF5C58D7AC840E8E14352E939BD /* is_boringssl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = is_boringssl.h; path = include/openssl/is_boringssl.h; sourceTree = "<group>"; };
@@ -8511,6 +8511,7 @@
 		335922CA54245A693D7174B1923CC18B /* FIRAuthAppDelegateProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAuthAppDelegateProxy.m; path = Firebase/Auth/Source/FIRAuthAppDelegateProxy.m; sourceTree = "<group>"; };
 		33622C4572AE0D9DD9C8144DAE97C2E2 /* call_combiner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = call_combiner.h; path = src/core/lib/iomgr/call_combiner.h; sourceTree = "<group>"; };
 		3368B546CD43F05E66AED3CFA76AE40F /* tcp_server_utils_posix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tcp_server_utils_posix.h; path = src/core/lib/iomgr/tcp_server_utils_posix.h; sourceTree = "<group>"; };
+		3384581FB7864CBBE8EAB793A9521A0B /* Pods-Pear-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pear-frameworks.sh"; sourceTree = "<group>"; };
 		33B4C59330C3A8440E6FF229C86EDADB /* version_set.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = version_set.h; path = db/version_set.h; sourceTree = "<group>"; };
 		33B9F08B733CB9E7F43F35B9E04A10FE /* FBSDKAccessToken.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAccessToken.m; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKAccessToken.m; sourceTree = "<group>"; };
 		33C634407D8EA3F66E7C4C73B13E98D4 /* FBSDKGraphRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKGraphRequest.h; path = FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequest.h; sourceTree = "<group>"; };
@@ -8574,6 +8575,7 @@
 		388BDA0BEAB9D40A7740901D3D3DADDB /* FIRGetOOBConfirmationCodeResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRGetOOBConfirmationCodeResponse.m; path = Firebase/Auth/Source/RPCs/FIRGetOOBConfirmationCodeResponse.m; sourceTree = "<group>"; };
 		38A963B0217A06E8F96E071A8E1E74E1 /* GoogleUtilities.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GoogleUtilities.modulemap; sourceTree = "<group>"; };
 		38C36EC1521DF4CE7B408536D73CDE7F /* socket_helper.c */ = {isa = PBXFileReference; includeInIndex = 1; name = socket_helper.c; path = crypto/bio/socket_helper.c; sourceTree = "<group>"; };
+		38C72A4DD7596DDD356064DA8F3D5050 /* Pods-PearTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PearTests-umbrella.h"; sourceTree = "<group>"; };
 		38C87FF25CCB291DC10A851467EAEF15 /* FIRInstanceIDUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDUtilities.m; path = Firebase/InstanceID/FIRInstanceIDUtilities.m; sourceTree = "<group>"; };
 		38D908C8B7D44B8B685407CC66DF61F5 /* cfb.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cfb.c; path = crypto/fipsmodule/modes/cfb.c; sourceTree = "<group>"; };
 		38EF99CF3AC156519128C33F1301FEBA /* completion_queue_factory.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = completion_queue_factory.cc; path = src/core/lib/surface/completion_queue_factory.cc; sourceTree = "<group>"; };
@@ -8615,6 +8617,7 @@
 		3B7635A7FBF0059CE910F2F2E935D38B /* wrappers.nanopb.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = wrappers.nanopb.cc; path = Firestore/Protos/nanopb/google/protobuf/wrappers.nanopb.cc; sourceTree = "<group>"; };
 		3B7A828EF9786F585C22C7223E70AABA /* SentryFileManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryFileManager.h; path = Sources/Sentry/include/SentryFileManager.h; sourceTree = "<group>"; };
 		3B928A24B58031133834AB252BC3A516 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B978EBAF1135D773F81A93FF59242E3 /* Pods-PearTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PearTests-Info.plist"; sourceTree = "<group>"; };
 		3BA951060D116F50D1CC466B8D17C693 /* FirebaseAuth.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseAuth.xcconfig; sourceTree = "<group>"; };
 		3BBF444B63909FF8E8BFECC3CC41A5E0 /* tree_sorted_map.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tree_sorted_map.h; path = Firestore/core/src/firebase/firestore/immutable/tree_sorted_map.h; sourceTree = "<group>"; };
 		3BCA8975E94E3A5E5F277190F8DB803C /* grpc_security_constants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = grpc_security_constants.h; path = include/grpc/grpc_security_constants.h; sourceTree = "<group>"; };
@@ -8902,7 +8905,6 @@
 		4F69A6148258EBEB7A72F84106DF1737 /* Albums.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = Albums.storyboard; path = Assets/Albums.storyboard; sourceTree = "<group>"; };
 		4F7D9976EFF0ABCC0E029A63AC4A6224 /* SentryFileManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryFileManager.m; path = Sources/Sentry/SentryFileManager.m; sourceTree = "<group>"; };
 		4F8530C519EE22CFAA8CDBD219E1A0B7 /* strerror.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = strerror.h; path = Firestore/core/src/firebase/firestore/util/strerror.h; sourceTree = "<group>"; };
-		4F8583FD2912FCE7021848FDB047CEB3 /* Pods-Pear-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pear-umbrella.h"; sourceTree = "<group>"; };
 		4F88594C3CF8ED8EEB1EAB4857AB47A1 /* Fabric.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Fabric.xcconfig; sourceTree = "<group>"; };
 		4F8A5D419DBCE1AAB072893F2AE6AA6E /* e_null.c */ = {isa = PBXFileReference; includeInIndex = 1; name = e_null.c; path = crypto/cipher_extra/e_null.c; sourceTree = "<group>"; };
 		4F8B190DAB88F6116272B49964E8A0DC /* GraphRequestConnection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GraphRequestConnection.swift; path = Sources/Core/GraphRequest/GraphRequestConnection.swift; sourceTree = "<group>"; };
@@ -8919,6 +8921,7 @@
 		5042D5F6989CA361538AA0FCF4C83E28 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MultiFormat.h"; path = "SDWebImage/UIImage+MultiFormat.h"; sourceTree = "<group>"; };
 		504AD5BA84ECE748D222B5B6C45911BA /* query_cache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = query_cache.h; path = Firestore/core/src/firebase/firestore/local/query_cache.h; sourceTree = "<group>"; };
 		50973C402DE6E4EA5FEF78D1A19EA8CD /* grpc_alts_credentials_options.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = grpc_alts_credentials_options.cc; path = src/core/lib/security/credentials/alts/grpc_alts_credentials_options.cc; sourceTree = "<group>"; };
+		509C85C33824FC8AFF89520B743AA0AE /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
 		50A9085AAA0E6F572EA87BE646908E53 /* ec_asn1.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ec_asn1.c; path = crypto/ec_extra/ec_asn1.c; sourceTree = "<group>"; };
 		50B16FDB0D2B5E526073361C4107D2DB /* rsaz_exp.c */ = {isa = PBXFileReference; includeInIndex = 1; name = rsaz_exp.c; path = crypto/fipsmodule/bn/rsaz_exp.c; sourceTree = "<group>"; };
 		50B2C0932FB3ED8578E05C3FECAD8ED2 /* bio_ssl.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = bio_ssl.cc; path = ssl/bio_ssl.cc; sourceTree = "<group>"; };
@@ -8959,7 +8962,6 @@
 		527F77A3A0330CDED89F94A78A30FFC1 /* UIImage+MemoryCacheCost.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MemoryCacheCost.m"; path = "SDWebImage/UIImage+MemoryCacheCost.m"; sourceTree = "<group>"; };
 		528B6F30533063B1E226CF66D4889478 /* BFExecutor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFExecutor.m; path = Bolts/Common/BFExecutor.m; sourceTree = "<group>"; };
 		529C4682A9D89571A2B5F8F6E6DD3BFB /* service_config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = service_config.h; path = src/core/lib/transport/service_config.h; sourceTree = "<group>"; };
-		529C8F36638AFDCC37EBE2C919DC692F /* Pods-Pear-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pear-acknowledgements.markdown"; sourceTree = "<group>"; };
 		52D03DC2B8C68E5C684D8DFDE1FD4669 /* FIRAuthSerialTaskQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAuthSerialTaskQueue.h; path = Firebase/Auth/Source/FIRAuthSerialTaskQueue.h; sourceTree = "<group>"; };
 		52E2A5EC2DA6EB6091601C7FEF9189DE /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = crypto/evp/internal.h; sourceTree = "<group>"; };
 		52E826880135B3C9A1E7E878E9DCCFC5 /* sockaddr_resolver.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = sockaddr_resolver.cc; path = src/core/ext/filters/client_channel/resolver/sockaddr/sockaddr_resolver.cc; sourceTree = "<group>"; };
@@ -9068,7 +9070,6 @@
 		5A61519A8CD53A43D69DFBC9DFC3C6A4 /* SDWebImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.xcconfig; sourceTree = "<group>"; };
 		5A634FDD4AB0DBEFF410A51D2FEF7455 /* atomic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = atomic.h; path = src/core/lib/gprpp/atomic.h; sourceTree = "<group>"; };
 		5A70C16F2690E24DA0E4353DF1E7689B /* by_file.c */ = {isa = PBXFileReference; includeInIndex = 1; name = by_file.c; path = crypto/x509/by_file.c; sourceTree = "<group>"; };
-		5A7DD8A02283A7E97326E1632F13E6B3 /* Pods-PearTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PearTests.development.xcconfig"; sourceTree = "<group>"; };
 		5A807F983388598DA5F5F1DF4BCC7A38 /* generic_stub.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = generic_stub.h; path = include/grpcpp/generic/generic_stub.h; sourceTree = "<group>"; };
 		5ACC4F6E76C4A839A12FFE0710043C06 /* resolve_address.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = resolve_address.cc; path = src/core/lib/iomgr/resolve_address.cc; sourceTree = "<group>"; };
 		5AE0D20D52C3310ABA0C8AC5DAFDAD7C /* FBSDKShareMessengerGenericTemplateElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKShareMessengerGenericTemplateElement.h; path = FBSDKShareKit/FBSDKShareKit/FBSDKShareMessengerGenericTemplateElement.h; sourceTree = "<group>"; };
@@ -9155,6 +9156,7 @@
 		5F178A56682B7B7A8DABB019C818CE4B /* sorted_map_iterator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sorted_map_iterator.h; path = Firestore/core/src/firebase/firestore/immutable/sorted_map_iterator.h; sourceTree = "<group>"; };
 		5F1F28892C47BE7829DE0BA2B13F1736 /* frame_goaway.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = frame_goaway.h; path = src/core/ext/transport/chttp2/transport/frame_goaway.h; sourceTree = "<group>"; };
 		5F2502D9780908614D72FDB9414E5B96 /* firestore_version.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = firestore_version.cc; path = Firestore/core/src/firebase/firestore/firestore_version.cc; sourceTree = "<group>"; };
+		5F34FAAAE0D1A57A8D14AC5BA7D7D310 /* Pods-Pear.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pear.modulemap"; sourceTree = "<group>"; };
 		5F5D247AC4ECF6F43AC470A6D071F58A /* alloc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alloc.h; path = include/grpc/support/alloc.h; sourceTree = "<group>"; };
 		5F82534E6A005AB91C2544734D378725 /* thd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = thd.h; path = src/core/lib/gprpp/thd.h; sourceTree = "<group>"; };
 		5F9B5161D5C4E0E779E543C6216EEC45 /* sync_stream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sync_stream.h; path = include/grpcpp/support/sync_stream.h; sourceTree = "<group>"; };
@@ -9207,7 +9209,6 @@
 		627AF09CAE726C7F75C9C5549ACD6C97 /* FIRInstanceIDAuthService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDAuthService.h; path = Firebase/InstanceID/FIRInstanceIDAuthService.h; sourceTree = "<group>"; };
 		628961835231BF8743F5B2B0355DEC13 /* GraphRequestProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GraphRequestProtocol.swift; path = Sources/Core/GraphRequest/GraphRequestProtocol.swift; sourceTree = "<group>"; };
 		6294A41341EBEF9162BF2CA481F72EAF /* nameser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = nameser.h; path = src/core/lib/iomgr/nameser.h; sourceTree = "<group>"; };
-		62A6170FC8C5EC0B2FBA63A55D768A9F /* Pods-PearTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PearTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		62ADF385920252840966928435234232 /* FBSDKShareVideo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKShareVideo.h; path = FBSDKShareKit/FBSDKShareKit/FBSDKShareVideo.h; sourceTree = "<group>"; };
 		62AF0BC0590FEECA32D28F3EEE0DA974 /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = crypto/conf/internal.h; sourceTree = "<group>"; };
 		62B85BEDD1C9279C1660662032E554B3 /* SentryEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryEvent.m; path = Sources/Sentry/SentryEvent.m; sourceTree = "<group>"; };
@@ -9237,7 +9238,6 @@
 		644A5E9EE7A5A7B878F9C396BD3EB8E6 /* FBSDKDeviceLoginCodeInfo+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBSDKDeviceLoginCodeInfo+Internal.h"; path = "FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKDeviceLoginCodeInfo+Internal.h"; sourceTree = "<group>"; };
 		6469AB4AA4581ECBBE8BDA2F1F15B981 /* SentryCrashReportSink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SentryCrashReportSink.h; path = Sources/Sentry/include/SentryCrashReportSink.h; sourceTree = "<group>"; };
 		646F3E9C527348E59E6217743BC91AAB /* iomgr_windows.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = iomgr_windows.cc; path = src/core/lib/iomgr/iomgr_windows.cc; sourceTree = "<group>"; };
-		646F532A7F3B248806B56C3DC1FC740C /* Pods-Pear-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pear-Info.plist"; sourceTree = "<group>"; };
 		648E267647FFCC012EB7BB17AFD3A85F /* error.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = error.h; path = src/core/lib/iomgr/error.h; sourceTree = "<group>"; };
 		6493CAE94E946574E8BFE8EEA48BF0F2 /* GPBUnknownFieldSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBUnknownFieldSet.h; path = objectivec/GPBUnknownFieldSet.h; sourceTree = "<group>"; };
 		64BEA49D3AD0BA235908D92773C38ADA /* BSImagePickerSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BSImagePickerSettings.swift; path = Source/Protocol/BSImagePickerSettings.swift; sourceTree = "<group>"; };
@@ -9383,7 +9383,6 @@
 		6C5806749F4DABD0DA058F6A13822580 /* service_type.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = service_type.h; path = include/grpcpp/impl/service_type.h; sourceTree = "<group>"; };
 		6C75581BDC880BC3150DC7A7B08114CB /* resource_quota.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resource_quota.h; path = include/grpcpp/resource_quota.h; sourceTree = "<group>"; };
 		6C75B15D053B596A4103DB5ABDA98206 /* SentryCrashCachedData.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashCachedData.c; path = Sources/SentryCrash/Recording/SentryCrashCachedData.c; sourceTree = "<group>"; };
-		6C81DD4AF166EF5D8025D18902191B92 /* Pods-Pear-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pear-acknowledgements.plist"; sourceTree = "<group>"; };
 		6CA190D12353EE15405DB65BD7A76AA6 /* SentryCrashMonitor.c */ = {isa = PBXFileReference; includeInIndex = 1; name = SentryCrashMonitor.c; path = Sources/SentryCrash/Recording/Monitors/SentryCrashMonitor.c; sourceTree = "<group>"; };
 		6CA46C2DBE97E864A2FCE23C64972190 /* grpcpp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = grpcpp.h; path = include/grpcpp/grpcpp.h; sourceTree = "<group>"; };
 		6CAD00ED6869378A0775EAD57EC4A7CB /* custom_extensions.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = custom_extensions.cc; path = ssl/custom_extensions.cc; sourceTree = "<group>"; };
@@ -9421,7 +9420,6 @@
 		6F40F496777841358AF82A6C6889A953 /* FIRVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRVersion.h; path = Firebase/Core/Private/FIRVersion.h; sourceTree = "<group>"; };
 		6F439D02AD95EDFF5C8FC23BEB06A9BC /* endpoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = endpoint.h; path = src/core/lib/iomgr/endpoint.h; sourceTree = "<group>"; };
 		6F49B9A77BC8DFD6794D27CF142DFBB4 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMSessionFetcher.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F50AA45227F0D2121348A1C30FDDAA0 /* Pods-PearTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PearTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		6F7095545C78CD1E4101FA9BD3949FB5 /* atm_gcc_atomic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = atm_gcc_atomic.h; path = include/grpc/impl/codegen/atm_gcc_atomic.h; sourceTree = "<group>"; };
 		6F75ADE11B794CC8D67802195F92360D /* BFCancellationTokenRegistration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFCancellationTokenRegistration.h; path = Bolts/Common/BFCancellationTokenRegistration.h; sourceTree = "<group>"; };
 		6F81B2594C03F1CBE3AFAAC53DD8F9DA /* e_ssl3.c */ = {isa = PBXFileReference; includeInIndex = 1; name = e_ssl3.c; path = crypto/cipher_extra/e_ssl3.c; sourceTree = "<group>"; };
@@ -9529,7 +9527,6 @@
 		7867DBF72FB502602A64A90BC9EB8F77 /* a_enum.c */ = {isa = PBXFileReference; includeInIndex = 1; name = a_enum.c; path = crypto/asn1/a_enum.c; sourceTree = "<group>"; };
 		78A3D073FA89824D96EA09D061CFCB15 /* sorted_map.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sorted_map.h; path = Firestore/core/src/firebase/firestore/immutable/sorted_map.h; sourceTree = "<group>"; };
 		78AF14885A2A6EAA15657701034A2B0B /* ssl_transport_security.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl_transport_security.h; path = src/core/tsi/ssl_transport_security.h; sourceTree = "<group>"; };
-		78B609ACB1971530348F0C6181066401 /* Pods-Pear-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pear-frameworks.sh"; sourceTree = "<group>"; };
 		78C4C222F2E03FCAEF3F79852B056CCF /* charconv.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = charconv.cc; path = "Firestore/third_party/abseil-cpp/absl/strings/charconv.cc"; sourceTree = "<group>"; };
 		78D4ADF5AC542E019B5C84547A8FB5CA /* deterministic.c */ = {isa = PBXFileReference; includeInIndex = 1; name = deterministic.c; path = crypto/rand_extra/deterministic.c; sourceTree = "<group>"; };
 		78F2B95445E147DA8727D50641A4EFE3 /* FBSDKCheckmarkIcon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKCheckmarkIcon.h; path = FBSDKShareKit/FBSDKShareKit/Internal/FBSDKCheckmarkIcon.h; sourceTree = "<group>"; };
@@ -9611,6 +9608,7 @@
 		7F815DF198BBBE3A30F787056CD6F0F2 /* alts_counter.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = alts_counter.cc; path = src/core/tsi/alts/frame_protector/alts_counter.cc; sourceTree = "<group>"; };
 		7F98F20D375692108493539D5BD313FF /* subchannel_index.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = subchannel_index.h; path = src/core/ext/filters/client_channel/subchannel_index.h; sourceTree = "<group>"; };
 		7F99D7CE933D269270F2D130E7E5CB90 /* endpoint_pair_uv.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = endpoint_pair_uv.cc; path = src/core/lib/iomgr/endpoint_pair_uv.cc; sourceTree = "<group>"; };
+		7F9AC18CAF1DABC413E46CD69C457346 /* Pods-PearTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PearTests-dummy.m"; sourceTree = "<group>"; };
 		7F9D4CE6AB1BD0ADBFD24C51EE1EBF25 /* executor_libdispatch.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = executor_libdispatch.mm; path = Firestore/core/src/firebase/firestore/util/executor_libdispatch.mm; sourceTree = "<group>"; };
 		7FA3A818286AC73D88FB95B4962C0628 /* FSTLocalStore.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FSTLocalStore.mm; path = Firestore/Source/Local/FSTLocalStore.mm; sourceTree = "<group>"; };
 		7FE894468E597F7C422896B352D3F8FA /* v3_int.c */ = {isa = PBXFileReference; includeInIndex = 1; name = v3_int.c; path = crypto/x509v3/v3_int.c; sourceTree = "<group>"; };
@@ -9662,7 +9660,6 @@
 		82B9338BE9DC60D9AEC880F7BC002910 /* civil_time_detail.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = civil_time_detail.cc; path = "Firestore/third_party/abseil-cpp/absl/time/internal/cctz/src/civil_time_detail.cc"; sourceTree = "<group>"; };
 		82BBD5980DFF5574296DC0CAE83421D4 /* hkdf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = hkdf.h; path = include/openssl/hkdf.h; sourceTree = "<group>"; };
 		82D4F028BDD9E088DEF6F8FC25626E29 /* murmur_hash.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = murmur_hash.cc; path = src/core/lib/gpr/murmur_hash.cc; sourceTree = "<group>"; };
-		831A39142FCE7849157DF0CCDD96DB1D /* Pods-PearTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PearTests.modulemap"; sourceTree = "<group>"; };
 		8327A921B0238E257467EC7887D820A2 /* composite_credentials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = composite_credentials.h; path = src/core/lib/security/credentials/composite/composite_credentials.h; sourceTree = "<group>"; };
 		83488556E6F08BD37CE34488BC17085F /* FSTFieldValue.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FSTFieldValue.mm; path = Firestore/Source/Model/FSTFieldValue.mm; sourceTree = "<group>"; };
 		835EF757E87C792F4D498A9FE2AD1A9A /* ssl_credentials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ssl_credentials.h; path = src/core/lib/security/credentials/ssl/ssl_credentials.h; sourceTree = "<group>"; };
@@ -9858,7 +9855,6 @@
 		90712733A6A8904069216DA539D9779D /* internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal.h; path = ssl/internal.h; sourceTree = "<group>"; };
 		907C43B6ACB7A25B34D4C69DD012BBAD /* internal_errqueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = internal_errqueue.h; path = src/core/lib/iomgr/internal_errqueue.h; sourceTree = "<group>"; };
 		907DE7B43173F5A8A5FEACF0284AC097 /* FIRInstanceIDAuthService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstanceIDAuthService.m; path = Firebase/InstanceID/FIRInstanceIDAuthService.m; sourceTree = "<group>"; };
-		908D7AE33A54D9EF67A6AF76301EAC8F /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9095D9B80CAABB12B872AD4DD908FC61 /* compression_internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = compression_internal.h; path = src/core/lib/compression/compression_internal.h; sourceTree = "<group>"; };
 		90986ABBE83313B631C71B32D4F5B447 /* FBSDKAppEventsState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAppEventsState.m; path = FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsState.m; sourceTree = "<group>"; };
 		909A94944825B5216F78635C8DAE1EAA /* FIRAuthAPNSTokenManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAuthAPNSTokenManager.h; path = Firebase/Auth/Source/FIRAuthAPNSTokenManager.h; sourceTree = "<group>"; };
@@ -9909,7 +9905,6 @@
 		94AD543CC7F7E69E1B5B2615831143AF /* endpoint.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = endpoint.cc; path = src/core/lib/iomgr/endpoint.cc; sourceTree = "<group>"; };
 		94C638F9D5DC210657A61419D1D9EB5B /* pem_info.c */ = {isa = PBXFileReference; includeInIndex = 1; name = pem_info.c; path = crypto/pem/pem_info.c; sourceTree = "<group>"; };
 		94CB0EE0741DA4114A0D66098FC65288 /* FBSDKBridgeAPIRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKBridgeAPIRequest.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIRequest.m; sourceTree = "<group>"; };
-		94D5F26793A14DBA372A28F56E519F6C /* Pods-PearTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PearTests-Info.plist"; sourceTree = "<group>"; };
 		94E0558000A194D9E79889AFBD77617A /* atomic_with_atm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = atomic_with_atm.h; path = src/core/lib/gprpp/atomic_with_atm.h; sourceTree = "<group>"; };
 		95008C49E842C996ADBBCAE3BC86695B /* cpu-intel.c */ = {isa = PBXFileReference; includeInIndex = 1; name = "cpu-intel.c"; path = "crypto/cpu-intel.c"; sourceTree = "<group>"; };
 		9501D60EEFED4D39825AD98E4416AD86 /* SentryCrashMonitor_Deadlock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryCrashMonitor_Deadlock.m; path = Sources/SentryCrash/Recording/Monitors/SentryCrashMonitor_Deadlock.m; sourceTree = "<group>"; };
@@ -10133,6 +10128,7 @@
 		A3ADE634F43EF4AFC19AD6A57D5050CC /* Bolts-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bolts-prefix.pch"; sourceTree = "<group>"; };
 		A3C6E1C2735B8CD12FD4B5A4C7D4D456 /* mutation_queue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = mutation_queue.h; path = Firestore/core/src/firebase/firestore/local/mutation_queue.h; sourceTree = "<group>"; };
 		A3ED529B8703D75B44EA2BEC6F8B413F /* iomgr.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = iomgr.h; path = src/core/lib/iomgr/iomgr.h; sourceTree = "<group>"; };
+		A3F146403FADDBCD453CBB09718FDDD0 /* Pods-Pear-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pear-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A4036956CF63EA6B6C27AC41FC1005BC /* transport_security_grpc.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = transport_security_grpc.cc; path = src/core/tsi/transport_security_grpc.cc; sourceTree = "<group>"; };
 		A425673E7CCA189011E2AECE818D88DA /* Any.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Any.pbobjc.m; path = objectivec/google/protobuf/Any.pbobjc.m; sourceTree = "<group>"; };
 		A437322036AE6CA1465400AB240E4A6C /* call_op_set.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = call_op_set.h; path = include/grpcpp/impl/codegen/call_op_set.h; sourceTree = "<group>"; };
@@ -10146,6 +10142,7 @@
 		A49F01E5D6D221AC1EDD95FA879BBDDB /* resolve_address.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = resolve_address.h; path = src/core/lib/iomgr/resolve_address.h; sourceTree = "<group>"; };
 		A4DC4C958F4BCB86DDBB79D273212FE3 /* chttp2_server.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = chttp2_server.cc; path = src/core/ext/transport/chttp2/server/chttp2_server.cc; sourceTree = "<group>"; };
 		A4DFFD462F3E38AE498706F85520A75C /* SDImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCache.m; path = SDWebImage/SDImageCache.m; sourceTree = "<group>"; };
+		A4E9AFAC32406FBE4FE22009034F3F44 /* Pods-PearTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PearTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		A4F3EA81EC4C65D26BD0FA0472244211 /* alts_grpc_record_protocol_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alts_grpc_record_protocol_common.h; path = src/core/tsi/alts/zero_copy_frame_protector/alts_grpc_record_protocol_common.h; sourceTree = "<group>"; };
 		A4FBD745B7614DCED2E6FA54D23351DA /* health_check_service_interface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = health_check_service_interface.h; path = include/grpcpp/health_check_service_interface.h; sourceTree = "<group>"; };
 		A5028E07BD50834C002BC96F14486411 /* precondition.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = precondition.cc; path = Firestore/core/src/firebase/firestore/model/precondition.cc; sourceTree = "<group>"; };
@@ -10202,6 +10199,7 @@
 		A8AB436B91332D7E66D0F67268BF7208 /* FSTDocumentKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSTDocumentKey.h; path = Firestore/Source/Model/FSTDocumentKey.h; sourceTree = "<group>"; };
 		A8D9AA032059BA68D57B80F3455DE362 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		A90B8DFADB3F2099502C002F58C967E5 /* GULAppDelegateSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler.h; path = GoogleUtilities/AppDelegateSwizzler/Private/GULAppDelegateSwizzler.h; sourceTree = "<group>"; };
+		A92175A6548C9A3C1F549DEF35B422C6 /* Pods-Pear.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pear.production.xcconfig"; sourceTree = "<group>"; };
 		A9326C658575A5E96B15983DEF348A31 /* histogram.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = histogram.cc; path = util/histogram.cc; sourceTree = "<group>"; };
 		A93F52E86D5B88F1ACCD3E96B9D62E37 /* stats.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = stats.h; path = src/core/lib/debug/stats.h; sourceTree = "<group>"; };
 		A94815FCBB01668F10943CB5D80EB596 /* c.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = c.cc; path = db/c.cc; sourceTree = "<group>"; };
@@ -10443,7 +10441,6 @@
 		BA85801722D1B6A304CACE2ECC493004 /* FBSDKLoginError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLoginError.h; path = FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginError.h; sourceTree = "<group>"; };
 		BAAA0FC72ECE868BF3C92ECFFDD649A5 /* FirebaseAuth-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FirebaseAuth-umbrella.h"; sourceTree = "<group>"; };
 		BAAA4875ABEEB8E9DDE1F96ED68E61F8 /* FIRInstanceIDCheckinPreferences.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDCheckinPreferences.h; path = Firebase/InstanceID/FIRInstanceIDCheckinPreferences.h; sourceTree = "<group>"; };
-		BAAEA21056ABDF0BF35E2A869664E844 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
 		BAB4B3493FBD204251EC70CFC34FF6C7 /* bytestring.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bytestring.h; path = include/openssl/bytestring.h; sourceTree = "<group>"; };
 		BAB8F535DA4F0189DCD08C8EB29AAD7F /* query.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = query.cc; path = Firestore/core/src/firebase/firestore/core/query.cc; sourceTree = "<group>"; };
 		BAF1D786D8E2C6E181ABF8B38E430958 /* FIRFieldPath.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FIRFieldPath.mm; path = Firestore/Source/API/FIRFieldPath.mm; sourceTree = "<group>"; };
@@ -10654,6 +10651,7 @@
 		CA91C47B5BAF8C9665152B98A8F79049 /* alts_record_protocol_crypter_common.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = alts_record_protocol_crypter_common.cc; path = src/core/tsi/alts/frame_protector/alts_record_protocol_crypter_common.cc; sourceTree = "<group>"; };
 		CA9339A1DC62F98B570CBCAB9DAE6A73 /* cipher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cipher.h; path = include/openssl/cipher.h; sourceTree = "<group>"; };
 		CABA7D5CD5CEF8FABCB8A1EAD08936D0 /* BFCancellationToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFCancellationToken.h; path = Bolts/Common/BFCancellationToken.h; sourceTree = "<group>"; };
+		CAD2A4A9AAB7E6EA3D4D5DBB5BEEF3FC /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
 		CAEAAC7BD38344568FE0958A55E6206C /* client_authority_filter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = client_authority_filter.h; path = src/core/ext/filters/http/client_authority_filter.h; sourceTree = "<group>"; };
 		CB015F5E1B7C5A07F710BFE36AC2EA8B /* derive_key.c */ = {isa = PBXFileReference; includeInIndex = 1; name = derive_key.c; path = crypto/cipher_extra/derive_key.c; sourceTree = "<group>"; };
 		CB01F82E46F65FCAD055688FA5AB7B65 /* transport_security_interface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = transport_security_interface.h; path = src/core/tsi/transport_security_interface.h; sourceTree = "<group>"; };
@@ -10831,6 +10829,7 @@
 		D6FE8562EC26F0003559D7A8F10FAC70 /* GPBUnknownField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBUnknownField.m; path = objectivec/GPBUnknownField.m; sourceTree = "<group>"; };
 		D711F863C0C4F28B776B5D53B183DF42 /* view_snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = view_snapshot.h; path = Firestore/core/src/firebase/firestore/core/view_snapshot.h; sourceTree = "<group>"; };
 		D725BDAF88FE9CE3CC3CC23939E042B3 /* t1_enc.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = t1_enc.cc; path = ssl/t1_enc.cc; sourceTree = "<group>"; };
+		D739E8E85E00EB60722F0C7712216427 /* Pods-Pear-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pear-Info.plist"; sourceTree = "<group>"; };
 		D73FF50A9C82643281147C948B799456 /* auth_context.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = auth_context.h; path = include/grpcpp/impl/codegen/security/auth_context.h; sourceTree = "<group>"; };
 		D774539DA02A507EFEE17AF9E3997588 /* delocate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = delocate.h; path = crypto/fipsmodule/delocate.h; sourceTree = "<group>"; };
 		D78C9BD7D49E9500C3AF62DFAD13CE5D /* FIRGitHubAuthProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRGitHubAuthProvider.h; path = Firebase/Auth/Source/Public/FIRGitHubAuthProvider.h; sourceTree = "<group>"; };
@@ -10875,7 +10874,6 @@
 		DA466A53EF7AA75239205A561D61D9F7 /* SentryCrashDoctor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SentryCrashDoctor.m; path = Sources/SentryCrash/Recording/SentryCrashDoctor.m; sourceTree = "<group>"; };
 		DA4AF55725E8C0CD16DE400DABB53C8E /* timestamp.pb.c */ = {isa = PBXFileReference; includeInIndex = 1; name = timestamp.pb.c; path = src/core/ext/filters/client_channel/lb_policy/grpclb/proto/grpc/lb/v1/google/protobuf/timestamp.pb.c; sourceTree = "<group>"; };
 		DA5497D587C1FC7036BC914BB581775C /* FBSDKShareOpenGraphObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKShareOpenGraphObject.m; path = FBSDKShareKit/FBSDKShareKit/FBSDKShareOpenGraphObject.m; sourceTree = "<group>"; };
-		DA63510A611930E7DE97A493F37BA3EB /* Pods-Pear.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pear.development.xcconfig"; sourceTree = "<group>"; };
 		DA6FCCA9076E5FEC40D6C28546D7DE33 /* GULMutableDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULMutableDictionary.m; path = GoogleUtilities/Network/GULMutableDictionary.m; sourceTree = "<group>"; };
 		DA71F9803C20E43AB204E1491566C8E6 /* write_batch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = write_batch.h; path = include/leveldb/write_batch.h; sourceTree = "<group>"; };
 		DA7494239B49EE4DA9E83BFC18CEC779 /* NVActivityIndicatorAnimationPacman.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NVActivityIndicatorAnimationPacman.swift; path = Source/NVActivityIndicatorView/Animations/NVActivityIndicatorAnimationPacman.swift; sourceTree = "<group>"; };
@@ -11066,6 +11064,7 @@
 		E5E70033412D4DF8751A6392511BBDC6 /* channel_trace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = channel_trace.h; path = src/core/lib/channel/channel_trace.h; sourceTree = "<group>"; };
 		E5EED74722D21C16F53748806E6B6D6B /* FBSDKShareMessengerURLActionButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKShareMessengerURLActionButton.m; path = FBSDKShareKit/FBSDKShareKit/FBSDKShareMessengerURLActionButton.m; sourceTree = "<group>"; };
 		E600404AF8935E0256B80E7A4AA46F8A /* FacebookCore-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FacebookCore-Info.plist"; sourceTree = "<group>"; };
+		E6140411B5574605AAED571D211D2F4F /* Pods-Pear-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pear-umbrella.h"; sourceTree = "<group>"; };
 		E6155D2B3D9D90E0F86B48342F505895 /* plugin_credentials.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = plugin_credentials.cc; path = src/core/lib/security/credentials/plugin/plugin_credentials.cc; sourceTree = "<group>"; };
 		E61C02272DB89CB0FB27C0C307A677EA /* http_server_filter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = http_server_filter.h; path = src/core/ext/filters/http/server/http_server_filter.h; sourceTree = "<group>"; };
 		E64C8EAB52587B2F418EF3834494A523 /* timer_manager.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = timer_manager.cc; path = src/core/lib/iomgr/timer_manager.cc; sourceTree = "<group>"; };
@@ -11103,6 +11102,7 @@
 		E8D9635A78AE71C5D755D690EDC23A55 /* FBSDKColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKColor.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKColor.h; sourceTree = "<group>"; };
 		E8E3838988080F1A15430A20B68969DF /* x509_vfy.c */ = {isa = PBXFileReference; includeInIndex = 1; name = x509_vfy.c; path = crypto/x509/x509_vfy.c; sourceTree = "<group>"; };
 		E8F168D85265802F0AA07F543D58591D /* FSTDocumentSet.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FSTDocumentSet.mm; path = Firestore/Source/Model/FSTDocumentSet.mm; sourceTree = "<group>"; };
+		E9113B20CF8581E6EBEE4BF952B785B5 /* Pods-PearTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PearTests.modulemap"; sourceTree = "<group>"; };
 		E912BE5166FC943E59F2ADE96713F113 /* UserProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = Sources/Core/UserProfile/UserProfile.swift; sourceTree = "<group>"; };
 		E923D1BB3AE50683F62B09273901BE53 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "SDWebImage/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		E9475A79825CAAF213DFD94D0391BCC9 /* server.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = server.h; path = src/core/lib/surface/server.h; sourceTree = "<group>"; };
@@ -11171,6 +11171,7 @@
 		EE31E8CF21C3026132AC1C7E4A36B4BA /* FirebasePerformance.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebasePerformance.framework; path = Frameworks/FirebasePerformance.framework; sourceTree = "<group>"; };
 		EE382270339A3099AFF4C40ABE7561A3 /* percent_encoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = percent_encoding.h; path = src/core/lib/slice/percent_encoding.h; sourceTree = "<group>"; };
 		EE3D84D9F2BFBD84A748DAF5BFB818DC /* server_callback.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = server_callback.h; path = include/grpcpp/impl/codegen/server_callback.h; sourceTree = "<group>"; };
+		EE60243EB3D237444279FEEB88E5A26A /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
 		EE83B1139A63025E0262C35EF6F76D92 /* NVActivityIndicatorAnimationBallGridBeat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NVActivityIndicatorAnimationBallGridBeat.swift; path = Source/NVActivityIndicatorView/Animations/NVActivityIndicatorAnimationBallGridBeat.swift; sourceTree = "<group>"; };
 		EEC0AA58B4EE0C01B288EEAA7A1EA1B1 /* Firebase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.xcconfig; sourceTree = "<group>"; };
 		EEC13DE8F78EB37E6D6A6D3CBA9CF136 /* ev_epollex_linux.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ev_epollex_linux.h; path = src/core/lib/iomgr/ev_epollex_linux.h; sourceTree = "<group>"; };
@@ -11202,7 +11203,6 @@
 		F0C0D293B507DD72ED116B116A4A51B5 /* gpr_types.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gpr_types.h; path = include/grpc/impl/codegen/gpr_types.h; sourceTree = "<group>"; };
 		F0E0AD4C18AFB265C5554DC0D52F6EA8 /* obj_xref.c */ = {isa = PBXFileReference; includeInIndex = 1; name = obj_xref.c; path = crypto/obj/obj_xref.c; sourceTree = "<group>"; };
 		F0ED5663F077FBCEBAB562C138D9DCD9 /* Type.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Type.pbobjc.m; path = objectivec/google/protobuf/Type.pbobjc.m; sourceTree = "<group>"; };
-		F0F0E2CCBD22B9710DE9627621C935AB /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
 		F10225CFD8ED8AABC1D31A9D3015531B /* FBSDKLikeDialog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKLikeDialog.h; path = FBSDKShareKit/FBSDKShareKit/Internal/FBSDKLikeDialog.h; sourceTree = "<group>"; };
 		F11332B411704CBCC5AFA403F3396DBE /* FBSDKAccessTokenExpirer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKAccessTokenExpirer.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenExpirer.m; sourceTree = "<group>"; };
 		F15F5C84813B8A13799ACB2550BB45E7 /* FIRInstanceIDVersionUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceIDVersionUtilities.h; path = Firebase/InstanceID/FIRInstanceIDVersionUtilities.h; sourceTree = "<group>"; };
@@ -11214,6 +11214,7 @@
 		F1BC6E868D691E1D2BDBA1B3B959F6C1 /* json_reader.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = json_reader.cc; path = src/core/lib/json/json_reader.cc; sourceTree = "<group>"; };
 		F1C75D3D3B2207196B7EBE52EEC23FF3 /* ContentSharingResultProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentSharingResultProtocol.swift; path = Sources/Share/Content/Common/ContentSharingResultProtocol.swift; sourceTree = "<group>"; };
 		F1CD0BCA3C9F369A334869B50E444039 /* slice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = slice.h; path = include/grpc/impl/codegen/slice.h; sourceTree = "<group>"; };
+		F1D2E5C7A7099A72FE39030B11393DFE /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1D3C115B1319280638C0E7FE43111E5 /* stack.c */ = {isa = PBXFileReference; includeInIndex = 1; name = stack.c; path = crypto/stack/stack.c; sourceTree = "<group>"; };
 		F1D4AA27D3E7CADBB2B5638306467710 /* socket_factory_posix.cc */ = {isa = PBXFileReference; includeInIndex = 1; name = socket_factory_posix.cc; path = src/core/lib/iomgr/socket_factory_posix.cc; sourceTree = "<group>"; };
 		F1D4F976905F3C768A6C110861775C48 /* FIRGameCenterAuthProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRGameCenterAuthProvider.m; path = Firebase/Auth/Source/AuthProviders/GameCenter/FIRGameCenterAuthProvider.m; sourceTree = "<group>"; };
@@ -11229,7 +11230,6 @@
 		F2B2B10DC41B0E2C086B1249774B3FE5 /* NSError+SentrySimpleConstructor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+SentrySimpleConstructor.m"; path = "Sources/SentryCrash/Recording/Tools/NSError+SentrySimpleConstructor.m"; sourceTree = "<group>"; };
 		F2C3AFF16127CB3A6661E56D04052C42 /* message_compress_filter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = message_compress_filter.h; path = src/core/ext/filters/http/message_compress/message_compress_filter.h; sourceTree = "<group>"; };
 		F2E6F4E9DCC404C78712DBE8D8482767 /* NSData+FIRBase64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+FIRBase64.h"; path = "Firebase/Auth/Source/NSData+FIRBase64.h"; sourceTree = "<group>"; };
-		F2F0E49C6FFBB1C17E55F990447FC960 /* Pods-Pear.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pear.modulemap"; sourceTree = "<group>"; };
 		F31184AA4C037C9F11F25B0C182F7100 /* composite_credentials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = composite_credentials.h; path = src/core/lib/security/credentials/composite/composite_credentials.h; sourceTree = "<group>"; };
 		F340263D48C4B3B11A15C6FCA29CB4A3 /* FBSDKLoginKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSDKLoginKit-prefix.pch"; sourceTree = "<group>"; };
 		F3419251AD0D2463182008D9B98509B1 /* FIRAnalyticsConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAnalyticsConfiguration.m; path = Firebase/Core/FIRAnalyticsConfiguration.m; sourceTree = "<group>"; };
@@ -12883,23 +12883,6 @@
 			path = "gRPC-C++";
 			sourceTree = "<group>";
 		};
-		54AB781FD16C7D69AC627E9CCBF24E5D /* Pods-PearTests */ = {
-			isa = PBXGroup;
-			children = (
-				831A39142FCE7849157DF0CCDD96DB1D /* Pods-PearTests.modulemap */,
-				62A6170FC8C5EC0B2FBA63A55D768A9F /* Pods-PearTests-acknowledgements.markdown */,
-				6F50AA45227F0D2121348A1C30FDDAA0 /* Pods-PearTests-acknowledgements.plist */,
-				2A8ADA50247CAB982560B3DE1DEF7DF4 /* Pods-PearTests-dummy.m */,
-				94D5F26793A14DBA372A28F56E519F6C /* Pods-PearTests-Info.plist */,
-				1D85670EB964C7DD6466AFBE7AA48F00 /* Pods-PearTests-umbrella.h */,
-				908D7AE33A54D9EF67A6AF76301EAC8F /* Pods-PearTests.debug.xcconfig */,
-				5A7DD8A02283A7E97326E1632F13E6B3 /* Pods-PearTests.development.xcconfig */,
-				F0F0E2CCBD22B9710DE9627621C935AB /* Pods-PearTests.release.xcconfig */,
-			);
-			name = "Pods-PearTests";
-			path = "Target Support Files/Pods-PearTests";
-			sourceTree = "<group>";
-		};
 		56422EC477E49A360EF88B0A957B5AD9 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
@@ -13796,24 +13779,6 @@
 				06CB135A6E9D044C3B04DE4916EB402D /* SentryUser.m */,
 			);
 			name = Core;
-			sourceTree = "<group>";
-		};
-		7D00CA5813944F5688B9C176759AACB1 /* Pods-Pear */ = {
-			isa = PBXGroup;
-			children = (
-				F2F0E49C6FFBB1C17E55F990447FC960 /* Pods-Pear.modulemap */,
-				529C8F36638AFDCC37EBE2C919DC692F /* Pods-Pear-acknowledgements.markdown */,
-				6C81DD4AF166EF5D8025D18902191B92 /* Pods-Pear-acknowledgements.plist */,
-				22D5C74246A9D8B60E79E632CCE93DFA /* Pods-Pear-dummy.m */,
-				78B609ACB1971530348F0C6181066401 /* Pods-Pear-frameworks.sh */,
-				646F532A7F3B248806B56C3DC1FC740C /* Pods-Pear-Info.plist */,
-				4F8583FD2912FCE7021848FDB047CEB3 /* Pods-Pear-umbrella.h */,
-				26407D608E598A3C8E4953C75D4F57CC /* Pods-Pear.debug.xcconfig */,
-				DA63510A611930E7DE97A493F37BA3EB /* Pods-Pear.development.xcconfig */,
-				BAAEA21056ABDF0BF35E2A869664E844 /* Pods-Pear.release.xcconfig */,
-			);
-			name = "Pods-Pear";
-			path = "Target Support Files/Pods-Pear";
 			sourceTree = "<group>";
 		};
 		7FD2179E71C53474F6589805AA8B1226 /* Tasks */ = {
@@ -14840,6 +14805,24 @@
 				B923698FDA8B4D1C9F0E7E92811D00E8 /* zone_info_source.cc */,
 			);
 			name = "abseil-cpp";
+			sourceTree = "<group>";
+		};
+		BBA0F633F47B92159A468C6A63E10E17 /* Pods-Pear */ = {
+			isa = PBXGroup;
+			children = (
+				5F34FAAAE0D1A57A8D14AC5BA7D7D310 /* Pods-Pear.modulemap */,
+				A3F146403FADDBCD453CBB09718FDDD0 /* Pods-Pear-acknowledgements.markdown */,
+				03AA7D33DAAE286EEAEB5FD58871CB06 /* Pods-Pear-acknowledgements.plist */,
+				09E4BD7946065886AA6E70181C9076B5 /* Pods-Pear-dummy.m */,
+				3384581FB7864CBBE8EAB793A9521A0B /* Pods-Pear-frameworks.sh */,
+				D739E8E85E00EB60722F0C7712216427 /* Pods-Pear-Info.plist */,
+				E6140411B5574605AAED571D211D2F4F /* Pods-Pear-umbrella.h */,
+				509C85C33824FC8AFF89520B743AA0AE /* Pods-Pear.debug.xcconfig */,
+				A92175A6548C9A3C1F549DEF35B422C6 /* Pods-Pear.production.xcconfig */,
+				EE60243EB3D237444279FEEB88E5A26A /* Pods-Pear.release.xcconfig */,
+			);
+			name = "Pods-Pear";
+			path = "Target Support Files/Pods-Pear";
 			sourceTree = "<group>";
 		};
 		BC707BFE256BD53A9F4E10D8ED4F37CC /* Interface */ = {
@@ -16243,8 +16226,8 @@
 		DD7CEEF883BDB2ADE79511F27A63D37C /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7D00CA5813944F5688B9C176759AACB1 /* Pods-Pear */,
-				54AB781FD16C7D69AC627E9CCBF24E5D /* Pods-PearTests */,
+				BBA0F633F47B92159A468C6A63E10E17 /* Pods-Pear */,
+				E6E43F54534F4B894477897557F2E166 /* Pods-PearTests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -16286,6 +16269,23 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/GoogleAppMeasurement";
+			sourceTree = "<group>";
+		};
+		E6E43F54534F4B894477897557F2E166 /* Pods-PearTests */ = {
+			isa = PBXGroup;
+			children = (
+				E9113B20CF8581E6EBEE4BF952B785B5 /* Pods-PearTests.modulemap */,
+				1EA4A8A0B983D20FE9C187050A269FB5 /* Pods-PearTests-acknowledgements.markdown */,
+				A4E9AFAC32406FBE4FE22009034F3F44 /* Pods-PearTests-acknowledgements.plist */,
+				7F9AC18CAF1DABC413E46CD69C457346 /* Pods-PearTests-dummy.m */,
+				3B978EBAF1135D773F81A93FF59242E3 /* Pods-PearTests-Info.plist */,
+				38C72A4DD7596DDD356064DA8F3D5050 /* Pods-PearTests-umbrella.h */,
+				F1D2E5C7A7099A72FE39030B11393DFE /* Pods-PearTests.debug.xcconfig */,
+				0FFA900D1759818D9E4DCE9DA19C4567 /* Pods-PearTests.production.xcconfig */,
+				CAD2A4A9AAB7E6EA3D4D5DBB5BEEF3FC /* Pods-PearTests.release.xcconfig */,
+			);
+			name = "Pods-PearTests";
+			path = "Target Support Files/Pods-PearTests";
 			sourceTree = "<group>";
 		};
 		E88DFE0FDA83B5BD8094722F8AEE13A0 /* Support Files */ = {
@@ -22069,42 +22069,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		01A8D4BDFACB54503FCEBDD6902FD078 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97D8ECC4863349A74E86D4AC16C67F10 /* FBSDKLoginKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FBSDKLoginKit/FBSDKLoginKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FBSDKLoginKit/FBSDKLoginKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/FBSDKLoginKit/FBSDKLoginKit.modulemap";
-				PRODUCT_MODULE_NAME = FBSDKLoginKit;
-				PRODUCT_NAME = FBSDKLoginKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
 		01C6F085EA66A3CF5CAA5EDCDD4C2078 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B16C30D0105EF2FF6679FAB086AD0D4C /* FacebookShare.xcconfig */;
@@ -22176,157 +22140,9 @@
 			};
 			name = Release;
 		};
-		03918D7B9921E88F442D1FD16A402C56 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7781B966DF471F90C7811A9C534879B /* FirebaseAuthInterop.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Development;
-		};
-		0619EA29DB07FF9D87D9378360B40C64 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83834979E1CE3C6689E96520C977EC1F /* gRPC-C++.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
-				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-gRPC-C++-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = gRPCCertificates;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Development;
-		};
-		07AFC7DF0ABDA553E33E211441861537 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D49045BAF3F8DE9C3DAC96CF621E5DE4 /* SwiftLint.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Development;
-		};
-		08C7248DA1550DB1110D7E57D1FBDC69 /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEVELOPMENT=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Development;
-		};
-		093F24FBDB568107385B42ADB10A9DCE /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2F54DEF79853F70CFF275D7D1275411 /* GoogleToolboxForMac.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
-				PRODUCT_MODULE_NAME = GoogleToolboxForMac;
-				PRODUCT_NAME = GoogleToolboxForMac;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
 		09E46E20B1AF2DDF6D587DDF445F0E4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAAEA21056ABDF0BF35E2A869664E844 /* Pods-Pear.release.xcconfig */;
+			baseConfigurationReference = EE60243EB3D237444279FEEB88E5A26A /* Pods-Pear.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -22433,78 +22249,6 @@
 			};
 			name = Debug;
 		};
-		11D25E4A056F90C3AF9E7FD233B401DF /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EA6D2F365E71DDBBD9CDA03DB7C1BBC /* Protobuf.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Protobuf/Protobuf-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Protobuf/Protobuf-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/Protobuf/Protobuf.modulemap";
-				PRODUCT_MODULE_NAME = Protobuf;
-				PRODUCT_NAME = Protobuf;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
-		12499D000FF47EA665254014DD23F047 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41D89243BE4D813DA41C84FFAA4AD645 /* FirebaseInstanceID.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/FirebaseInstanceID/FirebaseInstanceID-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/FirebaseInstanceID/FirebaseInstanceID.modulemap";
-				PRODUCT_MODULE_NAME = FirebaseInstanceID;
-				PRODUCT_NAME = FirebaseInstanceID;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
 		141C95C862088164C1A7276BC10DA076 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4DC2DF3D2AFA75EAFCF7D080F659B27 /* BoringSSL-GRPC.xcconfig */;
@@ -22539,6 +22283,81 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		16F338B7C44E17D2A2AE3EABBEA5EAE1 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEEDE2458A311912B00D8D3057E5BC35 /* Bolts.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Bolts/Bolts-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Bolts/Bolts-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Bolts/Bolts.modulemap";
+				PRODUCT_MODULE_NAME = Bolts;
+				PRODUCT_NAME = Bolts;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
+		1A1911EA73E96EF53FE99E5996B67F2E /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A92175A6548C9A3C1F549DEF35B422C6 /* Pods-Pear.production.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pear/Pods-Pear-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Pear/Pods-Pear.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 		1B010E983830350C0C1B7195C9F4B34A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -22591,9 +22410,9 @@
 			};
 			name = Debug;
 		};
-		1D16B2727777A73253546D170CE78588 /* Development */ = {
+		1F61C30FC75275EAF95DE138798341A2 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CE0F16151403E97729C230662023E60 /* FBSDKShareKit.xcconfig */;
+			baseConfigurationReference = 8CE521183D1CF47277AB285FB8CDF493 /* R.swift.Library.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -22604,8 +22423,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FBSDKShareKit/FBSDKShareKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FBSDKShareKit/FBSDKShareKit-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/R.swift.Library/R.swift.Library-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/R.swift.Library/R.swift.Library-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -22613,9 +22432,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/FBSDKShareKit/FBSDKShareKit.modulemap";
-				PRODUCT_MODULE_NAME = FBSDKShareKit;
-				PRODUCT_NAME = FBSDKShareKit;
+				MODULEMAP_FILE = "Target Support Files/R.swift.Library/R.swift.Library.modulemap";
+				PRODUCT_MODULE_NAME = Rswift;
+				PRODUCT_NAME = Rswift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -22625,43 +22444,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
-		};
-		1EEB13892070151958C82CC1E35BB40D /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83834979E1CE3C6689E96520C977EC1F /* gRPC-C++.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/gRPC-C++/gRPC-C++-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/gRPC-C++/gRPC-C++-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/gRPC-C++/gRPC-C++.modulemap";
-				PRODUCT_MODULE_NAME = grpcpp;
-				PRODUCT_NAME = grpcpp;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
+			name = Production;
 		};
 		216F1E45DFD0442DE517B49327E39933 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -22753,7 +22536,7 @@
 		};
 		2791812C43645995BAC179900CAAED5D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26407D608E598A3C8E4953C75D4F57CC /* Pods-Pear.debug.xcconfig */;
+			baseConfigurationReference = 509C85C33824FC8AFF89520B743AA0AE /* Pods-Pear.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -22896,9 +22679,9 @@
 			};
 			name = Debug;
 		};
-		31E21143B3C7551DC4AA3024E75C9AAC /* Development */ = {
+		312E1786EDC05F5FF6310EA3622ACC47 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BFE8588EE32EE7A36A724E3DFC11B1C /* Sentry.xcconfig */;
+			baseConfigurationReference = 99BB5A5880C563FD09C80EF2B1DEE1EE /* gRPC-Core.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -22909,8 +22692,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Sentry/Sentry-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Sentry/Sentry-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/gRPC-Core/gRPC-Core-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/gRPC-Core/gRPC-Core-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -22918,9 +22701,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/Sentry/Sentry.modulemap";
-				PRODUCT_MODULE_NAME = Sentry;
-				PRODUCT_NAME = Sentry;
+				MODULEMAP_FILE = "Target Support Files/gRPC-Core/gRPC-Core.modulemap";
+				PRODUCT_MODULE_NAME = grpc;
+				PRODUCT_NAME = grpc;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -22930,79 +22713,24 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
 		};
-		322B54DF5AB784A60593499C39E07DF2 /* Development */ = {
+		33BC8ADCAEA24DB5030E5C2BBAB676EF /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5A628F453F55828CB307B4000DABCF9 /* GoogleUtilities.xcconfig */;
+			baseConfigurationReference = 7814A01022BA831C630D86EABB42F898 /* FirebaseAnalytics.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/GoogleUtilities/GoogleUtilities-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities.modulemap";
-				PRODUCT_MODULE_NAME = GoogleUtilities;
-				PRODUCT_NAME = GoogleUtilities;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
-		};
-		3346433F9F195E155E601B7B86CAB58A /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E676CDBB8FC15CCC6CFE469EBEF9CF7E /* CodableFirebase.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/CodableFirebase/CodableFirebase-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CodableFirebase/CodableFirebase-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/CodableFirebase/CodableFirebase.modulemap";
-				PRODUCT_MODULE_NAME = CodableFirebase;
-				PRODUCT_NAME = CodableFirebase;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
+			name = Production;
 		};
 		34488B9BDC82C517BE2B539223C43639 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -23215,41 +22943,22 @@
 			};
 			name = Debug;
 		};
-		3F2B05ACA0199CDAD38AFC614700466C /* Development */ = {
+		3D4E29C8AB783E17092FACEA357A6F2F /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4DC2DF3D2AFA75EAFCF7D080F659B27 /* BoringSSL-GRPC.xcconfig */;
+			baseConfigurationReference = 7B29CF351DA88F25A04A2D9550D698B5 /* FirebaseRemoteConfig.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BoringSSL-GRPC/BoringSSL-GRPC-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BoringSSL-GRPC/BoringSSL-GRPC-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/BoringSSL-GRPC/BoringSSL-GRPC.modulemap";
-				PRODUCT_MODULE_NAME = openssl_grpc;
-				PRODUCT_NAME = openssl_grpc;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
 		};
 		3F4BEB979AAB468EDC398A6F670C5950 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -23303,6 +23012,42 @@
 			};
 			name = Debug;
 		};
+		4176052949FE2674AFACB12D7B66781C /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83834979E1CE3C6689E96520C977EC1F /* gRPC-C++.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/gRPC-C++/gRPC-C++-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/gRPC-C++/gRPC-C++-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/gRPC-C++/gRPC-C++.modulemap";
+				PRODUCT_MODULE_NAME = grpcpp;
+				PRODUCT_NAME = grpcpp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
 		432121AF1D92B36EA83D2F624EC642F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83834979E1CE3C6689E96520C977EC1F /* gRPC-C++.xcconfig */;
@@ -23354,9 +23099,9 @@
 			};
 			name = Debug;
 		};
-		47B7E26212B11526BA2EA5107EF6D3D2 /* Development */ = {
+		46BA0CC1E3E8CAF6B115B0D152EFF235 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA525E3D40FF6B9C311CF685B16A3035 /* FirebaseFirestore.xcconfig */;
+			baseConfigurationReference = D8B3A52B19893FFB5388A169F2911367 /* FirebaseCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -23367,7 +23112,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/FirebaseFirestore/FirebaseFirestore-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/FirebaseCore/FirebaseCore-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -23376,9 +23121,9 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/FirebaseFirestore/FirebaseFirestore.modulemap";
-				PRODUCT_MODULE_NAME = FirebaseFirestore;
-				PRODUCT_NAME = FirebaseFirestore;
+				MODULEMAP_FILE = "Target Support Files/FirebaseCore/FirebaseCore.modulemap";
+				PRODUCT_MODULE_NAME = FirebaseCore;
+				PRODUCT_NAME = FirebaseCore;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -23388,7 +23133,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
 		};
 		4A590183B47B906F5D448325C68D3E4B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -23425,6 +23170,78 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		4A963A4FEE34E8A0C62FCD17D85DAFF5 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80B3A02DC1A675D5AD99C507771544AB /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
+		4AD87A6BFA4AC67F3C91219FC3051200 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA525E3D40FF6B9C311CF685B16A3035 /* FirebaseFirestore.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/FirebaseFirestore/FirebaseFirestore-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/FirebaseFirestore/FirebaseFirestore.modulemap";
+				PRODUCT_MODULE_NAME = FirebaseFirestore;
+				PRODUCT_NAME = FirebaseFirestore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 		4AFABB5175A4B943FA0FEB25B97C67E3 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -23591,22 +23408,113 @@
 			};
 			name = Release;
 		};
-		4FC37ED20183491EA7154DE5F3F30481 /* Development */ = {
+		4FC4934BE52D8558CFD6786F58B81BB1 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69A76E5CB927014B3F4E5DFD4B352E5A /* GoogleAppMeasurement.xcconfig */;
+			baseConfigurationReference = 9590B4F2A4E6EEDB0F44C640458BCC8B /* FacebookLogin.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FacebookLogin/FacebookLogin-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FacebookLogin/FacebookLogin-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
+				MODULEMAP_FILE = "Target Support Files/FacebookLogin/FacebookLogin.modulemap";
+				PRODUCT_MODULE_NAME = FacebookLogin;
+				PRODUCT_NAME = FacebookLogin;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
+		};
+		503A09B38F45E5EE0ED09E957F4F29C9 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97EAAAFD487212997FFB037C9193819D /* GTMSessionFetcher.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher.modulemap";
+				PRODUCT_MODULE_NAME = GTMSessionFetcher;
+				PRODUCT_NAME = GTMSessionFetcher;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
+		51014BC8B86C3932D48A4655F85CAFE2 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BFE8588EE32EE7A36A724E3DFC11B1C /* Sentry.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Sentry/Sentry-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Sentry/Sentry-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Sentry/Sentry.modulemap";
+				PRODUCT_MODULE_NAME = Sentry;
+				PRODUCT_NAME = Sentry;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 		51F097E95C5B46494D02F966B1D3F1C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -23679,6 +23587,42 @@
 			};
 			name = Release;
 		};
+		541E1721F7C6E6F41ADEFD1318B5D1CE /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BA951060D116F50D1CC466B8D17C693 /* FirebaseAuth.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/FirebaseAuth/FirebaseAuth-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/FirebaseAuth/FirebaseAuth.modulemap";
+				PRODUCT_MODULE_NAME = FirebaseAuth;
+				PRODUCT_NAME = FirebaseAuth;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
 		54A895B2B25AE31CD76481CB66312ADC /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 04783C65D698535AADD5559B70D20474 /* BSGridCollectionViewLayout.xcconfig */;
@@ -23715,26 +23659,9 @@
 			};
 			name = Release;
 		};
-		552A5F57BED56CDF5BBA170AD7B40CF7 /* Development */ = {
+		5A4234D4AF746C33B080AC09EEA46EF1 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B29CF351DA88F25A04A2D9550D698B5 /* FirebaseRemoteConfig.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Development;
-		};
-		595DC5AF30581E70E6094C107308008A /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8B3A52B19893FFB5388A169F2911367 /* FirebaseCore.xcconfig */;
+			baseConfigurationReference = 25EEAB88088775B7D8A84CF21CD7F436 /* NVActivityIndicatorView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -23745,7 +23672,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/FirebaseCore/FirebaseCore-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/NVActivityIndicatorView/NVActivityIndicatorView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/NVActivityIndicatorView/NVActivityIndicatorView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -23753,20 +23681,58 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/FirebaseCore/FirebaseCore.modulemap";
-				PRODUCT_MODULE_NAME = FirebaseCore;
-				PRODUCT_NAME = FirebaseCore;
+				MODULEMAP_FILE = "Target Support Files/NVActivityIndicatorView/NVActivityIndicatorView.modulemap";
+				PRODUCT_MODULE_NAME = NVActivityIndicatorView;
+				PRODUCT_NAME = NVActivityIndicatorView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
+		};
+		5B3B9BD9BEC199A93E7121E93566AA2A /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FFA900D1759818D9E4DCE9DA19C4567 /* Pods-PearTests.production.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-PearTests/Pods-PearTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PearTests/Pods-PearTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 		5CEFCCFFD381308448E73F8F95B74F79 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -23838,45 +23804,6 @@
 			};
 			name = Debug;
 		};
-		5EA3FB4B5808FEC056D8012CCA970C0E /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA63510A611930E7DE97A493F37BA3EB /* Pods-Pear.development.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Pear/Pods-Pear-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Pear/Pods-Pear.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
 		6065F96A5934B77893084D4DCEDDF098 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7EA6D2F365E71DDBBD9CDA03DB7C1BBC /* Protobuf.xcconfig */;
@@ -23913,42 +23840,6 @@
 			};
 			name = Release;
 		};
-		611A329C517E0D0D82595490672AF663 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25EEAB88088775B7D8A84CF21CD7F436 /* NVActivityIndicatorView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/NVActivityIndicatorView/NVActivityIndicatorView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/NVActivityIndicatorView/NVActivityIndicatorView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/NVActivityIndicatorView/NVActivityIndicatorView.modulemap";
-				PRODUCT_MODULE_NAME = NVActivityIndicatorView;
-				PRODUCT_NAME = NVActivityIndicatorView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
 		61DB2E6CB63C02FB040980FBF7FDAFB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E1FD9E64976E0A4FE0A800773F55495 /* FirebaseABTesting.xcconfig */;
@@ -23964,23 +23855,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
-		};
-		6208B29450DB2CBE752F02441F19018E /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C58E28A36F822D77FFB355093B383776 /* Crashlytics.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Development;
 		};
 		65DC8C8E8835185CAF5F4AB90D65C3E3 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -24017,6 +23891,57 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		67437B95A3470B6EB03EE68CC3EBC375 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEC0AA58B4EE0C01B288EEAA7A1EA1B1 /* Firebase.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production;
+		};
+		685BD4B28A594315E1D600E9A58DE592 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69A76E5CB927014B3F4E5DFD4B352E5A /* GoogleAppMeasurement.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production;
+		};
+		68D505D1640619C54D5855E06295CEE2 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B8C491A899E86C536A196CAD7128C58 /* R.swift.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production;
 		};
 		6AE95E628F5A94DCD997B635BF1DEBF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -24068,6 +23993,42 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
+		};
+		6B38234A3692D370216432DC0CDDB471 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CE0F16151403E97729C230662023E60 /* FBSDKShareKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FBSDKShareKit/FBSDKShareKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FBSDKShareKit/FBSDKShareKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FBSDKShareKit/FBSDKShareKit.modulemap";
+				PRODUCT_MODULE_NAME = FBSDKShareKit;
+				PRODUCT_NAME = FBSDKShareKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 		6BF3FC1EEAA5FD7A748588A3B59ABF58 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -24185,41 +24146,39 @@
 			};
 			name = Release;
 		};
-		739879BA665846BB51C3BA2EC8CB8BBE /* Development */ = {
+		7306E6E95A146535202BBFDB91E00AB7 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 631DE0E4D7D4D1C3BC169C7935E57070 /* BSImageView.xcconfig */;
+			baseConfigurationReference = 6E1FD9E64976E0A4FE0A800773F55495 /* FirebaseABTesting.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BSImageView/BSImageView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BSImageView/BSImageView-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/BSImageView/BSImageView.modulemap";
-				PRODUCT_MODULE_NAME = BSImageView;
-				PRODUCT_NAME = BSImageView;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
+		};
+		73A5C488C2D7D30EA0B008932652B31D /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 670018163C31C12C72EC52C69059D83F /* FirebasePerformance.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production;
 		};
 		73BECB011635C71C6DAAC4B79F3B963C /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -24257,9 +24216,9 @@
 			};
 			name = Release;
 		};
-		745D63E09005C73B41586D097720009A /* Development */ = {
+		73EC94AB5C24EA1C56BE6A9373C905E6 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B8C491A899E86C536A196CAD7128C58 /* R.swift.xcconfig */;
+			baseConfigurationReference = D49045BAF3F8DE9C3DAC96CF621E5DE4 /* SwiftLint.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -24272,11 +24231,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Development;
+			name = Production;
 		};
-		784FE83FF8B5E91F629C7CB77265D373 /* Development */ = {
+		7763B442DBCF8CA8F6F77413397FCACA /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B16C30D0105EF2FF6679FAB086AD0D4C /* FacebookShare.xcconfig */;
+			baseConfigurationReference = B2F54DEF79853F70CFF275D7D1275411 /* GoogleToolboxForMac.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -24287,8 +24246,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FacebookShare/FacebookShare-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FacebookShare/FacebookShare-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -24296,45 +24255,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/FacebookShare/FacebookShare.modulemap";
-				PRODUCT_MODULE_NAME = FacebookShare;
-				PRODUCT_NAME = FacebookShare;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
-		7A9B4F1DAD1D9357BF6EF55C2AE2EF04 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BE010F1E67CCEB3EC58A197A1AD50A0 /* leveldb-library.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/leveldb-library/leveldb-library-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/leveldb-library/leveldb-library-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/leveldb-library/leveldb-library.modulemap";
-				PRODUCT_MODULE_NAME = leveldb;
-				PRODUCT_NAME = leveldb;
+				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
+				PRODUCT_MODULE_NAME = GoogleToolboxForMac;
+				PRODUCT_NAME = GoogleToolboxForMac;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -24344,43 +24267,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
-		};
-		7B139C2AD42124B4A2E45C83832B5B9F /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BA951060D116F50D1CC466B8D17C693 /* FirebaseAuth.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/FirebaseAuth/FirebaseAuth-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/FirebaseAuth/FirebaseAuth.modulemap";
-				PRODUCT_MODULE_NAME = FirebaseAuth;
-				PRODUCT_NAME = FirebaseAuth;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
+			name = Production;
 		};
 		7B40B0034CDE09CC9BC2F68282D6D1FC /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -24398,45 +24285,27 @@
 			};
 			name = Debug;
 		};
-		7E360E99887BA5B77367AED70BF2B533 /* Development */ = {
+		7B5110F141B68102B037269D46D88E43 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CE521183D1CF47277AB285FB8CDF493 /* R.swift.Library.xcconfig */;
+			baseConfigurationReference = 1095007C6EA5E7B6A5B39B1A630EDDC8 /* BSImagePicker.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/R.swift.Library/R.swift.Library-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/R.swift.Library/R.swift.Library-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BSImagePicker";
+				INFOPLIST_FILE = "Target Support Files/BSImagePicker/ResourceBundle-BSImagePicker-BSImagePicker-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/R.swift.Library/R.swift.Library.modulemap";
-				PRODUCT_MODULE_NAME = Rswift;
-				PRODUCT_NAME = Rswift;
+				PRODUCT_NAME = BSImagePicker;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
-			name = Development;
+			name = Production;
 		};
-		7E9FBB4B01EFFF02A1744D4F36C93A63 /* Development */ = {
+		801BD38049FEC9804D60253BDF1DE557 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 355A7952317E99728AF56E685E2C9F9D /* FacebookCore.xcconfig */;
+			baseConfigurationReference = 04783C65D698535AADD5559B70D20474 /* BSGridCollectionViewLayout.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -24447,8 +24316,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FacebookCore/FacebookCore-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FacebookCore/FacebookCore-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -24456,9 +24325,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/FacebookCore/FacebookCore.modulemap";
-				PRODUCT_MODULE_NAME = FacebookCore;
-				PRODUCT_NAME = FacebookCore;
+				MODULEMAP_FILE = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout.modulemap";
+				PRODUCT_MODULE_NAME = BSGridCollectionViewLayout;
+				PRODUCT_NAME = BSGridCollectionViewLayout;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -24468,7 +24337,103 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
+		};
+		80C262862476F7322941B92222637DBA /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_PRODUCTION=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Production;
+		};
+		83E82188EC3A0ED0B7B665FCA3E5D20C /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E676CDBB8FC15CCC6CFE469EBEF9CF7E /* CodableFirebase.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CodableFirebase/CodableFirebase-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CodableFirebase/CodableFirebase-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CodableFirebase/CodableFirebase.modulemap";
+				PRODUCT_MODULE_NAME = CodableFirebase;
+				PRODUCT_NAME = CodableFirebase;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 		859282F57A46D73BBA8283D2D3AF9326 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -24504,6 +24469,42 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		85F2B80789F838C4A8F639690A00D6A8 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 631DE0E4D7D4D1C3BC169C7935E57070 /* BSImageView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BSImageView/BSImageView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BSImageView/BSImageView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/BSImageView/BSImageView.modulemap";
+				PRODUCT_MODULE_NAME = BSImageView;
+				PRODUCT_NAME = BSImageView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 		8679E047AF810DF0AB6077E9629AF10D /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -24541,7 +24542,7 @@
 			};
 			name = Release;
 		};
-		8F0597E80DA1396D5B79193C3EC4628D /* Development */ = {
+		8744CB3FB1BAB439082491F857CB43A9 /* Production */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F88594C3CF8ED8EEB1EAB4857AB47A1 /* Fabric.xcconfig */;
 			buildSettings = {
@@ -24556,7 +24557,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Development;
+			name = Production;
 		};
 		90D8963F5E8FBBE6AE2F8DEB44105458 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -24593,42 +24594,6 @@
 			};
 			name = Debug;
 		};
-		919A590BC2DD8FA0FF9A27838775C70B /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEEDE2458A311912B00D8D3057E5BC35 /* Bolts.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Bolts/Bolts-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Bolts/Bolts-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/Bolts/Bolts.modulemap";
-				PRODUCT_MODULE_NAME = Bolts;
-				PRODUCT_NAME = Bolts;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
 		91E91FB37B4F7F605B4E1DE25B339308 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F88594C3CF8ED8EEB1EAB4857AB47A1 /* Fabric.xcconfig */;
@@ -24646,9 +24611,9 @@
 			};
 			name = Release;
 		};
-		93E86807B13B1E8C7F09E29624E7AAB3 /* Development */ = {
+		95E58C31EC80461FCF1F014BB27A6DB5 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04783C65D698535AADD5559B70D20474 /* BSGridCollectionViewLayout.xcconfig */;
+			baseConfigurationReference = 3C088D82D6D2254936365166CC16F3AD /* FBSDKCoreKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -24659,8 +24624,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -24668,19 +24633,36 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout.modulemap";
-				PRODUCT_MODULE_NAME = BSGridCollectionViewLayout;
-				PRODUCT_NAME = BSGridCollectionViewLayout;
+				MODULEMAP_FILE = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit.modulemap";
+				PRODUCT_MODULE_NAME = FBSDKCoreKit;
+				PRODUCT_NAME = FBSDKCoreKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
+		};
+		96D25D53B14D11552D14D54DB65FF222 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C58E28A36F822D77FFB355093B383776 /* Crashlytics.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production;
 		};
 		982E72B56636DA2A35189A1FEDB76FA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -24770,22 +24752,41 @@
 			};
 			name = Release;
 		};
-		9F49B0CEE3BD94243A5BFC262DA6DCE3 /* Development */ = {
+		9F8825897CFB85847D2FE5910CA4644B /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEC0AA58B4EE0C01B288EEAA7A1EA1B1 /* Firebase.xcconfig */;
+			baseConfigurationReference = 41D89243BE4D813DA41C84FFAA4AD645 /* FirebaseInstanceID.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/FirebaseInstanceID/FirebaseInstanceID-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/FirebaseInstanceID/FirebaseInstanceID.modulemap";
+				PRODUCT_MODULE_NAME = FirebaseInstanceID;
+				PRODUCT_NAME = FirebaseInstanceID;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
 		};
 		9FFC5FE1FFB73FF94085D33EA0022B68 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -24821,23 +24822,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		A16A4807797EED1D0CA6CE293B96AF79 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E1FD9E64976E0A4FE0A800773F55495 /* FirebaseABTesting.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Development;
 		};
 		A21922D4EA79BB602EAB728352051401 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -25013,6 +24997,42 @@
 			};
 			name = Debug;
 		};
+		AA16F7DF824CCB727EC40CB4E72E0F40 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EA6D2F365E71DDBBD9CDA03DB7C1BBC /* Protobuf.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Protobuf/Protobuf-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Protobuf/Protobuf-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Protobuf/Protobuf.modulemap";
+				PRODUCT_MODULE_NAME = Protobuf;
+				PRODUCT_NAME = Protobuf;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
 		AA74CB962B2CA888EE4E3A3455AA764C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7814A01022BA831C630D86EABB42F898 /* FirebaseAnalytics.xcconfig */;
@@ -25028,42 +25048,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
-		};
-		AD365BF3852F520D6E9535292CFDB678 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9590B4F2A4E6EEDB0F44C640458BCC8B /* FacebookLogin.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FacebookLogin/FacebookLogin-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FacebookLogin/FacebookLogin-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/FacebookLogin/FacebookLogin.modulemap";
-				PRODUCT_MODULE_NAME = FacebookLogin;
-				PRODUCT_NAME = FacebookLogin;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
 		};
 		B1D298724A8D03AF3257588F3F6E0033 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -25081,78 +25065,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		B29B7F0FF2F736915364131CD633BBAD /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97EAAAFD487212997FFB037C9193819D /* GTMSessionFetcher.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher.modulemap";
-				PRODUCT_MODULE_NAME = GTMSessionFetcher;
-				PRODUCT_NAME = GTMSessionFetcher;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
-		B2C3C735C4DB0029E3E5D103177A7EA9 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C4303762D160FBBA47974D973161AF5 /* nanopb.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/nanopb/nanopb-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/nanopb/nanopb-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/nanopb/nanopb.modulemap";
-				PRODUCT_MODULE_NAME = nanopb;
-				PRODUCT_NAME = nanopb;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
 		};
 		B388BE14DC7C7FF0BC7626D027C6C3CA /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -25207,9 +25119,9 @@
 			};
 			name = Release;
 		};
-		B62DCBF0B099A782B760391CE3A76EA0 /* Development */ = {
+		B5F89E4F5515CFE20DA38D0102A0F8C2 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99BB5A5880C563FD09C80EF2B1DEE1EE /* gRPC-Core.xcconfig */;
+			baseConfigurationReference = C5A628F453F55828CB307B4000DABCF9 /* GoogleUtilities.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -25220,8 +25132,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/gRPC-Core/gRPC-Core-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/gRPC-Core/gRPC-Core-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleUtilities/GoogleUtilities-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -25229,9 +25141,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/gRPC-Core/gRPC-Core.modulemap";
-				PRODUCT_MODULE_NAME = grpc;
-				PRODUCT_NAME = grpc;
+				MODULEMAP_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities.modulemap";
+				PRODUCT_MODULE_NAME = GoogleUtilities;
+				PRODUCT_NAME = GoogleUtilities;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -25241,7 +25153,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
 		};
 		B877B8B60981CF87CA8BCD556496817F /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -25278,6 +25190,42 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		B90EECEEF417F634C417AEB2C50DACBA /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B16C30D0105EF2FF6679FAB086AD0D4C /* FacebookShare.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FacebookShare/FacebookShare-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FacebookShare/FacebookShare-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FacebookShare/FacebookShare.modulemap";
+				PRODUCT_MODULE_NAME = FacebookShare;
+				PRODUCT_NAME = FacebookShare;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
 		};
 		B9589DE3FD2F0F81327EB3A580424C55 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -25402,6 +25350,42 @@
 			};
 			name = Debug;
 		};
+		BC61F74689ECDFBC4A59732E0CC0606A /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BE010F1E67CCEB3EC58A197A1AD50A0 /* leveldb-library.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/leveldb-library/leveldb-library-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/leveldb-library/leveldb-library-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/leveldb-library/leveldb-library.modulemap";
+				PRODUCT_MODULE_NAME = leveldb;
+				PRODUCT_NAME = leveldb;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
 		BCDB068B38703ACB783A7F5BF92940D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EEC0AA58B4EE0C01B288EEAA7A1EA1B1 /* Firebase.xcconfig */;
@@ -25453,45 +25437,9 @@
 			};
 			name = Release;
 		};
-		C06A900FBBA4CFA435E4AC2206C0C5A7 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C088D82D6D2254936365166CC16F3AD /* FBSDKCoreKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/FBSDKCoreKit/FBSDKCoreKit.modulemap";
-				PRODUCT_MODULE_NAME = FBSDKCoreKit;
-				PRODUCT_NAME = FBSDKCoreKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
 		C218780B27D6E766C6424D659ADA0471 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 908D7AE33A54D9EF67A6AF76301EAC8F /* Pods-PearTests.debug.xcconfig */;
+			baseConfigurationReference = F1D2E5C7A7099A72FE39030B11393DFE /* Pods-PearTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -25527,6 +25475,42 @@
 			};
 			name = Debug;
 		};
+		C2A23A53B2645F14A110734FC333DE3F /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1095007C6EA5E7B6A5B39B1A630EDDC8 /* BSImagePicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BSImagePicker/BSImagePicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BSImagePicker/BSImagePicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/BSImagePicker/BSImagePicker.modulemap";
+				PRODUCT_MODULE_NAME = BSImagePicker;
+				PRODUCT_NAME = BSImagePicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
 		CC6960B919C232C2656927687C4E97B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1095007C6EA5E7B6A5B39B1A630EDDC8 /* BSImagePicker.xcconfig */;
@@ -25542,23 +25526,6 @@
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
-		};
-		CC8C1787069BB91A51F9E6ADA9467398 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7814A01022BA831C630D86EABB42F898 /* FirebaseAnalytics.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Development;
 		};
 		CCE02DF80ED03C676FC668F11828BB07 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -25627,95 +25594,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		CE5DA05E1B57425CA8FE34C056CFE4E8 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80B3A02DC1A675D5AD99C507771544AB /* SwiftyJSON.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyJSON;
-				PRODUCT_NAME = SwiftyJSON;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
-		D02BEEF13C36513724944876F649C756 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1095007C6EA5E7B6A5B39B1A630EDDC8 /* BSImagePicker.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BSImagePicker/BSImagePicker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BSImagePicker/BSImagePicker-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/BSImagePicker/BSImagePicker.modulemap";
-				PRODUCT_MODULE_NAME = BSImagePicker;
-				PRODUCT_NAME = BSImagePicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
-		D0593415EB3EC22B6C818A9AF90D6420 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 670018163C31C12C72EC52C69059D83F /* FirebasePerformance.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Development;
 		};
 		D552714A0FD2C7C5E2B7B58B04820BBA /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -25858,6 +25736,78 @@
 			};
 			name = Debug;
 		};
+		E21E627140F871F6E751470A0D522C8F /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4DC2DF3D2AFA75EAFCF7D080F659B27 /* BoringSSL-GRPC.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BoringSSL-GRPC/BoringSSL-GRPC-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BoringSSL-GRPC/BoringSSL-GRPC-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/BoringSSL-GRPC/BoringSSL-GRPC.modulemap";
+				PRODUCT_MODULE_NAME = openssl_grpc;
+				PRODUCT_NAME = openssl_grpc;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
+		E540258ACAE7258A5A81A2DFB524CF98 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A61519A8CD53A43D69DFBC9DFC3C6A4 /* SDWebImage.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SDWebImage/SDWebImage-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SDWebImage/SDWebImage.modulemap";
+				PRODUCT_MODULE_NAME = SDWebImage;
+				PRODUCT_NAME = SDWebImage;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
 		E9F2707BCA4414A9CC8130E4EC86ACB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B2F54DEF79853F70CFF275D7D1275411 /* GoogleToolboxForMac.xcconfig */;
@@ -25892,6 +25842,24 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		E9FE4A04EA42F2748217D03165B9DE90 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83834979E1CE3C6689E96520C977EC1F /* gRPC-C++.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-gRPC-C++-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = gRPCCertificates;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Production;
 		};
 		EB721ACED41A1C042916C15EEB7F6E1C /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -25964,9 +25932,62 @@
 			};
 			name = Debug;
 		};
+		EF0D9F3F73B8B5B2B42023B83D5CE189 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97D8ECC4863349A74E86D4AC16C67F10 /* FBSDKLoginKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FBSDKLoginKit/FBSDKLoginKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FBSDKLoginKit/FBSDKLoginKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FBSDKLoginKit/FBSDKLoginKit.modulemap";
+				PRODUCT_MODULE_NAME = FBSDKLoginKit;
+				PRODUCT_NAME = FBSDKLoginKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Production;
+		};
+		EF5795950E77D812D9E8676C70879DBD /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7781B966DF471F90C7811A9C534879B /* FirebaseAuthInterop.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Production;
+		};
 		EF948024D15D25A80D4CA0754B31FFD9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0F0E2CCBD22B9710DE9627621C935AB /* Pods-PearTests.release.xcconfig */;
+			baseConfigurationReference = CAD2A4A9AAB7E6EA3D4D5DBB5BEEF3FC /* Pods-PearTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -26039,9 +26060,9 @@
 			};
 			name = Release;
 		};
-		F08DB3B67781DBB2F17A7CB0FB8E4D80 /* Development */ = {
+		F4DFB3C443368B0E9140111CE228AC1D /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A61519A8CD53A43D69DFBC9DFC3C6A4 /* SDWebImage.xcconfig */;
+			baseConfigurationReference = 355A7952317E99728AF56E685E2C9F9D /* FacebookCore.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -26052,8 +26073,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SDWebImage/SDWebImage-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SDWebImage/SDWebImage-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FacebookCore/FacebookCore-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FacebookCore/FacebookCore-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -26061,19 +26082,19 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/SDWebImage/SDWebImage.modulemap";
-				PRODUCT_MODULE_NAME = SDWebImage;
-				PRODUCT_NAME = SDWebImage;
+				MODULEMAP_FILE = "Target Support Files/FacebookCore/FacebookCore.modulemap";
+				PRODUCT_MODULE_NAME = FacebookCore;
+				PRODUCT_NAME = FacebookCore;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
 		};
 		F6E3D16C72F22EDEF6843B818BB45C33 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -26146,23 +26167,41 @@
 			};
 			name = Release;
 		};
-		F9F187F357273B2B34CA142A5A56D33B /* Development */ = {
+		F98D0DAAD6731137E6C7ED493047BBB7 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1095007C6EA5E7B6A5B39B1A630EDDC8 /* BSImagePicker.xcconfig */;
+			baseConfigurationReference = 3C4303762D160FBBA47974D973161AF5 /* nanopb.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BSImagePicker";
-				INFOPLIST_FILE = "Target Support Files/BSImagePicker/ResourceBundle-BSImagePicker-BSImagePicker-Info.plist";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/nanopb/nanopb-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/nanopb/nanopb-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = BSImagePicker;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/nanopb/nanopb.modulemap";
+				PRODUCT_MODULE_NAME = nanopb;
+				PRODUCT_NAME = nanopb;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = bundle;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
-			name = Development;
+			name = Production;
 		};
 		FCFA7608964840AFFCC5AE92BCAD7B8C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -26199,45 +26238,6 @@
 			};
 			name = Debug;
 		};
-		FF588414835E74CA65F2090B8F4415E5 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A7DD8A02283A7E97326E1632F13E6B3 /* Pods-PearTests.development.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-PearTests/Pods-PearTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PearTests/Pods-PearTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Development;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -26245,7 +26245,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6AF869D7AD93D71009801AA712392ABE /* Debug */,
-				03918D7B9921E88F442D1FD16A402C56 /* Development */,
+				EF5795950E77D812D9E8676C70879DBD /* Production */,
 				CDF2441590ACACF19289F981C0D2B2E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26255,7 +26255,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D77D5B0C32DC05BDFE608900B42E037F /* Debug */,
-				AD365BF3852F520D6E9535292CFDB678 /* Development */,
+				4FC4934BE52D8558CFD6786F58B81BB1 /* Production */,
 				290C3D37F57A167124C247C65BCE76A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26265,7 +26265,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				141C95C862088164C1A7276BC10DA076 /* Debug */,
-				3F2B05ACA0199CDAD38AFC614700466C /* Development */,
+				E21E627140F871F6E751470A0D522C8F /* Production */,
 				B38A0B9C9B82CAA546627BF545672C26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26275,7 +26275,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B17E78986B3A9895DB143C6C7C5D366 /* Debug */,
-				F9F187F357273B2B34CA142A5A56D33B /* Development */,
+				7B5110F141B68102B037269D46D88E43 /* Production */,
 				CC6960B919C232C2656927687C4E97B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26285,7 +26285,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AA74CB962B2CA888EE4E3A3455AA764C /* Debug */,
-				CC8C1787069BB91A51F9E6ADA9467398 /* Development */,
+				33BC8ADCAEA24DB5030E5C2BBAB676EF /* Production */,
 				B1D298724A8D03AF3257588F3F6E0033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26295,7 +26295,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2F6EDD766D5952EFFC9FEA6DF0CEB817 /* Debug */,
-				7B139C2AD42124B4A2E45C83832B5B9F /* Development */,
+				541E1721F7C6E6F41ADEFD1318B5D1CE /* Production */,
 				3A55DBECA3E64412CA2937A037C6D075 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26305,7 +26305,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5E4F3B249ECF9D0D52CDC1B222A82E2A /* Debug */,
-				47B7E26212B11526BA2EA5107EF6D3D2 /* Development */,
+				4AD87A6BFA4AC67F3C91219FC3051200 /* Production */,
 				4AFABB5175A4B943FA0FEB25B97C67E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26315,7 +26315,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				100CACDF0F19E2E6FFB7970C947082B5 /* Debug */,
-				739879BA665846BB51C3BA2EC8CB8BBE /* Development */,
+				85F2B80789F838C4A8F639690A00D6A8 /* Production */,
 				65DC8C8E8835185CAF5F4AB90D65C3E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26325,7 +26325,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6BF3FC1EEAA5FD7A748588A3B59ABF58 /* Debug */,
-				D0593415EB3EC22B6C818A9AF90D6420 /* Development */,
+				73A5C488C2D7D30EA0B008932652B31D /* Production */,
 				BFAE6753F7987466374E4C8AD73F3365 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26335,7 +26335,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6AE95E628F5A94DCD997B635BF1DEBF7 /* Debug */,
-				B62DCBF0B099A782B760391CE3A76EA0 /* Development */,
+				312E1786EDC05F5FF6310EA3622ACC47 /* Production */,
 				9D91904D1C64EEF9E6DDF60890F19C53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26345,7 +26345,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39DB25626F7110449FD734B3F758AF6E /* Debug */,
-				0619EA29DB07FF9D87D9378360B40C64 /* Development */,
+				E9FE4A04EA42F2748217D03165B9DE90 /* Production */,
 				432121AF1D92B36EA83D2F624EC642F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26355,7 +26355,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D0E3B0341CE9F07A476CDF254624DB2 /* Debug */,
-				9F49B0CEE3BD94243A5BFC262DA6DCE3 /* Development */,
+				67437B95A3470B6EB03EE68CC3EBC375 /* Production */,
 				BCDB068B38703ACB783A7F5BF92940D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26365,7 +26365,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D552714A0FD2C7C5E2B7B58B04820BBA /* Debug */,
-				7E360E99887BA5B77367AED70BF2B533 /* Development */,
+				1F61C30FC75275EAF95DE138798341A2 /* Production */,
 				02965757BCC4DC220B58B361CA1B4B00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26375,7 +26375,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FCFA7608964840AFFCC5AE92BCAD7B8C /* Debug */,
-				CE5DA05E1B57425CA8FE34C056CFE4E8 /* Development */,
+				4A963A4FEE34E8A0C62FCD17D85DAFF5 /* Production */,
 				5209D776422293D5EA3B24D043BA4BB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26385,7 +26385,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				982E72B56636DA2A35189A1FEDB76FA1 /* Debug */,
-				8F0597E80DA1396D5B79193C3EC4628D /* Development */,
+				8744CB3FB1BAB439082491F857CB43A9 /* Production */,
 				91E91FB37B4F7F605B4E1DE25B339308 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26395,7 +26395,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				859282F57A46D73BBA8283D2D3AF9326 /* Debug */,
-				B2C3C735C4DB0029E3E5D103177A7EA9 /* Development */,
+				F98D0DAAD6731137E6C7ED493047BBB7 /* Production */,
 				73BECB011635C71C6DAAC4B79F3B963C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26405,7 +26405,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6DFA1578582149B7E24AD55CBA30F07A /* Debug */,
-				08C7248DA1550DB1110D7E57D1FBDC69 /* Development */,
+				80C262862476F7322941B92222637DBA /* Production */,
 				4CE281642D6EE9FAB113046B4B6328A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26415,7 +26415,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD47CF6274FA7D8FF15DD290A98F1723 /* Debug */,
-				93E86807B13B1E8C7F09E29624E7AAB3 /* Development */,
+				801BD38049FEC9804D60253BDF1DE557 /* Production */,
 				54A895B2B25AE31CD76481CB66312ADC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26425,7 +26425,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1CE907296258A189B933E7396DCC1AAC /* Debug */,
-				611A329C517E0D0D82595490672AF663 /* Development */,
+				5A4234D4AF746C33B080AC09EEA46EF1 /* Production */,
 				2B530C2E621AB809D949BF0818A37AEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26435,7 +26435,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BA748EBE9D3632E4890727FBB447865F /* Debug */,
-				11D25E4A056F90C3AF9E7FD233B401DF /* Development */,
+				AA16F7DF824CCB727EC40CB4E72E0F40 /* Production */,
 				6065F96A5934B77893084D4DCEDDF098 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26445,7 +26445,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC4D314E1908A0160F45C5701D77C985 /* Debug */,
-				4FC37ED20183491EA7154DE5F3F30481 /* Development */,
+				685BD4B28A594315E1D600E9A58DE592 /* Production */,
 				4C0E72B244D325574FB9C372CD1640FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26455,7 +26455,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3FD2452F3F2C3456A34F5F5A5CD233ED /* Debug */,
-				7E9FBB4B01EFFF02A1744D4F36C93A63 /* Development */,
+				F4DFB3C443368B0E9140111CE228AC1D /* Production */,
 				B877B8B60981CF87CA8BCD556496817F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26465,7 +26465,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EEE41861225548568AC5490562E8D809 /* Debug */,
-				1D16B2727777A73253546D170CE78588 /* Development */,
+				6B38234A3692D370216432DC0CDDB471 /* Production */,
 				BC013D14FC0CEAB6B715A56ECCD980ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26475,7 +26475,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCE02DF80ED03C676FC668F11828BB07 /* Debug */,
-				6208B29450DB2CBE752F02441F19018E /* Development */,
+				96D25D53B14D11552D14D54DB65FF222 /* Production */,
 				BDF3ABB00DCD8D6C12EE1988375C8678 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26485,7 +26485,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				373C1B2028478681818408D0A531CCC0 /* Debug */,
-				3346433F9F195E155E601B7B86CAB58A /* Development */,
+				83E82188EC3A0ED0B7B665FCA3E5D20C /* Production */,
 				8679E047AF810DF0AB6077E9629AF10D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26495,7 +26495,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				11A2F9D673A1F719E1D3884AFF47F37E /* Debug */,
-				919A590BC2DD8FA0FF9A27838775C70B /* Development */,
+				16F338B7C44E17D2A2AE3EABBEA5EAE1 /* Production */,
 				3A26E2960686BC8878A5E2B0C16A5CD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26505,7 +26505,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1B010E983830350C0C1B7195C9F4B34A /* Debug */,
-				07AFC7DF0ABDA553E33E211441861537 /* Development */,
+				73EC94AB5C24EA1C56BE6A9373C905E6 /* Production */,
 				A327EF874A4ACCFA557DA8D680ECC700 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26515,7 +26515,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5663C74E8648E7077FFE084EABEC39F /* Debug */,
-				595DC5AF30581E70E6094C107308008A /* Development */,
+				46BA0CC1E3E8CAF6B115B0D152EFF235 /* Production */,
 				EB721ACED41A1C042916C15EEB7F6E1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26525,7 +26525,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61DB2E6CB63C02FB040980FBF7FDAFB1 /* Debug */,
-				A16A4807797EED1D0CA6CE293B96AF79 /* Development */,
+				7306E6E95A146535202BBFDB91E00AB7 /* Production */,
 				B388BE14DC7C7FF0BC7626D027C6C3CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26535,7 +26535,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E9F2707BCA4414A9CC8130E4EC86ACB0 /* Debug */,
-				093F24FBDB568107385B42ADB10A9DCE /* Development */,
+				7763B442DBCF8CA8F6F77413397FCACA /* Production */,
 				4EE6C2D7083B050ED33F8B9653AB0D59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26545,7 +26545,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44803E1693D7B40E2EBAA78EFEDD882D /* Debug */,
-				7A9B4F1DAD1D9357BF6EF55C2AE2EF04 /* Development */,
+				BC61F74689ECDFBC4A59732E0CC0606A /* Production */,
 				7247F9B46DCDA018B1418E3B23EB3A3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26555,7 +26555,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE93260AD9E146EB71E30A52CD96891B /* Debug */,
-				B29B7F0FF2F736915364131CD633BBAD /* Development */,
+				503A09B38F45E5EE0ED09E957F4F29C9 /* Production */,
 				3677380013AA9EF736F8B9FC88E5339E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26565,7 +26565,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7B40B0034CDE09CC9BC2F68282D6D1FC /* Debug */,
-				552A5F57BED56CDF5BBA170AD7B40CF7 /* Development */,
+				3D4E29C8AB783E17092FACEA357A6F2F /* Production */,
 				3F4BEB979AAB468EDC398A6F670C5950 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26575,7 +26575,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9FFC5FE1FFB73FF94085D33EA0022B68 /* Debug */,
-				C06A900FBBA4CFA435E4AC2206C0C5A7 /* Development */,
+				95E58C31EC80461FCF1F014BB27A6DB5 /* Production */,
 				EFF3F83206009AB82A90A2893EE3CD87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26585,7 +26585,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2791812C43645995BAC179900CAAED5D /* Debug */,
-				5EA3FB4B5808FEC056D8012CCA970C0E /* Development */,
+				1A1911EA73E96EF53FE99E5996B67F2E /* Production */,
 				09E46E20B1AF2DDF6D587DDF445F0E4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26595,7 +26595,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01C6F085EA66A3CF5CAA5EDCDD4C2078 /* Debug */,
-				784FE83FF8B5E91F629C7CB77265D373 /* Development */,
+				B90EECEEF417F634C417AEB2C50DACBA /* Production */,
 				B9589DE3FD2F0F81327EB3A580424C55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26605,7 +26605,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				216F1E45DFD0442DE517B49327E39933 /* Debug */,
-				D02BEEF13C36513724944876F649C756 /* Development */,
+				C2A23A53B2645F14A110734FC333DE3F /* Production */,
 				2397D6DCF96C7B60039EEA207FF25DA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26615,7 +26615,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A8BCFA15FAA1FD7697567657408D3B9D /* Debug */,
-				745D63E09005C73B41586D097720009A /* Development */,
+				68D505D1640619C54D5855E06295CEE2 /* Production */,
 				275579BC5B7F91D7CF1AABC97F7B81E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26625,7 +26625,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5CEFCCFFD381308448E73F8F95B74F79 /* Debug */,
-				31E21143B3C7551DC4AA3024E75C9AAC /* Development */,
+				51014BC8B86C3932D48A4655F85CAFE2 /* Production */,
 				A3763A17C2E244B347E5C23C76D4660E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26635,7 +26635,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A52BCDBD090CA0E4916303F34DC1BE2B /* Debug */,
-				12499D000FF47EA665254014DD23F047 /* Development */,
+				9F8825897CFB85847D2FE5910CA4644B /* Production */,
 				34488B9BDC82C517BE2B539223C43639 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26645,7 +26645,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C218780B27D6E766C6424D659ADA0471 /* Debug */,
-				FF588414835E74CA65F2090B8F4415E5 /* Development */,
+				5B3B9BD9BEC199A93E7121E93566AA2A /* Production */,
 				EF948024D15D25A80D4CA0754B31FFD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26655,7 +26655,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A21922D4EA79BB602EAB728352051401 /* Debug */,
-				F08DB3B67781DBB2F17A7CB0FB8E4D80 /* Development */,
+				E540258ACAE7258A5A81A2DFB524CF98 /* Production */,
 				DB4CFD15A52F062EAE987313BED3CE64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26665,7 +26665,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				90D8963F5E8FBBE6AE2F8DEB44105458 /* Debug */,
-				322B54DF5AB784A60593499C39E07DF2 /* Development */,
+				B5F89E4F5515CFE20DA38D0102A0F8C2 /* Production */,
 				4A590183B47B906F5D448325C68D3E4B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26675,7 +26675,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F6E3D16C72F22EDEF6843B818BB45C33 /* Debug */,
-				01A8D4BDFACB54503FCEBDD6902FD078 /* Development */,
+				EF0D9F3F73B8B5B2B42023B83D5CE189 /* Production */,
 				99A149E138BE4D0626979CBA70442B79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -26685,7 +26685,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				51F097E95C5B46494D02F966B1D3F1C5 /* Debug */,
-				1EEB13892070151958C82CC1E35BB40D /* Development */,
+				4176052949FE2674AFACB12D7B66781C /* Production */,
 				F8C7474BF1F39372683152A8A4373614 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

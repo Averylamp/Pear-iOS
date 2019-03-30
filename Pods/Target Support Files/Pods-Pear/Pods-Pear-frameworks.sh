@@ -179,7 +179,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
-if [[ "$CONFIGURATION" == "Development" ]]; then
+if [[ "$CONFIGURATION" == "Production" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework"
