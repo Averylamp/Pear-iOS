@@ -21,6 +21,7 @@ target 'Pear' do
   pod 'R.swift'
   pod 'Sentry' 
   pod 'BSImagePicker'
+  pod 'Lightbox'
 
 
   target 'PearTests' do
