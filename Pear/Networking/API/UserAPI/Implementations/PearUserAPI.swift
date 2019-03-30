@@ -171,7 +171,8 @@ extension PearUserAPI {
       let lastName = userData.lastName,
       let gender = userData.gender,
       let firebaseToken = userData.firebaseToken,
-      let firebaseAuthID = userData.firebaseAuthID
+      let firebaseAuthID = userData.firebaseAuthID,
+      let location = userData.lastLocation
       else {
         throw UserAPIError.invalidVariables
     }
@@ -186,7 +187,8 @@ extension PearUserAPI {
       "lastName": lastName,
       "gender": gender.rawValue,
       "firebaseToken": firebaseToken,
-      "firebaseAuthID": firebaseAuthID
+      "firebaseAuthID": firebaseAuthID,
+      "location": [location.longitude, location.latitude]
     ]
     
     let birthdayFormatter = DateFormatter()
@@ -203,10 +205,6 @@ extension PearUserAPI {
     if let thumbnailURL = userData.thumbnailURL {
       variablesDictionary["thumbnailURL"] = thumbnailURL
     }
-    
-    let defaultCoordinates: [Double] = [42.3601, -71.0589]
-    variablesDictionary["location"] = defaultCoordinates
-    variablesDictionary["locationName"] = "Boston Area"
     
     return variablesDictionary
   }
