@@ -20,4 +20,7 @@ class NetworkingConfig {
   static let graphQLHost: URL = URL(string: "\(secureHTTPs)://\(host)/graphql")!
   static let imageAPIHost: URL = URL(string: "https://u6qoh0vm77.execute-api.us-east-1.amazonaws.com/default/imageCompressorUploader")!
   static let imageAPIKey: String = "3gIpimRUcE54l1Vmq4DL56eJVGUDiymf92TH9YBJ"
+  static let eulaURL: URL = URL(string: "https://getpear.com/terms-of-use")!
+  static let privacyPolicyURL: URL = URL(string: "https://getpear.com/privacy-policy")!
+  
 }
