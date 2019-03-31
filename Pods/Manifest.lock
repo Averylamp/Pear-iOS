@@ -16,7 +16,6 @@ PODS:
     - BSGridCollectionViewLayout (= 1.2.2)
     - BSImageView (= 1.0.2)
   - BSImageView (1.0.2)
-  - Cache (5.2.0)
   - CodableFirebase (0.2.1)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
@@ -40,21 +39,21 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.42.0):
     - FBSDKCoreKit
-  - Firebase/Auth (5.19.0):
+  - Firebase/Auth (5.20.1):
     - Firebase/CoreOnly
-    - FirebaseAuth (= 5.4.1)
-  - Firebase/Core (5.19.0):
+    - FirebaseAuth (= 5.4.2)
+  - Firebase/Core (5.20.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
-  - Firebase/CoreOnly (5.19.0):
-    - FirebaseCore (= 5.4.0)
-  - Firebase/Firestore (5.19.0):
+  - Firebase/CoreOnly (5.20.1):
+    - FirebaseCore (= 5.4.1)
+  - Firebase/Firestore (5.20.1):
     - Firebase/CoreOnly
-    - FirebaseFirestore (= 1.1.0)
-  - Firebase/Performance (5.19.0):
+    - FirebaseFirestore (= 1.2.1)
+  - Firebase/Performance (5.20.1):
     - Firebase/Core
     - FirebasePerformance (= 2.2.4)
-  - Firebase/RemoteConfig (5.19.0):
+  - Firebase/RemoteConfig (5.20.1):
     - Firebase/Core
     - FirebaseRemoteConfig (= 3.1.0)
   - FirebaseABTesting (2.0.0):
@@ -69,31 +68,31 @@ PODS:
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseAuth (5.4.1):
+  - FirebaseAuth (5.4.2):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseAuthInterop (1.0.0)
-  - FirebaseCore (5.4.0):
+  - FirebaseCore (5.4.1):
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseFirestore (1.1.0):
+  - FirebaseFirestore (1.2.1):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
-    - FirebaseFirestore/abseil-cpp (= 1.1.0)
+    - FirebaseFirestore/abseil-cpp (= 1.2.1)
     - "gRPC-C++ (= 0.0.6)"
     - leveldb-library (~> 1.20)
     - nanopb (~> 0.3.901)
     - Protobuf (~> 3.1)
-  - FirebaseFirestore/abseil-cpp (1.1.0):
+  - FirebaseFirestore/abseil-cpp (1.2.1):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - "gRPC-C++ (= 0.0.6)"
     - leveldb-library (~> 1.20)
     - nanopb (~> 0.3.901)
     - Protobuf (~> 3.1)
-  - FirebaseInstanceID (3.8.0):
+  - FirebaseInstanceID (3.8.1):
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
@@ -162,11 +161,7 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.17.0)
   - GTMSessionFetcher/Core (1.2.1)
-  - Imaginary (4.2.0):
-    - Cache (~> 5.0)
   - leveldb-library (1.20)
-  - Lightbox (2.3.0):
-    - Imaginary (~> 4.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -202,7 +197,6 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Performance
   - Firebase/RemoteConfig
-  - Lightbox
   - NVActivityIndicatorView
   - R.swift
   - SDWebImage
@@ -217,7 +211,6 @@ SPEC REPOS:
     - BSGridCollectionViewLayout
     - BSImagePicker
     - BSImageView
-    - Cache
     - CodableFirebase
     - Crashlytics
     - Fabric
@@ -243,9 +236,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - Imaginary
     - leveldb-library
-    - Lightbox
     - nanopb
     - NVActivityIndicatorView
     - Protobuf
@@ -262,7 +253,6 @@ SPEC CHECKSUMS:
   BSGridCollectionViewLayout: 3e6f23b3a2b4f0ca9afae09ca01389d1057f7b32
   BSImagePicker: 553707de1adaad42eac252e0b84d20dbdba83fe9
   BSImageView: ab22ff8cae61f1ae17a3c9efeeb216af3cf84a09
-  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -272,14 +262,14 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
   FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
   FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
-  Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
+  Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
-  FirebaseAuth: cbb892a66baed025efc179372598941252acf853
+  FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
-  FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
-  FirebaseFirestore: 1531eefe02da66be6860966ac4e2cdac635706e2
-  FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
+  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
+  FirebaseFirestore: faca891c0f0d1d6c10c793473e2f6a29d75014b5
+  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
   FirebasePerformance: 25ecee2a260bcf398d7f32d6f4804438df953100
   FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
@@ -288,9 +278,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": e76441995900ac90e9bd98644ab4733f12521edf
   gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
-  Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
-  Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
@@ -301,6 +289,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: b357670b1c26fa2dbe04e91d8bf3311cb9b286a9
+PODFILE CHECKSUM: 88b6982a95782cdcb2e876292dab4320593d116a
 
 COCOAPODS: 1.6.1

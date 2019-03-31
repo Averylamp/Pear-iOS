@@ -9,7 +9,6 @@
 import UIKit
 import BSImagePicker
 import Photos
-import Lightbox
 
 class GetStartedPhotoInputViewController: UIViewController {
   
@@ -116,25 +115,25 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
       let alertController = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .actionSheet)
       let viewImageAction = UIAlertAction(title: "View Full Images", style: .default) { (_) in
         DispatchQueue.main.async {
-          var lightboxImages: [LightboxImage] = []
-          for image in self.images {
-            var lightboxImage: LightboxImage?
-            if let rawImage = image.image {
-              lightboxImage = LightboxImage(image: rawImage)
-            } else if let imageURLString = image.imageContainer?.large.imageURL,
-              let imageURL = URL(string: imageURLString) {
-              lightboxImage = LightboxImage(imageURL: imageURL)
-            }
-            if let lightboxImage = lightboxImage {
-              lightboxImages.append(lightboxImage)
-            }
-          }
-          if lightboxImages.count > 0 {
-            let index = indexPath.row < lightboxImages.count ? indexPath.row : lightboxImages.count - 1
-            let lightboxController = LightboxController(images: lightboxImages, startIndex: index)
-            lightboxController.dynamicBackground = false
-            self.present(lightboxController, animated: true, completion: nil)
-          }
+//          var lightboxImages: [LightboxImage] = []
+//          for image in self.images {
+//            var lightboxImage: LightboxImage?
+//            if let rawImage = image.image {
+//              lightboxImage = LightboxImage(image: rawImage)
+//            } else if let imageURLString = image.imageContainer?.large.imageURL,
+//              let imageURL = URL(string: imageURLString) {
+//              lightboxImage = LightboxImage(imageURL: imageURL)
+//            }
+//            if let lightboxImage = lightboxImage {
+//              lightboxImages.append(lightboxImage)
+//            }
+//          }
+//          if lightboxImages.count > 0 {
+//            let index = indexPath.row < lightboxImages.count ? indexPath.row : lightboxImages.count - 1
+//            let lightboxController = LightboxController(images: lightboxImages, startIndex: index)
+//            lightboxController.dynamicBackground = false
+//            self.present(lightboxController, animated: true, completion: nil)
+//          }
         }
       }
       let replaceImageAction = UIAlertAction(title: "Replace Image", style: .default) { (_) in

@@ -23,7 +23,7 @@ class DataStore {
   }
   
   func reloadRemoteConfig(completion: ((Bool) -> Void)? = nil) {
-    #if DEBUG
+    #if DEVMODE
     self.remoteConfig.configSettings = RemoteConfigSettings(developerModeEnabled: true)
     #endif
     #if PROD
