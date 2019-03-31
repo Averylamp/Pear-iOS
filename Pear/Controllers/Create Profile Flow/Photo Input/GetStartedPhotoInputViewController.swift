@@ -9,6 +9,7 @@
 import UIKit
 import BSImagePicker
 import Photos
+import Firebase
 
 class GetStartedPhotoInputViewController: UIViewController {
   
@@ -43,6 +44,7 @@ class GetStartedPhotoInputViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    Analytics.logEvent("clicked_friend_pictures_back", parameters: nil)
     self.saveImages()
     
     self.navigationController?.popViewController(animated: true)
@@ -52,6 +54,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveImages()
     
+    Analytics.logEvent("finished_friend_pictures", parameters: nil)
     guard let profileReviewVC = FullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
       print("Failed to create scrolling Full VC")
       return
