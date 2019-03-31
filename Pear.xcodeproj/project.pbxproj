@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E6F0CAE1052BE35280BA5A5 /* Pods_PearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948A2610B2ED8AA9C3ACAD21 /* Pods_PearTests.framework */; };
 		600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600FA61021D358B500A40EAC /* UIViewController+Alert.swift */; };
 		60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131C221D342BC0093ECBA /* AppDelegate.swift */; };
 		60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60C131C921D342BD0093ECBA /* Assets.xcassets */; };
@@ -17,6 +16,7 @@
 		60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */; };
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
+		79317809358124F6D8845F22 /* Pods_PearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB2541660CCD22C986E8AA2 /* Pods_PearTests.framework */; };
 		9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */; };
 		9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
@@ -128,6 +128,8 @@
 		BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */; };
 		BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */; };
 		BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */; };
+		BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */; };
+		BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */; };
 		BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */; };
 		BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */; };
 		BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */; };
@@ -173,8 +175,6 @@
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */; };
-		BBE5BFBC224F600E00D99217 /* DiscoveryFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */; };
-		BBE5BFBD224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */; };
 		BBECBEB12237BA05008E8E91 /* FullProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */; };
 		BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */; };
 		BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */; };
@@ -195,7 +195,7 @@
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
 		BBFFBBE022212E82002E1B54 /* PearImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDF22212E82002E1B54 /* PearImageAPI.swift */; };
-		FD02580B99C2568779774076 /* Pods_Pear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94EED5E96263243AE645E1 /* Pods_Pear.framework */; };
+		EAE68F44430D8E8B44E4E0DD /* Pods_Pear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E98FB283782A362C3BB5CE /* Pods_Pear.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,7 +216,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0588A438EAC24C20459D873C /* Pods-Pear.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.development.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.development.xcconfig"; sourceTree = "<group>"; };
+		0BB2541660CCD22C986E8AA2 /* Pods_PearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		600FA61021D358B500A40EAC /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		60C131BF21D342BC0093ECBA /* Pear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C131C221D342BC0093ECBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,14 +228,11 @@
 		60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthAPI.swift; sourceTree = "<group>"; };
 		60C131EB21D348840093ECBA /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
-		7E6324F2DEE18BCF51851AE6 /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.debug.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
-		85A2E5452E51D136FF448912 /* Pods-PearTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.development.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.development.xcconfig"; sourceTree = "<group>"; };
+		6EDD8F13E2B68C3CCCAD5B4C /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.release.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
 		9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionBlockViewController.swift; sourceTree = "<group>"; };
 		9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionBlockViewController.storyboard; sourceTree = "<group>"; };
-		948A2610B2ED8AA9C3ACAD21 /* Pods_PearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3F82C333835EDA9B0C30EE3 /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.debug.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
-		B1E961CFA51413C59FB2E676 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
-		B28FAF81EFEF83BC0C029B2C /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.release.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
+		95C0B9A8D896C17916094523 /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.debug.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A2BDB6B2938CBD9E872F1429 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
@@ -349,6 +346,8 @@
 		BB986A5E220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSampleBiosViewController.storyboard; sourceTree = "<group>"; };
 		BB986A60220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhotoInputViewController.storyboard; sourceTree = "<group>"; };
 		BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedCreateAccountViewController.storyboard; sourceTree = "<group>"; };
+		BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFullProfileViewController.swift; sourceTree = "<group>"; };
+		BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Helpers.swift"; sourceTree = "<group>"; };
 		BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileStackViewController.swift; sourceTree = "<group>"; };
 		BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileStackViewController.storyboard; sourceTree = "<group>"; };
@@ -393,13 +392,12 @@
 		BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD2842D223BFC1000AC6E30 /* PearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUITests.swift; sourceTree = "<group>"; };
 		BBD2842F223BFC1000AC6E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConfig.swift; sourceTree = "<group>"; };
 		BBDEAB6E224258A40052D5E9 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		BBDEAB6F224258B20052D5E9 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+UserDefaults.swift"; sourceTree = "<group>"; };
-		BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFullProfileViewController.swift; sourceTree = "<group>"; };
-		BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB02237BA05008E8E91 /* FullProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BBECBEB22237BA10008E8E91 /* FullProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileReviewViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
@@ -420,9 +418,8 @@
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
 		BBFFBBDF22212E82002E1B54 /* PearImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearImageAPI.swift; sourceTree = "<group>"; };
-		BE94EED5E96263243AE645E1 /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFFC3C4994205C2FDE8557D6 /* Pods-PearTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.production.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.production.xcconfig"; sourceTree = "<group>"; };
-		F9DB93D56577FA076EE4C5E8 /* Pods-Pear.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.production.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.production.xcconfig"; sourceTree = "<group>"; };
+		BD803D1EEE60E7B6D003209B /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.debug.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
+		D8E98FB283782A362C3BB5CE /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,7 +427,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD02580B99C2568779774076 /* Pods_Pear.framework in Frameworks */,
+				EAE68F44430D8E8B44E4E0DD /* Pods_Pear.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E6F0CAE1052BE35280BA5A5 /* Pods_PearTests.framework in Frameworks */,
+				79317809358124F6D8845F22 /* Pods_PearTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +449,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		173BBCC2867A0F9B47A7D56F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8E98FB283782A362C3BB5CE /* Pods_Pear.framework */,
+				0BB2541660CCD22C986E8AA2 /* Pods_PearTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		60C131B621D342BC0093ECBA = {
 			isa = PBXGroup;
 			children = (
@@ -460,7 +466,7 @@
 				BB1435FF2243D25800B8C3EB /* PearTests */,
 				60C131C021D342BC0093ECBA /* Products */,
 				82F6D7E984C2057ACDA63923 /* Pods */,
-				F2EC4ADB321CB3EC964287FB /* Frameworks */,
+				173BBCC2867A0F9B47A7D56F /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				BB94C12C2243C558001320B0 /* R.generated.swift */,
+				BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */,
 				BB0F16B7222EE6D200915C1C /* DataStore.swift */,
 				BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */,
 				BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */,
@@ -597,14 +604,10 @@
 		82F6D7E984C2057ACDA63923 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A3F82C333835EDA9B0C30EE3 /* Pods-Pear.debug.xcconfig */,
-				0588A438EAC24C20459D873C /* Pods-Pear.development.xcconfig */,
-				B1E961CFA51413C59FB2E676 /* Pods-Pear.release.xcconfig */,
-				7E6324F2DEE18BCF51851AE6 /* Pods-PearTests.debug.xcconfig */,
-				85A2E5452E51D136FF448912 /* Pods-PearTests.development.xcconfig */,
-				B28FAF81EFEF83BC0C029B2C /* Pods-PearTests.release.xcconfig */,
-				F9DB93D56577FA076EE4C5E8 /* Pods-Pear.production.xcconfig */,
-				EFFC3C4994205C2FDE8557D6 /* Pods-PearTests.production.xcconfig */,
+				BD803D1EEE60E7B6D003209B /* Pods-Pear.debug.xcconfig */,
+				A2BDB6B2938CBD9E872F1429 /* Pods-Pear.release.xcconfig */,
+				95C0B9A8D896C17916094523 /* Pods-PearTests.debug.xcconfig */,
+				6EDD8F13E2B68C3CCCAD5B4C /* Pods-PearTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -682,7 +685,7 @@
 			children = (
 				BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */,
 				BB18789221E2B21800964F26 /* DiscoverMainViewController.storyboard */,
-				BBE5BFBE224F619200D99217 /* Discovery Full Profile View */,
+				BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */,
 				BB94C12222437CF1001320B0 /* Simple Discovery */,
 			);
 			path = "Discovery Flow";
@@ -748,12 +751,12 @@
 			isa = PBXGroup;
 			children = (
 				BB75BFCA22155F9100BAB800 /* Full Profile View */,
-				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 				BBECBEBA2237D940008E8E91 /* Profile Demographics */,
 				BBECBEBB2237D94B008E8E91 /* Profile Bio */,
 				BBECBEBC2237D955008E8E91 /* Profile Interests */,
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
+				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -1004,6 +1007,15 @@
 			path = "Create Profile Flow";
 			sourceTree = "<group>";
 		};
+		BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */ = {
+			isa = PBXGroup;
+			children = (
+				BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */,
+				BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */,
+			);
+			path = "Discovery Full Profile View";
+			sourceTree = "<group>";
+		};
 		BBA2E1F3224B30DD0088A7A7 /* Navigation Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1121,15 +1133,6 @@
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 			);
 			path = "Create User Flow";
-			sourceTree = "<group>";
-		};
-		BBE5BFBE224F619200D99217 /* Discovery Full Profile View */ = {
-			isa = PBXGroup;
-			children = (
-				BBE5BFBB224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard */,
-				BBE5BFBA224F600E00D99217 /* DiscoveryFullProfileViewController.swift */,
-			);
-			path = "Discovery Full Profile View";
 			sourceTree = "<group>";
 		};
 		BBE8D01C2213E04600FD1355 /* User Name Input */ = {
@@ -1338,15 +1341,6 @@
 			path = Implementations;
 			sourceTree = "<group>";
 		};
-		F2EC4ADB321CB3EC964287FB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BE94EED5E96263243AE645E1 /* Pods_Pear.framework */,
-				948A2610B2ED8AA9C3ACAD21 /* Pods_PearTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1354,7 +1348,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60C131D121D342BD0093ECBA /* Build configuration list for PBXNativeTarget "Pear" */;
 			buildPhases = (
-				BE955074FC0137214B4D3DF3 /* [CP] Check Pods Manifest.lock */,
+				DA0208DACE0C6ABE8EEFE4F7 /* [CP] Check Pods Manifest.lock */,
 				BB94C1292243C465001320B0 /* ShellScript */,
 				60C131BB21D342BC0093ECBA /* Sources */,
 				60C131BC21D342BC0093ECBA /* Frameworks */,
@@ -1362,7 +1356,7 @@
 				BB3442A722275D280021764A /* Run Script */,
 				BB08B88F2247C431005A3EA9 /* ShellScript */,
 				BB23A412224961AA00DA0075 /* ShellScript */,
-				7003405A107EE6F4163A3183 /* [CP] Embed Pods Frameworks */,
+				FED21195B17A581D06E0B571 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1377,7 +1371,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB1436082243D25800B8C3EB /* Build configuration list for PBXNativeTarget "PearTests" */;
 			buildPhases = (
-				8F60B636DE0659FF85861C00 /* [CP] Check Pods Manifest.lock */,
+				28D3176FBCCF81624254381F /* [CP] Check Pods Manifest.lock */,
 				BB1435FA2243D25700B8C3EB /* Sources */,
 				BB1435FB2243D25700B8C3EB /* Frameworks */,
 				BB1435FC2243D25700B8C3EB /* Resources */,
@@ -1500,7 +1494,7 @@
 				BB18789921E2B22C00964F26 /* SettingsMainViewController.storyboard in Resources */,
 				BBECBEB32237BA10008E8E91 /* FullProfileReviewViewController.storyboard in Resources */,
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
-				BBE5BFBD224F600E00D99217 /* DiscoveryFullProfileViewController.storyboard in Resources */,
+				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
 				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
@@ -1562,83 +1556,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7003405A107EE6F4163A3183 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework",
-				"${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
-				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
-				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
-				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSGridCollectionViewLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImagePicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImageView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8F60B636DE0659FF85861C00 /* [CP] Check Pods Manifest.lock */ = {
+		28D3176FBCCF81624254381F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1732,7 +1650,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		BE955074FC0137214B4D3DF3 /* [CP] Check Pods Manifest.lock */ = {
+		DA0208DACE0C6ABE8EEFE4F7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1752,6 +1670,76 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FED21195B17A581D06E0B571 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSGridCollectionViewLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImageView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sentry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1789,7 +1777,7 @@
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
-				BBE5BFBC224F600E00D99217 /* DiscoveryFullProfileViewController.swift in Sources */,
+				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
 				BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */,
@@ -2037,12 +2025,12 @@
 		};
 		60C131D221D342BD0093ECBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3F82C333835EDA9B0C30EE3 /* Pods-Pear.debug.xcconfig */;
+			baseConfigurationReference = BD803D1EEE60E7B6D003209B /* Pods-Pear.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 23;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2053,6 +2041,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEVMODE;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2061,13 +2050,14 @@
 		};
 		60C131D321D342BD0093ECBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1E961CFA51413C59FB2E676 /* Pods-Pear.release.xcconfig */;
+			baseConfigurationReference = A2BDB6B2938CBD9E872F1429 /* Pods-Pear.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2077,6 +2067,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2085,7 +2076,7 @@
 		};
 		BB1436052243D25800B8C3EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E6324F2DEE18BCF51851AE6 /* Pods-PearTests.debug.xcconfig */;
+			baseConfigurationReference = 95C0B9A8D896C17916094523 /* Pods-PearTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2141,7 +2132,7 @@
 		};
 		BB1436072243D25800B8C3EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B28FAF81EFEF83BC0C029B2C /* Pods-PearTests.release.xcconfig */;
+			baseConfigurationReference = 6EDD8F13E2B68C3CCCAD5B4C /* Pods-PearTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2235,168 +2226,6 @@
 			};
 			name = Release;
 		};
-		BBE5BFB6224F5BCB00D99217 /* Production */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Production;
-		};
-		BBE5BFB7224F5BCB00D99217 /* Production */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9DB93D56577FA076EE4C5E8 /* Pods-Pear.production.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9ST4X5576Q;
-				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Production;
-		};
-		BBE5BFB8224F5BCB00D99217 /* Production */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ST4X5576Q;
-				INFOPLIST_FILE = PearUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Pear;
-			};
-			name = Production;
-		};
-		BBE5BFB9224F5BCB00D99217 /* Production */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFFC3C4994205C2FDE8557D6 /* Pods-PearTests.production.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9ST4X5576Q;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CodableFirebase/CodableFirebase.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookCore/FacebookCore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookLogin/FacebookLogin.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare/FacebookShare.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/Protobuf.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift.Library/Rswift.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
-					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
-					"$(inherited)",
-					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
-					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
-				);
-				INFOPLIST_FILE = PearTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
-			};
-			name = Production;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2404,7 +2233,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60C131CF21D342BD0093ECBA /* Debug */,
-				BBE5BFB6224F5BCB00D99217 /* Production */,
 				60C131D021D342BD0093ECBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2414,7 +2242,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60C131D221D342BD0093ECBA /* Debug */,
-				BBE5BFB7224F5BCB00D99217 /* Production */,
 				60C131D321D342BD0093ECBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2424,7 +2251,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB1436052243D25800B8C3EB /* Debug */,
-				BBE5BFB9224F5BCB00D99217 /* Production */,
 				BB1436072243D25800B8C3EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2434,7 +2260,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BBD28432223BFC1000AC6E30 /* Debug */,
-				BBE5BFB8224F5BCB00D99217 /* Production */,
 				BBD28433223BFC1000AC6E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
