@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GetStartedShortBioViewController: UIViewController {
   
@@ -40,6 +41,7 @@ class GetStartedShortBioViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    Analytics.logEvent("clicked_friend_bio_back", parameters: nil)
     self.saveBio()
     self.navigationController?.popViewController(animated: true)
   }
@@ -54,6 +56,7 @@ class GetStartedShortBioViewController: UIViewController {
                                                 preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
         let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
+          Analytics.logEvent("finished_friend_bio", parameters: nil)
           if self.gettingStartedData.bio?.count == 0 {
             self.gettingStartedData.bio = " "
           }
@@ -70,6 +73,7 @@ class GetStartedShortBioViewController: UIViewController {
         alertController.addAction(continueButton)
         self.present(alertController, animated: true, completion: nil)
       } else {
+        Analytics.logEvent("finished_friend_bio", parameters: nil)
         guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
           print("Failed to create photoInputVC")
           return
