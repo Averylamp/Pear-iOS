@@ -189,6 +189,7 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoveryTableViewCell else {
       return UITableViewCell()
     }
+    cell.delegate = self
     let fullProfile = self.fullProfiles[indexPath.row]
     cell.selectionStyle = .none
     cell.configureCell(profileData: fullProfile)
@@ -201,11 +202,23 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let fullProfile = self.fullProfiles[indexPath.row]
+    self.presentFullProfile(fullProfile: fullProfile)
+  }
+  
+  func presentFullProfile(fullProfile: FullProfileDisplayData) {
     guard let fullProfileScrollVC = DiscoveryFullProfileViewController.instantiate(fullProfileData: fullProfile) else {
       print("Failed to create full profile Scroll View")
       return
     }
     self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+  }
+  
+}
+
+extension DiscoverySimpleViewController: DiscoveryTableViewCellDelegate {
+  
+  func fullProfileViewTriggered(profileData: FullProfileDisplayData) {
+    self.presentFullProfile(fullProfile: profileData)
   }
   
 }

@@ -104,16 +104,36 @@
                                                                 </view>
                                                             </subviews>
                                                         </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psg-dH-oMI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="160.5" height="321"/>
+                                                            <connections>
+                                                                <action selector="backButtonClicked:" destination="dpC-89-kHb" eventType="touchUpInside" id="b5a-db-T4B"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJK-9R-lNQ">
+                                                            <rect key="frame" x="160.5" y="0.0" width="160.5" height="321"/>
+                                                            <connections>
+                                                                <action selector="forwardButtonClicked:" destination="dpC-89-kHb" eventType="touchUpInside" id="pKB-Cr-4lm"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="XnC-nZ-AcO" firstAttribute="centerX" secondItem="0Uz-Lb-xBO" secondAttribute="centerX" id="01h-qd-DJ3"/>
+                                                        <constraint firstItem="Psg-dH-oMI" firstAttribute="width" secondItem="QmL-H5-4bA" secondAttribute="width" multiplier="0.5" id="1nN-Le-sBt"/>
+                                                        <constraint firstItem="Psg-dH-oMI" firstAttribute="height" secondItem="QmL-H5-4bA" secondAttribute="height" id="8EF-qe-pBg"/>
+                                                        <constraint firstItem="Psg-dH-oMI" firstAttribute="centerY" secondItem="QmL-H5-4bA" secondAttribute="centerY" id="Ag4-xL-sjD"/>
+                                                        <constraint firstItem="rJK-9R-lNQ" firstAttribute="trailing" secondItem="QmL-H5-4bA" secondAttribute="trailing" id="Jre-yp-sqy"/>
+                                                        <constraint firstItem="rJK-9R-lNQ" firstAttribute="height" secondItem="QmL-H5-4bA" secondAttribute="height" id="LpT-fG-feH"/>
+                                                        <constraint firstItem="Psg-dH-oMI" firstAttribute="leading" secondItem="QmL-H5-4bA" secondAttribute="leading" id="NB2-x6-L2x"/>
                                                         <constraint firstItem="XnC-nZ-AcO" firstAttribute="height" secondItem="0Uz-Lb-xBO" secondAttribute="height" id="TW9-Yj-No0"/>
                                                         <constraint firstItem="QSV-KQ-nxW" firstAttribute="bottom" secondItem="QmL-H5-4bA" secondAttribute="bottom" id="Trt-zB-WPA"/>
                                                         <constraint firstItem="XnC-nZ-AcO" firstAttribute="width" secondItem="0Uz-Lb-xBO" secondAttribute="width" id="WCk-E6-jDs"/>
                                                         <constraint firstItem="QSV-KQ-nxW" firstAttribute="width" secondItem="QmL-H5-4bA" secondAttribute="width" id="X3j-Rf-4Rb"/>
                                                         <constraint firstItem="QSV-KQ-nxW" firstAttribute="centerX" secondItem="QmL-H5-4bA" secondAttribute="centerX" id="eYw-o5-lt0"/>
+                                                        <constraint firstItem="rJK-9R-lNQ" firstAttribute="width" secondItem="QmL-H5-4bA" secondAttribute="width" multiplier="0.5" id="gHf-5h-w3G"/>
                                                         <constraint firstItem="XnC-nZ-AcO" firstAttribute="centerY" secondItem="0Uz-Lb-xBO" secondAttribute="centerY" id="hIp-qg-79o"/>
+                                                        <constraint firstItem="rJK-9R-lNQ" firstAttribute="centerY" secondItem="QmL-H5-4bA" secondAttribute="centerY" id="plZ-ce-ulI"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -125,9 +145,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="backButton" destination="Psg-dH-oMI" id="3SN-cl-HJq"/>
                                             <outlet property="cardView" destination="0Uz-Lb-xBO" id="ldp-o9-k4o"/>
                                             <outlet property="contentScrollView" destination="QmL-H5-4bA" id="P9c-ux-Nfq"/>
                                             <outlet property="contentStackView" destination="Pn0-8j-aJJ" id="hW0-3P-hoi"/>
+                                            <outlet property="forwardButton" destination="rJK-9R-lNQ" id="P5J-0C-tVy"/>
                                             <outlet property="gradientView" destination="QSV-KQ-nxW" id="gW9-q4-oXl"/>
                                             <outlet property="itemsStackView" destination="XnC-nZ-AcO" id="v63-Fg-P6J"/>
                                         </connections>
