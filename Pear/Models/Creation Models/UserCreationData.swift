@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import CoreLocation
 
 class UserCreationData: CustomStringConvertible {
   
@@ -27,7 +28,7 @@ class UserCreationData: CustomStringConvertible {
   var facebookId: String?
   var facebookAccessToken: String?
   var thumbnailURL: String?
-  
+  var lastLocation: CLLocationCoordinate2D?
   init() {
     
   }
@@ -51,6 +52,14 @@ class UserCreationData: CustomStringConvertible {
   }
   
   func getNextInputViewController() -> UIViewController? {
+    if self.lastLocation == nil {
+      print("get next input view controller... no last location")
+      guard let locationVC = GetStartedLocationViewController.instantiate(gettingStartedUserData: self) else {
+        print("Failed to create Location VC")
+        return nil
+      }
+      return locationVC
+    }
     
     if self.email == nil {
       guard let emailInputVC = GetStartedEmailProviderViewController.instantiate(gettingStartedUserData: self) else {

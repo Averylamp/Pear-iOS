@@ -192,18 +192,10 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
     let fullProfile = self.fullProfiles[indexPath.row]
     cell.selectionStyle = .none
     cell.configureCell(profileData: fullProfile)
-//    cell.cardView.layer.cornerRadius = 8
-//    cell.cardView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
-//    cell.cardView.layer.borderWidth = 2
-//    cell.cardView.clipsToBounds = true
-//    cell.firstImageView.image = nil
-//    if let imageContainer = fullProfile.imageContainers.first,
-//      let imageURL = URL(string: imageContainer.medium.imageURL) {
-//      cell.firstImageView.sd_setImage(with: imageURL) { (_, _, _, _) in
-//        cell.cardView.layer.borderColor = nil
-//        cell.cardView.layer.borderWidth = 0
-//      }
-//    }
+    cell.cardView.layer.cornerRadius = 8
+    cell.cardView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
+    cell.cardView.layer.borderWidth = 2
+    cell.cardView.clipsToBounds = true
     return cell
   }
   

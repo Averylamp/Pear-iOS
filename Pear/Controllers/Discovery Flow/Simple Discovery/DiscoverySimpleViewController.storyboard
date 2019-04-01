@@ -125,6 +125,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cardView" destination="0Uz-Lb-xBO" id="ldp-o9-k4o"/>
                                             <outlet property="contentScrollView" destination="QmL-H5-4bA" id="P9c-ux-Nfq"/>
                                             <outlet property="contentStackView" destination="Pn0-8j-aJJ" id="hW0-3P-hoi"/>
                                             <outlet property="gradientView" destination="QSV-KQ-nxW" id="gW9-q4-oXl"/>
