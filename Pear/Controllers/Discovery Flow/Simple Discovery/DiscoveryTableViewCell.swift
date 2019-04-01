@@ -9,7 +9,13 @@
 import UIKit
 import SDWebImage
 
+protocol DiscoveryTableViewCellDelegate: class {
+  func fullProfileViewTriggered(profileData: FullProfileDisplayData)
+}
+
 class DiscoveryTableViewCell: UITableViewCell {
+  
+  weak var delegate: DiscoveryTableViewCellDelegate?
   
   var profileData: FullProfileDisplayData!
   var imageViews: [UIImageView] = []
@@ -23,6 +29,8 @@ class DiscoveryTableViewCell: UITableViewCell {
   @IBOutlet weak var itemsStackView: UIStackView!
   @IBOutlet weak var gradientView: UIView!
   @IBOutlet weak var cardView: UIView!
+  @IBOutlet weak var backButton: UIButton!
+  @IBOutlet weak var forwardButton: UIButton!
   
   let indentWidth: CGFloat = 20.0
   
@@ -71,6 +79,39 @@ class DiscoveryTableViewCell: UITableViewCell {
     self.contentScrollView.delegate = self
     self.contentScrollView.isPagingEnabled = true
     self.contentScrollView.showsHorizontalScrollIndicator = false
+    let backwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
+    let forwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
+    self.backButton.addGestureRecognizer(backwardPanGestureRecognizer)
+    self.forwardButton.addGestureRecognizer(forwardPanGestureRecognizer)
+  }
+  
+  @objc func handlePanGestureRecognizer(panRecognizer: UIPanGestureRecognizer) {
+    guard panRecognizer.view != nil else {return}
+    let piece = panRecognizer.view!
+    let translation = panRecognizer.translation(in: piece.superview)
+    if panRecognizer.state != .cancelled {
+      self.contentScrollView
+        .setContentOffset(CGPoint(x: self.contentScrollView.contentOffset.x - translation.x,
+                                  y: self.contentScrollView.contentOffset.y), animated: false)
+      panRecognizer.setTranslation(CGPoint.zero, in: nil)
+    }
+    if panRecognizer.state == .ended {
+      var pageIndex = round(self.contentScrollView.contentOffset.x / self.contentScrollView.frame.width)
+      let velocity = panRecognizer.velocity(in: piece.superview)
+      let velocityThreshold: CGFloat = 150
+      if velocity.x < velocityThreshold &&
+        pageIndex * self.contentScrollView.frame.width < self.contentScrollView.contentOffset.x &&
+        pageIndex * self.contentScrollView.frame.width + self.contentScrollView.frame.width / 2.0 > self.contentScrollView.contentOffset.x {
+        pageIndex += 1
+      } else if velocity.x > velocityThreshold && pageIndex > 0 &&
+        pageIndex * self.contentScrollView.frame.width > self.contentScrollView.contentOffset.x &&
+        pageIndex * self.contentScrollView.frame.width - self.contentScrollView.frame.width / 2.0 < self.contentScrollView.contentOffset.x {
+        pageIndex -= 1
+      }
+      self.contentScrollView
+        .setContentOffset(CGPoint(x: pageIndex * self.contentScrollView.frame.width, y: 0), animated: true)
+    }
+    
   }
   
   func configureCell(profileData: FullProfileDisplayData) {
@@ -170,6 +211,36 @@ class DiscoveryTableViewCell: UITableViewCell {
         
       }
     }
+    
+  }
+  
+  @IBAction func backButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.pageChange(forward: false)
+  }
+  
+  @IBAction func forwardButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.pageChange(forward: true)
+  }
+  
+  func pageChange(forward: Bool) {
+    var pageIndex = round(self.contentScrollView.contentOffset.x / self.contentScrollView.frame.width)
+    if forward {
+      pageIndex += 1
+    } else if pageIndex > 0 {
+      pageIndex -= 1
+    }
+    let numPages = self.contentStackView.arrangedSubviews.filter({ !$0.isHidden }).count
+    if Int(pageIndex) >= numPages,
+      let triggerDelegate = self.delegate {
+      triggerDelegate.fullProfileViewTriggered(profileData: self.profileData)
+    }
+    
+    var pageFrame = self.contentScrollView.frame
+    pageFrame.origin.x = pageIndex * self.contentScrollView.frame.width
+    pageFrame.origin.y = 0
+    self.contentScrollView.scrollRectToVisible(pageFrame, animated: true)
     
   }
   
@@ -278,7 +349,7 @@ extension DiscoveryTableViewCell {
       NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
                          toItem: containerView, attribute: .right, multiplier: 1.0, constant: -16),
       NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 12),
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 18),
       NSLayoutConstraint(item: iconImageView, attribute: .left, relatedBy: .equal,
                          toItem: containerView, attribute: .left, multiplier: 1.0, constant: 8),
       NSLayoutConstraint(item: iconImageView, attribute: .width, relatedBy: .equal,
