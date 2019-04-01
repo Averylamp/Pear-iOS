@@ -248,11 +248,11 @@ extension GetStartedDoDontViewController {
       
       expandingTextViewVC.setPlaceholderText(text: self.sampleStarters[(self.doTextViewControllers.count + self.dontTextViewControllers.count) % self.sampleStarters.count])
       expandingTextViewVC.permanentTextLabel.font = UIFont(name: StylingConfig.displayFontMedium, size: 18)
-      if type == .doType {
-        expandingTextViewVC.permanentTextLabel.text = "Do"
-      } else if type == .dontType {
-        expandingTextViewVC.permanentTextLabel.text = "Don't"
-      }
+//      if type == .doType {
+//        expandingTextViewVC.permanentTextLabel.text = "Do"
+//      } else if type == .dontType {
+//        expandingTextViewVC.permanentTextLabel.text = "Don't"
+//      }
     } else {
       print("Failed to create ExpandingTextVC")
     }
@@ -428,7 +428,7 @@ extension GetStartedDoDontViewController {
   @objc func keyboardWillHide(notification: Notification) {
     if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
       if self.nextButtonBottomConstraint.constant > self.keyboardBottomPadding && self.view.frame.height < 600 {
-        self.subtitleLabel.text = "Should we ask about their family? Talk about food? Help us out!"
+        self.subtitleLabel.text = "Should we take them to brunch? Talk about sports? What are their pet peeves?"
       }
       self.nextButtonBottomConstraint.constant = self.keyboardBottomPadding
       UIView.animate(withDuration: duration) {

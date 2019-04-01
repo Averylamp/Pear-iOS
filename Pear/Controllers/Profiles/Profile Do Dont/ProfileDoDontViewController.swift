@@ -114,9 +114,9 @@ extension ProfileDoDontViewController {
     var fullContentText = ""
     switch type {
     case .doType:
-      fullContentText += "\"Do " + contentText + "\""
+      fullContentText += contentText
     case .dontType:
-      fullContentText += "\"Don't " + contentText + "\""
+      fullContentText += contentText
     }
     
     let indentWidth: CGFloat = 20.0
