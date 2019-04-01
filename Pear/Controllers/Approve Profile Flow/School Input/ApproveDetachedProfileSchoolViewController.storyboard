@@ -179,6 +179,7 @@
                         <viewLayoutGuide key="safeArea" id="Lo8-ZS-yFe"/>
                     </view>
                     <connections>
+                        <outlet property="bottomButtonBottomConstraint" destination="oLY-hi-kxj" id="gkz-Xi-aEV"/>
                         <outlet property="nextButton" destination="eSH-x6-HWS" id="ynn-dL-lSD"/>
                         <outlet property="progressWidthConstraint" destination="HAT-T4-x13" id="OqZ-aJ-Lex"/>
                         <outlet property="schoolNameContainer" destination="Hf7-rz-YZ3" id="oks-5b-N8Z"/>
