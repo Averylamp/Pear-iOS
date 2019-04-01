@@ -745,8 +745,6 @@
 			children = (
 				BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */,
 				BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */,
-				BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */,
-				BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */,
 			);
 			path = "Gender Input";
 			sourceTree = "<group>";
@@ -856,6 +854,15 @@
 				BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */,
 			);
 			path = "Notify Friend";
+			sourceTree = "<group>";
+		};
+		BB77E79D225217F100A12B12 /* User Gender Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */,
+				BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */,
+			);
+			path = "User Gender Input";
 			sourceTree = "<group>";
 		};
 		BB94C11522437AC5001320B0 /* Detached Profile */ = {
@@ -1133,6 +1140,7 @@
 				9101E0CD224F1FF6009646AB /* Location Input */,
 				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
 				BBE8D01C2213E04600FD1355 /* User Name Input */,
+				BB77E79D225217F100A12B12 /* User Gender Input */,
 				BB3F4AE82233974C00F99C8E /* Birthday Input */,
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 			);
@@ -1702,7 +1710,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
