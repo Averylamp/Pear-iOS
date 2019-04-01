@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 enum FullProfileError: Error {
   case conversionError
@@ -35,6 +36,10 @@ class FullProfileDisplayData: Equatable {
   var imageContainers: [ImageContainer] = []
   var rawImages: [UIImage] = []
   var profileOrigin: FullProfileOrigin?
+  
+  var locationName: String? = "Boston, MA"
+  var locationCoordinates: CLLocationCoordinate2D?
+  var school: String? = "Harvard University"
   
   init (firstName: String!,
         age: Int!,

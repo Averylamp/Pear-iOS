@@ -27,9 +27,9 @@ class LandingScreenViewController: UIViewController {
   
   var pages: [LandingScreenPageViewController] = []
   let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-                                                     type: NVActivityIndicatorType.ballScaleRippleMultiple,
-                                                     color: StylingConfig.textFontColor,
-                                                     padding: 0)
+                                                      type: NVActivityIndicatorType.ballScaleRippleMultiple,
+                                                      color: StylingConfig.textFontColor,
+                                                      padding: 0)
   
   /// Factory method for creating this view controller.
   ///
@@ -202,7 +202,7 @@ private extension LandingScreenViewController {
     
     let loginManager = LoginManager()
     
-//   [.publicProfile, .email, .userBirthday, .userGender]
+    //   [.publicProfile, .email, .userBirthday, .userGender]
     loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
       switch result {
       case .success:
@@ -313,12 +313,15 @@ private extension LandingScreenViewController {
           self.userGraphRequest(gettingStartedUser: gettingStartedUser,
                                 permissions: permissions,
                                 completion: { (fbGraphFilledGSUser  ) in
-            DispatchQueue.main.async {
-              if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
-                self.stylizeFacebookButton(isEnabled: true)
-                self.navigationController?.pushViewController(nextVC, animated: true)
+              if let location = DataStore.shared.lastLocation {
+                fbGraphFilledGSUser.lastLocation = location
               }
-            }
+              DispatchQueue.main.async {
+                if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
+                  self.stylizeFacebookButton(isEnabled: true)
+                  self.navigationController?.pushViewController(nextVC, animated: true)
+                }
+              }
           })
         })
         
