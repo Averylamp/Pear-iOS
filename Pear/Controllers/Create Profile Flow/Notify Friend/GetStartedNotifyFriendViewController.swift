@@ -59,7 +59,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
                                           self.inputTextFieldContainerView.frame.height + 40)
       activityIndicator.startAnimating()
       
-      #if DEBUG
+      #if DEVMODE
       self.createDetachedProfile()
       return
       #endif
