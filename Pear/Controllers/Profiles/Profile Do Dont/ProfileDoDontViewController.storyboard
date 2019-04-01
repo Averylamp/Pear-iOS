@@ -72,7 +72,7 @@
                     <connections>
                         <outlet property="pageControl" destination="90t-o6-2S0" id="DY9-to-M5X"/>
                         <outlet property="scrollView" destination="e0w-vx-wtg" id="DXA-IY-qfH"/>
-                        <outlet property="scrollViewHeightConstraint" destination="Fez-G5-Oco" id="nmr-p2-RTS"/>
+                        <outlet property="scrollViewHeightConstraint" destination="Fez-G5-Oco" id="3ql-fl-tcC"/>
                         <outlet property="titleImageView" destination="PWM-Qe-l4h" id="rKh-l3-HiC"/>
                         <outlet property="titleLabel" destination="hEU-Ht-yCj" id="Ey3-Mv-ZrY"/>
                     </connections>
