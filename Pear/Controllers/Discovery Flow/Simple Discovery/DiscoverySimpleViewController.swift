@@ -74,11 +74,9 @@ extension DiscoverySimpleViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.reloadeFullDataIfNeeded()
-    print("View appearing")
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    print("View dissappearing")
   }
   
   func registerNotifications() {
@@ -100,9 +98,7 @@ extension DiscoverySimpleViewController {
   @objc func reloadeFullDataIfNeeded() {
     if lastRefreshTime < Date(timeIntervalSinceNow: -self.minRefreshTime) {
       self.fullDataReload()
-    } else {
-      print("Discovery Reload not needed")
-    }
+    } 
   }
   
   func fullDataReload() {
