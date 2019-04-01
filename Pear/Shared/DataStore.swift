@@ -9,17 +9,37 @@
 import Foundation
 import Firebase
 import SwiftyJSON
+import CoreLocation
 
-class DataStore {
+protocol DataStoreLocationDelegate: AnyObject {
+  
+  func firstLocationReceived(location: CLLocationCoordinate2D)
+  
+  func authorizationStatusChanged(status: CLAuthorizationStatus)
+  
+}
+
+class DataStore: NSObject {
   
   static let shared = DataStore()
   
+  weak var delegate: DataStoreLocationDelegate?
   var currentPearUser: PearUser?
   var remoteConfig: RemoteConfig
+  var locationManager: CLLocationManager
+  var firstLocationReceived: Bool = false
+  var lastLocation: CLLocationCoordinate2D?
   
-  private init() {
+  // @avery please check this and LMK if it's wrong (i.e. things in wrong order etc)
+  private override init() {
     self.remoteConfig = RemoteConfig.remoteConfig()
+    self.locationManager = CLLocationManager()
+    
+    super.init()
+    
     self.reloadRemoteConfig()
+    self.locationManager.delegate = self
+    self.startReceivingLocationChanges()
   }
   
   func reloadRemoteConfig(completion: ((Bool) -> Void)? = nil) {
@@ -57,4 +77,53 @@ class DataStore {
       }
     }
   }
+}
+
+extension DataStore: CLLocationManagerDelegate {
+  
+  func startReceivingLocationChanges() {
+    let authorizationStatus = CLLocationManager.authorizationStatus()
+    if authorizationStatus != .authorizedWhenInUse && authorizationStatus != .authorizedAlways {
+      print("location services not authorized")
+      // User has not authorized access to location information.
+      return
+    }
+    // Do not start services that aren't available.
+    if !CLLocationManager.locationServicesEnabled() {
+      print("location services not enabled")
+      // Location services is not available.
+      return
+    }
+    // Configure and start the service.
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+    self.locationManager.distanceFilter = 2000.0  // In meters.
+    self.locationManager.startUpdatingLocation()
+    
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if let location = locations.last {
+      self.lastLocation = location.coordinate
+      if let locationDelegate = self.delegate {
+        if !self.firstLocationReceived {
+          locationDelegate.firstLocationReceived(location: location.coordinate)
+          self.firstLocationReceived = true
+        }
+      }
+    }
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    if let error = error as? CLError, error.code == .denied {
+      manager.stopUpdatingLocation()
+      return
+    }
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    if let locationDelegate = self.delegate {
+      locationDelegate.authorizationStatusChanged(status: status)
+    }
+  }
+  
 }

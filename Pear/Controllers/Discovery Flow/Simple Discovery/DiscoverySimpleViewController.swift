@@ -74,11 +74,9 @@ extension DiscoverySimpleViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.reloadeFullDataIfNeeded()
-    print("View appearing")
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    print("View dissappearing")
   }
   
   func registerNotifications() {
@@ -100,9 +98,7 @@ extension DiscoverySimpleViewController {
   @objc func reloadeFullDataIfNeeded() {
     if lastRefreshTime < Date(timeIntervalSinceNow: -self.minRefreshTime) {
       self.fullDataReload()
-    } else {
-      print("Discovery Reload not needed")
-    }
+    } 
   }
   
   func fullDataReload() {
@@ -149,14 +145,14 @@ extension DiscoverySimpleViewController {
       PearProfileAPI.shared.getDiscoveryFeed(user_id: userID, completion: { (result) in
         switch result {
         case .success(let feedObjects):
-          
+          print("Found \(feedObjects.count) Feed Objects Total")
           let newFeed = feedObjects.filter({
             if let userID = $0.userID {
               return !self.blockedUsers.contains(userID)
             }
             return true
           })
-          print("Found \(feedObjects.count) Feed Objects")
+          print("Found \(feedObjects.count) Feed Objects Filtered")
           if self.newItemsFound(fullProfileData: newFeed, otherFullProfileData: self.fullProfiles) {
             self.fullProfiles = newFeed
             DispatchQueue.main.async {
@@ -182,37 +178,52 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 360
+    return UITableView.automaticDimension
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoverySimpleTableViewCell else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoveryTableViewCell else {
       return UITableViewCell()
     }
+    cell.delegate = self
     let fullProfile = self.fullProfiles[indexPath.row]
     cell.selectionStyle = .none
+    cell.configureCell(profileData: fullProfile)
     cell.cardView.layer.cornerRadius = 8
     cell.cardView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
     cell.cardView.layer.borderWidth = 2
     cell.cardView.clipsToBounds = true
-    cell.firstImageView.image = nil
-    if let imageContainer = fullProfile.imageContainers.first,
-      let imageURL = URL(string: imageContainer.medium.imageURL) {
-      cell.firstImageView.sd_setImage(with: imageURL) { (_, _, _, _) in
-        cell.cardView.layer.borderColor = nil
-        cell.cardView.layer.borderWidth = 0
-      }
-    }
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let fullProfile = self.fullProfiles[indexPath.row]
+    self.presentFullProfile(fullProfile: fullProfile)
+  }
+  
+  func presentFullProfile(fullProfile: FullProfileDisplayData) {
     guard let fullProfileScrollVC = DiscoveryFullProfileViewController.instantiate(fullProfileData: fullProfile) else {
       print("Failed to create full profile Scroll View")
       return
     }
     self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+  }
+  
+}
+
+extension DiscoverySimpleViewController: DiscoveryTableViewCellDelegate {
+  
+  func receivedVerticalPanTranslation(yTranslation: CGFloat) {
+    self.tableView.setContentOffset(CGPoint(x: self.tableView.contentOffset.x,
+                                            y: self.tableView.contentOffset.y - yTranslation), animated: false)
+  }
+  
+  func endedVerticalPanTranslation(yVelocity: CGFloat) {
+    
+  }
+  
+  func fullProfileViewTriggered(profileData: FullProfileDisplayData) {
+    self.presentFullProfile(fullProfile: profileData)
   }
   
 }

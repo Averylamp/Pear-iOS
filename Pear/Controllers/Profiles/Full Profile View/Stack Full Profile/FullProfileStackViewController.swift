@@ -48,26 +48,39 @@ extension FullProfileStackViewController {
       self.addImageVC(image: self.fullProfileData.rawImages[1])
     } else if 1 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[1])
+    } else {
+      self.addLineView()
     }
     self.addInterestsVC(interests: self.fullProfileData.interests)
     if 2 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[2])
     } else if 2 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
+    } else {
+      self.addLineView()
     }
     
-    self.addDoDontVC(doDontType: .doType, doDontContent: fullProfileData.dos)
+    if fullProfileData.dos.count > 0 {
+      self.addDoDontVC(doDontType: .doType, doDontContent: fullProfileData.dos)
+    }
+    
     if 3 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[3])
     } else if 3 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
+    } else {
+      self.addLineView()
     }
     
-    self.addDoDontVC(doDontType: .dontType, doDontContent: fullProfileData.donts)
+    if fullProfileData.donts.count > 0 {
+      self.addDoDontVC(doDontType: .dontType, doDontContent: fullProfileData.donts)
+    }
     if 4 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[4])
     } else if 4 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[4])
+    } else {
+      self.addLineView()
     }
     
     if 5 < self.fullProfileData.rawImages.count {
@@ -76,6 +89,29 @@ extension FullProfileStackViewController {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[5])
     }
     
+  }
+  
+  func addLineView() {
+    let containerView = UIView()
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let lineView = UIView()
+    lineView.translatesAutoresizingMaskIntoConstraints = false
+    lineView.backgroundColor = UIColor(white: 0.5, alpha: 0.125)
+    
+    containerView.addSubview(lineView)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: lineView, attribute: .width, relatedBy: .equal, toItem: containerView, attribute: .width, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: lineView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0),
+      NSLayoutConstraint(item: lineView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+      ])
+    
+    self.stackView.addArrangedSubview(containerView)
+    self.stackView.addConstraints([
+      NSLayoutConstraint(item: containerView, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0),
+      NSLayoutConstraint(item: containerView, attribute: .centerX, relatedBy: .equal, toItem: self.stackView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+      ])
   }
   
   func addDemographcsVC(firstName: String,
