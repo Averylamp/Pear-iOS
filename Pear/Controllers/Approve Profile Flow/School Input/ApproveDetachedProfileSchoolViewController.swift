@@ -70,6 +70,9 @@ extension ApproveDetachedProfileSchoolViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
+    
+    self.addKeyboardSizeNotifications()
+    self.addDismissKeyboardOnViewClick()
   }
   
   func stylize() {

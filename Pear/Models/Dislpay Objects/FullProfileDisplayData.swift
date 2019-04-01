@@ -119,7 +119,7 @@ class FullProfileDisplayData: Equatable {
   convenience init (pdp: PearDetachedProfile) {
     self.init(firstName: pdp.firstName,
               age: pdp.age,
-              gender: pdp.gender,
+              gender: GenderEnum.stringFromEnumString(string: pdp.gender),
               interests: pdp.interests,
               vibes: pdp.vibes,
               bio: [BioContent.init(bio: pdp.bio, creatorName: pdp.creatorFirstName)],
