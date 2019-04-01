@@ -26,7 +26,7 @@ class PearUser: Decodable, CustomStringConvertible {
   var lastName: String!
   var fullName: String!
   var thumbnailURL: String?
-  var gender: String?
+  var gender: GenderEnum?
   var age: Int!
   var birthdate: Date!
   
@@ -74,7 +74,10 @@ class PearUser: Decodable, CustomStringConvertible {
     self.lastName = try values.decode(String.self, forKey: .lastName)
     self.fullName = try values.decode(String.self, forKey: .fullName)
     self.thumbnailURL = try? values.decode(String.self, forKey: .thumbnailURL)
-    self.gender = try? values.decode(String.self, forKey: .gender)
+    guard let gender = GenderEnum.init(rawValue: try values.decode(String.self, forKey: .gender)) else {
+      throw DecodingError.enumError
+    }
+    self.gender = gender
     let birthdateValue = try? values.decode(String.self, forKey: .birthdate)
     if let birthdateValue = birthdateValue, let birthdateNumberValue = Double(birthdateValue) {
       self.birthdate = Date(timeIntervalSince1970: birthdateNumberValue / 1000)
