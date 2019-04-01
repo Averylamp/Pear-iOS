@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FullProfileReviewViewController: UIViewController {
   
@@ -44,6 +45,7 @@ class FullProfileReviewViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    Analytics.logEvent("clicked_friend_review_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -53,6 +55,7 @@ class FullProfileReviewViewController: UIViewController {
       print("Failed to create Notify Friend VC")
       return
     }
+    Analytics.logEvent("finished_friend_review", parameters: nil)
     self.navigationController?.pushViewController(notifyFriendVC, animated: true)
   }
   
