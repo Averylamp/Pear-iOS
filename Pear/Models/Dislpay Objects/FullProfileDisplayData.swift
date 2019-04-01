@@ -71,7 +71,7 @@ class FullProfileDisplayData: Equatable {
     
     self.init(firstName: firstName,
               age: age,
-              gender: gender.rawValue,
+              gender: gender.toString(),
               interests: gsup.interests,
               vibes: gsup.vibes,
               bio: [BioContent.init(bio: bio, creatorName: creatorFirstName)],
@@ -106,7 +106,7 @@ class FullProfileDisplayData: Equatable {
     }
     self.init(firstName: matchingUser.firstName,
               age: matchingUser.matchingDemographics.age,
-              gender: matchingUser.matchingDemographics.gender.rawValue,
+              gender: matchingUser.matchingDemographics.gender.toString(),
               interests: interests,
               vibes: vibes,
               bio: bioContent,
@@ -158,7 +158,7 @@ class FullProfileDisplayData: Equatable {
     }
     self.init(firstName: user.firstName,
               age: user.age,
-              gender: user.gender!,
+              gender: user.gender?.toString(),
               interests: interests,
               vibes: vibes,
               bio: bioContent,

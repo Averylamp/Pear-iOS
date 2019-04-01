@@ -17,7 +17,7 @@ class MatchingPearUser: Decodable, CustomStringConvertible {
   var lastName: String
   var fullName: String
   var thumbnailURL: String?
-  var gender: String?
+  var gender: GenderEnum?
   var school: String?
   
   var matchingDemographics: MatchingDemographics!
@@ -39,7 +39,10 @@ class MatchingPearUser: Decodable, CustomStringConvertible {
     self.lastName = try values.decode(String.self, forKey: .lastName)
     self.fullName = try values.decode(String.self, forKey: .fullName)
     self.thumbnailURL = try? values.decode(String.self, forKey: .thumbnailURL)
-    self.gender = try? values.decode(String.self, forKey: .gender)
+    guard let gender = GenderEnum.init(rawValue: try values.decode(String.self, forKey: .gender)) else {
+      throw DecodingError.enumError
+    }
+    self.gender = gender
     self.school = try? values.decode(String.self, forKey: .school)
     
     self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
