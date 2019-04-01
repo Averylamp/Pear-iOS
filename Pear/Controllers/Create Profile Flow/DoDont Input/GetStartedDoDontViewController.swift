@@ -26,13 +26,7 @@ class GetStartedDoDontViewController: UIViewController {
   @IBOutlet weak var stackView: UIStackView!
   
   let sampleStarters: [String] = [
-    "ask about ...",
-    "talk about ...",
-    "say something about ...",
-    "comment on ...",
-    "tell them ...",
-    "pretend to ...",
-    "give them ..."
+    "..."
   ]
   
   var doTextViewControllers: [ExpandingTextViewController] = []
@@ -71,14 +65,10 @@ class GetStartedDoDontViewController: UIViewController {
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
-    if self.gettingStartedData.dos.count == 0 {
-      self.alert(title: "Incomplete Field", message: "Please add a Do for your friend")
-      return
-    } else if self.gettingStartedData.donts.count == 0 {
-      self.alert(title: "Incomplete Field", message: "Please add a Don't for your friend")
+    if self.gettingStartedData.dos.count + self.gettingStartedData.donts.count == 0 {
+      self.alert(title: "Incomplete Field", message: "Please add either a Do or Don't for your friend")
       return
     }
-    
     guard let shortBioVC = GetStartedShortBioViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
       print("Failed to create short Bio VC")
       return
@@ -117,6 +107,7 @@ extension GetStartedDoDontViewController {
     
     self.progressWidthConstraint.constant = (pageNumber - 1) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     self.view.layoutIfNeeded()
+    self.doTextViewControllers.first?.becomeFirstResponder()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -252,11 +243,6 @@ extension GetStartedDoDontViewController {
       
       expandingTextViewVC.setPlaceholderText(text: self.sampleStarters[(self.doTextViewControllers.count + self.dontTextViewControllers.count) % self.sampleStarters.count])
       expandingTextViewVC.permanentTextLabel.font = UIFont(name: StylingConfig.displayFontMedium, size: 18)
-      if type == .doType {
-        expandingTextViewVC.permanentTextLabel.text = "Do"
-      } else if type == .dontType {
-        expandingTextViewVC.permanentTextLabel.text = "Don't"
-      }
     } else {
       print("Failed to create ExpandingTextVC")
     }
@@ -379,12 +365,28 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
     if self.doTextViewControllers.contains(expandingTextViewController), let index = self.doTextViewControllers.firstIndex(of: expandingTextViewController) {
       if index < self.doTextViewControllers.count - 1 {
         nextTextView = self.doTextViewControllers[index + 1].textView
-      } else if self.dontTextViewControllers.count > 0 {
-        nextTextView = self.dontTextViewControllers[0].textView
+      } else {
+        if self.doTextViewControllers.contains(expandingTextViewController) {
+          self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .doType)
+        }
+        expandingTextViewController.removeAllAccessoryButtons()
+        expandingTextViewController.addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
+        expandingTextViewController.textViewDidChange(expandingTextViewController.textView)
+        self.returnKeyPressed(expandingTextViewController: expandingTextViewController)
+        return
       }
     } else if self.dontTextViewControllers.contains(expandingTextViewController), let index = self.dontTextViewControllers.firstIndex(of: expandingTextViewController) {
       if index < self.dontTextViewControllers.count - 1 {
         nextTextView = self.dontTextViewControllers[index + 1].textView
+      } else {
+        if self.dontTextViewControllers.contains(expandingTextViewController) {
+          self.addExpandingTextViewControllerToStackView(stackView: self.stackView, type: .dontType)
+        }
+        expandingTextViewController.removeAllAccessoryButtons()
+        expandingTextViewController.addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
+        expandingTextViewController.textViewDidChange(expandingTextViewController.textView)
+        self.returnKeyPressed(expandingTextViewController: expandingTextViewController)
+        return
       }
     }
     if let nextTextView = nextTextView {
@@ -432,7 +434,7 @@ extension GetStartedDoDontViewController {
   @objc func keyboardWillHide(notification: Notification) {
     if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
       if self.nextButtonBottomConstraint.constant > self.keyboardBottomPadding && self.view.frame.height < 600 {
-        self.subtitleLabel.text = "Should we ask about their family? Talk about food? Help us out!"
+        self.subtitleLabel.text = "Should we take them to brunch? Talk about sports? What are their pet peeves?"
       }
       self.nextButtonBottomConstraint.constant = self.keyboardBottomPadding
       UIView.animate(withDuration: duration) {

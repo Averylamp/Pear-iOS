@@ -144,15 +144,48 @@ extension ApproveDetachedProfilePhotosViewController {
 extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if indexPath.item >= self.images.count {
       self.imageReplacementIndexPath = nil
+      self.pickImage()
     } else {
-      self.imageReplacementIndexPath = indexPath
+      let alertController = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .actionSheet)
+      let viewImageAction = UIAlertAction(title: "View Full Images", style: .default) { (_) in
+        DispatchQueue.main.async {
+//          var lightboxImages: [LightboxImage] = []
+//          for image in self.images {
+//            var lightboxImage: LightboxImage?
+//            if let rawImage = image.image {
+//              lightboxImage = LightboxImage(image: rawImage)
+//            } else if let imageURLString = image.imageContainer?.large.imageURL,
+//              let imageURL = URL(string: imageURLString) {
+//              lightboxImage = LightboxImage(imageURL: imageURL)
+//            }
+//            if let lightboxImage = lightboxImage {
+//              lightboxImages.append(lightboxImage)
+//            }
+//          }
+//          if lightboxImages.count > 0 {
+//            let index = indexPath.row < lightboxImages.count ? indexPath.row : lightboxImages.count - 1
+//            let lightboxController = LightboxController(images: lightboxImages, startIndex: index)
+//            lightboxController.dynamicBackground = false
+//            self.present(lightboxController, animated: true, completion: nil)
+//          }
+        }
+      }
+      let replaceImageAction = UIAlertAction(title: "Replace Image", style: .default) { (_) in
+        DispatchQueue.main.async {
+          self.imageReplacementIndexPath = indexPath
+          self.pickImage()
+        }
+      }
+      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+      alertController.addAction(viewImageAction)
+      alertController.addAction(replaceImageAction)
+      alertController.addAction(cancelAction)
+      self.present(alertController, animated: true, completion: nil)
     }
-    self.pickImage()
   }
-  
+
   func pickImage() {
     if UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
       if self.imageReplacementIndexPath != nil {

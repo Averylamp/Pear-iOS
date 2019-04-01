@@ -40,11 +40,11 @@ class GetStartedAllowNotificationsViewController: UIViewController {
             if let error = error {
               print(error)
             }
-            guard let allowLocationVC = GetStartedAllowLocationViewController.instantiate() else {
-              print("Failed to create Allow Location VC")
+            guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+              print("Failed to initialize main VC")
               return
             }
-            self.navigationController?.pushViewController(allowLocationVC, animated: true)
+            self.navigationController?.setViewControllers([mainVC], animated: true)
           }
       }
       
@@ -55,11 +55,11 @@ class GetStartedAllowNotificationsViewController: UIViewController {
           if let error = error {
             print(error)
           }
-          guard let allowLocationVC = GetStartedAllowLocationViewController.instantiate() else {
-            print("Failed to create Allow Location VC")
+          guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+            print("Failed to initialize main VC")
             return
           }
-          self.navigationController?.pushViewController(allowLocationVC, animated: true)
+          self.navigationController?.setViewControllers([mainVC], animated: true)
         }
       }
     }
@@ -67,11 +67,11 @@ class GetStartedAllowNotificationsViewController: UIViewController {
   }
   
   @IBAction func skipNotificationsClicked(_ sender: Any) {
-    guard let allowLocationVC = GetStartedAllowLocationViewController.instantiate() else {
-      print("Failed to create Allow Location VC")
+    guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+      print("Failed to initialize main VC")
       return
     }
-    self.navigationController?.pushViewController(allowLocationVC, animated: true)
+    self.navigationController?.setViewControllers([mainVC], animated: true)
   }
   
 }

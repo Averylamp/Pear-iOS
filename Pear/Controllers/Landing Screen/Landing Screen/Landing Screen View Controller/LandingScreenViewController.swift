@@ -12,6 +12,7 @@ import FBSDKCoreKit
 import Firebase
 import SwiftyJSON
 import NVActivityIndicatorView
+import SafariServices
 
 class LandingScreenViewController: UIViewController {
   
@@ -19,15 +20,16 @@ class LandingScreenViewController: UIViewController {
   @IBOutlet weak var facebookButton: UIButton!
   @IBOutlet weak var emailButton: UIButton!
   @IBOutlet weak var pageControl: UIPageControl!
+  @IBOutlet weak var termsButton: UIButton!
   
   var gettingStarted: Bool = false
   var isLoggingIntoFacebook: Bool = false
   
   var pages: [LandingScreenPageViewController] = []
   let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-                                                     type: NVActivityIndicatorType.ballScaleRippleMultiple,
-                                                     color: StylingConfig.textFontColor,
-                                                     padding: 0)
+                                                      type: NVActivityIndicatorType.ballScaleRippleMultiple,
+                                                      color: StylingConfig.textFontColor,
+                                                      padding: 0)
   
   /// Factory method for creating this view controller.
   ///
@@ -62,6 +64,22 @@ class LandingScreenViewController: UIViewController {
     return landingScreenVC
   }
   
+  @IBAction func termsButtonClicked(_ sender: Any) {
+    let actionSheet = UIAlertController(title: "Terms of Service",
+                                        message: "What would you like to see?",
+                                        preferredStyle: .actionSheet)
+    let eulaAction = UIAlertAction(title: "End User License Agreement", style: .default) { (_) in
+      self.present(SFSafariViewController(url: NetworkingConfig.eulaURL), animated: true, completion: nil)
+    }
+    let privacyPolicyAction = UIAlertAction(title: "Privacy Policy", style: .default) { (_) in
+      self.present(SFSafariViewController(url: NetworkingConfig.eulaURL), animated: true, completion: nil)
+    }
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    actionSheet.addAction(eulaAction)
+    actionSheet.addAction(privacyPolicyAction)
+    actionSheet.addAction(cancelAction)
+    self.present(actionSheet, animated: true, completion: nil)
+  }
 }
 
 // MARK: - Life Cycle
@@ -82,6 +100,28 @@ extension LandingScreenViewController {
     
     self.emailButton.stylizeLight()
     self.emailButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
+
+    guard let textFont = R.font.nunitoLight(size: 11),
+      let boldFont = R.font.nunitoSemiBold(size: 11) else {
+        print("Failed to load in fonts")
+        return
+    }
+    let subtleAttributes = [NSAttributedString.Key.font: textFont,
+                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.7, alpha: 1.0)]
+    let boldAttributes = [NSAttributedString.Key.font: boldFont,
+                          NSAttributedString.Key.foregroundColor: UIColor(white: 0.6, alpha: 1.0)]
+    let termsString = NSMutableAttributedString(string: "By continuing you agree to our ",
+                                                attributes: subtleAttributes)
+    let eulaString = NSMutableAttributedString(string: "EULA",
+                                               attributes: boldAttributes)
+    let andString = NSMutableAttributedString(string: " and ",
+                                                attributes: subtleAttributes)
+    let privacyPolicyString = NSMutableAttributedString(string: "privacy policy",
+                                               attributes: boldAttributes)
+    termsString.append(eulaString)
+    termsString.append(andString)
+    termsString.append(privacyPolicyString)
+    self.termsButton.setAttributedTitle(termsString, for: .normal)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -162,7 +202,7 @@ private extension LandingScreenViewController {
     
     let loginManager = LoginManager()
     
-//   [.publicProfile, .email, .userBirthday, .userGender]
+    //   [.publicProfile, .email, .userBirthday, .userGender]
     loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: self) { result in
       switch result {
       case .success:
@@ -273,12 +313,15 @@ private extension LandingScreenViewController {
           self.userGraphRequest(gettingStartedUser: gettingStartedUser,
                                 permissions: permissions,
                                 completion: { (fbGraphFilledGSUser  ) in
-            DispatchQueue.main.async {
-              if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
-                self.stylizeFacebookButton(isEnabled: true)
-                self.navigationController?.pushViewController(nextVC, animated: true)
+              if let location = DataStore.shared.lastLocation {
+                fbGraphFilledGSUser.lastLocation = location
               }
-            }
+              DispatchQueue.main.async {
+                if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
+                  self.stylizeFacebookButton(isEnabled: true)
+                  self.navigationController?.pushViewController(nextVC, animated: true)
+                }
+              }
           })
         })
         

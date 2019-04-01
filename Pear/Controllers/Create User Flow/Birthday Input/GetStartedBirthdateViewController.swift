@@ -12,6 +12,7 @@ class GetStartedBirthdateViewController: UIViewController {
   @IBOutlet weak var datePicker: UIDatePicker!
   var gettingStartedUserData: UserCreationData!
   @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var subtitleLabel: UILabel!
   
   @IBOutlet weak var nextButton: UIButton!
   
@@ -55,6 +56,20 @@ extension GetStartedBirthdateViewController {
   
   func stylize() {
     self.titleLabel.stylizeTitleLabel()
+    self.subtitleLabel.stylizeSubtitleLabel()
+    if let boldFont = UIFont(name: StylingConfig.displayFontMedium, size: 28),
+      let regularFont = UIFont(name: StylingConfig.displayFontRegular, size: 28) {
+      let titleText = NSMutableAttributedString(string: "When's ", attributes: [NSAttributedString.Key.font: regularFont,
+                                                                         NSAttributedString.Key.foregroundColor: StylingConfig.textFontColor])
+      let yourText = NSAttributedString(string: "your", attributes: [NSAttributedString.Key.font: boldFont,
+                                                                         NSAttributedString.Key.foregroundColor: StylingConfig.textFontColor,
+                                                                         NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
+      let birthdayText = NSAttributedString(string: " birthday?", attributes: [NSAttributedString.Key.font: regularFont,
+                                                                         NSAttributedString.Key.foregroundColor: StylingConfig.textFontColor])
+      titleText.append(yourText)
+      titleText.append(birthdayText)
+      self.titleLabel.attributedText = titleText
+    }
     self.nextButton.stylizeDark()
   }
   
