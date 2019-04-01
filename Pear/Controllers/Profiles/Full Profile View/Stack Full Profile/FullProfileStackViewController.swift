@@ -56,14 +56,19 @@ extension FullProfileStackViewController {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
     }
     
-    self.addDoDontVC(doDontType: .doType, doDontContent: fullProfileData.dos)
+    if fullProfileData.dos.count > 0 {
+      self.addDoDontVC(doDontType: .doType, doDontContent: fullProfileData.dos)
+    }
+    
     if 3 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[3])
     } else if 3 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
     }
     
-    self.addDoDontVC(doDontType: .dontType, doDontContent: fullProfileData.donts)
+    if fullProfileData.donts.count > 0 {
+      self.addDoDontVC(doDontType: .dontType, doDontContent: fullProfileData.donts)
+    }
     if 4 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[4])
     } else if 4 < self.fullProfileData.imageContainers.count {

@@ -41,7 +41,7 @@ platform :ios do
         thumb_url: "https://averylamp.me/images/Pear.jpg",
       }
     )
-
+    upload_symbols
   end
   desc "Upload Symbols"
   lane :upload_symbols do
