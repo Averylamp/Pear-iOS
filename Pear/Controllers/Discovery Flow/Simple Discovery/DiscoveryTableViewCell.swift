@@ -22,6 +22,7 @@ class DiscoveryTableViewCell: UITableViewCell {
   @IBOutlet weak var contentStackView: UIStackView!
   @IBOutlet weak var itemsStackView: UIStackView!
   @IBOutlet weak var gradientView: UIView!
+  @IBOutlet weak var cardView: UIView!
   
   let indentWidth: CGFloat = 20.0
   
