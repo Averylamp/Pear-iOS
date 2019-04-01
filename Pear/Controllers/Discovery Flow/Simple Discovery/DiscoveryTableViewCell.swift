@@ -258,7 +258,7 @@ extension DiscoveryTableViewCell: UIScrollViewDelegate {
     let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
     self.highlightIndicator(index: Int(pageIndex))
     let numPages = self.contentStackView.arrangedSubviews.filter({ !$0.isHidden }).count
-    if pageIndex > CGFloat(numPages), let triggerDelegate = self.delegate {
+    if pageIndex >= CGFloat(numPages), let triggerDelegate = self.delegate {
       triggerDelegate.fullProfileViewTriggered(profileData: self.profileData)
     }
   }
