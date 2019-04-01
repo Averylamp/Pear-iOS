@@ -13,7 +13,7 @@ class NetworkingConfig {
   // swiftlint : disable: next line
   static let secureHTTPs = "https"
   
-  #if DEBUG
+  #if DEVMODE
   static let host: String = "sloths.mit.edu"
   #endif
   #if PROD
