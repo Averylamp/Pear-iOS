@@ -84,11 +84,19 @@ class ApproveDetachedProfilePhotosViewController: UIViewController {
                 self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
                 return
               }
-              guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
-                print("Failed to create Approve Detached Profile VC")
-                return
+              if DataStore.shared.currentPearUser?.school != nil {
+                guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
+                  print("Failed to create Approve Detached Profile VC")
+                  return
+                }
+                self.navigationController?.pushViewController(profileApprovalVC, animated: true)
+              } else {
+                guard let schoolVC = ApproveDetachedProfileSchoolViewController.instantiate(detachedProfile: self.detachedProfile) else {
+                  print("Failed to create Approve Detached Profile VC")
+                  return
+                }
+                self.navigationController?.pushViewController(schoolVC, animated: true)
               }
-              self.navigationController?.pushViewController(profileApprovalVC, animated: true)
             } else {
               print("Failure updating User's Images")
               self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
