@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Firebase
 
 class GetStartedInterestsViewController: UIViewController {
   
@@ -87,6 +88,7 @@ class GetStartedInterestsViewController: UIViewController {
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.saveInterests()
+    Analytics.logEvent("clicked_friend_interests_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -97,6 +99,7 @@ class GetStartedInterestsViewController: UIViewController {
       print("Failed to create vibes VC")
       return
     }
+    Analytics.logEvent("finished_friend_interests", parameters: nil)
     self.navigationController?.pushViewController(vibesVC, animated: true)
   }
   
