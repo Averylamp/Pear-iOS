@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GetStartedChooseGenderViewController: UIViewController {
   
@@ -54,11 +55,11 @@ class GetStartedChooseGenderViewController: UIViewController {
     default:
       break
     }
-    
     guard let ageVC = GetStartedAgeViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
       print("Failed to create age VC")
       return
     }
+    Analytics.logEvent("finished_friend_gender", parameters: nil)
     self.navigationController?.pushViewController(ageVC, animated: true)
   }
   
@@ -80,6 +81,7 @@ class GetStartedChooseGenderViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    Analytics.logEvent("clicked_friend_gender_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   

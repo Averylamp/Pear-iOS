@@ -54,7 +54,6 @@ class GetStartedUserGenderViewController: UIViewController {
     default:
       break
     }
-    
     guard let nextVC = self.gettingStartedData.getNextInputViewController() else {
       print("Failed to create next VC")
       return

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 struct FruitVibe {
   let image: UIImage
@@ -58,6 +59,7 @@ class GetStartedVibeViewController: UIViewController {
       print("Failed to create photoInputVC")
       return
     }
+    Analytics.logEvent("finished_friend_vibes", parameters: nil)
     self.navigationController?.pushViewController(doDontVC, animated: true)
   }
   
@@ -80,6 +82,7 @@ class GetStartedVibeViewController: UIViewController {
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.saveVibes()
+    Analytics.logEvent("clicked_friend_vibes_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
 }
