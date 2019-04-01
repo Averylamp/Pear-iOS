@@ -64,7 +64,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VgD-Ez-iF8">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimpleDiscoveryTVC" rowHeight="484" id="dpC-89-kHb" customClass="DiscoveryTableViewCell" customModule="Pear" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="484"/>
@@ -73,6 +73,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="484"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QfY-r4-Y8X">
+                                                    <rect key="frame" x="21" y="17" width="333" height="450"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uz-Lb-xBO">
                                                     <rect key="frame" x="21" y="17" width="333" height="450"/>
                                                     <subviews>
@@ -214,13 +218,18 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0Uz-Lb-xBO" secondAttribute="trailing" constant="6" id="D74-KB-qJH"/>
+                                                <constraint firstItem="QfY-r4-Y8X" firstAttribute="centerX" secondItem="0Uz-Lb-xBO" secondAttribute="centerX" id="IWa-hX-9sT"/>
+                                                <constraint firstItem="QfY-r4-Y8X" firstAttribute="width" secondItem="0Uz-Lb-xBO" secondAttribute="width" id="RGx-iZ-Q2J"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="0Uz-Lb-xBO" secondAttribute="bottom" constant="6" id="TuQ-pJ-Mzf"/>
                                                 <constraint firstItem="0Uz-Lb-xBO" firstAttribute="leading" secondItem="X8o-go-E0H" secondAttribute="leadingMargin" constant="6" id="duG-6f-DXT"/>
+                                                <constraint firstItem="QfY-r4-Y8X" firstAttribute="height" secondItem="0Uz-Lb-xBO" secondAttribute="height" id="kBK-qi-JVa"/>
+                                                <constraint firstItem="QfY-r4-Y8X" firstAttribute="centerY" secondItem="0Uz-Lb-xBO" secondAttribute="centerY" id="rCF-MQ-cpp"/>
                                                 <constraint firstItem="0Uz-Lb-xBO" firstAttribute="top" secondItem="X8o-go-E0H" secondAttribute="topMargin" constant="6" id="wcM-cp-SMX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backButton" destination="Psg-dH-oMI" id="3SN-cl-HJq"/>
+                                            <outlet property="cardShadowView" destination="QfY-r4-Y8X" id="Fkp-cc-Tt3"/>
                                             <outlet property="cardView" destination="0Uz-Lb-xBO" id="ldp-o9-k4o"/>
                                             <outlet property="contentScrollView" destination="QmL-H5-4bA" id="P9c-ux-Nfq"/>
                                             <outlet property="contentStackView" destination="Pn0-8j-aJJ" id="hW0-3P-hoi"/>

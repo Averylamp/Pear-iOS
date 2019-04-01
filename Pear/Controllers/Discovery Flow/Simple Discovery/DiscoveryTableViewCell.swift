@@ -31,6 +31,7 @@ class DiscoveryTableViewCell: UITableViewCell {
   @IBOutlet weak var itemsStackView: UIStackView!
   @IBOutlet weak var gradientView: UIView!
   @IBOutlet weak var cardView: UIView!
+  @IBOutlet weak var cardShadowView: UIView!
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var forwardButton: UIButton!
   @IBOutlet weak var nameLabel: UILabel!
