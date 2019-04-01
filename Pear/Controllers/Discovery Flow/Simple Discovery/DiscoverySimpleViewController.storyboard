@@ -71,6 +71,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uz-Lb-xBO">
                                                     <rect key="frame" x="27" y="17" width="321" height="340"/>
                                                     <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSV-KQ-nxW">
+                                                            <rect key="frame" x="0.0" y="301" width="321" height="20"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="TsR-Qe-8Gt"/>
+                                                            </constraints>
+                                                        </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XnC-nZ-AcO">
                                                             <rect key="frame" x="0.0" y="0.0" width="321" height="340"/>
                                                             <subviews>
@@ -102,7 +109,10 @@
                                                     <constraints>
                                                         <constraint firstItem="XnC-nZ-AcO" firstAttribute="centerX" secondItem="0Uz-Lb-xBO" secondAttribute="centerX" id="01h-qd-DJ3"/>
                                                         <constraint firstItem="XnC-nZ-AcO" firstAttribute="height" secondItem="0Uz-Lb-xBO" secondAttribute="height" id="TW9-Yj-No0"/>
+                                                        <constraint firstItem="QSV-KQ-nxW" firstAttribute="bottom" secondItem="QmL-H5-4bA" secondAttribute="bottom" id="Trt-zB-WPA"/>
                                                         <constraint firstItem="XnC-nZ-AcO" firstAttribute="width" secondItem="0Uz-Lb-xBO" secondAttribute="width" id="WCk-E6-jDs"/>
+                                                        <constraint firstItem="QSV-KQ-nxW" firstAttribute="width" secondItem="QmL-H5-4bA" secondAttribute="width" id="X3j-Rf-4Rb"/>
+                                                        <constraint firstItem="QSV-KQ-nxW" firstAttribute="centerX" secondItem="QmL-H5-4bA" secondAttribute="centerX" id="eYw-o5-lt0"/>
                                                         <constraint firstItem="XnC-nZ-AcO" firstAttribute="centerY" secondItem="0Uz-Lb-xBO" secondAttribute="centerY" id="hIp-qg-79o"/>
                                                     </constraints>
                                                 </view>
@@ -117,6 +127,7 @@
                                         <connections>
                                             <outlet property="contentScrollView" destination="QmL-H5-4bA" id="P9c-ux-Nfq"/>
                                             <outlet property="contentStackView" destination="Pn0-8j-aJJ" id="hW0-3P-hoi"/>
+                                            <outlet property="gradientView" destination="QSV-KQ-nxW" id="gW9-q4-oXl"/>
                                             <outlet property="itemsStackView" destination="XnC-nZ-AcO" id="v63-Fg-P6J"/>
                                         </connections>
                                     </tableViewCell>

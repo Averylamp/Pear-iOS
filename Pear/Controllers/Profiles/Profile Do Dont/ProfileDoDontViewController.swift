@@ -126,7 +126,7 @@ extension ProfileDoDontViewController {
     contentTextLabel.text = fullContentText
     contentTextLabel.stylizeDoDontLabel()
     contentTextLabel.translatesAutoresizingMaskIntoConstraints = false
-    contentTextLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+    contentTextLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
     containerView.addSubview(contentTextLabel)
     containerView.addConstraints([
       NSLayoutConstraint(item: contentTextLabel, attribute: .left, relatedBy: .equal,
@@ -145,7 +145,7 @@ extension ProfileDoDontViewController {
     containerView.addConstraints([
       NSLayoutConstraint(item: writtenByLabel, attribute: .top, relatedBy: .equal,
                          toItem: contentTextLabel, attribute: .bottom, multiplier: 1.0, constant: 12.0),
-      NSLayoutConstraint(item: writtenByLabel, attribute: .bottom, relatedBy: .equal,
+      NSLayoutConstraint(item: writtenByLabel, attribute: .bottom, relatedBy: .greaterThanOrEqual,
                          toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -16.0)
       
       ])
