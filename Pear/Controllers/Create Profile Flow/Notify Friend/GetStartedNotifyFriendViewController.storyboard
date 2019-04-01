@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4y9-g9-KBp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4y9-g9-KBp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -112,11 +112,20 @@
                                     <constraint firstItem="4gr-IX-Nqt" firstAttribute="leading" secondItem="lnC-vq-pvr" secondAttribute="trailing" constant="8" id="ydF-rr-JhF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGe-E3-4qL">
+                                <rect key="frame" x="110" y="303" width="155" height="30"/>
+                                <state key="normal" title="Choose from Contacts"/>
+                                <connections>
+                                    <action selector="contactsButtonClicked:" destination="4y9-g9-KBp" eventType="touchUpInside" id="mdQ-6l-bh0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nqS-Sa-u5T" firstAttribute="top" secondItem="XGV-20-CzZ" secondAttribute="bottom" constant="8" id="1xN-fe-g1v"/>
+                            <constraint firstItem="NGe-E3-4qL" firstAttribute="centerX" secondItem="Vai-Mi-1e1" secondAttribute="centerX" id="37D-Dt-saQ"/>
                             <constraint firstItem="Vai-Mi-1e1" firstAttribute="bottom" secondItem="GRJ-RZ-ANp" secondAttribute="bottom" constant="20" id="9NZ-2n-xzH"/>
+                            <constraint firstItem="NGe-E3-4qL" firstAttribute="top" secondItem="SCr-Mf-fW4" secondAttribute="bottom" constant="25.5" id="Fc7-OY-IHt"/>
                             <constraint firstItem="1Z4-SD-wFc" firstAttribute="leading" secondItem="Vai-Mi-1e1" secondAttribute="leading" constant="20" id="Lgj-L2-fN7"/>
                             <constraint firstItem="XGV-20-CzZ" firstAttribute="top" secondItem="tJo-KH-Ag2" secondAttribute="bottom" constant="8" id="QlA-kO-T0g"/>
                             <constraint firstItem="Vai-Mi-1e1" firstAttribute="trailing" secondItem="XGV-20-CzZ" secondAttribute="trailing" constant="20" id="SaK-eg-GHg"/>
@@ -151,8 +160,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="30" height="30"/>
-        <image name="onboarding-icon-notify-friend" width="60" height="60"/>
-        <image name="onboarding-icon-us-flag" width="20" height="20.25"/>
+        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-icon-notify-friend" width="300" height="300"/>
+        <image name="onboarding-icon-us-flag" width="80" height="81"/>
     </resources>
 </document>

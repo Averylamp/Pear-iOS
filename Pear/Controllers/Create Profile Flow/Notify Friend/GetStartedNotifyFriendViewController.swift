@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import MessageUI
+import ContactsUI
 
 class GetStartedNotifyFriendViewController: UIViewController {
   
@@ -114,6 +115,16 @@ class GetStartedNotifyFriendViewController: UIViewController {
     self.navigationController?.popViewController(animated: true)
   }
   
+  @IBAction func contactsButtonClicked(_ sender: Any) {
+    let cnPicker = CNContactPickerViewController()
+    cnPicker.delegate = self
+    cnPicker.predicateForEnablingContact = NSPredicate(format: "phoneNumbers.@count >= 1", argumentArray: nil)
+    cnPicker.predicateForSelectionOfContact = NSPredicate(format: "phoneNumbers.@count == 1", argumentArray: nil)
+    cnPicker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'phoneNumbers'", argumentArray: nil)
+    cnPicker.displayedPropertyKeys = [CNContactPhoneNumbersKey]
+    self.present(cnPicker, animated: true, completion: nil)
+  }
+  
 }
 
 extension GetStartedNotifyFriendViewController {
@@ -166,7 +177,6 @@ extension GetStartedNotifyFriendViewController: UITextFieldDelegate {
       }
     }
     return false
-    
   }
   
 }
@@ -261,4 +271,42 @@ extension GetStartedNotifyFriendViewController: MFMessageComposeViewControllerDe
       fatalError()
     }
   }
+}
+
+extension GetStartedNotifyFriendViewController: CNContactPickerDelegate {
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+    if let cnPhoneNumber = contact.phoneNumbers.first?.value {
+      self.selectedPhoneNumberContactProperty(cnPhoneNumber: cnPhoneNumber)
+    }
+  }
+
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+    if let cnPhoneNumber = contactProperty.value as? CNPhoneNumber {
+      self.selectedPhoneNumberContactProperty(cnPhoneNumber: cnPhoneNumber)
+    }
+  }
+  
+  func selectedPhoneNumberContactProperty(cnPhoneNumber: CNPhoneNumber) {
+    var phoneNumber = cnPhoneNumber.stringValue
+    phoneNumber = phoneNumber.filter("0123456789".contains)
+    if phoneNumber.count == 11 && phoneNumber[0] == "1" {
+      phoneNumber = phoneNumber[1..<11]
+    }
+    if phoneNumber.count != 10 {
+      let alert = UIAlertController(title: "Not a Valid Number", message: "Contact must have a valid US phone number", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      DispatchQueue.main.async {
+        self.present(alert, animated: true)
+      }
+    } else {
+      self.inputTextField.text = phoneNumber
+      self.textField(self.inputTextField, shouldChangeCharactersIn: NSRange(location: 0, length: phoneNumber.count), replacementString: phoneNumber)
+    }
+  }
+  
+  func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+    print("Cancel Contact Picker")
+  }
+  
 }
