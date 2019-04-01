@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Discovery Simple View Controller-->
         <scene sceneID="BpO-A3-gMg">
@@ -61,15 +66,15 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimpleDiscoveryTVC" rowHeight="374" id="dpC-89-kHb" customClass="DiscoveryTableViewCell" customModule="Pear" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="374"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimpleDiscoveryTVC" rowHeight="425" id="dpC-89-kHb" customClass="DiscoveryTableViewCell" customModule="Pear" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="425"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dpC-89-kHb" id="X8o-go-E0H">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="425"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uz-Lb-xBO">
-                                                    <rect key="frame" x="27" y="17" width="321" height="340"/>
+                                                    <rect key="frame" x="27" y="17" width="321" height="391"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSV-KQ-nxW">
                                                             <rect key="frame" x="0.0" y="301" width="321" height="20"/>
@@ -79,7 +84,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XnC-nZ-AcO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="321" height="340"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="321" height="391"/>
                                                             <subviews>
                                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QmL-H5-4bA">
                                                                     <rect key="frame" x="0.0" y="0.0" width="321" height="321"/>
@@ -99,9 +104,30 @@
                                                                     </constraints>
                                                                 </scrollView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEB-YS-xqY">
-                                                                    <rect key="frame" x="0.0" y="321" width="321" height="19"/>
+                                                                    <rect key="frame" x="0.0" y="321" width="321" height="50"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name, Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBX-uV-4pf">
+                                                                            <rect key="frame" x="12" y="4" width="297" height="42"/>
+                                                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="TBX-uV-4pf" firstAttribute="leading" secondItem="BEB-YS-xqY" secondAttribute="leading" constant="12" id="DAJ-XB-3Yi"/>
+                                                                        <constraint firstItem="TBX-uV-4pf" firstAttribute="centerY" secondItem="BEB-YS-xqY" secondAttribute="centerY" id="MRD-FT-OER"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="TBX-uV-4pf" secondAttribute="trailing" constant="12" id="uZ4-5D-cEb"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="TBX-uV-4pf" secondAttribute="bottom" constant="4" id="wGt-MP-W1Z"/>
+                                                                        <constraint firstItem="TBX-uV-4pf" firstAttribute="top" secondItem="BEB-YS-xqY" secondAttribute="top" constant="4" id="xwc-zV-SRT"/>
+                                                                    </constraints>
                                                                 </view>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fa-nN-H5Y">
+                                                                    <rect key="frame" x="0.0" y="371" width="321" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="vli-5R-rva"/>
+                                                                    </constraints>
+                                                                </stackView>
                                                             </subviews>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psg-dH-oMI">
@@ -151,7 +177,9 @@
                                             <outlet property="contentStackView" destination="Pn0-8j-aJJ" id="hW0-3P-hoi"/>
                                             <outlet property="forwardButton" destination="rJK-9R-lNQ" id="P5J-0C-tVy"/>
                                             <outlet property="gradientView" destination="QSV-KQ-nxW" id="gW9-q4-oXl"/>
+                                            <outlet property="infoStackView" destination="4fa-nN-H5Y" id="v1t-3b-QUa"/>
                                             <outlet property="itemsStackView" destination="XnC-nZ-AcO" id="v63-Fg-P6J"/>
+                                            <outlet property="nameLabel" destination="TBX-uV-4pf" id="jd8-pq-Uxp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

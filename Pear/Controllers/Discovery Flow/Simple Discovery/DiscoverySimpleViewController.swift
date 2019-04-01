@@ -213,6 +213,15 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
 
 extension DiscoverySimpleViewController: DiscoveryTableViewCellDelegate {
   
+  func receivedVerticalPanTranslation(yTranslation: CGFloat) {
+    self.tableView.setContentOffset(CGPoint(x: self.tableView.contentOffset.x,
+                                            y: self.tableView.contentOffset.y - yTranslation), animated: false)
+  }
+  
+  func endedVerticalPanTranslation(yVelocity: CGFloat) {
+    
+  }
+  
   func fullProfileViewTriggered(profileData: FullProfileDisplayData) {
     self.presentFullProfile(fullProfile: profileData)
   }
