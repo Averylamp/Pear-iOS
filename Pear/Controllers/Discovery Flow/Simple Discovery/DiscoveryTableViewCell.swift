@@ -11,6 +11,8 @@ import SDWebImage
 
 protocol DiscoveryTableViewCellDelegate: class {
   func fullProfileViewTriggered(profileData: FullProfileDisplayData)
+  func receivedVerticalPanTranslation(yTranslation: CGFloat)
+  func endedVerticalPanTranslation(yVelocity: CGFloat)
 }
 
 class DiscoveryTableViewCell: UITableViewCell {
@@ -29,8 +31,12 @@ class DiscoveryTableViewCell: UITableViewCell {
   @IBOutlet weak var itemsStackView: UIStackView!
   @IBOutlet weak var gradientView: UIView!
   @IBOutlet weak var cardView: UIView!
+  @IBOutlet weak var cardShadowView: UIView!
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var forwardButton: UIButton!
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var infoStackView: UIStackView!
+  @IBOutlet weak var suggestedForLabel: UILabel!
   
   let indentWidth: CGFloat = 20.0
   
@@ -47,6 +53,9 @@ class DiscoveryTableViewCell: UITableViewCell {
     gradient.colors = [UIColor(white: 0.0, alpha: 0.0).cgColor, UIColor(white: 0.0, alpha: 0.08).cgColor]
     
     self.gradientView.layer.insertSublayer(gradient, at: 0)
+    self.infoStackView.layoutMargins = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
+    self.infoStackView.isLayoutMarginsRelativeArrangement = true
+    self.suggestedForLabel.stylizeInfoSubtextLabel()
   }
   
   func setupContentViews() {
@@ -80,6 +89,7 @@ class DiscoveryTableViewCell: UITableViewCell {
     self.contentScrollView.isPagingEnabled = true
     self.contentScrollView.showsHorizontalScrollIndicator = false
     let backwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
+    
     let forwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
     self.backButton.addGestureRecognizer(backwardPanGestureRecognizer)
     self.forwardButton.addGestureRecognizer(forwardPanGestureRecognizer)
@@ -93,6 +103,9 @@ class DiscoveryTableViewCell: UITableViewCell {
       self.contentScrollView
         .setContentOffset(CGPoint(x: self.contentScrollView.contentOffset.x - translation.x,
                                   y: self.contentScrollView.contentOffset.y), animated: false)
+      if let panDelegate = self.delegate {
+        panDelegate.receivedVerticalPanTranslation(yTranslation: translation.y)
+      }
       panRecognizer.setTranslation(CGPoint.zero, in: nil)
     }
     if panRecognizer.state == .ended {
@@ -108,75 +121,13 @@ class DiscoveryTableViewCell: UITableViewCell {
         pageIndex * self.contentScrollView.frame.width - self.contentScrollView.frame.width / 2.0 < self.contentScrollView.contentOffset.x {
         pageIndex -= 1
       }
+      if let panDelegate = self.delegate {
+        panDelegate.endedVerticalPanTranslation(yVelocity: velocity.y)
+      }
       self.contentScrollView
         .setContentOffset(CGPoint(x: pageIndex * self.contentScrollView.frame.width, y: 0), animated: true)
     }
     
-  }
-  
-  func configureCell(profileData: FullProfileDisplayData) {
-    self.profileData = profileData
-    self.contentScrollView.contentOffset = CGPoint.zero
-    self.indicatorViews.forEach({
-      $0.removeFromSuperview()
-    })
-    self.indicatorViews = []
-    
-    var pagesCount = 0
-    for index in 0..<3 {
-      let imageView = self.imageViews[index]
-      imageView.image = nil
-      if index < profileData.rawImages.count {
-        imageView.image = profileData.rawImages[index]
-        imageView.isHidden = false
-        pagesCount += 1
-      } else if index < profileData.imageContainers.count,
-        let imageURL = URL(string: profileData.imageContainers[index].medium.imageURL) {
-        imageView.sd_setImage(with: imageURL, completed: nil)
-        imageView.isHidden = false
-        pagesCount += 1
-      } else {
-        imageView.isHidden = true
-      }
-    }
-    if let bioContent = profileData.bio.first {
-      self.bioView.isHidden = false
-      self.bioView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: bioContent.creatorName)
-      self.bioView.contentLabel?.text = bioContent.bio
-      pagesCount += 1
-    } else {
-      self.bioView.isHidden = true
-    }
-    if let doContent = profileData.dos.first {
-      self.doView.isHidden = false
-      self.doView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: doContent.creatorName)
-      self.doView.contentLabel?.text = doContent.phrase
-      pagesCount += 1
-    } else {
-      self.doView.isHidden = true
-    }
-    if let dontContent = profileData.donts.first {
-      self.dontView.isHidden = false
-      self.dontView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: dontContent.creatorName)
-      self.dontView.contentLabel?.text = dontContent.phrase
-      pagesCount += 1
-    } else {
-      self.dontView.isHidden = true
-    }
-    
-    let indicatorSpacing: CGFloat = 8
-    let indicatorWidth: CGFloat = (self.contentScrollView.frame.width - (CGFloat(pagesCount + 1) * indicatorSpacing)) / CGFloat(pagesCount)
-    let totalItemWidth = indicatorSpacing + indicatorWidth
-    for index in 0..<pagesCount {
-      let indicatorView = UIView(frame: CGRect(x: indicatorSpacing + totalItemWidth * CGFloat(index) ,
-                                               y: self.contentScrollView.frame.height - 8,
-                                               width: indicatorWidth,
-                                               height: 4))
-      indicatorView.layer.cornerRadius = 2
-      self.indicatorViews.append(indicatorView)
-      self.itemsStackView.addSubview(indicatorView)
-    }
-    self.highlightIndicator(index: 0)
   }
   
   func highlightIndicator(index: Int) {
@@ -252,6 +203,162 @@ class DiscoveryTableViewCell: UITableViewCell {
   
 }
 
+// MARK: - Cell Configuration
+extension DiscoveryTableViewCell {
+  func configureInfo(profileData: FullProfileDisplayData) {
+    if let firstName = profileData.firstName,
+      let age = profileData.age {
+      self.nameLabel.text = "\(firstName), \(age)"
+    }
+    self.infoStackView.arrangedSubviews.forEach({
+      $0.removeFromSuperview()
+      self.infoStackView.removeArrangedSubview($0)
+    })
+    if let locationName = profileData.locationName {
+      let containerView = UIView()
+      
+      let locationIconView = UIImageView(image: R.image.discoveryIconLocation())
+      locationIconView.translatesAutoresizingMaskIntoConstraints = false
+      locationIconView.contentMode = .scaleAspectFit
+      containerView.addSubview(locationIconView)
+      locationIconView.addConstraints([
+        NSLayoutConstraint(item: locationIconView, attribute: .width, relatedBy: .equal,
+                           toItem: locationIconView, attribute: .height, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: locationIconView, attribute: .width, relatedBy: .equal,
+                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 18)
+        ])
+      let locationLabel = UILabel()
+      containerView.addSubview(locationLabel)
+      locationLabel.translatesAutoresizingMaskIntoConstraints = false
+      locationLabel.stylizeInfoSubtextLabel()
+      locationLabel.text = locationName
+      containerView.addConstraints([
+        NSLayoutConstraint(item: locationIconView, attribute: .left, relatedBy: .equal,
+                           toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
+        NSLayoutConstraint(item: locationIconView, attribute: .right, relatedBy: .equal,
+                           toItem: locationLabel, attribute: .left, multiplier: 1.0, constant: -2),
+        NSLayoutConstraint(item: locationIconView, attribute: .bottom, relatedBy: .equal,
+                           toItem: locationLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: locationLabel, attribute: .centerY, relatedBy: .equal,
+                           toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: locationLabel, attribute: .right, relatedBy: .equal,
+                           toItem: containerView, attribute: .right, multiplier: 1.0, constant: -6),
+        NSLayoutConstraint(item: locationLabel, attribute: .top, relatedBy: .equal,
+                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
+        NSLayoutConstraint(item: locationLabel, attribute: .bottom, relatedBy: .equal,
+                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
+        ])
+      self.infoStackView.addArrangedSubview(containerView)
+    }
+    
+    if let schoolName = profileData.school {
+      let containerView = UIView()
+      
+      let schoolIconView = UIImageView(image: R.image.discoveryIconSchool())
+      schoolIconView.translatesAutoresizingMaskIntoConstraints = false
+      schoolIconView.contentMode = .scaleAspectFit
+      containerView.addSubview(schoolIconView)
+      schoolIconView.addConstraints([
+        NSLayoutConstraint(item: schoolIconView, attribute: .width, relatedBy: .equal,
+                           toItem: schoolIconView, attribute: .height, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: schoolIconView, attribute: .width, relatedBy: .equal,
+                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 18)
+        ])
+      let schoolLabel = UILabel()
+      containerView.addSubview(schoolLabel)
+      schoolLabel.translatesAutoresizingMaskIntoConstraints = false
+      schoolLabel.stylizeInfoSubtextLabel()
+      schoolLabel.text = schoolName
+      containerView.addConstraints([
+        NSLayoutConstraint(item: schoolIconView, attribute: .left, relatedBy: .equal,
+                           toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
+        NSLayoutConstraint(item: schoolIconView, attribute: .right, relatedBy: .equal,
+                           toItem: schoolLabel, attribute: .left, multiplier: 1.0, constant: -2),
+        NSLayoutConstraint(item: schoolIconView, attribute: .bottom, relatedBy: .equal,
+                           toItem: schoolLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: schoolLabel, attribute: .centerY, relatedBy: .equal,
+                           toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: schoolLabel, attribute: .right, relatedBy: .equal,
+                           toItem: containerView, attribute: .right, multiplier: 1.0, constant: -6),
+        NSLayoutConstraint(item: schoolLabel, attribute: .top, relatedBy: .equal,
+                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
+        NSLayoutConstraint(item: schoolLabel, attribute: .bottom, relatedBy: .equal,
+                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
+        ])
+      self.infoStackView.addArrangedSubview(containerView)
+    }
+    
+  }
+  
+  func configureCell(profileData: FullProfileDisplayData) {
+    self.configureInfo(profileData: profileData)
+    self.profileData = profileData
+    self.contentScrollView.contentOffset = CGPoint.zero
+    self.indicatorViews.forEach({
+      $0.removeFromSuperview()
+    })
+    self.indicatorViews = []
+    
+    var pagesCount = 0
+    for index in 0..<3 {
+      let imageView = self.imageViews[index]
+      imageView.image = nil
+      if index < profileData.rawImages.count {
+        imageView.image = profileData.rawImages[index]
+        imageView.isHidden = false
+        pagesCount += 1
+      } else if index < profileData.imageContainers.count,
+        let imageURL = URL(string: profileData.imageContainers[index].medium.imageURL) {
+        imageView.sd_setImage(with: imageURL, completed: nil)
+        imageView.isHidden = false
+        pagesCount += 1
+      } else {
+        imageView.isHidden = true
+      }
+    }
+    if let bioContent = profileData.bio.first {
+      self.bioView.isHidden = false
+      self.bioView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: bioContent.creatorName)
+      self.bioView.contentLabel?.text = bioContent.bio
+      pagesCount += 1
+    } else {
+      self.bioView.isHidden = true
+    }
+    if let doContent = profileData.dos.first {
+      self.doView.isHidden = false
+      self.doView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: doContent.creatorName)
+      self.doView.contentLabel?.text = doContent.phrase
+      pagesCount += 1
+    } else {
+      self.doView.isHidden = true
+    }
+    if let dontContent = profileData.donts.first {
+      self.dontView.isHidden = false
+      self.dontView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: dontContent.creatorName)
+      self.dontView.contentLabel?.text = dontContent.phrase
+      pagesCount += 1
+    } else {
+      self.dontView.isHidden = true
+    }
+    
+    let indicatorSpacing: CGFloat = 8
+    let indicatorWidth: CGFloat = (self.contentScrollView.frame.width - (CGFloat(pagesCount + 1) * indicatorSpacing)) / CGFloat(pagesCount)
+    let totalItemWidth = indicatorSpacing + indicatorWidth
+    for index in 0..<pagesCount {
+      let indicatorView = UIView(frame: CGRect(x: indicatorSpacing + totalItemWidth * CGFloat(index) ,
+                                               y: self.contentScrollView.frame.height - 8,
+                                               width: indicatorWidth,
+                                               height: 4))
+      indicatorView.layer.cornerRadius = 2
+      self.indicatorViews.append(indicatorView)
+      self.itemsStackView.addSubview(indicatorView)
+    }
+    self.highlightIndicator(index: 0)
+  }
+
+}
+
+// MARK: - UIScrollViewDelegate
 extension DiscoveryTableViewCell: UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {

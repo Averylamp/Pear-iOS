@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GetStartedPhoneVerificationCompleteViewController: UIViewController {
   
@@ -26,6 +27,7 @@ class GetStartedPhoneVerificationCompleteViewController: UIViewController {
   
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("finished_phone_verification", parameters: nil)
     if DataStore.shared.remoteConfig.configValue(forKey: "discovery_first").boolValue {
       guard let mainScreenVC = LoadingScreenViewController.getMainScreenVC() else {
         print("Go to Main VC")

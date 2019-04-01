@@ -91,6 +91,8 @@
 		BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */; };
 		BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */; };
 		BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */; };
+		BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB77E79E2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard */; };
+		BB77E7A12252211700A12B12 /* ApproveDetachedProfileSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB77E79F2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.swift */; };
 		BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F88222DB19300E31C7F /* PearUserConstants.swift */; };
 		BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F89222DB19300E31C7F /* PearUser.swift */; };
 		BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */; };
@@ -311,6 +313,8 @@
 		BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedWaitlistViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedNotifyFriendViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedNotifyFriendViewController.swift; sourceTree = "<group>"; };
+		BB77E79E2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ApproveDetachedProfileSchoolViewController.storyboard; sourceTree = "<group>"; };
+		BB77E79F2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveDetachedProfileSchoolViewController.swift; sourceTree = "<group>"; };
 		BB796F88222DB19300E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
 		BB796F89222DB19300E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
@@ -745,8 +749,6 @@
 			children = (
 				BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */,
 				BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */,
-				BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */,
-				BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */,
 			);
 			path = "Gender Input";
 			sourceTree = "<group>";
@@ -856,6 +858,24 @@
 				BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */,
 			);
 			path = "Notify Friend";
+			sourceTree = "<group>";
+		};
+		BB77E79D225217F100A12B12 /* User Gender Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F4AEA2234259D00F99C8E /* GetStartedUserGenderViewController.swift */,
+				BB3F4AE92234259D00F99C8E /* GetStartedUserGenderViewController.storyboard */,
+			);
+			path = "User Gender Input";
+			sourceTree = "<group>";
+		};
+		BB77E7A22252212000A12B12 /* School Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB77E79E2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard */,
+				BB77E79F2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.swift */,
+			);
+			path = "School Input";
 			sourceTree = "<group>";
 		};
 		BB94C11522437AC5001320B0 /* Detached Profile */ = {
@@ -1133,6 +1153,7 @@
 				9101E0CD224F1FF6009646AB /* Location Input */,
 				BBE8D0252213E0FD00FD1355 /* Create Email Account  */,
 				BBE8D01C2213E04600FD1355 /* User Name Input */,
+				BB77E79D225217F100A12B12 /* User Gender Input */,
 				BB3F4AE82233974C00F99C8E /* Birthday Input */,
 				BBE8D0262213E12500FD1355 /* Validate Phone Number */,
 			);
@@ -1303,6 +1324,7 @@
 			children = (
 				BBA2E1F3224B30DD0088A7A7 /* Navigation Controller */,
 				BBA2E1F5224B30F90088A7A7 /* Profile Found Page */,
+				BB77E7A22252212000A12B12 /* School Input */,
 				BBA2E1F6224B31030088A7A7 /* Update Photos */,
 				BBA2E1F4224B30EA0088A7A7 /* Full Screen Approval */,
 			);
@@ -1473,6 +1495,7 @@
 				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
+				BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
 				BBA2E1EE224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard in Resources */,
 				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
@@ -1702,7 +1725,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1836,6 +1859,7 @@
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
+				BB77E7A12252211700A12B12 /* ApproveDetachedProfileSchoolViewController.swift in Sources */,
 				BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
@@ -2020,7 +2044,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 30;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2045,7 +2069,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";

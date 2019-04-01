@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GetStartedShortBioViewController: UIViewController {
   
@@ -39,7 +40,25 @@ class GetStartedShortBioViewController: UIViewController {
     self.gettingStartedData.bio = inputTextView.text
   }
   
+  @IBAction func cancelButtonClicked(_ sender: Any) {
+    let alertController = UIAlertController(title: "Stop Making a Profile?", message: "Are you sure you want to cancel", preferredStyle: .alert)
+    let continueAction = UIAlertAction(title: "Keep Going", style: .default, handler: nil)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
+      DispatchQueue.main.async {
+        guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+          print("Failed to initialize Main VC")
+          return
+        }
+        self.navigationController?.setViewControllers([mainVC], animated: true)
+      }
+    }
+    alertController.addAction(continueAction)
+    alertController.addAction(cancelAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
+  
   @IBAction func backButtonClicked(_ sender: Any) {
+    Analytics.logEvent("clicked_friend_bio_back", parameters: nil)
     self.saveBio()
     self.navigationController?.popViewController(animated: true)
   }
@@ -54,6 +73,7 @@ class GetStartedShortBioViewController: UIViewController {
                                                 preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
         let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
+          Analytics.logEvent("finished_friend_bio", parameters: nil)
           if self.gettingStartedData.bio?.count == 0 {
             self.gettingStartedData.bio = " "
           }
@@ -70,6 +90,7 @@ class GetStartedShortBioViewController: UIViewController {
         alertController.addAction(continueButton)
         self.present(alertController, animated: true, completion: nil)
       } else {
+        Analytics.logEvent("finished_friend_bio", parameters: nil)
         guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
           print("Failed to create photoInputVC")
           return

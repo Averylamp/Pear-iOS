@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 enum FullProfileError: Error {
   case conversionError
@@ -35,6 +36,10 @@ class FullProfileDisplayData: Equatable {
   var imageContainers: [ImageContainer] = []
   var rawImages: [UIImage] = []
   var profileOrigin: FullProfileOrigin?
+  
+  var locationName: String? = "Boston, MA"
+  var locationCoordinates: CLLocationCoordinate2D?
+  var school: String? = "Harvard University"
   
   init (firstName: String!,
         age: Int!,
@@ -66,7 +71,7 @@ class FullProfileDisplayData: Equatable {
     
     self.init(firstName: firstName,
               age: age,
-              gender: gender.rawValue,
+              gender: gender.toString(),
               interests: gsup.interests,
               vibes: gsup.vibes,
               bio: [BioContent.init(bio: bio, creatorName: creatorFirstName)],
@@ -101,7 +106,7 @@ class FullProfileDisplayData: Equatable {
     }
     self.init(firstName: matchingUser.firstName,
               age: matchingUser.matchingDemographics.age,
-              gender: matchingUser.matchingDemographics.gender.rawValue,
+              gender: matchingUser.matchingDemographics.gender.toString(),
               interests: interests,
               vibes: vibes,
               bio: bioContent,
@@ -114,7 +119,7 @@ class FullProfileDisplayData: Equatable {
   convenience init (pdp: PearDetachedProfile) {
     self.init(firstName: pdp.firstName,
               age: pdp.age,
-              gender: pdp.gender,
+              gender: GenderEnum.stringFromEnumString(string: pdp.gender),
               interests: pdp.interests,
               vibes: pdp.vibes,
               bio: [BioContent.init(bio: pdp.bio, creatorName: pdp.creatorFirstName)],
@@ -153,7 +158,7 @@ class FullProfileDisplayData: Equatable {
     }
     self.init(firstName: user.firstName,
               age: user.age,
-              gender: user.gender!,
+              gender: user.gender?.toString(),
               interests: interests,
               vibes: vibes,
               bio: bioContent,

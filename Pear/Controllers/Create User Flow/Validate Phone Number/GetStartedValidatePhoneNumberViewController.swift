@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import NVActivityIndicatorView
+import Firebase
 
 class GetStartedValidatePhoneNumberViewController: UIViewController {
   
@@ -86,6 +87,7 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
             print("Failed to create Phone Number Code VC")
             return
         }
+        Analytics.logEvent("finished_phone_enter", parameters: nil)
         self.navigationController?.pushViewController(phoneNumberCodeVC, animated: true)
       }
     } else {

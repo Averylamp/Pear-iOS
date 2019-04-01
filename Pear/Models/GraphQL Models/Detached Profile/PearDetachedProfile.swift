@@ -59,9 +59,12 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
     self.gender = try values.decode(String.self, forKey: .gender)
     self.interests = try values.decode([String].self, forKey: .interests)
     self.vibes = try values.decode([String].self, forKey: .vibes)
-    self.bio = try values.decode(String.self, forKey: .bio)
-    self.dos = try values.decode([String].self, forKey: .dos)
-    self.donts = try values.decode([String].self, forKey: .donts)
+    self.bio = try values.decode(String.self, forKey: .bio).trimmingCharacters(in: .whitespacesAndNewlines)
+    self.bio =  "\"\(self.bio!)\""
+    self.dos = try values.decode([String].self, forKey: .dos).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
+      .map({ "\"\($0)\""})
+    self.donts = try values.decode([String].self, forKey: .donts).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
+      .map({ "\"\($0)\""})
     let images = try values.decode([ImageContainer].self, forKey: .images)
     self.images = images
   }

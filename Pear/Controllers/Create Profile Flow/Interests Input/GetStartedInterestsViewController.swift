@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Firebase
 
 class GetStartedInterestsViewController: UIViewController {
   
@@ -85,8 +86,26 @@ class GetStartedInterestsViewController: UIViewController {
     }
   }
   
+  @IBAction func cancelButtonClicked(_ sender: Any) {
+    let alertController = UIAlertController(title: "Stop Making a Profile?", message: "Are you sure you want to cancel", preferredStyle: .alert)
+    let continueAction = UIAlertAction(title: "Keep Going", style: .default, handler: nil)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
+      DispatchQueue.main.async {
+        guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+          print("Failed to initialize Main VC")
+          return
+        }
+        self.navigationController?.setViewControllers([mainVC], animated: true)
+      }
+    }
+    alertController.addAction(continueAction)
+    alertController.addAction(cancelAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
+  
   @IBAction func backButtonClicked(_ sender: Any) {
     self.saveInterests()
+    Analytics.logEvent("clicked_friend_interests_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -97,6 +116,7 @@ class GetStartedInterestsViewController: UIViewController {
       print("Failed to create vibes VC")
       return
     }
+    Analytics.logEvent("finished_friend_interests", parameters: nil)
     self.navigationController?.pushViewController(vibesVC, animated: true)
   }
   

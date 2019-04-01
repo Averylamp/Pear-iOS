@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import MessageUI
+import Firebase
 import ContactsUI
 
 class GetStartedNotifyFriendViewController: UIViewController {
@@ -86,6 +87,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
       print("Create Detached Profile Called")
       switch result {
       case .success(let detachedProfile):
+        Analytics.logEvent("finished_friend_profile", parameters: nil)
         print(detachedProfile)
         DispatchQueue.main.async {
           guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
@@ -112,6 +114,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    Analytics.logEvent("clicked_notify_friend_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
