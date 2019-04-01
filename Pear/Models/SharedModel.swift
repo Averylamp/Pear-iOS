@@ -18,6 +18,22 @@ enum GenderEnum: String {
   case male
   case female
   case nonbinary
+  
+  static func stringFromEnumString(string: String) -> String? {
+    return GenderEnum(rawValue: string)?.toString()
+  }
+  
+  func toString() -> String {
+    switch self {
+    case .male:
+      return "Male"
+    case .female:
+      return "Female"
+    case .nonbinary:
+      return "Non Binary"
+    }
+  }
+  
 }
 
 enum LocationKeys: String, CodingKey {

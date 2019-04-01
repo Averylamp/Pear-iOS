@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GetStartedStartFriendProfileViewController: UIViewController {
   
@@ -52,11 +53,11 @@ class GetStartedStartFriendProfileViewController: UIViewController {
         self.alert(title: "Name Missing", message: "Please enter your name")
         return
       }
-      
       guard let chooseGenderVC = GetStartedChooseGenderViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
         print("Failed to create Gender VC")
         return
       }
+      Analytics.logEvent("started_create_profile", parameters: nil)
       self.navigationController?.pushViewController(chooseGenderVC, animated: true)
     }
   }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GetStartedChooseGenderViewController: UIViewController {
   
@@ -54,15 +55,33 @@ class GetStartedChooseGenderViewController: UIViewController {
     default:
       break
     }
-    
     guard let ageVC = GetStartedAgeViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
       print("Failed to create age VC")
       return
     }
+    Analytics.logEvent("finished_friend_gender", parameters: nil)
     self.navigationController?.pushViewController(ageVC, animated: true)
   }
   
+  @IBAction func cancelButtonClicked(_ sender: Any) {
+    let alertController = UIAlertController(title: "Stop Making a Profile?", message: "Are you sure you want to cancel", preferredStyle: .alert)
+    let continueAction = UIAlertAction(title: "Keep Going", style: .default, handler: nil)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
+      DispatchQueue.main.async {
+        guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+          print("Failed to initialize Main VC")
+          return
+        }
+        self.navigationController?.setViewControllers([mainVC], animated: true)
+      }
+    }
+    alertController.addAction(continueAction)
+    alertController.addAction(cancelAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
+  
   @IBAction func backButtonClicked(_ sender: Any) {
+    Analytics.logEvent("clicked_friend_gender_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   

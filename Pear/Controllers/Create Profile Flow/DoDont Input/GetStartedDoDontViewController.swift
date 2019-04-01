@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GetStartedDoDontViewController: UIViewController {
   
@@ -57,13 +58,32 @@ class GetStartedDoDontViewController: UIViewController {
     }
   }
   
+  @IBAction func cancelButtonClicked(_ sender: Any) {
+    let alertController = UIAlertController(title: "Stop Making a Profile?", message: "Are you sure you want to cancel", preferredStyle: .alert)
+    let continueAction = UIAlertAction(title: "Keep Going", style: .default, handler: nil)
+    let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
+      DispatchQueue.main.async {
+        guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+          print("Failed to initialize Main VC")
+          return
+        }
+        self.navigationController?.setViewControllers([mainVC], animated: true)
+      }
+    }
+    alertController.addAction(continueAction)
+    alertController.addAction(cancelAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
+  
   @IBAction func backButtonClicked(_ sender: Any) {
+    Analytics.logEvent("clicked_friend_dosdonts_back", parameters: nil)
     saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
     self.navigationController?.popViewController(animated: true)
   }
   
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("finished_friend_dosdonts", parameters: nil)
     saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
     if self.gettingStartedData.dos.count + self.gettingStartedData.donts.count == 0 {
       self.alert(title: "Incomplete Field", message: "Please add either a Do or Don't for your friend")

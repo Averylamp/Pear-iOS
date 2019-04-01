@@ -74,11 +74,9 @@ extension DiscoverySimpleViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.reloadeFullDataIfNeeded()
-    print("View appearing")
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    print("View dissappearing")
   }
   
   func registerNotifications() {
@@ -100,9 +98,7 @@ extension DiscoverySimpleViewController {
   @objc func reloadeFullDataIfNeeded() {
     if lastRefreshTime < Date(timeIntervalSinceNow: -self.minRefreshTime) {
       self.fullDataReload()
-    } else {
-      print("Discovery Reload not needed")
-    }
+    } 
   }
   
   func fullDataReload() {
@@ -193,10 +189,15 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
     let fullProfile = self.fullProfiles[indexPath.row]
     cell.selectionStyle = .none
     cell.configureCell(profileData: fullProfile)
-    cell.cardView.layer.cornerRadius = 8
-    cell.cardView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
-    cell.cardView.layer.borderWidth = 2
+    cell.cardView.layer.cornerRadius = 12
+    cell.cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
+    cell.cardView.layer.borderWidth = 1
     cell.cardView.clipsToBounds = true
+    cell.cardShadowView.layer.shadowOpacity = 0.4
+    cell.cardShadowView.layer.shadowColor = R.color.shadowColor()?.cgColor
+    cell.cardShadowView.layer.shadowOffset = CGSize(width: 1, height: 1 )
+    cell.cardShadowView.layer.shadowRadius = 2
+    cell.cardShadowView.layer.cornerRadius = cell.cardView.layer.cornerRadius
     return cell
   }
   
@@ -216,6 +217,15 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension DiscoverySimpleViewController: DiscoveryTableViewCellDelegate {
+  
+  func receivedVerticalPanTranslation(yTranslation: CGFloat) {
+    self.tableView.setContentOffset(CGPoint(x: self.tableView.contentOffset.x,
+                                            y: self.tableView.contentOffset.y - yTranslation), animated: false)
+  }
+  
+  func endedVerticalPanTranslation(yVelocity: CGFloat) {
+    
+  }
   
   func fullProfileViewTriggered(profileData: FullProfileDisplayData) {
     self.presentFullProfile(fullProfile: profileData)
