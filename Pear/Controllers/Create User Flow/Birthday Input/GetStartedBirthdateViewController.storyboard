@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DkV-s7-e0g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DkV-s7-e0g">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Nunito-Regular.ttf">
-            <string>Nunito-Regular</string>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -63,10 +63,34 @@
                                     <action selector="nextButtonClicked:" destination="DkV-s7-e0g" eventType="touchUpInside" id="QrE-Ti-Xei"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When's your birthday?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gjj-0Y-zYR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gjj-0Y-zYR">
                                 <rect key="frame" x="30" y="101" width="315" height="38.5"/>
-                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="When's ">
+                                        <attributes>
+                                            <font key="NSFont" size="28" name="Nunito-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="your">
+                                        <attributes>
+                                            <font key="NSFont" size="28" name="Nunito-BoldItalic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" birthday?">
+                                        <attributes>
+                                            <font key="NSFont" size="28" name="Nunito-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You must be 18 or oder to use Pear." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xQ7-gM-fQq">
+                                <rect key="frame" x="30" y="151.5" width="315" height="53"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -81,7 +105,10 @@
                             <constraint firstItem="IjM-ws-b27" firstAttribute="leading" secondItem="mfk-W9-HSM" secondAttribute="leading" id="HPY-xc-EW5"/>
                             <constraint firstItem="gjj-0Y-zYR" firstAttribute="leading" secondItem="iEi-wO-VJO" secondAttribute="leading" constant="30" id="LVH-1S-a6e"/>
                             <constraint firstItem="TYr-Hc-cck" firstAttribute="leading" secondItem="iEi-wO-VJO" secondAttribute="leading" constant="16" id="LgG-ld-mt0"/>
+                            <constraint firstItem="xQ7-gM-fQq" firstAttribute="centerX" secondItem="iEi-wO-VJO" secondAttribute="centerX" id="Oxd-K4-rFz"/>
+                            <constraint firstItem="xQ7-gM-fQq" firstAttribute="width" secondItem="gjj-0Y-zYR" secondAttribute="width" id="Rpu-z9-gym"/>
                             <constraint firstItem="Wdd-cM-qob" firstAttribute="leading" secondItem="iEi-wO-VJO" secondAttribute="leading" constant="20" id="SrQ-kH-Vca"/>
+                            <constraint firstItem="xQ7-gM-fQq" firstAttribute="top" secondItem="gjj-0Y-zYR" secondAttribute="bottom" constant="12" id="aXY-U4-Avu"/>
                             <constraint firstItem="iEi-wO-VJO" firstAttribute="trailing" secondItem="IjM-ws-b27" secondAttribute="trailing" id="g9J-JX-cqj"/>
                             <constraint firstItem="Xcj-Jj-oYt" firstAttribute="centerX" secondItem="iEi-wO-VJO" secondAttribute="centerX" id="i9O-hj-20S"/>
                             <constraint firstItem="iEi-wO-VJO" firstAttribute="trailing" secondItem="gjj-0Y-zYR" secondAttribute="trailing" constant="30" id="jWO-zJ-jsA"/>
@@ -93,6 +120,7 @@
                     <connections>
                         <outlet property="datePicker" destination="IjM-ws-b27" id="Sby-pq-rep"/>
                         <outlet property="nextButton" destination="Wdd-cM-qob" id="yda-0I-cbA"/>
+                        <outlet property="subtitleLabel" destination="xQ7-gM-fQq" id="JOP-8v-sGc"/>
                         <outlet property="titleLabel" destination="gjj-0Y-zYR" id="iVs-7h-3ub"/>
                     </connections>
                 </viewController>
@@ -102,7 +130,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="30" height="30"/>
-        <image name="onboarding-icon-age" width="32" height="32"/>
+        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-icon-age" width="128" height="128"/>
     </resources>
 </document>

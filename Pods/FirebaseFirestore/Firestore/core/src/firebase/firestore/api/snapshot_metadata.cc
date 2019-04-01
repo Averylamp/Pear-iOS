@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2019 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,23 @@
  * limitations under the License.
  */
 
-#include "Firestore/core/src/firebase/firestore/immutable/sorted_map_base.h"
+#include "Firestore/core/src/firebase/firestore/api/snapshot_metadata.h"
+
+#include "Firestore/core/src/firebase/firestore/util/hashing.h"
 
 namespace firebase {
 namespace firestore {
-namespace immutable {
-namespace impl {
+namespace api {
 
-// Define external storage for constants:
-constexpr SortedMapBase::size_type SortedMapBase::kFixedSize;
-constexpr SortedMapBase::size_type SortedMapBase::npos;
+bool operator==(const SnapshotMetadata& lhs, const SnapshotMetadata& rhs) {
+  return lhs.pending_writes_ == rhs.pending_writes_ &&
+         lhs.from_cache_ == rhs.from_cache_;
+}
 
-}  // namespace impl
-}  // namespace immutable
+size_t SnapshotMetadata::Hash() const {
+  return util::Hash(pending_writes_, from_cache_);
+}
+
+}  // namespace api
 }  // namespace firestore
 }  // namespace firebase

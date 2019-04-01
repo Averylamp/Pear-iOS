@@ -22,6 +22,7 @@ enum FullProfileOrigin {
 
 class FullProfileDisplayData: Equatable {
   
+  var userID: String?
   var originalCreatorName: String?
   var firstName: String!
   var age: Int!
@@ -106,7 +107,7 @@ class FullProfileDisplayData: Equatable {
               bio: bioContent,
               dos: doContent,
               donts: dontContent)
-    
+    self.userID = matchingUser.documentID
     self.imageContainers = matchingUser.images
   }
   
@@ -163,14 +164,15 @@ class FullProfileDisplayData: Equatable {
     }
     self.imageContainers = user.displayedImages
     self.profileOrigin = .userProfile
+    self.userID = user.documentID
   }
   
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
-    return lhs.originalCreatorName == rhs.originalCreatorName &&
+    return lhs.userID == rhs.userID &&
+    lhs.originalCreatorName == rhs.originalCreatorName &&
     lhs.firstName == rhs.firstName &&
     lhs.age == rhs.age &&
     lhs.gender == rhs.gender
-    
   }
   
 }

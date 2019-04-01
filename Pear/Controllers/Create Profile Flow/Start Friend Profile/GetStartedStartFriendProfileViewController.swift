@@ -30,9 +30,9 @@ class GetStartedStartFriendProfileViewController: UIViewController {
     let storyboard = UIStoryboard(name: String(describing: GetStartedStartFriendProfileViewController.self), bundle: nil)
     guard let startFriendProfileVC = storyboard.instantiateInitialViewController() as? GetStartedStartFriendProfileViewController else { return nil }
     startFriendProfileVC.gettingStartedData = UserProfileCreationData()
-    if DevConfig.devMode {
-      startFriendProfileVC.gettingStartedData.fakePopulate()
-    }
+    #if DEVMODE
+    startFriendProfileVC.gettingStartedData.fakePopulate()
+    #endif
     return startFriendProfileVC
   }
   

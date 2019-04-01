@@ -16,6 +16,7 @@
 
 #import "FIRQuery.h"
 
+#include <memory>
 #include <utility>
 
 #import "FIRDocumentReference.h"
@@ -37,7 +38,6 @@
 #import "Firestore/Source/Core/FSTQuery.h"
 #import "Firestore/Source/Model/FSTDocument.h"
 #import "Firestore/Source/Model/FSTFieldValue.h"
-#import "Firestore/Source/Util/FSTAsyncQueryListener.h"
 #import "Firestore/Source/Util/FSTUsageValidation.h"
 
 #include "Firestore/core/src/firebase/firestore/model/document_key.h"
@@ -49,8 +49,9 @@
 #include "Firestore/core/src/firebase/firestore/util/string_apple.h"
 
 namespace util = firebase::firestore::util;
+using firebase::firestore::core::AsyncEventListener;
+using firebase::firestore::core::EventListener;
 using firebase::firestore::core::ViewSnapshot;
-using firebase::firestore::core::ViewSnapshotHandler;
 using firebase::firestore::model::DocumentKey;
 using firebase::firestore::model::FieldPath;
 using firebase::firestore::model::ResourcePath;
@@ -118,10 +119,10 @@ NS_ASSUME_NONNULL_BEGIN
     return;
   }
 
-  FSTListenOptions *listenOptions =
-      [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:YES
-                                     includeDocumentMetadataChanges:YES
-                                              waitForSyncWhenOnline:YES];
+  ListenOptions listenOptions(
+      /*include_query_metadata_changes=*/true,
+      /*include_document_metadata_changes=*/true,
+      /*wait_for_sync_when_online=*/true);
 
   dispatch_semaphore_t registered = dispatch_semaphore_create(0);
   __block id<FIRListenerRegistration> listenerRegistration;
@@ -164,46 +165,44 @@ NS_ASSUME_NONNULL_BEGIN
 - (id<FIRListenerRegistration>)
     addSnapshotListenerWithIncludeMetadataChanges:(BOOL)includeMetadataChanges
                                          listener:(FIRQuerySnapshotBlock)listener {
-  auto options = [self internalOptionsForIncludeMetadataChanges:includeMetadataChanges];
+  auto options = ListenOptions::FromIncludeMetadataChanges(includeMetadataChanges);
   return [self addSnapshotListenerInternalWithOptions:options listener:listener];
 }
 
-- (id<FIRListenerRegistration>)
-    addSnapshotListenerInternalWithOptions:(FSTListenOptions *)internalOptions
-                                  listener:(FIRQuerySnapshotBlock)listener {
-  FIRFirestore *firestore = self.firestore;
+- (id<FIRListenerRegistration>)addSnapshotListenerInternalWithOptions:(ListenOptions)internalOptions
+                                                             listener:
+                                                                 (FIRQuerySnapshotBlock)listener {
+  Firestore *firestore = self.firestore.wrapped;
   FSTQuery *query = self.query;
 
-  ViewSnapshotHandler snapshotHandler = [listener, firestore,
-                                         query](const StatusOr<ViewSnapshot> &maybe_snapshot) {
-    if (!maybe_snapshot.status().ok()) {
-      listener(nil, MakeNSError(maybe_snapshot.status()));
-      return;
-    }
-    ViewSnapshot snapshot = maybe_snapshot.ValueOrDie();
+  // Convert from ViewSnapshots to QuerySnapshots.
+  auto view_listener = EventListener<ViewSnapshot>::Create(
+      [listener, firestore, query](StatusOr<ViewSnapshot> maybe_snapshot) {
+        if (!maybe_snapshot.status().ok()) {
+          listener(nil, MakeNSError(maybe_snapshot.status()));
+          return;
+        }
 
-    FIRSnapshotMetadata *metadata =
-        [FIRSnapshotMetadata snapshotMetadataWithPendingWrites:snapshot.has_pending_writes()
-                                                     fromCache:snapshot.from_cache()];
+        ViewSnapshot snapshot = std::move(maybe_snapshot).ValueOrDie();
+        SnapshotMetadata metadata(snapshot.has_pending_writes(), snapshot.from_cache());
 
-    listener([FIRQuerySnapshot snapshotWithFirestore:firestore
-                                       originalQuery:query
-                                            snapshot:std::move(snapshot)
-                                            metadata:metadata],
-             nil);
-  };
+        listener([[FIRQuerySnapshot alloc] initWithFirestore:firestore
+                                               originalQuery:query
+                                                    snapshot:std::move(snapshot)
+                                                    metadata:std::move(metadata)],
+                 nil);
+      });
 
-  FSTAsyncQueryListener *asyncListener =
-      [[FSTAsyncQueryListener alloc] initWithExecutor:self.firestore.client.userExecutor
-                                      snapshotHandler:std::move(snapshotHandler)];
+  // Call the view_listener on the user Executor.
+  auto async_listener = AsyncEventListener<ViewSnapshot>::Create(firestore->client().userExecutor,
+                                                                 std::move(view_listener));
 
-  FSTQueryListener *internalListener =
-      [firestore.client listenToQuery:query
-                              options:internalOptions
-                  viewSnapshotHandler:[asyncListener asyncSnapshotHandler]];
-  return [[FSTListenerRegistration alloc] initWithClient:self.firestore.client
-                                           asyncListener:asyncListener
-                                        internalListener:internalListener];
+  std::shared_ptr<QueryListener> query_listener =
+      [firestore->client() listenToQuery:query options:internalOptions listener:async_listener];
+
+  return [[FSTListenerRegistration alloc]
+      initWithRegistration:ListenerRegistration(firestore->client(), std::move(async_listener),
+                                                std::move(query_listener))];
 }
 
 - (FIRQuery *)queryWhereField:(NSString *)field isEqualTo:(id)value {
@@ -666,13 +665,6 @@ NS_ASSUME_NONNULL_BEGIN
   }];
 
   return [FSTBound boundWithPosition:components isBefore:isBefore];
-}
-
-/** Converts the public API options object to the internal options object. */
-- (FSTListenOptions *)internalOptionsForIncludeMetadataChanges:(BOOL)includeMetadataChanges {
-  return [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:includeMetadataChanges
-                                        includeDocumentMetadataChanges:includeMetadataChanges
-                                                 waitForSyncWhenOnline:NO];
 }
 
 @end

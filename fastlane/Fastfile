@@ -41,7 +41,16 @@ platform :ios do
         thumb_url: "https://averylamp.me/images/Pear.jpg",
       }
     )
-
+    upload_symbols
+  end
+  desc "Upload Symbols"
+  lane :upload_symbols do
+    download_dsyms(output_directory: 'dsyms')
+    sentry_upload_dsym(
+      auth_token: '602ec7c2764146e29de4ec0c60c6fb6acece827d74be480e8e6b2b06ad8d22fc',
+      org_slug: 'setup-and-matchmake-pear',
+      project_slug: 'pear',
+    )
   end
   desc "Runs Tests"
   lane :test do
