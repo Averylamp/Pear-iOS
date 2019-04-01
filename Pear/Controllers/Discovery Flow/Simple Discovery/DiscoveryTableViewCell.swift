@@ -11,6 +11,8 @@ import SDWebImage
 
 protocol DiscoveryTableViewCellDelegate: class {
   func fullProfileViewTriggered(profileData: FullProfileDisplayData)
+  func receivedVerticalPanTranslation(yTranslation: CGFloat)
+  func endedVerticalPanTranslation(yVelocity: CGFloat)
 }
 
 class DiscoveryTableViewCell: UITableViewCell {
@@ -31,6 +33,8 @@ class DiscoveryTableViewCell: UITableViewCell {
   @IBOutlet weak var cardView: UIView!
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var forwardButton: UIButton!
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var infoStackView: UIStackView!
   
   let indentWidth: CGFloat = 20.0
   
@@ -47,6 +51,8 @@ class DiscoveryTableViewCell: UITableViewCell {
     gradient.colors = [UIColor(white: 0.0, alpha: 0.0).cgColor, UIColor(white: 0.0, alpha: 0.08).cgColor]
     
     self.gradientView.layer.insertSublayer(gradient, at: 0)
+    self.infoStackView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    self.infoStackView.isLayoutMarginsRelativeArrangement = true
   }
   
   func setupContentViews() {
@@ -80,6 +86,7 @@ class DiscoveryTableViewCell: UITableViewCell {
     self.contentScrollView.isPagingEnabled = true
     self.contentScrollView.showsHorizontalScrollIndicator = false
     let backwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
+    
     let forwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
     self.backButton.addGestureRecognizer(backwardPanGestureRecognizer)
     self.forwardButton.addGestureRecognizer(forwardPanGestureRecognizer)
@@ -93,6 +100,9 @@ class DiscoveryTableViewCell: UITableViewCell {
       self.contentScrollView
         .setContentOffset(CGPoint(x: self.contentScrollView.contentOffset.x - translation.x,
                                   y: self.contentScrollView.contentOffset.y), animated: false)
+      if let panDelegate = self.delegate {
+        panDelegate.receivedVerticalPanTranslation(yTranslation: translation.y)
+      }
       panRecognizer.setTranslation(CGPoint.zero, in: nil)
     }
     if panRecognizer.state == .ended {
@@ -108,13 +118,26 @@ class DiscoveryTableViewCell: UITableViewCell {
         pageIndex * self.contentScrollView.frame.width - self.contentScrollView.frame.width / 2.0 < self.contentScrollView.contentOffset.x {
         pageIndex -= 1
       }
+      if let panDelegate = self.delegate {
+        panDelegate.endedVerticalPanTranslation(yVelocity: velocity.y)
+      }
       self.contentScrollView
         .setContentOffset(CGPoint(x: pageIndex * self.contentScrollView.frame.width, y: 0), animated: true)
     }
     
   }
   
+  func configureInfo(profileData: FullProfileDisplayData) {
+    if let firstName = profileData.firstName,
+      let age = profileData.age {
+      self.nameLabel.text = "\(firstName), \(age)"
+    }
+    self.infoStackView.arrangedSubviews.forEach({ self.infoStackView.removeArrangedSubview($0)})
+    
+  }
+  
   func configureCell(profileData: FullProfileDisplayData) {
+    self.configureInfo(profileData: profileData)
     self.profileData = profileData
     self.contentScrollView.contentOffset = CGPoint.zero
     self.indicatorViews.forEach({
