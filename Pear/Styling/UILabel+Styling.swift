@@ -62,4 +62,13 @@ extension UILabel {
     self.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
     self.textColor = StylingConfig.textFontColor
   }
+  
+  func stylizeInfoSubtextLabel() {
+    if let font = R.font.nunitoSemiBold(size: 15) {
+      self.font = font
+    }
+    self.minimumScaleFactor = 0.5
+    self.adjustsFontSizeToFitWidth = true
+    self.textColor = StylingConfig.textFontColor
+  }
 }
