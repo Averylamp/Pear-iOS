@@ -137,7 +137,7 @@
                                             <constraint firstAttribute="height" constant="1" id="2sN-yP-NX2"/>
                                         </constraints>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends-tab-top-image" translatesAutoresizingMaskIntoConstraints="NO" id="pNe-91-auO">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-icon-friends-selected" translatesAutoresizingMaskIntoConstraints="NO" id="pNe-91-auO">
                                         <rect key="frame" x="171.5" y="9" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pNe-91-auO" secondAttribute="height" multiplier="1:1" id="04d-f8-jGU"/>
@@ -179,6 +179,6 @@
     </scenes>
     <resources>
         <image name="friends-create-profile" width="498" height="498"/>
-        <image name="friends-tab-top-image" width="500" height="500"/>
+        <image name="tab-icon-friends-selected" width="500" height="500"/>
     </resources>
 </document>
