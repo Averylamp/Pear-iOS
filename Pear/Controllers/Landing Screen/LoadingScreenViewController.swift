@@ -30,6 +30,7 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.testCheckUserProfiles()
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
         DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
@@ -141,7 +142,10 @@ extension LoadingScreenViewController {
     } else {
       fatalError("Failed to create image for image upload test")
     }
-    
+  }
+  
+  func testCheckUserProfiles() {
+    DataStore.shared.refreshEndorsedUsers(completion: nil)
   }
   
 }

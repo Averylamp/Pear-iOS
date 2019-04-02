@@ -19,6 +19,8 @@ enum FullProfileOrigin {
   case gettingStartedProfile
   case detachedProfile
   case userProfile
+  case matchingUser
+  case pearUser
 }
 
 class FullProfileDisplayData: Equatable {
@@ -36,7 +38,7 @@ class FullProfileDisplayData: Equatable {
   var imageContainers: [ImageContainer] = []
   var rawImages: [UIImage] = []
   var profileOrigin: FullProfileOrigin?
-  
+  var originObject: Any?
   var locationName: String? = "Boston, MA"
   var locationCoordinates: CLLocationCoordinate2D?
   var school: String? = "Harvard University"
@@ -114,34 +116,18 @@ class FullProfileDisplayData: Equatable {
               donts: dontContent)
     self.userID = matchingUser.documentID
     self.imageContainers = matchingUser.images
+    self.profileOrigin = .matchingUser
+    self.originObject = matchingUser
   }
   
-  convenience init (pdp: PearDetachedProfile) {
-    self.init(firstName: pdp.firstName,
-              age: pdp.age,
-              gender: GenderEnum.stringFromEnumString(string: pdp.gender),
-              interests: pdp.interests,
-              vibes: pdp.vibes,
-              bio: [BioContent.init(bio: pdp.bio, creatorName: pdp.creatorFirstName)],
-              dos: pdp.dos.map({DoDontContent.init(phrase: $0, creatorName: pdp.creatorFirstName)}),
-              donts: pdp.donts.map({DoDontContent.init(phrase: $0, creatorName: pdp.creatorFirstName)}))
-    self.originalCreatorName = pdp.creatorFirstName
-    self.imageContainers = pdp.images
-    self.profileOrigin = .detachedProfile
-  }
-  
-  convenience init (user: PearUser, profiles: [PearUserProfile]) throws {
-    guard profiles.count > 0 else {
-      throw FullProfileError.notEnoughProfileInformation
-    }
-    
+  convenience init (user: PearUser) {
     var interests: [String] = []
     var vibes: [String] = []
     var bioContent: [BioContent] = []
     var doContent: [DoDontContent] = []
     var dontContent: [DoDontContent] = []
     
-    for profile in profiles {
+    for profile in user.userProfiles {
       profile.interests.forEach({
         if !interests.contains($0) {
           interests.append($0)
@@ -157,19 +143,32 @@ class FullProfileDisplayData: Equatable {
       dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
     }
     self.init(firstName: user.firstName,
-              age: user.age,
-              gender: user.gender?.toString(),
+              age: user.matchingDemographics.age,
+              gender: user.matchingDemographics.gender.toString(),
               interests: interests,
               vibes: vibes,
               bio: bioContent,
               dos: doContent,
               donts: dontContent)
-    if profiles.count == 1 {
-      self.originalCreatorName = profiles.first?.creatorFirstName
-    }
-    self.imageContainers = user.displayedImages
-    self.profileOrigin = .userProfile
     self.userID = user.documentID
+    self.imageContainers = user.displayedImages
+    self.profileOrigin = .pearUser
+    self.originObject = user
+  }
+  
+  convenience init (pdp: PearDetachedProfile) {
+    self.init(firstName: pdp.firstName,
+              age: pdp.age,
+              gender: GenderEnum.stringFromEnumString(string: pdp.gender),
+              interests: pdp.interests,
+              vibes: pdp.vibes,
+              bio: [BioContent.init(bio: pdp.bio, creatorName: pdp.creatorFirstName)],
+              dos: pdp.dos.map({DoDontContent.init(phrase: $0, creatorName: pdp.creatorFirstName)}),
+              donts: pdp.donts.map({DoDontContent.init(phrase: $0, creatorName: pdp.creatorFirstName)}))
+    self.originalCreatorName = pdp.creatorFirstName
+    self.imageContainers = pdp.images
+    self.profileOrigin = .detachedProfile
+    self.originObject = pdp
   }
   
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
@@ -178,6 +177,20 @@ class FullProfileDisplayData: Equatable {
     lhs.firstName == rhs.firstName &&
     lhs.age == rhs.age &&
     lhs.gender == rhs.gender
+  }
+ 
+  static func compareListsForNewItems(oldList: [FullProfileDisplayData], newList: [FullProfileDisplayData]) -> Bool {
+    var newItems = false
+    for prof1 in newList {
+      var foundMatch = false
+      for prof2 in oldList where prof1 == prof2 {
+        foundMatch = true
+      }
+      if !foundMatch {
+        newItems = true
+      }
+    }
+    return newItems
   }
   
 }
