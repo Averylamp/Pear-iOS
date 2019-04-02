@@ -88,11 +88,10 @@ class DiscoveryTableViewCell: UITableViewCell {
     self.contentScrollView.delegate = self
     self.contentScrollView.isPagingEnabled = true
     self.contentScrollView.showsHorizontalScrollIndicator = false
-    let backwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
-    
-    let forwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
-    self.backButton.addGestureRecognizer(backwardPanGestureRecognizer)
-    self.forwardButton.addGestureRecognizer(forwardPanGestureRecognizer)
+//    let backwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
+//    let forwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
+//    self.backButton.addGestureRecognizer(backwardPanGestureRecognizer)
+//    self.forwardButton.addGestureRecognizer(forwardPanGestureRecognizer)
   }
   
   @objc func handlePanGestureRecognizer(panRecognizer: UIPanGestureRecognizer) {

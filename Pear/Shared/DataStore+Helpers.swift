@@ -57,8 +57,13 @@ extension DataStore {
   }
   // swiftlint:enable identifier_name
   
-  func checkForExistingUser(pearUserFoundCompletion: @escaping () -> Void, userNotFoundCompletion: @escaping () -> Void) {
-    let trace = Performance.startTrace(name: "Loading Screen Existing User")
+  struct AuthenticationTokens {
+    let uid: String
+    let token: String
+  }
+  
+  func fetchUIDToken(completion: @escaping (Result<AuthenticationTokens, UserAPIError>) -> Void) {
+    let trace = Performance.startTrace(name: "Fetching Firebase Token")
     if let currentUser = Auth.auth().currentUser {
       let uid = currentUser.uid
       currentUser.getIDToken { (token, error) in
@@ -66,52 +71,66 @@ extension DataStore {
           print("Error getting firebase token: \(error)")
           trace?.incrementMetric("Firebase Token Error", by: 1)
           trace?.stop()
-          userNotFoundCompletion()
+          completion(.failure(UserAPIError.unauthenticated))
           return
         }
         if let token = token {
-          trace?.incrementMetric("Firebase Token Found", by: 1)
-          PearUserAPI.shared.getUser(uid: uid,
-                                     token: token,
-                                     completion: { (result) in
-              switch result {
-              case .success(let pearUser):
-                print("Got Existing Pear User \(String(describing: pearUser))")
-                DataStore.shared.currentPearUser = pearUser
-                
-                Crashlytics.sharedInstance().setUserEmail(pearUser.email)
-                Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
-                Crashlytics.sharedInstance().setUserName(pearUser.fullName)
-                Client.shared?.extra = [
-                  "email": pearUser.email!,
-                  "firebaseAuthID": pearUser.firebaseAuthID!,
-                  "fullName": pearUser.fullName!,
-                  "userDocumentID": pearUser.documentID!
-                ]
-                trace?.incrementMetric("Existing User Found", by: 1)
-                trace?.stop()
-                pearUserFoundCompletion()
-                return
-              case .failure(let error):
-                print("Error getting Pear User: \(error)")
-                trace?.incrementMetric("No Existing User Found", by: 1)
-                trace?.stop()
-                userNotFoundCompletion()
-                return
-              }
-          })
-        } else {
-          trace?.incrementMetric("Firebase Token Not Found", by: 1)
           trace?.stop()
-          print("No token found")
-          userNotFoundCompletion()
+          completion(.success(AuthenticationTokens(uid: uid, token: token)))
+          return
+        } else {
+          trace?.stop()
+          completion(.failure(UserAPIError.unauthenticated))
+          return
         }
       }
     } else {
-      trace?.incrementMetric("Current Firebase User Not Found", by: 1)
-      trace?.stop()
-      userNotFoundCompletion()
+      completion(.failure(UserAPIError.unauthenticated))
     }
+    
+  }
+  
+  func checkForExistingUser(pearUserFoundCompletion: @escaping () -> Void, userNotFoundCompletion: @escaping () -> Void) {
+    self.fetchUIDToken { (result) in
+      switch result {
+      case .success(let authTokens):
+        let trace = Performance.startTrace(name: "Loading Screen Existing User")
+        PearUserAPI.shared.getUser(uid: authTokens.uid,
+                                   token: authTokens.token,
+                                   completion: { (result) in
+            switch result {
+            case .success(let pearUser):
+              print("Got Existing Pear User \(String(describing: pearUser))")
+              DataStore.shared.currentPearUser = pearUser
+              
+              Crashlytics.sharedInstance().setUserEmail(pearUser.email)
+              Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
+              Crashlytics.sharedInstance().setUserName(pearUser.fullName)
+              Client.shared?.extra = [
+                "email": pearUser.email!,
+                "firebaseAuthID": pearUser.firebaseAuthID!,
+                "fullName": pearUser.fullName!,
+                "userDocumentID": pearUser.documentID!
+              ]
+              trace?.incrementMetric("Existing User Found", by: 1)
+              trace?.stop()
+              pearUserFoundCompletion()
+              return
+            case .failure(let error):
+              print("Error getting Pear User: \(error)")
+              trace?.incrementMetric("No Existing User Found", by: 1)
+              trace?.stop()
+              userNotFoundCompletion()
+              return
+            }
+        })
+      case .failure(let error):
+        print("Failure getting Tokens: \(error)")
+        userNotFoundCompletion()
+        return
+      }
+    }
+    
   }
   
   func checkForDetachedProfiles(detachedProfilesFound: @escaping ([PearDetachedProfile]) -> Void) {
@@ -131,6 +150,31 @@ extension DataStore {
       detachedProfilesFound([])
       return
     }
+  }
+  
+  func refreshEndorsedUsers(completion: ((_ endorsedUsers: [MatchingPearUser], _ detachedProfiles: [PearDetachedProfile]) -> Void)?) {
+    self.fetchUIDToken { (result) in
+      switch result {
+      case .success(let authTokens):
+        PearUserAPI.shared.fetchEndorsedUsers(uid: authTokens.uid,
+                                              token: authTokens.token,
+                                              completion: { (result) in
+            switch result {
+            case .success(let (newEndorsedUsers, newDetachedProfiles)):
+              self.endorsedUsers = newEndorsedUsers
+              self.detachedProfiles  =  newDetachedProfiles
+              if let completion = completion {
+                completion(newEndorsedUsers, newDetachedProfiles)
+              }
+            case .failure(let error):
+              print("Failure getting endorsed users: \(error)")
+            }
+        })
+      case .failure(let error):
+        print("Failure getting auth tokens: \(error)")
+      }
+    }
+    
   }
   
   func checkForNotificationsEnabled(completion: @escaping  (Bool) -> Void) {

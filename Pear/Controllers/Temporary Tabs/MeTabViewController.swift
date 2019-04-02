@@ -9,7 +9,7 @@
 import UIKit
 
 class MeTabViewController: UIViewController {
-
+  
   var userProfiles: [FullProfileDisplayData] = []
   
   @IBOutlet weak var tableView: UITableView!
@@ -43,9 +43,12 @@ extension MeTabViewController {
         }
       }
     }
-    
     self.tableView.dataSource = self
     self.tableView.delegate = self
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    
   }
   
   func stylize() {
