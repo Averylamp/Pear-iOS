@@ -137,7 +137,7 @@ extension DataStore {
     if #available(iOS 12, *) {
       UNUserNotificationCenter.current()
         .requestAuthorization(
-        options: [.badge, .alert, .sound, .provisional, .providesAppNotificationSettings, .criticalAlert]) { (result, error) in
+        options: [.badge, .alert, .sound]) { (result, error) in
           DispatchQueue.main.sync {
             UIApplication.shared.registerForRemoteNotifications()
             if let error = error {
@@ -158,7 +158,17 @@ extension DataStore {
         }
       }
     }
-    
+  }
+  
+  func getNotificationSettings() {
+    UNUserNotificationCenter.current().getNotificationSettings { settings in
+      print("Notification settings: \(settings)")
+      guard settings.authorizationStatus == .authorized else { return }
+      print("registering for remote notifications")
+      DispatchQueue.main.async {
+        UIApplication.shared.registerForRemoteNotifications()
+      }
+    }
   }
   
 }
