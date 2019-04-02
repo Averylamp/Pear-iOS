@@ -42,6 +42,22 @@ extension UIButton {
     self.setTitleColor(StylingConfig.textFontColor, for: .normal)
     self.setTitleColor(R.color.brandPrimaryDark()!, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
+    self.layer.borderWidth = 0
+  }
+  
+  func stylizeLightSelected() {
+    self.backgroundColor = UIColor.white
+    self.layer.cornerRadius = self.frame.height / 2.0
+    
+    self.layer.shadowColor = UIColor(white: 0.0, alpha: 0.25).cgColor
+    self.layer.shadowOffset = CGSize(width: 1, height: 1)
+    self.layer.shadowOpacity = 1.0
+    self.setTitleColor(StylingConfig.textFontColor, for: .normal)
+    self.setTitleColor(R.color.brandPrimaryDark()!, for: .normal)
+    self.titleLabel?.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
+    
+    self.layer.borderColor = R.color.brandPrimaryLight()?.cgColor
+    self.layer.borderWidth = 2
   }
   
   func stylizeAllowFeature() {

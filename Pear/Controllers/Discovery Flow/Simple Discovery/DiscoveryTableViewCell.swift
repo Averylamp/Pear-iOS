@@ -398,7 +398,7 @@ extension DiscoveryTableViewCell {
       NSLayoutConstraint(item: contentTextLabel, attribute: .right, relatedBy: .equal,
                          toItem: containerView, attribute: .right, multiplier: 1.0, constant: -indentWidth),
       NSLayoutConstraint(item: contentTextLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 0.0)
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 8.0)
       ])
     
     let writtenByLabel = UILabel()
