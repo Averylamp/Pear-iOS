@@ -37,6 +37,14 @@ class ApproveDetachedProfileViewController: UIViewController {
   
   @objc func saveButtonClicked(sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    
+    guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
+      print("Failed to initialize Update User Pref VC")
+      return
+    }
+    self.navigationController?.setViewControllers([updateUserVC], animated: true)
+    return
+    
     if let currentUserID = DataStore.shared.currentPearUser?.documentID {
       PearProfileAPI.shared.attachDetachedProfile(user_id: currentUserID,
                                                   detachedProfile_id: detachedProfile.documentID,

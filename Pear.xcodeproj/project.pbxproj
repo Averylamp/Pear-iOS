@@ -27,6 +27,14 @@
 		BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */; };
 		BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DB225361DC005DD315 /* splash-background.png */; };
 		BB0AE4DE22536208005DD315 /* splash-pear.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DD22536208005DD315 /* splash-pear.png */; };
+		BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AE4DF225364D0005DD315 /* UpdateUserPreferencesViewController.swift */; };
+		BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4E1225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard */; };
+		BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */; };
+		BB0AE4E922536FAC005DD315 /* UserAgePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AE4E822536FAC005DD315 /* UserAgePreferencesViewController.swift */; };
+		BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AE4EA22536FC3005DD315 /* UserLocationViewController.swift */; };
+		BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4EC22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard */; };
+		BB0AE4EF22536FE0005DD315 /* UserAgePreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4EE22536FE0005DD315 /* UserAgePreferencesViewController.storyboard */; };
+		BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4F022536FEA005DD315 /* UserLocationViewController.storyboard */; };
 		BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */; };
 		BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16B7222EE6D200915C1C /* DataStore.swift */; };
 		BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */; };
@@ -244,6 +252,14 @@
 		BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelpers.swift; sourceTree = "<group>"; };
 		BB0AE4DB225361DC005DD315 /* splash-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-background.png"; sourceTree = "<group>"; };
 		BB0AE4DD22536208005DD315 /* splash-pear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-pear.png"; sourceTree = "<group>"; };
+		BB0AE4DF225364D0005DD315 /* UpdateUserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserPreferencesViewController.swift; sourceTree = "<group>"; };
+		BB0AE4E1225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
+		BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderPreferencesViewController.swift; sourceTree = "<group>"; };
+		BB0AE4E822536FAC005DD315 /* UserAgePreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgePreferencesViewController.swift; sourceTree = "<group>"; };
+		BB0AE4EA22536FC3005DD315 /* UserLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationViewController.swift; sourceTree = "<group>"; };
+		BB0AE4EC22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserGenderPreferencesViewController.storyboard; sourceTree = "<group>"; };
+		BB0AE4EE22536FE0005DD315 /* UserAgePreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserAgePreferencesViewController.storyboard; sourceTree = "<group>"; };
+		BB0AE4F022536FEA005DD315 /* UserLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserLocationViewController.storyboard; sourceTree = "<group>"; };
 		BB0C701422347D0E00F6F153 /* PearDetachedProfileConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfileConstants.swift; sourceTree = "<group>"; };
 		BB0F16B7222EE6D200915C1C /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConfig.swift; sourceTree = "<group>"; };
@@ -523,6 +539,7 @@
 				BB986A39220E43A300759A14 /* Create Profile Flow */,
 				BB56D22922142E2400A652E7 /* Profiles */,
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
+				BB0AE4E422536F75005DD315 /* Update User */,
 				BBDF1FEB21E2B61F00520881 /* Navigation */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
 				BB5F1DA0225318040042D443 /* Me Tab */,
@@ -645,6 +662,27 @@
 				BB0628C32246352B000D9B12 /* PearChatAPI.swift */,
 			);
 			path = Implementations;
+			sourceTree = "<group>";
+		};
+		BB0AE4E422536F75005DD315 /* Update User */ = {
+			isa = PBXGroup;
+			children = (
+				BB0AE4E522536F85005DD315 /* Preferences */,
+			);
+			path = "Update User";
+			sourceTree = "<group>";
+		};
+		BB0AE4E522536F85005DD315 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */,
+				BB0AE4EC22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard */,
+				BB0AE4E822536FAC005DD315 /* UserAgePreferencesViewController.swift */,
+				BB0AE4EE22536FE0005DD315 /* UserAgePreferencesViewController.storyboard */,
+				BB0AE4EA22536FC3005DD315 /* UserLocationViewController.swift */,
+				BB0AE4F022536FEA005DD315 /* UserLocationViewController.storyboard */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		BB0F16B9222EE72800915C1C /* Helpers */ = {
@@ -1308,9 +1346,11 @@
 			children = (
 				BBA2E1F3224B30DD0088A7A7 /* Navigation Controller */,
 				BBA2E1F5224B30F90088A7A7 /* Profile Found Page */,
-				BB77E7A22252212000A12B12 /* School Input */,
 				BBA2E1F6224B31030088A7A7 /* Update Photos */,
+				BB77E7A22252212000A12B12 /* School Input */,
 				BBA2E1F4224B30EA0088A7A7 /* Full Screen Approval */,
+				BB0AE4DF225364D0005DD315 /* UpdateUserPreferencesViewController.swift */,
+				BB0AE4E1225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard */,
 			);
 			path = "Approve Profile Flow";
 			sourceTree = "<group>";
@@ -1487,6 +1527,7 @@
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
 				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
+				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
 				BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */,
@@ -1511,11 +1552,13 @@
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BBA2E1F9224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard in Resources */,
+				BB0AE4EF22536FE0005DD315 /* UserAgePreferencesViewController.storyboard in Resources */,
 				BB94C1312243C73B001320B0 /* Strings.strings in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
 				9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */,
 				BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */,
 				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
+				BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */,
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
 				BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */,
 				BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */,
@@ -1528,6 +1571,7 @@
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
 				BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */,
+				BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
 				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
@@ -1764,9 +1808,11 @@
 				BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* StylingConfig.swift in Sources */,
 				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
+				BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */,
 				BB4C8A47225152EC00F7BA1A /* DoDontView.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */,
+				BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
@@ -1783,6 +1829,7 @@
 				BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */,
 				BBA2E1EA224B23970088A7A7 /* ApproveDetachedProfileFoundViewController.swift in Sources */,
 				BB986A47220F799A00759A14 /* GetStartedStartFriendProfileViewController.swift in Sources */,
+				BB0AE4E922536FAC005DD315 /* UserAgePreferencesViewController.swift in Sources */,
 				BB3F219D22267B8000DC4489 /* GetStartedUserLastNameViewController.swift in Sources */,
 				BB986A1E220E08E000759A14 /* LandingScreenViewController.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,
@@ -1804,6 +1851,7 @@
 				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
 				BB94C12722438F00001320B0 /* Chat.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
+				BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
@@ -2009,7 +2057,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2034,7 +2082,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
