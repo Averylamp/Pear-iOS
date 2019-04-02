@@ -80,6 +80,10 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     return SDKApplicationDelegate.shared.application(app, open: url, options: options)
   }
   
+  func applicationWillEnterForeground(_ application: UIApplication) {
+    UIApplication.shared.applicationIconBadgeNumber = 0
+  }
+  
 }
 
 extension AppDelegate {
