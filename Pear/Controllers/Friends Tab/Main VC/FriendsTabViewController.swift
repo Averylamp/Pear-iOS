@@ -46,6 +46,7 @@ extension FriendsTabViewController {
     if FullProfileDisplayData.compareListsForNewItems(oldList: self.userProfiles, newList: fullList) {
       self.userProfiles = fullList
       DispatchQueue.main.async {
+        self.collectionView.reloadData()
       }
     }
     
@@ -64,6 +65,7 @@ extension FriendsTabViewController {
     DataStore.shared.refreshEndorsedUsers { (endorsedUsers, detachedProfiles) in
       self.loadNewEndorsedDetachedProfiles(endorsedProfiles: endorsedUsers,
                                            detachedProfiles: detachedProfiles)
+      print("\(endorsedUsers.count) Endorsed Users, \(detachedProfiles.count) Detached Profiles Loaded into Friends Tab")
     }
   }
   

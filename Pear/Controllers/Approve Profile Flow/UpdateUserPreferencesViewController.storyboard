@@ -21,20 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0Q-33-grj" userLabel="Header Container">
                                 <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjt-tT-i8v" userLabel="Back Button">
-                                        <rect key="frame" x="12" y="5" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="l5I-rX-3AG"/>
-                                            <constraint firstAttribute="width" constant="40" id="qZl-cq-yrT"/>
-                                        </constraints>
-                                        <state key="normal" image="onboarding-back-button">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backButtonClicked:" destination="QBx-4s-irh" eventType="touchUpInside" id="KFf-hE-gST"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="school-icon" translatesAutoresizingMaskIntoConstraints="NO" id="5HN-XS-UwL" userLabel="Center Icon">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-preferences-icon" translatesAutoresizingMaskIntoConstraints="NO" id="5HN-XS-UwL" userLabel="Center Icon">
                                         <rect key="frame" x="167.5" y="5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5HN-XS-UwL" secondAttribute="height" multiplier="1:1" id="c3c-04-8ib"/>
@@ -51,13 +38,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="5HN-XS-UwL" firstAttribute="height" secondItem="h0Q-33-grj" secondAttribute="height" constant="-10" id="1GV-Va-DzN"/>
-                                    <constraint firstItem="cjt-tT-i8v" firstAttribute="leading" secondItem="h0Q-33-grj" secondAttribute="leading" constant="12" id="4RC-WM-5tM"/>
                                     <constraint firstAttribute="height" constant="50" id="SXT-I8-d0J"/>
                                     <constraint firstItem="5HN-XS-UwL" firstAttribute="centerY" secondItem="h0Q-33-grj" secondAttribute="centerY" id="YBo-WA-7MO"/>
                                     <constraint firstItem="5HN-XS-UwL" firstAttribute="centerX" secondItem="h0Q-33-grj" secondAttribute="centerX" id="auj-FO-xo9"/>
                                     <constraint firstItem="rYJ-c0-0c5" firstAttribute="leading" secondItem="h0Q-33-grj" secondAttribute="leading" id="bg2-tN-HxS"/>
                                     <constraint firstAttribute="bottom" secondItem="rYJ-c0-0c5" secondAttribute="bottom" id="emH-XQ-6I0"/>
-                                    <constraint firstItem="cjt-tT-i8v" firstAttribute="centerY" secondItem="h0Q-33-grj" secondAttribute="centerY" id="yjd-gt-lGF"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSX-RG-tN8">
@@ -148,7 +133,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="120" height="120"/>
-        <image name="school-icon" width="256" height="256"/>
+        <image name="user-preferences-icon" width="160" height="160"/>
     </resources>
 </document>

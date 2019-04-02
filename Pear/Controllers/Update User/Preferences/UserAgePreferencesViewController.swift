@@ -82,7 +82,7 @@ extension UserAgePreferencesViewController: UITextFieldDelegate {
   }
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    if self.inputTextField.text!.count + string.count - range.length > 2 {
+    if let text = textField.text, text.count + string.count - range.length > 2 {
       return false
     }
     return true
