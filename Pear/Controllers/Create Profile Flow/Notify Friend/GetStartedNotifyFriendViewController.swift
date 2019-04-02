@@ -25,6 +25,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
   @IBOutlet weak var inputTextFieldTitle: UILabel!
   
   @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+  var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
   
   /// Factory method for creating this view controller.
   ///
@@ -51,7 +52,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
       self.nextButton.backgroundColor = UIColor.white
       self.nextButton.setTitleColor(StylingConfig.nextButtonColor, for: .normal)
       self.nextButton.isEnabled = false
-      let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+      self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
                                                       type: NVActivityIndicatorType.ballScaleRippleMultiple,
                                                       color: StylingConfig.textFontColor,
                                                       padding: 0)
@@ -73,9 +74,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
         messageVC.recipients = [phoneNumber]
         messageVC.body = "Hey! I made you a profile on Pear 🍐.  Let's find you a date 😉.  https://getpear.com/go/refer"
         
-        self.present(messageVC, animated: true) {
-          activityIndicator.stopAnimating()
-        }
+        self.present(messageVC, animated: true, completion: nil)
       } else {
         createDetachedProfile()
       }
@@ -107,6 +106,10 @@ class GetStartedNotifyFriendViewController: UIViewController {
           default:
             self.alert(title: "Oopsie", message: "Our server made an oopsie woopsie.  Please try again or let us know and we will do our best to fix it ASAP (support@getpear.com)")
           }
+          self.stylize()
+          self.inputTextField.text = ""
+          self.inputTextField.isEnabled = true
+          self.activityIndicator.stopAnimating()
         }
         
       }
