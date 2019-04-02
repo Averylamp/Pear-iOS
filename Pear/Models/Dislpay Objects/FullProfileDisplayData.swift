@@ -39,9 +39,9 @@ class FullProfileDisplayData: Equatable {
   var rawImages: [UIImage] = []
   var profileOrigin: FullProfileOrigin?
   var originObject: Any?
-  var locationName: String? = "Boston, MA"
+  var locationName: String?
   var locationCoordinates: CLLocationCoordinate2D?
-  var school: String? = "Harvard University"
+  var school: String?
   
   init (firstName: String!,
         age: Int!,
@@ -118,6 +118,8 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = matchingUser.images
     self.profileOrigin = .matchingUser
     self.originObject = matchingUser
+    self.school = matchingUser.school
+    self.locationName = matchingUser.matchingDemographics.location.locationName
   }
   
   convenience init (user: PearUser) {
@@ -154,6 +156,8 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = user.displayedImages
     self.profileOrigin = .pearUser
     self.originObject = user
+    self.school = user.school
+    self.locationName = user.matchingDemographics.location.locationName
   }
   
   convenience init (pdp: PearDetachedProfile) {
