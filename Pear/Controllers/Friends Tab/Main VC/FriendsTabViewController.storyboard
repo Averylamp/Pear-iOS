@@ -42,7 +42,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="184" height="158"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLJ-ls-q72">
-                                                            <rect key="frame" x="35" y="68" width="114.5" height="22.5"/>
+                                                            <rect key="frame" x="31" y="68" width="122.5" height="22.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending Approval" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyQ-Je-Zz6">
@@ -62,8 +62,8 @@
                                                     <constraints>
                                                         <constraint firstItem="b4x-Co-qmy" firstAttribute="centerX" secondItem="bn7-fJ-pdR" secondAttribute="centerX" id="Aii-vi-Nec"/>
                                                         <constraint firstItem="gEv-bP-EIc" firstAttribute="height" secondItem="bn7-fJ-pdR" secondAttribute="height" id="Cz4-cr-pYQ"/>
-                                                        <constraint firstItem="fyQ-Je-Zz6" firstAttribute="leading" secondItem="FLJ-ls-q72" secondAttribute="leading" constant="4" id="Db0-Hc-1xK"/>
-                                                        <constraint firstItem="fyQ-Je-Zz6" firstAttribute="trailing" secondItem="FLJ-ls-q72" secondAttribute="trailing" constant="-4" id="GWJ-I5-vTR"/>
+                                                        <constraint firstItem="fyQ-Je-Zz6" firstAttribute="leading" secondItem="FLJ-ls-q72" secondAttribute="leading" constant="8" id="Db0-Hc-1xK"/>
+                                                        <constraint firstItem="fyQ-Je-Zz6" firstAttribute="trailing" secondItem="FLJ-ls-q72" secondAttribute="trailing" constant="-8" id="GWJ-I5-vTR"/>
                                                         <constraint firstItem="gEv-bP-EIc" firstAttribute="width" secondItem="bn7-fJ-pdR" secondAttribute="width" id="LfJ-dh-XJf"/>
                                                         <constraint firstItem="gEv-bP-EIc" firstAttribute="centerY" secondItem="bn7-fJ-pdR" secondAttribute="centerY" id="Wt5-oL-lfi"/>
                                                         <constraint firstItem="FLJ-ls-q72" firstAttribute="centerX" secondItem="bn7-fJ-pdR" secondAttribute="centerX" id="Zef-IB-qQ0"/>

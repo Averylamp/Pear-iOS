@@ -21,11 +21,12 @@ class FriendProfileCollectionViewCell: UICollectionViewCell {
     self.cardView.layer.cornerRadius = 8
     self.cardView.layer.shadowOpacity = 0.2
     self.cardView.layer.shadowColor = UIColor.black.cgColor
-    self.cardView.layer.shadowRadius = 4
+    self.cardView.layer.shadowRadius = 3
     self.cardView.layer.shadowOffset = CGSize(width: 1, height: 1)
     self.firstImageView.clipsToBounds = true
     self.firstImageView.contentMode = .scaleAspectFill
     self.firstImageView.layer.cornerRadius = 8
+    self.pendingApprovalBackground.layer.cornerRadius = self.pendingApprovalBackground.frame.height / 2.0
     
     if profileData.profileOrigin == .detachedProfile {
       self.firstImageView.alpha = 0.5
@@ -37,7 +38,6 @@ class FriendProfileCollectionViewCell: UICollectionViewCell {
       self.nameLabel.alpha = 1.0
       self.pendingApprovalLabel.isHidden = true
       self.pendingApprovalBackground.isHidden = true
-      self.pendingApprovalBackground.layer.cornerRadius = self.pendingApprovalBackground.frame.height / 2.0
     }
     if let firstImage = profileData.rawImages.first {
       self.firstImageView.image = firstImage
