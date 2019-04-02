@@ -30,6 +30,9 @@
                                         <state key="normal" image="onboarding-back-button">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="QBx-4s-irh" eventType="touchUpInside" id="KFf-hE-gST"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="school-icon" translatesAutoresizingMaskIntoConstraints="NO" id="5HN-XS-UwL" userLabel="Center Icon">
                                         <rect key="frame" x="167.5" y="5" width="40" height="40"/>
@@ -38,10 +41,9 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYJ-c0-0c5" userLabel="Progress View">
-                                        <rect key="frame" x="0.0" y="49" width="0.0" height="1"/>
+                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
                                         <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" id="ct8-KU-qCX"/>
                                             <constraint firstAttribute="height" constant="1" id="m5n-iO-oxx"/>
                                         </constraints>
                                     </view>
@@ -64,7 +66,7 @@
                                     <constraint firstAttribute="height" constant="55" id="M5O-qb-690"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Next">
+                                <state key="normal" title="Start Discovering">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -119,6 +121,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yPE-pr-BBZ" firstAttribute="bottom" secondItem="BSX-RG-tN8" secondAttribute="bottom" constant="20" id="0Oq-PP-7oZ"/>
+                            <constraint firstItem="rYJ-c0-0c5" firstAttribute="width" secondItem="c0F-l0-ByO" secondAttribute="width" id="1kI-UV-bnC"/>
                             <constraint firstItem="yPE-pr-BBZ" firstAttribute="trailing" secondItem="bwh-NP-1yB" secondAttribute="trailing" id="3BP-JA-pyM"/>
                             <constraint firstItem="h0Q-33-grj" firstAttribute="leading" secondItem="yPE-pr-BBZ" secondAttribute="leading" id="56t-Yx-F4D"/>
                             <constraint firstItem="h0Q-33-grj" firstAttribute="top" secondItem="yPE-pr-BBZ" secondAttribute="top" id="7Zn-AB-EM8"/>
@@ -132,6 +135,8 @@
                         <viewLayoutGuide key="safeArea" id="yPE-pr-BBZ"/>
                     </view>
                     <connections>
+                        <outlet property="bottomButtonBottomConstraint" destination="0Oq-PP-7oZ" id="FaV-NZ-ryM"/>
+                        <outlet property="nextButton" destination="BSX-RG-tN8" id="K3s-2V-4dJ"/>
                         <outlet property="stackView" destination="acY-To-2H9" id="txD-Oe-7tt"/>
                         <outlet property="subtitleLabel" destination="4jd-gT-x1z" id="SUw-h8-tbF"/>
                         <outlet property="titleLabel" destination="uvE-SV-7c1" id="iui-fu-jgn"/>

@@ -39,6 +39,13 @@ class ApproveDetachedProfileFoundViewController: UIViewController {
   
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
+      print("Failed to initialize Update User Pref VC")
+      return
+    }
+    self.navigationController?.setViewControllers([updateUserVC], animated: true)
+    return
+    
     guard let imageContainers = self.imageContainers else {
       if hasClickedNext {
         return

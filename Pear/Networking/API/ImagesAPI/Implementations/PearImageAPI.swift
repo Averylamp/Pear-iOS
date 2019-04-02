@@ -173,7 +173,6 @@ extension PearImageAPI {
           case .foundObjectData(let objectData):
             do {
               let imagesJSON = try JSON(data: objectData)
-              print(imagesJSON)
               let displayedImagesData = try imagesJSON["displayedImages"].rawData()
               let displayedImages = try JSONDecoder().decode([ImageContainer].self, from: displayedImagesData)
               let bankImagesData = try imagesJSON["bankImages"].rawData()
