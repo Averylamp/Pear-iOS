@@ -110,7 +110,6 @@ extension FriendsTabViewController: UICollectionViewDelegate, UICollectionViewDa
 extension FriendsTabViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    print(collectionView.contentInset)
     let sideLength: CGFloat = (collectionView.frame.size.width  - betweenImageSpacing - collectionView.contentInset.left - collectionView.contentInset.right) / 2.0
     return CGSize(width: sideLength, height: sideLength)
   }

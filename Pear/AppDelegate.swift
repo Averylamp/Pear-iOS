@@ -45,12 +45,19 @@ extension AppDelegate: UIApplicationDelegate {
       resetState()
     }
     
+    self.stylize()
+    
     window = UIWindow(frame: UIScreen.main.bounds)
     let navController = LandingNavigationViewController.instantiate()
     window?.rootViewController = navController
     //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()
     return true
+  }
+  
+  func stylize() {
+    UITabBar.appearance().tintColor = UIColor(red: 0.27, green: 0.29, blue: 0.33, alpha: 1.00)
+    
   }
   
   func resetState() {
