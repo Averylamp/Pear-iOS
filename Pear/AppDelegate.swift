@@ -112,6 +112,7 @@ extension AppDelegate {
         print("Error fetching remote instance ID: \(error)")
       } else if let result = result {
         print("Remote instance ID token: \(result.token)")
+        DataStore.shared.firebaseRemoteInstanceID = result.token
       }
     }
   }
