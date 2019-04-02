@@ -298,7 +298,6 @@ extension DiscoveryTableViewCell {
     if let matchingDemographics = profileData.matchingDemographics,
       let matchingPreferences = profileData.matchingPreferences {
       for endorsedUser in DataStore.shared.endorsedUsers {
-        print("Comparing \(endorsedUser.firstName) with \(profileData.firstName)")
         if endorsedUser.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
           matchingPreferences.matchesDemographics(demographics: endorsedUser.matchingDemographics) {
           suggestedFor.append(endorsedUser.firstName)

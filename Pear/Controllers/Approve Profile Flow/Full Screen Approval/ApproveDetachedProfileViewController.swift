@@ -53,6 +53,7 @@ class ApproveDetachedProfileViewController: UIViewController {
                 print("Failed to initialize Update User Pref VC")
                 return
               }
+              DataStore.shared.refreshEndorsedUsers(completion: nil)
               self.navigationController?.setViewControllers([updateUserVC], animated: true)
             } else {
               self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
