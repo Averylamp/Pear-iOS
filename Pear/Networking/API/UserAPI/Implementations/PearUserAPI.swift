@@ -108,6 +108,9 @@ extension PearUserAPI {
     request.allHTTPHeaderFields = defaultHeaders
     
     do {
+      if let firebaseRemoteInstanceID = DataStore.shared.firebaseRemoteInstanceID {
+        gettingStartedUserData.firebaseRemoteInstanceID = firebaseRemoteInstanceID
+      }
       let fullDictionary: [String: Any] = [
         "query": PearUserAPI.createUserQuery,
         "variables": [
@@ -171,8 +174,7 @@ extension PearUserAPI {
       let lastName = userData.lastName,
       let gender = userData.gender,
       let firebaseToken = userData.firebaseToken,
-      let firebaseAuthID = userData.firebaseAuthID,
-      let location = userData.lastLocation
+      let firebaseAuthID = userData.firebaseAuthID
       else {
         throw UserAPIError.invalidVariables
     }
@@ -187,9 +189,16 @@ extension PearUserAPI {
       "lastName": lastName,
       "gender": gender.rawValue,
       "firebaseToken": firebaseToken,
-      "firebaseAuthID": firebaseAuthID,
-      "location": [location.longitude, location.latitude]
+      "firebaseAuthID": firebaseAuthID
     ]
+    
+    if let firebaseRemoteInstanceID = userData.firebaseRemoteInstanceID {
+      variablesDictionary["firebaseRemoteInstanceID"] = firebaseRemoteInstanceID
+    }
+    
+    if let location = userData.lastLocation {
+      variablesDictionary["location"] = [location.longitude, location.latitude]
+    }
     
     let birthdayFormatter = DateFormatter()
     birthdayFormatter.dateFormat = "yyyy-MM-dd"

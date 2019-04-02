@@ -29,7 +29,7 @@ class DataStore: NSObject {
   var locationManager: CLLocationManager
   var firstLocationReceived: Bool = false
   var lastLocation: CLLocationCoordinate2D?
-  var remoteInstanceIDToken: String? // for push notifications via Firebase Cloud Messaging
+  var firebaseRemoteInstanceID: String? // for push notifications via Firebase Cloud Messaging
   
   // @avery please check this and LMK if it's wrong (i.e. things in wrong order etc)
   private override init() {
