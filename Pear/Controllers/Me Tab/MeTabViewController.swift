@@ -36,13 +36,13 @@ extension MeTabViewController {
     super.viewDidLoad()
     self.stylize()
     
-    if let user = DataStore.shared.currentPearUser {
-      for userProfile in user.userProfiles {
-        if let fullProfile = try? FullProfileDisplayData(user: user, profiles: [userProfile]) {
-          self.userProfiles.append(fullProfile)
-        }
-      }
-    }
+//    if let user = DataStore.shared.currentPearUser {
+//      for userProfile in user.userProfiles {
+//        if let fullProfile = try? FullProfileDisplayData(user: user, profiles: [userProfile]) {
+//          self.userProfiles.append(fullProfile)
+//        }
+//      }
+//    }
     self.tableView.dataSource = self
     self.tableView.delegate = self
   }

@@ -19,6 +19,7 @@ enum FullProfileOrigin {
   case gettingStartedProfile
   case detachedProfile
   case userProfile
+  case matchingUser
 }
 
 class FullProfileDisplayData: Equatable {
@@ -36,7 +37,7 @@ class FullProfileDisplayData: Equatable {
   var imageContainers: [ImageContainer] = []
   var rawImages: [UIImage] = []
   var profileOrigin: FullProfileOrigin?
-  
+  var originObject: Any?
   var locationName: String? = "Boston, MA"
   var locationCoordinates: CLLocationCoordinate2D?
   var school: String? = "Harvard University"
@@ -114,6 +115,8 @@ class FullProfileDisplayData: Equatable {
               donts: dontContent)
     self.userID = matchingUser.documentID
     self.imageContainers = matchingUser.images
+    self.profileOrigin = .matchingUser
+    self.originObject = matchingUser
   }
   
   convenience init (pdp: PearDetachedProfile) {
@@ -128,48 +131,7 @@ class FullProfileDisplayData: Equatable {
     self.originalCreatorName = pdp.creatorFirstName
     self.imageContainers = pdp.images
     self.profileOrigin = .detachedProfile
-  }
-  
-  convenience init (user: PearUser, profiles: [PearUserProfile]) throws {
-    guard profiles.count > 0 else {
-      throw FullProfileError.notEnoughProfileInformation
-    }
-    
-    var interests: [String] = []
-    var vibes: [String] = []
-    var bioContent: [BioContent] = []
-    var doContent: [DoDontContent] = []
-    var dontContent: [DoDontContent] = []
-    
-    for profile in profiles {
-      profile.interests.forEach({
-        if !interests.contains($0) {
-          interests.append($0)
-        }
-      })
-      profile.vibes.forEach({
-        if !vibes.contains($0) {
-          vibes.append($0)
-        }
-      })
-      bioContent.append(BioContent.init(bio: profile.bio, creatorName: profile.creatorFirstName))
-      doContent.append(contentsOf: profile.dos.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-      dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-    }
-    self.init(firstName: user.firstName,
-              age: user.age,
-              gender: user.gender?.toString(),
-              interests: interests,
-              vibes: vibes,
-              bio: bioContent,
-              dos: doContent,
-              donts: dontContent)
-    if profiles.count == 1 {
-      self.originalCreatorName = profiles.first?.creatorFirstName
-    }
-    self.imageContainers = user.displayedImages
-    self.profileOrigin = .userProfile
-    self.userID = user.documentID
+    self.originObject = pdp
   }
   
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
