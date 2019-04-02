@@ -30,28 +30,15 @@ class GetStartedAllowNotificationsViewController: UIViewController {
   }
   
   @IBAction func enableNotificationsClicked(_ sender: Any) {
-    // iOS 12 support
-    if #available(iOS 12, *) {
-      UNUserNotificationCenter.current()
-        .requestAuthorization(
-        options: [.badge, .alert, .sound, .provisional, .providesAppNotificationSettings, .criticalAlert]) { (_, error) in
-          DispatchQueue.main.sync {
-            UIApplication.shared.registerForRemoteNotifications()
-            if let error = error {
-              print(error)
-            }
-            guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-              print("Failed to initialize main VC")
-              return
-            }
-            self.navigationController?.setViewControllers([mainVC], animated: true)
-          }
-      }
-      
-    } else if #available(iOS 11, *) {
-      UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (_, error) in
+    UNUserNotificationCenter.current()
+      .requestAuthorization(
+      options: [.badge, .alert, .sound]) { (granted, error) in
+        print("Permission granted: \(granted)")
+        if granted {
+          // register for remote notifications
+          DataStore.shared.getNotificationSettings()
+        }
         DispatchQueue.main.sync {
-          UIApplication.shared.registerForRemoteNotifications()
           if let error = error {
             print(error)
           }
@@ -61,7 +48,6 @@ class GetStartedAllowNotificationsViewController: UIViewController {
           }
           self.navigationController?.setViewControllers([mainVC], animated: true)
         }
-      }
     }
     
   }
