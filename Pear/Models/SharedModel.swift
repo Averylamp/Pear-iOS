@@ -74,10 +74,10 @@ class MatchingPreferences: Decodable {
   
   static let graphQLMatchingPreferencesFields = "{ seekingGender maxDistance minAgeRange maxAgeRange location \(LocationObject.graphQLLocationFields) }"
   
-  var seekingGender: [GenderEnum]!
-  var maxDistance: Int!
-  var minAgeRange: Int!
-  var maxAgeRange: Int!
+  var seekingGender: [GenderEnum] = []
+  var maxDistance: Int
+  var minAgeRange: Int
+  var maxAgeRange: Int
   var location: LocationObject!
   
   required init(from decoder: Decoder) throws {

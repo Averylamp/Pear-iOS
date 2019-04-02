@@ -27,11 +27,13 @@ class UserGenderPreferencesViewController: UIViewController {
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(genderPreferences: [GenderEnum]) -> UserGenderPreferencesViewController? {
     let storyboard = UIStoryboard(name: String(describing: UserGenderPreferencesViewController.self), bundle: nil)
-    guard let matchesVC = storyboard.instantiateInitialViewController() as? UserGenderPreferencesViewController else { return nil }
-    return matchesVC
+    guard let genderPreferencesVC = storyboard.instantiateInitialViewController() as? UserGenderPreferencesViewController else { return nil }
+    genderPreferencesVC.genderPreferences = genderPreferences
+    return genderPreferencesVC
   }
   
   @IBAction func genderButtonToggled(_ sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     switch sender {
     case self.maleGenderButton:
       if let index = genderPreferences.firstIndex(of: .male) {
@@ -94,10 +96,10 @@ extension UserGenderPreferencesViewController {
     
     if self.genderPreferences.contains(.nonbinary) {
       self.nonbinaryGenderButton.stylizeLightSelected()
-      self.nonbinarySelectedIndicator.isHighlighted = false
+      self.nonbinarySelectedIndicator.isHidden = false
     } else {
       self.nonbinaryGenderButton.stylizeLight()
-      self.nonbinarySelectedIndicator.isHighlighted = true
+      self.nonbinarySelectedIndicator.isHidden = true
     }
   }
   
