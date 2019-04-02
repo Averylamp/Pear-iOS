@@ -34,6 +34,7 @@ extension LoadingScreenViewController {
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
         DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+          DataStore.shared.refreshEndorsedUsers(completion: nil)
           self.continueToMainScreen()
         }, userNotFoundCompletion: {
           self.continueToLandingScreen()
