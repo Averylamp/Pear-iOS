@@ -783,8 +783,8 @@
 			isa = PBXGroup;
 			children = (
 				BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */,
-				BB5F5310223BA57700C25861 /* ProfileMadeByTableViewCell.swift */,
 				BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */,
+				BB5F5310223BA57700C25861 /* ProfileMadeByTableViewCell.swift */,
 			);
 			path = "Me Tab";
 			sourceTree = "<group>";
