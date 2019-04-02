@@ -13,6 +13,7 @@ import FacebookLogin
 import Fabric
 import Crashlytics
 import Sentry
+import FirebaseMessaging
 
 @UIApplicationMain
 final class AppDelegate: UIResponder {
@@ -21,10 +22,11 @@ final class AppDelegate: UIResponder {
 }
 
 // MARK: - UIApplicationDelegate
-extension AppDelegate: UIApplicationDelegate {
+extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
     FirebaseApp.configure()
+    Messaging.messaging().delegate = self
     
     //    Forces Remote config fetch
     print(DataStore.shared.remoteConfig.configSettings)
@@ -97,6 +99,21 @@ extension AppDelegate {
       return
     }
     // This notification is not auth related, developer should handle it.
+  }
+  
+}
+
+// implement the firebase messaging delegate protocol
+extension AppDelegate {
+  
+  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    InstanceID.instanceID().instanceID { (result, error) in
+      if let error = error {
+        print("Error fetching remote instance ID: \(error)")
+      } else if let result = result {
+        print("Remote instance ID token: \(result.token)")
+      }
+    }
   }
   
 }

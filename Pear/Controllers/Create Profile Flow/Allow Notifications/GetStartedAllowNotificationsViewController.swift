@@ -34,9 +34,12 @@ class GetStartedAllowNotificationsViewController: UIViewController {
     if #available(iOS 12, *) {
       UNUserNotificationCenter.current()
         .requestAuthorization(
-        options: [.badge, .alert, .sound, .provisional, .providesAppNotificationSettings, .criticalAlert]) { (_, error) in
+        options: [.badge, .alert, .sound]) { (granted, error) in
+          print("Permission granted: \(granted)")
+          if granted {
+            DataStore.shared.getNotificationSettings()
+          }
           DispatchQueue.main.sync {
-            UIApplication.shared.registerForRemoteNotifications()
             if let error = error {
               print(error)
             }
