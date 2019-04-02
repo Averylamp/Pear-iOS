@@ -52,6 +52,9 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     window?.rootViewController = navController
     //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()
+    
+    // register for remote notifications if we have notification authorization
+    DataStore.shared.getNotificationSettings()
     return true
   }
   
@@ -93,6 +96,9 @@ extension AppDelegate {
                    didReceiveRemoteNotification notification: [AnyHashable: Any],
                    fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
     print("Received Remote Notification: \(notification)")
+    if UIApplication.shared.applicationIconBadgeNumber < 100 {
+      UIApplication.shared.applicationIconBadgeNumber += 1
+    }
     if Auth.auth().canHandleNotification(notification) {
       print(notification)
       completionHandler(.noData)
