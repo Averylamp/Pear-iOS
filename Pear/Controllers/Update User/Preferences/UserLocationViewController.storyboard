@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bq2-Hm-hge">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cSF-88-x3m">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,25 +9,83 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--User Location View Controller-->
-        <scene sceneID="Xzj-ZU-zTS">
+        <scene sceneID="sL5-DB-dUr">
             <objects>
-                <viewController id="bq2-Hm-hge" customClass="UserLocationViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cSF-88-x3m" customClass="UserLocationViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rw6-ON-37n"/>
-                        <viewControllerLayoutGuide type="bottom" id="vbT-fg-UxT"/>
+                        <viewControllerLayoutGuide type="top" id="JZK-qF-jkz"/>
+                        <viewControllerLayoutGuide type="bottom" id="TG0-02-vyK"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Lff-H5-L9I">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                    <view key="view" contentMode="scaleToFill" id="AhM-ps-bbq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkS-m7-Jbs">
+                                <rect key="frame" x="28" y="37" width="47" height="23"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyl-K7-iCc">
+                                <rect key="frame" x="24" y="8" width="66" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhW-CR-jvh">
+                                <rect key="frame" x="28" y="62" width="319" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Boston, MA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WwS-4C-P4w">
+                                        <rect key="frame" x="6" y="6" width="307" height="38"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="address-level1+2"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="WwS-4C-P4w" firstAttribute="leading" secondItem="mhW-CR-jvh" secondAttribute="leading" constant="6" id="EYU-iP-Ux4"/>
+                                    <constraint firstAttribute="height" constant="50" id="VnH-QU-pxs"/>
+                                    <constraint firstItem="WwS-4C-P4w" firstAttribute="top" secondItem="mhW-CR-jvh" secondAttribute="top" constant="6" id="hzJ-ZB-aZq"/>
+                                    <constraint firstAttribute="bottom" secondItem="WwS-4C-P4w" secondAttribute="bottom" constant="6" id="rsz-nW-42V"/>
+                                    <constraint firstAttribute="trailing" secondItem="WwS-4C-P4w" secondAttribute="trailing" constant="6" id="vxo-0D-I9Y"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="DQX-ft-hiS"/>
+                        <constraints>
+                            <constraint firstItem="UkS-m7-Jbs" firstAttribute="leading" secondItem="kyl-K7-iCc" secondAttribute="leading" constant="4" id="4AV-b2-fhB"/>
+                            <constraint firstAttribute="bottom" secondItem="mhW-CR-jvh" secondAttribute="bottom" constant="8" id="4jR-b7-S9g"/>
+                            <constraint firstItem="mhW-CR-jvh" firstAttribute="top" secondItem="UkS-m7-Jbs" secondAttribute="bottom" constant="2" id="BKl-fw-CnW"/>
+                            <constraint firstItem="kyl-K7-iCc" firstAttribute="top" secondItem="AhM-ps-bbq" secondAttribute="top" constant="8" id="Sbi-Pv-9u3"/>
+                            <constraint firstItem="UkS-m7-Jbs" firstAttribute="top" secondItem="kyl-K7-iCc" secondAttribute="bottom" constant="8" id="ZS8-rd-7Lv"/>
+                            <constraint firstItem="mhW-CR-jvh" firstAttribute="centerX" secondItem="qqO-Eh-DKe" secondAttribute="centerX" id="lU9-d0-P45"/>
+                            <constraint firstItem="kyl-K7-iCc" firstAttribute="leading" secondItem="AhM-ps-bbq" secondAttribute="leadingMargin" constant="8" id="pM6-7b-N37"/>
+                            <constraint firstItem="mhW-CR-jvh" firstAttribute="leading" secondItem="UkS-m7-Jbs" secondAttribute="leading" id="swB-bJ-okr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qqO-Eh-DKe"/>
                     </view>
-                    <size key="freeformSize" width="375" height="400"/>
+                    <size key="freeformSize" width="375" height="120"/>
+                    <connections>
+                        <outlet property="locationFieldContainer" destination="mhW-CR-jvh" id="koF-PU-ZD5"/>
+                        <outlet property="locationSubtitleLabel" destination="UkS-m7-Jbs" id="rPv-MI-3fZ"/>
+                        <outlet property="locationTextField" destination="WwS-4C-P4w" id="oNF-8S-qwg"/>
+                        <outlet property="titleLabel" destination="kyl-K7-iCc" id="Pvh-MT-z3f"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1JH-8Z-YDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xHq-Tr-sjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="48.550724637681164" y="20.758928571428569"/>
         </scene>
     </scenes>
 </document>

@@ -17,6 +17,8 @@ class UpdateUserPreferencesViewController: UIViewController {
   
   weak var genderPreferencesVC: UserGenderPreferencesViewController?
   weak var agePreferenceVC: UserAgePreferencesViewController?
+  weak var locationNameVC: UserLocationViewController?
+  
   @IBOutlet weak var bottomButtonBottomConstraint: NSLayoutConstraint!
   /// Factory method for creating this view controller.
   ///
@@ -29,6 +31,56 @@ class UpdateUserPreferencesViewController: UIViewController {
   }
   
   @IBAction func nextButtonClicked(_ sender: Any) {
+    guard let genderPrefs = self.genderPreferencesVC?.genderPreferences.map({ $0.rawValue }) else {
+      print("Failed to retreive gender prefs")
+      return
+    }
+    if genderPrefs.count == 0 {
+      let alertVC = UIAlertController(title: "No Gender Preferences",
+                                      message: "You have not selected any gender preferences.  You can continue, but you will not be suggested for anyone.",
+                                      preferredStyle: .alert)
+      let keepEditing = UIAlertAction(title: "Keep Editing", style: .default, handler: nil)
+      let continueAction = UIAlertAction(title: "Continue", style: .destructive) { (_) in
+        DispatchQueue.main.async {
+          self.dismiss(animated: true, completion: nil)
+        }
+      }
+      alertVC.addAction(keepEditing)
+      alertVC.addAction(continueAction)
+      self.present(alertVC, animated: true, completion: nil)
+      return
+    }
+    
+    guard let ageVC = self.agePreferenceVC else {
+        print("Failed to get Age VC")
+        return
+    }
+    let minAge = ageVC.minAge
+    let maxAge = ageVC.maxAge
+    
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("No user found")
+      return
+    }
+    
+    let locationName: String? = self.locationNameVC?.locationName
+    PearUserAPI.shared.updateUserPreferences(userID: userID,
+                                             genderPrefs: genderPrefs,
+                                             minAge: minAge,
+                                             maxAge: maxAge,
+                                             locationName: locationName) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Update user was successful")
+        } else {
+          print("Update user failed")
+        }
+      case .failure(let error):
+        print("Update user failure: \(error)")
+      }
+    }
+    self.dismiss(animated: true, completion: nil)
     
   }
   
@@ -47,14 +99,14 @@ extension UpdateUserPreferencesViewController {
     self.setupUserPreferences()
     self.addKeyboardSizeNotifications()
     self.addDismissKeyboardOnViewClick()
-   }
+  }
   
   func stylize() {
     self.titleLabel.stylizeTitleLabel()
     self.subtitleLabel.stylizeSubtitleLabel()
     self.nextButton.stylizeDark()
   }
-
+  
   func setupUserPreferences() {
     
     guard let currentUser = DataStore.shared.currentPearUser else {
@@ -86,14 +138,24 @@ extension UpdateUserPreferencesViewController {
     guard let agePreferencesVC = UserAgePreferencesViewController
       .instantiate(minAge: currentUser.matchingPreferences.minAgeRange,
                    maxAge: currentUser.matchingPreferences.maxAgeRange) else {
-      print("Unable to instantiate user gender preferences vc")
-      return
+                    print("Unable to instantiate user gender preferences vc")
+                    return
     }
     stackView.addArrangedSubview(agePreferencesVC.view)
     self.addChild(agePreferencesVC)
     self.agePreferenceVC = agePreferencesVC
     agePreferencesVC.didMove(toParent: self)
     
+    guard let locationNameVC = UserLocationViewController
+      .instantiate(locationName: currentUser.matchingDemographics.location.locationName,
+                   locationCoordinates: currentUser.matchingDemographics.location.locationCoordinate) else {
+                    print("Unable to instantiate user location preferences vc")
+                    return
+    }
+    stackView.addArrangedSubview(locationNameVC.view)
+    self.addChild(locationNameVC)
+    self.locationNameVC = locationNameVC
+    locationNameVC.didMove(toParent: self)
   }
   
 }
