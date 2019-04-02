@@ -20,6 +20,7 @@ enum FullProfileOrigin {
   case detachedProfile
   case userProfile
   case matchingUser
+  case pearUser
 }
 
 class FullProfileDisplayData: Equatable {
@@ -117,6 +118,42 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = matchingUser.images
     self.profileOrigin = .matchingUser
     self.originObject = matchingUser
+  }
+  
+  convenience init (user: PearUser) {
+    var interests: [String] = []
+    var vibes: [String] = []
+    var bioContent: [BioContent] = []
+    var doContent: [DoDontContent] = []
+    var dontContent: [DoDontContent] = []
+    
+    for profile in user.userProfiles {
+      profile.interests.forEach({
+        if !interests.contains($0) {
+          interests.append($0)
+        }
+      })
+      profile.vibes.forEach({
+        if !vibes.contains($0) {
+          vibes.append($0)
+        }
+      })
+      bioContent.append(BioContent.init(bio: profile.bio, creatorName: profile.creatorFirstName))
+      doContent.append(contentsOf: profile.dos.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
+      dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
+    }
+    self.init(firstName: user.firstName,
+              age: user.matchingDemographics.age,
+              gender: user.matchingDemographics.gender.toString(),
+              interests: interests,
+              vibes: vibes,
+              bio: bioContent,
+              dos: doContent,
+              donts: dontContent)
+    self.userID = user.documentID
+    self.imageContainers = user.displayedImages
+    self.profileOrigin = .pearUser
+    self.originObject = user
   }
   
   convenience init (pdp: PearDetachedProfile) {

@@ -15,15 +15,23 @@ class MainTabBarViewController: UITabBarController {
     guard let mainTabVC = storyboard.instantiateInitialViewController() as? MainTabBarViewController else { return nil }
     
     //      Discovery
-    if let discoverVC = DiscoverySimpleViewController.instantiate() {
-      discoverVC.tabBarItem = UITabBarItem(title: "Discovery", image: UIImage(named: "tab-icon-discovery"), selectedImage: nil)
+    if let discoverVC = DiscoverySimpleViewController.instantiate(),
+      let regularImage = R.image.tabIconDiscovery(),
+      let selectedImage = R.image.tabIconDiscoverySelected() {
+      discoverVC.tabBarItem = UITabBarItem(title: "Discover",
+                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                              .withRenderingMode(.alwaysOriginal),
+                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                              .withRenderingMode(.alwaysOriginal))
       mainTabVC.addChild(discoverVC)
     }
     
     //      Matches
-    if let friendsTabVC = FriendsTabViewController.instantiate(), let selectedImage = R.image.tabIconFriendsSelected() {
+    if let friendsTabVC = FriendsTabViewController.instantiate(),
+      let regularImage = R.image.tabIconFriends(),
+      let selectedImage = R.image.tabIconFriendsSelected() {
       friendsTabVC.tabBarItem = UITabBarItem(title: "Friends",
-                                             image: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal),
                                              selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal))
@@ -32,9 +40,11 @@ class MainTabBarViewController: UITabBarController {
     }
     
     //      Profiles
-    if let meTabVC = MeTabViewController.instantiate(), let selectedImage = R.image.tabIconMeSelected() {
+    if let meTabVC = MeTabViewController.instantiate(),
+//      let regularImage = R.image.tabIconYou(),
+      let selectedImage = R.image.tabIconYouSelected() {
       meTabVC.tabBarItem =  UITabBarItem(title: "Me",
-                                         image: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                         image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                           .withRenderingMode(.alwaysOriginal),
                                          selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                           .withRenderingMode(.alwaysOriginal))
