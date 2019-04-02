@@ -9,9 +9,11 @@
 import Foundation
 import FirebaseFirestore
 import CodableFirebase
+import SwiftyJSON
 
 enum ChatDecodingError: Error {
   case enumDecodingError
+  case badDictionaryError
 }
 
 enum ChatType: String, Codable {
@@ -74,6 +76,26 @@ class Chat: Codable, CustomStringConvertible {
     self.initialMessagesFetch()
   }
   
+  init(documentID: String,
+       type: ChatType,
+       mongoDocumentID: String,
+       lastActivity: Date,
+       messages: [Message],
+       firstPersonID: String,
+       secondPersonID: String,
+       firstPersonLastOpened: Date,
+       secondPersonLastOpened: Date) {
+    self.documentID = documentID
+    self.type = type
+    self.mongoDocumentID = mongoDocumentID
+    self.lastActivity = lastActivity
+    self.messages = messages
+    self.firstPersonID = firstPersonID
+    self.secondPersonID = secondPersonID
+    self.firstPersonLastOpened = firstPersonLastOpened
+    self.secondPersonLastOpened = secondPersonLastOpened
+  }
+  
 }
 
 // MARK: - Message Fetching
@@ -128,4 +150,78 @@ extension Chat {
     
   }
   
+}
+
+extension Chat {
+  
+  static func createFakeChat1() -> Chat {
+    let documentID = String.randomStringWithLength(len: 20)
+    let mongoDocumentID = String.randomStringWithLength(len: 20)
+    let firstPersonID = String.randomStringWithLength(len: 20)
+    let secondPersonID = String.randomStringWithLength(len: 20)
+    
+    let matchmakerID = String.randomStringWithLength(len: 20)
+    
+    let type = ChatType.match
+    let lastActivity = Date()
+    let messages = [Message.fakeServerMessage(), Message.fakeMatchmakerRequest(senderID: matchmakerID), Message.fakeUserMessage(senderID: firstPersonID, message: "what's up?")]
+    let firstPersonLastOpened = Date()
+    let secondPersonLastOpened = Date()
+    
+    return Chat(documentID: documentID,
+                type: type,
+                mongoDocumentID: mongoDocumentID,
+                lastActivity: lastActivity,
+                messages: messages,
+                firstPersonID: firstPersonID,
+                secondPersonID: secondPersonID,
+                firstPersonLastOpened: firstPersonLastOpened,
+                secondPersonLastOpened: secondPersonLastOpened)
+  }
+  
+  static func createFakeChat2() -> Chat {
+    let documentID = String.randomStringWithLength(len: 20)
+    let mongoDocumentID = String.randomStringWithLength(len: 20)
+    let firstPersonID = String.randomStringWithLength(len: 20)
+    let secondPersonID = String.randomStringWithLength(len: 20)
+    
+    let type = ChatType.match
+    let lastActivity = Date()
+    let messages = [Message.fakeServerMessage(), Message.fakePersonalRequest(senderID: secondPersonID), Message.fakeUserMessage(senderID: firstPersonID, message: "hey there!")]
+    let firstPersonLastOpened = Date()
+    let secondPersonLastOpened = Date()
+    
+    return Chat(documentID: documentID,
+                type: type,
+                mongoDocumentID: mongoDocumentID,
+                lastActivity: lastActivity,
+                messages: messages,
+                firstPersonID: firstPersonID,
+                secondPersonID: secondPersonID,
+                firstPersonLastOpened: firstPersonLastOpened,
+                secondPersonLastOpened: secondPersonLastOpened)
+  }
+  
+  static func createFakeChat3() -> Chat {
+    let documentID = String.randomStringWithLength(len: 20)
+    let mongoDocumentID = String.randomStringWithLength(len: 20)
+    let firstPersonID = String.randomStringWithLength(len: 20)
+    let secondPersonID = String.randomStringWithLength(len: 20)
+    
+    let type = ChatType.match
+    let lastActivity = Date()
+    let messages = [Message.fakeServerMessage(), Message.fakeUserMessage(senderID: firstPersonID, message: "Pear me please!")]
+    let firstPersonLastOpened = Date()
+    let secondPersonLastOpened = Date()
+    
+    return Chat(documentID: documentID,
+                type: type,
+                mongoDocumentID: mongoDocumentID,
+                lastActivity: lastActivity,
+                messages: messages,
+                firstPersonID: firstPersonID,
+                secondPersonID: secondPersonID,
+                firstPersonLastOpened: firstPersonLastOpened,
+                secondPersonLastOpened: secondPersonLastOpened)
+  }
 }
