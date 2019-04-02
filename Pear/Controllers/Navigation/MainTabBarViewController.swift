@@ -41,7 +41,7 @@ class MainTabBarViewController: UITabBarController {
     
     //      Profiles
     if let meTabVC = MeTabViewController.instantiate(),
-//      let regularImage = R.image.tabIconYou(),
+      let regularImage = R.image.tabIconYou(),
       let selectedImage = R.image.tabIconYouSelected() {
       meTabVC.tabBarItem =  UITabBarItem(title: "Me",
                                          image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
