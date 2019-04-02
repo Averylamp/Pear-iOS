@@ -42,6 +42,8 @@ class FullProfileDisplayData: Equatable {
   var locationName: String?
   var locationCoordinates: CLLocationCoordinate2D?
   var school: String?
+  var matchingDemographics: MatchingDemographics?
+  var matchingPreferences: MatchingPreferences?
   
   init (firstName: String!,
         age: Int!,
@@ -120,6 +122,8 @@ class FullProfileDisplayData: Equatable {
     self.originObject = matchingUser
     self.school = matchingUser.school
     self.locationName = matchingUser.matchingDemographics.location.locationName
+    self.matchingDemographics = matchingUser.matchingDemographics
+    self.matchingPreferences = matchingUser.matchingPreferences
   }
   
   convenience init (user: PearUser) {
@@ -158,6 +162,8 @@ class FullProfileDisplayData: Equatable {
     self.originObject = user
     self.school = user.school
     self.locationName = user.matchingDemographics.location.locationName
+    self.matchingDemographics = user.matchingDemographics
+    self.matchingPreferences = user.matchingPreferences
   }
   
   convenience init (pdp: PearDetachedProfile) {
@@ -173,6 +179,8 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = pdp.images
     self.profileOrigin = .detachedProfile
     self.originObject = pdp
+    self.matchingDemographics = pdp.matchingDemographics
+    self.matchingPreferences = pdp.matchingPreferences
   }
   
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {

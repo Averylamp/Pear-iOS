@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class PearDetachedProfile: Codable, CustomStringConvertible {
+class PearDetachedProfile: Decodable, CustomStringConvertible {
   
   var documentID: String!
   var creatorUserID: String!
@@ -22,8 +22,10 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
   var dos: [String]
   var donts: [String]
   var images: [ImageContainer]
-  
-  static let graphQLDetachedProfileFieldsAll = "{ _id creatorUser_id creatorFirstName firstName phoneNumber age gender interests vibes bio dos donts images \(ImageContainer.graphQLImageFields)  }"
+  var matchingDemographics: MatchingDemographics!
+  var matchingPreferences: MatchingPreferences!
+
+  static let graphQLDetachedProfileFieldsAll = "{ _id creatorUser_id creatorFirstName firstName phoneNumber age gender interests vibes bio dos donts images \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
   
   var description: String {
     return "**** Pear Detached Profile **** \n" + """
@@ -67,6 +69,9 @@ class PearDetachedProfile: Codable, CustomStringConvertible {
       .map({ "\"\($0)\""})
     let images = try values.decode([ImageContainer].self, forKey: .images)
     self.images = images
+    self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
+    self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)
+
   }
   
 }
