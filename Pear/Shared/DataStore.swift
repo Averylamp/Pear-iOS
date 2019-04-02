@@ -25,6 +25,8 @@ class DataStore: NSObject {
   
   weak var delegate: DataStoreLocationDelegate?
   var currentPearUser: PearUser?
+  var endorsedUsers: [MatchingPearUser] = []
+  var detachedProfiles: [PearDetachedProfile] = []
   var remoteConfig: RemoteConfig
   var locationManager: CLLocationManager
   var firstLocationReceived: Bool = false
@@ -35,7 +37,6 @@ class DataStore: NSObject {
   private override init() {
     self.remoteConfig = RemoteConfig.remoteConfig()
     self.locationManager = CLLocationManager()
-    
     super.init()
     
     self.reloadRemoteConfig()

@@ -126,20 +126,6 @@ extension DiscoverySimpleViewController {
     })
   }
   
-  func newItemsFound(fullProfileData: [FullProfileDisplayData], otherFullProfileData: [FullProfileDisplayData]) -> Bool {
-    var newItems = false
-    for prof1 in fullProfileData {
-      var foundMatch = false
-      for prof2 in otherFullProfileData where prof1 == prof2 {
-        foundMatch = true
-      }
-      if !foundMatch {
-        newItems = true
-      }
-    }
-    return newItems
-  }
-  
   func refreshFeed() {
     if let userID = DataStore.shared.currentPearUser?.documentID {
       PearProfileAPI.shared.getDiscoveryFeed(user_id: userID, completion: { (result) in
@@ -153,7 +139,7 @@ extension DiscoverySimpleViewController {
             return true
           })
           print("Found \(feedObjects.count) Feed Objects Filtered")
-          if self.newItemsFound(fullProfileData: newFeed, otherFullProfileData: self.fullProfiles) {
+          if FullProfileDisplayData.compareListsForNewItems(oldList: self.fullProfiles, newList: newFeed) {
             self.fullProfiles = newFeed
             DispatchQueue.main.async {
               self.tableView.reloadData()

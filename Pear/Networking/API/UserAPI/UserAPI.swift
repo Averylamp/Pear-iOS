@@ -12,10 +12,16 @@ enum UserAPIError: Error {
   case unknownError(error: Error)
   case invalidVariables
   case failedDeserialization
+  case unauthenticated
   case graphQLError(message: String)
 }
 
 protocol UserAPI {
   func createNewUser(with gettingStartedUserData: UserCreationData, completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
   func getUser(uid: String, token: String, completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
+  func fetchEndorsedUsers(uid: String,
+                          token: String,
+                          completion: @escaping (Result<
+    (endorsedProfiles: [MatchingPearUser], detachedProfiles: [PearDetachedProfile]),
+    UserAPIError>) -> Void)
 }

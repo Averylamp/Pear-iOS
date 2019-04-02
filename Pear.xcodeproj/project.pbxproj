@@ -176,6 +176,7 @@
 		BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */; };
 		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
 		BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418F2227E137009CEC4A /* UIView+Styling.swift */; };
+		BBD2402222531FB000380315 /* FriendProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2402122531FB000380315 /* FriendProfileCollectionViewCell.swift */; };
 		BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2842D223BFC1000AC6E30 /* PearUITests.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
@@ -398,6 +399,7 @@
 		BBCF418B2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedPhoneVerificationCompleteViewController.storyboard; sourceTree = "<group>"; };
 		BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Styling.swift"; sourceTree = "<group>"; };
 		BBCF418F2227E137009CEC4A /* UIView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Styling.swift"; sourceTree = "<group>"; };
+		BBD2402122531FB000380315 /* FriendProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD2842D223BFC1000AC6E30 /* PearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUITests.swift; sourceTree = "<group>"; };
 		BBD2842F223BFC1000AC6E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -531,7 +533,8 @@
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
 				BBDF1FEB21E2B61F00520881 /* Navigation */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
-				BBF694EE223B7E3600E13ABB /* Temporary Tabs */,
+				BB5F1DA0225318040042D443 /* Me Tab */,
+				BBF694EE223B7E3600E13ABB /* Friends Tab */,
 				BB18788F21E2B1E200964F26 /* Matches Flow */,
 				BB18789021E2B1E900964F26 /* Profiles Flow */,
 				BB18789121E2B1F500964F26 /* Settings Flow */,
@@ -774,6 +777,26 @@
 				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 			);
 			path = Profiles;
+			sourceTree = "<group>";
+		};
+		BB5F1DA0225318040042D443 /* Me Tab */ = {
+			isa = PBXGroup;
+			children = (
+				BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */,
+				BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */,
+				BB5F5310223BA57700C25861 /* ProfileMadeByTableViewCell.swift */,
+			);
+			path = "Me Tab";
+			sourceTree = "<group>";
+		};
+		BB5F1DA122531CE90042D443 /* Main VC */ = {
+			isa = PBXGroup;
+			children = (
+				BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */,
+				BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */,
+				BBD2402122531FB000380315 /* FriendProfileCollectionViewCell.swift */,
+			);
+			path = "Main VC";
 			sourceTree = "<group>";
 		};
 		BB610E98222A1E4B00901FC3 /* Styling */ = {
@@ -1340,16 +1363,12 @@
 			path = "Full Profile Scroll";
 			sourceTree = "<group>";
 		};
-		BBF694EE223B7E3600E13ABB /* Temporary Tabs */ = {
+		BBF694EE223B7E3600E13ABB /* Friends Tab */ = {
 			isa = PBXGroup;
 			children = (
-				BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */,
-				BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */,
-				BB5F5310223BA57700C25861 /* ProfileMadeByTableViewCell.swift */,
-				BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */,
-				BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */,
+				BB5F1DA122531CE90042D443 /* Main VC */,
 			);
-			path = "Temporary Tabs";
+			path = "Friends Tab";
 			sourceTree = "<group>";
 		};
 		BBFFBBD722211749002E1B54 /* ImagesAPI */ = {
@@ -1778,6 +1797,7 @@
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
+				BBD2402222531FB000380315 /* FriendProfileCollectionViewCell.swift in Sources */,
 				BBA2B4322235051400D8C27B /* ProfileDoDontViewController.swift in Sources */,
 				BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */,
 				BB0628C722463B12000D9B12 /* Match.swift in Sources */,
@@ -2044,7 +2064,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2069,7 +2089,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
