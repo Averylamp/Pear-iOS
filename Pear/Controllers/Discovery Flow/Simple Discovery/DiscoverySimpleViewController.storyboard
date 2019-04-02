@@ -236,6 +236,7 @@
                                             <outlet property="infoStackView" destination="4fa-nN-H5Y" id="v1t-3b-QUa"/>
                                             <outlet property="itemsStackView" destination="XnC-nZ-AcO" id="v63-Fg-P6J"/>
                                             <outlet property="nameLabel" destination="TBX-uV-4pf" id="jd8-pq-Uxp"/>
+                                            <outlet property="suggestedForContainer" destination="Gp4-Fi-ni8" id="Fgn-I0-NDt"/>
                                             <outlet property="suggestedForLabel" destination="wNC-Oe-XCP" id="kY5-Rl-tTy"/>
                                         </connections>
                                     </tableViewCell>

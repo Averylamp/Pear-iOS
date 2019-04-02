@@ -38,6 +38,7 @@ class DiscoveryTableViewCell: UITableViewCell {
   @IBOutlet weak var infoStackView: UIStackView!
   @IBOutlet weak var infoScrollView: UIScrollView!
   @IBOutlet weak var suggestedForLabel: UILabel!
+  @IBOutlet weak var suggestedForContainer: UIView!
   
   let indentWidth: CGFloat = 20.0
   
@@ -238,7 +239,7 @@ extension DiscoveryTableViewCell {
         NSLayoutConstraint(item: locationIconView, attribute: .right, relatedBy: .equal,
                            toItem: locationLabel, attribute: .left, multiplier: 1.0, constant: -2),
         NSLayoutConstraint(item: locationIconView, attribute: .bottom, relatedBy: .equal,
-                           toItem: locationLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0),
+                           toItem: locationLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 2),
         NSLayoutConstraint(item: locationLabel, attribute: .centerY, relatedBy: .equal,
                            toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0),
         NSLayoutConstraint(item: locationLabel, attribute: .right, relatedBy: .equal,
@@ -291,6 +292,30 @@ extension DiscoveryTableViewCell {
       self.infoScrollView.isHidden = false
     } else {
       self.infoScrollView.isHidden = true
+    }
+    
+    var suggestedFor: [String] = []
+    if let matchingDemographics = profileData.matchingDemographics,
+      let matchingPreferences = profileData.matchingPreferences {
+      for endorsedUser in DataStore.shared.endorsedUsers {
+        print("Comparing \(endorsedUser.firstName) with \(profileData.firstName)")
+        if endorsedUser.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
+          matchingPreferences.matchesDemographics(demographics: endorsedUser.matchingDemographics) {
+          suggestedFor.append(endorsedUser.firstName)
+        }
+      }
+      for detachedProfile in DataStore.shared.detachedProfiles {
+        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
+          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
+          suggestedFor.append(detachedProfile.firstName)
+        }
+      }
+    }
+    if suggestedFor.count > 0 {
+      self.suggestedForContainer.isHidden = false
+      self.suggestedForLabel.text = "Suggested for " + suggestedFor.joined(separator: ", ")
+    } else {
+      self.suggestedForContainer.isHidden = true
     }
     
   }
