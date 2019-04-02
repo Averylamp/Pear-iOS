@@ -36,25 +36,45 @@ class FriendsTabViewController: UIViewController {
 extension FriendsTabViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    if let user = DataStore.shared.currentPearUser {
-      for userProfile in user.endorsedProfiles {
-        if let fullProfile = try? FullProfileDisplayData(user: user, profiles: [userProfile]) {
-          self.userProfiles.append(fullProfile)
-        }
-      }
-      for detachedProfile in user.detachedProfiles {
-        self.userProfiles.append(FullProfileDisplayData(pdp: detachedProfile))
-      }
-    }
+  
+    self.loadNewEndorsedDetachedProfiles(endorsedProfiles: DataStore.shared.endorsedUsers,
+                                         detachedProfiles: DataStore.shared.detachedProfiles)
     
     self.tableView.dataSource = self
     self.tableView.delegate = self
     self.stylize()
   }
   
+  func loadNewEndorsedDetachedProfiles(endorsedProfiles: [MatchingPearUser], detachedProfiles: [PearDetachedProfile]) {
+    let newEndorsedProfiles = DataStore.shared.endorsedUsers.map({ FullProfileDisplayData(matchingUser: $0) })
+    let newDetachedProfiles = DataStore.shared.detachedProfiles.map({ FullProfileDisplayData(pdp: $0) })
+    var fullList: [FullProfileDisplayData] = []
+    fullList.append(contentsOf: newEndorsedProfiles)
+    fullList.append(contentsOf: newDetachedProfiles)
+    if FullProfileDisplayData.compareListsForNewItems(oldList: self.userProfiles, newList: fullList) {
+      self.userProfiles = fullList
+      DispatchQueue.main.async {      
+        self.tableView.reloadData()
+      }
+    }
+    
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    self.reloadEndorsedProfiles()
+  }
+  
   func stylize() {
     self.createFriendProfileButton.stylizeDark()
+  }
+  
+  func reloadEndorsedProfiles() {
+    self.loadNewEndorsedDetachedProfiles(endorsedProfiles: DataStore.shared.endorsedUsers,
+                                         detachedProfiles: DataStore.shared.detachedProfiles)
+    DataStore.shared.refreshEndorsedUsers { (endorsedUsers, detachedProfiles) in
+      self.loadNewEndorsedDetachedProfiles(endorsedProfiles: endorsedUsers,
+                                           detachedProfiles: detachedProfiles)
+    }
   }
   
 }

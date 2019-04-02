@@ -179,5 +179,19 @@ class FullProfileDisplayData: Equatable {
     lhs.age == rhs.age &&
     lhs.gender == rhs.gender
   }
+ 
+  static func compareListsForNewItems(oldList: [FullProfileDisplayData], newList: [FullProfileDisplayData]) -> Bool {
+    var newItems = false
+    for prof1 in newList {
+      var foundMatch = false
+      for prof2 in oldList where prof1 == prof2 {
+        foundMatch = true
+      }
+      if !foundMatch {
+        newItems = true
+      }
+    }
+    return newItems
+  }
   
 }
