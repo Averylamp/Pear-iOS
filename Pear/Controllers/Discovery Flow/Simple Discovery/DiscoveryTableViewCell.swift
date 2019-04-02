@@ -36,6 +36,7 @@ class DiscoveryTableViewCell: UITableViewCell {
   @IBOutlet weak var forwardButton: UIButton!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var infoStackView: UIStackView!
+  @IBOutlet weak var infoScrollView: UIScrollView!
   @IBOutlet weak var suggestedForLabel: UILabel!
   
   let indentWidth: CGFloat = 20.0
@@ -285,6 +286,11 @@ extension DiscoveryTableViewCell {
                            toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
         ])
       self.infoStackView.addArrangedSubview(containerView)
+    }
+    if self.infoStackView.arrangedSubviews.count > 0 {
+      self.infoScrollView.isHidden = false
+    } else {
+      self.infoScrollView.isHidden = true
     }
     
   }
