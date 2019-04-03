@@ -21,6 +21,13 @@ extension UILabel {
     self.textColor = StylingConfig.textFontColor
   }
   
+  func stylizeFullPageNameLabel() {
+    if let font = R.font.nunitoBold(size: 34) {
+     self.font = font
+    }
+    self.textColor = StylingConfig.textFontColor
+  }
+  
   func stylizeSubtitleLabel() {
     self.font = UIFont(name: StylingConfig.textFontSemiBold, size: 22)
     self.textColor = StylingConfig.textFontColor

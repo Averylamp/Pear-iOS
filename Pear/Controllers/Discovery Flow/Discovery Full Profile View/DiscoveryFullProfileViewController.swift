@@ -13,6 +13,7 @@ class DiscoveryFullProfileViewController: UIViewController {
 
   var fullProfileData: FullProfileDisplayData!
   
+  @IBOutlet weak var profileNameLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
   
   /// Factory method for creating this view controller.
@@ -72,8 +73,13 @@ class DiscoveryFullProfileViewController: UIViewController {
 extension DiscoveryFullProfileViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.stylize()
     self.addFullStackVC()
+  }
+  
+  func stylize() {
+    self.profileNameLabel.stylizeSubtitleLabelSmall()
+    self.profileNameLabel.text = self.fullProfileData.firstName
   }
   
   func addFullStackVC() {

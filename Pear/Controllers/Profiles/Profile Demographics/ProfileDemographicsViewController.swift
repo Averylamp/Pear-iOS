@@ -43,7 +43,7 @@ extension ProfileDemographicsViewController {
   }
   
   func stylize() {
-    self.firstNameLabel.stylizeTitleLabel()
+    self.firstNameLabel.stylizeFullPageNameLabel()
     self.firstNameLabel.text = self.firstName
     
     let ageIcon = createTagView(text: "\(self.age!)", image: R.image.profileIconAge())
