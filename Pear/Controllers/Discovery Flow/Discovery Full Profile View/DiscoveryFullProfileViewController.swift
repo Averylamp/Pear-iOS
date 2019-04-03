@@ -31,12 +31,8 @@ class DiscoveryFullProfileViewController: UIViewController {
   
   @IBAction func moreButtonClicked(_ sender: Any) {
     print("More Clicked")
-    let actionController = UIAlertController(title: "More Options", message: nil, preferredStyle: .actionSheet)
-    let matchAction = UIAlertAction(title: "Match", style: .default) { (_) in
-      DispatchQueue.main.async {
-        self.alert(title: "Matching not available yet 😢", message: "Coming very soon!!!")
-      }
-    }
+    let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
     let blockAction = UIAlertAction(title: "Block User", style: .destructive) { (_) in
       DispatchQueue.main.async {
         if let userID = self.fullProfileData.userID {
@@ -64,7 +60,6 @@ class DiscoveryFullProfileViewController: UIViewController {
       }
     }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    actionController.addAction(matchAction)
     actionController.addAction(blockAction)
     actionController.addAction(reportAction)
     actionController.addAction(cancelAction)

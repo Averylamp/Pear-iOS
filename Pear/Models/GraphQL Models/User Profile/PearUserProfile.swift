@@ -61,14 +61,14 @@ class PearUserProfile: Codable, CustomStringConvertible {
     self.creatorUserID = try values.decode(String.self, forKey: .creatorUserID)
     self.ownerUserID = try values.decode(String.self, forKey: .ownerUserID)
     self.creatorFirstName = try values.decode(String.self, forKey: .creatorFirstName)
-    self.interests = try values.decode([String].self, forKey: .interests)
+    self.interests = try values.decode([String].self, forKey: .interests).map({ $0.firstCapitalized })
     self.vibes = try values.decode([String].self, forKey: .vibes)
     self.bio = try values.decode(String.self, forKey: .bio).trimmingCharacters(in: .whitespacesAndNewlines)
-    self.bio =  "\"\(self.bio!)\""
+    self.bio =  "\"\(self.bio!.firstCapitalized)\""
     self.dos = try values.decode([String].self, forKey: .dos).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
-      .map({ "\"\($0)\""})
+      .map({ "\"\($0.firstCapitalized)\""})
     self.donts = try values.decode([String].self, forKey: .donts).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
-      .map({ "\"\($0)\""})
+      .map({ "\"\($0.firstCapitalized)\""})
   }
   
 }

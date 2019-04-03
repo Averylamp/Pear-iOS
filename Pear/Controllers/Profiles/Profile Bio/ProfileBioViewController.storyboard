@@ -40,8 +40,8 @@
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AvL-kg-M9P">
                                 <rect key="frame" x="187.5" y="0.0" width="0.0" height="0.0"/>
-                                <color key="pageIndicatorTintColor" white="0.10000000000000001" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
-                                <color key="currentPageIndicatorTintColor" white="0.5" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <color key="pageIndicatorTintColor" white="0.5" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.10000000000000001" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
