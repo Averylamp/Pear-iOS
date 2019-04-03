@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DJh-4O-bGc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DJh-4O-bGc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -110,16 +110,6 @@
                                             <constraint firstAttribute="width" secondItem="l45-qU-wM2" secondAttribute="height" multiplier="1:1" id="sYl-AR-pYk"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdY-PL-ZSA" userLabel="Extra Button">
-                                        <rect key="frame" x="319" y="5" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="hcl-R0-z5i"/>
-                                            <constraint firstAttribute="width" constant="40" id="pnp-yp-jW9"/>
-                                        </constraints>
-                                        <state key="normal" image="onboarding-close-button">
-                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yI-5L-k1i" userLabel="Progress View">
                                         <rect key="frame" x="0.0" y="49" width="375" height="1"/>
                                         <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -131,9 +121,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="4yI-5L-k1i" firstAttribute="width" secondItem="7rK-j9-b42" secondAttribute="width" id="1QG-yr-HaT" userLabel="Progress View Width Constraint"/>
-                                    <constraint firstItem="KdY-PL-ZSA" firstAttribute="centerY" secondItem="7rK-j9-b42" secondAttribute="centerY" id="J8g-vR-559"/>
                                     <constraint firstItem="4yI-5L-k1i" firstAttribute="leading" secondItem="7rK-j9-b42" secondAttribute="leading" id="PzS-M2-GnA"/>
-                                    <constraint firstAttribute="trailing" secondItem="KdY-PL-ZSA" secondAttribute="trailing" constant="16" id="Voi-fR-I9L"/>
                                     <constraint firstAttribute="bottom" secondItem="4yI-5L-k1i" secondAttribute="bottom" id="XI6-pV-5vb"/>
                                     <constraint firstItem="aO8-wA-vcf" firstAttribute="centerY" secondItem="7rK-j9-b42" secondAttribute="centerY" id="fds-QJ-0cu"/>
                                     <constraint firstItem="aO8-wA-vcf" firstAttribute="leading" secondItem="7rK-j9-b42" secondAttribute="leading" constant="12" id="g4Q-Rt-p2z"/>
@@ -177,9 +165,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="30" height="30"/>
-        <image name="onboarding-close-button" width="30" height="30"/>
-        <image name="onboarding-icon-us-flag" width="20" height="20.25"/>
-        <image name="onboarding-icon-verify-phone-shield-incomplete" width="74" height="74"/>
+        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-icon-us-flag" width="80" height="81"/>
+        <image name="onboarding-icon-verify-phone-shield-incomplete" width="296" height="296"/>
     </resources>
 </document>
