@@ -134,7 +134,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="C6B-VB-LsR"/>
                                 </constraints>
-                                <state key="normal" title="I don't want to make a profile">
+                                <state key="normal" title="Skip">
                                     <color key="titleColor" red="0.76078431369999999" green="0.76862745099999996" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -198,7 +198,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="school-icon" width="256" height="256"/>
     </resources>
 </document>

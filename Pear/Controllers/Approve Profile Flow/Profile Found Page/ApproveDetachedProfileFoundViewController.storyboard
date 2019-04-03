@@ -36,7 +36,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XV6-Vt-aX3"/>
                                 </constraints>
-                                <state key="normal" title="Skip for now"/>
+                                <state key="normal" title="Reject Profile"/>
                                 <connections>
                                     <action selector="skipButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="F8S-bX-B1y"/>
                                 </connections>

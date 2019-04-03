@@ -15,6 +15,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   
   @IBOutlet weak var profileNameLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var pearButton: UIButton!
   
   /// Factory method for creating this view controller.
   ///
@@ -40,9 +41,10 @@ class DiscoveryFullProfileViewController: UIViewController {
           var blockedUsers = DataStore.shared.fetchListFromDefaults(type: .blockedUsers)
           if !blockedUsers.contains(userID) {
             blockedUsers.append(userID)
+            print(blockedUsers)
           }
-          NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
           DataStore.shared.saveListToDefaults(list: blockedUsers, type: .blockedUsers)
+          NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
         }
         self.navigationController?.popViewController(animated: true)
         self.alert(title: "User Reported", message: "Thank you for your report and making Pear a safe place")
@@ -67,6 +69,19 @@ class DiscoveryFullProfileViewController: UIViewController {
     self.present(actionController, animated: true, completion: nil)
   }
   
+  @IBAction func pearButtonClicked(_ sender: Any) {
+    
+    var pearMessage = "You'll be notified if someone pears you with them."
+    if let configPearMessage = DataStore.shared.remoteConfig.configValue(forKey: "pear_button_string").stringValue {
+      pearMessage = configPearMessage
+    }
+    
+    let alertVC = UIAlertController(title: "Request Sent!", message: pearMessage, preferredStyle: .alert)
+    let continueButton = UIAlertAction(title: "Okay!", style: .default, handler: nil)
+    alertVC.addAction(continueButton)
+    self.present(alertVC, animated: true, completion: nil)
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -80,6 +95,18 @@ extension DiscoveryFullProfileViewController {
   func stylize() {
     self.profileNameLabel.stylizeSubtitleLabelSmall()
     self.profileNameLabel.text = self.fullProfileData.firstName
+    
+    if DataStore.shared.remoteConfig.configValue(forKey: "pear_button_enabled").boolValue {
+      self.pearButton.isHidden = false
+    } else {
+      self.pearButton.isHidden = true
+    }
+    
+    self.pearButton.layer.cornerRadius = 30
+    self.pearButton.layer.shadowOpacity = 0.2
+    self.pearButton.layer.shadowColor = UIColor.black.cgColor
+    self.pearButton.layer.shadowRadius = 6
+    self.pearButton.layer.shadowOffset = CGSize(width: 2, height: 2)
   }
   
   func addFullStackVC() {

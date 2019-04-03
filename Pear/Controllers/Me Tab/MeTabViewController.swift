@@ -34,13 +34,11 @@ extension MeTabViewController {
     if let user = DataStore.shared.currentPearUser {
       self.fullProfile = FullProfileDisplayData(user: user)
     }
-    
-    self.refreshFullStackVC()
 
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    
+    self.refreshFullStackVC()
   }
   
   func checkForUpdatedUser() {
@@ -58,8 +56,15 @@ extension MeTabViewController {
   func refreshFullStackVC() {
     self.scrollView.subviews.forEach({ $0.removeFromSuperview() })
     
-    guard let fullProfile = self.fullProfile,
-      let fullProfileStackVC = FullProfileStackViewController.instantiate(userFullProfileData: fullProfile) else {
+    guard let fullProfile = self.fullProfile else {
+      print("Failed to get full profile")
+      return
+    }
+    if fullProfile.imageContainers.count == 0 && fullProfile.rawImages.count == 0,
+      let incompleteImage = R.image.meIncompleteProfile() {
+      fullProfile.rawImages.append(incompleteImage)
+    }
+    guard let fullProfileStackVC = FullProfileStackViewController.instantiate(userFullProfileData: fullProfile) else {
       print("Failed to create full profiles stack VC")
       return
     }

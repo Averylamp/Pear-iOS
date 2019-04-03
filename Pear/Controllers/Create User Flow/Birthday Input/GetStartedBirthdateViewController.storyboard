@@ -130,7 +130,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-icon-age" width="128" height="128"/>
     </resources>
 </document>
