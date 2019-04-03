@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dC2-Zw-Xmy">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Gender Preferences View Controller-->
+        <scene sceneID="MqL-U2-E3Z">
+            <objects>
+                <viewController id="dC2-Zw-Xmy" customClass="UserGenderPreferencesViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fsO-N1-3wn"/>
+                        <viewControllerLayoutGuide type="bottom" id="pIZ-Zj-Zgt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ftW-dP-gxv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOA-ci-ZIe">
+                                <rect key="frame" x="20" y="280" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UcG-A3-Lqu"/>
+                                </constraints>
+                                <state key="normal" title="Female"/>
+                                <connections>
+                                    <action selector="genderButtonToggled:" destination="dC2-Zw-Xmy" eventType="touchUpInside" id="a64-2k-UOQ"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="update-icon-selected" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-gm-IdU">
+                                <rect key="frame" x="317" y="290" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="DUf-y0-4Yg"/>
+                                    <constraint firstAttribute="height" constant="30" id="FCl-Fp-Sq7"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender-female" translatesAutoresizingMaskIntoConstraints="NO" id="fGr-ph-dUS">
+                                <rect key="frame" x="28" y="290" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="9uC-5l-we8"/>
+                                    <constraint firstAttribute="height" constant="30" id="EyV-kf-oqb"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JDS-pL-0vi">
+                                <rect key="frame" x="20" y="218" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="WIZ-VA-EMZ"/>
+                                </constraints>
+                                <state key="normal" title="Male"/>
+                                <connections>
+                                    <action selector="genderButtonToggled:" destination="dC2-Zw-Xmy" eventType="touchUpInside" id="bGx-ws-gdL"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="update-icon-selected" translatesAutoresizingMaskIntoConstraints="NO" id="aGA-d1-ObX">
+                                <rect key="frame" x="317" y="228" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1hh-Rv-B5g"/>
+                                    <constraint firstAttribute="width" constant="30" id="h7E-SJ-bVj"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender-male" translatesAutoresizingMaskIntoConstraints="NO" id="e9r-Nc-Ags">
+                                <rect key="frame" x="28" y="228" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2eM-0k-5cI"/>
+                                    <constraint firstAttribute="width" constant="30" id="76E-Ta-vhg"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgc-h7-bhq">
+                                <rect key="frame" x="20" y="342" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cdT-bb-7gz"/>
+                                </constraints>
+                                <state key="normal" title="Non Binary"/>
+                                <connections>
+                                    <action selector="genderButtonToggled:" destination="dC2-Zw-Xmy" eventType="touchUpInside" id="SUY-gE-p31"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender-nonbinary" translatesAutoresizingMaskIntoConstraints="NO" id="mgA-FX-kbl">
+                                <rect key="frame" x="28" y="352" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="47x-rH-cf8"/>
+                                    <constraint firstAttribute="height" constant="30" id="Tv0-7i-Ih9"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft7-YK-yrj">
+                                <rect key="frame" x="24" y="52" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select all that apply." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2UD-Nf-3OZ">
+                                <rect key="frame" x="24" y="81" width="154" height="129"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="update-icon-selected" translatesAutoresizingMaskIntoConstraints="NO" id="6Ln-6u-Ord">
+                                <rect key="frame" x="317" y="352" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="La9-Y0-Hym"/>
+                                    <constraint firstAttribute="width" constant="30" id="zgy-kI-feP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aGA-d1-ObX" firstAttribute="trailing" secondItem="JDS-pL-0vi" secondAttribute="trailing" constant="-8" id="0Ax-To-sPD"/>
+                            <constraint firstItem="JDS-pL-0vi" firstAttribute="centerX" secondItem="Zgc-h7-bhq" secondAttribute="centerX" id="39e-bq-xbc"/>
+                            <constraint firstItem="Zgc-h7-bhq" firstAttribute="leading" secondItem="ftW-dP-gxv" secondAttribute="leading" constant="20" id="A6z-m6-RyI"/>
+                            <constraint firstItem="JDS-pL-0vi" firstAttribute="width" secondItem="Zgc-h7-bhq" secondAttribute="width" id="APy-7V-JbU"/>
+                            <constraint firstItem="Zgc-h7-bhq" firstAttribute="top" secondItem="JOA-ci-ZIe" secondAttribute="bottom" constant="12" id="An9-AI-Gyn"/>
+                            <constraint firstItem="JOA-ci-ZIe" firstAttribute="centerX" secondItem="Zgc-h7-bhq" secondAttribute="centerX" id="C4S-aM-s0M"/>
+                            <constraint firstItem="e9r-Nc-Ags" firstAttribute="leading" secondItem="JDS-pL-0vi" secondAttribute="leading" constant="8" id="Dwt-2c-KNa"/>
+                            <constraint firstItem="ft7-YK-yrj" firstAttribute="top" secondItem="fsO-N1-3wn" secondAttribute="bottom" constant="8" id="FFO-h5-ETP"/>
+                            <constraint firstItem="Zgc-h7-bhq" firstAttribute="top" secondItem="JOA-ci-ZIe" secondAttribute="bottom" constant="12" id="Fy3-lO-91n"/>
+                            <constraint firstItem="JOA-ci-ZIe" firstAttribute="top" secondItem="JDS-pL-0vi" secondAttribute="bottom" constant="12" id="Hpc-e5-6fB"/>
+                            <constraint firstItem="JOA-ci-ZIe" firstAttribute="width" secondItem="Zgc-h7-bhq" secondAttribute="width" id="IB6-hL-dN7"/>
+                            <constraint firstItem="fGr-ph-dUS" firstAttribute="leading" secondItem="JOA-ci-ZIe" secondAttribute="leading" constant="8" id="J1R-9U-E1R"/>
+                            <constraint firstItem="tZF-gm-IdU" firstAttribute="trailing" secondItem="JOA-ci-ZIe" secondAttribute="trailing" constant="-8" id="K1n-dY-T7g"/>
+                            <constraint firstItem="aGA-d1-ObX" firstAttribute="centerY" secondItem="JDS-pL-0vi" secondAttribute="centerY" id="Kmp-YH-SDK"/>
+                            <constraint firstAttribute="bottom" secondItem="Zgc-h7-bhq" secondAttribute="bottom" constant="8" id="MOO-ft-gWX"/>
+                            <constraint firstAttribute="trailing" secondItem="Zgc-h7-bhq" secondAttribute="trailing" constant="20" id="Mw5-wX-0sr"/>
+                            <constraint firstItem="mgA-FX-kbl" firstAttribute="centerY" secondItem="Zgc-h7-bhq" secondAttribute="centerY" id="PhB-mX-7UY"/>
+                            <constraint firstItem="2UD-Nf-3OZ" firstAttribute="top" secondItem="ft7-YK-yrj" secondAttribute="bottom" constant="8" id="TF9-gs-hNz"/>
+                            <constraint firstItem="mgA-FX-kbl" firstAttribute="leading" secondItem="Zgc-h7-bhq" secondAttribute="leading" constant="8" id="TkB-6E-D1C"/>
+                            <constraint firstItem="ft7-YK-yrj" firstAttribute="leading" secondItem="ftW-dP-gxv" secondAttribute="leadingMargin" constant="8" id="XnM-OP-qzq"/>
+                            <constraint firstItem="2UD-Nf-3OZ" firstAttribute="leading" secondItem="ftW-dP-gxv" secondAttribute="leadingMargin" constant="8" id="YGF-Os-dBb"/>
+                            <constraint firstItem="fGr-ph-dUS" firstAttribute="centerY" secondItem="JOA-ci-ZIe" secondAttribute="centerY" id="aTd-g9-utq"/>
+                            <constraint firstItem="6Ln-6u-Ord" firstAttribute="centerY" secondItem="Zgc-h7-bhq" secondAttribute="centerY" id="dyF-ts-bfy"/>
+                            <constraint firstItem="JDS-pL-0vi" firstAttribute="top" secondItem="2UD-Nf-3OZ" secondAttribute="bottom" constant="8" id="khX-HT-MxO"/>
+                            <constraint firstItem="tZF-gm-IdU" firstAttribute="centerY" secondItem="JOA-ci-ZIe" secondAttribute="centerY" id="n3D-mT-458"/>
+                            <constraint firstItem="6Ln-6u-Ord" firstAttribute="trailing" secondItem="Zgc-h7-bhq" secondAttribute="trailing" constant="-8" id="nSn-YS-3dW"/>
+                            <constraint firstItem="e9r-Nc-Ags" firstAttribute="centerY" secondItem="JDS-pL-0vi" secondAttribute="centerY" id="ppS-t6-azt"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="400"/>
+                    <connections>
+                        <outlet property="femaleGenderButton" destination="JOA-ci-ZIe" id="Tfv-jz-ifh"/>
+                        <outlet property="femaleSelectedIndicator" destination="tZF-gm-IdU" id="vP9-3v-Ngd"/>
+                        <outlet property="maleGenderButton" destination="JDS-pL-0vi" id="Iew-3s-B8E"/>
+                        <outlet property="maleSelectedIndicator" destination="aGA-d1-ObX" id="bWW-tW-eZM"/>
+                        <outlet property="nonbinaryGenderButton" destination="Zgc-h7-bhq" id="pye-Pv-31g"/>
+                        <outlet property="nonbinarySelectedIndicator" destination="6Ln-6u-Ord" id="tet-fv-5nZ"/>
+                        <outlet property="subtitleLabel" destination="2UD-Nf-3OZ" id="CpV-lH-HBQ"/>
+                        <outlet property="titleLabel" destination="ft7-YK-yrj" id="m2A-PJ-9q6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scJ-rC-9ob" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48.550724637681164" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-icon-gender-female" width="128" height="128"/>
+        <image name="onboarding-icon-gender-male" width="128" height="128"/>
+        <image name="onboarding-icon-gender-nonbinary" width="128" height="128"/>
+        <image name="update-icon-selected" width="96" height="96"/>
+    </resources>
+</document>

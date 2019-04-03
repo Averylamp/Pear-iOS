@@ -28,6 +28,10 @@ class PearUserAPI: UserAPI {
   static let getUserQuery: String = "query GetUser($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLUserFieldsAll) }}"
   static let fetchEndorsedUsersQuery: String = "query GetEndorsedUsers($userInput: GetUserInput) { getUser(userInput:$userInput) { success message user { endorsedProfileObjs { userObj \(MatchingPearUser.graphQLMatchedUserFieldsAll) } detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFieldsAll))  }  }}"
   
+  func getUpdateUserQueryWithName(name: String) -> String {
+    return "mutation \(name)($user_id: ID, $userInput: UpdateUserInput){ updateUser(id:$user_id, updateUserInput:$userInput){ success message } }"
+  }
+  
   func generateSentryEvent(level: SentrySeverity = .warning,
                            message: String,
                            tags: [String: String] = [:],
@@ -186,6 +190,9 @@ extension PearUserAPI {
     request.allHTTPHeaderFields = defaultHeaders
     
     do {
+      if let firebaseRemoteInstanceID = DataStore.shared.firebaseRemoteInstanceID {
+        gettingStartedUserData.firebaseRemoteInstanceID = firebaseRemoteInstanceID
+      }
       let fullDictionary: [String: Any] = [
         "query": PearUserAPI.createUserQuery,
         "variables": [
@@ -234,6 +241,93 @@ extension PearUserAPI {
     }
   }
   
+  //swiftlint:disable:next function_parameter_count
+  func updateUserPreferences(userID: String,
+                             genderPrefs: [String],
+                             minAge: Int,
+                             maxAge: Int,
+                             locationName: String?,
+                             completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+    let preferenceDictionary: [String: Any] = [
+      "minAgeRange": minAge,
+      "maxAgeRange": maxAge,
+      "seekingGender": genderPrefs,
+      "locationName": locationName as Any
+    ]
+    self.updateUserWithPreferenceDictionary(userID: userID,
+                                            inputDictionary: preferenceDictionary,
+                                            mutationName: "UpdateUserPrefernces",
+                                            completion: completion)
+  }
+  
+  func updateUserSchool(userID: String,
+                        schoolName: String?,
+                        schoolYear: String?,
+                        completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+    let preferenceDictionary: [String: Any] = [
+      "school": schoolName as Any
+    ]
+    self.updateUserWithPreferenceDictionary(userID: userID,
+                                            inputDictionary: preferenceDictionary,
+                                            mutationName: "UpdateUserSchool",
+                                            completion: completion)
+  }
+  
+  func updateUserWithPreferenceDictionary(userID: String,
+                                          inputDictionary: [String: Any],
+                                          mutationName: String = "UpdateUser",
+                                          completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    request.allHTTPHeaderFields = defaultHeaders
+    
+    do {
+      let fullDictionary: [String: Any] = [
+        "query": getUpdateUserQueryWithName(name: mutationName),
+        "variables": [
+          "user_id": userID,
+          "userInput": inputDictionary
+        ]
+      ]
+      
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        print("Data task returned")
+        if let error = error {
+          print(error as Any)
+          completion(.failure(UserAPIError.unknownError(error: error)))
+          return
+        } else {
+          let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "updateUser")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
+            print("Failed to Update User: \(helperResult)")
+            self.generateSentryEvent(level: .error, message: "GraphQL Error: \(helperResult)",
+              tags: ["function": "updateUser"], paylod: fullDictionary)
+            completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Update User: \(message ?? "")")
+            self.generateSentryEvent(level: .error, message: message ?? "Failed to Update User",
+                                     tags: ["function": "updateUser"], paylod: fullDictionary)
+            completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
+          case .success(let message):
+            print("Successfully Updated User: \(String(describing: message))")
+            completion(.success(true))
+          }
+        }
+      }
+      dataTask.resume()
+    } catch {
+      print(error)
+      completion(.failure(UserAPIError.unknownError(error: error)))
+    }
+    
+  }
+  
 }
 
 // MARK: - Create User Endpoint Helpers
@@ -249,8 +343,7 @@ extension PearUserAPI {
       let lastName = userData.lastName,
       let gender = userData.gender,
       let firebaseToken = userData.firebaseToken,
-      let firebaseAuthID = userData.firebaseAuthID,
-      let location = userData.lastLocation
+      let firebaseAuthID = userData.firebaseAuthID
       else {
         throw UserAPIError.invalidVariables
     }
@@ -265,9 +358,16 @@ extension PearUserAPI {
       "lastName": lastName,
       "gender": gender.rawValue,
       "firebaseToken": firebaseToken,
-      "firebaseAuthID": firebaseAuthID,
-      "location": [location.longitude, location.latitude]
+      "firebaseAuthID": firebaseAuthID
     ]
+    
+    if let firebaseRemoteInstanceID = userData.firebaseRemoteInstanceID {
+      variablesDictionary["firebaseRemoteInstanceID"] = firebaseRemoteInstanceID
+    }
+    
+    if let location = userData.lastLocation {
+      variablesDictionary["location"] = [location.longitude, location.latitude]
+    }
     
     let birthdayFormatter = DateFormatter()
     birthdayFormatter.dateFormat = "yyyy-MM-dd"

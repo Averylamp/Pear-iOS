@@ -30,10 +30,11 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.testCheckUserProfiles()
+    self.ctestUpdateUserSchool()
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
         DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+          DataStore.shared.refreshEndorsedUsers(completion: nil)
           self.continueToMainScreen()
         }, userNotFoundCompletion: {
           self.continueToLandingScreen()
@@ -148,4 +149,43 @@ extension LoadingScreenViewController {
     DataStore.shared.refreshEndorsedUsers(completion: nil)
   }
   
+  func ctestUpdateUserSchool() {
+    PearUserAPI.shared.updateUserSchool(userID: "5c82162afec46c84e924a332",
+                                        schoolName: "MIT",
+                                        schoolYear: "2020") { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Update user school was successful")
+        } else {
+          print("Update user school was unsuccessful")
+        }
+        
+      case .failure(let error):
+        print("Update user failure: \(error)")
+      }
+    }
+  }
+ 
+  func testUpdateUserPrefs() {
+    PearUserAPI.shared.updateUserPreferences(userID: "5c82162afec46c84e924a332",
+                                             genderPrefs: ["female"],
+                                             minAge: 18,
+                                             maxAge: 25,
+                                             locationName: nil) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Update user was successful")
+        } else {
+          print("Update user was unsuccessful")
+        }
+        
+      case .failure(let error):
+        print("Update user failure: \(error)")
+      }
+
+    }
+    
+  }
 }

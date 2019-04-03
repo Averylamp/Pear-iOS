@@ -71,4 +71,15 @@ extension UILabel {
     self.adjustsFontSizeToFitWidth = true
     self.textColor = StylingConfig.textFontColor
   }
+  
+  func stylizePreferencesTitleLabel() {
+    self.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
+    self.textColor = StylingConfig.textFontColor
+  }
+  
+  func stylizePreferencesSubtitleLabel() {
+    self.font = UIFont(name: StylingConfig.displayFontRegular, size: 15)
+    self.textColor = StylingConfig.textFontColor
+  }
+  
 }

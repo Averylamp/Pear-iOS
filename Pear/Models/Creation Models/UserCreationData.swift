@@ -29,6 +29,7 @@ class UserCreationData: CustomStringConvertible {
   var facebookAccessToken: String?
   var thumbnailURL: String?
   var lastLocation: CLLocationCoordinate2D?
+  var firebaseRemoteInstanceID: String?
   init() {
     
   }

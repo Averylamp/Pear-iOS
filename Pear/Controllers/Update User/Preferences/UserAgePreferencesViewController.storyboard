@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XQD-gj-xXe">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--User Age Preferences View Controller-->
+        <scene sceneID="VE7-2m-haE">
+            <objects>
+                <viewController id="XQD-gj-xXe" customClass="UserAgePreferencesViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ryG-F5-pun"/>
+                        <viewControllerLayoutGuide type="bottom" id="1IG-D1-i5G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X7h-x7-sqe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiU-I2-Ycw">
+                                <rect key="frame" x="28" y="37" width="43" height="23"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ai8-sl-aiH">
+                                <rect key="frame" x="28" y="62" width="148.5" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sf5-Mo-8Es">
+                                        <rect key="frame" x="6" y="6" width="136.5" height="38"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="numberPad" returnKeyType="next"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="sf5-Mo-8Es" firstAttribute="leading" secondItem="Ai8-sl-aiH" secondAttribute="leading" constant="6" id="K0A-Eg-7BN"/>
+                                    <constraint firstItem="sf5-Mo-8Es" firstAttribute="top" secondItem="Ai8-sl-aiH" secondAttribute="top" constant="6" id="U2a-jW-Dm3"/>
+                                    <constraint firstAttribute="height" constant="50" id="a3D-xO-dV7"/>
+                                    <constraint firstAttribute="trailing" secondItem="sf5-Mo-8Es" secondAttribute="trailing" constant="6" id="gdy-Ac-EPL"/>
+                                    <constraint firstAttribute="bottom" secondItem="sf5-Mo-8Es" secondAttribute="bottom" constant="6" id="ndg-qV-whj"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf0-OL-LLE">
+                                <rect key="frame" x="196.5" y="37" width="45.5" height="23"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                                <color key="textColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-a9-7d1">
+                                <rect key="frame" x="196.5" y="62" width="148.5" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fu1-Mu-NQD">
+                                        <rect key="frame" x="6" y="6" width="136.5" height="38"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fu1-Mu-NQD" firstAttribute="leading" secondItem="J3t-a9-7d1" secondAttribute="leading" constant="6" id="EKV-s9-eAT"/>
+                                    <constraint firstAttribute="bottom" secondItem="fu1-Mu-NQD" secondAttribute="bottom" constant="6" id="JBM-2h-5h5"/>
+                                    <constraint firstAttribute="height" constant="50" id="NEQ-Fp-mP8"/>
+                                    <constraint firstAttribute="trailing" secondItem="fu1-Mu-NQD" secondAttribute="trailing" constant="6" id="Oyh-sD-paM"/>
+                                    <constraint firstItem="fu1-Mu-NQD" firstAttribute="top" secondItem="J3t-a9-7d1" secondAttribute="top" constant="6" id="tmD-Pj-Yxy"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcU-C8-X0F">
+                                <rect key="frame" x="24" y="8" width="30" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wf0-OL-LLE" firstAttribute="centerY" secondItem="UiU-I2-Ycw" secondAttribute="centerY" id="2th-gU-wOV"/>
+                            <constraint firstItem="UiU-I2-Ycw" firstAttribute="leading" secondItem="rcU-C8-X0F" secondAttribute="leading" constant="4" id="9Cs-aA-lTb"/>
+                            <constraint firstItem="Ai8-sl-aiH" firstAttribute="leading" secondItem="UiU-I2-Ycw" secondAttribute="leading" id="9dQ-Qu-XKt"/>
+                            <constraint firstItem="J3t-a9-7d1" firstAttribute="leading" secondItem="wf0-OL-LLE" secondAttribute="leading" id="CEV-TR-1li"/>
+                            <constraint firstItem="rcU-C8-X0F" firstAttribute="top" secondItem="X7h-x7-sqe" secondAttribute="top" constant="8" id="EIp-q8-o4R"/>
+                            <constraint firstItem="J3t-a9-7d1" firstAttribute="leading" secondItem="Ai8-sl-aiH" secondAttribute="trailing" constant="20" id="Fc9-gY-sWF"/>
+                            <constraint firstAttribute="trailing" secondItem="J3t-a9-7d1" secondAttribute="trailing" constant="30" id="HoM-nK-35N"/>
+                            <constraint firstItem="rcU-C8-X0F" firstAttribute="leading" secondItem="X7h-x7-sqe" secondAttribute="leadingMargin" constant="8" id="JDt-mc-Pla"/>
+                            <constraint firstAttribute="bottom" secondItem="Ai8-sl-aiH" secondAttribute="bottom" constant="8" id="MoI-0S-Ye9"/>
+                            <constraint firstItem="UiU-I2-Ycw" firstAttribute="top" secondItem="rcU-C8-X0F" secondAttribute="bottom" constant="8" id="R0O-ic-md9"/>
+                            <constraint firstItem="Ai8-sl-aiH" firstAttribute="top" secondItem="UiU-I2-Ycw" secondAttribute="bottom" constant="2" id="Tua-e7-Kdc"/>
+                            <constraint firstItem="J3t-a9-7d1" firstAttribute="centerY" secondItem="Ai8-sl-aiH" secondAttribute="centerY" id="sNT-I3-Jp1"/>
+                            <constraint firstItem="J3t-a9-7d1" firstAttribute="top" secondItem="wf0-OL-LLE" secondAttribute="bottom" constant="2" id="uwv-cF-bSC"/>
+                            <constraint firstItem="J3t-a9-7d1" firstAttribute="width" secondItem="Ai8-sl-aiH" secondAttribute="width" id="yV2-m9-pOr"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="120"/>
+                    <connections>
+                        <outlet property="maximumSubtitleLabel" destination="wf0-OL-LLE" id="7Uw-d9-k6h"/>
+                        <outlet property="maximumTextField" destination="fu1-Mu-NQD" id="ohY-VM-d6n"/>
+                        <outlet property="maximumTextInputContainer" destination="J3t-a9-7d1" id="AAQ-K8-SQm"/>
+                        <outlet property="minimumSubtitleLabel" destination="UiU-I2-Ycw" id="AFI-Mg-WTT"/>
+                        <outlet property="minimumTextField" destination="sf5-Mo-8Es" id="3Ms-78-cOE"/>
+                        <outlet property="minimumTextInputContainer" destination="Ai8-sl-aiH" id="0L7-7B-uF3"/>
+                        <outlet property="titleLabel" destination="rcU-C8-X0F" id="j7a-2W-YXk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yHA-op-XnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48.550724637681164" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+</document>

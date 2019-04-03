@@ -39,9 +39,11 @@ class FullProfileDisplayData: Equatable {
   var rawImages: [UIImage] = []
   var profileOrigin: FullProfileOrigin?
   var originObject: Any?
-  var locationName: String? = "Boston, MA"
+  var locationName: String?
   var locationCoordinates: CLLocationCoordinate2D?
-  var school: String? = "Harvard University"
+  var school: String?
+  var matchingDemographics: MatchingDemographics?
+  var matchingPreferences: MatchingPreferences?
   
   init (firstName: String!,
         age: Int!,
@@ -118,6 +120,10 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = matchingUser.images
     self.profileOrigin = .matchingUser
     self.originObject = matchingUser
+    self.school = matchingUser.school
+    self.locationName = matchingUser.matchingDemographics.location.locationName
+    self.matchingDemographics = matchingUser.matchingDemographics
+    self.matchingPreferences = matchingUser.matchingPreferences
   }
   
   convenience init (user: PearUser) {
@@ -154,6 +160,10 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = user.displayedImages
     self.profileOrigin = .pearUser
     self.originObject = user
+    self.school = user.school
+    self.locationName = user.matchingDemographics.location.locationName
+    self.matchingDemographics = user.matchingDemographics
+    self.matchingPreferences = user.matchingPreferences
   }
   
   convenience init (pdp: PearDetachedProfile) {
@@ -169,6 +179,8 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = pdp.images
     self.profileOrigin = .detachedProfile
     self.originObject = pdp
+    self.matchingDemographics = pdp.matchingDemographics
+    self.matchingPreferences = pdp.matchingPreferences
   }
   
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {

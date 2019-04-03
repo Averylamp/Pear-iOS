@@ -28,26 +28,36 @@
                                             <constraint firstAttribute="height" constant="1" id="XHe-5C-CTM"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profiles Made for You" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgu-uw-QAM">
-                                        <rect key="frame" x="106" y="14.5" width="163" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-icon-you-selected" translatesAutoresizingMaskIntoConstraints="NO" id="3cg-NJ-uHc">
+                                        <rect key="frame" x="170.5" y="8" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="3cg-NJ-uHc" secondAttribute="height" multiplier="1:1" id="PZ7-Wo-pud"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="pgu-uw-QAM" firstAttribute="centerX" secondItem="jm5-Sd-1i9" secondAttribute="centerX" id="28j-sL-W8t"/>
                                     <constraint firstAttribute="height" constant="50" id="Gng-0r-YjS"/>
                                     <constraint firstAttribute="bottom" secondItem="l2N-Iu-8ZE" secondAttribute="bottom" id="JJ3-jr-oHz"/>
-                                    <constraint firstItem="pgu-uw-QAM" firstAttribute="centerY" secondItem="jm5-Sd-1i9" secondAttribute="centerY" id="XWO-lz-uD3"/>
+                                    <constraint firstItem="3cg-NJ-uHc" firstAttribute="centerX" secondItem="jm5-Sd-1i9" secondAttribute="centerX" id="XB0-JF-1jk"/>
                                     <constraint firstItem="l2N-Iu-8ZE" firstAttribute="leading" secondItem="jm5-Sd-1i9" secondAttribute="leading" id="Zuq-nh-DH5"/>
+                                    <constraint firstAttribute="bottom" secondItem="3cg-NJ-uHc" secondAttribute="bottom" constant="8" id="nQN-pn-vF2"/>
                                     <constraint firstItem="l2N-Iu-8ZE" firstAttribute="width" secondItem="jm5-Sd-1i9" secondAttribute="width" id="rwd-PA-9xM"/>
+                                    <constraint firstItem="3cg-NJ-uHc" firstAttribute="centerY" secondItem="jm5-Sd-1i9" secondAttribute="centerY" id="yEQ-WR-4Lw"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9U-Uq-JmU">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vss-rd-H0W">
+                                <rect key="frame" x="295" y="587" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="cjs-zN-wcv"/>
+                                    <constraint firstAttribute="width" constant="60" id="rGP-tb-4Ci"/>
+                                </constraints>
+                                <state key="normal" image="me-icon-edit"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -55,15 +65,17 @@
                             <constraint firstItem="jm5-Sd-1i9" firstAttribute="leading" secondItem="YBi-ol-4bB" secondAttribute="leading" id="If6-cb-PdA"/>
                             <constraint firstItem="YBi-ol-4bB" firstAttribute="trailing" secondItem="e9U-Uq-JmU" secondAttribute="trailing" id="Mg0-P4-wPB"/>
                             <constraint firstItem="jm5-Sd-1i9" firstAttribute="trailing" secondItem="YBi-ol-4bB" secondAttribute="trailing" id="YEh-Ef-5eY"/>
+                            <constraint firstItem="YBi-ol-4bB" firstAttribute="trailing" secondItem="vss-rd-H0W" secondAttribute="trailing" constant="20" id="bOA-SE-hKW"/>
                             <constraint firstItem="e9U-Uq-JmU" firstAttribute="leading" secondItem="YBi-ol-4bB" secondAttribute="leading" id="cfd-u6-3Ez"/>
+                            <constraint firstItem="YBi-ol-4bB" firstAttribute="bottom" secondItem="vss-rd-H0W" secondAttribute="bottom" constant="20" id="fsd-y6-d98"/>
                             <constraint firstItem="e9U-Uq-JmU" firstAttribute="top" secondItem="jm5-Sd-1i9" secondAttribute="bottom" id="k1L-n4-G63"/>
                             <constraint firstItem="jm5-Sd-1i9" firstAttribute="top" secondItem="YBi-ol-4bB" secondAttribute="top" id="m7u-GH-p0G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YBi-ol-4bB"/>
                     </view>
                     <connections>
+                        <outlet property="floatingEditButton" destination="vss-rd-H0W" id="lLf-j4-LyL"/>
                         <outlet property="scrollView" destination="e9U-Uq-JmU" id="DVM-CL-4fx"/>
-                        <outlet property="titleLabel" destination="pgu-uw-QAM" id="ydr-nT-DAS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2k-eC-OOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,4 +83,8 @@
             <point key="canvasLocation" x="629.60000000000002" y="-242.42878560719643"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="me-icon-edit" width="144" height="144"/>
+        <image name="tab-icon-you-selected" width="500" height="500"/>
+    </resources>
 </document>

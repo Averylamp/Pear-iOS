@@ -16,19 +16,20 @@ class ProfileDemographicsViewController: UIViewController {
   var firstName: String!
   var age: Int!
   var gender: String!
+  var schoolName: String?
   var locationName: String?
-  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(firstName: String, age: Int, gender: String, locationName: String? = nil) -> ProfileDemographicsViewController? {
+  class func instantiate(firstName: String, age: Int, gender: String, schoolName: String? = nil, locationName: String? = nil) -> ProfileDemographicsViewController? {
     let storyboard = UIStoryboard(name: String(describing: ProfileDemographicsViewController.self), bundle: nil)
-    guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? ProfileDemographicsViewController else { return nil }
-    profileStackViewVC.firstName = firstName
-    profileStackViewVC.age = age
-    profileStackViewVC.gender = gender
-    profileStackViewVC.locationName = locationName
-    return profileStackViewVC
+    guard let demograpicsVC = storyboard.instantiateInitialViewController() as? ProfileDemographicsViewController else { return nil }
+    demograpicsVC.firstName = firstName
+    demograpicsVC.age = age
+    demograpicsVC.gender = gender
+    demograpicsVC.schoolName = schoolName
+    demograpicsVC.locationName = locationName
+    return demograpicsVC
   }
   
 }
@@ -49,6 +50,11 @@ extension ProfileDemographicsViewController {
     let genderIcon = createTagView(text: self.gender, image: nil)
     
     var tagViews = [ageIcon, genderIcon]
+    
+    if let schoolName = self.schoolName {
+      let schoolTagView = createTagView(text: schoolName, image: nil)
+      tagViews.append(schoolTagView)
+    }
     
     if let locationName = self.locationName {
       let locationTagView = createTagView(text: locationName, image: nil)
