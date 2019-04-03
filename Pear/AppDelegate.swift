@@ -77,13 +77,41 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
   }
   
   func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-    return SDKApplicationDelegate.shared.application(app, open: url, options: options)
+    if SDKApplicationDelegate.shared.application(app, open: url, options: options) {
+      print("FBSDK LINK DETECTED")
+      return true
+    }
+    return application(app, open: url,
+                       sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                       annotation: "")
   }
   
   func applicationWillEnterForeground(_ application: UIApplication) {
     UIApplication.shared.applicationIconBadgeNumber = 0
   }
   
+  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+      // Handle the deep link. For example, show the deep-linked content or
+      // apply a promotional offer to the user's account.
+      // ...
+      print("DYNAMIC LINK FOUND")
+      print(dynamicLink)
+      print("DYNAMIC LINK END")
+      return true
+    }
+    return false
+  }
+  
+  func application(_ application: UIApplication,
+                   continue userActivity: NSUserActivity,
+                   restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (_, _) in
+      
+    }
+    
+    return handled
+  }
 }
 
 extension AppDelegate {

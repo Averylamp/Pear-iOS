@@ -11,6 +11,7 @@ target 'Pear' do
   pod 'Firebase/Performance'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
   pod 'FacebookShare'
   pod 'Fabric'
   pod 'Crashlytics'
