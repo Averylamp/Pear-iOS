@@ -136,12 +136,14 @@ extension DiscoverySimpleViewController {
           print("Found \(feedObjects.count) Feed Objects Total")
           let newFeed = feedObjects.filter({
             if let userID = $0.userID {
-              return !self.blockedUsers.contains(userID)
+              let blocked =  !self.blockedUsers.contains(userID)
+              return blocked
             }
             return true
           })
-          print("Found \(feedObjects.count) Feed Objects Filtered")
+          print("Found \(newFeed.count) Feed Objects Filtered")
           if FullProfileDisplayData.compareListsForNewItems(oldList: self.fullProfiles, newList: newFeed) {
+            
             self.fullProfiles = newFeed
             DispatchQueue.main.async {
               self.tableView.reloadData()

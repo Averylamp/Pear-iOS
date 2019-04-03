@@ -202,6 +202,9 @@ class FullProfileDisplayData: Equatable {
         newItems = true
       }
     }
+    if newList.count < oldList.count {
+      return true
+    }
     return newItems
   }
   

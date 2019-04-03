@@ -76,6 +76,18 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuM-UC-gNb">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                             </scrollView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCU-1E-fql">
+                                <rect key="frame" x="295" y="587" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Bn9-y9-T4l"/>
+                                    <constraint firstAttribute="height" constant="60" id="Oag-mo-l7Y"/>
+                                </constraints>
+                                <state key="normal" image="discovery-pear-button"/>
+                                <connections>
+                                    <action selector="pearButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="OF8-k1-AsJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -83,14 +95,17 @@
                             <constraint firstItem="lb2-5H-MMS" firstAttribute="leading" secondItem="yBm-A3-ChV" secondAttribute="leading" id="Xh3-Xi-7Vx"/>
                             <constraint firstItem="lb2-5H-MMS" firstAttribute="top" secondItem="yBm-A3-ChV" secondAttribute="top" id="Xkv-Pn-60S"/>
                             <constraint firstItem="FuM-UC-gNb" firstAttribute="centerX" secondItem="yBm-A3-ChV" secondAttribute="centerX" id="bbV-Yh-nUD"/>
+                            <constraint firstItem="yBm-A3-ChV" firstAttribute="trailing" secondItem="RCU-1E-fql" secondAttribute="trailing" constant="20" id="izd-86-iWw"/>
                             <constraint firstItem="FuM-UC-gNb" firstAttribute="leading" secondItem="yBm-A3-ChV" secondAttribute="leading" id="jTv-a4-nud"/>
                             <constraint firstItem="FuM-UC-gNb" firstAttribute="top" secondItem="lb2-5H-MMS" secondAttribute="bottom" id="mXF-gt-iS5"/>
                             <constraint firstItem="yBm-A3-ChV" firstAttribute="bottom" secondItem="FuM-UC-gNb" secondAttribute="bottom" id="mkB-i0-1AN"/>
                             <constraint firstItem="yBm-A3-ChV" firstAttribute="trailing" secondItem="FuM-UC-gNb" secondAttribute="trailing" id="thB-Be-c6P"/>
+                            <constraint firstItem="yBm-A3-ChV" firstAttribute="bottom" secondItem="RCU-1E-fql" secondAttribute="bottom" constant="20" id="xwP-qS-hER"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yBm-A3-ChV"/>
                     </view>
                     <connections>
+                        <outlet property="pearButton" destination="RCU-1E-fql" id="idk-vs-m3x"/>
                         <outlet property="profileNameLabel" destination="YVo-UZ-U0x" id="1g8-VC-C0a"/>
                         <outlet property="scrollView" destination="FuM-UC-gNb" id="vjG-jh-ayd"/>
                     </connections>
@@ -101,6 +116,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="discovery-pear-button" width="266.66665649414062" height="266.66665649414062"/>
         <image name="icon-more" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
     </resources>

@@ -90,7 +90,7 @@ extension DataStore {
     
   }
   
-  func checkForExistingUser(pearUserFoundCompletion: @escaping () -> Void, userNotFoundCompletion: @escaping () -> Void) {
+  func fetchExistingUser(pearUserFoundCompletion:(() -> Void)?, userNotFoundCompletion: (() -> Void)?) {
     self.fetchUIDToken { (result) in
       switch result {
       case .success(let authTokens):
@@ -114,19 +114,25 @@ extension DataStore {
               ]
               trace?.incrementMetric("Existing User Found", by: 1)
               trace?.stop()
-              pearUserFoundCompletion()
+              if let pearFoundCompletion = pearUserFoundCompletion {
+                pearFoundCompletion()
+              }
               return
             case .failure(let error):
               print("Error getting Pear User: \(error)")
               trace?.incrementMetric("No Existing User Found", by: 1)
               trace?.stop()
-              userNotFoundCompletion()
+              if let pearNotFoundCompletion = userNotFoundCompletion {
+                pearNotFoundCompletion()
+              }
               return
             }
         })
       case .failure(let error):
         print("Failure getting Tokens: \(error)")
-        userNotFoundCompletion()
+        if let pearNotFoundCompletion = userNotFoundCompletion {
+          pearNotFoundCompletion()
+        }
         return
       }
     }

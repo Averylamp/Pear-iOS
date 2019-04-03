@@ -256,7 +256,7 @@ private extension LandingScreenViewController {
         firebaseFacebookLogin?.stop()
         
         let facebookLoginExistingUserTrace = Performance.startTrace(name: "Facebook Login Check User")
-        DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+        DataStore.shared.fetchExistingUser(pearUserFoundCompletion: {
           facebookLoginExistingUserTrace?.incrementMetric("Facebook Found Existing User", by: 1)
           facebookLoginExistingUserTrace?.stop()
           DispatchQueue.main.async {

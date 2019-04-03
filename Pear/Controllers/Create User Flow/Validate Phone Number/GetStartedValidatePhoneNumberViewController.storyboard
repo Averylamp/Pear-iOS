@@ -165,7 +165,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-icon-us-flag" width="80" height="81"/>
         <image name="onboarding-icon-verify-phone-shield-incomplete" width="296" height="296"/>
     </resources>
