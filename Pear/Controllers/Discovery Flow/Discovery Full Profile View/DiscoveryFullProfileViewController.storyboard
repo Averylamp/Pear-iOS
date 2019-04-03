@@ -52,6 +52,12 @@
                                             <action selector="moreButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="UFi-w6-wXU"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVo-UZ-U0x">
+                                        <rect key="frame" x="187.5" y="25" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -60,7 +66,9 @@
                                     <constraint firstAttribute="trailing" secondItem="eSL-1y-QLb" secondAttribute="trailing" constant="12" id="E1b-qW-nry"/>
                                     <constraint firstAttribute="height" constant="50" id="MYw-Fe-fYx"/>
                                     <constraint firstItem="eSL-1y-QLb" firstAttribute="centerY" secondItem="2eG-b0-BBl" secondAttribute="centerY" id="Nv7-7F-NHc"/>
+                                    <constraint firstItem="YVo-UZ-U0x" firstAttribute="centerX" secondItem="lb2-5H-MMS" secondAttribute="centerX" id="U20-El-KLV"/>
                                     <constraint firstItem="Jst-Tn-iZQ" firstAttribute="width" secondItem="lb2-5H-MMS" secondAttribute="width" id="WFM-nM-gj8"/>
+                                    <constraint firstItem="YVo-UZ-U0x" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="dvJ-O5-ucl"/>
                                     <constraint firstAttribute="bottom" secondItem="Jst-Tn-iZQ" secondAttribute="bottom" id="iIU-eZ-hbX"/>
                                     <constraint firstItem="2eG-b0-BBl" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="u2o-Xj-JrU"/>
                                 </constraints>
@@ -83,6 +91,7 @@
                         <viewLayoutGuide key="safeArea" id="yBm-A3-ChV"/>
                     </view>
                     <connections>
+                        <outlet property="profileNameLabel" destination="YVo-UZ-U0x" id="1g8-VC-C0a"/>
                         <outlet property="scrollView" destination="FuM-UC-gNb" id="vjG-jh-ayd"/>
                     </connections>
                 </viewController>
@@ -92,7 +101,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-more" width="96" height="96"/>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="icon-more" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
     </resources>
 </document>

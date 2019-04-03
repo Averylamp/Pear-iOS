@@ -41,8 +41,6 @@
 		BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BD222F20CD00915C1C /* GetStartedVibeViewController.swift */; };
 		BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0F16BF222F20E500915C1C /* GetStartedVibeViewController.storyboard */; };
 		BB1436012243D25800B8C3EB /* PearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1436002243D25800B8C3EB /* PearTests.swift */; };
-		BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */; };
-		BB18789321E2B21800964F26 /* DiscoverMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB18789221E2B21800964F26 /* DiscoverMainViewController.storyboard */; };
 		BB1C67102237205700D75848 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C670F2237205700D75848 /* Coding.swift */; };
 		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
 		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
@@ -268,8 +266,6 @@
 		BB1435FE2243D25700B8C3EB /* PearTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1436002243D25800B8C3EB /* PearTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearTests.swift; sourceTree = "<group>"; };
 		BB1436022243D25800B8C3EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverMainViewController.swift; sourceTree = "<group>"; };
-		BB18789221E2B21800964F26 /* DiscoverMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverMainViewController.storyboard; sourceTree = "<group>"; };
 		BB1C670F2237205700D75848 /* Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding.swift; sourceTree = "<group>"; };
 		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
@@ -730,8 +726,6 @@
 		BB18788E21E2B1D900964F26 /* Discovery Flow */ = {
 			isa = PBXGroup;
 			children = (
-				BB18788621E2B1A200964F26 /* DiscoverMainViewController.swift */,
-				BB18789221E2B21800964F26 /* DiscoverMainViewController.storyboard */,
 				BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */,
 				BB94C12222437CF1001320B0 /* Simple Discovery */,
 			);
@@ -1512,7 +1506,6 @@
 			files = (
 				BB0AE4DE22536208005DD315 /* splash-pear.png in Resources */,
 				BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */,
-				BB18789321E2B21800964F26 /* DiscoverMainViewController.storyboard in Resources */,
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
 				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
@@ -1848,7 +1841,6 @@
 				BB4C8A492251559800F7BA1A /* BioView.swift in Sources */,
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
-				BB18788721E2B1A200964F26 /* DiscoverMainViewController.swift in Sources */,
 				BB94C12722438F00001320B0 /* Chat.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */,
