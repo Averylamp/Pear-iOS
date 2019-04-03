@@ -37,7 +37,9 @@ extension FullProfileStackViewController {
     
     self.addDemographcsVC(firstName: self.fullProfileData.firstName,
                           age: self.fullProfileData.age,
-                          gender: self.fullProfileData.gender)
+                          gender: self.fullProfileData.gender,
+                          schoolName: self.fullProfileData.school,
+                          locationName: self.fullProfileData.locationName)
     if 0 < self.fullProfileData.rawImages.count {
       self.addImageVC(image: self.fullProfileData.rawImages[0])
     } else if 0 < self.fullProfileData.imageContainers.count {
@@ -116,10 +118,14 @@ extension FullProfileStackViewController {
   
   func addDemographcsVC(firstName: String,
                         age: Int,
-                        gender: String) {
+                        gender: String,
+                        schoolName: String?,
+                        locationName: String?) {
     guard let demographicsVC = ProfileDemographicsViewController.instantiate(firstName: firstName,
                                                                              age: age,
-                                                                             gender: gender) else {
+                                                                             gender: gender,
+                                                                             schoolName: schoolName,
+                                                                             locationName: locationName) else {
                                                                               print("Failed to create Demographics VC")
                                                                               return
     }

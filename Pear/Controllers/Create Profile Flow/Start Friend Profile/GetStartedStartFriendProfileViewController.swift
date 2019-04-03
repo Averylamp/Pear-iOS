@@ -132,7 +132,6 @@ extension GetStartedStartFriendProfileViewController {
       }
     }
   }
-  
 }
 
 // MARK: - Dismiss First Responder on Click

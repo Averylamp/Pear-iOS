@@ -37,6 +37,7 @@ class ApproveDetachedProfileViewController: UIViewController {
   
   @objc func saveButtonClicked(sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    
     if let currentUserID = DataStore.shared.currentPearUser?.documentID {
       PearProfileAPI.shared.attachDetachedProfile(user_id: currentUserID,
                                                   detachedProfile_id: detachedProfile.documentID,
@@ -48,7 +49,12 @@ class ApproveDetachedProfileViewController: UIViewController {
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
             print("Successfully attached detached profile: \(success)")
             if success {
-              self.dismiss(animated: true, completion: nil)
+              guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
+                print("Failed to initialize Update User Pref VC")
+                return
+              }
+              DataStore.shared.refreshEndorsedUsers(completion: nil)
+              self.navigationController?.setViewControllers([updateUserVC], animated: true)
             } else {
               self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
             }

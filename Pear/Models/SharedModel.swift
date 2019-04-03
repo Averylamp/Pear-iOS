@@ -74,10 +74,16 @@ class MatchingPreferences: Decodable {
   
   static let graphQLMatchingPreferencesFields = "{ seekingGender maxDistance minAgeRange maxAgeRange location \(LocationObject.graphQLLocationFields) }"
   
-  var seekingGender: [GenderEnum]!
-  var maxDistance: Int!
-  var minAgeRange: Int!
-  var maxAgeRange: Int!
+  func matchesDemographics(demographics: MatchingDemographics) -> Bool {
+    return self.seekingGender.contains(demographics.gender) &&
+      self.minAgeRange <= demographics.age &&
+      demographics.age <= self.maxAgeRange
+  }
+  
+  var seekingGender: [GenderEnum] = []
+  var maxDistance: Int
+  var minAgeRange: Int
+  var maxAgeRange: Int
   var location: LocationObject!
   
   required init(from decoder: Decoder) throws {

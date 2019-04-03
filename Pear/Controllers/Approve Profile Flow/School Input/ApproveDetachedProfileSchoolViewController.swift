@@ -47,6 +47,29 @@ class ApproveDetachedProfileSchoolViewController: UIViewController {
   
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    
+    let schoolName = self.schoolNameTextField.text == "" ? nil : self.schoolNameTextField.text!
+    let schoolYear = self.schoolYearTextField.text == "" ? nil : self.schoolYearTextField.text!
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Failed to get Current User")
+      return
+    }
+    PearUserAPI.shared.updateUserSchool(userID: userID,
+                                        schoolName: schoolName,
+                                        schoolYear: schoolYear) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Update user school was successful")
+        } else {
+          print("Update user school was unsuccessful")
+        }
+        
+      case .failure(let error):
+        print("Update user failure: \(error)")
+      }
+    }
+    
     guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
       print("Failed to create Approve Detached Profile VC")
       return

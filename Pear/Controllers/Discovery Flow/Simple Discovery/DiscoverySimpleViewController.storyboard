@@ -108,10 +108,10 @@
                                                                     </constraints>
                                                                 </scrollView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEB-YS-xqY">
-                                                                    <rect key="frame" x="0.0" y="333" width="333" height="59"/>
+                                                                    <rect key="frame" x="0.0" y="333" width="333" height="37"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name, Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBX-uV-4pf">
-                                                                            <rect key="frame" x="12" y="4" width="309" height="51"/>
+                                                                            <rect key="frame" x="12" y="4" width="309" height="29"/>
                                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -127,22 +127,19 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phU-QS-g7I">
-                                                                    <rect key="frame" x="0.0" y="392" width="333" height="28"/>
+                                                                    <rect key="frame" x="0.0" y="370" width="333" height="50"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fa-nN-H5Y">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="28"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Saq-9I-UdE">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="28"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
                                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" id="Fck-qM-LkF"/>
                                                                                     </constraints>
                                                                                 </view>
                                                                             </subviews>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="28" id="vli-5R-rva"/>
-                                                                            </constraints>
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>
@@ -164,7 +161,7 @@
                                                                                 <constraint firstAttribute="width" secondItem="YHY-6r-wjr" secondAttribute="height" multiplier="1:1" id="G4G-VM-jaZ"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested for" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-Oe-XCP">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested for" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-Oe-XCP">
                                                                             <rect key="frame" x="46" y="5" width="275" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
@@ -235,9 +232,11 @@
                                             <outlet property="contentStackView" destination="Pn0-8j-aJJ" id="hW0-3P-hoi"/>
                                             <outlet property="forwardButton" destination="rJK-9R-lNQ" id="P5J-0C-tVy"/>
                                             <outlet property="gradientView" destination="QSV-KQ-nxW" id="gW9-q4-oXl"/>
+                                            <outlet property="infoScrollView" destination="phU-QS-g7I" id="AM4-4F-hgX"/>
                                             <outlet property="infoStackView" destination="4fa-nN-H5Y" id="v1t-3b-QUa"/>
                                             <outlet property="itemsStackView" destination="XnC-nZ-AcO" id="v63-Fg-P6J"/>
                                             <outlet property="nameLabel" destination="TBX-uV-4pf" id="jd8-pq-Uxp"/>
+                                            <outlet property="suggestedForContainer" destination="Gp4-Fi-ni8" id="Fgn-I0-NDt"/>
                                             <outlet property="suggestedForLabel" destination="wNC-Oe-XCP" id="kY5-Rl-tTy"/>
                                         </connections>
                                     </tableViewCell>

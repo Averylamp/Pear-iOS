@@ -12,6 +12,7 @@ class MeTabViewController: UIViewController {
   
   var fullProfile: FullProfileDisplayData?
 
+  @IBOutlet weak var floatingEditButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
   
@@ -47,7 +48,11 @@ extension MeTabViewController {
   }
   
   func stylize() {
-    
+    self.floatingEditButton.layer.cornerRadius = 30
+    self.floatingEditButton.layer.shadowOpacity = 0.2
+    self.floatingEditButton.layer.shadowColor = UIColor.black.cgColor
+    self.floatingEditButton.layer.shadowRadius = 6
+    self.floatingEditButton.layer.shadowOffset = CGSize(width: 2, height: 2)
   }
   
   func refreshFullStackVC() {
