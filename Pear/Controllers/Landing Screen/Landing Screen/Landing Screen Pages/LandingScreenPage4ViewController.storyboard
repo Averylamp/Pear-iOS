@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WCE-ve-g7C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WCE-ve-g7C">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="FredokaOne-Regular.ttf">
-            <string>FredokaOne-Regular</string>
-        </array>
         <array key="SF-Pro-Display-Regular.otf">
             <string>SFProDisplay-Regular</string>
         </array>
@@ -30,13 +27,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="532-gc-eQD">
-                                <rect key="frame" x="0.0" y="-20" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="532-gc-eQD" secondAttribute="height" multiplier="3:2" id="fLG-8M-wP8"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landing-pear-4" translatesAutoresizingMaskIntoConstraints="NO" id="oit-d7-Vse">
-                                <rect key="frame" x="80" y="10" width="215" height="220"/>
+                                <rect key="frame" x="80" y="50" width="215" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="kav-pl-1t7"/>
                                 </constraints>
@@ -47,33 +44,19 @@
                                 <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEAR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GU0-V3-MX1">
-                                <rect key="frame" x="40" y="238" width="295" height="44"/>
-                                <fontDescription key="fontDescription" name="FredokaOne-Regular" family="Fredoka One" pointSize="36"/>
-                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="kerning">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GU0-V3-MX1" firstAttribute="top" secondItem="oit-d7-Vse" secondAttribute="bottom" constant="8" id="1Lq-7S-KuE"/>
                             <constraint firstItem="oit-d7-Vse" firstAttribute="centerX" secondItem="cdb-ta-2be" secondAttribute="centerX" id="2fB-21-EF0"/>
-                            <constraint firstItem="GU0-V3-MX1" firstAttribute="centerX" secondItem="0fU-uo-tEi" secondAttribute="centerX" id="I1v-Jb-8JL"/>
-                            <constraint firstItem="oit-d7-Vse" firstAttribute="centerY" secondItem="cdb-ta-2be" secondAttribute="centerY" constant="-80" id="QlS-h7-K2J"/>
+                            <constraint firstItem="0fU-uo-tEi" firstAttribute="top" secondItem="532-gc-eQD" secondAttribute="bottom" constant="20" id="Lqc-a4-dRl"/>
+                            <constraint firstItem="oit-d7-Vse" firstAttribute="centerY" secondItem="cdb-ta-2be" secondAttribute="centerY" constant="-40" id="QlS-h7-K2J"/>
                             <constraint firstItem="532-gc-eQD" firstAttribute="bottom" secondItem="oit-d7-Vse" secondAttribute="bottom" id="VoS-26-znt"/>
                             <constraint firstItem="oit-d7-Vse" firstAttribute="leading" secondItem="cdb-ta-2be" secondAttribute="leading" constant="80" id="Wu5-je-agD"/>
                             <constraint firstAttribute="trailing" secondItem="oit-d7-Vse" secondAttribute="trailing" constant="80" id="aW4-xl-ddK"/>
                             <constraint firstItem="532-gc-eQD" firstAttribute="width" secondItem="cdb-ta-2be" secondAttribute="width" id="b6W-2C-QHt"/>
                             <constraint firstItem="0fU-uo-tEi" firstAttribute="leading" secondItem="cdb-ta-2be" secondAttribute="leading" constant="40" id="beJ-nU-Pig"/>
                             <constraint firstAttribute="trailing" secondItem="0fU-uo-tEi" secondAttribute="trailing" constant="40" id="bra-Js-kb6"/>
-                            <constraint firstItem="GU0-V3-MX1" firstAttribute="width" secondItem="0fU-uo-tEi" secondAttribute="width" id="qCE-gF-Nej"/>
                             <constraint firstItem="532-gc-eQD" firstAttribute="centerX" secondItem="cdb-ta-2be" secondAttribute="centerX" id="sbx-5z-B9v"/>
-                            <constraint firstItem="0fU-uo-tEi" firstAttribute="top" secondItem="GU0-V3-MX1" secondAttribute="bottom" constant="8" id="sfC-JN-hoa"/>
                             <constraint firstItem="0fU-uo-tEi" firstAttribute="centerX" secondItem="cdb-ta-2be" secondAttribute="centerX" id="xOg-oj-45O"/>
                         </constraints>
                     </view>
@@ -82,7 +65,6 @@
                         <outlet property="backgroundImageView" destination="532-gc-eQD" id="P5B-Cm-TM6"/>
                         <outlet property="imageView" destination="oit-d7-Vse" id="7LD-hf-WOp"/>
                         <outlet property="subtitleLabel" destination="0fU-uo-tEi" id="S6H-6S-N0q"/>
-                        <outlet property="titleLabel" destination="GU0-V3-MX1" id="fBf-Lu-MJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q9b-Uu-eV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -91,6 +73,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="landing-pear-4" width="220" height="220"/>
+        <image name="landing-pear-4" width="880" height="880"/>
     </resources>
 </document>
