@@ -320,6 +320,7 @@ extension DiscoveryTableViewCell {
   }
   
   func configureCell(profileData: FullProfileDisplayData) {
+    self.layoutIfNeeded()
     self.configureInfo(profileData: profileData)
     self.profileData = profileData
     self.contentScrollView.contentOffset = CGPoint.zero

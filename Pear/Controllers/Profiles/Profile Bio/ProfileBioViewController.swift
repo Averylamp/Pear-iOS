@@ -84,7 +84,11 @@ extension ProfileBioViewController {
     }
     
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * itemNumber, height: 0)
-    self.scrollViewHeightConstraint.constant = self.intrinsicContentHeights.first! + 40
+    if let firstIntrinsicHeight = self.intrinsicContentHeights.first {
+      self.scrollViewHeightConstraint.constant = firstIntrinsicHeight + 40
+    } else {
+      self.scrollViewHeightConstraint.constant = 40
+    }
   }
   
   func createBioContentItem(bioText: String, creatorName: String) -> (view: UIView, intrinsicHeight: CGFloat) {
