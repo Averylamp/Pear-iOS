@@ -24,6 +24,9 @@
                                     <constraint firstAttribute="height" constant="50" id="pfF-OW-Gpx"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="sendRequestButtonClicked:" destination="C9V-aj-VkA" eventType="touchUpInside" id="Shy-Zy-UKD"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxr-6t-smo">
                                 <rect key="frame" x="20" y="167" width="335" height="20.5"/>
@@ -51,14 +54,16 @@
                                     <constraint firstAttribute="width" constant="40" id="udo-Vh-CcI"/>
                                 </constraints>
                                 <state key="normal" image="onboarding-close-button"/>
+                                <connections>
+                                    <action selector="dismissButtonClicked:" destination="C9V-aj-VkA" eventType="touchUpInside" id="zPa-kJ-JlQ"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvj-0X-W7O">
                                 <rect key="frame" x="20" y="203.5" width="335" height="96.5"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kd6-Vd-CUE">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kd6-Vd-CUE">
                                         <rect key="frame" x="4" y="4" width="327" height="88.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -107,6 +112,13 @@
                         <viewLayoutGuide key="safeArea" id="ROb-MU-bvB"/>
                     </view>
                     <size key="freeformSize" width="375" height="400"/>
+                    <connections>
+                        <outlet property="endorsedThumbnailImageView" destination="RD3-KT-Cyv" id="wXD-5q-DZB"/>
+                        <outlet property="sendRequestButton" destination="3mZ-uT-lrx" id="Oko-5E-zkH"/>
+                        <outlet property="subtitleLabel" destination="oxr-6t-smo" id="gAG-oR-03z"/>
+                        <outlet property="thumbnailImageView" destination="hzT-xq-g1h" id="0Cw-Er-zaS"/>
+                        <outlet property="titleLabel" destination="4zn-Cj-cxz" id="Io2-Tl-Ilq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVT-2i-dnE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

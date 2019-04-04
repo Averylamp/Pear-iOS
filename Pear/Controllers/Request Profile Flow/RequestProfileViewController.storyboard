@@ -26,17 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnA-gl-hBO">
-                                <rect key="frame" x="20" y="40" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="2eN-Qf-6kQ"/>
-                                    <constraint firstAttribute="width" constant="40" id="upx-GM-bCc"/>
-                                </constraints>
-                                <state key="normal" image="onboarding-back-button"/>
-                                <connections>
-                                    <action selector="backButtonClicked:" destination="ri3-W1-LHd" eventType="touchUpInside" id="Cm1-5h-bGI"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request a Profile" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-mm-Q1l">
                                 <rect key="frame" x="20" y="96" width="335" height="38.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
@@ -141,7 +130,6 @@
                             <constraint firstItem="1nk-FI-PDH" firstAttribute="leading" secondItem="zZq-Ol-YFL" secondAttribute="leading" constant="20" id="3rE-CE-zV1"/>
                             <constraint firstItem="zZq-Ol-YFL" firstAttribute="bottom" secondItem="1nk-FI-PDH" secondAttribute="bottom" constant="20" id="HlM-Cu-AnL"/>
                             <constraint firstItem="0WA-S1-JpP" firstAttribute="top" secondItem="zZq-Ol-YFL" secondAttribute="top" constant="8" id="J4h-QX-3cD"/>
-                            <constraint firstItem="PnA-gl-hBO" firstAttribute="leading" secondItem="zZq-Ol-YFL" secondAttribute="leading" constant="20" id="JAm-bq-fsd"/>
                             <constraint firstItem="zZq-Ol-YFL" firstAttribute="trailing" secondItem="pmo-0z-RQS" secondAttribute="trailing" constant="20" id="MxQ-Ua-cwv"/>
                             <constraint firstItem="zZq-Ol-YFL" firstAttribute="trailing" secondItem="f5v-79-RJM" secondAttribute="trailing" constant="20" id="Q2W-f3-5ws"/>
                             <constraint firstItem="zZq-Ol-YFL" firstAttribute="trailing" secondItem="1nk-FI-PDH" secondAttribute="trailing" constant="20" id="TEw-oP-4KO"/>
@@ -160,7 +148,6 @@
                             <constraint firstItem="pmo-0z-RQS" firstAttribute="centerX" secondItem="zZq-Ol-YFL" secondAttribute="centerX" id="ive-ba-jtx"/>
                             <constraint firstItem="1nk-FI-PDH" firstAttribute="top" secondItem="pmo-0z-RQS" secondAttribute="bottom" constant="12" id="jOr-ZV-OQm"/>
                             <constraint firstItem="zZq-Ol-YFL" firstAttribute="trailing" secondItem="WxS-OD-rZf" secondAttribute="trailing" constant="20" id="otW-K2-EXc"/>
-                            <constraint firstItem="PnA-gl-hBO" firstAttribute="top" secondItem="zZq-Ol-YFL" secondAttribute="top" constant="20" id="sET-eV-iLM"/>
                             <constraint firstItem="f5v-79-RJM" firstAttribute="top" secondItem="x2c-mm-Q1l" secondAttribute="bottom" constant="8" id="tNA-cy-kxy"/>
                             <constraint firstItem="WxS-OD-rZf" firstAttribute="top" secondItem="f5v-79-RJM" secondAttribute="bottom" constant="12" id="vL0-Pz-OrT"/>
                         </constraints>
@@ -183,7 +170,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-icon-notify-friend" width="300" height="300"/>
         <image name="onboarding-icon-us-flag" width="80" height="81"/>
     </resources>
