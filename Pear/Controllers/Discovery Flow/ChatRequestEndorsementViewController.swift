@@ -18,6 +18,7 @@ class ChatRequestEndorsementViewController: UIViewController {
   var requestPersonName: String!
   var userPersonName: String!
   
+  @IBOutlet weak var inputTextView: UITextView!
   @IBOutlet weak var sendRequestButton: UIButton!
   @IBOutlet weak var thumbnailImageView: UIImageView!
   @IBOutlet weak var endorsedThumbnailImageView: UIImageView!
@@ -64,7 +65,7 @@ extension ChatRequestEndorsementViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.thumbnailImageView.sd_setImage(with: self.thumbnailImageURL, completed: nil)
-    
+    self.endorsedThumbnailImageView.sd_setImage(with: self.userPersonthumbnailImageURL, completed: nil)
     self.stylize()
   }
   
@@ -73,6 +74,14 @@ extension ChatRequestEndorsementViewController {
     self.thumbnailImageView.layer.cornerRadius = self.thumbnailImageView.frame.width / 2.0
     self.thumbnailImageView.layer.borderWidth = 1.0
     self.thumbnailImageView.layer.borderColor = R.color.brandPrimaryLight()?.cgColor
+    self.thumbnailImageView.clipsToBounds = true
+    self.thumbnailImageView.contentMode = .scaleAspectFill
+    self.endorsedThumbnailImageView.layer.cornerRadius = self.thumbnailImageView.frame.width / 2.0
+    self.endorsedThumbnailImageView.layer.borderWidth = 1.0
+    self.endorsedThumbnailImageView.layer.borderColor = R.color.brandPrimaryLight()?.cgColor
+    self.endorsedThumbnailImageView.clipsToBounds = true
+    self.endorsedThumbnailImageView.contentMode = .scaleAspectFill
+    
     self.titleLabel.stylizeRequestTitleLabel()
     self.subtitleLabel.stylizeRequestSubtitleLabel()
     self.titleLabel.text = "Pair \(self.userPersonName!) and \(self.requestPersonName!)"

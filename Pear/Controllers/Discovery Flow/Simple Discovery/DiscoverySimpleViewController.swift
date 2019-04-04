@@ -192,6 +192,7 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     let fullProfile = self.fullProfiles[indexPath.row]
     self.presentFullProfile(fullProfile: fullProfile)
   }

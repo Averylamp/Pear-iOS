@@ -86,7 +86,6 @@ class DiscoveryTableViewCell: UITableViewCell {
                            toItem: self.contentScrollView, attribute: .width, multiplier: 1.0, constant: 0)
         ])
     }
-    
   }
   
   func setupScrollView() {

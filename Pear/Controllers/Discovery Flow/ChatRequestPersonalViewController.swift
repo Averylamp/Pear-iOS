@@ -64,6 +64,8 @@ extension ChatRequestPersonalViewController {
     self.thumbnailImageView.layer.cornerRadius = self.thumbnailImageView.frame.width / 2.0
     self.thumbnailImageView.layer.borderWidth = 1.0
     self.thumbnailImageView.layer.borderColor = R.color.brandPrimaryLight()?.cgColor
+    self.thumbnailImageView.clipsToBounds = true
+    self.thumbnailImageView.contentMode = .scaleAspectFill
     self.titleLabel.stylizeRequestTitleLabel()
     self.subtitleLabel.stylizeRequestSubtitleLabel()
     self.titleLabel.text = "Request to chat with \(self.requestPersonName!)"
