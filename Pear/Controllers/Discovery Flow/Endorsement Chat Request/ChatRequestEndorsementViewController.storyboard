@@ -23,11 +23,11 @@
                         <viewControllerLayoutGuide type="bottom" id="qya-Tl-f2B"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dSb-zD-bge">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mZ-uT-lrx">
-                                <rect key="frame" x="20" y="207.5" width="335" height="50"/>
+                                <rect key="frame" x="20" y="255.5" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="pfF-OW-Gpx"/>
                                 </constraints>
@@ -74,15 +74,37 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They'll both be notified and will have to accept to chat." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-LL-SUd">
-                                <rect key="frame" x="40" y="265.5" width="295" height="84.5"/>
+                                <rect key="frame" x="40" y="313.5" width="295" height="56.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="15"/>
                                 <color key="textColor" red="0.61960784313725492" green="0.63529411764705879" blue="0.65098039215686276" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHQ-uN-Sys">
+                                <rect key="frame" x="26" y="195.5" width="323" height="52"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Sent them both a message..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fVl-4c-Chp">
+                                        <rect key="frame" x="8" y="8" width="307" height="36"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="2NJ-IR-3NW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fVl-4c-Chp" firstAttribute="centerY" secondItem="RHQ-uN-Sys" secondAttribute="centerY" id="3Dx-s2-Gt2"/>
+                                    <constraint firstItem="fVl-4c-Chp" firstAttribute="top" secondItem="RHQ-uN-Sys" secondAttribute="top" constant="8" id="6jF-5c-jhG"/>
+                                    <constraint firstAttribute="trailing" secondItem="fVl-4c-Chp" secondAttribute="trailing" constant="8" id="LOJ-CS-Voq"/>
+                                    <constraint firstAttribute="bottom" secondItem="fVl-4c-Chp" secondAttribute="bottom" constant="8" id="UU7-ko-MQS"/>
+                                    <constraint firstItem="fVl-4c-Chp" firstAttribute="centerX" secondItem="RHQ-uN-Sys" secondAttribute="centerX" id="UZ6-wc-dmj"/>
+                                    <constraint firstItem="fVl-4c-Chp" firstAttribute="leading" secondItem="RHQ-uN-Sys" secondAttribute="leading" constant="8" id="dly-9C-3qt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3mZ-uT-lrx" firstAttribute="top" secondItem="oxr-6t-smo" secondAttribute="bottom" constant="20" id="0qG-Ry-sDX"/>
                             <constraint firstItem="RD3-KT-Cyv" firstAttribute="centerX" secondItem="dSb-zD-bge" secondAttribute="centerX" constant="-25" id="0v1-UT-CWH"/>
                             <constraint firstItem="qya-Tl-f2B" firstAttribute="top" secondItem="pjJ-LL-SUd" secondAttribute="bottom" constant="16" id="1LR-nk-fHc"/>
                             <constraint firstItem="pjJ-LL-SUd" firstAttribute="top" secondItem="3mZ-uT-lrx" secondAttribute="bottom" constant="8" id="65Y-Oo-XQk"/>
@@ -97,20 +119,27 @@
                             <constraint firstItem="4zn-Cj-cxz" firstAttribute="leading" secondItem="dSb-zD-bge" secondAttribute="leading" constant="20" id="Sz2-Za-p8b"/>
                             <constraint firstItem="oxr-6t-smo" firstAttribute="leading" secondItem="dSb-zD-bge" secondAttribute="leading" constant="20" id="Uk5-tW-l4e"/>
                             <constraint firstItem="hzT-xq-g1h" firstAttribute="top" secondItem="7er-uy-YPb" secondAttribute="bottom" constant="20" id="VEI-3t-hEV"/>
+                            <constraint firstItem="RHQ-uN-Sys" firstAttribute="top" secondItem="oxr-6t-smo" secondAttribute="bottom" constant="8" id="X3U-6c-qM8"/>
                             <constraint firstItem="hzT-xq-g1h" firstAttribute="centerX" secondItem="dSb-zD-bge" secondAttribute="centerX" constant="25" id="fC7-2a-E8P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RHQ-uN-Sys" secondAttribute="trailing" constant="10" id="fNq-NS-dYa"/>
+                            <constraint firstItem="RHQ-uN-Sys" firstAttribute="leading" secondItem="dSb-zD-bge" secondAttribute="leadingMargin" constant="10" id="hzl-YY-8cC"/>
                             <constraint firstItem="4zn-Cj-cxz" firstAttribute="centerX" secondItem="dSb-zD-bge" secondAttribute="centerX" id="i3a-Lr-8KU"/>
                             <constraint firstItem="YIL-E4-HyD" firstAttribute="top" secondItem="7er-uy-YPb" secondAttribute="bottom" constant="12" id="kr0-v2-Rzm"/>
                             <constraint firstAttribute="trailing" secondItem="YIL-E4-HyD" secondAttribute="trailing" constant="12" id="oRy-Do-3VF"/>
                             <constraint firstItem="oxr-6t-smo" firstAttribute="top" secondItem="4zn-Cj-cxz" secondAttribute="bottom" constant="6" id="rKd-1K-S5w"/>
                             <constraint firstItem="3mZ-uT-lrx" firstAttribute="leading" secondItem="dSb-zD-bge" secondAttribute="leading" constant="20" id="tA4-4b-AWf"/>
+                            <constraint firstItem="3mZ-uT-lrx" firstAttribute="top" secondItem="RHQ-uN-Sys" secondAttribute="bottom" constant="8" id="ubn-NB-ZCr"/>
                             <constraint firstAttribute="trailing" secondItem="oxr-6t-smo" secondAttribute="trailing" constant="20" id="vOI-jm-Qcj"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="375" height="400"/>
+                    <size key="freeformSize" width="375" height="420"/>
                     <connections>
                         <outlet property="endorsedThumbnailImageView" destination="RD3-KT-Cyv" id="wXD-5q-DZB"/>
+                        <outlet property="inputTextView" destination="fVl-4c-Chp" id="bCc-Hh-ntE"/>
+                        <outlet property="inputTextViewContainer" destination="RHQ-uN-Sys" id="DZY-tQ-gNU"/>
                         <outlet property="sendRequestButton" destination="3mZ-uT-lrx" id="Oko-5E-zkH"/>
                         <outlet property="subtitleLabel" destination="oxr-6t-smo" id="gAG-oR-03z"/>
+                        <outlet property="textViewHeightConstraint" destination="2NJ-IR-3NW" id="j1O-pt-FWs"/>
                         <outlet property="thumbnailImageView" destination="hzT-xq-g1h" id="0Cw-Er-zaS"/>
                         <outlet property="titleLabel" destination="4zn-Cj-cxz" id="Io2-Tl-Ilq"/>
                     </connections>

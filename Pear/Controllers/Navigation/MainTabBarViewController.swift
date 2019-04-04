@@ -51,24 +51,6 @@ class MainTabBarViewController: UITabBarController {
       mainTabVC.addChild(meTabVC)
     }
     
-    ////      Matches
-    //        if let matchesVC = MatchesMainViewController.instantiate() {
-    //            matchesVC.tabBarItem = UITabBarItem(title: "Matches", image: UIImage(named: "tab-icon-matches"), selectedImage: nil)
-    //            mainTabVC.addChild(matchesVC)
-    //        }
-    //
-    ////      Profiles
-    //        if let profilesVC = ProfilesMainViewController.instantiate() {
-    //            profilesVC.tabBarItem =  UITabBarItem(title: "Profiles", image: UIImage(named: "tab-icon-profiles"), selectedImage: nil)
-    //            mainTabVC.addChild(profilesVC)
-    //        }
-    
-    ////      Settings
-    //        if let settingsVC = SettingsMainViewController.instantiate() {
-    //            settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "tab-icon-settings"), selectedImage: nil)
-    //            mainTabVC.addChild(settingsVC)
-    //        }
-    
     return mainTabVC
   }
   

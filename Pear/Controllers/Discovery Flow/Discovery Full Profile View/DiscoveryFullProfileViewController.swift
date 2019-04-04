@@ -41,6 +41,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   var matchButtonShadows: [UIView] = []
   var fullPageBlocker: UIButton?
   var chatRequestVC: UIViewController?
+  var chatRequestVCBottomConstraint: NSLayoutConstraint?
   
   /// Factory method for creating this view controller.
   ///
@@ -264,7 +265,7 @@ extension DiscoveryFullProfileViewController {
     super.viewDidLoad()
     self.stylize()
     self.addFullStackVC()
-    
+    self.addKeyboardSizeNotifications()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -608,6 +609,9 @@ extension DiscoveryFullProfileViewController {
         chatRequestVC.removeFromParent()
         self.chatRequestVC = nil
       }
+      if let chatConstraint = self.chatRequestVCBottomConstraint {
+        self.chatRequestVCBottomConstraint = nil
+      }
     })
   }
   
@@ -628,10 +632,15 @@ extension DiscoveryFullProfileViewController {
     personalRequestVC.view.translatesAutoresizingMaskIntoConstraints = false
     let centerYConstraint = NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerY, relatedBy: .equal,
                                                toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 40)
+    centerYConstraint.priority = .defaultHigh
+    let requestBottomConstraint = NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .bottom, relatedBy: .lessThanOrEqual,
+                                                     toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -20)
+    self.chatRequestVCBottomConstraint = requestBottomConstraint
     self.view.addConstraints([
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerX, relatedBy: .equal,
                          toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
       centerYConstraint,
+      requestBottomConstraint,
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .left, relatedBy: .equal,
                          toItem: self.view, attribute: .left, multiplier: 1.0, constant: 30.0),
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .right, relatedBy: .equal,
@@ -674,10 +683,15 @@ extension DiscoveryFullProfileViewController {
     personalRequestVC.view.translatesAutoresizingMaskIntoConstraints = false
     let centerYConstraint = NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerY, relatedBy: .equal,
                                                toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 40)
+    centerYConstraint.priority = .defaultHigh
+    let requestBottomConstraint = NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .bottom, relatedBy: .lessThanOrEqual,
+                                                     toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -20)
+    self.chatRequestVCBottomConstraint = requestBottomConstraint
     self.view.addConstraints([
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerX, relatedBy: .equal,
                          toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
       centerYConstraint,
+      requestBottomConstraint,
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .left, relatedBy: .equal,
                          toItem: self.view, attribute: .left, multiplier: 1.0, constant: 30.0),
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .right, relatedBy: .equal,
@@ -698,11 +712,11 @@ extension DiscoveryFullProfileViewController {
 
 extension DiscoveryFullProfileViewController: PearModalDelegate {
   
-  func createPearRequest(sentByUserID: String, sentForUserID: String) {
+  func createPearRequest(sentByUserID: String, sentForUserID: String, requestText: String?) {
     PearMatchesAPI.shared.createMatchRequest(sentByUserID: sentByUserID,
                                              sentForUserID: sentForUserID,
                                              receivedByUserID: self.profileID,
-                                             requestText: nil) { (result) in
+                                             requestText: requestText) { (result) in
       DispatchQueue.main.async {
         DataStore.shared.addMatchedUserToDefaults(userID: self.profileID, matchedUserID: sentForUserID)
         switch result {
@@ -737,6 +751,48 @@ extension DiscoveryFullProfileViewController: UIGestureRecognizerDelegate {
   
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     return true
+  }
+  
+}
+
+// MARK: - Keybaord Size Notifications
+extension DiscoveryFullProfileViewController {
+  
+  func addKeyboardSizeNotifications() {
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(DiscoveryFullProfileViewController.keyboardWillChange(notification:)),
+                   name: UIWindow.keyboardWillChangeFrameNotification,
+                   object: nil)
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(DiscoveryFullProfileViewController.keyboardWillHide(notification:)),
+                   name: UIWindow.keyboardWillHideNotification,
+                   object: nil)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+      let targetFrame = targetFrameNSValue.cgRectValue
+      if let requestBottomConstraint = self.chatRequestVCBottomConstraint {
+        requestBottomConstraint.constant = -(targetFrame.height - self.view.safeAreaInsets.bottom + 20)
+        print("Constraint Value: \(requestBottomConstraint.constant)")
+      }
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
+    }
+  }
+  @objc func keyboardWillHide(notification: Notification) {
+    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+      if let requestBottomConstraint = self.chatRequestVCBottomConstraint {
+        requestBottomConstraint.constant =  20
+      }
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
+    }
   }
   
 }

@@ -746,10 +746,8 @@
 			children = (
 				BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */,
 				BB94C12222437CF1001320B0 /* Simple Discovery */,
-				BBA3CEB5225566560020A36C /* ChatRequestPersonalViewController.swift */,
-				BBA3CEB92255666E0020A36C /* ChatRequestPersonalViewController.storyboard */,
-				BBA3CEB7225566600020A36C /* ChatRequestEndorsementViewController.swift */,
-				BBA3CEBB2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard */,
+				BB9D1B8122562CF20074C099 /* Personal Chat Request */,
+				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -1071,8 +1069,8 @@
 		BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */ = {
 			isa = PBXGroup;
 			children = (
-				BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */,
 				BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */,
+				BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */,
 			);
 			path = "Discovery Full Profile View";
 			sourceTree = "<group>";
@@ -1101,6 +1099,24 @@
 				BB9D1B232255E1310074C099 /* PearMatchesAPI.swift */,
 			);
 			path = Implementations;
+			sourceTree = "<group>";
+		};
+		BB9D1B8122562CF20074C099 /* Personal Chat Request */ = {
+			isa = PBXGroup;
+			children = (
+				BBA3CEB5225566560020A36C /* ChatRequestPersonalViewController.swift */,
+				BBA3CEB92255666E0020A36C /* ChatRequestPersonalViewController.storyboard */,
+			);
+			path = "Personal Chat Request";
+			sourceTree = "<group>";
+		};
+		BB9D1B8222562D050074C099 /* Endorsement Chat Request */ = {
+			isa = PBXGroup;
+			children = (
+				BBA3CEB7225566600020A36C /* ChatRequestEndorsementViewController.swift */,
+				BBA3CEBB2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard */,
+			);
+			path = "Endorsement Chat Request";
 			sourceTree = "<group>";
 		};
 		BBA2E1F3224B30DD0088A7A7 /* Navigation Controller */ = {
@@ -2108,7 +2124,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2133,7 +2149,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
