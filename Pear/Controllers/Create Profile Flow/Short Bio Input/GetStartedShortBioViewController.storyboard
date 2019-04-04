@@ -44,7 +44,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good bios help friends stand out, leading to fun &amp; interesting conversations." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2JK-lB-JVq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good bios help friends stand out and strike the right balance between real &amp; roast." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2JK-lB-JVq">
                                 <rect key="frame" x="18" y="126.5" width="339" height="53"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
                                 <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
@@ -159,7 +159,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-close-button" width="120" height="120"/>
         <image name="onboarding-icon-short-bio" width="128" height="128"/>
     </resources>
