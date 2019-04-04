@@ -111,12 +111,15 @@ class DiscoveryFullProfileViewController: UIViewController {
       print("No Match Object Found")
       return
     }
-    print(matchObject)
     
     guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
       let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
         print("Failed to pull relavant discover user fields")
         return
+    }
+    guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
+      print("Failed to get personal User ID")
+      return
     }
     
     switch matchObject.type {
@@ -124,10 +127,6 @@ class DiscoveryFullProfileViewController: UIViewController {
       self.promptEndorsedProfileCreation()
     case .personalUser:
       if matchObject.buttonEnabled {
-        guard let personalUserID = matchObject.user?.documentID else {
-          print("Failed to get personal User ID")
-          return
-        }
         self.removeMatchButtons()
         self.displayPersonalRequestVC(personalUserID: personalUserID,
                                       thumbnailImageURL: requestedThumbnailURL,
@@ -136,10 +135,27 @@ class DiscoveryFullProfileViewController: UIViewController {
         self.promptProfileRequest()
       }
     case .detachedProfile:
-      break
+      let alertController = UIAlertController(title: "Your friend has not yet accepted their profile",
+                                              message: "They must have approve their profile first",
+                                              preferredStyle: .alert)
+      let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+      alertController.addAction(okayAction)
+      self.present(alertController, animated: true, completion: nil)
     case .endorsedUser:
+      guard let endorsedUserObject = matchObject.endorsedUser,
+        let endorsedUserThumbnailString = endorsedUserObject.images.first?.thumbnail.imageURL,
+        let endorsedUserThumbnailURL = URL(string: endorsedUserThumbnailString) else {
+          print("Failed to get required endorsed user fields")
+          return
+      }
+      self.removeMatchButtons()
+      self.displayEndorsedRequestVC(personalUserID: personalUserID,
+                                    endorsedUserID: endorsedUserObject.documentID,
+                                    thumbnailImageURL: requestedThumbnailURL,
+                                    requestPersonName: self.fullProfileData.firstName,
+                                    userPersonName: endorsedUserObject.firstName,
+                                    userPersonThumbnailURL: endorsedUserThumbnailURL)
       
-      break
     }
     
   }
@@ -587,9 +603,9 @@ extension DiscoveryFullProfileViewController {
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerX, relatedBy: .equal,
                          toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
       centerYConstraint,
-      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .left, relatedBy: .greaterThanOrEqual,
+      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .left, relatedBy: .equal,
                          toItem: self.view, attribute: .left, multiplier: 1.0, constant: 30.0),
-      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .right, relatedBy: .lessThanOrEqual,
+      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .right, relatedBy: .equal,
                          toItem: self.view, attribute: .right, multiplier: 1.0, constant: -30.0)
       ])
     personalRequestVC.didMove(toParent: self)
@@ -600,8 +616,53 @@ extension DiscoveryFullProfileViewController {
                    animations: {
                     personalRequestVC.view.alpha = 1.0
                     self.view.layoutIfNeeded()
-    }, completion: nil)    
+    }, completion: nil)
+  }
+  
+  // swiftlint:disable:next function_parameter_count
+  func displayEndorsedRequestVC(personalUserID: String,
+                                endorsedUserID: String,
+                                thumbnailImageURL: URL,
+                                requestPersonName: String,
+                                userPersonName: String,
+                                userPersonThumbnailURL: URL) {
     
+    guard let personalRequestVC = ChatRequestEndorsementViewController
+      .instantiate(personalUserID: personalUserID,
+                   endorsedUserID: endorsedUserID,
+                   thumbnailImageURL: thumbnailImageURL,
+                   requestPersonName: requestPersonName,
+                   userPersonName: userPersonName,
+                   userPersonThumbnailURL: userPersonThumbnailURL) else {
+                    print("Failed to create Endorsed Request VC")
+                    return
+    }
+    self.chatRequestVC = personalRequestVC
+    personalRequestVC.delegate = self
+    self.deployFullPageBlocker()
+    self.addChild(personalRequestVC)
+    self.view.addSubview(personalRequestVC.view)
+    personalRequestVC.view.translatesAutoresizingMaskIntoConstraints = false
+    let centerYConstraint = NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerY, relatedBy: .equal,
+                                               toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 40)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      centerYConstraint,
+      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .left, relatedBy: .equal,
+                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 30.0),
+      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .right, relatedBy: .equal,
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: -30.0)
+      ])
+    personalRequestVC.didMove(toParent: self)
+    self.view.layoutIfNeeded()
+    centerYConstraint.constant = 0.0
+    UIView.animate(withDuration: self.requestAnimationTime,
+                   delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
+                   animations: {
+                    personalRequestVC.view.alpha = 1.0
+                    self.view.layoutIfNeeded()
+    }, completion: nil)
   }
   
 }
@@ -626,7 +687,14 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
           }
         case .failure(let error):
           print("Error creating Request: \(error)")
-          self.alert(title: "Failed to create request 😢", message: "Our servers had an oppsie woopsie")
+          switch error {
+          case .graphQLError(let message ):
+            self.alert(title: "Failed to create request 😢", message: message)
+          default:
+            self.alert(title: "Failed to create request 😢", message: "Our servers had an oppsie woopsie")
+          }
+          
+          
         }
         self.dismissRequestModal()
       }
