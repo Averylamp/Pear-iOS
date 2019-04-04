@@ -63,8 +63,8 @@ class GetStartedStartFriendProfileViewController: UIViewController {
   }
   
   @IBAction func skipProfileCreationButtonClicked(_ sender: Any) {
-    if let requestProfileVC = RequestProfileViewController.instantiate() {
-      self.navigationController?.pushViewController(requestProfileVC, animated: true)
+    if let mainVC = LoadingScreenViewController.getMainScreenVC() {
+      self.navigationController?.setViewControllers([mainVC], animated: true)
     }
   }
   
