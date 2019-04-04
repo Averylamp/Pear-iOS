@@ -28,7 +28,7 @@ struct MatchButton {
 }
 
 class DiscoveryFullProfileViewController: UIViewController {
-
+  
   var fullProfileData: FullProfileDisplayData!
   var profileID: String!
   
@@ -64,7 +64,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   @IBAction func moreButtonClicked(_ sender: Any) {
     print("More Clicked")
     let actionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
+    
     let blockAction = UIAlertAction(title: "Block User", style: .destructive) { (_) in
       DispatchQueue.main.async {
         if let userID = self.fullProfileData.userID {
@@ -100,6 +100,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   }
   
   @objc func matchOptionClicked(sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     print("Match object clicked")
     var foundMatchObject: MatchButton?
     self.matchButtons.forEach({
@@ -132,18 +133,25 @@ class DiscoveryFullProfileViewController: UIViewController {
                                       thumbnailImageURL: requestedThumbnailURL,
                                       requestPersonName: self.fullProfileData.firstName)
       } else {
-        self.promptProfileRequest()
+        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(personalUserID) {
+          self.presentSimpleMessageAlert(title: "You have already Peared!",
+                                         message: "If \(self.fullProfileData.firstName!) pears back you will be dropped into a chat",
+                                         acceptAction: "Okay")
+        } else {
+          self.promptProfileRequest()
+        }
       }
     case .detachedProfile:
-      let alertController = UIAlertController(title: "Your friend has not yet accepted their profile",
-                                              message: "They must have approve their profile first",
-                                              preferredStyle: .alert)
-      let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-      alertController.addAction(okayAction)
-      self.present(alertController, animated: true, completion: nil)
+      self.presentSimpleMessageAlert(title: "Your friend has not yet accepted their profile",
+                                     message: "They must have approve their profile first",
+                                     acceptAction: "Okay")
     case .endorsedUser:
-      guard let endorsedUserObject = matchObject.endorsedUser,
-        let endorsedUserThumbnailString = endorsedUserObject.images.first?.thumbnail.imageURL,
+      guard let endorsedUserObject = matchObject.endorsedUser else {
+        print("Failed to get endorsed User Object")
+        return
+      }
+      if matchObject.buttonEnabled {
+      guard  let endorsedUserThumbnailString = endorsedUserObject.images.first?.thumbnail.imageURL,
         let endorsedUserThumbnailURL = URL(string: endorsedUserThumbnailString) else {
           print("Failed to get required endorsed user fields")
           return
@@ -155,15 +163,35 @@ class DiscoveryFullProfileViewController: UIViewController {
                                     requestPersonName: self.fullProfileData.firstName,
                                     userPersonName: endorsedUserObject.firstName,
                                     userPersonThumbnailURL: endorsedUserThumbnailURL)
+      } else {
+        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(endorsedUserObject.documentID) {
+          self.presentSimpleMessageAlert(title: "You have already Peared \(self.fullProfileData.firstName!) and \(endorsedUserObject.firstName)!",
+            message: "If they both accept, they will be dropped into a chat",
+            acceptAction: "Okay")
+        } else {
+          self.presentSimpleMessageAlert(title: "Preference mismatch",
+            message: "Either \(self.fullProfileData.firstName!) or \(endorsedUserObject.firstName) indicated preferences that are not compatible",
+            acceptAction: "Okay")
+        }
+      }
       
     }
     
   }
   
+  func presentSimpleMessageAlert(title: String, message: String?, acceptAction: String) {
+    let alertController = UIAlertController(title: title,
+                                            message: message,
+                                            preferredStyle: .alert)
+    let okayAction = UIAlertAction(title: acceptAction, style: .default, handler: nil)
+    alertController.addAction(okayAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
+  
   func promptEndorsedProfileCreation() {
     let alertController = UIAlertController(title: "Match a Friend!",
                                             message: "Make a profile for a friend to pair them with \(self.fullProfileData.firstName!) or others.",
-                                            preferredStyle: .alert)
+      preferredStyle: .alert)
     let createProfile = UIAlertAction(title: "Continue", style: .default) { (_) in
       DispatchQueue.main.async {
         guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
@@ -201,6 +229,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   }
   
   @IBAction func pearButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if !pearButton.isSelected {
       self.matchButtons = self.createMatchButtons()
       self.addMatchButtonsAnimated(matchButtons: self.matchButtons)
@@ -250,7 +279,7 @@ extension DiscoveryFullProfileViewController {
       self.pearButton.isHidden = false
     } else {
       self.pearButton.isHidden = false
-//      self.pearButton.isHidden = true
+      //      self.pearButton.isHidden = true
     }
     self.pearButton.setImage(R.image.discoveryPearButtonSelected(), for: .selected)
     self.pearButton.layer.cornerRadius = 30
@@ -262,8 +291,8 @@ extension DiscoveryFullProfileViewController {
   
   func addFullStackVC() {
     guard let fullProfileStackVC = FullProfileStackViewController.instantiate(userFullProfileData: self.fullProfileData) else {
-        print("Failed to create full profiles stack VC")
-        return
+      print("Failed to create full profiles stack VC")
+      return
     }
     
     self.addChild(fullProfileStackVC)
@@ -482,11 +511,11 @@ extension DiscoveryFullProfileViewController {
       placeholderEndorsedButton.setImage(R.image.discoveryPlaceholderEndorsement(), for: .normal)
       
       let placeholderEndorsementButton = MatchButton(button: placeholderEndorsedButton,
-                                       buttonEnabled: true,
-                                       type: .placeholderEndorsed,
-                                       endorsedUser: nil,
-                                       user: nil,
-                                       detachedProfile: nil)
+                                                     buttonEnabled: true,
+                                                     type: .placeholderEndorsed,
+                                                     endorsedUser: nil,
+                                                     user: nil,
+                                                     detachedProfile: nil)
       allMatchButtons.append(placeholderEndorsementButton)
     }
     
@@ -675,9 +704,7 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
                                              receivedByUserID: self.profileID,
                                              requestText: nil) { (result) in
       DispatchQueue.main.async {
-        #if !DEVMODE
         DataStore.shared.addMatchedUserToDefaults(userID: self.profileID, matchedUserID: sentForUserID)
-        #endif
         switch result {
         case .success(let success):
           if success {

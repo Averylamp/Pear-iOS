@@ -74,7 +74,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They'll both be notified and will have to accept to chat." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-LL-SUd">
-                                <rect key="frame" x="40" y="261.5" width="295" height="88.5"/>
+                                <rect key="frame" x="40" y="265.5" width="295" height="84.5"/>
                                 <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="15"/>
                                 <color key="textColor" red="0.61960784313725492" green="0.63529411764705879" blue="0.65098039215686276" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -85,7 +85,7 @@
                             <constraint firstItem="3mZ-uT-lrx" firstAttribute="top" secondItem="oxr-6t-smo" secondAttribute="bottom" constant="20" id="0qG-Ry-sDX"/>
                             <constraint firstItem="RD3-KT-Cyv" firstAttribute="centerX" secondItem="dSb-zD-bge" secondAttribute="centerX" constant="-25" id="0v1-UT-CWH"/>
                             <constraint firstItem="qya-Tl-f2B" firstAttribute="top" secondItem="pjJ-LL-SUd" secondAttribute="bottom" constant="16" id="1LR-nk-fHc"/>
-                            <constraint firstItem="pjJ-LL-SUd" firstAttribute="top" secondItem="3mZ-uT-lrx" secondAttribute="bottom" constant="4" id="65Y-Oo-XQk"/>
+                            <constraint firstItem="pjJ-LL-SUd" firstAttribute="top" secondItem="3mZ-uT-lrx" secondAttribute="bottom" constant="8" id="65Y-Oo-XQk"/>
                             <constraint firstItem="pjJ-LL-SUd" firstAttribute="leading" secondItem="dSb-zD-bge" secondAttribute="leading" constant="40" id="FGl-Dz-VZ6"/>
                             <constraint firstAttribute="trailing" secondItem="pjJ-LL-SUd" secondAttribute="trailing" constant="40" id="J8o-AE-h37"/>
                             <constraint firstItem="RD3-KT-Cyv" firstAttribute="centerY" secondItem="hzT-xq-g1h" secondAttribute="centerY" id="JN2-7K-cxM"/>
