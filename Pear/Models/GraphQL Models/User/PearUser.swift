@@ -31,6 +31,7 @@ class PearUser: Decodable, CustomStringConvertible {
   var birthdate: Date!
   
   var school: String?
+  var schoolYear: String?
   var schoolEmail: String?
   var schoolEmailVerified: String?
   
@@ -50,9 +51,9 @@ class PearUser: Decodable, CustomStringConvertible {
   var requestedMatches: [Match] = []
   var currentMatches: [Match] = []
   
-  static let graphQLUserFieldsAll: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) pearPoints profileObjs \(PearUserProfile.graphQLUserProfileFieldsAll) endorsedProfileObjs \(PearUserProfile.graphQLUserProfileFieldsAll) detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFieldsAll))  requestedMatches \(Match.graphQLMatchFields) currentMatches \(Match.graphQLMatchFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
-  static let graphQLUserFieldsUserOnly: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) pearPoints matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
-  static let graphQLUserFieldsMatchingUser: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields)  pearPoints profileObjs \(PearUserProfile.graphQLUserProfileFieldsAll)  matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+  static let graphQLUserFieldsAll: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolYear schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) pearPoints profileObjs \(PearUserProfile.graphQLUserProfileFieldsAll) endorsedProfileObjs \(PearUserProfile.graphQLUserProfileFieldsAll) detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFieldsAll))  requestedMatches \(Match.graphQLMatchFields) currentMatches \(Match.graphQLMatchFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+  static let graphQLUserFieldsUserOnly: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolYear schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) pearPoints matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+  static let graphQLUserFieldsMatchingUser: String = "{ _id deactivated firebaseToken firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate school schoolYear schoolEmail schoolEmailVerified isSeeking displayedImages \(ImageContainer.graphQLImageFields)  pearPoints profileObjs \(PearUserProfile.graphQLUserProfileFieldsAll)  matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
   
   init() {
     fatalError("Should never be called to generate")
@@ -85,6 +86,7 @@ class PearUser: Decodable, CustomStringConvertible {
     self.age = try values.decode(Int.self, forKey: .age)
     
     self.school = try? values.decode(String.self, forKey: .school)
+    self.schoolYear = try? values.decode(String.self, forKey: .schoolYear)
     self.schoolEmail = try? values.decode(String.self, forKey: .schoolEmail)
     self.schoolEmailVerified = try? values.decode(String.self, forKey: .schoolEmailVerified)
     

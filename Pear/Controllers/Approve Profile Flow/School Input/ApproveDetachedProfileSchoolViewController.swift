@@ -49,7 +49,7 @@ class ApproveDetachedProfileSchoolViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     
     let schoolName = self.schoolNameTextField.text == "" ? nil : self.schoolNameTextField.text!
-    let schoolYear = self.schoolYearTextField.text == "" ? nil : self.schoolYearTextField.text!
+    let schoolYear = self.schoolYearTextField.text == "" || self.schoolYearTextField.text?.count != 4 ? nil : self.schoolYearTextField.text!
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       print("Failed to get Current User")
       return

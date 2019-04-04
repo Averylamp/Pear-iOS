@@ -90,6 +90,7 @@ extension FriendsTabViewController: UICollectionViewDelegate, UICollectionViewDa
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if indexPath.item < self.userProfiles.count {
       let fullProfile = self.userProfiles[indexPath.row]
       guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {

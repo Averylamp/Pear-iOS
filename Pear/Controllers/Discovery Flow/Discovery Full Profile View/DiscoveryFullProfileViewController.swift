@@ -138,6 +138,10 @@ class DiscoveryFullProfileViewController: UIViewController {
           self.presentSimpleMessageAlert(title: "You have already Peared!",
                                          message: "If \(self.fullProfileData.firstName!) pears back you will be dropped into a chat",
                                          acceptAction: "Okay")
+        } else if let userProfileCount = matchObject.user?.userProfiles.count, userProfileCount > 0 {
+          self.presentSimpleMessageAlert(title: "Preference mismatch",
+                                         message: "Either \(self.fullProfileData.firstName!) or You indicated preferences that are not compatible",
+                                          acceptAction: "Okay")
         } else {
           self.promptProfileRequest()
         }
@@ -429,9 +433,19 @@ extension DiscoveryFullProfileViewController {
     }
     let alreadyMatchedUsers = DataStore.shared.matchedUsersFromDefaults(userID: self.profileID)
     
+    guard let discoveryUserPreferences = self.fullProfileData.matchingPreferences,
+      let discoveryUserDemographics = self.fullProfileData.matchingDemographics else {
+        print("Failed to get discovery user pref/demo")
+        return []
+    }
+    
+    let discoverySet = (preferences: discoveryUserPreferences, demographics: discoveryUserDemographics)
+    
     var allMatchButtons: [MatchButton] = []
     
-    let youEnabled = user.userProfiles.count > 0 && !alreadyMatchedUsers.contains(user.documentID)
+    var youEnabled = user.userProfiles.count > 0 && !alreadyMatchedUsers.contains(user.documentID)
+    youEnabled = youEnabled && user.matchingPreferences.matchesDemographics(demographics: discoveryUserDemographics)
+       && discoveryUserPreferences.matchesDemographics(demographics: user.matchingDemographics)
     let youButton = self.generateMatchButton(enabled: youEnabled)
     youButton.setImage(R.image.discoveryYouButton(), for: .normal)
     
@@ -443,7 +457,9 @@ extension DiscoveryFullProfileViewController {
                                      detachedProfile: nil)
     
     for endorsedProfile in DataStore.shared.endorsedUsers {
-      let endorsedEnabled = !alreadyMatchedUsers.contains(endorsedProfile.documentID)
+      var endorsedEnabled = !alreadyMatchedUsers.contains(endorsedProfile.documentID)
+      endorsedEnabled = endorsedEnabled && endorsedProfile.matchingPreferences.matchesDemographics(demographics: discoveryUserDemographics)
+        && discoveryUserPreferences.matchesDemographics(demographics: endorsedProfile.matchingDemographics)
       let endorsedButton = self.generateMatchButton(enabled: endorsedEnabled)
       if let imageURLString = endorsedProfile.images.first?.thumbnail.imageURL,
         let imageURL = URL(string: imageURLString) {
@@ -472,14 +488,6 @@ extension DiscoveryFullProfileViewController {
                                             detachedProfile: detachedProfile)
       allMatchButtons.append(endorsedMatchButton)
     }
-    
-    guard let discoveryUserPreferences = self.fullProfileData.matchingPreferences,
-      let discoveryUserDemographics = self.fullProfileData.matchingDemographics else {
-        print("Failed to get discovery user pref/demo")
-        return []
-    }
-    
-    let discoverySet = (preferences: discoveryUserPreferences, demographics: discoveryUserDemographics)
     
     allMatchButtons.sort { (matchButton1, matchButton2) -> Bool in
       guard let mat1 = getMatchingPrefDemoFromMatchButton(matchButton: matchButton1) else {

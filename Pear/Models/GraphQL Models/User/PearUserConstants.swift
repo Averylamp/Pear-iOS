@@ -28,6 +28,7 @@ enum PearUserKeys: String, CodingKey {
   case age
 
   case school
+  case schoolYear
   case schoolEmail
   case schoolEmailVerified
 

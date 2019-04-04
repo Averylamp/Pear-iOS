@@ -19,6 +19,7 @@ class MatchingPearUser: Decodable, CustomStringConvertible {
   var thumbnailURL: String?
   var gender: GenderEnum?
   var school: String?
+  var schoolYear: String?
   
   var matchingDemographics: MatchingDemographics!
   var matchingPreferences: MatchingPreferences!
@@ -26,7 +27,7 @@ class MatchingPearUser: Decodable, CustomStringConvertible {
   var userProfiles: [PearUserProfile] = []
   var images: [ImageContainer] = []
   
-  static let graphQLMatchedUserFieldsAll: String = "{ _id deactivated firstName lastName fullName thumbnailURL gender school birthdate age profileObjs \(PearUserProfile.graphQLUserProfileFieldsAll) displayedImages \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) pearPoints }"
+  static let graphQLMatchedUserFieldsAll: String = "{ _id deactivated firstName lastName fullName thumbnailURL gender school schoolYear birthdate age profileObjs \(PearUserProfile.graphQLUserProfileFieldsAll) displayedImages \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) pearPoints }"
   
   init() {
     fatalError("Should never be called to generate")
@@ -44,6 +45,7 @@ class MatchingPearUser: Decodable, CustomStringConvertible {
     }
     self.gender = gender
     self.school = try? values.decode(String.self, forKey: .school)
+    self.schoolYear = try? values.decode(String.self, forKey: .schoolYear)
     
     self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
     self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)

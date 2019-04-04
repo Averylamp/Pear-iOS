@@ -277,7 +277,11 @@ extension DiscoveryTableViewCell {
       containerView.addSubview(schoolLabel)
       schoolLabel.translatesAutoresizingMaskIntoConstraints = false
       schoolLabel.stylizeInfoSubtextLabel()
+//      if let schoolYear = profileData.schoolYear {
+//        schoolLabel.text = schoolName + " | " + schoolYear
+//      } else {
       schoolLabel.text = schoolName
+//      }
       containerView.addConstraints([
         NSLayoutConstraint(item: schoolIconView, attribute: .left, relatedBy: .equal,
                            toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
