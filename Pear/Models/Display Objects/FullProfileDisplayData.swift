@@ -42,6 +42,7 @@ class FullProfileDisplayData: Equatable {
   var locationName: String?
   var locationCoordinates: CLLocationCoordinate2D?
   var school: String?
+  var schoolYear: String?
   var matchingDemographics: MatchingDemographics?
   var matchingPreferences: MatchingPreferences?
   
@@ -121,6 +122,7 @@ class FullProfileDisplayData: Equatable {
     self.profileOrigin = .matchingUser
     self.originObject = matchingUser
     self.school = matchingUser.school
+    self.schoolYear = matchingUser.schoolYear
     self.locationName = matchingUser.matchingDemographics.location.locationName
     self.matchingDemographics = matchingUser.matchingDemographics
     self.matchingPreferences = matchingUser.matchingPreferences
@@ -161,6 +163,7 @@ class FullProfileDisplayData: Equatable {
     self.profileOrigin = .pearUser
     self.originObject = user
     self.school = user.school
+    self.schoolYear = user.schoolYear
     self.locationName = user.matchingDemographics.location.locationName
     self.matchingDemographics = user.matchingDemographics
     self.matchingPreferences = user.matchingPreferences

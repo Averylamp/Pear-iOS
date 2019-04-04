@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 extension Notification.Name {
   static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
@@ -145,6 +146,15 @@ extension DiscoverySimpleViewController {
           if FullProfileDisplayData.compareListsForNewItems(oldList: self.fullProfiles, newList: newFeed) {
             
             self.fullProfiles = newFeed
+            var prefetchURLS: [URL] = []
+            self.fullProfiles.forEach({
+              if let firstImageMediumString = $0.imageContainers.first?.medium.imageURL,
+                let firstImageMediumURL = URL(string: firstImageMediumString) {
+                prefetchURLS.append(firstImageMediumURL)
+              }
+            })
+            SDWebImagePrefetcher.shared().prefetchURLs(prefetchURLS)
+            
             DispatchQueue.main.async {
               self.tableView.reloadData()
             }

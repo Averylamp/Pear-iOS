@@ -267,7 +267,8 @@ extension PearUserAPI {
                         schoolYear: String?,
                         completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
     let preferenceDictionary: [String: Any] = [
-      "school": schoolName as Any
+      "school": schoolName as Any,
+      "schoolYear": schoolYear as Any
     ]
     self.updateUserWithPreferenceDictionary(userID: userID,
                                             inputDictionary: preferenceDictionary,
