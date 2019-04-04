@@ -10,6 +10,7 @@
 import UIKit
 import Sentry
 import SDWebImage
+import Firebase
 
 enum MatchingButtonType: Int {
   case personalUser = 0
@@ -657,6 +658,7 @@ extension DiscoveryFullProfileViewController {
     personalRequestVC.didMove(toParent: self)
     self.view.layoutIfNeeded()
     centerYConstraint.constant = 0.0
+    Analytics.logEvent("tapped_send_personal_request", parameters: nil)
     UIView.animate(withDuration: self.requestAnimationTime,
                    delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
                    animations: {
@@ -708,6 +710,7 @@ extension DiscoveryFullProfileViewController {
     personalRequestVC.didMove(toParent: self)
     self.view.layoutIfNeeded()
     centerYConstraint.constant = 0.0
+    Analytics.logEvent("tapped_send_matchmaker_request", parameters: nil)
     UIView.animate(withDuration: self.requestAnimationTime,
                    delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
                    animations: {
@@ -740,7 +743,7 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
           case .graphQLError(let message ):
             self.alert(title: "Failed to create request 😢", message: message)
           default:
-            self.alert(title: "Failed to create request 😢", message: "Our servers had an oppsie woopsie")
+            self.alert(title: "Failed to create request 😢", message: "Our servers had an oopsie woopsie")
           }
           
         }

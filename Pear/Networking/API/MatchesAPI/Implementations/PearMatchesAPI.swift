@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Sentry
+import Firebase
 
 class PearMatchesAPI: MatchesAPI {
   
@@ -93,6 +94,11 @@ extension PearMatchesAPI {
                                      tags: ["function": "createMatcheRequest"], paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
+            if sentByUserID == sentForUserID {
+              Analytics.logEvent("sent_personal_request", parameters: nil)
+            } else {
+              Analytics.logEvent("sent_matchmaker_request", parameters: nil)
+            }
             print("Successfully Create Match Request: \(String(describing: message))")
             completion(.success(true))
           }
