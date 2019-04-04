@@ -110,6 +110,7 @@ extension GetStartedAgeViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.view.layoutIfNeeded()
     self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
@@ -166,6 +167,14 @@ extension GetStartedAgeViewController {
         self.view.layoutIfNeeded()
       }
     }
+  }
+  
+}
+
+extension GetStartedAgeViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
 }

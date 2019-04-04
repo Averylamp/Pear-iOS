@@ -72,7 +72,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     self.saveImages()
     
     Analytics.logEvent("finished_friend_pictures", parameters: nil)
-    guard let profileReviewVC = FullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
+    guard let profileReviewVC = GetStartedFullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
       print("Failed to create scrolling Full VC")
       return
     }
@@ -105,6 +105,7 @@ extension GetStartedPhotoInputViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.view.layoutIfNeeded()
     self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
@@ -355,6 +356,14 @@ extension GetStartedPhotoInputViewController {
       }
     }
     return img
+  }
+  
+}
+
+extension GetStartedPhotoInputViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
 }

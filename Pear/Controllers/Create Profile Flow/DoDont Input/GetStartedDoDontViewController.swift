@@ -118,6 +118,7 @@ extension GetStartedDoDontViewController {
     self.addDismissKeyboardOnViewClick()
     self.restoreSavedState()
     self.stylize()
+
   }
   
   func stylize() {
@@ -132,6 +133,8 @@ extension GetStartedDoDontViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+
     self.view.layoutIfNeeded()
     self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
@@ -373,9 +376,6 @@ extension GetStartedDoDontViewController: ExpandingTextViewControllerDelegate {
       expandingTextViewController.primaryAccessoryButton == nil {
       expandingTextViewController.addAccessoryButton(image: UIImage(named: "onboarding-icon-plus")!, buttonType: .add)
       expandingTextViewController.addAccessoryButton(image: UIImage(named: "onboarding-icon-close")!, buttonType: .close)
-      expandingTextViewController.textView.text = expandingTextViewController.textView.text
-        .substring(toIndex: 1).lowercased() + expandingTextViewController.textView.text
-          .substring(fromIndex: 1)
     }
   }
   
@@ -462,4 +462,12 @@ extension GetStartedDoDontViewController {
       }
     }
   }
+}
+
+extension GetStartedDoDontViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
+  }
+  
 }

@@ -101,7 +101,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
         DispatchQueue.main.async {
           switch error {
           case .graphQLError(let message):
-            self.alert(title: "Failed to Create Detached Profile", message: message)
+            self.alert(title: "Failed to Create Profile", message: message)
           case .userNotLoggedIn:
             self.alert(title: "Please login first", message: "You muust be logged in to create profiles")
           default:
@@ -110,6 +110,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
           self.stylize()
           self.inputTextField.text = ""
           self.inputTextField.isEnabled = true
+          self.nextButton.isEnabled = true
           self.activityIndicator.stopAnimating()
         }
         

@@ -141,6 +141,7 @@ extension GetStartedInterestsViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.view.layoutIfNeeded()
     self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
@@ -237,6 +238,14 @@ extension GetStartedInterestsViewController {
   
   @objc func interestButtonClicked(sender: UIButton) {
     toggleInterestButton(button: sender)
+  }
+  
+}
+
+extension GetStartedInterestsViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
 }
