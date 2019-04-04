@@ -138,6 +138,7 @@ class DiscoveryFullProfileViewController: UIViewController {
     case .detachedProfile:
       break
     case .endorsedUser:
+      
       break
     }
     
@@ -325,6 +326,7 @@ extension DiscoveryFullProfileViewController {
     matchButton.translatesAutoresizingMaskIntoConstraints = false
     matchButton.layer.cornerRadius = 30
     matchButton.clipsToBounds = true
+    matchButton.imageView?.contentMode = .scaleAspectFill
     matchButton.addTarget(self,
                           action: #selector(DiscoveryFullProfileViewController.matchOptionClicked(sender:)),
                           for: .touchUpInside)
@@ -607,7 +609,28 @@ extension DiscoveryFullProfileViewController {
 extension DiscoveryFullProfileViewController: PearModalDelegate {
   
   func createPearRequest(sentByUserID: String, sentForUserID: String) {
-    
+    PearMatchesAPI.shared.createMatchRequest(sentByUserID: sentByUserID,
+                                             sentForUserID: sentForUserID,
+                                             receivedByUserID: self.profileID,
+                                             requestText: nil) { (result) in
+      DispatchQueue.main.async {
+        #if !DEVMODE
+        DataStore.shared.addMatchedUserToDefaults(userID: self.profileID, matchedUserID: sentForUserID)
+        #endif
+        switch result {
+        case .success(let success):
+          if success {
+            self.alert(title: "Successfully sent request!", message: "If they accept, a chat will be opened")
+          } else {
+            self.alert(title: "Failed to create request 😢", message: "The error has been reported and we are working to resolve it")
+          }
+        case .failure(let error):
+          print("Error creating Request: \(error)")
+          self.alert(title: "Failed to create request 😢", message: "Our servers had an oppsie woopsie")
+        }
+        self.dismissRequestModal()
+      }
+    }
   }
   
   func dismissPearRequest() {

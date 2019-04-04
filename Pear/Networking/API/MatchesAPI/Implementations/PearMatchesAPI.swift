@@ -76,6 +76,10 @@ extension PearMatchesAPI {
           completion(.failure(MatchesAPIError.unknownError(error: error)))
           return
         } else {
+          if let data = data,
+            let json = try? JSON(data: data) {
+            print(json)
+          }
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "createMatchRequest")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:

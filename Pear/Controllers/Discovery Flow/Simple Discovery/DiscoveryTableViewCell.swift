@@ -93,10 +93,18 @@ class DiscoveryTableViewCell: UITableViewCell {
     self.contentScrollView.delegate = self
     self.contentScrollView.isPagingEnabled = true
     self.contentScrollView.showsHorizontalScrollIndicator = false
-//    let backwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
-//    let forwardPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.handlePanGestureRecognizer(panRecognizer:)))
-//    self.backButton.addGestureRecognizer(backwardPanGestureRecognizer)
-//    self.forwardButton.addGestureRecognizer(forwardPanGestureRecognizer)
+    let forwardSwipe = UISwipeGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.forwardButtonClicked(_:)))
+    let forwardSwipe2 = UISwipeGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.forwardButtonClicked(_:)))
+    forwardSwipe.direction = .left
+    forwardSwipe2.direction = .left
+    let backwardSwipe = UISwipeGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.backButtonClicked(_:)))
+    let backwardSwipe2 = UISwipeGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.backButtonClicked(_:)))
+    backwardSwipe.direction = .right
+    backwardSwipe2.direction = .right
+    self.backButton.addGestureRecognizer(forwardSwipe)
+    self.backButton.addGestureRecognizer(backwardSwipe)
+    self.forwardButton.addGestureRecognizer(forwardSwipe2)
+    self.forwardButton.addGestureRecognizer(backwardSwipe2)
   }
   
   @objc func handlePanGestureRecognizer(panRecognizer: UIPanGestureRecognizer) {
