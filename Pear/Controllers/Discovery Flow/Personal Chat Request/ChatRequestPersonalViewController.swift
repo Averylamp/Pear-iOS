@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PearModalDelegate: class {
-  func createPearRequest(sentByUserID: String, sentForUserID: String)
+  func createPearRequest(sentByUserID: String, sentForUserID: String, requestText: String?)
   func dismissPearRequest()
 }
 
@@ -44,7 +44,7 @@ class ChatRequestPersonalViewController: UIViewController {
   
   @IBAction func sendRequestButtonClicked(_ sender: Any) {
     if let delegate = self.delegate {
-      delegate.createPearRequest(sentByUserID: self.userID, sentForUserID: self.userID)
+      delegate.createPearRequest(sentByUserID: self.userID, sentForUserID: self.userID, requestText: nil)
     }
   }
   

@@ -18,12 +18,16 @@ class ChatRequestEndorsementViewController: UIViewController {
   var requestPersonName: String!
   var userPersonName: String!
   
+  let placeholderText: String = "Sent them both a message..."
+  
+  @IBOutlet weak var inputTextViewContainer: UIView!
   @IBOutlet weak var inputTextView: UITextView!
   @IBOutlet weak var sendRequestButton: UIButton!
   @IBOutlet weak var thumbnailImageView: UIImageView!
   @IBOutlet weak var endorsedThumbnailImageView: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
+  @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
   
   /// Factory method for creating this view controller.
   ///
@@ -53,7 +57,11 @@ class ChatRequestEndorsementViewController: UIViewController {
   
   @IBAction func sendRequestButtonClicked(_ sender: Any) {
     if let delegate = self.delegate {
-      delegate.createPearRequest(sentByUserID: self.userID, sentForUserID: self.endorsedUserID)
+      var requestText: String?
+      if self.inputTextView.text != "" && self.inputTextView.text != self.placeholderText && self.inputTextView.text.count > 0 {
+        requestText = self.inputTextView.text
+      }
+      delegate.createPearRequest(sentByUserID: self.userID, sentForUserID: self.endorsedUserID, requestText: requestText)
     }
   }
   
@@ -87,6 +95,54 @@ extension ChatRequestEndorsementViewController {
     self.titleLabel.text = "Pair \(self.userPersonName!) and \(self.requestPersonName!)"
     self.subtitleLabel.text = "Get the conversation started"
     self.sendRequestButton.stylizeDark()
+    
+    if let textFont = R.font.nunitoRegular(size: 17) {
+      self.inputTextView.font = textFont
+    }
+    self.inputTextView.textColor = UIColor(white: 0.7, alpha: 1.0)
+    self.inputTextView.text = placeholderText
+    self.inputTextView.delegate =  self
+    self.inputTextView.isScrollEnabled = false
+    
+    self.inputTextViewContainer.layer.cornerRadius = 10
+    self.inputTextViewContainer.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.87, alpha: 1.00).cgColor
+    self.inputTextViewContainer.layer.borderWidth = 1
+  }
+  
+}
+
+// MARK: - UITextViewDelegate
+extension ChatRequestEndorsementViewController: UITextViewDelegate {
+  
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if textView.text == self.placeholderText {
+      textView.text = ""
+      textView.textColor = StylingConfig.textFontColor
+    }
+  }
+  
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if textView.text == "" {
+      textView.text = self.placeholderText
+      textView.textColor = UIColor(white: 0.7, alpha: 1.0)
+    }
+  }
+  
+  func textViewDidChange(_ textView: UITextView) {
+    if let textViewHeightConstraint = self.textViewHeightConstraint {
+      let textHeight = textView.sizeThatFits(CGSize(width: textView.frame.width, height: CGFloat.greatestFiniteMagnitude)).height
+      textViewHeightConstraint.constant = max(34, textHeight)
+      UIView.animate(withDuration: 0.2) {
+        self.view.layoutIfNeeded()
+      }
+    }
+  }
+  
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    if textView.text.count + text.count - range.length > 120 {
+      return false
+    }
+    return true
   }
   
 }
