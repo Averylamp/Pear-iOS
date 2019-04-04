@@ -50,7 +50,7 @@ class GetStartedStartFriendProfileViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if let endorseeFirstName = saveProfileFirstName() {
       if endorseeFirstName.count < 1 {
-        self.alert(title: "Name Missing", message: "Please enter your name")
+        self.alert(title: "Name Missing", message: "Please enter a friend's name")
         return
       }
       guard let chooseGenderVC = GetStartedChooseGenderViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
