@@ -113,7 +113,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGe-E3-4qL">
-                                <rect key="frame" x="110" y="303" width="155" height="30"/>
+                                <rect key="frame" x="20" y="303" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jLz-xi-VhL"/>
+                                </constraints>
                                 <state key="normal" title="Choose from Contacts">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -126,6 +129,7 @@
                         <constraints>
                             <constraint firstItem="nqS-Sa-u5T" firstAttribute="top" secondItem="XGV-20-CzZ" secondAttribute="bottom" constant="8" id="1xN-fe-g1v"/>
                             <constraint firstItem="NGe-E3-4qL" firstAttribute="centerX" secondItem="Vai-Mi-1e1" secondAttribute="centerX" id="37D-Dt-saQ"/>
+                            <constraint firstItem="Vai-Mi-1e1" firstAttribute="trailing" secondItem="NGe-E3-4qL" secondAttribute="trailing" constant="20" id="44l-Xl-koG"/>
                             <constraint firstItem="Vai-Mi-1e1" firstAttribute="bottom" secondItem="GRJ-RZ-ANp" secondAttribute="bottom" constant="20" id="9NZ-2n-xzH"/>
                             <constraint firstItem="NGe-E3-4qL" firstAttribute="top" secondItem="SCr-Mf-fW4" secondAttribute="bottom" constant="25.5" id="Fc7-OY-IHt"/>
                             <constraint firstItem="1Z4-SD-wFc" firstAttribute="leading" secondItem="Vai-Mi-1e1" secondAttribute="leading" constant="20" id="Lgj-L2-fN7"/>
@@ -141,12 +145,14 @@
                             <constraint firstItem="XGV-20-CzZ" firstAttribute="leading" secondItem="Vai-Mi-1e1" secondAttribute="leading" constant="20" id="qRu-eM-sI1"/>
                             <constraint firstItem="1Z4-SD-wFc" firstAttribute="top" secondItem="Vai-Mi-1e1" secondAttribute="top" constant="20" id="qYd-6M-e5Y"/>
                             <constraint firstItem="GRJ-RZ-ANp" firstAttribute="leading" secondItem="Vai-Mi-1e1" secondAttribute="leading" constant="20" id="rHl-bb-FQ9"/>
+                            <constraint firstItem="NGe-E3-4qL" firstAttribute="leading" secondItem="Vai-Mi-1e1" secondAttribute="leading" constant="20" id="smL-aX-Hcb"/>
                             <constraint firstItem="tJo-KH-Ag2" firstAttribute="width" secondItem="tJo-KH-Ag2" secondAttribute="height" multiplier="1:1" id="tQ1-NM-3im"/>
                             <constraint firstItem="SCr-Mf-fW4" firstAttribute="leading" secondItem="Vai-Mi-1e1" secondAttribute="leading" constant="20" id="x2C-Uv-Lu2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vai-Mi-1e1"/>
                     </view>
                     <connections>
+                        <outlet property="contactButton" destination="NGe-E3-4qL" id="T5M-a6-5db"/>
                         <outlet property="inputTextField" destination="4gr-IX-Nqt" id="xlI-eA-v8j"/>
                         <outlet property="inputTextFieldContainerView" destination="SCr-Mf-fW4" id="60J-nL-mc8"/>
                         <outlet property="inputTextFieldTitle" destination="fQg-eh-z5Y" id="Kxm-vH-Dtu"/>
@@ -162,7 +168,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-icon-notify-friend" width="300" height="300"/>
         <image name="onboarding-icon-us-flag" width="80" height="81"/>
     </resources>

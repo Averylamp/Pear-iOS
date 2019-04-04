@@ -43,21 +43,20 @@ extension ProfileDemographicsViewController {
   }
   
   func stylize() {
-    self.firstNameLabel.stylizeTitleLabel()
+    self.firstNameLabel.stylizeFullPageNameLabel()
     self.firstNameLabel.text = self.firstName
     
-    let ageIcon = createTagView(text: "\(self.age!)", image: UIImage(named: "profiles-icon-age"))
-    let genderIcon = createTagView(text: self.gender, image: nil)
+    let ageIcon = createTagView(text: "\(self.age!)", image: R.image.profileIconAge())
     
-    var tagViews = [ageIcon, genderIcon]
+    var tagViews = [ageIcon]
     
     if let schoolName = self.schoolName {
-      let schoolTagView = createTagView(text: schoolName, image: nil)
+      let schoolTagView = createTagView(text: schoolName, image: R.image.profileIconSchool())
       tagViews.append(schoolTagView)
     }
     
     if let locationName = self.locationName {
-      let locationTagView = createTagView(text: locationName, image: nil)
+      let locationTagView = createTagView(text: locationName, image: R.image.profileIconLocation())
       tagViews.append(locationTagView)
     }
     
@@ -76,7 +75,7 @@ extension ProfileDemographicsViewController {
     fullView.addSubview(textLabel)
     textLabel.translatesAutoresizingMaskIntoConstraints = false
     textLabel.text = text
-    textLabel.stylizeSubtitleLabel()
+    textLabel.stylizeTagLabel()
     if let image = image {
       let imageView = UIImageView(image: image)
       fullView.addSubview(imageView)

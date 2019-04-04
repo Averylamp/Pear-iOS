@@ -1,5 +1,5 @@
 //
-//  FullProfileReviewViewController.swift
+//  GetStartedFullProfileReviewViewController.swift
 //  Pear
 //
 //  Created by Avery Lamp on 3/12/19.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class FullProfileReviewViewController: UIViewController {
+class GetStartedFullProfileReviewViewController: UIViewController {
   
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
   let pageNumber: CGFloat  = 8.0
@@ -20,9 +20,9 @@ class FullProfileReviewViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserProfileData: UserProfileCreationData) -> FullProfileReviewViewController? {
-    let storyboard = UIStoryboard(name: String(describing: FullProfileReviewViewController.self), bundle: nil)
-    guard let fullProfileReviewVC = storyboard.instantiateInitialViewController() as? FullProfileReviewViewController else { return nil }
+  class func instantiate(gettingStartedUserProfileData: UserProfileCreationData) -> GetStartedFullProfileReviewViewController? {
+    let storyboard = UIStoryboard(name: String(describing: GetStartedFullProfileReviewViewController.self), bundle: nil)
+    guard let fullProfileReviewVC = storyboard.instantiateInitialViewController() as? GetStartedFullProfileReviewViewController else { return nil }
     fullProfileReviewVC.gettingStartedUserProfileData = gettingStartedUserProfileData
     return fullProfileReviewVC
   }
@@ -62,14 +62,14 @@ class FullProfileReviewViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension FullProfileReviewViewController {
+extension GetStartedFullProfileReviewViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.addFullStackVC()
     self.stylize()
   }
-  
+    
   func addFullStackVC() {
     guard let creatorFirstName = DataStore.shared.currentPearUser?.firstName,
       let fullProfileData = try? FullProfileDisplayData(gsup: self.gettingStartedUserProfileData, creatorFirstName: creatorFirstName),
@@ -86,7 +86,7 @@ extension FullProfileReviewViewController {
     continueContainerView.translatesAutoresizingMaskIntoConstraints = false
     
     let continueButton = UIButton()
-    continueButton.addTarget(self, action: #selector(FullProfileReviewViewController.nextButtonClicked(_:)), for: .touchUpInside)
+    continueButton.addTarget(self, action: #selector(GetStartedFullProfileReviewViewController.nextButtonClicked(_:)), for: .touchUpInside)
     continueButton.stylizeDark()
     continueButton.layer.cornerRadius = 25
     continueButton.setTitle("Looks good?", for: .normal)
@@ -144,11 +144,21 @@ extension FullProfileReviewViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.view.layoutIfNeeded()
     self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
       self.view.layoutIfNeeded()
     }, completion: nil)
+  }
+  
+}
+
+extension GetStartedFullProfileReviewViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
 }

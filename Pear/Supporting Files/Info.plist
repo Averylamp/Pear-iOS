@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -34,9 +34,19 @@
 				<string>com.googleusercontent.apps.808130294159-ciqdpk9nne2e8de786srf8a6pefj447c</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>DynamicFirebaseLinks</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.getpear.pear</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>34</string>
+	<string>42</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -55,6 +65,12 @@
 	<string>2258474404196000</string>
 	<key>FacebookDisplayName</key>
 	<string>Pear</string>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://getpear.com/go</string>
+		<string>https://getpear.com/event</string>
+		<string>https://getpear.com/group</string>
+	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

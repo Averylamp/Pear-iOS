@@ -59,14 +59,14 @@ class PearDetachedProfile: Decodable, CustomStringConvertible {
     self.phoneNumber = try values.decode(String.self, forKey: .phoneNumber)
     self.age = try values.decode(Int.self, forKey: .age)
     self.gender = try values.decode(String.self, forKey: .gender)
-    self.interests = try values.decode([String].self, forKey: .interests)
+    self.interests = try values.decode([String].self, forKey: .interests).map({ $0.firstCapitalized })
     self.vibes = try values.decode([String].self, forKey: .vibes)
     self.bio = try values.decode(String.self, forKey: .bio).trimmingCharacters(in: .whitespacesAndNewlines)
-    self.bio =  "\"\(self.bio!)\""
+    self.bio =  "\"\(self.bio!.firstCapitalized)\""
     self.dos = try values.decode([String].self, forKey: .dos).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
-      .map({ "\"\($0)\""})
+      .map({ "\"\($0.firstCapitalized)\""})
     self.donts = try values.decode([String].self, forKey: .donts).map({$0.trimmingCharacters(in: .whitespacesAndNewlines)})
-      .map({ "\"\($0)\""})
+      .map({ "\"\($0.firstCapitalized)\""})
     let images = try values.decode([ImageContainer].self, forKey: .images)
     self.images = images
     self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)

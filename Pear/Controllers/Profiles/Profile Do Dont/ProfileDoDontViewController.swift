@@ -97,7 +97,11 @@ extension ProfileDoDontViewController {
     }
     
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * itemNumber, height: 0)
-    self.scrollViewHeightConstraint.constant = self.intrinsicContentHeights.first! + 24
+    if let firstIntrinsicHeight = self.intrinsicContentHeights.first {
+      self.scrollViewHeightConstraint.constant = firstIntrinsicHeight + 24
+    } else {
+      self.scrollViewHeightConstraint.constant = 24
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {

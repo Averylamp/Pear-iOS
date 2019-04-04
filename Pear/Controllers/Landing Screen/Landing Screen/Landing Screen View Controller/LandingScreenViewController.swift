@@ -256,7 +256,7 @@ private extension LandingScreenViewController {
         firebaseFacebookLogin?.stop()
         
         let facebookLoginExistingUserTrace = Performance.startTrace(name: "Facebook Login Check User")
-        DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+        DataStore.shared.fetchExistingUser(pearUserFoundCompletion: {
           facebookLoginExistingUserTrace?.incrementMetric("Facebook Found Existing User", by: 1)
           facebookLoginExistingUserTrace?.stop()
           DispatchQueue.main.async {
@@ -397,6 +397,7 @@ private extension LandingScreenViewController {
     self.delay(delay: 1.0) {
       self.gettingStarted = false
     }
+    self.gettingStarted = true
     self.loginWithFacebook()
   }
   
@@ -450,7 +451,7 @@ extension LandingScreenViewController: UIScrollViewDelegate {
       pages[3].scaleImageView(percent: 1 - (percentOffset - 0.75) * 4, before: false)
       if percentOffset > 0.8 {
         print("Autotrigger get started")
-        //                self.signupButtonClicked(sender: UIButton())
+        self.facebookButtonClicked(sender: self.facebookButton)
       }
     }
   }

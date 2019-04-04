@@ -54,6 +54,9 @@ class DiscoveryTableViewCell: UITableViewCell {
     gradient.frame = CGRect(origin: CGPoint.zero, size: self.gradientView.frame.size)
     gradient.colors = [UIColor(white: 0.0, alpha: 0.0).cgColor, UIColor(white: 0.0, alpha: 0.08).cgColor]
     
+    if let nameFont = R.font.nunitoSemiBold(size: 22) {
+      self.nameLabel.font = nameFont
+    }
     self.gradientView.layer.insertSublayer(gradient, at: 0)
     self.infoStackView.layoutMargins = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
     self.infoStackView.isLayoutMarginsRelativeArrangement = true
@@ -240,14 +243,12 @@ extension DiscoveryTableViewCell {
                            toItem: locationLabel, attribute: .left, multiplier: 1.0, constant: -2),
         NSLayoutConstraint(item: locationIconView, attribute: .bottom, relatedBy: .equal,
                            toItem: locationLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 2),
-        NSLayoutConstraint(item: locationLabel, attribute: .centerY, relatedBy: .equal,
-                           toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0),
         NSLayoutConstraint(item: locationLabel, attribute: .right, relatedBy: .equal,
                            toItem: containerView, attribute: .right, multiplier: 1.0, constant: -6),
         NSLayoutConstraint(item: locationLabel, attribute: .top, relatedBy: .equal,
-                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
+                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 2),
         NSLayoutConstraint(item: locationLabel, attribute: .bottom, relatedBy: .equal,
-                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
+                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0)
         ])
       self.infoStackView.addArrangedSubview(containerView)
     }
@@ -274,17 +275,15 @@ extension DiscoveryTableViewCell {
         NSLayoutConstraint(item: schoolIconView, attribute: .left, relatedBy: .equal,
                            toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
         NSLayoutConstraint(item: schoolIconView, attribute: .right, relatedBy: .equal,
-                           toItem: schoolLabel, attribute: .left, multiplier: 1.0, constant: -2),
+                           toItem: schoolLabel, attribute: .left, multiplier: 1.0, constant: -4),
         NSLayoutConstraint(item: schoolIconView, attribute: .bottom, relatedBy: .equal,
                            toItem: schoolLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0),
-        NSLayoutConstraint(item: schoolLabel, attribute: .centerY, relatedBy: .equal,
-                           toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0),
         NSLayoutConstraint(item: schoolLabel, attribute: .right, relatedBy: .equal,
                            toItem: containerView, attribute: .right, multiplier: 1.0, constant: -6),
         NSLayoutConstraint(item: schoolLabel, attribute: .top, relatedBy: .equal,
-                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
+                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 2),
         NSLayoutConstraint(item: schoolLabel, attribute: .bottom, relatedBy: .equal,
-                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
+                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0)
         ])
       self.infoStackView.addArrangedSubview(containerView)
     }
@@ -303,12 +302,12 @@ extension DiscoveryTableViewCell {
           suggestedFor.append(endorsedUser.firstName)
         }
       }
-      for detachedProfile in DataStore.shared.detachedProfiles {
-        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
-          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
-          suggestedFor.append(detachedProfile.firstName)
-        }
-      }
+//      for detachedProfile in DataStore.shared.detachedProfiles {
+//        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
+//          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
+//          suggestedFor.append(detachedProfile.firstName)
+//        }
+//      }
     }
     if suggestedFor.count > 0 {
       self.suggestedForContainer.isHidden = false
@@ -320,6 +319,7 @@ extension DiscoveryTableViewCell {
   }
   
   func configureCell(profileData: FullProfileDisplayData) {
+    self.layoutIfNeeded()
     self.configureInfo(profileData: profileData)
     self.profileData = profileData
     self.contentScrollView.contentOffset = CGPoint.zero
@@ -489,7 +489,7 @@ extension DiscoveryTableViewCell {
       NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
                          toItem: containerView, attribute: .right, multiplier: 1.0, constant: -16),
       NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 18),
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 26),
       NSLayoutConstraint(item: iconImageView, attribute: .left, relatedBy: .equal,
                          toItem: containerView, attribute: .left, multiplier: 1.0, constant: 8),
       NSLayoutConstraint(item: iconImageView, attribute: .width, relatedBy: .equal,

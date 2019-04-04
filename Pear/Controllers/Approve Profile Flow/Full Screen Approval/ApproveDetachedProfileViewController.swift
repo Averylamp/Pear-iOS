@@ -13,6 +13,7 @@ class ApproveDetachedProfileViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
   let pageNumber: CGFloat = 2.0
+  var isApprovingProfile = false
   
   var detachedProfile: PearDetachedProfile!
   /// Factory method for creating this view controller.
@@ -36,6 +37,10 @@ class ApproveDetachedProfileViewController: UIViewController {
   }
   
   @objc func saveButtonClicked(sender: UIButton) {
+    if self.isApprovingProfile {
+      return
+    }
+    self.isApprovingProfile = true
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     
     if let currentUserID = DataStore.shared.currentPearUser?.documentID {
@@ -48,18 +53,22 @@ class ApproveDetachedProfileViewController: UIViewController {
           case .success(let success):
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
             print("Successfully attached detached profile: \(success)")
+            self.isApprovingProfile = false
             if success {
               guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
                 print("Failed to initialize Update User Pref VC")
                 return
               }
+              DataStore.shared.fetchExistingUser(pearUserFoundCompletion: nil, userNotFoundCompletion: nil)
               DataStore.shared.refreshEndorsedUsers(completion: nil)
               self.navigationController?.setViewControllers([updateUserVC], animated: true)
             } else {
               self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
+              self.isApprovingProfile = false
             }
           case .failure(let error):
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+            self.isApprovingProfile = false
             print("Failed to attach detached profile: \(error)")
           }
         }
@@ -131,7 +140,7 @@ extension ApproveDetachedProfileViewController {
     skipButton.addTarget(self,
                          action: #selector(ApproveDetachedProfileViewController.skipButtonClicked(sender:)), for: .touchUpInside)
     skipButton.stylizeSubtle()
-    skipButton.setTitle("Skip adding profile", for: .normal)
+    skipButton.setTitle("Reject Profile", for: .normal)
     skipButton.translatesAutoresizingMaskIntoConstraints = false
     continueContainerView.addSubview(skipButton)
     continueContainerView.addConstraints([

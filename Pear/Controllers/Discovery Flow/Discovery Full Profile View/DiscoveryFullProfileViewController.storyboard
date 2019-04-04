@@ -36,7 +36,7 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jst-Tn-iZQ" userLabel="Progress View">
                                         <rect key="frame" x="0.0" y="49" width="375" height="1"/>
-                                        <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="w9x-mf-lH6"/>
                                         </constraints>
@@ -52,6 +52,12 @@
                                             <action selector="moreButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="UFi-w6-wXU"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVo-UZ-U0x">
+                                        <rect key="frame" x="187.5" y="25" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -60,7 +66,9 @@
                                     <constraint firstAttribute="trailing" secondItem="eSL-1y-QLb" secondAttribute="trailing" constant="12" id="E1b-qW-nry"/>
                                     <constraint firstAttribute="height" constant="50" id="MYw-Fe-fYx"/>
                                     <constraint firstItem="eSL-1y-QLb" firstAttribute="centerY" secondItem="2eG-b0-BBl" secondAttribute="centerY" id="Nv7-7F-NHc"/>
+                                    <constraint firstItem="YVo-UZ-U0x" firstAttribute="centerX" secondItem="lb2-5H-MMS" secondAttribute="centerX" id="U20-El-KLV"/>
                                     <constraint firstItem="Jst-Tn-iZQ" firstAttribute="width" secondItem="lb2-5H-MMS" secondAttribute="width" id="WFM-nM-gj8"/>
+                                    <constraint firstItem="YVo-UZ-U0x" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="dvJ-O5-ucl"/>
                                     <constraint firstAttribute="bottom" secondItem="Jst-Tn-iZQ" secondAttribute="bottom" id="iIU-eZ-hbX"/>
                                     <constraint firstItem="2eG-b0-BBl" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="u2o-Xj-JrU"/>
                                 </constraints>
@@ -68,6 +76,18 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuM-UC-gNb">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                             </scrollView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCU-1E-fql">
+                                <rect key="frame" x="285" y="557" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Bn9-y9-T4l"/>
+                                    <constraint firstAttribute="height" constant="60" id="Oag-mo-l7Y"/>
+                                </constraints>
+                                <state key="normal" image="discovery-pear-button"/>
+                                <connections>
+                                    <action selector="pearButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="OF8-k1-AsJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -75,14 +95,18 @@
                             <constraint firstItem="lb2-5H-MMS" firstAttribute="leading" secondItem="yBm-A3-ChV" secondAttribute="leading" id="Xh3-Xi-7Vx"/>
                             <constraint firstItem="lb2-5H-MMS" firstAttribute="top" secondItem="yBm-A3-ChV" secondAttribute="top" id="Xkv-Pn-60S"/>
                             <constraint firstItem="FuM-UC-gNb" firstAttribute="centerX" secondItem="yBm-A3-ChV" secondAttribute="centerX" id="bbV-Yh-nUD"/>
+                            <constraint firstItem="yBm-A3-ChV" firstAttribute="trailing" secondItem="RCU-1E-fql" secondAttribute="trailing" constant="30" id="izd-86-iWw"/>
                             <constraint firstItem="FuM-UC-gNb" firstAttribute="leading" secondItem="yBm-A3-ChV" secondAttribute="leading" id="jTv-a4-nud"/>
                             <constraint firstItem="FuM-UC-gNb" firstAttribute="top" secondItem="lb2-5H-MMS" secondAttribute="bottom" id="mXF-gt-iS5"/>
                             <constraint firstItem="yBm-A3-ChV" firstAttribute="bottom" secondItem="FuM-UC-gNb" secondAttribute="bottom" id="mkB-i0-1AN"/>
                             <constraint firstItem="yBm-A3-ChV" firstAttribute="trailing" secondItem="FuM-UC-gNb" secondAttribute="trailing" id="thB-Be-c6P"/>
+                            <constraint firstItem="yBm-A3-ChV" firstAttribute="bottom" secondItem="RCU-1E-fql" secondAttribute="bottom" constant="50" id="xwP-qS-hER"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yBm-A3-ChV"/>
                     </view>
                     <connections>
+                        <outlet property="pearButton" destination="RCU-1E-fql" id="idk-vs-m3x"/>
+                        <outlet property="profileNameLabel" destination="YVo-UZ-U0x" id="1g8-VC-C0a"/>
                         <outlet property="scrollView" destination="FuM-UC-gNb" id="vjG-jh-ayd"/>
                     </connections>
                 </viewController>
@@ -92,7 +116,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-more" width="96" height="96"/>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="discovery-pear-button" width="266.66665649414062" height="266.66665649414062"/>
+        <image name="icon-more" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
     </resources>
 </document>
