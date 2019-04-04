@@ -40,7 +40,10 @@ extension DataStore {
   
   func addMatchedUserToDefaults(userID: String, matchedUserID: String) {
     var existingMatchedUsers = self.matchedUsersFromDefaults(userID: userID)
-    existingMatchedUsers.append(matchedUserID)
+    print("Adding \(matchedUserID) to \(existingMatchedUsers)")
+    if existingMatchedUsers.firstIndex(of: matchedUserID) == nil {    
+      existingMatchedUsers.append(matchedUserID)
+    }
     UserDefaults.standard.set(existingMatchedUsers, forKey: matchedUserKey(userID: userID))
   }
   
