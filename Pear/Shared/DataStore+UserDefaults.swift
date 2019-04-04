@@ -13,6 +13,7 @@ extension DataStore {
   enum UserDefaultKeys: String {
     case skippedDetachedProfiles
     case blockedUsers
+    case matchedUsers
   }
   
   func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {
@@ -24,6 +25,23 @@ extension DataStore {
   
   func saveListToDefaults(list: [String], type: UserDefaultKeys) {
     UserDefaults.standard.set(list, forKey: type.rawValue)
+  }
+  
+  func matchedUserKey(userID: String) -> String {
+    return UserDefaultKeys.matchedUsers.rawValue + "-" + userID
+  }
+  
+  func matchedUsersFromDefaults(userID: String) -> [String] {
+    if let result = UserDefaults.standard.array(forKey: matchedUserKey(userID: userID) ) as? [String] {
+      return result
+    }
+    return []
+  }
+  
+  func addMatchedUserToDefaults(userID: String, matchedUserID: String) {
+    var existingMatchedUsers = self.matchedUsersFromDefaults(userID: userID)
+    existingMatchedUsers.append(matchedUserID)
+    UserDefaults.standard.set(existingMatchedUsers, forKey: matchedUserKey(userID: userID))
   }
   
 }

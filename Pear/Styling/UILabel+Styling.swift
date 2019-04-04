@@ -93,4 +93,17 @@ extension UILabel {
     self.textColor = StylingConfig.textFontColor
   }
   
+  func stylizeRequestTitleLabel() {
+    if let font = R.font.nunitoSemiBold(size: 17) {
+      self.font = font
+    }
+    self.textColor = UIColor.black
+  }
+  
+  func stylizeRequestSubtitleLabel() {
+    if let font = R.font.nunitoRegular(size: 17) {
+      self.font = font
+    }
+    self.textColor = UIColor.black
+  }
 }

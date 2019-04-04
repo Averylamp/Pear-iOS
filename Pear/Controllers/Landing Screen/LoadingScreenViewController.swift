@@ -30,7 +30,8 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.ctestUpdateUserSchool()
+//    self.testUpdateUserSchool()
+//    self.testCreateMatchRequests()
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
         DataStore.shared.fetchExistingUser(pearUserFoundCompletion: {
@@ -149,7 +150,7 @@ extension LoadingScreenViewController {
     DataStore.shared.refreshEndorsedUsers(completion: nil)
   }
   
-  func ctestUpdateUserSchool() {
+  func testUpdateUserSchool() {
     PearUserAPI.shared.updateUserSchool(userID: "5c82162afec46c84e924a332",
                                         schoolName: "MIT",
                                         schoolYear: "2020") { (result) in
@@ -188,4 +189,42 @@ extension LoadingScreenViewController {
     }
     
   }
+  
+  func testCreateMatchRequests() {
+    PearMatchesAPI.shared.createMatchRequest(sentByUserID: "5c82162afec46c84e924a336",
+                                             sentForUserID: "5c82162afec46c84e924a332",
+                                             receivedByUserID: "5c82162afec46c84e924a334",
+                                             requestText: nil) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Create Match Request 1 was successful")
+        } else {
+          print("Create Match Request 1 was unsuccessful")
+        }
+        
+      case .failure(let error):
+        print("Create Match Request 1 failure: \(error)")
+      }
+    }
+    
+    PearMatchesAPI.shared.createMatchRequest(sentByUserID: "5c82162afec46c84e924a332",
+                                             sentForUserID: "5c82162afec46c84e924a332",
+                                             receivedByUserID: "5c82162afec46c84e924a339",
+                                             requestText: nil) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Create Match Request 2 was successful")
+        } else {
+          print("Create Match Request 2 was unsuccessful")
+        }
+        
+      case .failure(let error):
+        print("Create Match Request 2 failure: \(error)")
+      }
+    }
+    
+  }
+  
 }

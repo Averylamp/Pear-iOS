@@ -5,6 +5,7 @@
 //  Created by Avery Lamp on 3/12/19.
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
+// swiftlint:disable file_length
 
 import UIKit
 import Sentry
@@ -29,22 +30,31 @@ struct MatchButton {
 class DiscoveryFullProfileViewController: UIViewController {
 
   var fullProfileData: FullProfileDisplayData!
+  var profileID: String!
   
   @IBOutlet weak var profileNameLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pearButton: UIButton!
   
+  let requestAnimationTime: Double = 0.4
   var matchButtons: [MatchButton] = []
   var matchButtonShadows: [UIView] = []
+  var fullPageBlocker: UIButton?
+  var chatRequestVC: UIViewController?
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(fullProfileData: FullProfileDisplayData!) -> DiscoveryFullProfileViewController? {
     let storyboard = UIStoryboard(name: String(describing: DiscoveryFullProfileViewController.self), bundle: nil)
-    guard let doDontVC = storyboard.instantiateInitialViewController() as? DiscoveryFullProfileViewController else { return nil }
-    doDontVC.fullProfileData = fullProfileData
-    return doDontVC
+    guard let fullDiscoveryVC = storyboard.instantiateInitialViewController() as? DiscoveryFullProfileViewController else { return nil }
+    fullDiscoveryVC.fullProfileData = fullProfileData
+    guard let matchingUserObject = fullProfileData.originObject as? MatchingPearUser else {
+      print("Failed to get matching user object from full profile")
+      return nil
+    }
+    fullDiscoveryVC.profileID = matchingUserObject.documentID
+    return fullDiscoveryVC
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -103,12 +113,25 @@ class DiscoveryFullProfileViewController: UIViewController {
     }
     print(matchObject)
     
+    guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
+      let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
+        print("Failed to pull relavant discover user fields")
+        return
+    }
+    
     switch matchObject.type {
     case .placeholderEndorsed:
       self.promptEndorsedProfileCreation()
     case .personalUser:
       if matchObject.buttonEnabled {
-        self.promptProfileRequest()
+        guard let personalUserID = matchObject.user?.documentID else {
+          print("Failed to get personal User ID")
+          return
+        }
+        self.removeMatchButtons()
+        self.displayPersonalRequestVC(personalUserID: personalUserID,
+                                      thumbnailImageURL: requestedThumbnailURL,
+                                      requestPersonName: self.fullProfileData.firstName)
       } else {
         self.promptProfileRequest()
       }
@@ -164,10 +187,8 @@ class DiscoveryFullProfileViewController: UIViewController {
     if !pearButton.isSelected {
       self.matchButtons = self.createMatchButtons()
       self.addMatchButtonsAnimated(matchButtons: self.matchButtons)
-      self.pearButton.isSelected = true
     } else {
       self.removeMatchButtons()
-      self.pearButton.isSelected = false
     }
     return
     
@@ -175,10 +196,8 @@ class DiscoveryFullProfileViewController: UIViewController {
       if !pearButton.isSelected {
         self.matchButtons = self.createMatchButtons()
         self.addMatchButtonsAnimated(matchButtons: self.matchButtons)
-        self.pearButton.isSelected = false
       } else {
         self.removeMatchButtons()
-        self.pearButton.isSelected = true
       }
     } else {
       var pearMessage = "You'll be notified if someone pears you with them."
@@ -283,6 +302,7 @@ extension DiscoveryFullProfileViewController {
 extension DiscoveryFullProfileViewController {
   
   func removeMatchButtons() {
+    self.pearButton.isSelected = false
     UIView.animate(withDuration: 0.2, animations: {
       self.matchButtons.forEach {
         $0.button.alpha = 0.0
@@ -359,10 +379,11 @@ extension DiscoveryFullProfileViewController {
       print("User not found")
       return []
     }
+    let alreadyMatchedUsers = DataStore.shared.matchedUsersFromDefaults(userID: self.profileID)
     
     var allMatchButtons: [MatchButton] = []
     
-    let youEnabled = user.userProfiles.count > 0
+    let youEnabled = user.userProfiles.count > 0 && !alreadyMatchedUsers.contains(user.documentID)
     let youButton = self.generateMatchButton(enabled: youEnabled)
     youButton.setImage(R.image.discoveryYouButton(), for: .normal)
     
@@ -374,13 +395,14 @@ extension DiscoveryFullProfileViewController {
                                      detachedProfile: nil)
     
     for endorsedProfile in DataStore.shared.endorsedUsers {
-      let endorsedButton = self.generateMatchButton(enabled: true)
+      let endorsedEnabled = !alreadyMatchedUsers.contains(endorsedProfile.documentID)
+      let endorsedButton = self.generateMatchButton(enabled: endorsedEnabled)
       if let imageURLString = endorsedProfile.images.first?.thumbnail.imageURL,
         let imageURL = URL(string: imageURLString) {
         endorsedButton.sd_setImage(with: imageURL, for: .normal, completed: nil)
       }
       let endorsedMatchButton = MatchButton(button: endorsedButton,
-                                            buttonEnabled: true,
+                                            buttonEnabled: endorsedEnabled,
                                             type: .endorsedUser,
                                             endorsedUser: endorsedProfile,
                                             user: nil,
@@ -454,6 +476,7 @@ extension DiscoveryFullProfileViewController {
   }
   
   func addMatchButtonsAnimated(matchButtons: [MatchButton]) {
+    self.pearButton.isSelected = true
     var matchButtonYConstraints: [NSLayoutConstraint] = []
     matchButtons.forEach { (matchButton) in
       let centerYConstraint = NSLayoutConstraint(item: matchButton.button, attribute: .centerY, relatedBy: .equal,
@@ -482,6 +505,115 @@ extension DiscoveryFullProfileViewController {
                    completion: nil)
     
   }
+}
+
+// MARK: - Request View
+extension DiscoveryFullProfileViewController {
+  
+  func deployFullPageBlocker() {
+    if let blockingButton = self.fullPageBlocker {
+      blockingButton.removeFromSuperview()
+    }
+    let blockingButton = UIButton()
+    blockingButton.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
+    blockingButton.translatesAutoresizingMaskIntoConstraints = false
+    blockingButton.addTarget(self,
+                             action: #selector(DiscoveryFullProfileViewController.fullPageBlockerClicked(sender:)),
+                             for: .touchUpInside)
+    self.view.addSubview(blockingButton)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: blockingButton, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: blockingButton, attribute: .centerY, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: blockingButton, attribute: .width, relatedBy: .equal,
+                         toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: blockingButton, attribute: .height, relatedBy: .equal,
+                         toItem: self.view, attribute: .height, multiplier: 1.0, constant: 0.0)
+      ])
+    self.fullPageBlocker = blockingButton
+    blockingButton.alpha = 0.0
+    UIView.animate(withDuration: self.requestAnimationTime) {
+      blockingButton.alpha = 1.0
+    }
+  }
+  
+  @objc func fullPageBlockerClicked(sender: UIButton) {
+    self.dismissRequestModal()
+  }
+  
+  func dismissRequestModal() {
+    UIView.animate(withDuration: self.requestAnimationTime, animations: {
+      if let pageBlocker = self.fullPageBlocker {
+        pageBlocker.alpha = 0.0
+      }
+      if let chatRequestVC = self.chatRequestVC {
+        chatRequestVC.view.center.y -= 30
+        chatRequestVC.view.alpha = 0.0
+      }
+    }, completion: { (_) in
+      if let pageBlocker = self.fullPageBlocker {
+        pageBlocker.removeFromSuperview()
+        self.fullPageBlocker = nil
+      }
+      if let chatRequestVC = self.chatRequestVC {
+        chatRequestVC.view.removeFromSuperview()
+        chatRequestVC.removeFromParent()
+        self.chatRequestVC = nil
+      }
+    })
+  }
+  
+  func displayPersonalRequestVC(personalUserID: String, thumbnailImageURL: URL, requestPersonName: String) {
+    
+    guard let personalRequestVC = ChatRequestPersonalViewController
+      .instantiate(personalUserID: personalUserID,
+                   thumbnailImageURL: thumbnailImageURL,
+                   requestPersonName: requestPersonName) else {
+                    print("Failed to create Personal Request VC")
+                    return
+    }
+    self.chatRequestVC = personalRequestVC
+    personalRequestVC.delegate = self
+    self.deployFullPageBlocker()
+    self.addChild(personalRequestVC)
+    self.view.addSubview(personalRequestVC.view)
+    personalRequestVC.view.translatesAutoresizingMaskIntoConstraints = false
+    let centerYConstraint = NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerY, relatedBy: .equal,
+                                               toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 40)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      centerYConstraint,
+      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .left, relatedBy: .greaterThanOrEqual,
+                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 30.0),
+      NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .right, relatedBy: .lessThanOrEqual,
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: -30.0)
+      ])
+    personalRequestVC.didMove(toParent: self)
+    self.view.layoutIfNeeded()
+    centerYConstraint.constant = 0.0
+    UIView.animate(withDuration: self.requestAnimationTime,
+                   delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
+                   animations: {
+                    personalRequestVC.view.alpha = 1.0
+                    self.view.layoutIfNeeded()
+    }, completion: nil)    
+    
+  }
+  
+}
+
+extension DiscoveryFullProfileViewController: PearModalDelegate {
+  
+  func createPearRequest(sentByUserID: String, sentForUserID: String) {
+    
+  }
+  
+  func dismissPearRequest() {
+    self.dismissRequestModal()
+  }
+  
 }
 
 extension DiscoveryFullProfileViewController: UIGestureRecognizerDelegate {
