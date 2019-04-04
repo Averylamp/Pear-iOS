@@ -38,7 +38,7 @@ class RequestProfileViewController: UIViewController {
     if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
       print("Verifying phone number")
       
-      if let userPhoneNumber = DataStore.shared.currentPearUser?.phoneNumber {
+      if (DataStore.shared.currentPearUser?.phoneNumber) != nil {
         self.alert(title: "Invalid phone number", message: "Please enter a phone number that is not your own.")
         return
       }
