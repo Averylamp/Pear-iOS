@@ -125,7 +125,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qX3-FB-3sC">
-                                <rect key="frame" x="110" y="303" width="155" height="30"/>
+                                <rect key="frame" x="20" y="303" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ijn-1K-i6H"/>
+                                </constraints>
                                 <state key="normal" title="Choose from Contacts"/>
                                 <connections>
                                     <action selector="contactsButtonClicked:" destination="ri3-W1-LHd" eventType="touchUpInside" id="1kH-WN-fCP"/>
@@ -143,10 +146,12 @@
                             <constraint firstItem="zZq-Ol-YFL" firstAttribute="trailing" secondItem="f5v-79-RJM" secondAttribute="trailing" constant="20" id="Q2W-f3-5ws"/>
                             <constraint firstItem="zZq-Ol-YFL" firstAttribute="trailing" secondItem="1nk-FI-PDH" secondAttribute="trailing" constant="20" id="TEw-oP-4KO"/>
                             <constraint firstItem="x2c-mm-Q1l" firstAttribute="leading" secondItem="zZq-Ol-YFL" secondAttribute="leading" constant="20" id="UED-hZ-dHM"/>
+                            <constraint firstItem="qX3-FB-3sC" firstAttribute="leading" secondItem="zZq-Ol-YFL" secondAttribute="leading" constant="20" id="WEW-lN-70M"/>
                             <constraint firstItem="WxS-OD-rZf" firstAttribute="leading" secondItem="zZq-Ol-YFL" secondAttribute="leading" constant="20" id="WfM-4C-yur"/>
                             <constraint firstItem="x2c-mm-Q1l" firstAttribute="top" secondItem="0WA-S1-JpP" secondAttribute="bottom" constant="8" id="ZWG-OS-Bh3"/>
                             <constraint firstItem="pmo-0z-RQS" firstAttribute="leading" secondItem="zZq-Ol-YFL" secondAttribute="leading" constant="20" id="aBN-vV-FVu"/>
                             <constraint firstItem="zZq-Ol-YFL" firstAttribute="trailing" secondItem="x2c-mm-Q1l" secondAttribute="trailing" constant="20" id="bll-vt-Ooz"/>
+                            <constraint firstItem="zZq-Ol-YFL" firstAttribute="trailing" secondItem="qX3-FB-3sC" secondAttribute="trailing" constant="20" id="cRd-hb-kIX"/>
                             <constraint firstItem="0WA-S1-JpP" firstAttribute="width" secondItem="0WA-S1-JpP" secondAttribute="height" multiplier="1:1" id="dIg-qQ-E0y"/>
                             <constraint firstItem="f5v-79-RJM" firstAttribute="leading" secondItem="zZq-Ol-YFL" secondAttribute="leading" constant="20" id="f76-0O-Da8"/>
                             <constraint firstItem="1nk-FI-PDH" firstAttribute="centerX" secondItem="zZq-Ol-YFL" secondAttribute="centerX" id="hn9-X9-7cW"/>

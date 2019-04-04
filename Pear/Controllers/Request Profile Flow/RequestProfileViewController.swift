@@ -38,12 +38,8 @@ class RequestProfileViewController: UIViewController {
     if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
       print("Verifying phone number")
       
-      if (DataStore.shared.currentPearUser?.phoneNumber) != nil {
-        self.alert(title: "Invalid phone number", message: "Please enter a phone number that is not your own.")
-        return
-      }
       if let userPhoneNumber = DataStore.shared.currentPearUser?.phoneNumber, phoneNumber == userPhoneNumber && phoneNumber != "9738738225" {
-        self.alert(title: "Invalid phone number", message: "Please enter a valid phone number.")
+        self.alert(title: "Invalid phone number", message: "Please enter a phone number that is not your own.")
         return
       }
       
@@ -62,21 +58,12 @@ class RequestProfileViewController: UIViewController {
                                           self.inputTextFieldContainerView.frame.height + 40)
       activityIndicator.startAnimating()
       
-      // #if DEVMODE
-      // if let mainVC = LoadingScreenViewController.getMainScreenVC() {
-      //   self.navigationController?.setViewControllers([mainVC], animated: true)
-      // } else {
-      //   print("Failed to create main VC")
-      // }
-      // return
-      // #endif
-      
       if MFMessageComposeViewController.canSendText() {
         let messageVC = MFMessageComposeViewController()
         messageVC.messageComposeDelegate = self
         
         messageVC.recipients = [phoneNumber]
-        messageVC.body = "Hey! Help write a profile for me on Pear 🍐. https://getpear.com/go/refer"
+        messageVC.body = "Hey! Help write a profile for me on Pear 🍐. https://getpear.com/go/request"
         
         self.present(messageVC, animated: true, completion: nil)
       } else {
