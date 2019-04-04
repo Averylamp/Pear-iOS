@@ -694,7 +694,6 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
             self.alert(title: "Failed to create request 😢", message: "Our servers had an oppsie woopsie")
           }
           
-          
         }
         self.dismissRequestModal()
       }

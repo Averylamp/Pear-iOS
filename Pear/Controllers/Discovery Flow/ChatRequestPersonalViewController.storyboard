@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lrj-hF-lm6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lrj-hF-lm6">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +13,10 @@
         <scene sceneID="aC8-YQ-z9f">
             <objects>
                 <viewController id="lrj-hF-lm6" customClass="ChatRequestPersonalViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q5b-9f-YsI"/>
+                        <viewControllerLayoutGuide type="bottom" id="A5o-U9-KPV"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gc8-pn-eIc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,24 +64,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="V1m-nP-onA" firstAttribute="leading" secondItem="qgx-kL-znA" secondAttribute="leading" constant="20" id="5no-wh-PWo"/>
-                            <constraint firstItem="qgx-kL-znA" firstAttribute="trailing" secondItem="cmy-Rj-6it" secondAttribute="trailing" constant="20" id="68n-Eq-oVI"/>
+                            <constraint firstItem="V1m-nP-onA" firstAttribute="leading" secondItem="gc8-pn-eIc" secondAttribute="leading" constant="20" id="5no-wh-PWo"/>
+                            <constraint firstAttribute="trailing" secondItem="cmy-Rj-6it" secondAttribute="trailing" constant="20" id="68n-Eq-oVI"/>
                             <constraint firstItem="ZSk-W5-UQm" firstAttribute="top" secondItem="V1m-nP-onA" secondAttribute="bottom" constant="10" id="6jk-YT-vPQ"/>
-                            <constraint firstItem="cmy-Rj-6it" firstAttribute="leading" secondItem="qgx-kL-znA" secondAttribute="leading" constant="20" id="CFu-w3-ln0"/>
-                            <constraint firstItem="qgx-kL-znA" firstAttribute="trailing" secondItem="ZSk-W5-UQm" secondAttribute="trailing" constant="20" id="NMP-sR-Ji5"/>
-                            <constraint firstItem="qgx-kL-znA" firstAttribute="trailing" secondItem="V1m-nP-onA" secondAttribute="trailing" constant="20" id="OAc-bX-M0X"/>
-                            <constraint firstItem="Bya-JH-lQx" firstAttribute="top" secondItem="qgx-kL-znA" secondAttribute="top" constant="12" id="QMp-HP-lO7"/>
-                            <constraint firstItem="qgx-kL-znA" firstAttribute="bottom" secondItem="ZSk-W5-UQm" secondAttribute="bottom" constant="16" id="Vcv-P2-7J0"/>
-                            <constraint firstItem="PbQ-vu-Aep" firstAttribute="centerX" secondItem="qgx-kL-znA" secondAttribute="centerX" id="bdx-63-hPy"/>
-                            <constraint firstItem="qgx-kL-znA" firstAttribute="trailing" secondItem="Bya-JH-lQx" secondAttribute="trailing" constant="12" id="bzk-1t-dJg"/>
-                            <constraint firstItem="ZSk-W5-UQm" firstAttribute="leading" secondItem="qgx-kL-znA" secondAttribute="leading" constant="20" id="fXB-QJ-rsi"/>
+                            <constraint firstItem="cmy-Rj-6it" firstAttribute="leading" secondItem="gc8-pn-eIc" secondAttribute="leading" constant="20" id="CFu-w3-ln0"/>
+                            <constraint firstAttribute="trailing" secondItem="ZSk-W5-UQm" secondAttribute="trailing" constant="20" id="NMP-sR-Ji5"/>
+                            <constraint firstAttribute="trailing" secondItem="V1m-nP-onA" secondAttribute="trailing" constant="20" id="OAc-bX-M0X"/>
+                            <constraint firstItem="Bya-JH-lQx" firstAttribute="top" secondItem="q5b-9f-YsI" secondAttribute="bottom" constant="12" id="QMp-HP-lO7"/>
+                            <constraint firstItem="A5o-U9-KPV" firstAttribute="top" secondItem="ZSk-W5-UQm" secondAttribute="bottom" constant="16" id="Vcv-P2-7J0"/>
+                            <constraint firstItem="PbQ-vu-Aep" firstAttribute="centerX" secondItem="gc8-pn-eIc" secondAttribute="centerX" id="bdx-63-hPy"/>
+                            <constraint firstAttribute="trailing" secondItem="Bya-JH-lQx" secondAttribute="trailing" constant="12" id="bzk-1t-dJg"/>
+                            <constraint firstItem="ZSk-W5-UQm" firstAttribute="leading" secondItem="gc8-pn-eIc" secondAttribute="leading" constant="20" id="fXB-QJ-rsi"/>
                             <constraint firstItem="V1m-nP-onA" firstAttribute="top" secondItem="cmy-Rj-6it" secondAttribute="bottom" constant="6" id="m3V-Y9-cxQ"/>
-                            <constraint firstItem="cmy-Rj-6it" firstAttribute="centerX" secondItem="qgx-kL-znA" secondAttribute="centerX" id="mLR-b9-j9C"/>
+                            <constraint firstItem="cmy-Rj-6it" firstAttribute="centerX" secondItem="gc8-pn-eIc" secondAttribute="centerX" id="mLR-b9-j9C"/>
                             <constraint firstItem="cmy-Rj-6it" firstAttribute="top" secondItem="PbQ-vu-Aep" secondAttribute="bottom" constant="16" id="rV8-cm-xVf"/>
-                            <constraint firstItem="V1m-nP-onA" firstAttribute="centerX" secondItem="qgx-kL-znA" secondAttribute="centerX" id="wdF-6w-Sxd"/>
-                            <constraint firstItem="PbQ-vu-Aep" firstAttribute="top" secondItem="qgx-kL-znA" secondAttribute="top" constant="20" id="xgD-Ir-kgl"/>
+                            <constraint firstItem="V1m-nP-onA" firstAttribute="centerX" secondItem="gc8-pn-eIc" secondAttribute="centerX" id="wdF-6w-Sxd"/>
+                            <constraint firstItem="PbQ-vu-Aep" firstAttribute="top" secondItem="q5b-9f-YsI" secondAttribute="bottom" constant="20" id="xgD-Ir-kgl"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qgx-kL-znA"/>
                     </view>
                     <size key="freeformSize" width="375" height="400"/>
                     <connections>
