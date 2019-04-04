@@ -35,6 +35,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   @IBOutlet weak var pearButton: UIButton!
   
   var matchButtons: [MatchButton] = []
+  var matchButtonShadows: [UIView] = []
   
   /// Factory method for creating this view controller.
   ///
@@ -120,10 +121,10 @@ class DiscoveryFullProfileViewController: UIViewController {
   }
   
   func promptEndorsedProfileCreation() {
-    let alertController = UIAlertController(title: "Match with a friend?",
-                                            message: "To match this person with a friend, you must create a profile for them",
+    let alertController = UIAlertController(title: "Match a Friend!",
+                                            message: "Make a profile for a friend to pair them with \(self.fullProfileData.firstName!) or others.",
                                             preferredStyle: .alert)
-    let createProfile = UIAlertAction(title: "Let's do it!", style: .default) { (_) in
+    let createProfile = UIAlertAction(title: "Continue", style: .default) { (_) in
       DispatchQueue.main.async {
         guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
           print("Failed to create get started friend profile vc")
@@ -133,7 +134,7 @@ class DiscoveryFullProfileViewController: UIViewController {
       }
     }
     
-    let maybeLater = UIAlertAction(title: "Maybe later", style: .cancel, handler: nil)
+    let maybeLater = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     alertController.addAction(createProfile)
     alertController.addAction(maybeLater)
     self.present(alertController, animated: true, completion: nil)
@@ -141,9 +142,9 @@ class DiscoveryFullProfileViewController: UIViewController {
   
   func promptProfileRequest() {
     let alertController = UIAlertController(title: "Match with yourself?",
-                                            message: "To match this person with yourself, a friend must create a profile for you first!",
+                                            message: "To match this person with yourself, ask a friend to make you a profile first!",
                                             preferredStyle: .alert)
-    let createProfile = UIAlertAction(title: "Notify a friend", style: .default) { (_) in
+    let createProfile = UIAlertAction(title: "Ask a friend", style: .default) { (_) in
       DispatchQueue.main.async {
         guard let requestProfileVC = RequestProfileViewController.instantiate() else {
           print("Failed to create get started friend profile vc")
@@ -153,7 +154,7 @@ class DiscoveryFullProfileViewController: UIViewController {
       }
     }
     
-    let maybeLater = UIAlertAction(title: "Maybe later", style: .cancel, handler: nil)
+    let maybeLater = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     alertController.addAction(createProfile)
     alertController.addAction(maybeLater)
     self.present(alertController, animated: true, completion: nil)
@@ -287,9 +288,15 @@ extension DiscoveryFullProfileViewController {
         $0.button.alpha = 0.0
         $0.button.center.y += 10
       }
+      self.matchButtonShadows.forEach({
+        $0.alpha = 0.0
+        $0.center.y += 10
+      })
     }, completion: { (_) in
       self.matchButtons.forEach({ $0.button.removeFromSuperview() })
       self.matchButtons = []
+      self.matchButtonShadows.forEach({ $0.removeFromSuperview() })
+      self.matchButtonShadows = []
     })
   }
   
@@ -304,10 +311,12 @@ extension DiscoveryFullProfileViewController {
     let shadowView = UIView()
     shadowView.translatesAutoresizingMaskIntoConstraints = false
     shadowView.layer.cornerRadius = 30
-    shadowView.layer.shadowOpacity = 0.1
+    shadowView.backgroundColor = UIColor.white
+    shadowView.layer.shadowOpacity = 0.15
     shadowView.layer.shadowColor = UIColor.black.cgColor
-    shadowView.layer.shadowRadius = 6
-    shadowView.layer.shadowOffset = CGSize(width: 2, height: 2)
+    shadowView.layer.shadowRadius = 8
+    shadowView.layer.shadowOffset = CGSize(width: 3, height: 3 )
+    self.matchButtonShadows.append(shadowView)
     self.view.insertSubview(matchButton, belowSubview: self.pearButton)
     self.view.insertSubview(shadowView, belowSubview: matchButton)
     self.view.addConstraints([
