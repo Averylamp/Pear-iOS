@@ -11,9 +11,10 @@ import Sentry
 import SDWebImage
 
 enum MatchingButtonType: Int {
-  case endorsedUser = 1
   case personalUser = 0
-  case detachedProfile = 2
+  case placeholderEndorsed = 1
+  case endorsedUser = 2
+  case detachedProfile = 3
 }
 
 struct MatchButton {
@@ -88,6 +89,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   }
   
   @objc func matchOptionClicked(sender: UIButton) {
+    print("Match object clicked")
     var foundMatchObject: MatchButton?
     self.matchButtons.forEach({
       if $0.button == sender {
@@ -100,6 +102,61 @@ class DiscoveryFullProfileViewController: UIViewController {
     }
     print(matchObject)
     
+    switch matchObject.type {
+    case .placeholderEndorsed:
+      self.promptEndorsedProfileCreation()
+    case .personalUser:
+      if matchObject.buttonEnabled {
+        self.promptProfileRequest()
+      } else {
+        self.promptProfileRequest()
+      }
+    case .detachedProfile:
+      break
+    case .endorsedUser:
+      break
+    }
+    
+  }
+  
+  func promptEndorsedProfileCreation() {
+    let alertController = UIAlertController(title: "Match with a friend?",
+                                            message: "To match this person with a friend, you must create a profile for them",
+                                            preferredStyle: .alert)
+    let createProfile = UIAlertAction(title: "Let's do it!", style: .default) { (_) in
+      DispatchQueue.main.async {
+        guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
+          print("Failed to create get started friend profile vc")
+          return
+        }
+        self.navigationController?.setViewControllers([startFriendVC], animated: true)
+      }
+    }
+    
+    let maybeLater = UIAlertAction(title: "Maybe later", style: .cancel, handler: nil)
+    alertController.addAction(createProfile)
+    alertController.addAction(maybeLater)
+    self.present(alertController, animated: true, completion: nil)
+  }
+  
+  func promptProfileRequest() {
+    let alertController = UIAlertController(title: "Match with yourself?",
+                                            message: "To match this person with yourself, a friend must create a profile for you first!",
+                                            preferredStyle: .alert)
+    let createProfile = UIAlertAction(title: "Notify a friend", style: .default) { (_) in
+      DispatchQueue.main.async {
+        guard let requestProfileVC = RequestProfileViewController.instantiate() else {
+          print("Failed to create get started friend profile vc")
+          return
+        }
+        self.navigationController?.setViewControllers([requestProfileVC], animated: true)
+      }
+    }
+    
+    let maybeLater = UIAlertAction(title: "Maybe later", style: .cancel, handler: nil)
+    alertController.addAction(createProfile)
+    alertController.addAction(maybeLater)
+    self.present(alertController, animated: true, completion: nil)
   }
   
   @IBAction func pearButtonClicked(_ sender: Any) {
@@ -215,6 +272,8 @@ extension DiscoveryFullProfileViewController {
         return nil
       }
       return (user.matchingPreferences, user.matchingDemographics)
+    case .placeholderEndorsed:
+      return nil
     }
   }
 }
@@ -245,7 +304,7 @@ extension DiscoveryFullProfileViewController {
     let shadowView = UIView()
     shadowView.translatesAutoresizingMaskIntoConstraints = false
     shadowView.layer.cornerRadius = 30
-    shadowView.layer.shadowOpacity = 0.2
+    shadowView.layer.shadowOpacity = 0.1
     shadowView.layer.shadowColor = UIColor.black.cgColor
     shadowView.layer.shadowRadius = 6
     shadowView.layer.shadowOffset = CGSize(width: 2, height: 2)
@@ -268,6 +327,7 @@ extension DiscoveryFullProfileViewController {
     
     if !enabled {
       let darkeningView = UIView()
+      darkeningView.isUserInteractionEnabled = false
       darkeningView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
       darkeningView.translatesAutoresizingMaskIntoConstraints = false
       matchButton.addSubview(darkeningView)
@@ -364,7 +424,23 @@ extension DiscoveryFullProfileViewController {
       
       return true
     }
+    
     allMatchButtons.insert(youMatchButton, at: 0)
+    
+    // Only You in match buttons, generate placeholder endorsed
+    if allMatchButtons.count == 1 {
+      let placeholderEndorsedButton = self.generateMatchButton(enabled: true)
+      placeholderEndorsedButton.setImage(R.image.discoveryPlaceholderEndorsement(), for: .normal)
+      
+      let placeholderEndorsementButton = MatchButton(button: placeholderEndorsedButton,
+                                       buttonEnabled: true,
+                                       type: .placeholderEndorsed,
+                                       endorsedUser: nil,
+                                       user: nil,
+                                       detachedProfile: nil)
+      allMatchButtons.append(placeholderEndorsementButton)
+    }
+    
     return allMatchButtons
   }
   
