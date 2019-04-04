@@ -50,7 +50,7 @@ extension FullProfileStackViewController {
       self.addImageVC(image: self.fullProfileData.rawImages[1])
     } else if 1 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[1])
-    } else {
+    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
       self.addLineView()
     }
     self.addInterestsVC(interests: self.fullProfileData.interests)
@@ -58,7 +58,7 @@ extension FullProfileStackViewController {
       self.addImageVC(image: self.fullProfileData.rawImages[2])
     } else if 2 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
-    } else {
+    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
       self.addLineView()
     }
     
@@ -70,7 +70,7 @@ extension FullProfileStackViewController {
       self.addImageVC(image: self.fullProfileData.rawImages[3])
     } else if 3 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
-    } else {
+    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
       self.addLineView()
     }
     
@@ -81,7 +81,7 @@ extension FullProfileStackViewController {
       self.addImageVC(image: self.fullProfileData.rawImages[4])
     } else if 4 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[4])
-    } else {
+    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
       self.addLineView()
     }
     
@@ -163,6 +163,11 @@ extension FullProfileStackViewController {
     self.addChild(bioVC)
     self.stackView.addArrangedSubview(bioVC.view)
     bioVC.didMove(toParent: self)
+    if bioContent.count == 0 {
+      bioVC.view.isHidden = true
+    } else {
+      bioVC.view.isHidden = false
+    }
   }
   
   func addInterestsVC(interests: [String]) {
@@ -173,6 +178,11 @@ extension FullProfileStackViewController {
     self.addChild(interestsVC)
     self.stackView.addArrangedSubview(interestsVC.view)
     interestsVC.didMove(toParent: self)
+    if interests.count == 0 {
+      interestsVC.view.isHidden = true
+    } else {
+      interestsVC.view.isHidden = false
+    }
   }
   
   func addDoDontVC(doDontType: DoDontType, doDontContent: [DoDontContent]) {

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>pear_button_string</key>
+	<string>You&apos;ll be notified if someone pears you with them.</string>
+	<key>pear_button_enabled</key>
+	<false/>
 	<key>waitlist_enabled</key>
 	<true/>
 </dict>

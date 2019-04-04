@@ -128,7 +128,7 @@ extension GetStartedShortBioViewController {
     self.addDismissKeyboardOnViewClick()
     self.addKeyboardSizeNotifications()
     self.stylize()
-  }
+   }
   
   func stylize() {
     self.nextButton.stylizeDark()
@@ -148,6 +148,7 @@ extension GetStartedShortBioViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.view.layoutIfNeeded()
     self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
@@ -229,6 +230,14 @@ extension GetStartedShortBioViewController {
         self.view.layoutIfNeeded()
       }
     }
+  }
+  
+}
+
+extension GetStartedShortBioViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
 }

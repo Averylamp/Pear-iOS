@@ -80,6 +80,12 @@ extension GetStartedStartFriendProfileViewController {
     self.addDismissKeyboardOnViewClick()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.dismissKeyboard()
+    self.view.layoutIfNeeded()
+  }
+  
   func stylize() {
     self.titleLabel.stylizeTitleLabel()
     self.subtitleLabel.stylizeSubtitleLabel()

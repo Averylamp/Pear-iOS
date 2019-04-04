@@ -19,6 +19,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var nextButton: UIButton!
+  @IBOutlet weak var contactButton: UIButton!
   
   @IBOutlet weak var inputTextFieldContainerView: UIView!
   @IBOutlet weak var inputTextField: UITextField!
@@ -49,8 +50,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
       self.gettingStartedData.phoneNumber = phoneNumber
       self.inputTextField.textColor = UIColor.lightGray
       self.inputTextField.isEnabled = false
-      self.nextButton.backgroundColor = UIColor.white
-      self.nextButton.setTitleColor(StylingConfig.nextButtonColor, for: .normal)
+      self.nextButton.stylizeLight()
       self.nextButton.isEnabled = false
       self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
                                                       type: NVActivityIndicatorType.ballScaleRippleMultiple,
@@ -88,6 +88,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
       case .success(let detachedProfile):
         Analytics.logEvent("finished_friend_profile", parameters: nil)
         print(detachedProfile)
+        DataStore.shared.refreshEndorsedUsers(completion: nil)
         DispatchQueue.main.async {
           guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
             print("Failed to create Allow Notifications VC")
@@ -100,7 +101,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
         DispatchQueue.main.async {
           switch error {
           case .graphQLError(let message):
-            self.alert(title: "Failed to Create Detached Profile", message: message)
+            self.alert(title: "Failed to Create Profile", message: message)
           case .userNotLoggedIn:
             self.alert(title: "Please login first", message: "You muust be logged in to create profiles")
           default:
@@ -109,6 +110,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
           self.stylize()
           self.inputTextField.text = ""
           self.inputTextField.isEnabled = true
+          self.nextButton.isEnabled = true
           self.activityIndicator.stopAnimating()
         }
         
@@ -146,7 +148,8 @@ extension GetStartedNotifyFriendViewController {
   }
   
   func stylize() {
-    self.nextButton.stylizeLight()
+    self.nextButton.stylizeDark()
+    self.contactButton.stylizeLight()
     self.titleLabel.stylizeTitleLabel()
     self.subtitleLabel.stylizeSubtitleLabel()
     
@@ -256,7 +259,7 @@ extension GetStartedNotifyFriendViewController: MFMessageComposeViewControllerDe
         self.inputTextField.isEnabled = true
         self.inputTextField.stylizeInputTextField()
         self.nextButton.isEnabled = true
-        self.nextButton.stylizeLight()
+        self.nextButton.stylizeDark()
       }
     }
   }

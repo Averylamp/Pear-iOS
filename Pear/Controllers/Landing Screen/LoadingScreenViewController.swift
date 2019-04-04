@@ -33,7 +33,7 @@ extension LoadingScreenViewController {
     self.ctestUpdateUserSchool()
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
-        DataStore.shared.checkForExistingUser(pearUserFoundCompletion: {
+        DataStore.shared.fetchExistingUser(pearUserFoundCompletion: {
           DataStore.shared.refreshEndorsedUsers(completion: nil)
           self.continueToMainScreen()
         }, userNotFoundCompletion: {
