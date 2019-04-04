@@ -302,12 +302,12 @@ extension DiscoveryTableViewCell {
           suggestedFor.append(endorsedUser.firstName)
         }
       }
-      for detachedProfile in DataStore.shared.detachedProfiles {
-        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
-          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
-          suggestedFor.append(detachedProfile.firstName)
-        }
-      }
+//      for detachedProfile in DataStore.shared.detachedProfiles {
+//        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
+//          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
+//          suggestedFor.append(detachedProfile.firstName)
+//        }
+//      }
     }
     if suggestedFor.count > 0 {
       self.suggestedForContainer.isHidden = false
