@@ -187,7 +187,7 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
         }
       }
       let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-      alertController.addAction(viewImageAction)
+//      alertController.addAction(viewImageAction)
       alertController.addAction(replaceImageAction)
       alertController.addAction(cancelAction)
       self.present(alertController, animated: true, completion: nil)
