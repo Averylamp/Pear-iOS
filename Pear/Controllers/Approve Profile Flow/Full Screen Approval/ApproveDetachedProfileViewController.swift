@@ -106,7 +106,7 @@ extension ApproveDetachedProfileViewController {
     continueButton.addTarget(self, action: #selector(ApproveDetachedProfileViewController.saveButtonClicked(sender:)), for: .touchUpInside)
     continueButton.stylizeDark()
     continueButton.layer.cornerRadius = 25
-    continueButton.setTitle("Save & Share", for: .normal)
+    continueButton.setTitle("Continue", for: .normal)
     continueButton.translatesAutoresizingMaskIntoConstraints = false
     continueContainerView.addSubview(continueButton)
     continueContainerView.addConstraints([

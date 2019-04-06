@@ -185,6 +185,12 @@ extension GetStartedVibeViewController {
     fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-watermelon")!,
                                 text: "Just Add Water",
                                 textColor: UIColor(red: 0.85, green: 0.34, blue: 0.42, alpha: 1.00)))
+    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-pear")!,
+                                text: "Pearfect",
+                                textColor: UIColor(red: 0.26, green: 0.76, blue: 0.36, alpha: 1.00)))
+    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-pomegranate")!,
+                                text: "Pomegranny",
+                                textColor: UIColor(red: 0.79, green: 0.31, blue: 0.40, alpha: 1.00)))
     
     return fruitVibes
   }
