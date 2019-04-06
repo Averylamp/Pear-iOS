@@ -68,7 +68,7 @@ extension PearImageAPI {
     
     let request = NSMutableURLRequest(url: NetworkingConfig.imageAPIHost as URL,
                                       cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 25.0)
+                                      timeoutInterval: 30.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = headers
     let imageString: String = finalImage.jpegData(compressionQuality: 0.8)!.base64EncodedString()
