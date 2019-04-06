@@ -348,7 +348,7 @@ extension GetStartedPhotoInputViewController {
     var img: UIImage?
     let manager = PHImageManager.default()
     let options = PHImageRequestOptions()
-    options.version = .original
+    options.version = .current
     options.isSynchronous = true
     manager.requestImageData(for: asset, options: options) { data, _, _, _ in
       if let data = data {
