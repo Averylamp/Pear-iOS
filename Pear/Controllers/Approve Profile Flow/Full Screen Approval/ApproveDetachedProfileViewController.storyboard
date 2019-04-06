@@ -52,7 +52,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFs-tK-yYE" userLabel="Progress View">
                                         <rect key="frame" x="0.0" y="49" width="0.0" height="1"/>
-                                        <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.1215686275" green="0.83137254900000002" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" id="Gth-1v-ZBo"/>
                                             <constraint firstAttribute="height" constant="1" id="Jno-A3-8OK"/>
@@ -99,6 +99,6 @@
     </scenes>
     <resources>
         <image name="approval-person" width="160" height="160"/>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
     </resources>
 </document>
