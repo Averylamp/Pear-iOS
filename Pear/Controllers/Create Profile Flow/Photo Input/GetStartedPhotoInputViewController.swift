@@ -23,7 +23,7 @@ class GetStartedPhotoInputViewController: UIViewController {
   let pageNumber: CGFloat = 7.0
   
   let betweenImageSpacing: CGFloat = 6
-  var images: [GettingStartedUIImageContainer] = []
+  var images: [LoadedImageContainer] = []
   var imagePickerController = BSImagePickerViewController()
   var longPressGestureRecognizer: UILongPressGestureRecognizer!
   var justMovedIndexPath: IndexPath?
