@@ -51,7 +51,7 @@ extension GetStartedBirthdateViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -18, to: Date())
-    datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -90, to: Date())
+    datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -99, to: Date())
     self.stylize()
   }
   
