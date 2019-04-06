@@ -42,7 +42,8 @@ extension DiscoverySimpleViewController {
     super.viewDidLoad()
     self.setup()
     self.stylize()
-    self.fullDataReload()
+    self.tableView.setContentOffset(CGPoint(x: 0, y: -refreshControl.frame.size.height), animated: true)
+    self.fullDataReload(animated: true)
   }
   
   func setup() {
@@ -56,7 +57,7 @@ extension DiscoverySimpleViewController {
                  for: .valueChanged)
     self.refreshTimer = Timer.scheduledTimer(timeInterval: 10,
                          target: self,
-                         selector: #selector(DiscoverySimpleViewController.reloadeFullDataIfNeeded),
+                         selector: #selector(DiscoverySimpleViewController.reloadFullDataIfNeeded),
                          userInfo: nil,
                          repeats: true)
     self.registerNotifications()
@@ -74,7 +75,7 @@ extension DiscoverySimpleViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    self.reloadeFullDataIfNeeded()
+    self.reloadFullDataIfNeeded()
   }
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
@@ -93,22 +94,25 @@ extension DiscoverySimpleViewController {
   }
   
   @objc func refreshControlChanged(sender: UIRefreshControl) {
-    self.fullDataReload()
+    self.fullDataReload(animated: true)
   }
   
-  @objc func reloadeFullDataIfNeeded() {
+  @objc func reloadFullDataIfNeeded() {
     if lastRefreshTime < Date(timeIntervalSinceNow: -self.minRefreshTime) {
       self.fullDataReload()
-    } 
+    }
   }
   
-  func fullDataReload() {
+  func fullDataReload(animated: Bool = false) {
     print("Discovery Full Reload")
+    if animated {
+      self.refreshControl.beginRefreshing()
+    }
     self.lastRefreshTime = Date()
     self.blockedUsers = DataStore.shared.fetchListFromDefaults(type: .blockedUsers)
     self.skippedDetachedProfiles = DataStore.shared.fetchListFromDefaults(type: .skippedDetachedProfiles)
     self.checkForDetachedProfiles()
-    self.refreshFeed()
+    self.refreshFeed(animated: animated)
   }
   
   func checkForDetachedProfiles() {
@@ -129,7 +133,7 @@ extension DiscoverySimpleViewController {
     })
   }
   
-  func refreshFeed() {
+  func refreshFeed(animated: Bool = false) {
     if let userID = DataStore.shared.currentPearUser?.documentID {
       PearProfileAPI.shared.getDiscoveryFeed(user_id: userID, completion: { (result) in
         switch result {
@@ -162,8 +166,10 @@ extension DiscoverySimpleViewController {
         case .failure(let error):
           print("Error fetching feed:\(error)")
         }
-        DispatchQueue.main.async {
-          self.refreshControl.endRefreshing()
+        if animated {
+          DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+          }
         }
       })
       
