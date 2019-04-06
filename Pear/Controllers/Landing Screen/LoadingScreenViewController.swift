@@ -32,6 +32,7 @@ extension LoadingScreenViewController {
     super.viewDidLoad()
 //    self.testUpdateUserSchool()
 //    self.testCreateMatchRequests()
+    self.testFetchMatchRequests()
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
         DataStore.shared.fetchExistingUser(pearUserFoundCompletion: {
@@ -186,6 +187,13 @@ extension LoadingScreenViewController {
         print("Update user failure: \(error)")
       }
 
+    }
+    
+  }
+  
+  func testFetchMatchRequests() {
+    DataStore.shared.fetchMatchRequests { (matchRequests) in
+      print(matchRequests)
     }
     
   }

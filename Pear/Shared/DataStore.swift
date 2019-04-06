@@ -27,6 +27,7 @@ class DataStore: NSObject {
   var currentPearUser: PearUser?
   var endorsedUsers: [MatchingPearUser] = []
   var detachedProfiles: [PearDetachedProfile] = []
+  var matchRequests: [Match] = []
   var remoteConfig: RemoteConfig
   var locationManager: CLLocationManager
   var firstLocationReceived: Bool = false

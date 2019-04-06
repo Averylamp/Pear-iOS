@@ -136,7 +136,30 @@ extension DataStore {
         return
       }
     }
-    
+  }
+  
+  func fetchMatchRequests(matchRequestsFound: (([Match]) -> Void)?) {
+    self.fetchUIDToken { (result) in
+      switch result {
+      case .success(let authTokens):
+        PearMatchesAPI.shared.getMatchesForUser(uid: authTokens.uid,
+                                                token: authTokens.token,
+                                                completion: { (result) in
+            switch result {
+            case .success(let matches):
+              self.matchRequests = matches
+              if let matchCompletion = matchRequestsFound {
+                matchCompletion(matches)
+              }
+            case .failure(let error):
+              print("Failure getting error: \(error)")
+            }
+        })
+      case .failure(let error):
+        print("Failure getting Tokens: \(error)")
+        return
+      }
+    }
   }
   
   func checkForDetachedProfiles(detachedProfilesFound: @escaping ([PearDetachedProfile]) -> Void) {
