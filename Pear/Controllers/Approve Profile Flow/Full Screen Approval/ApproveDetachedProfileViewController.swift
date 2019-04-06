@@ -124,7 +124,7 @@ extension ApproveDetachedProfileViewController {
     continueSubtext.stylizeTextFieldTitle()
     continueSubtext.numberOfLines = 0
     continueSubtext.textAlignment = .center
-    continueSubtext.text = "This will make your profile visible to other users on Pear."
+    continueSubtext.text = "This will make your profile visible to other users on Pear and your friend will be able to edit their contributions to your profile in the future."
     continueSubtext.translatesAutoresizingMaskIntoConstraints = false
     continueContainerView.addSubview(continueSubtext)
     continueContainerView.addConstraints([
