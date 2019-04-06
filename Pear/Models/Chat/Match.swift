@@ -37,13 +37,13 @@ enum MatchKeys: String, CodingKey {
 class Match: Decodable, CustomStringConvertible {
   
   let documentID: String!
-  let sentByUser: PearUser!
-  let sentForUser: PearUser!
-  let receivedByUser: PearUser!
+  let sentByUser: MatchingPearUser!
+  let sentForUser: MatchingPearUser!
+  let receivedByUser: MatchingPearUser!
   let sentForUserStatus: MatchRequestResponse!
   let sentForUserStatusLastUpdated: Date!
   let receivedByUserStatus: MatchRequestResponse!
-  let receivedByUserStatusLastUpdated: Date!
+  var receivedByUserStatusLastUpdated: Date!
   let firebaseChatDocumentID: String!
   var chat: Chat?
   
@@ -67,16 +67,31 @@ class Match: Decodable, CustomStringConvertible {
     let values = try decoder.container(keyedBy: MatchKeys.self)
     
     self.documentID = try values.decode(String.self, forKey: .documentID)
-    self.sentByUser = try values.decode(PearUser.self, forKey: .sentByUser)
-    self.sentForUser = try values.decode(PearUser.self, forKey: .sentForUser)
-    self.receivedByUser = try values.decode(PearUser.self, forKey: .receivedByUser)
+    self.sentByUser = try values.decode(MatchingPearUser.self, forKey: .sentByUser)
+    self.sentForUser = try values.decode(MatchingPearUser.self, forKey: .sentForUser)
+    self.receivedByUser = try values.decode(MatchingPearUser.self, forKey: .receivedByUser)
     guard let userStatus = MatchRequestResponse.init(rawValue: try values.decode(String.self, forKey: .sentForUserStatus)) else {
       throw MatchDecodingError.enumDecodingError
     }
     self.sentForUserStatus = userStatus
-    self.sentForUserStatusLastUpdated = try values.decode(Timestamp.self, forKey: .sentForUserStatusLastUpdated).dateValue()
+     let sentStatusLastUpdatedString = try? values.decode(String.self, forKey: .sentForUserStatusLastUpdated)
+    if let sentStatusLastUpdatedString = sentStatusLastUpdatedString, let sentStatusLastUpdatedDouble = Double(sentStatusLastUpdatedString) {
+      self.sentForUserStatusLastUpdated = Date(timeIntervalSince1970: sentStatusLastUpdatedDouble / 1000)
+    } else {
+      print("Failed to get sent for user status last updated")
+      self.sentForUserStatusLastUpdated = Date()
+    }
+
+    let receivedStatusLastUpdatedString = try? values.decode(String.self, forKey: .receivedByUserStatusLastUpdated)
+    if let receivedStatusLastUpdatedString = receivedStatusLastUpdatedString, let receivedStatusLastUpdatedDouble = Double(receivedStatusLastUpdatedString) {
+      self.receivedByUserStatusLastUpdated = Date(timeIntervalSince1970: receivedStatusLastUpdatedDouble / 1000)
+    } else {
+      print("Failed to get received by user status last updated")
+      self.receivedByUserStatusLastUpdated = Date()
+    }
+    
     guard let receivedUserStatus = MatchRequestResponse.init(rawValue: try values.decode(String.self, forKey: .receivedByUserStatus)) else {
-      throw MatchDecodingError.enumDecodingError
+      throw MatchDecodingError.enumDecodingError 
     }
     self.receivedByUserStatus = receivedUserStatus
     self.receivedByUserStatusLastUpdated = try values.decode(Timestamp.self, forKey: .receivedByUserStatusLastUpdated).dateValue()

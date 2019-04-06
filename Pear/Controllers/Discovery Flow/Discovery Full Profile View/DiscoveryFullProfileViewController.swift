@@ -241,25 +241,7 @@ class DiscoveryFullProfileViewController: UIViewController {
     } else {
       self.removeMatchButtons()
     }
-    return
-    
-    if DataStore.shared.remoteConfig.configValue(forKey: "pear_button_enabled").boolValue {
-      if !pearButton.isSelected {
-        self.matchButtons = self.createMatchButtons()
-        self.addMatchButtonsAnimated(matchButtons: self.matchButtons)
-      } else {
-        self.removeMatchButtons()
-      }
-    } else {
-      var pearMessage = "You'll be notified if someone pears you with them."
-      if let configPearMessage = DataStore.shared.remoteConfig.configValue(forKey: "pear_button_string").stringValue {
-        pearMessage = configPearMessage
-      }
-      let alertVC = UIAlertController(title: "Request Sent!", message: pearMessage, preferredStyle: .alert)
-      let continueButton = UIAlertAction(title: "Okay!", style: .default, handler: nil)
-      alertVC.addAction(continueButton)
-      self.present(alertVC, animated: true, completion: nil)
-    }
+
   }
 }
 
