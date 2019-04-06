@@ -180,6 +180,8 @@
 		BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */; };
 		BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */; };
 		BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A0812257F624009D9867 /* SentryHelper.swift */; };
+		BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */; };
+		BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */; };
 		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
 		BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
@@ -413,6 +415,8 @@
 		BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styling.swift"; sourceTree = "<group>"; };
 		BBC4A0812257F624009D9867 /* SentryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryHelper.swift; sourceTree = "<group>"; };
+		BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateImagesViewController.swift; sourceTree = "<group>"; };
+		BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateImagesViewController.storyboard; sourceTree = "<group>"; };
 		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
@@ -684,7 +688,10 @@
 		BB0AE4E422536F75005DD315 /* Update User */ = {
 			isa = PBXGroup;
 			children = (
+				BBC4A08622586F60009D9867 /* Demographics */,
 				BB0AE4E522536F85005DD315 /* Preferences */,
+				BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */,
+				BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */,
 			);
 			path = "Update User";
 			sourceTree = "<group>";
@@ -692,12 +699,8 @@
 		BB0AE4E522536F85005DD315 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */,
-				BB0AE4EC22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard */,
-				BB0AE4E822536FAC005DD315 /* UserAgePreferencesViewController.swift */,
-				BB0AE4EE22536FE0005DD315 /* UserAgePreferencesViewController.storyboard */,
-				BB0AE4EA22536FC3005DD315 /* UserLocationViewController.swift */,
-				BB0AE4F022536FEA005DD315 /* UserLocationViewController.storyboard */,
+				BBC4A08322586F40009D9867 /* Gender Preferences */,
+				BBC4A08422586F4B009D9867 /* Age Preferences */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -1220,6 +1223,41 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		BBC4A08322586F40009D9867 /* Gender Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */,
+				BB0AE4EC22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard */,
+			);
+			path = "Gender Preferences";
+			sourceTree = "<group>";
+		};
+		BBC4A08422586F4B009D9867 /* Age Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				BB0AE4E822536FAC005DD315 /* UserAgePreferencesViewController.swift */,
+				BB0AE4EE22536FE0005DD315 /* UserAgePreferencesViewController.storyboard */,
+			);
+			path = "Age Preferences";
+			sourceTree = "<group>";
+		};
+		BBC4A08522586F58009D9867 /* Location Demographics */ = {
+			isa = PBXGroup;
+			children = (
+				BB0AE4EA22536FC3005DD315 /* UserLocationViewController.swift */,
+				BB0AE4F022536FEA005DD315 /* UserLocationViewController.storyboard */,
+			);
+			path = "Location Demographics";
+			sourceTree = "<group>";
+		};
+		BBC4A08622586F60009D9867 /* Demographics */ = {
+			isa = PBXGroup;
+			children = (
+				BBC4A08522586F58009D9867 /* Location Demographics */,
+			);
+			path = Demographics;
+			sourceTree = "<group>";
+		};
 		BBD2842C223BFC1000AC6E30 /* PearUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1651,6 +1689,7 @@
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */,
 				BBA3CEBC2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard in Resources */,
+				BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */,
 				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
@@ -1967,6 +2006,7 @@
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */,
 				BBA2B42C223504E200D8C27B /* ProfileBioViewController.swift in Sources */,
+				BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */,
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
 				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */,

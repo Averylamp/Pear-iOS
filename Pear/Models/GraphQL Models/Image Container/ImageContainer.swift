@@ -98,9 +98,9 @@ class ImageContainer: Codable, CustomStringConvertible {
     return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
   }
   
-  func gettingStartedImageContainer(size: ImageType? = nil) -> GettingStartedUIImageContainer {
+  func gettingStartedImageContainer(size: ImageType? = nil) -> LoadedImageContainer {
     guard let size = size else {
-      return GettingStartedUIImageContainer(container: self)
+      return LoadedImageContainer(container: self)
     }
     var cacheImageURL: URL?
     switch size {
@@ -115,9 +115,9 @@ class ImageContainer: Codable, CustomStringConvertible {
     case .thumbnail:
       cacheImageURL = URL(string: self.thumbnail.imageURL)
     case .unknown:
-      return GettingStartedUIImageContainer(container: self)
+      return LoadedImageContainer(container: self)
     }
-    return GettingStartedUIImageContainer(container: self, imageURL: cacheImageURL, imageSize: size)
+    return LoadedImageContainer(container: self, imageURL: cacheImageURL, imageSize: size)
   }
 }
 
@@ -170,7 +170,7 @@ extension ImageContainer {
   
 }
 
-class GettingStartedUIImageContainer {
+class LoadedImageContainer {
   var imageContainer: ImageContainer?
   var image: UIImage?
   var loadedImageSize: ImageType?

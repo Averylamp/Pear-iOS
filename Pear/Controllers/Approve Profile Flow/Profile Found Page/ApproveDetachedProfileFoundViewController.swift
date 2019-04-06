@@ -22,7 +22,7 @@ class ApproveDetachedProfileFoundViewController: UIViewController {
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var skipButton: UIButton!
   
-  var imageContainers: (displayedImages: [GettingStartedUIImageContainer], imageBank: [GettingStartedUIImageContainer])?
+  var imageContainers: (displayedImages: [LoadedImageContainer], imageBank: [LoadedImageContainer])?
   var loadedImageContainersFromUser = false
   var hasClickedNext = false
   
