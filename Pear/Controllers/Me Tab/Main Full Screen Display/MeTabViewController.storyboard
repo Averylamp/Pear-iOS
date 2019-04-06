@@ -49,7 +49,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9U-Uq-JmU">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                             </scrollView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vss-rd-H0W">
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vss-rd-H0W">
                                 <rect key="frame" x="295" y="587" width="60" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -57,6 +57,9 @@
                                     <constraint firstAttribute="width" constant="60" id="rGP-tb-4Ci"/>
                                 </constraints>
                                 <state key="normal" image="me-icon-edit"/>
+                                <connections>
+                                    <action selector="editButtonClicked:" destination="Epp-Ix-2Bq" eventType="touchUpInside" id="MDe-XA-FNk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

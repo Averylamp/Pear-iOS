@@ -22,6 +22,16 @@ class MeTabViewController: UIViewController {
     return matchesVC
   }
   
+  @IBAction func editButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let profile = self.fullProfile,
+      let editMeVC = MeEditUserViewController.instantiate(profile: profile) else {
+        print("Failed to instantiate edit user profile")
+        return
+    }
+    self.navigationController?.pushViewController(editMeVC, animated: true)
+  }
+  
 }
 
 // MARK: - Life Cycle
