@@ -39,8 +39,8 @@
                                     </imageView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="90t-o6-2S0">
                                         <rect key="frame" x="187.5" y="0.0" width="0.0" height="0.0"/>
-                                        <color key="pageIndicatorTintColor" white="0.5" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
-                                        <color key="currentPageIndicatorTintColor" white="0.10000000000000001" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                        <color key="pageIndicatorTintColor" white="0.69999999999999996" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                        <color key="currentPageIndicatorTintColor" white="0.20000000000000001" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                                     </pageControl>
                                 </subviews>
                                 <constraints>
