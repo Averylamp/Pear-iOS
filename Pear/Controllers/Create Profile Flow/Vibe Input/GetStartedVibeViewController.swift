@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 struct FruitVibe {
-  let image: UIImage
+  let image: UIImage?
   let text: String
   let textColor: UIColor
 }
@@ -149,46 +149,46 @@ extension GetStartedVibeViewController {
   
   func allFruitVibes() -> [FruitVibe] {
     var fruitVibes: [FruitVibe] = []
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-apple")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesApple(),
                                 text: "Forbidden Fruit",
                                 textColor: UIColor(red: 0.00, green: 0.62, blue: 0.59, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-coconut")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesCoconut(),
                                 text: "Coco-nuts",
                                 textColor: UIColor(red: 0.51, green: 0.33, blue: 0.35, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-avocado")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesAvocado(),
                                 text: "Extra Like Guac",
                                 textColor: UIColor(red: 0.00, green: 0.62, blue: 0.59, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-bananas")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesBananas(),
                                 text: "BANANAS!",
                                 textColor: UIColor(red: 0.88, green: 0.72, blue: 0.04, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-cherry")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesCherry(),
                                 text: "Cherry Bomb",
                                 textColor: UIColor(red: 0.67, green: 0.24, blue: 0.33, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-grapes")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesGrapes(),
                                 text: "Grapeful",
                                 textColor: UIColor(red: 0.35, green: 0.29, blue: 0.50, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-kiwi")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesKiwi(),
                                 text: "Klutzy Kiwi",
                                 textColor: UIColor(red: 0.64, green: 0.42, blue: 0.42, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-lemon")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesLemon(),
                                 text: "Zesty",
                                 textColor: UIColor(red: 0.76, green: 0.66, blue: 0.09, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-pepper")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesPepper(),
                                 text: "Spicy",
                                 textColor: UIColor(red: 0.79, green: 0.31, blue: 0.40, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-raddish")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesRaddish(),
                                 text: "Baddest Radish",
                                 textColor: UIColor(red: 0.79, green: 0.31, blue: 0.40, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-strawberry")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesStrawberry(),
                                 text: "Fruity Cutie",
                                 textColor: UIColor(red: 0.85, green: 0.34, blue: 0.42, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-watermelon")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesWatermelon(),
                                 text: "Just Add Water",
                                 textColor: UIColor(red: 0.85, green: 0.34, blue: 0.42, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-pear")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesPear(),
                                 text: "Pearfect",
                                 textColor: UIColor(red: 0.26, green: 0.76, blue: 0.36, alpha: 1.00)))
-    fruitVibes.append(FruitVibe(image: UIImage(named: "fruit-vibes-pomegranate")!,
+    fruitVibes.append(FruitVibe(image: R.image.fruitVibesPomegranny(),
                                 text: "Pomegranny",
                                 textColor: UIColor(red: 0.79, green: 0.31, blue: 0.40, alpha: 1.00)))
     

@@ -212,7 +212,7 @@
     </scenes>
     <resources>
         <image name="onboarding-add-image-dotted-rectangle" width="330" height="330"/>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-close-button" width="120" height="120"/>
         <image name="onboarding-icon-camera" width="160" height="160"/>
         <image name="onboarding-icon-delete-image" width="120" height="120"/>
