@@ -68,26 +68,21 @@ class GetStartedShortBioViewController: UIViewController {
     self.saveBio()
     if let profileBio = self.gettingStartedData.bio {
       if profileBio.count < 50 {
-        let alertController = UIAlertController(title: nil,
-                                                message: "Your bio seems a little short 🤔.  Don't you think your friend deserves a little more?",
+        let alertController = UIAlertController(title: "Skip to Discovery?",
+                                                message: "That bio's short! Want to create this profile later?",
                                                 preferredStyle: .alert)
-        let cancelButton = UIAlertAction(title: "Yeah, I'll help 'em out", style: .cancel, handler: nil)
-        let continueButton = UIAlertAction(title: "Continue anyway", style: .default) { (_) in
-          Analytics.logEvent("finished_friend_bio", parameters: nil)
-          if self.gettingStartedData.bio?.count == 0 {
-            self.gettingStartedData.bio = " "
-          }
+        let skipToDiscoveryButton = UIAlertAction(title: "Skip Ahead", style: .destructive) { (_) in
           DispatchQueue.main.async {
-            guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-              print("Failed to create photoInputVC")
+            guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+              print("Failed to initialize Main VC")
               return
             }
-            self.navigationController?.pushViewController(photoInputVC, animated: true)
+            self.navigationController?.setViewControllers([mainVC], animated: true)
           }
         }
-        
-        alertController.addAction(cancelButton)
+        let continueButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alertController.addAction(continueButton)
+        alertController.addAction(skipToDiscoveryButton)
         self.present(alertController, animated: true, completion: nil)
       } else {
         Analytics.logEvent("finished_friend_bio", parameters: nil)
