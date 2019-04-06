@@ -36,7 +36,7 @@ class GetStartedAllowNotificationsViewController: UIViewController {
         print("Permission granted: \(granted)")
         if granted {
           // register for remote notifications
-          DataStore.shared.getNotificationSettings()
+          DataStore.shared.registerForRemoteNotificationsIfAuthorized()
         }
         DispatchQueue.main.sync {
           if let error = error {
