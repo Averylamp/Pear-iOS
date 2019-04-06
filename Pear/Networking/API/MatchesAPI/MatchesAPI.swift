@@ -21,4 +21,6 @@ protocol MatchesAPI {
                           receivedByUserID: String,
                           requestText: String?,
                           completion: @escaping(Result<Bool, MatchesAPIError>) -> Void)
+  func getMatchesForUser(uid: String, token: String, completion: @escaping (Result<[Match], MatchesAPIError>) -> Void)
+
 }

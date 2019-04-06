@@ -28,19 +28,6 @@ class PearImageAPI: ImageAPI {
   
   static let updateImagesQuery: String = "mutation UpdateUserPhotos($userInput:UpdateUserPhotosInput) { updateUserPhotos(updateUserPhotosInput:$userInput){ success message }}"
   
-  func generateSentryEvent(level: SentrySeverity = .warning,
-                           message: String,
-                           tags: [String: String] = [:],
-                           paylod: [String: Any] = [:]) {
-    let iamgeErrorEvent = Event(level: level)
-    iamgeErrorEvent.message = message
-    var allTags: [String: String] = ["API": "ImageUploadAPI"]
-    tags.forEach({ allTags[$0.key] = $0.value })
-    iamgeErrorEvent.tags = allTags
-    iamgeErrorEvent.extra = paylod
-    Client.shared?.send(event: iamgeErrorEvent, completion: nil)
-  }
-  
 }
 
 // MARK: - Routes
@@ -98,7 +85,12 @@ extension PearImageAPI {
             print("Image Upload Error: \(error)")
             trace?.incrementMetric("Image Upload Error", by: 1)
             trace?.stop()
-            self.generateSentryEvent(level: .error, message: error.localizedDescription, tags: [:], paylod: payload)
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearImageAPI",
+                                             functionName: "uploadImage",
+                                             message: "Image upload failure",
+                                             tags: [:],
+                                             paylod: payload)
             completion(.failure(ImageAPIError.unknownError(error: error)))
           } else {
             trace?.incrementMetric("Image Request Successful", by: 1)
@@ -112,12 +104,23 @@ extension PearImageAPI {
               } catch {
                 trace?.incrementMetric("Image Decoding Unsuccessful", by: 1)
                 trace?.stop()
-                self.generateSentryEvent(level: .error, message: error.localizedDescription, tags: [:], paylod: payload)
+                SentryHelper.generateSentryEvent(level: .error,
+                                                 apiName: "PearImageAPI",
+                                                 functionName: "uploadImage",
+                                                 message: "Image Decoding Failure",
+                                                 tags: [:],
+                                                 paylod: payload)
                 completion(.failure(ImageAPIError.unknownError(error: error)))
               }
             } else {
               trace?.incrementMetric("Image Request Data Missing", by: 1)
               trace?.stop()
+              SentryHelper.generateSentryEvent(level: .error,
+                                               apiName: "PearImageAPI",
+                                               functionName: "uploadImage",
+                                               message: "Image Response Data Missing",
+                                               tags: [:],
+                                               paylod: payload)
               completion(.failure(ImageAPIError.failedDeserialization))
             }
           }
@@ -125,7 +128,10 @@ extension PearImageAPI {
       
       dataTask.resume()
     } catch {
-      self.generateSentryEvent(level: .error, message: error.localizedDescription, tags: [:])
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearImageAPI",
+                                       functionName: "uploadImage",
+                                       message: error.localizedDescription)
       completion(.failure(ImageAPIError.unknownError(error: error)))
     }
   }
@@ -223,6 +229,12 @@ extension PearImageAPI {
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
         if let error = error {
           print(error as Any)
+          SentryHelper.generateSentryEvent(level: .error,
+                                           apiName: "PearImageAPI",
+                                           functionName: "updateUserPhotos",
+                                           message: error.localizedDescription,
+                                           tags: [:],
+                                           paylod: fullDictionary)
           completion(.failure(ImageAPIError.unknownError(error: error)))
           return
         } else {
@@ -230,13 +242,21 @@ extension PearImageAPI {
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
             print("Failed to Approve Detached Profile: \(helperResult)")
-            self.generateSentryEvent(level: .error, message: "GraphQL Error: \(helperResult)",
-              tags: ["function": "updateUserPhotos"], paylod: fullDictionary)
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearImageAPI",
+                                             functionName: "updateUserPhotos",
+                                             message: "GraphQL Error: \(helperResult)",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(ImageAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Approve Detached Profile: \(message ?? "")")
-            self.generateSentryEvent(level: .error, message: message ?? "Failed to Approve Detached Profile",
-                                     tags: ["function": "updateUserPhotos"], paylod: fullDictionary)
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearImageAPI",
+                                             functionName: "updateUserPhotos",
+                                             message: message ?? "GraphQL returned Failure",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(ImageAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Successfully attached Detached Profile: \(String(describing: message))")
@@ -247,6 +267,10 @@ extension PearImageAPI {
       dataTask.resume()
     } catch {
       print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearImageAPI",
+                                       functionName: "updateUserPhotos",
+                                       message: error.localizedDescription)
       completion(.failure(ImageAPIError.unknownError(error: error)))
     }
 

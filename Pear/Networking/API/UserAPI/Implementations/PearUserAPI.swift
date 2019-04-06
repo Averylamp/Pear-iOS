@@ -32,19 +32,6 @@ class PearUserAPI: UserAPI {
     return "mutation \(name)($user_id: ID, $userInput: UpdateUserInput){ updateUser(id:$user_id, updateUserInput:$userInput){ success message } }"
   }
   
-  func generateSentryEvent(level: SentrySeverity = .warning,
-                           message: String,
-                           tags: [String: String] = [:],
-                           paylod: [String: Any] = [:]) {
-    let userErrorEvent = Event(level: level)
-    userErrorEvent.message = message
-    var allTags: [String: String] = ["API": "PearUserAPI"]
-    tags.forEach({ allTags[$0.key] = $0.value })
-    userErrorEvent.tags = allTags
-    userErrorEvent.extra = paylod
-    Client.shared?.send(event: userErrorEvent, completion: nil)
-  }
-  
 }
 
 // MARK: - Routes
@@ -82,9 +69,21 @@ extension PearUserAPI {
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
             print("Failed to Get User: \(helperResult)")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: "getUser",
+                                             message: "GraphQL Error: \(helperResult)",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Get User: \(message ?? "")")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: "getUser",
+                                             message: message ?? "Returned Failure",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -95,6 +94,12 @@ extension PearUserAPI {
 //              completion(.failure(UserAPIError.failedDeserialization))
             } catch {
               print("Deserialization Error: \(error)")
+              SentryHelper.generateSentryEvent(level: .error,
+                                               apiName: "PearUserAPI",
+                                               functionName: "getUser",
+                                               message: error.localizedDescription,
+                                               tags: [:],
+                                               paylod: fullDictionary)
               completion(.failure(UserAPIError.failedDeserialization))
             }
           }
@@ -103,6 +108,10 @@ extension PearUserAPI {
       dataTask.resume()
     } catch {
       print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearUserAPI",
+                                       functionName: "getUser",
+                                       message: error.localizedDescription)
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
   }
@@ -142,9 +151,21 @@ extension PearUserAPI {
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
             print("Failed to Get User: \(helperResult)")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: "fetchEndorsedUsers",
+                                             message: "GraphQL Error: \(helperResult)",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Get User: \(message ?? "")")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: "fetchEndorsedUsers",
+                                             message: message ?? "Returned Failure",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -170,6 +191,13 @@ extension PearUserAPI {
               completion(.success((endorsedProfiles: endorsedUsers, detachedProfiles: detachedProfiles)))
             } catch {
               print("Deserialization Error: \(error)")
+              SentryHelper.generateSentryEvent(level: .error,
+                                               apiName: "PearUserAPI",
+                                               functionName: "fetchEndorsedUsers",
+                                               message: error.localizedDescription,
+                                               tags: [:],
+                                               paylod: fullDictionary)
+              
               completion(.failure(UserAPIError.failedDeserialization))
             }
           }
@@ -178,6 +206,10 @@ extension PearUserAPI {
       dataTask.resume()
     } catch {
       print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearUserAPI",
+                                       functionName: "fetchEndorsedUsers",
+                                       message: error.localizedDescription)
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
     
@@ -209,6 +241,12 @@ extension PearUserAPI {
         print("Data task returned")
         if let error = error {
           print(error as Any)
+          SentryHelper.generateSentryEvent(level: .error,
+                                           apiName: "PearUserAPI",
+                                           functionName: "createUser",
+                                           message: error.localizedDescription,
+                                           tags: [:],
+                                           paylod: fullDictionary)
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
@@ -216,9 +254,21 @@ extension PearUserAPI {
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
             print("Failed to Create User: \(helperResult)")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: "createUser",
+                                             message: "GraphQL Error: \(helperResult)",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: "createUser",
+                                             message: message ?? "Returned Error",
+              tags: [:],
+              paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -227,18 +277,24 @@ extension PearUserAPI {
               completion(.success(pearUser))
             } catch {
               print("Deserialization Error: \(error)")
+              SentryHelper.generateSentryEvent(level: .error,
+                                               apiName: "PearUserAPI",
+                                               functionName: "createUser",
+                                               message: "Deserialization Error: \(error.localizedDescription)",
+                                               tags: [:],
+                                               paylod: fullDictionary)
               completion(.failure(UserAPIError.failedDeserialization))
             }
           }
         }
       }
       dataTask.resume()
-    } catch let error as UserAPIError {
-      
-      print("Invalid variables for user creation error")
-      completion(.failure(error))
     } catch {
       print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearUserAPI",
+                                       functionName: "createUser",
+                                       message: error.localizedDescription)
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
   }
@@ -302,6 +358,12 @@ extension PearUserAPI {
         print("Data task returned")
         if let error = error {
           print(error as Any)
+          SentryHelper.generateSentryEvent(level: .error,
+                                           apiName: "PearUserAPI",
+                                           functionName: mutationName,
+                                           message: error.localizedDescription,
+                                           tags: [:],
+                                           paylod: fullDictionary)
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
@@ -309,13 +371,21 @@ extension PearUserAPI {
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
             print("Failed to Update User: \(helperResult)")
-            self.generateSentryEvent(level: .error, message: "GraphQL Error: \(helperResult)",
-              tags: ["function": "updateUser"], paylod: fullDictionary)
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: mutationName,
+                                             message: "GraphQL Error: \(helperResult)",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Update User: \(message ?? "")")
-            self.generateSentryEvent(level: .error, message: message ?? "Failed to Update User",
-                                     tags: ["function": "updateUser"], paylod: fullDictionary)
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: mutationName,
+                                             message: message ?? "Returned Failure",
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Successfully Updated User: \(String(describing: message))")
@@ -326,6 +396,10 @@ extension PearUserAPI {
       dataTask.resume()
     } catch {
       print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearUserAPI",
+                                       functionName: mutationName,
+                                       message: error.localizedDescription)
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
     
