@@ -1040,10 +1040,8 @@
 		BB986A1C220E08B300759A14 /* Landing Screen */ = {
 			isa = PBXGroup;
 			children = (
-				BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */,
-				BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */,
-				BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */,
-				BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */,
+				BB9CB6B9225A3BFB00605A98 /* Landing Navigation View Controller */,
+				BB9CB6B8225A3BED00605A98 /* Loading View Controller */,
 				BB986A38220E439800759A14 /* Landing Screen */,
 			);
 			path = "Landing Screen";
@@ -1121,6 +1119,42 @@
 				BB9CB6A62259FAA700605A98 /* UpdateTextFieldController.swift */,
 			);
 			path = "Update Text Field";
+			sourceTree = "<group>";
+		};
+		BB9CB6B6225A303E00605A98 /* Full Screen Friend VC */ = {
+			isa = PBXGroup;
+			children = (
+				BB9CB6B2225A139600605A98 /* FriendFullProfileViewController.storyboard */,
+				BB9CB6B3225A139600605A98 /* FriendFullProfileViewController.swift */,
+			);
+			path = "Full Screen Friend VC";
+			sourceTree = "<group>";
+		};
+		BB9CB6B7225A305300605A98 /* Edit Friend VC */ = {
+			isa = PBXGroup;
+			children = (
+				BB9CB6AA225A11F900605A98 /* FriendEditProfileViewController.storyboard */,
+				BB9CB6AB225A11F900605A98 /* FriendEditProfileViewController.swift */,
+			);
+			path = "Edit Friend VC";
+			sourceTree = "<group>";
+		};
+		BB9CB6B8225A3BED00605A98 /* Loading View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */,
+				BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */,
+			);
+			path = "Loading View Controller";
+			sourceTree = "<group>";
+		};
+		BB9CB6B9225A3BFB00605A98 /* Landing Navigation View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB986A3E220E85B100759A14 /* LandingNavigationViewController.swift */,
+				BB986A40220E85C000759A14 /* LandingNavigationViewController.storyboard */,
+			);
+			path = "Landing Navigation View Controller";
 			sourceTree = "<group>";
 		};
 		BB9D1B1A2255CFFA0074C099 /* Request Profile Flow */ = {
@@ -1514,10 +1548,8 @@
 		BBF694EE223B7E3600E13ABB /* Friends Tab */ = {
 			isa = PBXGroup;
 			children = (
-				BB9CB6B2225A139600605A98 /* FriendFullProfileViewController.storyboard */,
-				BB9CB6B3225A139600605A98 /* FriendFullProfileViewController.swift */,
-				BB9CB6AA225A11F900605A98 /* FriendEditProfileViewController.storyboard */,
-				BB9CB6AB225A11F900605A98 /* FriendEditProfileViewController.swift */,
+				BB9CB6B6225A303E00605A98 /* Full Screen Friend VC */,
+				BB9CB6B7225A305300605A98 /* Edit Friend VC */,
 				BB5F1DA122531CE90042D443 /* Main VC */,
 			);
 			path = "Friends Tab";

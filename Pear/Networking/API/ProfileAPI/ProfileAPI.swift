@@ -17,6 +17,13 @@ enum DetachedProfileError: Error {
   case unknownError(error: Error)
 }
 
+enum ProfileAPIError: Error {
+  case graphQLError(message: String)
+  case unknownError(error: Error)
+  case invalidVariables
+  case failedDeserialization
+}
+
 protocol ProfileAPI {
   func createNewDetachedProfile(gettingStartedUserProfileData: UserProfileCreationData,
                                 completion: @escaping(Result<PearDetachedProfile, DetachedProfileError>) -> Void)
