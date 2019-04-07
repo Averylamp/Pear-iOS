@@ -58,7 +58,23 @@ class ApproveDetachedProfileViewController: UIViewController {
               DataStore.shared.refreshPearUser(completion: nil)
               DataStore.shared.refreshEndorsedUsers(completion: nil)
               if DataStore.shared.hasUpdatedPreferences() {
-                self.dismiss(animated: true, completion: nil)
+                DataStore.shared.getNotificationAuthorizationStatus { status in
+                  print("**NOTIF AUTH STATUS**")
+                  print(status)
+                  if status == .notDetermined {
+                    DispatchQueue.main.async {
+                      guard let allowNotificationVC = ApproveProfileAllowNotificationsViewController.instantiate() else {
+                        print("Failed to create Allow Notifications VC")
+                        return
+                      }
+                      self.navigationController?.setViewControllers([allowNotificationVC], animated: true)
+                    }
+                  } else {
+                    DispatchQueue.main.async {
+                      self.dismiss(animated: true, completion: nil)
+                    }
+                  }
+                }
               } else {
                 guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
                   print("Failed to initialize Update User Pref VC")
