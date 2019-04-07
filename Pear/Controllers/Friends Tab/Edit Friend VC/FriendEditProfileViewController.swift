@@ -41,10 +41,34 @@ class FriendEditProfileViewController: UIViewController {
   }
   
   @IBAction func cancelButtonClicked(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
+    if checkForEdits() {
+      let alertController = UIAlertController(title: "Are you sure?",
+                                              message: "Your unsaved changes will be lost.",
+                                              preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+      let goBackAction = UIAlertAction(title: "Don't Save", style: .destructive) { (_) in
+        DispatchQueue.main.async {
+          self.navigationController?.popViewController(animated: true)
+        }
+      }
+      alertController.addAction(goBackAction)
+      alertController.addAction(cancelAction)
+      self.present(alertController, animated: true, completion: nil)
+    } else {
+      self.navigationController?.popViewController(animated: true)
+    }
   }
   
   @IBAction func doneButtonClicked(_ sender: Any) {
+    self.saveChanges()
+  }
+  
+  func saveChanges() {
+//    if let detachedProfile = self.detachedProfile {
+//      
+//    } else if let userProfile = self.userProfile {
+//      
+//    }
     
   }
   
@@ -135,7 +159,7 @@ extension FriendEditProfileViewController {
                               allowDeleteButton: true,
                               maxHeight: nil)
     })
-    
+    self.addSpacer(space: 30)
   }
   
   func addSpacer(space: CGFloat) {
@@ -223,11 +247,14 @@ extension FriendEditProfileViewController {
                     print("Failed to create expanding text vc")
                     return
     }
+    expandingTextVC.delegate = self
     self.textViewVCs.insert(expandingTextVC, at: insertionIndex + 1)
     self.addChild(expandingTextVC)
     self.stackView.insertArrangedSubview(expandingTextVC.view, at: arrangedSubviewIndex + 1)
     expandingTextVC.didMove(toParent: self)
-    
+    self.view.layoutIfNeeded()
+    expandingTextVC.expandingTextView.becomeFirstResponder()
+    self.scrollView.scrollRectToVisible(expandingTextVC.view.frame, animated: true)
   }
   
   func addTitleSection(title: String) {
@@ -250,6 +277,7 @@ extension FriendEditProfileViewController {
                          toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
       ])
     self.stackView.addArrangedSubview(containerView)
+    
   }
   
   func addSubtitleSection(subtitle: String) {
@@ -319,11 +347,40 @@ extension FriendEditProfileViewController {
                     print("Failed to create expanding text vc")
                     return
     }
+    expandingTextVC.delegate = self
     self.textViewVCs.append(expandingTextVC)
     self.addChild(expandingTextVC)
     self.stackView.addArrangedSubview(expandingTextVC.view)
     expandingTextVC.didMove(toParent: self)
     
+  }
+  
+}
+
+// MARK: - Update Expanding Text View Delegate
+extension FriendEditProfileViewController: UpdateExpandingTextViewDelegate {
+  
+  func deleteButtonPressed(controller: UpdateExpandingTextViewController) {
+    guard controller.type == .doType || controller.type == .dontType else {
+      print("Not allowed to remove non do/dont types")
+      return
+    }
+    var matchingCount = 0
+    self.textViewVCs.forEach({ if controller.type == $0.type { matchingCount += 1 }})
+    guard matchingCount > 1 else {
+      print("Cant remove last remaining item")
+      controller.expandingTextView.text = ""
+      return
+    }
+    guard self.stackView.arrangedSubviews.firstIndex(where: { $0 == controller.view }) != nil,
+      let arrayIndex = self.textViewVCs.firstIndex(of: controller) else {
+        print("Unable to find indices to remove")
+        return
+    }
+    
+    self.stackView.removeArrangedSubview(controller.view)
+    controller.view.removeFromSuperview()
+    self.textViewVCs.remove(at: arrayIndex)
   }
   
 }
