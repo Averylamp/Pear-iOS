@@ -224,4 +224,20 @@ extension DataStore {
     }
   }
   
+  func hasUpdatedPreferences() -> Bool {
+    // we should do something more robust in the future, but for now just check if the settings are defaults
+    if let user = DataStore.shared.currentPearUser {
+      if user.matchingPreferences.seekingGender.count != 3 {
+        return true
+      }
+      if user.matchingPreferences.minAgeRange != 18 {
+        return true
+      }
+      if user.matchingPreferences.maxAgeRange != 40 && user.matchingPreferences.maxAgeRange != 24 {
+        return true
+      }
+    }
+    return false
+  }
+  
 }

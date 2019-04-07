@@ -55,13 +55,17 @@ class ApproveDetachedProfileViewController: UIViewController {
             print("Successfully attached detached profile: \(success)")
             self.isApprovingProfile = false
             if success {
-              guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
-                print("Failed to initialize Update User Pref VC")
-                return
-              }
               DataStore.shared.fetchExistingUser(pearUserFoundCompletion: nil, userNotFoundCompletion: nil)
               DataStore.shared.refreshEndorsedUsers(completion: nil)
-              self.navigationController?.setViewControllers([updateUserVC], animated: true)
+              if DataStore.shared.hasUpdatedPreferences() {
+                self.dismiss(animated: true, completion: nil)
+              } else {
+                guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
+                  print("Failed to initialize Update User Pref VC")
+                  return
+                }
+                self.navigationController?.setViewControllers([updateUserVC], animated: true)
+              }
             } else {
               self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
               self.isApprovingProfile = false
