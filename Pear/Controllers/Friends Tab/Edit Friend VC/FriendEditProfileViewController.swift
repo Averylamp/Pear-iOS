@@ -42,6 +42,7 @@ class FriendEditProfileViewController: UIViewController {
   
   @IBAction func cancelButtonClicked(_ sender: Any) {
     if checkForEdits() {
+      HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .warning)
       let alertController = UIAlertController(title: "Are you sure?",
                                               message: "Your unsaved changes will be lost.",
                                               preferredStyle: .alert)
@@ -60,15 +61,110 @@ class FriendEditProfileViewController: UIViewController {
   }
   
   @IBAction func doneButtonClicked(_ sender: Any) {
-    self.saveChanges()
+    self.saveChanges {
+      DispatchQueue.main.async {
+        HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+        NotificationCenter.default.post(name: .refreshFriendTab, object: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+      }
+    }
   }
   
-  func saveChanges() {
-//    if let detachedProfile = self.detachedProfile {
-//      
-//    } else if let userProfile = self.userProfile {
-//      
-//    }
+  func compareStringArrays(first: [String], second: [String]) -> Bool {
+    if first.count != second.count {
+      return false
+    }
+    for index in 0..<first.count {
+      if !compareWithoutQuotes(first: first[index], second: second[index]) {
+        return false
+      }
+    }
+    return true
+  }
+  
+  func getUpdates() -> [String: Any] {
+    var updates: [String: Any] = [:]
+    var bio: String = ""
+    self.textViewVCs.forEach({ if $0.type == .bio { bio = $0.expandingTextView.text } })
+    var dos: [String] = []
+    self.textViewVCs.forEach({ if $0.type == .doType { dos.append($0.expandingTextView.text) } })
+    var donts: [String] = []
+    self.textViewVCs.forEach({ if $0.type == .dontType { donts.append($0.expandingTextView.text) } })
+    
+    if let detachedProfile = self.detachedProfile {
+      if !compareWithoutQuotes(first: bio, second: detachedProfile.bio) {
+        updates["bio"] = bio
+      }
+      if !compareStringArrays(first: dos, second: detachedProfile.dos) {
+        updates["dos"] = dos
+      }
+      if !compareStringArrays(first: donts, second: detachedProfile.donts) {
+        updates["donts"] = donts
+      }
+    } else if let userProfile = self.userProfile {
+      if !compareWithoutQuotes(first: bio, second: userProfile.bio) {
+        updates["bio"] = bio
+      }
+      if !compareStringArrays(first: dos, second: userProfile.dos) {
+        updates["dos"] = dos
+      }
+      if !compareStringArrays(first: donts, second: userProfile.donts) {
+        updates["donts"] = donts
+      }
+    }
+    
+    return updates
+  }
+  
+  func saveChanges(completion: (() -> Void)?) {
+    var updates = self.getUpdates()
+    if updates.count == 0 {
+      if let completion = completion {
+        completion()
+      }
+      return
+    }
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Failed to get current user")
+      return
+    }
+    if let detachedProfile = self.detachedProfile {
+      PearProfileAPI.shared.editDetachedProfile(profileDocumentID: detachedProfile.documentID,
+                                                userID: userID,
+                                                updates: updates) { (result) in
+        switch result {
+        case .success(let successful):
+          if successful {
+            print("Successful detached profile update")
+          } else {
+            print("Failed to update detached profile")
+          }
+        case .failure(let error):
+          print("Failure updating detached profile:\(error)")
+        }
+        if let completion = completion {
+          completion()
+        }
+      }
+    } else if let userProfile = self.userProfile {
+      PearProfileAPI.shared.editUserProfile(profileDocumentID: userProfile.documentID,
+                                                userID: userID,
+                                                updates: updates) { (result) in
+        switch result {
+        case .success(let successful):
+          if successful {
+            print("Successful user profile update")
+          } else {
+            print("Failed to update user profile")
+          }
+        case .failure(let error):
+          print("Failure updating user profile:\(error)")
+        }
+        if let completion = completion {
+          completion()
+        }
+      }
+    }
     
   }
   
@@ -79,6 +175,10 @@ extension FriendEditProfileViewController {
   
   func checkForEdits() -> Bool {
     if let photoVC = self.photoUpdateVC, photoVC.checkForChanges() {
+      return true
+    }
+    let updates = self.getUpdates()
+    if updates.count > 0 {
       return true
     }
     return false
@@ -95,7 +195,7 @@ extension FriendEditProfileViewController {
     self.constructEditProfile()
     self.addKeyboardSizeNotifications()
     self.addDismissKeyboardOnViewClick()
-
+    
   }
   
   func stylize() {
@@ -103,7 +203,7 @@ extension FriendEditProfileViewController {
     self.profileNameLabel.text = "Edit \(firstName!)'s Profile"
   }
   
-  func compateWithoutQuotes(first: String, second: String) -> Bool {
+  func compareWithoutQuotes(first: String, second: String) -> Bool {
     return first.replacingOccurrences(of: "\"", with: "") == second.replacingOccurrences(of: "\"", with: "")
   }
   
@@ -117,8 +217,6 @@ extension FriendEditProfileViewController {
   
   func constructEditProfile() {
     self.addSpacer(space: 20)
-    self.addTitleSection(title: "Suggested Photos")
-    self.addSubtitleSection(subtitle: "\(firstName!) will be able to choose from these photos.")
     var images: [LoadedImageContainer] = []
     var bio: String = ""
     var dos: [String] = []
@@ -134,7 +232,13 @@ extension FriendEditProfileViewController {
       donts.append(contentsOf: userProfile.donts.map({  removeFirstLastCharacter(text: $0) }))
     }
     
-    self.addPhotosSection(images: images)
+    // Only detached profiles have image editing ability
+    if self.detachedProfile != nil {
+      self.addTitleSection(title: "Suggested Photos")
+      self.addSubtitleSection(subtitle: "\(firstName!) will be able to choose from these photos.")
+      self.addPhotosSection(images: images)
+    }
+    
     self.addTitleSection(title: "Bio")
     self.addExpandingTextVC(initialText: bio,
                             type: .bio,
@@ -234,10 +338,10 @@ extension FriendEditProfileViewController {
     guard let lastExpandingTextVC = lastOfType,
       let insertionIndex = self.textViewVCs.firstIndex(of: lastExpandingTextVC),
       let arrangedSubviewIndex = self.stackView.arrangedSubviews.firstIndex(where: { $0 == lastExpandingTextVC.view })  else {
-      print("Failed to find expanding text VC of type \(type)")
-      return
+        print("Failed to find expanding text VC of type \(type)")
+        return
     }
-  
+    
     guard let expandingTextVC = UpdateExpandingTextViewController
       .instantiate(initialText: "",
                    type: type,
@@ -324,8 +428,8 @@ extension FriendEditProfileViewController {
                                                                   textFieldTitle: title,
                                                                   allowEditing: editable,
                                                                   textContentType: textContentType) else {
-      print("Failed to initialize text field")
-      return
+                                                                    print("Failed to initialize text field")
+                                                                    return
     }
     self.addChild(textFieldVC)
     self.stackView.addArrangedSubview(textFieldVC.view)

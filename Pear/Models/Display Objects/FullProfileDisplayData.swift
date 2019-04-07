@@ -191,7 +191,12 @@ class FullProfileDisplayData: Equatable {
     lhs.originalCreatorName == rhs.originalCreatorName &&
     lhs.firstName == rhs.firstName &&
     lhs.age == rhs.age &&
-    lhs.gender == rhs.gender
+    lhs.gender == rhs.gender &&
+    lhs.interests == rhs.interests &&
+    lhs.vibes == rhs.vibes &&
+    lhs.dos.map({$0.phrase}) == rhs.dos.map({$0.phrase}) &&
+    lhs.donts.map({$0.phrase}) == rhs.donts.map({$0.phrase}) &&
+    lhs.bio.map({$0.bio}) == rhs.bio.map({$0.bio})
   }
  
   static func compareListsForNewItems(oldList: [FullProfileDisplayData], newList: [FullProfileDisplayData]) -> Bool {

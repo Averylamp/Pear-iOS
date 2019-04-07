@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+extension Notification.Name {
+  static let refreshFriendTab = Notification.Name("refreshFriendTab")
+}
+
 class FriendsTabViewController: UIViewController {
   
   var userProfiles: [FullProfileDisplayData] = []
@@ -35,6 +39,10 @@ extension FriendsTabViewController {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
     self.stylize()
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(FriendsTabViewController.reloadEndorsedProfiles),
+                   name: .refreshFriendTab, object: nil)
   }
   
   func loadNewEndorsedDetachedProfiles(endorsedProfiles: [MatchingPearUser], detachedProfiles: [PearDetachedProfile]) {
@@ -59,13 +67,13 @@ extension FriendsTabViewController {
   func stylize() {
   }
   
-  func reloadEndorsedProfiles() {
+  @objc func reloadEndorsedProfiles() {
     self.loadNewEndorsedDetachedProfiles(endorsedProfiles: DataStore.shared.endorsedUsers,
                                          detachedProfiles: DataStore.shared.detachedProfiles)
     DataStore.shared.refreshEndorsedUsers { (endorsedUsers, detachedProfiles) in
       self.loadNewEndorsedDetachedProfiles(endorsedProfiles: endorsedUsers,
                                            detachedProfiles: detachedProfiles)
-      print("\(endorsedUsers.count) Endorsed Users, \(detachedProfiles.count) Detached Profiles Loaded into Friends Tab")
+      print("Network load of \(endorsedUsers.count) Endorsed Users, \(detachedProfiles.count) Detached Profiles Loaded into Friends Tab")
     }
   }
   
