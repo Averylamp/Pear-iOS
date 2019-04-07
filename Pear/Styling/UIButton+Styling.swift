@@ -82,4 +82,11 @@ extension UIButton {
     self.setTitleColor(R.color.primaryTextColor(), for: .normal)
   }
   
+  func stylizeEditAddSection() {
+    if let font = R.font.nunitoBold(size: 17) {
+      self.titleLabel?.font = font
+    }
+    self.setTitleColor(R.color.brandPrimaryDark(), for: .normal)
+  }
+  
 }

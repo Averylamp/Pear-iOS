@@ -51,9 +51,7 @@ class FriendFullProfileViewController: UIViewController {
                                                                                   print("Failed to create edit friend VC")
                                                                                   return
     }
-    
     self.navigationController?.pushViewController(editFriendProfileVC, animated: true)
-    
   }
   
 }
@@ -62,8 +60,16 @@ class FriendFullProfileViewController: UIViewController {
 extension FriendFullProfileViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.stylize()
     self.addFullStackVC()
+  }
+  
+  func stylize() {
+    self.editButton.layer.cornerRadius = 30
+    self.editButton.layer.shadowOpacity = 0.2
+    self.editButton.layer.shadowColor = UIColor.black.cgColor
+    self.editButton.layer.shadowRadius = 6
+    self.editButton.layer.shadowOffset = CGSize(width: 2, height: 2)
   }
   
   func addFullStackVC() {
