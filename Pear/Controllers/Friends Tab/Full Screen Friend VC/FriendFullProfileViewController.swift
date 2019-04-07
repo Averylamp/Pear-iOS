@@ -30,7 +30,7 @@ class FriendFullProfileViewController: UIViewController {
   }
   
   @IBAction func editProfileButtonClicked(_ sender: Any) {
-    
+    tg
     let detachedProfile = fullProfileData.originObject as? PearDetachedProfile
     var userProfile: PearUserProfile?
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
