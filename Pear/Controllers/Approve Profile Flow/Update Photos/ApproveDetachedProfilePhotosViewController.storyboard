@@ -140,7 +140,7 @@
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ta2-qc-wTR" userLabel="Progress View">
                                         <rect key="frame" x="0.0" y="49" width="0.0" height="1"/>
-                                        <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.1215686275" green="0.83137254900000002" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="4zr-Qt-CHj"/>
                                             <constraint firstAttribute="width" id="HAT-T4-x13"/>
@@ -197,7 +197,7 @@
     </scenes>
     <resources>
         <image name="onboarding-add-image-dotted-rectangle" width="330" height="330"/>
-        <image name="onboarding-back-button" width="120" height="120"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-close-button" width="120" height="120"/>
         <image name="onboarding-icon-camera" width="160" height="160"/>
     </resources>
