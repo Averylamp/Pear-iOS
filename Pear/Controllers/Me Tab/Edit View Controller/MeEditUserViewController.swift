@@ -18,14 +18,17 @@ class MeEditUserViewController: UIViewController {
   @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
   
   var profile: FullProfileDisplayData!
+  var pearUser: PearUser!
   let leadingSpace: CGFloat = 12
   
   var photoUpdateVC: UpdateImagesViewController?
+  var textFieldVCs: [UpdateTextFieldController] = []
   
-  class func instantiate(profile: FullProfileDisplayData) -> MeEditUserViewController? {
+  class func instantiate(profile: FullProfileDisplayData, pearUser: PearUser) -> MeEditUserViewController? {
     let storyboard = UIStoryboard(name: String(describing: MeEditUserViewController.self), bundle: nil)
     guard let editMeVC = storyboard.instantiateInitialViewController() as? MeEditUserViewController else { return nil }
     editMeVC.profile = profile
+    editMeVC.pearUser = pearUser
     return editMeVC
   }
   
@@ -35,6 +38,48 @@ class MeEditUserViewController: UIViewController {
   
   @IBAction func doneButtonClicked(_ sender: Any) {
     
+  }
+  
+}
+
+// MARK: - Updating and Saving
+extension MeEditUserViewController {
+  
+  func getValueForFieldType(type: UpdateTextFieldType) -> String {
+    switch type {
+    case .firstName:
+      return self.pearUser.firstName
+    case .lastName:
+      return self.pearUser.lastName
+    case .birthday:
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "MMM d, yyyy"
+      return dateFormatter.string(from: self.pearUser.birthdate)
+    case .gender:
+       return self.pearUser.matchingDemographics.gender.toString()
+    case .location:
+      return self.pearUser.matchingDemographics.location.locationName ?? ""
+    case .unknown:
+      return ""
+    }
+  }
+  
+  func checkForEdits() -> Bool {
+    if let photoVC = self.photoUpdateVC, photoVC.checkForChanges() {
+      return true
+    }
+    var textFieldChanged = false
+    self.textFieldVCs.forEach { (fieldVC) in
+      if let inputText = fieldVC.inputTextField.text,
+        self.getValueForFieldType(type: fieldVC.type) != inputText {
+        textFieldChanged = true
+      }
+    }
+    if textFieldChanged {
+      return true
+    }
+    
+    return false
   }
   
 }
@@ -53,16 +98,29 @@ extension MeEditUserViewController {
   
   func stylize() {
     self.profileNameLabel.stylizeSubtitleLabelSmall()
-    self.profileNameLabel.text = self.profile.firstName
-    
   }
   
   func constructEditProfile() {
     self.addSpacer(space: 20)
     self.addPhotosSection()
-    self.addSingleField(title: "Bio", initialText: "Here is the bio of my friend")
-    self.addSingleField(title: "Bio", initialText: "Here is the bio of my friend")
-    self.addSingleField(title: "Bio", initialText: "Here is the bio of my friend")
+    self.addTitleSection(title: "Basic Information")
+    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName, editable: false)
+    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName, editable: false)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM d, yyyy"
+    let birthdate = dateFormatter.string(from: self.pearUser.birthdate)
+    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate, editable: false)
+    
+    self.addTextField(type: .gender,
+                      title: "Gender",
+                      initialText: self.pearUser.matchingDemographics.gender.toString(),
+                      editable: false)
+    
+    self.addTextField(type: .location,
+                      title: "Location",
+                      initialText: self.pearUser.matchingDemographics.location.locationName ?? "",
+                      editable: true,
+                      textContentType: .addressCityAndState)
     
   }
   
@@ -136,6 +194,25 @@ extension MeEditUserViewController {
     self.addChild(photosVC)
     self.stackView.addArrangedSubview(photosVC.view)
     photosVC.didMove(toParent: self)
+  }
+  
+  func addTextField(type: UpdateTextFieldType,
+                    title: String,
+                    initialText: String,
+                    editable: Bool,
+                    textContentType: UITextContentType? = nil) {
+    guard let textFieldVC = UpdateTextFieldController.instantiate(type: type,
+                                                                  initialText: initialText,
+                                                                  textFieldTitle: title,
+                                                                  allowEditing: editable,
+                                                                  textContentType: textContentType) else {
+      print("Failed to initialize text field")
+      return
+    }
+    self.textFieldVCs.append(textFieldVC)
+    self.addChild(textFieldVC)
+    self.stackView.addArrangedSubview(textFieldVC.view)
+    textFieldVC.didMove(toParent: self)
   }
   
   func addSingleField(title: String, initialText: String = "") {

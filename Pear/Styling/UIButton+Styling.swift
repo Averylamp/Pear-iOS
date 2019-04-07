@@ -75,4 +75,11 @@ extension UIButton {
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontRegular, size: 17)
   }
   
+  func stylizeTextFieldButton() {
+    if let font = R.font.nunitoLight(size: 12) {
+      self.titleLabel?.font = font
+    }
+    self.setTitleColor(R.color.primaryTextColor(), for: .normal)
+  }
+  
 }

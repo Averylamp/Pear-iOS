@@ -17,6 +17,8 @@ class SentryHelper {
                                  message: String,
                                  tags: [String: String] = [:],
                                  paylod: [String: Any] = [:]) {
+    print("\n***** GENERATING SENTRY REPORT *****")
+    print("***** \(apiName):\(functionName) - \(message) *****\n")
     #if PROD
     let userErrorEvent = Event(level: level)
     userErrorEvent.message = "\(apiName):\(functionName) - \(message)"

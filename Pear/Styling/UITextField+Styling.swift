@@ -17,4 +17,12 @@ extension UITextField {
     self.tintColor = StylingConfig.textFontColor
   }
   
+  func stylizeUpdateInputTextField() {
+    if let font = R.font.nunitoRegular(size: 18) {
+      self.font = font
+    }
+    self.textColor = R.color.primaryTextColor()
+    self.tintColor = R.color.primaryTextColor()
+  }
+  
 }

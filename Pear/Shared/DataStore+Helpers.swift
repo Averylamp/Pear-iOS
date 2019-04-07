@@ -90,7 +90,7 @@ extension DataStore {
     
   }
   
-  func fetchExistingUser(pearUserFoundCompletion:(() -> Void)?, userNotFoundCompletion: (() -> Void)?) {
+  func refreshPearUser(completion: ((PearUser?) -> Void)?) {
     self.fetchUIDToken { (result) in
       switch result {
       case .success(let authTokens):
@@ -114,24 +114,24 @@ extension DataStore {
               ]
               trace?.incrementMetric("Existing User Found", by: 1)
               trace?.stop()
-              if let pearFoundCompletion = pearUserFoundCompletion {
-                pearFoundCompletion()
+              if let completion = completion {
+                completion(pearUser)
               }
               return
             case .failure(let error):
               print("Error getting Pear User: \(error)")
               trace?.incrementMetric("No Existing User Found", by: 1)
               trace?.stop()
-              if let pearNotFoundCompletion = userNotFoundCompletion {
-                pearNotFoundCompletion()
+              if let completion = completion {
+                completion(nil)
               }
               return
             }
         })
       case .failure(let error):
         print("Failure getting Tokens: \(error)")
-        if let pearNotFoundCompletion = userNotFoundCompletion {
-          pearNotFoundCompletion()
+        if let completion = completion {
+          completion(nil)
         }
         return
       }
@@ -145,15 +145,15 @@ extension DataStore {
         PearMatchesAPI.shared.getMatchesForUser(uid: authTokens.uid,
                                                 token: authTokens.token,
                                                 completion: { (result) in
-            switch result {
-            case .success(let matches):
-              self.matchRequests = matches
-              if let matchCompletion = matchRequestsFound {
-                matchCompletion(matches)
-              }
-            case .failure(let error):
-              print("Failure getting error: \(error)")
-            }
+                                                  switch result {
+                                                  case .success(let matches):
+                                                    self.matchRequests = matches
+                                                    if let matchCompletion = matchRequestsFound {
+                                                      matchCompletion(matches)
+                                                    }
+                                                  case .failure(let error):
+                                                    print("Failure getting error: \(error)")
+                                                  }
         })
       case .failure(let error):
         print("Failure getting Tokens: \(error)")
@@ -188,16 +188,16 @@ extension DataStore {
         PearUserAPI.shared.fetchEndorsedUsers(uid: authTokens.uid,
                                               token: authTokens.token,
                                               completion: { (result) in
-            switch result {
-            case .success(let (newEndorsedUsers, newDetachedProfiles)):
-              self.endorsedUsers = newEndorsedUsers
-              self.detachedProfiles  =  newDetachedProfiles
-              if let completion = completion {
-                completion(newEndorsedUsers, newDetachedProfiles)
-              }
-            case .failure(let error):
-              print("Failure getting endorsed users: \(error)")
-            }
+                                                switch result {
+                                                case .success(let (newEndorsedUsers, newDetachedProfiles)):
+                                                  self.endorsedUsers = newEndorsedUsers
+                                                  self.detachedProfiles  =  newDetachedProfiles
+                                                  if let completion = completion {
+                                                    completion(newEndorsedUsers, newDetachedProfiles)
+                                                  }
+                                                case .failure(let error):
+                                                  print("Failure getting endorsed users: \(error)")
+                                                }
         })
       case .failure(let error):
         print("Failure getting auth tokens: \(error)")

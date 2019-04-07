@@ -71,9 +71,9 @@ extension UpdateExpandingTextViewController {
     self.stylize()
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    self.recalculateTextViewHeight()
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.recalculateTextViewHeight(animated: false)
   }
   
   func configure() {
@@ -99,6 +99,9 @@ extension UpdateExpandingTextViewController {
     self.expandingTextContainerView.layer.cornerRadius = 8
     
     self.expandingTextView.stylizeEditTextLabel()
+    if let primaryTextColor = R.color.primaryTextColor() {
+      self.expandingTextView.tintColor = primaryTextColor
+    }
   }
   
 }
@@ -106,7 +109,7 @@ extension UpdateExpandingTextViewController {
 // MARK: - UITextViewDelegate
 extension UpdateExpandingTextViewController: UITextViewDelegate {
   
-  func recalculateTextViewHeight() {
+  func recalculateTextViewHeight(animated: Bool = true) {
     if let viewHeightConstraint = self.expandingTextViewHeightConstraint {
       self.view.layoutIfNeeded()
       let textHeight = self.expandingTextView.sizeThatFits(CGSize(width: self.expandingTextView.frame.width,
@@ -118,8 +121,12 @@ extension UpdateExpandingTextViewController: UITextViewDelegate {
       } else {
         self.expandingTextView.isScrollEnabled = false
       }
-      UIView.animate(withDuration: self.animationDuration) {
-        self.view.layoutIfNeeded()
+      if animated {
+        UIView.animate(withDuration: self.animationDuration) {
+          self.view.layoutIfNeeded()
+        }
+      } else {
+         self.view.layoutIfNeeded()
       }
     }
   }
