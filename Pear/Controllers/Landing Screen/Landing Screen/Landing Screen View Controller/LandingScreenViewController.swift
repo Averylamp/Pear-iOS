@@ -100,7 +100,7 @@ extension LandingScreenViewController {
     
     self.emailButton.stylizeLight()
     self.emailButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
-
+    
     guard let textFont = R.font.nunitoLight(size: 11),
       let boldFont = R.font.nunitoSemiBold(size: 11) else {
         print("Failed to load in fonts")
@@ -115,9 +115,9 @@ extension LandingScreenViewController {
     let eulaString = NSMutableAttributedString(string: "EULA",
                                                attributes: boldAttributes)
     let andString = NSMutableAttributedString(string: " and ",
-                                                attributes: subtleAttributes)
+                                              attributes: subtleAttributes)
     let privacyPolicyString = NSMutableAttributedString(string: "privacy policy",
-                                               attributes: boldAttributes)
+                                                        attributes: boldAttributes)
     termsString.append(eulaString)
     termsString.append(andString)
     termsString.append(privacyPolicyString)
@@ -256,73 +256,75 @@ private extension LandingScreenViewController {
         firebaseFacebookLogin?.stop()
         
         let facebookLoginExistingUserTrace = Performance.startTrace(name: "Facebook Login Check User")
-        DataStore.shared.fetchExistingUser(pearUserFoundCompletion: {
-          facebookLoginExistingUserTrace?.incrementMetric("Facebook Found Existing User", by: 1)
-          facebookLoginExistingUserTrace?.stop()
-          DispatchQueue.main.async {
-            guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-              print("Failed to create Landing Screen VC")
+        DataStore.shared.refreshPearUser(completion: { (pearUser) in
+          if pearUser != nil {
+            facebookLoginExistingUserTrace?.incrementMetric("Facebook Found Existing User", by: 1)
+            facebookLoginExistingUserTrace?.stop()
+            DispatchQueue.main.async {
+              guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+                print("Failed to create Landing Screen VC")
+                self.stylizeFacebookButton(isEnabled: true)
+                return
+              }
               self.stylizeFacebookButton(isEnabled: true)
-              return
+              self.navigationController?.setViewControllers([mainVC], animated: true)
             }
-            self.stylizeFacebookButton(isEnabled: true)
-            self.navigationController?.setViewControllers([mainVC], animated: true)
-          }
-        }, userNotFoundCompletion: {
-          facebookLoginExistingUserTrace?.incrementMetric("Facebook Existing User Not Found", by: 1)
-          facebookLoginExistingUserTrace?.stop()
-          gettingStartedUser.firebaseAuthID = user.uid
-          
-          var facebookLogin = false
-          var emailLogin = false
-          var phoneLogin = false
-          
-          user.providerData.forEach({ (userInfo) in
-            print(userInfo.providerID)
-            if userInfo.providerID == FacebookAuthProviderID {
-              print("Facebook Found")
-              facebookLogin = true
-            } else if userInfo.providerID == EmailAuthProviderID {
-              print("Email Found")
-              emailLogin = true
-            } else if userInfo.providerID == PhoneAuthProviderID {
-              print("Phone Found")
-              phoneLogin = true
-            }
-          })
-          if (facebookLogin && phoneLogin) || (emailLogin && phoneLogin) {
-            print("Probably already created account")
-          }
-          
-          if !phoneLogin {
-            print("Attached phone number not found")
-            gettingStartedUser.phoneNumber = nil
-          }
-          
-          var permissions: [String] = ["id", "first_name", "last_name", "picture.width(300).height(300)"]
-          
-          if  grantedPermissions.contains("email") {
-            permissions.append("email")
-          }
-          if  grantedPermissions.contains("user_birthday") {
-            permissions.append("birthday")
-          }
-          if  grantedPermissions.contains("user_gender") {
-            permissions.append("gender")
-          }
-          self.userGraphRequest(gettingStartedUser: gettingStartedUser,
-                                permissions: permissions,
-                                completion: { (fbGraphFilledGSUser  ) in
-              if let location = DataStore.shared.lastLocation {
-                fbGraphFilledGSUser.lastLocation = location
+          } else {
+            facebookLoginExistingUserTrace?.incrementMetric("Facebook Existing User Not Found", by: 1)
+            facebookLoginExistingUserTrace?.stop()
+            gettingStartedUser.firebaseAuthID = user.uid
+            
+            var facebookLogin = false
+            var emailLogin = false
+            var phoneLogin = false
+            
+            user.providerData.forEach({ (userInfo) in
+              print(userInfo.providerID)
+              if userInfo.providerID == FacebookAuthProviderID {
+                print("Facebook Found")
+                facebookLogin = true
+              } else if userInfo.providerID == EmailAuthProviderID {
+                print("Email Found")
+                emailLogin = true
+              } else if userInfo.providerID == PhoneAuthProviderID {
+                print("Phone Found")
+                phoneLogin = true
               }
-              DispatchQueue.main.async {
-                if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
-                  self.stylizeFacebookButton(isEnabled: true)
-                  self.navigationController?.pushViewController(nextVC, animated: true)
+            })
+            if (facebookLogin && phoneLogin) || (emailLogin && phoneLogin) {
+              print("Probably already created account")
+            }
+            
+            if !phoneLogin {
+              print("Attached phone number not found")
+              gettingStartedUser.phoneNumber = nil
+            }
+            
+            var permissions: [String] = ["id", "first_name", "last_name", "picture.width(300).height(300)"]
+            
+            if  grantedPermissions.contains("email") {
+              permissions.append("email")
+            }
+            if  grantedPermissions.contains("user_birthday") {
+              permissions.append("birthday")
+            }
+            if  grantedPermissions.contains("user_gender") {
+              permissions.append("gender")
+            }
+            self.userGraphRequest(gettingStartedUser: gettingStartedUser,
+                                  permissions: permissions,
+                                  completion: { (fbGraphFilledGSUser  ) in
+                if let location = DataStore.shared.lastLocation {
+                  fbGraphFilledGSUser.lastLocation = location
                 }
-              }
-          })
+                DispatchQueue.main.async {
+                  if let nextVC = fbGraphFilledGSUser.getNextInputViewController() {
+                    self.stylizeFacebookButton(isEnabled: true)
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                  }
+                }
+            })
+          }
         })
         
       }

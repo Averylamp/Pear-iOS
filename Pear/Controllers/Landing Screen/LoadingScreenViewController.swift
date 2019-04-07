@@ -35,13 +35,14 @@ extension LoadingScreenViewController {
     self.testFetchMatchRequests()
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
-        DataStore.shared.fetchExistingUser(pearUserFoundCompletion: {
-          DataStore.shared.refreshEndorsedUsers(completion: nil)
-          self.continueToMainScreen()
-        }, userNotFoundCompletion: {
-          self.continueToLandingScreen()
+        DataStore.shared.refreshPearUser(completion: { (pearUser) in
+          if pearUser != nil {
+            DataStore.shared.refreshEndorsedUsers(completion: nil)
+            self.continueToMainScreen()
+          } else {
+            self.continueToLandingScreen()
+          }
         })
-        self.testChat()
       } else {
         self.continueToVersionBlockScreen()
       }

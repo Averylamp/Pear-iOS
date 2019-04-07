@@ -59,7 +59,7 @@ class ApproveDetachedProfileViewController: UIViewController {
                 print("Failed to initialize Update User Pref VC")
                 return
               }
-              DataStore.shared.fetchExistingUser(pearUserFoundCompletion: nil, userNotFoundCompletion: nil)
+              DataStore.shared.refreshPearUser(completion: nil)
               DataStore.shared.refreshEndorsedUsers(completion: nil)
               self.navigationController?.setViewControllers([updateUserVC], animated: true)
             } else {
