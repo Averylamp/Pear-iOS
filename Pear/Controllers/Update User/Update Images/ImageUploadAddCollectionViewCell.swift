@@ -10,5 +10,13 @@ import UIKit
 
 class ImageUploadAddCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var imageView: UIImageView!
+
+  weak var imageCellDelegate: ImageUploadCollectionViewDelegate?
   
+  @IBAction func cellClicked(_ sender: Any) {
+    if let delegate = self.imageCellDelegate {
+      delegate.imageClicked(tag: self.tag)
+    }
+  }
+
 }

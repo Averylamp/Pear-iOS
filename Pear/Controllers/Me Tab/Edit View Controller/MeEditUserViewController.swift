@@ -179,11 +179,8 @@ extension MeEditUserViewController {
   func addPhotosSection() {
     self.addTitleSection(title: "Photos")
     var allImages: [LoadedImageContainer] = []
-    self.profile.imageContainers.forEach({
+    self.pearUser.displayedImages.forEach({
       allImages.append($0.loadedImageContainer())
-    })
-    self.profile.rawImages.forEach({
-      allImages.append($0.gettingStartedImage())
     })
     guard let photosVC = UpdateImagesViewController.instantiate(images: allImages) else {
       print("failed to create photo edit VC")

@@ -78,16 +78,16 @@ extension UpdateImagesViewController {
 
 // MARK: - UICollectionViewDelegate
 extension UpdateImagesViewController: UICollectionViewDelegate {
-  
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if indexPath.item >= self.images.count {
+
+  func selectedItemAtIndex(index: Int) {
+    if index >= self.images.count {
       self.imageReplacementIndexPath = nil
       self.pickImage()
     } else {
       let alertController = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .actionSheet)
       let replaceImageAction = UIAlertAction(title: "Replace Image", style: .default) { (_) in
         DispatchQueue.main.async {
-          self.imageReplacementIndexPath = indexPath
+          self.imageReplacementIndexPath = IndexPath(item: index, section: 0)
           self.pickImage()
         }
       }
@@ -96,6 +96,11 @@ extension UpdateImagesViewController: UICollectionViewDelegate {
       alertController.addAction(cancelAction)
       self.present(alertController, animated: true, completion: nil)
     }
+
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    self.selectedItemAtIndex(index: indexPath.item)
   }
   
   func pickImage() {
@@ -206,6 +211,7 @@ extension UpdateImagesViewController {
 
 // MARK: - UICollectionViewDataSource
 extension UpdateImagesViewController: UICollectionViewDataSource, ImageUploadCollectionViewDelegate {
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 6
   }
@@ -226,13 +232,16 @@ extension UpdateImagesViewController: UICollectionViewDataSource, ImageUploadCol
       cell.imageView.contentMode = .scaleAspectFill
       cell.imageView.layer.cornerRadius = 3
       cell.imageView.clipsToBounds = true
-      cell.closeButtonDelegate = self
+      cell.imageCellDelegate = self
+      cell.tag = indexPath.item
       cell.cancelButton.tag = indexPath.item
       return cell
     } else {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadAddCollectionViewCell", for: indexPath) as? ImageUploadAddCollectionViewCell else {
         return UICollectionViewCell()
       }
+      cell.tag = indexPath.item
+      cell.imageCellDelegate = self
       if indexPath.item == self.images.count {
         cell.imageView.image = UIImage(named: "onboarding-add-image-primary")
       } else {
@@ -246,6 +255,10 @@ extension UpdateImagesViewController: UICollectionViewDataSource, ImageUploadCol
   func closeButtonClicked(tag: Int) {
     self.images.remove(at: tag)
     self.collectionView.reloadData()
+  }
+  
+  func imageClicked(tag: Int) {
+    self.selectedItemAtIndex(index: tag)
   }
   
 }

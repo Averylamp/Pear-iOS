@@ -134,29 +134,6 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
       self.pickImage()
     } else {
       let alertController = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .actionSheet)
-      let viewImageAction = UIAlertAction(title: "View Full Images", style: .default) { (_) in
-        DispatchQueue.main.async {
-//          var lightboxImages: [LightboxImage] = []
-//          for image in self.images {
-//            var lightboxImage: LightboxImage?
-//            if let rawImage = image.image {
-//              lightboxImage = LightboxImage(image: rawImage)
-//            } else if let imageURLString = image.imageContainer?.large.imageURL,
-//              let imageURL = URL(string: imageURLString) {
-//              lightboxImage = LightboxImage(imageURL: imageURL)
-//            }
-//            if let lightboxImage = lightboxImage {
-//              lightboxImages.append(lightboxImage)
-//            }
-//          }
-//          if lightboxImages.count > 0 {
-//            let index = indexPath.row < lightboxImages.count ? indexPath.row : lightboxImages.count - 1
-//            let lightboxController = LightboxController(images: lightboxImages, startIndex: index)
-//            lightboxController.dynamicBackground = false
-//            self.present(lightboxController, animated: true, completion: nil)
-//          }
-        }
-      }
       let replaceImageAction = UIAlertAction(title: "Replace Image", style: .default) { (_) in
         DispatchQueue.main.async {
           self.imageReplacementIndexPath = indexPath
@@ -164,7 +141,6 @@ extension GetStartedPhotoInputViewController: UICollectionViewDelegate {
         }
       }
       let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-      alertController.addAction(viewImageAction)
       alertController.addAction(replaceImageAction)
       alertController.addAction(cancelAction)
       self.present(alertController, animated: true, completion: nil)
@@ -252,27 +228,39 @@ extension GetStartedPhotoInputViewController {
 
 // MARK: - UICollectionViewDataSource
 extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageUploadCollectionViewDelegate {
+  func imageClicked(tag: Int) {
+    self.collectionView(self.collectionView, didSelectItemAt: IndexPath(item: tag, section: 0))
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 6
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    
     if indexPath.item < self.images.count {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadCollectionViewCell", for: indexPath) as? ImageUploadCollectionViewCell else {
         return UICollectionViewCell()
       }
-      cell.imageView.image = self.images[indexPath.item].image
+      if let image = self.images[indexPath.row].image {
+        cell.imageView.image = image
+      } else if let urlString = self.images[indexPath.row].imageContainer?.thumbnail.imageURL, let imageURL = URL(string: urlString) {
+        cell.imageView.image = nil
+        cell.imageView.sd_setImage(with: imageURL, placeholderImage: nil, options: .highPriority, progress: nil, completed: nil)
+      }
       cell.imageView.contentMode = .scaleAspectFill
       cell.imageView.layer.cornerRadius = 3
       cell.imageView.clipsToBounds = true
-      cell.closeButtonDelegate = self
+      cell.imageCellDelegate = self
+      cell.tag = indexPath.item
       cell.cancelButton.tag = indexPath.item
       return cell
     } else {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadAddCollectionViewCell", for: indexPath) as? ImageUploadAddCollectionViewCell else {
         return UICollectionViewCell()
       }
+      cell.tag = indexPath.item
+      cell.imageCellDelegate = self
       if indexPath.item == self.images.count {
         cell.imageView.image = UIImage(named: "onboarding-add-image-primary")
       } else {
@@ -282,7 +270,7 @@ extension GetStartedPhotoInputViewController: UICollectionViewDataSource, ImageU
       return cell
     }
   }
-  
+
   func closeButtonClicked(tag: Int) {
     self.images.remove(at: tag)
     self.collectionView.reloadData()
