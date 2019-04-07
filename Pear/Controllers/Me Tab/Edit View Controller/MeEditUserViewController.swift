@@ -98,6 +98,7 @@ extension MeEditUserViewController {
   
   func stylize() {
     self.profileNameLabel.stylizeSubtitleLabelSmall()
+    self.doneButton.stylizeEditAddSection()
   }
   
   func constructEditProfile() {
