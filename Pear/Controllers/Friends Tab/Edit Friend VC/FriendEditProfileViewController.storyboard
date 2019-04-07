@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Me Edit User View Controller-->
+        <!--Friend Edit Profile View Controller-->
         <scene sceneID="sYA-Gg-tdR">
             <objects>
-                <viewController id="1d6-oB-8PO" customClass="MeEditUserViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1d6-oB-8PO" customClass="FriendEditProfileViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZO0-rP-Cgi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,14 +44,14 @@
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="vwc-cT-hB5"/>
+                                            <action selector="cancelButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="nX1-8U-yvn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBh-z2-b4F">
                                         <rect key="frame" x="326" y="10" width="37" height="30"/>
                                         <state key="normal" title="Done"/>
                                         <connections>
-                                            <action selector="doneButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="R74-Qf-nSY"/>
+                                            <action selector="doneButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="jLa-cM-GST"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -107,12 +107,12 @@
                         <viewLayoutGuide key="safeArea" id="SIR-1c-p7i"/>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="WZP-gN-Rsq" id="ogn-IG-KKR"/>
-                        <outlet property="doneButton" destination="OBh-z2-b4F" id="bD7-Ej-SKp"/>
-                        <outlet property="profileNameLabel" destination="Vz7-4z-i8h" id="Iok-HX-fRQ"/>
-                        <outlet property="scrollView" destination="sKx-em-e81" id="Yn6-gN-sde"/>
-                        <outlet property="scrollViewBottomConstraint" destination="cz9-TE-hgG" id="WWd-dJ-DFe"/>
-                        <outlet property="stackView" destination="lpG-Cn-3kF" id="6Me-x0-hXA"/>
+                        <outlet property="cancelButton" destination="WZP-gN-Rsq" id="010-VP-uv9"/>
+                        <outlet property="doneButton" destination="OBh-z2-b4F" id="7nZ-K1-3Ys"/>
+                        <outlet property="profileNameLabel" destination="Vz7-4z-i8h" id="8J1-Gz-EEH"/>
+                        <outlet property="scrollView" destination="sKx-em-e81" id="wVt-7M-C14"/>
+                        <outlet property="scrollViewBottomConstraint" destination="cz9-TE-hgG" id="Bof-6H-0ps"/>
+                        <outlet property="stackView" destination="lpG-Cn-3kF" id="hjd-6F-96M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMp-nq-df4" userLabel="First Responder" sceneMemberID="firstResponder"/>

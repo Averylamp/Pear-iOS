@@ -157,29 +157,6 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDelegate {
       self.pickImage()
     } else {
       let alertController = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .actionSheet)
-      let viewImageAction = UIAlertAction(title: "View Full Images", style: .default) { (_) in
-        DispatchQueue.main.async {
-//          var lightboxImages: [LightboxImage] = []
-//          for image in self.images {
-//            var lightboxImage: LightboxImage?
-//            if let rawImage = image.image {
-//              lightboxImage = LightboxImage(image: rawImage)
-//            } else if let imageURLString = image.imageContainer?.large.imageURL,
-//              let imageURL = URL(string: imageURLString) {
-//              lightboxImage = LightboxImage(imageURL: imageURL)
-//            }
-//            if let lightboxImage = lightboxImage {
-//              lightboxImages.append(lightboxImage)
-//            }
-//          }
-//          if lightboxImages.count > 0 {
-//            let index = indexPath.row < lightboxImages.count ? indexPath.row : lightboxImages.count - 1
-//            let lightboxController = LightboxController(images: lightboxImages, startIndex: index)
-//            lightboxController.dynamicBackground = false
-//            self.present(lightboxController, animated: true, completion: nil)
-//          }
-        }
-      }
       let replaceImageAction = UIAlertAction(title: "Replace Image", style: .default) { (_) in
         DispatchQueue.main.async {
           self.imageReplacementIndexPath = indexPath
@@ -302,6 +279,11 @@ extension ApproveDetachedProfilePhotosViewController {
 
 // MARK: - UICollectionViewDataSource
 extension ApproveDetachedProfilePhotosViewController: UICollectionViewDataSource, ImageUploadCollectionViewDelegate {
+  
+  func imageClicked(tag: Int) {
+    self.collectionView(self.collectionView, didSelectItemAt: IndexPath(item: tag, section: 0))
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 6
   }
@@ -319,25 +301,19 @@ extension ApproveDetachedProfilePhotosViewController: UICollectionViewDataSource
         cell.imageView.image = nil
         cell.imageView.sd_setImage(with: imageURL, placeholderImage: nil, options: .highPriority, progress: nil, completed: nil)
       }
-      if let imageID = self.images[indexPath.row].imageContainer?.imageID,
-        self.originalDetachedProfileImages.contains(where: { $0.imageID == imageID }) {
-        cell.imageView.layer.borderColor = R.color.brandPrimaryDark()?.cgColor
-        cell.imageView.layer.borderWidth = 3
-      } else {
-        cell.imageView.layer.borderColor = nil
-        cell.imageView.layer.borderWidth = 0
-      }
-      
       cell.imageView.contentMode = .scaleAspectFill
       cell.imageView.layer.cornerRadius = 3
       cell.imageView.clipsToBounds = true
-      cell.closeButtonDelegate = self
+      cell.imageCellDelegate = self
+      cell.tag = indexPath.item
       cell.cancelButton.tag = indexPath.item
       return cell
     } else {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadAddCollectionViewCell", for: indexPath) as? ImageUploadAddCollectionViewCell else {
         return UICollectionViewCell()
       }
+      cell.tag = indexPath.item
+      cell.imageCellDelegate = self
       if indexPath.item == self.images.count {
         cell.imageView.image = UIImage(named: "onboarding-add-image-primary")
       } else {

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hwL-Xf-fyY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Update Expanding Text View Controller-->
+        <scene sceneID="cWJ-uE-drv">
+            <objects>
+                <viewController id="hwL-Xf-fyY" customClass="UpdateExpandingTextViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0rV-Yd-wA5"/>
+                        <viewControllerLayoutGuide type="bottom" id="HFo-4L-rXe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fcR-kd-JN1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GF-WB-M7f">
+                                <rect key="frame" x="12" y="4" width="351" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDX-Zx-bKZ">
+                                        <rect key="frame" x="313" y="8" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="7wH-Mf-QRw"/>
+                                            <constraint firstAttribute="width" secondItem="kDX-Zx-bKZ" secondAttribute="height" multiplier="1:1" id="jTo-vF-sl7"/>
+                                        </constraints>
+                                        <state key="normal" image="onboarding-close-button"/>
+                                        <connections>
+                                            <action selector="deleteButtonClicked:" destination="hwL-Xf-fyY" eventType="touchUpInside" id="bWG-Gc-9aC"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jXf-2R-Kfb">
+                                        <rect key="frame" x="4" y="4" width="305" height="124"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="124" id="dHq-o1-9xR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jXf-2R-Kfb" firstAttribute="top" secondItem="1GF-WB-M7f" secondAttribute="top" constant="4" id="6ne-57-e9Y"/>
+                                    <constraint firstItem="kDX-Zx-bKZ" firstAttribute="leading" secondItem="jXf-2R-Kfb" secondAttribute="trailing" constant="4" id="9BJ-Q6-8kp"/>
+                                    <constraint firstItem="kDX-Zx-bKZ" firstAttribute="top" secondItem="1GF-WB-M7f" secondAttribute="top" constant="8" id="QCx-B5-gMt"/>
+                                    <constraint firstAttribute="trailing" secondItem="kDX-Zx-bKZ" secondAttribute="trailing" constant="8" id="aoH-Km-R7U"/>
+                                    <constraint firstAttribute="bottom" secondItem="jXf-2R-Kfb" secondAttribute="bottom" constant="4" id="fzx-jw-k00"/>
+                                    <constraint firstItem="jXf-2R-Kfb" firstAttribute="leading" secondItem="1GF-WB-M7f" secondAttribute="leading" constant="4" id="vCH-lu-vtF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1GF-WB-M7f" secondAttribute="trailing" constant="12" id="0tW-vL-5mN"/>
+                            <constraint firstItem="HFo-4L-rXe" firstAttribute="top" secondItem="1GF-WB-M7f" secondAttribute="bottom" constant="4" id="K6t-Nx-GUw"/>
+                            <constraint firstItem="1GF-WB-M7f" firstAttribute="top" secondItem="0rV-Yd-wA5" secondAttribute="bottom" constant="4" id="QWN-cv-Avq"/>
+                            <constraint firstItem="1GF-WB-M7f" firstAttribute="leading" secondItem="fcR-kd-JN1" secondAttribute="leading" constant="12" id="pBm-YW-KqI"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="140"/>
+                    <connections>
+                        <outlet property="deleteButton" destination="kDX-Zx-bKZ" id="hc2-iX-x9t"/>
+                        <outlet property="deleteButtonWidthConstraint" destination="7wH-Mf-QRw" id="Gsd-rM-jBU"/>
+                        <outlet property="expandingTextContainerView" destination="1GF-WB-M7f" id="9S5-3k-Z3q"/>
+                        <outlet property="expandingTextView" destination="jXf-2R-Kfb" id="q0n-Cn-hQB"/>
+                        <outlet property="expandingTextViewHeightConstraint" destination="dHq-o1-9xR" id="WxG-El-Tup"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bB3-VB-ngg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="-305.84707646176912"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-close-button" width="120" height="120"/>
+    </resources>
+</document>

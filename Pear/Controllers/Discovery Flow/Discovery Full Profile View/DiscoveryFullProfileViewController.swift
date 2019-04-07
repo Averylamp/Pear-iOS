@@ -599,7 +599,7 @@ extension DiscoveryFullProfileViewController {
         chatRequestVC.removeFromParent()
         self.chatRequestVC = nil
       }
-      if let chatConstraint = self.chatRequestVCBottomConstraint {
+      if self.chatRequestVCBottomConstraint != nil {
         self.chatRequestVCBottomConstraint = nil
       }
     })

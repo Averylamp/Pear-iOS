@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ysX-Me-dlM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Update Text Field Controller-->
+        <scene sceneID="kgP-Hh-95O">
+            <objects>
+                <viewController id="ysX-Me-dlM" customClass="UpdateTextFieldController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ehx-Jb-m9j"/>
+                        <viewControllerLayoutGuide type="bottom" id="EDq-kp-20S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5h4-UT-hPz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kWc-wx-wAX">
+                                <rect key="frame" x="12" y="4" width="351" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wy5-U0-CpB">
+                                        <rect key="frame" x="12" y="6" width="38" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="Rbg-xW-mXP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="textFieldSubtitleClicked:" destination="ysX-Me-dlM" eventType="touchUpInside" id="Fzv-IN-waS"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rMc-n1-9rj">
+                                        <rect key="frame" x="12" y="24" width="327" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="900" constant="34" id="ut4-q5-38K"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="rMc-n1-9rj" firstAttribute="top" secondItem="Wy5-U0-CpB" secondAttribute="bottom" id="9Jq-a3-c5D"/>
+                                    <constraint firstItem="rMc-n1-9rj" firstAttribute="leading" secondItem="kWc-wx-wAX" secondAttribute="leading" constant="12" id="KaH-QJ-TIF"/>
+                                    <constraint firstAttribute="trailing" secondItem="rMc-n1-9rj" secondAttribute="trailing" constant="12" id="aHX-c0-XQ4"/>
+                                    <constraint firstAttribute="bottom" secondItem="rMc-n1-9rj" secondAttribute="bottom" id="onx-t0-AWf"/>
+                                    <constraint firstItem="Wy5-U0-CpB" firstAttribute="top" secondItem="kWc-wx-wAX" secondAttribute="top" constant="6" id="unn-ew-T2C"/>
+                                    <constraint firstItem="Wy5-U0-CpB" firstAttribute="leading" secondItem="kWc-wx-wAX" secondAttribute="leading" constant="12" id="xH9-RZ-7vS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kWc-wx-wAX" firstAttribute="leading" secondItem="5h4-UT-hPz" secondAttribute="leading" constant="12" id="HCG-ZG-sle"/>
+                            <constraint firstAttribute="trailing" secondItem="kWc-wx-wAX" secondAttribute="trailing" constant="12" id="b1C-Az-JnJ"/>
+                            <constraint firstItem="kWc-wx-wAX" firstAttribute="top" secondItem="Ehx-Jb-m9j" secondAttribute="bottom" constant="4" id="n13-5l-T3E"/>
+                            <constraint firstItem="EDq-kp-20S" firstAttribute="top" secondItem="kWc-wx-wAX" secondAttribute="bottom" constant="4" id="ydb-zL-QYF"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="64"/>
+                    <connections>
+                        <outlet property="expandingTextContainerView" destination="kWc-wx-wAX" id="tSt-ba-Dne"/>
+                        <outlet property="inputTextField" destination="rMc-n1-9rj" id="wJs-Ft-u5q"/>
+                        <outlet property="textFieldSubtitleButton" destination="Wy5-U0-CpB" id="e8f-EO-sRl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bow-Zn-xlH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="-305.84707646176912"/>
+        </scene>
+    </scenes>
+</document>
