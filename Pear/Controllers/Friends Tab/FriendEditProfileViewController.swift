@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MeEditUserViewController: UIViewController {
+class FriendEditProfileViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var stackView: UIStackView!
@@ -17,19 +17,27 @@ class MeEditUserViewController: UIViewController {
   @IBOutlet weak var profileNameLabel: UILabel!
   @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
   
-  var profile: FullProfileDisplayData!
-  var pearUser: PearUser!
+  var detachedProfile: PearDetachedProfile?
+  var userProfile: PearUserProfile?
+  var firstName: String!
   let leadingSpace: CGFloat = 12
   
   var photoUpdateVC: UpdateImagesViewController?
-  var textFieldVCs: [UpdateTextFieldController] = []
+  var textViewVCs: [UpdateExpandingTextViewController] = []
   
-  class func instantiate(profile: FullProfileDisplayData, pearUser: PearUser) -> MeEditUserViewController? {
-    let storyboard = UIStoryboard(name: String(describing: MeEditUserViewController.self), bundle: nil)
-    guard let editMeVC = storyboard.instantiateInitialViewController() as? MeEditUserViewController else { return nil }
-    editMeVC.profile = profile
-    editMeVC.pearUser = pearUser
-    return editMeVC
+  class func instantiate(detachedProfile: PearDetachedProfile?,
+                         userProfile: PearUserProfile?,
+                         firstName: String) -> FriendEditProfileViewController? {
+    let storyboard = UIStoryboard(name: String(describing: FriendEditProfileViewController.self), bundle: nil)
+    guard let editFriendVC = storyboard.instantiateInitialViewController() as? FriendEditProfileViewController else { return nil }
+    if detachedProfile == nil && userProfile == nil {
+      print("Both friend profiles types are nil")
+      return nil
+    }
+    editFriendVC.detachedProfile = detachedProfile
+    editFriendVC.userProfile = userProfile
+    editFriendVC.firstName = firstName
+    return editFriendVC
   }
   
   @IBAction func cancelButtonClicked(_ sender: Any) {
@@ -43,49 +51,19 @@ class MeEditUserViewController: UIViewController {
 }
 
 // MARK: - Updating and Saving
-extension MeEditUserViewController {
-  
-  func getValueForFieldType(type: UpdateTextFieldType) -> String {
-    switch type {
-    case .firstName:
-      return self.pearUser.firstName
-    case .lastName:
-      return self.pearUser.lastName
-    case .birthday:
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "MMM d, yyyy"
-      return dateFormatter.string(from: self.pearUser.birthdate)
-    case .gender:
-       return self.pearUser.matchingDemographics.gender.toString()
-    case .location:
-      return self.pearUser.matchingDemographics.location.locationName ?? ""
-    case .unknown:
-      return ""
-    }
-  }
+extension FriendEditProfileViewController {
   
   func checkForEdits() -> Bool {
     if let photoVC = self.photoUpdateVC, photoVC.checkForChanges() {
       return true
     }
-    var textFieldChanged = false
-    self.textFieldVCs.forEach { (fieldVC) in
-      if let inputText = fieldVC.inputTextField.text,
-        self.getValueForFieldType(type: fieldVC.type) != inputText {
-        textFieldChanged = true
-      }
-    }
-    if textFieldChanged {
-      return true
-    }
-    
     return false
   }
   
 }
 
 // MARK: - Life Cycle
-extension MeEditUserViewController {
+extension FriendEditProfileViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -98,30 +76,65 @@ extension MeEditUserViewController {
   
   func stylize() {
     self.profileNameLabel.stylizeSubtitleLabelSmall()
+    self.profileNameLabel.text = "Edit \(firstName!)'s Profile"
+  }
+  
+  func compateWithoutQuotes(first: String, second: String) -> Bool {
+    return first.replacingOccurrences(of: "\"", with: "") == second.replacingOccurrences(of: "\"", with: "")
+  }
+  
+  func removeFirstLastCharacter(text: String) -> String {
+    guard text.count > 1 else {
+      print("SHOULDNT EVER HAPPEN TEXT MISFORMED")
+      return ""
+    }
+    return text[1..<text.count - 1]
   }
   
   func constructEditProfile() {
     self.addSpacer(space: 20)
-    self.addTitleSection(title: "Photos")
-    self.addPhotosSection()
-    self.addTitleSection(title: "Basic Information")
-    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName, editable: false)
-    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName, editable: false)
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM d, yyyy"
-    let birthdate = dateFormatter.string(from: self.pearUser.birthdate)
-    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate, editable: false)
+    self.addTitleSection(title: "Suggested Photos")
+    self.addSubtitleSection(subtitle: "\(firstName!) will be able to choose from these photos.")
+    var images: [LoadedImageContainer] = []
+    var bio: String = ""
+    var dos: [String] = []
+    var donts: [String] = []
+    if let detachedProfile = self.detachedProfile {
+      images.append(contentsOf: detachedProfile.images.map({ $0.loadedImageContainer() }))
+      bio = removeFirstLastCharacter(text: detachedProfile.bio)
+      dos.append(contentsOf: detachedProfile.dos.map({  removeFirstLastCharacter(text: $0) }))
+      donts.append(contentsOf: detachedProfile.donts.map({  removeFirstLastCharacter(text: $0) }))
+    } else if let userProfile = self.userProfile {
+      bio = removeFirstLastCharacter(text: userProfile.bio)
+      dos.append(contentsOf: userProfile.dos.map({  removeFirstLastCharacter(text: $0) }))
+      donts.append(contentsOf: userProfile.donts.map({  removeFirstLastCharacter(text: $0) }))
+    }
     
-    self.addTextField(type: .gender,
-                      title: "Gender",
-                      initialText: self.pearUser.matchingDemographics.gender.toString(),
-                      editable: false)
-    
-    self.addTextField(type: .location,
-                      title: "Location",
-                      initialText: self.pearUser.matchingDemographics.location.locationName ?? "",
-                      editable: true,
-                      textContentType: .addressCityAndState)
+    self.addPhotosSection(images: images)
+    self.addTitleSection(title: "Bio")
+    self.addExpandingTextVC(initialText: bio,
+                            type: .bio,
+                            fixedHeight: nil,
+                            allowDeleteButton: false,
+                            maxHeight: nil)
+    self.addSpacer(space: 15)
+    self.addTitleSection(title: "Do's")
+    dos.forEach({
+      self.addExpandingTextVC(initialText: $0,
+                              type: .doType,
+                              fixedHeight: nil,
+                              allowDeleteButton: true,
+                              maxHeight: nil)
+    })
+    self.addSpacer(space: 15)
+    self.addTitleSection(title: "Dont's")
+    donts.forEach({
+      self.addExpandingTextVC(initialText: $0,
+                              type: .dontType,
+                              fixedHeight: nil,
+                              allowDeleteButton: true,
+                              maxHeight: nil)
+    })
     
   }
   
@@ -162,7 +175,7 @@ extension MeEditUserViewController {
     let titleLabel = UILabel()
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.stylizeEditSubtitleLabel()
-    titleLabel.text = title
+    titleLabel.text = subtitle
     containerView.addSubview(titleLabel)
     containerView.addConstraints([
       NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
@@ -177,12 +190,8 @@ extension MeEditUserViewController {
     self.stackView.addArrangedSubview(containerView)
   }
   
-  func addPhotosSection() {
-    var allImages: [LoadedImageContainer] = []
-    self.pearUser.displayedImages.forEach({
-      allImages.append($0.loadedImageContainer())
-    })
-    guard let photosVC = UpdateImagesViewController.instantiate(images: allImages) else {
+  func addPhotosSection(images: [LoadedImageContainer]) {
+    guard let photosVC = UpdateImagesViewController.instantiate(images: images) else {
       print("failed to create photo edit VC")
       return
     }
@@ -206,23 +215,27 @@ extension MeEditUserViewController {
       print("Failed to initialize text field")
       return
     }
-    self.textFieldVCs.append(textFieldVC)
     self.addChild(textFieldVC)
     self.stackView.addArrangedSubview(textFieldVC.view)
     textFieldVC.didMove(toParent: self)
   }
   
-  func addSingleField(title: String, initialText: String = "") {
-    self.addTitleSection(title: title)
+  func addExpandingTextVC(initialText: String,
+                          type: ExpandingTextViewControllerType,
+                          fixedHeight: CGFloat?,
+                          allowDeleteButton: Bool,
+                          maxHeight: CGFloat?) {
+    
     guard let expandingTextVC = UpdateExpandingTextViewController
       .instantiate(initialText: initialText,
-                   type: .bio,
-                   fixedHeight: nil,
-                   allowDeleteButton: true,
-                   maxHeight: nil) else {
+                   type: type,
+                   fixedHeight: fixedHeight,
+                   allowDeleteButton: allowDeleteButton,
+                   maxHeight: maxHeight) else {
                     print("Failed to create expanding text vc")
                     return
     }
+    self.textViewVCs.append(expandingTextVC)
     self.addChild(expandingTextVC)
     self.stackView.addArrangedSubview(expandingTextVC.view)
     expandingTextVC.didMove(toParent: self)
@@ -232,17 +245,17 @@ extension MeEditUserViewController {
 }
 
 // MARK: - Keybaord Size Notifications
-extension MeEditUserViewController {
+extension FriendEditProfileViewController {
   
   func addKeyboardSizeNotifications() {
     NotificationCenter.default
       .addObserver(self,
-                   selector: #selector(MeEditUserViewController.keyboardWillChange(notification:)),
+                   selector: #selector(FriendEditProfileViewController.keyboardWillChange(notification:)),
                    name: UIWindow.keyboardWillChangeFrameNotification,
                    object: nil)
     NotificationCenter.default
       .addObserver(self,
-                   selector: #selector(MeEditUserViewController.keyboardWillHide(notification:)),
+                   selector: #selector(FriendEditProfileViewController.keyboardWillHide(notification:)),
                    name: UIWindow.keyboardWillHideNotification,
                    object: nil)
   }
@@ -270,9 +283,9 @@ extension MeEditUserViewController {
 }
 
 // MARK: - Dismiss First Responder on Click
-extension MeEditUserViewController {
+extension FriendEditProfileViewController {
   func addDismissKeyboardOnViewClick() {
-    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MeEditUserViewController.dismissKeyboard)))
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FriendEditProfileViewController.dismissKeyboard)))
   }
   
   @objc func dismissKeyboard() {

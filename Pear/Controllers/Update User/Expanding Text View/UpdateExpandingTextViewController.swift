@@ -12,13 +12,14 @@ protocol UpdateExpandingTextViewDelegate: class {
   func deleteButtonPressed(controller: UpdateExpandingTextViewController)
 }
 
-class UpdateExpandingTextViewController: UIViewController {
+enum ExpandingTextViewControllerType: String {
+  case bio
+  case doType
+  case dontType
+  case unknown
+}
 
-  enum ExpandingTextViewControllerType: String {
-    case bio
-    case doType
-    case dontType
-  }
+class UpdateExpandingTextViewController: UIViewController {
   
   var initialText: String!
   
@@ -34,7 +35,7 @@ class UpdateExpandingTextViewController: UIViewController {
   var expanding: Bool = true
   var fixedHeight: CGFloat?
   var allowDelete: Bool = false
-  var type: ExpandingTextViewControllerType = .bio
+  var type: ExpandingTextViewControllerType = .unknown
   var maxHeight: CGFloat?
   var minTextViewSize: CGFloat = 32
   var animationDuration: Double = 0.3
@@ -67,7 +68,7 @@ extension UpdateExpandingTextViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-   self.configure()
+    self.configure()
     self.stylize()
   }
   
@@ -97,7 +98,7 @@ extension UpdateExpandingTextViewController {
     self.expandingTextContainerView.layer.borderColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.00).cgColor
     self.expandingTextContainerView.layer.borderWidth = 2
     self.expandingTextContainerView.layer.cornerRadius = 8
-    
+    self.expandingTextView.text = self.initialText
     self.expandingTextView.stylizeEditTextLabel()
     if let primaryTextColor = R.color.primaryTextColor() {
       self.expandingTextView.tintColor = primaryTextColor

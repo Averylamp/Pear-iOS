@@ -93,11 +93,11 @@ extension FriendsTabViewController: UICollectionViewDelegate, UICollectionViewDa
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if indexPath.item < self.userProfiles.count {
       let fullProfile = self.userProfiles[indexPath.row]
-      guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
-        print("Failed to create full profile Scroll View")
+      guard let friendFullProfileVC = FriendFullProfileViewController.instantiate(fullProfileData: fullProfile) else {
+        print("Failed to create full friend profile Scroll View")
         return
       }
-      self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+      self.navigationController?.pushViewController(friendFullProfileVC, animated: true)
     } else {
       guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
         print("Failed to create get started friend profile vc")
