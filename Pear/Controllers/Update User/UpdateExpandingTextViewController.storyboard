@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jTm-XY-m6Q">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Update Expanding Text View Controller-->
+        <scene sceneID="z87-fL-aRP">
+            <objects>
+                <viewController id="jTm-XY-m6Q" customClass="UpdateExpandingTextViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wRg-s5-jOg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Caf-X4-1XW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k6Z-xj-za2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EgU-C2-h9x">
+                                <rect key="frame" x="12" y="4" width="351" height="132"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2T-Us-HJZ">
+                                        <rect key="frame" x="313" y="8" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="o2T-Us-HJZ" secondAttribute="height" multiplier="1:1" id="3WL-h8-LHc"/>
+                                            <constraint firstAttribute="width" constant="30" id="ZWI-TS-A4Z"/>
+                                        </constraints>
+                                        <state key="normal" image="onboarding-close-button"/>
+                                        <connections>
+                                            <action selector="deleteButtonClicked:" destination="jTm-XY-m6Q" eventType="touchUpInside" id="se7-ik-gxp"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mW8-Sr-gy6">
+                                        <rect key="frame" x="4" y="4" width="305" height="124"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="124" id="cUu-ZD-trb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="o2T-Us-HJZ" firstAttribute="leading" secondItem="mW8-Sr-gy6" secondAttribute="trailing" constant="4" id="9wX-EJ-0J7"/>
+                                    <constraint firstItem="mW8-Sr-gy6" firstAttribute="top" secondItem="EgU-C2-h9x" secondAttribute="top" constant="4" id="HM4-4B-h8t"/>
+                                    <constraint firstAttribute="bottom" secondItem="mW8-Sr-gy6" secondAttribute="bottom" constant="4" id="Hfb-r0-4sI"/>
+                                    <constraint firstAttribute="trailing" secondItem="o2T-Us-HJZ" secondAttribute="trailing" constant="8" id="W0C-TZ-kVb"/>
+                                    <constraint firstItem="mW8-Sr-gy6" firstAttribute="leading" secondItem="EgU-C2-h9x" secondAttribute="leading" constant="4" id="pPt-Da-v0K"/>
+                                    <constraint firstItem="o2T-Us-HJZ" firstAttribute="top" secondItem="EgU-C2-h9x" secondAttribute="top" constant="8" id="w6Y-Je-g8O"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EgU-C2-h9x" secondAttribute="trailing" constant="12" id="1l1-Rx-qJx"/>
+                            <constraint firstItem="Caf-X4-1XW" firstAttribute="top" secondItem="EgU-C2-h9x" secondAttribute="bottom" constant="4" id="Ot5-9I-tkJ"/>
+                            <constraint firstItem="EgU-C2-h9x" firstAttribute="top" secondItem="wRg-s5-jOg" secondAttribute="bottom" constant="4" id="Rny-P2-YJM"/>
+                            <constraint firstItem="EgU-C2-h9x" firstAttribute="leading" secondItem="k6Z-xj-za2" secondAttribute="leading" constant="12" id="Tzv-18-vE0"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="140"/>
+                    <connections>
+                        <outlet property="deleteButton" destination="o2T-Us-HJZ" id="200-25-COj"/>
+                        <outlet property="deleteButtonWidthConstraint" destination="ZWI-TS-A4Z" id="Zga-us-NhM"/>
+                        <outlet property="expandingTextContainerView" destination="EgU-C2-h9x" id="id6-1W-Htr"/>
+                        <outlet property="expandingTextView" destination="mW8-Sr-gy6" id="iqF-PB-h8M"/>
+                        <outlet property="expandingTextViewHeightConstraint" destination="cUu-ZD-trb" id="BRr-kZ-K2N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ks7-zf-c6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="388" y="-305.84707646176912"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-close-button" width="120" height="120"/>
+    </resources>
+</document>

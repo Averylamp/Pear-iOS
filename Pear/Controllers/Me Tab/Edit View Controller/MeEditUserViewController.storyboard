@@ -28,9 +28,8 @@
                                             <constraint firstAttribute="height" constant="1" id="cD4-pg-mI3"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz7-4z-i8h">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz7-4z-i8h">
                                         <rect key="frame" x="166" y="15" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -49,8 +48,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBh-z2-b4F">
-                                        <rect key="frame" x="317" y="10" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="326" y="10" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="doneButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="R74-Qf-nSY"/>
                                         </connections>
@@ -58,7 +57,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Vz7-4z-i8h" firstAttribute="centerY" secondItem="REG-GK-LWC" secondAttribute="centerY" id="9W0-1A-qn4"/>
                                     <constraint firstItem="lx0-7n-BkB" firstAttribute="leading" secondItem="REG-GK-LWC" secondAttribute="leading" id="PAU-pc-Nmd"/>
+                                    <constraint firstItem="Vz7-4z-i8h" firstAttribute="centerX" secondItem="REG-GK-LWC" secondAttribute="centerX" id="WCS-Yb-I5Y"/>
                                     <constraint firstItem="WZP-gN-Rsq" firstAttribute="leading" secondItem="REG-GK-LWC" secondAttribute="leading" constant="12" id="YsJ-5j-TPN"/>
                                     <constraint firstAttribute="bottom" secondItem="lx0-7n-BkB" secondAttribute="bottom" id="aKb-yj-bc4"/>
                                     <constraint firstAttribute="height" constant="50" id="hpx-JM-omo"/>
@@ -108,7 +109,9 @@
                     <connections>
                         <outlet property="cancelButton" destination="WZP-gN-Rsq" id="ogn-IG-KKR"/>
                         <outlet property="doneButton" destination="OBh-z2-b4F" id="bD7-Ej-SKp"/>
+                        <outlet property="profileNameLabel" destination="Vz7-4z-i8h" id="Iok-HX-fRQ"/>
                         <outlet property="scrollView" destination="sKx-em-e81" id="Yn6-gN-sde"/>
+                        <outlet property="scrollViewBottomConstraint" destination="cz9-TE-hgG" id="WWd-dJ-DFe"/>
                         <outlet property="stackView" destination="lpG-Cn-3kF" id="6Me-x0-hXA"/>
                     </connections>
                 </viewController>
