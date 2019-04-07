@@ -118,7 +118,7 @@ extension FriendEditProfileViewController {
                             allowDeleteButton: false,
                             maxHeight: nil)
     self.addSpacer(space: 15)
-    self.addTitleSection(title: "Do's")
+    self.addDoDontTitle(type: .doType)
     dos.forEach({
       self.addExpandingTextVC(initialText: $0,
                               type: .doType,
@@ -127,7 +127,7 @@ extension FriendEditProfileViewController {
                               maxHeight: nil)
     })
     self.addSpacer(space: 15)
-    self.addTitleSection(title: "Dont's")
+    self.addDoDontTitle(type: .dontType)
     donts.forEach({
       self.addExpandingTextVC(initialText: $0,
                               type: .dontType,
@@ -144,6 +144,90 @@ extension FriendEditProfileViewController {
     spacer.addConstraint(NSLayoutConstraint(item: spacer, attribute: .height, relatedBy: .equal,
                                             toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: space))
     self.stackView.addArrangedSubview(spacer)
+  }
+  
+  func addDoDontTitle(type: DoDontType) {
+    let containerView = UIView()
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let titleLabel = UILabel()
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.stylizeEditTitleLabel()
+    containerView.addSubview(titleLabel)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: leadingSpace),
+      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -leadingSpace),
+      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
+      NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
+      ])
+    
+    let addFieldButton = UIButton()
+    addFieldButton.translatesAutoresizingMaskIntoConstraints = false
+    addFieldButton.setTitle("Add", for: .normal)
+    addFieldButton.stylizeEditAddSection()
+    containerView.addSubview(addFieldButton)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: addFieldButton, attribute: .centerY, relatedBy: .equal,
+                         toItem: titleLabel, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: addFieldButton, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -12.0)
+      ])
+    
+    switch type {
+    case .doType:
+      titleLabel.text = "Do's"
+      addFieldButton.addTarget(self, action: #selector(FriendEditProfileViewController.addDoSection), for: .touchUpInside)
+    case .dontType:
+      titleLabel.text = "Dont's"
+      addFieldButton.addTarget(self, action: #selector(FriendEditProfileViewController.addDontSection), for: .touchUpInside)
+    }
+    self.stackView.addArrangedSubview(containerView)
+  }
+  
+  @objc func addDoSection() {
+    self.addExpandingTextController(type: .doType)
+  }
+  
+  @objc func addDontSection() {
+    self.addExpandingTextController(type: .dontType)
+  }
+  
+  func addExpandingTextController(type: ExpandingTextViewControllerType) {
+    guard type == .dontType || type == .doType else {
+      print("Not allowed to add not do/dont types")
+      return
+    }
+    var lastOfType: UpdateExpandingTextViewController?
+    self.textViewVCs.forEach({
+      if $0.type == type {
+        lastOfType = $0
+      }
+    })
+    guard let lastExpandingTextVC = lastOfType,
+      let insertionIndex = self.textViewVCs.firstIndex(of: lastExpandingTextVC),
+      let arrangedSubviewIndex = self.stackView.arrangedSubviews.firstIndex(where: { $0 == lastExpandingTextVC.view })  else {
+      print("Failed to find expanding text VC of type \(type)")
+      return
+    }
+  
+    guard let expandingTextVC = UpdateExpandingTextViewController
+      .instantiate(initialText: "",
+                   type: type,
+                   fixedHeight: nil,
+                   allowDeleteButton: true,
+                   maxHeight: nil) else {
+                    print("Failed to create expanding text vc")
+                    return
+    }
+    self.textViewVCs.insert(expandingTextVC, at: insertionIndex + 1)
+    self.addChild(expandingTextVC)
+    self.stackView.insertArrangedSubview(expandingTextVC.view, at: arrangedSubviewIndex + 1)
+    expandingTextVC.didMove(toParent: self)
+    
   }
   
   func addTitleSection(title: String) {
