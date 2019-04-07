@@ -141,6 +141,10 @@
 		BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CB69E2259E55D00605A98 /* UITextView+Styling.swift */; };
 		BB9CB6A72259FAA700605A98 /* UpdateTextFieldController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9CB6A52259FAA700605A98 /* UpdateTextFieldController.storyboard */; };
 		BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CB6A62259FAA700605A98 /* UpdateTextFieldController.swift */; };
+		BB9CB6AC225A11F900605A98 /* FriendEditProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9CB6AA225A11F900605A98 /* FriendEditProfileViewController.storyboard */; };
+		BB9CB6AD225A11F900605A98 /* FriendEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CB6AB225A11F900605A98 /* FriendEditProfileViewController.swift */; };
+		BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9CB6B2225A139600605A98 /* FriendFullProfileViewController.storyboard */; };
+		BB9CB6B5225A139600605A98 /* FriendFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CB6B3225A139600605A98 /* FriendFullProfileViewController.swift */; };
 		BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9D1B1B2255D0110074C099 /* RequestProfileViewController.swift */; };
 		BB9D1B1E2255D02C0074C099 /* RequestProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9D1B1D2255D02C0074C099 /* RequestProfileViewController.storyboard */; };
 		BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9D1B202255E0D00074C099 /* MatchesAPI.swift */; };
@@ -383,6 +387,10 @@
 		BB9CB69E2259E55D00605A98 /* UITextView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Styling.swift"; sourceTree = "<group>"; };
 		BB9CB6A52259FAA700605A98 /* UpdateTextFieldController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UpdateTextFieldController.storyboard; sourceTree = "<group>"; };
 		BB9CB6A62259FAA700605A98 /* UpdateTextFieldController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTextFieldController.swift; sourceTree = "<group>"; };
+		BB9CB6AA225A11F900605A98 /* FriendEditProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FriendEditProfileViewController.storyboard; sourceTree = "<group>"; };
+		BB9CB6AB225A11F900605A98 /* FriendEditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendEditProfileViewController.swift; sourceTree = "<group>"; };
+		BB9CB6B2225A139600605A98 /* FriendFullProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FriendFullProfileViewController.storyboard; sourceTree = "<group>"; };
+		BB9CB6B3225A139600605A98 /* FriendFullProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFullProfileViewController.swift; sourceTree = "<group>"; };
 		BB9D1B1B2255D0110074C099 /* RequestProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProfileViewController.swift; sourceTree = "<group>"; };
 		BB9D1B1D2255D02C0074C099 /* RequestProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RequestProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB9D1B202255E0D00074C099 /* MatchesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesAPI.swift; sourceTree = "<group>"; };
@@ -809,7 +817,6 @@
 				BBECBEBC2237D955008E8E91 /* Profile Interests */,
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
-				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -886,6 +893,7 @@
 		BB75BFCA22155F9100BAB800 /* Full Profile View */ = {
 			isa = PBXGroup;
 			children = (
+				BBECBECE223848CA008E8E91 /* Full Profile Scroll */,
 				BB94C12122437C78001320B0 /* Stack Full Profile */,
 			);
 			path = "Full Profile View";
@@ -1506,6 +1514,10 @@
 		BBF694EE223B7E3600E13ABB /* Friends Tab */ = {
 			isa = PBXGroup;
 			children = (
+				BB9CB6B2225A139600605A98 /* FriendFullProfileViewController.storyboard */,
+				BB9CB6B3225A139600605A98 /* FriendFullProfileViewController.swift */,
+				BB9CB6AA225A11F900605A98 /* FriendEditProfileViewController.storyboard */,
+				BB9CB6AB225A11F900605A98 /* FriendEditProfileViewController.swift */,
 				BB5F1DA122531CE90042D443 /* Main VC */,
 			);
 			path = "Friends Tab";
@@ -1698,6 +1710,7 @@
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
 				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
+				BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */,
 				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
@@ -1728,6 +1741,7 @@
 				BB0AE4EF22536FE0005DD315 /* UserAgePreferencesViewController.storyboard in Resources */,
 				BB94C1312243C73B001320B0 /* Strings.strings in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
+				BB9CB6AC225A11F900605A98 /* FriendEditProfileViewController.storyboard in Resources */,
 				9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */,
 				BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */,
 				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
@@ -1963,6 +1977,7 @@
 				600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */,
 				BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */,
 				BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */,
+				BB9CB6B5225A139600605A98 /* FriendFullProfileViewController.swift in Sources */,
 				BB94C12522438502001320B0 /* Message.swift in Sources */,
 				9101E0CF224F2024009646AB /* GetStartedLocationViewController.swift in Sources */,
 				BBA2E1E8224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift in Sources */,
@@ -2021,6 +2036,7 @@
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
+				BB9CB6AD225A11F900605A98 /* FriendEditProfileViewController.swift in Sources */,
 				BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
