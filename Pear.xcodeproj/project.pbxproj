@@ -209,6 +209,8 @@
 		BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */; };
 		BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */; };
 		BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */; };
+		BBF79688225956E200E9A506 /* MeEditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF79687225956E200E9A506 /* MeEditUserViewController.swift */; };
+		BBF7968A225956EB00E9A506 /* MeEditUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF79689225956EB00E9A506 /* MeEditUserViewController.storyboard */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
@@ -449,6 +451,8 @@
 		BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsTabViewController.storyboard; sourceTree = "<group>"; };
 		BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeTabViewController.storyboard; sourceTree = "<group>"; };
+		BBF79687225956E200E9A506 /* MeEditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeEditUserViewController.swift; sourceTree = "<group>"; };
+		BBF79689225956EB00E9A506 /* MeEditUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeEditUserViewController.storyboard; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
@@ -690,8 +694,7 @@
 			children = (
 				BBC4A08622586F60009D9867 /* Demographics */,
 				BB0AE4E522536F85005DD315 /* Preferences */,
-				BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */,
-				BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */,
+				BBF7968C225962A800E9A506 /* Update Images */,
 			);
 			path = "Update User";
 			sourceTree = "<group>";
@@ -802,8 +805,8 @@
 		BB5F1DA0225318040042D443 /* Me Tab */ = {
 			isa = PBXGroup;
 			children = (
-				BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */,
-				BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */,
+				BBF79686225956C200E9A506 /* Main Full Screen Display */,
+				BBF7968B22595B9A00E9A506 /* Edit View Controller */,
 			);
 			path = "Me Tab";
 			sourceTree = "<group>";
@@ -1479,6 +1482,33 @@
 			path = "Friends Tab";
 			sourceTree = "<group>";
 		};
+		BBF79686225956C200E9A506 /* Main Full Screen Display */ = {
+			isa = PBXGroup;
+			children = (
+				BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */,
+				BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */,
+			);
+			path = "Main Full Screen Display";
+			sourceTree = "<group>";
+		};
+		BBF7968B22595B9A00E9A506 /* Edit View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BBF79687225956E200E9A506 /* MeEditUserViewController.swift */,
+				BBF79689225956EB00E9A506 /* MeEditUserViewController.storyboard */,
+			);
+			path = "Edit View Controller";
+			sourceTree = "<group>";
+		};
+		BBF7968C225962A800E9A506 /* Update Images */ = {
+			isa = PBXGroup;
+			children = (
+				BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */,
+				BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */,
+			);
+			path = "Update Images";
+			sourceTree = "<group>";
+		};
 		BBFFBBD722211749002E1B54 /* ImagesAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1624,6 +1654,7 @@
 				BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */,
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
 				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
+				BBF7968A225956EB00E9A506 /* MeEditUserViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
 				BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */,
@@ -1932,6 +1963,7 @@
 				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
+				BBF79688225956E200E9A506 /* MeEditUserViewController.swift in Sources */,
 				BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
 				9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */,
