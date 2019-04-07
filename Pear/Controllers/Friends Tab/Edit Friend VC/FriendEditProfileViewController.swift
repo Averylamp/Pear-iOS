@@ -117,7 +117,7 @@ class FriendEditProfileViewController: UIViewController {
   }
   
   func saveChanges(completion: (() -> Void)?) {
-    var updates = self.getUpdates()
+    let updates = self.getUpdates()
     if updates.count == 0 {
       if let completion = completion {
         completion()
@@ -132,37 +132,37 @@ class FriendEditProfileViewController: UIViewController {
       PearProfileAPI.shared.editDetachedProfile(profileDocumentID: detachedProfile.documentID,
                                                 userID: userID,
                                                 updates: updates) { (result) in
-        switch result {
-        case .success(let successful):
-          if successful {
-            print("Successful detached profile update")
-          } else {
-            print("Failed to update detached profile")
-          }
-        case .failure(let error):
-          print("Failure updating detached profile:\(error)")
-        }
-        if let completion = completion {
-          completion()
-        }
+                                                  switch result {
+                                                  case .success(let successful):
+                                                    if successful {
+                                                      print("Successful detached profile update")
+                                                    } else {
+                                                      print("Failed to update detached profile")
+                                                    }
+                                                  case .failure(let error):
+                                                    print("Failure updating detached profile:\(error)")
+                                                  }
+                                                  if let completion = completion {
+                                                    completion()
+                                                  }
       }
     } else if let userProfile = self.userProfile {
       PearProfileAPI.shared.editUserProfile(profileDocumentID: userProfile.documentID,
-                                                userID: userID,
-                                                updates: updates) { (result) in
-        switch result {
-        case .success(let successful):
-          if successful {
-            print("Successful user profile update")
-          } else {
-            print("Failed to update user profile")
-          }
-        case .failure(let error):
-          print("Failure updating user profile:\(error)")
-        }
-        if let completion = completion {
-          completion()
-        }
+                                            userID: userID,
+                                            updates: updates) { (result) in
+                                              switch result {
+                                              case .success(let successful):
+                                                if successful {
+                                                  print("Successful user profile update")
+                                                } else {
+                                                  print("Failed to update user profile")
+                                                }
+                                              case .failure(let error):
+                                                print("Failure updating user profile:\(error)")
+                                              }
+                                              if let completion = completion {
+                                                completion()
+                                              }
       }
     }
     
@@ -201,6 +201,7 @@ extension FriendEditProfileViewController {
   func stylize() {
     self.profileNameLabel.stylizeSubtitleLabelSmall()
     self.profileNameLabel.text = "Edit \(firstName!)'s Profile"
+    self.doneButton.stylizeEditAddSection()
   }
   
   func compareWithoutQuotes(first: String, second: String) -> Bool {
