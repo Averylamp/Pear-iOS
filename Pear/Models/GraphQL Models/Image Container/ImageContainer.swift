@@ -98,7 +98,7 @@ class ImageContainer: Codable, CustomStringConvertible {
     return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)).flatMap { $0 as? [String: Any] }
   }
   
-  func gettingStartedImageContainer(size: ImageType? = nil) -> LoadedImageContainer {
+  func loadedImageContainer(size: ImageType? = nil) -> LoadedImageContainer {
     guard let size = size else {
       return LoadedImageContainer(container: self)
     }

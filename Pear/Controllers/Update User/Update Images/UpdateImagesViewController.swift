@@ -11,98 +11,27 @@ import BSImagePicker
 import Photos
 
 class UpdateImagesViewController: UIViewController {
-
-  var detachedProfile: PearDetachedProfile!
   
-  @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var collectionView: UICollectionView!
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var subtitleLabel: UILabel!
-  @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat = 1.0
-  
-  let betweenImageSpacing: CGFloat = 6
   var images: [LoadedImageContainer] = []
+  var originalImages: [LoadedImageContainer] = []
   var imagePickerController = BSImagePickerViewController()
   var longPressGestureRecognizer: UILongPressGestureRecognizer!
   var justMovedIndexPath: IndexPath?
-  var hasClickedNext = false
   var imageReplacementIndexPath: IndexPath?
-  
+  var allowsDelete: Bool = true
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(images: [LoadedImageContainer]) -> UpdateImagesViewController? {
+  class func instantiate(images: [LoadedImageContainer], allowsDelete: Bool = false) -> UpdateImagesViewController? {
     let storyboard = UIStoryboard(name: String(describing: UpdateImagesViewController.self), bundle: nil)
     guard let photoInputVC = storyboard.instantiateInitialViewController() as? UpdateImagesViewController else { return nil }
     photoInputVC.images = images
+    photoInputVC.originalImages = images
+    photoInputVC.allowsDelete = allowsDelete
     return photoInputVC
   }
   
-  @IBAction func backButtonClicked(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
-  }
-  
-  @IBAction func nextButtonClicked(_ sender: Any) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    
-//    if self.images.compactMap({ $0.imageContainer }).count != self.images.count {
-//      if self.hasClickedNext {
-//        return
-//      }
-//      self.hasClickedNext = true
-//      let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-//                                                      type: NVActivityIndicatorType.ballScaleRippleMultiple,
-//                                                      color: StylingConfig.textFontColor,
-//                                                      padding: 0)
-//      self.view.addSubview(activityIndicator)
-//      activityIndicator.center = CGPoint(x: self.view.center.x,
-//                                         y: self.nextButton.frame.origin.y - 40)
-//      activityIndicator.startAnimating()
-//      return
-//    }
-//
-//    self.detachedProfile.images = self.images.compactMap({ $0.imageContainer })
-//    if let userID = DataStore.shared.currentPearUser?.documentID {
-//      PearImageAPI.shared.updateImages(userID: userID,
-//                                       displayedImages: self.detachedProfile.images,
-//                                       additionalImages: self.originalDetachedProfileImages) { (result) in
-//                                        DispatchQueue.main.async {
-//                                          switch result {
-//                                          case .success(let success):
-//                                            if success {
-//                                              print("Successfully updated User's Images")
-//                                              if self.detachedProfile.images.count == 0 {
-//                                                self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
-//                                                return
-//                                              }
-//                                              if DataStore.shared.currentPearUser?.school != nil {
-//                                                guard let profileApprovalVC = ApproveDetachedProfileViewController.instantiate(detachedProfile: self.detachedProfile) else {
-//                                                  print("Failed to create Approve Detached Profile VC")
-//                                                  return
-//                                                }
-//                                                self.navigationController?.pushViewController(profileApprovalVC, animated: true)
-//                                              } else {
-//                                                guard let schoolVC = ApproveDetachedProfileSchoolViewController.instantiate(detachedProfile: self.detachedProfile) else {
-//                                                  print("Failed to create Approve Detached Profile VC")
-//                                                  return
-//                                                }
-//                                                self.navigationController?.pushViewController(schoolVC, animated: true)
-//                                              }
-//                                            } else {
-//                                              print("Failure updating User's Images")
-//                                              self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
-//                                            }
-//                                          case .failure(let error):
-//                                            print(error)
-//                                            self.alert(title: "Image Upload Failure", message: "Our server is feeling kinda down today.  Please try again later")
-//                                          }
-//                                          self.hasClickedNext = false
-//                                        }
-//      }
-//
-//    }
-  }
 }
 
 // MARK: - Life Cycle
@@ -116,74 +45,62 @@ extension UpdateImagesViewController {
   }
   
   func stylize() {
-    self.nextButton.stylizeDark()
-    self.titleLabel.stylizeTitleLabel()
-    self.subtitleLabel.stylizeSubtitleLabel()
-    
-    self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalProfileApprovalPagesNumber * self.view.frame.width
-    self.view.layoutIfNeeded()
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    self.view.layoutIfNeeded()
-    self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalProfileApprovalPagesNumber * self.view.frame.width
-    UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
-      self.view.layoutIfNeeded()
-    }, completion: nil)
   }
   
   func setupCollectionView() {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
   }
+}
+
+// MARK: 
+
+extension UpdateImagesViewController {
+  
+  func checkForChanges() -> Bool {
+    if self.images.count != self.originalImages.count {
+      return true
+    }
+    for index in 0..<self.images.count {
+      if self.images[index].image != self.originalImages[index].image ||
+        self.images[index].imageContainer?.imageID != self.originalImages[index].imageContainer?.imageID {
+        return true
+      }
+    }
+    return false
+  }
   
 }
 
 // MARK: - UICollectionViewDelegate
 extension UpdateImagesViewController: UICollectionViewDelegate {
-  
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if indexPath.item >= self.images.count {
+
+  func selectedItemAtIndex(index: Int) {
+    if index >= self.images.count {
       self.imageReplacementIndexPath = nil
       self.pickImage()
     } else {
       let alertController = UIAlertController(title: "What would you like to do?", message: nil, preferredStyle: .actionSheet)
-      let viewImageAction = UIAlertAction(title: "View Full Images", style: .default) { (_) in
-        DispatchQueue.main.async {
-          //          var lightboxImages: [LightboxImage] = []
-          //          for image in self.images {
-          //            var lightboxImage: LightboxImage?
-          //            if let rawImage = image.image {
-          //              lightboxImage = LightboxImage(image: rawImage)
-          //            } else if let imageURLString = image.imageContainer?.large.imageURL,
-          //              let imageURL = URL(string: imageURLString) {
-          //              lightboxImage = LightboxImage(imageURL: imageURL)
-          //            }
-          //            if let lightboxImage = lightboxImage {
-          //              lightboxImages.append(lightboxImage)
-          //            }
-          //          }
-          //          if lightboxImages.count > 0 {
-          //            let index = indexPath.row < lightboxImages.count ? indexPath.row : lightboxImages.count - 1
-          //            let lightboxController = LightboxController(images: lightboxImages, startIndex: index)
-          //            lightboxController.dynamicBackground = false
-          //            self.present(lightboxController, animated: true, completion: nil)
-          //          }
-        }
-      }
       let replaceImageAction = UIAlertAction(title: "Replace Image", style: .default) { (_) in
         DispatchQueue.main.async {
-          self.imageReplacementIndexPath = indexPath
+          self.imageReplacementIndexPath = IndexPath(item: index, section: 0)
           self.pickImage()
         }
       }
       let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-      //      alertController.addAction(viewImageAction)
       alertController.addAction(replaceImageAction)
       alertController.addAction(cancelAction)
       self.present(alertController, animated: true, completion: nil)
     }
+
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    self.selectedItemAtIndex(index: indexPath.item)
   }
   
   func pickImage() {
@@ -294,6 +211,7 @@ extension UpdateImagesViewController {
 
 // MARK: - UICollectionViewDataSource
 extension UpdateImagesViewController: UICollectionViewDataSource, ImageUploadCollectionViewDelegate {
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 6
   }
@@ -304,7 +222,7 @@ extension UpdateImagesViewController: UICollectionViewDataSource, ImageUploadCol
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadCollectionViewCell", for: indexPath) as? ImageUploadCollectionViewCell else {
         return UICollectionViewCell()
       }
-      cell.cancelButton.isHidden = true
+      cell.cancelButton.isHidden = !self.allowsDelete
       if let image = self.images[indexPath.row].image {
         cell.imageView.image = image
       } else if let urlString = self.images[indexPath.row].imageContainer?.thumbnail.imageURL, let imageURL = URL(string: urlString) {
@@ -314,13 +232,16 @@ extension UpdateImagesViewController: UICollectionViewDataSource, ImageUploadCol
       cell.imageView.contentMode = .scaleAspectFill
       cell.imageView.layer.cornerRadius = 3
       cell.imageView.clipsToBounds = true
-      cell.closeButtonDelegate = self
+      cell.imageCellDelegate = self
+      cell.tag = indexPath.item
       cell.cancelButton.tag = indexPath.item
       return cell
     } else {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadAddCollectionViewCell", for: indexPath) as? ImageUploadAddCollectionViewCell else {
         return UICollectionViewCell()
       }
+      cell.tag = indexPath.item
+      cell.imageCellDelegate = self
       if indexPath.item == self.images.count {
         cell.imageView.image = UIImage(named: "onboarding-add-image-primary")
       } else {
@@ -334,6 +255,10 @@ extension UpdateImagesViewController: UICollectionViewDataSource, ImageUploadCol
   func closeButtonClicked(tag: Int) {
     self.images.remove(at: tag)
     self.collectionView.reloadData()
+  }
+  
+  func imageClicked(tag: Int) {
+    self.selectedItemAtIndex(index: tag)
   }
   
 }
@@ -377,7 +302,7 @@ extension UpdateImagesViewController {
     var img: UIImage?
     let manager = PHImageManager.default()
     let options = PHImageRequestOptions()
-    options.version = .original
+    options.version = .current
     options.isSynchronous = true
     manager.requestImageData(for: asset, options: options) { data, _, _, _ in
       if let data = data {
@@ -393,16 +318,16 @@ extension UpdateImagesViewController {
 extension UpdateImagesViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let sideLength: CGFloat = (collectionView.frame.size.width  - ( 2 * betweenImageSpacing)) / 3.0
+    let sideLength: CGFloat = collectionView.frame.size.width / 3.0
     return CGSize(width: sideLength, height: sideLength)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return betweenImageSpacing
+    return 0
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return betweenImageSpacing
+    return 0
   }
   
 }

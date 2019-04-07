@@ -15,6 +15,7 @@ class MeTabViewController: UIViewController {
   @IBOutlet weak var floatingEditButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
+  var currentPearUser: PearUser?
   
   class func instantiate() -> MeTabViewController? {
     let storyboard = UIStoryboard(name: String(describing: MeTabViewController.self), bundle: nil)
@@ -25,7 +26,8 @@ class MeTabViewController: UIViewController {
   @IBAction func editButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     guard let profile = self.fullProfile,
-      let editMeVC = MeEditUserViewController.instantiate(profile: profile) else {
+      let pearUser = self.currentPearUser,
+      let editMeVC = MeEditUserViewController.instantiate(profile: profile, pearUser: pearUser) else {
         print("Failed to instantiate edit user profile")
         return
     }
@@ -41,18 +43,32 @@ extension MeTabViewController {
     super.viewDidLoad()
     self.stylize()
     
-    if let user = DataStore.shared.currentPearUser {
-      self.fullProfile = FullProfileDisplayData(user: user)
+    self.checkForUpdatedUser()
+    guard let pearUser = self.currentPearUser,
+      let profile = self.fullProfile else {
+        print("Failed to get pear user and profile")
+        return
     }
-
+    self.refreshFullStackVC(pearUser: pearUser, profile: profile)
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    self.refreshFullStackVC()
+  func reloadPearUser() {
+    DataStore.shared.refreshPearUser { (pearUser) in
+      self.checkForUpdatedUser()
+      guard let pearUser = self.currentPearUser,
+        let profile = self.fullProfile else {
+          print("Failed to get pear user and profile")
+          return
+      }
+      self.refreshFullStackVC(pearUser: pearUser, profile: profile)
+    }
   }
   
   func checkForUpdatedUser() {
-    
+    if let user = DataStore.shared.currentPearUser {
+      self.fullProfile = FullProfileDisplayData(user: user)
+      self.currentPearUser = user
+    }
   }
   
   func stylize() {
@@ -63,7 +79,7 @@ extension MeTabViewController {
     self.floatingEditButton.layer.shadowOffset = CGSize(width: 2, height: 2)
   }
   
-  func refreshFullStackVC() {
+  func refreshFullStackVC(pearUser: PearUser, profile: FullProfileDisplayData) {
     self.scrollView.subviews.forEach({ $0.removeFromSuperview() })
     
     guard let fullProfile = self.fullProfile else {

@@ -107,15 +107,15 @@ extension ApproveDetachedProfileFoundViewController {
               }
               var foundBankImages = foundImages.imageBank
               foundBankImages.append(contentsOf: self.detachedProfile.images)
-              let displayedImagesContainers = foundDisplayedImageContainers.map({ $0.gettingStartedImageContainer(size: .thumbnail) })
-              let bankImages = foundBankImages.map({ $0.gettingStartedImageContainer() })
+              let displayedImagesContainers = foundDisplayedImageContainers.map({ $0.loadedImageContainer(size: .thumbnail) })
+              let bankImages = foundBankImages.map({ $0.loadedImageContainer() })
               self.imageContainers = (displayedImages: displayedImagesContainers, imageBank: bankImages)
               print("Successfully loaded \(displayedImagesContainers.count) Displayed Images, \(bankImages.count) Bank Images")
               
             case .failure(let error):
               print(error)
-              self.imageContainers = (displayedImages: self.detachedProfile.images.map({ $0.gettingStartedImageContainer(size: .thumbnail )}),
-                                      imageBank: self.detachedProfile.images.map({ $0.gettingStartedImageContainer(size: .thumbnail )}))
+              self.imageContainers = (displayedImages: self.detachedProfile.images.map({ $0.loadedImageContainer(size: .thumbnail )}),
+                                      imageBank: self.detachedProfile.images.map({ $0.loadedImageContainer(size: .thumbnail )}))
             }
             
             if self.hasClickedNext {

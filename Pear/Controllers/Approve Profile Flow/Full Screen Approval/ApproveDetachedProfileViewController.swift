@@ -55,7 +55,7 @@ class ApproveDetachedProfileViewController: UIViewController {
             print("Successfully attached detached profile: \(success)")
             self.isApprovingProfile = false
             if success {
-              DataStore.shared.fetchExistingUser(pearUserFoundCompletion: nil, userNotFoundCompletion: nil)
+              DataStore.shared.refreshPearUser(completion: nil)
               DataStore.shared.refreshEndorsedUsers(completion: nil)
               if DataStore.shared.hasUpdatedPreferences() {
                 self.dismiss(animated: true, completion: nil)
