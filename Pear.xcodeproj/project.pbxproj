@@ -136,6 +136,9 @@
 		BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */; };
 		BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */; };
 		BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */; };
+		BB9CB69B2259E13300605A98 /* UpdateExpandingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CB69A2259E13300605A98 /* UpdateExpandingTextViewController.swift */; };
+		BB9CB69D2259E14100605A98 /* UpdateExpandingTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9CB69C2259E14100605A98 /* UpdateExpandingTextViewController.storyboard */; };
+		BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CB69E2259E55D00605A98 /* UITextView+Styling.swift */; };
 		BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9D1B1B2255D0110074C099 /* RequestProfileViewController.swift */; };
 		BB9D1B1E2255D02C0074C099 /* RequestProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9D1B1D2255D02C0074C099 /* RequestProfileViewController.storyboard */; };
 		BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9D1B202255E0D00074C099 /* MatchesAPI.swift */; };
@@ -373,6 +376,9 @@
 		BB986A62220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedCreateAccountViewController.storyboard; sourceTree = "<group>"; };
 		BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFullProfileViewController.swift; sourceTree = "<group>"; };
 		BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFullProfileViewController.storyboard; sourceTree = "<group>"; };
+		BB9CB69A2259E13300605A98 /* UpdateExpandingTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExpandingTextViewController.swift; sourceTree = "<group>"; };
+		BB9CB69C2259E14100605A98 /* UpdateExpandingTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateExpandingTextViewController.storyboard; sourceTree = "<group>"; };
+		BB9CB69E2259E55D00605A98 /* UITextView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Styling.swift"; sourceTree = "<group>"; };
 		BB9D1B1B2255D0110074C099 /* RequestProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProfileViewController.swift; sourceTree = "<group>"; };
 		BB9D1B1D2255D02C0074C099 /* RequestProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RequestProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB9D1B202255E0D00074C099 /* MatchesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesAPI.swift; sourceTree = "<group>"; };
@@ -695,6 +701,8 @@
 				BBC4A08622586F60009D9867 /* Demographics */,
 				BB0AE4E522536F85005DD315 /* Preferences */,
 				BBF7968C225962A800E9A506 /* Update Images */,
+				BB9CB69A2259E13300605A98 /* UpdateExpandingTextViewController.swift */,
+				BB9CB69C2259E14100605A98 /* UpdateExpandingTextViewController.storyboard */,
 			);
 			path = "Update User";
 			sourceTree = "<group>";
@@ -825,6 +833,7 @@
 			isa = PBXGroup;
 			children = (
 				BB686E3E22120F1A008A263C /* StylingConfig.swift */,
+				BB9CB69E2259E55D00605A98 /* UITextView+Styling.swift */,
 				BBCF418F2227E137009CEC4A /* UIView+Styling.swift */,
 				BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */,
 				BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */,
@@ -1678,6 +1687,7 @@
 				BBA3CEBA2255666E0020A36C /* ChatRequestPersonalViewController.storyboard in Resources */,
 				BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */,
 				BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */,
+				BB9CB69D2259E14100605A98 /* UpdateExpandingTextViewController.storyboard in Resources */,
 				BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */,
 				BB3F4AEB2234259D00F99C8E /* GetStartedUserGenderViewController.storyboard in Resources */,
 				BBA2E1F0224B2E980088A7A7 /* ApproveDetachedProfileNavigationViewController.storyboard in Resources */,
@@ -2012,6 +2022,7 @@
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
 				BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
+				BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */,
 				BB9D1B242255E1310074C099 /* PearMatchesAPI.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
@@ -2036,6 +2047,7 @@
 				BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
+				BB9CB69B2259E13300605A98 /* UpdateExpandingTextViewController.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */,
 				BBA2B42C223504E200D8C27B /* ProfileBioViewController.swift in Sources */,
 				BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */,

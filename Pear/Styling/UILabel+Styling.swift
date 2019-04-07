@@ -106,4 +106,19 @@ extension UILabel {
     }
     self.textColor = UIColor.black
   }
+  
+  func stylizeEditTitleLabel() {
+    if let font = R.font.nunitoBold(size: 18) {
+      self.font = font
+    }
+    self.textColor = R.color.primaryTextColor()
+  }
+  
+  func stylizeEditSubtitleLabel() {
+    if let font = R.font.nunitoRegular(size: 15) {
+      self.font = font
+    }
+    self.textColor = R.color.primaryTextColor()
+  }
+
 }
