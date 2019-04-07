@@ -17,6 +17,7 @@ class SentryHelper {
                                  message: String,
                                  tags: [String: String] = [:],
                                  paylod: [String: Any] = [:]) {
+    #if PROD
     let userErrorEvent = Event(level: level)
     userErrorEvent.message = "\(apiName):\(functionName) - \(message)"
     var allTags: [String: String] = ["API": apiName,
@@ -25,6 +26,7 @@ class SentryHelper {
     userErrorEvent.tags = allTags
     userErrorEvent.extra = paylod
     Client.shared?.send(event: userErrorEvent, completion: nil)
+    #endif
   }
   
 }
