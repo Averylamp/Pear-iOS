@@ -39,8 +39,13 @@ extension DataStore {
       let deviceVersionArr = deviceVersionStr.components(separatedBy: ".").compactMap({Int($0)})
       if deviceVersionArr.count == 3 {
         completion(compareVersionArrays(a: deviceVersionArr, b: [minVersion, minMajor, minMinor]))
-      } else {
-        completion(true)
+      } else if deviceVersionArr.count == 2 {
+        if deviceVersionArr[1] > minMajor && deviceVersionArr[0] > minVersion ||
+           deviceVersionArr[0] > minVersion {
+          completion(true)
+        } else {
+          completion(true)
+        }
       }
     } else {
       completion(true)

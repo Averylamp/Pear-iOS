@@ -30,6 +30,7 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+  
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
         DataStore.shared.refreshPearUser(completion: { (pearUser) in
@@ -41,7 +42,20 @@ extension LoadingScreenViewController {
           }
         })
       } else {
-        self.continueToVersionBlockScreen()
+        if DataStore.shared.remoteConfig.configValue(forKey: "version_blocking_enabled").boolValue {
+          self.continueToVersionBlockScreen()
+        } else {
+          print("Not blocking version anyways")
+          DataStore.shared.refreshPearUser(completion: { (pearUser) in
+            if pearUser != nil {
+              DataStore.shared.refreshEndorsedUsers(completion: nil)
+              self.continueToMainScreen()
+            } else {
+              self.continueToLandingScreen()
+            }
+          })
+
+        }
       }
     })
   }
