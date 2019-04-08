@@ -335,6 +335,15 @@ extension PearUserAPI {
                                             completion: completion)
   }
   
+  func updateUser(userID: String,
+                  updates: [String: Any],
+                  completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+   self.updateUserWithPreferenceDictionary(userID: userID,
+                                           inputDictionary: updates,
+                                           mutationName: "FullUserUpdate",
+                                           completion: completion)
+  }
+  
   func updateUserWithPreferenceDictionary(userID: String,
                                           inputDictionary: [String: Any],
                                           mutationName: String = "UpdateUser",
@@ -345,15 +354,15 @@ extension PearUserAPI {
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
     
-    do {
-      let fullDictionary: [String: Any] = [
-        "query": getUpdateUserQueryWithName(name: mutationName),
-        "variables": [
-          "user_id": userID,
-          "userInput": inputDictionary
-        ]
+    let fullDictionary: [String: Any] = [
+      "query": getUpdateUserQueryWithName(name: mutationName),
+      "variables": [
+        "user_id": userID,
+        "userInput": inputDictionary
       ]
-      
+    ]
+    
+    do {
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       request.httpBody = data
       
@@ -370,6 +379,7 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
+
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "updateUser")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:

@@ -9,9 +9,11 @@
 import UIKit
 import CoreLocation
 
-class UserLocationViewController: UIViewController {
+class UserLocationViewController: UpdateUIViewController {
 
+  private var initialLocationName: String?
   var locationName: String?
+  private var initialLocationCoordinate: CLLocationCoordinate2D?
   var locationCoordinate: CLLocationCoordinate2D?
   
   @IBOutlet weak var titleLabel: UILabel!
@@ -26,9 +28,26 @@ class UserLocationViewController: UIViewController {
   class func instantiate(locationName: String?, locationCoordinates: CLLocationCoordinate2D?) -> UserLocationViewController? {
     let storyboard = UIStoryboard(name: String(describing: UserLocationViewController.self), bundle: nil)
     guard let locationPrefVC = storyboard.instantiateInitialViewController() as? UserLocationViewController else { return nil }
+    locationPrefVC.initialLocationName = locationName
+    locationPrefVC.initialLocationCoordinate = locationCoordinates
     locationPrefVC.locationName = locationName
     locationPrefVC.locationCoordinate = locationCoordinates
     return locationPrefVC
+  }
+  
+  override func didMakeUpdates() -> Bool {
+    if (initialLocationCoordinate == nil && locationCoordinate != nil) ||
+      initialLocationCoordinate != nil && locationCoordinate == nil {
+      return true
+    }
+    if let initialCoordinate = initialLocationCoordinate,
+      let coordinate = locationCoordinate {
+      if initialCoordinate.latitude != coordinate.latitude ||
+        initialCoordinate.longitude != coordinate.longitude {
+        return true
+      }
+    }
+    return initialLocationName != locationName
   }
   
 }

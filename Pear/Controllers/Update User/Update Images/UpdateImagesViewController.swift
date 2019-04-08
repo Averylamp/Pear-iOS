@@ -10,7 +10,7 @@ import UIKit
 import BSImagePicker
 import Photos
 
-class UpdateImagesViewController: UIViewController {
+class UpdateImagesViewController: UpdateUIViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
   var images: [LoadedImageContainer] = []
@@ -30,6 +30,10 @@ class UpdateImagesViewController: UIViewController {
     photoInputVC.originalImages = images
     photoInputVC.allowsDelete = allowsDelete
     return photoInputVC
+  }
+  
+  override func didMakeUpdates() -> Bool {
+    return !ImageContainer.compareImageLists(lhs: originalImages.compactMap({ $0.imageContainer }), rhs: images.compactMap({ $0.imageContainer }))
   }
   
 }
@@ -55,25 +59,6 @@ extension UpdateImagesViewController {
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
   }
-}
-
-// MARK: 
-
-extension UpdateImagesViewController {
-  
-  func checkForChanges() -> Bool {
-    if self.images.count != self.originalImages.count {
-      return true
-    }
-    for index in 0..<self.images.count {
-      if self.images[index].image != self.originalImages[index].image ||
-        self.images[index].imageContainer?.imageID != self.originalImages[index].imageContainer?.imageID {
-        return true
-      }
-    }
-    return false
-  }
-  
 }
 
 // MARK: - UICollectionViewDelegate
