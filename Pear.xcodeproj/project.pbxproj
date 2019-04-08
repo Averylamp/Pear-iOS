@@ -21,6 +21,8 @@
 		9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */; };
 		9101E0CF224F2024009646AB /* GetStartedLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101E0CE224F2024009646AB /* GetStartedLocationViewController.swift */; };
 		9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0D0224F22E9009646AB /* GetStartedLocationViewController.storyboard */; };
+		91BEE2A0225B077600A53171 /* GetStartedSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE29F225B077600A53171 /* GetStartedSchoolViewController.swift */; };
+		91BEE2A2225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE2A1225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
@@ -262,6 +264,8 @@
 		9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionBlockViewController.storyboard; sourceTree = "<group>"; };
 		9101E0CE224F2024009646AB /* GetStartedLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedLocationViewController.swift; sourceTree = "<group>"; };
 		9101E0D0224F22E9009646AB /* GetStartedLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedLocationViewController.storyboard; sourceTree = "<group>"; };
+		91BEE29F225B077600A53171 /* GetStartedSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSchoolViewController.swift; sourceTree = "<group>"; };
+		91BEE2A1225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSchoolViewController.storyboard; sourceTree = "<group>"; };
 		9982C9520B58C87949B039D4 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
@@ -568,6 +572,7 @@
 				BB986A1C220E08B300759A14 /* Landing Screen */,
 				BBE5BFAF224D0BBC00D99217 /* Create User Flow */,
 				BB986A39220E43A300759A14 /* Create Profile Flow */,
+				BBE8D01E2213E09F00FD1355 /* Age Input */,
 				BB56D22922142E2400A652E7 /* Profiles */,
 				BB9D1B1A2255CFFA0074C099 /* Request Profile Flow */,
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
@@ -688,6 +693,15 @@
 				4F1F29E72161DCE78694A73C /* Pods_PearTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		91BEE29E225B075300A53171 /* School Input */ = {
+			isa = PBXGroup;
+			children = (
+				91BEE29F225B077600A53171 /* GetStartedSchoolViewController.swift */,
+				91BEE2A1225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard */,
+			);
+			path = "School Input";
 			sourceTree = "<group>";
 		};
 		BB0628C0224634A4000D9B12 /* ChatAPI */ = {
@@ -1077,7 +1091,7 @@
 			children = (
 				BBE8D01D2213E09400FD1355 /* Start Friend Profile */,
 				BB33E7562224A095001BFA8F /* Gender Input */,
-				BBE8D01E2213E09F00FD1355 /* Age Input */,
+				91BEE29E225B075300A53171 /* School Input */,
 				BBE8D01F2213E0B200FD1355 /* Interests Input */,
 				BB0F16C1222F20F200915C1C /* Vibe Input */,
 				BBE8D0212213E0C500FD1355 /* DoDont Input */,
@@ -1783,6 +1797,7 @@
 				BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */,
 				BBB70AE722233A77006B75A0 /* Nunito-ExtraBold.ttf in Resources */,
 				BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */,
+				91BEE2A2225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedStartFriendProfileViewController.storyboard in Resources */,
 				BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */,
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
@@ -2013,6 +2028,7 @@
 				BB94C12522438502001320B0 /* Message.swift in Sources */,
 				9101E0CF224F2024009646AB /* GetStartedLocationViewController.swift in Sources */,
 				BBA2E1E8224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift in Sources */,
+				91BEE2A0225B077600A53171 /* GetStartedSchoolViewController.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
 				BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,

@@ -20,6 +20,8 @@ class UserProfileCreationData: CustomStringConvertible {
   var dos: [String] = []
   var donts: [String] = []
   var images: [LoadedImageContainer] = []
+  var school: String?
+  var schoolYear: String?
   
   init() {
     
@@ -37,6 +39,8 @@ class UserProfileCreationData: CustomStringConvertible {
     profileDos: \(String(describing: dos)),
     profileDonts: \(String(describing: donts)),
     profileImages: \(String(describing: images)),
+    profileSchoolName: \(String(describing: school)),
+    profileSchoolYear: \(String(describing: schoolYear))
     """
     
   }
@@ -51,6 +55,7 @@ class UserProfileCreationData: CustomStringConvertible {
     self.dos = ["take him to eat ramen", "take him to the movies. His favorite series of movies is the Marvel series",
                 "feed him tasty food. Japanese, Italian, and Chipotle" ]
     self.donts = ["feed him vegetables", "make him sleep on time"]
+    self.school = "MIT"
 
   }
   

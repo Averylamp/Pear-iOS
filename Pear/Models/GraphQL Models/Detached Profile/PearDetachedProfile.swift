@@ -24,8 +24,10 @@ class PearDetachedProfile: Decodable, CustomStringConvertible {
   var images: [ImageContainer]
   var matchingDemographics: MatchingDemographics!
   var matchingPreferences: MatchingPreferences!
+  var school: String?
+  var schoolYear: String?
 
-  static let graphQLDetachedProfileFieldsAll = "{ _id creatorUser_id creatorFirstName firstName phoneNumber age gender interests vibes bio dos donts images \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+  static let graphQLDetachedProfileFieldsAll = "{ _id creatorUser_id creatorFirstName firstName phoneNumber age gender interests vibes bio dos donts school schoolYear images \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
   
   var description: String {
     return "**** Pear Detached Profile **** \n" + """
@@ -41,6 +43,8 @@ class PearDetachedProfile: Decodable, CustomStringConvertible {
     bio: \(String(describing: bio)),
     dos: \(String(describing: dos)),
     donts: \(String(describing: donts)),
+    school: \(String(describing: school)),
+    schoolYear: \(String(describing: schoolYear)),
     images: \(images.count) found,
     """
     
@@ -71,6 +75,8 @@ class PearDetachedProfile: Decodable, CustomStringConvertible {
     self.images = images
     self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
     self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)
+    self.school = try? values.decode(String.self, forKey: .school)
+    self.schoolYear = try? values.decode(String.self, forKey: .schoolYear)
 
   }
   

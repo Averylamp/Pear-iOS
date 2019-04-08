@@ -26,4 +26,6 @@ enum PearDetachedProfileKeys: String, CodingKey {
   case images
   case matchingDemographics
   case matchingPreferences
+  case school
+  case schoolYear
 }
