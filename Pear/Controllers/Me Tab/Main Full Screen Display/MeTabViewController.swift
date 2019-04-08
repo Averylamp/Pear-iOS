@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension Notification.Name {
+  static let refreshMeTab = Notification.Name("refreshMeTab")
+}
+
 class MeTabViewController: UIViewController {
   
   var fullProfile: FullProfileDisplayData?
@@ -43,6 +47,15 @@ extension MeTabViewController {
     super.viewDidLoad()
     self.stylize()
     
+    self.updateWithCurrentUser()
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(MeTabViewController.updateWithCurrentUser),
+                   name: .refreshMeTab, object: nil)
+  }
+  
+  @objc func updateWithCurrentUser() {
+    print("Reloaded Me Tab")
     self.checkForUpdatedUser()
     guard let pearUser = self.currentPearUser,
       let profile = self.fullProfile else {

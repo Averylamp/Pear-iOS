@@ -114,6 +114,14 @@ extension ApproveDetachedProfileSchoolViewController {
     self.schoolYearTextField.stylizeInputTextField()
     self.schoolNameTextField.delegate = self
     self.schoolYearTextField.delegate = self
+    
+    if let schoolName = self.detachedProfile.school {
+      self.schoolNameTextField.text = schoolName
+    }
+    
+    if let schoolYear = self.detachedProfile.schoolYear {
+      self.schoolYearTextField.text = schoolYear
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -137,6 +145,13 @@ extension ApproveDetachedProfileSchoolViewController: UITextFieldDelegate {
       self.nextButtonClicked(self.nextButton as Any)
     }
     return false
+  }
+  
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if let schoolYearText = self.schoolYearTextField.text, schoolYearText.count + string.count - range.length > 4 {
+      return false
+    }
+    return true
   }
   
 }

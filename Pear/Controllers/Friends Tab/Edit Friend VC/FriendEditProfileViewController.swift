@@ -64,7 +64,7 @@ class FriendEditProfileViewController: UIViewController {
     self.saveChanges {
       DispatchQueue.main.async {
         HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-        NotificationCenter.default.post(name: .refreshFriendTab, object: nil)
+        DataStore.shared.refreshEndorsedUsers(completion: nil)
         self.navigationController?.popToRootViewController(animated: true)
       }
     }
@@ -101,6 +101,12 @@ class FriendEditProfileViewController: UIViewController {
       if !compareStringArrays(first: donts, second: detachedProfile.donts) {
         updates["donts"] = donts
       }
+      if let photoVC = self.photoUpdateVC, photoVC.checkForChanges() {
+        updates["images"] = photoVC.images
+          .filter({ $0.imageContainer != nil })
+          .map({ $0.imageContainer!.dictionary })
+          .filter({$0 != nil})
+      }
     } else if let userProfile = self.userProfile {
       if !compareWithoutQuotes(first: bio, second: userProfile.bio) {
         updates["bio"] = bio
@@ -120,12 +126,17 @@ class FriendEditProfileViewController: UIViewController {
     let updates = self.getUpdates()
     if updates.count == 0 {
       if let completion = completion {
+        print("Skipping updates")
         completion()
       }
       return
     }
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       print("Failed to get current user")
+      if let completion = completion {
+        print("Skipping updates")
+        completion()
+      }
       return
     }
     if let detachedProfile = self.detachedProfile {

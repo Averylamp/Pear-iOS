@@ -431,7 +431,7 @@ extension PearProfileAPI {
   }
   
   func validateUserProfileUpdates(updates: [String: Any]) -> Bool {
-    let allowedKeys: [String] = ["interests", "vibes", "bio", "dos", "donts"]
+    let allowedKeys: [String] = ["interests", "vibes", "bio", "dos", "donts", "images"]
     var allowed = true
     updates.forEach { (item) in
       if !allowedKeys.contains(item.key) {
@@ -460,6 +460,7 @@ extension PearProfileAPI {
                                        message: "Invalid Updates",
                                        tags: [:],
                                        paylod: updates)
+      completion(.failure(ProfileAPIError.invalidVariables))
       return
     }
     var finalUpdates = updates
@@ -542,6 +543,7 @@ extension PearProfileAPI {
                                        message: "Invalid Updates",
                                        tags: [:],
                                        paylod: updates)
+      completion(.failure(ProfileAPIError.invalidVariables))
       return
     }
     var finalUpdates = updates
