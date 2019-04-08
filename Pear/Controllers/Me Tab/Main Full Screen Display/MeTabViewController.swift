@@ -38,6 +38,14 @@ class MeTabViewController: UIViewController {
     self.navigationController?.pushViewController(editMeVC, animated: true)
   }
   
+  @objc func inviteFriendsButtonClicked(sender: UIButton) {
+    guard let requestProfileVC = RequestProfileViewController.instantiate() else {
+      print("Failed to create get started friend profile vc")
+      return
+    }
+    self.present(requestProfileVC, animated: true, completion: nil)
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -103,7 +111,8 @@ extension MeTabViewController {
       print("Failed to get full profile")
       return
     }
-    if fullProfile.imageContainers.count == 0 && fullProfile.rawImages.count == 0,
+    
+    if pearUser.userProfiles.count == 0,
       let incompleteImage = R.image.meIncompleteProfile() {
       fullProfile.rawImages.append(incompleteImage)
     }
@@ -127,6 +136,33 @@ extension MeTabViewController {
                          toItem: self.scrollView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
       ])
     fullProfileStackVC.didMove(toParent: self)
+    
+    let containerView = UIView()
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    let inviteButton = UIButton()
+    inviteButton.addTarget(self, action: #selector(MeTabViewController.inviteFriendsButtonClicked(sender:)), for: .touchUpInside)
+    inviteButton.translatesAutoresizingMaskIntoConstraints = false
+    inviteButton.setTitle("Invite Friends", for: .normal)
+    containerView.addSubview(inviteButton)
+    inviteButton.addConstraint(NSLayoutConstraint(item: inviteButton, attribute: .height, relatedBy: .equal,
+                                                  toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50))
+    
+    containerView.addConstraints([
+      NSLayoutConstraint(item: inviteButton, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 20.0),
+      NSLayoutConstraint(item: inviteButton, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -20.0),
+      NSLayoutConstraint(item: inviteButton, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 8.0),
+      NSLayoutConstraint(item: inviteButton, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -8.0)
+      ])
+
+    fullProfileStackVC.stackView.addArrangedSubview(containerView)
+    
+    self.view.layoutIfNeeded()
+    
+    inviteButton.stylizeDark()
   }
   
 }

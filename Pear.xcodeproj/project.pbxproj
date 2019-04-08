@@ -593,7 +593,7 @@
 				BB9D1B1A2255CFFA0074C099 /* Request Profile Flow */,
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
 				BB0AE4E422536F75005DD315 /* Update User */,
-				BBDF1FEB21E2B61F00520881 /* Navigation */,
+				BBDF1FEB21E2B61F00520881 /* Tab Controller */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
 				BB5F1DA0225318040042D443 /* Me Tab */,
 				BBF694EE223B7E3600E13ABB /* Friends Tab */,
@@ -1369,13 +1369,13 @@
 			path = PearUITests;
 			sourceTree = "<group>";
 		};
-		BBDF1FEB21E2B61F00520881 /* Navigation */ = {
+		BBDF1FEB21E2B61F00520881 /* Tab Controller */ = {
 			isa = PBXGroup;
 			children = (
 				BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */,
 				BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */,
 			);
-			path = Navigation;
+			path = "Tab Controller";
 			sourceTree = "<group>";
 		};
 		BBE5BFAF224D0BBC00D99217 /* Create User Flow */ = {
