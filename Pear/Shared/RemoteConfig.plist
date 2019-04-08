@@ -8,5 +8,7 @@
 	<false/>
 	<key>waitlist_enabled</key>
 	<true/>
+	<key>version_blocking_enabled</key>
+	<false/>
 </dict>
 </plist>

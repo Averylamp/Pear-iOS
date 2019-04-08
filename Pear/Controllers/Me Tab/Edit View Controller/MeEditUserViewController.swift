@@ -20,6 +20,7 @@ class MeEditUserViewController: UIViewController {
   var profile: FullProfileDisplayData!
   var pearUser: PearUser!
   let leadingSpace: CGFloat = 12
+  var isUpdating: Bool = false
   
   weak var photoUpdateVC: UpdateImagesViewController?
   var textFieldVCs: [UpdateTextFieldController] = []
@@ -145,6 +146,10 @@ extension MeEditUserViewController {
   }
   
   func saveChanges(completion: (() -> Void)?) {
+    if isUpdating {
+      return
+    }
+    self.isUpdating = true
     let userUpdates = self.getUserUpdates()
     let photoUpdates = self.getPhotoUpdates()
     var updateCalls = 0
@@ -169,7 +174,7 @@ extension MeEditUserViewController {
       }
       return
     }
-    
+
     if userUpdates.count > 0 {
       PearUserAPI.shared.updateUser(userID: userID,
                                     updates: userUpdates) { (result) in
@@ -185,8 +190,11 @@ extension MeEditUserViewController {
                                         print("Updating user failure: \(error)")
                                       }
                                       updateCalls -= 1
-                                      if updateCalls == 0, let completion = completion {
-                                        completion()
+                                      if updateCalls == 0 {
+                                        self.isUpdating = false
+                                        if let completion = completion {
+                                          completion()
+                                        }
                                       }
       }
     }
@@ -207,8 +215,11 @@ extension MeEditUserViewController {
                                           print("Updating Images failure: \(error)")
                                         }
                                         updateCalls -= 1
-                                        if updateCalls == 0, let completion = completion {
-                                          completion()
+                                        if updateCalls == 0 {
+                                          self.isUpdating = false
+                                          if let completion = completion {
+                                            completion()
+                                          }
                                         }
       }
     }
