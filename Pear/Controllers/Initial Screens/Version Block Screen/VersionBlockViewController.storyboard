@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h7o-yC-gju">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Version Block View Controller-->
+        <scene sceneID="42K-t6-yrB">
+            <objects>
+                <viewController id="h7o-yC-gju" customClass="VersionBlockViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iLC-Su-eMg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Pear" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="b4B-50-Qbd">
+                                <rect key="frame" x="30" y="304.5" width="315" height="38.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Install the latest update to continue making new matches!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpr-Ww-K9e">
+                                <rect key="frame" x="20" y="351" width="335" height="53"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="update-app" translatesAutoresizingMaskIntoConstraints="NO" id="5Tj-kg-uK8">
+                                <rect key="frame" x="157.5" y="236.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="QII-Lj-U7O"/>
+                                    <constraint firstAttribute="width" secondItem="5Tj-kg-uK8" secondAttribute="height" multiplier="1:1" id="qOo-5o-8wn"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffw-xy-G9p">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="maB-uL-Uoi"/>
+                                </constraints>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updateButtonClicked:" destination="h7o-yC-gju" eventType="touchUpInside" id="vpG-cw-zq6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="b4B-50-Qbd" secondAttribute="trailing" constant="30" id="7CQ-ZC-SME"/>
+                            <constraint firstItem="MdC-f0-idY" firstAttribute="trailing" secondItem="dpr-Ww-K9e" secondAttribute="trailing" constant="20" id="F7A-F8-xV2"/>
+                            <constraint firstItem="b4B-50-Qbd" firstAttribute="top" secondItem="5Tj-kg-uK8" secondAttribute="bottom" constant="8" id="Ppn-o2-pXX"/>
+                            <constraint firstItem="b4B-50-Qbd" firstAttribute="centerY" secondItem="MdC-f0-idY" secondAttribute="centerY" constant="-20" id="QvJ-cV-OYS"/>
+                            <constraint firstItem="dpr-Ww-K9e" firstAttribute="top" secondItem="b4B-50-Qbd" secondAttribute="bottom" constant="8" id="Rz2-Su-iYh"/>
+                            <constraint firstItem="ffw-xy-G9p" firstAttribute="leading" secondItem="MdC-f0-idY" secondAttribute="leading" constant="20" id="b2s-Xx-pfp"/>
+                            <constraint firstItem="5Tj-kg-uK8" firstAttribute="centerX" secondItem="b4B-50-Qbd" secondAttribute="centerX" id="fOH-b3-CEs"/>
+                            <constraint firstItem="MdC-f0-idY" firstAttribute="trailing" secondItem="ffw-xy-G9p" secondAttribute="trailing" constant="20" id="g4Y-Bl-W9Y"/>
+                            <constraint firstItem="b4B-50-Qbd" firstAttribute="centerX" secondItem="MdC-f0-idY" secondAttribute="centerX" id="q0V-Xh-faw"/>
+                            <constraint firstItem="b4B-50-Qbd" firstAttribute="leading" secondItem="iLC-Su-eMg" secondAttribute="leading" constant="30" id="w9L-GJ-gBU"/>
+                            <constraint firstItem="dpr-Ww-K9e" firstAttribute="leading" secondItem="MdC-f0-idY" secondAttribute="leading" constant="20" id="wQx-95-pnM"/>
+                            <constraint firstItem="MdC-f0-idY" firstAttribute="bottom" secondItem="ffw-xy-G9p" secondAttribute="bottom" constant="20" id="zn8-H2-u8D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MdC-f0-idY"/>
+                    </view>
+                    <connections>
+                        <outlet property="subtitleLabel" destination="dpr-Ww-K9e" id="pjU-Zl-2zf"/>
+                        <outlet property="titleLabel" destination="b4B-50-Qbd" id="BcQ-Cc-Giw"/>
+                        <outlet property="updateButton" destination="ffw-xy-G9p" id="tG7-z5-SDF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fty-np-gaM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="update-app" width="512" height="512"/>
+    </resources>
+</document>

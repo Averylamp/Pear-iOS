@@ -21,6 +21,7 @@ class FriendEditProfileViewController: UIViewController {
   var userProfile: PearUserProfile?
   var firstName: String!
   let leadingSpace: CGFloat = 12
+  var isUpdating: Bool = false
   
   var photoUpdateVC: UpdateImagesViewController?
   var textViewVCs: [UpdateExpandingTextViewController] = []
@@ -123,6 +124,10 @@ class FriendEditProfileViewController: UIViewController {
   }
   
   func saveChanges(completion: (() -> Void)?) {
+    if isUpdating {
+      return
+    }
+    self.isUpdating = true
     let updates = self.getUpdates()
     if updates.count == 0 {
       if let completion = completion {
@@ -156,6 +161,7 @@ class FriendEditProfileViewController: UIViewController {
                                                   if let completion = completion {
                                                     completion()
                                                   }
+                                                  self.isUpdating = false
       }
     } else if let userProfile = self.userProfile {
       PearProfileAPI.shared.editUserProfile(profileDocumentID: userProfile.documentID,
@@ -174,6 +180,7 @@ class FriendEditProfileViewController: UIViewController {
                                               if let completion = completion {
                                                 completion()
                                               }
+                                              self.isUpdating = false
       }
     }
     
