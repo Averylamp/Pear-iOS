@@ -1,15 +1,15 @@
 //
-//  GetStartedAllowNotificationsViewController.swift
+//  ApproveProfileAllowNotificationsViewController.swift
 //  Pear
 //
-//  Created by Avery Lamp on 2/28/19.
+//  Created by Brian Gu on 4/7/19.
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
 import UIKit
 import UserNotifications
 
-class GetStartedAllowNotificationsViewController: UIViewController {
+class ApproveProfileAllowNotificationsViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
@@ -17,15 +17,12 @@ class GetStartedAllowNotificationsViewController: UIViewController {
   @IBOutlet weak var enableNotificationsButton: UIButton!
   @IBOutlet weak var skipButton: UIButton!
   
-  var friendName: String?
-  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(friendName: String? = nil) -> GetStartedAllowNotificationsViewController? {
-    let storyboard = UIStoryboard(name: String(describing: GetStartedAllowNotificationsViewController.self), bundle: nil)
-    guard let allowNotificationsVC = storyboard.instantiateInitialViewController() as? GetStartedAllowNotificationsViewController else { return nil }
-    allowNotificationsVC.friendName = friendName
+  class func instantiate() -> ApproveProfileAllowNotificationsViewController? {
+    let storyboard = UIStoryboard(name: String(describing: ApproveProfileAllowNotificationsViewController.self), bundle: nil)
+    guard let allowNotificationsVC = storyboard.instantiateInitialViewController() as? ApproveProfileAllowNotificationsViewController else { return nil }
     return allowNotificationsVC
   }
   
@@ -42,28 +39,20 @@ class GetStartedAllowNotificationsViewController: UIViewController {
           if let error = error {
             print(error)
           }
-          guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-            print("Failed to initialize main VC")
-            return
-          }
-          self.navigationController?.setViewControllers([mainVC], animated: true)
+          self.dismiss(animated: true, completion: nil)
         }
     }
     
   }
   
   @IBAction func skipNotificationsClicked(_ sender: Any) {
-    guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-      print("Failed to initialize main VC")
-      return
-    }
-    self.navigationController?.setViewControllers([mainVC], animated: true)
+    self.dismiss(animated: true, completion: nil)
   }
   
 }
 
 // MARK: - Life Cycle
-extension GetStartedAllowNotificationsViewController {
+extension ApproveProfileAllowNotificationsViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -77,9 +66,7 @@ extension GetStartedAllowNotificationsViewController {
     self.skipButton.stylizeSubtle()
     self.titleLabel.stylizeTitleLabel()
     self.subtitleLabel.stylizeSubtitleLabel()
-    if let friendName = self.friendName {
-      self.subtitleLabel.text = "You'll be able to pear \(friendName) with potential matches, and more!"
-    }
+    self.subtitleLabel.text = "You'll be notified when you receive new matches, and more!"
     
   }
   
