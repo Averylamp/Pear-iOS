@@ -393,12 +393,15 @@ extension ApproveDetachedProfilePhotosViewController {
     let options = PHImageRequestOptions()
     options.version = .current
     options.isSynchronous = true
+    options.isNetworkAccessAllowed = true
     manager.requestImageData(for: asset, options: options) { data, _, _, _ in
       if let data = data {
         img = UIImage(data: data)
+      } else {
+        print("CANT GET IMAGE")
       }
     }
     return img
   }
-  
+
 }
