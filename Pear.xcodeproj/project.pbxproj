@@ -572,8 +572,7 @@
 		60C131D521D343560093ECBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9101E0C7224DD371009646AB /* Version Block Screen */,
-				BB986A1C220E08B300759A14 /* Landing Screen */,
+				BB986A1C220E08B300759A14 /* Initial Screens */,
 				BBE5BFAF224D0BBC00D99217 /* Create User Flow */,
 				BB986A39220E43A300759A14 /* Create Profile Flow */,
 				BBE8D01E2213E09F00FD1355 /* Age Input */,
@@ -1055,14 +1054,15 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		BB986A1C220E08B300759A14 /* Landing Screen */ = {
+		BB986A1C220E08B300759A14 /* Initial Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9101E0C7224DD371009646AB /* Version Block Screen */,
 				BB9CB6B9225A3BFB00605A98 /* Landing Navigation View Controller */,
 				BB9CB6B8225A3BED00605A98 /* Loading View Controller */,
 				BB986A38220E439800759A14 /* Landing Screen */,
 			);
-			path = "Landing Screen";
+			path = "Initial Screens";
 			sourceTree = "<group>";
 		};
 		BB986A25220E1BDD00759A14 /* Landing Screen Pages */ = {
