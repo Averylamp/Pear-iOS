@@ -117,7 +117,7 @@ extension FullProfileStackViewController {
   }
   
   func addDemographcsVC(firstName: String,
-                        age: Int,
+                        age: Int?,
                         gender: String,
                         schoolName: String?,
                         locationName: String?) {

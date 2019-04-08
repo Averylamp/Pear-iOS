@@ -24,6 +24,7 @@ class GetStartedFullProfileReviewViewController: UIViewController {
     let storyboard = UIStoryboard(name: String(describing: GetStartedFullProfileReviewViewController.self), bundle: nil)
     guard let fullProfileReviewVC = storyboard.instantiateInitialViewController() as? GetStartedFullProfileReviewViewController else { return nil }
     fullProfileReviewVC.gettingStartedUserProfileData = gettingStartedUserProfileData
+    print(gettingStartedUserProfileData)
     return fullProfileReviewVC
   }
   
