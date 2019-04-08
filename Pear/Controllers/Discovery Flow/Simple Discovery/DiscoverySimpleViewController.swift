@@ -33,6 +33,10 @@ class DiscoverySimpleViewController: UIViewController {
     return discoverySimpleVC
   }
   
+  @IBAction func discoveryIconClicked(_ sender: Any) {
+    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+  }
+  
 }
 
 // MARK: - Life Cycle
