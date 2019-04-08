@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1AEDDD5EC3B598B35BA57705 /* Pods_PearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2319FD8AD98E9FEFAB8AF49A /* Pods_PearTests.framework */; };
+		22807CC8D34E49314B5386C8 /* Pods_Pear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57AD941AA8A6251EED0C14A1 /* Pods_Pear.framework */; };
 		600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600FA61021D358B500A40EAC /* UIViewController+Alert.swift */; };
 		60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131C221D342BC0093ECBA /* AppDelegate.swift */; };
 		60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60C131C921D342BD0093ECBA /* Assets.xcassets */; };
@@ -16,7 +16,7 @@
 		60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */; };
 		60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131EB21D348840093ECBA /* UIViewController+Loading.swift */; };
 		60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C131F121D350330093ECBA /* SAMAuthAPI.swift */; };
-		6AB5034329893A0DBD1ED716 /* Pods_Pear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDE464CE96F886BC4B29DFC /* Pods_Pear.framework */; };
+		8711FDC30892C34A327A3562 /* Pods_PearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47EA652097D9719ACF4BA26 /* Pods_PearTests.framework */; };
 		9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */; };
 		9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */; };
 		9101E0CF224F2024009646AB /* GetStartedLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101E0CE224F2024009646AB /* GetStartedLocationViewController.swift */; };
@@ -249,9 +249,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E1EB4E1A00A6FF32E40B7A5 /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.debug.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
-		2319FD8AD98E9FEFAB8AF49A /* Pods_PearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BEFCB7D857562F91F6813EF /* Pods-PearTests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.beta.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.beta.xcconfig"; sourceTree = "<group>"; };
+		5144CBB305DCE6356389265A /* Pods-Pear.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.production.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.production.xcconfig"; sourceTree = "<group>"; };
+		57AD941AA8A6251EED0C14A1 /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EF9537DB834C92FBAB335BF /* Pods-Pear.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.beta.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.beta.xcconfig"; sourceTree = "<group>"; };
 		600FA61021D358B500A40EAC /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		6096C21C551090E3EDF5A59E /* Pods-Pear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.debug.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.debug.xcconfig"; sourceTree = "<group>"; };
 		60C131BF21D342BC0093ECBA /* Pear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C131C221D342BC0093ECBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C131C921D342BD0093ECBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -261,14 +264,13 @@
 		60C131E821D346DA0093ECBA /* FakeAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAuthAPI.swift; sourceTree = "<group>"; };
 		60C131EB21D348840093ECBA /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		60C131F121D350330093ECBA /* SAMAuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAMAuthAPI.swift; sourceTree = "<group>"; };
-		8A20DFA2EFFBBB552CC665C5 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
 		9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionBlockViewController.swift; sourceTree = "<group>"; };
 		9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionBlockViewController.storyboard; sourceTree = "<group>"; };
 		9101E0CE224F2024009646AB /* GetStartedLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedLocationViewController.swift; sourceTree = "<group>"; };
 		9101E0D0224F22E9009646AB /* GetStartedLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedLocationViewController.storyboard; sourceTree = "<group>"; };
 		91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveProfileAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
-		B9F04708F03CC5131C4C77FB /* Pods-PearTests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.beta.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.beta.xcconfig"; sourceTree = "<group>"; };
+		991944730638D2074E047223 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
@@ -484,10 +486,10 @@
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
 		BBFFBBDF22212E82002E1B54 /* PearImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearImageAPI.swift; sourceTree = "<group>"; };
-		BDDE464CE96F886BC4B29DFC /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD0215A12C379A788BDF3E2D /* Pods-Pear.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.beta.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.beta.xcconfig"; sourceTree = "<group>"; };
-		DFE122E5032867AB36006F73 /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.debug.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
-		FA59BBAF685371563F3CB22A /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.release.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
+		D8B1BFCA6373C11F058B9C0E /* Pods-PearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.debug.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA56AF01147DE84A7AB5A2CF /* Pods-PearTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.release.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.release.xcconfig"; sourceTree = "<group>"; };
+		ED57C2E54FAC40C0BFBEFC57 /* Pods-PearTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.production.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.production.xcconfig"; sourceTree = "<group>"; };
+		F47EA652097D9719ACF4BA26 /* Pods_PearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,7 +497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AB5034329893A0DBD1ED716 /* Pods_Pear.framework in Frameworks */,
+				22807CC8D34E49314B5386C8 /* Pods_Pear.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +505,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AEDDD5EC3B598B35BA57705 /* Pods_PearTests.framework in Frameworks */,
+				8711FDC30892C34A327A3562 /* Pods_PearTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,11 +519,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35027683CDC5C6957C3D67C1 /* Frameworks */ = {
+		37D41C00DF282F89C1C0B270 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BDDE464CE96F886BC4B29DFC /* Pods_Pear.framework */,
-				2319FD8AD98E9FEFAB8AF49A /* Pods_PearTests.framework */,
+				57AD941AA8A6251EED0C14A1 /* Pods_Pear.framework */,
+				F47EA652097D9719ACF4BA26 /* Pods_PearTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -534,7 +536,7 @@
 				BB1435FF2243D25800B8C3EB /* PearTests */,
 				60C131C021D342BC0093ECBA /* Products */,
 				82F6D7E984C2057ACDA63923 /* Pods */,
-				35027683CDC5C6957C3D67C1 /* Frameworks */,
+				37D41C00DF282F89C1C0B270 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -676,12 +678,14 @@
 		82F6D7E984C2057ACDA63923 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0E1EB4E1A00A6FF32E40B7A5 /* Pods-Pear.debug.xcconfig */,
-				8A20DFA2EFFBBB552CC665C5 /* Pods-Pear.release.xcconfig */,
-				DD0215A12C379A788BDF3E2D /* Pods-Pear.beta.xcconfig */,
-				DFE122E5032867AB36006F73 /* Pods-PearTests.debug.xcconfig */,
-				FA59BBAF685371563F3CB22A /* Pods-PearTests.release.xcconfig */,
-				B9F04708F03CC5131C4C77FB /* Pods-PearTests.beta.xcconfig */,
+				6096C21C551090E3EDF5A59E /* Pods-Pear.debug.xcconfig */,
+				5144CBB305DCE6356389265A /* Pods-Pear.production.xcconfig */,
+				991944730638D2074E047223 /* Pods-Pear.release.xcconfig */,
+				5EF9537DB834C92FBAB335BF /* Pods-Pear.beta.xcconfig */,
+				D8B1BFCA6373C11F058B9C0E /* Pods-PearTests.debug.xcconfig */,
+				ED57C2E54FAC40C0BFBEFC57 /* Pods-PearTests.production.xcconfig */,
+				EA56AF01147DE84A7AB5A2CF /* Pods-PearTests.release.xcconfig */,
+				1BEFCB7D857562F91F6813EF /* Pods-PearTests.beta.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1643,14 +1647,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60C131D121D342BD0093ECBA /* Build configuration list for PBXNativeTarget "Pear" */;
 			buildPhases = (
-				0796C7E04E8E179CBF7515B0 /* [CP] Check Pods Manifest.lock */,
+				CF069127E3687C7E1C5E6802 /* [CP] Check Pods Manifest.lock */,
 				BB94C1292243C465001320B0 /* ShellScript */,
 				60C131BB21D342BC0093ECBA /* Sources */,
 				60C131BC21D342BC0093ECBA /* Frameworks */,
 				60C131BD21D342BC0093ECBA /* Resources */,
 				BB3442A722275D280021764A /* Run Script */,
 				BB08B88F2247C431005A3EA9 /* ShellScript */,
-				AFBA147EDF454B05CBE6C9B4 /* [CP] Embed Pods Frameworks */,
+				67A7261BEF24802123DEBA31 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1665,7 +1669,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB1436082243D25800B8C3EB /* Build configuration list for PBXNativeTarget "PearTests" */;
 			buildPhases = (
-				E8FD0FF146499DBB7BBAAF44 /* [CP] Check Pods Manifest.lock */,
+				A6D9EDB9325C24717DD987FC /* [CP] Check Pods Manifest.lock */,
 				BB1435FA2243D25700B8C3EB /* Sources */,
 				BB1435FB2243D25700B8C3EB /* Frameworks */,
 				BB1435FC2243D25700B8C3EB /* Resources */,
@@ -1867,29 +1871,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0796C7E04E8E179CBF7515B0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Pear-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AFBA147EDF454B05CBE6C9B4 /* [CP] Embed Pods Frameworks */ = {
+		67A7261BEF24802123DEBA31 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1959,6 +1941,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pear/Pods-Pear-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A6D9EDB9325C24717DD987FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PearTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BB08B88F2247C431005A3EA9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2008,13 +2012,13 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		E8FD0FF146499DBB7BBAAF44 /* [CP] Check Pods Manifest.lock */ = {
+		CF069127E3687C7E1C5E6802 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2029,7 +2033,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PearTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Pear-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2327,7 +2331,7 @@
 		};
 		60C131D221D342BD0093ECBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E1EB4E1A00A6FF32E40B7A5 /* Pods-Pear.debug.xcconfig */;
+			baseConfigurationReference = 6096C21C551090E3EDF5A59E /* Pods-Pear.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
@@ -2352,7 +2356,7 @@
 		};
 		60C131D321D342BD0093ECBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A20DFA2EFFBBB552CC665C5 /* Pods-Pear.release.xcconfig */;
+			baseConfigurationReference = 991944730638D2074E047223 /* Pods-Pear.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
@@ -2378,7 +2382,7 @@
 		};
 		BB1436052243D25800B8C3EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFE122E5032867AB36006F73 /* Pods-PearTests.debug.xcconfig */;
+			baseConfigurationReference = D8B1BFCA6373C11F058B9C0E /* Pods-PearTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2434,7 +2438,7 @@
 		};
 		BB1436072243D25800B8C3EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA59BBAF685371563F3CB22A /* Pods-PearTests.release.xcconfig */;
+			baseConfigurationReference = EA56AF01147DE84A7AB5A2CF /* Pods-PearTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2487,6 +2491,168 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
 			};
 			name = Release;
+		};
+		BB178924225BEDA10033ACC6 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Production;
+		};
+		BB178925225BEDA10033ACC6 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5144CBB305DCE6356389265A /* Pods-Pear.production.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 52;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.pear;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Production;
+		};
+		BB178926225BEDA10033ACC6 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				INFOPLIST_FILE = PearUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pear;
+			};
+			name = Production;
+		};
+		BB178927225BEDA10033ACC6 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED57C2E54FAC40C0BFBEFC57 /* Pods-PearTests.production.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9ST4X5576Q;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts/Bolts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/CodableFirebase/CodableFirebase.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookCore/FacebookCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookLogin/FacebookLogin.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FacebookShare/FacebookShare.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Protobuf/Protobuf.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift.Library/Rswift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuthInterop\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"${SRCROOT}/Pods/Firebase/CoreOnly/Sources",
+				);
+				INFOPLIST_FILE = PearTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.getpear.PearTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pear.app/Pear";
+			};
+			name = Production;
 		};
 		BBD28432223BFC1000AC6E30 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2585,7 +2751,7 @@
 		};
 		BBEA635F225BA4C600A50422 /* Beta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD0215A12C379A788BDF3E2D /* Pods-Pear.beta.xcconfig */;
+			baseConfigurationReference = 5EF9537DB834C92FBAB335BF /* Pods-Pear.beta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
@@ -2631,7 +2797,7 @@
 		};
 		BBEA6361225BA4C600A50422 /* Beta */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9F04708F03CC5131C4C77FB /* Pods-PearTests.beta.xcconfig */;
+			baseConfigurationReference = 1BEFCB7D857562F91F6813EF /* Pods-PearTests.beta.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -2692,6 +2858,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60C131CF21D342BD0093ECBA /* Debug */,
+				BB178924225BEDA10033ACC6 /* Production */,
 				60C131D021D342BD0093ECBA /* Release */,
 				BBEA635E225BA4C600A50422 /* Beta */,
 			);
@@ -2702,6 +2869,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60C131D221D342BD0093ECBA /* Debug */,
+				BB178925225BEDA10033ACC6 /* Production */,
 				60C131D321D342BD0093ECBA /* Release */,
 				BBEA635F225BA4C600A50422 /* Beta */,
 			);
@@ -2712,6 +2880,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB1436052243D25800B8C3EB /* Debug */,
+				BB178927225BEDA10033ACC6 /* Production */,
 				BB1436072243D25800B8C3EB /* Release */,
 				BBEA6361225BA4C600A50422 /* Beta */,
 			);
@@ -2722,6 +2891,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BBD28432223BFC1000AC6E30 /* Debug */,
+				BB178926225BEDA10033ACC6 /* Production */,
 				BBD28433223BFC1000AC6E30 /* Release */,
 				BBEA6360225BA4C600A50422 /* Beta */,
 			);
