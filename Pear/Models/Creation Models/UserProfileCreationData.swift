@@ -43,7 +43,6 @@ class UserProfileCreationData: CustomStringConvertible {
   
   func fakePopulate() {
     self.firstName = "Avery"
-    self.age = 21
     self.gender = .male
     self.interests = ["Sports", "Coding", "Environment", "Tech", "Adventure", "Nature", "Magic", "Ice Cream", "Ramen", "Cars", "Movies", "Walks"]
     self.vibes = ["forbidden fruit", "coco-nuts"]
