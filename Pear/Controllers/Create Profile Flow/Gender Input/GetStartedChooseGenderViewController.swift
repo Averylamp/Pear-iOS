@@ -55,12 +55,14 @@ class GetStartedChooseGenderViewController: UIViewController {
     default:
       break
     }
-    guard let ageVC = GetStartedAgeViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
-      print("Failed to create age VC")
+    
+    if let schoolVC = GetStartedSchoolViewController.instantiate(gettingStartedData: self.gettingStartedData) {
+      Analytics.logEvent("finished_friend_gender", parameters: nil)
+      self.navigationController?.pushViewController(schoolVC, animated: true)
+    } else {
+      print("Failed to create School VC")
       return
     }
-    Analytics.logEvent("finished_friend_gender", parameters: nil)
-    self.navigationController?.pushViewController(ageVC, animated: true)
   }
   
   @IBAction func cancelButtonClicked(_ sender: Any) {

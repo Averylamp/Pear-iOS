@@ -20,6 +20,8 @@ class UserProfileCreationData: CustomStringConvertible {
   var dos: [String] = []
   var donts: [String] = []
   var images: [LoadedImageContainer] = []
+  var school: String?
+  var schoolYear: String?
   
   init() {
     
@@ -37,13 +39,14 @@ class UserProfileCreationData: CustomStringConvertible {
     profileDos: \(String(describing: dos)),
     profileDonts: \(String(describing: donts)),
     profileImages: \(String(describing: images)),
+    profileSchoolName: \(String(describing: school)),
+    profileSchoolYear: \(String(describing: schoolYear))
     """
     
   }
   
   func fakePopulate() {
     self.firstName = "Avery"
-    self.age = 21
     self.gender = .male
     self.interests = ["Sports", "Coding", "Environment", "Tech", "Adventure", "Nature", "Magic", "Ice Cream", "Ramen", "Cars", "Movies", "Walks"]
     self.vibes = ["forbidden fruit", "coco-nuts"]
@@ -52,6 +55,7 @@ class UserProfileCreationData: CustomStringConvertible {
     self.dos = ["take him to eat ramen", "take him to the movies. His favorite series of movies is the Marvel series",
                 "feed him tasty food. Japanese, Italian, and Chipotle" ]
     self.donts = ["feed him vegetables", "make him sleep on time"]
+    self.school = "MIT"
 
   }
   

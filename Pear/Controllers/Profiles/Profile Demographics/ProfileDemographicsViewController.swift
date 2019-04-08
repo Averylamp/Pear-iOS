@@ -12,16 +12,17 @@ class ProfileDemographicsViewController: UIViewController {
   
   @IBOutlet weak var firstNameLabel: UILabel!
   @IBOutlet weak var stackView: UIStackView!
-  
+  @IBOutlet weak var scrollView: UIScrollView!
+    
   var firstName: String!
-  var age: Int!
+  var age: Int?
   var gender: String!
   var schoolName: String?
   var locationName: String?
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(firstName: String, age: Int, gender: String, schoolName: String? = nil, locationName: String? = nil) -> ProfileDemographicsViewController? {
+  class func instantiate(firstName: String, age: Int?, gender: String, schoolName: String? = nil, locationName: String? = nil) -> ProfileDemographicsViewController? {
     let storyboard = UIStoryboard(name: String(describing: ProfileDemographicsViewController.self), bundle: nil)
     guard let demograpicsVC = storyboard.instantiateInitialViewController() as? ProfileDemographicsViewController else { return nil }
     demograpicsVC.firstName = firstName
@@ -45,10 +46,12 @@ extension ProfileDemographicsViewController {
   func stylize() {
     self.firstNameLabel.stylizeFullPageNameLabel()
     self.firstNameLabel.text = self.firstName
+    var tagViews: [UIView] = []
     
-    let ageIcon = createTagView(text: "\(self.age!)", image: R.image.profileIconAge())
-    
-    var tagViews = [ageIcon]
+    if let age = self.age {
+      let ageIcon = createTagView(text: "\(age)", image: R.image.profileIconAge())
+      tagViews = [ageIcon]
+    }
     
     if let schoolName = self.schoolName {
       let schoolTagView = createTagView(text: schoolName, image: R.image.profileIconSchool())
@@ -64,6 +67,10 @@ extension ProfileDemographicsViewController {
       tagView.layer.cornerRadius = 25
       tagView.backgroundColor = R.color.tagBubbleColor()!
       self.stackView.addArrangedSubview(tagView)
+    }
+    
+    if tagViews.count == 0 {
+      self.scrollView.isHidden = true
     }
     
   }

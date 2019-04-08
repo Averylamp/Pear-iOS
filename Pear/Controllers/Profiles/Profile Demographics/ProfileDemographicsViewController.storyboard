@@ -70,6 +70,7 @@
                     <size key="freeformSize" width="375" height="124"/>
                     <connections>
                         <outlet property="firstNameLabel" destination="PKJ-Fi-ar0" id="7jG-eK-fI4"/>
+                        <outlet property="scrollView" destination="1OV-ap-Hxt" id="Krk-O2-J3D"/>
                         <outlet property="stackView" destination="zXz-pl-NMJ" id="kHA-VK-J5e"/>
                     </connections>
                 </viewController>

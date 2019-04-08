@@ -28,7 +28,7 @@ class FullProfileDisplayData: Equatable {
   var userID: String?
   var originalCreatorName: String?
   var firstName: String!
-  var age: Int!
+  var age: Int?
   var gender: String!
   var interests: [String]
   var vibes: [String]
@@ -47,7 +47,7 @@ class FullProfileDisplayData: Equatable {
   var matchingPreferences: MatchingPreferences?
   
   init (firstName: String!,
-        age: Int!,
+        age: Int?,
         gender: String!,
         interests: [String],
         vibes: [String],
@@ -66,7 +66,6 @@ class FullProfileDisplayData: Equatable {
   
   convenience init (gsup: UserProfileCreationData, creatorFirstName: String) throws {
     guard let firstName = gsup.firstName,
-      let age = gsup.age,
       let gender = gsup.gender,
       let bio = gsup.bio
       else {
@@ -75,7 +74,7 @@ class FullProfileDisplayData: Equatable {
     }
     
     self.init(firstName: firstName,
-              age: age,
+              age: nil,
               gender: gender.toString(),
               interests: gsup.interests,
               vibes: gsup.vibes,
@@ -85,6 +84,8 @@ class FullProfileDisplayData: Equatable {
     self.originalCreatorName = creatorFirstName
     self.rawImages = gsup.images.compactMap({ $0.image })
     self.profileOrigin = .gettingStartedProfile
+    self.school = gsup.school
+    self.schoolYear = gsup.schoolYear
   }
   
   convenience init (matchingUser: MatchingPearUser) {
@@ -171,7 +172,7 @@ class FullProfileDisplayData: Equatable {
   
   convenience init (pdp: PearDetachedProfile) {
     self.init(firstName: pdp.firstName,
-              age: pdp.age,
+              age: nil,
               gender: GenderEnum.stringFromEnumString(string: pdp.gender),
               interests: pdp.interests,
               vibes: pdp.vibes,
@@ -184,6 +185,8 @@ class FullProfileDisplayData: Equatable {
     self.originObject = pdp
     self.matchingDemographics = pdp.matchingDemographics
     self.matchingPreferences = pdp.matchingPreferences
+    self.school = pdp.school
+    self.schoolYear = pdp.schoolYear
   }
   
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
