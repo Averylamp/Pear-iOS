@@ -52,7 +52,7 @@ extension ProfileInterestsViewController {
     let horizontalStackView = UIStackView()
     horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
     stackViewContainer.addSubview(horizontalStackView)
-    horizontalStackView.spacing = 16
+//    horizontalStackView.spacing = 16
     horizontalStackView.axis = .horizontal
     stackViewContainer.addConstraints([
       NSLayoutConstraint(item: horizontalStackView, attribute: .left, relatedBy: .equal,
@@ -73,7 +73,7 @@ extension ProfileInterestsViewController {
     for interest in self.interests {
       let interestTag = createTagView(text: interest, image: nil)
       self.lastStackView.addArrangedSubview(interestTag)
-      self.view.layoutIfNeeded()
+      self.lastStackView.layoutIfNeeded()
       interestTag.layer.cornerRadius = interestTag.frame.height / 2
       interestTag.backgroundColor = R.color.tagBubbleColor()!
       if self.lastStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).width >= self.lastStackView.frame.width {
@@ -84,12 +84,20 @@ extension ProfileInterestsViewController {
         self.addNewHorizontalStackView()
         self.lastStackView.addArrangedSubview(interestTag)
       }
-      
+      self.addSpacerView(width: 16)
     }
     let placeholderView = UIView()
     placeholderView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     self.lastStackView.addArrangedSubview(placeholderView)
-    
+  }
+  
+  func addSpacerView(width: CGFloat) {
+    let spacer = UIView()
+    spacer.translatesAutoresizingMaskIntoConstraints = false
+    spacer.addConstraint(NSLayoutConstraint(item: spacer, attribute: .width, relatedBy: .lessThanOrEqual,
+                                            toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: width))
+    spacer.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+    self.lastStackView.addArrangedSubview(spacer)
   }
   
   func createTagView(text: String, image: UIImage?) -> UIView {
