@@ -53,7 +53,6 @@ class ApproveDetachedProfileViewController: UIViewController {
           case .success(let success):
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
             print("Successfully attached detached profile: \(success)")
-            self.isApprovingProfile = false
             if success {
               DataStore.shared.refreshPearUser(completion: nil)
               DataStore.shared.refreshEndorsedUsers(completion: nil)
@@ -83,14 +82,15 @@ class ApproveDetachedProfileViewController: UIViewController {
                 self.navigationController?.setViewControllers([updateUserVC], animated: true)
               }
             } else {
+              HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
               self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
-              self.isApprovingProfile = false
             }
           case .failure(let error):
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
-            self.isApprovingProfile = false
+            self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
             print("Failed to attach detached profile: \(error)")
           }
+          self.isApprovingProfile = false
         }
         
       }
