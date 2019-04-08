@@ -20,7 +20,7 @@ class GetStartedSchoolViewController: UIViewController {
   @IBOutlet weak var skipButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat = 1.0
+  let pageNumber: CGFloat = 2.0
   
   @IBOutlet weak var schoolNameTextField: UITextField!
   @IBOutlet weak var schoolNameContainer: UIView!
@@ -106,7 +106,7 @@ extension GetStartedSchoolViewController {
     self.skipButton.stylizeSubtle()
     self.titleLabel.stylizeTitleLabel()
     
-    self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalProfileApprovalPagesNumber * self.view.frame.width
+    self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     self.view.layoutIfNeeded()
     
     self.schoolNameContainer.stylizeInputTextFieldContainer()
@@ -122,7 +122,7 @@ extension GetStartedSchoolViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     self.view.layoutIfNeeded()
-    self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalProfileApprovalPagesNumber * self.view.frame.width
+    self.progressWidthConstraint.constant = pageNumber / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     UIView.animate(withDuration: StylingConfig.progressBarAnimationDuration, delay: StylingConfig.progressBarAnimationDelay, options: .curveEaseOut, animations: {
       self.view.layoutIfNeeded()
     }, completion: nil)
@@ -140,6 +140,13 @@ extension GetStartedSchoolViewController: UITextFieldDelegate {
       self.nextButtonClicked(self.nextButton as Any)
     }
     return false
+  }
+  
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if let schoolYearText = self.schoolYearTextField.text, schoolYearText.count + string.count - range.length > 4 {
+      return false
+    }
+    return true
   }
   
 }

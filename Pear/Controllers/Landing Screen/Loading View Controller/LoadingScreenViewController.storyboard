@@ -48,6 +48,6 @@
     </scenes>
     <resources>
         <image name="splash-background.png" width="375" height="812"/>
-        <image name="splash-pear.png" width="105.75" height="123.5"/>
+        <image name="splash-pear.png" width="150" height="150"/>
     </resources>
 </document>

@@ -21,8 +21,8 @@
 		9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */; };
 		9101E0CF224F2024009646AB /* GetStartedLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101E0CE224F2024009646AB /* GetStartedLocationViewController.swift */; };
 		9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0D0224F22E9009646AB /* GetStartedLocationViewController.storyboard */; };
-		91BEE2A0225B077600A53171 /* GetStartedSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE29F225B077600A53171 /* GetStartedSchoolViewController.swift */; };
-		91BEE2A2225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE2A1225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard */; };
+		91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */; };
+		91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
@@ -30,7 +30,7 @@
 		BB0628C922464278000D9B12 /* MatchingPearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C822464278000D9B12 /* MatchingPearUser.swift */; };
 		BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */; };
 		BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DB225361DC005DD315 /* splash-background.png */; };
-		BB0AE4DE22536208005DD315 /* splash-pear.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DD22536208005DD315 /* splash-pear.png */; };
+		BB0AE4DE22536208005DD315 /* splash-leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DD22536208005DD315 /* splash-leaf.png */; };
 		BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AE4DF225364D0005DD315 /* UpdateUserPreferencesViewController.swift */; };
 		BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4E1225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard */; };
 		BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */; };
@@ -147,6 +147,7 @@
 		BB9CB6AD225A11F900605A98 /* FriendEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CB6AB225A11F900605A98 /* FriendEditProfileViewController.swift */; };
 		BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9CB6B2225A139600605A98 /* FriendFullProfileViewController.storyboard */; };
 		BB9CB6B5225A139600605A98 /* FriendFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9CB6B3225A139600605A98 /* FriendFullProfileViewController.swift */; };
+		BB9CB6BB225B601200605A98 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9CB6BA225B601200605A98 /* Launch Screen.storyboard */; };
 		BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9D1B1B2255D0110074C099 /* RequestProfileViewController.swift */; };
 		BB9D1B1E2255D02C0074C099 /* RequestProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9D1B1D2255D02C0074C099 /* RequestProfileViewController.storyboard */; };
 		BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9D1B202255E0D00074C099 /* MatchesAPI.swift */; };
@@ -201,10 +202,11 @@
 		BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418F2227E137009CEC4A /* UIView+Styling.swift */; };
 		BBD2402222531FB000380315 /* FriendProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2402122531FB000380315 /* FriendProfileCollectionViewCell.swift */; };
 		BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2842D223BFC1000AC6E30 /* PearUITests.swift */; };
-		BBD28650225360A30038DAF3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD2864F225360A30038DAF3 /* Launch Screen.storyboard */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */; };
+		BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA6359225B68FA00A50422 /* GetStartedSchoolViewController.swift */; };
+		BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBEA635A225B68FA00A50422 /* GetStartedSchoolViewController.storyboard */; };
 		BBECBEB12237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB02237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift */; };
 		BBECBEB32237BA10008E8E91 /* GetStartedFullProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB22237BA10008E8E91 /* GetStartedFullProfileReviewViewController.storyboard */; };
 		BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */; };
@@ -264,8 +266,8 @@
 		9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionBlockViewController.storyboard; sourceTree = "<group>"; };
 		9101E0CE224F2024009646AB /* GetStartedLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedLocationViewController.swift; sourceTree = "<group>"; };
 		9101E0D0224F22E9009646AB /* GetStartedLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedLocationViewController.storyboard; sourceTree = "<group>"; };
-		91BEE29F225B077600A53171 /* GetStartedSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSchoolViewController.swift; sourceTree = "<group>"; };
-		91BEE2A1225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedSchoolViewController.storyboard; sourceTree = "<group>"; };
+		91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileAllowNotificationsViewController.swift; sourceTree = "<group>"; };
+		91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveProfileAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		9982C9520B58C87949B039D4 /* Pods-Pear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pear.release.xcconfig"; path = "Target Support Files/Pods-Pear/Pods-Pear.release.xcconfig"; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
@@ -274,7 +276,7 @@
 		BB0628C822464278000D9B12 /* MatchingPearUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingPearUser.swift; sourceTree = "<group>"; };
 		BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelpers.swift; sourceTree = "<group>"; };
 		BB0AE4DB225361DC005DD315 /* splash-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-background.png"; sourceTree = "<group>"; };
-		BB0AE4DD22536208005DD315 /* splash-pear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-pear.png"; sourceTree = "<group>"; };
+		BB0AE4DD22536208005DD315 /* splash-leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-leaf.png"; sourceTree = "<group>"; };
 		BB0AE4DF225364D0005DD315 /* UpdateUserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserPreferencesViewController.swift; sourceTree = "<group>"; };
 		BB0AE4E1225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		BB9CB6AB225A11F900605A98 /* FriendEditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendEditProfileViewController.swift; sourceTree = "<group>"; };
 		BB9CB6B2225A139600605A98 /* FriendFullProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FriendFullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB9CB6B3225A139600605A98 /* FriendFullProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFullProfileViewController.swift; sourceTree = "<group>"; };
+		BB9CB6BA225B601200605A98 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BB9D1B1B2255D0110074C099 /* RequestProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProfileViewController.swift; sourceTree = "<group>"; };
 		BB9D1B1D2255D02C0074C099 /* RequestProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RequestProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB9D1B202255E0D00074C099 /* MatchesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesAPI.swift; sourceTree = "<group>"; };
@@ -451,13 +454,14 @@
 		BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD2842D223BFC1000AC6E30 /* PearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUITests.swift; sourceTree = "<group>"; };
 		BBD2842F223BFC1000AC6E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BBD2864F225360A30038DAF3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BBDEAB6C2241C2C90052D5E9 /* DevConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevConfig.swift; sourceTree = "<group>"; };
 		BBDEAB6E224258A40052D5E9 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		BBDEAB6F224258B20052D5E9 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+UserDefaults.swift"; sourceTree = "<group>"; };
+		BBEA6359225B68FA00A50422 /* GetStartedSchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedSchoolViewController.swift; sourceTree = "<group>"; };
+		BBEA635A225B68FA00A50422 /* GetStartedSchoolViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedSchoolViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB02237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedFullProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BBECBEB22237BA10008E8E91 /* GetStartedFullProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedFullProfileReviewViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
@@ -554,9 +558,9 @@
 				BBB70AD4222336B7006B75A0 /* Fonts */,
 				BB686E2A2210BF34008A263C /* GoogleService-Info.plist */,
 				60C131CE21D342BD0093ECBA /* Info.plist */,
-				BB0AE4DD22536208005DD315 /* splash-pear.png */,
+				BB0AE4DD22536208005DD315 /* splash-leaf.png */,
 				BB0AE4DB225361DC005DD315 /* splash-background.png */,
-				BBD2864F225360A30038DAF3 /* Launch Screen.storyboard */,
+				BB9CB6BA225B601200605A98 /* Launch Screen.storyboard */,
 				60C131C921D342BD0093ECBA /* Assets.xcassets */,
 				BBDEAB6E224258A40052D5E9 /* Debug.xcconfig */,
 				BB58D48F22425D4500A6A910 /* Development.xcconfig */,
@@ -695,13 +699,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		91BEE29E225B075300A53171 /* School Input */ = {
+		91BEE2942259951500A53171 /* Allow Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				91BEE29F225B077600A53171 /* GetStartedSchoolViewController.swift */,
-				91BEE2A1225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard */,
+				91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */,
+				91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */,
 			);
-			path = "School Input";
+			path = "Allow Notifications";
 			sourceTree = "<group>";
 		};
 		BB0628C0224634A4000D9B12 /* ChatAPI */ = {
@@ -1091,7 +1095,7 @@
 			children = (
 				BBE8D01D2213E09400FD1355 /* Start Friend Profile */,
 				BB33E7562224A095001BFA8F /* Gender Input */,
-				91BEE29E225B075300A53171 /* School Input */,
+				BBEA635D225B690600A50422 /* School Input */,
 				BBE8D01F2213E0B200FD1355 /* Interests Input */,
 				BB0F16C1222F20F200915C1C /* Vibe Input */,
 				BBE8D0212213E0C500FD1355 /* DoDont Input */,
@@ -1490,6 +1494,15 @@
 			path = "Validate Phone Number";
 			sourceTree = "<group>";
 		};
+		BBEA635D225B690600A50422 /* School Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBEA6359225B68FA00A50422 /* GetStartedSchoolViewController.swift */,
+				BBEA635A225B68FA00A50422 /* GetStartedSchoolViewController.storyboard */,
+			);
+			path = "School Input";
+			sourceTree = "<group>";
+		};
 		BBECBEBA2237D940008E8E91 /* Profile Demographics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1540,6 +1553,7 @@
 		BBECBEC32237E67D008E8E91 /* Approve Profile Flow */ = {
 			isa = PBXGroup;
 			children = (
+				91BEE2942259951500A53171 /* Allow Notifications */,
 				BBA2E1F3224B30DD0088A7A7 /* Navigation Controller */,
 				BBA2E1F5224B30F90088A7A7 /* Profile Found Page */,
 				BBA2E1F6224B31030088A7A7 /* Update Photos */,
@@ -1739,7 +1753,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB0AE4DE22536208005DD315 /* splash-pear.png in Resources */,
+				BB0AE4DE22536208005DD315 /* splash-leaf.png in Resources */,
 				BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */,
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
 				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
@@ -1757,12 +1771,12 @@
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
 				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
 				BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */,
+				BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */,
 				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
 				BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */,
 				BB686E422212213A008A263C /* GetStartedDoDontViewController.storyboard in Resources */,
-				BBD28650225360A30038DAF3 /* Launch Screen.storyboard in Resources */,
 				BBB70AE522233A77006B75A0 /* Nunito-SemiBold.ttf in Resources */,
 				9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */,
 				BBA3CEBA2255666E0020A36C /* ChatRequestPersonalViewController.storyboard in Resources */,
@@ -1793,11 +1807,11 @@
 				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
 				BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */,
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
+				BB9CB6BB225B601200605A98 /* Launch Screen.storyboard in Resources */,
 				BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */,
 				BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */,
 				BBB70AE722233A77006B75A0 /* Nunito-ExtraBold.ttf in Resources */,
 				BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */,
-				91BEE2A2225B0E3A00A53171 /* GetStartedSchoolViewController.storyboard in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedStartFriendProfileViewController.storyboard in Resources */,
 				BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */,
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
@@ -1810,6 +1824,7 @@
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
 				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
+				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */,
@@ -2028,9 +2043,9 @@
 				BB94C12522438502001320B0 /* Message.swift in Sources */,
 				9101E0CF224F2024009646AB /* GetStartedLocationViewController.swift in Sources */,
 				BBA2E1E8224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift in Sources */,
-				91BEE2A0225B077600A53171 /* GetStartedSchoolViewController.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
 				BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */,
+				91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
@@ -2130,6 +2145,7 @@
 				BBA3CEB8225566600020A36C /* ChatRequestEndorsementViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
+				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
 				BB77E7A12252211700A12B12 /* ApproveDetachedProfileSchoolViewController.swift in Sources */,
 				BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */,
