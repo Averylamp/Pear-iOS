@@ -206,34 +206,14 @@ extension DataStore {
     
   }
   
-  func checkForNotificationsEnabled(completion: @escaping  (Bool) -> Void) {
-    if #available(iOS 12, *) {
-      UNUserNotificationCenter.current()
-        .requestAuthorization(
-        options: [.badge, .alert, .sound]) { (result, error) in
-          DispatchQueue.main.sync {
-            UIApplication.shared.registerForRemoteNotifications()
-            if let error = error {
-              print(error)
-            }
-            completion(result)
-          }
-      }
-      
-    } else if #available(iOS 11, *) {
-      UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (result, error) in
-        DispatchQueue.main.sync {
-          UIApplication.shared.registerForRemoteNotifications()
-          if let error = error {
-            print(error)
-          }
-          completion(result)
-        }
-      }
+  func getNotificationAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
+    UNUserNotificationCenter.current().getNotificationSettings { settings in
+      print("Notification settings: \(settings)")
+      completion(settings.authorizationStatus)
     }
   }
   
-  func getNotificationSettings() {
+  func registerForRemoteNotificationsIfAuthorized() {
     UNUserNotificationCenter.current().getNotificationSettings { settings in
       print("Notification settings: \(settings)")
       guard settings.authorizationStatus == .authorized else { return }
@@ -242,6 +222,22 @@ extension DataStore {
         UIApplication.shared.registerForRemoteNotifications()
       }
     }
+  }
+  
+  func hasUpdatedPreferences() -> Bool {
+    // we should do something more robust in the future, but for now just check if the settings are defaults
+    if let user = DataStore.shared.currentPearUser {
+      if user.matchingPreferences.seekingGender.count != 3 {
+        return true
+      }
+      if user.matchingPreferences.minAgeRange != 18 {
+        return true
+      }
+      if user.matchingPreferences.maxAgeRange != 40 && user.matchingPreferences.maxAgeRange != 24 {
+        return true
+      }
+    }
+    return false
   }
   
 }

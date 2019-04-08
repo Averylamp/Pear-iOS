@@ -89,12 +89,24 @@ class GetStartedNotifyFriendViewController: UIViewController {
         Analytics.logEvent("finished_friend_profile", parameters: nil)
         print(detachedProfile)
         DataStore.shared.refreshEndorsedUsers(completion: nil)
-        DispatchQueue.main.async {
-          guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
-            print("Failed to create Allow Notifications VC")
-            return
+        DataStore.shared.getNotificationAuthorizationStatus { status in
+          if status == .notDetermined {
+            DispatchQueue.main.async {
+              guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
+                print("Failed to create Allow Notifications VC")
+                return
+              }
+              self.navigationController?.pushViewController(allowNotificationVC, animated: true)
+            }
+          } else {
+            DispatchQueue.main.async {
+              guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+                print("Failed to initialize main VC")
+                return
+              }
+              self.navigationController?.setViewControllers([mainVC], animated: true)
+            }
           }
-          self.navigationController?.pushViewController(allowNotificationVC, animated: true)
         }
       case .failure(let error):
         print(error)
