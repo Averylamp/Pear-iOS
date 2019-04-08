@@ -101,7 +101,7 @@ class FriendEditProfileViewController: UIViewController {
       if !compareStringArrays(first: donts, second: detachedProfile.donts) {
         updates["donts"] = donts
       }
-      if let photoVC = self.photoUpdateVC, photoVC.checkForChanges() {
+      if let photoVC = self.photoUpdateVC, photoVC.didMakeUpdates() {
         updates["images"] = photoVC.images
           .filter({ $0.imageContainer != nil })
           .map({ $0.imageContainer!.dictionary })
@@ -185,7 +185,7 @@ class FriendEditProfileViewController: UIViewController {
 extension FriendEditProfileViewController {
   
   func checkForEdits() -> Bool {
-    if let photoVC = self.photoUpdateVC, photoVC.checkForChanges() {
+    if let photoVC = self.photoUpdateVC, photoVC.didMakeUpdates() {
       return true
     }
     let updates = self.getUpdates()
@@ -428,24 +428,6 @@ extension FriendEditProfileViewController {
     self.addChild(photosVC)
     self.stackView.addArrangedSubview(photosVC.view)
     photosVC.didMove(toParent: self)
-  }
-  
-  func addTextField(type: UpdateTextFieldType,
-                    title: String,
-                    initialText: String,
-                    editable: Bool,
-                    textContentType: UITextContentType? = nil) {
-    guard let textFieldVC = UpdateTextFieldController.instantiate(type: type,
-                                                                  initialText: initialText,
-                                                                  textFieldTitle: title,
-                                                                  allowEditing: editable,
-                                                                  textContentType: textContentType) else {
-                                                                    print("Failed to initialize text field")
-                                                                    return
-    }
-    self.addChild(textFieldVC)
-    self.stackView.addArrangedSubview(textFieldVC.view)
-    textFieldVC.didMove(toParent: self)
   }
   
   func addExpandingTextVC(initialText: String,
