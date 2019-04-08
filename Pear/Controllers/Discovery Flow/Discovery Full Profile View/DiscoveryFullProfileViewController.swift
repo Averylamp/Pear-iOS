@@ -224,7 +224,7 @@ class DiscoveryFullProfileViewController: UIViewController {
           print("Failed to create get started friend profile vc")
           return
         }
-        self.navigationController?.setViewControllers([requestProfileVC], animated: true)
+        self.present(requestProfileVC, animated: true, completion: nil)
       }
     }
     

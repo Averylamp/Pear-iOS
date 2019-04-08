@@ -77,15 +77,11 @@ class RequestProfileViewController: UIViewController {
   }
   @IBAction func backButtonClicked(_ sender: Any) {
     Analytics.logEvent("clicked_request_profile_back", parameters: nil)
-    self.navigationController?.popViewController(animated: true)
+    self.dismiss(animated: true, completion: nil)
   }
   
   @IBAction func skipButtonClicked(_ sender: Any) {
-    if let mainVC = LoadingScreenViewController.getMainScreenVC() {
-      self.navigationController?.setViewControllers([mainVC], animated: true)
-    } else {
-      print("Failed to create main VC")
-    }
+    self.dismiss(animated: true, completion: nil)
   }
   
   @IBAction func contactsButtonClicked(_ sender: Any) {
@@ -183,7 +179,7 @@ extension RequestProfileViewController {
     if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
       let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
       let targetFrame = targetFrameNSValue.cgRectValue
-      let keyboardBottomPadding: CGFloat = 20
+      let keyboardBottomPadding: CGFloat = 0
       if self.view.frame.height < 600 && targetFrame.height > 0 {
         self.subtitleLabel.text = ""
       }
@@ -195,7 +191,7 @@ extension RequestProfileViewController {
   }
   @objc func keyboardWillHide(notification: Notification) {
     if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      let keyboardBottomPadding: CGFloat = 20
+      let keyboardBottomPadding: CGFloat = 0
       
       self.skipButtonBottomConstraint.constant = keyboardBottomPadding
       UIView.animate(withDuration: duration) {
@@ -227,11 +223,7 @@ extension RequestProfileViewController: MFMessageComposeViewControllerDelegate {
       self.dismissMessageVC(controller: controller)
     case .sent:
       controller.dismiss(animated: true) {
-        if let mainVC = LoadingScreenViewController.getMainScreenVC() {
-          self.navigationController?.setViewControllers([mainVC], animated: true)
-        } else {
-          print("Failed to create main VC")
-        }
+        self.dismiss(animated: true, completion: nil)
       }
     @unknown default:
       fatalError()
