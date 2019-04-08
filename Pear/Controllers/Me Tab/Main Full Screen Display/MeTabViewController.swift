@@ -62,18 +62,22 @@ extension MeTabViewController {
         print("Failed to get pear user and profile")
         return
     }
-    self.refreshFullStackVC(pearUser: pearUser, profile: profile)
+    DispatchQueue.main.async {    
+      self.refreshFullStackVC(pearUser: pearUser, profile: profile)
+    }
   }
   
   func reloadPearUser() {
     DataStore.shared.refreshPearUser { (pearUser) in
-      self.checkForUpdatedUser()
-      guard let pearUser = self.currentPearUser,
-        let profile = self.fullProfile else {
-          print("Failed to get pear user and profile")
-          return
+      DispatchQueue.main.async {
+        self.checkForUpdatedUser()
+        guard let pearUser = self.currentPearUser,
+          let profile = self.fullProfile else {
+            print("Failed to get pear user and profile")
+            return
+        }
+        self.refreshFullStackVC(pearUser: pearUser, profile: profile)
       }
-      self.refreshFullStackVC(pearUser: pearUser, profile: profile)
     }
   }
   

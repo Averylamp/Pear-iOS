@@ -8,8 +8,9 @@
 
 import UIKit
 
-class UserGenderPreferencesViewController: UIViewController {
+class UserGenderPreferencesViewController: UpdateUIViewController {
 
+  private var initialGenderPreferences: [GenderEnum] = []
   var genderPreferences: [GenderEnum] = []
   
   @IBOutlet weak var maleGenderButton: UIButton!
@@ -29,7 +30,18 @@ class UserGenderPreferencesViewController: UIViewController {
     let storyboard = UIStoryboard(name: String(describing: UserGenderPreferencesViewController.self), bundle: nil)
     guard let genderPreferencesVC = storyboard.instantiateInitialViewController() as? UserGenderPreferencesViewController else { return nil }
     genderPreferencesVC.genderPreferences = genderPreferences
+    genderPreferencesVC.initialGenderPreferences = genderPreferences
     return genderPreferencesVC
+  }
+  
+  override func didMakeUpdates() -> Bool {
+    if initialGenderPreferences.count != genderPreferences.count {
+      return true
+    }
+    for genderPref in initialGenderPreferences where !genderPreferences.contains(genderPref) {
+      return true
+    }
+    return false
   }
   
   @IBAction func genderButtonToggled(_ sender: UIButton) {

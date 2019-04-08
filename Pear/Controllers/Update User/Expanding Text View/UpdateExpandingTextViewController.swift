@@ -19,7 +19,7 @@ enum ExpandingTextViewControllerType: String {
   case unknown
 }
 
-class UpdateExpandingTextViewController: UIViewController {
+class UpdateExpandingTextViewController: UpdateUIViewController {
   
   var initialText: String!
   
@@ -53,6 +53,10 @@ class UpdateExpandingTextViewController: UIViewController {
     expandingTextVC.type = type
     expandingTextVC.maxHeight = maxHeight
     return expandingTextVC
+  }
+  
+  override func didMakeUpdates() -> Bool {
+    return initialText != self.expandingTextView.text
   }
   
   @IBAction func deleteButtonClicked(_ sender: Any) {

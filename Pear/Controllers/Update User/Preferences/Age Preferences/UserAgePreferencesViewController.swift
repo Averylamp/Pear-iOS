@@ -8,10 +8,12 @@
 
 import UIKit
 
-class UserAgePreferencesViewController: UIViewController {
+class UserAgePreferencesViewController: UpdateUIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   
+  private var initialMinAge: Int = 18
+  private var initialMaxAge: Int = 24
   var minAge: Int = 18
   var maxAge: Int = 24
   
@@ -28,9 +30,16 @@ class UserAgePreferencesViewController: UIViewController {
   class func instantiate(minAge: Int, maxAge: Int) -> UserAgePreferencesViewController? {
     let storyboard = UIStoryboard(name: String(describing: UserAgePreferencesViewController.self), bundle: nil)
     guard let agePrefVC = storyboard.instantiateInitialViewController() as? UserAgePreferencesViewController else { return nil }
+    agePrefVC.initialMinAge = minAge
+    agePrefVC.initialMaxAge = maxAge
     agePrefVC.minAge = minAge
     agePrefVC.maxAge = maxAge
     return agePrefVC
+  }
+  
+  override func didMakeUpdates() -> Bool {
+    return initialMinAge != minAge ||
+           initialMaxAge != maxAge
   }
   
 }

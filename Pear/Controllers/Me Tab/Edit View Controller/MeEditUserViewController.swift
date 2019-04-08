@@ -21,8 +21,10 @@ class MeEditUserViewController: UIViewController {
   var pearUser: PearUser!
   let leadingSpace: CGFloat = 12
   
-  var photoUpdateVC: UpdateImagesViewController?
+  weak var photoUpdateVC: UpdateImagesViewController?
   var textFieldVCs: [UpdateTextFieldController] = []
+  weak var genderPreferencesVC: UserGenderPreferencesViewController?
+  weak var agePreferenceVC: UserAgePreferencesViewController?
   
   class func instantiate(profile: FullProfileDisplayData, pearUser: PearUser) -> MeEditUserViewController? {
     let storyboard = UIStoryboard(name: String(describing: MeEditUserViewController.self), bundle: nil)
@@ -33,11 +35,35 @@ class MeEditUserViewController: UIViewController {
   }
   
   @IBAction func cancelButtonClicked(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
+    if checkForEdits() {
+      HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .warning)
+      let alertController = UIAlertController(title: "Are you sure?",
+                                              message: "Your unsaved changes will be lost.",
+                                              preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+      let goBackAction = UIAlertAction(title: "Don't Save", style: .destructive) { (_) in
+        DispatchQueue.main.async {
+          self.navigationController?.popViewController(animated: true)
+        }
+      }
+      alertController.addAction(goBackAction)
+      alertController.addAction(cancelAction)
+      self.present(alertController, animated: true, completion: nil)
+    } else {
+      self.navigationController?.popViewController(animated: true)
+    }
   }
   
   @IBAction func doneButtonClicked(_ sender: Any) {
-    
+    self.view.endEditing(true)
+    self.saveChanges {
+      DispatchQueue.main.async {
+        HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+        DataStore.shared.refreshPearUser(completion: nil)
+        self.navigationController?.popViewController(animated: true)
+      }
+    }
+
   }
   
 }
@@ -45,43 +71,149 @@ class MeEditUserViewController: UIViewController {
 // MARK: - Updating and Saving
 extension MeEditUserViewController {
   
-  func getValueForFieldType(type: UpdateTextFieldType) -> String {
-    switch type {
-    case .firstName:
-      return self.pearUser.firstName
-    case .lastName:
-      return self.pearUser.lastName
-    case .birthday:
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "MMM d, yyyy"
-      return dateFormatter.string(from: self.pearUser.birthdate)
-    case .gender:
-       return self.pearUser.matchingDemographics.gender.toString()
-    case .location:
-      return self.pearUser.matchingDemographics.location.locationName ?? ""
-    case .unknown:
-      return ""
-    }
-  }
-  
   func checkForEdits() -> Bool {
-    if let photoVC = self.photoUpdateVC, photoVC.checkForChanges() {
+    if let photoVC = self.photoUpdateVC, photoVC.didMakeUpdates() {
       return true
     }
-    var textFieldChanged = false
-    self.textFieldVCs.forEach { (fieldVC) in
-      if let inputText = fieldVC.inputTextField.text,
-        self.getValueForFieldType(type: fieldVC.type) != inputText {
-        textFieldChanged = true
-      }
+    for textFieldVC in self.textFieldVCs where textFieldVC.didMakeUpdates() {
+      return true
     }
-    if textFieldChanged {
+    
+    if let genderPrefVC = self.genderPreferencesVC,
+      genderPrefVC.didMakeUpdates() {
+      return true
+    }
+    
+    if let agePrefVC = self.agePreferenceVC,
+      agePrefVC.didMakeUpdates() {
       return true
     }
     
     return false
   }
   
+  func getPhotoUpdates() -> [ImageContainer] {
+    var updates: [ImageContainer] = []
+    if let photoVC = self.photoUpdateVC, photoVC.didMakeUpdates() {
+      updates = photoVC.images
+        .compactMap({ $0.imageContainer })
+    }
+    return updates
+  }
+  
+  func getUserUpdates() -> [String: Any] {
+    var updates: [String: Any] = [:]
+    
+    for fieldVC in self.textFieldVCs where fieldVC.didMakeUpdates() {
+      guard let inputText = fieldVC.inputTextField.text else {
+        print("Failed to get input text to update")
+        continue
+      }
+      switch fieldVC.type {
+      case .firstName:
+        updates["firstName"] = inputText
+      case .lastName:
+        updates["lastName"] = inputText
+      case .birthday:
+        updates["birthdate"] = inputText
+      case .gender:
+        print("Gender currently can't be updated")
+//        updates["gender"] = inputText
+      case .location:
+        updates["locationName"] = inputText
+      case .schoolName:
+        updates["school"] = inputText
+      case .schoolYear:
+        updates["schoolYear"] = inputText
+      case .unknown:
+        break
+      }
+    }
+    
+    if let genderPrefVC = self.genderPreferencesVC,
+      genderPrefVC.didMakeUpdates() {
+      updates["seekingGender"] = genderPrefVC.genderPreferences.map({ $0.rawValue })
+    }
+    
+    if let agePrefVC = self.agePreferenceVC,
+      agePrefVC.didMakeUpdates() {
+      updates["minAgeRange"] = agePrefVC.minAge
+      updates["maxAgeRange"] = agePrefVC.maxAge
+    }
+    
+    return updates
+  }
+  
+  func saveChanges(completion: (() -> Void)?) {
+    let userUpdates = self.getUserUpdates()
+    let photoUpdates = self.getPhotoUpdates()
+    var updateCalls = 0
+    if userUpdates.count > 0 {
+      updateCalls += 1
+    }
+    if photoUpdates.count > 0 {
+      updateCalls += 1
+    }
+    if updateCalls == 0 {
+      if let completion = completion {
+        print("Skipping updates")
+        completion()
+      }
+      return
+    }
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Failed to get current user")
+      if let completion = completion {
+        print("Skipping updates")
+        completion()
+      }
+      return
+    }
+    
+    if userUpdates.count > 0 {
+      PearUserAPI.shared.updateUser(userID: userID,
+                                    updates: userUpdates) { (result) in
+                                      switch result {
+                                      case .success(let successful):
+                                        if successful {
+                                          print("Updating user successful")
+                                        } else {
+                                          print("Updating user failure")
+                                        }
+                                        
+                                      case .failure(let error):
+                                        print("Updating user failure: \(error)")
+                                      }
+                                      updateCalls -= 1
+                                      if updateCalls == 0, let completion = completion {
+                                        completion()
+                                      }
+      }
+    }
+    
+    if photoUpdates.count > 0 {
+      PearImageAPI.shared.updateImages(userID: userID,
+                                       displayedImages: photoUpdates,
+                                       additionalImages: []) { (result) in
+                                        switch result {
+                                        case .success(let successful):
+                                          if successful {
+                                            print("Updating Images successful")
+                                          } else {
+                                            print("Updating Images failure")
+                                          }
+                                          
+                                        case .failure(let error):
+                                          print("Updating Images failure: \(error)")
+                                        }
+                                        updateCalls -= 1
+                                        if updateCalls == 0, let completion = completion {
+                                          completion()
+                                        }
+      }
+    }
+    
+  }
 }
 
 // MARK: - Life Cycle
@@ -106,24 +238,32 @@ extension MeEditUserViewController {
     self.addTitleSection(title: "Photos")
     self.addPhotosSection()
     self.addTitleSection(title: "Basic Information")
-    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName, editable: false)
-    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName, editable: false)
+    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName)
+    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName)
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM d, yyyy"
     let birthdate = dateFormatter.string(from: self.pearUser.birthdate)
-    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate, editable: false)
+    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate)
     
     self.addTextField(type: .gender,
                       title: "Gender",
-                      initialText: self.pearUser.matchingDemographics.gender.toString(),
-                      editable: false)
+                      initialText: self.pearUser.matchingDemographics.gender.toString())
     
     self.addTextField(type: .location,
-                      title: "Location",
-                      initialText: self.pearUser.matchingDemographics.location.locationName ?? "",
-                      editable: true,
-                      textContentType: .addressCityAndState)
+                      title: "Location (City, State)",
+                      initialText: self.pearUser.matchingDemographics.location.locationName ?? "")
     
+    self.addTextField(type: .schoolName,
+                      title: "School Name",
+                      initialText: self.pearUser.school ?? "")
+    self.addTextField(type: .schoolYear,
+                      title: "School Year",
+                      initialText: self.pearUser.schoolYear ?? "")
+    
+    self.addSpacer(space: 20)
+    self.addTitleSection(title: "Matching Preferences")
+    self.addUserPreferences()
+    self.addSpacer(space: 30)
   }
   
   func addSpacer(space: CGFloat) {
@@ -196,14 +336,10 @@ extension MeEditUserViewController {
   
   func addTextField(type: UpdateTextFieldType,
                     title: String,
-                    initialText: String,
-                    editable: Bool,
-                    textContentType: UITextContentType? = nil) {
+                    initialText: String) {
     guard let textFieldVC = UpdateTextFieldController.instantiate(type: type,
                                                                   initialText: initialText,
-                                                                  textFieldTitle: title,
-                                                                  allowEditing: editable,
-                                                                  textContentType: textContentType) else {
+                                                                  textFieldTitle: title) else {
       print("Failed to initialize text field")
       return
     }
@@ -227,6 +363,46 @@ extension MeEditUserViewController {
     self.addChild(expandingTextVC)
     self.stackView.addArrangedSubview(expandingTextVC.view)
     expandingTextVC.didMove(toParent: self)
+    
+  }
+  
+  func addUserPreferences() {
+    guard let currentUser = DataStore.shared.currentPearUser else {
+      print("Failed to fetch user")
+      return
+    }
+    
+    var genderPreferences = currentUser.matchingPreferences.seekingGender
+    if genderPreferences.count == 0,
+      let currentGender = currentUser.gender {
+      if currentGender == .male {
+        genderPreferences.append(.female)
+      } else if currentGender == .female {
+        genderPreferences.append(.male)
+      } else if currentGender == .nonbinary {
+        genderPreferences = [.male, .female, .nonbinary]
+      }
+    }
+    
+    guard let userGenderPreferencesVC = UserGenderPreferencesViewController.instantiate(genderPreferences: genderPreferences) else {
+      print("Unable to instantiate user gender preferences vc")
+      return
+    }
+    stackView.addArrangedSubview(userGenderPreferencesVC.view)
+    self.addChild(userGenderPreferencesVC)
+    self.genderPreferencesVC = userGenderPreferencesVC
+    userGenderPreferencesVC.didMove(toParent: self)
+    
+    guard let agePreferencesVC = UserAgePreferencesViewController
+      .instantiate(minAge: currentUser.matchingPreferences.minAgeRange,
+                   maxAge: currentUser.matchingPreferences.maxAgeRange) else {
+                    print("Unable to instantiate user gender preferences vc")
+                    return
+    }
+    stackView.addArrangedSubview(agePreferencesVC.view)
+    self.addChild(agePreferencesVC)
+    self.agePreferenceVC = agePreferencesVC
+    agePreferencesVC.didMove(toParent: self)
     
   }
   
