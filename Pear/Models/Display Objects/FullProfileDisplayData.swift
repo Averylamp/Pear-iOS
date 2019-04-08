@@ -84,6 +84,8 @@ class FullProfileDisplayData: Equatable {
     self.originalCreatorName = creatorFirstName
     self.rawImages = gsup.images.compactMap({ $0.image })
     self.profileOrigin = .gettingStartedProfile
+    self.school = gsup.school
+    self.schoolYear = gsup.schoolYear
   }
   
   convenience init (matchingUser: MatchingPearUser) {
@@ -183,6 +185,8 @@ class FullProfileDisplayData: Equatable {
     self.originObject = pdp
     self.matchingDemographics = pdp.matchingDemographics
     self.matchingPreferences = pdp.matchingPreferences
+    self.school = pdp.school
+    self.schoolYear = pdp.schoolYear
   }
   
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {

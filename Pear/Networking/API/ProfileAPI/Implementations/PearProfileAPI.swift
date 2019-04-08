@@ -653,6 +653,12 @@ extension PearProfileAPI {
     let defaultCoordinates: [Double] = [42.3601, -71.0589]
     variablesDictionary["location"] = defaultCoordinates
     variablesDictionary["locationName"] = "Boston Area"
+    if let school = userProfileData.school {
+      variablesDictionary["school"] = school
+    }
+    if let schoolYear = userProfileData.schoolYear {
+      variablesDictionary["schoolYear"] = schoolYear
+    }
     
     return variablesDictionary
   }
