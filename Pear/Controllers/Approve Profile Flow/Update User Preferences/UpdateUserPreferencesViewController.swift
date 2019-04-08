@@ -80,7 +80,19 @@ class UpdateUserPreferencesViewController: UIViewController {
         print("Update user failure: \(error)")
       }
     }
-    self.dismiss(animated: true, completion: nil)
+    DataStore.shared.getNotificationAuthorizationStatus { status in
+      if status == .notDetermined {
+        DispatchQueue.main.async {
+          guard let allowNotificationVC = ApproveProfileAllowNotificationsViewController.instantiate() else {
+            print("Failed to create Allow Notifications VC")
+            return
+          }
+          self.navigationController?.setViewControllers([allowNotificationVC], animated: true)
+        }
+      } else {
+        self.dismiss(animated: true, completion: nil)
+      }
+    }
     
   }
   
