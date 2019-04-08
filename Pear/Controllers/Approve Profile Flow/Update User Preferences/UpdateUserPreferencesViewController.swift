@@ -35,6 +35,9 @@ class UpdateUserPreferencesViewController: UIViewController {
       print("Failed to retreive gender prefs")
       return
     }
+    
+    self.view.endEditing(true)
+    
     if genderPrefs.count == 0 {
       let alertVC = UIAlertController(title: "No Gender Preferences",
                                       message: "You have not selected any gender preferences.  You can continue, but you will not be suggested for anyone.",

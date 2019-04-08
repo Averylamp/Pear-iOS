@@ -199,7 +199,8 @@ class FullProfileDisplayData: Equatable {
     lhs.vibes == rhs.vibes &&
     lhs.dos.map({$0.phrase}) == rhs.dos.map({$0.phrase}) &&
     lhs.donts.map({$0.phrase}) == rhs.donts.map({$0.phrase}) &&
-    lhs.bio.map({$0.bio}) == rhs.bio.map({$0.bio})
+    lhs.bio.map({$0.bio}) == rhs.bio.map({$0.bio}) &&
+    ImageContainer.compareImageLists(lhs: lhs.imageContainers, rhs: rhs.imageContainers)
   }
  
   static func compareListsForNewItems(oldList: [FullProfileDisplayData], newList: [FullProfileDisplayData]) -> Bool {

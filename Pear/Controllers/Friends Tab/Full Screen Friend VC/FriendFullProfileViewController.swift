@@ -64,6 +64,11 @@ extension FriendFullProfileViewController {
     self.addFullStackVC()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+  }
+  
   func stylize() {
     self.editButton.layer.cornerRadius = 30
     self.editButton.layer.shadowOpacity = 0.2
@@ -94,4 +99,12 @@ extension FriendFullProfileViewController {
       ])
     fullProfileStackVC.didMove(toParent: self)
   }
+}
+
+extension FriendFullProfileViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
+  }
+  
 }

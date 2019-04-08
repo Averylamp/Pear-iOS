@@ -68,13 +68,9 @@ extension FriendsTabViewController {
   }
   
   @objc func reloadEndorsedProfiles() {
+    print("Reloaded Friends Tab")
     self.loadNewEndorsedDetachedProfiles(endorsedProfiles: DataStore.shared.endorsedUsers,
                                          detachedProfiles: DataStore.shared.detachedProfiles)
-    DataStore.shared.refreshEndorsedUsers { (endorsedUsers, detachedProfiles) in
-      self.loadNewEndorsedDetachedProfiles(endorsedProfiles: endorsedUsers,
-                                           detachedProfiles: detachedProfiles)
-      print("Network load of \(endorsedUsers.count) Endorsed Users, \(detachedProfiles.count) Detached Profiles Loaded into Friends Tab")
-    }
   }
   
 }

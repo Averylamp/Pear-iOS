@@ -21,7 +21,7 @@ enum ImageContainerCodingKeys: String, CodingKey {
   case thumbnail
 }
 
-class ImageContainer: Codable, CustomStringConvertible {
+class ImageContainer: Codable, CustomStringConvertible, Equatable {
   
   static let graphQLImageFields: String = "{ imageID uploadedByUser_id original \(ImageRepresentation.graphQLImageRepresentationFields) large \(ImageRepresentation.graphQLImageRepresentationFields) medium \(ImageRepresentation.graphQLImageRepresentationFields) small \(ImageRepresentation.graphQLImageRepresentationFields) thumbnail \(ImageRepresentation.graphQLImageRepresentationFields)}"
   
@@ -119,6 +119,7 @@ class ImageContainer: Codable, CustomStringConvertible {
     }
     return LoadedImageContainer(container: self, imageURL: cacheImageURL, imageSize: size)
   }
+  
 }
 
 extension ImageContainer {
@@ -166,6 +167,22 @@ extension ImageContainer {
     ]
     
     return try? JSONDecoder().decode(ImageContainer.self, from: JSONSerialization.data(withJSONObject: data, options: .prettyPrinted))
+  }
+  
+  static func == (lhs: ImageContainer, rhs: ImageContainer) -> Bool {
+    return lhs.imageID == rhs.imageID &&
+    lhs.description == rhs.description
+  }
+  
+  static func compareImageLists(lhs: [ImageContainer], rhs: [ImageContainer]) -> Bool {
+    if lhs.count != rhs.count {
+      return false
+    }
+    for index in 0..<lhs.count where lhs[index] != rhs[index] {
+      return false 
+    }
+    
+    return true
   }
   
 }

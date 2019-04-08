@@ -24,9 +24,22 @@ class DataStore: NSObject {
   static let shared = DataStore()
   
   weak var delegate: DataStoreLocationDelegate?
-  var currentPearUser: PearUser?
-  var endorsedUsers: [MatchingPearUser] = []
-  var detachedProfiles: [PearDetachedProfile] = []
+  var currentPearUser: PearUser? {
+    didSet {
+      NotificationCenter.default.post(name: .refreshMeTab, object: nil)
+    }
+  }
+  var endorsedUsers: [MatchingPearUser] = [] {
+    didSet {
+      NotificationCenter.default.post(name: .refreshFriendTab, object: nil)
+    }
+  }
+  var detachedProfiles: [PearDetachedProfile] = [] {
+    didSet {
+      NotificationCenter.default.post(name: .refreshFriendTab, object: nil)
+    }
+  }
+  
   var matchRequests: [Match] = []
   var remoteConfig: RemoteConfig
   var locationManager: CLLocationManager

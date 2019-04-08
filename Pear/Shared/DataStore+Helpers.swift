@@ -190,6 +190,7 @@ extension DataStore {
                                               completion: { (result) in
                                                 switch result {
                                                 case .success(let (newEndorsedUsers, newDetachedProfiles)):
+                                                  print("Fetched Endorsed and Detached Profiles")
                                                   self.endorsedUsers = newEndorsedUsers
                                                   self.detachedProfiles  =  newDetachedProfiles
                                                   if let completion = completion {
