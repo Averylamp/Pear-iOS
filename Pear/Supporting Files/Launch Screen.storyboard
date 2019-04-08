@@ -18,25 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="DFg-hZ-y34">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="7F0-FD-i9I">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-pear.png" translatesAutoresizingMaskIntoConstraints="NO" id="54o-qE-53g">
-                                <rect key="frame" x="137" y="378" width="140" height="140"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-leaf.png" translatesAutoresizingMaskIntoConstraints="NO" id="DZy-02-qJ6">
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="Z8I-lN-e1e"/>
-                                    <constraint firstAttribute="width" constant="140" id="nvx-pU-gce"/>
+                                    <constraint firstAttribute="height" constant="150" id="fTk-hu-iSo"/>
+                                    <constraint firstAttribute="width" constant="150" id="izd-k1-hOf"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DFg-hZ-y34" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="QUe-Dk-SDG"/>
-                            <constraint firstAttribute="bottom" secondItem="DFg-hZ-y34" secondAttribute="bottom" id="YH3-hp-zqO"/>
-                            <constraint firstItem="DFg-hZ-y34" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="YyD-Nf-Uwx"/>
-                            <constraint firstItem="DFg-hZ-y34" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="iF3-QM-41p"/>
-                            <constraint firstItem="54o-qE-53g" firstAttribute="centerY" secondItem="DFg-hZ-y34" secondAttribute="centerY" id="qqX-d6-4zT"/>
-                            <constraint firstItem="54o-qE-53g" firstAttribute="centerX" secondItem="DFg-hZ-y34" secondAttribute="centerX" id="w2I-Pz-xZx"/>
+                            <constraint firstItem="DZy-02-qJ6" firstAttribute="centerX" secondItem="7F0-FD-i9I" secondAttribute="centerX" id="9HP-5j-TAr"/>
+                            <constraint firstItem="DZy-02-qJ6" firstAttribute="centerY" secondItem="7F0-FD-i9I" secondAttribute="centerY" id="Abb-W7-bby"/>
+                            <constraint firstItem="7F0-FD-i9I" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="FNh-4M-pgT"/>
+                            <constraint firstItem="7F0-FD-i9I" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="K7Y-wl-C9i"/>
+                            <constraint firstItem="7F0-FD-i9I" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="akM-yf-b0F"/>
+                            <constraint firstAttribute="bottom" secondItem="7F0-FD-i9I" secondAttribute="bottom" id="lU3-ob-U0j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
@@ -48,6 +48,6 @@
     </scenes>
     <resources>
         <image name="splash-background.png" width="375" height="812"/>
-        <image name="splash-pear.png" width="105.75" height="123.5"/>
+        <image name="splash-leaf.png" width="150" height="150"/>
     </resources>
 </document>
