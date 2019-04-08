@@ -59,6 +59,8 @@ extension LoadingScreenViewController {
     DispatchQueue.main.async {
       if let versionBlockVC = LoadingScreenViewController.getVersionBlockScreen() {
         self.navigationController?.setViewControllers([versionBlockVC], animated: true)
+      } else {
+        print("couldn't create version block VC")
       }
     }
   }
