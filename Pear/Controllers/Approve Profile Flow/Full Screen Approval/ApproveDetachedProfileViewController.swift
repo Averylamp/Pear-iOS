@@ -53,24 +53,44 @@ class ApproveDetachedProfileViewController: UIViewController {
           case .success(let success):
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
             print("Successfully attached detached profile: \(success)")
-            self.isApprovingProfile = false
             if success {
-              guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
-                print("Failed to initialize Update User Pref VC")
-                return
-              }
               DataStore.shared.refreshPearUser(completion: nil)
               DataStore.shared.refreshEndorsedUsers(completion: nil)
-              self.navigationController?.setViewControllers([updateUserVC], animated: true)
+              if DataStore.shared.hasUpdatedPreferences() {
+                DataStore.shared.getNotificationAuthorizationStatus { status in
+                  print("**NOTIF AUTH STATUS**")
+                  print(status)
+                  if status == .notDetermined {
+                    DispatchQueue.main.async {
+                      guard let allowNotificationVC = ApproveProfileAllowNotificationsViewController.instantiate() else {
+                        print("Failed to create Allow Notifications VC")
+                        return
+                      }
+                      self.navigationController?.setViewControllers([allowNotificationVC], animated: true)
+                    }
+                  } else {
+                    DispatchQueue.main.async {
+                      self.dismiss(animated: true, completion: nil)
+                    }
+                  }
+                }
+              } else {
+                guard let updateUserVC = UpdateUserPreferencesViewController.instantiate() else {
+                  print("Failed to initialize Update User Pref VC")
+                  return
+                }
+                self.navigationController?.setViewControllers([updateUserVC], animated: true)
+              }
             } else {
+              HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
               self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
-              self.isApprovingProfile = false
             }
           case .failure(let error):
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
-            self.isApprovingProfile = false
+            self.alert(title: "Failed to Accept", message: "Unfortunately there was a problem with our servers.  Try again later")
             print("Failed to attach detached profile: \(error)")
           }
+          self.isApprovingProfile = false
         }
         
       }

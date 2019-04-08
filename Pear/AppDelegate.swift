@@ -56,7 +56,7 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     window?.makeKeyAndVisible()
     
     // register for remote notifications if we have notification authorization
-    DataStore.shared.getNotificationSettings()
+    DataStore.shared.registerForRemoteNotificationsIfAuthorized()
     return true
   }
   

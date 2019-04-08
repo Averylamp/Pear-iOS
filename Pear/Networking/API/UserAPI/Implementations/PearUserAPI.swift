@@ -43,7 +43,6 @@ extension PearUserAPI {
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
-    
     do {
       
       let fullDictionary: [String: Any] = [
@@ -68,6 +67,10 @@ extension PearUserAPI {
           let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "getUser", objectName: "user")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
+            if let data = data,
+              let json = try? JSON(data: data) {
+              print(json)
+            }
             print("Failed to Get User: \(helperResult)")
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearUserAPI",
