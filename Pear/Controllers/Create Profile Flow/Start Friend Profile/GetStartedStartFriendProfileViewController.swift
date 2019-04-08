@@ -31,6 +31,11 @@ class GetStartedStartFriendProfileViewController: UIViewController {
     let storyboard = UIStoryboard(name: String(describing: GetStartedStartFriendProfileViewController.self), bundle: nil)
     guard let startFriendProfileVC = storyboard.instantiateInitialViewController() as? GetStartedStartFriendProfileViewController else { return nil }
     startFriendProfileVC.gettingStartedData = UserProfileCreationData()
+    if let pearUser =  DataStore.shared.currentPearUser {
+      startFriendProfileVC.gettingStartedData.age = pearUser.age
+    } else {
+      print("no pear user")
+    }
     #if DEVMODE
     startFriendProfileVC.gettingStartedData.fakePopulate()
     #endif
