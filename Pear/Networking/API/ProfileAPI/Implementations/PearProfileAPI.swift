@@ -652,8 +652,16 @@ extension PearProfileAPI {
       "images": imageContainer
     ]
     
-    let defaultCoordinates: [Double] = [42.3601, -71.0589]
-    variablesDictionary["location"] = defaultCoordinates
+    var coordinates: [Double] = []
+    if let userLocation =  DataStore.shared.lastLocation {
+      coordinates.append(userLocation.longitude)
+      coordinates.append(userLocation.latitude)
+    } else {
+      coordinates.append(-71.0589)
+      coordinates.append(42.3601)
+    }
+    
+    variablesDictionary["location"] = coordinates
     variablesDictionary["locationName"] = "Boston Area"
     if let school = userProfileData.school {
       variablesDictionary["school"] = school

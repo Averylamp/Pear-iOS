@@ -25,8 +25,21 @@ class MainTabBarViewController: UITabBarController {
                                               .withRenderingMode(.alwaysOriginal))
       mainTabVC.addChild(discoverVC)
     }
+
+    //      Chat
+    if let chatTabVC = ChatMainViewController.instantiate(),
+      let regularImage = R.image.tabIconChat(),
+      let selectedImage = R.image.tabIconChatSelected() {
+      chatTabVC.tabBarItem = UITabBarItem(title: "Chat",
+                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                              .withRenderingMode(.alwaysOriginal),
+                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                              .withRenderingMode(.alwaysOriginal))
+      
+      mainTabVC.addChild(chatTabVC)
+    }
     
-    //      Matches
+    //      Friendos
     if let friendsTabVC = FriendsTabViewController.instantiate(),
       let regularImage = R.image.tabIconFriends(),
       let selectedImage = R.image.tabIconFriendsSelected() {
@@ -39,7 +52,7 @@ class MainTabBarViewController: UITabBarController {
       mainTabVC.addChild(friendsTabVC)
     }
     
-    //      Profiles
+    //      You
     if let meTabVC = MeTabViewController.instantiate(),
       let regularImage = R.image.tabIconYou(),
       let selectedImage = R.image.tabIconYouSelected() {
@@ -61,8 +74,26 @@ extension MainTabBarViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.delegate = self
+  }
+  
+}
+
+extension MainTabBarViewController: UITabBarControllerDelegate {
+  
+  func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    switch tabBarController.selectedIndex {
+    case 0:
+      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    case 1:
+      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .medium)
+    case 2:
+      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .heavy)
+    default:
+      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+      
+    }
     
-    // Do any additional setup after loading the view.
   }
   
 }
