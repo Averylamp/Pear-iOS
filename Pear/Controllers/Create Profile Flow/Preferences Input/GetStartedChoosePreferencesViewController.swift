@@ -11,6 +11,9 @@ import Firebase
 
 class GetStartedChoosePreferencesViewController: UIViewController {
   
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var subtitleLabel: UILabel!
+  @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var stackView: UIStackView!
   
@@ -104,6 +107,9 @@ extension GetStartedChoosePreferencesViewController {
   }
   
   func stylize() {
+    self.titleLabel.stylizeTitleLabel()
+    self.subtitleLabel.stylizeSubtitleLabel()
+    self.nextButton.stylizeDark()
     
     self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     self.view.layoutIfNeeded()
