@@ -39,6 +39,8 @@ class DataStore: NSObject {
       NotificationCenter.default.post(name: .refreshFriendTab, object: nil)
     }
   }
+  var filterForEndorsedUsers: [Bool] = []
+  var filterForDetachedProfiles: [Bool] = []
   
   var matchRequests: [Match] = []
   var remoteConfig: RemoteConfig

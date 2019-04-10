@@ -9,14 +9,21 @@
 import UIKit
 import SDWebImage
 
+struct MatchingConstraints {
+  let demographics: MatchingDemographics
+  let preferences: MatchingPreferences
+}
+
 extension Notification.Name {
   static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
+  static let refreshDiscoveryFeedAnimated = Notification.Name("refreshDiscoveryFeedAnimated")
 }
 
 class DiscoverySimpleViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   var fullProfiles: [FullProfileDisplayData] = []
+  var filteredFullProfiles: [FullProfileDisplayData] = []
   var blockedUsers: [String] = []
   var skippedDetachedProfiles: [String] = []
   var lastRefreshTime: Date = Date()
@@ -35,6 +42,14 @@ class DiscoverySimpleViewController: UIViewController {
   
   @IBAction func discoveryIconClicked(_ sender: Any) {
     self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+  }
+  
+  @IBAction func filtersButtonClicked(_ sender: Any) {
+    guard let filtersVC = DiscoveryFilterViewController.instantiate() else {
+      print ("Failed to create Filters VC")
+      return
+    }
+    self.present(filtersVC, animated: true, completion: nil)
   }
   
 }
@@ -90,11 +105,19 @@ extension DiscoverySimpleViewController {
       .addObserver(self,
                    selector: #selector(DiscoverySimpleViewController.didRecieveRefreshFeedNotification),
                    name: .refreshDiscoveryFeed, object: nil)
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(DiscoverySimpleViewController.didReceiveRefreshFiltersNotification),
+                                           name: .refreshDiscoveryFeedAnimated, object: nil)
   }
   
   @objc func didRecieveRefreshFeedNotification() {
     print("Received Refresh notification")
     self.fullDataReload()
+  }
+  
+  @objc func didReceiveRefreshFiltersNotification() {
+    print("Received refresh filters notification")
+    self.fullDataReload(animated: true)
   }
   
   @objc func refreshControlChanged(sender: UIRefreshControl) {
@@ -138,17 +161,51 @@ extension DiscoverySimpleViewController {
   }
   
   func refreshFeed(animated: Bool = false) {
+    // FPDD
     if let userID = DataStore.shared.currentPearUser?.documentID {
       PearProfileAPI.shared.getDiscoveryFeed(user_id: userID, completion: { (result) in
         switch result {
         case .success(let feedObjects):
           print("Found \(feedObjects.count) Feed Objects Total")
+          
+          // create list of constraints, to filter discovery users again
+          var mustMatchSomeConstraint: [MatchingConstraints] = []
+          if let user = DataStore.shared.currentPearUser,
+            !DataStore.shared.filteringDisabledForSelfFromDefaults() {
+            mustMatchSomeConstraint.append(MatchingConstraints(demographics: user.matchingDemographics, preferences: user.matchingPreferences))
+          }
+          let disabledEndorsedUsers = DataStore.shared.filteredEndorsedUsersFromDefaults()
+          for endorsedUser in DataStore.shared.endorsedUsers {
+            let enabled = !disabledEndorsedUsers.contains(endorsedUser.documentID)
+            if enabled {
+              mustMatchSomeConstraint.append(MatchingConstraints(demographics: endorsedUser.matchingDemographics, preferences: endorsedUser.matchingPreferences))
+            }
+          }
+          let disabledDetachedProfiles = DataStore.shared.filteredDetachedProfilesFromDefaults()
+          for detachedProfile in DataStore.shared.detachedProfiles {
+            let enabled = !disabledDetachedProfiles.contains(detachedProfile.documentID)
+            if enabled {
+              mustMatchSomeConstraint.append(MatchingConstraints(demographics: detachedProfile.matchingDemographics, preferences: detachedProfile.matchingPreferences))
+            }
+          }
+          
+          // filter out blocked users and users in no one's constraints
           let newFeed = feedObjects.filter({
             if let userID = $0.userID {
-              let blocked =  !self.blockedUsers.contains(userID)
-              return blocked
+              if self.blockedUsers.contains(userID) {
+                return false
+              }
+              if let discoveryUserDemographics = $0.matchingDemographics,
+                let discoveryUserPreferences = $0.matchingPreferences {
+                for constraints in mustMatchSomeConstraint {
+                  if constraints.preferences.matchesDemographics(demographics: discoveryUserDemographics)
+                    && discoveryUserPreferences.matchesDemographics(demographics: constraints.demographics) {
+                    return true
+                  }
+                }
+              }
             }
-            return true
+            return false
           })
           print("Found \(newFeed.count) Feed Objects Filtered")
           if FullProfileDisplayData.compareListsForNewItems(oldList: self.fullProfiles, newList: newFeed) {
