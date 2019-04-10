@@ -46,7 +46,7 @@ class GetStartedFullProfileReviewViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_friend_review_back", parameters: nil)
+    Analytics.logEvent("CP_review_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
