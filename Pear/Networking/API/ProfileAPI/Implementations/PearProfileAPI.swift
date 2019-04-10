@@ -646,6 +646,7 @@ extension PearProfileAPI {
       "gender": gender.rawValue,
       "interests": userProfileData.interests,
       "vibes": userProfileData.vibes,
+      "seekingGender": userProfileData.seekingGender,
       "bio": bio,
       "dos": userProfileData.dos,
       "donts": userProfileData.donts,
