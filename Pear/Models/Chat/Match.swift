@@ -15,11 +15,9 @@ enum MatchDecodingError: Error {
 }
 
 enum MatchRequestResponse: String {
-  case unseen
-  case seen
+  case undecided
   case rejected
   case accepted
-  
 }
 
 enum MatchKeys: String, CodingKey {
@@ -32,6 +30,11 @@ enum MatchKeys: String, CodingKey {
   case receivedByUserStatus
   case receivedByUserStatusLastUpdated
   case firebaseChatDocumentID
+  case firebaseChatDocumentPath
+}
+
+protocol MatchDelegate: class {
+  func chatObjectFetched(chat: Chat)
 }
 
 class Match: Decodable, CustomStringConvertible {
@@ -45,7 +48,9 @@ class Match: Decodable, CustomStringConvertible {
   let receivedByUserStatus: MatchRequestResponse!
   var receivedByUserStatusLastUpdated: Date!
   let firebaseChatDocumentID: String!
+  let firebaseChatDocumentPath: String!
   var chat: Chat?
+  var otherUser: MatchingPearUser!
   
   var description: String {
     return "**** Match Object **** \n" + """
@@ -57,11 +62,12 @@ class Match: Decodable, CustomStringConvertible {
     receivedByUserStatus: \(String(describing: self.receivedByUserStatus!))
     receivedByUserStatusLastUpdated: \(String(describing: self.receivedByUserStatusLastUpdated!))
     firebaseChatDocumentID: \(String(describing: self.firebaseChatDocumentID!))
-    chat: \(String(describing: self.chat!))
+    chat: \(String(describing: self.chat))
+    chatPath: \(String(describing: self.firebaseChatDocumentPath))
     """
   }
   
-  static let graphQLMatchFields = "{ _id sentByUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) sentForUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) receivedByUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) sentForUserStatus sentForUserStatusLastUpdated receivedByUserStatus receivedByUserStatusLastUpdated firebaseChatDocumentID }"
+  static let graphQLMatchFields = "{ _id sentByUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) sentForUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) receivedByUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) sentForUserStatus sentForUserStatusLastUpdated receivedByUserStatus receivedByUserStatusLastUpdated firebaseChatDocumentID firebaseChatDocumentPath }"
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: MatchKeys.self)
@@ -94,21 +100,40 @@ class Match: Decodable, CustomStringConvertible {
       throw MatchDecodingError.enumDecodingError 
     }
     self.receivedByUserStatus = receivedUserStatus
-    self.receivedByUserStatusLastUpdated = try values.decode(Timestamp.self, forKey: .receivedByUserStatusLastUpdated).dateValue()
-    self.firebaseChatDocumentID = try values.decode(String.self, forKey: .firebaseChatDocumentID)
-//    self.firebaseChatDocumentID = "DZxANxQpVXZSrcpKJpHG"
     
-    self.fetchFirebaseChatObject()
+    let receivedByUserStatusLastUpdatedString = try? values.decode(String.self, forKey: .receivedByUserStatusLastUpdated)
+    if let receivedByUserStatusLastUpdatedString = receivedByUserStatusLastUpdatedString,
+      let receivedByUserStatusLastUpdatedDouble = Double(receivedByUserStatusLastUpdatedString) {
+      self.receivedByUserStatusLastUpdated = Date(timeIntervalSince1970: receivedByUserStatusLastUpdatedDouble / 1000)
+    } else {
+      print("Failed to get sent for received by user status last updated")
+      self.receivedByUserStatusLastUpdated = Date()
+    }
+
+    self.firebaseChatDocumentID = try values.decode(String.self, forKey: .firebaseChatDocumentID)
+    self.firebaseChatDocumentPath = try values.decode(String.self, forKey: .firebaseChatDocumentPath)
+    
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Could not find user")
+      return
+    }
+    
+    self.otherUser = self.sentByUser.documentID == userID ? self.sentByUser : self.sentForUser
   }
   
-  func fetchFirebaseChatObject() {
-    PearChatAPI.shared.getFirebaseChatObject(firebaseDocumentID: self.firebaseChatDocumentID) { (result) in
+  func fetchFirebaseChatObject(completion: ((Match?) -> Void)?) {
+    PearChatAPI.shared.getFirebaseChatObject(firebaseDocumentPath: self.firebaseChatDocumentPath) { (result) in
       switch result {
       case .success(let chat):
         self.chat = chat
+        if let completion = completion {
+          completion(self)
+        }
       case .failure(let error):
         print("Failure finding Chat object: \(error)")
-        
+        if let completion = completion {
+          completion(nil)
+        }
       }
     }
     
