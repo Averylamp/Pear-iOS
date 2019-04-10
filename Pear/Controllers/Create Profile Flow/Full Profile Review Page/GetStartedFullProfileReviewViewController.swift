@@ -46,7 +46,7 @@ class GetStartedFullProfileReviewViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CP_review_back", parameters: nil)
+    Analytics.logEvent("CP_back_review", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -56,7 +56,7 @@ class GetStartedFullProfileReviewViewController: UIViewController {
       print("Failed to create Notify Friend VC")
       return
     }
-    Analytics.logEvent("finished_friend_review", parameters: nil)
+    Analytics.logEvent("CP_done_review", parameters: nil)
     self.navigationController?.pushViewController(notifyFriendVC, animated: true)
   }
   

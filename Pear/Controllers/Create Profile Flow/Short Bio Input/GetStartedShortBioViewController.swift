@@ -58,7 +58,7 @@ class GetStartedShortBioViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CP_bio_back", parameters: nil)
+    Analytics.logEvent("CP_back_bio", parameters: nil)
     self.saveBio()
     self.navigationController?.popViewController(animated: true)
   }
@@ -85,7 +85,7 @@ class GetStartedShortBioViewController: UIViewController {
         alertController.addAction(skipToDiscoveryButton)
         self.present(alertController, animated: true, completion: nil)
       } else {
-        Analytics.logEvent("finished_friend_bio", parameters: nil)
+        Analytics.logEvent("CP_done_bio", parameters: nil)
         guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
           print("Failed to create photoInputVC")
           return

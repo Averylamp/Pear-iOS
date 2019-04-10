@@ -55,7 +55,7 @@ class GetStartedSchoolViewController: UIViewController {
       print("Failed to create Interests VC")
       return
     }
-    Analytics.logEvent("finished_friend_school", parameters: nil)
+    Analytics.logEvent("CP_done_school", parameters: nil)
     self.navigationController?.pushViewController(interestsVC, animated: true)
   }
   
@@ -85,7 +85,7 @@ class GetStartedSchoolViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CP_school_back", parameters: nil)
+    Analytics.logEvent("CP_back_school", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
