@@ -35,7 +35,7 @@ class GetStartedChoosePreferencesViewController: UIViewController {
   @IBAction func nextButtonClicked(_ sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if let schoolVC = GetStartedSchoolViewController.instantiate(gettingStartedData: self.gettingStartedData) {
-      Analytics.logEvent("finished_friend_seekingGender", parameters: nil)
+      Analytics.logEvent("CP_done_preferences", parameters: nil)
       self.navigationController?.pushViewController(schoolVC, animated: true)
     } else {
       print("Failed to create School VC")
@@ -61,7 +61,7 @@ class GetStartedChoosePreferencesViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_friend_gender_back", parameters: nil)
+    Analytics.logEvent("CP_back_preferences", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   

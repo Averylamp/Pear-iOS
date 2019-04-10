@@ -62,7 +62,7 @@ class GetStartedStartFriendProfileViewController: UIViewController {
         print("Failed to create Gender VC")
         return
       }
-      Analytics.logEvent("started_create_profile", parameters: nil)
+      Analytics.logEvent("CP_start", parameters: nil)
       self.navigationController?.pushViewController(chooseGenderVC, animated: true)
     }
   }

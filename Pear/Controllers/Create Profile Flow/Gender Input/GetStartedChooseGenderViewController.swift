@@ -57,7 +57,7 @@ class GetStartedChooseGenderViewController: UIViewController {
     }
     
     if let choosePreferencesVC = GetStartedChoosePreferencesViewController.instantiate(gettingStartedData: self.gettingStartedData) {
-      Analytics.logEvent("finished_friend_gender", parameters: nil)
+      Analytics.logEvent("CP_done_gender", parameters: nil)
       self.navigationController?.pushViewController(choosePreferencesVC, animated: true)
     } else {
       print("Failed to create School VC")
@@ -83,7 +83,7 @@ class GetStartedChooseGenderViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CP_gender_back", parameters: nil)
+    Analytics.logEvent("CP_back_gender", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   

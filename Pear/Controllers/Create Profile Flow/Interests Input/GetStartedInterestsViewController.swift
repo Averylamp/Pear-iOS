@@ -105,7 +105,7 @@ class GetStartedInterestsViewController: UIViewController {
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.saveInterests()
-    Analytics.logEvent("CP_interests_back", parameters: nil)
+    Analytics.logEvent("CP_back_interests", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -116,7 +116,7 @@ class GetStartedInterestsViewController: UIViewController {
       print("Failed to create vibes VC")
       return
     }
-    Analytics.logEvent("finished_friend_interests", parameters: nil)
+    Analytics.logEvent("CP_done_interests", parameters: nil)
     self.navigationController?.pushViewController(vibesVC, animated: true)
   }
   

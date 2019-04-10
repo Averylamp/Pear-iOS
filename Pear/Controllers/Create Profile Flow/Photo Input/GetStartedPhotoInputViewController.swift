@@ -61,7 +61,7 @@ class GetStartedPhotoInputViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CP_pictures_back", parameters: nil)
+    Analytics.logEvent("CP_back_pictures", parameters: nil)
     self.saveImages()
     
     self.navigationController?.popViewController(animated: true)
@@ -71,7 +71,7 @@ class GetStartedPhotoInputViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveImages()
     
-    Analytics.logEvent("finished_friend_pictures", parameters: nil)
+    Analytics.logEvent("CP_done_pictures", parameters: nil)
     guard let profileReviewVC = GetStartedFullProfileReviewViewController.instantiate(gettingStartedUserProfileData: self.gettingStartedUserProfileData) else {
       print("Failed to create scrolling Full VC")
       return
