@@ -61,7 +61,7 @@ class GetStartedPhotoInputViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_friend_pictures_back", parameters: nil)
+    Analytics.logEvent("CP_pictures_back", parameters: nil)
     self.saveImages()
     
     self.navigationController?.popViewController(animated: true)
