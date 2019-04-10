@@ -39,7 +39,7 @@
                                             <action selector="backButtonClicked:" destination="kKf-Mw-9LH" eventType="touchUpInside" id="dtt-ib-npm"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-gender" translatesAutoresizingMaskIntoConstraints="NO" id="GVW-Vo-bLL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-preferences-icon" translatesAutoresizingMaskIntoConstraints="NO" id="GVW-Vo-bLL">
                                         <rect key="frame" x="167.5" y="5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="GVW-Vo-bLL" secondAttribute="height" multiplier="1:1" id="w8P-kT-af8"/>
@@ -155,6 +155,6 @@
     <resources>
         <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-close-button" width="120" height="120"/>
-        <image name="onboarding-icon-gender" width="512" height="512"/>
+        <image name="user-preferences-icon" width="160" height="160"/>
     </resources>
 </document>
