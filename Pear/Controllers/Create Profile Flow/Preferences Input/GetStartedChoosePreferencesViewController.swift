@@ -12,52 +12,27 @@ import Firebase
 class GetStartedChoosePreferencesViewController: UIViewController {
   
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
+  @IBOutlet weak var stackView: UIStackView!
+  
   let pageNumber: CGFloat = 1.0
   
   var gettingStartedData: UserProfileCreationData!
-  
-  @IBOutlet weak var maleButton: UIButton!
-  @IBOutlet weak var femaleButton: UIButton!
-  @IBOutlet weak var nonbinaryButton: UIButton!
+  weak var genderPreferencesVC: UserGenderPreferencesViewController?
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(gettingStartedData: UserProfileCreationData) -> GetStartedChoosePreferencesViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedChoosePreferencesViewController.self), bundle: nil)
-    guard let chooseGenderVC = storyboard.instantiateInitialViewController() as? GetStartedChoosePreferencesViewController else { return nil }
-    chooseGenderVC.gettingStartedData = gettingStartedData
-    return chooseGenderVC
+    guard let choosePreferencesVC = storyboard.instantiateInitialViewController() as? GetStartedChoosePreferencesViewController else { return nil }
+    choosePreferencesVC.gettingStartedData = gettingStartedData
+    return choosePreferencesVC
   }
   
-  @IBAction func chooseGenderButtonClicked(_ sender: UIButton) {
+  @IBAction func nextButtonClicked(_ sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    
-    switch sender.tag {
-    case 0:
-      self.gettingStartedData.gender = GenderEnum.male
-      self.maleButton.stylizeDark()
-      self.femaleButton.stylizeLight()
-      self.nonbinaryButton.stylizeLight()
-      
-    case 1:
-      self.gettingStartedData.gender = GenderEnum.female
-      self.femaleButton.stylizeDark()
-      self.maleButton.stylizeLight()
-      self.nonbinaryButton.stylizeLight()
-      
-    case 2:
-      self.gettingStartedData.gender = GenderEnum.nonbinary
-      self.nonbinaryButton.stylizeDark()
-      self.maleButton.stylizeLight()
-      self.femaleButton.stylizeLight()
-      
-    default:
-      break
-    }
-    
     if let schoolVC = GetStartedSchoolViewController.instantiate(gettingStartedData: self.gettingStartedData) {
-      Analytics.logEvent("finished_friend_gender", parameters: nil)
+      Analytics.logEvent("finished_friend_seekingGender", parameters: nil)
       self.navigationController?.pushViewController(schoolVC, animated: true)
     } else {
       print("Failed to create School VC")
@@ -95,30 +70,40 @@ extension GetStartedChoosePreferencesViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.setupFriendPreferences()
     self.stylize()
   }
   
-  func stylize() {
+  func setupFriendPreferences() {
     
-    self.maleButton.stylizeLight()
-    self.maleButton.tag = 0
+//    guard let currentUser = DataStore.shared.currentPearUser else {
+//      print("Failed to fetch user")
+//      return
+//    }
     
-    self.femaleButton.stylizeLight()
-    self.femaleButton.tag = 1
-    
-    self.nonbinaryButton.stylizeLight()
-    self.nonbinaryButton.tag = 2
-    
-    if let previousGender = self.gettingStartedData.gender {
-      switch previousGender {
-      case .male:
-        self.maleButton.stylizeDark()
-      case .female:
-        self.femaleButton.stylizeDark()
-      case .nonbinary:
-        self.nonbinaryButton.stylizeDark()
+    var seekingGender = self.gettingStartedData.seekingGender
+    if seekingGender.count == 0,
+      let friendGender = self.gettingStartedData.gender {
+      if friendGender == .male {
+        seekingGender.append(.female)
+      } else if friendGender == .female {
+        seekingGender.append(.male)
+      } else if friendGender == .nonbinary {
+        seekingGender = [.male, .female, .nonbinary]
       }
     }
+    
+    guard let userGenderPreferencesVC = UserGenderPreferencesViewController.instantiate(genderPreferences: seekingGender) else {
+      print("Unable to instantiate user gender preferences vc")
+      return
+    }
+    stackView.addArrangedSubview(userGenderPreferencesVC.view)
+    self.addChild(userGenderPreferencesVC)
+    self.genderPreferencesVC = userGenderPreferencesVC
+    userGenderPreferencesVC.didMove(toParent: self)
+  }
+  
+  func stylize() {
     
     self.progressWidthConstraint.constant = (pageNumber - 1.0) / StylingConfig.totalGettingStartedPagesNumber * self.view.frame.width
     self.view.layoutIfNeeded()
