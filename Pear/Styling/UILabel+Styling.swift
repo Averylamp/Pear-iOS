@@ -84,7 +84,7 @@ extension UILabel {
   }
   
   func stylizePreferencesTitleLabel() {
-    self.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
+    self.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
     self.textColor = StylingConfig.textFontColor
   }
   
