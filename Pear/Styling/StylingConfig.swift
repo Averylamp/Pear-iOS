@@ -15,10 +15,10 @@ class StylingConfig {
   
   static let logoFont: String = "FredokaOne-Regular"
   
-  static let displayFontRegular: String = "SFProDisplay-Regular"
-  static let displayFontLight: String = "SFProDisplay-Light"
-  static let displayFontMedium: String = "SFProDisplay-Medium"
-  static let displayFontBold: String = "SFProDisplay-Bold"
+  static let displayFontRegular: String = "Nunito-SemiBold"
+  static let displayFontLight: String = "Nunito-Regular"
+  static let displayFontMedium: String = "Nunito-Bold"
+  static let displayFontBold: String = "Nunito-ExtraBold"
   
   static let textFontRegular: String = "Nunito-Regular"
   static let textFontBlack: String = "Nunito-Black"
