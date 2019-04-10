@@ -11,6 +11,11 @@ import SwiftyJSON
 import Sentry
 import Firebase
 
+enum MatchesRequestType: String {
+  case matchRequests
+  case currentMatches
+}
+
 class PearMatchesAPI: MatchesAPI {
   
   static let shared = PearMatchesAPI()
@@ -24,7 +29,8 @@ class PearMatchesAPI: MatchesAPI {
   
   // swiftlint:disable:next line_length
   static let createMatchRequestQuery: String = "mutation CreateMatchRequest($requestInput: CreateMatchRequestInput!) { createMatchRequest(requestInput: $requestInput) { success message } }"
-  static let getUserMatchesQuery: String = "query GetUserMatches($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user { requestedMatches \(Match.graphQLMatchFields) } }}"
+  static let getUserCurrentMatchesQuery: String = "query GetUserMatches($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user { currentMatches \(Match.graphQLMatchFields) } }}"
+  static let getUserMatchRequests: String = "query GetUserMatches($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user { requestedMatches \(Match.graphQLMatchFields) } }}"
   
 }
 
@@ -114,25 +120,29 @@ extension PearMatchesAPI {
     
   }
   
-  func getMatchesForUser(uid: String, token: String, completion: @escaping (Result<[Match], MatchesAPIError>) -> Void) {
+  func getMatchesForUser(uid: String,
+                         token: String,
+                         matchType: MatchesRequestType,
+                         completion: @escaping (Result<[Match], MatchesAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
+                                      timeoutInterval: 25.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
     
-    do {
-      
-      let fullDictionary: [String: Any] = [
-        "query": PearMatchesAPI.getUserMatchesQuery,
-        "variables": [
-          "userInput": [
-            "firebaseToken": token,
-            "firebaseAuthID": uid
-          ]
+    let query = matchType == .currentMatches ? PearMatchesAPI.getUserCurrentMatchesQuery : PearMatchesAPI.getUserMatchRequests
+    
+    let fullDictionary: [String: Any] = [
+      "query": query,
+      "variables": [
+        "userInput": [
+          "firebaseToken": token,
+          "firebaseAuthID": uid
         ]
       ]
-      
+    ]
+
+    do {
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       request.httpBody = data
       
@@ -142,10 +152,6 @@ extension PearMatchesAPI {
           completion(.failure(MatchesAPIError.unknownError(error: error)))
           return
         } else {
-          if let data = data,
-            let json = try? JSON(data: data) {
-            print(json)
-          }
           let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "getUser", objectName: "user")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
@@ -167,24 +173,52 @@ extension PearMatchesAPI {
           case .foundObjectData(let objectData):
             do {
               let json = try JSON(data: objectData)
-              guard let requestedMatches = json["requestedMatches"].array else {
+              let matchesKey = matchType == .currentMatches ? "currentMatches" : "requestedMatches"
+              guard let requestedMatches = json[matchesKey].array else {
                 print("Unable to find requested matches")
                 completion(.failure(.failedDeserialization))
                 return
               }
+              
               var allMatchRequests: [Match] = []
+              var matchesToLoad = requestedMatches.count
+              print("\(matchesToLoad) Matches to load for: \(matchType)")
               for requestedMatch in requestedMatches {
-                do {
+                do {                  
                   let matchData = try requestedMatch.rawData()
                   let matchObject = try JSONDecoder().decode(Match.self, from: matchData)
-                  print(matchObject)
-                  allMatchRequests.append(matchObject)
+                  matchObject.fetchFirebaseChatObject(completion: { (match) in
+                    if let matchObj = match {
+                      allMatchRequests.append(matchObj)
+                    } else {
+                      print("Unable to find match object")
+                    }
+                    matchesToLoad -= 1
+                    print("Fetched Match Object \(matchType): \(matchesToLoad) left")
+                    if matchesToLoad == 0 {
+                      allMatchRequests.sort(by: { (lft, rht) -> Bool in
+                        var lftTime: Date!
+                        var rhtTime: Date!
+                        if lft.receivedByUser.documentID == uid {
+                          lftTime = lft.receivedByUserStatusLastUpdated
+                        } else {
+                          lftTime = lft.sentForUserStatusLastUpdated
+                        }
+                        if rht.receivedByUser.documentID == uid {
+                          rhtTime = rht.receivedByUserStatusLastUpdated
+                        } else {
+                          rhtTime = rht.sentForUserStatusLastUpdated
+                        }
+                        return lftTime.compare(rhtTime) == .orderedDescending
+                      })
+                      completion(.success(allMatchRequests))
+                    }
+                  })
                 } catch {
-                  
+                  print("Failure deserializing match object: \(error)")
                 }
               }
-              print(requestedMatches)
-              //              completion(.success(pearUser))
+              
             } catch {
               print("Deserialization Error: \(error)")
               completion(.failure(MatchesAPIError.failedDeserialization))

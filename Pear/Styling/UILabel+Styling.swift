@@ -120,5 +120,54 @@ extension UILabel {
     }
     self.textColor = R.color.primaryTextColor()
   }
+  
+  func stylizeChatRequestNameLabel(unread: Bool) {
+    if unread {
+      if let font = R.font.nunitoSemiBold(size: 17) {
+        self.font = font
+      }
+    } else {
+      if let font = R.font.nunitoRegular(size: 17) {
+        self.font = font
+      }
+    }
+    self.textColor = R.color.primaryTextColor()
+  }
 
+  func stylizeChatRequestPreviewTextLabel(unread: Bool) {
+    if let font = R.font.nunitoRegular(size: 16) {
+      self.font = font
+    }
+    if unread {
+      self.textColor = R.color.primaryTextColor()
+    } else {
+      self.textColor = R.color.secondaryTextColor()
+    }
+  }
+  
+  func stylizeChatRequestDateLabel(unread: Bool) {
+    if let font = R.font.nunitoRegular(size: 13) {
+      self.font = font
+    }
+    if unread {
+     self.textColor = R.color.brandPrimaryDark()
+    } else {
+      self.textColor = R.color.secondaryTextColor()
+    }
+  }
+  
+  func stylizeChatMessageServerRequest() {
+    if let font = R.font.nunitoRegular(size: 13) {
+      self.font = font
+    }
+    self.textColor = R.color.secondaryTextColor()
+  }
+  
+  func stylizeChatDarkMessageText() {
+    if let font = R.font.nunitoSemiBold(size: 17) {
+      self.font = font
+    }
+    self.textColor = R.color.primaryTextColor()
+  }
+  
 }

@@ -266,7 +266,8 @@ extension DiscoveryFullProfileViewController {
     if DataStore.shared.remoteConfig.configValue(forKey: "pear_button_enabled").boolValue {
       self.pearButton.isHidden = false
     } else {
-      self.pearButton.isHidden = true
+      self.pearButton.isHidden = false
+//      self.pearButton.isHidden = true
     }
     self.pearButton.setImage(R.image.discoveryPearButtonSelected(), for: .selected)
     self.pearButton.layer.cornerRadius = 30

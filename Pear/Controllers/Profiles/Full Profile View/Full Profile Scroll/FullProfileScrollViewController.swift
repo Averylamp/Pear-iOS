@@ -12,6 +12,7 @@ class FullProfileScrollViewController: UIViewController {
 
   var fullProfileData: FullProfileDisplayData!
   
+  @IBOutlet weak var firstNameLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
   
   /// Factory method for creating this view controller.
@@ -33,8 +34,15 @@ class FullProfileScrollViewController: UIViewController {
 extension FullProfileScrollViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.addFullStackVC()
+    self.stylize()
+  }
+  
+  func stylize() {
+    self.firstNameLabel.stylizeSubtitleLabelSmall()
+    self.firstNameLabel.text = self.fullProfileData.firstName
+
   }
   
   func addFullStackVC() {
@@ -59,4 +67,12 @@ extension FullProfileScrollViewController {
       ])
     fullProfileStackVC.didMove(toParent: self)
   }
+}
+
+extension FullProfileScrollViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
+  }
+  
 }

@@ -30,12 +30,18 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-  
+//    self.testFetchMatchRequests()
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
       if versionIsSufficient {
         DataStore.shared.refreshPearUser(completion: { (pearUser) in
           if pearUser != nil {
             DataStore.shared.refreshEndorsedUsers(completion: nil)
+            DataStore.shared.refreshMatchRequests { (matchRequests) in
+              print("Found Match Requests: \(matchRequests.count)")
+            }
+            DataStore.shared.refreshCurrentMatches { (matches) in
+              print("Found Current Matches: \(matches.count)")
+            }
             self.continueToMainScreen()
           } else {
             self.continueToLandingScreen()
@@ -206,8 +212,12 @@ extension LoadingScreenViewController {
   }
   
   func testFetchMatchRequests() {
-    DataStore.shared.fetchMatchRequests { (matchRequests) in
-      print(matchRequests)
+    DataStore.shared.refreshMatchRequests { (matchRequests) in
+      print("Found Match Requests: \(matchRequests.count)")
+    }
+    
+    DataStore.shared.refreshCurrentMatches { (matches) in
+      print("Found Current Matches: \(matches.count)")
     }
     
   }
