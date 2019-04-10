@@ -29,7 +29,7 @@ extension UILabel {
   }
   
   func stylizeSubtitleLabel() {
-    self.font = UIFont(name: StylingConfig.textFontSemiBold, size: 22)
+    self.font = UIFont(name: StylingConfig.textFontRegular, size: 17)
     self.textColor = StylingConfig.textFontColor
   }
   func stylizeTagLabel() {
