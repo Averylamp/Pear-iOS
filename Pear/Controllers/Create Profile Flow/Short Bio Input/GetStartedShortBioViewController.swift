@@ -58,7 +58,7 @@ class GetStartedShortBioViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_friend_bio_back", parameters: nil)
+    Analytics.logEvent("CP_bio_back", parameters: nil)
     self.saveBio()
     self.navigationController?.popViewController(animated: true)
   }

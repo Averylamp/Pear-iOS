@@ -83,7 +83,7 @@ class GetStartedChooseGenderViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_friend_gender_back", parameters: nil)
+    Analytics.logEvent("CP_gender_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   

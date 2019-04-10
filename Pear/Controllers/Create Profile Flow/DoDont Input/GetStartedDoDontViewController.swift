@@ -76,7 +76,7 @@ class GetStartedDoDontViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_friend_dosdonts_back", parameters: nil)
+    Analytics.logEvent("CP_dosdonts_back", parameters: nil)
     saveDoDontListsTo(gettingStartedData: self.gettingStartedData)
     self.navigationController?.popViewController(animated: true)
   }
