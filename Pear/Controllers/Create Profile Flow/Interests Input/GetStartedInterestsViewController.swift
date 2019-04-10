@@ -105,7 +105,7 @@ class GetStartedInterestsViewController: UIViewController {
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.saveInterests()
-    Analytics.logEvent("clicked_friend_interests_back", parameters: nil)
+    Analytics.logEvent("CP_interests_back", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
