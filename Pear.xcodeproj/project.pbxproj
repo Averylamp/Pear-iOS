@@ -45,6 +45,18 @@
 		BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BD222F20CD00915C1C /* GetStartedVibeViewController.swift */; };
 		BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0F16BF222F20E500915C1C /* GetStartedVibeViewController.storyboard */; };
 		BB1436012243D25800B8C3EB /* PearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1436002243D25800B8C3EB /* PearTests.swift */; };
+		BB17892A225D96D60033ACC6 /* ChatMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB178929225D96D60033ACC6 /* ChatMainViewController.swift */; };
+		BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB17892B225D96E20033ACC6 /* ChatMainViewController.storyboard */; };
+		BB17892E225DE26F0033ACC6 /* ChatRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB17892D225DE26F0033ACC6 /* ChatRequestsTableViewController.swift */; };
+		BB178930225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB17892F225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard */; };
+		BB178932225DE28F0033ACC6 /* ChatRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB178931225DE28F0033ACC6 /* ChatRequestsTableViewCell.swift */; };
+		BB178934225DE73E0033ACC6 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB178933225DE73E0033ACC6 /* Date+Helpers.swift */; };
+		BB178936225DFCA00033ACC6 /* FullChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB178935225DFCA00033ACC6 /* FullChatViewController.swift */; };
+		BB178938225DFCAA0033ACC6 /* FullChatViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB178937225DFCAA0033ACC6 /* FullChatViewController.storyboard */; };
+		BB17893D225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB17893C225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift */; };
+		BB17893F225E064F0033ACC6 /* ChatRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB17893E225E064F0033ACC6 /* ChatRequestTableViewCell.swift */; };
+		BB178941225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB178940225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift */; };
+		BB178943225E8B6A0033ACC6 /* ServerMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB178942225E8B690033ACC6 /* ServerMessageTableViewCell.swift */; };
 		BB1C67102237205700D75848 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C670F2237205700D75848 /* Coding.swift */; };
 		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
 		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
@@ -295,6 +307,18 @@
 		BB1435FE2243D25700B8C3EB /* PearTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1436002243D25800B8C3EB /* PearTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearTests.swift; sourceTree = "<group>"; };
 		BB1436022243D25800B8C3EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB178929225D96D60033ACC6 /* ChatMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainViewController.swift; sourceTree = "<group>"; };
+		BB17892B225D96E20033ACC6 /* ChatMainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatMainViewController.storyboard; sourceTree = "<group>"; };
+		BB17892D225DE26F0033ACC6 /* ChatRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestsTableViewController.swift; sourceTree = "<group>"; };
+		BB17892F225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRequestsTableViewController.storyboard; sourceTree = "<group>"; };
+		BB178931225DE28F0033ACC6 /* ChatRequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestsTableViewCell.swift; sourceTree = "<group>"; };
+		BB178933225DE73E0033ACC6 /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
+		BB178935225DFCA00033ACC6 /* FullChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullChatViewController.swift; sourceTree = "<group>"; };
+		BB178937225DFCAA0033ACC6 /* FullChatViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullChatViewController.storyboard; sourceTree = "<group>"; };
+		BB17893C225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMatchmakerRequestTableViewCell.swift; sourceTree = "<group>"; };
+		BB17893E225E064F0033ACC6 /* ChatRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestTableViewCell.swift; sourceTree = "<group>"; };
+		BB178940225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageTableViewCell.swift; sourceTree = "<group>"; };
+		BB178942225E8B690033ACC6 /* ServerMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerMessageTableViewCell.swift; sourceTree = "<group>"; };
 		BB1C670F2237205700D75848 /* Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding.swift; sourceTree = "<group>"; };
 		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
@@ -596,6 +620,7 @@
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
 				BB0AE4E422536F75005DD315 /* Update User */,
 				BBDF1FEB21E2B61F00520881 /* Tab Controller */,
+				BB178928225BFFD40033ACC6 /* Chat Tab */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
 				BB5F1DA0225318040042D443 /* Me Tab */,
 				BBF694EE223B7E3600E13ABB /* Friends Tab */,
@@ -765,6 +790,7 @@
 				BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */,
 				BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */,
 				BB1C670F2237205700D75848 /* Coding.swift */,
+				BB178933225DE73E0033ACC6 /* Date+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -796,6 +822,48 @@
 				BB1436022243D25800B8C3EB /* Info.plist */,
 			);
 			path = PearTests;
+			sourceTree = "<group>";
+		};
+		BB178928225BFFD40033ACC6 /* Chat Tab */ = {
+			isa = PBXGroup;
+			children = (
+				BB17893A225DFCC40033ACC6 /* Main Chat VC */,
+				BB178939225DFCB10033ACC6 /* Chat Request Table View Controller */,
+				BB17893B225DFD100033ACC6 /* Full Chat VC */,
+			);
+			path = "Chat Tab";
+			sourceTree = "<group>";
+		};
+		BB178939225DFCB10033ACC6 /* Chat Request Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB17892D225DE26F0033ACC6 /* ChatRequestsTableViewController.swift */,
+				BB17892F225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard */,
+				BB178931225DE28F0033ACC6 /* ChatRequestsTableViewCell.swift */,
+			);
+			path = "Chat Request Table View Controller";
+			sourceTree = "<group>";
+		};
+		BB17893A225DFCC40033ACC6 /* Main Chat VC */ = {
+			isa = PBXGroup;
+			children = (
+				BB178929225D96D60033ACC6 /* ChatMainViewController.swift */,
+				BB17892B225D96E20033ACC6 /* ChatMainViewController.storyboard */,
+			);
+			path = "Main Chat VC";
+			sourceTree = "<group>";
+		};
+		BB17893B225DFD100033ACC6 /* Full Chat VC */ = {
+			isa = PBXGroup;
+			children = (
+				BB178935225DFCA00033ACC6 /* FullChatViewController.swift */,
+				BB178937225DFCAA0033ACC6 /* FullChatViewController.storyboard */,
+				BB17893E225E064F0033ACC6 /* ChatRequestTableViewCell.swift */,
+				BB17893C225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift */,
+				BB178940225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift */,
+				BB178942225E8B690033ACC6 /* ServerMessageTableViewCell.swift */,
+			);
+			path = "Full Chat VC";
 			sourceTree = "<group>";
 		};
 		BB18788E21E2B1D900964F26 /* Discovery Flow */ = {
@@ -1776,6 +1844,7 @@
 				BBA2E1EE224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard in Resources */,
 				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
 				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
+				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
@@ -1829,6 +1898,7 @@
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
+				BB178930225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard in Resources */,
 				BB9CB6A72259FAA700605A98 /* UpdateTextFieldController.storyboard in Resources */,
 				BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */,
 				BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */,
@@ -1844,6 +1914,7 @@
 				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
+				BB178938225DFCAA0033ACC6 /* FullChatViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
 				BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
@@ -2012,7 +2083,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2076,11 +2147,15 @@
 				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
 				BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */,
 				BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */,
+				BB17893F225E064F0033ACC6 /* ChatRequestTableViewCell.swift in Sources */,
 				BB4C8A47225152EC00F7BA1A /* DoDontView.swift in Sources */,
+				BB178934225DE73E0033ACC6 /* Date+Helpers.swift in Sources */,
+				BB178936225DFCA00033ACC6 /* FullChatViewController.swift in Sources */,
 				BB986A35220E1C9500759A14 /* LandingScreenPage3ViewController.swift in Sources */,
 				BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */,
 				BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
+				BB17892E225DE26F0033ACC6 /* ChatRequestsTableViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
@@ -2112,6 +2187,7 @@
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
 				BB9CB6AD225A11F900605A98 /* FriendEditProfileViewController.swift in Sources */,
+				BB17892A225D96D60033ACC6 /* ChatMainViewController.swift in Sources */,
 				BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
@@ -2152,7 +2228,9 @@
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
+				BB17893D225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift in Sources */,
 				BBECBEB12237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift in Sources */,
+				BB178941225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift in Sources */,
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
 				BBA3CEB8225566600020A36C /* ChatRequestEndorsementViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
@@ -2162,6 +2240,7 @@
 				BB77E7A12252211700A12B12 /* ApproveDetachedProfileSchoolViewController.swift in Sources */,
 				BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
+				BB178943225E8B6A0033ACC6 /* ServerMessageTableViewCell.swift in Sources */,
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
 				BB9CB69B2259E13300605A98 /* UpdateExpandingTextViewController.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */,
@@ -2170,6 +2249,7 @@
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
 				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */,
+				BB178932225DE28F0033ACC6 /* ChatRequestsTableViewCell.swift in Sources */,
 				BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,

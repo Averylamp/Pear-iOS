@@ -41,18 +41,17 @@ class DataStore: NSObject {
   }
   
   var matchRequests: [Match] = []
+  var currentMatches: [Match] = []
   var remoteConfig: RemoteConfig
   var locationManager: CLLocationManager
   var firstLocationReceived: Bool = false
   var lastLocation: CLLocationCoordinate2D?
   var firebaseRemoteInstanceID: String? // for push notifications via Firebase Cloud Messaging
   
-  // @avery please check this and LMK if it's wrong (i.e. things in wrong order etc)
   private override init() {
     self.remoteConfig = RemoteConfig.remoteConfig()
     self.locationManager = CLLocationManager()
     super.init()
-    
     self.reloadRemoteConfig()
     self.locationManager.delegate = self
     self.startReceivingLocationChanges()
