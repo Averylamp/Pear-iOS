@@ -56,9 +56,9 @@ class GetStartedChooseGenderViewController: UIViewController {
       break
     }
     
-    if let schoolVC = GetStartedSchoolViewController.instantiate(gettingStartedData: self.gettingStartedData) {
+    if let choosePreferencesVC = GetStartedChoosePreferencesViewController.instantiate(gettingStartedData: self.gettingStartedData) {
       Analytics.logEvent("finished_friend_gender", parameters: nil)
-      self.navigationController?.pushViewController(schoolVC, animated: true)
+      self.navigationController?.pushViewController(choosePreferencesVC, animated: true)
     } else {
       print("Failed to create School VC")
       return
