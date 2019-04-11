@@ -20,7 +20,7 @@ class GetStartedSchoolViewController: UIViewController {
   @IBOutlet weak var skipButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat = 2.0
+  let pageNumber: CGFloat = 3.0
   
   @IBOutlet weak var schoolNameTextField: UITextField!
   @IBOutlet weak var schoolNameContainer: UIView!
@@ -55,7 +55,7 @@ class GetStartedSchoolViewController: UIViewController {
       print("Failed to create Interests VC")
       return
     }
-    Analytics.logEvent("finished_friend_school", parameters: nil)
+    Analytics.logEvent("CP_done_school", parameters: nil)
     self.navigationController?.pushViewController(interestsVC, animated: true)
   }
   
@@ -85,7 +85,7 @@ class GetStartedSchoolViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_friend_school_back", parameters: nil)
+    Analytics.logEvent("CP_back_school", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   

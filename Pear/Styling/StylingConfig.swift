@@ -15,10 +15,10 @@ class StylingConfig {
   
   static let logoFont: String = "FredokaOne-Regular"
   
-  static let displayFontRegular: String = "SFProDisplay-Regular"
-  static let displayFontLight: String = "SFProDisplay-Light"
-  static let displayFontMedium: String = "SFProDisplay-Medium"
-  static let displayFontBold: String = "SFProDisplay-Bold"
+  static let displayFontRegular: String = "Nunito-SemiBold"
+  static let displayFontLight: String = "Nunito-Regular"
+  static let displayFontMedium: String = "Nunito-Bold"
+  static let displayFontBold: String = "Nunito-ExtraBold"
   
   static let textFontRegular: String = "Nunito-Regular"
   static let textFontBlack: String = "Nunito-Black"
@@ -29,11 +29,13 @@ class StylingConfig {
   static let textFontSemiBold: String = "Nunito-SemiBold"
   
   static let textFontColor: UIColor = UIColor(red: 0.27, green: 0.29, blue: 0.33, alpha: 1.00)
+  static let secondaryTextFontColor: UIColor = UIColor(red: 0.27, green: 0.29, blue: 0.33, alpha: 0.5)
+  static let tertiaryTextFontColor: UIColor = UIColor(red: 0.27, green: 0.29, blue: 0.33, alpha: 0.3)
   static let inactiveTextFontColor: UIColor = UIColor(red: 0.27, green: 0.29, blue: 0.33, alpha: 0.3)
   
   static let nextButtonColor: UIColor = UIColor(red: 0.27, green: 0.29, blue: 0.33, alpha: 1.00)
   
-  static let totalGettingStartedPagesNumber: CGFloat = 9.0
+  static let totalGettingStartedPagesNumber: CGFloat = 10.0
   static let totalProfileApprovalPagesNumber: CGFloat = 4.0
   static let progressBarAnimationDuration: Double = 0.4
   static let progressBarAnimationDelay: Double = 0.0

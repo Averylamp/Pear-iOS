@@ -22,6 +22,7 @@ class UserProfileCreationData: CustomStringConvertible {
   var images: [LoadedImageContainer] = []
   var school: String?
   var schoolYear: String?
+  var seekingGender: [GenderEnum] = []
   
   init() {
     

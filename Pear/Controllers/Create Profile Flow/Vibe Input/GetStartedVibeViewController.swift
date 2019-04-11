@@ -25,7 +25,7 @@ class GetStartedVibeViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat = 4.0
+  let pageNumber: CGFloat = 5.0
   
   let betweenVibeSpacing: CGFloat = 12
   var selectedItems: [IndexPath] = []
@@ -59,7 +59,7 @@ class GetStartedVibeViewController: UIViewController {
       print("Failed to create photoInputVC")
       return
     }
-    Analytics.logEvent("finished_friend_vibes", parameters: nil)
+    Analytics.logEvent("CP_done_vibes", parameters: nil)
     self.navigationController?.pushViewController(doDontVC, animated: true)
   }
   
@@ -82,7 +82,7 @@ class GetStartedVibeViewController: UIViewController {
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.saveVibes()
-    Analytics.logEvent("clicked_friend_vibes_back", parameters: nil)
+    Analytics.logEvent("CP_back_vibes", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
 }

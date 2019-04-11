@@ -313,9 +313,10 @@ extension PearProfileAPI {
                                                    apiName: "PearProfileAPI",
                                                    functionName: "getDiscoveryFeed",
                                                    message: "Failed Discovery Serialization: \(error.localizedDescription)",
-                    tags: [:],
-                    paylod: fullDictionary)
+                                                   tags: [:],
+                                                   paylod: fullDictionary)
                   print("Failed to deserialize pear user from feed: \(error)")
+                  print(userData)
                 }
               }
               completion(.success(allFullProfiles))
@@ -646,14 +647,23 @@ extension PearProfileAPI {
       "gender": gender.rawValue,
       "interests": userProfileData.interests,
       "vibes": userProfileData.vibes,
+      "seekingGender": userProfileData.seekingGender.map({ $0.rawValue }),
       "bio": bio,
       "dos": userProfileData.dos,
       "donts": userProfileData.donts,
       "images": imageContainer
     ]
     
-    let defaultCoordinates: [Double] = [42.3601, -71.0589]
-    variablesDictionary["location"] = defaultCoordinates
+    var coordinates: [Double] = []
+    if let userLocation =  DataStore.shared.lastLocation {
+      coordinates.append(userLocation.longitude)
+      coordinates.append(userLocation.latitude)
+    } else {
+      coordinates.append(-71.0589)
+      coordinates.append(42.3601)
+    }
+    
+    variablesDictionary["location"] = coordinates
     variablesDictionary["locationName"] = "Boston Area"
     if let school = userProfileData.school {
       variablesDictionary["school"] = school
