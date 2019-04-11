@@ -86,7 +86,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
       print("Create Detached Profile Called")
       switch result {
       case .success(let detachedProfile):
-        Analytics.logEvent("finished_friend_profile", parameters: nil)
+        Analytics.logEvent("CP_success", parameters: nil)
         print(detachedProfile)
         DataStore.shared.refreshEndorsedUsers(completion: nil)
         DataStore.shared.getNotificationAuthorizationStatus { status in
@@ -131,7 +131,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_notify_friend_back", parameters: nil)
+    Analytics.logEvent("CP_back_notify_friend", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   

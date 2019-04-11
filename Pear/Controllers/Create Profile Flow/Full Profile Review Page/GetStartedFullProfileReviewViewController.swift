@@ -12,7 +12,7 @@ import Firebase
 class GetStartedFullProfileReviewViewController: UIViewController {
   
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat  = 8.0
+  let pageNumber: CGFloat  = 9.0
   
   @IBOutlet weak var scrollView: UIScrollView!
   var gettingStartedUserProfileData: UserProfileCreationData!
@@ -46,7 +46,7 @@ class GetStartedFullProfileReviewViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    Analytics.logEvent("clicked_friend_review_back", parameters: nil)
+    Analytics.logEvent("CP_back_review", parameters: nil)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -56,7 +56,7 @@ class GetStartedFullProfileReviewViewController: UIViewController {
       print("Failed to create Notify Friend VC")
       return
     }
-    Analytics.logEvent("finished_friend_review", parameters: nil)
+    Analytics.logEvent("CP_done_review", parameters: nil)
     self.navigationController?.pushViewController(notifyFriendVC, animated: true)
   }
   

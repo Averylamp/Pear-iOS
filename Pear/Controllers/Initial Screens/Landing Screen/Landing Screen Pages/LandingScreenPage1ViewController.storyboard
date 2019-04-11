@@ -22,13 +22,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landing-pear-1" translatesAutoresizingMaskIntoConstraints="NO" id="8Fv-F1-0B9">
-                                <rect key="frame" x="80" y="10" width="215" height="220"/>
+                                <rect key="frame" x="80" y="70" width="215" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="kRB-5c-GHa"/>
+                                    <constraint firstAttribute="height" constant="100" id="kRB-5c-GHa"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landing-pear-background-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yn7-72-0nP">
-                                <rect key="frame" x="16" y="230" width="343" height="170"/>
+                                <rect key="frame" x="16" y="170" width="343" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Yn7-72-0nP" secondAttribute="height" multiplier="2.02" id="zEK-4T-nal"/>
                                 </constraints>

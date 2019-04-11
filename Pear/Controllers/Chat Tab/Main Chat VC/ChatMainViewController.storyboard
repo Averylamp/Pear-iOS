@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zgU-Ef-FRU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat Main View Controller-->
+        <scene sceneID="EgO-8A-PPD">
+            <objects>
+                <viewController id="zgU-Ef-FRU" customClass="ChatMainViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b8N-ju-GVb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0j-nz-OnO" userLabel="Header Container">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-icon-chat-selected" translatesAutoresizingMaskIntoConstraints="NO" id="nRR-1g-7D1" userLabel="Center Icon">
+                                        <rect key="frame" x="167.5" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nRR-1g-7D1" secondAttribute="height" multiplier="1:1" id="1Oj-79-swW"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="nRR-1g-7D1" firstAttribute="centerY" secondItem="P0j-nz-OnO" secondAttribute="centerY" id="W8I-Po-Aae"/>
+                                    <constraint firstAttribute="height" constant="50" id="Yjb-Rx-bE4"/>
+                                    <constraint firstItem="nRR-1g-7D1" firstAttribute="centerX" secondItem="P0j-nz-OnO" secondAttribute="centerX" id="fSY-9b-jVy"/>
+                                    <constraint firstItem="nRR-1g-7D1" firstAttribute="height" secondItem="P0j-nz-OnO" secondAttribute="height" constant="-10" id="tq7-z5-wEw"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGt-Xw-Rpv">
+                                <rect key="frame" x="0.0" y="70" width="375" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdR-dh-ge0">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Inbox"/>
+                                        <connections>
+                                            <action selector="inboxButtonClicked:" destination="zgU-Ef-FRU" eventType="touchUpInside" id="GYy-8X-5Sz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfq-8I-4T5">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Requests"/>
+                                        <connections>
+                                            <action selector="requestsButtonClicked:" destination="zgU-Ef-FRU" eventType="touchUpInside" id="PZu-h3-lZ1"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8E-EA-7L2">
+                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.26274509800000001" green="0.29411764709999999" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="c0a-yD-w8v"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYc-Fw-Ahx">
+                                        <rect key="frame" x="187" y="1" width="1" height="48"/>
+                                        <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="haE-Xm-g2h"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Tfq-8I-4T5" firstAttribute="centerY" secondItem="PGt-Xw-Rpv" secondAttribute="centerY" id="2pj-Oc-SgW"/>
+                                    <constraint firstItem="Tfq-8I-4T5" firstAttribute="height" secondItem="PGt-Xw-Rpv" secondAttribute="height" id="4wX-A9-JBb"/>
+                                    <constraint firstItem="yYc-Fw-Ahx" firstAttribute="centerY" secondItem="PGt-Xw-Rpv" secondAttribute="centerY" id="Dbg-Xl-RZ8"/>
+                                    <constraint firstItem="zdR-dh-ge0" firstAttribute="centerY" secondItem="PGt-Xw-Rpv" secondAttribute="centerY" id="Rhk-ck-tFN"/>
+                                    <constraint firstItem="yYc-Fw-Ahx" firstAttribute="centerX" secondItem="PGt-Xw-Rpv" secondAttribute="centerX" id="Vbi-dV-FhI"/>
+                                    <constraint firstItem="Tfq-8I-4T5" firstAttribute="leading" secondItem="zdR-dh-ge0" secondAttribute="trailing" id="W56-0P-zVn"/>
+                                    <constraint firstAttribute="trailing" secondItem="e8E-EA-7L2" secondAttribute="trailing" id="WUI-Oy-kvj"/>
+                                    <constraint firstAttribute="height" constant="50" id="bMd-Ra-SNX"/>
+                                    <constraint firstItem="zdR-dh-ge0" firstAttribute="height" secondItem="PGt-Xw-Rpv" secondAttribute="height" id="gBE-6U-dDy"/>
+                                    <constraint firstItem="Tfq-8I-4T5" firstAttribute="width" secondItem="zdR-dh-ge0" secondAttribute="width" id="ghr-N1-vva"/>
+                                    <constraint firstItem="yYc-Fw-Ahx" firstAttribute="height" secondItem="PGt-Xw-Rpv" secondAttribute="height" constant="-2" id="n1D-78-X1Q"/>
+                                    <constraint firstItem="e8E-EA-7L2" firstAttribute="leading" secondItem="PGt-Xw-Rpv" secondAttribute="leading" id="ouV-mn-RRU"/>
+                                    <constraint firstAttribute="bottom" secondItem="e8E-EA-7L2" secondAttribute="bottom" id="q9Z-Rd-zy0"/>
+                                    <constraint firstItem="zdR-dh-ge0" firstAttribute="leading" secondItem="PGt-Xw-Rpv" secondAttribute="leading" id="xct-S2-m0l"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tfq-8I-4T5" secondAttribute="trailing" id="yXX-8f-pjx"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qc-zU-5Si">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8hD-yB-jro" firstAttribute="bottom" secondItem="0qc-zU-5Si" secondAttribute="bottom" id="5L9-yW-Dly"/>
+                            <constraint firstItem="P0j-nz-OnO" firstAttribute="leading" secondItem="8hD-yB-jro" secondAttribute="leading" id="BJM-aJ-oDp"/>
+                            <constraint firstItem="8hD-yB-jro" firstAttribute="trailing" secondItem="PGt-Xw-Rpv" secondAttribute="trailing" id="GZZ-XM-O4J"/>
+                            <constraint firstItem="0qc-zU-5Si" firstAttribute="leading" secondItem="b8N-ju-GVb" secondAttribute="leading" id="LQa-Ue-L4Y"/>
+                            <constraint firstItem="P0j-nz-OnO" firstAttribute="trailing" secondItem="8hD-yB-jro" secondAttribute="trailing" id="bHi-rq-KOZ"/>
+                            <constraint firstItem="PGt-Xw-Rpv" firstAttribute="top" secondItem="P0j-nz-OnO" secondAttribute="bottom" id="fw5-JM-iar"/>
+                            <constraint firstItem="8hD-yB-jro" firstAttribute="trailing" secondItem="0qc-zU-5Si" secondAttribute="trailing" id="hip-mR-xAO"/>
+                            <constraint firstItem="PGt-Xw-Rpv" firstAttribute="leading" secondItem="8hD-yB-jro" secondAttribute="leading" id="jLl-eR-Lxs"/>
+                            <constraint firstItem="0qc-zU-5Si" firstAttribute="top" secondItem="PGt-Xw-Rpv" secondAttribute="bottom" id="yAZ-oh-S5i"/>
+                            <constraint firstItem="P0j-nz-OnO" firstAttribute="top" secondItem="8hD-yB-jro" secondAttribute="top" id="zUB-xF-jTG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8hD-yB-jro"/>
+                    </view>
+                    <connections>
+                        <outlet property="inboxButton" destination="zdR-dh-ge0" id="R64-bJ-laW"/>
+                        <outlet property="requestsButton" destination="Tfq-8I-4T5" id="pgy-a8-E2T"/>
+                        <outlet property="scrollView" destination="0qc-zU-5Si" id="Le6-HX-d5E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WJN-gN-xHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab-icon-chat-selected" width="500" height="500"/>
+    </resources>
+</document>

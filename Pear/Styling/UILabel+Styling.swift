@@ -29,7 +29,7 @@ extension UILabel {
   }
   
   func stylizeSubtitleLabel() {
-    self.font = UIFont(name: StylingConfig.textFontSemiBold, size: 22)
+    self.font = UIFont(name: StylingConfig.textFontRegular, size: 17)
     self.textColor = StylingConfig.textFontColor
   }
   func stylizeTagLabel() {
@@ -84,7 +84,7 @@ extension UILabel {
   }
   
   func stylizePreferencesTitleLabel() {
-    self.font = UIFont(name: StylingConfig.textFontSemiBold, size: 17)
+    self.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
     self.textColor = StylingConfig.textFontColor
   }
   
@@ -120,5 +120,83 @@ extension UILabel {
     }
     self.textColor = R.color.primaryTextColor()
   }
+  
+  func stylizeChatRequestNameLabel(unread: Bool) {
+    if unread {
+      if let font = R.font.nunitoBold(size: 18) {
+        self.font = font
+      }
+    } else {
+      if let font = R.font.nunitoRegular(size: 17) {
+        self.font = font
+      }
+    }
+    self.textColor = R.color.primaryTextColor()
+  }
 
+  func stylizeChatRequestPreviewTextLabel(unread: Bool) {
+    if unread {
+      self.textColor = R.color.primaryTextColor()
+      if let font = R.font.nunitoSemiBold(size: 16) {
+        self.font = font
+      }
+    } else {
+      self.textColor = R.color.secondaryTextColor()
+      if let font = R.font.nunitoRegular(size: 16) {
+        self.font = font
+      }
+    }
+  }
+  
+  func stylizeFilterName(selected: Bool) {
+    if let font = R.font.nunitoSemiBold(size: 17) {
+      self.font = font
+    }
+    if selected {
+      self.textColor = R.color.primaryTextColor()
+    } else {
+      self.textColor = R.color.tertiaryTextColor()
+    }
+  }
+  
+  func stylizeChatRequestDateLabel(unread: Bool) {
+    if let font = R.font.nunitoRegular(size: 13) {
+      self.font = font
+    }
+    if unread {
+     self.textColor = R.color.brandPrimaryDark()
+    } else {
+      self.textColor = R.color.secondaryTextColor()
+    }
+  }
+  
+  func stylizeChatMessageServerRequest() {
+    if let font = R.font.nunitoRegular(size: 13) {
+      self.font = font
+    }
+    self.textColor = R.color.secondaryTextColor()
+  }
+  
+  func stylizeChatMessageText(sender: Bool) {
+    if let font = R.font.nunitoSemiBold(size: 17) {
+      self.font = font
+    }
+    if sender {
+      self.textColor = UIColor.white
+    } else {
+      self.textColor = R.color.primaryTextColor()
+    }
+  }
+  
+  func stylizeChatMessageTimestamp(sender: Bool) {
+    if let font = R.font.nunitoRegular(size: 13) {
+      self.font = font
+    }
+    if sender {
+      self.textColor = UIColor(white: 1.0, alpha: 0.8)
+    } else {
+      self.textColor = R.color.secondaryTextColor()?.withAlphaComponent(0.8)
+    }
+  }
+  
 }
