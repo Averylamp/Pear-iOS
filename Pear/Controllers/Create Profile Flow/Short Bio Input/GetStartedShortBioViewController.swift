@@ -69,15 +69,18 @@ class GetStartedShortBioViewController: UIViewController {
     if let profileBio = self.gettingStartedData.bio {
       if profileBio.count < 50 {
         let alertController = UIAlertController(title: "Skip to Discovery?",
-                                                message: "That bio's short! Want to create this profile later?",
+                                                message: "That bio's short! Continue anyways?",
                                                 preferredStyle: .alert)
-        let skipToDiscoveryButton = UIAlertAction(title: "Skip Ahead", style: .destructive) { (_) in
+        let skipToDiscoveryButton = UIAlertAction(title: "Skip Ahead", style: .default) { (_) in
           DispatchQueue.main.async {
-            guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-              print("Failed to initialize Main VC")
+            Analytics.logEvent("skipped_friend_bio", parameters: nil)
+            Analytics.logEvent("finished_friend_bio", parameters: nil)
+            guard let photoInputVC = GetStartedPhotoInputViewController.instantiate(gettingStartedData: self.gettingStartedData) else {
+              print("Failed to create photoInputVC")
               return
             }
-            self.navigationController?.setViewControllers([mainVC], animated: true)
+            self.navigationController?.pushViewController(photoInputVC, animated: true)
+
           }
         }
         let continueButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
@@ -123,6 +126,7 @@ extension GetStartedShortBioViewController {
     self.addDismissKeyboardOnViewClick()
     self.addKeyboardSizeNotifications()
     self.stylize()
+    self.inputTextView.becomeFirstResponder()
    }
   
   func stylize() {

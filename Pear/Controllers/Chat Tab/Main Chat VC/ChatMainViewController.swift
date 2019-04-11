@@ -17,7 +17,8 @@ class ChatMainViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var inboxButton: UIButton!
   @IBOutlet weak var requestsButton: UIButton!
-  
+  private let refreshControl = UIRefreshControl()
+
   var requestsTVC: ChatRequestsTableViewController?
   var matchesTVC: ChatRequestsTableViewController?
   
@@ -55,18 +56,47 @@ extension ChatMainViewController {
     self.setupRequestTVCs()
     NotificationCenter.default
       .addObserver(self,
-                   selector: #selector(ChatMainViewController.reloadChatVCs),
+                   selector: #selector(ChatMainViewController.reloadChatVCData),
                    name: .refreshChatsTab, object: nil)
+
+    self.reloadChatVCData()
 
   }
   
-  @objc func reloadChatVCs() {
+  @objc func refreshControlChanged(sender: UIRefreshControl) {
+    print("Refresh control changed")
+    self.refreshMatchesObjects()
+  }
+  
+  @objc func reloadChatVCData() {
     if let requestVC = self.requestsTVC {
+      print("Updating RequestTVC with :\(DataStore.shared.matchRequests.count) requests")
       requestVC.updateMatches(matches: DataStore.shared.matchRequests)
     }
     if let matchesVC = self.matchesTVC {
+      print("Updating currentMatchesTVC with :\(DataStore.shared.currentMatches.count) matches")
       matchesVC.updateMatches(matches: DataStore.shared.currentMatches)
     }
+  }
+  
+  func refreshMatchesObjects() {
+    if let matchesVC = self.matchesTVC {
+      DataStore.shared.refreshCurrentMatches { (currentMatches) in
+        DispatchQueue.main.async {
+          matchesVC.updateMatches(matches: currentMatches)
+          self.refreshControl.endRefreshing()
+        }
+      }
+    }
+    if let requestVC = self.requestsTVC {
+      DataStore.shared.refreshMatchRequests { (matchRequests) in
+        DispatchQueue.main.async {
+          requestVC.updateMatches(matches: matchRequests)
+          self.refreshControl.endRefreshing()
+        }
+      }
+    }
+
   }
   
   func setup() {
@@ -85,6 +115,14 @@ extension ChatMainViewController {
   }
   
   func stylize() {
+    if let refreshFont = UIFont(name: R.font.nunitoRegular.fontName, size: 14) {
+      
+      self.refreshControl
+        .attributedTitle = NSAttributedString(string: "Refreshing Your Chats...",
+                                              attributes: [NSAttributedString.Key.font: refreshFont,
+                                                           NSAttributedString.Key.foregroundColor: UIColor(white: 0.7, alpha: 1.0)])
+    }
+    
     self.scrollView.isPagingEnabled = true
     if let buttonFont = R.font.nunitoSemiBold(size: 18) {
       self.inboxButton.titleLabel?.font = buttonFont
@@ -99,6 +137,11 @@ extension ChatMainViewController {
   }
   
   func setupRequestTVCs() {
+    self.refreshControl
+      .addTarget(self,
+                 action: #selector(ChatMainViewController.refreshControlChanged(sender:)),
+                 for: .valueChanged)
+
     guard let matchesTVC = ChatRequestsTableViewController.instantiate() else {
       print("Failed to instantiate matches TVC")
       return
@@ -144,6 +187,8 @@ extension ChatMainViewController {
     requestsTVC.updateMatches(matches: DataStore.shared.matchRequests)
     
     self.view.layoutIfNeeded()
+    matchesTVC.tableView.refreshControl = self.refreshControl
+//    requestsTVC.tableView.refreshControl = self.refreshControl
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * 2, height: self.scrollView.frame.height)
   }
   
@@ -180,7 +225,7 @@ extension ChatMainViewController: ChatRequestTableViewControllerDelegate {
         print("Failed to instantiate full chat VC")
         return
       }
-      self.navigationController?.pushViewController(fullChatVC, animated: true)      
+      self.navigationController?.pushViewController(fullChatVC, animated: true)
     }
   }
   

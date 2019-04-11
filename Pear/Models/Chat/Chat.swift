@@ -11,6 +11,10 @@ import FirebaseFirestore
 import CodableFirebase
 import SwiftyJSON
 
+protocol ChatDelegate: class {
+  func receivedNewMessages()
+}
+
 enum ChatDecodingError: Error {
   case enumDecodingError
   case badDictionaryError
@@ -33,7 +37,9 @@ enum ChatKeys: String, CodingKey {
   case secondPersonLastOpened
 }
 
-class Chat: Codable, CustomStringConvertible {
+class Chat: Decodable, CustomStringConvertible {
+  
+  weak var delegate: ChatDelegate?
   
   let documentID: String
   let documentPath: String
@@ -44,9 +50,12 @@ class Chat: Codable, CustomStringConvertible {
   let secondPersonID: String
   let firstPersonLastOpened: Date
   let secondPersonLastOpened: Date
+  var lastOpenedDate: Date
   
-  static let messageBatchSizePaginated: Int = 60
-  static let messageBatchSizeInitial: Int = 30
+  var isSubscribed = false
+  
+  static let messageBatchSizePaginated: Int = 100
+  static let messageBatchSizeInitial: Int = 100
   
   var description: String {
     return "**** Chat ****\n" + """
@@ -73,13 +82,28 @@ class Chat: Codable, CustomStringConvertible {
     self.secondPersonID = try values.decode(String.self, forKey: .secondPersonID)
     self.firstPersonLastOpened = try values.decode(Timestamp.self, forKey: .firstPersonLastOpened).dateValue()
     self.secondPersonLastOpened = try values.decode(Timestamp.self, forKey: .secondPersonLastOpened).dateValue()
+    
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Failed to get user")
+      throw MatchesAPIError.failedDeserialization
+    }
+    self.lastOpenedDate = self.firstPersonID == userID ? self.firstPersonLastOpened : self.secondPersonLastOpened
+    self.subscribeToMessages()
   }
   
-  func addMessage(message: Message) {
+  func addMessage(message: Message) -> Bool {
     if !self.messages.contains(where: { $0.documentID == message.documentID}) {
       self.messages.append(message)
-      self.messages.sort { $0.timestamp.compare($1.timestamp) == .orderedAscending }
+      self.messages.sort { if $0.timestamp.compare($1.timestamp) == .orderedAscending {
+        return true
+      } else if $0.timestamp.compare($1.timestamp) == .orderedDescending {
+        return false
+        }
+        return $0.documentID < $1.documentID
+      }
+      return true
     }
+    return false
   }
   
 }
@@ -143,6 +167,88 @@ extension Chat {
       
     }
     
+  }
+  
+  func getSubscriptionMessageQuery(fromMessage: Message?) -> Query {
+    if let message = self.messages.first {
+      return Firestore.firestore().collection("/\(self.documentPath)/messages")
+        .order(by: MessageKeys.timestamp.stringValue, descending: false)
+        .order(by: MessageKeys.documentID.stringValue, descending: false)
+        .start(at: [Timestamp(date: message.timestamp), message.documentID])
+    } else {
+      return Firestore.firestore().collection("/\(self.documentPath)/messages")
+        .order(by: "timestamp", descending: true)
+    }
+  }
+  
+  func subscribeToMessages() {
+    guard !isSubscribed else {
+      print("Already subscribed to messages")
+      return
+    }
+    self.isSubscribed = true
+    let subscriptionQuery = self.getSubscriptionMessageQuery(fromMessage: self.messages.last)
+    subscriptionQuery.addSnapshotListener { (snapshot, error) in
+      if let error = error {
+        print("Error getting message query documents: \(error)")
+        return
+      }
+      
+      if let snapshot = snapshot {
+        var messagesReceived = false
+        for document in snapshot.documents {
+          do {
+            let message = try FirestoreDecoder().decode(Message.self, from: document.data())
+            guard let userID = DataStore.shared.currentPearUser?.documentID else {
+              print("User not found")
+              return
+            }
+            message.configureMessageForID(userID: userID)
+            if self.addMessage(message: message) {
+              messagesReceived = true
+            }
+          } catch {
+            print("Error Deserializing Message Object")
+            print(error)
+          }
+        }
+        if messagesReceived {
+          if let delegate = self.delegate {
+            delegate.receivedNewMessages()
+          }
+          NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
+        }
+      }
+      
+    }
+  }
+  
+  func sendMessage(text: String, completion: ((Error?) -> Void)?) {
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Pear user not found:")
+      return
+    }
+    let messageRef = Firestore.firestore().collection("\(self.documentPath)/messages").document()
+    messageRef.setData([
+      "documentID": messageRef.documentID,
+      "sender_id": userID,
+      "contentType": "TEXT",
+      "type": "USER_MESSAGE",
+      "content": text,
+      "timestamp": Date()
+      ], completion: completion)
+  }
+  
+  func updateLastSeenTime(completion: ((Error?) -> Void)?) {
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Failed to get user")
+      return
+    }
+    self.lastOpenedDate = Date()
+    let updateDateKey = self.firstPersonID == userID ? "firstPersonLastOpened" : "secondPersonLastOpened"
+    Firestore.firestore().document(self.documentPath).updateData([
+      updateDateKey: self.lastOpenedDate
+      ], completion: completion)
   }
   
 }
