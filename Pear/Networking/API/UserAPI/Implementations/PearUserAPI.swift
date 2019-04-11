@@ -42,6 +42,7 @@ extension PearUserAPI {
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
+    print(uid)
     request.allHTTPHeaderFields = defaultHeaders
     do {
       
