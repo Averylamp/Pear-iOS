@@ -513,11 +513,11 @@ extension FullChatViewController {
 // MARK: - ChatDelegate
 extension FullChatViewController: ChatDelegate {
   func receivedNewMessages() {
-    self.tableView.beginUpdates()
-    self.tableView.reloadData()
-    self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
-    self.tableView.endUpdates()
-    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
-    self.chat.updateLastSeenTime(completion: nil)
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+      self.tableView.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: true)
+      NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
+      self.chat.updateLastSeenTime(completion: nil)
+    }
   }
 }
