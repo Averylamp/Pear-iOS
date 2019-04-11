@@ -21,7 +21,8 @@ class ChatMainViewController: UIViewController {
 
   var requestsTVC: ChatRequestsTableViewController?
   var matchesTVC: ChatRequestsTableViewController?
-  
+  private var refreshTimer: Timer = Timer()
+
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -69,13 +70,26 @@ extension ChatMainViewController {
   }
   
   @objc func reloadChatVCData() {
+    var iconNumber = 0
     if let requestVC = self.requestsTVC {
       print("Updating RequestTVC with :\(DataStore.shared.matchRequests.count) requests")
       requestVC.updateMatches(matches: DataStore.shared.matchRequests)
+      DispatchQueue.main.async {
+        self.requestsButton.setTitle("Requests (\(DataStore.shared.matchRequests.count))", for: .normal)
+      }
+      iconNumber += DataStore.shared.matchRequests.count
     }
     if let matchesVC = self.matchesTVC {
       print("Updating currentMatchesTVC with :\(DataStore.shared.currentMatches.count) matches")
       matchesVC.updateMatches(matches: DataStore.shared.currentMatches)
+      DataStore.shared.currentMatches.compactMap({$0.chat}).forEach({
+        if let lastMessageTimestamp = $0.messages.last?.timestamp, $0.lastActivity.compare(lastMessageTimestamp) == .orderedAscending {
+          iconNumber += 1
+        }
+      })
+    }
+    DispatchQueue.main.async {
+      UIApplication.shared.applicationIconBadgeNumber = iconNumber
     }
   }
   
@@ -92,6 +106,7 @@ extension ChatMainViewController {
       DataStore.shared.refreshMatchRequests { (matchRequests) in
         DispatchQueue.main.async {
           requestVC.updateMatches(matches: matchRequests)
+          self.requestsButton.setTitle("Requests (\(matchRequests.count))", for: .normal)
           self.refreshControl.endRefreshing()
         }
       }
@@ -101,6 +116,11 @@ extension ChatMainViewController {
   
   func setup() {
     self.scrollView.delegate = self
+    self.refreshTimer = Timer.scheduledTimer(timeInterval: 10,
+                                             target: self,
+                                             selector: #selector(ChatMainViewController.reloadChatVCData),
+                                             userInfo: nil,
+                                             repeats: true)
   }
   
   override func viewWillAppear(_ animated: Bool) {
