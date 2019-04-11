@@ -18,6 +18,7 @@
         <!--Discovery Simple View Controller-->
         <scene sceneID="BpO-A3-gMg">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S8D-w7-i9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="JZe-kz-mxa" customClass="DiscoverySimpleViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nya-gS-WUR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -72,19 +73,19 @@
                                 <rect key="frame" x="0.0" y="70" width="414" height="666"/>
                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimpleDiscoveryTVC" rowHeight="484" id="dpC-89-kHb" customClass="DiscoveryTableViewCell" customModule="Pear" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="484"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SimpleDiscoveryTVC" rowHeight="527" id="dpC-89-kHb" customClass="DiscoveryTableViewCell" customModule="Pear" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="527"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dpC-89-kHb" id="X8o-go-E0H">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="484"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="527"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QfY-r4-Y8X">
-                                                    <rect key="frame" x="16" y="15" width="382" height="454"/>
+                                                    <rect key="frame" x="16" y="15" width="382" height="497"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uz-Lb-xBO">
-                                                    <rect key="frame" x="16" y="15" width="382" height="454"/>
+                                                    <rect key="frame" x="16" y="15" width="382" height="497"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSV-KQ-nxW">
                                                             <rect key="frame" x="0.0" y="362" width="382" height="20"/>
@@ -94,7 +95,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XnC-nZ-AcO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="454"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="497"/>
                                                             <subviews>
                                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QmL-H5-4bA">
                                                                     <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
@@ -113,11 +114,11 @@
                                                                         <constraint firstAttribute="trailing" secondItem="Pn0-8j-aJJ" secondAttribute="trailing" id="xiA-Hd-2XM"/>
                                                                     </constraints>
                                                                 </scrollView>
-                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BEB-YS-xqY">
-                                                                    <rect key="frame" x="0.0" y="382" width="382" height="24"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEB-YS-xqY">
+                                                                    <rect key="frame" x="0.0" y="382" width="382" height="45"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name, Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBX-uV-4pf">
-                                                                            <rect key="frame" x="16" y="16" width="354" height="0.0"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name, Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBX-uV-4pf">
+                                                                            <rect key="frame" x="16" y="16" width="354" height="21"/>
                                                                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -131,14 +132,14 @@
                                                                         <constraint firstItem="TBX-uV-4pf" firstAttribute="top" secondItem="BEB-YS-xqY" secondAttribute="top" constant="16" id="xwc-zV-SRT"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="phU-QS-g7I">
-                                                                    <rect key="frame" x="0.0" y="406" width="382" height="28"/>
+                                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phU-QS-g7I">
+                                                                    <rect key="frame" x="0.0" y="427" width="382" height="50"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fa-nN-H5Y">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="28"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Saq-9I-UdE">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="28"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
                                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" id="Fck-qM-LkF"/>
@@ -156,18 +157,18 @@
                                                                         <constraint firstItem="4fa-nN-H5Y" firstAttribute="height" secondItem="phU-QS-g7I" secondAttribute="height" id="uss-yV-z1g"/>
                                                                     </constraints>
                                                                 </scrollView>
-                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gp4-Fi-ni8">
-                                                                    <rect key="frame" x="0.0" y="434" width="382" height="20"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gp4-Fi-ni8">
+                                                                    <rect key="frame" x="0.0" y="477" width="382" height="20"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="discovery-icon-suggested" translatesAutoresizingMaskIntoConstraints="NO" id="YHY-6r-wjr">
-                                                                            <rect key="frame" x="16" y="-0.33333333333331439" width="18" height="18"/>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discovery-icon-suggested" translatesAutoresizingMaskIntoConstraints="NO" id="YHY-6r-wjr">
+                                                                            <rect key="frame" x="16" y="-9" width="18" height="18"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="18" id="5ZN-u3-GUf"/>
                                                                                 <constraint firstAttribute="width" secondItem="YHY-6r-wjr" secondAttribute="height" multiplier="1:1" id="G4G-VM-jaZ"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Suggested for" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-Oe-XCP">
-                                                                            <rect key="frame" x="46" y="0.0" width="324" height="17"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggested for" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNC-Oe-XCP">
+                                                                            <rect key="frame" x="46" y="0.0" width="324" height="0.0"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -264,9 +265,8 @@
                         <outlet property="tableView" destination="VgD-Ez-iF8" id="gAP-UI-fUn"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S8D-w7-i9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.600000000000001" y="27.436281859070466"/>
+            <point key="canvasLocation" x="52.173913043478265" y="26.90217391304348"/>
         </scene>
     </scenes>
     <resources>

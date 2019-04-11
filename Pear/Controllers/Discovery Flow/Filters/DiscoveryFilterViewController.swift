@@ -63,6 +63,7 @@ extension DiscoveryFilterViewController {
     self.loadData()
     self.stylize()
     self.setup()
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
   }
   
   func setup() {
@@ -231,4 +232,12 @@ extension DiscoveryFilterViewController: UITableViewDelegate, UITableViewDataSou
       self.promptEndorsedProfileCreation()
     }
   }
+}
+
+extension DiscoveryFilterViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
+  }
+  
 }

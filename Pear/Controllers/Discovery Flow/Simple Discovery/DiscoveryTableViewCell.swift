@@ -307,14 +307,7 @@ extension DiscoveryTableViewCell {
     var suggestedFor: [String] = []
     if let matchingDemographics = profileData.matchingDemographics,
       let matchingPreferences = profileData.matchingPreferences {
-      if let user = DataStore.shared.currentPearUser {
-        if user.matchingPreferences.matchesDemographics(demographics: matchingDemographics)
-          && matchingPreferences.matchesDemographics(demographics: user.matchingDemographics) && user.isSeeking {
-          if !DataStore.shared.filteringDisabledForSelfFromDefaults() {
-            suggestedFor.append("me")
-          }
-        }
-      }
+      
       for endorsedUser in DataStore.shared.endorsedUsers {
         if endorsedUser.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
           matchingPreferences.matchesDemographics(demographics: endorsedUser.matchingDemographics) {
@@ -328,6 +321,14 @@ extension DiscoveryTableViewCell {
           matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
           if !DataStore.shared.filteredDetachedProfilesFromDefaults().contains(detachedProfile.documentID) {
             suggestedFor.append(detachedProfile.firstName)
+          }
+        }
+      }
+      if let user = DataStore.shared.currentPearUser {
+        if user.matchingPreferences.matchesDemographics(demographics: matchingDemographics)
+          && matchingPreferences.matchesDemographics(demographics: user.matchingDemographics) && user.isSeeking {
+          if !DataStore.shared.filteringDisabledForSelfFromDefaults() {
+            suggestedFor.append("You")
           }
         }
       }
