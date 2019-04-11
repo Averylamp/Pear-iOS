@@ -43,7 +43,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   var fullPageBlocker: UIButton?
   var chatRequestVC: UIViewController?
   var chatRequestVCBottomConstraint: NSLayoutConstraint?
-  
+  var isSendingRequest = false
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -706,6 +706,11 @@ extension DiscoveryFullProfileViewController {
 extension DiscoveryFullProfileViewController: PearModalDelegate {
   
   func createPearRequest(sentByUserID: String, sentForUserID: String, requestText: String?) {
+    guard !isSendingRequest else {
+      print("Is already sending request")
+      return
+    }
+    self.isSendingRequest = true
     PearMatchesAPI.shared.createMatchRequest(sentByUserID: sentByUserID,
                                              sentForUserID: sentForUserID,
                                              receivedByUserID: self.profileID,
@@ -729,6 +734,7 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
           }
           
         }
+        self.isSendingRequest = false
         self.dismissRequestModal()
       }
     }

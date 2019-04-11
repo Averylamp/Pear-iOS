@@ -31,6 +31,11 @@ protocol MatchesAPI {
                             accepted: Bool,
                             completion: @escaping(Result<Match, MatchesAPIError>) -> Void)
   
+  func unmatchRequest(uid: String,
+                      matchID: String,
+                      reason: String?,
+                      completion: @escaping(Result<Bool, MatchesAPIError>) -> Void)
+  
   func sendNotification(fromID: String,
                         toID: String,
                         completion: @escaping(Result<Bool, MatchesAPIError>) -> Void)

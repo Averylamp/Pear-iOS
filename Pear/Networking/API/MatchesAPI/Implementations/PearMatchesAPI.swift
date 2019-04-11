@@ -34,6 +34,9 @@ class PearMatchesAPI: MatchesAPI {
   
   static let sendMessageNotificationQuery: String = "query SendNotification($fromUser_id:ID!, toUser_ID!) { notifyNewMessage(fromUser_id:$fromUser_id, toUser_id:$toUser_id) }"
   
+  // swiftlint:disable:next line_length
+  static let unmatchRequestQuery: String = "mutation UnmatchRequest($user_id: ID!, $match_id: ID!, $reason: String) { unmatch(user_id:$user_id, match_id:$match_id, reason: $reason) { success message  } }"
+  
   static func getMatchDecisionRequest(accepted: Bool) -> String {
     let requestFunction = accepted ? "acceptRequest" : "rejectRequest"
     let functionHeader = accepted ? "AcceptMatchRequest" : "RejectMatchRequest"
@@ -68,7 +71,7 @@ extension PearMatchesAPI {
         ]
       ]
     ]
-
+    
     do {
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
@@ -246,6 +249,80 @@ extension PearMatchesAPI {
     
   }
   
+  func unmatchRequest(uid: String,
+                      matchID: String,
+                      reason: String?,
+                      completion: @escaping(Result<Bool, MatchesAPIError>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 25.0)
+    request.httpMethod = "POST"
+    
+    request.allHTTPHeaderFields = defaultHeaders
+    
+    do {
+      
+      let fullDictionary: [String: Any] = [
+        "query": PearMatchesAPI.unmatchRequestQuery,
+        "variables": [
+          "user_id": uid,
+          "match_id": matchID,
+          "reason": reason
+        ]
+      ]
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          completion(.failure(MatchesAPIError.unknownError(error: error)))
+          return
+        } else {
+          if let data = data,
+            let json = try? JSON(data: data) {
+            print(json)
+          }
+          let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "unmatch")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
+            print("Failed to Create Match Request: \(helperResult)")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearMatchAPI",
+                                             functionName: "unmatchRequest",
+                                             message: "GraphQL Error: \(helperResult)",
+              tags: ["function": "createMatcheRequest"],
+              paylod: fullDictionary)
+            completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Create Match Request: \(message ?? "")")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearMatchAPI",
+                                             functionName: "unmatchRequest",
+                                             message: message ?? "Failed to Unmatch",
+                                             tags: ["function": "createMatcheRequest"],
+                                             paylod: fullDictionary)
+            completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
+          case .success(let message):
+            Analytics.logEvent("sent_unmatch_request", parameters: nil)
+            print("Successfully Create Unmatch Match Request: \(String(describing: message))")
+            completion(.success(true))
+          }
+        }
+      }
+      dataTask.resume()
+    } catch {
+      print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearMatchAPI",
+                                       functionName: "unmatchRequest",
+                                       message: "Unknown Error: \(error.localizedDescription)",
+        tags: [:])
+      completion(.failure(MatchesAPIError.unknownError(error: error)))
+    }
+  }
+  
   func decideOnMatchRequest(uid: String,
                             matchID: String,
                             accepted: Bool,
@@ -289,8 +366,8 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: requestFunction,
                                              message: "GraphQL Error: \(helperResult)",
-                                             tags: [:],
-                                             paylod: fullDictionary)
+              tags: [:],
+              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
@@ -323,7 +400,7 @@ extension PearMatchesAPI {
               completion(.failure(MatchesAPIError.failedDeserialization))
             }
           }
-
+          
         }
       }
       dataTask.resume()
