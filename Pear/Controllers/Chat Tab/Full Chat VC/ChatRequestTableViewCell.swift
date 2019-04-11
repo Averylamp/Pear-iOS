@@ -22,10 +22,10 @@ class ChatRequestTableViewCell: UITableViewCell {
       timestampLabel.stylizeChatMessageServerRequest()
     }
     if let requestContentLabel = self.requestContentLabel {
-      requestContentLabel.stylizeChatMessageText(sender: true)
+      requestContentLabel.stylizeChatMessageText(sender: false)
     }
     if let chatRequestLabel = self.chatRequestLabel {
-      chatRequestLabel.stylizeChatMessageText(sender: true)
+      chatRequestLabel.stylizeChatMessageText(sender: false)
     }
   }
   
