@@ -228,6 +228,7 @@ extension Chat {
       print("Pear user not found:")
       return
     }
+    let otherUserID = userID == firstPersonID ? secondPersonID : firstPersonID
     let messageRef = Firestore.firestore().collection("\(self.documentPath)/messages").document()
     messageRef.setData([
       "documentID": messageRef.documentID,
@@ -237,6 +238,19 @@ extension Chat {
       "content": text,
       "timestamp": Date()
       ], completion: completion)
+    
+    PearMatchesAPI.shared.sendNotification(fromID: userID, toID: otherUserID) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Successfully sent notification")
+        } else {
+          print("Failed to send notification")
+        }
+      case .failure(let error):
+        print("Error sending notification: :\(error)")
+      }
+    }
   }
   
   func updateLastSeenTime(completion: ((Error?) -> Void)?) {

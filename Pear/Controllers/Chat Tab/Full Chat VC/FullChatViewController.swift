@@ -51,6 +51,41 @@ class FullChatViewController: UIViewController {
     self.navigationController?.popViewController(animated: true)
   }
   
+  @IBAction func moreOptionsButtonClicked(_ sender: Any) {
+    let alertController = UIAlertController()
+    let unmatch = UIAlertAction(title: "Unmatch", style: .destructive) { (_) in
+      guard let userID = DataStore.shared.currentPearUser?.documentID else {
+        print("Failed to get pear user")
+        return
+      }
+      PearMatchesAPI.shared.unmatchRequest(uid: userID, matchID: self.match.documentID, reason: nil, completion: { (result) in
+        switch result {
+        case .success(let successful):
+          if successful {
+            print("Successfully unmatches")
+            HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+          } else {
+            print("Failed to Unmatch")
+            HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+          }
+        case .failure(let error):
+          print("Error unmatching: \(error)")
+        }
+        DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
+        DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
+      
+        DispatchQueue.main.async {
+          self.navigationController?.popViewController(animated: true)
+        }
+
+      })
+    }
+    let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    alertController.addAction(unmatch)
+    alertController.addAction(cancel)
+    self.present(alertController, animated: true, completion: nil)
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -131,7 +166,9 @@ extension FullChatViewController {
                                                         }
                                                       } else {
                                                         HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-                                                        self.navigationController?.popViewController(animated: true)
+                                                        DispatchQueue.main.async {
+                                                          self.navigationController?.popViewController(animated: true)
+                                                        }
                                                       }
                                                     }
                                                   })

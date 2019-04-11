@@ -48,6 +48,9 @@
                                             <constraint firstAttribute="height" constant="40" id="o2j-2n-ylJ"/>
                                         </constraints>
                                         <state key="normal" image="icon-more"/>
+                                        <connections>
+                                            <action selector="moreOptionsButtonClicked:" destination="Len-jD-UCq" eventType="touchUpInside" id="pvM-ro-wWc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOD-v0-Tg0">
                                         <rect key="frame" x="172.5" y="10" width="30" height="30"/>
