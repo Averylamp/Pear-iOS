@@ -209,6 +209,27 @@ extension DataStore {
     }
   }
   
+  func updateLatestLocationAndToken() {
+    if let user = DataStore.shared.currentPearUser {
+      var updates: [String: Any] = [:]
+      if let remoteInstanceID = DataStore.shared.firebaseRemoteInstanceID {
+        updates["firebaseRemoteInstanceID"] = remoteInstanceID
+      }
+      if let lastLocation = DataStore.shared.lastLocation {
+        var coordinates: [Double] = []
+        coordinates.append(lastLocation.longitude)
+        coordinates.append(lastLocation.latitude)
+        updates["location"] = coordinates
+        print("inserting location into update object")
+      }
+      PearUserAPI.shared.updateUser(userID: user.documentID, updates: updates) { (result) in
+        print("attempted to update location and remote instance ID")
+        print(result)
+      }
+      
+    }
+  }
+  
   func checkForDetachedProfiles(detachedProfilesFound: @escaping ([PearDetachedProfile]) -> Void) {
     if let user = DataStore.shared.currentPearUser {
       PearProfileAPI.shared.checkDetachedProfiles(phoneNumber: user.phoneNumber) { (result) in
