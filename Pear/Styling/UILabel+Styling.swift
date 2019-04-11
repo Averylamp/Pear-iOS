@@ -177,6 +177,13 @@ extension UILabel {
     self.textColor = R.color.secondaryTextColor()
   }
   
+  func sylizeMatchmakerRequestLabel() {
+    if let font = R.font.nunitoSemiBold(size: 17) {
+      self.font = font
+    }
+    self.textColor = R.color.primaryTextColor()
+  }
+  
   func stylizeChatMessageText(sender: Bool) {
     if let font = R.font.nunitoSemiBold(size: 17) {
       self.font = font
