@@ -14,6 +14,9 @@ extension DataStore {
     case skippedDetachedProfiles
     case blockedUsers
     case matchedUsers
+    case isFilteringForSelfDisabled
+    case notFilteringForEndorsedUsers
+    case notFilteringForDetachedProfiles
   }
   
   func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {
@@ -45,6 +48,36 @@ extension DataStore {
       existingMatchedUsers.append(matchedUserID)
     }
     UserDefaults.standard.set(existingMatchedUsers, forKey: matchedUserKey(userID: userID))
+  }
+  
+  func filteringDisabledForSelfFromDefaults() -> Bool {
+    return UserDefaults.standard.bool(forKey: UserDefaultKeys.isFilteringForSelfDisabled.rawValue)
+  }
+  
+  func filteredEndorsedUsersFromDefaults() -> [String] {
+    if let result = UserDefaults.standard.array(forKey: UserDefaultKeys.notFilteringForEndorsedUsers.rawValue) as? [String] {
+      return result
+    }
+    return []
+  }
+  
+  func filteredDetachedProfilesFromDefaults() -> [String] {
+    if let result = UserDefaults.standard.array(forKey: UserDefaultKeys.notFilteringForDetachedProfiles.rawValue) as? [String] {
+      return result
+    }
+    return []
+  }
+  
+  func updateFilteringDisabledForSelfInDefault(disabled: Bool) {
+    UserDefaults.standard.set(disabled, forKey: UserDefaultKeys.isFilteringForSelfDisabled.rawValue)
+  }
+  
+  func updateFilteredEndorsedUsersInDefault(filteredEndorsedUserIDs: [String]) {
+    UserDefaults.standard.set(filteredEndorsedUserIDs, forKey: UserDefaultKeys.notFilteringForEndorsedUsers.rawValue)
+  }
+  
+  func updateFilteredDetachedProfilesInDefault(filteredDetachedProfileIDs: [String]) {
+    UserDefaults.standard.set(filteredDetachedProfileIDs, forKey: UserDefaultKeys.notFilteringForDetachedProfiles.rawValue)
   }
   
 }

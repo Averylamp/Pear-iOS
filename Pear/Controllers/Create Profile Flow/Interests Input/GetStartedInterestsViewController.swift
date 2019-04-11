@@ -18,7 +18,7 @@ class GetStartedInterestsViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat  = 3.0
+  let pageNumber: CGFloat  = 4.0
   var gettingStartedData: UserProfileCreationData!
   
   var interestStrings: [String] = []
