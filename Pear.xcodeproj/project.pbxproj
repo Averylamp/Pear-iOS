@@ -751,8 +751,8 @@
 		91BEE2A3225C3C8000A53171 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */,
 				91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */,
+				91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */,
 				91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */,
 			);
 			path = Filters;

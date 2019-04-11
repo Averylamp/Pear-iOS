@@ -118,6 +118,7 @@ extension DiscoverySimpleViewController {
   @objc func didReceiveRefreshFiltersNotification() {
     print("Received refresh filters notification")
     self.fullDataReload(animated: true)
+    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)t
   }
   
   @objc func refreshControlChanged(sender: UIRefreshControl) {

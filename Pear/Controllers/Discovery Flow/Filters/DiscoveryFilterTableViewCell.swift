@@ -30,7 +30,6 @@ extension DiscoveryFilterTableViewCell {
     self.thumbnailImage.clipsToBounds = true
     self.thumbnailImage.contentMode = .scaleAspectFill
     self.thumbnailImage.layer.cornerRadius = 24
-    print("configuring for discoveryFilterItem:")
     switch discoveryFilterItem.type {
     case .personalUser:
       if let user = discoveryFilterItem.user {
@@ -59,6 +58,7 @@ extension DiscoveryFilterTableViewCell {
       }
     }
     checkboxChecked.isHidden = !discoveryFilterItem.checked
+    self.nameLabel.stylizeFilterName(selected: discoveryFilterItem.checked)
   }
   
 }
