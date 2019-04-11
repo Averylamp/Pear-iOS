@@ -313,9 +313,10 @@ extension PearProfileAPI {
                                                    apiName: "PearProfileAPI",
                                                    functionName: "getDiscoveryFeed",
                                                    message: "Failed Discovery Serialization: \(error.localizedDescription)",
-                    tags: [:],
-                    paylod: fullDictionary)
+                                                   tags: [:],
+                                                   paylod: fullDictionary)
                   print("Failed to deserialize pear user from feed: \(error)")
+                  print(userData)
                 }
               }
               completion(.success(allFullProfiles))

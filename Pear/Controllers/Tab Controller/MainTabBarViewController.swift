@@ -82,18 +82,7 @@ extension MainTabBarViewController {
 extension MainTabBarViewController: UITabBarControllerDelegate {
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-    switch tabBarController.selectedIndex {
-    case 0:
-      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    case 1:
-      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .medium)
-    case 2:
-      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .heavy)
-    default:
-      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-      
-    }
-    
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
   }
   
 }

@@ -154,6 +154,7 @@ extension DataStore {
                                                   switch result {
                                                   case .success(let matches):
                                                     self.currentMatches = matches
+                                                    print("Current Matches:\(self.matchRequests.count)")
                                                     NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
                                                     if let matchCompletion = matchRequestsFound {
                                                       matchCompletion(matches)
@@ -186,6 +187,7 @@ extension DataStore {
                                                   switch result {
                                                   case .success(let matches):
                                                     self.matchRequests = matches
+                                                    print("Match Requests:\(self.matchRequests.count)")
                                                     NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
                                                     if let matchCompletion = matchRequestsFound {
                                                       matchCompletion(matches)
