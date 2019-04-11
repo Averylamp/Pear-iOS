@@ -42,6 +42,10 @@ extension LoadingScreenViewController {
             DataStore.shared.refreshCurrentMatches { (matches) in
               print("Found Current Matches: \(matches.count)")
             }
+            // THIS IS NO GOOD SHOULD BE FIXED
+            self.delay(delay: 60, closure: {
+              DataStore.shared.updateLatestLocationAndToken()
+            })
             self.continueToMainScreen()
           } else {
             self.continueToLandingScreen()
