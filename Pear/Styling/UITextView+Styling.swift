@@ -18,4 +18,20 @@ extension UITextView {
     self.textColor = R.color.primaryTextColor()
   }
   
+  func stylizeChatInputPlaceholder() {
+    if let font = R.font.nunitoRegular(size: 17) {
+      self.font = font
+    }
+    self.tintColor = R.color.primaryTextColor()
+    self.textColor = R.color.tertiaryTextColor()
+  }
+  
+  func stylizeChatInputText() {
+    if let font = R.font.nunitoRegular(size: 17) {
+      self.font = font
+    }
+    self.tintColor = R.color.primaryTextColor()
+    self.textColor = R.color.primaryTextColor()
+  }
+  
 }
