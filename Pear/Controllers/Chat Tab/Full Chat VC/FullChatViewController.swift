@@ -104,7 +104,8 @@ extension FullChatViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.recalculateTextViewHeight(animated: false)
-    self.tableView.scrollToRow(at: IndexPath(row: self.tableView.numberOfRows(inSection: 0) - 1, section: 0), at: .bottom, animated: false)
+    
+    self.tableView.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: true)
   }
   
   override func viewDidAppear(_ animated: Bool) {
