@@ -23,6 +23,7 @@ class LandingScreenViewController: UIViewController {
   @IBOutlet weak var termsButton: UIButton!
   
   var gettingStarted: Bool = false
+  var prevPageNum: Int = 0
   var isLoggingIntoFacebook: Bool = false
   
   var pages: [LandingScreenPageViewController] = []
@@ -212,6 +213,7 @@ private extension LandingScreenViewController {
       case .cancelled:
         trace?.incrementMetric("Facebook Login Cancelled", by: 1)
         trace?.stop()
+        self.prevPageNum = 3 // prevents analytics case where 2nd fb auto login not logged
         self.stylizeFacebookButton(isEnabled: true)
       case .failed:
         trace?.incrementMetric("Facebook Login Failed", by: 1)
@@ -396,6 +398,7 @@ private extension LandingScreenViewController {
   ///
   /// - Parameter sender: Facebook Login Button
   @objc func facebookButtonClicked(sender: UIButton) {
+    Analytics.logEvent("LAND_tapFBLogin", parameters: nil)
     self.delay(delay: 1.0) {
       self.gettingStarted = false
     }
@@ -404,6 +407,7 @@ private extension LandingScreenViewController {
   }
   
   @objc func emailButtonClicked(sender: UIButton) {
+    Analytics.logEvent("LAND_tapEmailLogin", parameters: nil)
     guard !self.gettingStarted else { return }
     self.gettingStarted = true
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
@@ -427,7 +431,6 @@ private extension LandingScreenViewController {
 
 // MARK: - UIScrollViewDelegate
 extension LandingScreenViewController: UIScrollViewDelegate {
-  
   /// Scroll View Did Scroll
   ///
   /// Used for realtime resizing of landing pages
@@ -438,11 +441,28 @@ extension LandingScreenViewController: UIScrollViewDelegate {
     pageControl.currentPage = Int(pageIndex)
     let percentOffset: CGFloat = scrollView.contentOffset.x / scrollView.contentSize.width
     
+    // Analytics for viewing pages
+    if percentOffset == 0 {
+      trackPageView(pageNumber: 0)
+    } else if percentOffset == 0.25 {
+      trackPageView(pageNumber: 1)
+    } else if percentOffset == 0.50 {
+      trackPageView(pageNumber: 2)
+    } else if percentOffset == 0.75 {
+      if prevPageNum != 4 {
+        trackPageView(pageNumber: 3)
+      }
+    } else if percentOffset > 0.8 {
+      trackPageView(pageNumber: 4)
+    }
+    
+    // Scale page image views
     if percentOffset < 0 {
       pages[0].scaleImageView(percent: 1 + ((percentOffset) * 4), before: true)
     } else if percentOffset > 0 && percentOffset <= 0.25 {
       pages[0].scaleImageView(percent: 1 - ((percentOffset) * 4), before: false)
       pages[1].scaleImageView(percent: percentOffset * 4, before: true)
+      
     } else if percentOffset > 0.25 && percentOffset <= 0.50 {
       pages[1].scaleImageView(percent: 1 - (percentOffset - 0.25) * 4, before: false)
       pages[2].scaleImageView(percent: (percentOffset - 0.25) * 4, before: true)
@@ -455,6 +475,20 @@ extension LandingScreenViewController: UIScrollViewDelegate {
         print("Autotrigger get started")
         self.facebookButtonClicked(sender: self.facebookButton)
       }
+    }
+  }
+  
+  func trackPageView(pageNumber: Int) {
+    if prevPageNum != pageNumber {
+      var eventName: String
+      if pageNumber == 4 {
+        eventName = "LAND_autoFBLogin"
+      } else {
+        eventName = "LAND_p" + String(pageNumber) + "View"
+      }
+      Analytics.logEvent(eventName, parameters: nil)
+      print(eventName)
+      prevPageNum = pageNumber
     }
   }
   
