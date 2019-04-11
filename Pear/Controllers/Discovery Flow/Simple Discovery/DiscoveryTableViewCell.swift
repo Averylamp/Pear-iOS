@@ -307,18 +307,31 @@ extension DiscoveryTableViewCell {
     var suggestedFor: [String] = []
     if let matchingDemographics = profileData.matchingDemographics,
       let matchingPreferences = profileData.matchingPreferences {
+      
       for endorsedUser in DataStore.shared.endorsedUsers {
         if endorsedUser.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
           matchingPreferences.matchesDemographics(demographics: endorsedUser.matchingDemographics) {
-          suggestedFor.append(endorsedUser.firstName)
+          if !DataStore.shared.filteredEndorsedUsersFromDefaults().contains(endorsedUser.documentID) {
+            suggestedFor.append(endorsedUser.firstName)
+          }
         }
       }
-//      for detachedProfile in DataStore.shared.detachedProfiles {
-//        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
-//          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
-//          suggestedFor.append(detachedProfile.firstName)
-//        }
-//      }
+      for detachedProfile in DataStore.shared.detachedProfiles {
+        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
+          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
+          if !DataStore.shared.filteredDetachedProfilesFromDefaults().contains(detachedProfile.documentID) {
+            suggestedFor.append(detachedProfile.firstName)
+          }
+        }
+      }
+      if let user = DataStore.shared.currentPearUser {
+        if user.matchingPreferences.matchesDemographics(demographics: matchingDemographics)
+          && matchingPreferences.matchesDemographics(demographics: user.matchingDemographics) && user.isSeeking {
+          if !DataStore.shared.filteringDisabledForSelfFromDefaults() {
+            suggestedFor.append("You")
+          }
+        }
+      }
     }
     if suggestedFor.count > 0 {
       self.suggestedForContainer.isHidden = false

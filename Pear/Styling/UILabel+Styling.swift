@@ -148,6 +148,17 @@ extension UILabel {
     }
   }
   
+  func stylizeFilterName(selected: Bool) {
+    if let font = R.font.nunitoSemiBold(size: 17) {
+      self.font = font
+    }
+    if selected {
+      self.textColor = R.color.primaryTextColor()
+    } else {
+      self.textColor = R.color.tertiaryTextColor()
+    }
+  }
+  
   func stylizeChatRequestDateLabel(unread: Bool) {
     if let font = R.font.nunitoRegular(size: 13) {
       self.font = font
