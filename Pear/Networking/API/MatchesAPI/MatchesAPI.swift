@@ -25,4 +25,13 @@ protocol MatchesAPI {
                          token: String,
                          matchType: MatchesRequestType,
                          completion: @escaping (Result<[Match], MatchesAPIError>) -> Void)
+  
+  func decideOnMatchRequest(uid: String,
+                            matchID: String,
+                            accepted: Bool,
+                            completion: @escaping(Result<Match, MatchesAPIError>) -> Void)
+  
+  func sendNotification(fromID: String,
+                        toID: String,
+                        completion: @escaping(Result<Bool, MatchesAPIError>) -> Void)
 }

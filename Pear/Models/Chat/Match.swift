@@ -39,29 +39,31 @@ protocol MatchDelegate: class {
 
 class Match: Decodable, CustomStringConvertible {
   
-  let documentID: String!
-  let sentByUser: MatchingPearUser!
-  let sentForUser: MatchingPearUser!
-  let receivedByUser: MatchingPearUser!
-  let sentForUserStatus: MatchRequestResponse!
-  let sentForUserStatusLastUpdated: Date!
-  let receivedByUserStatus: MatchRequestResponse!
-  var receivedByUserStatusLastUpdated: Date!
-  let firebaseChatDocumentID: String!
-  let firebaseChatDocumentPath: String!
+  let documentID: String
+  let sentByUser: MatchingPearUser
+  let sentForUser: MatchingPearUser
+  let receivedByUser: MatchingPearUser
+  let sentForUserStatus: MatchRequestResponse
+  let sentForUserStatusLastUpdated: Date
+  let receivedByUserStatus: MatchRequestResponse
+  var receivedByUserStatusLastUpdated: Date
+  let firebaseChatDocumentID: String
+  let firebaseChatDocumentPath: String
   var chat: Chat?
-  var otherUser: MatchingPearUser!
+  var otherUser: MatchingPearUser
+  var currentUserStatus: MatchRequestResponse
+  var otherUserStatus: MatchRequestResponse
   
   var description: String {
     return "**** Match Object **** \n" + """
-    sentByUser: \(String(describing: self.sentByUser!))
-    sentForUser: \(String(describing: self.sentForUser!))
-    receivedByUser: \(String(describing: self.receivedByUser!))
-    sentForUserStatus: \(String(describing: self.sentForUserStatus!))
-    sentForUserStatusLastUpdated: \(String(describing: self.sentForUserStatusLastUpdated!))
-    receivedByUserStatus: \(String(describing: self.receivedByUserStatus!))
-    receivedByUserStatusLastUpdated: \(String(describing: self.receivedByUserStatusLastUpdated!))
-    firebaseChatDocumentID: \(String(describing: self.firebaseChatDocumentID!))
+    sentByUser: \(String(describing: self.sentByUser))
+    sentForUser: \(String(describing: self.sentForUser))
+    receivedByUser: \(String(describing: self.receivedByUser))
+    sentForUserStatus: \(String(describing: self.sentForUserStatus))
+    sentForUserStatusLastUpdated: \(String(describing: self.sentForUserStatusLastUpdated))
+    receivedByUserStatus: \(String(describing: self.receivedByUserStatus))
+    receivedByUserStatusLastUpdated: \(String(describing: self.receivedByUserStatusLastUpdated))
+    firebaseChatDocumentID: \(String(describing: self.firebaseChatDocumentID))
     chat: \(String(describing: self.chat))
     chatPath: \(String(describing: self.firebaseChatDocumentPath))
     """
@@ -115,10 +117,12 @@ class Match: Decodable, CustomStringConvertible {
     
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       print("Could not find user")
-      return
+      throw MatchesAPIError.unknown
     }
     
-    self.otherUser = self.sentByUser.documentID == userID ? self.sentByUser : self.sentForUser
+    self.otherUser = self.sentForUser.documentID == userID ? self.receivedByUser : self.sentForUser
+    self.currentUserStatus = self.sentForUser.documentID == userID ? self.sentForUserStatus : self.receivedByUserStatus
+    self.otherUserStatus = self.sentForUser.documentID == userID ? self.receivedByUserStatus : self.sentForUserStatus
   }
   
   func fetchFirebaseChatObject(completion: ((Match?) -> Void)?) {
