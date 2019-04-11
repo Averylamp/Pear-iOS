@@ -49,7 +49,7 @@ class DiscoverySimpleViewController: UIViewController {
       print ("Failed to create Filters VC")
       return
     }
-    self.present(filtersVC, animated: true, completion: nil)
+    self.navigationController?.pushViewController(filtersVC, animated: true)
   }
   
 }

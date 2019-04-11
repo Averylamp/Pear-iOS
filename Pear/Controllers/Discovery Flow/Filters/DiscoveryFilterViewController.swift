@@ -39,13 +39,17 @@ class DiscoveryFilterViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    self.dismiss(animated: true, completion: nil)
-  }
-  
-  @IBAction func doneButtonClicked(_ sender: Any) {
     self.saveFilters()
     NotificationCenter.default.post(name: .refreshDiscoveryFeedAnimated, object: nil)
-    self.dismiss(animated: true, completion: nil)
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  func promptEndorsedProfileCreation() {
+    guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
+      print("Failed to create get started friend profile vc")
+      return
+    }
+    self.navigationController?.setViewControllers([startFriendVC], animated: true)
   }
   
 }
@@ -132,9 +136,48 @@ extension DiscoveryFilterViewController {
                                                                   checked: enabled)
         allDiscoveryFilterItems.append(detachedProfileDiscoveryFilterItem)
       }
+      
+      allDiscoveryFilterItems.sort { (item1, item2) -> Bool in
+        
+        // Ordering of user < endorsed < detached
+        if item1.type.rawValue < item2.type.rawValue {
+          return true
+        } else if item1.type.rawValue > item2.type.rawValue {
+          return false
+        }
+        
+        let item1FullName = self.getNameFromDiscoveryFilterItem(item: item1)
+        let item2FullName = self.getNameFromDiscoveryFilterItem(item: item2)
+        if item1FullName < item2FullName {
+          return true
+        } else if item1FullName > item2FullName {
+          return false
+        }
+        
+        return true
+      }
+      
       self.discoveryFilterItems = allDiscoveryFilterItems
-      print(self.discoveryFilterItems.map({ $0.checked }))
     }
+  }
+  
+  func getNameFromDiscoveryFilterItem(item: DiscoveryFilterItem) -> String {
+    var name = ""
+    switch item.type {
+    case .personalUser:
+      if let user = item.user {
+        name = user.fullName
+      }
+    case .endorsedUser:
+      if let endorsedUser = item.endorsedUser {
+        name = endorsedUser.fullName
+      }
+    case .detachedProfile:
+      if let detachedProfile = item.detachedProfile {
+        name = detachedProfile.firstName
+      }
+    }
+    return name
   }
   
 }
@@ -142,34 +185,50 @@ extension DiscoveryFilterViewController {
 extension DiscoveryFilterViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.discoveryFilterItems.count
+    return self.discoveryFilterItems.count + 1
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableView.automaticDimension
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    // Fetch a cell of the appropriate type.
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoveryFilterTVC", for: indexPath) as? DiscoveryFilterTableViewCell else {
-      return UITableViewCell()
+    if indexPath.row < self.discoveryFilterItems.count {
+      // Fetch a cell of the appropriate type.
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoveryFilterTVC", for: indexPath) as? DiscoveryFilterTableViewCell else {
+        return UITableViewCell()
+      }
+      cell.selectionStyle = .none
+      // Configure the cell’s contents.
+      print("Configuring Cell \(indexPath.row)")
+      cell.configure(discoveryFilterItem: discoveryFilterItems[indexPath.row])
+      return cell
+    } else {
+      return tableView.dequeueReusableCell(withIdentifier: "CreateProfileTVC", for: indexPath)
     }
-    cell.selectionStyle = .none
-    // Configure the cell’s contents.
-    print("Configuring Cell \(indexPath.row)")
-    cell.configure(discoveryFilterItem: discoveryFilterItems[indexPath.row])
-    return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("did select \(indexPath.row)")
-    discoveryFilterItems[indexPath.row].checked = !discoveryFilterItems[indexPath.row].checked
-    if let filterCell = tableView.cellForRow(at: indexPath) as? DiscoveryFilterTableViewCell {
-      filterCell.configure(discoveryFilterItem: discoveryFilterItems[indexPath.row])
+    if indexPath.row < self.discoveryFilterItems.count {
+      discoveryFilterItems[indexPath.row].checked = !discoveryFilterItems[indexPath.row].checked
+      if let filterCell = tableView.cellForRow(at: indexPath) as? DiscoveryFilterTableViewCell {
+        filterCell.configure(discoveryFilterItem: discoveryFilterItems[indexPath.row])
+      }
+    } else {
+      self.promptEndorsedProfileCreation()
     }
   }
   
   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    print("did deselect \(indexPath.row)")
-    discoveryFilterItems[indexPath.row].checked = !discoveryFilterItems[indexPath.row].checked
-    if let filterCell = tableView.cellForRow(at: indexPath) as? DiscoveryFilterTableViewCell {
-      filterCell.configure(discoveryFilterItem: discoveryFilterItems[indexPath.row])
+    print("did select \(indexPath.row)")
+    if indexPath.row < self.discoveryFilterItems.count {
+      discoveryFilterItems[indexPath.row].checked = !discoveryFilterItems[indexPath.row].checked
+      if let filterCell = tableView.cellForRow(at: indexPath) as? DiscoveryFilterTableViewCell {
+        filterCell.configure(discoveryFilterItem: discoveryFilterItems[indexPath.row])
+      }
+    } else {
+      self.promptEndorsedProfileCreation()
     }
   }
 }

@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DiscoveryFilterTableViewCell: UITableViewCell {
   
   @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var checkbox: UILabel!
+  @IBOutlet weak var checkboxBackground: UIImageView!
+  @IBOutlet weak var checkboxChecked: UIImageView!
+  @IBOutlet weak var thumbnailImage: UIImageView!
   
   override func awakeFromNib() {
       super.awakeFromNib()
@@ -24,22 +27,38 @@ class DiscoveryFilterTableViewCell: UITableViewCell {
 extension DiscoveryFilterTableViewCell {
   
   func configure(discoveryFilterItem: DiscoveryFilterItem) {
+    self.thumbnailImage.clipsToBounds = true
+    self.thumbnailImage.contentMode = .scaleAspectFill
+    self.thumbnailImage.layer.cornerRadius = 24
     print("configuring for discoveryFilterItem:")
     switch discoveryFilterItem.type {
     case .personalUser:
       if let user = discoveryFilterItem.user {
         self.nameLabel.text = user.firstName
+        self.thumbnailImage.image = R.image.discoveryYouButton()
       }
     case .endorsedUser:
       if let endorsedUser = discoveryFilterItem.endorsedUser {
         self.nameLabel.text = endorsedUser.firstName
+        if let firstImageURLString = endorsedUser.images.first?.thumbnail.imageURL,
+          let firstImageURL = URL(string: firstImageURLString) {
+          self.thumbnailImage.sd_setImage(with: firstImageURL, completed: nil)
+        } else {
+          self.thumbnailImage.image = R.image.friendsNoImage()
+        }
       }
     case .detachedProfile:
       if let detachedProfile = discoveryFilterItem.detachedProfile {
         self.nameLabel.text = detachedProfile.firstName
+        if let firstImageURLString = detachedProfile.images.first?.thumbnail.imageURL,
+          let firstImageURL = URL(string: firstImageURLString) {
+          self.thumbnailImage.sd_setImage(with: firstImageURL, completed: nil)
+        } else {
+          self.thumbnailImage.image = R.image.friendsNoImage()
+        }
       }
     }
-    self.checkbox.text = discoveryFilterItem.checked.description
+    checkboxChecked.isHidden = !discoveryFilterItem.checked
   }
   
 }
