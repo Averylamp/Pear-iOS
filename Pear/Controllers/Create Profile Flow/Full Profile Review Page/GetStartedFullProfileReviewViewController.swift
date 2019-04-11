@@ -12,7 +12,7 @@ import Firebase
 class GetStartedFullProfileReviewViewController: UIViewController {
   
     @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat  = 8.0
+  let pageNumber: CGFloat  = 9.0
   
   @IBOutlet weak var scrollView: UIScrollView!
   var gettingStartedUserProfileData: UserProfileCreationData!

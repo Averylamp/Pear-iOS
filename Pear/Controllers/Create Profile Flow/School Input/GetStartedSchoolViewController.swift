@@ -20,7 +20,7 @@ class GetStartedSchoolViewController: UIViewController {
   @IBOutlet weak var skipButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat = 2.0
+  let pageNumber: CGFloat = 3.0
   
   @IBOutlet weak var schoolNameTextField: UITextField!
   @IBOutlet weak var schoolNameContainer: UIView!

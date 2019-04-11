@@ -20,7 +20,7 @@ class GetStartedPhotoInputViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
-  let pageNumber: CGFloat = 7.0
+  let pageNumber: CGFloat = 8.0
   
   let betweenImageSpacing: CGFloat = 6
   var images: [LoadedImageContainer] = []

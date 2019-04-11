@@ -17,7 +17,7 @@ class GetStartedChoosePreferencesViewController: UIViewController {
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var stackView: UIStackView!
   
-  let pageNumber: CGFloat = 1.0
+  let pageNumber: CGFloat = 2.0
   
   var gettingStartedData: UserProfileCreationData!
   weak var genderPreferencesVC: UserGenderPreferencesViewController?
@@ -34,6 +34,12 @@ class GetStartedChoosePreferencesViewController: UIViewController {
   
   @IBAction func nextButtonClicked(_ sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    if let genderPreferences = genderPreferencesVC {
+      self.gettingStartedData.seekingGender = genderPreferences.genderPreferences
+    } else {
+      self.gettingStartedData.seekingGender = [.male, .female, .nonbinary]
+    }
+    print(self.gettingStartedData.seekingGender)
     if let schoolVC = GetStartedSchoolViewController.instantiate(gettingStartedData: self.gettingStartedData) {
       Analytics.logEvent("CP_done_preferences", parameters: nil)
       self.navigationController?.pushViewController(schoolVC, animated: true)
@@ -78,11 +84,6 @@ extension GetStartedChoosePreferencesViewController {
   }
   
   func setupFriendPreferences() {
-    
-//    guard let currentUser = DataStore.shared.currentPearUser else {
-//      print("Failed to fetch user")
-//      return
-//    }
     
     var seekingGender = self.gettingStartedData.seekingGender
     if seekingGender.count == 0,
