@@ -41,7 +41,9 @@ class DiscoverySimpleViewController: UIViewController {
   }
   
   @IBAction func discoveryIconClicked(_ sender: Any) {
-    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    if self.fullProfiles.count > 0 {
+      self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
   }
   
   @IBAction func filtersButtonClicked(_ sender: Any) {
@@ -118,7 +120,9 @@ extension DiscoverySimpleViewController {
   @objc func didReceiveRefreshFiltersNotification() {
     print("Received refresh filters notification")
     self.fullDataReload(animated: true)
-    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    if self.fullProfiles.count > 0 {
+      self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
   }
   
   @objc func refreshControlChanged(sender: UIRefreshControl) {
