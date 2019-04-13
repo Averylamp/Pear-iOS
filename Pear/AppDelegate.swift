@@ -158,6 +158,7 @@ extension AppDelegate {
       } else if let result = result {
         print("Remote instance ID token: \(result.token)")
         DataStore.shared.firebaseRemoteInstanceID = result.token
+        // [Brian] hmm usually by this point we haven't actually retrieved the pear user, so this will no-op
         DataStore.shared.updateLatestLocationAndToken()
       }
     }

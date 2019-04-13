@@ -128,6 +128,7 @@ extension DataStore: CLLocationManagerDelegate {
           self.firstLocationReceived = true
         }
       }
+      // [Brian] hmm usually by this point, on the first location update we haven't actually retrieved the pear user, so this will no-op
       DataStore.shared.updateLatestLocationAndToken()
     }
   }
