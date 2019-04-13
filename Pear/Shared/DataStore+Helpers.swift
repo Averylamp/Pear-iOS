@@ -317,7 +317,6 @@ extension DataStore {
     DataStore.shared.refreshCurrentMatches { (matches) in
       print("Found Current Matches: \(matches.count)")
     }
-    
   }
   
 }
