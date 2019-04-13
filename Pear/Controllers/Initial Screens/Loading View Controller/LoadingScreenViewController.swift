@@ -35,13 +35,7 @@ extension LoadingScreenViewController {
       if versionIsSufficient {
         DataStore.shared.refreshPearUser(completion: { (pearUser) in
           if pearUser != nil {
-            DataStore.shared.refreshEndorsedUsers(completion: nil)
-            DataStore.shared.refreshMatchRequests { (matchRequests) in
-              print("Found Match Requests: \(matchRequests.count)")
-            }
-            DataStore.shared.refreshCurrentMatches { (matches) in
-              print("Found Current Matches: \(matches.count)")
-            }
+            DataStore.shared.reloadAllUserData()
             // THIS IS NO GOOD SHOULD BE FIXED
             self.delay(delay: 60, closure: {
               DataStore.shared.updateLatestLocationAndToken()
@@ -58,7 +52,7 @@ extension LoadingScreenViewController {
           print("Not blocking version anyways")
           DataStore.shared.refreshPearUser(completion: { (pearUser) in
             if pearUser != nil {
-              DataStore.shared.refreshEndorsedUsers(completion: nil)
+              DataStore.shared.reloadAllUserData()
               self.continueToMainScreen()
             } else {
               self.continueToLandingScreen()
