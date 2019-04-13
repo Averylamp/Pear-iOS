@@ -38,6 +38,7 @@ extension LoadingScreenViewController {
       } else {
         DataStore.shared.refreshPearUser(completion: { (pearUser) in
           if pearUser != nil {
+            print("pear user refreshed")
             DataStore.shared.getNotificationAuthorizationStatus { status in
               if status == .notDetermined {
                 // user exists but notification auth status undetermined (likely reinstalled the app?), so prompt again

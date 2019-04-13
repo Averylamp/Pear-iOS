@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import CoreLocation
 
 class AllowNotificationsViewController: UIViewController {
   
@@ -29,21 +30,29 @@ class AllowNotificationsViewController: UIViewController {
   @IBAction func enableNotificationsClicked(_ sender: Any) {
     UNUserNotificationCenter.current()
       .requestAuthorization(
-      options: [.badge, .alert, .sound]) { (granted, error) in
+      options: [.badge, .alert, .sound]) { (granted, _) in
         print("Permission granted: \(granted)")
         if granted {
           // register for remote notifications
           DataStore.shared.registerForRemoteNotificationsIfAuthorized()
         }
-        DispatchQueue.main.sync {
-          if let error = error {
-            print(error)
+        let locationAuthStatus = CLLocationManager.authorizationStatus()
+        if locationAuthStatus == .authorizedWhenInUse || locationAuthStatus == .authorizedAlways {
+          DispatchQueue.main.async {
+            guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+              print("Failed to create Main Screen VC")
+              return
+            }
+            self.navigationController?.setViewControllers([mainVC], animated: true)
           }
-          guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-            print("Failed to initialize main VC")
-            return
+        } else {
+          if let allowLocationVC = AllowLocationViewController.instantiate() {
+            DispatchQueue.main.async {
+              self.navigationController?.pushViewController(allowLocationVC, animated: true)
+            }
+          } else {
+            print("Failed to create Allow Location VC")
           }
-          self.navigationController?.setViewControllers([mainVC], animated: true)
         }
     }
     
