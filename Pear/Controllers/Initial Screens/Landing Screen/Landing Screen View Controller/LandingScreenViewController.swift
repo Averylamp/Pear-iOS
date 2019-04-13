@@ -263,6 +263,7 @@ private extension LandingScreenViewController {
             facebookLoginExistingUserTrace?.incrementMetric("Facebook Found Existing User", by: 1)
             facebookLoginExistingUserTrace?.stop()
             DataStore.shared.reloadAllUserData()
+            // to do: prompt for notifications and location permissions
             DispatchQueue.main.async {
               guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
                 print("Failed to create Landing Screen VC")
