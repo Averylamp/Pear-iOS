@@ -119,6 +119,7 @@ extension DataStore {
               ]
               trace?.incrementMetric("Existing User Found", by: 1)
               trace?.stop()
+              DataStore.shared.updateLatestLocationAndToken()
               if let completion = completion {
                 completion(pearUser)
               }
