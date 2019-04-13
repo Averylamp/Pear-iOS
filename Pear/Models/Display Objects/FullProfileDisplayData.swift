@@ -45,6 +45,8 @@ class FullProfileDisplayData: Equatable {
   var schoolYear: String?
   var matchingDemographics: MatchingDemographics?
   var matchingPreferences: MatchingPreferences?
+  var discoveryTimestamp: Date?
+  var profileNumber: Int?
   
   init (firstName: String!,
         age: Int?,
