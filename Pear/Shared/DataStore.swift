@@ -119,6 +119,7 @@ extension DataStore: CLLocationManagerDelegate {
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    print("UPDATED LOCATION")
     if let location = locations.last {
       self.lastLocation = location.coordinate
       if let locationDelegate = self.delegate {

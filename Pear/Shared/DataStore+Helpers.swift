@@ -210,7 +210,9 @@ extension DataStore {
   }
   
   func updateLatestLocationAndToken() {
+    print("***UPDATING LATEST LOCATION AND TOKEN IF USER EXISTS***")
     if let user = DataStore.shared.currentPearUser {
+      print("***UPDATING LATEST LOCATION AND TOKEN***")
       var updates: [String: Any] = [:]
       if let remoteInstanceID = DataStore.shared.firebaseRemoteInstanceID {
         updates["firebaseRemoteInstanceID"] = remoteInstanceID
