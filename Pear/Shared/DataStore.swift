@@ -119,6 +119,7 @@ extension DataStore: CLLocationManagerDelegate {
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    print("UPDATED LOCATION")
     if let location = locations.last {
       self.lastLocation = location.coordinate
       if let locationDelegate = self.delegate {
@@ -127,6 +128,8 @@ extension DataStore: CLLocationManagerDelegate {
           self.firstLocationReceived = true
         }
       }
+      // [Brian] hmm usually by this point, on the first location update we haven't actually retrieved the pear user, so this will no-op
+      DataStore.shared.updateLatestLocationAndToken()
     }
   }
   
