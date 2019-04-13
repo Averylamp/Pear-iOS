@@ -71,7 +71,7 @@ extension DataStore {
     let trace = Performance.startTrace(name: "Fetching Firebase Token")
     if let currentUser = Auth.auth().currentUser {
       let uid = currentUser.uid
-      currentUser.getIDToken { (token, error) in
+      currentUser.getIDTokenForcingRefresh(true) { (token, error) in
         if let error = error {
           print("Error getting firebase token: \(error)")
           trace?.incrementMetric("Firebase Token Error", by: 1)
@@ -307,6 +307,17 @@ extension DataStore {
       }
     }
     return false
+  }
+  
+  func reloadAllUserData() {
+    DataStore.shared.refreshEndorsedUsers(completion: nil)
+    DataStore.shared.refreshMatchRequests { (matchRequests) in
+      print("Found Match Requests: \(matchRequests.count)")
+    }
+    DataStore.shared.refreshCurrentMatches { (matches) in
+      print("Found Current Matches: \(matches.count)")
+    }
+    
   }
   
 }
