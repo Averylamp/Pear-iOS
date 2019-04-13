@@ -104,8 +104,8 @@ extension FullChatViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.recalculateTextViewHeight(animated: false)
-    
-    self.tableView.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: true)
+    self.tableView.reloadData()
+    self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: false)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -516,7 +516,7 @@ extension FullChatViewController: ChatDelegate {
   func receivedNewMessages() {
     DispatchQueue.main.async {
       self.tableView.reloadData()
-      self.tableView.setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: true)
+      self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
       NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
       self.chat.updateLastSeenTime(completion: nil)
     }

@@ -71,7 +71,7 @@ extension DataStore {
     let trace = Performance.startTrace(name: "Fetching Firebase Token")
     if let currentUser = Auth.auth().currentUser {
       let uid = currentUser.uid
-      currentUser.getIDToken { (token, error) in
+      currentUser.getIDTokenForcingRefresh(true) { (token, error) in
         if let error = error {
           print("Error getting firebase token: \(error)")
           trace?.incrementMetric("Firebase Token Error", by: 1)
@@ -119,6 +119,7 @@ extension DataStore {
               ]
               trace?.incrementMetric("Existing User Found", by: 1)
               trace?.stop()
+              DataStore.shared.updateLatestLocationAndToken()
               if let completion = completion {
                 completion(pearUser)
               }
@@ -210,7 +211,9 @@ extension DataStore {
   }
   
   func updateLatestLocationAndToken() {
+    print("***UPDATING LATEST LOCATION AND TOKEN IF USER EXISTS***")
     if let user = DataStore.shared.currentPearUser {
+      print("***UPDATING LATEST LOCATION AND TOKEN***")
       var updates: [String: Any] = [:]
       if let remoteInstanceID = DataStore.shared.firebaseRemoteInstanceID {
         updates["firebaseRemoteInstanceID"] = remoteInstanceID
@@ -240,7 +243,7 @@ extension DataStore {
         case .failure(let error):
           print("Error checking for Detached Profiles: \(error)")
           detachedProfilesFound([])
-          return
+          return  
         }
       }
     } else {
@@ -307,6 +310,16 @@ extension DataStore {
       }
     }
     return false
+  }
+  
+  func reloadAllUserData() {
+    DataStore.shared.refreshEndorsedUsers(completion: nil)
+    DataStore.shared.refreshMatchRequests { (matchRequests) in
+      print("Found Match Requests: \(matchRequests.count)")
+    }
+    DataStore.shared.refreshCurrentMatches { (matches) in
+      print("Found Current Matches: \(matches.count)")
+    }
   }
   
 }

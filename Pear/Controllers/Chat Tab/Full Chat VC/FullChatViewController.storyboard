@@ -220,7 +220,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="SvL-P9-x5d" secondAttribute="trailing" constant="12" id="PPP-Hj-lgW"/>
                                                 <constraint firstItem="SvL-P9-x5d" firstAttribute="top" secondItem="U6g-XC-lsL" secondAttribute="topMargin" constant="4" id="SAI-0p-0dO"/>
                                                 <constraint firstItem="SvL-P9-x5d" firstAttribute="bottom" secondItem="U6g-XC-lsL" secondAttribute="bottomMargin" constant="4" id="ciV-xb-eSp"/>
-                                                <constraint firstItem="SvL-P9-x5d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U6g-XC-lsL" secondAttribute="leading" constant="100" id="hvS-gZ-yc4"/>
+                                                <constraint firstItem="SvL-P9-x5d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U6g-XC-lsL" secondAttribute="leading" constant="80" id="hvS-gZ-yc4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -299,7 +299,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="siV-vC-PbN" secondAttribute="bottom" constant="4" id="CmD-Kp-ca5"/>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="2Y3-aD-pJm" secondAttribute="trailing" constant="100" id="GQr-0k-G8p"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="2Y3-aD-pJm" secondAttribute="trailing" constant="80" id="GQr-0k-G8p"/>
                                                 <constraint firstItem="siV-vC-PbN" firstAttribute="leading" secondItem="p1c-St-95E" secondAttribute="leadingMargin" id="QTo-kM-vkn"/>
                                                 <constraint firstItem="siV-vC-PbN" firstAttribute="bottom" secondItem="2Y3-aD-pJm" secondAttribute="bottom" id="TVA-Mx-6qL"/>
                                                 <constraint firstItem="2Y3-aD-pJm" firstAttribute="top" secondItem="p1c-St-95E" secondAttribute="topMargin" constant="4" id="aAo-7k-IEQ"/>

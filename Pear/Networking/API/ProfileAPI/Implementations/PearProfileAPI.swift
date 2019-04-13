@@ -29,7 +29,7 @@ class PearProfileAPI: ProfileAPI {
   // swiftlint:disable:next line_length
   static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
   
-  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) } }}"
+  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) timestamp } }}"
   static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) }"
   
   // swiftlint:disable:next line_length
@@ -303,9 +303,15 @@ extension PearProfileAPI {
               for userData in discoveryUsers {
                 do {
                   let userRawData = try userData["user"].rawData()
+                  print(userData)
                   let matchingPearUser = try JSONDecoder().decode(MatchingPearUser.self, from: userRawData)
                   if matchingPearUser.userProfiles.count > 0 {
                     let fullProfile = FullProfileDisplayData(matchingUser: matchingPearUser)
+                    fullProfile.profileNumber = matchingPearUser.userProfiles.count
+                    if let timestamp = userData["timestamp"].string,
+                      let timestampValue = Double(timestamp) {
+                      fullProfile.discoveryTimestamp = Date(timeIntervalSince1970: timestampValue / 1000.0)
+                    }
                     allFullProfiles.append(fullProfile)
                   }
                 } catch {
