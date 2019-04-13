@@ -243,7 +243,7 @@ extension DataStore {
         case .failure(let error):
           print("Error checking for Detached Profiles: \(error)")
           detachedProfilesFound([])
-          return
+          return  
         }
       }
     } else {

@@ -59,7 +59,7 @@ class AllowNotificationsViewController: UIViewController {
   }
   
   @IBAction func skipNotificationsClicked(_ sender: Any) {
-    DispatchQueue.main.sync {
+    DispatchQueue.main.async {
       guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
         print("Failed to initialize main VC")
         return
