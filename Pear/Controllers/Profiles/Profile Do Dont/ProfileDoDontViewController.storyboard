@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="VWS-Hu-dqy"/>
                     </layoutGuides>
                     <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" id="Amx-4P-xls">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Yzj-YS-ktJ">
@@ -37,16 +37,9 @@
                                             <constraint firstAttribute="width" constant="46" id="eCO-uU-en9"/>
                                         </constraints>
                                     </imageView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="90t-o6-2S0">
-                                        <rect key="frame" x="187.5" y="0.0" width="0.0" height="0.0"/>
-                                        <color key="pageIndicatorTintColor" white="0.69999999999999996" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
-                                        <color key="currentPageIndicatorTintColor" white="0.20000000000000001" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
-                                    </pageControl>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="90t-o6-2S0" firstAttribute="centerX" secondItem="Yzj-YS-ktJ" secondAttribute="centerX" id="6D9-hf-Ydl"/>
                                     <constraint firstItem="hEU-Ht-yCj" firstAttribute="leading" secondItem="PWM-Qe-l4h" secondAttribute="trailing" constant="8" id="6PH-WW-iIz"/>
-                                    <constraint firstItem="90t-o6-2S0" firstAttribute="top" secondItem="Yzj-YS-ktJ" secondAttribute="top" id="LCR-n7-Wlj"/>
                                     <constraint firstItem="PWM-Qe-l4h" firstAttribute="leading" secondItem="Yzj-YS-ktJ" secondAttribute="leading" constant="8" id="We5-Ox-KVh"/>
                                     <constraint firstItem="hEU-Ht-yCj" firstAttribute="top" secondItem="Yzj-YS-ktJ" secondAttribute="top" constant="12" id="ZLQ-gI-MSL"/>
                                     <constraint firstItem="PWM-Qe-l4h" firstAttribute="centerY" secondItem="hEU-Ht-yCj" secondAttribute="centerY" id="j6l-oF-bGW"/>
@@ -60,15 +53,22 @@
                                     <constraint firstAttribute="height" constant="160" id="Fez-G5-Oco"/>
                                 </constraints>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="90t-o6-2S0">
+                                <rect key="frame" x="0.0" y="272" width="375" height="8"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="QYY-c2-tYF"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.69999999999999996" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.20000000000000001" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </pageControl>
                         </subviews>
                         <constraints>
                             <constraint firstItem="e0w-vx-wtg" firstAttribute="trailing" secondItem="Amx-4P-xls" secondAttribute="trailing" id="3wx-vM-ZFZ"/>
                             <constraint firstItem="e0w-vx-wtg" firstAttribute="leading" secondItem="Amx-4P-xls" secondAttribute="leading" id="7Rg-2K-CxW"/>
-                            <constraint firstItem="VWS-Hu-dqy" firstAttribute="top" secondItem="e0w-vx-wtg" secondAttribute="bottom" id="Anv-bL-F64"/>
                             <constraint firstItem="e0w-vx-wtg" firstAttribute="width" secondItem="Amx-4P-xls" secondAttribute="width" id="w19-GX-iWW"/>
                         </constraints>
                     </stackView>
-                    <size key="freeformSize" width="375" height="260"/>
+                    <size key="freeformSize" width="375" height="280"/>
                     <connections>
                         <outlet property="pageControl" destination="90t-o6-2S0" id="DY9-to-M5X"/>
                         <outlet property="scrollView" destination="e0w-vx-wtg" id="DXA-IY-qfH"/>

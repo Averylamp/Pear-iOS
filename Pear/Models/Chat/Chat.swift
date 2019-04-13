@@ -91,15 +91,19 @@ class Chat: Decodable, CustomStringConvertible {
     self.subscribeToMessages()
   }
   
-  func addMessage(message: Message) -> Bool {
+  func addMessage(message: Message, feedback: Bool = false) -> Bool {
     if !self.messages.contains(where: { $0.documentID == message.documentID}) {
       self.messages.append(message)
       self.messages.sort { if $0.timestamp.compare($1.timestamp) == .orderedAscending {
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .medium)
         return true
       } else if $0.timestamp.compare($1.timestamp) == .orderedDescending {
         return false
         }
         return $0.documentID < $1.documentID
+      }
+      if feedback {
+        HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .medium)
       }
       return true
     }
@@ -204,7 +208,7 @@ extension Chat {
               return
             }
             message.configureMessageForID(userID: userID)
-            if self.addMessage(message: message) {
+            if self.addMessage(message: message, feedback: true) {
               messagesReceived = true
             }
           } catch {

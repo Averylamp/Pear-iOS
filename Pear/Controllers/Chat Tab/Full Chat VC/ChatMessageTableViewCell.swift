@@ -31,15 +31,15 @@ class ChatMessageTableViewCell: UITableViewCell {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    if let gradientLayer = self.gradientLayer {
-      self.layoutIfNeeded()
-      CATransaction.begin()
-      CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .linear))
-      let multiplier: Double = self.chatContainerView.bounds.height < gradientLayer.frame.height ? 4.0 :1.0
-      CATransaction.setAnimationDuration(0.2 * multiplier)
-      gradientLayer.frame = self.chatContainerView.bounds
-      CATransaction.commit()
-    }
+//    if let gradientLayer = self.gradientLayer {
+//      self.layoutIfNeeded()
+//      CATransaction.begin()
+//      CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .linear))
+//      let multiplier: Double = self.chatContainerView.bounds.height < gradientLayer.frame.height ? 4.0 :1.0
+//      CATransaction.setAnimationDuration(0.2 * multiplier)
+//      gradientLayer.frame = self.chatContainerView.bounds
+//      CATransaction.commit()
+//    }
   }
   
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -71,17 +71,18 @@ class ChatMessageTableViewCell: UITableViewCell {
       if let chatThumbnailImageView = self.chatThumbnailImageView {
         chatThumbnailImageView.image = nil
       }
-      
-      let gradientLayer = CAGradientLayer()
-      self.gradientLayer = gradientLayer
-      gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-      gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-      if let startColor = R.color.chatGradientSenderStart()?.cgColor,
-        let endColor = R.color.chatGradientSenderEnd()?.cgColor {
-        gradientLayer.colors = [startColor, endColor]
-      }
-      gradientLayer.frame = self.chatContainerView.bounds
-      self.chatContainerView.layer.insertSublayer(gradientLayer, at: 0)
+
+      self.chatContainerView.backgroundColor = R.color.chatGradientSenderEnd()
+//      let gradientLayer = CAGradientLayer()
+//      self.gradientLayer = gradientLayer
+//      gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+//      gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+//      if let startColor = R.color.chatGradientSenderStart()?.cgColor,
+//        let endColor = R.color.chatGradientSenderEnd()?.cgColor {
+//        gradientLayer.colors = [startColor, endColor]
+//      }
+//      gradientLayer.frame = self.chatContainerView.bounds
+//      self.chatContainerView.layer.insertSublayer(gradientLayer, at: 0)
     } else {
       if let chatThumbnailImageView = self.chatThumbnailImageView {
         if let thumbnailURL = message.thumbnailImage {
@@ -90,16 +91,17 @@ class ChatMessageTableViewCell: UITableViewCell {
           chatThumbnailImageView.image = nil
         }
       }
-      let gradientLayer = CAGradientLayer()
-      self.gradientLayer = gradientLayer
-      gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-      gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-      if let startColor = R.color.chatGradientReceiverStart()?.cgColor,
-        let endColor = R.color.chatGradientReceiverEnd()?.cgColor {
-        gradientLayer.colors = [startColor, endColor]
-      }
-      gradientLayer.frame = self.chatContainerView.bounds
-      self.chatContainerView.layer.insertSublayer(gradientLayer, at: 0)
+      self.chatContainerView.backgroundColor = R.color.chatGradientReceiverEnd()
+//      let gradientLayer = CAGradientLayer()
+//      self.gradientLayer = gradientLayer
+//      gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+//      gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+//      if let startColor = R.color.chatGradientReceiverStart()?.cgColor,
+//        let endColor = R.color.chatGradientReceiverEnd()?.cgColor {
+//        gradientLayer.colors = [startColor, endColor]
+//      }
+//      gradientLayer.frame = self.chatContainerView.bounds
+//      self.chatContainerView.layer.insertSublayer(gradientLayer, at: 0)
     }
     self.setNeedsLayout()
   }

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t9W-Pp-VdW">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Allow Notifications View Controller-->
+        <scene sceneID="kYO-Va-nEH">
+            <objects>
+                <viewController id="t9W-Pp-VdW" customClass="AllowNotificationsViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nau-kR-MUQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Notifications" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9t1-Sa-u6Z">
+                                <rect key="frame" x="30" y="304.5" width="315" height="38.5"/>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll be notified when you receive new matches, and more!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLY-Pu-jtd">
+                                <rect key="frame" x="20" y="351" width="335" height="53"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
+                                <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-notifications" translatesAutoresizingMaskIntoConstraints="NO" id="qC6-XB-z6p">
+                                <rect key="frame" x="157.5" y="236.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qC6-XB-z6p" secondAttribute="height" multiplier="1:1" id="QH0-GU-CR4"/>
+                                    <constraint firstAttribute="height" constant="60" id="QSZ-D5-cxs"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F56-kc-CA4">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JsT-KM-a38"/>
+                                </constraints>
+                                <state key="normal" title="Don't Notify Me">
+                                    <color key="titleColor" red="0.76078431369999999" green="0.76862745099999996" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipNotificationsClicked:" destination="t9W-Pp-VdW" eventType="touchUpInside" id="xhF-hf-iET"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFp-H1-Qbo">
+                                <rect key="frame" x="20" y="535" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="OAx-py-tmO"/>
+                                </constraints>
+                                <state key="normal" title="Enable Notifications"/>
+                                <connections>
+                                    <action selector="enableNotificationsClicked:" destination="t9W-Pp-VdW" eventType="touchUpInside" id="b5L-3t-ULd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="c64-x6-2bp" firstAttribute="trailing" secondItem="oLY-Pu-jtd" secondAttribute="trailing" constant="20" id="258-O6-Duv"/>
+                            <constraint firstItem="F56-kc-CA4" firstAttribute="leading" secondItem="c64-x6-2bp" secondAttribute="leading" constant="20" id="4Tq-6h-lYJ"/>
+                            <constraint firstItem="c64-x6-2bp" firstAttribute="trailing" secondItem="hFp-H1-Qbo" secondAttribute="trailing" constant="20" id="4Vh-eO-xJW"/>
+                            <constraint firstItem="qC6-XB-z6p" firstAttribute="centerX" secondItem="9t1-Sa-u6Z" secondAttribute="centerX" id="EAt-eU-bSl"/>
+                            <constraint firstItem="9t1-Sa-u6Z" firstAttribute="leading" secondItem="nau-kR-MUQ" secondAttribute="leading" constant="30" id="God-z2-Yxk"/>
+                            <constraint firstAttribute="trailing" secondItem="9t1-Sa-u6Z" secondAttribute="trailing" constant="30" id="Hh0-OE-2HV"/>
+                            <constraint firstItem="9t1-Sa-u6Z" firstAttribute="centerY" secondItem="c64-x6-2bp" secondAttribute="centerY" constant="-20" id="JZn-ta-1iX"/>
+                            <constraint firstItem="c64-x6-2bp" firstAttribute="bottom" secondItem="F56-kc-CA4" secondAttribute="bottom" constant="20" id="Lb8-0N-HxZ"/>
+                            <constraint firstItem="oLY-Pu-jtd" firstAttribute="leading" secondItem="c64-x6-2bp" secondAttribute="leading" constant="20" id="RBb-W2-gpf"/>
+                            <constraint firstItem="9t1-Sa-u6Z" firstAttribute="top" secondItem="qC6-XB-z6p" secondAttribute="bottom" constant="8" id="Tpl-sc-Gfa"/>
+                            <constraint firstItem="hFp-H1-Qbo" firstAttribute="leading" secondItem="c64-x6-2bp" secondAttribute="leading" constant="20" id="hvD-6g-hbh"/>
+                            <constraint firstItem="oLY-Pu-jtd" firstAttribute="top" secondItem="9t1-Sa-u6Z" secondAttribute="bottom" constant="8" id="iZb-oJ-67I"/>
+                            <constraint firstItem="c64-x6-2bp" firstAttribute="trailing" secondItem="F56-kc-CA4" secondAttribute="trailing" constant="20" id="jUz-Aq-hx5"/>
+                            <constraint firstItem="9t1-Sa-u6Z" firstAttribute="centerX" secondItem="c64-x6-2bp" secondAttribute="centerX" id="kmU-pR-H7J"/>
+                            <constraint firstItem="F56-kc-CA4" firstAttribute="top" secondItem="hFp-H1-Qbo" secondAttribute="bottom" constant="12" id="wbz-k2-LDI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c64-x6-2bp"/>
+                    </view>
+                    <connections>
+                        <outlet property="enableNotificationsButton" destination="hFp-H1-Qbo" id="d5D-pk-71K"/>
+                        <outlet property="skipButton" destination="F56-kc-CA4" id="o03-xL-WTU"/>
+                        <outlet property="subtitleLabel" destination="oLY-Pu-jtd" id="nhV-cq-wPT"/>
+                        <outlet property="titleLabel" destination="9t1-Sa-u6Z" id="nUs-ck-qXr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9IE-V2-gf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-icon-notifications" width="240" height="240"/>
+    </resources>
+</document>

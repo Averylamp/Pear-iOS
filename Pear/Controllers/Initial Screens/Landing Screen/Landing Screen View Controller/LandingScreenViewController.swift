@@ -13,6 +13,7 @@ import Firebase
 import SwiftyJSON
 import NVActivityIndicatorView
 import SafariServices
+import CoreLocation
 
 class LandingScreenViewController: UIViewController {
   
@@ -223,6 +224,7 @@ private extension LandingScreenViewController {
     }
   }
   
+  // swiftlint:disable function_body_length
   func handleSuccessfulFacebookLogin(successResult: LoginResult) {
     switch successResult {
     case .success(let grantedPermissions, let deniedPermissions, let accessToken):
@@ -262,15 +264,51 @@ private extension LandingScreenViewController {
           if pearUser != nil {
             facebookLoginExistingUserTrace?.incrementMetric("Facebook Found Existing User", by: 1)
             facebookLoginExistingUserTrace?.stop()
-            DispatchQueue.main.async {
-              guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-                print("Failed to create Landing Screen VC")
-                self.stylizeFacebookButton(isEnabled: true)
-                return
+            DataStore.shared.reloadAllUserData()
+            // this is basically a copy of almost identical code in LoadingScreenViewController.swift
+            DataStore.shared.getNotificationAuthorizationStatus { status in
+              if status == .notDetermined {
+                // user exists but notification auth status undetermined (likely reinstalled the app?), so prompt again
+                if let allowNotificationsVC = AllowNotificationsViewController.instantiate() {
+                  DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(allowNotificationsVC, animated: true)
+                  }
+                } else {
+                  print("Failed to create Allow Notifications VC")
+                  DispatchQueue.main.async {
+                    guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+                      print("Failed to create Landing Screen VC")
+                      self.stylizeFacebookButton(isEnabled: true)
+                      return
+                    }
+                    self.stylizeFacebookButton(isEnabled: true)
+                    self.navigationController?.setViewControllers([mainVC], animated: true)
+                  }
+                }
+              } else {
+                let locationAuthStatus = CLLocationManager.authorizationStatus()
+                if locationAuthStatus == .authorizedWhenInUse || locationAuthStatus == .authorizedAlways {
+                  DispatchQueue.main.async {
+                    guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+                      print("Failed to create Landing Screen VC")
+                      self.stylizeFacebookButton(isEnabled: true)
+                      return
+                    }
+                    self.stylizeFacebookButton(isEnabled: true)
+                    self.navigationController?.setViewControllers([mainVC], animated: true)
+                  }
+                } else {
+                  if let allowLocationVC = AllowLocationViewController.instantiate() {
+                    DispatchQueue.main.async {
+                      self.navigationController?.pushViewController(allowLocationVC, animated: true)
+                    }
+                  } else {
+                    print("Failed to create Allow Location VC")
+                  }
+                }
               }
-              self.stylizeFacebookButton(isEnabled: true)
-              self.navigationController?.setViewControllers([mainVC], animated: true)
             }
+            
           } else {
             facebookLoginExistingUserTrace?.incrementMetric("Facebook Existing User Not Found", by: 1)
             facebookLoginExistingUserTrace?.stop()
