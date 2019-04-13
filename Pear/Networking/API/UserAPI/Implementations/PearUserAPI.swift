@@ -45,8 +45,6 @@ extension PearUserAPI {
     print(uid)
     request.allHTTPHeaderFields = defaultHeaders
     do {
-      print("***USER QUERY IS***")
-      print(PearUserAPI.getUserQuery)
       let fullDictionary: [String: Any] = [
         "query": PearUserAPI.getUserQuery,
         "variables": [
@@ -73,10 +71,6 @@ extension PearUserAPI {
           let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "getUser", objectName: "user")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
-            if let data = data,
-              let json = try? JSON(data: data) {
-              print(json)
-            }
             print("Failed to Get User: \(helperResult)")
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearUserAPI",
