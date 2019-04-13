@@ -277,11 +277,11 @@ extension DiscoveryTableViewCell {
       containerView.addSubview(schoolLabel)
       schoolLabel.translatesAutoresizingMaskIntoConstraints = false
       schoolLabel.stylizeInfoSubtextLabel()
-//      if let schoolYear = profileData.schoolYear {
-//        schoolLabel.text = schoolName + " | " + schoolYear
-//      } else {
+      //      if let schoolYear = profileData.schoolYear {
+      //        schoolLabel.text = schoolName + " | " + schoolYear
+      //      } else {
       schoolLabel.text = schoolName
-//      }
+      //      }
       containerView.addConstraints([
         NSLayoutConstraint(item: schoolIconView, attribute: .left, relatedBy: .equal,
                            toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
@@ -359,11 +359,29 @@ extension DiscoveryTableViewCell {
       if index < profileData.rawImages.count {
         imageView.image = profileData.rawImages[index]
         imageView.isHidden = false
+        if pagesCount == 0 {
+          imageView.subviews.forEach({
+            if $0.tag == 12 {
+              $0.removeFromSuperview()
+            }
+          })
+          self.addTagsToImageView(imageView: imageView, writtenByName: profileData.bio.first?.creatorName,
+                                  timestampDate: profileData.discoveryTimestamp)
+        }
         pagesCount += 1
       } else if index < profileData.imageContainers.count,
         let imageURL = URL(string: profileData.imageContainers[index].medium.imageURL) {
         imageView.sd_setImage(with: imageURL, completed: nil)
         imageView.isHidden = false
+        if pagesCount == 0 {
+          imageView.subviews.forEach({
+            if $0.tag == 12 {
+              $0.removeFromSuperview()
+            }
+          })
+          self.addTagsToImageView(imageView: imageView, writtenByName: profileData.bio.first?.creatorName,
+                                  timestampDate: profileData.discoveryTimestamp)
+        }
         pagesCount += 1
       } else {
         imageView.isHidden = true
@@ -408,7 +426,104 @@ extension DiscoveryTableViewCell {
     }
     self.highlightIndicator(index: 0)
   }
+  
+  func addTagsToImageView(imageView: UIImageView, writtenByName: String? = nil, timestampDate: Date? = nil) {
+    if let writtenByString = writtenByName {
+      let writtenByContainer = UIView()
+      writtenByContainer.tag = 12
+      writtenByContainer.translatesAutoresizingMaskIntoConstraints = false
+      writtenByContainer.backgroundColor = UIColor(white: 0.0, alpha: 0.8)
+      writtenByContainer.layer.cornerRadius = 15
+      
+      let writtenByIcon = UIImageView()
+      writtenByIcon.translatesAutoresizingMaskIntoConstraints = false
+      writtenByIcon.image = R.image.discoveryIconWirttenBy()
+      writtenByIcon.contentMode = .scaleAspectFill
+      writtenByIcon.addConstraint(NSLayoutConstraint(item: writtenByIcon, attribute: .height, relatedBy: .equal,
+                                                     toItem: writtenByIcon, attribute: .width, multiplier: 1.0, constant: 0.0))
+      
+      let writtenByLabel = UILabel()
+      writtenByLabel.translatesAutoresizingMaskIntoConstraints = false
+      writtenByLabel.text = "Written by \(writtenByString)"
+      writtenByLabel.stylizeDiscoveryTagLabel()
+      writtenByLabel.addConstraint(NSLayoutConstraint(item: writtenByLabel, attribute: .height, relatedBy: .equal,
+                                                      toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30))
+      writtenByContainer.addSubview(writtenByIcon)
+      writtenByContainer.addSubview(writtenByLabel)
+      writtenByContainer.addConstraints([
+        NSLayoutConstraint(item: writtenByIcon, attribute: .left, relatedBy: .equal,
+                           toItem: writtenByContainer, attribute: .left, multiplier: 1.0, constant: 8.0),
+        NSLayoutConstraint(item: writtenByIcon, attribute: .top, relatedBy: .equal,
+                           toItem: writtenByContainer, attribute: .top, multiplier: 1.0, constant: 4.0),
+        NSLayoutConstraint(item: writtenByIcon, attribute: .bottom, relatedBy: .equal,
+                           toItem: writtenByContainer, attribute: .bottom, multiplier: 1.0, constant: -4.0),
+        NSLayoutConstraint(item: writtenByLabel, attribute: .right, relatedBy: .equal,
+                           toItem: writtenByContainer, attribute: .right, multiplier: 1.0, constant: -8.0),
+        NSLayoutConstraint(item: writtenByLabel, attribute: .top, relatedBy: .equal,
+                           toItem: writtenByContainer, attribute: .top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: writtenByLabel, attribute: .bottom, relatedBy: .equal,
+                           toItem: writtenByContainer, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: writtenByLabel, attribute: .left, relatedBy: .equal,
+                           toItem: writtenByIcon, attribute: .right, multiplier: 1.0, constant: 8.0)
+        ])
+      imageView.addSubview(writtenByContainer)
+      imageView.addConstraints([
+        NSLayoutConstraint(item: writtenByContainer, attribute: .left, relatedBy: .equal,
+                           toItem: imageView, attribute: .left, multiplier: 1.0, constant: 8.0),
+        NSLayoutConstraint(item: writtenByContainer, attribute: .top, relatedBy: .equal,
+                           toItem: imageView, attribute: .top, multiplier: 1.0, constant: 8.0)
+        ])
+    }
+    
+    if let timestampDate = timestampDate {
+      let timestampContainer = UIView()
+      timestampContainer.tag = 12
+      timestampContainer.translatesAutoresizingMaskIntoConstraints = false
+      timestampContainer.backgroundColor = UIColor(white: 0.0, alpha: 0.8)
+      timestampContainer.layer.cornerRadius = 15
+      
+      let timestampIcon = UIImageView()
+      timestampIcon.translatesAutoresizingMaskIntoConstraints = false
+      timestampIcon.image = R.image.discoveryIconTimestamp()
+      timestampIcon.contentMode = .scaleAspectFill
+      timestampIcon.addConstraint(NSLayoutConstraint(item: timestampIcon, attribute: .height, relatedBy: .equal,
+                                                     toItem: timestampIcon, attribute: .width, multiplier: 1.0, constant: 0.0))
+      
+      let timestampLabel = UILabel()
+      timestampLabel.translatesAutoresizingMaskIntoConstraints = false
+      timestampLabel.text = "\(timestampDate.timeAgoSinceDate())"
+      timestampLabel.stylizeDiscoveryTagLabel()
+      timestampLabel.addConstraint(NSLayoutConstraint(item: timestampLabel, attribute: .height, relatedBy: .equal,
+                                                      toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30))
 
+      timestampContainer.addSubview(timestampIcon)
+      timestampContainer.addSubview(timestampLabel)
+      timestampContainer.addConstraints([
+        NSLayoutConstraint(item: timestampIcon, attribute: .left, relatedBy: .equal,
+                           toItem: timestampContainer, attribute: .left, multiplier: 1.0, constant: 8.0),
+        NSLayoutConstraint(item: timestampIcon, attribute: .top, relatedBy: .equal,
+                           toItem: timestampContainer, attribute: .top, multiplier: 1.0, constant: 4.0),
+        NSLayoutConstraint(item: timestampIcon, attribute: .bottom, relatedBy: .equal,
+                           toItem: timestampContainer, attribute: .bottom, multiplier: 1.0, constant: -4.0),
+        NSLayoutConstraint(item: timestampLabel, attribute: .right, relatedBy: .equal,
+                           toItem: timestampContainer, attribute: .right, multiplier: 1.0, constant: -8.0),
+        NSLayoutConstraint(item: timestampLabel, attribute: .top, relatedBy: .equal,
+                           toItem: timestampContainer, attribute: .top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: timestampLabel, attribute: .bottom, relatedBy: .equal,
+                           toItem: timestampContainer, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: timestampLabel, attribute: .left, relatedBy: .equal,
+                           toItem: timestampIcon, attribute: .right, multiplier: 1.0, constant: 8.0)
+        ])
+      imageView.addSubview(timestampContainer)
+      imageView.addConstraints([
+        NSLayoutConstraint(item: timestampContainer, attribute: .right, relatedBy: .equal,
+                           toItem: imageView, attribute: .right, multiplier: 1.0, constant: -8.0),
+        NSLayoutConstraint(item: timestampContainer, attribute: .top, relatedBy: .equal,
+                           toItem: imageView, attribute: .top, multiplier: 1.0, constant: 8.0)
+        ])
+    }
+  }
+  
 }
 
 // MARK: - UIScrollViewDelegate
@@ -590,4 +705,5 @@ extension DiscoveryTableViewCell {
     
     return containerView
   }
+  //swiftlint:disable:next file_length
 }

@@ -206,4 +206,11 @@ extension UILabel {
     }
   }
   
+  func stylizeDiscoveryTagLabel() {
+    if let font = R.font.nunitoBold(size: 12) {
+      self.font = font
+    }
+    self.textColor = UIColor.white
+  }
+  
 }

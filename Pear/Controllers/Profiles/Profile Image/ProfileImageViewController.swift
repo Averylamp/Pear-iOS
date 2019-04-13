@@ -14,7 +14,8 @@ class ProfileImageViewController: UIViewController {
   var image: UIImage?
   var imageContainer: ImageContainer?
   @IBOutlet var imageView: UIImageView!
-  
+  var timestampString: String?
+  var writtenByName: String?
   @IBOutlet weak var imageViewAspectConstraint: NSLayoutConstraint!
   /// Factory method for creating this view controller.
   ///
@@ -29,10 +30,12 @@ class ProfileImageViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(imageContainer: ImageContainer) -> ProfileImageViewController? {
+  class func instantiate(imageContainer: ImageContainer, timestampString: String? = nil, writtenByName: String? = nil) -> ProfileImageViewController? {
     let storyboard = UIStoryboard(name: String(describing: ProfileImageViewController.self), bundle: nil)
     guard let profileStackViewVC = storyboard.instantiateInitialViewController() as? ProfileImageViewController else { return nil }
     profileStackViewVC.imageContainer = imageContainer
+    profileStackViewVC.timestampString = timestampString
+    profileStackViewVC.writtenByName = writtenByName
     return profileStackViewVC
   }
   
@@ -65,5 +68,4 @@ extension ProfileImageViewController {
     self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView!, attribute: .height, relatedBy: .equal,
                                                     toItem: self.imageView, attribute: .width, multiplier: aspectRatio, constant: 0.0))
   }
-  
 }
