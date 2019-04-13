@@ -17,11 +17,13 @@ class ChatMainViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var inboxButton: UIButton!
   @IBOutlet weak var requestsButton: UIButton!
-  private let refreshControl = UIRefreshControl()
+  private let currentChatsRefreshControl = UIRefreshControl()
+  private let requestsRefreshControl = UIRefreshControl()
 
   var requestsTVC: ChatRequestsTableViewController?
   var matchesTVC: ChatRequestsTableViewController?
-  private var refreshTimer: Timer = Timer()
+  private var messageRequestRefreshTimer: Timer = Timer()
+  private var requestRefreshTimer: Timer = Timer()
 
   /// Factory method for creating this view controller.
   ///
@@ -88,9 +90,9 @@ extension ChatMainViewController {
         }
       })
     }
-    DispatchQueue.main.async {
-      UIApplication.shared.applicationIconBadgeNumber = iconNumber
-    }
+//    DispatchQueue.main.async {
+//      UIApplication.shared.applicationIconBadgeNumber = iconNumber
+//    }
   }
   
   func refreshMatchesObjects() {
@@ -98,7 +100,7 @@ extension ChatMainViewController {
       DataStore.shared.refreshCurrentMatches { (currentMatches) in
         DispatchQueue.main.async {
           matchesVC.updateMatches(matches: currentMatches)
-          self.refreshControl.endRefreshing()
+          self.currentChatsRefreshControl.endRefreshing()
         }
       }
     }
@@ -107,7 +109,7 @@ extension ChatMainViewController {
         DispatchQueue.main.async {
           requestVC.updateMatches(matches: matchRequests)
           self.requestsButton.setTitle("Requests (\(matchRequests.count))", for: .normal)
-          self.refreshControl.endRefreshing()
+          self.requestsRefreshControl.endRefreshing()
         }
       }
     }
@@ -116,11 +118,16 @@ extension ChatMainViewController {
   
   func setup() {
     self.scrollView.delegate = self
-    self.refreshTimer = Timer.scheduledTimer(timeInterval: 10,
+    self.messageRequestRefreshTimer = Timer.scheduledTimer(timeInterval: 10,
                                              target: self,
                                              selector: #selector(ChatMainViewController.reloadChatVCData),
                                              userInfo: nil,
                                              repeats: true)
+    self.requestRefreshTimer = Timer.scheduledTimer(timeInterval: 10,
+                                                           target: self,
+                                                           selector: #selector(ChatMainViewController.reloadChatVCData),
+                                                           userInfo: nil,
+                                                           repeats: true)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -137,8 +144,12 @@ extension ChatMainViewController {
   func stylize() {
     if let refreshFont = UIFont(name: R.font.nunitoRegular.fontName, size: 14) {
       
-      self.refreshControl
+      self.currentChatsRefreshControl
         .attributedTitle = NSAttributedString(string: "Refreshing Your Chats...",
+                                              attributes: [NSAttributedString.Key.font: refreshFont,
+                                                           NSAttributedString.Key.foregroundColor: UIColor(white: 0.7, alpha: 1.0)])
+      self.requestsRefreshControl
+        .attributedTitle = NSAttributedString(string: "Refreshing Your Requests...",
                                               attributes: [NSAttributedString.Key.font: refreshFont,
                                                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.7, alpha: 1.0)])
     }
@@ -157,7 +168,11 @@ extension ChatMainViewController {
   }
   
   func setupRequestTVCs() {
-    self.refreshControl
+    self.currentChatsRefreshControl
+      .addTarget(self,
+                 action: #selector(ChatMainViewController.refreshControlChanged(sender:)),
+                 for: .valueChanged)
+    self.requestsRefreshControl
       .addTarget(self,
                  action: #selector(ChatMainViewController.refreshControlChanged(sender:)),
                  for: .valueChanged)
@@ -207,8 +222,8 @@ extension ChatMainViewController {
     requestsTVC.updateMatches(matches: DataStore.shared.matchRequests)
     
     self.view.layoutIfNeeded()
-    matchesTVC.tableView.refreshControl = self.refreshControl
-//    requestsTVC.tableView.refreshControl = self.refreshControl
+    matchesTVC.tableView.refreshControl = self.currentChatsRefreshControl
+    requestsTVC.tableView.refreshControl = self.requestsRefreshControl
     self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * 2, height: self.scrollView.frame.height)
   }
   

@@ -175,7 +175,7 @@ extension ProfileDoDontViewController {
       ])
     
     let containerSize = CGSize(width: self.view.frame.width - (2 * indentWidth), height: CGFloat.infinity)
-    let intrinsicContentHeight: CGFloat = contentTextLabel.sizeThatFits(containerSize).height + 28
+    let intrinsicContentHeight: CGFloat = contentTextLabel.sizeThatFits(containerSize).height + 24
       + writtenByLabel.sizeThatFits(containerSize).height
     
     return (containerView, intrinsicContentHeight)
@@ -192,7 +192,7 @@ extension ProfileDoDontViewController: UIScrollViewDelegate {
     if pageIndex < self.intrinsicContentHeights.count - 1 && pageIndex >= 0 {
       let newScrollViewHeight = self.intrinsicContentHeights[pageIndex] * (1 - pagePercentage) +
         self.intrinsicContentHeights[pageIndex + 1] * pagePercentage
-      self.scrollViewHeightConstraint.constant = newScrollViewHeight + 24
+      self.scrollViewHeightConstraint.constant = newScrollViewHeight + 20
       self.view.layoutIfNeeded()
     }
   }

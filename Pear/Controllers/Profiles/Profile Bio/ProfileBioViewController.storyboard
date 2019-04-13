@@ -39,17 +39,17 @@
                                 </constraints>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AvL-kg-M9P">
-                                <rect key="frame" x="187.5" y="0.0" width="0.0" height="0.0"/>
-                                <color key="pageIndicatorTintColor" white="0.69999999999999996" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
-                                <color key="currentPageIndicatorTintColor" white="0.20000000000000001" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="187.5" y="268" width="0.0" height="0.0"/>
+                                <color key="pageIndicatorTintColor" white="0.69999999999999996" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.20000000000000001" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ARY-y7-cr4" secondAttribute="trailing" id="KQ1-d2-k51"/>
                             <constraint firstItem="ARY-y7-cr4" firstAttribute="width" secondItem="pis-cb-xLy" secondAttribute="width" id="Kit-RV-qpR"/>
-                            <constraint firstItem="AvL-kg-M9P" firstAttribute="top" secondItem="pis-cb-xLy" secondAttribute="top" id="SAz-vh-fIL"/>
                             <constraint firstItem="ARY-y7-cr4" firstAttribute="height" secondItem="pis-cb-xLy" secondAttribute="height" id="VmU-FI-Urk"/>
+                            <constraint firstAttribute="bottom" secondItem="AvL-kg-M9P" secondAttribute="bottom" constant="-8" id="XyQ-Tq-ps6"/>
                             <constraint firstItem="ARY-y7-cr4" firstAttribute="centerY" secondItem="pis-cb-xLy" secondAttribute="centerY" id="mLy-lL-E88"/>
                             <constraint firstItem="AvL-kg-M9P" firstAttribute="centerX" secondItem="pis-cb-xLy" secondAttribute="centerX" id="n9Q-Zj-vmK"/>
                             <constraint firstItem="ARY-y7-cr4" firstAttribute="leading" secondItem="pis-cb-xLy" secondAttribute="leading" id="xVE-EE-LMt"/>
