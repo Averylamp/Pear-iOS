@@ -158,6 +158,7 @@ extension AppDelegate {
       } else if let result = result {
         print("Remote instance ID token: \(result.token)")
         DataStore.shared.firebaseRemoteInstanceID = result.token
+        DataStore.shared.updateLatestLocationAndToken()
       }
     }
   }

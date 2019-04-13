@@ -54,10 +54,6 @@ extension LoadingScreenViewController {
                 let locationAuthStatus = CLLocationManager.authorizationStatus()
                 if locationAuthStatus == .authorizedWhenInUse || locationAuthStatus == .authorizedAlways {
                   DataStore.shared.reloadAllUserData()
-                  // THIS IS NO GOOD SHOULD BE FIXED
-                  self.delay(delay: 60, closure: {
-                    DataStore.shared.updateLatestLocationAndToken()
-                  })
                   self.continueToMainScreen()
                 } else {
                   if let allowLocationVC = AllowLocationViewController.instantiate() {

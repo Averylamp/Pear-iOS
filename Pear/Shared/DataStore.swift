@@ -127,6 +127,7 @@ extension DataStore: CLLocationManagerDelegate {
           self.firstLocationReceived = true
         }
       }
+      DataStore.shared.updateLatestLocationAndToken()
     }
   }
   
