@@ -21,6 +21,10 @@
 		9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */; };
 		9101E0CF224F2024009646AB /* GetStartedLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101E0CE224F2024009646AB /* GetStartedLocationViewController.swift */; };
 		9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0D0224F22E9009646AB /* GetStartedLocationViewController.storyboard */; };
+		911AD0F122619FDD00A743C2 /* AllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AD0F022619FDD00A743C2 /* AllowNotificationsViewController.swift */; };
+		911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */; };
+		911AD0F62261AE6900A743C2 /* AllowLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */; };
+		911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */; };
 		91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */; };
 		91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */; };
 		91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */; };
@@ -285,6 +289,10 @@
 		9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionBlockViewController.storyboard; sourceTree = "<group>"; };
 		9101E0CE224F2024009646AB /* GetStartedLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedLocationViewController.swift; sourceTree = "<group>"; };
 		9101E0D0224F22E9009646AB /* GetStartedLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedLocationViewController.storyboard; sourceTree = "<group>"; };
+		911AD0F022619FDD00A743C2 /* AllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationsViewController.swift; sourceTree = "<group>"; };
+		911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
+		911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationViewController.swift; sourceTree = "<group>"; };
+		911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowLocationViewController.storyboard; sourceTree = "<group>"; };
 		91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveProfileAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterTableViewCell.swift; sourceTree = "<group>"; };
@@ -743,6 +751,24 @@
 			path = "Location Input";
 			sourceTree = "<group>";
 		};
+		911AD0EF22619E3200A743C2 /* Allow Notifications Screen */ = {
+			isa = PBXGroup;
+			children = (
+				911AD0F022619FDD00A743C2 /* AllowNotificationsViewController.swift */,
+				911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */,
+			);
+			path = "Allow Notifications Screen";
+			sourceTree = "<group>";
+		};
+		911AD0F42261AE3900A743C2 /* Allow Location Screen */ = {
+			isa = PBXGroup;
+			children = (
+				911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */,
+				911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */,
+			);
+			path = "Allow Location Screen";
+			sourceTree = "<group>";
+		};
 		91BEE2942259951500A53171 /* Allow Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1161,6 +1187,8 @@
 				BB9CB6B9225A3BFB00605A98 /* Landing Navigation View Controller */,
 				BB9CB6B8225A3BED00605A98 /* Loading View Controller */,
 				BB986A38220E439800759A14 /* Landing Screen */,
+				911AD0EF22619E3200A743C2 /* Allow Notifications Screen */,
+				911AD0F42261AE3900A743C2 /* Allow Location Screen */,
 			);
 			path = "Initial Screens";
 			sourceTree = "<group>";
@@ -1925,7 +1953,9 @@
 				BBB70AE722233A77006B75A0 /* Nunito-ExtraBold.ttf in Resources */,
 				BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedStartFriendProfileViewController.storyboard in Resources */,
+				911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */,
 				BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */,
+				911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */,
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
@@ -2205,6 +2235,7 @@
 				BB986A4D220F79CA00759A14 /* GetStartedShortBioViewController.swift in Sources */,
 				BB986A43220F76BF00759A14 /* UserProfileCreationData.swift in Sources */,
 				BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */,
+				911AD0F62261AE6900A743C2 /* AllowLocationViewController.swift in Sources */,
 				BBA2E1EA224B23970088A7A7 /* ApproveDetachedProfileFoundViewController.swift in Sources */,
 				BB986A47220F799A00759A14 /* GetStartedStartFriendProfileViewController.swift in Sources */,
 				BB0AE4E922536FAC005DD315 /* UserAgePreferencesViewController.swift in Sources */,
@@ -2236,6 +2267,7 @@
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */,
+				911AD0F122619FDD00A743C2 /* AllowNotificationsViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,

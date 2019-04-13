@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebasePerformance
 import CodableFirebase
+import CoreLocation
 
 class LoadingScreenViewController: UIViewController {
   
@@ -32,34 +33,46 @@ extension LoadingScreenViewController {
     super.viewDidLoad()
 //    self.testFetchMatchRequests()
     DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
-      if versionIsSufficient {
+      if !versionIsSufficient && DataStore.shared.remoteConfig.configValue(forKey: "version_blocking_enabled").boolValue {
+        self.continueToVersionBlockScreen()
+      } else {
         DataStore.shared.refreshPearUser(completion: { (pearUser) in
           if pearUser != nil {
-            DataStore.shared.reloadAllUserData()
-            // THIS IS NO GOOD SHOULD BE FIXED
-            self.delay(delay: 60, closure: {
-              DataStore.shared.updateLatestLocationAndToken()
-            })
-            self.continueToMainScreen()
+            DataStore.shared.getNotificationAuthorizationStatus { status in
+              if status == .notDetermined {
+                // user exists but notification auth status undetermined (likely reinstalled the app?), so prompt again
+                if let allowNotificationsVC = AllowNotificationsViewController.instantiate() {
+                  DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(allowNotificationsVC, animated: true)
+                  }
+                } else {
+                  print("Failed to create Allow Notifications VC")
+                  self.continueToMainScreen()
+                }
+              } else {
+                let locationAuthStatus = CLLocationManager.authorizationStatus()
+                if locationAuthStatus == .authorizedWhenInUse || locationAuthStatus == .authorizedAlways {
+                  DataStore.shared.reloadAllUserData()
+                  // THIS IS NO GOOD SHOULD BE FIXED
+                  self.delay(delay: 60, closure: {
+                    DataStore.shared.updateLatestLocationAndToken()
+                  })
+                  self.continueToMainScreen()
+                } else {
+                  if let allowLocationVC = AllowLocationViewController.instantiate() {
+                    DispatchQueue.main.async {
+                      self.navigationController?.pushViewController(allowLocationVC, animated: true)
+                    }
+                  } else {
+                    print("Failed to create Allow Location VC")
+                  }
+                }
+              }
+            }
           } else {
             self.continueToLandingScreen()
           }
         })
-      } else {
-        if DataStore.shared.remoteConfig.configValue(forKey: "version_blocking_enabled").boolValue {
-          self.continueToVersionBlockScreen()
-        } else {
-          print("Not blocking version anyways")
-          DataStore.shared.refreshPearUser(completion: { (pearUser) in
-            if pearUser != nil {
-              DataStore.shared.reloadAllUserData()
-              self.continueToMainScreen()
-            } else {
-              self.continueToLandingScreen()
-            }
-          })
-
-        }
       }
     })
   }

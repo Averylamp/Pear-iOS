@@ -45,7 +45,8 @@ extension PearUserAPI {
     print(uid)
     request.allHTTPHeaderFields = defaultHeaders
     do {
-      
+      print("***USER QUERY IS***")
+      print(PearUserAPI.getUserQuery)
       let fullDictionary: [String: Any] = [
         "query": PearUserAPI.getUserQuery,
         "variables": [
@@ -65,6 +66,10 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
+          
+          if let data = data {
+            print(data.base64EncodedString())
+          }
           let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "getUser", objectName: "user")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
