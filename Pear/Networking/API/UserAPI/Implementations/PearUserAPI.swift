@@ -64,10 +64,6 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-          
-          if let data = data {
-            print(data.base64EncodedString())
-          }
           let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "getUser", objectName: "user")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
@@ -92,9 +88,9 @@ extension PearUserAPI {
             do {
               let pearUser = try JSONDecoder().decode(PearUser.self, from: objectData)
               print("Successfully found Pear User")
-              completion(.success(pearUser))
+//              completion(.success(pearUser))
               // Uncomment this line to go through initial user setup
-//              completion(.failure(UserAPIError.failedDeserialization))
+              completion(.failure(UserAPIError.failedDeserialization))
             } catch {
               print("Deserialization Error: \(error)")
               SentryHelper.generateSentryEvent(level: .error,

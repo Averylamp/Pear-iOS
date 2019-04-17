@@ -15,7 +15,7 @@ import NVActivityIndicatorView
 import SafariServices
 import CoreLocation
 
-class LandingScreenViewController: UIViewController {
+class OldLandingScreenViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var facebookButton: UIButton!
@@ -36,9 +36,9 @@ class LandingScreenViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> LandingScreenViewController? {
-    let storyboard = UIStoryboard(name: String(describing: LandingScreenViewController.self), bundle: nil)
-    guard let landingScreenVC = storyboard.instantiateInitialViewController() as? LandingScreenViewController else { return nil }
+  class func instantiate() -> OldLandingScreenViewController? {
+    let storyboard = UIStoryboard(name: String(describing: OldLandingScreenViewController.self), bundle: nil)
+    guard let landingScreenVC = storyboard.instantiateInitialViewController() as? OldLandingScreenViewController else { return nil }
     guard let page1VC = LandingScreenPage1ViewController.instantiate() else {
       print("Failed to create Page 1")
       return nil
@@ -85,7 +85,7 @@ class LandingScreenViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension LandingScreenViewController {
+extension OldLandingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -133,7 +133,7 @@ extension LandingScreenViewController {
 }
 
 // MARK: - Styling
-extension LandingScreenViewController {
+extension OldLandingScreenViewController {
   
   func setupScrollView() {
     let numPages: Int  = self.pages.count
@@ -142,7 +142,7 @@ extension LandingScreenViewController {
     
     scrollView.isPagingEnabled = true
     pageControl.numberOfPages = numPages
-    pageControl.addTarget(self, action: #selector(LandingScreenViewController.pageControlChanged(sender:)), for: .valueChanged)
+    pageControl.addTarget(self, action: #selector(OldLandingScreenViewController.pageControlChanged(sender:)), for: .valueChanged)
     
     for pageNumber in 0..<self.pages.count {
       self.addChild(self.pages[pageNumber])
@@ -166,10 +166,10 @@ extension LandingScreenViewController {
 }
 
 // MARK: - @IBActions
-private extension LandingScreenViewController {
+private extension OldLandingScreenViewController {
   func attachButtons() {
-    self.facebookButton.addTarget(self, action: #selector(LandingScreenViewController.facebookButtonClicked(sender:)), for: .touchUpInside)
-    self.emailButton.addTarget(self, action: #selector(LandingScreenViewController.emailButtonClicked(sender:)), for: .touchUpInside)
+    self.facebookButton.addTarget(self, action: #selector(OldLandingScreenViewController.facebookButtonClicked(sender:)), for: .touchUpInside)
+    self.emailButton.addTarget(self, action: #selector(OldLandingScreenViewController.emailButtonClicked(sender:)), for: .touchUpInside)
   }
   
   func stylizeFacebookButton(isEnabled: Bool) {
@@ -468,7 +468,7 @@ private extension LandingScreenViewController {
 }
 
 // MARK: - UIScrollViewDelegate
-extension LandingScreenViewController: UIScrollViewDelegate {
+extension OldLandingScreenViewController: UIScrollViewDelegate {
   /// Scroll View Did Scroll
   ///
   /// Used for realtime resizing of landing pages
