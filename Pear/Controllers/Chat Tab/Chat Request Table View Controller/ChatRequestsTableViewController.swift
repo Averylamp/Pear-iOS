@@ -80,7 +80,7 @@ extension ChatRequestsTableViewController: UITableViewDelegate, UITableViewDataS
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRequestTVC", for: indexPath) as? ChatRequestsTableViewCell else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRequestItemTVC", for: indexPath) as? ChatRequestsTableViewCell else {
       print("Failed to instantiate Chat Request TVC")
       return UITableViewCell()
     }

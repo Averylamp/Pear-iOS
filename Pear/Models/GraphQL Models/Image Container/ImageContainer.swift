@@ -206,7 +206,7 @@ class LoadedImageContainer {
   init(container: ImageContainer, imageURL: URL? = nil, imageSize: ImageType? = nil) {
     self.imageContainer = container
     if let imageURL = imageURL {
-      SDWebImageDownloader.shared()
+      SDWebImageDownloader.shared
         .downloadImage(with: imageURL, options: .highPriority, progress: nil) { (image, _, _, _) in
           if let image = image {
             self.loadedImageSize = imageSize
