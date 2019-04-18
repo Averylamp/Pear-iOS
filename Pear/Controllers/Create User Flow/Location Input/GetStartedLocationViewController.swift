@@ -11,7 +11,7 @@ import CoreLocation
 
 class GetStartedLocationViewController: UIViewController {
   
-  var gettingStartedUserData: UserCreationData!
+  var gettingStartedUserData: OldUserCreationData!
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
@@ -21,7 +21,7 @@ class GetStartedLocationViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserData: UserCreationData) -> GetStartedLocationViewController? {
+  class func instantiate(gettingStartedUserData: OldUserCreationData) -> GetStartedLocationViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedLocationViewController.self), bundle: nil)
     guard let allowLocationVC = storyboard.instantiateInitialViewController() as? GetStartedLocationViewController else { return nil }
     allowLocationVC.gettingStartedUserData = gettingStartedUserData

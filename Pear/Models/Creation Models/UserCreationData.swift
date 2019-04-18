@@ -1,8 +1,8 @@
 //
-//  GettingStartedUserData.swift
+//  UserCreationData.swift
 //  Pear
 //
-//  Created by Avery Lamp on 2/27/19.
+//  Created by Avery Lamp on 4/18/19.
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
@@ -53,62 +53,6 @@ class UserCreationData: CustomStringConvertible {
   }
   
   func getNextInputViewController() -> UIViewController? {
-    if self.lastLocation == nil {
-      print("get next input view controller... no last location")
-      guard let locationVC = GetStartedLocationViewController.instantiate(gettingStartedUserData: self) else {
-        print("Failed to create Location VC")
-        return nil
-      }
-      return locationVC
-    }
-    
-    if self.email == nil {
-      guard let emailInputVC = GetStartedEmailProviderViewController.instantiate(gettingStartedUserData: self) else {
-        print("Failed to create Email Provider VC")
-        return nil
-      }
-      return emailInputVC
-    }
-    
-    if self.firstName == nil {
-      guard let userFirstNameVC = GetStartedUserFirstNameViewController.instantiate(gettingStartedUserData: self) else {
-        print("Failed to start User First Name VC: ")
-        return nil
-      }
-      return userFirstNameVC
-    }
-    
-    if self.lastName == nil {
-      guard let userLastNameVC = GetStartedUserLastNameViewController.instantiate(gettingStartedUserData: self) else {
-        print("Failed to start User Last Name VC: ")
-        return nil
-      }
-      return userLastNameVC
-    }
-    
-    if self.age  == nil || self.birthdate  == nil {
-      guard let birthdateVC = GetStartedBirthdateViewController.instantiate(gettingStartedUserData: self) else {
-        print("Failed to start Birthdate VC")
-        return nil
-      }
-      return birthdateVC
-    }
-    
-    if self.gender == nil {
-      guard let genderVC = GetStartedUserGenderViewController.instantiate(gettingStartedData: self) else {
-        print("Failed to start Gender VC")
-        return nil
-      }
-      return genderVC
-    }
-    
-    if self.phoneNumber == nil {
-      guard let phoneInputVC = GetStartedValidatePhoneNumberViewController.instantiate(gettingStartedUserData: self) else {
-        print("Failed to create Phone Number VC")
-        return nil
-      }
-      return phoneInputVC
-    }
     
     return nil
   }

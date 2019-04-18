@@ -232,7 +232,7 @@ private extension OldLandingScreenViewController {
       print(deniedPermissions)
       let firebaseFacebookLogin = Performance.startTrace(name: "Firebase Facebook Login")
       
-      let gettingStartedUser = UserCreationData()
+      let gettingStartedUser = OldUserCreationData()
       // 2. Auth via Firebase.
       let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
       gettingStartedUser.primaryAuth = credential
@@ -373,7 +373,7 @@ private extension OldLandingScreenViewController {
     }
   }
   
-  func userGraphRequest(gettingStartedUser: UserCreationData, permissions: [String], completion: @escaping (UserCreationData) -> Void) {
+  func userGraphRequest(gettingStartedUser: OldUserCreationData, permissions: [String], completion: @escaping (OldUserCreationData) -> Void) {
     let trace = Performance.startTrace(name: "Facebook Graph Request")
     // Fetch All other User Profile Data available
     let userInfoRequest = FBSDKGraphRequest.init(graphPath: "me", parameters: ["fields": permissions.joined(separator: ",")])
@@ -449,7 +449,7 @@ private extension OldLandingScreenViewController {
     guard !self.gettingStarted else { return }
     self.gettingStarted = true
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let emailProviderVC = GetStartedEmailProviderViewController.instantiate(gettingStartedUserData: UserCreationData()) else {
+    guard let emailProviderVC = GetStartedEmailProviderViewController.instantiate(gettingStartedUserData: OldUserCreationData()) else {
       print("Failed to create Email Provider VC")
       return
     }

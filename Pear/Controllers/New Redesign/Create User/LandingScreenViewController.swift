@@ -8,12 +8,17 @@
 
 import UIKit
 import SafariServices
+import NVActivityIndicatorView
+import FirebaseAuth
 
 class LandingScreenViewController: UIViewController {
   
+  @IBOutlet weak var logoImageView: UIImageView!
   @IBOutlet weak var termsButton: UIButton!
   @IBOutlet weak var phoneNumberContainerView: UIView!
+  @IBOutlet weak var inputTextField: UITextField!
   
+  var isValidatingPhoneNumber: Bool = false
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -39,6 +44,69 @@ class LandingScreenViewController: UIViewController {
     self.present(actionSheet, animated: true, completion: nil)
   }
   
+  func validatePhoneNumber() {
+    guard self.isValidatingPhoneNumber == false else {
+      print("Is already validating")
+      return
+    }
+    self.isValidatingPhoneNumber = true
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    
+    if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
+      let fullPhoneNumber = "+1" + phoneNumber
+      print("Verifying phone number: \(fullPhoneNumber)")
+      self.inputTextField.textColor = UIColor.lightGray
+      self.inputTextField.isEnabled = false
+      let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                      type: NVActivityIndicatorType.lineScalePulseOut,
+                                                      color: StylingConfig.textFontColor,
+                                                      padding: 0)
+      self.view.addSubview(activityIndicator)
+      activityIndicator.center = CGPoint(x: self.view.center.x,
+                                         y: self.logoImageView.frame.origin.y - 40)
+      activityIndicator.startAnimating()
+      
+      PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+        
+          UIView.animate(withDuration: 0.5, animations: {
+            activityIndicator.alpha = 0.0
+          }, completion: { (_) in
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+          })
+        
+        self.inputTextField.textColor = StylingConfig.textFontColor
+        self.inputTextField.isEnabled = true
+        if let error = error {
+          self.alert(title: "Error validating Phone Number", message: error.localizedDescription)
+          print(error)
+          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+          self.isValidatingPhoneNumber = false
+          return
+        }
+        self.isValidatingPhoneNumber = false
+        guard let verificationID = verificationID else { return }
+        print("Phone number validated, \(fullPhoneNumber), \(phoneNumber)")
+        // Sign in using the verificationID and the code sent to the user
+        // ...
+        UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+        
+        HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+//        guard let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController
+//          .instantiate(gettingStartedUserData: self.gettingStartedUserData, verificationID: verificationID) else {
+//            print("Failed to create Phone Number Code VC")
+//            return
+//        }
+//        Analytics.logEvent("finished_phone_enter", parameters: nil)
+//        self.navigationController?.pushViewController(phoneNumberCodeVC, animated: true)
+      }
+    } else {
+      self.alert(title: "Phone number not detected", message: "Please input your 10 digit phone number")
+      self.isValidatingPhoneNumber = false
+    }
+    
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -47,19 +115,22 @@ extension LandingScreenViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
+    self.inputTextField.delegate = self
+    self.addDismissKeyboardOnViewClick()
   }
   
   func stylize() {
-//    self.view.background
+    self.view.backgroundColor = R.color.backgroundColorGreen()
+    
     guard let textFont = R.font.openSansLight(size: 11),
       let boldFont = R.font.openSansSemiBold(size: 11) else {
         print("Failed to load in fonts")
         return
     }
     let subtleAttributes = [NSAttributedString.Key.font: textFont,
-                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.7, alpha: 1.0)]
+                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.87, alpha: 1.0)]
     let boldAttributes = [NSAttributedString.Key.font: boldFont,
-                          NSAttributedString.Key.foregroundColor: UIColor(white: 0.6, alpha: 1.0)]
+                          NSAttributedString.Key.foregroundColor: UIColor(white: 0.93, alpha: 1.0)]
     let termsString = NSMutableAttributedString(string: "By continuing you agree to our ",
                                                 attributes: subtleAttributes)
     let eulaString = NSMutableAttributedString(string: "EULA",
@@ -75,6 +146,48 @@ extension LandingScreenViewController {
     
     self.phoneNumberContainerView.layer.cornerRadius = 8
     
+  }
+  
+}
+
+// MARK: - UITextFieldDelegate
+extension LandingScreenViewController: UITextFieldDelegate {
+  
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    var fullString = textField.text ?? ""
+    fullString.append(string.filter("0123456789".contains))
+    if range.length == 1 {
+      textField.text = String.formatPhoneNumber(phoneNumber: fullString, shouldRemoveLastDigit: true)
+    } else if string == " "{
+      return true
+    } else if string.count != 0 {
+      if fullString.filter("0123456789".contains).count == 11 && "1" == fullString.filter("0123456789".contains).substring(toIndex: 1) {
+        textField.text = String.formatPhoneNumber(phoneNumber: fullString.filter("0123456789".contains).substring(fromIndex: 1))
+        if let phoneNumber = inputTextField.text?.filter("0123456789".contains), phoneNumber.count == 10 {
+          self.validatePhoneNumber()
+        }
+      } else {
+        textField.text = String.formatPhoneNumber(phoneNumber: fullString)
+      }
+    }
+    if let phoneText = self.inputTextField.text, phoneText.filter("0123456789".contains).count == 10 {
+      print("Full Phone Number")
+      self.validatePhoneNumber()
+    }
+    return false
+  }
+  
+}
+
+// MARK: - Dismiss First Responder on Click
+extension LandingScreenViewController {
+  
+  func addDismissKeyboardOnViewClick() {
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LandingScreenViewController.dismissKeyboard)))
+  }
+  
+  @objc func dismissKeyboard() {
+    self.view.endEditing(true)
   }
   
 }
