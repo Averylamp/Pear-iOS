@@ -50,6 +50,7 @@ extension LandingScreenViewController {
   }
   
   func stylize() {
+//    self.view.background
     guard let textFont = R.font.openSansLight(size: 11),
       let boldFont = R.font.openSansSemiBold(size: 11) else {
         print("Failed to load in fonts")

@@ -223,7 +223,8 @@ extension DiscoverySimpleViewController {
                 prefetchURLS.append(firstImageMediumURL)
               }
             })
-            SDWebImagePrefetcher.shared().prefetchURLs(prefetchURLS)
+            
+            SDWebImagePrefetcher.shared.prefetchURLs(prefetchURLS)
             
             DispatchQueue.main.async {
               self.tableView.reloadData()
