@@ -29,10 +29,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yfc-4O-4AC">
-                                <rect key="frame" x="152.5" y="133" width="70" height="70"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pear-icon-white" translatesAutoresizingMaskIntoConstraints="NO" id="Yfc-4O-4AC">
+                                <rect key="frame" x="142.5" y="113" width="90" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="mln-QQ-gkQ"/>
+                                    <constraint firstAttribute="width" constant="90" id="mln-QQ-gkQ"/>
                                     <constraint firstAttribute="width" secondItem="Yfc-4O-4AC" secondAttribute="height" multiplier="1:1" id="xK1-LB-5Qs"/>
                                 </constraints>
                             </imageView>
@@ -60,7 +60,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1o-6t-8ui">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(800) GET-PEAR" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1o-6t-8ui">
                                         <rect key="frame" x="46" y="8" width="261" height="34"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="24"/>
@@ -111,6 +111,8 @@
                         <viewLayoutGuide key="safeArea" id="3yk-8c-7g0"/>
                     </view>
                     <connections>
+                        <outlet property="inputTextField" destination="j1o-6t-8ui" id="pDH-YO-Y6B"/>
+                        <outlet property="logoImageView" destination="Yfc-4O-4AC" id="hNa-J6-fG3"/>
                         <outlet property="phoneNumberContainerView" destination="6LX-bT-a7M" id="Cp5-HC-2bO"/>
                         <outlet property="termsButton" destination="mdH-2H-OCq" id="vAu-wg-o5B"/>
                     </connections>
@@ -119,4 +121,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="pear-icon-white" width="354" height="435"/>
+    </resources>
 </document>

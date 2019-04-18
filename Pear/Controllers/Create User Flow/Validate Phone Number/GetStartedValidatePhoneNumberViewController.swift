@@ -20,14 +20,14 @@ class GetStartedValidatePhoneNumberViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   
-  var gettingStartedUserData: UserCreationData!
+  var gettingStartedUserData: OldUserCreationData!
   
   @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserData: UserCreationData) -> GetStartedValidatePhoneNumberViewController? {
+  class func instantiate(gettingStartedUserData: OldUserCreationData) -> GetStartedValidatePhoneNumberViewController? {
     
     let storyboard = UIStoryboard(name: String(describing: GetStartedValidatePhoneNumberViewController.self), bundle: nil)
     guard let validatePhoneNumberVC = storyboard.instantiateInitialViewController() as? GetStartedValidatePhoneNumberViewController else { return nil }

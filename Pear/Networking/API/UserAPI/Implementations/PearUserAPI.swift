@@ -214,7 +214,7 @@ extension PearUserAPI {
     
   }
   
-  func createNewUser(with gettingStartedUserData: UserCreationData,
+  func createNewUser(with gettingStartedUserData: OldUserCreationData,
                      completion: @escaping (Result<PearUser, UserAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
@@ -419,7 +419,7 @@ extension PearUserAPI {
 // MARK: - Create User Endpoint Helpers
 extension PearUserAPI {
   
-  func convertUserDataToQueryVariable(userData: UserCreationData) throws -> [String: Any] {
+  func convertUserDataToQueryVariable(userData: OldUserCreationData) throws -> [String: Any] {
     guard
       let age = userData.age,
       let birthdate = userData.birthdate,

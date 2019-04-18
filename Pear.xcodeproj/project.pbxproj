@@ -75,7 +75,7 @@
 		BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */; };
 		BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */; };
 		BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */; };
-		BB3F219A2226765C00DC4489 /* UserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* UserCreationData.swift */; };
+		BB3F219A2226765C00DC4489 /* OldUserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* OldUserCreationData.swift */; };
 		BB3F219D22267B8000DC4489 /* GetStartedUserLastNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F219B22267B8000DC4489 /* GetStartedUserLastNameViewController.swift */; };
 		BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F219C22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard */; };
 		BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */; };
@@ -226,6 +226,7 @@
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */; };
+		BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91C832268D24800D285E3 /* UserCreationData.swift */; };
 		BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA6359225B68FA00A50422 /* GetStartedSchoolViewController.swift */; };
 		BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBEA635A225B68FA00A50422 /* GetStartedSchoolViewController.storyboard */; };
 		BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */; };
@@ -382,7 +383,7 @@
 		BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseGenderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedEmailProviderViewController.swift; sourceTree = "<group>"; };
 		BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedEmailProviderViewController.storyboard; sourceTree = "<group>"; };
-		BB3F21992226765C00DC4489 /* UserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationData.swift; sourceTree = "<group>"; };
+		BB3F21992226765C00DC4489 /* OldUserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserCreationData.swift; sourceTree = "<group>"; };
 		BB3F219B22267B8000DC4489 /* GetStartedUserLastNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedUserLastNameViewController.swift; sourceTree = "<group>"; };
 		BB3F219C22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedUserLastNameViewController.storyboard; sourceTree = "<group>"; };
 		BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfile.swift; sourceTree = "<group>"; };
@@ -540,6 +541,7 @@
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+UserDefaults.swift"; sourceTree = "<group>"; };
+		BBE91C832268D24800D285E3 /* UserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationData.swift; sourceTree = "<group>"; };
 		BBEA6359225B68FA00A50422 /* GetStartedSchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedSchoolViewController.swift; sourceTree = "<group>"; };
 		BBEA635A225B68FA00A50422 /* GetStartedSchoolViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedSchoolViewController.storyboard; sourceTree = "<group>"; };
 		BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUIViewController.swift; sourceTree = "<group>"; };
@@ -1200,7 +1202,8 @@
 			isa = PBXGroup;
 			children = (
 				BB986A42220F76BF00759A14 /* UserProfileCreationData.swift */,
-				BB3F21992226765C00DC4489 /* UserCreationData.swift */,
+				BB3F21992226765C00DC4489 /* OldUserCreationData.swift */,
+				BBE91C832268D24800D285E3 /* UserCreationData.swift */,
 			);
 			path = "Creation Models";
 			sourceTree = "<group>";
@@ -2374,6 +2377,7 @@
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				BB0628C922464278000D9B12 /* MatchingPearUser.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
+				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
@@ -2410,7 +2414,7 @@
 				9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */,
 				BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */,
 				BBA3CEB6225566560020A36C /* ChatRequestPersonalViewController.swift in Sources */,
-				BB3F219A2226765C00DC4489 /* UserCreationData.swift in Sources */,
+				BB3F219A2226765C00DC4489 /* OldUserCreationData.swift in Sources */,
 				BB986A4D220F79CA00759A14 /* GetStartedShortBioViewController.swift in Sources */,
 				BB986A43220F76BF00759A14 /* UserProfileCreationData.swift in Sources */,
 				BBF93E5A2267C9F3002841EE /* ProfileInputBoastRoastViewController.swift in Sources */,
