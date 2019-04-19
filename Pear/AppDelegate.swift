@@ -106,8 +106,15 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
   func application(_ application: UIApplication,
                    continue userActivity: NSUserActivity,
                    restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-    let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (_, _) in
-      
+    let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (link, error) in
+      if let error = error {
+        print(error)
+      }
+      if let link = link {
+        print(link)
+        print(link.matchType)
+        
+      }
     }
     
     return handled
