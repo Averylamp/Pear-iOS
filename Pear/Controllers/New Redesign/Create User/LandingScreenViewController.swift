@@ -10,6 +10,7 @@ import UIKit
 import SafariServices
 import NVActivityIndicatorView
 import FirebaseAuth
+import FirebaseAnalytics
 
 class LandingScreenViewController: UIViewController {
   
@@ -59,7 +60,7 @@ class LandingScreenViewController: UIViewController {
       self.inputTextField.isEnabled = false
       let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
                                                       type: NVActivityIndicatorType.lineScalePulseOut,
-                                                      color: StylingConfig.textFontColor,
+                                                      color: UIColor(white: 1.0, alpha: 0.7),
                                                       padding: 0)
       self.view.addSubview(activityIndicator)
       activityIndicator.center = CGPoint(x: self.view.center.x,
@@ -68,12 +69,12 @@ class LandingScreenViewController: UIViewController {
       
       PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
         
-          UIView.animate(withDuration: 0.5, animations: {
-            activityIndicator.alpha = 0.0
-          }, completion: { (_) in
-            activityIndicator.stopAnimating()
-            activityIndicator.removeFromSuperview()
-          })
+        UIView.animate(withDuration: 0.5, animations: {
+          activityIndicator.alpha = 0.0
+        }, completion: { (_) in
+          activityIndicator.stopAnimating()
+          activityIndicator.removeFromSuperview()
+        })
         
         self.inputTextField.textColor = StylingConfig.textFontColor
         self.inputTextField.isEnabled = true
@@ -92,13 +93,15 @@ class LandingScreenViewController: UIViewController {
         UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
         
         HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-//        guard let phoneNumberCodeVC = GetStartedValidatePhoneNumberCodeViewController
-//          .instantiate(gettingStartedUserData: self.gettingStartedUserData, verificationID: verificationID) else {
-//            print("Failed to create Phone Number Code VC")
-//            return
-//        }
-//        Analytics.logEvent("finished_phone_enter", parameters: nil)
-//        self.navigationController?.pushViewController(phoneNumberCodeVC, animated: true)
+        let userCreationData = UserCreationData()
+        userCreationData.phoneNumber = phoneNumber
+        guard let phoneNumberVC = UserPhoneCodeViewController.instantiate(userCreationData: userCreationData,
+                                                                          verificationID: verificationID) else {
+          print("Failed to create Phone Number Code VC")
+          return
+        }
+        Analytics.logEvent("finished_phone_enter", parameters: nil)
+        self.navigationController?.pushViewController(phoneNumberVC, animated: true)
       }
     } else {
       self.alert(title: "Phone number not detected", message: "Please input your 10 digit phone number")
