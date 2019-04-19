@@ -94,7 +94,7 @@ extension LoadingScreenViewController {
   }
   
   static func getLandingScreen() -> UIViewController? {
-    guard let landingScreenVC = LandingScreenViewController.instantiate() else {
+    guard let landingScreenVC = LandingScreenWaitlistViewController.instantiate() else {
       print("Failed to create Landing Screen VC")
       return nil
     }

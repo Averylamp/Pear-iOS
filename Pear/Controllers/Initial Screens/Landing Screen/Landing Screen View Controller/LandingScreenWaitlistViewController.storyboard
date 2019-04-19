@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qE8-K0-EU5">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Landing Screen Waitlist View Controller-->
+        <scene sceneID="kct-eX-Gxy">
+            <objects>
+                <viewController id="qE8-K0-EU5" customClass="LandingScreenWaitlistViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y9I-Yn-G0g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waitlist-pineapple" translatesAutoresizingMaskIntoConstraints="NO" id="ydW-1b-oTp">
+                                <rect key="frame" x="107.66666666666667" y="12" width="198.66666666666663" height="265"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" priority="900" constant="200" id="Dz6-sl-F1l"/>
+                                    <constraint firstAttribute="width" secondItem="ydW-1b-oTp" secondAttribute="height" multiplier="3:4" id="TPs-mo-2Ko"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOOKIN LIKE A FINEAPPLE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CvA-Xo-xf2">
+                                <rect key="frame" x="30" y="277" width="354" height="202.33333333333337"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="74"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’re on the waitlist! We’ll notify you when you can get on Pear 🍐" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M88-C1-ARZ">
+                                <rect key="frame" x="40" y="479.33333333333331" width="334" height="46.666666666666686"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sq-cp-1KS">
+                                <rect key="frame" x="20" y="538" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="488-6y-zRp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Enable Notifications"/>
+                                <connections>
+                                    <action selector="notificationsButtonClicked:" destination="qE8-K0-EU5" eventType="touchUpInside" id="Xgb-E8-uYh"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5CV-OX-Pj0">
+                                <rect key="frame" x="20" y="538" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5CV-OX-Pj0" secondAttribute="height" multiplier="1:1" id="nQs-zp-tgv"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="324 people waiting to Pear in Boston" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtc-KY-PC7">
+                                <rect key="frame" x="30" y="608" width="354" height="23.333333333333371"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TE1-jA-onR" firstAttribute="trailing" secondItem="CvA-Xo-xf2" secondAttribute="trailing" constant="30" id="3iN-zc-KPz"/>
+                            <constraint firstItem="CvA-Xo-xf2" firstAttribute="centerX" secondItem="TE1-jA-onR" secondAttribute="centerX" id="93S-Ox-T5J"/>
+                            <constraint firstItem="TE1-jA-onR" firstAttribute="trailing" secondItem="M88-C1-ARZ" secondAttribute="trailing" constant="40" id="9aL-YF-JkK"/>
+                            <constraint firstItem="M88-C1-ARZ" firstAttribute="centerX" secondItem="TE1-jA-onR" secondAttribute="centerX" id="AAh-oT-0Gr"/>
+                            <constraint firstItem="TE1-jA-onR" firstAttribute="trailing" secondItem="3sq-cp-1KS" secondAttribute="trailing" constant="20" id="BgE-m3-V78"/>
+                            <constraint firstItem="M88-C1-ARZ" firstAttribute="top" secondItem="CvA-Xo-xf2" secondAttribute="bottom" id="EXo-tZ-mcL"/>
+                            <constraint firstItem="TE1-jA-onR" firstAttribute="trailing" secondItem="wtc-KY-PC7" secondAttribute="trailing" constant="30" id="EaA-Fj-oiw"/>
+                            <constraint firstItem="wtc-KY-PC7" firstAttribute="top" secondItem="3sq-cp-1KS" secondAttribute="bottom" constant="20" id="FSP-nr-rRX"/>
+                            <constraint firstItem="CvA-Xo-xf2" firstAttribute="centerY" secondItem="TE1-jA-onR" secondAttribute="centerY" id="Fhp-Fn-1VB"/>
+                            <constraint firstItem="M88-C1-ARZ" firstAttribute="leading" secondItem="y9I-Yn-G0g" secondAttribute="leading" constant="40" id="NyZ-hB-k1m"/>
+                            <constraint firstItem="3sq-cp-1KS" firstAttribute="centerX" secondItem="TE1-jA-onR" secondAttribute="centerX" id="Onc-yN-QFI"/>
+                            <constraint firstItem="wtc-KY-PC7" firstAttribute="centerX" secondItem="TE1-jA-onR" secondAttribute="centerX" id="VF1-nD-AdD"/>
+                            <constraint firstItem="wtc-KY-PC7" firstAttribute="leading" secondItem="TE1-jA-onR" secondAttribute="leading" constant="30" id="Wj6-aM-jol"/>
+                            <constraint firstItem="3sq-cp-1KS" firstAttribute="leading" secondItem="TE1-jA-onR" secondAttribute="leading" constant="20" id="Yd3-nT-Aoo"/>
+                            <constraint firstItem="CvA-Xo-xf2" firstAttribute="top" secondItem="ydW-1b-oTp" secondAttribute="bottom" id="aWB-nL-YlF"/>
+                            <constraint firstItem="5CV-OX-Pj0" firstAttribute="centerY" secondItem="3sq-cp-1KS" secondAttribute="centerY" id="gzs-p2-hF5"/>
+                            <constraint firstItem="ydW-1b-oTp" firstAttribute="centerX" secondItem="TE1-jA-onR" secondAttribute="centerX" id="hV0-9X-orb"/>
+                            <constraint firstItem="3sq-cp-1KS" firstAttribute="top" secondItem="M88-C1-ARZ" secondAttribute="bottom" constant="12" id="igb-q3-whT"/>
+                            <constraint firstItem="5CV-OX-Pj0" firstAttribute="leading" secondItem="3sq-cp-1KS" secondAttribute="leading" id="jch-h8-78E"/>
+                            <constraint firstItem="TE1-jA-onR" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wtc-KY-PC7" secondAttribute="bottom" constant="30" id="jfK-M4-bEf"/>
+                            <constraint firstItem="5CV-OX-Pj0" firstAttribute="height" secondItem="3sq-cp-1KS" secondAttribute="height" id="vtT-kE-h3v"/>
+                            <constraint firstItem="CvA-Xo-xf2" firstAttribute="leading" secondItem="TE1-jA-onR" secondAttribute="leading" constant="30" id="vzU-5r-2pS"/>
+                            <constraint firstItem="ydW-1b-oTp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y9I-Yn-G0g" secondAttribute="top" constant="12" id="zh0-va-MAv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TE1-jA-onR"/>
+                    </view>
+                    <connections>
+                        <outlet property="notificationButtonImage" destination="5CV-OX-Pj0" id="2wB-B8-xn8"/>
+                        <outlet property="notificationsButton" destination="3sq-cp-1KS" id="lAs-RA-uSk"/>
+                        <outlet property="waitlistLabel" destination="wtc-KY-PC7" id="TMh-ya-tEP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8N-HT-NZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="waitlist-pineapple" width="519" height="693"/>
+    </resources>
+</document>

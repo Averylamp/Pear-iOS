@@ -226,6 +226,8 @@
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */; };
+		BBE91C862269620200D285E3 /* LandingScreenWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91C852269620200D285E3 /* LandingScreenWaitlistViewController.swift */; };
+		BBE91C882269621000D285E3 /* LandingScreenWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE91C872269620F00D285E3 /* LandingScreenWaitlistViewController.storyboard */; };
 		BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA6359225B68FA00A50422 /* GetStartedSchoolViewController.swift */; };
 		BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBEA635A225B68FA00A50422 /* GetStartedSchoolViewController.storyboard */; };
 		BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */; };
@@ -504,6 +506,8 @@
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+UserDefaults.swift"; sourceTree = "<group>"; };
+		BBE91C852269620200D285E3 /* LandingScreenWaitlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenWaitlistViewController.swift; sourceTree = "<group>"; };
+		BBE91C872269620F00D285E3 /* LandingScreenWaitlistViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingScreenWaitlistViewController.storyboard; sourceTree = "<group>"; };
 		BBEA6359225B68FA00A50422 /* GetStartedSchoolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedSchoolViewController.swift; sourceTree = "<group>"; };
 		BBEA635A225B68FA00A50422 /* GetStartedSchoolViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedSchoolViewController.storyboard; sourceTree = "<group>"; };
 		BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUIViewController.swift; sourceTree = "<group>"; };
@@ -1056,6 +1060,8 @@
 			children = (
 				BB986A1D220E08E000759A14 /* LandingScreenViewController.swift */,
 				BB986A1F220E08ED00759A14 /* LandingScreenViewController.storyboard */,
+				BBE91C852269620200D285E3 /* LandingScreenWaitlistViewController.swift */,
+				BBE91C872269620F00D285E3 /* LandingScreenWaitlistViewController.storyboard */,
 			);
 			path = "Landing Screen View Controller";
 			sourceTree = "<group>";
@@ -1968,6 +1974,7 @@
 				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
+				BBE91C882269621000D285E3 /* LandingScreenWaitlistViewController.storyboard in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */,
@@ -2294,6 +2301,7 @@
 				BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */,
 				BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
+				BBE91C862269620200D285E3 /* LandingScreenWaitlistViewController.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
 				BB17893D225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift in Sources */,
