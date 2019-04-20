@@ -48,7 +48,7 @@ extension LoadingScreenViewController {
                     }
                   } else {
                     print("Failed to create Allow Notifications VC")
-                    self.continueToMainScreen()
+                    self. continueToMainScreen()
                   }
                 } else {
                   let locationAuthStatus = CLLocationManager.authorizationStatus()
