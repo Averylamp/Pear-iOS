@@ -31,6 +31,10 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.redirectToCorrectScreen()
+  }
+  
+  func redirectToCorrectScreen() {
     DataStore.shared.reloadRemoteConfig { (_) in
       DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
         if !versionIsSufficient && DataStore.shared.remoteConfig.configValue(forKey: "version_blocking_enabled").boolValue {
@@ -48,20 +52,19 @@ extension LoadingScreenViewController {
                     }
                   } else {
                     print("Failed to create Allow Notifications VC")
-                    self. continueToMainScreen()
+                    self.continueToMainScreen()
                   }
                 } else {
                   let locationAuthStatus = CLLocationManager.authorizationStatus()
                   if locationAuthStatus == .authorizedWhenInUse || locationAuthStatus == .authorizedAlways {
-                    DataStore.shared.reloadAllUserData()
                     self.continueToMainScreen()
                   } else {
-                    if let allowLocationVC = AllowLocationViewController.instantiate() {
-                      DispatchQueue.main.async {
-                        self.navigationController?.pushViewController(allowLocationVC, animated: true)
-                      }
-                    } else {
+                    guard let allowLocationVC = AllowLocationViewController.instantiate() else {
                       print("Failed to create Allow Location VC")
+                      return
+                    }
+                    DispatchQueue.main.async {
+                      self.navigationController?.pushViewController(allowLocationVC, animated: true)
                     }
                   }
                 }
@@ -126,7 +129,13 @@ extension LoadingScreenViewController {
         return nil
       }
       return waitlistVC
-    } else {
+    }else if DataStore.shared.remoteConfig.configValue(forKey: "pineapple_waitlist_enabled_all_users").boolValue {
+      guard let landingScreenVC = LandingScreenWaitlistViewController.instantiate() else {
+        print("Failed to create Landing Screen VC")
+        return nil
+      }
+      return landingScreenVC
+    }else {
       guard let mainVC = MainTabBarViewController.instantiate() else {
         print("Failed to create Simple Discovery VC")
         return nil
@@ -146,6 +155,7 @@ extension LoadingScreenViewController {
   func continueToMainScreen() {
     print("Continuing to Main Screen")
     DispatchQueue.main.async {
+      DataStore.shared.reloadAllUserData()
       if let mainVC = LoadingScreenViewController.getMainScreenVC() {
         self.navigationController?.setViewControllers([mainVC], animated: true)
       }
@@ -192,38 +202,38 @@ extension LoadingScreenViewController {
     PearUserAPI.shared.updateUserSchool(userID: "5c82162afec46c84e924a332",
                                         schoolName: "MIT",
                                         schoolYear: "2020") { (result) in
-      switch result {
-      case .success(let successful):
-        if successful {
-          print("Update user school was successful")
-        } else {
-          print("Update user school was unsuccessful")
-        }
-        
-      case .failure(let error):
-        print("Update user failure: \(error)")
-      }
+                                          switch result {
+                                          case .success(let successful):
+                                            if successful {
+                                              print("Update user school was successful")
+                                            } else {
+                                              print("Update user school was unsuccessful")
+                                            }
+                                            
+                                          case .failure(let error):
+                                            print("Update user failure: \(error)")
+                                          }
     }
   }
- 
+  
   func testUpdateUserPrefs() {
     PearUserAPI.shared.updateUserPreferences(userID: "5c82162afec46c84e924a332",
                                              genderPrefs: ["female"],
                                              minAge: 18,
                                              maxAge: 25,
                                              locationName: nil) { (result) in
-      switch result {
-      case .success(let successful):
-        if successful {
-          print("Update user was successful")
-        } else {
-          print("Update user was unsuccessful")
-        }
-        
-      case .failure(let error):
-        print("Update user failure: \(error)")
-      }
-
+                                              switch result {
+                                              case .success(let successful):
+                                                if successful {
+                                                  print("Update user was successful")
+                                                } else {
+                                                  print("Update user was unsuccessful")
+                                                }
+                                                
+                                              case .failure(let error):
+                                                print("Update user failure: \(error)")
+                                              }
+                                              
     }
     
   }
@@ -244,53 +254,53 @@ extension LoadingScreenViewController {
                                              sentForUserID: "5c82162afec46c84e924a332",
                                              receivedByUserID: "5c82162afec46c84e924a334",
                                              requestText: nil) { (result) in
-      switch result {
-      case .success(let successful):
-        if successful {
-          print("Create Match Request 1 was successful")
-        } else {
-          print("Create Match Request 1 was unsuccessful")
-        }
-        
-      case .failure(let error):
-        print("Create Match Request 1 failure: \(error)")
-      }
+                                              switch result {
+                                              case .success(let successful):
+                                                if successful {
+                                                  print("Create Match Request 1 was successful")
+                                                } else {
+                                                  print("Create Match Request 1 was unsuccessful")
+                                                }
+                                                
+                                              case .failure(let error):
+                                                print("Create Match Request 1 failure: \(error)")
+                                              }
     }
     
     PearMatchesAPI.shared.createMatchRequest(sentByUserID: "5c82162afec46c84e924a332",
                                              sentForUserID: "5c82162afec46c84e924a332",
                                              receivedByUserID: "5c82162afec46c84e924a339",
                                              requestText: nil) { (result) in
-      switch result {
-      case .success(let successful):
-        if successful {
-          print("Create Match Request 2 was successful")
-        } else {
-          print("Create Match Request 2 was unsuccessful")
-        }
-        
-      case .failure(let error):
-        print("Create Match Request 2 failure: \(error)")
-      }
+                                              switch result {
+                                              case .success(let successful):
+                                                if successful {
+                                                  print("Create Match Request 2 was successful")
+                                                } else {
+                                                  print("Create Match Request 2 was unsuccessful")
+                                                }
+                                                
+                                              case .failure(let error):
+                                                print("Create Match Request 2 failure: \(error)")
+                                              }
     }
   }
   
   func testUserProfileUpdates() {
     PearProfileAPI.shared.editUserProfile(profileDocumentID: "5ca7e1bea4b35e29efff5258",
-                                              userID: "5c82162afec46c84e924a337",
-                                              updates: ["bio": "Heres a new bio for you"]) { (result) in
-                                                switch result {
-                                                case .success(let successful):
-                                                  if successful {
-                                                    print("Successfully updated user profile")
-                                                  } else {
-                                                    print("Failure updating user profile")
-                                                  }
-                                                case .failure(let error):
-                                                  print("Failure updating user profile: \(error)")
-                                                }
+                                          userID: "5c82162afec46c84e924a337",
+                                          updates: ["bio": "Heres a new bio for you"]) { (result) in
+                                            switch result {
+                                            case .success(let successful):
+                                              if successful {
+                                                print("Successfully updated user profile")
+                                              } else {
+                                                print("Failure updating user profile")
+                                              }
+                                            case .failure(let error):
+                                              print("Failure updating user profile: \(error)")
+                                            }
     }
-
+    
   }
   
   func testDetachedProfileUpdates() {
