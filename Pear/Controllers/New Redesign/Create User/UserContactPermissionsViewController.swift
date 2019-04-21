@@ -7,12 +7,19 @@
 //
 
 import UIKit
-
+import FirebaseFirestore
+import CodableFirebase
+ 
 class UserContactPermissionsViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var numberProfilesLabel: UILabel!
   @IBOutlet weak var enableContactsButton: UIButton!
+  @IBOutlet weak var tableViewContainerView: UIView!
+  @IBOutlet weak var tableView: UITableView!
+  
+  var allSampleBoastRoastItems: [LatestRoastBoastItem] = []
+  var currentBoastRoastItems: [LatestRoastBoastItem] = []
   
   /// Factory method for creating this view controller.
   ///
@@ -31,6 +38,8 @@ extension UserContactPermissionsViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
+    self.setup()
+    self.loadSampleBoastRoasts()
   }
   
   func stylize() {
@@ -53,6 +62,89 @@ extension UserContactPermissionsViewController {
     self.enableContactsButton.backgroundColor = R.color.backgroundColorYellow()
     self.enableContactsButton.layer.cornerRadius = self.enableContactsButton.frame.height / 2.0
     
+    self.tableViewContainerView.layer.cornerRadius = 12
+    self.tableViewContainerView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+    self.tableView.backgroundColor = nil
+    
+  }
+  
+  func setup() {
+    self.tableView.dataSource = self
+    self.tableView.delegate = self
+    self.startRunLoop()
+  }
+  
+  func startRunLoop() {
+    _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (_) in
+      let random = Int.random(in: 0..<6)
+      self.tableView.reloadData()
+      if random == 0 {
+        self.addRandomBoastRoast()
+      }
+    }
+    
+  }
+  
+  func addRandomBoastRoast() {
+    DispatchQueue.main.async {
+      if let item = self.allSampleBoastRoastItems.randomElement() {
+        let newItem = item.copy()
+        newItem.timestamp = Date()
+        self.tableView.beginUpdates()
+        self.currentBoastRoastItems.insert(newItem, at: 0)
+        self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .left)
+        self.tableView.endUpdates()
+      }
+    }
+  }
+  
+  func loadSampleBoastRoasts() {
+    Firestore.firestore().collection("latestRoastBoasts").order(by: "timestamp", descending: false).getDocuments { (snapshot, error) in
+      if let error = error {
+        print("Error getting message query documents: \(error)")
+        return
+      }
+      if let snapshot = snapshot {
+        for document in snapshot.documents {
+          do {
+            let boastRoastItem = try FirestoreDecoder().decode(LatestRoastBoastItem.self, from: document.data())
+            if !self.allSampleBoastRoastItems.contains(where: { $0 == boastRoastItem }) {
+              self.allSampleBoastRoastItems.append(boastRoastItem)              
+            }
+            
+          } catch {
+            print("Failed deserialization of sample boast roast: \(error)")
+          }
+          
+        }
+        for _ in 0..<5 {
+          self.addRandomBoastRoast()
+        }
+        
+      }
+      
+    }
+  }
+  
+}
+
+// MARK: - UITableVieDelegate/DataSource
+extension UserContactPermissionsViewController: UITableViewDelegate, UITableViewDataSource {
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.currentBoastRoastItems.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.latestRoastBoastTVC.identifier,
+                                                   for: indexPath) as? LatestRoastBoastTableViewCell else {
+      print("Failed to dequeue reusable cell")
+      return UITableViewCell()
+    }
+    
+    let item = self.currentBoastRoastItems[indexPath.row]
+    cell.configure(item: item)
+    return cell
   }
   
 }

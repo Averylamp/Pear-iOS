@@ -96,6 +96,8 @@
 	<string>To make better matches!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To find your latest and greatest photos!</string>
+	<key>NSContactsUsageDescription</key>
+	<string>To roast/boast up your friends</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
