@@ -133,6 +133,7 @@ PODS:
     - GoogleUtilities/Environment (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - Protobuf (~> 3.5)
+  - Fuse (1.2.0)
   - GoogleAppMeasurement (5.8.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -218,6 +219,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Performance
   - Firebase/RemoteConfig
+  - Fuse
   - NVActivityIndicatorView
   - R.swift
   - SDWebImage
@@ -254,6 +256,7 @@ SPEC REPOS:
     - FirebaseMessaging
     - FirebasePerformance
     - FirebaseRemoteConfig
+    - Fuse
     - GoogleAppMeasurement
     - GoogleToolboxForMac
     - GoogleUtilities
@@ -299,6 +302,7 @@ SPEC CHECKSUMS:
   FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
   FirebasePerformance: 25ecee2a260bcf398d7f32d6f4804438df953100
   FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
+  Fuse: 287bd95a5c8dbfe6c41af519eaf48856aa1a28f6
   GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 273e67030e0de313e7304f6dcfa96fc5214f6c23
@@ -316,6 +320,6 @@ SPEC CHECKSUMS:
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 7bd6c73abc51bcc9f6d9c9f214b3381629735aab
+PODFILE CHECKSUM: 29539d6690f430c4de58dfb3de10db84951f3e80
 
 COCOAPODS: 1.6.1
