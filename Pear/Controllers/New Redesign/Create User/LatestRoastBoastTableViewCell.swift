@@ -14,10 +14,14 @@ class LatestRoastBoastTableViewCell: UITableViewCell {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var contentLabel: UILabel!
   @IBOutlet weak var timestampLabel: UILabel!
+  @IBOutlet weak var containerView: UIView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
+    self.containerView.layer.cornerRadius = 6
+    self.containerView.backgroundColor = UIColor.white
+    self.backgroundColor = nil
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

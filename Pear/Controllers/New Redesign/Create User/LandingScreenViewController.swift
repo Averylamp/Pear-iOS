@@ -131,9 +131,9 @@ extension LandingScreenViewController {
         return
     }
     let subtleAttributes = [NSAttributedString.Key.font: textFont,
-                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.87, alpha: 1.0)]
+                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.95, alpha: 1.0)]
     let boldAttributes = [NSAttributedString.Key.font: boldFont,
-                          NSAttributedString.Key.foregroundColor: UIColor(white: 0.93, alpha: 1.0)]
+                          NSAttributedString.Key.foregroundColor: UIColor(white: 0.95, alpha: 1.0)]
     let termsString = NSMutableAttributedString(string: "By continuing you agree to our ",
                                                 attributes: subtleAttributes)
     let eulaString = NSMutableAttributedString(string: "EULA",
