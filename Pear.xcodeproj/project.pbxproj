@@ -196,6 +196,7 @@
 		BBA3CEB8225566600020A36C /* ChatRequestEndorsementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3CEB7225566600020A36C /* ChatRequestEndorsementViewController.swift */; };
 		BBA3CEBA2255666E0020A36C /* ChatRequestPersonalViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA3CEB92255666E0020A36C /* ChatRequestPersonalViewController.storyboard */; };
 		BBA3CEBC2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA3CEBB2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard */; };
+		BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */; };
 		BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */; };
 		BBA757AD225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA757AB225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift */; };
 		BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */; };
@@ -510,6 +511,7 @@
 		BBA3CEB7225566600020A36C /* ChatRequestEndorsementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestEndorsementViewController.swift; sourceTree = "<group>"; };
 		BBA3CEB92255666E0020A36C /* ChatRequestPersonalViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRequestPersonalViewController.storyboard; sourceTree = "<group>"; };
 		BBA3CEBB2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRequestEndorsementViewController.storyboard; sourceTree = "<group>"; };
+		BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListItemTableViewCell.swift; sourceTree = "<group>"; };
 		BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedChoosePreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BBA757AB225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedChoosePreferencesViewController.swift; sourceTree = "<group>"; };
 		BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1861,6 +1863,7 @@
 				BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */,
 				BBF93E532267C86C002841EE /* UserContactListViewController.swift */,
 				BBF93E612267CA3A002841EE /* UserContactListViewController.storyboard */,
+				BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */,
 				BBF93E552267C881002841EE /* ProfileInputVibeViewController.swift */,
 				BBF93E632267CA4A002841EE /* ProfileInputVibeViewController.storyboard */,
 				BBF93E572267C8B1002841EE /* ProfileInputQuestionViewController.swift */,
@@ -2472,6 +2475,7 @@
 				BBF93E562267C881002841EE /* ProfileInputVibeViewController.swift in Sources */,
 				BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */,
 				BB6479DB226A679F00652318 /* LandingScreenWaitlistViewController.swift in Sources */,
+				BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */,

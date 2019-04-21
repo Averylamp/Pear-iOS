@@ -9,7 +9,8 @@
 import UIKit
 import FirebaseFirestore
 import CodableFirebase
- 
+import Contacts
+
 class UserContactPermissionsViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
@@ -29,7 +30,34 @@ class UserContactPermissionsViewController: UIViewController {
       .instantiateInitialViewController() as? UserContactPermissionsViewController else { return nil }
     return contactPermissionsVC
   }
-
+  
+  @IBAction func enableContactsButtonClicked(_ sender: Any) {
+    
+//    let predicate = CNContact.predicateForContacts(withIdentifiers: [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey])
+    let keysToFetch: [CNKeyDescriptor] = [CNContactGivenNameKey as CNKeyDescriptor,
+                                         CNContactFamilyNameKey as CNKeyDescriptor,
+                                         CNContactPhoneNumbersKey as CNKeyDescriptor]
+    let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+    let store = CNContactStore()
+    var allContacts: [CNContact] = []
+    do {
+      try store.enumerateContacts(with: fetchRequest) { (contact, _) in
+        if contact.phoneNumbers.count > 0 {
+          allContacts.append(contact)
+        }
+      }
+      print("\(allContacts.count) Contacts fetched")
+      guard let contactListVC = UserContactListViewController.instantiate(contacts: allContacts) else {
+        print("Failed to create Contact List VC")
+        return
+      }
+      self.navigationController?.pushViewController(contactListVC, animated: true)
+    } catch {
+      print("Failed to fetch contacts: \(error)")
+    }
+    
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -65,7 +93,7 @@ extension UserContactPermissionsViewController {
     self.tableViewContainerView.layer.cornerRadius = 12
     self.tableViewContainerView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
     self.tableView.backgroundColor = nil
-    
+    self.tableView.separatorStyle = .none
   }
   
   func setup() {
