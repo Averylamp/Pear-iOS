@@ -20,9 +20,9 @@ enum ProfileCreationKey: String {
 
 class ProfileCreationData: GraphQLInput {
   
-  var phoneNumber: String!
-  var firstName: String!
-  var lastName: String!
+  var phoneNumber: String
+  var firstName: String
+  var lastName: String
   var boasts: [BoastItem] = []
   var roasts: [RoastItem] = []
   var questionResponses: [QuestionResponseItem] = []

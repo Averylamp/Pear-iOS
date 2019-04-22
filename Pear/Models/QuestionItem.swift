@@ -216,12 +216,40 @@ enum IconAssetKey: String, CodingKey {
   case assetURL
 }
 
-class IconAsset: Codable, GraphQLInput {
+class IconAsset: Decodable, GraphQLInput {
   
   var assetString: String?
   var assetURL: URL?
+  var cachedImage: UIImage?
   
-  func uiImage(foundImage:@escaping (UIImage?) -> Void) {
+  required init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: IconAssetKey.self)
+    self.assetString = try? values.decode(String.self, forKey: .assetString)
+    if let assetURLString = try? values.decode(String.self, forKey: .assetURL),
+      let assetURL = URL(string: assetURLString) {
+      self.assetURL = assetURL
+    } else {
+      self.assetURL = nil
+    }
+    self.cachedImage = self.syncUIImageFetch()
+    if self.cachedImage == nil {
+      self.asyncUIImageFetch { (image) in
+        if let image = image {
+          self.cachedImage = image
+        }
+      }
+    }
+  }
+
+  func syncUIImageFetch() -> UIImage? {
+    if let assetString = self.assetString,
+      let image = UIImage(named: assetString) {
+      return image
+    }
+    return nil
+  }
+  
+  func asyncUIImageFetch(foundImage:@escaping (UIImage?) -> Void) {
     if let assetString = self.assetString,
       let image = UIImage(named: assetString) {
       foundImage(image)
@@ -241,6 +269,10 @@ class IconAsset: Codable, GraphQLInput {
     } else {
       foundImage(nil)
     }
+  }
+  
+  func assetLikelyExists() -> Bool {
+    return self.assetString != nil || self.assetURL != nil
   }
   
   func toGraphQLInput() -> [String: Any] {
