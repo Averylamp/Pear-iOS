@@ -32,7 +32,7 @@ class UserContactPermissionsViewController: UIViewController {
   }
   
   @IBAction func enableContactsButtonClicked(_ sender: Any) {
-    
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
 //    let predicate = CNContact.predicateForContacts(withIdentifiers: [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey])
     let keysToFetch: [CNKeyDescriptor] = [CNContactGivenNameKey as CNKeyDescriptor,
                                          CNContactFamilyNameKey as CNKeyDescriptor,

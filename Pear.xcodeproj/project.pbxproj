@@ -224,6 +224,9 @@
 		BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5740226D9751000BCD5F /* BioItem.swift */; };
 		BBBA5743226DA4E5000BCD5F /* GraphQLInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5742226DA4E5000BCD5F /* GraphQLInput.swift */; };
 		BBBA5745226DB094000BCD5F /* TextContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5744226DB094000BCD5F /* TextContentItem.swift */; };
+		BBBA5747226DC9E4000BCD5F /* InputTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBA5746226DC9E4000BCD5F /* InputTableViewController.storyboard */; };
+		BBBA5749226DC9F5000BCD5F /* InputTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */; };
+		BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */; };
 		BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A0812257F624009D9867 /* SentryHelper.swift */; };
 		BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */; };
 		BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */; };
@@ -546,6 +549,9 @@
 		BBBA5740226D9751000BCD5F /* BioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioItem.swift; sourceTree = "<group>"; };
 		BBBA5742226DA4E5000BCD5F /* GraphQLInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLInput.swift; sourceTree = "<group>"; };
 		BBBA5744226DB094000BCD5F /* TextContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContentItem.swift; sourceTree = "<group>"; };
+		BBBA5746226DC9E4000BCD5F /* InputTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputTableViewController.storyboard; sourceTree = "<group>"; };
+		BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTableViewController.swift; sourceTree = "<group>"; };
+		BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputItemTableViewCell.swift; sourceTree = "<group>"; };
 		BBC4A0812257F624009D9867 /* SentryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryHelper.swift; sourceTree = "<group>"; };
 		BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateImagesViewController.swift; sourceTree = "<group>"; };
 		BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateImagesViewController.storyboard; sourceTree = "<group>"; };
@@ -1569,6 +1575,63 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
+			isa = PBXGroup;
+			children = (
+				BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */,
+				BBBA5746226DC9E4000BCD5F /* InputTableViewController.storyboard */,
+				BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */,
+			);
+			path = "Input Table View";
+			sourceTree = "<group>";
+		};
+		BBBA574D226DD60E000BCD5F /* Landing Screen */ = {
+			isa = PBXGroup;
+			children = (
+				BBF93E4D2267C7F8002841EE /* LandingScreenViewController.swift */,
+				BBF93E5B2267CA11002841EE /* LandingScreenViewController.storyboard */,
+			);
+			path = "Landing Screen";
+			sourceTree = "<group>";
+		};
+		BBBA574E226DD619000BCD5F /* Phone Code Confirmation */ = {
+			isa = PBXGroup;
+			children = (
+				BBF93E4F2267C80B002841EE /* UserPhoneCodeViewController.swift */,
+				BBF93E5D2267CA20002841EE /* UserPhoneCodeViewController.storyboard */,
+			);
+			path = "Phone Code Confirmation";
+			sourceTree = "<group>";
+		};
+		BBBA574F226DD627000BCD5F /* Enable Contact Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				BBF93E512267C861002841EE /* UserContactPermissionsViewController.swift */,
+				BBF93E5F2267CA2A002841EE /* UserContactPermissionsViewController.storyboard */,
+				BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */,
+			);
+			path = "Enable Contact Permissions";
+			sourceTree = "<group>";
+		};
+		BBBA5750226DD631000BCD5F /* Pick Endorsed Contact */ = {
+			isa = PBXGroup;
+			children = (
+				BBF93E532267C86C002841EE /* UserContactListViewController.swift */,
+				BBF93E612267CA3A002841EE /* UserContactListViewController.storyboard */,
+				BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */,
+			);
+			path = "Pick Endorsed Contact";
+			sourceTree = "<group>";
+		};
+		BBBA5751226DD641000BCD5F /* Vibes Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBF93E552267C881002841EE /* ProfileInputVibeViewController.swift */,
+				BBF93E632267CA4A002841EE /* ProfileInputVibeViewController.storyboard */,
+			);
+			path = "Vibes Input";
+			sourceTree = "<group>";
+		};
 		BBC4A08322586F40009D9867 /* Gender Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -1875,22 +1938,16 @@
 		BBF93E4C2267C7E6002841EE /* Create User */ = {
 			isa = PBXGroup;
 			children = (
-				BBF93E4D2267C7F8002841EE /* LandingScreenViewController.swift */,
-				BBF93E5B2267CA11002841EE /* LandingScreenViewController.storyboard */,
-				BBF93E4F2267C80B002841EE /* UserPhoneCodeViewController.swift */,
-				BBF93E5D2267CA20002841EE /* UserPhoneCodeViewController.storyboard */,
-				BBF93E512267C861002841EE /* UserContactPermissionsViewController.swift */,
-				BBF93E5F2267CA2A002841EE /* UserContactPermissionsViewController.storyboard */,
-				BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */,
-				BBF93E532267C86C002841EE /* UserContactListViewController.swift */,
-				BBF93E612267CA3A002841EE /* UserContactListViewController.storyboard */,
-				BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */,
-				BBF93E552267C881002841EE /* ProfileInputVibeViewController.swift */,
-				BBF93E632267CA4A002841EE /* ProfileInputVibeViewController.storyboard */,
+				BBBA574D226DD60E000BCD5F /* Landing Screen */,
+				BBBA574E226DD619000BCD5F /* Phone Code Confirmation */,
+				BBBA574F226DD627000BCD5F /* Enable Contact Permissions */,
+				BBBA5750226DD631000BCD5F /* Pick Endorsed Contact */,
+				BBBA5751226DD641000BCD5F /* Vibes Input */,
 				BBF93E572267C8B1002841EE /* ProfileInputQuestionViewController.swift */,
 				BBF93E652267CA56002841EE /* ProfileInputQuestionViewController.storyboard */,
 				BBF93E592267C9F3002841EE /* ProfileInputBoastRoastViewController.swift */,
 				BBF93E672267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard */,
+				BBBA574C226DD5FE000BCD5F /* Input Table View */,
 			);
 			path = "Create User";
 			sourceTree = "<group>";
@@ -2195,6 +2252,7 @@
 				BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */,
 				BBA3CEBC2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard in Resources */,
 				BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */,
+				BBBA5747226DC9E4000BCD5F /* InputTableViewController.storyboard in Resources */,
 				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BBF93E662267CA56002841EE /* ProfileInputQuestionViewController.storyboard in Resources */,
 				BBF93E782267CCB3002841EE /* Cera Pro Regular.otf in Resources */,
@@ -2479,6 +2537,7 @@
 				BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */,
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
 				60C131E121D345630093ECBA /* Result.swift in Sources */,
+				BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */,
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
@@ -2533,6 +2592,7 @@
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BBECBEC52237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift in Sources */,
 				BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */,
+				BBBA5749226DC9F5000BCD5F /* InputTableViewController.swift in Sources */,
 				BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */,
 				BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,

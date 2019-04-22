@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pr2-9c-pyo">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,10 +15,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--User Contact List View Controller-->
+        <!--Profile Input Vibe View Controller-->
         <scene sceneID="Rwq-q9-Ln1">
             <objects>
-                <viewController id="pr2-9c-pyo" customClass="UserContactListViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pr2-9c-pyo" customClass="ProfileInputVibeViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zXg-vd-ahz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
                         <viewLayoutGuide key="safeArea" id="KB1-SY-aJA"/>
                     </view>
                     <connections>
-                        <outlet property="titleLabel" destination="UL4-RL-DZt" id="cGW-pK-aKd"/>
+                        <outlet property="titleLabel" destination="UL4-RL-DZt" id="Dhe-4D-zig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ew4-3M-jYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
