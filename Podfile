@@ -23,7 +23,6 @@ target 'Pear' do
   pod 'R.swift'
   pod 'Sentry' 
   pod 'BSImagePicker'
-  pod 'Fuse'
 
   target 'PearTests' do
     inherit! :search_paths

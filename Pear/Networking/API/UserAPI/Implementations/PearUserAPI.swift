@@ -27,6 +27,7 @@ class PearUserAPI: UserAPI {
   
   static let getUserQuery: String = "query GetUser($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLUserFieldsAll) }}"
   static let fetchEndorsedUsersQuery: String = "query GetEndorsedUsers($userInput: GetUserInput) { getUser(userInput:$userInput) { success message user { endorsedProfileObjs { userObj \(MatchingPearUser.graphQLMatchedUserFieldsAll) } detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFieldsAll))  }  }}"
+  static let getExistingUsersQuery: String = "query GetAlreadyOnPear($phoneNumbers:[String!]!){alreadyOnPear(phoneNumbers: $phoneNumbers)}"
   
   func getUpdateUserQueryWithName(name: String) -> String {
     return "mutation \(name)($user_id: ID, $userInput: UpdateUserInput){ updateUser(id:$user_id, updateUserInput:$userInput){ success message } }"
@@ -72,8 +73,8 @@ extension PearUserAPI {
                                              apiName: "PearUserAPI",
                                              functionName: "getUser",
                                              message: "GraphQL Error: \(helperResult)",
-                                             tags: [:],
-                                             paylod: fullDictionary)
+              tags: [:],
+              paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Get User: \(message ?? "")")
@@ -88,7 +89,7 @@ extension PearUserAPI {
             do {
               let pearUser = try JSONDecoder().decode(PearUser.self, from: objectData)
               print("Successfully found Pear User")
-//              completion(.success(pearUser))
+              //              completion(.success(pearUser))
               // Uncomment this line to go through initial user setup
               completion(.failure(UserAPIError.failedDeserialization))
             } catch {
@@ -114,7 +115,7 @@ extension PearUserAPI {
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
   }
-
+  
   func fetchEndorsedUsers(uid: String,
                           token: String,
                           completion: @escaping
@@ -154,8 +155,8 @@ extension PearUserAPI {
                                              apiName: "PearUserAPI",
                                              functionName: "fetchEndorsedUsers",
                                              message: "GraphQL Error: \(helperResult)",
-                                             tags: [:],
-                                             paylod: fullDictionary)
+              tags: [:],
+              paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Get User: \(message ?? "")")
@@ -257,8 +258,8 @@ extension PearUserAPI {
                                              apiName: "PearUserAPI",
                                              functionName: "createUser",
                                              message: "GraphQL Error: \(helperResult)",
-                                             tags: [:],
-                                             paylod: fullDictionary)
+              tags: [:],
+              paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
@@ -266,8 +267,8 @@ extension PearUserAPI {
                                              apiName: "PearUserAPI",
                                              functionName: "createUser",
                                              message: message ?? "Returned Error",
-              tags: [:],
-              paylod: fullDictionary)
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -280,8 +281,8 @@ extension PearUserAPI {
                                                apiName: "PearUserAPI",
                                                functionName: "createUser",
                                                message: "Deserialization Error: \(error.localizedDescription)",
-                                               tags: [:],
-                                               paylod: fullDictionary)
+                tags: [:],
+                paylod: fullDictionary)
               completion(.failure(UserAPIError.failedDeserialization))
             }
           }
@@ -334,10 +335,10 @@ extension PearUserAPI {
   func updateUser(userID: String,
                   updates: [String: Any],
                   completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
-   self.updateUserWithPreferenceDictionary(userID: userID,
-                                           inputDictionary: updates,
-                                           mutationName: "FullUserUpdate",
-                                           completion: completion)
+    self.updateUserWithPreferenceDictionary(userID: userID,
+                                            inputDictionary: updates,
+                                            mutationName: "FullUserUpdate",
+                                            completion: completion)
   }
   
   func updateUserWithPreferenceDictionary(userID: String,
@@ -375,7 +376,7 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-
+          
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "updateUser")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
@@ -384,8 +385,8 @@ extension PearUserAPI {
                                              apiName: "PearUserAPI",
                                              functionName: mutationName,
                                              message: "GraphQL Error: \(helperResult)",
-                                             tags: [:],
-                                             paylod: fullDictionary)
+              tags: [:],
+              paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Update User: \(message ?? "")")
@@ -412,6 +413,58 @@ extension PearUserAPI {
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
     
+  }
+  
+  func getExistingUsers(checkNumbers: [String], completion: @escaping(Result<[String], UserAPIError>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    request.allHTTPHeaderFields = defaultHeaders
+    let fullDictionary: [String: Any] = [
+      "query": PearUserAPI.getExistingUsersQuery,
+      "variables": [
+        "phoneNumbers": checkNumbers
+      ]
+    ]
+    
+    do {
+      
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        print("Data task returned")
+        if let error = error {
+          print(error as Any)
+          SentryHelper.generateSentryEvent(level: .error,
+                                           apiName: "PearUserAPI",
+                                           functionName: "getExistingUsers",
+                                           message: error.localizedDescription,
+                                           tags: [:],
+                                           paylod: fullDictionary)
+          completion(.failure(UserAPIError.unknownError(error: error)))
+          return
+        } else {
+          if let data = data,
+            let json = try? JSON(data: data),
+            let foundNumberJsons = json["data"]["alreadyOnPear"].array {
+            let foundNumbers = foundNumberJsons.compactMap({ $0.string })
+            completion(.success(foundNumbers))
+          } else {
+           completion(.failure(UserAPIError.graphQLError(message: "Wasnt able to find numbers")))
+          }
+        }
+      }
+      dataTask.resume()
+    } catch {
+      print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearUserAPI",
+                                       functionName: "createUser",
+                                       message: error.localizedDescription)
+      completion(.failure(UserAPIError.unknownError(error: error)))
+    }
   }
   
 }

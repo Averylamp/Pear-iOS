@@ -217,6 +217,13 @@
 		BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */; };
 		BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */; };
 		BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */; };
+		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
+		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
+		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
+		BBBA573F226D9749000BCD5F /* VibeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573E226D9749000BCD5F /* VibeItem.swift */; };
+		BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5740226D9751000BCD5F /* BioItem.swift */; };
+		BBBA5743226DA4E5000BCD5F /* GraphQLInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5742226DA4E5000BCD5F /* GraphQLInput.swift */; };
+		BBBA5745226DB094000BCD5F /* TextContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5744226DB094000BCD5F /* TextContentItem.swift */; };
 		BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A0812257F624009D9867 /* SentryHelper.swift */; };
 		BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */; };
 		BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */; };
@@ -532,6 +539,13 @@
 		BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
 		BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styling.swift"; sourceTree = "<group>"; };
+		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
+		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
+		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
+		BBBA573E226D9749000BCD5F /* VibeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibeItem.swift; sourceTree = "<group>"; };
+		BBBA5740226D9751000BCD5F /* BioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioItem.swift; sourceTree = "<group>"; };
+		BBBA5742226DA4E5000BCD5F /* GraphQLInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLInput.swift; sourceTree = "<group>"; };
+		BBBA5744226DB094000BCD5F /* TextContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContentItem.swift; sourceTree = "<group>"; };
 		BBC4A0812257F624009D9867 /* SentryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryHelper.swift; sourceTree = "<group>"; };
 		BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateImagesViewController.swift; sourceTree = "<group>"; };
 		BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateImagesViewController.storyboard; sourceTree = "<group>"; };
@@ -1105,6 +1119,13 @@
 			isa = PBXGroup;
 			children = (
 				BB6479DF226A7FF300652318 /* LatestRoastBoastItem.swift */,
+				BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */,
+				BBBA5742226DA4E5000BCD5F /* GraphQLInput.swift */,
+				BBBA5744226DB094000BCD5F /* TextContentItem.swift */,
+				BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */,
+				BBBA573E226D9749000BCD5F /* VibeItem.swift */,
+				BBBA5740226D9751000BCD5F /* BioItem.swift */,
+				BBBA573C226D9741000BCD5F /* QuestionItem.swift */,
 			);
 			name = "New Models";
 			sourceTree = "<group>";
@@ -2230,7 +2251,6 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
-				"${BUILT_PRODUCTS_DIR}/Fuse/Fuse.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -2261,7 +2281,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fuse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -2352,7 +2371,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2404,12 +2423,15 @@
 				BB0628C922464278000D9B12 /* MatchingPearUser.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
+				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
+				BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */,
 				BBD2402222531FB000380315 /* FriendProfileCollectionViewCell.swift in Sources */,
 				BBA2B4322235051400D8C27B /* ProfileDoDontViewController.swift in Sources */,
+				BBBA5743226DA4E5000BCD5F /* GraphQLInput.swift in Sources */,
 				BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */,
 				BB0628C722463B12000D9B12 /* Match.swift in Sources */,
 				BBF93E4E2267C7F8002841EE /* LandingScreenViewController.swift in Sources */,
@@ -2433,7 +2455,9 @@
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
+				BBBA573F226D9749000BCD5F /* VibeItem.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
+				BBBA5745226DB094000BCD5F /* TextContentItem.swift in Sources */,
 				BBF79688225956E200E9A506 /* MeEditUserViewController.swift in Sources */,
 				BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
@@ -2476,6 +2500,7 @@
 				BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */,
 				BBF93E562267C881002841EE /* ProfileInputVibeViewController.swift in Sources */,
 				BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */,
+				BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */,
 				BB6479DB226A679F00652318 /* LandingScreenWaitlistViewController.swift in Sources */,
 				BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
@@ -2483,6 +2508,7 @@
 				91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */,
 				911AD0F122619FDD00A743C2 /* AllowNotificationsViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
+				BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */,
 				BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* PearImageAPI.swift in Sources */,
