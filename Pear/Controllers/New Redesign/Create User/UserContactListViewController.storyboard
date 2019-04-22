@@ -140,6 +140,7 @@
                         <outlet property="searchContainerView" destination="BPB-DF-8Rh" id="T82-3I-xls"/>
                         <outlet property="searchInputTextField" destination="fIk-wW-s1v" id="fi8-sF-jZ2"/>
                         <outlet property="tableView" destination="imy-AF-JzO" id="dcY-OE-c1E"/>
+                        <outlet property="tableViewBottomConstraint" destination="3aO-W0-BCg" id="me0-ZX-0xH"/>
                         <outlet property="titleLabel" destination="I71-5B-LuA" id="28I-ZF-RwV"/>
                     </connections>
                 </viewController>
