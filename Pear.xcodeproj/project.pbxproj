@@ -227,6 +227,7 @@
 		BBBA5747226DC9E4000BCD5F /* InputTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBA5746226DC9E4000BCD5F /* InputTableViewController.storyboard */; };
 		BBBA5749226DC9F5000BCD5F /* InputTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */; };
 		BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */; };
+		BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */; };
 		BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A0812257F624009D9867 /* SentryHelper.swift */; };
 		BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */; };
 		BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */; };
@@ -552,6 +553,7 @@
 		BBBA5746226DC9E4000BCD5F /* InputTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InputTableViewController.storyboard; sourceTree = "<group>"; };
 		BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTableViewController.swift; sourceTree = "<group>"; };
 		BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputItemTableViewCell.swift; sourceTree = "<group>"; };
+		BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
 		BBC4A0812257F624009D9867 /* SentryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryHelper.swift; sourceTree = "<group>"; };
 		BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateImagesViewController.swift; sourceTree = "<group>"; };
 		BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateImagesViewController.storyboard; sourceTree = "<group>"; };
@@ -943,6 +945,7 @@
 				BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */,
 				BB1C670F2237205700D75848 /* Coding.swift */,
 				BB178933225DE73E0033ACC6 /* Date+Helpers.swift */,
+				BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2531,6 +2534,7 @@
 				BBA2E1EA224B23970088A7A7 /* ApproveDetachedProfileFoundViewController.swift in Sources */,
 				BB986A47220F799A00759A14 /* GetStartedStartFriendProfileViewController.swift in Sources */,
 				BB0AE4E922536FAC005DD315 /* UserAgePreferencesViewController.swift in Sources */,
+				BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */,
 				BB3F219D22267B8000DC4489 /* GetStartedUserLastNameViewController.swift in Sources */,
 				BB986A1E220E08E000759A14 /* OldLandingScreenViewController.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,

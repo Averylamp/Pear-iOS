@@ -122,6 +122,7 @@ extension UserContactListViewController {
         
         for index in 0..<self.filteredContacts.count where phoneNumberSet.contains(self.filteredContacts[index].phoneNumber) {
           self.filteredContacts[index].enabled = false
+          print("Existing User: \(self.filteredContacts[index].name)")
         }
         
       case .failure(let error):

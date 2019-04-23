@@ -169,7 +169,7 @@ extension UserContactPermissionsViewController: UITableViewDelegate, UITableView
       print("Failed to dequeue reusable cell")
       return UITableViewCell()
     }
-    
+    cell.selectionStyle = .none
     let item = self.currentBoastRoastItems[indexPath.row]
     cell.configure(item: item)
     return cell

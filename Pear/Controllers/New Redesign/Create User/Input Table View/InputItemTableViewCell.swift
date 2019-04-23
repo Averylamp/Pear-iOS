@@ -19,6 +19,8 @@ class InputItemTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    self.backgroundColor = nil
+    self.selectionStyle = .none
     if let font = R.font.openSansExtraBold(size: 16) {
       self.titleLabel.font = font
     }
@@ -31,6 +33,11 @@ class InputItemTableViewCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+    if selected {
+      self.checkboxImage.image = R.image.iconItemSelected()
+    } else {
+      self.checkboxImage.image = nil
+    }
     
   }
   
@@ -41,16 +48,16 @@ class InputItemTableViewCell: UITableViewCell {
       checkboxImageWidthConstraint.constant = 0
     }
     if selected {
-//      self.checkboxImage.image = R.image.selected
+      self.checkboxImage.image = R.image.iconItemSelected()
     } else {
       self.checkboxImage.image = nil
     }
     
     if let image = inputItem.icon?.cachedImage {
-      self.itemImageWidthConstraint.constant = 45
+      self.itemImageWidthConstraint.constant = 35
       self.itemImageView.image = image
     } else if let icon =  inputItem.icon, icon.assetLikelyExists() {
-      self.itemImageWidthConstraint.constant = 45
+      self.itemImageWidthConstraint.constant = 35
       self.itemImageView.image = nil
       icon.asyncUIImageFetch { (image) in
         DispatchQueue.main.async {
@@ -67,6 +74,13 @@ class InputItemTableViewCell: UITableViewCell {
       self.titleLabel.textColor = color.uiColor()
       self.contentLabel.textColor = color.uiColor()
     }
+    if let itemTitle = inputItem.responseTitle {
+      self.titleLabel.isHidden = false
+      self.titleLabel.text = itemTitle
+    } else {
+      self.titleLabel.isHidden = true
+    }
+    self.contentLabel.text = inputItem.responseBody
     
   }
 }
