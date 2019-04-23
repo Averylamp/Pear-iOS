@@ -1,5 +1,5 @@
 //
-//  ProfileInputVibeViewController.swift
+//  ProfileInputQuestionViewController.swift
 //  Pear
 //
 //  Created by Avery Lamp on 4/17/19.
@@ -8,52 +8,78 @@
 
 import UIKit
 
-class ProfileInputVibeViewController: UIViewController {
+class ProfileInputQuestionViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var topSeperatorView: UIView!
   @IBOutlet weak var nextButton: UIButton!
+  @IBOutlet weak var questionCountLabel: UILabel!
+  @IBOutlet weak var questionCountImageView: UIImageView!
   
   var profileData: ProfileCreationData!
   var inputTVC: InputTableViewController?
   var tableViewHeightConstraint: NSLayoutConstraint?
+  var question: QuestionItem!
+  var alreadySelectedResponse: Bool = false
+  var selectedResponse: QuestionResponseItem?
+  
+  let checkImages: [UIImage?] = [R.image.iconCheckRound(),
+                                 R.image.iconCheckPointy(),
+                                 R.image.iconCheckRoundish()]
+  var questionBackgroundColors: [UIColor?] = [R.color.backgroundColorBlue(),
+                                              R.color.backgroundColorPurple(),
+                                              R.color.backgroundColorOrange()]
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(profileCreationData: ProfileCreationData) -> ProfileInputVibeViewController? {
-    guard let profileVibeVC = R.storyboard.profileInputVibeViewController()
-      .instantiateInitialViewController() as? ProfileInputVibeViewController else { return nil }
+  class func instantiate(profileCreationData: ProfileCreationData, question: QuestionItem) -> ProfileInputQuestionViewController? {
+    guard let profileVibeVC = R.storyboard.profileInputQuestionViewController()
+      .instantiateInitialViewController() as? ProfileInputQuestionViewController else { return nil }
     profileVibeVC.profileData = profileCreationData
+    profileVibeVC.question = question
     return profileVibeVC
   }
   
-  @IBAction func nextButtonClicked(_ sender: Any) {
-    if let inputTVC = self.inputTVC {
-      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-      let selectedItems = inputTVC.getSelectedItems().map({ $0.suggestion })
-      print("\(selectedItems.count) Items Selected")
-      let vibeItems = selectedItems.map({ VibeItem(questionResponse: $0) })
-      self.profileData.vibes = vibeItems
-      guard let questionInputVC = ProfileInputQuestionViewController
-        .instantiate(profileCreationData: self.profileData,
-                     question: QuestionItem.dayOffQuestion()) else {
-                      "Failed to create question input VC"
-                      return
+  func continueToNextQuestion() {
+    DispatchQueue.main.async {
+      var questionResponse: QuestionResponseItem?
+      questionResponse = self.selectedResponse
+      if let inputTVC = self.inputTVC,
+        let foundResponse = inputTVC.responseItems.filter({ $0.selected }).first?.suggestion,
+        foundResponse.responseBody != questionResponse?.responseBody,
+        let newResponse = try? QuestionResponseItem(documentID: nil,
+                                                    question: inputTVC.question,
+                                                    responseBody: foundResponse.responseBody,
+                                                    responseTitle: foundResponse.responseTitle,
+                                                    color: foundResponse.color,
+                                                    icon: foundResponse.icon) {
+        questionResponse = newResponse
       }
-      self.navigationController?.pushViewController(questionInputVC, animated: true)
+      
+      guard let response = questionResponse else {
+        print("No response found")
+        return
+      }
+      self.profileData.questionResponses.append(response)
+      guard let nextQuestionVC = ProfileInputQuestionViewController.instantiate(profileCreationData: self.profileData,
+                                                                                question: QuestionItem.idealDateQuestion()) else {
+                                                                                  print("Failed to create question VC")
+                                                                                  return
+      }
+      self.navigationController?.pushViewController(nextQuestionVC, animated: true)
     }
   }
+  
 }
 
 // MARK: - Life Cycle
-extension ProfileInputVibeViewController {
+extension ProfileInputQuestionViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
     self.setup()
-    self.addCardQuestion(question: QuestionItem.vibeQuestion())
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +90,8 @@ extension ProfileInputVibeViewController {
   }
   
   func stylize() {
-    self.view.backgroundColor = R.color.backgroundColorOrange()
+    
+    self.view.backgroundColor = questionBackgroundColors[self.profileData.questionResponses.count % questionBackgroundColors.count]
     if let font = R.font.openSansExtraBold(size: 16) {
       self.titleLabel.font = font
     }
@@ -72,12 +99,19 @@ extension ProfileInputVibeViewController {
     self.nextButton.layer.cornerRadius = self.nextButton.frame.width / 2.0
     self.nextButton.alpha = 0.0
     self.nextButton.isUserInteractionEnabled = false
-    
+    self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)"
+    self.questionCountImageView.contentMode = .scaleAspectFill
+    self.questionCountImageView.image = self.checkImages[self.profileData.questionResponses.count % checkImages.count]
   }
   
   func setup() {
-    
+    self.addCardQuestion(question: self.question)
   }
+  
+}
+
+// MARK: - Question Card Setup
+extension ProfileInputQuestionViewController {
   
   func addCardQuestion(question: QuestionItem) {
     let cardView = UIView()
@@ -111,7 +145,7 @@ extension ProfileInputVibeViewController {
       stackView.addArrangedSubview(subtitleView)
     }
     
-    guard let inputTVC = InputTableViewController.instantiate(question: question, multiselect: true, vibesInput: true) else {
+    guard let inputTVC = InputTableViewController.instantiate(question: question) else {
       print("Failed to create answer TVC")
       return
     }
@@ -132,14 +166,14 @@ extension ProfileInputVibeViewController {
                                               toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -20.0)
     bottomConstraint.priority = .defaultHigh
     self.view.addConstraints([
-        NSLayoutConstraint(item: cardView, attribute: .centerX, relatedBy: .equal,
-                           toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: cardView, attribute: .centerY, relatedBy: .equal,
-                           toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: self.topSeperatorView.center.y / 2.0),
-        NSLayoutConstraint(item: cardView, attribute: .width, relatedBy: .equal,
-                           toItem: self.view, attribute: .width, multiplier: 1.0, constant: -40),
-        topConstraint,
-        bottomConstraint
+      NSLayoutConstraint(item: cardView, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: cardView, attribute: .centerY, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: self.topSeperatorView.center.y / 2.0),
+      NSLayoutConstraint(item: cardView, attribute: .width, relatedBy: .equal,
+                         toItem: self.view, attribute: .width, multiplier: 1.0, constant: -40),
+      topConstraint,
+      bottomConstraint
       ])
     
     self.view.layoutIfNeeded()
@@ -204,28 +238,47 @@ extension ProfileInputVibeViewController {
 }
 
 // MARK: - InputTVDelegate
-extension ProfileInputVibeViewController: InputTableViewDelegate {
+extension ProfileInputQuestionViewController: InputTableViewDelegate {
   func canSelect(response: SuggestedResponseTableItem, allItems: [SuggestedResponseTableItem]) -> Bool {
     let numberSelected = allItems.filter({$0.selected}).count
     return numberSelected <= 2
   }
   
   func suggestedResponseSelected(response: QuestionResponseItem, allItems: [SuggestedResponseTableItem]) {
-    let numberSelected = allItems.filter({$0.selected}).count
-    if numberSelected > 0, self.nextButton.alpha == 0 {
-      DispatchQueue.main.async {
-        self.nextButton.isUserInteractionEnabled = true
-        UIView.animate(withDuration: 0.5, animations: {
-          self.nextButton.alpha = 1.0
+    guard !self.alreadySelectedResponse else {
+      print("Already selected response")
+      return
+    }
+    self.alreadySelectedResponse = true
+    self.selectedResponse = response
+    
+    DispatchQueue.main.async {
+      
+      let checkboxImage = UIImageView()
+      checkboxImage.contentMode = .scaleAspectFill
+      checkboxImage.image = self.checkImages[self.profileData.questionResponses.count % self.checkImages.count]
+
+      checkboxImage.alpha = 0.0
+      checkboxImage.translatesAutoresizingMaskIntoConstraints = false
+      checkboxImage.addConstraints([
+        NSLayoutConstraint(item: checkboxImage, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 200),
+        NSLayoutConstraint(item: checkboxImage, attribute: .width, relatedBy: .equal, toItem: checkboxImage, attribute: .height, multiplier: 1.0, constant: 0)
+        ])
+      self.view.addSubview(checkboxImage)
+      self.view.addConstraints([
+        NSLayoutConstraint(item: checkboxImage, attribute: .centerX, relatedBy: .equal,
+                           toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: checkboxImage, attribute: .centerY, relatedBy: .equal,
+                           toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0)
+        ])
+      UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+        checkboxImage.alpha = 1.0
+      }, completion: { (_) in
+        self.delay(delay: 0.8, closure: {
+          self.continueToNextQuestion()
         })
-      }
-    } else if numberSelected == 0 && self.nextButton.alpha != 0.0 {
-      DispatchQueue.main.async {
-        self.nextButton.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.5, animations: {
-          self.nextButton.alpha = 0.0
-        })
-      }
+      })
+      
     }
   }
   
