@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import SDWebImage
 
+enum QuestionItemError: Error {
+  case userNotAuthorized
+  case missingEssentialInformation
+}
+
 enum QuestionItemKey: String, CodingKey {
   case documentID = "_id"
   case questionText
@@ -29,7 +34,7 @@ enum QuestionType: String {
 }
 
 class QuestionItem: Decodable, GraphQLInput {
-
+  
   var documentID: String?
   var questionText: String
   var questionSubtext: String?
@@ -39,7 +44,7 @@ class QuestionItem: Decodable, GraphQLInput {
   var placeholderResponseText: String?
   var hiddenInQuestionnaire: Bool
   var hiddenInProfile: Bool
-
+  
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: QuestionItemKey.self)
     self.documentID = try? values.decode(String.self, forKey: .documentID)
@@ -47,14 +52,34 @@ class QuestionItem: Decodable, GraphQLInput {
     self.questionSubtext = try? values.decode(String.self, forKey: .questionSubtext)
     self.questionTextWithName = try? values.decode(String.self, forKey: .questionTextWithName)
     guard let questionTypeString = try? values.decode(String.self, forKey: .questionType),
-     let questionType = QuestionType(rawValue: questionTypeString) else {
-      throw ContentItemError.decodingEnumError
+      let questionType = QuestionType(rawValue: questionTypeString) else {
+        throw ContentItemError.decodingEnumError
     }
     self.questionType = questionType
     self.suggestedResponses = try values.decode([QuestionSuggestedResponse].self, forKey: .suggestedResponses)
     self.placeholderResponseText = try? values.decode(String.self, forKey: .placeholderResponseText)
     self.hiddenInQuestionnaire = try values.decode(Bool.self, forKey: .hiddenInQuestionnaire)
     self.hiddenInProfile = try values.decode(Bool.self, forKey: .hiddenInProfile)
+  }
+  
+  init(documentID: String?,
+       questionText: String,
+       questionSubtext: String?,
+       questionTextWithName: String?,
+       questionType: QuestionType,
+       suggestedResponses: [QuestionSuggestedResponse],
+       placeholderResponseText: String?,
+       hiddenInQuestionnaire: Bool,
+       hiddenInProfile: Bool) {
+    self.documentID = documentID
+    self.questionText = questionText
+    self.questionSubtext = questionSubtext
+    self.questionTextWithName = questionTextWithName
+    self.questionType = questionType
+    self.suggestedResponses = suggestedResponses
+    self.placeholderResponseText = placeholderResponseText
+    self.hiddenInQuestionnaire = hiddenInQuestionnaire
+    self.hiddenInProfile = hiddenInProfile
   }
   
   func toGraphQLInput() -> [String: Any] {
@@ -78,6 +103,19 @@ class QuestionItem: Decodable, GraphQLInput {
       input[QuestionItemKey.placeholderResponseText.rawValue] = placeholderResponseText
     }
     return input
+  }
+  
+  static func vibeQuestion() -> QuestionItem {
+    
+    return QuestionItem(documentID: nil,
+                        questionText: "What's their vibe?",
+                        questionSubtext: "Pick up to 3",
+                        questionTextWithName: "What's <name> vibe?",
+                        questionType: .multipleChoice,
+                        suggestedResponses: QuestionSuggestedResponse.vibeResponses(),
+                        placeholderResponseText: nil,
+                        hiddenInQuestionnaire: false,
+                        hiddenInProfile: false)
   }
   
 }
@@ -110,6 +148,56 @@ class QuestionSuggestedResponse: Decodable, GraphQLInput {
       input[QuestionSuggestedResponseKey.icon.rawValue] = icon
     }
     return input
+  }
+  
+  init(responseBody: String,
+       responseTitle: String?,
+       color: Color?,
+       icon: IconAsset?) {
+    self.responseBody = responseBody
+    self.responseTitle = responseTitle
+    self.color = color
+    self.icon = icon
+  }
+ 
+  static func vibeResponses() -> [QuestionSuggestedResponse] {
+    var responses: [QuestionSuggestedResponse] = []
+    
+    responses.append(QuestionSuggestedResponse(responseBody: "Player", responseTitle: nil,
+                                               color: Color(color: R.color.vibePlayerColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconPlayer.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Fineapple", responseTitle: nil,
+                                               color: Color(color: R.color.vibeFineappleColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconFineapple.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Forbidden Fruit", responseTitle: nil,
+                                               color: Color(color: R.color.vibeForbiddenFruitColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconForbiddenFruit.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Just Add Water", responseTitle: nil,
+                                               color: Color(color: R.color.vibeJustAddWaterColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconJustAddWater.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Cherry Bomb", responseTitle: nil,
+                                               color: Color(color: R.color.vibeCherryBombColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconCherryBomb.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Coco-NUTS", responseTitle: nil,
+                                               color: Color(color: R.color.vibeCoconutsColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconCoconuts.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Extra Like Guac", responseTitle: nil,
+                                               color: Color(color: R.color.vibeExtraLikeGuacColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconExtraLikeGuac.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Passionfruit", responseTitle: nil,
+                                               color: Color(color: R.color.vibePassionfruitColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconPassionfruit.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Spicy", responseTitle: nil,
+                                               color: Color(color: R.color.vibeSpicyColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconSpicy.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Big Gains", responseTitle: nil,
+                                               color: Color(color: R.color.vibeBigGainsColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconBigGains.name, assetURL: nil)))
+    responses.append(QuestionSuggestedResponse(responseBody: "Baddest Radish", responseTitle: nil,
+                                               color: Color(color: R.color.vibeBaddestRadishColor()),
+                                               icon: IconAsset(assetString: R.image.vibeIconBaddestRadish.name, assetURL: nil)))
+
+    return responses
   }
   
 }
@@ -163,6 +251,33 @@ class QuestionResponseItem: Decodable, GraphQLInput {
   var icon: IconAsset?
   var hidden: Bool
   
+  init( documentID: String?,
+        question: QuestionItem,
+        responseBody: String,
+        responseTitle: String?,
+        color: Color?,
+        icon: IconAsset?) throws {
+    
+    self.documentID = documentID
+    guard let creatorID = DataStore.shared.currentPearUser?.documentID,
+      let creatorFirstName = DataStore.shared.currentPearUser?.firstName else {
+        throw QuestionItemError.userNotAuthorized
+    }
+    self.authorID = creatorID
+    self.authorFirstName = creatorFirstName
+    guard let questionID = question.documentID else {
+      print("Question without ID cant be saved")
+      throw QuestionItemError.missingEssentialInformation
+    }
+    self.questionID = questionID
+    self.question = question
+    self.responseBody = responseBody
+    self.responseTitle = responseTitle
+    self.color = color
+    self.icon = icon
+    self.hidden = false
+  }
+  
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: QuestionResponseItemKey.self)
     self.documentID = try values.decode(String.self, forKey: .documentID)
@@ -193,6 +308,16 @@ class Color: Codable, GraphQLInput {
   var blue: CGFloat
   var alpha: CGFloat
   
+  init?(color: UIColor?) {
+    guard let color = color else {
+      return nil
+    }
+    self.red = color.rgba.red
+    self.green = color.rgba.green
+    self.blue = color.rgba.blue
+    self.alpha = color.rgba.alpha
+  }
+  
   func toGraphQLInput() -> [String: Any] {
     return [
       ColorKey.red.rawValue: self.red,
@@ -222,6 +347,13 @@ class IconAsset: Decodable, GraphQLInput {
   var assetURL: URL?
   var cachedImage: UIImage?
   
+  init (assetString: String?,
+        assetURL: URL?
+    ) {
+    self.assetString = assetString
+    self.assetURL = assetURL
+  }
+  
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: IconAssetKey.self)
     self.assetString = try? values.decode(String.self, forKey: .assetString)
@@ -240,7 +372,7 @@ class IconAsset: Decodable, GraphQLInput {
       }
     }
   }
-
+  
   func syncUIImageFetch() -> UIImage? {
     if let assetString = self.assetString,
       let image = UIImage(named: assetString) {

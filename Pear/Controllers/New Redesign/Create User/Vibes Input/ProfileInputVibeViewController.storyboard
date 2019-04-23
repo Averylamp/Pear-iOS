@@ -32,8 +32,18 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKs-aO-fga">
+                                        <rect key="frame" x="8" y="5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="JVQ-ul-TSM"/>
+                                            <constraint firstAttribute="width" secondItem="DKs-aO-fga" secondAttribute="height" multiplier="1:1" id="kSo-oK-r77"/>
+                                        </constraints>
+                                        <state key="normal" image="icon-cancel-button"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="DKs-aO-fga" firstAttribute="centerY" secondItem="UL4-RL-DZt" secondAttribute="centerY" id="7mP-oW-ZaM"/>
+                                    <constraint firstItem="DKs-aO-fga" firstAttribute="leading" secondItem="jAd-YO-Lte" secondAttribute="leading" constant="8" id="J8L-MZ-HTp"/>
                                     <constraint firstAttribute="height" constant="40" id="KVn-WM-UyW"/>
                                     <constraint firstItem="UL4-RL-DZt" firstAttribute="centerX" secondItem="jAd-YO-Lte" secondAttribute="centerX" id="W3v-Eb-cOK"/>
                                     <constraint firstItem="UL4-RL-DZt" firstAttribute="centerY" secondItem="jAd-YO-Lte" secondAttribute="centerY" id="XMe-i0-zS9"/>
@@ -61,6 +71,7 @@
                     </view>
                     <connections>
                         <outlet property="titleLabel" destination="UL4-RL-DZt" id="Dhe-4D-zig"/>
+                        <outlet property="topSeperatorView" destination="fex-wJ-9Ii" id="No0-BO-e8r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ew4-3M-jYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -68,4 +79,7 @@
             <point key="canvasLocation" x="676.81159420289862" y="-290.625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-cancel-button" width="96" height="96"/>
+    </resources>
 </document>
