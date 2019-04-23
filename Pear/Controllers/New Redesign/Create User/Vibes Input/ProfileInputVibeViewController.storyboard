@@ -56,20 +56,35 @@
                                     <constraint firstAttribute="height" constant="1" id="UW2-wS-gJ3"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qg6-1g-wgv">
+                                <rect key="frame" x="314" y="762" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.38039215686274508" green="0.7803921568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Qg6-1g-wgv" secondAttribute="height" multiplier="1:1" id="afJ-jR-ipd"/>
+                                    <constraint firstAttribute="width" constant="60" id="bP9-X9-lcm"/>
+                                </constraints>
+                                <state key="normal" image="icon-forward-arrow-white"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="pr2-9c-pyo" eventType="touchUpInside" id="imF-Sk-3Xp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jAd-YO-Lte" firstAttribute="leading" secondItem="KB1-SY-aJA" secondAttribute="leading" id="0Nl-P7-Wqt"/>
                             <constraint firstItem="fex-wJ-9Ii" firstAttribute="top" secondItem="jAd-YO-Lte" secondAttribute="bottom" constant="8" id="9Nw-Af-ebD"/>
                             <constraint firstItem="KB1-SY-aJA" firstAttribute="trailing" secondItem="fex-wJ-9Ii" secondAttribute="trailing" id="Gxq-Ks-wpT"/>
+                            <constraint firstItem="KB1-SY-aJA" firstAttribute="bottom" secondItem="Qg6-1g-wgv" secondAttribute="bottom" constant="40" id="K4I-ob-JEr"/>
                             <constraint firstItem="jAd-YO-Lte" firstAttribute="top" secondItem="KB1-SY-aJA" secondAttribute="top" constant="12" id="PXf-iV-WZd"/>
                             <constraint firstItem="fex-wJ-9Ii" firstAttribute="centerX" secondItem="KB1-SY-aJA" secondAttribute="centerX" id="kdX-rC-V0N"/>
                             <constraint firstItem="fex-wJ-9Ii" firstAttribute="leading" secondItem="KB1-SY-aJA" secondAttribute="leading" id="mZ6-pb-I68"/>
                             <constraint firstItem="KB1-SY-aJA" firstAttribute="trailing" secondItem="jAd-YO-Lte" secondAttribute="trailing" id="rfp-MO-rwm"/>
+                            <constraint firstItem="KB1-SY-aJA" firstAttribute="trailing" secondItem="Qg6-1g-wgv" secondAttribute="trailing" constant="40" id="sLT-Hf-UbS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KB1-SY-aJA"/>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="Qg6-1g-wgv" id="qao-hC-HtL"/>
                         <outlet property="titleLabel" destination="UL4-RL-DZt" id="Dhe-4D-zig"/>
                         <outlet property="topSeperatorView" destination="fex-wJ-9Ii" id="No0-BO-e8r"/>
                     </connections>
@@ -81,5 +96,6 @@
     </scenes>
     <resources>
         <image name="icon-cancel-button" width="96" height="96"/>
+        <image name="icon-forward-arrow-white" width="512" height="512"/>
     </resources>
 </document>

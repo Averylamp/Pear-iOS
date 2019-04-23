@@ -137,8 +137,12 @@ extension UserContactListViewController {
 extension UserContactListViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     let selectedContactListItem = self.filteredContacts[indexPath.row]
+    if !selectedContactListItem.enabled {
+      HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+      return
+    }
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     let profileCreationData = ProfileCreationData(contactListItem: selectedContactListItem)
     guard let vibeVC = ProfileInputVibeViewController.instantiate(profileCreationData: profileCreationData) else {
       print("Faile to created Vibe VC")

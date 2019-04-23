@@ -12,6 +12,7 @@ class ProfileInputVibeViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var topSeperatorView: UIView!
+  @IBOutlet weak var nextButton: UIButton!
   
   var profileData: ProfileCreationData!
   var inputTVC: InputTableViewController?
@@ -26,6 +27,17 @@ class ProfileInputVibeViewController: UIViewController {
     return profileVibeVC
   }
   
+  @IBAction func nextButtonClicked(_ sender: Any) {
+    if let inputTVC = self.inputTVC {
+      let selectedItems = inputTVC.getSelectedItems().map({ $0.suggestion })
+      print("\(selectedItems.count) Items Selected")
+      let vibeItems = selectedItems.map({ VibeItem(questionResponse: $0) })
+      self.profileData.vibes = vibeItems
+      
+      
+      
+    }
+  }
 }
 
 // MARK: - Life Cycle
@@ -55,6 +67,10 @@ extension ProfileInputVibeViewController {
       self.titleLabel.font = font
     }
     self.titleLabel.textColor = UIColor.white
+    self.nextButton.layer.cornerRadius = self.nextButton.frame.width / 2.0
+    self.nextButton.alpha = 0.0
+    self.nextButton.isUserInteractionEnabled = false
+    
   }
   
   func setup() {
@@ -105,7 +121,7 @@ extension ProfileInputVibeViewController {
     
     inputTVC.didMove(toParent: self)
     
-    self.view.addSubview(cardView)
+    self.view.insertSubview(cardView, belowSubview: self.nextButton)
     
     let topConstraint = NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .greaterThanOrEqual,
                                            toItem: self.topSeperatorView, attribute: .top, multiplier: 1.0, constant: 20.0)
@@ -198,7 +214,22 @@ extension ProfileInputVibeViewController: InputTableViewDelegate {
   }
   
   func suggestedResponseSelected(response: QuestionResponseItem, allItems: [SuggestedResponseTableItem]) {
-    
+    let numberSelected = allItems.filter({$0.selected}).count
+    if numberSelected > 0, self.nextButton.alpha == 0 {
+      DispatchQueue.main.async {
+        self.nextButton.isUserInteractionEnabled = true
+        UIView.animate(withDuration: 0.5, animations: {
+          self.nextButton.alpha = 1.0
+        })
+      }
+    } else if numberSelected == 0 && self.nextButton.alpha != 0.0 {
+      DispatchQueue.main.async {
+        self.nextButton.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.5, animations: {
+          self.nextButton.alpha = 0.0
+        })
+      }
+    }
   }
   
 }

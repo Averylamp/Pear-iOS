@@ -21,24 +21,23 @@ enum TextContentItemKey: String, CodingKey {
   case hidden
 }
 
-class TextContentItem: GraphQLInput {
+class TextContentItem: GraphQLInput, AuthorGraphQLInput {
   let documentID: String? = nil
-  var creatorFirstName: String
   var authorID: String
   var authorFirstName: String
   var content: String
   var hidden: Bool
   
-  init(creatorFirstName: String, content: String, hidden: Bool = false) throws {
-    self.creatorFirstName = creatorFirstName
+  init(content: String, hidden: Bool = false) throws {
     self.content = content
     self.hidden = hidden
-    guard let creatorID = DataStore.shared.currentPearUser?.documentID,
-      let creatorFirstName = DataStore.shared.currentPearUser?.firstName else {
-        throw ContentItemError.userNotAuthorized
-    }
-    self.authorFirstName = creatorFirstName
-    self.authorID = creatorID
+    self.authorFirstName = ""
+    self.authorID = ""
+  }
+  
+  func updateAuthor(authorID: String, authorFirstName: String) {
+    self.authorID = authorID
+    self.authorFirstName = authorFirstName
   }
   
   func toGraphQLInput() -> [String: Any] {

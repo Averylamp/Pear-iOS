@@ -256,6 +256,8 @@
 		BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */; };
 		BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */; };
 		BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBECF223848E6008E8E91 /* FullProfileScrollViewController.swift */; };
+		BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */; };
+		BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF2268226F8F9F0021B021 /* QuestionResponseItem.swift */; };
 		BBF09A6B224AF69F00BC82B9 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */; };
 		BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */; };
 		BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */; };
@@ -587,6 +589,8 @@
 		BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserProfile.swift; sourceTree = "<group>"; };
 		BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollViewController.storyboard; sourceTree = "<group>"; };
 		BBECBECF223848E6008E8E91 /* FullProfileScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullProfileScrollViewController.swift; sourceTree = "<group>"; };
+		BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSuggestedResponse.swift; sourceTree = "<group>"; };
+		BBEF2268226F8F9F0021B021 /* QuestionResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionResponseItem.swift; sourceTree = "<group>"; };
 		BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
 		BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
@@ -1135,6 +1139,8 @@
 				BBBA573E226D9749000BCD5F /* VibeItem.swift */,
 				BBBA5740226D9751000BCD5F /* BioItem.swift */,
 				BBBA573C226D9741000BCD5F /* QuestionItem.swift */,
+				BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */,
+				BBEF2268226F8F9F0021B021 /* QuestionResponseItem.swift */,
 			);
 			name = "New Models";
 			sourceTree = "<group>";
@@ -2485,6 +2491,7 @@
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
+				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
@@ -2613,6 +2620,7 @@
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
 				BBF93E582267C8B1002841EE /* ProfileInputQuestionViewController.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
+				BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */,
 				BB77E7A12252211700A12B12 /* ApproveDetachedProfileSchoolViewController.swift in Sources */,
 				BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
