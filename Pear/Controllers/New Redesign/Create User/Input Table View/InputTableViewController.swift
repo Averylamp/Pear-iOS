@@ -42,6 +42,10 @@ class InputTableViewController: UIViewController {
     return inputTableVC
   }
   
+  func getSelectedItems() -> [SuggestedResponseTableItem] {
+    return self.responseItems.filter({ $0.selected })
+  }
+  
 }
 
 // MARK: - Life Cycle

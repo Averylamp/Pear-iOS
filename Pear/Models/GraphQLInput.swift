@@ -13,3 +13,9 @@ protocol GraphQLInput: class {
   func toGraphQLInput() -> [String: Any]
   
 }
+
+protocol AuthorGraphQLInput: class {
+  
+  func updateAuthor(authorID: String, authorFirstName: String)
+  
+}

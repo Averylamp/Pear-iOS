@@ -107,7 +107,7 @@ class QuestionItem: Decodable, GraphQLInput {
   
   static func vibeQuestion() -> QuestionItem {
     
-    return QuestionItem(documentID: nil,
+    return QuestionItem(documentID: "5cb1af368eb7800f51c00bbf",
                         questionText: "What's their vibe?",
                         questionSubtext: "Pick up to 3",
                         questionTextWithName: "What's <name> vibe?",
@@ -118,178 +118,28 @@ class QuestionItem: Decodable, GraphQLInput {
                         hiddenInProfile: false)
   }
   
-}
-
-enum QuestionSuggestedResponseKey: String, CodingKey {
-  case responseBody
-  case responseTitle
-  case color
-  case icon
-}
-
-class QuestionSuggestedResponse: Decodable, GraphQLInput {
-  
-  var responseBody: String
-  var responseTitle: String?
-  var color: Color?
-  var icon: IconAsset?
-  
-  func toGraphQLInput() -> [String: Any] {
-    var input: [String: Any] = [
-      QuestionSuggestedResponseKey.responseBody.rawValue: self.responseBody
-    ]
-    if let responseTitle = self.responseTitle {
-      input[QuestionSuggestedResponseKey.responseTitle.rawValue] = responseTitle
-    }
-    if let color = self.color {
-      input[QuestionSuggestedResponseKey.color.rawValue] = color
-    }
-    if let icon = self.icon {
-      input[QuestionSuggestedResponseKey.icon.rawValue] = icon
-    }
-    return input
+  static func idealDateQuestion() -> QuestionItem {
+    return QuestionItem(documentID: "5cb1af46951e460f2b486292",
+                        questionText: "What time's their ideal date?",
+                        questionSubtext: nil,
+                        questionTextWithName: "What time's <name>'s ideal date?",
+                        questionType: .multipleChoice,
+                        suggestedResponses: QuestionSuggestedResponse.idealDateResponses(),
+                        placeholderResponseText: nil,
+                        hiddenInQuestionnaire: false,
+                        hiddenInProfile: false)
   }
   
-  init(responseBody: String,
-       responseTitle: String?,
-       color: Color?,
-       icon: IconAsset?) {
-    self.responseBody = responseBody
-    self.responseTitle = responseTitle
-    self.color = color
-    self.icon = icon
-  }
- 
-  static func vibeResponses() -> [QuestionSuggestedResponse] {
-    var responses: [QuestionSuggestedResponse] = []
-    
-    responses.append(QuestionSuggestedResponse(responseBody: "Player", responseTitle: nil,
-                                               color: Color(color: R.color.vibePlayerColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconPlayer.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Fineapple", responseTitle: nil,
-                                               color: Color(color: R.color.vibeFineappleColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconFineapple.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Forbidden Fruit", responseTitle: nil,
-                                               color: Color(color: R.color.vibeForbiddenFruitColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconForbiddenFruit.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Just Add Water", responseTitle: nil,
-                                               color: Color(color: R.color.vibeJustAddWaterColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconJustAddWater.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Cherry Bomb", responseTitle: nil,
-                                               color: Color(color: R.color.vibeCherryBombColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconCherryBomb.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Coco-NUTS", responseTitle: nil,
-                                               color: Color(color: R.color.vibeCoconutsColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconCoconuts.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Extra Like Guac", responseTitle: nil,
-                                               color: Color(color: R.color.vibeExtraLikeGuacColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconExtraLikeGuac.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Passionfruit", responseTitle: nil,
-                                               color: Color(color: R.color.vibePassionfruitColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconPassionfruit.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Spicy", responseTitle: nil,
-                                               color: Color(color: R.color.vibeSpicyColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconSpicy.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Big Gains", responseTitle: nil,
-                                               color: Color(color: R.color.vibeBigGainsColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconBigGains.name, assetURL: nil)))
-    responses.append(QuestionSuggestedResponse(responseBody: "Baddest Radish", responseTitle: nil,
-                                               color: Color(color: R.color.vibeBaddestRadishColor()),
-                                               icon: IconAsset(assetString: R.image.vibeIconBaddestRadish.name, assetURL: nil)))
-
-    return responses
-  }
-  
-}
-
-enum QuestionResponseItemKey: String, CodingKey {
-  case documentID = "_id"
-  case authorID = "author_id"
-  case authorFirstName
-  case questionID = "question_id"
-  case question
-  case responseBody
-  case responseTitle
-  case color
-  case icon
-  case hidden
-}
-
-class QuestionResponseItem: Decodable, GraphQLInput {
-  func toGraphQLInput() -> [String: Any] {
-    var input: [String: Any] = [
-      QuestionResponseItemKey.authorID.rawValue: authorID,
-      QuestionResponseItemKey.authorFirstName.rawValue: authorFirstName,
-      QuestionResponseItemKey.questionID.rawValue: questionID,
-      QuestionResponseItemKey.question.rawValue: question.toGraphQLInput(),
-      QuestionResponseItemKey.responseBody.rawValue: responseBody,
-      QuestionResponseItemKey.hidden.rawValue: hidden
-    ]
-    if let documentID = self.documentID {
-      input[QuestionResponseItemKey.documentID.rawValue] = documentID
-    }
-    if let responseTitle = self.responseTitle {
-      input[QuestionResponseItemKey.responseTitle.rawValue] = responseTitle
-    }
-    if let color = self.color {
-      input[QuestionResponseItemKey.color.rawValue] = color
-    }
-    if let icon = self.icon {
-      input[QuestionResponseItemKey.icon.rawValue] = icon
-    }
-    return input
-  }
-  
-  var documentID: String?
-  var authorID: String
-  var authorFirstName: String
-  var questionID: String
-  var question: QuestionItem
-  var responseBody: String
-  var responseTitle: String?
-  var color: Color?
-  var icon: IconAsset?
-  var hidden: Bool
-  
-  init( documentID: String?,
-        question: QuestionItem,
-        responseBody: String,
-        responseTitle: String?,
-        color: Color?,
-        icon: IconAsset?) throws {
-    
-    self.documentID = documentID
-    guard let creatorID = DataStore.shared.currentPearUser?.documentID,
-      let creatorFirstName = DataStore.shared.currentPearUser?.firstName else {
-        throw QuestionItemError.userNotAuthorized
-    }
-    self.authorID = creatorID
-    self.authorFirstName = creatorFirstName
-    guard let questionID = question.documentID else {
-      print("Question without ID cant be saved")
-      throw QuestionItemError.missingEssentialInformation
-    }
-    self.questionID = questionID
-    self.question = question
-    self.responseBody = responseBody
-    self.responseTitle = responseTitle
-    self.color = color
-    self.icon = icon
-    self.hidden = false
-  }
-  
-  required init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: QuestionResponseItemKey.self)
-    self.documentID = try values.decode(String.self, forKey: .documentID)
-    self.authorID = try values.decode(String.self, forKey: .authorID)
-    self.authorFirstName = try values.decode(String.self, forKey: .authorFirstName)
-    self.questionID = try values.decode(String.self, forKey: .questionID)
-    self.question = try values.decode(QuestionItem.self, forKey: .question)
-    self.responseBody = try values.decode(String.self, forKey: .responseBody)
-    self.responseTitle = try? values.decode(String.self, forKey: .responseTitle)
-    self.color = try? values.decode(Color.self, forKey: .color)
-    self.icon = try? values.decode(IconAsset.self, forKey: .icon)
-    self.hidden = try values.decode(Bool.self, forKey: .hidden)
+  static func dayOffQuestion() -> QuestionItem {
+    return QuestionItem(documentID: "5cb1af55d94e960f442d2a60",
+                        questionText: "What do they do on a day off?",
+                        questionSubtext: nil,
+                        questionTextWithName: "What do they do on a day off?",
+                        questionType: .multipleChoice,
+                        suggestedResponses: QuestionSuggestedResponse.dayOffResponses(),
+                        placeholderResponseText: nil,
+                        hiddenInQuestionnaire: false,
+                        hiddenInProfile: false)
   }
   
 }
