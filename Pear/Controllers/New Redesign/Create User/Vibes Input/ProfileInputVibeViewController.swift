@@ -13,6 +13,7 @@ class ProfileInputVibeViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var topSeperatorView: UIView!
   @IBOutlet weak var nextButton: UIButton!
+  @IBOutlet weak var nextButtonShadowView: UIView!
   
   var profileData: ProfileCreationData!
   var inputTVC: InputTableViewController?
@@ -73,6 +74,12 @@ extension ProfileInputVibeViewController {
     self.nextButton.alpha = 0.0
     self.nextButton.isUserInteractionEnabled = false
     
+    self.nextButtonShadowView.alpha = 0.0
+    self.nextButtonShadowView.layer.cornerRadius = self.nextButton.frame.width / 2.0
+    self.nextButtonShadowView.layer.shadowOpacity = 0.4
+    self.nextButtonShadowView.layer.shadowColor = UIColor.black.cgColor
+    self.nextButtonShadowView.layer.shadowOffset = CGSize(width: 1, height: 1)
+    self.nextButtonShadowView.layer.shadowRadius = 2
   }
   
   func setup() {
@@ -123,7 +130,7 @@ extension ProfileInputVibeViewController {
     
     inputTVC.didMove(toParent: self)
     
-    self.view.insertSubview(cardView, belowSubview: self.nextButton)
+    self.view.insertSubview(cardView, belowSubview: self.nextButtonShadowView)
     
     let topConstraint = NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .greaterThanOrEqual,
                                            toItem: self.topSeperatorView, attribute: .top, multiplier: 1.0, constant: 20.0)
@@ -217,6 +224,7 @@ extension ProfileInputVibeViewController: InputTableViewDelegate {
         self.nextButton.isUserInteractionEnabled = true
         UIView.animate(withDuration: 0.5, animations: {
           self.nextButton.alpha = 1.0
+          self.nextButtonShadowView.alpha = 1.0
         })
       }
     } else if numberSelected == 0 && self.nextButton.alpha != 0.0 {
@@ -224,6 +232,7 @@ extension ProfileInputVibeViewController: InputTableViewDelegate {
         self.nextButton.isUserInteractionEnabled = false
         UIView.animate(withDuration: 0.5, animations: {
           self.nextButton.alpha = 0.0
+          self.nextButtonShadowView.alpha = 0.0
         })
       }
     }

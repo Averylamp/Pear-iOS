@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ldV-yO-okM">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Profile Input Boast Roast View Controller-->
+        <scene sceneID="HgW-sy-cuF">
+            <objects>
+                <viewController id="ldV-yO-okM" customClass="ProfileInputBoastRoastViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GRc-mv-xn8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IIs-kj-SEt">
+                                <rect key="frame" x="2" y="58" width="414" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer some questions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vzw-TY-4an">
+                                        <rect key="frame" x="126.5" y="10" width="161" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lx1-e0-7ZK">
+                                        <rect key="frame" x="8" y="5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="9HR-iy-XJr"/>
+                                            <constraint firstAttribute="width" secondItem="lx1-e0-7ZK" secondAttribute="height" multiplier="1:1" id="W7N-Wh-hXc"/>
+                                        </constraints>
+                                        <state key="normal" image="icon-cancel-button"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Vzw-TY-4an" firstAttribute="centerY" secondItem="IIs-kj-SEt" secondAttribute="centerY" id="W08-V3-698"/>
+                                    <constraint firstAttribute="height" constant="40" id="nMP-7B-ExC"/>
+                                    <constraint firstItem="lx1-e0-7ZK" firstAttribute="centerY" secondItem="Vzw-TY-4an" secondAttribute="centerY" id="u57-J8-fvq"/>
+                                    <constraint firstItem="lx1-e0-7ZK" firstAttribute="leading" secondItem="IIs-kj-SEt" secondAttribute="leading" constant="8" id="uO0-fs-u2L"/>
+                                    <constraint firstItem="Vzw-TY-4an" firstAttribute="centerX" secondItem="IIs-kj-SEt" secondAttribute="centerX" id="zSi-9c-peW"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWg-Wa-Jnu">
+                                <rect key="frame" x="0.0" y="104" width="414" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="EiB-Jq-pjV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IIs-kj-SEt" firstAttribute="leading" secondItem="qah-yF-tAi" secondAttribute="leading" id="Clg-Tc-fiv"/>
+                            <constraint firstItem="qah-yF-tAi" firstAttribute="trailing" secondItem="EWg-Wa-Jnu" secondAttribute="trailing" id="O4U-7V-aBa"/>
+                            <constraint firstItem="qah-yF-tAi" firstAttribute="trailing" secondItem="IIs-kj-SEt" secondAttribute="trailing" id="Otf-mt-mjn"/>
+                            <constraint firstItem="IIs-kj-SEt" firstAttribute="top" secondItem="qah-yF-tAi" secondAttribute="top" constant="12" id="ZpU-v9-5sG"/>
+                            <constraint firstItem="EWg-Wa-Jnu" firstAttribute="centerX" secondItem="qah-yF-tAi" secondAttribute="centerX" id="cqh-8s-Cru"/>
+                            <constraint firstItem="EWg-Wa-Jnu" firstAttribute="top" secondItem="IIs-kj-SEt" secondAttribute="bottom" constant="8" id="g70-uh-tnm"/>
+                            <constraint firstItem="EWg-Wa-Jnu" firstAttribute="leading" secondItem="qah-yF-tAi" secondAttribute="leading" id="qoE-xN-xCc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qah-yF-tAi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lGi-Tn-PEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="676.81159420289862" y="-290.625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-cancel-button" width="96" height="96"/>
+    </resources>
+</document>
