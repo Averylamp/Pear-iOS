@@ -13,8 +13,11 @@ class ProfileInputQuestionViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var topSeperatorView: UIView!
   @IBOutlet weak var nextButton: UIButton!
+  @IBOutlet weak var nextButtonShadowView: UIView!
   @IBOutlet weak var questionCountLabel: UILabel!
   @IBOutlet weak var questionCountImageView: UIImageView!
+  @IBOutlet weak var skipContainerView: UIView!
+  @IBOutlet weak var continueContainerView: UIView!
   
   var profileData: ProfileCreationData!
   var inputTVC: InputTableViewController?
@@ -71,6 +74,27 @@ class ProfileInputQuestionViewController: UIViewController {
     }
   }
   
+  @IBAction func skipButtonClicked(_ sender: Any) {
+    self.profileData.skipCount += 1
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let nextQuestionVC = ProfileInputQuestionViewController.instantiate(profileCreationData: self.profileData,
+                                                                              question: QuestionItem.idealDateQuestion()) else {
+                                                                                print("Failed to create question VC")
+                                                                                return
+    }
+    self.navigationController?.pushViewController(nextQuestionVC, animated: true)
+  }
+  
+  @IBAction func continueButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+    guard let boastRoastVC = ProfileInputBoastRoastViewController.instantiate(profileCreationData: self.profileData) else {
+                                                                                print("Failed to create question VC")
+                                                                                return
+    }
+    self.navigationController?.pushViewController(boastRoastVC, animated: true)
+    
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -91,17 +115,34 @@ extension ProfileInputQuestionViewController {
   
   func stylize() {
     
-    self.view.backgroundColor = questionBackgroundColors[self.profileData.questionResponses.count % questionBackgroundColors.count]
+    self.view.backgroundColor = questionBackgroundColors[(self.profileData.questionResponses.count + self.profileData.skipCount)
+      % questionBackgroundColors.count]
     if let font = R.font.openSansExtraBold(size: 16) {
       self.titleLabel.font = font
     }
     self.titleLabel.textColor = UIColor.white
     self.nextButton.layer.cornerRadius = self.nextButton.frame.width / 2.0
-    self.nextButton.alpha = 0.0
-    self.nextButton.isUserInteractionEnabled = false
     self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)"
     self.questionCountImageView.contentMode = .scaleAspectFill
-    self.questionCountImageView.image = self.checkImages[self.profileData.questionResponses.count % checkImages.count]
+    self.questionCountImageView.image = self.checkImages[(self.profileData.questionResponses.count + self.profileData.skipCount)
+      % checkImages.count]
+    if self.profileData.questionResponses.count == 0 {
+      self.skipContainerView.alpha = 0.0
+      UIView.animate(withDuration: 0.8, delay: 5.0, options: .curveEaseInOut, animations: {
+        self.skipContainerView.alpha = 1.0
+      }, completion: nil)
+    }
+    
+    if self.profileData.questionResponses.count == 0 {
+      self.continueContainerView.alpha = 0.0
+      self.continueContainerView.isUserInteractionEnabled = false
+    }
+    
+    self.nextButtonShadowView.layer.cornerRadius = self.nextButton.frame.width / 2.0
+    self.nextButtonShadowView.layer.shadowOpacity = 0.2
+    self.nextButtonShadowView.layer.shadowColor = UIColor.black.cgColor
+    self.nextButtonShadowView.layer.shadowOffset = CGSize(width: 1, height: 1)
+    self.nextButtonShadowView.layer.shadowRadius = 2
   }
   
   func setup() {
@@ -163,13 +204,13 @@ extension ProfileInputQuestionViewController {
                                            toItem: self.topSeperatorView, attribute: .top, multiplier: 1.0, constant: 20.0)
     topConstraint.priority = .defaultHigh
     let bottomConstraint = NSLayoutConstraint(item: cardView, attribute: .bottom, relatedBy: .lessThanOrEqual,
-                                              toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -20.0)
+                                              toItem: self.continueContainerView, attribute: .top, multiplier: 1.0, constant: -20.0)
     bottomConstraint.priority = .defaultHigh
     self.view.addConstraints([
       NSLayoutConstraint(item: cardView, attribute: .centerX, relatedBy: .equal,
                          toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: cardView, attribute: .centerY, relatedBy: .equal,
-                         toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: self.topSeperatorView.center.y / 2.0),
+                         toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: cardView, attribute: .width, relatedBy: .equal,
                          toItem: self.view, attribute: .width, multiplier: 1.0, constant: -40),
       topConstraint,
@@ -256,7 +297,8 @@ extension ProfileInputQuestionViewController: InputTableViewDelegate {
       
       let checkboxImage = UIImageView()
       checkboxImage.contentMode = .scaleAspectFill
-      checkboxImage.image = self.checkImages[self.profileData.questionResponses.count % self.checkImages.count]
+      checkboxImage.image = self.checkImages[(self.profileData.questionResponses.count + self.profileData.skipCount)
+        % self.checkImages.count]
 
       checkboxImage.alpha = 0.0
       checkboxImage.translatesAutoresizingMaskIntoConstraints = false
@@ -271,10 +313,10 @@ extension ProfileInputQuestionViewController: InputTableViewDelegate {
         NSLayoutConstraint(item: checkboxImage, attribute: .centerY, relatedBy: .equal,
                            toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0)
         ])
-      UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+      UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
         checkboxImage.alpha = 1.0
       }, completion: { (_) in
-        self.delay(delay: 0.8, closure: {
+        self.delay(delay: 0.6, closure: {
           self.continueToNextQuestion()
         })
       })

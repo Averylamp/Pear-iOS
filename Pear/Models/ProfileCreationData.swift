@@ -26,6 +26,7 @@ class ProfileCreationData: GraphQLInput, AuthorGraphQLInput {
   var boasts: [BoastItem] = []
   var roasts: [RoastItem] = []
   var questionResponses: [QuestionResponseItem] = []
+  var skipCount: Int = 0
   var vibes: [VibeItem] = []
   
   init(contactListItem: ContactListItem) {
