@@ -28,8 +28,7 @@ class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput {
   var icon: IconAsset?
   var hidden: Bool = false
   
-  
-  init(questionResponse: QuestionSuggestedResponse){
+  init(questionResponse: QuestionSuggestedResponse) {
     self.content = questionResponse.responseBody
     self.color = questionResponse.color
     self.icon = questionResponse.icon

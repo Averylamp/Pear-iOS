@@ -1897,6 +1897,15 @@
 			path = "Full Profile Scroll";
 			sourceTree = "<group>";
 		};
+		BBEF226A226FA0B40021B021 /* Input Question */ = {
+			isa = PBXGroup;
+			children = (
+				BBF93E572267C8B1002841EE /* ProfileInputQuestionViewController.swift */,
+				BBF93E652267CA56002841EE /* ProfileInputQuestionViewController.storyboard */,
+			);
+			path = "Input Question";
+			sourceTree = "<group>";
+		};
 		BBF694EE223B7E3600E13ABB /* Friends Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -1952,8 +1961,7 @@
 				BBBA574F226DD627000BCD5F /* Enable Contact Permissions */,
 				BBBA5750226DD631000BCD5F /* Pick Endorsed Contact */,
 				BBBA5751226DD641000BCD5F /* Vibes Input */,
-				BBF93E572267C8B1002841EE /* ProfileInputQuestionViewController.swift */,
-				BBF93E652267CA56002841EE /* ProfileInputQuestionViewController.storyboard */,
+				BBEF226A226FA0B40021B021 /* Input Question */,
 				BBF93E592267C9F3002841EE /* ProfileInputBoastRoastViewController.swift */,
 				BBF93E672267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard */,
 				BBBA574C226DD5FE000BCD5F /* Input Table View */,

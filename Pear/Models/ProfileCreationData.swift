@@ -18,7 +18,7 @@ enum ProfileCreationKey: String {
   case vibes
 }
 
-class ProfileCreationData: GraphQLInput {
+class ProfileCreationData: GraphQLInput, AuthorGraphQLInput {
   
   var phoneNumber: String
   var firstName: String
@@ -32,6 +32,13 @@ class ProfileCreationData: GraphQLInput {
     self.phoneNumber = contactListItem.phoneNumber
     self.firstName = contactListItem.firstName
     self.lastName = contactListItem.lastName
+  }
+  
+  func updateAuthor(authorID: String, authorFirstName: String) {
+    self.boasts.forEach({ $0.updateAuthor(authorID: authorID, authorFirstName: authorFirstName) })
+    self.roasts.forEach({ $0.updateAuthor(authorID: authorID, authorFirstName: authorFirstName) })
+    self.questionResponses.forEach({ $0.updateAuthor(authorID: authorID, authorFirstName: authorFirstName) })
+    self.vibes.forEach({ $0.updateAuthor(authorID: authorID, authorFirstName: authorFirstName) })
   }
   
   func toGraphQLInput() -> [String: Any] {

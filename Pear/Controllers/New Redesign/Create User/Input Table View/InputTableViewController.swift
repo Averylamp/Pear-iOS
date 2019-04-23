@@ -89,7 +89,7 @@ extension InputTableViewController: UITableViewDelegate, UITableViewDataSource {
           return UITableViewCell()
     }
     let responseItem = self.responseItems[indexPath.row]
-    cell.configure(inputItem: responseItem.suggestion, multiselect: self.multiselect, selected: responseItem.selected)
+    cell.configure(inputItem: responseItem.suggestion, selected: responseItem.selected)
     if self.vibesInput, let font = R.font.openSansExtraBold(size: 18) {
       cell.contentLabel.font = font
     }

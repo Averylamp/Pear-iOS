@@ -19,9 +19,22 @@ class SentryHelper {
                                  paylod: [String: Any] = [:]) {
     print("\n***** GENERATING SENTRY REPORT *****")
     print("***** \(apiName):\(functionName) - \(message) *****\n")
+    let skipErrors: [String] = [
+    "The network connection was lost.".lowercased(),
+    "The request timed out.".lowercased(),
+    "The Internet connection appears to be offline.".lowercased(),
+    "A data connection is not currently allowed.".lowercased()
+    ]
+    skipErrors.forEach({
+      if  "\(message) - \(apiName):\(functionName)".lowercased().contains($0) {
+        print("Found skippable error message")
+        return
+      }
+    })
+    
     #if PROD
     let userErrorEvent = Event(level: level)
-    userErrorEvent.message = "\(apiName):\(functionName) - \(message)"
+    userErrorEvent.message = "\(message) - \(apiName):\(functionName)"
     var allTags: [String: String] = ["API": apiName,
                                      "functionName": functionName]
     tags.forEach({ allTags[$0.key] = $0.value })

@@ -34,21 +34,18 @@ class InputItemTableViewCell: UITableViewCell {
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     if selected {
-      self.checkboxImage.image = R.image.iconItemSelected()
+      self.checkboxImage.image = R.image.iconCheckRound()
     } else {
       self.checkboxImage.image = nil
     }
     
   }
   
-  func configure(inputItem: QuestionSuggestedResponse, multiselect: Bool, selected: Bool) {
-    if multiselect {
-      checkboxImageWidthConstraint.constant = 30
-    } else {
-      checkboxImageWidthConstraint.constant = 0
-    }
+  func configure(inputItem: QuestionSuggestedResponse, selected: Bool) {
+    checkboxImageWidthConstraint.constant = 30
+    
     if selected {
-      self.checkboxImage.image = R.image.iconItemSelected()
+      self.checkboxImage.image = R.image.iconCheckRound()
     } else {
       self.checkboxImage.image = nil
     }
