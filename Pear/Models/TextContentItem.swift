@@ -26,7 +26,7 @@ class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLI
     return "{ _id author_id authorFirstName content hidden }"
   }
   
-  let documentID: String? = nil
+  var documentID: String?
   var authorID: String
   var authorFirstName: String
   var content: String
@@ -55,6 +55,15 @@ class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLI
       input[TextContentItemKey.documentID.rawValue] = docID
     }
     return input
+  }
+  
+  required init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: TextContentItemKey.self)
+    self.documentID = try? values.decode(String.self, forKey: .documentID)
+    self.authorID = try values.decode(String.self, forKey: .authorID)
+    self.authorFirstName = try values.decode(String.self, forKey: .authorFirstName)
+    self.content = try values.decode(String.self, forKey: .content)
+    self.hidden = try values.decode(Bool.self, forKey: .hidden)
   }
   
 }
