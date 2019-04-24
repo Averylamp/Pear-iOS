@@ -114,7 +114,7 @@ extension FullChatViewController {
   }
   
   func stylize() {
-    self.firstNameButton.titleLabel?.stylizeSubtitleLabelSmall()
+    self.firstNameButton.titleLabel?.stylizeFullChatNameHeader()
     self.firstNameButton.setTitleColor(R.color.primaryTextColor(), for: .normal)
     self.firstNameButton.setTitle(match.otherUser.firstName, for: .normal)
     
@@ -253,7 +253,7 @@ extension FullChatViewController {
       
       self.view.layoutIfNeeded()
       
-      acceptButton.stylizeDark()
+      acceptButton.stylizeChatAccept()
       declineButton.stylizeLight()
 
     } else {

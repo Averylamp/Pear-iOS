@@ -155,7 +155,7 @@ extension ChatMainViewController {
     }
     
     self.scrollView.isPagingEnabled = true
-    if let buttonFont = R.font.nunitoSemiBold(size: 18) {
+    if let buttonFont = R.font.openSansExtraBold(size: 17) {
       self.inboxButton.titleLabel?.font = buttonFont
       self.requestsButton.titleLabel?.font = buttonFont
     }
@@ -177,7 +177,7 @@ extension ChatMainViewController {
                  action: #selector(ChatMainViewController.refreshControlChanged(sender:)),
                  for: .valueChanged)
 
-    guard let matchesTVC = ChatRequestsTableViewController.instantiate() else {
+    guard let matchesTVC = ChatRequestsTableViewController.instantiate(tableViewType: .inbox) else {
       print("Failed to instantiate matches TVC")
       return
     }
@@ -199,7 +199,7 @@ extension ChatMainViewController {
     matchesTVC.didMove(toParent: self)
     matchesTVC.updateMatches(matches: DataStore.shared.currentMatches)
     
-    guard let requestsTVC = ChatRequestsTableViewController.instantiate() else {
+    guard let requestsTVC = ChatRequestsTableViewController.instantiate(tableViewType: .requests) else {
       print("Failed to instantiate requests TVC")
       return
     }
