@@ -34,7 +34,6 @@
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
 		BB0628C722463B12000D9B12 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C622463B12000D9B12 /* Match.swift */; };
-		BB0628C922464278000D9B12 /* MatchingPearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C822464278000D9B12 /* MatchingPearUser.swift */; };
 		BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */; };
 		BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DB225361DC005DD315 /* splash-background.png */; };
 		BB0AE4DE22536208005DD315 /* splash-leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DD22536208005DD315 /* splash-leaf.png */; };
@@ -202,6 +201,7 @@
 		BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0957227009D20095F27E /* ContentAPI.swift */; };
 		BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095A22700A770095F27E /* PearContentAPI.swift */; };
 		BBAC095E22700B900095F27E /* GraphQLDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */; };
+		BBAC0960227029780095F27E /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095F227029780095F27E /* FullProfileDisplayData.swift */; };
 		BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */; };
 		BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */; };
 		BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */; };
@@ -231,6 +231,10 @@
 		BBBA5749226DC9F5000BCD5F /* InputTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */; };
 		BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */; };
 		BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */; };
+		BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */; };
+		BBC0FF1B22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */; };
+		BBC0FF1D227069FC00632924 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */; };
+		BBC0FF1F22706A0600632924 /* UserNameInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC0FF1E22706A0600632924 /* UserNameInputViewController.storyboard */; };
 		BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A0812257F624009D9867 /* SentryHelper.swift */; };
 		BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */; };
 		BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */; };
@@ -251,12 +255,11 @@
 		BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */; };
 		BBECBEB12237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB02237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift */; };
 		BBECBEB32237BA10008E8E91 /* GetStartedFullProfileReviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB22237BA10008E8E91 /* GetStartedFullProfileReviewViewController.storyboard */; };
-		BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */; };
+		BBECBEB52237CE04008E8E91 /* OldFullProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB42237CE04008E8E91 /* OldFullProfileDisplayData.swift */; };
 		BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */; };
 		BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */; };
 		BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEC12237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard */; };
 		BBECBEC52237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEC42237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift */; };
-		BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */; };
 		BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */; };
 		BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBECF223848E6008E8E91 /* FullProfileScrollViewController.swift */; };
 		BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */; };
@@ -361,7 +364,6 @@
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C622463B12000D9B12 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
-		BB0628C822464278000D9B12 /* MatchingPearUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingPearUser.swift; sourceTree = "<group>"; };
 		BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelpers.swift; sourceTree = "<group>"; };
 		BB0AE4DB225361DC005DD315 /* splash-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-background.png"; sourceTree = "<group>"; };
 		BB0AE4DD22536208005DD315 /* splash-leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-leaf.png"; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 		BBAC0957227009D20095F27E /* ContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAPI.swift; sourceTree = "<group>"; };
 		BBAC095A22700A770095F27E /* PearContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearContentAPI.swift; sourceTree = "<group>"; };
 		BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDecodable.swift; sourceTree = "<group>"; };
+		BBAC095F227029780095F27E /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
 		BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
@@ -562,6 +565,10 @@
 		BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTableViewController.swift; sourceTree = "<group>"; };
 		BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputItemTableViewCell.swift; sourceTree = "<group>"; };
 		BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
+		BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingBoastRoastInputViewController.swift; sourceTree = "<group>"; };
+		BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingBoastRoastInputViewController.storyboard; sourceTree = "<group>"; };
+		BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
+		BBC0FF1E22706A0600632924 /* UserNameInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserNameInputViewController.storyboard; sourceTree = "<group>"; };
 		BBC4A0812257F624009D9867 /* SentryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryHelper.swift; sourceTree = "<group>"; };
 		BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateImagesViewController.swift; sourceTree = "<group>"; };
 		BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateImagesViewController.storyboard; sourceTree = "<group>"; };
@@ -587,12 +594,11 @@
 		BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUIViewController.swift; sourceTree = "<group>"; };
 		BBECBEB02237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedFullProfileReviewViewController.swift; sourceTree = "<group>"; };
 		BBECBEB22237BA10008E8E91 /* GetStartedFullProfileReviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedFullProfileReviewViewController.storyboard; sourceTree = "<group>"; };
-		BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileDisplayData.swift; sourceTree = "<group>"; };
+		BBECBEB42237CE04008E8E91 /* OldFullProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldFullProfileDisplayData.swift; sourceTree = "<group>"; };
 		BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySimpleViewController.swift; sourceTree = "<group>"; };
 		BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverySimpleViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEC12237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveDetachedProfileViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEC42237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveDetachedProfileViewController.swift; sourceTree = "<group>"; };
-		BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserProfile.swift; sourceTree = "<group>"; };
 		BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollViewController.storyboard; sourceTree = "<group>"; };
 		BBECBECF223848E6008E8E91 /* FullProfileScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullProfileScrollViewController.swift; sourceTree = "<group>"; };
 		BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSuggestedResponse.swift; sourceTree = "<group>"; };
@@ -1239,19 +1245,10 @@
 		BB94C11622437AD3001320B0 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				BB0628C822464278000D9B12 /* MatchingPearUser.swift */,
 				BB796F89222DB19300E31C7F /* PearUser.swift */,
 				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
 			);
 			path = User;
-			sourceTree = "<group>";
-		};
-		BB94C11922437B04001320B0 /* User Profile */ = {
-			isa = PBXGroup;
-			children = (
-				BBECBEC622382EFE008E8E91 /* PearUserProfile.swift */,
-			);
-			path = "User Profile";
 			sourceTree = "<group>";
 		};
 		BB94C11C22437B7A001320B0 /* Image Container */ = {
@@ -1277,7 +1274,6 @@
 			isa = PBXGroup;
 			children = (
 				BB94C11622437AD3001320B0 /* User */,
-				BB94C11922437B04001320B0 /* User Profile */,
 				BB94C11522437AC5001320B0 /* Detached Profile */,
 				BB94C11C22437B7A001320B0 /* Image Container */,
 			);
@@ -1287,7 +1283,8 @@
 		BB94C11F22437BFE001320B0 /* Display Objects */ = {
 			isa = PBXGroup;
 			children = (
-				BBECBEB42237CE04008E8E91 /* FullProfileDisplayData.swift */,
+				BBECBEB42237CE04008E8E91 /* OldFullProfileDisplayData.swift */,
+				BBAC095F227029780095F27E /* FullProfileDisplayData.swift */,
 			);
 			path = "Display Objects";
 			sourceTree = "<group>";
@@ -1666,6 +1663,15 @@
 			path = "Vibes Input";
 			sourceTree = "<group>";
 		};
+		BBC0FF2022706A1500632924 /* Name Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */,
+				BBC0FF1E22706A0600632924 /* UserNameInputViewController.storyboard */,
+			);
+			path = "Name Input";
+			sourceTree = "<group>";
+		};
 		BBC4A08322586F40009D9867 /* Gender Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -1936,6 +1942,8 @@
 			children = (
 				BBF93E592267C9F3002841EE /* ProfileInputBoastRoastViewController.swift */,
 				BBF93E672267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard */,
+				BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */,
+				BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */,
 			);
 			path = "Boast Roast Input";
 			sourceTree = "<group>";
@@ -1997,6 +2005,7 @@
 				BBBA5751226DD641000BCD5F /* Vibes Input */,
 				BBEF226A226FA0B40021B021 /* Input Question */,
 				BBEF226B226FC3F70021B021 /* Boast Roast Input */,
+				BBC0FF2022706A1500632924 /* Name Input */,
 				BBBA574C226DD5FE000BCD5F /* Input Table View */,
 			);
 			path = "Create User";
@@ -2284,8 +2293,10 @@
 				BBF93E7C2267CCB3002841EE /* Cera Pro Thin.otf in Resources */,
 				BBF93E762267CCB2002841EE /* Cera Pro Bold.otf in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
+				BBC0FF1F22706A0600632924 /* UserNameInputViewController.storyboard in Resources */,
 				BBF93E622267CA3A002841EE /* UserContactListViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
+				BBC0FF1B22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard in Resources */,
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
 				BB178930225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard in Resources */,
 				BB9CB6A72259FAA700605A98 /* UpdateTextFieldController.storyboard in Resources */,
@@ -2479,7 +2490,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2528,7 +2539,6 @@
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
-				BB0628C922464278000D9B12 /* MatchingPearUser.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
@@ -2593,7 +2603,7 @@
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
-				BBECBEB52237CE04008E8E91 /* FullProfileDisplayData.swift in Sources */,
+				BBECBEB52237CE04008E8E91 /* OldFullProfileDisplayData.swift in Sources */,
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
@@ -2603,9 +2613,11 @@
 				BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
+				BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */,
 				BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */,
 				BB4C8A492251559800F7BA1A /* BioView.swift in Sources */,
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
+				BBAC0960227029780095F27E /* FullProfileDisplayData.swift in Sources */,
 				BBF93E522267C861002841EE /* UserContactPermissionsViewController.swift in Sources */,
 				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
 				BB94C12722438F00001320B0 /* Chat.swift in Sources */,
@@ -2622,7 +2634,6 @@
 				911AD0F122619FDD00A743C2 /* AllowNotificationsViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */,
-				BBECBEC722382EFE008E8E91 /* PearUserProfile.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* PearImageAPI.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
@@ -2665,6 +2676,7 @@
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
 				BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */,
 				BB77E7A12252211700A12B12 /* ApproveDetachedProfileSchoolViewController.swift in Sources */,
+				BBC0FF1D227069FC00632924 /* UserNameInputViewController.swift in Sources */,
 				BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */,
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				BB178943225E8B6A0033ACC6 /* ServerMessageTableViewCell.swift in Sources */,

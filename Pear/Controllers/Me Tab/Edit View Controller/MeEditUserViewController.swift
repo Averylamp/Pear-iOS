@@ -249,20 +249,20 @@ extension MeEditUserViewController {
     self.addTitleSection(title: "Photos")
     self.addPhotosSection()
     self.addTitleSection(title: "Basic Information")
-    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName)
-    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName)
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM d, yyyy"
-    let birthdate = dateFormatter.string(from: self.pearUser.birthdate)
-    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate)
+    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName ?? "")
+    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName ?? "")
+//    let dateFormatter = DateFormatter()
+//    dateFormatter.dateFormat = "MMM d, yyyy"
+//    let birthdate = dateFormatter.string(from: self.pearUser.birthdate)
+//    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate)
     
     self.addTextField(type: .gender,
                       title: "Gender",
-                      initialText: self.pearUser.matchingDemographics.gender.toString())
+                      initialText: self.pearUser.matchingDemographics.gender?.toString() ?? "")
     
     self.addTextField(type: .location,
                       title: "Location (City, State)",
-                      initialText: self.pearUser.matchingDemographics.location.locationName ?? "")
+                      initialText: self.pearUser.matchingDemographics.location?.locationName ?? "")
     
     self.addTextField(type: .schoolName,
                       title: "School Name",

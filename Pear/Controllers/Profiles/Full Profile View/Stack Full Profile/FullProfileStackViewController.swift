@@ -35,62 +35,60 @@ extension FullProfileStackViewController {
   
   func stylize() {
     
-    self.addDemographcsVC(firstName: self.fullProfileData.firstName,
+    self.addDemographcsVC(firstName: self.fullProfileData.firstName ?? "",
                           age: self.fullProfileData.age,
-                          gender: self.fullProfileData.gender,
+                          gender: self.fullProfileData.gender?.toString() ?? GenderEnum.male.toString(),
                           schoolName: self.fullProfileData.school,
                           locationName: self.fullProfileData.locationName)
-    if 0 < self.fullProfileData.rawImages.count {
-      self.addImageVC(image: self.fullProfileData.rawImages[0])
-    } else if 0 < self.fullProfileData.imageContainers.count {
+    if 0 < self.fullProfileData.imageContainers.count {
       self.addImageVC(imageContainer: self.fullProfileData.imageContainers[0])
     }
-    self.addBioVC(bioContent: self.fullProfileData.bio)
-    if 1 < self.fullProfileData.rawImages.count {
-      self.addImageVC(image: self.fullProfileData.rawImages[1])
-    } else if 1 < self.fullProfileData.imageContainers.count {
-      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[1])
-    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
-      self.addLineView()
-    }
-    self.addInterestsVC(interests: self.fullProfileData.interests)
-    if 2 < self.fullProfileData.rawImages.count {
-      self.addImageVC(image: self.fullProfileData.rawImages[2])
-    } else if 2 < self.fullProfileData.imageContainers.count {
-      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
-    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
-      self.addLineView()
-    }
-    
-    if fullProfileData.dos.count > 0 {
-      self.addDoDontVC(doDontType: .doType, doDontContent: fullProfileData.dos)
-    }
-    
-    if 3 < self.fullProfileData.rawImages.count {
-      self.addImageVC(image: self.fullProfileData.rawImages[3])
-    } else if 3 < self.fullProfileData.imageContainers.count {
-      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
-    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
-      self.addLineView()
-    }
-    
-    if fullProfileData.donts.count > 0 {
-      self.addDoDontVC(doDontType: .dontType, doDontContent: fullProfileData.donts)
-    }
-    if 4 < self.fullProfileData.rawImages.count {
-      self.addImageVC(image: self.fullProfileData.rawImages[4])
-    } else if 4 < self.fullProfileData.imageContainers.count {
-      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[4])
-    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
-      self.addLineView()
-    }
-    
-    if 5 < self.fullProfileData.rawImages.count {
-      self.addImageVC(image: self.fullProfileData.rawImages[5])
-    } else if 5 < self.fullProfileData.imageContainers.count {
-      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[5])
-    }
-    
+//    self.addBioVC(bioContent: self.fullProfileData.bio)
+//    if 1 < self.fullProfileData.rawImages.count {
+//      self.addImageVC(image: self.fullProfileData.rawImages[1])
+//    } else if 1 < self.fullProfileData.imageContainers.count {
+//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[1])
+//    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
+//      self.addLineView()
+//    }
+//    self.addInterestsVC(interests: self.fullProfileData.interests)
+//    if 2 < self.fullProfileData.rawImages.count {
+//      self.addImageVC(image: self.fullProfileData.rawImages[2])
+//    } else if 2 < self.fullProfileData.imageContainers.count {
+//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
+//    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
+//      self.addLineView()
+//    }
+//
+//    if fullProfileData.dos.count > 0 {
+//      self.addDoDontVC(doDontType: .doType, doDontContent: fullProfileData.dos)
+//    }
+//
+//    if 3 < self.fullProfileData.rawImages.count {
+//      self.addImageVC(image: self.fullProfileData.rawImages[3])
+//    } else if 3 < self.fullProfileData.imageContainers.count {
+//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
+//    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
+//      self.addLineView()
+//    }
+//
+//    if fullProfileData.donts.count > 0 {
+//      self.addDoDontVC(doDontType: .dontType, doDontContent: fullProfileData.donts)
+//    }
+//    if 4 < self.fullProfileData.rawImages.count {
+//      self.addImageVC(image: self.fullProfileData.rawImages[4])
+//    } else if 4 < self.fullProfileData.imageContainers.count {
+//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[4])
+//    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
+//      self.addLineView()
+//    }
+//
+//    if 5 < self.fullProfileData.rawImages.count {
+//      self.addImageVC(image: self.fullProfileData.rawImages[5])
+//    } else if 5 < self.fullProfileData.imageContainers.count {
+//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[5])
+//    }
+//
   }
   
   func addLineView() {

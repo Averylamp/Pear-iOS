@@ -104,7 +104,7 @@ extension UserContactPermissionsViewController {
   
   func startRunLoop() {
     _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (_) in
-      let random = Int.random(in: 0..<4)
+      let random = Int.random(in: 0..<6)
       self.tableView.reloadData()
       if random == 0 {
         self.addRandomBoastRoast()
