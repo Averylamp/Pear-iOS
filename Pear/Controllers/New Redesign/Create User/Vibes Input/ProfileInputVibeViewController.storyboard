@@ -26,8 +26,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAd-YO-Lte">
                                 <rect key="frame" x="0.0" y="56" width="414" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer some questions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UL4-RL-DZt">
-                                        <rect key="frame" x="57" y="0.5" width="300.5" height="39"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2: Answer some questions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UL4-RL-DZt">
+                                        <rect key="frame" x="9" y="0.5" width="396" height="39"/>
                                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

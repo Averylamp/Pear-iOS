@@ -23,7 +23,7 @@ enum TextContentItemKey: String, CodingKey {
 
 class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput {
   static func graphQLAllFields() -> String {
-    return "{ _id author_id author authorFirstName content hidden }"
+    return "{ _id author_id authorFirstName content hidden }"
   }
   
   let documentID: String? = nil
@@ -32,7 +32,7 @@ class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLI
   var content: String
   var hidden: Bool
   
-  init(content: String, hidden: Bool = false) throws {
+  init(content: String, hidden: Bool = false) {
     self.content = content
     self.hidden = hidden
     self.authorFirstName = ""
