@@ -39,10 +39,7 @@ class FriendProfileCollectionViewCell: UICollectionViewCell {
       self.pendingApprovalLabel.isHidden = true
       self.pendingApprovalBackground.isHidden = true
     }
-    if let firstImage = profileData.rawImages.first {
-      self.firstImageView.image = firstImage
-      self.nameLabel.isHidden = true
-    } else if let firstImageURLString = profileData.imageContainers.first?.medium.imageURL,
+    if let firstImageURLString = profileData.imageContainers.first?.medium.imageURL,
       let firstImageURL = URL(string: firstImageURLString) {
       self.firstImageView.sd_setImage(with: firstImageURL, completed: nil)
       self.nameLabel.isHidden = true

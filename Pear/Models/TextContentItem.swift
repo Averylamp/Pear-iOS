@@ -21,7 +21,11 @@ enum TextContentItemKey: String, CodingKey {
   case hidden
 }
 
-class TextContentItem: GraphQLInput, AuthorGraphQLInput {
+class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput {
+  static func graphQLAllFields() -> String {
+    return "{ _id author_id author authorFirstName content hidden }"
+  }
+  
   let documentID: String? = nil
   var authorID: String
   var authorFirstName: String

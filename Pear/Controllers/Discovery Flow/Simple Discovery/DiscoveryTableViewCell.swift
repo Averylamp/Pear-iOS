@@ -217,214 +217,214 @@ class DiscoveryTableViewCell: UITableViewCell {
 // MARK: - Cell Configuration
 extension DiscoveryTableViewCell {
   func configureInfo(profileData: FullProfileDisplayData) {
-    if let firstName = profileData.firstName,
-      let age = profileData.age {
-      self.nameLabel.text = "\(firstName), \(age)"
-    }
-    self.infoStackView.arrangedSubviews.forEach({
-      $0.removeFromSuperview()
-      self.infoStackView.removeArrangedSubview($0)
-    })
-    if let locationName = profileData.locationName {
-      let containerView = UIView()
-      
-      let locationIconView = UIImageView(image: R.image.discoveryIconLocation())
-      locationIconView.translatesAutoresizingMaskIntoConstraints = false
-      locationIconView.contentMode = .scaleAspectFit
-      containerView.addSubview(locationIconView)
-      locationIconView.addConstraints([
-        NSLayoutConstraint(item: locationIconView, attribute: .width, relatedBy: .equal,
-                           toItem: locationIconView, attribute: .height, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: locationIconView, attribute: .width, relatedBy: .equal,
-                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 18)
-        ])
-      let locationLabel = UILabel()
-      containerView.addSubview(locationLabel)
-      locationLabel.translatesAutoresizingMaskIntoConstraints = false
-      locationLabel.stylizeInfoSubtextLabel()
-      locationLabel.text = locationName
-      containerView.addConstraints([
-        NSLayoutConstraint(item: locationIconView, attribute: .left, relatedBy: .equal,
-                           toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
-        NSLayoutConstraint(item: locationIconView, attribute: .right, relatedBy: .equal,
-                           toItem: locationLabel, attribute: .left, multiplier: 1.0, constant: -2),
-        NSLayoutConstraint(item: locationIconView, attribute: .bottom, relatedBy: .equal,
-                           toItem: locationLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 2),
-        NSLayoutConstraint(item: locationLabel, attribute: .right, relatedBy: .equal,
-                           toItem: containerView, attribute: .right, multiplier: 1.0, constant: -6),
-        NSLayoutConstraint(item: locationLabel, attribute: .top, relatedBy: .equal,
-                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 2),
-        NSLayoutConstraint(item: locationLabel, attribute: .bottom, relatedBy: .equal,
-                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0)
-        ])
-      self.infoStackView.addArrangedSubview(containerView)
-    }
-    
-    if let schoolName = profileData.school {
-      let containerView = UIView()
-      
-      let schoolIconView = UIImageView(image: R.image.discoveryIconSchool())
-      schoolIconView.translatesAutoresizingMaskIntoConstraints = false
-      schoolIconView.contentMode = .scaleAspectFit
-      containerView.addSubview(schoolIconView)
-      schoolIconView.addConstraints([
-        NSLayoutConstraint(item: schoolIconView, attribute: .width, relatedBy: .equal,
-                           toItem: schoolIconView, attribute: .height, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: schoolIconView, attribute: .width, relatedBy: .equal,
-                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 18)
-        ])
-      let schoolLabel = UILabel()
-      containerView.addSubview(schoolLabel)
-      schoolLabel.translatesAutoresizingMaskIntoConstraints = false
-      schoolLabel.stylizeInfoSubtextLabel()
-      //      if let schoolYear = profileData.schoolYear {
-      //        schoolLabel.text = schoolName + " | " + schoolYear
-      //      } else {
-      schoolLabel.text = schoolName
-      //      }
-      containerView.addConstraints([
-        NSLayoutConstraint(item: schoolIconView, attribute: .left, relatedBy: .equal,
-                           toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
-        NSLayoutConstraint(item: schoolIconView, attribute: .right, relatedBy: .equal,
-                           toItem: schoolLabel, attribute: .left, multiplier: 1.0, constant: -4),
-        NSLayoutConstraint(item: schoolIconView, attribute: .bottom, relatedBy: .equal,
-                           toItem: schoolLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0),
-        NSLayoutConstraint(item: schoolLabel, attribute: .right, relatedBy: .equal,
-                           toItem: containerView, attribute: .right, multiplier: 1.0, constant: -6),
-        NSLayoutConstraint(item: schoolLabel, attribute: .top, relatedBy: .equal,
-                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 2),
-        NSLayoutConstraint(item: schoolLabel, attribute: .bottom, relatedBy: .equal,
-                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0)
-        ])
-      self.infoStackView.addArrangedSubview(containerView)
-    }
-    if self.infoStackView.arrangedSubviews.count > 0 {
-      self.infoScrollView.isHidden = false
-    } else {
-      self.infoScrollView.isHidden = true
-    }
-    
-    var suggestedFor: [String] = []
-    if let matchingDemographics = profileData.matchingDemographics,
-      let matchingPreferences = profileData.matchingPreferences {
-      
-      for endorsedUser in DataStore.shared.endorsedUsers {
-        if endorsedUser.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
-          matchingPreferences.matchesDemographics(demographics: endorsedUser.matchingDemographics) {
-          if !DataStore.shared.filteredEndorsedUsersFromDefaults().contains(endorsedUser.documentID) {
-            suggestedFor.append(endorsedUser.firstName)
-          }
-        }
-      }
-      for detachedProfile in DataStore.shared.detachedProfiles {
-        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
-          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
-          if !DataStore.shared.filteredDetachedProfilesFromDefaults().contains(detachedProfile.documentID) {
-            suggestedFor.append(detachedProfile.firstName)
-          }
-        }
-      }
-      if let user = DataStore.shared.currentPearUser {
-        if user.matchingPreferences.matchesDemographics(demographics: matchingDemographics)
-          && matchingPreferences.matchesDemographics(demographics: user.matchingDemographics) && user.isSeeking {
-          if !DataStore.shared.filteringDisabledForSelfFromDefaults() {
-            suggestedFor.append("You")
-          }
-        }
-      }
-    }
-    if suggestedFor.count > 0 {
-      self.suggestedForContainer.isHidden = false
-      self.suggestedForLabel.text = "Suggested for " + suggestedFor.joined(separator: ", ")
-    } else {
-      self.suggestedForContainer.isHidden = true
-    }
-    
+//    if let firstName = profileData.firstName,
+//      let age = profileData.age {
+//      self.nameLabel.text = "\(firstName), \(age)"
+//    }
+//    self.infoStackView.arrangedSubviews.forEach({
+//      $0.removeFromSuperview()
+//      self.infoStackView.removeArrangedSubview($0)
+//    })
+//    if let locationName = profileData.locationName {
+//      let containerView = UIView()
+//
+//      let locationIconView = UIImageView(image: R.image.discoveryIconLocation())
+//      locationIconView.translatesAutoresizingMaskIntoConstraints = false
+//      locationIconView.contentMode = .scaleAspectFit
+//      containerView.addSubview(locationIconView)
+//      locationIconView.addConstraints([
+//        NSLayoutConstraint(item: locationIconView, attribute: .width, relatedBy: .equal,
+//                           toItem: locationIconView, attribute: .height, multiplier: 1.0, constant: 0.0),
+//        NSLayoutConstraint(item: locationIconView, attribute: .width, relatedBy: .equal,
+//                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 18)
+//        ])
+//      let locationLabel = UILabel()
+//      containerView.addSubview(locationLabel)
+//      locationLabel.translatesAutoresizingMaskIntoConstraints = false
+//      locationLabel.stylizeInfoSubtextLabel()
+//      locationLabel.text = locationName
+//      containerView.addConstraints([
+//        NSLayoutConstraint(item: locationIconView, attribute: .left, relatedBy: .equal,
+//                           toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
+//        NSLayoutConstraint(item: locationIconView, attribute: .right, relatedBy: .equal,
+//                           toItem: locationLabel, attribute: .left, multiplier: 1.0, constant: -2),
+//        NSLayoutConstraint(item: locationIconView, attribute: .bottom, relatedBy: .equal,
+//                           toItem: locationLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 2),
+//        NSLayoutConstraint(item: locationLabel, attribute: .right, relatedBy: .equal,
+//                           toItem: containerView, attribute: .right, multiplier: 1.0, constant: -6),
+//        NSLayoutConstraint(item: locationLabel, attribute: .top, relatedBy: .equal,
+//                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 2),
+//        NSLayoutConstraint(item: locationLabel, attribute: .bottom, relatedBy: .equal,
+//                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0)
+//        ])
+//      self.infoStackView.addArrangedSubview(containerView)
+//    }
+//
+//    if let schoolName = profileData.school {
+//      let containerView = UIView()
+//
+//      let schoolIconView = UIImageView(image: R.image.discoveryIconSchool())
+//      schoolIconView.translatesAutoresizingMaskIntoConstraints = false
+//      schoolIconView.contentMode = .scaleAspectFit
+//      containerView.addSubview(schoolIconView)
+//      schoolIconView.addConstraints([
+//        NSLayoutConstraint(item: schoolIconView, attribute: .width, relatedBy: .equal,
+//                           toItem: schoolIconView, attribute: .height, multiplier: 1.0, constant: 0.0),
+//        NSLayoutConstraint(item: schoolIconView, attribute: .width, relatedBy: .equal,
+//                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 18)
+//        ])
+//      let schoolLabel = UILabel()
+//      containerView.addSubview(schoolLabel)
+//      schoolLabel.translatesAutoresizingMaskIntoConstraints = false
+//      schoolLabel.stylizeInfoSubtextLabel()
+//      //      if let schoolYear = profileData.schoolYear {
+//      //        schoolLabel.text = schoolName + " | " + schoolYear
+//      //      } else {
+//      schoolLabel.text = schoolName
+//      //      }
+//      containerView.addConstraints([
+//        NSLayoutConstraint(item: schoolIconView, attribute: .left, relatedBy: .equal,
+//                           toItem: containerView, attribute: .left, multiplier: 1.0, constant: 2),
+//        NSLayoutConstraint(item: schoolIconView, attribute: .right, relatedBy: .equal,
+//                           toItem: schoolLabel, attribute: .left, multiplier: 1.0, constant: -4),
+//        NSLayoutConstraint(item: schoolIconView, attribute: .bottom, relatedBy: .equal,
+//                           toItem: schoolLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0),
+//        NSLayoutConstraint(item: schoolLabel, attribute: .right, relatedBy: .equal,
+//                           toItem: containerView, attribute: .right, multiplier: 1.0, constant: -6),
+//        NSLayoutConstraint(item: schoolLabel, attribute: .top, relatedBy: .equal,
+//                           toItem: containerView, attribute: .top, multiplier: 1.0, constant: 2),
+//        NSLayoutConstraint(item: schoolLabel, attribute: .bottom, relatedBy: .equal,
+//                           toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0)
+//        ])
+//      self.infoStackView.addArrangedSubview(containerView)
+//    }
+//    if self.infoStackView.arrangedSubviews.count > 0 {
+//      self.infoScrollView.isHidden = false
+//    } else {
+//      self.infoScrollView.isHidden = true
+//    }
+//
+//    var suggestedFor: [String] = []
+//    if let matchingDemographics = profileData.matchingDemographics,
+//      let matchingPreferences = profileData.matchingPreferences {
+//
+//      for endorsedUser in DataStore.shared.endorsedUsers {
+//        if endorsedUser.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
+//          matchingPreferences.matchesDemographics(demographics: endorsedUser.matchingDemographics) {
+//          if !DataStore.shared.filteredEndorsedUsersFromDefaults().contains(endorsedUser.documentID) {
+//            suggestedFor.append(endorsedUser.firstName)
+//          }
+//        }
+//      }
+//      for detachedProfile in DataStore.shared.detachedProfiles {
+//        if detachedProfile.matchingPreferences.matchesDemographics(demographics: matchingDemographics) &&
+//          matchingPreferences.matchesDemographics(demographics: detachedProfile.matchingDemographics) {
+//          if !DataStore.shared.filteredDetachedProfilesFromDefaults().contains(detachedProfile.documentID) {
+//            suggestedFor.append(detachedProfile.firstName)
+//          }
+//        }
+//      }
+//      if let user = DataStore.shared.currentPearUser {
+//        if user.matchingPreferences.matchesDemographics(demographics: matchingDemographics)
+//          && matchingPreferences.matchesDemographics(demographics: user.matchingDemographics) && user.isSeeking {
+//          if !DataStore.shared.filteringDisabledForSelfFromDefaults() {
+//            suggestedFor.append("You")
+//          }
+//        }
+//      }
+//    }
+//    if suggestedFor.count > 0 {
+//      self.suggestedForContainer.isHidden = false
+//      self.suggestedForLabel.text = "Suggested for " + suggestedFor.joined(separator: ", ")
+//    } else {
+//      self.suggestedForContainer.isHidden = true
+//    }
+  
   }
   
   func configureCell(profileData: FullProfileDisplayData) {
-    self.layoutIfNeeded()
-    self.configureInfo(profileData: profileData)
-    self.profileData = profileData
-    self.contentScrollView.contentOffset = CGPoint.zero
-    self.indicatorViews.forEach({
-      $0.removeFromSuperview()
-    })
-    self.indicatorViews = []
-    
-    var pagesCount = 0
-    for index in 0..<3 {
-      let imageView = self.imageViews[index]
-      imageView.image = nil
-      if index < profileData.rawImages.count {
-        imageView.image = profileData.rawImages[index]
-        imageView.isHidden = false
-        if pagesCount == 0 {
-          imageView.subviews.forEach({
-            if $0.tag == 12 {
-              $0.removeFromSuperview()
-            }
-          })
-          self.addTagsToImageView(imageView: imageView, writtenByName: profileData.bio.first?.creatorName,
-                                  timestampDate: profileData.discoveryTimestamp)
-        }
-        pagesCount += 1
-      } else if index < profileData.imageContainers.count,
-        let imageURL = URL(string: profileData.imageContainers[index].medium.imageURL) {
-        imageView.sd_setImage(with: imageURL, completed: nil)
-        imageView.isHidden = false
-        if pagesCount == 0 {
-          imageView.subviews.forEach({
-            if $0.tag == 12 {
-              $0.removeFromSuperview()
-            }
-          })
-          self.addTagsToImageView(imageView: imageView, writtenByName: profileData.bio.first?.creatorName,
-                                  timestampDate: profileData.discoveryTimestamp)
-        }
-        pagesCount += 1
-      } else {
-        imageView.isHidden = true
-      }
-    }
-    if let bioContent = profileData.bio.first {
-      self.bioView.isHidden = false
-      self.bioView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: bioContent.creatorName)
-      self.bioView.contentLabel?.text = bioContent.bio
-      pagesCount += 1
-    } else {
-      self.bioView.isHidden = true
-    }
-    if let doContent = profileData.dos.first {
-      self.doView.isHidden = false
-      self.doView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: doContent.creatorName)
-      self.doView.contentLabel?.text = doContent.phrase
-      pagesCount += 1
-    } else {
-      self.doView.isHidden = true
-    }
-    if let dontContent = profileData.donts.first {
-      self.dontView.isHidden = false
-      self.dontView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: dontContent.creatorName)
-      self.dontView.contentLabel?.text = dontContent.phrase
-      pagesCount += 1
-    } else {
-      self.dontView.isHidden = true
-    }
-    
-    let indicatorSpacing: CGFloat = 8
-    let indicatorWidth: CGFloat = (self.contentScrollView.frame.width - (CGFloat(pagesCount + 1) * indicatorSpacing)) / CGFloat(pagesCount)
-    let totalItemWidth = indicatorSpacing + indicatorWidth
-    for index in 0..<pagesCount {
-      let indicatorView = UIView(frame: CGRect(x: indicatorSpacing + totalItemWidth * CGFloat(index) ,
-                                               y: self.contentScrollView.frame.height - 8,
-                                               width: indicatorWidth,
-                                               height: 4))
-      indicatorView.layer.cornerRadius = 2
-      self.indicatorViews.append(indicatorView)
-      self.itemsStackView.addSubview(indicatorView)
-    }
-    self.highlightIndicator(index: 0)
+//    self.layoutIfNeeded()
+//    self.configureInfo(profileData: profileData)
+//    self.profileData = profileData
+//    self.contentScrollView.contentOffset = CGPoint.zero
+//    self.indicatorViews.forEach({
+//      $0.removeFromSuperview()
+//    })
+//    self.indicatorViews = []
+//
+//    var pagesCount = 0
+//    for index in 0..<3 {
+//      let imageView = self.imageViews[index]
+//      imageView.image = nil
+//      if index < profileData.rawImages.count {
+//        imageView.image = profileData.rawImages[index]
+//        imageView.isHidden = false
+//        if pagesCount == 0 {
+//          imageView.subviews.forEach({
+//            if $0.tag == 12 {
+//              $0.removeFromSuperview()
+//            }
+//          })
+//          self.addTagsToImageView(imageView: imageView, writtenByName: profileData.bio.first?.creatorName,
+//                                  timestampDate: profileData.discoveryTimestamp)
+//        }
+//        pagesCount += 1
+//      } else if index < profileData.imageContainers.count,
+//        let imageURL = URL(string: profileData.imageContainers[index].medium.imageURL) {
+//        imageView.sd_setImage(with: imageURL, completed: nil)
+//        imageView.isHidden = false
+//        if pagesCount == 0 {
+//          imageView.subviews.forEach({
+//            if $0.tag == 12 {
+//              $0.removeFromSuperview()
+//            }
+//          })
+//          self.addTagsToImageView(imageView: imageView, writtenByName: profileData.bio.first?.creatorName,
+//                                  timestampDate: profileData.discoveryTimestamp)
+//        }
+//        pagesCount += 1
+//      } else {
+//        imageView.isHidden = true
+//      }
+//    }
+//    if let bioContent = profileData.bio.first {
+//      self.bioView.isHidden = false
+//      self.bioView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: bioContent.creatorName)
+//      self.bioView.contentLabel?.text = bioContent.bio
+//      pagesCount += 1
+//    } else {
+//      self.bioView.isHidden = true
+//    }
+//    if let doContent = profileData.dos.first {
+//      self.doView.isHidden = false
+//      self.doView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: doContent.creatorName)
+//      self.doView.contentLabel?.text = doContent.phrase
+//      pagesCount += 1
+//    } else {
+//      self.doView.isHidden = true
+//    }
+//    if let dontContent = profileData.donts.first {
+//      self.dontView.isHidden = false
+//      self.dontView.writtenByLabel?.stylizeCreatorLabel(preText: "Written by ", boldText: dontContent.creatorName)
+//      self.dontView.contentLabel?.text = dontContent.phrase
+//      pagesCount += 1
+//    } else {
+//      self.dontView.isHidden = true
+//    }
+//
+//    let indicatorSpacing: CGFloat = 8
+//    let indicatorWidth: CGFloat = (self.contentScrollView.frame.width - (CGFloat(pagesCount + 1) * indicatorSpacing)) / CGFloat(pagesCount)
+//    let totalItemWidth = indicatorSpacing + indicatorWidth
+//    for index in 0..<pagesCount {
+//      let indicatorView = UIView(frame: CGRect(x: indicatorSpacing + totalItemWidth * CGFloat(index) ,
+//                                               y: self.contentScrollView.frame.height - 8,
+//                                               width: indicatorWidth,
+//                                               height: 4))
+//      indicatorView.layer.cornerRadius = 2
+//      self.indicatorViews.append(indicatorView)
+//      self.itemsStackView.addSubview(indicatorView)
+//    }
+//    self.highlightIndicator(index: 0)
   }
   
   func addTagsToImageView(imageView: UIImageView, writtenByName: String? = nil, timestampDate: Date? = nil) {

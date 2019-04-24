@@ -39,7 +39,7 @@ extension DiscoveryFilterTableViewCell {
     case .endorsedUser:
       if let endorsedUser = discoveryFilterItem.endorsedUser {
         self.nameLabel.text = endorsedUser.firstName
-        if let firstImageURLString = endorsedUser.images.first?.thumbnail.imageURL,
+        if let firstImageURLString = endorsedUser.displayedImages.first?.thumbnail.imageURL,
           let firstImageURL = URL(string: firstImageURLString) {
           self.thumbnailImage.sd_setImage(with: firstImageURL, completed: nil)
         } else {

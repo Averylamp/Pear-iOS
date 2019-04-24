@@ -23,7 +23,7 @@ protocol UserAPI {
   func fetchEndorsedUsers(uid: String,
                           token: String,
                           completion: @escaping (Result<
-    (endorsedProfiles: [MatchingPearUser], detachedProfiles: [PearDetachedProfile]), UserAPIError>) -> Void)
+    (endorsedProfiles: [PearUser], detachedProfiles: [PearDetachedProfile]), UserAPIError>) -> Void)
   
   // swiftlint:disable:next function_parameter_count
   func updateUserPreferences(userID: String,

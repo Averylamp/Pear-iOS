@@ -29,8 +29,8 @@ class PearProfileAPI: ProfileAPI {
   // swiftlint:disable:next line_length
   static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
   
-  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) timestamp } }}"
-  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) }"
+  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLAllFields()) timestamp } }}"
+//  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(PearUser.graphQLMatchedUserFieldsAll) }"
   
   // swiftlint:disable:next line_length
   static let editUserProfileQuery: String = "mutation EditUserProfile($editUserProfileInput:EditUserProfileInput!){ editUserProfile(editUserProfileInput: $editUserProfileInput){ success message}}"
@@ -304,10 +304,9 @@ extension PearProfileAPI {
                 do {
                   let userRawData = try userData["user"].rawData()
                   print(userData)
-                  let matchingPearUser = try JSONDecoder().decode(MatchingPearUser.self, from: userRawData)
-                  if matchingPearUser.userProfiles.count > 0 {
-                    let fullProfile = FullProfileDisplayData(matchingUser: matchingPearUser)
-                    fullProfile.profileNumber = matchingPearUser.userProfiles.count
+                  let pearUser = try JSONDecoder().decode(PearUser.self, from: userRawData)
+                  if pearUser.endorserIDs.count > 0 {
+                    let fullProfile = FullProfileDisplayData(user: pearUser)
                     if let timestamp = userData["timestamp"].string,
                       let timestampValue = Double(timestamp) {
                       fullProfile.discoveryTimestamp = Date(timeIntervalSince1970: timestampValue / 1000.0)
@@ -350,93 +349,7 @@ extension PearProfileAPI {
       completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
   }
-  
-  func getMatchingUser(user_id: String,
-                       completion: @escaping(Result<FullProfileDisplayData, DetachedProfileError>) -> Void) {
-    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
-    request.httpMethod = "POST"
     
-    request.allHTTPHeaderFields = defaultHeaders
-    
-    do {
-      
-      let fullDictionary: [String: Any] = [
-        "query": PearProfileAPI.fetchMatchingUserQuery,
-        "variables": [
-          "user_id": user_id
-        ]
-      ]
-      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
-      request.httpBody = data
-      
-      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-        if let error = error {
-          print(error as Any)
-          completion(.failure(DetachedProfileError.unknownError(error: error)))
-          SentryHelper.generateSentryEvent(level: .error,
-                                           apiName: "PearProfileAPI",
-                                           functionName: "getMatchingUser",
-                                           message: error.localizedDescription)
-          return
-        } else {
-          let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "user", objectName: "user")
-          switch helperResult {
-          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
-            print("Failed to Fetch User: \(helperResult)")
-            SentryHelper.generateSentryEvent(level: .error,
-                                             apiName: "PearProfileAPI",
-                                             functionName: "getMatchingUser",
-                                             message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
-            completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
-          case .failure(let message):
-            print("Failed to Create User: \(message ?? "")")
-            SentryHelper.generateSentryEvent(level: .error,
-                                             apiName: "PearProfileAPI",
-                                             functionName: "getMatchingUser",
-                                             message: message ?? "Failed to Get user",
-                                             tags: [:],
-                                             paylod: fullDictionary)
-            completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
-          case .foundObjectData(let objectData):
-            do {
-              let matchingPearUser = try JSONDecoder().decode(MatchingPearUser.self, from: objectData)
-              if matchingPearUser.userProfiles.count > 0 {
-                let fullProfile = FullProfileDisplayData(matchingUser: matchingPearUser)
-                completion(.success(fullProfile))
-              } else {
-                completion(.failure(DetachedProfileError.unknown))
-              }
-              print("Successfully found Detached Profile")
-            } catch {
-              print("Deserialization Error: \(error)")
-              SentryHelper.generateSentryEvent(level: .error,
-                                               apiName: "PearProfileAPI",
-                                               functionName: "getMatchingUser",
-                                               message: "DeserializationError: \(error.localizedDescription)",
-                tags: [:],
-                paylod: fullDictionary)
-              completion(.failure(DetachedProfileError.failedDeserialization))
-            }
-          }
-        }
-      }
-      dataTask.resume()
-    } catch {
-      print(error)
-      SentryHelper.generateSentryEvent(level: .error,
-                                       apiName: "PearProfileAPI",
-                                       functionName: "getMatchingUser",
-                                       message: error.localizedDescription)
-      completion(.failure(DetachedProfileError.unknownError(error: error)))
-    }
-    
-  }
-  
   func validateUserProfileUpdates(updates: [String: Any]) -> Bool {
     let allowedKeys: [String] = ["interests", "vibes", "bio", "dos", "donts", "images"]
     var allowed = true

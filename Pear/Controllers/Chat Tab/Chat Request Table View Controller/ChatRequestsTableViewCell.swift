@@ -50,7 +50,7 @@ extension ChatRequestsTableViewCell {
     self.nameLabel.text = match.otherUser.firstName
     self.thumbnailImage.layer.cornerRadius = self.thumbnailImage.frame.width / 2.0
     self.thumbnailImage.image = nil
-    if let thumbnailURLString = match.otherUser.images.first?.thumbnail.imageURL,
+    if let thumbnailURLString = match.otherUser.displayedImages.first?.thumbnail.imageURL,
       let thumbnailURL = URL(string: thumbnailURLString) {
       self.thumbnailImage.sd_setImage(with: thumbnailURL, completed: nil)
     }
