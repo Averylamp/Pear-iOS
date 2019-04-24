@@ -18,7 +18,7 @@ enum PearDetachedProfileKeys: String, CodingKey {
   case phoneNumber
   case age
   case gender
-  case bios
+  case bio
   case boasts
   case roasts
   case questionResponses
