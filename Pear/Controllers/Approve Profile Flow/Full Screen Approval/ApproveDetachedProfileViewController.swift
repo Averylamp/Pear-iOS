@@ -37,6 +37,8 @@ class ApproveDetachedProfileViewController: UIViewController {
   }
   
   @objc func saveButtonClicked(sender: UIButton) {
+    return
+    /*
     if self.isApprovingProfile {
       return
     }
@@ -95,8 +97,8 @@ class ApproveDetachedProfileViewController: UIViewController {
         
       }
     }
+     */
   }
-  
 }
 
 // MARK: - Life Cycle
