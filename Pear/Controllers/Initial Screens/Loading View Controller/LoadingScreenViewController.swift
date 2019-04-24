@@ -31,6 +31,7 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.fetchFakeUser()
     self.redirectToCorrectScreen()
   }
   
@@ -328,6 +329,17 @@ extension LoadingScreenViewController {
         print("\(questions.count) Questions Found")
       case .failure(let error):
         print("Error retrieving questions:\(error)")
+      }
+    }
+  }
+  
+  func fetchFakeUser() {
+    PearUserAPI.shared.getFakeUser { (result) in
+      switch result {
+      case .success(let user):
+        print(user)
+      case .failure(let error):
+        print("Failed to get fake user: \(error)")
       }
     }
   }
