@@ -26,7 +26,7 @@ class PearImageAPI: ImageAPI {
   
   static let getImagesQuery: String = "query GetUserImages($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user { displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) } }}"
   
-  static let updateImagesQuery: String = "mutation UpdateUserPhotos($userInput:UpdateUserPhotosInput) { updateUserPhotos(updateUserPhotosInput:$userInput){ success message }}"
+  static let updateImagesQuery: String = "mutation UpdateUserPhotos($userInput:UpdateUserPhotosInput!) { updateUserPhotos(updateUserPhotosInput:$userInput){ success message }}"
   
 }
 
@@ -245,7 +245,7 @@ extension PearImageAPI {
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "updateUserPhotos")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
-            print("Failed to Approve Detached Profile: \(helperResult)")
+            print("Failed to Update Images: \(helperResult)")
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearImageAPI",
                                              functionName: "updateUserPhotos",
@@ -255,7 +255,7 @@ extension PearImageAPI {
                                              paylod: fullDictionary)
             completion(.failure(ImageAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
-            print("Failed to Approve Detached Profile: \(message ?? "")")
+            print("Failed to Update Images: \(message ?? "")")
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearImageAPI",
                                              functionName: "updateUserPhotos",
@@ -265,7 +265,7 @@ extension PearImageAPI {
                                              paylod: fullDictionary)
             completion(.failure(ImageAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
-            print("Successfully attached Detached Profile: \(String(describing: message))")
+            print("Successfully updated images: \(String(describing: message))")
             completion(.success(true))
           }
         }
