@@ -112,9 +112,9 @@ extension MeTabViewController {
       return
     }
     
-    if pearUser.userProfiles.count == 0,
+    if pearUser.endorserIDs.count == 0,
       let incompleteImage = R.image.meIncompleteProfile() {
-      fullProfile.rawImages.append(incompleteImage)
+//      fullProfile.rawImages.append(incompleteImage)
     }
     guard let fullProfileStackVC = FullProfileStackViewController.instantiate(userFullProfileData: fullProfile) else {
       print("Failed to create full profiles stack VC")

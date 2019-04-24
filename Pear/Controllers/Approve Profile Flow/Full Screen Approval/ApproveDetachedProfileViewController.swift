@@ -110,7 +110,7 @@ extension ApproveDetachedProfileViewController {
   
   func addFullStackVC() {
     guard let fullProfileStackVC = FullProfileStackViewController
-      .instantiate(userFullProfileData: FullProfileDisplayData(pdp: self.detachedProfile)) else {
+      .instantiate(userFullProfileData: FullProfileDisplayData(detachedProfile: self.detachedProfile)) else {
         print("Failed to create full profiles stack VC")
         return
     }

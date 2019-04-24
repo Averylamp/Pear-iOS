@@ -11,7 +11,6 @@ import Foundation
 enum PearUserKeys: String, CodingKey {
   case documentID = "_id"
   case deactivated
-  case firebaseToken
   case firebaseAuthID
   case facebookId
   case facebookAccessToken
@@ -24,28 +23,31 @@ enum PearUserKeys: String, CodingKey {
   case fullName
   case thumbnailURL
   case gender
-  case birthdate
   case age
+  case birthdate
 
+  case bios
+  case boasts
+  case roasts
+  case questionResponses
+  case vibes
+  
   case school
   case schoolYear
   case schoolEmail
   case schoolEmailVerified
 
-  case isSeeking
-  case pearPoints
-
   case displayedImages
   case bankImages
 
-  case profileObjs = "profileObjs"
-  case endorsedProfileObjs = "endorsedProfileObjs"
-  case detachedProfileObjs = "detachedProfileObjs"
+  case isSeeking
+  case pearPoints
+  
+  case endorsedUserIDs = "endorsedUser_ids"
+  case endorserUserIDs = "endorser_ids"
+  case detachedProfileIDs = "detachedProfile_ids"
   
   case matchingDemographics
   case matchingPreferences
   
-  case requestedMatches
-  case currentMatches
-
 }

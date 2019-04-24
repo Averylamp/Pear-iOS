@@ -26,8 +26,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxj-bE-y0a">
                                 <rect key="frame" x="0.0" y="56" width="414" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a fresh friend to Pear" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="I71-5B-LuA">
-                                        <rect key="frame" x="47" y="1" width="320.5" height="38.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1: Pick a fresh friend to Pear" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="I71-5B-LuA">
+                                        <rect key="frame" x="-1" y="0.5" width="416" height="39"/>
                                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

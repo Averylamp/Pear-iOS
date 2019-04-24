@@ -20,7 +20,10 @@ enum QuestionResponseItemKey: String, CodingKey {
   case hidden
 }
 
-class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput {
+class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable {
+  static func graphQLAllFields() -> String {
+    return "{ _id author_id authorFirstName question_id question \(QuestionItem.graphQLAllFields()) responseBody responseTitle color \(Color.graphQLAllFields()) icon \(IconAsset.graphQLAllFields()) hidden }"
+  }
   
   var documentID: String?
   var authorID: String

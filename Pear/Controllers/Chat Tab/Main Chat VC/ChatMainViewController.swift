@@ -264,10 +264,10 @@ extension ChatMainViewController: ChatRequestTableViewControllerDelegate {
     }
   }
   
-  func selectedProfile(user: MatchingPearUser) {
+  func selectedProfile(user: PearUser) {
     DispatchQueue.main.async {
       HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-      let fullProfile = FullProfileDisplayData(matchingUser: user)
+      let fullProfile = FullProfileDisplayData(user: user)
       guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
         print("failed to instantiate full profile scroll VC")
         return

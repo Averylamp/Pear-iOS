@@ -17,7 +17,7 @@ enum DiscoveryFilterItemType: Int {
 
 struct DiscoveryFilterItem {
   let type: DiscoveryFilterItemType
-  var endorsedUser: MatchingPearUser?
+  var endorsedUser: PearUser?
   var user: PearUser?
   var detachedProfile: PearDetachedProfile?
   var checked: Bool
@@ -166,16 +166,16 @@ extension DiscoveryFilterViewController {
     var name = ""
     switch item.type {
     case .personalUser:
-      if let user = item.user {
-        name = user.fullName
+      if let fullName = item.user?.fullName {
+        name = fullName
       }
     case .endorsedUser:
-      if let endorsedUser = item.endorsedUser {
-        name = endorsedUser.fullName
+      if let fullName = item.endorsedUser?.fullName {
+        name = fullName
       }
     case .detachedProfile:
-      if let detachedProfile = item.detachedProfile {
-        name = detachedProfile.firstName
+      if let fullName = item.detachedProfile?.firstName {
+        name = fullName
       }
     }
     return name

@@ -16,7 +16,7 @@ enum ChatRequestTableViewType: Int {
 protocol ChatRequestTableViewControllerDelegate: class {
   
   func selectedMatch(match: Match)
-  func selectedProfile(user: MatchingPearUser)
+  func selectedProfile(user: PearUser)
   
 }
 

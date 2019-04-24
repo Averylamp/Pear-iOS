@@ -9,23 +9,24 @@
 import Foundation
 
 enum PearDetachedProfileKeys: String, CodingKey {
-  
+
   case documentID = "_id"
   case creatorUserID = "creatorUser_id"
-  case ownerUserID = "user_id"
   case creatorFirstName
   case firstName
+  case lastName
   case phoneNumber
   case age
   case gender
-  case interests
+  case bios
+  case boasts
+  case roasts
+  case questionResponses
   case vibes
-  case bio
-  case dos
-  case donts
   case images
   case matchingDemographics
   case matchingPreferences
   case school
   case schoolYear
+  
 }

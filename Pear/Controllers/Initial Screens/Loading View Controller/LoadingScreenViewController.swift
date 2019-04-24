@@ -31,6 +31,7 @@ extension LoadingScreenViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.fetchFakeUser()
     self.redirectToCorrectScreen()
   }
   
@@ -105,8 +106,8 @@ extension LoadingScreenViewController {
       }
       return landingScreenVC
     } else {
-      guard let landingScreenVC = MainTabBarViewController.instantiate() else {
-        print("Failed to create main tab bar VC")
+      guard let landingScreenVC = LandingScreenViewController.instantiate() else {
+        print("Failed to create Landing Screen VC")
         return nil
       }
       return landingScreenVC
@@ -161,20 +162,7 @@ extension LoadingScreenViewController {
       }
     }
   }
-  
-  func testChat() {
     
-    PearChatAPI.shared.getAllChatsForUser(user_id: "5c82162afec46c84e924a337") { (result) in
-      switch result {
-      case .success(let chats):
-        print(chats)
-      case .failure(let error):
-        print(error)
-      }
-    }
-    
-  }
-  
   func testImageUpload() {
     if let testImage = UIImage(named: "sample-profile-brooke-1") {
       let testUserID = "5c82162afec46c84e924a332"
@@ -328,6 +316,17 @@ extension LoadingScreenViewController {
         print("\(questions.count) Questions Found")
       case .failure(let error):
         print("Error retrieving questions:\(error)")
+      }
+    }
+  }
+  
+  func fetchFakeUser() {
+    PearUserAPI.shared.getFakeUser { (result) in
+      switch result {
+      case .success(let user):
+        print(user)
+      case .failure(let error):
+        print("Failed to get fake user: \(error)")
       }
     }
   }
