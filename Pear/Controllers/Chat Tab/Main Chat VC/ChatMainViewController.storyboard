@@ -120,6 +120,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tab-icon-chat-selected" width="500" height="500"/>
+        <image name="tab-icon-chat-selected" width="512" height="512"/>
     </resources>
 </document>

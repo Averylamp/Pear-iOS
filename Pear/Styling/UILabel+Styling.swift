@@ -123,11 +123,11 @@ extension UILabel {
   
   func stylizeChatRequestNameLabel(unread: Bool) {
     if unread {
-      if let font = R.font.nunitoBold(size: 18) {
+      if let font = R.font.openSansBold(size: 17) {
         self.font = font
       }
     } else {
-      if let font = R.font.nunitoRegular(size: 17) {
+      if let font = R.font.openSansRegular(size: 17) {
         self.font = font
       }
     }
@@ -137,12 +137,12 @@ extension UILabel {
   func stylizeChatRequestPreviewTextLabel(unread: Bool) {
     if unread {
       self.textColor = R.color.primaryTextColor()
-      if let font = R.font.nunitoSemiBold(size: 16) {
+      if let font = R.font.openSansRegular(size: 16) {
         self.font = font
       }
     } else {
       self.textColor = R.color.secondaryTextColor()
-      if let font = R.font.nunitoRegular(size: 16) {
+      if let font = R.font.openSansRegular(size: 16) {
         self.font = font
       }
     }
@@ -160,18 +160,28 @@ extension UILabel {
   }
   
   func stylizeChatRequestDateLabel(unread: Bool) {
-    if let font = R.font.nunitoRegular(size: 13) {
-      self.font = font
-    }
     if unread {
-     self.textColor = R.color.brandPrimaryDark()
+      self.textColor = R.color.chatAccentColor()
+      if let font = R.font.openSansBold(size: 13) {
+        self.font = font
+      }
     } else {
       self.textColor = R.color.secondaryTextColor()
+      if let font = R.font.openSansRegular(size: 13) {
+        self.font = font
+      }
     }
   }
   
+  func stylizeFullChatNameHeader() {
+    if let font = R.font.openSansExtraBold(size: 17) {
+      self.font = font
+    }
+    self.textColor = R.color.primaryTextColor()
+  }
+  
   func stylizeChatMessageServerRequest() {
-    if let font = R.font.nunitoRegular(size: 13) {
+    if let font = R.font.openSansRegular(size: 13) {
       self.font = font
     }
     self.textColor = R.color.secondaryTextColor()
@@ -185,7 +195,7 @@ extension UILabel {
   }
   
   func stylizeChatMessageText(sender: Bool) {
-    if let font = R.font.nunitoSemiBold(size: 17) {
+    if let font = R.font.openSansRegular(size: 16) {
       self.font = font
     }
     if sender {
@@ -196,7 +206,7 @@ extension UILabel {
   }
   
   func stylizeChatMessageTimestamp(sender: Bool) {
-    if let font = R.font.nunitoRegular(size: 13) {
+    if let font = R.font.openSansRegular(size: 13) {
       self.font = font
     }
     if sender {
