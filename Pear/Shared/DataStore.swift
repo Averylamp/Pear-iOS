@@ -49,6 +49,7 @@ class DataStore: NSObject {
   var firstLocationReceived: Bool = false
   var lastLocation: CLLocationCoordinate2D?
   var firebaseRemoteInstanceID: String? // for push notifications via Firebase Cloud Messaging
+  var possibleQuestions: [QuestionItem] = []
   
   private override init() {
     self.remoteConfig = RemoteConfig.remoteConfig()
@@ -57,6 +58,7 @@ class DataStore: NSObject {
     self.reloadRemoteConfig()
     self.locationManager.delegate = self
     self.startReceivingLocationChanges()
+    self.reloadPossibleQuestions()
   }
   
   func reloadRemoteConfig(completion: ((Bool) -> Void)? = nil) {

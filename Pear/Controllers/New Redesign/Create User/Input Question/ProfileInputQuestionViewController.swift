@@ -41,6 +41,7 @@ class ProfileInputQuestionViewController: UIViewController {
       .instantiateInitialViewController() as? ProfileInputQuestionViewController else { return nil }
     profileVibeVC.profileData = profileCreationData
     profileVibeVC.question = question
+    
     return profileVibeVC
   }
   
@@ -65,8 +66,13 @@ class ProfileInputQuestionViewController: UIViewController {
         return
       }
       self.profileData.questionResponses.append(response)
+      guard let nextQuestion = self.profileData.getRandomNextQuestion() else {
+        print("Unable to get next question")
+        self.continueToRoastBoast()
+        return
+      }
       guard let nextQuestionVC = ProfileInputQuestionViewController.instantiate(profileCreationData: self.profileData,
-                                                                                question: QuestionItem.idealDateQuestion()) else {
+                                                                                question: nextQuestion) else {
                                                                                   print("Failed to create question VC")
                                                                                   return
       }
@@ -86,13 +92,17 @@ class ProfileInputQuestionViewController: UIViewController {
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
+    self.continueToRoastBoast()
+  }
+  
+  func continueToRoastBoast() {
     HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
     guard let boastRoastVC = ProfileInputBoastRoastViewController.instantiate(profileCreationData: self.profileData) else {
-                                                                                print("Failed to create question VC")
-                                                                                return
+      print("Failed to create question VC")
+      return
     }
     self.navigationController?.pushViewController(boastRoastVC, animated: true)
-    
+
   }
   
 }
@@ -102,6 +112,7 @@ extension ProfileInputQuestionViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print("Answering question: \(self.question)")
     self.stylize()
     self.setup()
   }
@@ -318,10 +329,10 @@ extension ProfileInputQuestionViewController: InputTableViewDelegate {
         NSLayoutConstraint(item: checkboxImage, attribute: .centerY, relatedBy: .equal,
                            toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0)
         ])
-      UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+      UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut, animations: {
         checkboxImage.alpha = 1.0
       }, completion: { (_) in
-        self.delay(delay: 0.6, closure: {
+        self.delay(delay: 0.3, closure: {
           self.continueToNextQuestion()
         })
       })

@@ -34,7 +34,15 @@ enum QuestionType: String {
   case freeResponse
 }
 
-class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable {
+class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable, CustomStringConvertible {
+  var description: String {
+    return "**** Question Item ****" + """
+    documentID: \(String(describing: documentID))
+    questionText: \(String(describing: questionText))
+    questionSubtext: \(String(describing: questionSubtext))
+    
+    """
+  }
 
   var documentID: String?
   var questionText: String
