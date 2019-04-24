@@ -258,11 +258,11 @@ extension MeEditUserViewController {
     
     self.addTextField(type: .gender,
                       title: "Gender",
-                      initialText: self.pearUser.matchingDemographics.gender.toString())
+                      initialText: self.pearUser.matchingDemographics.gender?.toString() ?? "")
     
     self.addTextField(type: .location,
                       title: "Location (City, State)",
-                      initialText: self.pearUser.matchingDemographics.location.locationName ?? "")
+                      initialText: self.pearUser.matchingDemographics.location?.locationName ?? "")
     
     self.addTextField(type: .schoolName,
                       title: "School Name",

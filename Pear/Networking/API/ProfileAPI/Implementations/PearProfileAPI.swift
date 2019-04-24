@@ -311,7 +311,6 @@ extension PearProfileAPI {
               for userData in discoveryUsers {
                 do {
                   let userRawData = try userData["user"].rawData()
-                  print(userData)
                   let pearUser = try JSONDecoder().decode(PearUser.self, from: userRawData)
                   if pearUser.endorserIDs.count > 0 {
                     let fullProfile = FullProfileDisplayData(user: pearUser)

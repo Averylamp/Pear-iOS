@@ -385,7 +385,6 @@ extension PearMatchesAPI {
           case .foundObjectData(let objectData):
             do {
               let matchObj = try JSONDecoder().decode(Match.self, from: objectData)
-              print("Successfully found Pear User")
               matchObj.fetchFirebaseChatObject(completion: { (match) in
                 if let matchObj = match {
                   completion(.success(matchObj))

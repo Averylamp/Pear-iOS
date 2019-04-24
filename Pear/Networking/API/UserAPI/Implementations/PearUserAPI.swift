@@ -27,11 +27,11 @@ class PearUserAPI: UserAPI {
   
   static let getFakeUserQuery: String = "query{ user(id:\"5ca7ecaa35db345290275f50\") \(PearUser.graphQLAllFields()) }"
   static let getUserQuery: String = "query GetUser($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLCurrentUserFields()) }}"
-  static let fetchEndorsedUsersQuery: String = "query GetEndorsedUsers($userInput: GetUserInput!) { getUser(userInput:$userInput) { success message user { endorsedUsers \(PearUser.graphQLAllFields()) detachedProfileObjs \((PearDetachedProfile.graphQLAllFields()))  }  }}"
+  static let fetchEndorsedUsersQuery: String = "query GetEndorsedUsers($userInput: GetUserInput!) { getUser(userInput:$userInput) { success message user { endorsedUsers \(PearUser.graphQLAllFields()) detachedProfiles \((PearDetachedProfile.graphQLAllFields()))  }  }}"
   static let getExistingUsersQuery: String = "query GetAlreadyOnPear($phoneNumbers:[String!]!){alreadyOnPear(phoneNumbers: $phoneNumbers)}"
   
   func getUpdateUserQueryWithName(name: String) -> String {
-    return "mutation \(name)($user_id: ID, $userInput: UpdateUserInput){ updateUser(id:$user_id, updateUserInput:$userInput){ success message } }"
+    return "mutation \(name)($userInput: UpdateUserInput!){ updateUser(updateUserInput:$userInput){ success message } }"
   }
   
 }
@@ -44,7 +44,6 @@ extension PearUserAPI {
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
-    print(uid)
     request.allHTTPHeaderFields = defaultHeaders
     do {
       let fullDictionary: [String: Any] = [
@@ -66,7 +65,6 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-          APIHelpers.printDataDump(data: data)
           let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "getUser", objectName: "user")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
@@ -169,7 +167,8 @@ extension PearUserAPI {
   func fetchEndorsedUsers(uid: String,
                           token: String,
                           completion: @escaping
-    (Result<(endorsedProfiles: [PearUser], detachedProfiles: [PearDetachedProfile]), UserAPIError>) -> Void) {
+    (Result<(endorsedProfiles: [PearUser],
+    detachedProfiles: [PearDetachedProfile]), UserAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -409,12 +408,12 @@ extension PearUserAPI {
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
-    
+    var allInputs = inputDictionary
+    allInputs["user_id"] = userID
     let fullDictionary: [String: Any] = [
       "query": getUpdateUserQueryWithName(name: mutationName),
       "variables": [
-        "user_id": userID,
-        "userInput": inputDictionary
+        "userInput": allInputs
       ]
     ]
     
@@ -423,7 +422,6 @@ extension PearUserAPI {
       request.httpBody = data
       
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-        print("Data task returned")
         if let error = error {
           print(error as Any)
           SentryHelper.generateSentryEvent(level: .error,
