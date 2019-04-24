@@ -57,8 +57,8 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = user.displayedImages
     self.profileOrigin = .pearUser
     self.originObject = user
-    self.locationName = user.matchingDemographics.location.locationName
-    self.locationCoordinates = user.matchingDemographics.location.locationCoordinate
+    self.locationName = user.matchingDemographics.location?.locationName
+    self.locationCoordinates = user.matchingDemographics.location?.locationCoordinate
     self.school = user.school
     self.schoolYear = user.schoolYear
     self.matchingDemographics = user.matchingDemographics
@@ -81,8 +81,8 @@ class FullProfileDisplayData: Equatable {
     self.imageContainers = detachedProfile.images
     self.profileOrigin = .detachedProfile
     self.originObject = detachedProfile
-    self.locationName = detachedProfile.matchingDemographics.location.locationName
-    self.locationCoordinates = detachedProfile.matchingDemographics.location.locationCoordinate
+    self.locationName = detachedProfile.matchingDemographics.location?.locationName
+    self.locationCoordinates = detachedProfile.matchingDemographics.location?.locationCoordinate
     self.school = detachedProfile.school
     self.schoolYear = detachedProfile.schoolYear
     self.matchingDemographics = detachedProfile.matchingDemographics

@@ -162,8 +162,8 @@ extension UpdateUserPreferencesViewController {
     agePreferencesVC.didMove(toParent: self)
     
     guard let locationNameVC = UserLocationViewController
-      .instantiate(locationName: currentUser.matchingDemographics.location.locationName,
-                   locationCoordinates: currentUser.matchingDemographics.location.locationCoordinate) else {
+      .instantiate(locationName: currentUser.matchingDemographics.location?.locationName,
+                   locationCoordinates: currentUser.matchingDemographics.location?.locationCoordinate) else {
                     print("Unable to instantiate user location preferences vc")
                     return
     }
