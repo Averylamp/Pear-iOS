@@ -17,6 +17,7 @@ extension DataStore {
     case isFilteringForSelfDisabled
     case notFilteringForEndorsedUsers
     case notFilteringForDetachedProfiles
+    case hasCreatedUser
   }
   
   func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {
@@ -24,6 +25,14 @@ extension DataStore {
       return result
     }
     return []
+  }
+  
+  func fetchFlagFromDefaults(flag: UserDefaultKeys) -> Bool {
+    return UserDefaults.standard.bool(forKey: flag.rawValue)
+  }
+  
+  func setFlagToDefaults(value: Bool, flag: UserDefaultKeys) {
+    UserDefaults.standard.set(value, forKey: flag.rawValue)
   }
   
   func saveListToDefaults(list: [String], type: UserDefaultKeys) {

@@ -75,7 +75,8 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "createDetachedProfile",
                                              message: "GraphQL Error: \(helperResult)",
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
@@ -83,6 +84,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "createDetachedProfile",
                                              message: message ?? "Failed to create user",
+                                             responseData: data,
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
@@ -96,7 +98,8 @@ extension PearProfileAPI {
                                                apiName: "PearProfileAPI",
                                                functionName: "createDetachedProfile",
                                                message: "DeserializationError: \(error.localizedDescription)",
-                paylod: fullDictionary)
+                                               responseData: data,
+                                               paylod: fullDictionary)
               completion(.failure(DetachedProfileError.failedDeserialization))
             }
           }
@@ -141,7 +144,8 @@ extension PearProfileAPI {
           SentryHelper.generateSentryEvent(level: .error,
                                            apiName: "PearProfileAPI",
                                            functionName: "findDetachedProfiles",
-                                           message: error.localizedDescription)
+                                           message: error.localizedDescription,
+                                           responseData: data)
           return
         } else {
           if  let data = data,
@@ -164,6 +168,7 @@ extension PearProfileAPI {
                                                apiName: "PearProfileAPI",
                                                functionName: "findDetachedProfiles",
                                                message: error.localizedDescription,
+                                               responseData: data,
                                                tags: [:],
                                                paylod: fullDictionary)
               completion(.failure(DetachedProfileError.unknownError(error: error)))
@@ -175,6 +180,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "findDetachedProfiles",
                                              message: "Failed to convert inputs",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.failedDeserialization))
@@ -231,8 +237,9 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "approveNewDetachedProfile",
                                              message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Approve Detached Profile: \(message ?? "")")
@@ -240,6 +247,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "approveNewDetachedProfile",
                                              message: message ?? "Failed to Approve Detached Profile",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
@@ -289,8 +297,9 @@ extension PearProfileAPI {
                                            apiName: "PearProfileAPI",
                                            functionName: "getDiscoveryFeed",
                                            message: "Unknown Error: \(error.localizedDescription)",
-            tags: [:],
-            paylod: fullDictionary)
+                                           responseData: data,
+                                           tags: [:],
+                                           paylod: fullDictionary)
           completion(.failure(DetachedProfileError.unknownError(error: error)))
           return
         } else {
@@ -317,6 +326,7 @@ extension PearProfileAPI {
                                                    apiName: "PearProfileAPI",
                                                    functionName: "getDiscoveryFeed",
                                                    message: "Failed Discovery Serialization: \(error.localizedDescription)",
+                                                   responseData: data,
                                                    tags: [:],
                                                    paylod: fullDictionary)
                   print("Failed to deserialize pear user from feed: \(error)")
@@ -331,6 +341,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "getDiscoveryFeed",
                                              message: "Failed Data Serialization",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.failedDeserialization))
@@ -377,6 +388,7 @@ extension PearProfileAPI {
                                        apiName: "PearProfileAPI",
                                        functionName: "editUserProfile",
                                        message: "Invalid Updates",
+                                       responseData: nil,
                                        tags: [:],
                                        paylod: updates)
       completion(.failure(ProfileAPIError.invalidVariables))
@@ -415,8 +427,9 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "editUserProfile",
                                              message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Approve Detached Profile: \(message ?? "")")
@@ -424,6 +437,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "editUserProfile",
                                              message: message ?? "Failed to Edit User Profile",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))
@@ -460,6 +474,7 @@ extension PearProfileAPI {
                                        apiName: "PearProfileAPI",
                                        functionName: "editDetachedProfile",
                                        message: "Invalid Updates",
+                                       responseData: nil,
                                        tags: [:],
                                        paylod: updates)
       completion(.failure(ProfileAPIError.invalidVariables))
@@ -498,8 +513,9 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "editDetachedProfile",
                                              message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Approve Detached Profile: \(message ?? "")")
@@ -507,6 +523,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "editDetachedProfile",
                                              message: message ?? "Failed to Edit Detached Profile",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))

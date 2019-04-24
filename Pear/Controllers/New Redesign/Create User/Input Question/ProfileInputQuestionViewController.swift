@@ -112,7 +112,7 @@ extension ProfileInputQuestionViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    print("Answering question: \(self.question)")
+    print("Answering question: \(String(describing: self.question))")
     self.stylize()
     self.setup()
   }

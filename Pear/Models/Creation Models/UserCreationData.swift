@@ -11,50 +11,49 @@ import UIKit
 import FirebaseAuth
 import CoreLocation
 
+enum UserCreationDataError: Error {
+  case missingRequiredFields
+}
+
 class UserCreationData: CustomStringConvertible {
   
-  var firstName: String?
-  var lastName: String?
-  var email: String?
-  var emailVerified: Bool = false
-  var age: Int?
-  var gender: GenderEnum?
-  var birthdate: Date?
   var phoneNumber: String?
   var phoneNumberVerified: Bool = false
-  var primaryAuth: AuthCredential?
-  var firebaseToken: String?
   var firebaseAuthID: String?
-  var facebookId: String?
-  var facebookAccessToken: String?
-  var thumbnailURL: String?
-  var lastLocation: CLLocationCoordinate2D?
   var firebaseRemoteInstanceID: String?
+  var referredByCode: String?
   init() {
     
   }
   
   var description: String {
     return "**** GettingStartedUserData\n " + """
-    firstName: \(String(describing: firstName)),
-    lastName: \(String(describing: lastName)),
-    email: \(String(describing: email)),
-    emailVerified: \(String(describing: emailVerified)),
-    age: \(String(describing: age)),
-    gender: \(String(describing: gender)),
-    birthdate: \(String(describing: birthdate)),
     phoneNumber: \(String(describing: phoneNumber)),
     phoneNumberVerified: \(String(describing: phoneNumberVerified)),
-    firebaseToken: \(String(describing: firebaseToken)),
     firebaseAuthID: \(String(describing: firebaseAuthID)),
-    facebookId: \(String(describing: facebookId)),
-    facebookAccessToken: \(String(describing: facebookAccessToken)),
+    referedByCode: \(String(describing: referredByCode)),
     """
   }
-  
-  func getNextInputViewController() -> UIViewController? {
-    
-    return nil
+
+  func toGraphQLInput()throws -> [String: Any] {
+    guard let phoneNumber = self.phoneNumber,
+      let firebaseAuthID = self.firebaseAuthID else {
+        print("Missing required Fields")
+        throw UserCreationDataError.missingRequiredFields
+    }
+    var input: [String: Any] = [
+      "phoneNumber": phoneNumber,
+      "phoneNumberVerified": phoneNumberVerified,
+      "firebaseAuthID": firebaseAuthID
+    ]
+
+    if let remoteInstanceID = self.firebaseRemoteInstanceID {
+      input["firebaseRemoteInstanceID"] = remoteInstanceID
+    }
+    if let referredCode = self.referredByCode {
+      input["referredByCode"] = referredCode
+    }
+    return input
   }
   
 }

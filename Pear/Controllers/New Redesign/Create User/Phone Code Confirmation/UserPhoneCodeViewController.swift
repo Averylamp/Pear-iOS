@@ -130,35 +130,34 @@ extension UserPhoneCodeViewController {
         print(result)
         HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
         self.userCreationData.phoneNumberVerified = true
-        
-        guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
-          print("Failed to instantiate contact permisssion vc")
+        guard let authUID = Auth.auth().currentUser?.uid else {
+          print("Failed to sign in properly")
           return
         }
-        self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
-        //              PearUserAPI.shared.createNewUser(with: self.userCreationData, completion: { (result) in
-        //                print("Create User API Called")
-        //                switch result {
-        //                case .success(let pearUser):
-        //                  print(pearUser)
-        //                  DataStore.shared.currentPearUser = pearUser
-        //                  DispatchQueue.main.async {
-        //                    guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
-        //                      print("Failed to create Verification Complete VC")
-        //                      return
-        //                    }
-        //                    self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
-        //                  }
-        //                case .failure(let error):
-        //                  print(error)
-        //                  DispatchQueue.main.async {
-        //                    self.hiddenInputField.text = ""
-        //                    self.updateCodeNumberLabels()
-        //                    self.alert(title: "Error creating User",
-        //                               message: "Unfortunately we are unable to create your user at this time, please try again later")
-        //                  }
-        //                }
-        //              })
+        self.userCreationData.firebaseAuthID = authUID
+        PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
+          switch result {
+          case .success(let pearUser):
+            DispatchQueue.main.async {
+              DataStore.shared.currentPearUser = pearUser
+              DataStore.shared.reloadAllUserData()
+              guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
+                print("Failed to instantiate contact permisssion vc")
+                return
+              }
+              self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+            }
+          case .failure(let error):
+            print("Failure creating Pear User: \(error)")
+            DispatchQueue.main.async {
+              self.hiddenInputField.text = ""
+              self.updateCodeNumberLabels()
+              self.alert(title: "Error creating User",
+                         message: "Unfortunately we are unable to create your user at this time, please try again later")
+            }
+          }
+        })
+        
       }
       self.isVerifying = false
     }

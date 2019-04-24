@@ -10,7 +10,6 @@ import UIKit
 
 class UserNameInputViewController: UIViewController {
   
-  
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
   @IBOutlet weak var nameTextField: UITextField!
@@ -36,10 +35,8 @@ class UserNameInputViewController: UIViewController {
       self.profileData.updateAuthor(authorID: userID, authorFirstName: name)
     }
   }
-  
     
 }
-
 
 // MARK: - Life Cycle
 extension UserNameInputViewController {
@@ -48,7 +45,7 @@ extension UserNameInputViewController {
     self.stylize()
   }
   
-  func stylize(){
+  func stylize() {
     self.view.backgroundColor = R.color.backgroundColorOrange()
     if let font = R.font.openSansExtraBold(size: 16) {
       self.titleLabel.font = font
@@ -71,4 +68,3 @@ extension UserNameInputViewController {
     self.view.endEditing(true)
   }
 }
-

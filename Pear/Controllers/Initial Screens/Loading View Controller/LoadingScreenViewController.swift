@@ -106,7 +106,7 @@ extension LoadingScreenViewController {
       }
       return landingScreenVC
     } else {
-      guard let landingScreenVC = UserContactPermissionsViewController.instantiate() else {
+      guard let landingScreenVC = LandingScreenViewController.instantiate() else {
         print("Failed to create Landing Screen VC")
         return nil
       }
@@ -162,20 +162,7 @@ extension LoadingScreenViewController {
       }
     }
   }
-  
-  func testChat() {
     
-    PearChatAPI.shared.getAllChatsForUser(user_id: "5c82162afec46c84e924a337") { (result) in
-      switch result {
-      case .success(let chats):
-        print(chats)
-      case .failure(let error):
-        print(error)
-      }
-    }
-    
-  }
-  
   func testImageUpload() {
     if let testImage = UIImage(named: "sample-profile-brooke-1") {
       let testUserID = "5c82162afec46c84e924a332"

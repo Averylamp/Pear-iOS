@@ -240,7 +240,7 @@ extension FullChatViewController {
       infoLabel.translatesAutoresizingMaskIntoConstraints = false
       infoLabel.stylizeChatRequestPreviewTextLabel(unread: false)
       infoLabel.numberOfLines = 0
-      infoLabel.text = "If \(match.otherUser.firstName) also accepts, they'll see your message and you'll be able to chat with each other."
+      infoLabel.text = "If \(match.otherUser.firstName ?? "they") also accepts, they'll see your message and you'll be able to chat with each other."
       self.inputContainerView.addSubview(infoLabel)
       self.inputContainerView.addConstraints([
         NSLayoutConstraint(item: infoLabel, attribute: .left, relatedBy: .equal, toItem: self.inputContainerView, attribute: .left, multiplier: 1.0, constant: 20.0),
@@ -350,9 +350,9 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
     case .matchmakerRequest, .personalRequest:
       var matchmakerMessage = ""
       if message.type == .matchmakerRequest {
-        matchmakerMessage = "\(match.sentByUser.firstName) peared you and \(match.otherUser.firstName)"
+        matchmakerMessage = "\(match.sentByUser.firstName ?? "Someone") peared you and \(match.otherUser.firstName ?? "their friend")"
       } else {
-        matchmakerMessage = "\(match.sentByUser.firstName) requested to match with you"
+        matchmakerMessage = "\(match.sentByUser.firstName ?? "Someone") requested to match with you"
       }
       message.matchmakerMessage = matchmakerMessage
       guard let matchmakerMessageCell = tableView.dequeueReusableCell(withIdentifier: "ChatRequestTVC", for: indexPath) as? ChatMatchmakerRequestTableViewCell else {
