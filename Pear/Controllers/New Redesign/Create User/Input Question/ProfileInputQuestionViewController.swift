@@ -179,7 +179,12 @@ extension ProfileInputQuestionViewController {
                          toItem: cardView, attribute: .width, multiplier: 1.0, constant: 0.0)
       ])
     
-    let titleView = self.createTitleLabelForCard(title: question.questionText)
+    var titleText = question.questionText
+    if let textWithName = question.questionTextWithName {
+      titleText = textWithName.replacingOccurrences(of: "{{name}}", with: self.profileData.firstName)
+    }
+    
+    let titleView = self.createTitleLabelForCard(title: titleText)
     stackView.addArrangedSubview(titleView)
     if let subtitleText = question.questionSubtext {
       let subtitleView = self.createSubtitleLabel(subtitle: subtitleText)

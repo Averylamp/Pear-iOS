@@ -23,6 +23,7 @@ enum QuestionItemKey: String, CodingKey {
   case questionType
   case suggestedResponses
   case placeholderResponseText
+  case tags
   case hiddenInQuestionnaire
   case hiddenInProfile
 }
@@ -33,8 +34,8 @@ enum QuestionType: String {
   case freeResponse
 }
 
-class QuestionItem: Decodable, GraphQLInput {
-  
+class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable {
+
   var documentID: String?
   var questionText: String
   var questionSubtext: String?
@@ -42,8 +43,13 @@ class QuestionItem: Decodable, GraphQLInput {
   var questionType: QuestionType
   var suggestedResponses: [QuestionSuggestedResponse]
   var placeholderResponseText: String?
+  var tags: [String] = []
   var hiddenInQuestionnaire: Bool
   var hiddenInProfile: Bool
+  
+  static func graphQLAllFields() -> String {
+    return "{ _id questionText questionSubtext questionTextWithName questionType suggestedResponses \(QuestionSuggestedResponse.graphQLAllFields()) tags placeholderResponseText hiddenInQuestionnaire hiddenInProfile }"
+  }
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: QuestionItemKey.self)
@@ -56,6 +62,7 @@ class QuestionItem: Decodable, GraphQLInput {
         throw ContentItemError.decodingEnumError
     }
     self.questionType = questionType
+    self.tags = try values.decode([String].self, forKey: .tags)
     self.suggestedResponses = try values.decode([QuestionSuggestedResponse].self, forKey: .suggestedResponses)
     self.placeholderResponseText = try? values.decode(String.self, forKey: .placeholderResponseText)
     self.hiddenInQuestionnaire = try values.decode(Bool.self, forKey: .hiddenInQuestionnaire)
@@ -110,7 +117,7 @@ class QuestionItem: Decodable, GraphQLInput {
     return QuestionItem(documentID: "5cb1af368eb7800f51c00bbf",
                         questionText: "What's their vibe?",
                         questionSubtext: "Pick up to 3",
-                        questionTextWithName: "What's <name> vibe?",
+                        questionTextWithName: "What's {{name}} vibe?",
                         questionType: .multipleChoice,
                         suggestedResponses: QuestionSuggestedResponse.vibeResponses(),
                         placeholderResponseText: nil,
@@ -122,7 +129,7 @@ class QuestionItem: Decodable, GraphQLInput {
     return QuestionItem(documentID: "5cb1af46951e460f2b486292",
                         questionText: "What time's their ideal date?",
                         questionSubtext: nil,
-                        questionTextWithName: "What time's <name>'s ideal date?",
+                        questionTextWithName: "What time's {{name}}'s ideal date?",
                         questionType: .multipleChoice,
                         suggestedResponses: QuestionSuggestedResponse.idealDateResponses(),
                         placeholderResponseText: nil,
@@ -151,7 +158,7 @@ enum ColorKey: String, CodingKey {
   case alpha
 }
 
-class Color: Codable, GraphQLInput {
+class Color: Codable, GraphQLInput, GraphQLDecodable {
   
   var red: CGFloat
   var green: CGFloat
@@ -166,6 +173,10 @@ class Color: Codable, GraphQLInput {
     self.green = color.rgba.green
     self.blue = color.rgba.blue
     self.alpha = color.rgba.alpha
+  }
+  
+  static func graphQLAllFields() -> String {
+    return "{ red green blue alpha }"
   }
   
   func toGraphQLInput() -> [String: Any] {
@@ -191,7 +202,7 @@ enum IconAssetKey: String, CodingKey {
   case assetURL
 }
 
-class IconAsset: Decodable, GraphQLInput {
+class IconAsset: Decodable, GraphQLInput, GraphQLDecodable {
   
   var assetString: String?
   var assetURL: URL?
@@ -202,6 +213,10 @@ class IconAsset: Decodable, GraphQLInput {
     ) {
     self.assetString = assetString
     self.assetURL = assetURL
+  }
+  
+  static func graphQLAllFields() -> String {
+    return "{ assetString assetURL }"
   }
   
   required init(from decoder: Decoder) throws {
