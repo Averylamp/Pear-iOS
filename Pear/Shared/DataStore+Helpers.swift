@@ -252,7 +252,7 @@ extension DataStore {
     }
   }
   
-  func refreshEndorsedUsers(completion: ((_ endorsedUsers: [MatchingPearUser], _ detachedProfiles: [PearDetachedProfile]) -> Void)?) {
+  func refreshEndorsedUsers(completion: ((_ endorsedUsers: [PearUser], _ detachedProfiles: [PearDetachedProfile]) -> Void)?) {
     self.fetchUIDToken { (result) in
       switch result {
       case .success(let authTokens):

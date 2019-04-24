@@ -16,27 +16,22 @@ enum FullProfileError: Error {
 }
 
 enum FullProfileOrigin {
-  case gettingStartedProfile
   case detachedProfile
-  case userProfile
-  case matchingUser
   case pearUser
 }
 
 class FullProfileDisplayData: Equatable {
   
   var userID: String?
-  var originalCreatorName: String?
-  var firstName: String!
+  var firstName: String?
   var age: Int?
-  var gender: String!
-  var interests: [String]
-  var vibes: [String]
-  var bio: [BioContent]
-  var dos: [DoDontContent]
-  var donts: [DoDontContent]
+  var gender: GenderEnum?
+  var bios: [BioItem] = []
+  var boasts: [BoastItem] = []
+  var roasts: [RoastItem] = []
+  var questionResponses: [QuestionResponseItem] = []
+  var vibes: [VibeItem] = []
   var imageContainers: [ImageContainer] = []
-  var rawImages: [UIImage] = []
   var profileOrigin: FullProfileOrigin?
   var originObject: Any?
   var locationName: String?
@@ -48,163 +43,108 @@ class FullProfileDisplayData: Equatable {
   var discoveryTimestamp: Date?
   var profileNumber: Int?
   
-  init (firstName: String!,
-        age: Int?,
-        gender: String!,
-        interests: [String],
-        vibes: [String],
-        bio: [BioContent],
-        dos: [DoDontContent],
-        donts: [DoDontContent]) {
-    self.firstName = firstName
-    self.age = age
-    self.gender = gender
-    self.interests = interests
-    self.vibes = vibes
-    self.bio = bio
-    self.dos = dos
-    self.donts = donts
-  }
-  
-  convenience init (gsup: UserProfileCreationData, creatorFirstName: String) throws {
-    guard let firstName = gsup.firstName,
-      let gender = gsup.gender,
-      let bio = gsup.bio
-      else {
-        print("Failed to ensure fields")
-        throw FullProfileError.conversionError
-    }
-    
-    self.init(firstName: firstName,
-              age: nil,
-              gender: gender.toString(),
-              interests: gsup.interests,
-              vibes: gsup.vibes,
-              bio: [BioContent.init(bio: bio, creatorName: creatorFirstName)],
-              dos: gsup.dos.map({DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}),
-              donts: gsup.donts.map({DoDontContent.init(phrase: $0, creatorName: creatorFirstName)}))
-    self.originalCreatorName = creatorFirstName
-    self.rawImages = gsup.images.compactMap({ $0.image })
-    self.profileOrigin = .gettingStartedProfile
-    self.school = gsup.school
-    self.schoolYear = gsup.schoolYear
-  }
-  
-  convenience init (matchingUser: MatchingPearUser) {
-    var interests: [String] = []
-    var vibes: [String] = []
-    var bioContent: [BioContent] = []
-    var doContent: [DoDontContent] = []
-    var dontContent: [DoDontContent] = []
-    
-    for profile in matchingUser.userProfiles {
-      profile.interests.forEach({
-        if !interests.contains($0) {
-          interests.append($0)
-        }
-      })
-      profile.vibes.forEach({
-        if !vibes.contains($0) {
-          vibes.append($0)
-        }
-      })
-      bioContent.append(BioContent.init(bio: profile.bio, creatorName: profile.creatorFirstName))
-      doContent.append(contentsOf: profile.dos.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-      dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-    }
-    self.init(firstName: matchingUser.firstName,
-              age: matchingUser.matchingDemographics.age,
-              gender: matchingUser.matchingDemographics.gender.toString(),
-              interests: interests,
-              vibes: vibes,
-              bio: bioContent,
-              dos: doContent,
-              donts: dontContent)
-    self.userID = matchingUser.documentID
-    self.imageContainers = matchingUser.images
-    self.profileOrigin = .matchingUser
-    self.originObject = matchingUser
-    self.school = matchingUser.school
-    self.schoolYear = matchingUser.schoolYear
-    self.locationName = matchingUser.matchingDemographics.location.locationName
-    self.matchingDemographics = matchingUser.matchingDemographics
-    self.matchingPreferences = matchingUser.matchingPreferences
-  }
-  
-  convenience init (user: PearUser) {
-    var interests: [String] = []
-    var vibes: [String] = []
-    var bioContent: [BioContent] = []
-    var doContent: [DoDontContent] = []
-    var dontContent: [DoDontContent] = []
-    
-    for profile in user.userProfiles {
-      profile.interests.forEach({
-        if !interests.contains($0) {
-          interests.append($0)
-        }
-      })
-      profile.vibes.forEach({
-        if !vibes.contains($0) {
-          vibes.append($0)
-        }
-      })
-      bioContent.append(BioContent.init(bio: profile.bio, creatorName: profile.creatorFirstName))
-      doContent.append(contentsOf: profile.dos.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-      dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-    }
-    self.init(firstName: user.firstName,
-              age: user.matchingDemographics.age,
-              gender: user.matchingDemographics.gender.toString(),
-              interests: interests,
-              vibes: vibes,
-              bio: bioContent,
-              dos: doContent,
-              donts: dontContent)
+  convenience init(user: PearUser) {
+    self.init()
     self.userID = user.documentID
+    self.firstName = user.firstName
+    self.age = user.age
+    self.gender = user.gender
+    self.bios = user.bios
+    self.boasts = user.boasts
+    self.roasts = user.roasts
+    self.questionResponses = user.questionResponses
+    self.vibes = user.vibes
     self.imageContainers = user.displayedImages
     self.profileOrigin = .pearUser
     self.originObject = user
+    self.locationName = user.matchingDemographics.location.locationName
+    self.locationCoordinates = user.matchingDemographics.location.locationCoordinate
     self.school = user.school
     self.schoolYear = user.schoolYear
-    self.locationName = user.matchingDemographics.location.locationName
     self.matchingDemographics = user.matchingDemographics
     self.matchingPreferences = user.matchingPreferences
+    self.profileNumber = user.endorserIDs.count
+    
   }
   
-  convenience init (pdp: PearDetachedProfile) {
-    self.init(firstName: pdp.firstName,
-              age: nil,
-              gender: GenderEnum.stringFromEnumString(string: pdp.gender),
-              interests: pdp.interests,
-              vibes: pdp.vibes,
-              bio: [BioContent.init(bio: pdp.bio, creatorName: pdp.creatorFirstName)],
-              dos: pdp.dos.map({DoDontContent.init(phrase: $0, creatorName: pdp.creatorFirstName)}),
-              donts: pdp.donts.map({DoDontContent.init(phrase: $0, creatorName: pdp.creatorFirstName)}))
-    self.originalCreatorName = pdp.creatorFirstName
-    self.imageContainers = pdp.images
+  convenience init(detachedProfile: PearDetachedProfile) {
+    self.init()
+    self.userID = detachedProfile.documentID
+    self.firstName = detachedProfile.firstName
+    self.age = detachedProfile.age
+    self.gender = detachedProfile.gender
+    self.bios = detachedProfile.bios
+    self.boasts = detachedProfile.boasts
+    self.roasts = detachedProfile.roasts
+    self.questionResponses = detachedProfile.questionResponses
+    self.vibes = detachedProfile.vibes
+    self.imageContainers = detachedProfile.images
     self.profileOrigin = .detachedProfile
-    self.originObject = pdp
-    self.matchingDemographics = pdp.matchingDemographics
-    self.matchingPreferences = pdp.matchingPreferences
-    self.school = pdp.school
-    self.schoolYear = pdp.schoolYear
+    self.originObject = detachedProfile
+    self.locationName = detachedProfile.matchingDemographics.location.locationName
+    self.locationCoordinates = detachedProfile.matchingDemographics.location.locationCoordinate
+    self.school = detachedProfile.school
+    self.schoolYear = detachedProfile.schoolYear
+    self.matchingDemographics = detachedProfile.matchingDemographics
+    self.matchingPreferences = detachedProfile.matchingPreferences
+    self.profileNumber = 0
   }
   
+//  convenience init (user: PearUser) {
+//    var interests: [String] = []
+//    var vibes: [String] = []
+//    var bioContent: [BioContent] = []
+//    var doContent: [DoDontContent] = []
+//    var dontContent: [DoDontContent] = []
+//
+//    for profile in user.userProfiles {
+//      profile.interests.forEach({
+//        if !interests.contains($0) {
+//          interests.append($0)
+//        }
+//      })
+//      profile.vibes.forEach({
+//        if !vibes.contains($0) {
+//          vibes.append($0)
+//        }
+//      })
+//      bioContent.append(BioContent.init(bio: profile.bio, creatorName: profile.creatorFirstName))
+//      doContent.append(contentsOf: profile.dos.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
+//      dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
+//    }
+//    self.init(firstName: user.firstName,
+//              age: user.matchingDemographics.age,
+//              gender: user.matchingDemographics.gender.toString(),
+//              interests: interests,
+//              vibes: vibes,
+//              bio: bioContent,
+//              dos: doContent,
+//              donts: dontContent)
+//    self.userID = user.documentID
+//    self.imageContainers = user.displayedImages
+//    self.profileOrigin = .pearUser
+//    self.originObject = user
+//    self.school = user.school
+//    self.schoolYear = user.schoolYear
+//    self.locationName = user.matchingDemographics.location.locationName
+//    self.matchingDemographics = user.matchingDemographics
+//    self.matchingPreferences = user.matchingPreferences
+//  }
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
-    return lhs.userID == rhs.userID &&
-    lhs.originalCreatorName == rhs.originalCreatorName &&
-    lhs.firstName == rhs.firstName &&
-    lhs.age == rhs.age &&
-    lhs.gender == rhs.gender &&
-    lhs.interests == rhs.interests &&
-    lhs.vibes == rhs.vibes &&
-    lhs.dos.map({$0.phrase}) == rhs.dos.map({$0.phrase}) &&
-    lhs.donts.map({$0.phrase}) == rhs.donts.map({$0.phrase}) &&
-    lhs.bio.map({$0.bio}) == rhs.bio.map({$0.bio}) &&
-    ImageContainer.compareImageLists(lhs: lhs.imageContainers, rhs: rhs.imageContainers)
+//    return lhs.userID == rhs.userID &&
+//      lhs.originalCreatorName == rhs.originalCreatorName &&
+//      lhs.firstName == rhs.firstName &&
+//      lhs.age == rhs.age &&
+//      lhs.gender == rhs.gender &&
+//      lhs.interests == rhs.interests &&
+//      lhs.vibes == rhs.vibes &&
+//      lhs.dos.map({$0.phrase}) == rhs.dos.map({$0.phrase}) &&
+//      lhs.donts.map({$0.phrase}) == rhs.donts.map({$0.phrase}) &&
+//      lhs.bio.map({$0.bio}) == rhs.bio.map({$0.bio}) &&
+//      ImageContainer.compareImageLists(lhs: lhs.imageContainers, rhs: rhs.imageContainers)
+    return true
   }
- 
+  
   static func compareListsForNewItems(oldList: [FullProfileDisplayData], newList: [FullProfileDisplayData]) -> Bool {
     var newItems = false
     for prof1 in newList {

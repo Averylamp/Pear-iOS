@@ -46,18 +46,21 @@ class LocationObject: Decodable {
   static let graphQLLocationFields = "{ coords locationName }"
   
   let locationName: String?
-  let locationCoordinate: CLLocationCoordinate2D!
+  let locationCoordinate: CLLocationCoordinate2D?
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: LocationKeys.self)
     self.locationName = try? values.decode(String.self, forKey: .locationName)
-    let coordFloats = try values.decode([Double].self, forKey: .coords)
-    guard coordFloats.count == 2 else {
+    if let coordFloats = try? values.decode([Double].self, forKey: .coords) {
+      guard coordFloats.count == 2 else {
         throw DecodingError.coordinateDecodingError
+      }
+      let latitude = coordFloats[0]
+      let longitude = coordFloats[1]
+      self.locationCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
+    } else {
+      self.locationCoordinate = nil
     }
-    let latitude = coordFloats[0]
-    let longitude = coordFloats[1]
-    self.locationCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
   }
   
 }

@@ -23,10 +23,10 @@ class PearUserAPI: UserAPI {
     "Content-Type": "application/json"
   ]
   
-  static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput) {createUser(userInput: $userInput) { success message user \(PearUser.graphQLUserFieldsAll) }}"
+  static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput) {createUser(userInput: $userInput) { success message user \(PearUser.graphQLAllFields()) }}"
   
-  static let getUserQuery: String = "query GetUser($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLUserFieldsAll) }}"
-  static let fetchEndorsedUsersQuery: String = "query GetEndorsedUsers($userInput: GetUserInput) { getUser(userInput:$userInput) { success message user { endorsedProfileObjs { userObj \(MatchingPearUser.graphQLMatchedUserFieldsAll) } detachedProfileObjs \((PearDetachedProfile.graphQLDetachedProfileFieldsAll))  }  }}"
+  static let getUserQuery: String = "query GetUser($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLAllFields()) }}"
+  static let fetchEndorsedUsersQuery: String = "query GetEndorsedUsers($userInput: GetUserInput) { getUser(userInput:$userInput) { success message user { endorsedUsers \(PearUser.graphQLAllFields()) detachedProfileObjs \((PearDetachedProfile.graphQLAllFields()))  }  }}"
   static let getExistingUsersQuery: String = "query GetAlreadyOnPear($phoneNumbers:[String!]!){alreadyOnPear(phoneNumbers: $phoneNumbers)}"
   
   func getUpdateUserQueryWithName(name: String) -> String {
@@ -119,7 +119,7 @@ extension PearUserAPI {
   func fetchEndorsedUsers(uid: String,
                           token: String,
                           completion: @escaping
-    (Result<(endorsedProfiles: [MatchingPearUser], detachedProfiles: [PearDetachedProfile]), UserAPIError>) -> Void) {
+    (Result<(endorsedProfiles: [PearUser], detachedProfiles: [PearDetachedProfile]), UserAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -169,12 +169,12 @@ extension PearUserAPI {
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
-              var endorsedUsers: [MatchingPearUser] = []
+              var endorsedUsers: [PearUser] = []
               if let endorsedUsersJSON = (try JSON(data: objectData)["endorsedProfileObjs"]).array {
                 for endorsedUser in endorsedUsersJSON {
                   let userJSON = endorsedUser["userObj"]
                   if let matchingUserData = try? userJSON.rawData(),
-                    let matchingUserObj = try? JSONDecoder().decode(MatchingPearUser.self, from: matchingUserData) {
+                    let matchingUserObj = try? JSONDecoder().decode(PearUser.self, from: matchingUserData) {
                     endorsedUsers.append(matchingUserObj)
                   }
                 }

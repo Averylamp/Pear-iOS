@@ -11,7 +11,7 @@ import UIKit
 protocol ChatRequestTableViewControllerDelegate: class {
   
   func selectedMatch(match: Match)
-  func selectedProfile(user: MatchingPearUser)
+  func selectedProfile(user: PearUser)
   
 }
 

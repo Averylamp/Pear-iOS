@@ -29,7 +29,7 @@ class DataStore: NSObject {
       NotificationCenter.default.post(name: .refreshMeTab, object: nil)
     }
   }
-  var endorsedUsers: [MatchingPearUser] = [] {
+  var endorsedUsers: [PearUser] = [] {
     didSet {
       NotificationCenter.default.post(name: .refreshFriendTab, object: nil)
     }

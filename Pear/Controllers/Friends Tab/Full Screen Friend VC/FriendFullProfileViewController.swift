@@ -32,26 +32,26 @@ class FriendFullProfileViewController: UIViewController {
   @IBAction func editProfileButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     let detachedProfile = fullProfileData.originObject as? PearDetachedProfile
-    var userProfile: PearUserProfile?
+    var userProfile: PearUser?
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       print("Failed to get current user")
       return
     }
     
-    if let matchingUser = fullProfileData.originObject as? MatchingPearUser {
-      for matchingUserProfile in matchingUser.userProfiles where matchingUserProfile.creatorUserID == userID {
-        userProfile = matchingUserProfile
-        break
-      }
-    }
-    
-    guard let editFriendProfileVC = FriendEditProfileViewController.instantiate(detachedProfile: detachedProfile,
-                                                                                userProfile: userProfile,
-                                                                                firstName: fullProfileData.firstName) else {
-                                                                                  print("Failed to create edit friend VC")
-                                                                                  return
-    }
-    self.navigationController?.pushViewController(editFriendProfileVC, animated: true)
+//    if let matchingUser = fullProfileData.originObject as? PearUser {
+//      for matchingUserProfile in matchingUser.userProfiles where matchingUserProfile.creatorUserID == userID {
+//        userProfile = matchingUserProfile
+//        break
+//      }
+//    }
+//    
+//    guard let editFriendProfileVC = FriendEditProfileViewController.instantiate(detachedProfile: detachedProfile,
+//                                                                                userProfile: userProfile,
+//                                                                                firstName: fullProfileData.firstName) else {
+//                                                                                  print("Failed to create edit friend VC")
+//                                                                                  return
+//    }
+//    self.navigationController?.pushViewController(editFriendProfileVC, animated: true)
   }
   
 }

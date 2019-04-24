@@ -18,7 +18,11 @@ enum VibeKey: String, CodingKey {
   case hidden
 }
 
-class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput {
+class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable {
+  
+  static func graphQLAllFields() -> String {
+    return "{ _id author_id authorFirstName content color \(Color.graphQLAllFields()) icon \(IconAsset.graphQLAllFields()) hidden }"
+  }
   
   let documentID: String? = nil
   var authorID: String

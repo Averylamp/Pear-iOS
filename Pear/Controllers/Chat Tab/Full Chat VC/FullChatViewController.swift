@@ -39,7 +39,7 @@ class FullChatViewController: UIViewController {
   
   @IBAction func firstNameClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    let fullProfile = FullProfileDisplayData(matchingUser: match.otherUser)
+    let fullProfile = FullProfileDisplayData(user: match.otherUser)
     guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
       print("failed to instantiate full profile scroll VC")
       return
@@ -371,7 +371,7 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
       }
       if messageSender == .receiver {
         initialChatCell = tableView.dequeueReusableCell(withIdentifier: "ChatMessageTVCReceiver", for: indexPath) as? ChatMessageTableViewCell
-        if let thumbnailURLString = match.otherUser.images.first?.thumbnail.imageURL,
+        if let thumbnailURLString = match.otherUser.displayedImages.first?.thumbnail.imageURL,
           let thumbnailURL = URL(string: thumbnailURLString) {
           message.thumbnailImage = thumbnailURL
         }
