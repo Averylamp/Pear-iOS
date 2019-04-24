@@ -24,7 +24,7 @@ class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable {
     return "{ _id author_id authorFirstName content color \(Color.graphQLAllFields()) icon \(IconAsset.graphQLAllFields()) hidden }"
   }
   
-  let documentID: String? = nil
+  var documentID: String?
   var authorID: String
   var authorFirstName: String
   var content: String
@@ -64,6 +64,17 @@ class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable {
     }
     return input
 
+  }
+  
+  required init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: VibeKey.self)
+    self.documentID = try? values.decode(String.self, forKey: .documentID)
+    self.authorID = try values.decode(String.self, forKey: .authorID)
+    self.authorFirstName = try values.decode(String.self, forKey: .authorFirstName)
+    self.content = try values.decode(String.self, forKey: .content)
+    self.color = try? values.decode(Color.self, forKey: .color)
+    self.icon = try? values.decode(IconAsset.self, forKey: .icon)
+    self.hidden = try values.decode(Bool.self, forKey: .hidden)
   }
   
 }
