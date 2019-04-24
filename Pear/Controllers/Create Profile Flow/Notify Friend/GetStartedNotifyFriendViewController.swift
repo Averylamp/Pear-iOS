@@ -82,6 +82,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
   }
   
   func createDetachedProfile() {
+    /*
     PearProfileAPI.shared.createNewDetachedProfile(gettingStartedUserProfileData: self.gettingStartedData) { (result) in
       print("Create Detached Profile Called")
       switch result {
@@ -128,6 +129,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
         
       }
     }
+*/
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {

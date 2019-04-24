@@ -21,12 +21,12 @@ class PearProfileAPI: ProfileAPI {
     "Content-Type": "application/json"
   ]
   
-  static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile \(PearDetachedProfile.graphQLDetachedProfileFieldsAll) }}"
+  static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput!) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile \(PearDetachedProfile.graphQLAllFields()) }}"
   
-  static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLDetachedProfileFieldsAll) }"
+  static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String!) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLAllFields()) }"
   
   // swiftlint:disable:next line_length
-  static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
+  static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($approveDetachedProfileInput: ApproveDetachedProfileInput!) { approveNewDetachedProfile(approveDetachedProfileInput: $approveDetachedProfileInput){ message success } }"
   
   static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLAllFields()) timestamp } }}"
 //  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(PearUser.graphQLMatchedUserFieldsAll) }"
@@ -40,7 +40,7 @@ class PearProfileAPI: ProfileAPI {
 
 // MARK: Routes
 extension PearProfileAPI {
-  func createNewDetachedProfile(gettingStartedUserProfileData: UserProfileCreationData,
+  func createNewDetachedProfile(gettingStartedUserProfileData: ProfileCreationData,
                                 completion: @escaping (Result<PearDetachedProfile, DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
@@ -53,7 +53,7 @@ extension PearProfileAPI {
       let fullDictionary: [String: Any] = [
         "query": PearProfileAPI.createNewDetachedProfileQuery,
         "variables": [
-          "detachedProfileInput": try convertUserProfileDataToQueryVariable(userProfileData: gettingStartedUserProfileData)
+          "detachedProfileInput": try convertUserProfileDataToQueryVariable(profileData: gettingStartedUserProfileData)
         ]
       ]
       
@@ -201,22 +201,23 @@ extension PearProfileAPI {
   }
   
   func attachDetachedProfile(user_id: String, detachedProfile_id: String, creatorUser_id: String,
-                             completion: @escaping(Result<Bool, DetachedProfileError>) -> Void) {
+                             approvedContent: [String: Any], completion: @escaping(Result<Bool, DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
-    
     request.allHTTPHeaderFields = defaultHeaders
+    var allInputs = approvedContent
+    allInputs["user_id"] = user_id
+    allInputs["detachedProfile_id"] = detachedProfile_id
+    allInputs["creatorUser_id"] = creatorUser_id
     
     do {
       
       let fullDictionary: [String: Any] = [
         "query": PearProfileAPI.attachDetachedProfileQuery,
         "variables": [
-          "user_id": user_id,
-          "detachedProfile_id": detachedProfile_id,
-          "creatorUser_id": creatorUser_id
+          "approveDetachedProfileInput": allInputs
         ]
       ]
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
@@ -359,8 +360,20 @@ extension PearProfileAPI {
     }
   }
     
+  func validateDetachedProfileUpdates(updates: [String: Any]) -> Bool {
+    let allowedKeys: [String] = ["firstName", "lastName", "boasts", "roasts", "questionResponses", "vibes", "bio", "dos", "donts", "interests", "images", "school", "schoolYear"]
+    var allowed = true
+    updates.forEach { (item) in
+      if !allowedKeys.contains(item.key) {
+        print(item)
+        allowed = false
+      }
+    }
+    return allowed
+  }
+  
   func validateUserProfileUpdates(updates: [String: Any]) -> Bool {
-    let allowedKeys: [String] = ["interests", "vibes", "bio", "dos", "donts", "images"]
+    let allowedKeys: [String] = ["boasts", "roasts", "questionResponses", "vibes", "bio", "dos", "donts", "interests"]
     var allowed = true
     updates.forEach { (item) in
       if !allowedKeys.contains(item.key) {
@@ -375,6 +388,8 @@ extension PearProfileAPI {
                        userID: String,
                        updates: [String: Any],
                        completion: @escaping (Result<Bool, ProfileAPIError>) -> Void) {
+    return
+    /*
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -455,6 +470,7 @@ extension PearProfileAPI {
                                        message: error.localizedDescription)
       completion(.failure(ProfileAPIError.unknownError(error: error)))
     }
+ */
   }
   
   func editDetachedProfile(profileDocumentID: String,
@@ -467,7 +483,7 @@ extension PearProfileAPI {
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
     
-    guard validateUserProfileUpdates(updates: updates) else {
+    guard validateDetachedProfileUpdates(updates: updates) else {
       print("Invalid update values")
       SentryHelper.generateSentryEvent(level: .error,
                                        apiName: "PearProfileAPI",
@@ -548,22 +564,7 @@ extension PearProfileAPI {
 // MARK: Create Detached Profile Endpoint Helpers
 extension PearProfileAPI {
   
-  func convertUserProfileDataToQueryVariable(userProfileData: UserProfileCreationData) throws -> [String: Any] {
-    
-    guard
-      
-      let firstName = userProfileData.firstName,
-      let phoneNumber = userProfileData.phoneNumber,
-      let age = userProfileData.age,
-      let gender = userProfileData.gender,
-      let bio = userProfileData.bio else {
-        throw DetachedProfileError.invalidVariables
-    }
-    
-    let imageContainer = userProfileData.images
-      .filter({ $0.imageContainer != nil })
-      .map({ $0.imageContainer!.dictionary })
-      .filter({$0 != nil})
+  func convertUserProfileDataToQueryVariable(profileData: ProfileCreationData) throws -> [String: Any] {
     
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       throw DetachedProfileError.userNotLoggedIn
@@ -572,39 +573,17 @@ extension PearProfileAPI {
       throw DetachedProfileError.userNotLoggedIn
     }
     
-    var variablesDictionary: [String: Any] = [
+    let variablesDictionary: [String: Any] = [
       "creatorUser_id": userID,
       "creatorFirstName": creatorFirstName,
-      "firstName": firstName,
-      "phoneNumber": phoneNumber,
-      "age": age,
-      "gender": gender.rawValue,
-      "interests": userProfileData.interests,
-      "vibes": userProfileData.vibes,
-      "seekingGender": userProfileData.seekingGender.map({ $0.rawValue }),
-      "bio": bio,
-      "dos": userProfileData.dos,
-      "donts": userProfileData.donts,
-      "images": imageContainer
+      "firstName": profileData.firstName,
+      "lastName": profileData.lastName,
+      "phoneNumber": profileData.phoneNumber,
+      "boasts": profileData.boasts,
+      "roasts": profileData.roasts,
+      "questionResponses": profileData.questionResponses,
+      "vibes": profileData.vibes
     ]
-    
-    var coordinates: [Double] = []
-    if let userLocation =  DataStore.shared.lastLocation {
-      coordinates.append(userLocation.longitude)
-      coordinates.append(userLocation.latitude)
-    } else {
-      coordinates.append(-71.0589)
-      coordinates.append(42.3601)
-    }
-    
-    variablesDictionary["location"] = coordinates
-    variablesDictionary["locationName"] = "Boston Area"
-    if let school = userProfileData.school {
-      variablesDictionary["school"] = school
-    }
-    if let schoolYear = userProfileData.schoolYear {
-      variablesDictionary["schoolYear"] = schoolYear
-    }
     
     return variablesDictionary
   }
