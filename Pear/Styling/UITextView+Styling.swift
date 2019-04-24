@@ -12,14 +12,14 @@ import UIKit
 extension UITextView {
   
   func stylizeEditTextLabel() {
-    if let font = R.font.nunitoRegular(size: 17) {
+    if let font = R.font.openSansRegular(size: 17) {
       self.font = font
     }
     self.textColor = R.color.primaryTextColor()
   }
   
   func stylizeChatInputPlaceholder() {
-    if let font = R.font.nunitoRegular(size: 17) {
+    if let font = R.font.openSansRegular(size: 17) {
       self.font = font
     }
     self.tintColor = R.color.primaryTextColor()
@@ -27,7 +27,7 @@ extension UITextView {
   }
   
   func stylizeChatInputText() {
-    if let font = R.font.nunitoRegular(size: 17) {
+    if let font = R.font.openSansRegular(size: 17) {
       self.font = font
     }
     self.tintColor = R.color.primaryTextColor()

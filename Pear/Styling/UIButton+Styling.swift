@@ -25,6 +25,24 @@ extension UIButton {
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
   }
   
+  func stylizeChatAccept() {
+    self.backgroundColor = R.color.chatAccentColor()!
+    self.layer.cornerRadius = self.frame.height / 2.0
+    self.setTitleColor(UIColor.white, for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+  }
+  
+  func stylizeChatDecline() {
+    self.backgroundColor = UIColor.white
+    self.layer.cornerRadius = self.frame.height / 2.0
+    self.setTitleColor(R.color.chatDeclineColor(), for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+  }
+  
   func stylizeFacebookColor() {
     self.backgroundColor = R.color.facebookColor()
     self.layer.cornerRadius = self.frame.height / 2.0

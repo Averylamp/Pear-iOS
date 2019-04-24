@@ -72,7 +72,7 @@ class ChatMessageTableViewCell: UITableViewCell {
         chatThumbnailImageView.image = nil
       }
 
-      self.chatContainerView.backgroundColor = R.color.chatGradientSenderEnd()
+      self.chatContainerView.backgroundColor = R.color.chatAccentColor()
 //      let gradientLayer = CAGradientLayer()
 //      self.gradientLayer = gradientLayer
 //      gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
