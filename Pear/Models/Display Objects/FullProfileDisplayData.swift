@@ -73,7 +73,9 @@ class FullProfileDisplayData: Equatable {
     self.firstName = detachedProfile.firstName
     self.age = detachedProfile.age
     self.gender = detachedProfile.gender
-    self.bios = detachedProfile.bios
+    if let bio = detachedProfile.bio {
+      self.bios = [bio]
+    }
     self.boasts = detachedProfile.boasts
     self.roasts = detachedProfile.roasts
     self.questionResponses = detachedProfile.questionResponses
