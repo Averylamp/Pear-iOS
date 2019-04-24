@@ -29,8 +29,8 @@ class PearMatchesAPI: MatchesAPI {
   
   // swiftlint:disable:next line_length
   static let createMatchRequestQuery: String = "mutation CreateMatchRequest($requestInput: CreateMatchRequestInput!) { createMatchRequest(requestInput: $requestInput) { success message } }"
-  static let getUserCurrentMatchesQuery: String = "query GetUserMatches($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user { currentMatches \(Match.graphQLMatchFields) } }}"
-  static let getUserMatchRequests: String = "query GetUserMatches($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user { requestedMatches \(Match.graphQLMatchFields) } }}"
+  static let getUserCurrentMatchesQuery: String = "query GetUserMatches($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user { currentMatches \(Match.graphQLMatchFields) } }}"
+  static let getUserMatchRequests: String = "query GetUserMatches($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user { requestedMatches \(Match.graphQLMatchFields) } }}"
   
   static let sendMessageNotificationQuery: String = "query SendNotification($fromUser_id:ID!, toUser_ID!) { notifyNewMessage(fromUser_id:$fromUser_id, toUser_id:$toUser_id) }"
   
@@ -95,8 +95,9 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: "createMatchRequest",
                                              message: "GraphQL Error: \(helperResult)",
-              tags: ["function": "createMatcheRequest"],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create Match Request: \(message ?? "")")
@@ -104,7 +105,8 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: "createMatchRequest",
                                              message: message ?? "Failed to Approve Detached Profile",
-                                             tags: ["function": "createMatcheRequest"],
+                                             responseData: data,
+                                             tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
@@ -124,8 +126,7 @@ extension PearMatchesAPI {
       SentryHelper.generateSentryEvent(level: .error,
                                        apiName: "PearMatchAPI",
                                        functionName: "createMatchRequest",
-                                       message: "Unknown Error: \(error.localizedDescription)",
-        tags: ["function": "createMatcheRequest"])
+                                       message: "Unknown Error: \(error.localizedDescription)")
       completion(.failure(MatchesAPIError.unknownError(error: error)))
     }
     
@@ -171,7 +172,8 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: "getMatchesForUser",
                                              message: "GraphQL Error: \(helperResult)",
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Get Matches for User: \(message ?? "")")
@@ -179,7 +181,8 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: "getMatchesForUser",
                                              message: "Failure: \(helperResult)",
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -292,8 +295,8 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: "unmatchRequest",
                                              message: "GraphQL Error: \(helperResult)",
-              tags: ["function": "createMatcheRequest"],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create Match Request: \(message ?? "")")
@@ -301,7 +304,7 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: "unmatchRequest",
                                              message: message ?? "Failed to Unmatch",
-                                             tags: ["function": "createMatcheRequest"],
+                                             responseData: data,
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
@@ -317,8 +320,7 @@ extension PearMatchesAPI {
       SentryHelper.generateSentryEvent(level: .error,
                                        apiName: "PearMatchAPI",
                                        functionName: "unmatchRequest",
-                                       message: "Unknown Error: \(error.localizedDescription)",
-        tags: [:])
+                                       message: "Unknown Error: \(error.localizedDescription)")
       completion(.failure(MatchesAPIError.unknownError(error: error)))
     }
   }
@@ -366,8 +368,9 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: requestFunction,
                                              message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
@@ -375,6 +378,7 @@ extension PearMatchesAPI {
                                              apiName: "PearMatchAPI",
                                              functionName: requestFunction,
                                              message: message ?? "Returned Error",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
@@ -395,8 +399,9 @@ extension PearMatchesAPI {
                                                apiName: "PearMatchAPI",
                                                functionName: requestFunction,
                                                message: "Deserialization Error: \(error.localizedDescription)",
-                tags: [:],
-                paylod: fullDictionary)
+                                               responseData: data,
+                                               tags: [:],
+                                               paylod: fullDictionary)
               completion(.failure(MatchesAPIError.failedDeserialization))
             }
           }
@@ -409,8 +414,7 @@ extension PearMatchesAPI {
       SentryHelper.generateSentryEvent(level: .error,
                                        apiName: "PearMatchAPI",
                                        functionName: requestFunction,
-                                       message: "Unknown Error: \(error.localizedDescription)",
-        tags: [:])
+                                       message: "Unknown Error: \(error.localizedDescription)")
       completion(.failure(MatchesAPIError.unknownError(error: error)))
     }
     

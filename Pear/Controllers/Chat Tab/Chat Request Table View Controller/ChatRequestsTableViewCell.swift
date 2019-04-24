@@ -69,9 +69,9 @@ extension ChatRequestsTableViewCell {
       
       self.previewTextLabel.text = mostRecentMessage.content
       if  mostRecentMessage.content == "" && mostRecentMessage.type == .matchmakerRequest {
-        self.previewTextLabel.text = "\(match.sentByUser.firstName) peared you and \(match.otherUser.firstName)"
+        self.previewTextLabel.text = "\(match.sentByUser.firstName ?? "Someone") peared you and \(match.otherUser.firstName ?? "their friend")"
       } else if mostRecentMessage.content == "" && mostRecentMessage.type == .personalRequest {
-        self.previewTextLabel.text = "\(match.sentByUser.firstName) requested to match with you"
+        self.previewTextLabel.text = "\(match.sentByUser.firstName ?? "Someone") requested to match with you"
       }
       self.timestampLabel.text = mostRecentMessage.timestamp.timeAgoSinceDate()
     } else {

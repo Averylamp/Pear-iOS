@@ -112,9 +112,10 @@ extension DataStore {
               Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
               Crashlytics.sharedInstance().setUserName(pearUser.fullName)
               Client.shared?.extra = [
-                "email": pearUser.email!,
+                "email": pearUser.email ?? "",
+                "phoneNumber": pearUser.phoneNumber ?? "",
                 "firebaseAuthID": pearUser.firebaseAuthID!,
-                "fullName": pearUser.fullName!,
+                "fullName": pearUser.fullName ?? "",
                 "userDocumentID": pearUser.documentID!
               ]
               trace?.incrementMetric("Existing User Found", by: 1)

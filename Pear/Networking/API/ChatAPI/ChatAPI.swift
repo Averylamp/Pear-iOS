@@ -16,6 +16,5 @@ enum ChatAPIError: Error {
 }
 
 protocol ChatAPI {
-//  func getAllChatsForUser(user_id: String, completion: @escaping (Result<[Chat], ChatAPIError>) -> Void)
   func getFirebaseChatObject(firebaseDocumentPath: String, completion: @escaping (Result<Chat, ChatAPIError>) -> Void)
 }

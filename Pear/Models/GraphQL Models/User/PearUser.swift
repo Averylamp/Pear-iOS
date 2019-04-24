@@ -12,8 +12,12 @@ import SwiftyJSON
 
 class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
   
+  static func graphQLCurrentUserFields() -> String {
+    return "{ _id deactivated firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate bios \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"  }
+  
   static func graphQLAllFields() -> String {
-    return "{ _id deactivated firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate bios \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+    return "{ _id deactivated firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate bios \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLImageFields) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) }"
+    
   }
   
   var documentID: String!
@@ -99,7 +103,9 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
     self.detachedProfileIDs = try values.decode([String].self, forKey: .detachedProfileIDs)
     
     self.displayedImages = try values.decode([ImageContainer].self, forKey: .displayedImages)
-    self.bankImages = try values.decode([ImageContainer].self, forKey: .bankImages)
+    if let bankImages = try? values.decode([ImageContainer].self, forKey: .bankImages) {
+      self.bankImages = bankImages
+    }
 
     self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
     self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)
