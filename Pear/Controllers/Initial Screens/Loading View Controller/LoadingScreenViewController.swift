@@ -105,8 +105,8 @@ extension LoadingScreenViewController {
       }
       return landingScreenVC
     } else {
-      guard let landingScreenVC = UserContactPermissionsViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
+      guard let landingScreenVC = MainTabBarViewController.instantiate() else {
+        print("Failed to create main tab bar VC")
         return nil
       }
       return landingScreenVC

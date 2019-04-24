@@ -27,7 +27,7 @@
                                             <constraint firstAttribute="height" constant="40" id="9DY-QE-hp8"/>
                                             <constraint firstAttribute="width" constant="40" id="CWi-ov-L4H"/>
                                         </constraints>
-                                        <state key="normal" image="onboarding-back-button">
+                                        <state key="normal" image="chat-back-icon">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -47,7 +47,7 @@
                                             <constraint firstAttribute="width" constant="40" id="l1D-Ft-Zif"/>
                                             <constraint firstAttribute="height" constant="40" id="o2j-2n-ylJ"/>
                                         </constraints>
-                                        <state key="normal" image="icon-more"/>
+                                        <state key="normal" image="chat-more-icon"/>
                                         <connections>
                                             <action selector="moreOptionsButtonClicked:" destination="Len-jD-UCq" eventType="touchUpInside" id="pvM-ro-wWc"/>
                                         </connections>
@@ -381,7 +381,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-more" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="chat-back-icon" width="512" height="512"/>
+        <image name="chat-more-icon" width="512" height="512"/>
     </resources>
 </document>
