@@ -50,7 +50,7 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     self.stylize()
     
     window = UIWindow(frame: UIScreen.main.bounds)
-    let navController = LandingNavigationViewController.instantiate()
+    let navController = DiscoverySimpleViewController.instantiate()
     window?.rootViewController = navController
     //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()
