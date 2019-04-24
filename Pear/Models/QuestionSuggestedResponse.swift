@@ -14,12 +14,16 @@ enum QuestionSuggestedResponseKey: String, CodingKey {
   case icon
 }
 
-class QuestionSuggestedResponse: Decodable, GraphQLInput {
+class QuestionSuggestedResponse: Decodable, GraphQLInput, GraphQLDecodable {
   
   var responseBody: String
   var responseTitle: String?
   var color: Color?
   var icon: IconAsset?
+  
+  static func graphQLAllFields() -> String {
+    return "{ responseBody responseTitle color \(Color.graphQLAllFields()) icon \(IconAsset.graphQLAllFields()) }"
+  }
   
   func toGraphQLInput() -> [String: Any] {
     var input: [String: Any] = [

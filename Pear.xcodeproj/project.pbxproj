@@ -199,6 +199,9 @@
 		BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */; };
 		BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */; };
 		BBA757AD225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA757AB225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift */; };
+		BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0957227009D20095F27E /* ContentAPI.swift */; };
+		BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095A22700A770095F27E /* PearContentAPI.swift */; };
+		BBAC095E22700B900095F27E /* GraphQLDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */; };
 		BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */; };
 		BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */; };
 		BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */; };
@@ -527,6 +530,9 @@
 		BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListItemTableViewCell.swift; sourceTree = "<group>"; };
 		BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedChoosePreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BBA757AB225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedChoosePreferencesViewController.swift; sourceTree = "<group>"; };
+		BBAC0957227009D20095F27E /* ContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAPI.swift; sourceTree = "<group>"; };
+		BBAC095A22700A770095F27E /* PearContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearContentAPI.swift; sourceTree = "<group>"; };
+		BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDecodable.swift; sourceTree = "<group>"; };
 		BBB0E010221381E5009C1517 /* ImageUploadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB0E012221386DC009C1517 /* ImageUploadAddCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB70ACA222334E0006B75A0 /* ProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
@@ -777,6 +783,7 @@
 				BBFFBBD722211749002E1B54 /* ImagesAPI */,
 				BB0628C0224634A4000D9B12 /* ChatAPI */,
 				60C131DD21D344EE0093ECBA /* AuthAPI */,
+				BBAC095922700A670095F27E /* ContentAPI */,
 				BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */,
 			);
 			path = API;
@@ -1134,6 +1141,7 @@
 				BB6479DF226A7FF300652318 /* LatestRoastBoastItem.swift */,
 				BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */,
 				BBBA5742226DA4E5000BCD5F /* GraphQLInput.swift */,
+				BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */,
 				BBBA5744226DB094000BCD5F /* TextContentItem.swift */,
 				BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */,
 				BBBA573E226D9749000BCD5F /* VibeItem.swift */,
@@ -1533,6 +1541,23 @@
 				BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */,
 			);
 			path = "Preferences Input";
+			sourceTree = "<group>";
+		};
+		BBAC095922700A670095F27E /* ContentAPI */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC0957227009D20095F27E /* ContentAPI.swift */,
+				BBAC095C22700A7D0095F27E /* Implementations */,
+			);
+			path = ContentAPI;
+			sourceTree = "<group>";
+		};
+		BBAC095C22700A7D0095F27E /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC095A22700A770095F27E /* PearContentAPI.swift */,
+			);
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 		BBB70AC822233452006B75A0 /* UserAPI */ = {
@@ -2573,10 +2598,12 @@
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
 				BB9CB6AD225A11F900605A98 /* FriendEditProfileViewController.swift in Sources */,
+				BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */,
 				BB17892A225D96D60033ACC6 /* ChatMainViewController.swift in Sources */,
 				BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
+				BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */,
 				BB4C8A492251559800F7BA1A /* BioView.swift in Sources */,
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BBF93E522267C861002841EE /* UserContactPermissionsViewController.swift in Sources */,
@@ -2650,6 +2677,7 @@
 				BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */,
 				BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */,
 				BB178932225DE28F0033ACC6 /* ChatRequestsTableViewCell.swift in Sources */,
+				BBAC095E22700B900095F27E /* GraphQLDecodable.swift in Sources */,
 				BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,

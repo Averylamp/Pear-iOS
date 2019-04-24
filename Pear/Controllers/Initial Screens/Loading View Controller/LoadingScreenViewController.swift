@@ -321,4 +321,15 @@ extension LoadingScreenViewController {
     
   }
   
+  func testGetAllQuestions() {
+    PearContentAPI.shared.getQuestions { (result) in
+      switch result {
+      case .success(let questions):
+        print("\(questions.count) Questions Found")
+      case .failure(let error):
+        print("Error retrieving questions:\(error)")
+      }
+    }
+  }
+  
 }
