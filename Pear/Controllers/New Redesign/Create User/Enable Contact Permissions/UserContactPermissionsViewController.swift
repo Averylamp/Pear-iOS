@@ -104,7 +104,7 @@ extension UserContactPermissionsViewController {
   
   func startRunLoop() {
     _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (_) in
-      let random = Int.random(in: 0..<6)
+      let random = Int.random(in: 0..<4)
       self.tableView.reloadData()
       if random == 0 {
         self.addRandomBoastRoast()
@@ -115,7 +115,8 @@ extension UserContactPermissionsViewController {
   
   func addRandomBoastRoast() {
     DispatchQueue.main.async {
-      if let item = self.allSampleBoastRoastItems.randomElement() {
+      if let item = self.allSampleBoastRoastItems.first(where: {!self.currentBoastRoastItems.contains($0) }) {
+        
         let newItem = item.copy()
         newItem.timestamp = Date()
         self.tableView.beginUpdates()
@@ -145,10 +146,8 @@ extension UserContactPermissionsViewController {
           }
           
         }
-        for _ in 0..<5 {
-          self.addRandomBoastRoast()
-        }
-        
+        self.allSampleBoastRoastItems = self.allSampleBoastRoastItems.shuffled()
+        self.addRandomBoastRoast()
       }
       
     }

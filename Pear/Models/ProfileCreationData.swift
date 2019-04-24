@@ -55,4 +55,15 @@ class ProfileCreationData: GraphQLInput, AuthorGraphQLInput {
     return input
   }
   
+  func getRandomNextQuestion() -> QuestionItem? {
+    var possibleQuestions = DataStore.shared.possibleQuestions.shuffled()
+    let questionCount = self.questionResponses.count + skipCount
+    if questionCount < 2 {
+      possibleQuestions = possibleQuestions.filter({ $0.tags.contains("starter")})
+    }
+    return possibleQuestions.first(where: { (possibleQuestion) -> Bool in
+      return !self.questionResponses.contains(where: { $0.questionID == possibleQuestion.documentID })
+    })
+  }
+  
 }

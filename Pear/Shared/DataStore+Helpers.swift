@@ -322,4 +322,17 @@ extension DataStore {
     }
   }
   
+  func reloadPossibleQuestions() {
+    PearContentAPI.shared.getQuestions { (result) in
+      switch result {
+      case .success(let questions):
+        print("\(questions.count) Questions Found")
+        self.possibleQuestions = questions
+      case .failure(let error):
+        print("Error retrieving questions:\(error)")
+      }
+    }
+
+  }
+  
 }

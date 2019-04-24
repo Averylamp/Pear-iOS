@@ -36,9 +36,13 @@ class ProfileInputVibeViewController: UIViewController {
       print("\(selectedItems.count) Items Selected")
       let vibeItems = selectedItems.map({ VibeItem(questionResponse: $0) })
       self.profileData.vibes = vibeItems
+      guard let nextQuestion = self.profileData.getRandomNextQuestion() else {
+        print("No next question found")
+        return
+      }
       guard let questionInputVC = ProfileInputQuestionViewController
         .instantiate(profileCreationData: self.profileData,
-                     question: QuestionItem.dayOffQuestion()) else {
+                     question: nextQuestion) else {
                       "Failed to create question input VC"
                       return
       }
