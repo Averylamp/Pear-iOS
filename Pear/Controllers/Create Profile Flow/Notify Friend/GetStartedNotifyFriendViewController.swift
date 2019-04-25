@@ -53,7 +53,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
       self.nextButton.stylizeLight()
       self.nextButton.isEnabled = false
       self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-                                                      type: NVActivityIndicatorType.ballScaleRippleMultiple,
+                                                      type: NVActivityIndicatorType.lineScalePulseOut,
                                                       color: StylingConfig.textFontColor,
                                                       padding: 0)
       self.view.addSubview(activityIndicator)
@@ -263,6 +263,7 @@ extension GetStartedNotifyFriendViewController {
   
 }
 
+// MARK: - MFMessageDelegate
 extension GetStartedNotifyFriendViewController: MFMessageComposeViewControllerDelegate {
   
   func dismissMessageVC(controller: MFMessageComposeViewController) {

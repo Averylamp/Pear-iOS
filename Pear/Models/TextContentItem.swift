@@ -21,7 +21,8 @@ enum TextContentItemKey: String, CodingKey {
   case hidden
 }
 
-class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput {
+class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput, Equatable {
+
   static func graphQLAllFields() -> String {
     return "{ _id author_id authorFirstName content hidden }"
   }
@@ -64,6 +65,14 @@ class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLI
     self.authorFirstName = try values.decode(String.self, forKey: .authorFirstName)
     self.content = try values.decode(String.self, forKey: .content)
     self.hidden = try values.decode(Bool.self, forKey: .hidden)
+  }
+  
+  static func == (lhs: TextContentItem, rhs: TextContentItem) -> Bool {
+    return lhs.documentID == rhs.documentID &&
+           lhs.authorID == rhs.authorID &&
+           lhs.authorFirstName == rhs.authorFirstName &&
+           lhs.content == rhs.content &&
+           lhs.hidden == rhs.hidden
   }
   
 }

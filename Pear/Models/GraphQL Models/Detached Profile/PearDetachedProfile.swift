@@ -35,8 +35,6 @@ class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable 
   var school: String?
   var schoolYear: String?
 
-  static let graphQLDetachedProfileFieldsAll = "{ _id creatorUser_id creatorFirstName firstName lastName phoneNumber age gender bio \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) images \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) school schoolYear }"
-  
   var description: String {
     return "**** Pear Detached Profile **** \n" + """
     documentID: \(String(describing: documentID)),

@@ -40,7 +40,7 @@ class PearProfileAPI: ProfileAPI {
 
 // MARK: Routes
 extension PearProfileAPI {
-  func createNewDetachedProfile(gettingStartedUserProfileData: ProfileCreationData,
+  func createNewDetachedProfile(profileCreationData: ProfileCreationData,
                                 completion: @escaping (Result<PearDetachedProfile, DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
@@ -53,15 +53,16 @@ extension PearProfileAPI {
       let fullDictionary: [String: Any] = [
         "query": PearProfileAPI.createNewDetachedProfileQuery,
         "variables": [
-          "detachedProfileInput": try convertUserProfileDataToQueryVariable(profileData: gettingStartedUserProfileData)
+          "detachedProfileInput": try convertUserProfileDataToQueryVariable(profileData: profileCreationData)
         ]
       ]
       
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
-      
+      print(String(data: data, encoding: .utf8) ?? "")
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        APIHelpers.printDataDump(data: data)
         if let error = error {
           print(error as Any)
           completion(.failure(DetachedProfileError.unknownError(error: error)))
@@ -569,7 +570,7 @@ extension PearProfileAPI {
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       throw DetachedProfileError.userNotLoggedIn
     }
-    guard let creatorFirstName = DataStore.shared.currentPearUser?.firstName else {
+    guard let creatorFirstName = DataStore.shared.currentPearUser?.firstName  else {
       throw DetachedProfileError.userNotLoggedIn
     }
     
@@ -579,10 +580,10 @@ extension PearProfileAPI {
       "firstName": profileData.firstName,
       "lastName": profileData.lastName,
       "phoneNumber": profileData.phoneNumber,
-      "boasts": profileData.boasts,
-      "roasts": profileData.roasts,
-      "questionResponses": profileData.questionResponses,
-      "vibes": profileData.vibes
+      "boasts": profileData.boasts.map({ $0.toGraphQLInput() }),
+      "roasts": profileData.roasts.map({ $0.toGraphQLInput() }),
+      "questionResponses": profileData.questionResponses.map({ $0.toGraphQLInput() }),
+      "vibes": profileData.vibes.map({ $0.toGraphQLInput() })
     ]
     
     return variablesDictionary
