@@ -12,6 +12,7 @@ import FirebasePerformance
 import Crashlytics
 import Sentry
 import UserNotifications
+import SwiftyJSON
 
 extension DataStore {
   
@@ -334,6 +335,44 @@ extension DataStore {
       }
     }
 
+  }
+  
+  func getWaitlistNumber(completion: @escaping (Int) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    
+    request.allHTTPHeaderFields = [
+      "Content-Type": "application/json"
+    ]
+    do {
+      let fullDictionary: [String: Any] = [
+        "query": "query { getUserCount }"
+      ]
+      
+      guard let data: Data = try? JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted) else {
+        print("Failed to serialize request")
+        return
+      }
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          return
+        }
+        if let data = data,
+          let json = try? JSON(data: data),
+          let userCount = json["data"]["getUserCount"].int {
+          print("Waitlist number \(userCount)")
+          completion(userCount)
+        }
+      }
+      dataTask.resume()
+      
+    }
+    
   }
   
 }

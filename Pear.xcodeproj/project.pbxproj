@@ -956,8 +956,8 @@
 			children = (
 				917F20C7227170310023EC69 /* Gender */,
 				917F20C82271703A0023EC69 /* Preferences */,
-				917F20CA22719C190023EC69 /* Birthdate */,
 				917F20D62271B9E40023EC69 /* School */,
+				917F20CA22719C190023EC69 /* Birthdate */,
 				917F20D12271A6960023EC69 /* Photos */,
 			);
 			path = "Finish Setup Flow";
