@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  SubtleAsianMatches
+//  Pear
 //
-//  Created by Kelvin Lau on 2018-12-26.
-//  Copyright © 2018 sam. All rights reserved.
+//  Created by Avery Lamp on 2/17/19.
+//  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
 import UIKit
