@@ -13,17 +13,31 @@ class MainTabBarViewController: UITabBarController {
   class func instantiate() -> MainTabBarViewController? {
     let storyboard = UIStoryboard(name: String(describing: MainTabBarViewController.self), bundle: nil)
     guard let mainTabVC = storyboard.instantiateInitialViewController() as? MainTabBarViewController else { return nil }
-    
     //      Discovery
-    if let discoverVC = DiscoverySimpleViewController.instantiate(),
-      let regularImage = R.image.tabIconDiscovery(),
-      let selectedImage = R.image.tabIconDiscoverySelected() {
-      discoverVC.tabBarItem = UITabBarItem(title: "Discover",
+    if let gender = DataStore.shared.currentPearUser?.gender,
+      let birthdate = DataStore.shared.currentPearUser?.birthdate,
+      let images = DataStore.shared.currentPearUser?.displayedImages, images.count > 0 {
+      if let discoverVC = DiscoverySimpleViewController.instantiate(),
+        let regularImage = R.image.tabIconDiscovery(),
+        let selectedImage = R.image.tabIconDiscoverySelected() {
+        discoverVC.tabBarItem = UITabBarItem(title: "Discover",
                                              image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal),
                                              selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal))
-      mainTabVC.addChild(discoverVC)
+        mainTabVC.addChild(discoverVC)
+      }
+    } else {
+      if let discoverVC = DiscoverySetupViewController.instantiate(),
+        let regularImage = R.image.tabIconDiscovery(),
+        let selectedImage = R.image.tabIconDiscoverySelected() {
+        discoverVC.tabBarItem = UITabBarItem(title: "Discover",
+                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                              .withRenderingMode(.alwaysOriginal),
+                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                              .withRenderingMode(.alwaysOriginal))
+        mainTabVC.addChild(discoverVC)
+      }
     }
 
     //      Chat

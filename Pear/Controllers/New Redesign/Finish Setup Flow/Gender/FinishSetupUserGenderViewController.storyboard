@@ -93,7 +93,6 @@
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="backButtonClicked:" destination="bdM-0P-eau" eventType="touchUpInside" id="qjk-ay-KVE"/>
                                     <action selector="cancelButtonClicked:" destination="bdM-0P-eau" eventType="touchUpInside" id="hBP-im-U5Q"/>
                                 </connections>
                             </button>
