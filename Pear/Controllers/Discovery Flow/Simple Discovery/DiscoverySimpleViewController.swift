@@ -22,6 +22,7 @@ extension Notification.Name {
 class DiscoverySimpleViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  
   var fullProfiles: [FullProfileDisplayData] = []
   var filteredFullProfiles: [FullProfileDisplayData] = []
   var blockedUsers: [String] = []
