@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import FirebaseAnalytics
 
 struct ContactListItem: Comparable {
   static func < (lhs: ContactListItem, rhs: ContactListItem) -> Bool {
@@ -140,15 +141,17 @@ extension UserContactListViewController: UITableViewDelegate, UITableViewDataSou
     let selectedContactListItem = self.filteredContacts[indexPath.row]
     if !selectedContactListItem.enabled {
       HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+      Analytics.logEvent("CP_selectContact_TAP_pearedContact", parameters: nil)
       return
     }
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     let profileCreationData = ProfileCreationData(contactListItem: selectedContactListItem)
     guard let vibeVC = ProfileInputVibeViewController.instantiate(profileCreationData: profileCreationData) else {
-      print("Faile to created Vibe VC")
+      print("Failed to created Vibe VC")
       return
     }
     self.navigationController?.pushViewController(vibeVC, animated: true)
+    Analytics.logEvent("CP_selectContact_DONE", parameters: nil)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

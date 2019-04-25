@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseAnalytics
 import NVActivityIndicatorView
 
 class UserPhoneCodeViewController: UIViewController {
@@ -44,6 +45,7 @@ class UserPhoneCodeViewController: UIViewController {
   
   @IBAction func resendButtonClicked(_ sender: Any) {
     if resendButtonTime <= 0 {
+      Analytics.logEvent("CP_phoneAuth_TAP_resendCode", parameters: nil)
       self.hiddenInputField.text = ""
       self.updateCodeNumberLabels()
       if let phoneNumber = self.userCreationData.phoneNumber {
@@ -146,6 +148,7 @@ extension UserPhoneCodeViewController {
                 return
               }
               self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+              Analytics.logEvent("CP_phoneAuth_DONE", parameters: nil)
             }
           case .failure(let error):
             print("Failure creating Pear User: \(error)")
