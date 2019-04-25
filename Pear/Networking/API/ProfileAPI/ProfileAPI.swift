@@ -25,7 +25,7 @@ enum ProfileAPIError: Error {
 }
 
 protocol ProfileAPI {
-  func createNewDetachedProfile(gettingStartedUserProfileData: ProfileCreationData,
+  func createNewDetachedProfile(profileCreationData: ProfileCreationData,
                                 completion: @escaping(Result<PearDetachedProfile, DetachedProfileError>) -> Void)
   func checkDetachedProfiles(phoneNumber: String, completion: @escaping(Result<[PearDetachedProfile], DetachedProfileError>) -> Void)
   func attachDetachedProfile(user_id: String, detachedProfile_id: String, creatorUser_id: String,

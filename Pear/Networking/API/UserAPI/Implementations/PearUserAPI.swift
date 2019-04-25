@@ -70,6 +70,7 @@ extension PearUserAPI {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
             print("Failed to Get User: \(helperResult)")
             if DataStore.shared.fetchFlagFromDefaults(flag: .hasCreatedUser) {
+              #if PROD
               SentryHelper.generateSentryEvent(level: .error,
                                                apiName: "PearUserAPI",
                                                functionName: "getUser",
@@ -77,6 +78,7 @@ extension PearUserAPI {
                                                responseData: data,
                                                tags: [:],
                                                paylod: fullDictionary)
+              #endif
             }
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
@@ -95,7 +97,9 @@ extension PearUserAPI {
             do {
               let pearUser = try JSONDecoder().decode(PearUser.self, from: objectData)
               print("Successfully found Pear User")
+              #if PROD
               DataStore.shared.setFlagToDefaults(value: true, flag: .hasCreatedUser)
+              #endif
               completion(.success(pearUser))
               // Uncomment this line to go through initial user setup
 //              completion(.failure(UserAPIError.failedDeserialization))
@@ -204,9 +208,9 @@ extension PearUserAPI {
                                              apiName: "PearUserAPI",
                                              functionName: "fetchEndorsedUsers",
                                              message: "GraphQL Error: \(helperResult)",
-              responseData: data,
-              tags: [:],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Get User: \(message ?? "")")
@@ -331,16 +335,19 @@ extension PearUserAPI {
             do {
               let pearUser = try JSONDecoder().decode(PearUser.self, from: objectData)
               print("Successfully found Pear User")
+              #if PROD
               DataStore.shared.setFlagToDefaults(value: true, flag: .hasCreatedUser)
+              #endif
               completion(.success(pearUser))
             } catch {
               print("Deserialization Error: \(error)")
               SentryHelper.generateSentryEvent(level: .error,
                                                apiName: "PearUserAPI",
                                                functionName: "createUser",
-                                               message: "Deserialization Error: \(error.localizedDescription)",
-                tags: [:],
-                paylod: fullDictionary)
+                                               message: "Deserialization Error: \(String(describing: error.localizedDescription))",
+                                               responseData: data,
+                                               tags: [:],
+                                               paylod: fullDictionary)
               completion(.failure(UserAPIError.failedDeserialization))
             }
           }

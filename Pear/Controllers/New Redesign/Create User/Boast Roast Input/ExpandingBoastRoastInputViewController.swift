@@ -55,7 +55,8 @@ class ExpandingBoastRoastInputViewController: UIViewController {
   
   func getBoastRoastItem() -> BoastRoastItem? {
     if self.expandingTextView.text == boastPlaceholder ||
-      self.expandingTextView.text == roastPlaceholder {
+      self.expandingTextView.text == roastPlaceholder ||
+      self.expandingTextView.text.count < 4 {
       return nil
     }
     switch self.type {
@@ -83,6 +84,11 @@ extension ExpandingBoastRoastInputViewController {
     self.recalculateTextViewHeight(animated: false)
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.recalculateTextViewHeight(animated: false)
+  }
+  
   func configure() {
     
     self.deleteButton.isHidden = false
@@ -104,7 +110,7 @@ extension ExpandingBoastRoastInputViewController {
       self.boastRoastImageView.image = R.image.iconRoast()
     }
     if self.expandingTextView.text != boastPlaceholder && self.expandingTextView.text != roastPlaceholder &&
-      self.expandingTextView.text.count == 0 {
+      self.expandingTextView.text.count == 0 && !self.isEditing {
       switch self.type {
       case .boast:
         self.expandingTextView.text = boastPlaceholder
@@ -150,12 +156,14 @@ extension ExpandingBoastRoastInputViewController: UITextViewDelegate {
       self.expandingTextView.text = ""
       self.expandingTextView.textColor = UIColor.black
     }
+    self.isEditing = true
   }
   
   func textViewDidEndEditing(_ textView: UITextView) {
     if self.expandingTextView.text == "" {
       self.populatePlaceholder(type: self.type)
     }
+    self.isEditing = false
   }
   
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

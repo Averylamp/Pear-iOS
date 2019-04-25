@@ -49,11 +49,29 @@ class ProfileInputBoastRoastViewController: UIViewController {
   }
   
   @IBAction func addMoreButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.addBoastRoastVC(type: self.mode == .boast ? .boast : .roast)
   }
   
+  func saveBoastRoasts() {
+    if let boasts = self.textVCs.filter({ $0.type == .boast}).compactMap({ $0.getBoastRoastItem()}) as? [BoastItem] {
+      print("Boasts:\(boasts)")
+      self.profileData.boasts = boasts
+    }
+    if let roasts = self.textVCs.filter({ $0.type == .roast}).compactMap({ $0.getBoastRoastItem()}) as? [RoastItem] {
+      print("Roasts:\(roasts)")
+      self.profileData.roasts = roasts
+    }
+  }
+  
   @IBAction func continueButtonClicked(_ sender: Any) {
-    
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.saveBoastRoasts()
+    guard let firstNameVC = UserNameInputViewController.instantiate(profileCreationData: self.profileData) else {
+      print("Couldnt create first name VC")
+      return
+    }
+    self.navigationController?.pushViewController(firstNameVC, animated: true)
   }
   
 }

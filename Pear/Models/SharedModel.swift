@@ -94,6 +94,7 @@ class MatchingPreferences: Decodable {
   var maxDistance: Int
   var minAgeRange: Int
   var maxAgeRange: Int
+  var location: LocationObject?
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: MatchingPreferencesKeys.self)
@@ -102,7 +103,9 @@ class MatchingPreferences: Decodable {
     self.maxDistance = try values.decode(Int.self, forKey: .maxDistance)
     self.minAgeRange = try values.decode(Int.self, forKey: .minAgeRange)
     self.maxAgeRange = try values.decode(Int.self, forKey: .maxAgeRange)
-    
+    if let location = try? values.decode(LocationObject.self, forKey: .location) {
+      self.location = location
+    }
   }
 }
 
