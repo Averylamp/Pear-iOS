@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class FullChatViewController: UIViewController {
   
@@ -38,6 +39,8 @@ class FullChatViewController: UIViewController {
   }
   
   @IBAction func firstNameClicked(_ sender: Any) {
+    Analytics.logEvent("CHAT_thread_TAP_firstNameToProfile", parameters: nil)
+
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     let fullProfile = FullProfileDisplayData(user: match.otherUser)
     guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
@@ -52,6 +55,8 @@ class FullChatViewController: UIViewController {
   }
   
   @IBAction func moreOptionsButtonClicked(_ sender: Any) {
+    Analytics.logEvent("CHAT_thread_TAP_moreOptions", parameters: nil)
+
     let alertController = UIAlertController()
     let unmatch = UIAlertAction(title: "Unmatch", style: .destructive) { (_) in
       guard let userID = DataStore.shared.currentPearUser?.documentID else {
@@ -64,6 +69,7 @@ class FullChatViewController: UIViewController {
           if successful {
             print("Successfully unmatches")
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+            Analytics.logEvent("CHAT_thread_EV_unmatched", parameters: nil)
           } else {
             print("Failed to Unmatch")
             HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
@@ -131,12 +137,14 @@ extension FullChatViewController {
   }
   
   @objc func acceptRequestButtonClicked() {
-   HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("CHAT_request_TAP_acceptButton", parameters: nil)
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
   }
   
   @objc func declineRequestButtonClicked() {
-   HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("CHAT_request_TAP_declineButton", parameters: nil)
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
   }
   
@@ -181,7 +189,8 @@ extension FullChatViewController {
   }
   
   @objc func sendMessageButtonClicked() {
-   self.sendMessage()
+    Analytics.logEvent("CHAT_thread_TAP_sendMessage", parameters: nil)
+    self.sendMessage()
   }
   
   func sendMessage() {
@@ -401,6 +410,7 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   @objc func chatBubbleClicked(sender: UIButton) {
+    Analytics.logEvent("CHAT_thread_TAP_chatBubble", parameters: nil)
     if sender.tag < self.chat.messages.count {
       CATransaction.begin()
       CATransaction.setAnimationDuration(0.4)
@@ -507,6 +517,7 @@ extension FullChatViewController {
   }
   
   @objc func dismissKeyboard() {
+    Analytics.logEvent("CHAT_thread_EV_dismissKeyboard", parameters: nil)
     self.view.endEditing(true)
   }
 }
