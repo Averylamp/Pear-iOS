@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nA0-fT-dvM">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-ExtraBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Profile Question Response View Controller-->
+        <scene sceneID="ii9-V6-jrD">
+            <objects>
+                <viewController id="nA0-fT-dvM" customClass="ProfileQuestionResponseViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i65-yA-O9q"/>
+                        <viewControllerLayoutGuide type="bottom" id="gqK-d5-j2U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="enh-NA-9Fy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-question-response" translatesAutoresizingMaskIntoConstraints="NO" id="oj2-9Y-O61">
+                                <rect key="frame" x="10" y="54" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="cSN-Jg-ifL"/>
+                                    <constraint firstAttribute="width" secondItem="oj2-9Y-O61" secondAttribute="height" multiplier="1:1" id="o69-88-wXg"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="R5a-C2-ga2">
+                                <rect key="frame" x="58" y="48" width="324" height="114"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="What time’s their ideal date?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQZ-Sj-LhA">
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="62"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CV-c3-S2a">
+                                        <rect key="frame" x="0.0" y="66" width="324" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kri-kw-OAA">
+                                        <rect key="frame" x="0.0" y="92" width="324" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R5a-C2-ga2" firstAttribute="top" secondItem="i65-yA-O9q" secondAttribute="bottom" constant="4" id="0v5-gO-KrB"/>
+                            <constraint firstItem="gqK-d5-j2U" firstAttribute="top" secondItem="R5a-C2-ga2" secondAttribute="bottom" constant="4" id="2PS-MM-MPY"/>
+                            <constraint firstItem="oj2-9Y-O61" firstAttribute="leading" secondItem="enh-NA-9Fy" secondAttribute="leading" constant="10" id="MHl-Cx-6SR"/>
+                            <constraint firstItem="oj2-9Y-O61" firstAttribute="top" secondItem="i65-yA-O9q" secondAttribute="bottom" constant="10" id="YA1-XC-TBI"/>
+                            <constraint firstItem="R5a-C2-ga2" firstAttribute="leading" secondItem="oj2-9Y-O61" secondAttribute="trailing" constant="8" id="YWJ-xy-69n"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R5a-C2-ga2" secondAttribute="trailing" constant="12" id="oJ4-Wl-C3S"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="414" height="200"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="oj2-9Y-O61" id="yax-Ds-arJ"/>
+                        <outlet property="questionTitleLabel" destination="uQZ-Sj-LhA" id="2Ha-N1-3Jq"/>
+                        <outlet property="responseBodyLabel" destination="Kri-kw-OAA" id="JJb-Nz-f8e"/>
+                        <outlet property="responseSubtitleLabel" destination="9CV-c3-S2a" id="Qr3-DV-aG4"/>
+                        <outlet property="stackView" destination="R5a-C2-ga2" id="qsy-Ng-WAj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QWf-nS-zWB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.23188405797103" y="136.60714285714286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-question-response" width="512" height="512"/>
+    </resources>
+</document>

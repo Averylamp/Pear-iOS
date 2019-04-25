@@ -249,6 +249,10 @@
 		BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */; };
 		BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */; };
 		BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */; };
+		BBBE7B872272170800C32EBE /* ProfileQuestionResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */; };
+		BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */; };
+		BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */; };
+		BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */; };
 		BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */; };
 		BBC0FF1B22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */; };
 		BBC0FF1D227069FC00632924 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */; };
@@ -601,6 +605,10 @@
 		BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputItemTableViewCell.swift; sourceTree = "<group>"; };
 		BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
 		BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewItemViewController.swift; sourceTree = "<group>"; };
+		BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQuestionResponseViewController.swift; sourceTree = "<group>"; };
+		BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileQuestionResponseViewController.storyboard; sourceTree = "<group>"; };
+		BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableQuestionItemViewController.swift; sourceTree = "<group>"; };
+		BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollableQuestionItemViewController.storyboard; sourceTree = "<group>"; };
 		BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingBoastRoastInputViewController.swift; sourceTree = "<group>"; };
 		BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingBoastRoastInputViewController.storyboard; sourceTree = "<group>"; };
 		BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
@@ -1208,9 +1216,8 @@
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
 				BB3F02852271B178004855E8 /* Profile Boast Roast */,
-				BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */,
-				BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */,
-				BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */,
+				BBBE7B8B22721ADF00C32EBE /* Scrollable Item Controllers */,
+				BBBE7B8A22721AD900C32EBE /* New Group */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -1788,6 +1795,27 @@
 			path = "Vibes Input";
 			sourceTree = "<group>";
 		};
+		BBBE7B8A22721AD900C32EBE /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */,
+				BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		BBBE7B8B22721ADF00C32EBE /* Scrollable Item Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */,
+				BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */,
+				BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */,
+				BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */,
+				BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */,
+			);
+			path = "Scrollable Item Controllers";
+			sourceTree = "<group>";
+		};
 		BBC0FF2022706A1500632924 /* Name Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -2351,6 +2379,7 @@
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
 				BBF93E7D2267CCB3002841EE /* Cera Pro Medium.otf in Resources */,
+				BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */,
 				BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */,
 				917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
@@ -2452,6 +2481,7 @@
 				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BBF93E662267CA56002841EE /* ProfileInputQuestionViewController.storyboard in Resources */,
 				BBF93E782267CCB3002841EE /* Cera Pro Regular.otf in Resources */,
+				BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
 				BB178938225DFCAA0033ACC6 /* FullChatViewController.storyboard in Resources */,
@@ -2678,6 +2708,7 @@
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
+				BBBE7B872272170800C32EBE /* ProfileQuestionResponseViewController.swift in Sources */,
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
@@ -2751,6 +2782,7 @@
 				BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
+				BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */,
 				BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */,
 				BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */,
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
