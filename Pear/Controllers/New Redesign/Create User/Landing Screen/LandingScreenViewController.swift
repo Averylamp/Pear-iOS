@@ -101,6 +101,7 @@ class LandingScreenViewController: UIViewController {
                                                                               return
           }
           Analytics.logEvent("finished_phone_enter", parameters: nil)
+          Analytics.logEvent("CP_enterPhone_DONE", parameters: nil)        
           self.navigationController?.pushViewController(phoneNumberVC, animated: true)
         }
       }

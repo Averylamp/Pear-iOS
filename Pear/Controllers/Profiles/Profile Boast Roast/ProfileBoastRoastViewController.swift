@@ -13,7 +13,7 @@ enum ItemStyle {
   case profile
 }
 
-class ProfileBoastRoastViewController: UIViewController {
+class ProfileBoastRoastViewController: UITextViewItemViewController {
 
   var boastRoastItem: BoastRoastItem!
   var userName: String?
@@ -36,6 +36,11 @@ class ProfileBoastRoastViewController: UIViewController {
     profileBoastRoastVC.itemStyle = style
     profileBoastRoastVC.maxLines = maxLines
     return profileBoastRoastVC
+  }
+  
+  override func intrinsicHeight() -> CGFloat {
+    return self.contentLabel.sizeThatFits(CGSize(width: self.contentLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height +
+      self.titleLabel.sizeThatFits(CGSize(width: self.titleLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height + 12
   }
   
 }
