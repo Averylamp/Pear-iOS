@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 extension Notification.Name {
   static let refreshChatsTab = Notification.Name("refreshChatsTab")
@@ -35,12 +36,14 @@ class ChatMainViewController: UIViewController {
   }
   
   @IBAction func inboxButtonClicked(_ sender: Any) {
+    Analytics.logEvent("CHAT_nav_TAP_inboxTab", parameters: nil)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.scrollView.scrollRectToVisible(CGRect(x: 0, y: 0,
                                                width: self.scrollView.frame.width, height: self.scrollView.frame.height), animated: true)
   }
   
   @IBAction func requestsButtonClicked(_ sender: Any) {
+    Analytics.logEvent("CHAT_nav_TAP_requestsTab", parameters: nil)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.scrollView.scrollRectToVisible(CGRect(x: self.scrollView.frame.width, y: 0,
                                                width: self.scrollView.frame.width, height: self.scrollView.frame.height), animated: true)
@@ -261,6 +264,7 @@ extension ChatMainViewController: ChatRequestTableViewControllerDelegate {
         return
       }
       self.navigationController?.pushViewController(fullChatVC, animated: true)
+      Analytics.logEvent("CHAT_inbox_EV_openedRequest", parameters: nil)
     }
   }
   
@@ -273,6 +277,7 @@ extension ChatMainViewController: ChatRequestTableViewControllerDelegate {
         return
       }
       self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+      Analytics.logEvent("CHAT_inbox_EV_openedInboxThread", parameters: nil)
     }
   }
   

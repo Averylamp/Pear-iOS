@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class MeEditUserViewController: UIViewController {
   
@@ -36,6 +37,7 @@ class MeEditUserViewController: UIViewController {
   }
   
   @IBAction func cancelButtonClicked(_ sender: Any) {
+    Analytics.logEvent("ME_edit_TAP_cancel", parameters: nil)
     if checkForEdits() {
       HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .warning)
       let alertController = UIAlertController(title: "Are you sure?",
@@ -45,6 +47,7 @@ class MeEditUserViewController: UIViewController {
       let goBackAction = UIAlertAction(title: "Don't Save", style: .destructive) { (_) in
         DispatchQueue.main.async {
           self.navigationController?.popViewController(animated: true)
+          Analytics.logEvent("ME_edit_EV_discardEdits", parameters: nil)
         }
       }
       alertController.addAction(goBackAction)
@@ -52,6 +55,7 @@ class MeEditUserViewController: UIViewController {
       self.present(alertController, animated: true, completion: nil)
     } else {
       self.navigationController?.popViewController(animated: true)
+      Analytics.logEvent("ME_edit_EV_viewWithNoEdits", parameters: nil)
     }
   }
   
@@ -62,6 +66,7 @@ class MeEditUserViewController: UIViewController {
         HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
         DataStore.shared.refreshPearUser(completion: nil)
         self.navigationController?.popViewController(animated: true)
+        Analytics.logEvent("ME_edit_TAP_done", parameters: nil)
       }
     }
 
