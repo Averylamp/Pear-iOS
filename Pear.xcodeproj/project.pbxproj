@@ -25,6 +25,8 @@
 		911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */; };
 		911AD0F62261AE6900A743C2 /* AllowLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */; };
 		911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */; };
+		917F20AB22716BD80023EC69 /* DiscoverySetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20A922716BD70023EC69 /* DiscoverySetupViewController.swift */; };
+		917F20AC22716BD80023EC69 /* DiscoverySetupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20AA22716BD70023EC69 /* DiscoverySetupViewController.storyboard */; };
 		91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */; };
 		91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */; };
 		91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */; };
@@ -356,6 +358,8 @@
 		911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationViewController.swift; sourceTree = "<group>"; };
 		911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowLocationViewController.storyboard; sourceTree = "<group>"; };
+		917F20A922716BD70023EC69 /* DiscoverySetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverySetupViewController.swift; sourceTree = "<group>"; };
+		917F20AA22716BD70023EC69 /* DiscoverySetupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverySetupViewController.storyboard; sourceTree = "<group>"; };
 		91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveProfileAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterTableViewCell.swift; sourceTree = "<group>"; };
@@ -898,6 +902,16 @@
 			path = "Allow Location Screen";
 			sourceTree = "<group>";
 		};
+		917F20AD22716BE90023EC69 /* Discovery Setup */ = {
+			isa = PBXGroup;
+			children = (
+				917F20AA22716BD70023EC69 /* DiscoverySetupViewController.storyboard */,
+				917F20A922716BD70023EC69 /* DiscoverySetupViewController.swift */,
+			);
+			name = "Discovery Setup";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		91BEE2942259951500A53171 /* Allow Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1050,6 +1064,7 @@
 				BB94C12222437CF1001320B0 /* Simple Discovery */,
 				BB9D1B8122562CF20074C099 /* Personal Chat Request */,
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
+				917F20AD22716BE90023EC69 /* Discovery Setup */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -2278,6 +2293,7 @@
 				BBF93E792267CCB3002841EE /* Cera Pro Light Italic.otf in Resources */,
 				BBF93E942267CF7A002841EE /* OpenSans-Regular.ttf in Resources */,
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
+				917F20AC22716BD80023EC69 /* DiscoverySetupViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BBF93E772267CCB3002841EE /* Cera Pro Black.otf in Resources */,
 				BBA2E1F9224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard in Resources */,
@@ -2664,6 +2680,7 @@
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */,
 				BB9D1B242255E1310074C099 /* PearMatchesAPI.swift in Sources */,
+				917F20AB22716BD80023EC69 /* DiscoverySetupViewController.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
