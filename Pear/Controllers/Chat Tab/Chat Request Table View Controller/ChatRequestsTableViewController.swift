@@ -75,6 +75,13 @@ extension ChatRequestsTableViewController {
   
   func updateMatches(matches: [Match]) {
     self.requests = matches
+    self.requests.sort { (match1, match2) -> Bool in
+      if let m1lo = match1.chat?.messages.last?.timestamp,
+        let m2lo = match2.chat?.messages.last?.timestamp {
+        return m1lo.compare(m2lo) == .orderedDescending
+      }
+      return match1.currentUserLastUpdated.compare(match2.currentUserLastUpdated) == .orderedDescending
+    }
     DispatchQueue.main.async {
       self.tableView.reloadData()
     }

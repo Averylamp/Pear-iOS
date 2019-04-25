@@ -200,7 +200,7 @@ class DiscoveryFullProfileViewController: UIViewController {
       preferredStyle: .alert)
     let createProfile = UIAlertAction(title: "Continue", style: .default) { (_) in
       DispatchQueue.main.async {
-        guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
+        guard let startFriendVC = LoadingScreenViewController.getProfileCreationVC() else {
           print("Failed to create get started friend profile vc")
           return
         }
