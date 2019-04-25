@@ -80,6 +80,8 @@
 		BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */; };
 		BB3F027D2271451C004855E8 /* ProfileCreationFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F027C2271451C004855E8 /* ProfileCreationFinishedViewController.swift */; };
 		BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */; };
+		BB3F0282227189C8004855E8 /* ProfileBoastRoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */; };
+		BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */; };
 		BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */; };
 		BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */; };
 		BB3F219A2226765C00DC4489 /* OldUserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* OldUserCreationData.swift */; };
@@ -420,6 +422,8 @@
 		BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseGenderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F027C2271451C004855E8 /* ProfileCreationFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationFinishedViewController.swift; sourceTree = "<group>"; };
 		BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileCreationFinishedViewController.storyboard; sourceTree = "<group>"; };
+		BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBoastRoastViewController.swift; sourceTree = "<group>"; };
+		BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileBoastRoastViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedEmailProviderViewController.swift; sourceTree = "<group>"; };
 		BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedEmailProviderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21992226765C00DC4489 /* OldUserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserCreationData.swift; sourceTree = "<group>"; };
@@ -1148,6 +1152,8 @@
 				BBECBEBC2237D955008E8E91 /* Profile Interests */,
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
+				BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */,
+				BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -2373,6 +2379,7 @@
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
 				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
+				BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */,
 				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
 				BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
@@ -2707,6 +2714,7 @@
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* PearImageAPI.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
+				BB3F0282227189C8004855E8 /* ProfileBoastRoastViewController.swift in Sources */,
 				BB6479E0226A7FF300652318 /* LatestRoastBoastItem.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */,

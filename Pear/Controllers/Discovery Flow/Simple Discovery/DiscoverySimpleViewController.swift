@@ -31,6 +31,7 @@ class DiscoverySimpleViewController: UIViewController {
   let minRefreshTime: Double = 60 // Minimum time to wait before refreshing feed
   private let refreshControl = UIRefreshControl()
   private var refreshTimer: Timer = Timer()
+
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -304,8 +305,8 @@ extension DiscoverySimpleViewController: DiscoveryTableViewCellDelegate {
     
   }
   
-//  func fullProfileViewTriggered(profileData: FullProfileDisplayData) {
-//    self.presentFullProfile(fullProfile: profileData)
-//  }
+  func fullProfileViewTriggered(profileData: FullProfileDisplayData) {
+    self.presentFullProfile(fullProfile: profileData)
+  }
   
 }
