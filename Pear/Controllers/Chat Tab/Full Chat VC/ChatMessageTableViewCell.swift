@@ -44,7 +44,6 @@ class ChatMessageTableViewCell: UITableViewCell {
   
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-      print("Selected: \(selected)")
       if selected, let timestamp = timestamp {
         self.chatTimestampLabel.text = timestamp.timeAgoSinceDate()
       } else {

@@ -25,11 +25,12 @@
 		911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */; };
 		911AD0F62261AE6900A743C2 /* AllowLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */; };
 		911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */; };
-		917F209F227131490023EC69 /* FinishSetupUserGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F209E227131490023EC69 /* FinishSetupUserGenderViewController.swift */; };
-		917F20A1227131590023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20A0227131590023EC69 /* FinishSetupUserGenderViewController.storyboard */; };
-		917F20A32271401C0023EC69 /* UserSetupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20A22271401C0023EC69 /* UserSetupData.swift */; };
-		917F20A6227166EF0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20A5227166EF0023EC69 /* FinishSetupUserPreferencesViewController.swift */; };
-		917F20A8227167000023EC69 /* FinishSetupUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20A7227167000023EC69 /* FinishSetupUserPreferencesViewController.storyboard */; };
+		917F20B222716F380023EC69 /* DiscoverySetupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */; };
+		917F20B322716F380023EC69 /* DiscoverySetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */; };
+		917F20C22271701C0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20BE2271701B0023EC69 /* FinishSetupUserPreferencesViewController.swift */; };
+		917F20C32271701C0023EC69 /* FinishSetupUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20BF2271701B0023EC69 /* FinishSetupUserPreferencesViewController.storyboard */; };
+		917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20C02271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard */; };
+		917F20C52271701C0023EC69 /* FinishSetupUserGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20C12271701C0023EC69 /* FinishSetupUserGenderViewController.swift */; };
 		91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */; };
 		91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */; };
 		91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */; };
@@ -77,6 +78,8 @@
 		BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */; };
 		BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */; };
 		BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */; };
+		BB3F027D2271451C004855E8 /* ProfileCreationFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F027C2271451C004855E8 /* ProfileCreationFinishedViewController.swift */; };
+		BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */; };
 		BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */; };
 		BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */; };
 		BB3F219A2226765C00DC4489 /* OldUserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* OldUserCreationData.swift */; };
@@ -359,11 +362,12 @@
 		911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationViewController.swift; sourceTree = "<group>"; };
 		911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowLocationViewController.storyboard; sourceTree = "<group>"; };
-		917F209E227131490023EC69 /* FinishSetupUserGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSetupUserGenderViewController.swift; sourceTree = "<group>"; };
-		917F20A0227131590023EC69 /* FinishSetupUserGenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FinishSetupUserGenderViewController.storyboard; sourceTree = "<group>"; };
-		917F20A22271401C0023EC69 /* UserSetupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupData.swift; sourceTree = "<group>"; };
-		917F20A5227166EF0023EC69 /* FinishSetupUserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSetupUserPreferencesViewController.swift; sourceTree = "<group>"; };
-		917F20A7227167000023EC69 /* FinishSetupUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FinishSetupUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
+		917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverySetupViewController.storyboard; sourceTree = "<group>"; };
+		917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverySetupViewController.swift; sourceTree = "<group>"; };
+		917F20BE2271701B0023EC69 /* FinishSetupUserPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishSetupUserPreferencesViewController.swift; sourceTree = "<group>"; };
+		917F20BF2271701B0023EC69 /* FinishSetupUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FinishSetupUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
+		917F20C02271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FinishSetupUserGenderViewController.storyboard; sourceTree = "<group>"; };
+		917F20C12271701C0023EC69 /* FinishSetupUserGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishSetupUserGenderViewController.swift; sourceTree = "<group>"; };
 		91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveProfileAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterTableViewCell.swift; sourceTree = "<group>"; };
@@ -414,6 +418,8 @@
 		BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseGenderViewController.swift; sourceTree = "<group>"; };
 		BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseGenderViewController.storyboard; sourceTree = "<group>"; };
+		BB3F027C2271451C004855E8 /* ProfileCreationFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationFinishedViewController.swift; sourceTree = "<group>"; };
+		BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileCreationFinishedViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedEmailProviderViewController.swift; sourceTree = "<group>"; };
 		BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedEmailProviderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21992226765C00DC4489 /* OldUserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserCreationData.swift; sourceTree = "<group>"; };
@@ -904,31 +910,40 @@
 			path = "Allow Location Screen";
 			sourceTree = "<group>";
 		};
-		917F209C2271308B0023EC69 /* FInish Setup User */ = {
+		917F20B422716F6A0023EC69 /* Discovery Setup VC */ = {
 			isa = PBXGroup;
 			children = (
-				917F209D2271312B0023EC69 /* User Gender Input */,
-				917F20A4227166CD0023EC69 /* User Preferences Input */,
+				917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */,
+				917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */,
 			);
-			path = "FInish Setup User";
+			path = "Discovery Setup VC";
 			sourceTree = "<group>";
 		};
-		917F209D2271312B0023EC69 /* User Gender Input */ = {
+		917F20BD22716FEE0023EC69 /* Finish Setup Flow */ = {
 			isa = PBXGroup;
 			children = (
-				917F209E227131490023EC69 /* FinishSetupUserGenderViewController.swift */,
-				917F20A0227131590023EC69 /* FinishSetupUserGenderViewController.storyboard */,
+				917F20C7227170310023EC69 /* Gender */,
+				917F20C82271703A0023EC69 /* Preferences */,
 			);
-			path = "User Gender Input";
+			path = "Finish Setup Flow";
 			sourceTree = "<group>";
 		};
-		917F20A4227166CD0023EC69 /* User Preferences Input */ = {
+		917F20C7227170310023EC69 /* Gender */ = {
 			isa = PBXGroup;
 			children = (
-				917F20A5227166EF0023EC69 /* FinishSetupUserPreferencesViewController.swift */,
-				917F20A7227167000023EC69 /* FinishSetupUserPreferencesViewController.storyboard */,
+				917F20C02271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard */,
+				917F20C12271701C0023EC69 /* FinishSetupUserGenderViewController.swift */,
 			);
-			path = "User Preferences Input";
+			path = Gender;
+			sourceTree = "<group>";
+		};
+		917F20C82271703A0023EC69 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				917F20BF2271701B0023EC69 /* FinishSetupUserPreferencesViewController.storyboard */,
+				917F20BE2271701B0023EC69 /* FinishSetupUserPreferencesViewController.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		91BEE2942259951500A53171 /* Allow Notifications */ = {
@@ -1083,6 +1098,7 @@
 				BB94C12222437CF1001320B0 /* Simple Discovery */,
 				BB9D1B8122562CF20074C099 /* Personal Chat Request */,
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
+				917F20B422716F6A0023EC69 /* Discovery Setup VC */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -1103,6 +1119,15 @@
 				BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */,
 			);
 			path = "Gender Input";
+			sourceTree = "<group>";
+		};
+		BB3F02802271452F004855E8 /* Profile Creation Finished */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F027C2271451C004855E8 /* ProfileCreationFinishedViewController.swift */,
+				BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */,
+			);
+			path = "Profile Creation Finished";
 			sourceTree = "<group>";
 		};
 		BB3F4AE82233974C00F99C8E /* Birthday Input */ = {
@@ -1192,7 +1217,6 @@
 				BBBA573C226D9741000BCD5F /* QuestionItem.swift */,
 				BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */,
 				BBEF2268226F8F9F0021B021 /* QuestionResponseItem.swift */,
-				917F20A22271401C0023EC69 /* UserSetupData.swift */,
 			);
 			name = "New Models";
 			sourceTree = "<group>";
@@ -2028,7 +2052,7 @@
 		BBF93E4B2267C785002841EE /* New Redesign */ = {
 			isa = PBXGroup;
 			children = (
-				917F209C2271308B0023EC69 /* FInish Setup User */,
+				917F20BD22716FEE0023EC69 /* Finish Setup Flow */,
 				BBF93E4C2267C7E6002841EE /* Create User */,
 			);
 			path = "New Redesign";
@@ -2045,6 +2069,7 @@
 				BBEF226A226FA0B40021B021 /* Input Question */,
 				BBEF226B226FC3F70021B021 /* Boast Roast Input */,
 				BBC0FF2022706A1500632924 /* Name Input */,
+				BB3F02802271452F004855E8 /* Profile Creation Finished */,
 				BBBA574C226DD5FE000BCD5F /* Input Table View */,
 			);
 			path = "Create User";
@@ -2263,9 +2288,10 @@
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
 				BBF93E7D2267CCB3002841EE /* Cera Pro Medium.otf in Resources */,
+				BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */,
+				917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
-				917F20A8227167000023EC69 /* FinishSetupUserPreferencesViewController.storyboard in Resources */,
 				BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
 				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
@@ -2285,6 +2311,7 @@
 				BB9CB69D2259E14100605A98 /* UpdateExpandingTextViewController.storyboard in Resources */,
 				BBF93E8C2267CF7A002841EE /* OpenSans-BoldItalic.ttf in Resources */,
 				BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */,
+				917F20C32271701C0023EC69 /* FinishSetupUserPreferencesViewController.storyboard in Resources */,
 				BB3F4AEB2234259D00F99C8E /* GetStartedUserGenderViewController.storyboard in Resources */,
 				BBA2E1F0224B2E980088A7A7 /* ApproveDetachedProfileNavigationViewController.storyboard in Resources */,
 				BBF93E642267CA4A002841EE /* ProfileInputVibeViewController.storyboard in Resources */,
@@ -2303,6 +2330,7 @@
 				BBF93E792267CCB3002841EE /* Cera Pro Light Italic.otf in Resources */,
 				BBF93E942267CF7A002841EE /* OpenSans-Regular.ttf in Resources */,
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
+				917F20B222716F380023EC69 /* DiscoverySetupViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
 				BBF93E772267CCB3002841EE /* Cera Pro Black.otf in Resources */,
 				BBA2E1F9224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard in Resources */,
@@ -2316,7 +2344,6 @@
 				BBF93E802267CCB3002841EE /* Cera Pro Black Italic.otf in Resources */,
 				9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */,
 				BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */,
-				917F20A1227131590023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
 				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
 				BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */,
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
@@ -2575,6 +2602,7 @@
 				BBA2E1E8224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
 				BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */,
+				BB3F027D2271451C004855E8 /* ProfileCreationFinishedViewController.swift in Sources */,
 				91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
@@ -2602,6 +2630,7 @@
 				BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */,
 				BB17893F225E064F0033ACC6 /* ChatRequestTableViewCell.swift in Sources */,
 				BBF93E542267C86C002841EE /* UserContactListViewController.swift in Sources */,
+				917F20C52271701C0023EC69 /* FinishSetupUserGenderViewController.swift in Sources */,
 				BB4C8A47225152EC00F7BA1A /* DoDontView.swift in Sources */,
 				BB178934225DE73E0033ACC6 /* Date+Helpers.swift in Sources */,
 				BB178936225DFCA00033ACC6 /* FullChatViewController.swift in Sources */,
@@ -2667,7 +2696,6 @@
 				BBF93E562267C881002841EE /* ProfileInputVibeViewController.swift in Sources */,
 				BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */,
 				BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */,
-				917F209F227131490023EC69 /* FinishSetupUserGenderViewController.swift in Sources */,
 				BB6479DB226A679F00652318 /* LandingScreenWaitlistViewController.swift in Sources */,
 				BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
@@ -2688,9 +2716,9 @@
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
 				BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
-				917F20A32271401C0023EC69 /* UserSetupData.swift in Sources */,
 				BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */,
 				BB9D1B242255E1310074C099 /* PearMatchesAPI.swift in Sources */,
+				917F20B322716F380023EC69 /* DiscoverySetupViewController.swift in Sources */,
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
@@ -2703,7 +2731,7 @@
 				BBBA5749226DC9F5000BCD5F /* InputTableViewController.swift in Sources */,
 				BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */,
 				BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */,
-				917F20A6227166EF0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */,
+				917F20C22271701C0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,

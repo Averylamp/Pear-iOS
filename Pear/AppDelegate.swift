@@ -25,6 +25,7 @@ final class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+    
     FirebaseApp.configure()
     Messaging.messaging().delegate = self
     
@@ -50,7 +51,7 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     self.stylize()
     
     window = UIWindow(frame: UIScreen.main.bounds)
-    let navController = LandingNavigationViewController.instantiate()
+    let navController = DiscoverySetupViewController.instantiate()
     window?.rootViewController = navController
     //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()

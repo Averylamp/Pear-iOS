@@ -22,6 +22,7 @@ extension Notification.Name {
 class DiscoverySimpleViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  
   var fullProfiles: [FullProfileDisplayData] = []
   var filteredFullProfiles: [FullProfileDisplayData] = []
   var blockedUsers: [String] = []
@@ -261,16 +262,18 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
     cell.delegate = self
     let fullProfile = self.fullProfiles[indexPath.row]
     cell.selectionStyle = .none
+
     cell.configureCell(profileData: fullProfile)
-    cell.cardView.layer.cornerRadius = 12
-    cell.cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
-    cell.cardView.layer.borderWidth = 1
-    cell.cardView.clipsToBounds = true
-    cell.cardShadowView.layer.shadowOpacity = 0.4
-    cell.cardShadowView.layer.shadowColor = R.color.shadowColor()?.cgColor
-    cell.cardShadowView.layer.shadowOffset = CGSize(width: 1, height: 1 )
-    cell.cardShadowView.layer.shadowRadius = 2
-    cell.cardShadowView.layer.cornerRadius = cell.cardView.layer.cornerRadius
+//    cell.cardView.layer.cornerRadius = 12
+//    cell.cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
+//    cell.cardView.layer.borderWidth = 1
+//    cell.cardView.clipsToBounds = true
+//    cell.cardShadowView.layer.shadowOpacity = 0.4
+//    cell.cardShadowView.layer.shadowColor = R.color.shadowColor()?.cgColor
+//    cell.cardShadowView.layer.shadowOffset = CGSize(width: 1, height: 1 )
+//    cell.cardShadowView.layer.shadowRadius = 2
+//    cell.cardShadowView.layer.cornerRadius = cell.cardView.layer.cornerRadius
+
     return cell
   }
   
@@ -301,8 +304,8 @@ extension DiscoverySimpleViewController: DiscoveryTableViewCellDelegate {
     
   }
   
-  func fullProfileViewTriggered(profileData: FullProfileDisplayData) {
-    self.presentFullProfile(fullProfile: profileData)
-  }
+//  func fullProfileViewTriggered(profileData: FullProfileDisplayData) {
+//    self.presentFullProfile(fullProfile: profileData)
+//  }
   
 }

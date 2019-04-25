@@ -20,7 +20,30 @@ enum FullProfileOrigin {
   case pearUser
 }
 
-class FullProfileDisplayData: Equatable {
+class FullProfileDisplayData: Equatable, CustomStringConvertible {
+  var description: String {
+    return "**** Full Profile Display Data ****" + """
+    userID: \(String(describing: self.userID))
+    firstName: \(String(describing: self.firstName))
+    age: \(String(describing: self.age))
+    gender: \(String(describing: self.gender))
+    bios: \(String(describing: self.bios))
+    boasts: \(String(describing: self.boasts))
+    roasts: \(String(describing: self.roasts))
+    questionResponses: \(String(describing: self.questionResponses))
+    vibes: \(String(describing: self.vibes))
+    Image Count: \(String(describing: self.imageContainers.count))
+    profileOrigin: \(String(describing: self.profileOrigin))
+    locationName: \(String(describing: self.locationName))
+    locationCoordinates: \(String(describing: self.locationCoordinates))
+    school: \(String(describing: self.school))
+    schoolYear: \(String(describing: self.schoolYear))
+    matchingDemographics: \(String(describing: self.matchingDemographics))
+    matchingPreferences: \(String(describing: self.matchingPreferences))
+    discoveryTimestamp: \(String(describing: self.discoveryTimestamp))
+    profileNumber: \(String(describing: self.profileNumber))
+    """
+  }
   
   var userID: String?
   var firstName: String?
@@ -92,59 +115,25 @@ class FullProfileDisplayData: Equatable {
     self.profileNumber = 0
   }
   
-//  convenience init (user: PearUser) {
-//    var interests: [String] = []
-//    var vibes: [String] = []
-//    var bioContent: [BioContent] = []
-//    var doContent: [DoDontContent] = []
-//    var dontContent: [DoDontContent] = []
-//
-//    for profile in user.userProfiles {
-//      profile.interests.forEach({
-//        if !interests.contains($0) {
-//          interests.append($0)
-//        }
-//      })
-//      profile.vibes.forEach({
-//        if !vibes.contains($0) {
-//          vibes.append($0)
-//        }
-//      })
-//      bioContent.append(BioContent.init(bio: profile.bio, creatorName: profile.creatorFirstName))
-//      doContent.append(contentsOf: profile.dos.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-//      dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-//    }
-//    self.init(firstName: user.firstName,
-//              age: user.matchingDemographics.age,
-//              gender: user.matchingDemographics.gender.toString(),
-//              interests: interests,
-//              vibes: vibes,
-//              bio: bioContent,
-//              dos: doContent,
-//              donts: dontContent)
-//    self.userID = user.documentID
-//    self.imageContainers = user.displayedImages
-//    self.profileOrigin = .pearUser
-//    self.originObject = user
-//    self.school = user.school
-//    self.schoolYear = user.schoolYear
-//    self.locationName = user.matchingDemographics.location.locationName
-//    self.matchingDemographics = user.matchingDemographics
-//    self.matchingPreferences = user.matchingPreferences
-//  }
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
-//    return lhs.userID == rhs.userID &&
-//      lhs.originalCreatorName == rhs.originalCreatorName &&
-//      lhs.firstName == rhs.firstName &&
-//      lhs.age == rhs.age &&
-//      lhs.gender == rhs.gender &&
-//      lhs.interests == rhs.interests &&
-//      lhs.vibes == rhs.vibes &&
-//      lhs.dos.map({$0.phrase}) == rhs.dos.map({$0.phrase}) &&
-//      lhs.donts.map({$0.phrase}) == rhs.donts.map({$0.phrase}) &&
-//      lhs.bio.map({$0.bio}) == rhs.bio.map({$0.bio}) &&
-//      ImageContainer.compareImageLists(lhs: lhs.imageContainers, rhs: rhs.imageContainers)
-    return true
+    
+    return lhs.userID == rhs.userID &&
+           lhs.firstName == rhs.firstName &&
+           lhs.age == rhs.age &&
+           lhs.gender == rhs.gender &&
+           lhs.bios == rhs.bios &&
+           lhs.boasts == rhs.boasts &&
+           lhs.roasts == rhs.roasts &&
+           lhs.questionResponses == rhs.questionResponses &&
+           lhs.vibes == rhs.vibes &&
+           lhs.imageContainers == rhs.imageContainers &&
+           lhs.profileOrigin == rhs.profileOrigin &&
+           lhs.locationName == rhs.locationName &&
+           lhs.school == rhs.school &&
+           lhs.schoolYear == rhs.schoolYear &&
+           lhs.matchingDemographics == rhs.matchingDemographics &&
+           lhs.matchingPreferences == rhs.matchingPreferences &&
+           lhs.profileNumber == rhs.profileNumber
   }
   
   static func compareListsForNewItems(oldList: [FullProfileDisplayData], newList: [FullProfileDisplayData]) -> Bool {

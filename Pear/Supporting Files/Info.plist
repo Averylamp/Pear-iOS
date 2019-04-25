@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.6</string>
+	<string>1.0.7</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -92,12 +92,12 @@
 	<string>To find your latest and greatest photos!</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Quick!  Take a photo of them before they run away!</string>
+	<key>NSContactsUsageDescription</key>
+	<string>To roast/boast up your friends</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To make better matches!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To find your latest and greatest photos!</string>
-	<key>NSContactsUsageDescription</key>
-	<string>To roast/boast up your friends</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>

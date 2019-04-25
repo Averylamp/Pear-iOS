@@ -68,7 +68,7 @@
                                     <constraint firstAttribute="height" constant="50" id="rtZ-26-SzQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
-                                <state key="normal" title="I'm done, continue!"/>
+                                <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueButtonClicked:" destination="nIG-Og-yRX" eventType="touchUpInside" id="uN3-Qy-mol"/>
                                 </connections>
@@ -86,19 +86,19 @@
                                 <rect key="frame" x="20" y="166" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="YOUR first name plz" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJT-gZ-sOQ">
-                                        <rect key="frame" x="4" y="4" width="366" height="42"/>
+                                        <rect key="frame" x="12" y="4" width="350" height="42"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="given-name"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="tJT-gZ-sOQ" firstAttribute="leading" secondItem="OgU-DF-Lot" secondAttribute="leading" constant="4" id="2Gl-Th-u2j"/>
+                                    <constraint firstItem="tJT-gZ-sOQ" firstAttribute="leading" secondItem="OgU-DF-Lot" secondAttribute="leading" constant="12" id="2Gl-Th-u2j"/>
                                     <constraint firstItem="tJT-gZ-sOQ" firstAttribute="top" secondItem="OgU-DF-Lot" secondAttribute="top" constant="4" id="Ouu-KE-9sH"/>
                                     <constraint firstAttribute="height" constant="50" id="fft-1u-s9b"/>
                                     <constraint firstAttribute="bottom" secondItem="tJT-gZ-sOQ" secondAttribute="bottom" constant="4" id="hST-0q-OFN"/>
-                                    <constraint firstAttribute="trailing" secondItem="tJT-gZ-sOQ" secondAttribute="trailing" constant="4" id="ubb-BW-jZz"/>
+                                    <constraint firstAttribute="trailing" secondItem="tJT-gZ-sOQ" secondAttribute="trailing" constant="12" id="ubb-BW-jZz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -127,6 +127,7 @@
                     </view>
                     <connections>
                         <outlet property="continueButton" destination="KAx-J9-mcV" id="aRV-Nj-1Jt"/>
+                        <outlet property="nameFieldContainer" destination="OgU-DF-Lot" id="ggC-cU-iDm"/>
                         <outlet property="nameTextField" destination="tJT-gZ-sOQ" id="MZ6-8F-tvv"/>
                         <outlet property="titleLabel" destination="HNi-Oy-H5J" id="Zod-bC-pfl"/>
                     </connections>
