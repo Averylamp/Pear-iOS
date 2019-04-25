@@ -93,11 +93,11 @@ extension FullProfileStackViewController {
   
   func stylize() {
     
-    self.addDemographcsVC(firstName: self.fullProfileData.firstName ?? "",
+    self.addDemographcsVC(firstName: self.fullProfileData.firstName,
                           age: self.fullProfileData.age,
-                          gender: self.fullProfileData.gender?.toString() ?? GenderEnum.male.toString(),
                           schoolName: self.fullProfileData.school,
-                          locationName: self.fullProfileData.locationName)
+                          locationName: self.fullProfileData.locationName,
+                          vibes: self.fullProfileData.vibes)
     
     let sectionItems = self.sectionItemsFromProfile(profile: self.fullProfileData)
     for sectionItem in sectionItems {
@@ -157,16 +157,16 @@ extension FullProfileStackViewController {
       ])
   }
   
-  func addDemographcsVC(firstName: String,
+  func addDemographcsVC(firstName: String?,
                         age: Int?,
-                        gender: String,
                         schoolName: String?,
-                        locationName: String?) {
+                        locationName: String?,
+                        vibes: [VibeItem]) {
     guard let demographicsVC = ProfileDemographicsViewController.instantiate(firstName: firstName,
                                                                              age: age,
-                                                                             gender: gender,
                                                                              schoolName: schoolName,
-                                                                             locationName: locationName) else {
+                                                                             locationName: locationName,
+                                                                             vibes: vibes) else {
                                                                               print("Failed to create Demographics VC")
                                                                               return
     }
