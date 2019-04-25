@@ -18,7 +18,16 @@ enum VibeKey: String, CodingKey {
   case hidden
 }
 
-class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable {
+class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable {
+  static func == (lhs: VibeItem, rhs: VibeItem) -> Bool {
+    return lhs.documentID == rhs.documentID &&
+           lhs.authorID == rhs.authorID &&
+           lhs.authorFirstName == rhs.authorFirstName &&
+           lhs.content == rhs.content &&
+           lhs.color == rhs.color &&
+           lhs.icon == rhs.icon &&
+           lhs.hidden == rhs.hidden
+  }
   
   static func graphQLAllFields() -> String {
     return "{ _id author_id authorFirstName content color \(Color.graphQLAllFields()) icon \(IconAsset.graphQLAllFields()) hidden }"

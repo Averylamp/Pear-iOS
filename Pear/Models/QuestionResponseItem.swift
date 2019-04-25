@@ -20,7 +20,21 @@ enum QuestionResponseItemKey: String, CodingKey {
   case hidden
 }
 
-class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable {
+class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable {
+  
+  static func == (lhs: QuestionResponseItem, rhs: QuestionResponseItem) -> Bool {
+    return  lhs.documentID == rhs.documentID &&
+            lhs.authorID == rhs.authorID &&
+            lhs.authorFirstName == rhs.authorFirstName &&
+            lhs.questionID == rhs.questionID &&
+            lhs.question == rhs.question &&
+            lhs.responseBody == rhs.responseBody &&
+            lhs.responseTitle == rhs.responseTitle &&
+            lhs.color == rhs.color &&
+            lhs.icon == rhs.icon &&
+            lhs.hidden == rhs.hidden
+  }
+  
   static func graphQLAllFields() -> String {
     return "{ _id author_id authorFirstName question_id question \(QuestionItem.graphQLAllFields()) responseBody responseTitle color \(Color.graphQLAllFields()) icon \(IconAsset.graphQLAllFields()) hidden }"
   }
