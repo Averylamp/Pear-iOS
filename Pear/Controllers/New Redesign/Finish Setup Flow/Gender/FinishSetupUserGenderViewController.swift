@@ -21,7 +21,7 @@ class FinishSetupUserGenderViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> FinishSetupUserGenderViewController? {
-    let storyboard = UIStoryboard(name: String(describing: ApproveDetachedProfileSchoolViewController.self), bundle: nil)
+    let storyboard = UIStoryboard(name: String(describing: FinishSetupUserGenderViewController.self), bundle: nil)
     guard let genderVC = storyboard.instantiateInitialViewController() as? FinishSetupUserGenderViewController else { return nil }
     return genderVC
   }
