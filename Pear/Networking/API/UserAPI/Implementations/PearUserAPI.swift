@@ -6,6 +6,7 @@
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
+// swiftlint:disable file_length
 import Foundation
 import SwiftyJSON
 import Sentry
@@ -369,13 +370,17 @@ extension PearUserAPI {
                              minAge: Int,
                              maxAge: Int,
                              locationName: String?,
+                             isSeeking: Bool?,
                              completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
-    let preferenceDictionary: [String: Any] = [
+    var preferenceDictionary: [String: Any] = [
       "minAgeRange": minAge,
       "maxAgeRange": maxAge,
       "seekingGender": genderPrefs,
       "locationName": locationName as Any
     ]
+    if let isSeeking = isSeeking {
+      preferenceDictionary["isSeeking"] = isSeeking
+    }
     self.updateUserWithPreferenceDictionary(userID: userID,
                                             inputDictionary: preferenceDictionary,
                                             mutationName: "UpdateUserPrefernces",
@@ -386,21 +391,37 @@ extension PearUserAPI {
                         schoolName: String?,
                         schoolYear: String?,
                         completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
-    let preferenceDictionary: [String: Any] = [
-      "school": schoolName as Any,
-      "schoolYear": schoolYear as Any
-    ]
+    var preferenceDictionary = [String: Any]()
+    if let schoolName = schoolName {
+      preferenceDictionary["school"] = schoolName
+    }
+    if let schoolYear = schoolYear {
+      preferenceDictionary["schoolYear"] = schoolYear
+    }
     self.updateUserWithPreferenceDictionary(userID: userID,
                                             inputDictionary: preferenceDictionary,
                                             mutationName: "UpdateUserSchool",
                                             completion: completion)
   }
   
+  func updateUserBirthdateAge(userID: String,
+                              age: Int,
+                              birthdate: Date,
+                              completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+    let birthdayFormatter = DateFormatter()
+    birthdayFormatter.dateFormat = "yyyy-MM-dd"
+    let birthdateAgeDictionary: [String: Any] = [
+      "age": age,
+      "birthdate": birthdayFormatter.string(from: birthdate)
+    ]
+    self.updateUserWithPreferenceDictionary(userID: userID, inputDictionary: birthdateAgeDictionary, mutationName: "UpdateUserAgeBirthdate", completion: completion)
+  }
+  
   func updateUserGender(userID: String,
                         gender: GenderEnum,
                         completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
     let genderDictionary: [String: Any] = [
-      "gender": gender.toString()
+      "gender": gender.rawValue
     ]
     self.updateUserWithPreferenceDictionary(userID: userID, inputDictionary: genderDictionary, mutationName: "UpdateUserGender", completion: completion)
   }
@@ -448,6 +469,7 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
+          APIHelpers.printDataDump(data: data)
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "updateUser")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:

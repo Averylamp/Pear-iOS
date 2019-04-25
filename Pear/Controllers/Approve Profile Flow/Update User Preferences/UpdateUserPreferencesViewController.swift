@@ -71,7 +71,8 @@ class UpdateUserPreferencesViewController: UIViewController {
                                              genderPrefs: genderPrefs,
                                              minAge: minAge,
                                              maxAge: maxAge,
-                                             locationName: locationName) { (result) in
+                                             locationName: locationName,
+                                             isSeeking: nil) { (result) in
       switch result {
       case .success(let successful):
         if successful {
