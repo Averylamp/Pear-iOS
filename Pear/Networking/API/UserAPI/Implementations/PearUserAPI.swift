@@ -225,17 +225,16 @@ extension PearUserAPI {
           case .foundObjectData(let objectData):
             do {
               var endorsedUsers: [PearUser] = []
-              if let endorsedUsersJSON = (try JSON(data: objectData)["endorsedProfileObjs"]).array {
+              if let endorsedUsersJSON = (try JSON(data: objectData)["endorsedUsers"]).array {
                 for endorsedUser in endorsedUsersJSON {
-                  let userJSON = endorsedUser["userObj"]
-                  if let matchingUserData = try? userJSON.rawData(),
+                  if let matchingUserData = try? endorsedUser.rawData(),
                     let matchingUserObj = try? JSONDecoder().decode(PearUser.self, from: matchingUserData) {
                     endorsedUsers.append(matchingUserObj)
                   }
                 }
               }
               var detachedProfiles: [PearDetachedProfile] = []
-              if let detachedProfilesJSON = (try JSON(data: objectData)["detachedProfileObjs"]).array {
+              if let detachedProfilesJSON = (try JSON(data: objectData)["detachedProfiles"]).array {
                 for detachedProfile in detachedProfilesJSON {
                   if let detachedProfileData = try? detachedProfile.rawData(),
                     let detachedProfileObj = try? JSONDecoder().decode(PearDetachedProfile.self, from: detachedProfileData) {

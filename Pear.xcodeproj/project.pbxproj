@@ -82,6 +82,8 @@
 		BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */; };
 		BB3F0282227189C8004855E8 /* ProfileBoastRoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */; };
 		BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */; };
+		BB3F02872271C4D6004855E8 /* ScrollableTextItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */; };
+		BB3F02892271C4E6004855E8 /* ScrollableTextItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */; };
 		BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */; };
 		BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */; };
 		BB3F219A2226765C00DC4489 /* OldUserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* OldUserCreationData.swift */; };
@@ -423,6 +425,8 @@
 		BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileCreationFinishedViewController.storyboard; sourceTree = "<group>"; };
 		BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBoastRoastViewController.swift; sourceTree = "<group>"; };
 		BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileBoastRoastViewController.storyboard; sourceTree = "<group>"; };
+		BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextItemViewController.swift; sourceTree = "<group>"; };
+		BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollableTextItemViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedEmailProviderViewController.swift; sourceTree = "<group>"; };
 		BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedEmailProviderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21992226765C00DC4489 /* OldUserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserCreationData.swift; sourceTree = "<group>"; };
@@ -1160,6 +1164,8 @@
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
 				BB3F02852271B178004855E8 /* Profile Boast Roast */,
+				BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */,
+				BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -2309,6 +2315,7 @@
 				BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */,
 				BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */,
 				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
+				BB3F02892271C4E6004855E8 /* ScrollableTextItemViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
 				BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */,
@@ -2676,6 +2683,7 @@
 				BB0AE4E922536FAC005DD315 /* UserAgePreferencesViewController.swift in Sources */,
 				BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */,
 				BB3F219D22267B8000DC4489 /* GetStartedUserLastNameViewController.swift in Sources */,
+				BB3F02872271C4D6004855E8 /* ScrollableTextItemViewController.swift in Sources */,
 				BB986A1E220E08E000759A14 /* OldLandingScreenViewController.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,
 				BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */,
