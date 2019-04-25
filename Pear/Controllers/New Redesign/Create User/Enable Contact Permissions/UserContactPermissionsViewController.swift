@@ -113,12 +113,12 @@ extension UserContactPermissionsViewController {
     
   }
   
-  func addRandomBoastRoast() {
+  func addRandomBoastRoast(date: Date = Date()) {
     DispatchQueue.main.async {
       if let item = self.allSampleBoastRoastItems.first(where: {!self.currentBoastRoastItems.contains($0) }) {
         
         let newItem = item.copy()
-        newItem.timestamp = Date()
+        newItem.timestamp = date
         self.tableView.beginUpdates()
         self.currentBoastRoastItems.insert(newItem, at: 0)
         self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .left)
@@ -147,7 +147,11 @@ extension UserContactPermissionsViewController {
           
         }
         self.allSampleBoastRoastItems = self.allSampleBoastRoastItems.shuffled()
-        self.addRandomBoastRoast()
+        self.addRandomBoastRoast(date: Date(timeIntervalSinceNow: -23))
+        self.addRandomBoastRoast(date: Date(timeIntervalSinceNow: -18))
+        self.addRandomBoastRoast(date: Date(timeIntervalSinceNow: -15))
+        self.addRandomBoastRoast(date: Date(timeIntervalSinceNow: -11))
+        self.addRandomBoastRoast(date: Date(timeIntervalSinceNow: -4))
       }
       
     }

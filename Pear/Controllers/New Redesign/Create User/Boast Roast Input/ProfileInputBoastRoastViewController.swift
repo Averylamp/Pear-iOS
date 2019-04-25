@@ -67,6 +67,13 @@ class ProfileInputBoastRoastViewController: UIViewController {
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveBoastRoasts()
+    if self.profileData.boasts.count + self.profileData.roasts.count == 0 {
+      let alertController = UIAlertController(title: "You must write at least one", message: nil, preferredStyle: .alert)
+      let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+      alertController.addAction(okayAction)
+      self.present(alertController, animated: true, completion: nil)
+      return
+    }
     guard let firstNameVC = UserNameInputViewController.instantiate(profileCreationData: self.profileData) else {
       print("Couldnt create first name VC")
       return
