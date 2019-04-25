@@ -34,7 +34,21 @@ enum QuestionType: String {
   case freeResponse
 }
 
-class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable, CustomStringConvertible {
+class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable, CustomStringConvertible, Equatable {
+  
+  static func == (lhs: QuestionItem, rhs: QuestionItem) -> Bool {
+    return  lhs.documentID == rhs.documentID &&
+            lhs.questionText == rhs.questionText &&
+            lhs.questionSubtext == rhs.questionSubtext &&
+            lhs.questionTextWithName == rhs.questionTextWithName &&
+            lhs.questionType == rhs.questionType &&
+            lhs.suggestedResponses == rhs.suggestedResponses &&
+            lhs.placeholderResponseText == rhs.placeholderResponseText &&
+            lhs.tags == rhs.tags &&
+            lhs.hiddenInQuestionnaire == rhs.hiddenInQuestionnaire &&
+            lhs.hiddenInProfile == rhs.hiddenInProfile
+  }
+  
   var description: String {
     return "**** Question Item ****" + """
     documentID: \(String(describing: documentID))
@@ -166,7 +180,14 @@ enum ColorKey: String, CodingKey {
   case alpha
 }
 
-class Color: Codable, GraphQLInput, GraphQLDecodable {
+class Color: Codable, GraphQLInput, GraphQLDecodable, Equatable {
+  
+  static func == (lhs: Color, rhs: Color) -> Bool {
+    return lhs.red == rhs.red &&
+           lhs.green == rhs.green &&
+           lhs.blue == rhs.blue &&
+           lhs.alpha == rhs.alpha
+  }
   
   var red: CGFloat
   var green: CGFloat
@@ -210,7 +231,11 @@ enum IconAssetKey: String, CodingKey {
   case assetURL
 }
 
-class IconAsset: Decodable, GraphQLInput, GraphQLDecodable {
+class IconAsset: Decodable, GraphQLInput, GraphQLDecodable, Equatable {
+  static func == (lhs: IconAsset, rhs: IconAsset) -> Bool {
+    return lhs.assetString == rhs.assetString &&
+           lhs.assetURL == rhs.assetURL
+  }
   
   var assetString: String?
   var assetURL: URL?

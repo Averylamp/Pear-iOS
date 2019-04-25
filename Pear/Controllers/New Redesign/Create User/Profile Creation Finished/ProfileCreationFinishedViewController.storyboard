@@ -69,20 +69,20 @@
                                 <rect key="frame" x="20" y="200.66666666666666" width="335" height="77.999999999999972"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-emoji-hand" translatesAutoresizingMaskIntoConstraints="NO" id="A3A-Vt-1U8">
-                                        <rect key="frame" x="0.0" y="9" width="60" height="60"/>
+                                        <rect key="frame" x="10" y="9" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="A3A-Vt-1U8" secondAttribute="height" multiplier="1:1" id="PMf-vP-pbL"/>
                                             <constraint firstAttribute="width" constant="60" id="Q3J-nF-2p0"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See someone interesting?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q3R-s2-1Rz">
-                                        <rect key="frame" x="80" y="4" width="255" height="25"/>
+                                        <rect key="frame" x="90" y="4" width="245" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wave!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="04Q-RS-Dtl">
-                                        <rect key="frame" x="80" y="41" width="255" height="25"/>
+                                        <rect key="frame" x="90" y="41" width="245" height="25"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito SemiBold" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="04Q-RS-Dtl" firstAttribute="trailing" secondItem="Q3R-s2-1Rz" secondAttribute="trailing" id="WEQ-n5-6R8"/>
-                                    <constraint firstItem="A3A-Vt-1U8" firstAttribute="leading" secondItem="Vy4-Kb-Env" secondAttribute="leading" id="egb-T8-R3X"/>
+                                    <constraint firstItem="A3A-Vt-1U8" firstAttribute="leading" secondItem="Vy4-Kb-Env" secondAttribute="leading" constant="10" id="egb-T8-R3X"/>
                                     <constraint firstItem="Q3R-s2-1Rz" firstAttribute="top" secondItem="Vy4-Kb-Env" secondAttribute="top" constant="4" id="leo-sC-XTv"/>
                                     <constraint firstAttribute="trailing" secondItem="Q3R-s2-1Rz" secondAttribute="trailing" id="ljX-mi-wtP"/>
                                     <constraint firstItem="04Q-RS-Dtl" firstAttribute="top" secondItem="Q3R-s2-1Rz" secondAttribute="bottom" constant="12" id="mhQ-K7-L0u"/>
@@ -105,20 +105,20 @@
                                 <rect key="frame" x="20" y="284.66666666666669" width="335" height="78"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-emoji-pear" translatesAutoresizingMaskIntoConstraints="NO" id="2o8-qv-NrA">
-                                        <rect key="frame" x="0.0" y="9" width="60" height="60"/>
+                                        <rect key="frame" x="10" y="9" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="ase-Rl-obB"/>
                                             <constraint firstAttribute="width" secondItem="2o8-qv-NrA" secondAttribute="height" multiplier="1:1" id="zZx-FM-E4U"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See someone for a friend?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hOU-aS-Mf0">
-                                        <rect key="frame" x="80" y="4" width="255" height="25"/>
+                                        <rect key="frame" x="90" y="4" width="245" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pear them up ;)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YF4-E6-TKZ">
-                                        <rect key="frame" x="80" y="41" width="255" height="25"/>
+                                        <rect key="frame" x="90" y="41" width="245" height="25"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito SemiBold" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -127,7 +127,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="YF4-E6-TKZ" firstAttribute="leading" secondItem="hOU-aS-Mf0" secondAttribute="leading" id="3Du-v8-4G7"/>
-                                    <constraint firstItem="2o8-qv-NrA" firstAttribute="leading" secondItem="ZGX-FQ-fqc" secondAttribute="leading" id="CoC-N6-fr4"/>
+                                    <constraint firstItem="2o8-qv-NrA" firstAttribute="leading" secondItem="ZGX-FQ-fqc" secondAttribute="leading" constant="10" id="CoC-N6-fr4"/>
                                     <constraint firstAttribute="trailing" secondItem="hOU-aS-Mf0" secondAttribute="trailing" id="Euq-Ge-8Kn"/>
                                     <constraint firstItem="YF4-E6-TKZ" firstAttribute="trailing" secondItem="hOU-aS-Mf0" secondAttribute="trailing" id="QTr-FF-QxD"/>
                                     <constraint firstItem="2o8-qv-NrA" firstAttribute="centerY" secondItem="ZGX-FQ-fqc" secondAttribute="centerY" id="T1w-lQ-2wC"/>
@@ -141,20 +141,20 @@
                                 <rect key="frame" x="20" y="368.66666666666669" width="335" height="78"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-emoji-cry" translatesAutoresizingMaskIntoConstraints="NO" id="oxa-Jh-Q2y">
-                                        <rect key="frame" x="0.0" y="9" width="60" height="60"/>
+                                        <rect key="frame" x="10" y="9" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oxa-Jh-Q2y" secondAttribute="height" multiplier="1:1" id="WfD-cX-Q2F"/>
                                             <constraint firstAttribute="width" constant="60" id="k5P-0k-N2A"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get boasted/roasted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hsi-fN-L53">
-                                        <rect key="frame" x="80" y="4" width="255" height="25"/>
+                                        <rect key="frame" x="90" y="4" width="245" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See what your friends say" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Fiw-HU-W2X">
-                                        <rect key="frame" x="80" y="41" width="255" height="25"/>
+                                        <rect key="frame" x="90" y="41" width="245" height="25"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito SemiBold" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -168,7 +168,7 @@
                                     <constraint firstItem="Fiw-HU-W2X" firstAttribute="leading" secondItem="hsi-fN-L53" secondAttribute="leading" id="R4m-5q-c4a"/>
                                     <constraint firstAttribute="trailing" secondItem="hsi-fN-L53" secondAttribute="trailing" id="WYq-xS-hiV"/>
                                     <constraint firstItem="hsi-fN-L53" firstAttribute="leading" secondItem="oxa-Jh-Q2y" secondAttribute="trailing" constant="20" id="Zob-WO-pWM"/>
-                                    <constraint firstItem="oxa-Jh-Q2y" firstAttribute="leading" secondItem="C29-pw-p5a" secondAttribute="leading" id="arV-xU-k5J"/>
+                                    <constraint firstItem="oxa-Jh-Q2y" firstAttribute="leading" secondItem="C29-pw-p5a" secondAttribute="leading" constant="10" id="arV-xU-k5J"/>
                                     <constraint firstAttribute="bottom" secondItem="Fiw-HU-W2X" secondAttribute="bottom" constant="12" id="kHW-77-7Nt"/>
                                     <constraint firstItem="Fiw-HU-W2X" firstAttribute="trailing" secondItem="hsi-fN-L53" secondAttribute="trailing" id="ovf-d8-X5S"/>
                                 </constraints>
