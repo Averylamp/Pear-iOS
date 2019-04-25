@@ -51,7 +51,9 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     self.stylize()
     
     window = UIWindow(frame: UIScreen.main.bounds)
-    let navController = DiscoverySetupViewController.instantiate()
+    guard let navController = LandingNavigationViewController.instantiate() else {
+      fatalError("Something went horribly wrong")
+    }
     window?.rootViewController = navController
     //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()
