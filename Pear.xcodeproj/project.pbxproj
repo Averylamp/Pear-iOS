@@ -242,6 +242,7 @@
 		BBBA5749226DC9F5000BCD5F /* InputTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */; };
 		BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */; };
 		BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */; };
+		BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */; };
 		BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */; };
 		BBC0FF1B22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */; };
 		BBC0FF1D227069FC00632924 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */; };
@@ -587,6 +588,7 @@
 		BBBA5748226DC9F5000BCD5F /* InputTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTableViewController.swift; sourceTree = "<group>"; };
 		BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputItemTableViewCell.swift; sourceTree = "<group>"; };
 		BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
+		BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewItemViewController.swift; sourceTree = "<group>"; };
 		BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingBoastRoastInputViewController.swift; sourceTree = "<group>"; };
 		BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingBoastRoastInputViewController.storyboard; sourceTree = "<group>"; };
 		BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
@@ -1166,6 +1168,7 @@
 				BB3F02852271B178004855E8 /* Profile Boast Roast */,
 				BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */,
 				BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */,
+				BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -2744,6 +2747,7 @@
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
+				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,
 				BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BBECBEC52237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift in Sources */,

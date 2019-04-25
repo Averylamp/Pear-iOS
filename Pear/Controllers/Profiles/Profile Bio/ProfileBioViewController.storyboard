@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="width" secondItem="G6D-1C-fVv" secondAttribute="height" multiplier="1:1" id="9GU-5d-Gj4"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzZ-2Y-X27">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzZ-2Y-X27">
                                 <rect key="frame" x="58" y="4" width="348" height="138"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -50,8 +50,8 @@
                             <constraint firstItem="G6D-1C-fVv" firstAttribute="leading" secondItem="dXd-ui-e0Z" secondAttribute="leading" constant="10" id="LTu-PJ-VIv"/>
                             <constraint firstItem="dXd-ui-e0Z" firstAttribute="trailing" secondItem="nzZ-2Y-X27" secondAttribute="trailing" constant="8" id="R4W-Oa-3iJ"/>
                             <constraint firstItem="aHn-Q1-iEz" firstAttribute="trailing" secondItem="nzZ-2Y-X27" secondAttribute="trailing" id="WKC-R9-gjT"/>
-                            <constraint firstItem="nzZ-2Y-X27" firstAttribute="top" secondItem="dXd-ui-e0Z" secondAttribute="top" constant="4" id="fUP-mZ-j5B"/>
-                            <constraint firstItem="dXd-ui-e0Z" firstAttribute="bottom" secondItem="aHn-Q1-iEz" secondAttribute="bottom" constant="4" id="hsf-vf-1Fn"/>
+                            <constraint firstItem="nzZ-2Y-X27" firstAttribute="top" secondItem="dXd-ui-e0Z" secondAttribute="top" priority="900" constant="4" id="fUP-mZ-j5B"/>
+                            <constraint firstItem="dXd-ui-e0Z" firstAttribute="bottom" secondItem="aHn-Q1-iEz" secondAttribute="bottom" priority="900" constant="4" id="hsf-vf-1Fn"/>
                             <constraint firstItem="aHn-Q1-iEz" firstAttribute="top" secondItem="nzZ-2Y-X27" secondAttribute="bottom" priority="900" constant="4" id="nOS-VH-bhb"/>
                             <constraint firstItem="aHn-Q1-iEz" firstAttribute="leading" secondItem="nzZ-2Y-X27" secondAttribute="leading" id="xqY-wX-fRy"/>
                         </constraints>
