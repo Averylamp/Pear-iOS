@@ -47,9 +47,7 @@ class ApproveDetachedProfileViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     
     if let currentUserID = DataStore.shared.currentPearUser?.documentID {
-      PearProfileAPI.shared.attachDetachedProfile(user_id: currentUserID,
-                                                  detachedProfile_id: detachedProfile.documentID,
-                                                  creatorUser_id: detachedProfile.creatorUserID) { (result) in
+      PearProfileAPI.shared.attachDetachedProfile(detachedProfile: self.detachedProfile) { (result) in
         DispatchQueue.main.async {
           
           switch result {

@@ -64,7 +64,8 @@ class ApproveDetachedProfileFoundViewController: UIViewController {
 //    }
 //
 //    self.navigationController?.pushViewController(updatePhotosVC, animated: true)
-    guard let fullProfileApprovalVC = ApproveProfileViewController.instantiate(profileData: FullProfileDisplayData(detachedProfile: self.detachedProfile)) else {
+    guard let fullProfileApprovalVC = ApproveProfileViewController.instantiate(profileData: FullProfileDisplayData(detachedProfile: self.detachedProfile),
+                                                                               detachedProfile: self.detachedProfile) else {
       print("Failed to create full detached profile view")
       return
     }

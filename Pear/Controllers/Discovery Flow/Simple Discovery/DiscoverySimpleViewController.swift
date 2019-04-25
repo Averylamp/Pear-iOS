@@ -137,6 +137,7 @@ extension DiscoverySimpleViewController {
     }
   }
   
+  // copied in DiscoverySetupViewController: update both if updating this logic
   func fullDataReload(animated: Bool = false) {
     print("Discovery Full Reload")
     if animated {
@@ -149,6 +150,7 @@ extension DiscoverySimpleViewController {
     self.refreshFeed(animated: animated)
   }
   
+  // copied in DiscoverySetupViewController: update both if updating this logic
   func checkForDetachedProfiles() {
     DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
       print("\(detachedProfiles.count) Detached Profiles Found")

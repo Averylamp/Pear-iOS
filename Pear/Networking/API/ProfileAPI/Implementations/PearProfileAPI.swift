@@ -201,24 +201,17 @@ extension PearProfileAPI {
     
   }
   
-  func attachDetachedProfile(user_id: String, detachedProfile_id: String, creatorUser_id: String,
-                             approvedContent: [String: Any], completion: @escaping(Result<Bool, DetachedProfileError>) -> Void) {
+  func attachDetachedProfile(detachedProfile: PearDetachedProfile, completion: @escaping(Result<Bool, DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
-    var allInputs = approvedContent
-    allInputs["user_id"] = user_id
-    allInputs["detachedProfile_id"] = detachedProfile_id
-    allInputs["creatorUser_id"] = creatorUser_id
-    
     do {
-      
       let fullDictionary: [String: Any] = [
         "query": PearProfileAPI.attachDetachedProfileQuery,
         "variables": [
-          "approveDetachedProfileInput": allInputs
+          "approveDetachedProfileInput": try convertApprovalInputDataToQueryVariable(detachedProfile: detachedProfile)
         ]
       ]
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
@@ -483,7 +476,6 @@ extension PearProfileAPI {
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
-    
     guard validateDetachedProfileUpdates(updates: updates) else {
       print("Invalid update values")
       SentryHelper.generateSentryEvent(level: .error,
@@ -586,6 +578,22 @@ extension PearProfileAPI {
       "vibes": profileData.vibes.map({ $0.toGraphQLInput() })
     ]
     
+    return variablesDictionary
+  }
+  
+  func convertApprovalInputDataToQueryVariable(detachedProfile: PearDetachedProfile) throws -> [String: Any] {
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      throw DetachedProfileError.userNotLoggedIn
+    }
+    let variablesDictionary: [String: Any] = [
+      "user_id": userID,
+      "detachedProfile_id": detachedProfile.documentID as Any,
+      "creatorUser_id": detachedProfile.creatorUserID as Any,
+      "boasts": detachedProfile.boasts.map({ $0.toGraphQLInput() }),
+      "roasts": detachedProfile.roasts.map({ $0.toGraphQLInput() }),
+      "questionResponses": detachedProfile.questionResponses.map({ $0.toGraphQLInput() }),
+      "vibes": detachedProfile.vibes.map({ $0.toGraphQLInput() })
+    ]
     return variablesDictionary
   }
   
