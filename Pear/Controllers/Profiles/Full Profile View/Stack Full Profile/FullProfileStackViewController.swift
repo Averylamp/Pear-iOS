@@ -26,6 +26,19 @@ class FullProfileStackViewController: UIViewController {
   
 }
 
+enum SectionType {
+  case textItems
+  case image
+  case questions
+}
+
+struct SectionItem {
+  let sectionType: SectionType
+  let textItems: [TextContentItem]?
+  let image: ImageContainer?
+  let question: [QuestionResponseItem]?
+}
+
 // MARK: - Life Cycle
 extension FullProfileStackViewController {
   override func viewDidLoad() {
@@ -33,20 +46,7 @@ extension FullProfileStackViewController {
     self.stylize()
   }
   
-  enum SectionType {
-    case textItems
-    case image
-    case questions
-  }
-  
-  struct SectionItem {
-    let sectionType: SectionType
-    let textItems: [TextContentItem]?
-    let image: ImageContainer?
-    let question: [QuestionResponseItem]?
-  }
-  
-  func sectionItemsFromProfile(profile: FullProfileDisplayData) -> [SectionItem] {
+  static func sectionItemsFromProfile(profile: FullProfileDisplayData) -> [SectionItem] {
     var images = profile.imageContainers
     var textItems: [[TextContentItem]] = []
     if profile.bios.count > 0 {
@@ -99,7 +99,7 @@ extension FullProfileStackViewController {
                           locationName: self.fullProfileData.locationName,
                           vibes: self.fullProfileData.vibes)
     
-    let sectionItems = self.sectionItemsFromProfile(profile: self.fullProfileData)
+    let sectionItems = FullProfileStackViewController.sectionItemsFromProfile(profile: self.fullProfileData)
     for sectionItem in sectionItems {
       switch sectionItem.sectionType {
       case .image:
@@ -107,20 +107,22 @@ extension FullProfileStackViewController {
           self.addImageVC(imageContainer: image)
         }
       case .textItems:
-        if sectionItem.textItems is [BioItem]? {
-          self.addSectionTitle(title: "BIOS")
-        } else if sectionItem.textItems is [BoastItem]? {
-          self.addSectionTitle(title: "BOASTS")
-        } else if sectionItem.textItems is [RoastItem]? {
-          self.addSectionTitle(title: "ROASTS")
-        }
         if let textItems = sectionItem.textItems {
-          self.addScrollableContent(content: textItems)
+          if sectionItem.textItems is [BioItem]? {
+            self.addSectionTitle(title: "BIOS")
+          } else if sectionItem.textItems is [BoastItem]? {
+            self.addSectionTitle(title: "BOASTS")
+          } else if sectionItem.textItems is [RoastItem]? {
+            self.addSectionTitle(title: "ROASTS")
+          }
+          self.addScrollableTextContent(content: textItems)
         }
       case .questions:
-        break
+        if let questionItems = sectionItem.question {
+          self.addSectionTitle(title: "Q&A")
+          self.addScrollableQuestionContent(content: questionItems)
+        }
       }
-      
     }
     
   }
@@ -210,7 +212,7 @@ extension FullProfileStackViewController {
     imageVC.didMove(toParent: self)
   }
   
-  func addScrollableContent(content: [TextContentItem]) {
+  func addScrollableTextContent(content: [TextContentItem]) {
     guard let scrollableContentVC = ScrollableTextItemViewController.instantiate(items: content) else {
       print("failed to instantiate scrollable text item")
       return
@@ -218,7 +220,16 @@ extension FullProfileStackViewController {
     self.addChild(scrollableContentVC)
     self.stackView.addArrangedSubview(scrollableContentVC.view)
     scrollableContentVC.didMove(toParent: self)
-    
+  }
+
+  func addScrollableQuestionContent(content: [QuestionResponseItem]) {
+    guard let scrollableContentVC = ScrollableQuestionItemViewController.instantiate(items: content) else {
+      print("failed to instantiate scrollable questions item")
+      return
+    }
+    self.addChild(scrollableContentVC)
+    self.stackView.addArrangedSubview(scrollableContentVC.view)
+    scrollableContentVC.didMove(toParent: self)
   }
   
   func addInterestsVC(interests: [String]) {
