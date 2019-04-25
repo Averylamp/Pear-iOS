@@ -53,6 +53,7 @@ class Match: Decodable, CustomStringConvertible {
   var otherUser: PearUser
   var currentUserStatus: MatchRequestResponse
   var otherUserStatus: MatchRequestResponse
+  var currentUserLastUpdated: Date
   
   var description: String {
     return "**** Match Object **** \n" + """
@@ -123,6 +124,7 @@ class Match: Decodable, CustomStringConvertible {
     self.otherUser = self.sentForUser.documentID == userID ? self.receivedByUser : self.sentForUser
     self.currentUserStatus = self.sentForUser.documentID == userID ? self.sentForUserStatus : self.receivedByUserStatus
     self.otherUserStatus = self.sentForUser.documentID == userID ? self.receivedByUserStatus : self.sentForUserStatus
+    self.currentUserLastUpdated = self.sentForUser.documentID == userID ? self.sentForUserStatusLastUpdated : self.receivedByUserStatusLastUpdated
   }
   
   func fetchFirebaseChatObject(completion: ((Match?) -> Void)?) {

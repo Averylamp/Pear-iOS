@@ -60,6 +60,22 @@ class ProfileInputBoastRoastViewController: UIViewController {
       Analytics.logEvent("CP_r&b_TAP_addRoast", parameters: nil)
     }
   }
+  @IBAction func cancelButtonClicked(_ sender: Any) {
+    let alertController = UIAlertController(title: "Delete profile?", message: "Your progress will not be saved", preferredStyle: .alert)
+    let alertAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+    let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+      DispatchQueue.main.async {
+        guard let createProfileVC = LoadingScreenViewController.getProfileCreationVC() else {
+          print("Failure instantiating  create profile VC")
+          return
+        }
+        self.navigationController?.setViewControllers([createProfileVC], animated: true)
+      }
+    }
+    alertController.addAction(alertAction)
+    alertController.addAction(deleteAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
   
   func saveBoastRoasts() {
     if let boasts = self.textVCs.filter({ $0.type == .boast}).compactMap({ $0.getBoastRoastItem()}) as? [BoastItem] {

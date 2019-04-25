@@ -39,6 +39,9 @@
                                             <constraint firstAttribute="width" secondItem="DKs-aO-fga" secondAttribute="height" multiplier="1:1" id="kSo-oK-r77"/>
                                         </constraints>
                                         <state key="normal" image="icon-cancel-button"/>
+                                        <connections>
+                                            <action selector="cancelButtonClicked:" destination="pr2-9c-pyo" eventType="touchUpInside" id="vGq-vK-cOn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

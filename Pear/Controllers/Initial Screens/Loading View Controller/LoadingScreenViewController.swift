@@ -45,7 +45,7 @@ extension LoadingScreenViewController {
             if let pearUser = pearUser {
               if pearUser.endorsedUserIDs.count + pearUser.detachedProfileIDs.count  == 0 {
                 DispatchQueue.main.async {
-                  if let contactPermissionVC = UserContactPermissionsViewController.instantiate() {
+                  if let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() {
                     print("Creating permissions VC")
                     self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
                     return
@@ -163,6 +163,14 @@ extension LoadingScreenViewController {
       return nil
     }
     return waitlistVC
+  }
+  
+  static func getProfileCreationVC() -> UIViewController? {
+    guard let profileCreationVC = UserContactPermissionsViewController.instantiate() else {
+      print("Failed to instantiate contacts enabled VC")
+      return nil
+    }
+    return profileCreationVC
   }
   
   func continueToMainScreen() {

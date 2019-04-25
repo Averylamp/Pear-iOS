@@ -27,7 +27,7 @@ class ProfileCreationFinishedViewController: UIViewController {
   @IBAction func makeAnotherButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     Analytics.logEvent("CP_postCreation_TAP_createAnother", parameters: nil)
-    guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
+    guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
       print("Failed to instantiate contact permisssion vc")
       return
     }

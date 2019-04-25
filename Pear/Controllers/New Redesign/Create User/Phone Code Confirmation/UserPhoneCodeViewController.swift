@@ -153,7 +153,7 @@ extension UserPhoneCodeViewController {
                 DispatchQueue.main.async {
                   DataStore.shared.currentPearUser = pearUser
                   DataStore.shared.reloadAllUserData()
-                  guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
+                  guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
                     print("Failed to instantiate contact permisssion vc")
                     return
                   }

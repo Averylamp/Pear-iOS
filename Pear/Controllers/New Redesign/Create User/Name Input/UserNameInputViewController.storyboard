@@ -45,6 +45,9 @@
                                             <constraint firstAttribute="height" constant="30" id="nbX-5M-2qp"/>
                                         </constraints>
                                         <state key="normal" image="icon-cancel-button"/>
+                                        <connections>
+                                            <action selector="cancelButtonClicked:" destination="nIG-Og-yRX" eventType="touchUpInside" id="EdJ-bL-dNc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

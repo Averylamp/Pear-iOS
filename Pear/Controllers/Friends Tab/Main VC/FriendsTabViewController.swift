@@ -103,7 +103,7 @@ extension FriendsTabViewController: UICollectionViewDelegate, UICollectionViewDa
       }
       self.navigationController?.pushViewController(friendFullProfileVC, animated: true)
     } else {
-      guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
+      guard let startFriendVC = LoadingScreenViewController.getProfileCreationVC() else {
         print("Failed to create get started friend profile vc")
         return
       }
