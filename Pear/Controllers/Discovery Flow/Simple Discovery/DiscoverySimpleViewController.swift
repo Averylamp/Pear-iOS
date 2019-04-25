@@ -263,18 +263,9 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
     cell.delegate = self
     let fullProfile = self.fullProfiles[indexPath.row]
     cell.selectionStyle = .none
-
+    cell.layoutIfNeeded()
     cell.configureCell(profileData: fullProfile)
-//    cell.cardView.layer.cornerRadius = 12
-//    cell.cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
-//    cell.cardView.layer.borderWidth = 1
-//    cell.cardView.clipsToBounds = true
-//    cell.cardShadowView.layer.shadowOpacity = 0.4
-//    cell.cardShadowView.layer.shadowColor = R.color.shadowColor()?.cgColor
-//    cell.cardShadowView.layer.shadowOffset = CGSize(width: 1, height: 1 )
-//    cell.cardShadowView.layer.shadowRadius = 2
-//    cell.cardShadowView.layer.cornerRadius = cell.cardView.layer.cornerRadius
-
+    cell.layoutIfNeeded()
     return cell
   }
   

@@ -12,15 +12,13 @@ import CoreLocation
 
 protocol DiscoveryTableViewCellDelegate: class {
   func fullProfileViewTriggered(profileData: FullProfileDisplayData)
-  func receivedVerticalPanTranslation(yTranslation: CGFloat)
-  func endedVerticalPanTranslation(yVelocity: CGFloat)
 }
 
 class DiscoveryTableViewCell: UITableViewCell {
   
   weak var delegate: DiscoveryTableViewCellDelegate?
   
-  let boastRoastTag: Int = 1532
+  let contentItemTag: Int = 1532
   let imageTag: Int = 528
   
   @IBOutlet weak var profileStackView: UIStackView!
@@ -30,12 +28,19 @@ class DiscoveryTableViewCell: UITableViewCell {
   @IBOutlet weak var extraInfoStackView: UIStackView!
   @IBOutlet weak var vibeImageView: UIImageView!
   @IBOutlet weak var vibeImageWidthConstraint: NSLayoutConstraint!
+  @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
+  @IBOutlet weak var imageNumberControl: UIPageControl!
+  
+  var profileData: FullProfileDisplayData?
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.imageScrollView.subviews.forEach({$0.removeFromSuperview()})
+    self.imageScrollView.subviews.filter({ $0.tag == self.imageTag}).forEach({$0.removeFromSuperview()})
     self.imageScrollView.isPagingEnabled = true
-    
+    self.imageScrollView.showsHorizontalScrollIndicator = false
+    self.imageScrollView.delegate = self
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DiscoveryTableViewCell.scrollViewTapped))
+    self.imageScrollView.addGestureRecognizer(tapGestureRecognizer)
   }
   
   @IBAction func moreButtonClicked(_ sender: UIButton) {
@@ -44,9 +49,8 @@ class DiscoveryTableViewCell: UITableViewCell {
   
   override func layoutIfNeeded() {
     super.layoutIfNeeded()
-    let imageCount = self.imageScrollView.subviews.filter({$0.tag == self.imageTag}).count
-    self.imageScrollView.contentSize = CGSize(width: self.imageScrollView.frame.width * CGFloat(imageCount),
-                                              height: self.imageScrollView.frame.height)
+    let imageCount = self.imageScrollView.subviews.filter({ $0.tag == self.imageTag}).count
+    self.scrollViewWidthConstraint.constant = self.imageScrollView.frame.width * CGFloat(imageCount - 1)
   }
   
 }
@@ -54,7 +58,7 @@ class DiscoveryTableViewCell: UITableViewCell {
 // MARK: - Cell Configuration
 extension DiscoveryTableViewCell {
   func configureCell(profileData: FullProfileDisplayData) {
-    
+    self.profileData = profileData
     if let firstName = profileData.firstName {
       if let age = profileData.age {
         self.nameLabel.text = "\(firstName), \(age)"
@@ -99,22 +103,29 @@ extension DiscoveryTableViewCell {
     }
     self.populateImages(images: profileData.imageContainers)
     
-    self.profileStackView.subviews.filter({$0.tag == self.boastRoastTag}).forEach({
+    self.profileStackView.subviews.filter({$0.tag == self.contentItemTag}).forEach({
       self.profileStackView.removeArrangedSubview($0)
       $0.removeFromSuperview()
     })
-    
+
     if let boastItem = profileData.boasts.first {
       self.addBoastRoastItem(item: boastItem, userName: profileData.firstName)
     }
     if let roastItem = profileData.roasts.first {
       self.addBoastRoastItem(item: roastItem, userName: profileData.firstName)
     }
+    if profileData.boasts.count + profileData.roasts.count == 0,
+      let bioItem = profileData.bios.first {
+      self.addBioItem(item: bioItem)
+    }
     
   }
   
   func populateImages(images: [ImageContainer]) {
-    self.imageScrollView.subviews.forEach({$0.removeFromSuperview()})
+    self.imageNumberControl.numberOfPages = images.count
+    self.imageNumberControl.currentPage = 0
+    print("Populating \(images.count) images")
+    self.imageScrollView.subviews.filter({ $0.tag == self.imageTag}).forEach({$0.removeFromSuperview()})
     self.layoutIfNeeded()
     for index in 0..<images.count {
       let image = images[index]
@@ -142,9 +153,7 @@ extension DiscoveryTableViewCell {
         ])
       
     }
-    self.layoutIfNeeded()
-    self.imageScrollView.contentSize = CGSize(width: self.imageScrollView.frame.width * CGFloat(images.count),
-                                              height: self.imageScrollView.frame.height)
+    self.scrollViewWidthConstraint.constant = self.imageScrollView.frame.width * CGFloat(images.count)
     
   }
   
@@ -201,12 +210,22 @@ extension DiscoveryTableViewCell {
   }
   
   func addBoastRoastItem(item: BoastRoastItem, userName: String?) {
-    guard let boastRoastVC = ProfileBoastRoastViewController.instantiate(boastRoastItem: item, userName: userName) else {
+    guard let boastRoastVC = ProfileBoastRoastViewController.instantiate(boastRoastItem: item, userName: userName,
+                                                                         style: .discovery, maxLines: 3) else {
       print("Failed to create Boast Roast Item")
       return
     }
-    boastRoastVC.view.tag = self.boastRoastTag
+    boastRoastVC.view.tag = self.contentItemTag
     self.profileStackView.addArrangedSubview(boastRoastVC.view)
+  }
+  
+  func addBioItem(item: BioItem) {
+    guard let bioItemVC = ProfileBioViewController.instantiate(bioItem: item, maxLines: 4) else {
+      print("Failed to create Bio Item VC")
+      return
+    }
+    bioItemVC.view.tag = self.contentItemTag
+    self.profileStackView.addArrangedSubview(bioItemVC.view)
   }
   
 }
@@ -216,11 +235,18 @@ extension DiscoveryTableViewCell: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     
     let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
-    
+    if Int(pageIndex) < self.imageNumberControl.numberOfPages {
+      self.imageNumberControl.currentPage = Int(pageIndex)
+    }
   }
   
 }
 
 extension DiscoveryTableViewCell {
-  
+  @objc func scrollViewTapped() {
+    if let delegate = delegate,
+      let profileData = self.profileData {
+      delegate.fullProfileViewTriggered(profileData: profileData)
+    }
+  }
 }

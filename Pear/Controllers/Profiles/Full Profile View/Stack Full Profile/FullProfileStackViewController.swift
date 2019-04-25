@@ -154,18 +154,18 @@ extension FullProfileStackViewController {
   }
   
   func addBioVC(bioContent: [BioContent]) {
-    guard let bioVC = ProfileBioViewController.instantiate(bioContent: bioContent) else {
-      print("Failed to create bio VC")
-      return
-    }
-    self.addChild(bioVC)
-    self.stackView.addArrangedSubview(bioVC.view)
-    bioVC.didMove(toParent: self)
-    if bioContent.count == 0 {
-      bioVC.view.isHidden = true
-    } else {
-      bioVC.view.isHidden = false
-    }
+//    guard let bioVC = ProfileBioViewController.instantiate(bioContent: bioContent) else {
+//      print("Failed to create bio VC")
+//      return
+//    }
+//    self.addChild(bioVC)
+//    self.stackView.addArrangedSubview(bioVC.view)
+//    bioVC.didMove(toParent: self)
+//    if bioContent.count == 0 {
+//      bioVC.view.isHidden = true
+//    } else {
+//      bioVC.view.isHidden = false
+//    }
   }
   
   func addInterestsVC(interests: [String]) {
