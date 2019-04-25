@@ -397,6 +397,15 @@ extension PearUserAPI {
                                             completion: completion)
   }
   
+  func updateUserGender(userID: String,
+                        gender: GenderEnum,
+                        completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+    let genderDictionary: [String: Any] = [
+      "gender": gender.toString()
+    ]
+    self.updateUserWithPreferenceDictionary(userID: userID, inputDictionary: genderDictionary, mutationName: "UpdateUserGender", completion: completion)
+  }
+  
   func updateUser(userID: String,
                   updates: [String: Any],
                   completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
@@ -423,7 +432,6 @@ extension PearUserAPI {
         "userInput": allInputs
       ]
     ]
-    
     do {
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       request.httpBody = data
@@ -441,7 +449,6 @@ extension PearUserAPI {
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
-          
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "updateUser")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
@@ -479,7 +486,6 @@ extension PearUserAPI {
                                        message: error.localizedDescription)
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
-    
   }
   
   func getExistingUsers(checkNumbers: [String], completion: @escaping(Result<[String], UserAPIError>) -> Void) {
@@ -494,12 +500,10 @@ extension PearUserAPI {
         "phoneNumbers": checkNumbers
       ]
     ]
-    
     do {
       
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       request.httpBody = data
-      
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
         print("Data task returned")
         if let error = error {
@@ -571,26 +575,21 @@ extension PearUserAPI {
     if let firebaseRemoteInstanceID = userData.firebaseRemoteInstanceID {
       variablesDictionary["firebaseRemoteInstanceID"] = firebaseRemoteInstanceID
     }
-    
     if let location = userData.lastLocation {
       variablesDictionary["location"] = [location.longitude, location.latitude]
     }
-    
     let birthdayFormatter = DateFormatter()
     birthdayFormatter.dateFormat = "yyyy-MM-dd"
     variablesDictionary["birthdate"] = birthdayFormatter.string(from: birthdate)
-    
     if let facebookId = userData.facebookId {
       variablesDictionary["facebookId"] = facebookId
     }
     if let facebookAccessToken = userData.facebookAccessToken {
       variablesDictionary["facebookAccessToken"] = facebookAccessToken
     }
-    
     if let thumbnailURL = userData.thumbnailURL {
       variablesDictionary["thumbnailURL"] = thumbnailURL
     }
-    
     return variablesDictionary
   }
 }
