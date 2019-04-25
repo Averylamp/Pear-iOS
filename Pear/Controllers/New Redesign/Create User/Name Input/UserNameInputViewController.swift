@@ -66,6 +66,7 @@ class UserNameInputViewController: UIViewController {
         DataStore.shared.refreshPearUser(completion: nil)
       }
     }
+    Analytics.logEvent("CP_firstName_DONE", parameters: nil)
   }
   
   func promptMessageComposer() {
@@ -96,7 +97,9 @@ class UserNameInputViewController: UIViewController {
         messageVC.body = "I wrote something for you on Pear! Check it out 🍐 https://getpear.com/go/refer"
         
         self.present(messageVC, animated: true, completion: nil)
+        Analytics.logEvent("CP_sendProfileSMS_START", parameters: nil)
       } else {
+        Analytics.logEvent("CP_sendProfileSMS_FAIL", parameters: nil)
         createDetachedProfile()
       }
     }
@@ -107,7 +110,7 @@ class UserNameInputViewController: UIViewController {
     PearProfileAPI.shared.createNewDetachedProfile(profileCreationData: self.profileData) { (result) in
       switch result {
       case .success(let detachedProfile):
-        Analytics.logEvent("CP_success", parameters: nil)
+        Analytics.logEvent("CP_SUCCESS", parameters: nil)
         print(detachedProfile)
         DataStore.shared.reloadAllUserData()
         DispatchQueue.main.async {
@@ -119,6 +122,7 @@ class UserNameInputViewController: UIViewController {
         }
       case .failure(let error):
         print(error)
+        Analytics.logEvent("CP_FAIL", parameters: nil)
         DispatchQueue.main.async {
           switch error {
           case .graphQLError(let message):

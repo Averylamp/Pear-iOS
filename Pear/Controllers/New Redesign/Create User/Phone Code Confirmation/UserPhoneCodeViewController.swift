@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseAnalytics
 import NVActivityIndicatorView
 
 class UserPhoneCodeViewController: UIViewController {
@@ -44,6 +45,7 @@ class UserPhoneCodeViewController: UIViewController {
   
   @IBAction func resendButtonClicked(_ sender: Any) {
     if resendButtonTime <= 0 {
+      Analytics.logEvent("CP_phoneAuth_TAP_resendCode", parameters: nil)
       self.hiddenInputField.text = ""
       self.updateCodeNumberLabels()
       if let phoneNumber = self.userCreationData.phoneNumber {
@@ -134,29 +136,41 @@ extension UserPhoneCodeViewController {
           print("Failed to sign in properly")
           return
         }
-        self.userCreationData.firebaseAuthID = authUID
-        PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
-          switch result {
-          case .success(let pearUser):
+        DataStore.shared.refreshPearUser { (user) in
+          if let user = user {
+            print("Continuing to Main Screen")
             DispatchQueue.main.async {
-              DataStore.shared.currentPearUser = pearUser
               DataStore.shared.reloadAllUserData()
-              guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
-                print("Failed to instantiate contact permisssion vc")
-                return
+              if let mainVC = LoadingScreenViewController.getMainScreenVC() {
+                self.navigationController?.setViewControllers([mainVC], animated: true)
               }
-              self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
             }
-          case .failure(let error):
-            print("Failure creating Pear User: \(error)")
-            DispatchQueue.main.async {
-              self.hiddenInputField.text = ""
-              self.updateCodeNumberLabels()
-              self.alert(title: "Error creating User",
-                         message: "Unfortunately we are unable to create your user at this time, please try again later")
-            }
+          } else {
+            self.userCreationData.firebaseAuthID = authUID
+            PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
+              switch result {
+              case .success(let pearUser):
+                DispatchQueue.main.async {
+                  DataStore.shared.currentPearUser = pearUser
+                  DataStore.shared.reloadAllUserData()
+                  guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
+                    print("Failed to instantiate contact permisssion vc")
+                    return
+                  }
+                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+                }
+              case .failure(let error):
+                print("Failure creating Pear User: \(error)")
+                DispatchQueue.main.async {
+                  self.hiddenInputField.text = ""
+                  self.updateCodeNumberLabels()
+                  self.alert(title: "Error creating User",
+                             message: "Unfortunately we are unable to create your user at this time, please try again later")
+                }
+              }
+            })
           }
-        })
+        }
         
       }
       self.isVerifying = false

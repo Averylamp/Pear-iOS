@@ -47,13 +47,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iYO-As-Hbv" firstAttribute="top" secondItem="ME1-Kq-Nox" secondAttribute="top" constant="4" id="2rL-EF-V5H"/>
+                            <constraint firstItem="iYO-As-Hbv" firstAttribute="top" secondItem="ME1-Kq-Nox" secondAttribute="top" priority="900" constant="4" id="2rL-EF-V5H"/>
                             <constraint firstItem="TQP-hj-Dcv" firstAttribute="top" secondItem="iYO-As-Hbv" secondAttribute="bottom" priority="900" constant="4" id="4Bs-zn-ktW"/>
                             <constraint firstItem="TQP-hj-Dcv" firstAttribute="leading" secondItem="iYO-As-Hbv" secondAttribute="leading" id="5r4-Z1-nFi"/>
                             <constraint firstItem="xOx-j8-LM1" firstAttribute="leading" secondItem="ME1-Kq-Nox" secondAttribute="leading" constant="10" id="DNq-JI-kJ6"/>
                             <constraint firstItem="iYO-As-Hbv" firstAttribute="leading" secondItem="xOx-j8-LM1" secondAttribute="trailing" constant="8" id="acy-Bf-KzZ"/>
                             <constraint firstItem="TQP-hj-Dcv" firstAttribute="trailing" secondItem="iYO-As-Hbv" secondAttribute="trailing" id="ajT-eB-I1Y"/>
-                            <constraint firstItem="ME1-Kq-Nox" firstAttribute="bottom" secondItem="TQP-hj-Dcv" secondAttribute="bottom" constant="4" id="f0t-bs-a4O"/>
+                            <constraint firstItem="ME1-Kq-Nox" firstAttribute="bottom" secondItem="TQP-hj-Dcv" secondAttribute="bottom" priority="900" constant="4" id="f0t-bs-a4O"/>
                             <constraint firstItem="xOx-j8-LM1" firstAttribute="top" secondItem="ME1-Kq-Nox" secondAttribute="top" constant="10" id="rtT-v6-pvO"/>
                             <constraint firstItem="ME1-Kq-Nox" firstAttribute="trailing" secondItem="iYO-As-Hbv" secondAttribute="trailing" constant="8" id="xZO-lu-osW"/>
                         </constraints>

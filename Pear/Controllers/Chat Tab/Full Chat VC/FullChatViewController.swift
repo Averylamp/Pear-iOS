@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class FullChatViewController: UIViewController {
   
@@ -38,13 +39,8 @@ class FullChatViewController: UIViewController {
   }
   
   @IBAction func firstNameClicked(_ sender: Any) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    let fullProfile = FullProfileDisplayData(user: match.otherUser)
-    guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
-      print("failed to instantiate full profile scroll VC")
-      return
-    }
-    self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+    Analytics.logEvent("CHAT_thread_TAP_firstNameToProfile", parameters: nil)
+    self.goToFullProfile()
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -52,6 +48,8 @@ class FullChatViewController: UIViewController {
   }
   
   @IBAction func moreOptionsButtonClicked(_ sender: Any) {
+    Analytics.logEvent("CHAT_thread_TAP_moreOptions", parameters: nil)
+
     let alertController = UIAlertController()
     let unmatch = UIAlertAction(title: "Unmatch", style: .destructive) { (_) in
       guard let userID = DataStore.shared.currentPearUser?.documentID else {
@@ -61,12 +59,15 @@ class FullChatViewController: UIViewController {
       PearMatchesAPI.shared.unmatchRequest(uid: userID, matchID: self.match.documentID, reason: nil, completion: { (result) in
         switch result {
         case .success(let successful):
-          if successful {
-            print("Successfully unmatches")
-            HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-          } else {
-            print("Failed to Unmatch")
-            HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+          DispatchQueue.main.async {
+            if successful {
+              print("Successfully unmatches")
+              HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+              Analytics.logEvent("CHAT_thread_EV_unmatched", parameters: nil)
+            } else {
+              print("Failed to Unmatch")
+              HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+            }
           }
         case .failure(let error):
           print("Error unmatching: \(error)")
@@ -99,6 +100,7 @@ extension FullChatViewController {
     self.stylizeInputView()
     self.addKeyboardSizeNotifications()
     self.addDismissKeyboardOnViewClick()
+
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -111,6 +113,7 @@ extension FullChatViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
+    self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
   }
   
   func stylize() {
@@ -130,13 +133,25 @@ extension FullChatViewController {
     self.chat.updateLastSeenTime(completion: nil)
   }
   
+  func goToFullProfile() {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    let fullProfile = FullProfileDisplayData(user: match.otherUser)
+    guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
+      print("failed to instantiate full profile scroll VC")
+      return
+    }
+    self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+  }
+  
   @objc func acceptRequestButtonClicked() {
-   HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("CHAT_request_TAP_acceptButton", parameters: nil)
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
   }
   
   @objc func declineRequestButtonClicked() {
-   HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("CHAT_request_TAP_declineButton", parameters: nil)
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
   }
   
@@ -158,30 +173,33 @@ extension FullChatViewController {
                                                       self.match = match
                                                       self.chat = match.chat!
                                                       if match.otherUserStatus == .accepted && match.currentUserStatus == .accepted {
-                                                        HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                                                         DispatchQueue.main.async {
+                                                          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                                                           self.chat.delegate = self
                                                           self.chat.subscribeToMessages()
                                                           self.tableView.reloadData()
                                                           self.stylizeInputView()
                                                         }
                                                       } else {
-                                                        HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                                                         DispatchQueue.main.async {
+                                                          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                                                           self.navigationController?.popViewController(animated: true)
                                                         }
                                                       }
                                                     }
                                                   })
                                                 case .failure(let error):
-                                                  HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+                                                  DispatchQueue.main.async {
+                                                    HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)                                                    
+                                                  }
                                                   print("Failed to respond to request: \(error)")
                                                 }
     } 
   }
   
   @objc func sendMessageButtonClicked() {
-   self.sendMessage()
+    Analytics.logEvent("CHAT_thread_TAP_sendMessage", parameters: nil)
+    self.sendMessage()
   }
   
   func sendMessage() {
@@ -193,6 +211,7 @@ extension FullChatViewController {
         !self.sendingMessage {
         self.sendingMessage = true
         inputTextView.text = ""
+        self.recalculateTextViewHeight(animated: true)
         self.chat.sendMessage(text: messageText) { (error) in
           self.sendingMessage = false
           if let error = error {
@@ -382,6 +401,7 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
         print("No cell instantiated properly")
         return UITableViewCell()
       }
+      chatCell.delegate = self
       chatCell.selectionStyle = .default
       chatCell.selectionStyle = .none
       chatCell.backgroundColor = nil
@@ -401,6 +421,7 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   @objc func chatBubbleClicked(sender: UIButton) {
+    Analytics.logEvent("CHAT_thread_TAP_chatBubble", parameters: nil)
     if sender.tag < self.chat.messages.count {
       CATransaction.begin()
       CATransaction.setAnimationDuration(0.4)
@@ -507,6 +528,7 @@ extension FullChatViewController {
   }
   
   @objc func dismissKeyboard() {
+    Analytics.logEvent("CHAT_thread_EV_dismissKeyboard", parameters: nil)
     self.view.endEditing(true)
   }
 }
@@ -519,6 +541,15 @@ extension FullChatViewController: ChatDelegate {
       self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
       NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
       self.chat.updateLastSeenTime(completion: nil)
+    }
+  }
+}
+
+// MARK: - MesageTableCellDelegate
+extension FullChatViewController: ChatMessageCellDelegate {
+  func clickedOnIcon() {
+    DispatchQueue.main.async {
+      self.goToFullProfile()
     }
   }
 }
