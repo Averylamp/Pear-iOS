@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import FirebaseAnalytics
 
 public class DiscoverySetupViewController: UIViewController {
   @IBOutlet weak var joinMessageLabel: UILabel!
@@ -36,6 +37,7 @@ public class DiscoverySetupViewController: UIViewController {
   }
   
   @IBAction func enableLocationButtonPressed(_ sender: Any) {
+    Analytics.logEvent("DISC_setup_TAP_enableLoc", parameters: nil)
     DataStore.shared.locationManager.requestWhenInUseAuthorization()
   }
   
