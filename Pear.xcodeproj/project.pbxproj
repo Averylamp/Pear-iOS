@@ -31,6 +31,12 @@
 		917F20C32271701C0023EC69 /* FinishSetupUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20BF2271701B0023EC69 /* FinishSetupUserPreferencesViewController.storyboard */; };
 		917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20C02271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard */; };
 		917F20C52271701C0023EC69 /* FinishSetupUserGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20C12271701C0023EC69 /* FinishSetupUserGenderViewController.swift */; };
+		917F20CC22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20CB22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift */; };
+		917F20D02271A1F20023EC69 /* FinishSetupUserBirthdateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20CF2271A1F20023EC69 /* FinishSetupUserBirthdateViewController.storyboard */; };
+		917F20D32271A72D0023EC69 /* FinishSetupUserPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20D22271A72D0023EC69 /* FinishSetupUserPhotosViewController.swift */; };
+		917F20D52271B03B0023EC69 /* FinishSetupUserPhotosViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20D42271B03B0023EC69 /* FinishSetupUserPhotosViewController.storyboard */; };
+		917F20D82271BB230023EC69 /* FinishSetupUserSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20D72271BB230023EC69 /* FinishSetupUserSchoolViewController.swift */; };
+		917F20DA2271BB340023EC69 /* FinishSetupUserSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20D92271BB340023EC69 /* FinishSetupUserSchoolViewController.storyboard */; };
 		91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */; };
 		91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */; };
 		91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */; };
@@ -372,6 +378,12 @@
 		917F20BF2271701B0023EC69 /* FinishSetupUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FinishSetupUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
 		917F20C02271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FinishSetupUserGenderViewController.storyboard; sourceTree = "<group>"; };
 		917F20C12271701C0023EC69 /* FinishSetupUserGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishSetupUserGenderViewController.swift; sourceTree = "<group>"; };
+		917F20CB22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSetupUserBirthdateViewController.swift; sourceTree = "<group>"; };
+		917F20CF2271A1F20023EC69 /* FinishSetupUserBirthdateViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FinishSetupUserBirthdateViewController.storyboard; sourceTree = "<group>"; };
+		917F20D22271A72D0023EC69 /* FinishSetupUserPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSetupUserPhotosViewController.swift; sourceTree = "<group>"; };
+		917F20D42271B03B0023EC69 /* FinishSetupUserPhotosViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FinishSetupUserPhotosViewController.storyboard; sourceTree = "<group>"; };
+		917F20D72271BB230023EC69 /* FinishSetupUserSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSetupUserSchoolViewController.swift; sourceTree = "<group>"; };
+		917F20D92271BB340023EC69 /* FinishSetupUserSchoolViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FinishSetupUserSchoolViewController.storyboard; sourceTree = "<group>"; };
 		91BEE295225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		91BEE297225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveProfileAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterTableViewCell.swift; sourceTree = "<group>"; };
@@ -932,6 +944,9 @@
 			children = (
 				917F20C7227170310023EC69 /* Gender */,
 				917F20C82271703A0023EC69 /* Preferences */,
+				917F20CA22719C190023EC69 /* Birthdate */,
+				917F20D62271B9E40023EC69 /* School */,
+				917F20D12271A6960023EC69 /* Photos */,
 			);
 			path = "Finish Setup Flow";
 			sourceTree = "<group>";
@@ -952,6 +967,33 @@
 				917F20BE2271701B0023EC69 /* FinishSetupUserPreferencesViewController.swift */,
 			);
 			path = Preferences;
+			sourceTree = "<group>";
+		};
+		917F20CA22719C190023EC69 /* Birthdate */ = {
+			isa = PBXGroup;
+			children = (
+				917F20CF2271A1F20023EC69 /* FinishSetupUserBirthdateViewController.storyboard */,
+				917F20CB22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift */,
+			);
+			path = Birthdate;
+			sourceTree = "<group>";
+		};
+		917F20D12271A6960023EC69 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				917F20D22271A72D0023EC69 /* FinishSetupUserPhotosViewController.swift */,
+				917F20D42271B03B0023EC69 /* FinishSetupUserPhotosViewController.storyboard */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		917F20D62271B9E40023EC69 /* School */ = {
+			isa = PBXGroup;
+			children = (
+				917F20D72271BB230023EC69 /* FinishSetupUserSchoolViewController.swift */,
+				917F20D92271BB340023EC69 /* FinishSetupUserSchoolViewController.storyboard */,
+			);
+			path = School;
 			sourceTree = "<group>";
 		};
 		91BEE2942259951500A53171 /* Allow Notifications */ = {
@@ -2301,6 +2343,7 @@
 				BBF93E902267CF7A002841EE /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				BBF93E7B2267CCB3002841EE /* Cera Pro Regular Italic.otf in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
+				917F20D52271B03B0023EC69 /* FinishSetupUserPhotosViewController.storyboard in Resources */,
 				BBA2E1EE224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard in Resources */,
 				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
 				BBF93E8B2267CF7A002841EE /* OpenSans-SemiBold.ttf in Resources */,
@@ -2347,6 +2390,7 @@
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
+				917F20D02271A1F20023EC69 /* FinishSetupUserBirthdateViewController.storyboard in Resources */,
 				BBF93E932267CF7A002841EE /* OpenSans-LightItalic.ttf in Resources */,
 				BBF93E792267CCB3002841EE /* Cera Pro Light Italic.otf in Resources */,
 				BBF93E942267CF7A002841EE /* OpenSans-Regular.ttf in Resources */,
@@ -2368,6 +2412,7 @@
 				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
 				BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */,
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
+				917F20DA2271BB340023EC69 /* FinishSetupUserSchoolViewController.storyboard in Resources */,
 				BB9CB6BB225B601200605A98 /* Launch Screen.storyboard in Resources */,
 				BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */,
 				BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */,
@@ -2751,6 +2796,7 @@
 				BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BBECBEC52237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift in Sources */,
+				917F20D82271BB230023EC69 /* FinishSetupUserSchoolViewController.swift in Sources */,
 				BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */,
 				BBBA5749226DC9F5000BCD5F /* InputTableViewController.swift in Sources */,
 				BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */,
@@ -2759,6 +2805,7 @@
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
+				917F20CC22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift in Sources */,
 				BB17893D225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift in Sources */,
 				BBF93E502267C80B002841EE /* UserPhoneCodeViewController.swift in Sources */,
 				BBECBEB12237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift in Sources */,
@@ -2790,6 +2837,7 @@
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
 				BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */,
+				917F20D32271A72D0023EC69 /* FinishSetupUserPhotosViewController.swift in Sources */,
 				BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */,
 				BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */,
 			);
