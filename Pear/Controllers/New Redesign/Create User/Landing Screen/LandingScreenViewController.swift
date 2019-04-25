@@ -68,44 +68,48 @@ class LandingScreenViewController: UIViewController {
       activityIndicator.startAnimating()
       
       PhoneAuthProvider.provider().verifyPhoneNumber(fullPhoneNumber, uiDelegate: nil) { (verificationID, error) in
-        
-        UIView.animate(withDuration: 0.5, animations: {
-          activityIndicator.alpha = 0.0
-        }, completion: { (_) in
-          activityIndicator.stopAnimating()
-          activityIndicator.removeFromSuperview()
-        })
-        
-        self.inputTextField.textColor = StylingConfig.textFontColor
-        self.inputTextField.isEnabled = true
-        if let error = error {
-          self.alert(title: "Error validating Phone Number", message: error.localizedDescription)
-          print(error)
-          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+        DispatchQueue.main.async {
+          UIView.animate(withDuration: 0.5, animations: {
+            activityIndicator.alpha = 0.0
+          }, completion: { (_) in
+            activityIndicator.stopAnimating()
+            activityIndicator.removeFromSuperview()
+          })
+          
+          self.inputTextField.textColor = StylingConfig.textFontColor
+          self.inputTextField.isEnabled = true
+          if let error = error {
+            self.alert(title: "Error validating Phone Number", message: error.localizedDescription)
+            print(error)
+            HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+            self.isValidatingPhoneNumber = false
+            return
+          }
           self.isValidatingPhoneNumber = false
-          return
+          guard let verificationID = verificationID else { return }
+          print("Phone number validated, \(fullPhoneNumber), \(phoneNumber)")
+          // Sign in using the verificationID and the code sent to the user
+          // ...
+          UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+          
+          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+          let userCreationData = UserCreationData()
+          userCreationData.phoneNumber = phoneNumber
+          guard let phoneNumberVC = UserPhoneCodeViewController.instantiate(userCreationData: userCreationData,
+                                                                            verificationID: verificationID) else {
+                                                                              print("Failed to create Phone Number Code VC")
+                                                                              return
+          }
+          Analytics.logEvent("finished_phone_enter", parameters: nil)
+          Analytics.logEvent("CP_enterPhone_DONE", parameters: nil)        
+          self.navigationController?.pushViewController(phoneNumberVC, animated: true)
         }
-        self.isValidatingPhoneNumber = false
-        guard let verificationID = verificationID else { return }
-        print("Phone number validated, \(fullPhoneNumber), \(phoneNumber)")
-        // Sign in using the verificationID and the code sent to the user
-        // ...
-        UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-        
-        HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-        let userCreationData = UserCreationData()
-        userCreationData.phoneNumber = phoneNumber
-        guard let phoneNumberVC = UserPhoneCodeViewController.instantiate(userCreationData: userCreationData,
-                                                                          verificationID: verificationID) else {
-          print("Failed to create Phone Number Code VC")
-          return
-        }
-        Analytics.logEvent("CP_enterPhone_DONE", parameters: nil)
-        self.navigationController?.pushViewController(phoneNumberVC, animated: true)
       }
     } else {
-      self.alert(title: "Phone number not detected", message: "Please input your 10 digit phone number")
-      self.isValidatingPhoneNumber = false
+      DispatchQueue.main.async {
+        self.alert(title: "Phone number not detected", message: "Please input your 10 digit phone number")
+        self.isValidatingPhoneNumber = false
+      }
     }
     
   }

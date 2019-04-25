@@ -33,6 +33,64 @@ extension FullProfileStackViewController {
     self.stylize()
   }
   
+  enum SectionType {
+    case textItems
+    case image
+    case questions
+  }
+  
+  struct SectionItem {
+    let sectionType: SectionType
+    let textItems: [TextContentItem]?
+    let image: ImageContainer?
+    let question: [QuestionResponseItem]?
+  }
+  
+  func sectionItemsFromProfile(profile: FullProfileDisplayData) -> [SectionItem] {
+    var images = profile.imageContainers
+    var textItems: [[TextContentItem]] = []
+    if profile.bios.count > 0 {
+      textItems.append(profile.bios as [TextContentItem])
+    }
+    if profile.boasts.count > 0 {
+      textItems.append(profile.boasts as [TextContentItem])
+    }
+    if profile.roasts.count > 0 {
+      textItems.append(profile.roasts as [TextContentItem])
+    }
+    var sectionItems: [SectionItem] = []
+    while true {
+      var addedItems = false
+      if images.count > 0 {
+        let image = images.removeFirst()
+        sectionItems.append(SectionItem(sectionType: .image,
+                                        textItems: nil,
+                                        image: image,
+                                        question: nil))
+        addedItems = true
+      }
+      if textItems.count > 0 {
+        let textItem = textItems.removeFirst()
+        sectionItems.append(SectionItem(sectionType: .textItems,
+                                        textItems: textItem,
+                                        image: nil,
+                                        question: nil))
+        addedItems = true
+      } else if !sectionItems.contains(where: { $0.sectionType == .questions}),
+        profile.questionResponses.count > 0 {
+        sectionItems.append(SectionItem(sectionType: .questions,
+                                        textItems: nil,
+                                        image: nil,
+                                        question: profile.questionResponses))
+        addedItems = true
+      }
+      if !addedItems {
+        break
+      }
+    }
+    return sectionItems
+  }
+  
   func stylize() {
     
     self.addDemographcsVC(firstName: self.fullProfileData.firstName ?? "",
@@ -40,55 +98,40 @@ extension FullProfileStackViewController {
                           gender: self.fullProfileData.gender?.toString() ?? GenderEnum.male.toString(),
                           schoolName: self.fullProfileData.school,
                           locationName: self.fullProfileData.locationName)
-    if 0 < self.fullProfileData.imageContainers.count {
-      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[0])
+    
+    let sectionItems = self.sectionItemsFromProfile(profile: self.fullProfileData)
+    for sectionItem in sectionItems {
+      switch sectionItem.sectionType {
+      case .image:
+        if let image = sectionItem.image {
+          self.addImageVC(imageContainer: image)
+        }
+      case .textItems:
+        if sectionItem.textItems is [BioItem]? {
+          self.addSectionTitle(title: "BIOS")
+        } else if sectionItem.textItems is [BoastItem]? {
+          self.addSectionTitle(title: "BOASTS")
+        } else if sectionItem.textItems is [RoastItem]? {
+          self.addSectionTitle(title: "ROASTS")
+        }
+        if let textItems = sectionItem.textItems {
+          self.addScrollableContent(content: textItems)
+        }
+      case .questions:
+        break
+      }
+      
     }
-//    self.addBioVC(bioContent: self.fullProfileData.bio)
-//    if 1 < self.fullProfileData.rawImages.count {
-//      self.addImageVC(image: self.fullProfileData.rawImages[1])
-//    } else if 1 < self.fullProfileData.imageContainers.count {
-//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[1])
-//    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
-//      self.addLineView()
-//    }
-//    self.addInterestsVC(interests: self.fullProfileData.interests)
-//    if 2 < self.fullProfileData.rawImages.count {
-//      self.addImageVC(image: self.fullProfileData.rawImages[2])
-//    } else if 2 < self.fullProfileData.imageContainers.count {
-//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[2])
-//    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
-//      self.addLineView()
-//    }
-//
-//    if fullProfileData.dos.count > 0 {
-//      self.addDoDontVC(doDontType: .doType, doDontContent: fullProfileData.dos)
-//    }
-//
-//    if 3 < self.fullProfileData.rawImages.count {
-//      self.addImageVC(image: self.fullProfileData.rawImages[3])
-//    } else if 3 < self.fullProfileData.imageContainers.count {
-//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[3])
-//    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
-//      self.addLineView()
-//    }
-//
-//    if fullProfileData.donts.count > 0 {
-//      self.addDoDontVC(doDontType: .dontType, doDontContent: fullProfileData.donts)
-//    }
-//    if 4 < self.fullProfileData.rawImages.count {
-//      self.addImageVC(image: self.fullProfileData.rawImages[4])
-//    } else if 4 < self.fullProfileData.imageContainers.count {
-//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[4])
-//    } else if self.stackView.arrangedSubviews.last?.isHidden == false {
-//      self.addLineView()
-//    }
-//
-//    if 5 < self.fullProfileData.rawImages.count {
-//      self.addImageVC(image: self.fullProfileData.rawImages[5])
-//    } else if 5 < self.fullProfileData.imageContainers.count {
-//      self.addImageVC(imageContainer: self.fullProfileData.imageContainers[5])
-//    }
-//
+    
+  }
+  
+  func addSpacerView(height: CGFloat) {
+    let spacer = UIView()
+    spacer.translatesAutoresizingMaskIntoConstraints = false
+    spacer.backgroundColor = nil
+    spacer.addConstraint(NSLayoutConstraint(item: spacer, attribute: .height, relatedBy: .equal,
+                                            toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
+    self.stackView.addArrangedSubview(spacer)
   }
   
   func addLineView() {
@@ -132,15 +175,29 @@ extension FullProfileStackViewController {
     self.stackView.addArrangedSubview(demographicsVC.view)
     demographicsVC.didMove(toParent: self)
   }
-  
-  func addImageVC(image: UIImage) {
-    guard let imageVC = ProfileImageViewController.instantiate(image: image) else {
-      print("Failed to create Image VC")
-      return
+
+  func addSectionTitle(title: String) {
+    let containerView = UIView()
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    containerView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+    let titleLabel = UILabel()
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(titleLabel)
+    if let font = R.font.openSansExtraBold(size: 16) {
+      titleLabel.font = font
     }
-    self.addChild(imageVC)
-    self.stackView.addArrangedSubview(imageVC.view)
-    imageVC.didMove(toParent: self)
+    titleLabel.text = title
+    containerView.addConstraints([
+      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 12),
+      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: 12),
+      NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal,
+                         toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
+    ])
+    self.stackView.addArrangedSubview(containerView)
   }
   
   func addImageVC(imageContainer: ImageContainer) {
@@ -153,19 +210,15 @@ extension FullProfileStackViewController {
     imageVC.didMove(toParent: self)
   }
   
-  func addBioVC(bioContent: [BioContent]) {
-    guard let bioVC = ProfileBioViewController.instantiate(bioContent: bioContent) else {
-      print("Failed to create bio VC")
+  func addScrollableContent(content: [TextContentItem]) {
+    guard let scrollableContentVC = ScrollableTextItemViewController.instantiate(items: content) else {
+      print("failed to instantiate scrollable text item")
       return
     }
-    self.addChild(bioVC)
-    self.stackView.addArrangedSubview(bioVC.view)
-    bioVC.didMove(toParent: self)
-    if bioContent.count == 0 {
-      bioVC.view.isHidden = true
-    } else {
-      bioVC.view.isHidden = false
-    }
+    self.addChild(scrollableContentVC)
+    self.stackView.addArrangedSubview(scrollableContentVC.view)
+    scrollableContentVC.didMove(toParent: self)
+    
   }
   
   func addInterestsVC(interests: [String]) {

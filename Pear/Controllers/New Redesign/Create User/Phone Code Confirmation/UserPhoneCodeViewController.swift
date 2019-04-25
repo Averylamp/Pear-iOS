@@ -136,30 +136,41 @@ extension UserPhoneCodeViewController {
           print("Failed to sign in properly")
           return
         }
-        self.userCreationData.firebaseAuthID = authUID
-        PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
-          switch result {
-          case .success(let pearUser):
+        DataStore.shared.refreshPearUser { (user) in
+          if let user = user {
+            print("Continuing to Main Screen")
             DispatchQueue.main.async {
-              DataStore.shared.currentPearUser = pearUser
               DataStore.shared.reloadAllUserData()
-              guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
-                print("Failed to instantiate contact permisssion vc")
-                return
+              if let mainVC = LoadingScreenViewController.getMainScreenVC() {
+                self.navigationController?.setViewControllers([mainVC], animated: true)
               }
-              self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
-              Analytics.logEvent("CP_phoneAuth_DONE", parameters: nil)
             }
-          case .failure(let error):
-            print("Failure creating Pear User: \(error)")
-            DispatchQueue.main.async {
-              self.hiddenInputField.text = ""
-              self.updateCodeNumberLabels()
-              self.alert(title: "Error creating User",
-                         message: "Unfortunately we are unable to create your user at this time, please try again later")
-            }
+          } else {
+            self.userCreationData.firebaseAuthID = authUID
+            PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
+              switch result {
+              case .success(let pearUser):
+                DispatchQueue.main.async {
+                  DataStore.shared.currentPearUser = pearUser
+                  DataStore.shared.reloadAllUserData()
+                  guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
+                    print("Failed to instantiate contact permisssion vc")
+                    return
+                  }
+                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+                }
+              case .failure(let error):
+                print("Failure creating Pear User: \(error)")
+                DispatchQueue.main.async {
+                  self.hiddenInputField.text = ""
+                  self.updateCodeNumberLabels()
+                  self.alert(title: "Error creating User",
+                             message: "Unfortunately we are unable to create your user at this time, please try again later")
+                }
+              }
+            })
           }
-        })
+        }
         
       }
       self.isVerifying = false
