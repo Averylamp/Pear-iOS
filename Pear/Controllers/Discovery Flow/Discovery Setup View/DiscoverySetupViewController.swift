@@ -23,19 +23,13 @@ public class DiscoverySetupViewController: UIViewController {
   public override func viewDidLoad() {
     super.viewDidLoad()
     
+    DataStore.shared.locationManager.delegate = self
+    
     self.enableLocationButton.layer.cornerRadius = self.enableLocationButton.bounds.height/2
     self.finishSetupButton.layer.cornerRadius = self.finishSetupButton.bounds.height/2
     
     if CLLocationManager.locationServicesEnabled() {
-      switch CLLocationManager.authorizationStatus() {
-      case .notDetermined, .restricted, .denied:
-        self.enableLocationButton.isEnabled = true
-      case .authorizedAlways, .authorizedWhenInUse:
-        self.enableLocationButton.isEnabled = false
-        self.enableLocationButton.alpha = 0.3
-      default:
-         self.enableLocationButton.isEnabled = true
-      }
+      self.setEnableLocationButton(forStatus: CLLocationManager.authorizationStatus())
     } else {
       self.enableLocationButton.isEnabled = true
     }
@@ -44,6 +38,23 @@ public class DiscoverySetupViewController: UIViewController {
   @IBAction func enableLocationButtonPressed(_ sender: Any) {
     DataStore.shared.locationManager.requestWhenInUseAuthorization()
   }
-    
+  
+  private func setEnableLocationButton(forStatus status: CLAuthorizationStatus) {
+    switch status {
+    case .notDetermined, .restricted, .denied:
+      self.enableLocationButton.isEnabled = true
+    case .authorizedAlways, .authorizedWhenInUse:
+      self.enableLocationButton.isEnabled = false
+      self.enableLocationButton.alpha = 0.3
+    default:
+      self.enableLocationButton.isEnabled = true
+    }
+  }
 }
 
+extension DiscoverySetupViewController: CLLocationManagerDelegate {
+  public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    print("location status did change")
+    self.setEnableLocationButton(forStatus: CLLocationManager.authorizationStatus())
+  }
+}
