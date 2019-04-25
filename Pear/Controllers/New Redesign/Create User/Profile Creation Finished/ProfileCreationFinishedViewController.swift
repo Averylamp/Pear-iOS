@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class ProfileCreationFinishedViewController: UIViewController {
 
@@ -25,6 +26,7 @@ class ProfileCreationFinishedViewController: UIViewController {
   
   @IBAction func makeAnotherButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("CP_postCreation_TAP_createAnother", parameters: nil)
     guard let contactPermissionVC = UserContactPermissionsViewController.instantiate() else {
       print("Failed to instantiate contact permisssion vc")
       return
@@ -34,6 +36,7 @@ class ProfileCreationFinishedViewController: UIViewController {
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+    Analytics.logEvent("CP_postCreation_TAP_continue", parameters: nil)
     guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
       print("Failed to create main VC")
       return

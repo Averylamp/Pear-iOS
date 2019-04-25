@@ -31,6 +31,7 @@ protocol UserAPI {
                              minAge: Int,
                              maxAge: Int,
                              locationName: String?,
+                             isSeeking: Bool?,
                              completion: @escaping(Result<Bool, UserAPIError>) -> Void)
   
   func updateUser(userID: String,

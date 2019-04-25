@@ -118,7 +118,7 @@ extension DiscoveryTableViewCell {
       let bioItem = profileData.bios.first {
       self.addBioItem(item: bioItem)
     }
-    
+    self.updatePageControl()
   }
   
   func populateImages(images: [ImageContainer]) {
@@ -232,12 +232,16 @@ extension DiscoveryTableViewCell {
 
 // MARK: - UIScrollViewDelegate
 extension DiscoveryTableViewCell: UIScrollViewDelegate {
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-    let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
+  
+  func updatePageControl() {
+    let pageIndex = round(self.imageScrollView.contentOffset.x / self.imageScrollView.frame.width)
     if Int(pageIndex) < self.imageNumberControl.numberOfPages {
       self.imageNumberControl.currentPage = Int(pageIndex)
     }
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    self.updatePageControl()
   }
   
 }

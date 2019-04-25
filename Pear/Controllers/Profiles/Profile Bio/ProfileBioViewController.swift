@@ -13,7 +13,7 @@ struct BioContent {
   let creatorName: String
 }
 
-class ProfileBioViewController: UIViewController {
+class ProfileBioViewController: UITextViewItemViewController {
   
   var bioItem: BioItem!
   var maxLines: Int!
@@ -31,6 +31,11 @@ class ProfileBioViewController: UIViewController {
     bioVC.bioItem = bioItem
     bioVC.maxLines = maxLines
     return bioVC
+  }
+  
+  override func intrinsicHeight() -> CGFloat {
+    return self.contentLabel.sizeThatFits(CGSize(width: self.contentLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height +
+    self.creatorLabel.sizeThatFits(CGSize(width: self.creatorLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height + 20
   }
   
 }
