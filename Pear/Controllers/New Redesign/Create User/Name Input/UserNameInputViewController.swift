@@ -46,10 +46,26 @@ class UserNameInputViewController: UIViewController {
   }
   
   func updateUserName() {
-    if let pearUser = DataStore.shared.currentPearUser, let firstName = self.nameTextField.text {
-      pearUser.firstName = firstName
+    if let firstName = self.nameTextField.text {
+      guard let userID = DataStore.shared.currentPearUser?.documentID else {
+        print("Failed to get Current User")
+        return
+      }
+      PearUserAPI.shared.updateUserFirstName(userID: userID, firstName: firstName) { (result) in
+                                            switch result {
+                                            case .success(let successful):
+                                              if successful {
+                                                print("Update user first name was successful")
+                                              } else {
+                                                print("Update user first name was unsuccessful")
+                                              }
+                                              
+                                            case .failure(let error):
+                                              print("Update user failure: \(error)")
+                                            }
+        DataStore.shared.refreshPearUser(completion: nil)
+      }
     }
-    // @averylamp network call here
   }
   
   func promptMessageComposer() {

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
+// swiftlint:disable file_length
 import Foundation
 import SwiftyJSON
 import Sentry
@@ -362,6 +363,18 @@ extension PearUserAPI {
                                        message: error.localizedDescription)
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
+  }
+  
+  func updateUserFirstName(userID: String,
+                           firstName: String,
+                           completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+    let preferenceDictionary: [String: Any] = [
+      "firstName": firstName
+    ]
+    self.updateUserWithPreferenceDictionary(userID: userID,
+                                            inputDictionary: preferenceDictionary,
+                                            mutationName: "UpdateUserFirstName",
+                                            completion: completion)
   }
   
   //swiftlint:disable:next function_parameter_count
