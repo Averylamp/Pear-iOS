@@ -11,10 +11,9 @@ import UIKit
 class ScrollableTextItemViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
-  @IBOutlet weak var scrollContentView: UIView!
   
   var items: [TextContentItem] = []
   var intrinsicContentHeights: [CGFloat] = []
@@ -55,7 +54,7 @@ extension ScrollableTextItemViewController {
     print(self.items)
     var count = 0
     for item in self.items {
-      var viewController: UIViewController?
+      var viewController: UITextViewItemViewController?
       if let item = item as? BioItem {
         guard let bioItemVC = ProfileBioViewController.instantiate(bioItem: item, maxLines: maxLines) else {
           print("Failed to create Bio Item VC")
@@ -89,25 +88,26 @@ extension ScrollableTextItemViewController {
       }
       self.addChild(createdVC)
       createdVC.view.tag = count
-      self.scrollContentView.addSubview(createdVC.view)
-      self.scrollContentView.addConstraints([
+      self.stackView.addArrangedSubview(createdVC.view)
+      self.scrollView.addConstraints([
         NSLayoutConstraint(item: createdVC.view as Any, attribute: .width, relatedBy: .equal,
-                           toItem: self.scrollContentView, attribute: .width, multiplier: 1.0, constant: 0.0),
+                           toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: createdVC.view as Any, attribute: .height, relatedBy: .equal,
-                           toItem: self.scrollContentView, attribute: .height, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: createdVC.view as Any, attribute: .centerY, relatedBy: .equal,
-                           toItem: self.scrollContentView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: createdVC.view as Any, attribute: .centerX, relatedBy: .equal,
-                           toItem: self.scrollContentView, attribute: .centerX,
-                           multiplier: (1.0 + CGFloat(0 * count)), constant: 0.0)
+                           toItem: self.scrollView, attribute: .height, multiplier: 1.0, constant: 0.0)
         ])
       count += 1
       createdVC.didMove(toParent: self)
-      print("Added text item :\(count), \(item.content)")
+      print("Added text item \(count), \(item.content)")
+      self.view.layoutIfNeeded()
+      self.intrinsicContentHeights.append(createdVC.intrinsicHeight())
+      print("Intrinsic Height: \(createdVC.intrinsicHeight())")
     }
-    
-    print(self.scrollContentView.frame.size)
     self.pageControl.numberOfPages = count
+    if let firstIntrinsicHeight = self.intrinsicContentHeights.first {
+      self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * CGFloat(count), height: firstIntrinsicHeight)
+    }
+    self.view.layoutIfNeeded()
+    self.updateScrollViewHeight()
   }
   
 }
@@ -115,15 +115,22 @@ extension ScrollableTextItemViewController {
 // MARK: - ScrollViewDelegate
 extension ScrollableTextItemViewController: UIScrollViewDelegate {
   
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let pageIndex: Int = Int(floor(scrollView.contentOffset.x / scrollView.frame.width))
+  func updateScrollViewHeight() {
+    let pageIndex: Int = Int(floor(self.scrollView.contentOffset.x / self.scrollView.frame.width))
     self.pageControl.currentPage = pageIndex
-    let pagePercentage: CGFloat = scrollView.contentOffset.x.truncatingRemainder(dividingBy: scrollView.frame.width) / scrollView.frame.width
+    let pagePercentage: CGFloat = self.scrollView.contentOffset.x.truncatingRemainder(dividingBy: self.scrollView.frame.width) / self.scrollView.frame.width
     if pageIndex < self.intrinsicContentHeights.count - 1 && pageIndex >= 0 {
       let newScrollViewHeight = self.intrinsicContentHeights[pageIndex] * (1 - pagePercentage) +
         self.intrinsicContentHeights[pageIndex + 1] * pagePercentage
-      self.scrollViewHeightConstraint.constant = newScrollViewHeight + 20
+      self.scrollViewHeightConstraint.constant = newScrollViewHeight
       self.view.layoutIfNeeded()
+    } else if  pageIndex < self.intrinsicContentHeights.count && pageIndex >= 0 {
+      self.scrollViewHeightConstraint.constant = self.intrinsicContentHeights[pageIndex]
     }
   }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    self.updateScrollViewHeight()
+  }
+  
 }

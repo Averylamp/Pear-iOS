@@ -347,7 +347,6 @@ extension ProfileInputQuestionViewController: InputTableViewDelegate {
           self.continueToNextQuestion()
         })
       })
-      
     }
   }
   

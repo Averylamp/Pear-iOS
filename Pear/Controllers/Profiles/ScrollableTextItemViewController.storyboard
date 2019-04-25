@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3dp-Pa-v2v">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,25 +22,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-MB-IUc">
+                            <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-MB-IUc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfK-dZ-qje">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="375" id="Q0W-Z3-BTo"/>
-                                            <constraint firstAttribute="height" priority="90" constant="375" id="a06-Lp-BiB"/>
-                                        </constraints>
-                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdY-is-mK0">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="373"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjy-4c-6av">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="373"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" id="dRd-pe-N4H"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="sfK-dZ-qje" secondAttribute="trailing" id="4HJ-rU-RMp"/>
-                                    <constraint firstItem="sfK-dZ-qje" firstAttribute="centerX" secondItem="Ivz-MB-IUc" secondAttribute="centerX" id="6W3-qp-hpT"/>
-                                    <constraint firstItem="sfK-dZ-qje" firstAttribute="leading" secondItem="Ivz-MB-IUc" secondAttribute="leading" id="8tw-re-ClW"/>
-                                    <constraint firstItem="sfK-dZ-qje" firstAttribute="top" secondItem="Ivz-MB-IUc" secondAttribute="top" id="Dlz-Wr-Ifg"/>
-                                    <constraint firstItem="sfK-dZ-qje" firstAttribute="centerY" secondItem="Ivz-MB-IUc" secondAttribute="centerY" id="cO2-oE-PYF"/>
-                                    <constraint firstAttribute="bottom" secondItem="sfK-dZ-qje" secondAttribute="bottom" id="iKt-eT-nGZ"/>
+                                    <constraint firstItem="mdY-is-mK0" firstAttribute="leading" secondItem="Ivz-MB-IUc" secondAttribute="leading" id="Blp-jS-Lzg"/>
+                                    <constraint firstItem="mdY-is-mK0" firstAttribute="centerY" secondItem="Ivz-MB-IUc" secondAttribute="centerY" id="Za0-6i-ybk"/>
+                                    <constraint firstItem="mdY-is-mK0" firstAttribute="height" secondItem="Ivz-MB-IUc" secondAttribute="height" id="bY4-E4-q1k"/>
                                     <constraint firstAttribute="height" priority="900" constant="280" id="qaQ-DG-0tq"/>
                                 </constraints>
                             </scrollView>
@@ -66,10 +67,9 @@
                     <size key="freeformSize" width="375" height="400"/>
                     <connections>
                         <outlet property="pageControl" destination="L6s-Ey-jwd" id="3dF-NH-9CC"/>
-                        <outlet property="scrollContentView" destination="sfK-dZ-qje" id="XHv-Kf-9vi"/>
                         <outlet property="scrollView" destination="Ivz-MB-IUc" id="NFs-Rg-975"/>
-                        <outlet property="scrollViewHeightConstraint" destination="a06-Lp-BiB" id="jhC-Hc-YAT"/>
-                        <outlet property="scrollViewWidthConstraint" destination="Q0W-Z3-BTo" id="y7I-pJ-Ogt"/>
+                        <outlet property="scrollViewHeightConstraint" destination="qaQ-DG-0tq" id="c7H-o2-h6q"/>
+                        <outlet property="stackView" destination="mdY-is-mK0" id="U7Z-xu-tKu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-3k-h1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
