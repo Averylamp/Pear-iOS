@@ -57,10 +57,10 @@ class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable {
     }
 
     if let color = self.color {
-      input[VibeKey.color.rawValue] = color
+      input[VibeKey.color.rawValue] = color.toGraphQLInput()
     }
     if let icon = self.icon {
-      input[VibeKey.icon.rawValue] = icon
+      input[VibeKey.icon.rawValue] = icon.toGraphQLInput()
     }
     return input
 

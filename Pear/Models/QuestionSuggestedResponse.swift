@@ -33,10 +33,10 @@ class QuestionSuggestedResponse: Decodable, GraphQLInput, GraphQLDecodable {
       input[QuestionSuggestedResponseKey.responseTitle.rawValue] = responseTitle
     }
     if let color = self.color {
-      input[QuestionSuggestedResponseKey.color.rawValue] = color
+      input[QuestionSuggestedResponseKey.color.rawValue] = color.toGraphQLInput()
     }
     if let icon = self.icon {
-      input[QuestionSuggestedResponseKey.icon.rawValue] = icon
+      input[QuestionSuggestedResponseKey.icon.rawValue] = icon.toGraphQLInput()
     }
     return input
   }

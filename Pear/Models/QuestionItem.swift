@@ -102,8 +102,7 @@ class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable, CustomStringConve
       QuestionItemKey.questionText.rawValue: self.questionText,
       QuestionItemKey.questionType.rawValue: self.questionType.rawValue,
       QuestionItemKey.suggestedResponses.rawValue: self.suggestedResponses.map({ $0.toGraphQLInput()}),
-      QuestionItemKey.hiddenInQuestionnaire.rawValue: self.hiddenInQuestionnaire,
-      QuestionItemKey.hiddenInProfile.rawValue: self.hiddenInProfile
+      QuestionItemKey.tags.rawValue: self.tags
     ]
     if let documentID = self.documentID {
       input[QuestionItemKey.documentID.rawValue] = documentID
@@ -117,6 +116,7 @@ class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable, CustomStringConve
     if let placeholderResponseText = self.placeholderResponseText {
       input[QuestionItemKey.placeholderResponseText.rawValue] = placeholderResponseText
     }
+    
     return input
   }
   

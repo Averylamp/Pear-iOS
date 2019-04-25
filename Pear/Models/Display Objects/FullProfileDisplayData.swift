@@ -73,7 +73,7 @@ class FullProfileDisplayData: Equatable {
     self.firstName = detachedProfile.firstName
     self.age = detachedProfile.age
     self.gender = detachedProfile.gender
-    self.bios = detachedProfile.bios
+    self.bios = detachedProfile.bio != nil ? [detachedProfile.bio!] : []
     self.boasts = detachedProfile.boasts
     self.roasts = detachedProfile.roasts
     self.questionResponses = detachedProfile.questionResponses
@@ -90,46 +90,6 @@ class FullProfileDisplayData: Equatable {
     self.profileNumber = 0
   }
   
-//  convenience init (user: PearUser) {
-//    var interests: [String] = []
-//    var vibes: [String] = []
-//    var bioContent: [BioContent] = []
-//    var doContent: [DoDontContent] = []
-//    var dontContent: [DoDontContent] = []
-//
-//    for profile in user.userProfiles {
-//      profile.interests.forEach({
-//        if !interests.contains($0) {
-//          interests.append($0)
-//        }
-//      })
-//      profile.vibes.forEach({
-//        if !vibes.contains($0) {
-//          vibes.append($0)
-//        }
-//      })
-//      bioContent.append(BioContent.init(bio: profile.bio, creatorName: profile.creatorFirstName))
-//      doContent.append(contentsOf: profile.dos.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-//      dontContent.append(contentsOf: profile.donts.map({ DoDontContent.init(phrase: $0, creatorName: profile.creatorFirstName) }))
-//    }
-//    self.init(firstName: user.firstName,
-//              age: user.matchingDemographics.age,
-//              gender: user.matchingDemographics.gender.toString(),
-//              interests: interests,
-//              vibes: vibes,
-//              bio: bioContent,
-//              dos: doContent,
-//              donts: dontContent)
-//    self.userID = user.documentID
-//    self.imageContainers = user.displayedImages
-//    self.profileOrigin = .pearUser
-//    self.originObject = user
-//    self.school = user.school
-//    self.schoolYear = user.schoolYear
-//    self.locationName = user.matchingDemographics.location.locationName
-//    self.matchingDemographics = user.matchingDemographics
-//    self.matchingPreferences = user.matchingPreferences
-//  }
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
 //    return lhs.userID == rhs.userID &&
 //      lhs.originalCreatorName == rhs.originalCreatorName &&

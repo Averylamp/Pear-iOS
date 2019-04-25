@@ -33,6 +33,10 @@ class SentryHelper {
       }
     })
     
+    #if DEVMODE
+    fatalError("Some Network Call failed and sentry is generating an error")
+    #endif
+    
     #if PROD
     let userErrorEvent = Event(level: level)
     userErrorEvent.message = "\(message) - \(apiName):\(functionName)"

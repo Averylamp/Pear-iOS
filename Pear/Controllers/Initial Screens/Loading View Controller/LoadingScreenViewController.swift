@@ -42,7 +42,19 @@ extension LoadingScreenViewController {
           self.continueToVersionBlockScreen()
         } else {
           DataStore.shared.refreshPearUser(completion: { (pearUser) in
-            if pearUser != nil {
+            if let pearUser = pearUser {
+              if pearUser.endorsedUserIDs.count + pearUser.detachedProfileIDs.count  == 0 {
+                DispatchQueue.main.async {
+                  if let contactPermissionVC = UserContactPermissionsViewController.instantiate() {
+                    print("Creating permissions VC")
+                    self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+                    return
+                  } else {
+                    self.continueToLandingScreen()
+                  }
+                }
+                return
+              }
               print("pear user refreshed")
               DataStore.shared.getNotificationAuthorizationStatus { status in
                 if status == .notDetermined {

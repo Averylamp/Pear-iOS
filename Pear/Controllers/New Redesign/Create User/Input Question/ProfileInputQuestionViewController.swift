@@ -82,9 +82,14 @@ class ProfileInputQuestionViewController: UIViewController {
   
   @IBAction func skipButtonClicked(_ sender: Any) {
     self.profileData.skipCount += 1
+    guard let nextQuestion = self.profileData.getRandomNextQuestion() else {
+      print("Unable to get next question")
+      self.continueToRoastBoast()
+      return
+    }
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     guard let nextQuestionVC = ProfileInputQuestionViewController.instantiate(profileCreationData: self.profileData,
-                                                                              question: QuestionItem.idealDateQuestion()) else {
+                                                                              question: nextQuestion) else {
                                                                                 print("Failed to create question VC")
                                                                                 return
     }
