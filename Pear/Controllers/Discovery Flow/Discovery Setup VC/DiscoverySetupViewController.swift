@@ -15,6 +15,8 @@ public class DiscoverySetupViewController: UIViewController {
   @IBOutlet weak var enableLocationButton: UIButton!
   @IBOutlet weak var finishSetupButton: UIButton!
   
+  var skippedDetachedProfiles: [String] = []
+  
   class func instantiate() -> DiscoverySetupViewController? {
     let storyboard = UIStoryboard(name: String(describing: DiscoverySetupViewController.self), bundle: nil)
     guard let discoverySetupVC = storyboard.instantiateInitialViewController() as? DiscoverySetupViewController else { return nil }
@@ -34,6 +36,9 @@ public class DiscoverySetupViewController: UIViewController {
     } else {
       self.enableLocationButton.isEnabled = true
     }
+    
+    self.skippedDetachedProfiles = DataStore.shared.fetchListFromDefaults(type: .skippedDetachedProfiles)
+    self.checkForDetachedProfiles()
   }
   
   @IBAction func enableLocationButtonPressed(_ sender: Any) {
@@ -78,6 +83,25 @@ public class DiscoverySetupViewController: UIViewController {
     default:
       self.enableLocationButton.isEnabled = true
     }
+  }
+  
+  // copied from DiscoverySimpleViewController
+  func checkForDetachedProfiles() {
+    DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
+      print("\(detachedProfiles.count) Detached Profiles Found")
+      for detachedProfile in detachedProfiles
+        where !self.skippedDetachedProfiles.contains(detachedProfile.creatorUserID) {
+          DispatchQueue.main.async {
+            guard let detachedProfileApprovalVC = ApproveDetachedProfileNavigationViewController
+              .instantiate(detachedProfile: detachedProfile) else {
+                print("Failed to create detached profile navigation vc")
+                return
+            }
+            self.present(detachedProfileApprovalVC, animated: true, completion: nil)
+            return
+          }
+      }
+    })
   }
 }
 
