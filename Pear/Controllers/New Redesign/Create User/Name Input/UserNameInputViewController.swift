@@ -93,7 +93,7 @@ class UserNameInputViewController: UIViewController {
         messageVC.messageComposeDelegate = self
         
         messageVC.recipients = [phoneNumber]
-        messageVC.body = "Hey! I made you a profile on Pear 🍐.  Let's find you a date 😉.  https://getpear.com/go/refer"
+        messageVC.body = "I wrote something for you on Pear! Check it out 🍐 https://getpear.com/go/refer"
         
         self.present(messageVC, animated: true, completion: nil)
       } else {
