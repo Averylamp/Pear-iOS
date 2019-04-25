@@ -95,7 +95,6 @@
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
 		BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C8A42225148BD00F7BA1A /* DiscoveryTableViewCell.swift */; };
 		BB4C8A47225152EC00F7BA1A /* DoDontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C8A46225152EC00F7BA1A /* DoDontView.swift */; };
-		BB4C8A492251559800F7BA1A /* BioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C8A482251559800F7BA1A /* BioView.swift */; };
 		BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB541B41223B5AA0002239C8 /* RemoteConfig.plist */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */; };
@@ -437,7 +436,6 @@
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
 		BB4C8A42225148BD00F7BA1A /* DiscoveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewCell.swift; sourceTree = "<group>"; };
 		BB4C8A46225152EC00F7BA1A /* DoDontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDontView.swift; sourceTree = "<group>"; };
-		BB4C8A482251559800F7BA1A /* BioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioView.swift; sourceTree = "<group>"; };
 		BB541B41223B5AA0002239C8 /* RemoteConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfig.plist; sourceTree = "<group>"; };
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
 		BB58D48F22425D4500A6A910 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
@@ -1134,6 +1132,15 @@
 			path = "Profile Creation Finished";
 			sourceTree = "<group>";
 		};
+		BB3F02852271B178004855E8 /* Profile Boast Roast */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */,
+				BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */,
+			);
+			path = "Profile Boast Roast";
+			sourceTree = "<group>";
+		};
 		BB3F4AE82233974C00F99C8E /* Birthday Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -1152,8 +1159,7 @@
 				BBECBEBC2237D955008E8E91 /* Profile Interests */,
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
-				BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */,
-				BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */,
+				BB3F02852271B178004855E8 /* Profile Boast Roast */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -1940,7 +1946,6 @@
 			children = (
 				BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */,
 				BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */,
-				BB4C8A482251559800F7BA1A /* BioView.swift */,
 			);
 			path = "Profile Bio";
 			sourceTree = "<group>";
@@ -2692,7 +2697,6 @@
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
 				BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */,
 				BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */,
-				BB4C8A492251559800F7BA1A /* BioView.swift in Sources */,
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BBAC0960227029780095F27E /* FullProfileDisplayData.swift in Sources */,
 				BBF93E522267C861002841EE /* UserContactPermissionsViewController.swift in Sources */,
