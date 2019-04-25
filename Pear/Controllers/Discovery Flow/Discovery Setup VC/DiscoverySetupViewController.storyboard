@@ -42,6 +42,9 @@
                                 <state key="normal" title="Finish Setup">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishSetupButtonPressed:" destination="eba-jg-pCh" eventType="touchUpInside" id="IB6-RK-ZGC"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-smiling" translatesAutoresizingMaskIntoConstraints="NO" id="8Ys-cj-kSh">
                                 <rect key="frame" x="147" y="161" width="120" height="120"/>

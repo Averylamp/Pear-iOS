@@ -39,6 +39,15 @@ public class DiscoverySetupViewController: UIViewController {
     DataStore.shared.locationManager.requestWhenInUseAuthorization()
   }
   
+  @IBAction func finishSetupButtonPressed(_ sender: Any) {
+    guard let setupGenderVC = FinishSetupUserGenderViewController.instantiate() else {
+      print("Failed to create finish setup gender vc")
+      return
+    }
+    print("finish setup button pressed")
+    self.navigationController?.setViewControllers([setupGenderVC], animated: true)
+  }
+  
   private func setEnableLocationButton(forStatus status: CLAuthorizationStatus) {
     switch status {
     case .notDetermined, .restricted, .denied:
