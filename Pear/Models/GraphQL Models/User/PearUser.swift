@@ -90,6 +90,12 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
     }
     self.age = try? values.decode(Int.self, forKey: .age)
     
+    self.boasts = try values.decode([BoastItem].self, forKey: .boasts)
+    self.roasts = try values.decode([RoastItem].self, forKey: .roasts)
+    self.questionResponses = try values.decode([QuestionResponseItem].self, forKey: .questionResponses)
+    self.vibes = try values.decode([VibeItem].self, forKey: .vibes)
+    self.bios = try values.decode([BioItem].self, forKey: .bios)
+    
     self.school = try? values.decode(String.self, forKey: .school)
     self.schoolYear = try? values.decode(String.self, forKey: .schoolYear)
     self.schoolEmail = try? values.decode(String.self, forKey: .schoolEmail)

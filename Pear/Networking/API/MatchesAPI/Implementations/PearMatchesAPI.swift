@@ -212,7 +212,6 @@ extension PearMatchesAPI {
                       print("Unable to find match object")
                     }
                     matchesToLoad -= 1
-                    print("Fetched Match Object \(matchType): \(matchesToLoad) left")
                     if matchesToLoad == 0 {
                       allMatchRequests.sort(by: { (lft, rht) -> Bool in
                         var lftTime: Date!

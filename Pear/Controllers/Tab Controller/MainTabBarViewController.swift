@@ -100,6 +100,10 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
+      index == 0 {
+      NotificationCenter.default.post(name: .refreshDiscoveryFeedAnimated, object: nil)
+    }
   }
   
 }
