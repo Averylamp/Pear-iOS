@@ -38,7 +38,7 @@ class FinishSetupUserGenderViewController: UIViewController {
   
   @IBAction func chooseGenderButtonClicked(_ sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    
+
     switch sender.tag {
     case 0:
       self.gender = GenderEnum.male
@@ -65,6 +65,12 @@ class FinishSetupUserGenderViewController: UIViewController {
       print("Failed to get Current User")
       return
     }
+    self.maleButton.isEnabled = false
+    self.femaleButton.isEnabled = false
+    self.nonbinaryButton.isEnabled = false
+    self.maleButton.alpha = 0.3
+    self.femaleButton.alpha = 0.3
+    self.nonbinaryButton.alpha = 0.3
     if let gender = self.gender {
       PearUserAPI.shared.updateUserGender(userID: userID, gender: gender) { (result) in
                                             switch result {
@@ -75,24 +81,23 @@ class FinishSetupUserGenderViewController: UIViewController {
                                                 print("Update user gender was unsuccessful")
                                               }
                                               DispatchQueue.main.async {
-                                                guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-                                                  print("Failed to initialize Main VC")
+                                                guard let preferencesVC = FinishSetupUserPreferencesViewController.instantiate() else {
+                                                  print("Failed to initialize Preferences VC")
                                                   return
                                                 }
-                                                self.navigationController?.setViewControllers([mainVC], animated: true)
+                                                self.navigationController?.pushViewController(preferencesVC, animated: true)
                                               }
-                                              /*
-                                              DispatchQueue.main.async {
-                                                guard let nextVC = FinishSetupPreferencesViewController.instantiate() else {
-                                                  print("Failed to create next VC")
-                                                  return
-                                                }
-                                                self.navigationController?.pushViewController(nextVC, animated: true)
-                                              }
-                                              */
                                             case .failure(let error):
                                               print("Update user failure: \(error)")
                                             }
+        DispatchQueue.main.async {
+          self.maleButton.isEnabled = true
+          self.femaleButton.isEnabled = true
+          self.nonbinaryButton.isEnabled = true
+          self.maleButton.alpha = 1.0
+          self.femaleButton.alpha = 1.0
+          self.nonbinaryButton.alpha = 1.0
+        }
       }
     }
   }

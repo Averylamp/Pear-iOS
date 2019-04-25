@@ -64,23 +64,11 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gjj-0Y-zYR">
-                                <rect key="frame" x="30" y="101" width="315" height="38.5"/>
+                                <rect key="frame" x="30" y="101" width="315" height="33"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="When's ">
+                                    <fragment content="When's your birthday?">
                                         <attributes>
-                                            <font key="NSFont" size="28" name="Nunito-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="your">
-                                        <attributes>
-                                            <font key="NSFont" size="28" name="Nunito-BoldItalic"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" birthday?">
-                                        <attributes>
-                                            <font key="NSFont" size="28" name="Nunito-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="28"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -88,7 +76,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You must be 18 or older to use Pear." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xQ7-gM-fQq">
-                                <rect key="frame" x="30" y="151.5" width="315" height="53"/>
+                                <rect key="frame" x="30" y="146" width="315" height="53"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="22"/>
                                 <color key="textColor" red="0.2666666667" green="0.29411764709999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

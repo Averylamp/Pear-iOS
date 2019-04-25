@@ -221,7 +221,8 @@ extension LoadingScreenViewController {
                                              genderPrefs: ["female"],
                                              minAge: 18,
                                              maxAge: 25,
-                                             locationName: nil) { (result) in
+                                             locationName: nil,
+                                             isSeeking: nil) { (result) in
                                               switch result {
                                               case .success(let successful):
                                                 if successful {
