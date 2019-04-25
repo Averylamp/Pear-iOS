@@ -36,7 +36,23 @@ public class DiscoverySetupViewController: UIViewController {
   }
   
   @IBAction func enableLocationButtonPressed(_ sender: Any) {
-    DataStore.shared.locationManager.requestWhenInUseAuthorization()
+    if CLLocationManager.authorizationStatus() == .notDetermined {
+      DataStore.shared.locationManager.requestWhenInUseAuthorization()
+    } else {
+      DispatchQueue.main.async {
+        let alert = UIAlertController(title: "Location Required",
+                                      message: "Location is required, please enable Location in the Settings app.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Go to Settings now", style: .default, handler: { (_: UIAlertAction) in
+          print("")
+          
+          UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: { (finished) in
+            print(finished)
+            print("Finished")
+          })
+        }))
+        UIApplication.shared.keyWindow!.rootViewController?.present(alert, animated: true, completion: nil)
+      }
+    }
   }
   
   @IBAction func finishSetupButtonPressed(_ sender: Any) {
