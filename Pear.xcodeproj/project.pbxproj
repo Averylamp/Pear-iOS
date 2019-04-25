@@ -956,8 +956,8 @@
 			children = (
 				917F20C7227170310023EC69 /* Gender */,
 				917F20C82271703A0023EC69 /* Preferences */,
-				917F20CA22719C190023EC69 /* Birthdate */,
 				917F20D62271B9E40023EC69 /* School */,
+				917F20CA22719C190023EC69 /* Birthdate */,
 				917F20D12271A6960023EC69 /* Photos */,
 			);
 			path = "Finish Setup Flow";
@@ -1820,6 +1820,15 @@
 			path = "Scrollable Item Controllers";
 			sourceTree = "<group>";
 		};
+		BBBE7B9422722CE400C32EBE /* Full Profile Approval View */ = {
+			isa = PBXGroup;
+			children = (
+				BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */,
+				BBBE7B9222721E1200C32EBE /* ApproveProfileViewController.storyboard */,
+			);
+			path = "Full Profile Approval View";
+			sourceTree = "<group>";
+		};
 		BBC0FF2022706A1500632924 /* Name Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -2071,8 +2080,7 @@
 				BB77E7A22252212000A12B12 /* School Input */,
 				BBA2E1F4224B30EA0088A7A7 /* Full Screen Approval */,
 				BB9D1B8322564ED30074C099 /* Update User Preferences */,
-				BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */,
-				BBBE7B9222721E1200C32EBE /* ApproveProfileViewController.storyboard */,
+				BBBE7B9422722CE400C32EBE /* Full Profile Approval View */,
 			);
 			path = "Approve Profile Flow";
 			sourceTree = "<group>";

@@ -36,7 +36,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XV6-Vt-aX3"/>
                                 </constraints>
-                                <state key="normal" title="Reject Profile"/>
+                                <state key="normal" title="Reject profile"/>
                                 <connections>
                                     <action selector="skipButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="F8S-bX-B1y"/>
                                 </connections>
@@ -47,7 +47,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="QLI-HM-6SR"/>
                                 </constraints>
-                                <state key="normal" title="Next"/>
+                                <state key="normal" title="See the profile"/>
                                 <connections>
                                     <action selector="nextButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="bcI-M5-vga"/>
                                 </connections>
