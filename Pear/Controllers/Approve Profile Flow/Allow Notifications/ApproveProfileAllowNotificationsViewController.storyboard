@@ -102,6 +102,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-icon-notifications" width="240" height="240"/>
+        <image name="onboarding-icon-notifications" width="512" height="512"/>
     </resources>
 </document>
