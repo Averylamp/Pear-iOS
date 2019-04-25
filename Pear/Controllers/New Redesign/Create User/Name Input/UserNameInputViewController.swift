@@ -46,10 +46,26 @@ class UserNameInputViewController: UIViewController {
   }
   
   func updateUserName() {
-    if let pearUser = DataStore.shared.currentPearUser, let firstName = self.nameTextField.text {
-      pearUser.firstName = firstName
+    if let firstName = self.nameTextField.text {
+      guard let userID = DataStore.shared.currentPearUser?.documentID else {
+        print("Failed to get Current User")
+        return
+      }
+      PearUserAPI.shared.updateUserFirstName(userID: userID, firstName: firstName) { (result) in
+                                            switch result {
+                                            case .success(let successful):
+                                              if successful {
+                                                print("Update user first name was successful")
+                                              } else {
+                                                print("Update user first name was unsuccessful")
+                                              }
+                                              
+                                            case .failure(let error):
+                                              print("Update user failure: \(error)")
+                                            }
+        DataStore.shared.refreshPearUser(completion: nil)
+      }
     }
-    // @averylamp network call here
     Analytics.logEvent("CP_firstName_DONE", parameters: nil)
   }
   
@@ -78,7 +94,7 @@ class UserNameInputViewController: UIViewController {
         messageVC.messageComposeDelegate = self
         
         messageVC.recipients = [phoneNumber]
-        messageVC.body = "Hey! I made you a profile on Pear 🍐.  Let's find you a date 😉.  https://getpear.com/go/refer"
+        messageVC.body = "I wrote something for you on Pear! Check it out 🍐 https://getpear.com/go/refer"
         
         self.present(messageVC, animated: true, completion: nil)
         Analytics.logEvent("CP_sendProfileSMS_START", parameters: nil)
