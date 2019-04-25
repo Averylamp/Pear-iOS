@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3dp-Pa-v2v">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,33 +19,17 @@
                         <viewControllerLayoutGuide type="bottom" id="Mld-3S-E8c"/>
                     </layoutGuides>
                     <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" id="5we-y1-4M8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-MB-IUc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srK-3G-krT">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="375" id="CYY-My-cR3"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
+                            <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-MB-IUc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
                                 <constraints>
-                                    <constraint firstItem="srK-3G-krT" firstAttribute="height" secondItem="Ivz-MB-IUc" secondAttribute="height" id="4pz-A7-uTg"/>
-                                    <constraint firstAttribute="trailing" secondItem="srK-3G-krT" secondAttribute="trailing" id="53W-YB-2dX"/>
-                                    <constraint firstItem="srK-3G-krT" firstAttribute="centerX" secondItem="Ivz-MB-IUc" secondAttribute="centerX" id="OAZ-Q7-kBH"/>
-                                    <constraint firstAttribute="bottom" secondItem="srK-3G-krT" secondAttribute="bottom" id="Usr-v8-bQT"/>
-                                    <constraint firstItem="srK-3G-krT" firstAttribute="leading" secondItem="Ivz-MB-IUc" secondAttribute="leading" id="YPy-6w-wrZ"/>
-                                    <constraint firstItem="srK-3G-krT" firstAttribute="centerY" secondItem="Ivz-MB-IUc" secondAttribute="centerY" id="gyP-od-SiC"/>
-                                    <constraint firstAttribute="height" priority="900" constant="160" id="qaQ-DG-0tq"/>
-                                    <constraint firstItem="srK-3G-krT" firstAttribute="top" secondItem="Ivz-MB-IUc" secondAttribute="top" id="tNm-cU-Ds3"/>
+                                    <constraint firstAttribute="height" priority="900" constant="280" id="qaQ-DG-0tq"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1t-iT-Kv3">
-                                <rect key="frame" x="0.0" y="265" width="375" height="15"/>
+                                <rect key="frame" x="0.0" y="385" width="375" height="15"/>
                                 <subviews>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="L6s-Ey-jwd">
                                         <rect key="frame" x="152" y="-11" width="71" height="37"/>
@@ -68,12 +52,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RJV-Df-yfw"/>
                     </stackView>
-                    <size key="freeformSize" width="375" height="280"/>
+                    <size key="freeformSize" width="375" height="400"/>
                     <connections>
                         <outlet property="pageControl" destination="L6s-Ey-jwd" id="3dF-NH-9CC"/>
                         <outlet property="scrollView" destination="Ivz-MB-IUc" id="NFs-Rg-975"/>
                         <outlet property="scrollViewHeightConstraint" destination="qaQ-DG-0tq" id="Jh1-Dz-qtY"/>
-                        <outlet property="scrollViewWidthConstraint" destination="CYY-My-cR3" id="cxC-Ny-gL3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igX-3k-h1X" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -222,18 +222,20 @@ extension ProfileInputQuestionViewController {
     self.view.insertSubview(cardView, belowSubview: self.nextButton)
     
     let topConstraint = NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .greaterThanOrEqual,
-                                           toItem: self.topSeperatorView, attribute: .top, multiplier: 1.0, constant: 20.0)
+                                           toItem: self.skipContainerView, attribute: .bottom, multiplier: 1.0, constant: 10.0)
     topConstraint.priority = .defaultHigh
     let bottomConstraint = NSLayoutConstraint(item: cardView, attribute: .bottom, relatedBy: .lessThanOrEqual,
-                                              toItem: self.continueContainerView, attribute: .top, multiplier: 1.0, constant: -20.0)
+                                              toItem: self.continueContainerView, attribute: .top, multiplier: 1.0, constant: -10.0)
     bottomConstraint.priority = .defaultHigh
+    let centerYConstraint = NSLayoutConstraint(item: cardView, attribute: .centerY, relatedBy: .equal,
+                                               toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+    centerYConstraint.priority = .defaultLow
     self.view.addConstraints([
       NSLayoutConstraint(item: cardView, attribute: .centerX, relatedBy: .equal,
                          toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: cardView, attribute: .centerY, relatedBy: .equal,
-                         toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: cardView, attribute: .width, relatedBy: .equal,
                          toItem: self.view, attribute: .width, multiplier: 1.0, constant: -40),
+      centerYConstraint,
       topConstraint,
       bottomConstraint
       ])

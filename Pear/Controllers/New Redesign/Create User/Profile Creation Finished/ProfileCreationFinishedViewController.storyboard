@@ -88,7 +88,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="04Q-RS-Dtl" firstAttribute="trailing" secondItem="Q3R-s2-1Rz" secondAttribute="trailing" id="WEQ-n5-6R8"/>
                                     <constraint firstItem="A3A-Vt-1U8" firstAttribute="leading" secondItem="Vy4-Kb-Env" secondAttribute="leading" constant="10" id="egb-T8-R3X"/>
@@ -124,7 +124,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="YF4-E6-TKZ" firstAttribute="leading" secondItem="hOU-aS-Mf0" secondAttribute="leading" id="3Du-v8-4G7"/>
                                     <constraint firstItem="2o8-qv-NrA" firstAttribute="leading" secondItem="ZGX-FQ-fqc" secondAttribute="leading" constant="10" id="CoC-N6-fr4"/>
@@ -160,7 +160,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="oxa-Jh-Q2y" firstAttribute="centerY" secondItem="C29-pw-p5a" secondAttribute="centerY" id="6Y5-TV-kS3"/>
                                     <constraint firstItem="Fiw-HU-W2X" firstAttribute="top" secondItem="hsi-fN-L53" secondAttribute="bottom" constant="12" id="BeZ-Pm-6Fp"/>
