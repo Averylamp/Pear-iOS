@@ -72,6 +72,8 @@
 		BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */; };
 		BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */; };
 		BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */; };
+		BB3F027D2271451C004855E8 /* ProfileCreationFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F027C2271451C004855E8 /* ProfileCreationFinishedViewController.swift */; };
+		BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */; };
 		BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */; };
 		BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */; };
 		BB3F219A2226765C00DC4489 /* OldUserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* OldUserCreationData.swift */; };
@@ -404,6 +406,8 @@
 		BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		BB33E74E22249910001BFA8F /* GetStartedChooseGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedChooseGenderViewController.swift; sourceTree = "<group>"; };
 		BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedChooseGenderViewController.storyboard; sourceTree = "<group>"; };
+		BB3F027C2271451C004855E8 /* ProfileCreationFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationFinishedViewController.swift; sourceTree = "<group>"; };
+		BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileCreationFinishedViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21952226754D00DC4489 /* GetStartedEmailProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedEmailProviderViewController.swift; sourceTree = "<group>"; };
 		BB3F21962226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedEmailProviderViewController.storyboard; sourceTree = "<group>"; };
 		BB3F21992226765C00DC4489 /* OldUserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserCreationData.swift; sourceTree = "<group>"; };
@@ -1066,6 +1070,15 @@
 				BB33E75222249926001BFA8F /* GetStartedChooseGenderViewController.storyboard */,
 			);
 			path = "Gender Input";
+			sourceTree = "<group>";
+		};
+		BB3F02802271452F004855E8 /* Profile Creation Finished */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F027C2271451C004855E8 /* ProfileCreationFinishedViewController.swift */,
+				BB3F027E22714527004855E8 /* ProfileCreationFinishedViewController.storyboard */,
+			);
+			path = "Profile Creation Finished";
 			sourceTree = "<group>";
 		};
 		BB3F4AE82233974C00F99C8E /* Birthday Input */ = {
@@ -2006,6 +2019,7 @@
 				BBEF226A226FA0B40021B021 /* Input Question */,
 				BBEF226B226FC3F70021B021 /* Boast Roast Input */,
 				BBC0FF2022706A1500632924 /* Name Input */,
+				BB3F02802271452F004855E8 /* Profile Creation Finished */,
 				BBBA574C226DD5FE000BCD5F /* Input Table View */,
 			);
 			path = "Create User";
@@ -2224,6 +2238,7 @@
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
 				BBF93E7D2267CCB3002841EE /* Cera Pro Medium.otf in Resources */,
+				BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */,
@@ -2490,7 +2505,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2534,6 +2549,7 @@
 				BBA2E1E8224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
 				BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */,
+				BB3F027D2271451C004855E8 /* ProfileCreationFinishedViewController.swift in Sources */,
 				91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,

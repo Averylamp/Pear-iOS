@@ -68,7 +68,7 @@
                                     <constraint firstAttribute="height" constant="50" id="rtZ-26-SzQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
-                                <state key="normal" title="I'm done, continue!"/>
+                                <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="continueButtonClicked:" destination="nIG-Og-yRX" eventType="touchUpInside" id="uN3-Qy-mol"/>
                                 </connections>

@@ -94,7 +94,13 @@ class UserNameInputViewController: UIViewController {
         Analytics.logEvent("CP_success", parameters: nil)
         print(detachedProfile)
         DataStore.shared.reloadAllUserData()
-        
+        DispatchQueue.main.async {
+          guard let profileFinishedVC = ProfileCreationFinishedViewController.instantiate() else {
+            print("Failed to create Profile Finished VC")
+            return
+          }
+          self.navigationController?.setViewControllers([profileFinishedVC], animated: true)
+        }
       case .failure(let error):
         print(error)
         DispatchQueue.main.async {
@@ -109,7 +115,9 @@ class UserNameInputViewController: UIViewController {
           self.activityIndicator.stopAnimating()
         }
       }
-      self.continueButton.isEnabled = true
+      DispatchQueue.main.async {
+        self.continueButton.isEnabled = true
+      }
       
     }
     //    PearProfileAPI.shared.createNewDetachedProfile(gettingStartedUserProfileData: self.gettingStartedData) { (result) in
