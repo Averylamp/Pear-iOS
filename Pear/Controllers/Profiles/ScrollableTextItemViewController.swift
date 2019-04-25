@@ -13,7 +13,6 @@ class ScrollableTextItemViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
   
   var items: [TextContentItem] = []
   var intrinsicContentHeights: [CGFloat] = []
@@ -51,6 +50,8 @@ extension ScrollableTextItemViewController {
   
   func addItems() {
     self.view.layoutIfNeeded()
+    print(self.items)
+    var count = 0
     for item in self.items {
       var viewController: UIViewController?
       if let item = item as? BioItem {
@@ -85,6 +86,7 @@ extension ScrollableTextItemViewController {
         continue
       }
       self.addChild(createdVC)
+      createdVC.view.tag = count
       self.scrollView.addSubview(createdVC.view)
       self.scrollView.addConstraints([
         NSLayoutConstraint(item: createdVC.view as Any, attribute: .width, relatedBy: .equal,
@@ -95,13 +97,16 @@ extension ScrollableTextItemViewController {
                            toItem: self.scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: createdVC.view as Any, attribute: .centerX, relatedBy: .equal,
                            toItem: self.scrollView, attribute: .centerX,
-                           multiplier: (1.0 + CGFloat(2 * self.intrinsicContentHeights.count)), constant: 0.0)
+                           multiplier: (1.0 + CGFloat(2 * count)), constant: 0.0)
         ])
-      self.view.layoutIfNeeded()
-      print(createdVC.view.intrinsicContentSize)
-      let intrinsicHeight = createdVC.view.intrinsicContentSize.height
-      self.intrinsicContentHeights.append(intrinsicHeight)
+      count += 1
+      print("Added text item :\(count), \(item.content)")
     }
+    self.view.layoutIfNeeded()
+    print(self.scrollView.frame.size)
+    self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * CGFloat(count), 
+                                         height: 250)
+    self.pageControl.numberOfPages = count
   }
   
 }
