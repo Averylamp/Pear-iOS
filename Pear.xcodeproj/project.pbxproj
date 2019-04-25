@@ -253,6 +253,8 @@
 		BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */; };
 		BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */; };
 		BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */; };
+		BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */; };
+		BBBE7B9322721E1200C32EBE /* ApproveProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B9222721E1200C32EBE /* ApproveProfileViewController.storyboard */; };
 		BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */; };
 		BBC0FF1B22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */; };
 		BBC0FF1D227069FC00632924 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */; };
@@ -609,6 +611,8 @@
 		BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileQuestionResponseViewController.storyboard; sourceTree = "<group>"; };
 		BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableQuestionItemViewController.swift; sourceTree = "<group>"; };
 		BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollableQuestionItemViewController.storyboard; sourceTree = "<group>"; };
+		BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileViewController.swift; sourceTree = "<group>"; };
+		BBBE7B9222721E1200C32EBE /* ApproveProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveProfileViewController.storyboard; sourceTree = "<group>"; };
 		BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingBoastRoastInputViewController.swift; sourceTree = "<group>"; };
 		BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingBoastRoastInputViewController.storyboard; sourceTree = "<group>"; };
 		BBC0FF1C227069FC00632924 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
@@ -2067,6 +2071,8 @@
 				BB77E7A22252212000A12B12 /* School Input */,
 				BBA2E1F4224B30EA0088A7A7 /* Full Screen Approval */,
 				BB9D1B8322564ED30074C099 /* Update User Preferences */,
+				BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */,
+				BBBE7B9222721E1200C32EBE /* ApproveProfileViewController.storyboard */,
 			);
 			path = "Approve Profile Flow";
 			sourceTree = "<group>";
@@ -2462,6 +2468,7 @@
 				BBC0FF1B22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard in Resources */,
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
 				BB178930225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard in Resources */,
+				BBBE7B9322721E1200C32EBE /* ApproveProfileViewController.storyboard in Resources */,
 				BB9CB6A72259FAA700605A98 /* UpdateTextFieldController.storyboard in Resources */,
 				BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */,
 				BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */,
@@ -2710,6 +2717,7 @@
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
 				BBBE7B872272170800C32EBE /* ProfileQuestionResponseViewController.swift in Sources */,
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
+				BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,

@@ -94,7 +94,6 @@ extension FullChatViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.stylize()
     self.setup()
     self.stylizeInputView()
@@ -105,6 +104,7 @@ extension FullChatViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.recalculateTextViewHeight(animated: false)
     self.tableView.reloadData()
     self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: false)

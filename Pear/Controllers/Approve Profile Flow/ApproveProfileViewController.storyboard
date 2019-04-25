@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GZs-8s-NNh">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Approve Profile View Controller-->
+        <scene sceneID="MzJ-Gm-fQ4">
+            <objects>
+                <viewController id="GZs-8s-NNh" customClass="ApproveProfileViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BlI-cj-9ac">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elizabeth added to your profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxm-EC-5Ng">
+                                <rect key="frame" x="0.0" y="56" width="414" height="25"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YX2-59-x0U">
+                                <rect key="frame" x="0.0" y="93" width="414" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="iI8-C7-wIQ"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="j8r-g5-rIS">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m0D-Sg-pnz" firstAttribute="bottom" secondItem="j8r-g5-rIS" secondAttribute="bottom" id="3IQ-TO-M8a"/>
+                            <constraint firstItem="YX2-59-x0U" firstAttribute="width" secondItem="BlI-cj-9ac" secondAttribute="width" id="4Ca-6i-CrY"/>
+                            <constraint firstItem="dxm-EC-5Ng" firstAttribute="leading" secondItem="m0D-Sg-pnz" secondAttribute="leading" id="DsV-dM-nnW"/>
+                            <constraint firstItem="j8r-g5-rIS" firstAttribute="leading" secondItem="m0D-Sg-pnz" secondAttribute="leading" id="N3Z-4f-9YC"/>
+                            <constraint firstItem="dxm-EC-5Ng" firstAttribute="top" secondItem="m0D-Sg-pnz" secondAttribute="top" constant="12" id="UAx-yj-6Kx"/>
+                            <constraint firstItem="m0D-Sg-pnz" firstAttribute="trailing" secondItem="j8r-g5-rIS" secondAttribute="trailing" id="aqu-6s-8Ir"/>
+                            <constraint firstItem="j8r-g5-rIS" firstAttribute="top" secondItem="YX2-59-x0U" secondAttribute="bottom" id="exQ-5t-iTi"/>
+                            <constraint firstItem="m0D-Sg-pnz" firstAttribute="trailing" secondItem="dxm-EC-5Ng" secondAttribute="trailing" id="g1C-Kj-IBF"/>
+                            <constraint firstItem="YX2-59-x0U" firstAttribute="top" secondItem="dxm-EC-5Ng" secondAttribute="bottom" constant="12" id="msJ-01-qjM"/>
+                            <constraint firstItem="YX2-59-x0U" firstAttribute="centerX" secondItem="m0D-Sg-pnz" secondAttribute="centerX" id="ukd-Ql-dkx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m0D-Sg-pnz"/>
+                    </view>
+                    <connections>
+                        <outlet property="stackView" destination="j8r-g5-rIS" id="jtC-Et-9Av"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uof-Bg-Wtx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="461" y="-98"/>
+        </scene>
+    </scenes>
+</document>
