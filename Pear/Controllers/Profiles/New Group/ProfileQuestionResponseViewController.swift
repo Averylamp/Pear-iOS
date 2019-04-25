@@ -28,7 +28,11 @@ class ProfileQuestionResponseViewController: UITextViewItemViewController {
   }
   
   override func intrinsicHeight() -> CGFloat {
-    return self.stackView.intrinsicContentSize.height + 16
+    let responseTitleHeight = self.responseSubtitleLabel.isHidden ? 8 :
+      self.responseSubtitleLabel.sizeThatFits(CGSize(width: self.responseSubtitleLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height + 12
+    return self.questionTitleLabel.sizeThatFits(CGSize(width: self.questionTitleLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height +
+      self.responseBodyLabel.sizeThatFits(CGSize(width: self.responseBodyLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height +
+      responseTitleHeight + 16
   }
 }
 

@@ -40,30 +40,35 @@ class ApproveDetachedProfileFoundViewController: UIViewController {
   @IBAction func nextButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     
-    guard let imageContainers = self.imageContainers else {
-      if hasClickedNext {
-        return
-      }
-      hasClickedNext = true
-      let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-                                                      type: NVActivityIndicatorType.ballScaleRippleMultiple,
-                                                      color: StylingConfig.textFontColor,
-                                                      padding: 0)
-      self.view.addSubview(activityIndicator)
-      activityIndicator.center = CGPoint(x: self.view.center.x,
-                                         y: self.nextButton.frame.origin.y - 40)
-      activityIndicator.startAnimating()
+//    guard let imageContainers = self.imageContainers else {
+//      if hasClickedNext {
+//        return
+//      }
+//      hasClickedNext = true
+//      let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+//                                                      type: NVActivityIndicatorType.ballScaleRippleMultiple,
+//                                                      color: StylingConfig.textFontColor,
+//                                                      padding: 0)
+//      self.view.addSubview(activityIndicator)
+//      activityIndicator.center = CGPoint(x: self.view.center.x,
+//                                         y: self.nextButton.frame.origin.y - 40)
+//      activityIndicator.startAnimating()
+//      return
+//    }
+//    guard let updatePhotosVC = ApproveDetachedProfilePhotosViewController
+//      .instantiate(detachedProfile: self.detachedProfile,
+//                   displayedImages: imageContainers.displayedImages,
+//                   imageBank: imageContainers.imageBank) else {
+//      print("Failed to instantiate Update Photos VC")
+//      return
+//    }
+//
+//    self.navigationController?.pushViewController(updatePhotosVC, animated: true)
+    guard let fullProfileApprovalVC = ApproveProfileViewController.instantiate(profileData: FullProfileDisplayData(detachedProfile: self.detachedProfile)) else {
+      print("Failed to create full detached profile view")
       return
     }
-    guard let updatePhotosVC = ApproveDetachedProfilePhotosViewController
-      .instantiate(detachedProfile: self.detachedProfile,
-                   displayedImages: imageContainers.displayedImages,
-                   imageBank: imageContainers.imageBank) else {
-      print("Failed to instantiate Update Photos VC")
-      return
-    }
-    
-    self.navigationController?.pushViewController(updatePhotosVC, animated: true)
+    self.navigationController?.pushViewController(fullProfileApprovalVC, animated: true)
   }
   
   @IBAction func skipButtonClicked(_ sender: Any) {

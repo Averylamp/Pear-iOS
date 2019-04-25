@@ -72,7 +72,6 @@
                     </view>
                     <size key="freeformSize" width="414" height="200"/>
                     <connections>
-                        <outlet property="iconImageView" destination="oj2-9Y-O61" id="yax-Ds-arJ"/>
                         <outlet property="questionTitleLabel" destination="uQZ-Sj-LhA" id="2Ha-N1-3Jq"/>
                         <outlet property="responseBodyLabel" destination="Kri-kw-OAA" id="JJb-Nz-f8e"/>
                         <outlet property="responseSubtitleLabel" destination="9CV-c3-S2a" id="Qr3-DV-aG4"/>
