@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAnalytics
 import CodableFirebase
 import Contacts
 
@@ -32,6 +33,7 @@ class UserContactPermissionsViewController: UIViewController {
   }
   
   @IBAction func enableContactsButtonClicked(_ sender: Any) {
+    Analytics.logEvent("CP_enableContacts_TAP_enableContacts", parameters: nil)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
 //    let predicate = CNContact.predicateForContacts(withIdentifiers: [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey])
     let keysToFetch: [CNKeyDescriptor] = [CNContactGivenNameKey as CNKeyDescriptor,
@@ -52,6 +54,7 @@ class UserContactPermissionsViewController: UIViewController {
         return
       }
       self.navigationController?.pushViewController(contactListVC, animated: true)
+      Analytics.logEvent("CP_enableContacts_DONE", parameters: nil)
     } catch {
       print("Failed to fetch contacts: \(error)")
     }

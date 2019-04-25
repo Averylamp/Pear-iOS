@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class ProfileInputQuestionViewController: UIViewController {
   
@@ -77,6 +78,7 @@ class ProfileInputQuestionViewController: UIViewController {
                                                                                   return
       }
       self.navigationController?.pushViewController(nextQuestionVC, animated: true)
+      Analytics.logEvent("CP_Qs_EV_answeredQ", parameters: nil)
     }
   }
   
@@ -94,9 +96,11 @@ class ProfileInputQuestionViewController: UIViewController {
                                                                                 return
     }
     self.navigationController?.pushViewController(nextQuestionVC, animated: true)
+    Analytics.logEvent("CP_Qs_EV_skippedQ", parameters: nil)
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
+    Analytics.logEvent("CP_Qs_TAP_continueToRoastBoast", parameters: nil)
     self.continueToRoastBoast()
   }
   
@@ -107,7 +111,7 @@ class ProfileInputQuestionViewController: UIViewController {
       return
     }
     self.navigationController?.pushViewController(boastRoastVC, animated: true)
-
+    Analytics.logEvent("CP_Qs_DONE", parameters: nil)
   }
   
 }
@@ -343,7 +347,6 @@ extension ProfileInputQuestionViewController: InputTableViewDelegate {
           self.continueToNextQuestion()
         })
       })
-      
     }
   }
   

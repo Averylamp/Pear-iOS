@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class ProfileInputVibeViewController: UIViewController {
   
@@ -47,6 +48,7 @@ class ProfileInputVibeViewController: UIViewController {
                       return
       }
       self.navigationController?.pushViewController(questionInputVC, animated: true)
+      Analytics.logEvent("CP_vibes_DONE", parameters: nil)
     }
   }
 }
