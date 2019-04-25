@@ -390,6 +390,15 @@ extension PearUserAPI {
                                             completion: completion)
   }
   
+  func updateUserGender(userID: String,
+                        gender: GenderEnum,
+                        completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+    let genderDictionary: [String: Any] = [
+      "gender": gender.toString()
+    ]
+    self.updateUserWithPreferenceDictionary(userID: userID, inputDictionary: genderDictionary, mutationName: "UpdateUserGender", completion: completion)
+  }
+  
   func updateUser(userID: String,
                   updates: [String: Any],
                   completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
