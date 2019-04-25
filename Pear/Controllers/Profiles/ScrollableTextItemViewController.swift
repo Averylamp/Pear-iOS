@@ -13,6 +13,8 @@ class ScrollableTextItemViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pageControl: UIPageControl!
   @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var scrollViewWidthConstraint: NSLayoutConstraint!
+  @IBOutlet weak var scrollContentView: UIView!
   
   var items: [TextContentItem] = []
   var intrinsicContentHeights: [CGFloat] = []
@@ -87,25 +89,24 @@ extension ScrollableTextItemViewController {
       }
       self.addChild(createdVC)
       createdVC.view.tag = count
-      self.scrollView.addSubview(createdVC.view)
-      self.scrollView.addConstraints([
+      self.scrollContentView.addSubview(createdVC.view)
+      self.scrollContentView.addConstraints([
         NSLayoutConstraint(item: createdVC.view as Any, attribute: .width, relatedBy: .equal,
-                           toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
+                           toItem: self.scrollContentView, attribute: .width, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: createdVC.view as Any, attribute: .height, relatedBy: .equal,
-                           toItem: self.scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
+                           toItem: self.scrollContentView, attribute: .height, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: createdVC.view as Any, attribute: .centerY, relatedBy: .equal,
-                           toItem: self.scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+                           toItem: self.scrollContentView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: createdVC.view as Any, attribute: .centerX, relatedBy: .equal,
-                           toItem: self.scrollView, attribute: .centerX,
-                           multiplier: (1.0 + CGFloat(2 * count)), constant: 0.0)
+                           toItem: self.scrollContentView, attribute: .centerX,
+                           multiplier: (1.0 + CGFloat(0 * count)), constant: 0.0)
         ])
       count += 1
+      createdVC.didMove(toParent: self)
       print("Added text item :\(count), \(item.content)")
     }
-    self.view.layoutIfNeeded()
-    print(self.scrollView.frame.size)
-    self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * CGFloat(count), 
-                                         height: 250)
+    
+    print(self.scrollContentView.frame.size)
     self.pageControl.numberOfPages = count
   }
   
