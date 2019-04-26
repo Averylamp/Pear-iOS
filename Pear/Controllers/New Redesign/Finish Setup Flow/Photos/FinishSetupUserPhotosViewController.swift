@@ -113,9 +113,7 @@ extension FinishSetupUserPhotosViewController {
   }
   
   func stylize() {
-    self.nextButton.stylizeDark()
-    self.titleLabel.stylizeTitleLabel()
-    self.subtitleLabel.stylizeSubtitleLabel()
+    self.nextButton.stylizePreferencesOn()
     
     self.view.layoutIfNeeded()
   }

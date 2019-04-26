@@ -101,9 +101,8 @@ extension FinishSetupUserSchoolViewController {
   }
   
   func stylize() {
-    self.nextButton.stylizeDark()
+    self.nextButton.stylizePreferencesOn()
     self.skipButton.stylizeSubtle()
-    self.titleLabel.stylizeTitleLabel()
     
     self.view.layoutIfNeeded()
     
