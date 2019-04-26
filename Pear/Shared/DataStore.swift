@@ -96,6 +96,18 @@ class DataStore: NSObject {
       }
     }
   }
+  
+  func hasEnabledLocation() -> Bool {
+    let status = CLLocationManager.authorizationStatus()
+    switch status {
+    case .notDetermined, .restricted, .denied:
+      return false
+    case .authorizedAlways, .authorizedWhenInUse:
+      return true
+    default:
+      return false
+    }
+  }
 }
 
 extension DataStore: CLLocationManagerDelegate {
