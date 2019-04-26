@@ -71,6 +71,7 @@ public class DiscoverySetupViewController: UIViewController {
   }
   
   @IBAction func finishSetupButtonPressed(_ sender: Any) {
+    Analytics.logEvent("DISC_setup_TAP_finishSetup", parameters: nil)
     guard let setupGenderVC = FinishSetupUserGenderViewController.instantiate() else {
       print("Failed to create finish setup gender vc")
       return

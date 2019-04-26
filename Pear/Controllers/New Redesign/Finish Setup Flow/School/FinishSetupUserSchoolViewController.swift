@@ -10,6 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 import BSImagePicker
 import Photos
+import FirebaseAnalytics
 
 class FinishSetupUserSchoolViewController: UIViewController {
   
@@ -75,6 +76,7 @@ class FinishSetupUserSchoolViewController: UIViewController {
         return
       }
       self.navigationController?.pushViewController(birthdateVC, animated: true)
+      Analytics.logEvent("FS_school_TAP_skip", parameters: nil)
     }
   }
   
