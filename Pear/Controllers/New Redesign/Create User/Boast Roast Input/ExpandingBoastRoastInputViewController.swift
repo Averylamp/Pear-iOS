@@ -110,7 +110,7 @@ extension ExpandingBoastRoastInputViewController {
       self.boastRoastImageView.image = R.image.iconRoast()
     }
     if self.expandingTextView.text != boastPlaceholder && self.expandingTextView.text != roastPlaceholder &&
-      self.expandingTextView.text.count == 0 && !self.isEditing {
+      self.expandingTextView.text.count == 0 {
       switch self.type {
       case .boast:
         self.expandingTextView.text = boastPlaceholder
