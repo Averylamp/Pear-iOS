@@ -17,9 +17,9 @@ class NetworkingConfig {
   static let host: String = "sloths.mit.edu"
   #endif
   #if PROD
-  static let host: String = "18.102.228.45"
+  static let host: String = "koala.mit.edu"
   #endif
-//  static let host: String = "koala.mit.edu"ssh -i ~/.ssh
+//  static let host: String = "koala.mit.edu"
 //    static let host: String = "66.31.16.203"
   
   static let devGraphQLHost: URL = URL(string: "\(secureHTTPs)://\(host)/graphql")!
