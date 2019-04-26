@@ -148,9 +148,15 @@ class DiscoveryFullProfileViewController: UIViewController {
         }
       }
     case .detachedProfile:
-      self.presentSimpleMessageAlert(title: "Your friend has not yet accepted their profile",
-                                     message: "They must have approve their profile first",
-                                     acceptAction: "Okay")
+      if let firstName = matchObject.detachedProfile?.firstName {
+        self.presentSimpleMessageAlert(title: "\(firstName) has not yet accepted their profile",
+                                       message: "They must have approved their profile first",
+                                       acceptAction: "Okay")
+      } else {
+        self.presentSimpleMessageAlert(title: "Your friend has not yet accepted their profile",
+                                       message: "They must have approved their profile first",
+                                       acceptAction: "Okay")
+      }
     case .endorsedUser:
       guard let endorsedUserObject = matchObject.endorsedUser else {
         print("Failed to get endorsed User Object")
@@ -447,6 +453,8 @@ extension DiscoveryFullProfileViewController {
       if let imageURLString = endorsedProfile.displayedImages.first?.thumbnail.imageURL,
         let imageURL = URL(string: imageURLString) {
         endorsedButton.sd_setImage(with: imageURL, for: .normal, completed: nil)
+      } else {
+        endorsedButton.setImage(R.image.friendsNoImage(), for: .normal)
       }
       let endorsedMatchButton = MatchButton(button: endorsedButton,
                                             buttonEnabled: endorsedEnabled,
@@ -462,6 +470,8 @@ extension DiscoveryFullProfileViewController {
       if let imageURLString = detachedProfile.images.first?.thumbnail.imageURL,
         let imageURL = URL(string: imageURLString) {
         detachedProfileButton.sd_setImage(with: imageURL, for: .normal, completed: nil)
+      } else {
+        detachedProfileButton.setImage(R.image.friendsNoImage(), for: .normal)
       }
       let endorsedMatchButton = MatchButton(button: detachedProfileButton,
                                             buttonEnabled: false,
