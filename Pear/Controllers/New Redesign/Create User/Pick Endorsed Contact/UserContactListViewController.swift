@@ -103,7 +103,7 @@ extension UserContactListViewController {
     if let font = R.font.openSansExtraBold(size: 16) {
       self.titleLabel.font = font
     }
-    self.titleLabel.textColor = UIColor.white
+    self.titleLabel.textColor = UIColor.black
     
   }
   
