@@ -45,7 +45,12 @@ class SentryHelper {
                                      "functionName": functionName]
     tags.forEach({ allTags[$0.key] = $0.value })
     userErrorEvent.tags = allTags
-    userErrorEvent.extra = paylod
+    var extraTags: [String: Any] = [:]
+    paylod.forEach({ extraTags[$0.key] = $0.value })
+    if let responseString = APIHelpers.dataDumpToString(data: responseData) {
+      extraTags["response"] = responseString
+    }
+    userErrorEvent.extra = extraTags
     Client.shared?.send(event: userErrorEvent, completion: nil)
     #endif
   }
