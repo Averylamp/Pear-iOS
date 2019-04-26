@@ -67,7 +67,7 @@ extension MultipleBoastRoastStackViewController {
   }
   
   func getBoastRoastItems() -> [BoastRoastItem] {
-    return self.textVCs.filter({ $0.type == .roast}).compactMap({ $0.getBoastRoastItem()})
+    return self.textVCs.filter({ $0.type == (self.mode == .boast ? .boast : .roast)}).compactMap({ $0.getBoastRoastItem()})
   }
   
 }
