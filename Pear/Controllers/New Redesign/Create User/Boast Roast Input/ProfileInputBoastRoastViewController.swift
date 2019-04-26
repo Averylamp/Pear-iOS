@@ -82,8 +82,6 @@ class ProfileInputBoastRoastViewController: UIViewController {
   }
   
   func saveBoastRoasts() {
-    print(self.boastTVC.getBoastRoastItems())
-    print(self.roastTVC.getBoastRoastItems())
     if let boasts = self.boastTVC.getBoastRoastItems() as? [BoastItem] {
       print("Boasts:\(boasts)")
       self.profileData.boasts = boasts
@@ -275,5 +273,6 @@ extension ProfileInputBoastRoastViewController: UIScrollViewDelegate {
     } else if pageIndex == 1 {
       self.mode = .roast
     }
+    self.stylizeBoastRoastButtons()
   }
 }
