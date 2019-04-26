@@ -28,7 +28,9 @@ class ProfileInputBoastRoastViewController: UIViewController {
   
   var mode: BoastRoastMode = .boast
   var profileData: ProfileCreationData!
-  var textVCs: [ExpandingBoastRoastInputViewController] = []
+  
+  var boastTVC = MultipleBoastRoastStackViewController.instantiate(type: .boast)!
+  var roastTVC = MultipleBoastRoastStackViewController.instantiate(type: .roast)!
   
   /// Factory method for creating this view controller.
   ///
@@ -43,9 +45,11 @@ class ProfileInputBoastRoastViewController: UIViewController {
   @IBAction func selectedCategoryButton(_ sender: UIButton) {
     if sender.tag == 2 {
       self.mode = .boast
+      self.scrollView.scrollRectToVisible(self.boastTVC.view.frame, animated: true)
       Analytics.logEvent("CP_r&b_TAP_boastTab", parameters: nil)
     } else if sender.tag == 3 {
       self.mode = .roast
+      self.scrollView.scrollRectToVisible(self.roastTVC.view.frame, animated: true)
       Analytics.logEvent("CP_r&b_TAP_roastTab", parameters: nil)
     }
     self.stylizeBoastRoastButtons()
@@ -78,11 +82,11 @@ class ProfileInputBoastRoastViewController: UIViewController {
   }
   
   func saveBoastRoasts() {
-    if let boasts = self.textVCs.filter({ $0.type == .boast}).compactMap({ $0.getBoastRoastItem()}) as? [BoastItem] {
+    if let boasts = self.boastTVC.getBoastRoastItems() as? [BoastItem] {
       print("Boasts:\(boasts)")
       self.profileData.boasts = boasts
     }
-    if let roasts = self.textVCs.filter({ $0.type == .roast}).compactMap({ $0.getBoastRoastItem()}) as? [RoastItem] {
+    if let roasts = self.roastTVC.getBoastRoastItems() as? [RoastItem] {
       print("Roasts:\(roasts)")
       self.profileData.roasts = roasts
     }
@@ -105,9 +109,7 @@ class ProfileInputBoastRoastViewController: UIViewController {
     }
     self.navigationController?.pushViewController(firstNameVC, animated: true)
     Analytics.logEvent("CP_r&b_DONE", parameters: nil)
-
   }
-  
 }
 
 // MARK: - Life Cycle
@@ -170,7 +172,26 @@ extension ProfileInputBoastRoastViewController {
   }
   
   func setup() {
-   self.addBoastRoastVC(type: .boast)
+    self.scrollView.isPagingEnabled = true
+    self.scrollView.delegate = self
+    
+    self.addChild(self.boastTVC)
+    self.addChild(self.roastTVC)
+    self.stackView.addArrangedSubview(self.boastTVC.view)
+    self.stackView.addArrangedSubview(self.roastTVC.view)
+    self.boastTVC.didMove(toParent: self)
+    self.roastTVC.didMove(toParent: self)
+    self.scrollView.addConstraints([
+      NSLayoutConstraint(item: self.boastTVC.view as Any, attribute: .height, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: self.boastTVC.view as Any, attribute: .width, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: self.roastTVC.view as Any, attribute: .height, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: self.roastTVC.view as Any, attribute: .width, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0.0)
+      ])
+    
   }
   
   func stylizeBoastRoastButtons() {
@@ -179,34 +200,19 @@ extension ProfileInputBoastRoastViewController {
       self.boastButton.isSelected = true
       self.roastButton.isSelected = false
       self.subtitleLabel.text = "A “pro” of dating them!\nHype 👏 them 👏 up 👏"
-      if let lastTextVC = self.textVCs.last {
-        lastTextVC.populatePlaceholder(type: .boast)
-      }
     case .roast:
       self.boastButton.isSelected = false
       self.roastButton.isSelected = true
       self.subtitleLabel.text = "Something people should know;\nnobody’s perfect ;P"
-      if let lastTextVC = self.textVCs.last {
-        lastTextVC.populatePlaceholder(type: .roast)
-      }
     }
   }
   
   func addBoastRoastVC(type: ExpandingBoastRoastInputType) {
-    guard let expandingTextVC = ExpandingBoastRoastInputViewController.instantiate(type: type) else {
-                    print("Failed to create expanding b/roast text vc")
-                    return
+    if type == .boast {
+      self.boastTVC.addBoastRoastVC()
+    } else if type == .roast {
+      self.roastTVC.addBoastRoastVC()
     }
-    
-    expandingTextVC.delegate = self
-    self.textVCs.append(expandingTextVC)
-    self.addChild(expandingTextVC)
-    self.stackView.addArrangedSubview(expandingTextVC.view)
-    expandingTextVC.didMove(toParent: self)
-    self.view.layoutIfNeeded()
-    expandingTextVC.expandingTextView.becomeFirstResponder()
-    self.scrollView.scrollRectToVisible(expandingTextVC.view.frame, animated: true)
-
   }
   
 }
@@ -255,33 +261,17 @@ extension ProfileInputBoastRoastViewController {
         self.view.layoutIfNeeded()
       }
     }
-  }
-  
+  }  
 }
 
-// MARK: - ExpandingBoastRoastInputViewDelegate
-extension ProfileInputBoastRoastViewController: ExpandingBoastRoastInputViewDelegate {
-  func returnPressed(controller: ExpandingBoastRoastInputViewController) {
-    DispatchQueue.main.async {
-      self.addBoastRoastVC(type: self.mode == .boast ? .boast : .roast)
+// MARK: - UIScrollViewDelegate
+extension ProfileInputBoastRoastViewController: UIScrollViewDelegate {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let pageIndex: Int = Int(floor(scrollView.contentOffset.x / scrollView.frame.width))
+    if pageIndex == 0 {
+      self.mode = .boast
+    } else if pageIndex == 1 {
+      self.mode = .roast
     }
   }
-  
-  func deleteButtonPressed(controller: ExpandingBoastRoastInputViewController) {
-    guard self.textVCs.count > 1 else {
-      print("Cant remove last remaining item")
-      controller.expandingTextView.text = ""
-      return
-    }
-    guard self.stackView.arrangedSubviews.firstIndex(where: { $0 == controller.view }) != nil,
-      let arrayIndex = self.textVCs.firstIndex(of: controller) else {
-        print("Unable to find indices to remove")
-        return
-    }
-    
-    self.stackView.removeArrangedSubview(controller.view)
-    controller.view.removeFromSuperview()
-    self.textVCs.remove(at: arrayIndex)
-  }
-  
 }

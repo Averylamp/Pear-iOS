@@ -262,6 +262,8 @@
 		BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A0812257F624009D9867 /* SentryHelper.swift */; };
 		BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */; };
 		BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */; };
+		BBC8DD5B2272753700C157E2 /* MultipleBoastRoastStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */; };
+		BBC8DD5D2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */; };
 		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
 		BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
@@ -620,6 +622,8 @@
 		BBC4A0812257F624009D9867 /* SentryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryHelper.swift; sourceTree = "<group>"; };
 		BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateImagesViewController.swift; sourceTree = "<group>"; };
 		BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateImagesViewController.storyboard; sourceTree = "<group>"; };
+		BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBoastRoastStackViewController.swift; sourceTree = "<group>"; };
+		BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultipleBoastRoastStackViewController.storyboard; sourceTree = "<group>"; };
 		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
@@ -2110,6 +2114,8 @@
 				BBF93E672267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard */,
 				BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */,
 				BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */,
+				BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */,
+				BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */,
 			);
 			path = "Boast Roast Input";
 			sourceTree = "<group>";
@@ -2404,6 +2410,7 @@
 				BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */,
 				BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */,
 				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
+				BBC8DD5D2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard in Resources */,
 				BB3F02892271C4E6004855E8 /* ScrollableTextItemViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
@@ -2826,6 +2833,7 @@
 				BB6479E0226A7FF300652318 /* LatestRoastBoastItem.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */,
+				BBC8DD5B2272753700C157E2 /* MultipleBoastRoastStackViewController.swift in Sources */,
 				BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
 				BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */,

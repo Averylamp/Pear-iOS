@@ -90,26 +90,26 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8A-Tp-dBu">
                                 <rect key="frame" x="0.0" y="169" width="414" height="549"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-0f-vZT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgH-lc-4ro">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="549"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TmT-iY-Te5">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0CE-L6-a7T">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="549"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" id="ae4-uc-cXG"/>
+                                                    <constraint firstAttribute="width" id="ukI-zy-NAT"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="tPy-0f-vZT" firstAttribute="centerX" secondItem="c8A-Tp-dBu" secondAttribute="centerX" id="3fE-5k-6Qh"/>
-                                    <constraint firstAttribute="bottom" secondItem="tPy-0f-vZT" secondAttribute="bottom" id="PQx-7A-qhn"/>
-                                    <constraint firstItem="tPy-0f-vZT" firstAttribute="leading" secondItem="c8A-Tp-dBu" secondAttribute="leading" id="e9k-q1-Gm9"/>
-                                    <constraint firstItem="tPy-0f-vZT" firstAttribute="width" secondItem="c8A-Tp-dBu" secondAttribute="width" id="iY7-yh-3Rq"/>
-                                    <constraint firstAttribute="trailing" secondItem="tPy-0f-vZT" secondAttribute="trailing" id="rbG-ub-UyL"/>
-                                    <constraint firstItem="tPy-0f-vZT" firstAttribute="top" secondItem="c8A-Tp-dBu" secondAttribute="top" id="xPt-oZ-2n0"/>
+                                    <constraint firstItem="zgH-lc-4ro" firstAttribute="centerY" secondItem="c8A-Tp-dBu" secondAttribute="centerY" id="2Xc-EJ-I31"/>
+                                    <constraint firstItem="zgH-lc-4ro" firstAttribute="top" secondItem="c8A-Tp-dBu" secondAttribute="top" id="7ph-CJ-q1k"/>
+                                    <constraint firstAttribute="bottom" secondItem="zgH-lc-4ro" secondAttribute="bottom" id="djq-5v-7ye"/>
+                                    <constraint firstItem="zgH-lc-4ro" firstAttribute="height" secondItem="c8A-Tp-dBu" secondAttribute="height" id="h3g-fL-Uwx"/>
+                                    <constraint firstAttribute="trailing" secondItem="zgH-lc-4ro" secondAttribute="trailing" id="uLv-ie-EJz"/>
+                                    <constraint firstItem="zgH-lc-4ro" firstAttribute="leading" secondItem="c8A-Tp-dBu" secondAttribute="leading" id="vFA-em-72x"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q43-OX-5Ne">
@@ -191,7 +191,7 @@
                         <outlet property="doneButtonBottomConstraint" destination="V4y-as-hY4" id="27U-gf-lNy"/>
                         <outlet property="roastButton" destination="WpL-Yn-LaZ" id="izV-4C-mnR"/>
                         <outlet property="scrollView" destination="c8A-Tp-dBu" id="Xtl-51-hJw"/>
-                        <outlet property="stackView" destination="tPy-0f-vZT" id="dIT-YG-vWD"/>
+                        <outlet property="stackView" destination="zgH-lc-4ro" id="jCP-8g-IYg"/>
                         <outlet property="subtitleLabel" destination="p94-0o-7HO" id="OaO-bJ-XcI"/>
                         <outlet property="titleLabel" destination="Vzw-TY-4an" id="mSs-dI-i6U"/>
                     </connections>
