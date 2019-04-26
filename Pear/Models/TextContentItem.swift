@@ -21,7 +21,10 @@ enum TextContentItemKey: String, CodingKey {
   case hidden
 }
 
-class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput, Equatable {
+class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput, Equatable, CustomStringConvertible {
+  var description: String {
+    return "Content Item:  \(self.content)"
+  }
 
   static func graphQLAllFields() -> String {
     return "{ _id author_id authorFirstName content hidden }"
