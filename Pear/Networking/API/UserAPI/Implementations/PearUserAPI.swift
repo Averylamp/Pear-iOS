@@ -29,7 +29,8 @@ class PearUserAPI: UserAPI {
   static let getFakeUserQuery: String = "query{ user(id:\"5ca7ecaa35db345290275f50\") \(PearUser.graphQLAllFields()) }"
   static let getUserQuery: String = "query GetUser($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLCurrentUserFields()) }}"
   static let fetchEndorsedUsersQuery: String = "query GetEndorsedUsers($userInput: GetUserInput!) { getUser(userInput:$userInput) { success message user { endorsedUsers \(PearUser.graphQLAllFields()) detachedProfiles \((PearDetachedProfile.graphQLAllFields()))  }  }}"
-  static let getExistingUsersQuery: String = "query GetAlreadyOnPear($phoneNumbers:[String!]!){alreadyOnPear(phoneNumbers: $phoneNumbers)}"
+  // swiftlint:disable:next line_length
+  static let getExistingUsersQuery: String = "query GetAlreadyOnPear($myPhoneNumber: String!, $phoneNumbers:[String!]!){alreadyOnPear(myPhoneNumber: $myPhoneNumber, phoneNumbers: $phoneNumbers)}"
   
   func getUpdateUserQueryWithName(name: String) -> String {
     return "mutation \(name)($userInput: UpdateUserInput!){ updateUser(updateUserInput:$userInput){ success message } }"
@@ -525,11 +526,17 @@ extension PearUserAPI {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
+    guard let userPhoneNumber = DataStore.shared.currentPearUser?.phoneNumber else {
+      print("User not logged in")
+      completion(.failure(UserAPIError.unauthenticated))
+      return
+    }
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
     let fullDictionary: [String: Any] = [
       "query": PearUserAPI.getExistingUsersQuery,
       "variables": [
+        "myPhoneNumber": userPhoneNumber,
         "phoneNumbers": checkNumbers
       ]
     ]
