@@ -60,6 +60,7 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     
     // register for remote notifications if we have notification authorization
     DataStore.shared.registerForRemoteNotificationsIfAuthorized()
+    DataStore.shared.reloadPossibleQuestions()
     return true
   }
   

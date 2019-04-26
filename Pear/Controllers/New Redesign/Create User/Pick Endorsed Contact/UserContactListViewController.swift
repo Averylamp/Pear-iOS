@@ -120,11 +120,13 @@ extension UserContactListViewController {
       case .success(let existingUsersPhoneNumbers):
         print("Found Existing Phone Numbers: \(existingUsersPhoneNumbers)")
         let phoneNumberSet = Set(existingUsersPhoneNumbers)
-        
-        for index in 0..<self.filteredContacts.count where phoneNumberSet.contains(self.filteredContacts[index].phoneNumber)
-          && self.filteredContacts[index].phoneNumber != "9738738225" {
-          self.filteredContacts[index].enabled = false
-          print("Existing User: \(self.filteredContacts[index].name)")
+        if let pearUser = DataStore.shared.currentPearUser,
+          pearUser.endorsedUserIDs.count + pearUser.detachedProfileIDs.count  == 0 {
+          for index in 0..<self.filteredContacts.count where phoneNumberSet.contains(self.filteredContacts[index].phoneNumber)
+            && self.filteredContacts[index].phoneNumber != "9738738225" {
+              self.filteredContacts[index].enabled = false
+              print("Existing User: \(self.filteredContacts[index].name)")
+          }          
         }
         
       case .failure(let error):

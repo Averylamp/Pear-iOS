@@ -75,9 +75,6 @@ extension DiscoverySimpleViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.refreshControl = refreshControl
-    let feedEndImageView = UIImageView(image: R.image.feedEndPhoto())
-    feedEndImageView.contentMode = .scaleAspectFill
-    tableView.tableFooterView = feedEndImageView
     self.refreshControl
       .addTarget(self,
                  action: #selector(DiscoverySimpleViewController.refreshControlChanged(sender:)),
@@ -255,7 +252,7 @@ extension DiscoverySimpleViewController {
 extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.fullProfiles.count
+    return self.fullProfiles.count + 1
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -263,16 +260,20 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoveryTableViewCell else {
-      return UITableViewCell()
+    if indexPath.row < self.fullProfiles.count {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoveryTableViewCell else {
+        return UITableViewCell()
+      }
+      cell.delegate = self
+      let fullProfile = self.fullProfiles[indexPath.row]
+      cell.selectionStyle = .none
+      cell.layoutIfNeeded()
+      cell.configureCell(profileData: fullProfile)
+      cell.layoutIfNeeded()
+      return cell
+    } else {
+      return tableView.dequeueReusableCell(withIdentifier: "DiscoveryEndCell", for: indexPath)
     }
-    cell.delegate = self
-    let fullProfile = self.fullProfiles[indexPath.row]
-    cell.selectionStyle = .none
-    cell.layoutIfNeeded()
-    cell.configureCell(profileData: fullProfile)
-    cell.layoutIfNeeded()
-    return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

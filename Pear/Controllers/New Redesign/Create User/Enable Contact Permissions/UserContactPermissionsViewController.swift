@@ -84,7 +84,22 @@ extension UserContactPermissionsViewController {
       self.numberProfilesLabel.font = font
     }
     self.numberProfilesLabel.textColor = UIColor.white
-    self.numberProfilesLabel.text = "No one has peared you yet 😢.  Pear a friend!"
+    self.numberProfilesLabel.text = ""
+
+    DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
+      DispatchQueue.main.async {
+      print("\(detachedProfiles.count) Detached Profiles Found")
+        if let writerFirstName = detachedProfiles.first?.creatorFirstName {
+          if detachedProfiles.count > 1 {
+            self.numberProfilesLabel.text = "\(writerFirstName) & \(detachedProfiles.count) others are pearing you.\nPick a fresh pear to see what they said!"
+          } else {
+            self.numberProfilesLabel.text = "\(writerFirstName) peared you.\nPick a fresh pear to see what they said!"
+          }
+        } else {
+          self.numberProfilesLabel.text = "No one has peared you yet 😢.  Pear a friend!"
+        }
+      }
+    })
     
     if let font = R.font.openSansBold(size: 18) {
       self.enableContactsButton.titleLabel?.font = font
