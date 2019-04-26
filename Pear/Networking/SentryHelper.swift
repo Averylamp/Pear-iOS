@@ -34,8 +34,8 @@ class SentryHelper {
     })
     
     #if DEVMODE
-    APIHelpers.printDataDump(data: responseData)
-    fatalError("Some Network Call failed and sentry is generating an error")
+//    APIHelpers.printDataDump(data: responseData)
+//    fatalError("Some Network Call failed and sentry is generating an error")
     #endif
     
     #if PROD

@@ -16,6 +16,9 @@
         <array key="OpenSans-ExtraBold.ttf">
             <string>OpenSans-ExtraBold</string>
         </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Profile Input Boast Roast View Controller-->
@@ -46,9 +49,17 @@
                                             <action selector="cancelButtonClicked:" destination="ldV-yO-okM" eventType="touchUpInside" id="I1h-fB-Lyk"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-UO-m7r">
+                                        <rect key="frame" x="301" y="-28" width="105" height="96"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                                        <state key="normal" title="Done" image="icon-cancel-button"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="YEu-UO-m7r" firstAttribute="leading" secondItem="Vzw-TY-4an" secondAttribute="trailing" constant="8" id="VJ5-Me-AS1"/>
                                     <constraint firstItem="Vzw-TY-4an" firstAttribute="centerY" secondItem="IIs-kj-SEt" secondAttribute="centerY" id="W08-V3-698"/>
+                                    <constraint firstAttribute="trailing" secondItem="YEu-UO-m7r" secondAttribute="trailing" constant="8" id="fAh-jG-D5o"/>
+                                    <constraint firstItem="YEu-UO-m7r" firstAttribute="centerY" secondItem="Vzw-TY-4an" secondAttribute="centerY" id="j6T-tn-IrV"/>
                                     <constraint firstAttribute="height" constant="40" id="nMP-7B-ExC"/>
                                     <constraint firstItem="lx1-e0-7ZK" firstAttribute="centerY" secondItem="Vzw-TY-4an" secondAttribute="centerY" id="u57-J8-fvq"/>
                                     <constraint firstItem="lx1-e0-7ZK" firstAttribute="leading" secondItem="IIs-kj-SEt" secondAttribute="leading" constant="8" id="uO0-fs-u2L"/>

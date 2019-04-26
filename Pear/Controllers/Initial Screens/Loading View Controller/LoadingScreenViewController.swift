@@ -112,19 +112,11 @@ extension LoadingScreenViewController {
   
   static func getLandingScreen() -> UIViewController? {
     #if DEVMODE
-    if !DataStore.shared.remoteConfig.configValue(forKey: "pineapple_waitlist_enabled").boolValue {
-      guard let landingScreenVC = LandingScreenWaitlistViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
-        return nil
-      }
-      return landingScreenVC
-    } else {
-      guard let landingScreenVC = LandingScreenViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
-        return nil
-      }
-      return landingScreenVC
+    guard let landingScreenVC = LandingScreenViewController.instantiate() else {
+      print("Failed to create Landing Screen VC")
+      return nil
     }
+    return landingScreenVC
     #else
     if DataStore.shared.remoteConfig.configValue(forKey: "pineapple_waitlist_enabled").boolValue {
       guard let landingScreenVC = LandingScreenWaitlistViewController.instantiate() else {
