@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class FinishSetupUserBirthdateViewController: UIViewController {
   
@@ -50,6 +51,7 @@ class FinishSetupUserBirthdateViewController: UIViewController {
               print("Failed to initialize photos VC")
               return
             }
+            Analytics.logEvent("FS_bday_DONE", parameters: nil)
             self.navigationController?.pushViewController(photosVC, animated: true)
           }
 
