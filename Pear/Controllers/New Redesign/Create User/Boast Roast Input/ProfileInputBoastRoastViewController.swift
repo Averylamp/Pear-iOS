@@ -130,7 +130,12 @@ extension ProfileInputBoastRoastViewController {
     }
     self.titleLabel.textColor = UIColor.white
 
-    guard let font = R.font.openSansExtraBold(size: 24) else {
+    var size: CGFloat = 24
+    if self.view.frame.width < 325 {
+      size = 20
+    }
+    
+    guard let font = R.font.openSansExtraBold(size: size) else {
       print("Failed to find font")
       return
     }

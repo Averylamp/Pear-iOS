@@ -37,6 +37,7 @@ class UserNameInputViewController: UIViewController {
         print("No documentID Found")
         return
       }
+      DataStore.shared.currentPearUser?.firstName = name
       self.profileData.updateAuthor(authorID: userID, authorFirstName: name)
       self.updateUserName()
       self.promptMessageComposer()
