@@ -50,7 +50,7 @@ extension ChatRequestsTableViewCell {
     self.nameLabel.text = match.otherUser.firstName
     self.thumbnailImage.layer.cornerRadius = self.thumbnailImage.frame.width / 2.0
     self.thumbnailImage.image = nil
-    if let thumbnailURLString = match.otherUser.images.first?.thumbnail.imageURL,
+    if let thumbnailURLString = match.otherUser.displayedImages.first?.thumbnail.imageURL,
       let thumbnailURL = URL(string: thumbnailURLString) {
       self.thumbnailImage.sd_setImage(with: thumbnailURL, completed: nil)
     }
@@ -69,9 +69,9 @@ extension ChatRequestsTableViewCell {
       
       self.previewTextLabel.text = mostRecentMessage.content
       if  mostRecentMessage.content == "" && mostRecentMessage.type == .matchmakerRequest {
-        self.previewTextLabel.text = "\(match.sentByUser.firstName) peared you and \(match.otherUser.firstName)"
+        self.previewTextLabel.text = "\(match.sentByUser.firstName ?? "Someone") peared you and \(match.otherUser.firstName ?? "their friend")"
       } else if mostRecentMessage.content == "" && mostRecentMessage.type == .personalRequest {
-        self.previewTextLabel.text = "\(match.sentByUser.firstName) requested to match with you"
+        self.previewTextLabel.text = "\(match.sentByUser.firstName ?? "Someone") requested to match with you"
       }
       self.timestampLabel.text = mostRecentMessage.timestamp.timeAgoSinceDate()
     } else {

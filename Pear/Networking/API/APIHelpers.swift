@@ -28,6 +28,21 @@ enum GraphQLInterpretationSuccessResponse {
 
 class APIHelpers {
   
+  static func printDataDump(data: Data?) {
+    if let data = data,
+      let json = try? JSON(data: data) {
+      print(json)
+    }
+  }
+  
+  static func dataDumpToString(data: Data?) -> String? {
+    if let data = data,
+      let json = try? JSON(data: data) {
+      return String(describing: json)
+    }
+    return nil
+  }
+  
   static func interpretGraphQLResponseObjectData(data: Data?, functionName: String, objectName: String) -> GraphQLInterpretationObjectResponse {
     guard let data = data else {
       return .dataNotFound

@@ -17,12 +17,13 @@ enum UserAPIError: Error {
 }
 
 protocol UserAPI {
-  func createNewUser(with gettingStartedUserData: UserCreationData, completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
+  func createNewUser(userCreationData: UserCreationData, completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
   func getUser(uid: String, token: String, completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
+  func getExistingUsers(checkNumbers: [String], completion: @escaping(Result<[String], UserAPIError>) -> Void)
   func fetchEndorsedUsers(uid: String,
                           token: String,
                           completion: @escaping (Result<
-    (endorsedProfiles: [MatchingPearUser], detachedProfiles: [PearDetachedProfile]), UserAPIError>) -> Void)
+    (endorsedProfiles: [PearUser], detachedProfiles: [PearDetachedProfile]), UserAPIError>) -> Void)
   
   // swiftlint:disable:next function_parameter_count
   func updateUserPreferences(userID: String,
@@ -30,9 +31,12 @@ protocol UserAPI {
                              minAge: Int,
                              maxAge: Int,
                              locationName: String?,
+                             isSeeking: Bool?,
                              completion: @escaping(Result<Bool, UserAPIError>) -> Void)
   
   func updateUser(userID: String,
                   updates: [String: Any],
                   completion: @escaping(Result<Bool, UserAPIError>) -> Void)
+  
+  func getFakeUser(completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
 }

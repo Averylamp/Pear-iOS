@@ -40,9 +40,7 @@ public struct OpenGraphPropertyName: Hashable, RawRepresentable, ExpressibleBySt
     }
 
     self.namespace = String(components[0])
-
-    let subcharacters = components[1 ... components.count]
-    self.name = subcharacters.reduce("") { $0 + ":" + String($1) }
+    self.name = String(components[1])
   }
 
   /**
@@ -112,13 +110,6 @@ public struct OpenGraphPropertyName: Hashable, RawRepresentable, ExpressibleBySt
    */
   public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterType) {
     self.init(stringLiteral: value)
-  }
-
-  // MARK: Hashable
-
-  /// Calculates the hash value of this `OpenGraphPropertyName`.
-  public var hashValue: Int {
-    return rawValue.hashValue
   }
 
   /**

@@ -8,26 +8,36 @@
 
 import UIKit
 
+enum ChatRequestTableViewType: Int {
+  case inbox = 0
+  case requests = 1
+}
+
 protocol ChatRequestTableViewControllerDelegate: class {
   
   func selectedMatch(match: Match)
-  func selectedProfile(user: MatchingPearUser)
+  func selectedProfile(user: PearUser)
   
 }
 
 class ChatRequestsTableViewController: UIViewController {
   
   var requests: [Match] = []
+  var requestTableViewType: ChatRequestTableViewType!
   weak var delegate: ChatRequestTableViewControllerDelegate?
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var noRequestsImage: UIImageView!
+  @IBOutlet weak var noRequestsContainer: UIView!
+  @IBOutlet weak var noRequestsText: UILabel!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> ChatRequestsTableViewController? {
+  class func instantiate(tableViewType: ChatRequestTableViewType) -> ChatRequestsTableViewController? {
     let storyboard = UIStoryboard(name: String(describing: ChatRequestsTableViewController.self), bundle: nil)
     guard let chatMainVC = storyboard.instantiateInitialViewController() as? ChatRequestsTableViewController else { return nil }
+    chatMainVC.requestTableViewType = tableViewType
     return chatMainVC
   }
   
@@ -45,16 +55,33 @@ extension ChatRequestsTableViewController {
   func stylize() {
     self.tableView.separatorStyle = .none
     self.tableView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+    if let font = R.font.openSansRegular(size: 18) {
+      self.noRequestsText.font = font
+    }
+    self.noRequestsText.textColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
   }
   
   func setup() {
     self.tableView.dataSource = self
     self.tableView.delegate = self
-    
+    if self.requestTableViewType == .inbox {
+      noRequestsImage.image = R.image.noMatchesIcon()
+      noRequestsText.text = "You have no chats.\nGo wave to some people!"
+    } else if self.requestTableViewType == .requests {
+      noRequestsImage.image = R.image.noRequestsIcon()
+      noRequestsText.text = "You have no requests.\nCheck back later!"
+    }
   }
   
   func updateMatches(matches: [Match]) {
     self.requests = matches
+    self.requests.sort { (match1, match2) -> Bool in
+      if let m1lo = match1.chat?.messages.last?.timestamp,
+        let m2lo = match2.chat?.messages.last?.timestamp {
+        return m1lo.compare(m2lo) == .orderedDescending
+      }
+      return match1.currentUserLastUpdated.compare(match2.currentUserLastUpdated) == .orderedDescending
+    }
     DispatchQueue.main.async {
       self.tableView.reloadData()
     }
@@ -66,6 +93,9 @@ extension ChatRequestsTableViewController {
 extension ChatRequestsTableViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if requests.count > 0 {
+      self.noRequestsContainer.isHidden = true
+    }
     return requests.count
   }
   
@@ -80,7 +110,7 @@ extension ChatRequestsTableViewController: UITableViewDelegate, UITableViewDataS
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRequestTVC", for: indexPath) as? ChatRequestsTableViewCell else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRequestItemTVC", for: indexPath) as? ChatRequestsTableViewCell else {
       print("Failed to instantiate Chat Request TVC")
       return UITableViewCell()
     }

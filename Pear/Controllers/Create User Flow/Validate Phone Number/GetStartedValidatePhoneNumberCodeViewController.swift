@@ -20,14 +20,14 @@ class GetStartedValidatePhoneNumberCodeViewController: UIViewController {
   
   var numberLabels: [UILabel] = []
   var circleViews: [UIView] = []
-  var gettingStartedUserData: UserCreationData!
+  var gettingStartedUserData: OldUserCreationData!
   var verificationID: String!
   var isVerifying: Bool = false
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserData: UserCreationData, verificationID: String) -> GetStartedValidatePhoneNumberCodeViewController? {
+  class func instantiate(gettingStartedUserData: OldUserCreationData, verificationID: String) -> GetStartedValidatePhoneNumberCodeViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedValidatePhoneNumberCodeViewController.self), bundle: nil)
     guard let phoneNumberCodeVC = storyboard.instantiateInitialViewController() as? GetStartedValidatePhoneNumberCodeViewController else { return nil }
     phoneNumberCodeVC.gettingStartedUserData = gettingStartedUserData
@@ -135,77 +135,78 @@ extension GetStartedValidatePhoneNumberCodeViewController {
   }
   
   func validatePhoneNumberCode() {
-    guard !isVerifying else { return }
-    guard let fullString = self.hiddenInputField.text else { return }
-    guard fullString.count == 6 else { return }
-    self.isVerifying = true
-    for codeLabel in self.numberLabels {
-      codeLabel.textColor = UIColor.lightGray
-    }
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: fullString)
-    if let user = Auth.auth().currentUser {
-      user.linkAndRetrieveData(with: credential) { (_, error) in
-        self.isVerifying = false
-        if let error = error as NSError? {
-          print(error)
-          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
-          DispatchQueue.main.async {
-            print(error.localizedDescription)
-            
-            if error.code == 17025 {
-              self.alert(title: "Auth Error", message: "This phone number already associated with another account")
-            } else if error.code == 17044 {
-              self.alert(title: "Auth Error", message: "Incorrect code")
-            } else {
-              self.alert(title: "Auth Error", message: "We are currently having issues authenticating your profile")
-            }
-            self.hiddenInputField.text = ""
-            self.updateCodeNumberLabels()
-          }
-        } else {
-          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-          self.gettingStartedUserData.phoneNumberVerified = true
-          user.getIDToken(completion: { (authToken, error) in
-            if let error = error {
-              print("Error getting token: \(error)")
-            }
-            if let authToken = authToken {
-              self.gettingStartedUserData.firebaseToken = authToken
-              print(self.gettingStartedUserData!)
-              PearUserAPI.shared.createNewUser(with: self.gettingStartedUserData, completion: { (result) in
-                print("Create User API Called")
-                switch result {
-                case .success(let pearUser):
-                  print(pearUser)
-                  DataStore.shared.currentPearUser = pearUser
-                  DispatchQueue.main.async {
-                    guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
-                      print("Failed to create Verification Complete VC")
-                      return
-                    }
-                    self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
-                  }
-                case .failure(let error):
-                  print(error)
-                  DispatchQueue.main.async {
-                    self.hiddenInputField.text = ""
-                    self.updateCodeNumberLabels()
-                    self.alert(title: "Error creating User",
-                               message: "Unfortunately we are unable to create your user at this time, please try again later")
-                  }
-                }
-              })
-              
-            }
-          })
-          
-        }
-      }
-    } else {
-      self.isVerifying = false
-    }
-    
+//    guard !isVerifying else { return }
+//    guard let fullString = self.hiddenInputField.text else { return }
+//    guard fullString.count == 6 else { return }
+//    self.isVerifying = true
+//    for codeLabel in self.numberLabels {
+//      codeLabel.textColor = UIColor.lightGray
+//    }
+//    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+//    let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: fullString)
+//    if let user = Auth.auth().currentUser {
+//      user.linkAndRetrieveData(with: credential) { (_, error) in
+//        self.isVerifying = false
+//        if let error = error as NSError? {
+//          print(error)
+//          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+//          DispatchQueue.main.async {
+//            print(error.localizedDescription)
+//            
+//            if error.code == 17025 {
+//              self.alert(title: "Auth Error", message: "This phone number already associated with another account")
+//            } else if error.code == 17044 {
+//              self.alert(title: "Auth Error", message: "Incorrect code")
+//            } else {
+//              self.alert(title: "Auth Error", message: "We are currently having issues authenticating your profile")
+//            }
+//            self.hiddenInputField.text = ""
+//            self.updateCodeNumberLabels()
+//          }
+//        } else {
+//          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+//          self.gettingStartedUserData.phoneNumberVerified = true
+//          user.getIDToken(completion: { (authToken, error) in
+//            if let error = error {
+//              print("Error getting token: \(error)")
+//            }
+//            if let authToken = authToken {
+//              self.gettingStartedUserData.firebaseToken = authToken
+//              print(self.gettingStartedUserData!)
+//              
+//              PearUserAPI.shared.createNewUser(userCreationData: self.gettingStartedUserData, completion: { (result) in
+//                print("Create User API Called")
+//                switch result {
+//                case .success(let pearUser):
+//                  print(pearUser)
+//                  DataStore.shared.currentPearUser = pearUser
+//                  DispatchQueue.main.async {
+//                    guard let verificationCompleteVC = GetStartedPhoneVerificationCompleteViewController.instantiate() else {
+//                      print("Failed to create Verification Complete VC")
+//                      return
+//                    }
+//                    self.navigationController?.pushViewController(verificationCompleteVC, animated: true)
+//                  }
+//                case .failure(let error):
+//                  print(error)
+//                  DispatchQueue.main.async {
+//                    self.hiddenInputField.text = ""
+//                    self.updateCodeNumberLabels()
+//                    self.alert(title: "Error creating User",
+//                               message: "Unfortunately we are unable to create your user at this time, please try again later")
+//                  }
+//                }
+//              })
+//              
+//            }
+//          })
+//          
+//        }
+//      }
+//    } else {
+//      self.isVerifying = false
+//    }
+//    
   }
   
 }

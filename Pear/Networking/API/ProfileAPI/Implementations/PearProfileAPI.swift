@@ -5,7 +5,6 @@
 //  Created by Avery Lamp on 2/24/19.
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
-// swiftlint:disable file_length
 
 import Foundation
 import SwiftyJSON
@@ -22,15 +21,15 @@ class PearProfileAPI: ProfileAPI {
     "Content-Type": "application/json"
   ]
   
-  static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile \(PearDetachedProfile.graphQLDetachedProfileFieldsAll) }}"
+  static let createNewDetachedProfileQuery: String = "mutation CreateDetachedProfile($detachedProfileInput: CreationDetachedProfileInput!) { createDetachedProfile(detachedProfileInput: $detachedProfileInput) { success message detachedProfile \(PearDetachedProfile.graphQLAllFields()) }}"
   
-  static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLDetachedProfileFieldsAll) }"
+  static let findDetachedProfilesQuery: String = "query FindDetachedProfiles($phoneNumber: String!) { findDetachedProfiles(phoneNumber: $phoneNumber) \(PearDetachedProfile.graphQLAllFields()) }"
   
   // swiftlint:disable:next line_length
-  static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($user_id:ID!, $detachedProfile_id:ID!, $creatorUser_id:ID!) { approveNewDetachedProfile(user_id:$user_id, detachedProfile_id:$detachedProfile_id, creatorUser_id:$creatorUser_id){ message success } }"
+  static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($approveDetachedProfileInput: ApproveDetachedProfileInput!) { approveNewDetachedProfile(approveDetachedProfileInput: $approveDetachedProfileInput){ message success } }"
   
-  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) timestamp } }}"
-  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(MatchingPearUser.graphQLMatchedUserFieldsAll) }"
+  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLAllFields()) timestamp } }}"
+//  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(PearUser.graphQLMatchedUserFieldsAll) }"
   
   // swiftlint:disable:next line_length
   static let editUserProfileQuery: String = "mutation EditUserProfile($editUserProfileInput:EditUserProfileInput!){ editUserProfile(editUserProfileInput: $editUserProfileInput){ success message}}"
@@ -41,7 +40,7 @@ class PearProfileAPI: ProfileAPI {
 
 // MARK: Routes
 extension PearProfileAPI {
-  func createNewDetachedProfile(gettingStartedUserProfileData: UserProfileCreationData,
+  func createNewDetachedProfile(profileCreationData: ProfileCreationData,
                                 completion: @escaping (Result<PearDetachedProfile, DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
@@ -54,15 +53,16 @@ extension PearProfileAPI {
       let fullDictionary: [String: Any] = [
         "query": PearProfileAPI.createNewDetachedProfileQuery,
         "variables": [
-          "detachedProfileInput": try convertUserProfileDataToQueryVariable(userProfileData: gettingStartedUserProfileData)
+          "detachedProfileInput": try convertUserProfileDataToQueryVariable(profileData: profileCreationData)
         ]
       ]
       
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
       
       request.httpBody = data
-      
+      print(String(data: data, encoding: .utf8) ?? "")
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        APIHelpers.printDataDump(data: data)
         if let error = error {
           print(error as Any)
           completion(.failure(DetachedProfileError.unknownError(error: error)))
@@ -76,7 +76,8 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "createDetachedProfile",
                                              message: "GraphQL Error: \(helperResult)",
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
@@ -84,6 +85,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "createDetachedProfile",
                                              message: message ?? "Failed to create user",
+                                             responseData: data,
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
@@ -97,7 +99,8 @@ extension PearProfileAPI {
                                                apiName: "PearProfileAPI",
                                                functionName: "createDetachedProfile",
                                                message: "DeserializationError: \(error.localizedDescription)",
-                paylod: fullDictionary)
+                                               responseData: data,
+                                               paylod: fullDictionary)
               completion(.failure(DetachedProfileError.failedDeserialization))
             }
           }
@@ -142,7 +145,8 @@ extension PearProfileAPI {
           SentryHelper.generateSentryEvent(level: .error,
                                            apiName: "PearProfileAPI",
                                            functionName: "findDetachedProfiles",
-                                           message: error.localizedDescription)
+                                           message: error.localizedDescription,
+                                           responseData: data)
           return
         } else {
           if  let data = data,
@@ -165,6 +169,7 @@ extension PearProfileAPI {
                                                apiName: "PearProfileAPI",
                                                functionName: "findDetachedProfiles",
                                                message: error.localizedDescription,
+                                               responseData: data,
                                                tags: [:],
                                                paylod: fullDictionary)
               completion(.failure(DetachedProfileError.unknownError(error: error)))
@@ -176,6 +181,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "findDetachedProfiles",
                                              message: "Failed to convert inputs",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.failedDeserialization))
@@ -195,23 +201,17 @@ extension PearProfileAPI {
     
   }
   
-  func attachDetachedProfile(user_id: String, detachedProfile_id: String, creatorUser_id: String,
-                             completion: @escaping(Result<Bool, DetachedProfileError>) -> Void) {
+  func attachDetachedProfile(detachedProfile: PearDetachedProfile, completion: @escaping(Result<Bool, DetachedProfileError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
-    
     request.allHTTPHeaderFields = defaultHeaders
-    
     do {
-      
       let fullDictionary: [String: Any] = [
         "query": PearProfileAPI.attachDetachedProfileQuery,
         "variables": [
-          "user_id": user_id,
-          "detachedProfile_id": detachedProfile_id,
-          "creatorUser_id": creatorUser_id
+          "approveDetachedProfileInput": try convertApprovalInputDataToQueryVariable(detachedProfile: detachedProfile)
         ]
       ]
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
@@ -232,8 +232,9 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "approveNewDetachedProfile",
                                              message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Approve Detached Profile: \(message ?? "")")
@@ -241,6 +242,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "approveNewDetachedProfile",
                                              message: message ?? "Failed to Approve Detached Profile",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
@@ -290,8 +292,9 @@ extension PearProfileAPI {
                                            apiName: "PearProfileAPI",
                                            functionName: "getDiscoveryFeed",
                                            message: "Unknown Error: \(error.localizedDescription)",
-            tags: [:],
-            paylod: fullDictionary)
+                                           responseData: data,
+                                           tags: [:],
+                                           paylod: fullDictionary)
           completion(.failure(DetachedProfileError.unknownError(error: error)))
           return
         } else {
@@ -303,11 +306,9 @@ extension PearProfileAPI {
               for userData in discoveryUsers {
                 do {
                   let userRawData = try userData["user"].rawData()
-                  print(userData)
-                  let matchingPearUser = try JSONDecoder().decode(MatchingPearUser.self, from: userRawData)
-                  if matchingPearUser.userProfiles.count > 0 {
-                    let fullProfile = FullProfileDisplayData(matchingUser: matchingPearUser)
-                    fullProfile.profileNumber = matchingPearUser.userProfiles.count
+                  let pearUser = try JSONDecoder().decode(PearUser.self, from: userRawData)
+                  if pearUser.endorserIDs.count > 0 {
+                    let fullProfile = FullProfileDisplayData(user: pearUser)
                     if let timestamp = userData["timestamp"].string,
                       let timestampValue = Double(timestamp) {
                       fullProfile.discoveryTimestamp = Date(timeIntervalSince1970: timestampValue / 1000.0)
@@ -319,6 +320,7 @@ extension PearProfileAPI {
                                                    apiName: "PearProfileAPI",
                                                    functionName: "getDiscoveryFeed",
                                                    message: "Failed Discovery Serialization: \(error.localizedDescription)",
+                                                   responseData: data,
                                                    tags: [:],
                                                    paylod: fullDictionary)
                   print("Failed to deserialize pear user from feed: \(error)")
@@ -333,6 +335,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "getDiscoveryFeed",
                                              message: "Failed Data Serialization",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.failedDeserialization))
@@ -350,95 +353,21 @@ extension PearProfileAPI {
       completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
   }
-  
-  func getMatchingUser(user_id: String,
-                       completion: @escaping(Result<FullProfileDisplayData, DetachedProfileError>) -> Void) {
-    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
-    request.httpMethod = "POST"
     
-    request.allHTTPHeaderFields = defaultHeaders
-    
-    do {
-      
-      let fullDictionary: [String: Any] = [
-        "query": PearProfileAPI.fetchMatchingUserQuery,
-        "variables": [
-          "user_id": user_id
-        ]
-      ]
-      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
-      request.httpBody = data
-      
-      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-        if let error = error {
-          print(error as Any)
-          completion(.failure(DetachedProfileError.unknownError(error: error)))
-          SentryHelper.generateSentryEvent(level: .error,
-                                           apiName: "PearProfileAPI",
-                                           functionName: "getMatchingUser",
-                                           message: error.localizedDescription)
-          return
-        } else {
-          let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: "user", objectName: "user")
-          switch helperResult {
-          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
-            print("Failed to Fetch User: \(helperResult)")
-            SentryHelper.generateSentryEvent(level: .error,
-                                             apiName: "PearProfileAPI",
-                                             functionName: "getMatchingUser",
-                                             message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
-            completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
-          case .failure(let message):
-            print("Failed to Create User: \(message ?? "")")
-            SentryHelper.generateSentryEvent(level: .error,
-                                             apiName: "PearProfileAPI",
-                                             functionName: "getMatchingUser",
-                                             message: message ?? "Failed to Get user",
-                                             tags: [:],
-                                             paylod: fullDictionary)
-            completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
-          case .foundObjectData(let objectData):
-            do {
-              let matchingPearUser = try JSONDecoder().decode(MatchingPearUser.self, from: objectData)
-              if matchingPearUser.userProfiles.count > 0 {
-                let fullProfile = FullProfileDisplayData(matchingUser: matchingPearUser)
-                completion(.success(fullProfile))
-              } else {
-                completion(.failure(DetachedProfileError.unknown))
-              }
-              print("Successfully found Detached Profile")
-            } catch {
-              print("Deserialization Error: \(error)")
-              SentryHelper.generateSentryEvent(level: .error,
-                                               apiName: "PearProfileAPI",
-                                               functionName: "getMatchingUser",
-                                               message: "DeserializationError: \(error.localizedDescription)",
-                tags: [:],
-                paylod: fullDictionary)
-              completion(.failure(DetachedProfileError.failedDeserialization))
-            }
-          }
-        }
+  func validateDetachedProfileUpdates(updates: [String: Any]) -> Bool {
+    let allowedKeys: [String] = ["firstName", "lastName", "boasts", "roasts", "questionResponses", "vibes", "bio", "dos", "donts", "interests", "images", "school", "schoolYear"]
+    var allowed = true
+    updates.forEach { (item) in
+      if !allowedKeys.contains(item.key) {
+        print(item)
+        allowed = false
       }
-      dataTask.resume()
-    } catch {
-      print(error)
-      SentryHelper.generateSentryEvent(level: .error,
-                                       apiName: "PearProfileAPI",
-                                       functionName: "getMatchingUser",
-                                       message: error.localizedDescription)
-      completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
-    
+    return allowed
   }
   
   func validateUserProfileUpdates(updates: [String: Any]) -> Bool {
-    let allowedKeys: [String] = ["interests", "vibes", "bio", "dos", "donts", "images"]
+    let allowedKeys: [String] = ["boasts", "roasts", "questionResponses", "vibes", "bio", "dos", "donts", "interests"]
     var allowed = true
     updates.forEach { (item) in
       if !allowedKeys.contains(item.key) {
@@ -453,6 +382,8 @@ extension PearProfileAPI {
                        userID: String,
                        updates: [String: Any],
                        completion: @escaping (Result<Bool, ProfileAPIError>) -> Void) {
+    return
+    /*
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
@@ -465,6 +396,7 @@ extension PearProfileAPI {
                                        apiName: "PearProfileAPI",
                                        functionName: "editUserProfile",
                                        message: "Invalid Updates",
+                                       responseData: nil,
                                        tags: [:],
                                        paylod: updates)
       completion(.failure(ProfileAPIError.invalidVariables))
@@ -503,8 +435,9 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "editUserProfile",
                                              message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Approve Detached Profile: \(message ?? "")")
@@ -512,6 +445,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "editUserProfile",
                                              message: message ?? "Failed to Edit User Profile",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))
@@ -530,6 +464,7 @@ extension PearProfileAPI {
                                        message: error.localizedDescription)
       completion(.failure(ProfileAPIError.unknownError(error: error)))
     }
+ */
   }
   
   func editDetachedProfile(profileDocumentID: String,
@@ -541,13 +476,13 @@ extension PearProfileAPI {
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
-    
-    guard validateUserProfileUpdates(updates: updates) else {
+    guard validateDetachedProfileUpdates(updates: updates) else {
       print("Invalid update values")
       SentryHelper.generateSentryEvent(level: .error,
                                        apiName: "PearProfileAPI",
                                        functionName: "editDetachedProfile",
                                        message: "Invalid Updates",
+                                       responseData: nil,
                                        tags: [:],
                                        paylod: updates)
       completion(.failure(ProfileAPIError.invalidVariables))
@@ -586,8 +521,9 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "editDetachedProfile",
                                              message: "GraphQL Error: \(helperResult)",
-              tags: [:],
-              paylod: fullDictionary)
+                                             responseData: data,
+                                             tags: [:],
+                                             paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Approve Detached Profile: \(message ?? "")")
@@ -595,6 +531,7 @@ extension PearProfileAPI {
                                              apiName: "PearProfileAPI",
                                              functionName: "editDetachedProfile",
                                              message: message ?? "Failed to Edit Detached Profile",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))
@@ -620,64 +557,43 @@ extension PearProfileAPI {
 // MARK: Create Detached Profile Endpoint Helpers
 extension PearProfileAPI {
   
-  func convertUserProfileDataToQueryVariable(userProfileData: UserProfileCreationData) throws -> [String: Any] {
-    
-    guard
-      
-      let firstName = userProfileData.firstName,
-      let phoneNumber = userProfileData.phoneNumber,
-      let age = userProfileData.age,
-      let gender = userProfileData.gender,
-      let bio = userProfileData.bio else {
-        throw DetachedProfileError.invalidVariables
-    }
-    
-    let imageContainer = userProfileData.images
-      .filter({ $0.imageContainer != nil })
-      .map({ $0.imageContainer!.dictionary })
-      .filter({$0 != nil})
+  func convertUserProfileDataToQueryVariable(profileData: ProfileCreationData) throws -> [String: Any] {
     
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       throw DetachedProfileError.userNotLoggedIn
     }
-    guard let creatorFirstName = DataStore.shared.currentPearUser?.firstName else {
+    guard let creatorFirstName = DataStore.shared.currentPearUser?.firstName  else {
       throw DetachedProfileError.userNotLoggedIn
     }
     
-    var variablesDictionary: [String: Any] = [
+    let variablesDictionary: [String: Any] = [
       "creatorUser_id": userID,
       "creatorFirstName": creatorFirstName,
-      "firstName": firstName,
-      "phoneNumber": phoneNumber,
-      "age": age,
-      "gender": gender.rawValue,
-      "interests": userProfileData.interests,
-      "vibes": userProfileData.vibes,
-      "seekingGender": userProfileData.seekingGender.map({ $0.rawValue }),
-      "bio": bio,
-      "dos": userProfileData.dos,
-      "donts": userProfileData.donts,
-      "images": imageContainer
+      "firstName": profileData.firstName,
+      "lastName": profileData.lastName,
+      "phoneNumber": profileData.phoneNumber,
+      "boasts": profileData.boasts.map({ $0.toGraphQLInput() }),
+      "roasts": profileData.roasts.map({ $0.toGraphQLInput() }),
+      "questionResponses": profileData.questionResponses.map({ $0.toGraphQLInput() }),
+      "vibes": profileData.vibes.map({ $0.toGraphQLInput() })
     ]
     
-    var coordinates: [Double] = []
-    if let userLocation =  DataStore.shared.lastLocation {
-      coordinates.append(userLocation.longitude)
-      coordinates.append(userLocation.latitude)
-    } else {
-      coordinates.append(-71.0589)
-      coordinates.append(42.3601)
+    return variablesDictionary
+  }
+  
+  func convertApprovalInputDataToQueryVariable(detachedProfile: PearDetachedProfile) throws -> [String: Any] {
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      throw DetachedProfileError.userNotLoggedIn
     }
-    
-    variablesDictionary["location"] = coordinates
-    variablesDictionary["locationName"] = "Boston Area"
-    if let school = userProfileData.school {
-      variablesDictionary["school"] = school
-    }
-    if let schoolYear = userProfileData.schoolYear {
-      variablesDictionary["schoolYear"] = schoolYear
-    }
-    
+    let variablesDictionary: [String: Any] = [
+      "user_id": userID,
+      "detachedProfile_id": detachedProfile.documentID as Any,
+      "creatorUser_id": detachedProfile.creatorUserID as Any,
+      "boasts": detachedProfile.boasts.map({ $0.toGraphQLInput() }),
+      "roasts": detachedProfile.roasts.map({ $0.toGraphQLInput() }),
+      "questionResponses": detachedProfile.questionResponses.map({ $0.toGraphQLInput() }),
+      "vibes": detachedProfile.vibes.map({ $0.toGraphQLInput() })
+    ]
     return variablesDictionary
   }
   

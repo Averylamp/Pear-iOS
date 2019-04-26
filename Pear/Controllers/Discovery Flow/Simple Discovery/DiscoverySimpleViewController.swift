@@ -22,6 +22,7 @@ extension Notification.Name {
 class DiscoverySimpleViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  
   var fullProfiles: [FullProfileDisplayData] = []
   var filteredFullProfiles: [FullProfileDisplayData] = []
   var blockedUsers: [String] = []
@@ -30,6 +31,7 @@ class DiscoverySimpleViewController: UIViewController {
   let minRefreshTime: Double = 60 // Minimum time to wait before refreshing feed
   private let refreshControl = UIRefreshControl()
   private var refreshTimer: Timer = Timer()
+
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -68,6 +70,7 @@ extension DiscoverySimpleViewController {
   }
   
   func setup() {
+    tableView.estimatedRowHeight = 400
     tableView.separatorStyle = .none
     tableView.delegate = self
     tableView.dataSource = self
@@ -135,6 +138,7 @@ extension DiscoverySimpleViewController {
     }
   }
   
+  // copied in DiscoverySetupViewController: update both if updating this logic
   func fullDataReload(animated: Bool = false) {
     print("Discovery Full Reload")
     if animated {
@@ -147,6 +151,7 @@ extension DiscoverySimpleViewController {
     self.refreshFeed(animated: animated)
   }
   
+  // copied in DiscoverySetupViewController: update both if updating this logic
   func checkForDetachedProfiles() {
     DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
       print("\(detachedProfiles.count) Detached Profiles Found")
@@ -223,7 +228,8 @@ extension DiscoverySimpleViewController {
                 prefetchURLS.append(firstImageMediumURL)
               }
             })
-            SDWebImagePrefetcher.shared().prefetchURLs(prefetchURLS)
+            
+            SDWebImagePrefetcher.shared.prefetchURLs(prefetchURLS)
             
             DispatchQueue.main.async {
               self.tableView.reloadData()
@@ -246,7 +252,7 @@ extension DiscoverySimpleViewController {
 extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.fullProfiles.count
+    return self.fullProfiles.count + 1
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -254,23 +260,20 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoveryTableViewCell else {
-      return UITableViewCell()
+    if indexPath.row < self.fullProfiles.count {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDiscoveryTVC", for: indexPath) as? DiscoveryTableViewCell else {
+        return UITableViewCell()
+      }
+      cell.delegate = self
+      let fullProfile = self.fullProfiles[indexPath.row]
+      cell.selectionStyle = .none
+      cell.layoutIfNeeded()
+      cell.configureCell(profileData: fullProfile)
+      cell.layoutIfNeeded()
+      return cell
+    } else {
+      return tableView.dequeueReusableCell(withIdentifier: "DiscoveryEndCell", for: indexPath)
     }
-    cell.delegate = self
-    let fullProfile = self.fullProfiles[indexPath.row]
-    cell.selectionStyle = .none
-    cell.configureCell(profileData: fullProfile)
-    cell.cardView.layer.cornerRadius = 12
-    cell.cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
-    cell.cardView.layer.borderWidth = 1
-    cell.cardView.clipsToBounds = true
-    cell.cardShadowView.layer.shadowOpacity = 0.4
-    cell.cardShadowView.layer.shadowColor = R.color.shadowColor()?.cgColor
-    cell.cardShadowView.layer.shadowOffset = CGSize(width: 1, height: 1 )
-    cell.cardShadowView.layer.shadowRadius = 2
-    cell.cardShadowView.layer.cornerRadius = cell.cardView.layer.cornerRadius
-    return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

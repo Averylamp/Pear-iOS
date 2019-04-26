@@ -40,9 +40,9 @@ protocol MatchDelegate: class {
 class Match: Decodable, CustomStringConvertible {
   
   let documentID: String
-  let sentByUser: MatchingPearUser
-  let sentForUser: MatchingPearUser
-  let receivedByUser: MatchingPearUser
+  let sentByUser: PearUser
+  let sentForUser: PearUser
+  let receivedByUser: PearUser
   let sentForUserStatus: MatchRequestResponse
   let sentForUserStatusLastUpdated: Date
   let receivedByUserStatus: MatchRequestResponse
@@ -50,9 +50,10 @@ class Match: Decodable, CustomStringConvertible {
   let firebaseChatDocumentID: String
   let firebaseChatDocumentPath: String
   var chat: Chat?
-  var otherUser: MatchingPearUser
+  var otherUser: PearUser
   var currentUserStatus: MatchRequestResponse
   var otherUserStatus: MatchRequestResponse
+  var currentUserLastUpdated: Date
   
   var description: String {
     return "**** Match Object **** \n" + """
@@ -69,15 +70,15 @@ class Match: Decodable, CustomStringConvertible {
     """
   }
   
-  static let graphQLMatchFields = "{ _id sentByUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) sentForUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) receivedByUser \(MatchingPearUser.graphQLMatchedUserFieldsAll) sentForUserStatus sentForUserStatusLastUpdated receivedByUserStatus receivedByUserStatusLastUpdated firebaseChatDocumentID firebaseChatDocumentPath }"
+  static let graphQLMatchFields = "{ _id sentByUser \(PearUser.graphQLAllFields()) sentForUser \(PearUser.graphQLAllFields()) receivedByUser \(PearUser.graphQLAllFields()) sentForUserStatus sentForUserStatusLastUpdated receivedByUserStatus receivedByUserStatusLastUpdated firebaseChatDocumentID firebaseChatDocumentPath }"
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: MatchKeys.self)
     
     self.documentID = try values.decode(String.self, forKey: .documentID)
-    self.sentByUser = try values.decode(MatchingPearUser.self, forKey: .sentByUser)
-    self.sentForUser = try values.decode(MatchingPearUser.self, forKey: .sentForUser)
-    self.receivedByUser = try values.decode(MatchingPearUser.self, forKey: .receivedByUser)
+    self.sentByUser = try values.decode(PearUser.self, forKey: .sentByUser)
+    self.sentForUser = try values.decode(PearUser.self, forKey: .sentForUser)
+    self.receivedByUser = try values.decode(PearUser.self, forKey: .receivedByUser)
     guard let userStatus = MatchRequestResponse.init(rawValue: try values.decode(String.self, forKey: .sentForUserStatus)) else {
       throw MatchDecodingError.enumDecodingError
     }
@@ -123,6 +124,7 @@ class Match: Decodable, CustomStringConvertible {
     self.otherUser = self.sentForUser.documentID == userID ? self.receivedByUser : self.sentForUser
     self.currentUserStatus = self.sentForUser.documentID == userID ? self.sentForUserStatus : self.receivedByUserStatus
     self.otherUserStatus = self.sentForUser.documentID == userID ? self.receivedByUserStatus : self.sentForUserStatus
+    self.currentUserLastUpdated = self.sentForUser.documentID == userID ? self.sentForUserStatusLastUpdated : self.receivedByUserStatusLastUpdated
   }
   
   func fetchFirebaseChatObject(completion: ((Match?) -> Void)?) {

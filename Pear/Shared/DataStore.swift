@@ -29,7 +29,7 @@ class DataStore: NSObject {
       NotificationCenter.default.post(name: .refreshMeTab, object: nil)
     }
   }
-  var endorsedUsers: [MatchingPearUser] = [] {
+  var endorsedUsers: [PearUser] = [] {
     didSet {
       NotificationCenter.default.post(name: .refreshFriendTab, object: nil)
     }
@@ -49,6 +49,7 @@ class DataStore: NSObject {
   var firstLocationReceived: Bool = false
   var lastLocation: CLLocationCoordinate2D?
   var firebaseRemoteInstanceID: String? // for push notifications via Firebase Cloud Messaging
+  var possibleQuestions: [QuestionItem] = []
   
   private override init() {
     self.remoteConfig = RemoteConfig.remoteConfig()
@@ -57,6 +58,7 @@ class DataStore: NSObject {
     self.reloadRemoteConfig()
     self.locationManager.delegate = self
     self.startReceivingLocationChanges()
+    self.reloadPossibleQuestions()
   }
   
   func reloadRemoteConfig(completion: ((Bool) -> Void)? = nil) {
@@ -92,6 +94,18 @@ class DataStore: NSObject {
       if let completion = completion {
         completion(status == .success)
       }
+    }
+  }
+  
+  func hasEnabledLocation() -> Bool {
+    let status = CLLocationManager.authorizationStatus()
+    switch status {
+    case .notDetermined, .restricted, .denied:
+      return false
+    case .authorizedAlways, .authorizedWhenInUse:
+      return true
+    default:
+      return false
     }
   }
 }

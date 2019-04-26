@@ -24,7 +24,6 @@ target 'Pear' do
   pod 'Sentry' 
   pod 'BSImagePicker'
 
-
   target 'PearTests' do
     inherit! :search_paths
   end

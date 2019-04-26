@@ -30,24 +30,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMl-Hv-pPE">
-                                <rect key="frame" x="30" y="792" width="354" height="50"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="XV6-Vt-aX3"/>
-                                </constraints>
-                                <state key="normal" title="Reject Profile"/>
-                                <connections>
-                                    <action selector="skipButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="F8S-bX-B1y"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODI-3H-cEt">
-                                <rect key="frame" x="30" y="732" width="354" height="50"/>
+                                <rect key="frame" x="30" y="792" width="354" height="50"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="QLI-HM-6SR"/>
                                 </constraints>
-                                <state key="normal" title="Next"/>
+                                <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="nextButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="bcI-M5-vga"/>
                                 </connections>
@@ -62,16 +51,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gQ4-0s-yY9" firstAttribute="bottom" secondItem="ZMl-Hv-pPE" secondAttribute="bottom" constant="20" id="0HC-zb-HNB"/>
                             <constraint firstItem="VlL-Dh-foD" firstAttribute="centerX" secondItem="gQ4-0s-yY9" secondAttribute="centerX" id="1Vf-1D-Nem"/>
                             <constraint firstItem="ODI-3H-cEt" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="30" id="2S4-uD-feh"/>
-                            <constraint firstItem="ZMl-Hv-pPE" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="30" id="6Pq-kg-g2h"/>
+                            <constraint firstItem="gQ4-0s-yY9" firstAttribute="bottom" secondItem="ODI-3H-cEt" secondAttribute="bottom" constant="20" id="DKr-7m-Ci9"/>
                             <constraint firstItem="13a-lb-DzA" firstAttribute="centerX" secondItem="gQ4-0s-yY9" secondAttribute="centerX" id="JNx-Bc-qKY"/>
                             <constraint firstItem="nvd-2p-GUa" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="40" id="KfR-hU-1cf"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="ODI-3H-cEt" secondAttribute="trailing" constant="30" id="RdE-46-tBD"/>
                             <constraint firstItem="13a-lb-DzA" firstAttribute="top" secondItem="VlL-Dh-foD" secondAttribute="bottom" constant="40" id="W0d-pl-HIJ"/>
-                            <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="ZMl-Hv-pPE" secondAttribute="trailing" constant="30" id="Yac-i7-5Jy"/>
-                            <constraint firstItem="ZMl-Hv-pPE" firstAttribute="top" secondItem="ODI-3H-cEt" secondAttribute="bottom" constant="10" id="eXk-v2-wrU"/>
                             <constraint firstItem="nvd-2p-GUa" firstAttribute="centerX" secondItem="13a-lb-DzA" secondAttribute="centerX" id="goQ-y9-6IH"/>
                             <constraint firstItem="13a-lb-DzA" firstAttribute="centerY" secondItem="gQ4-0s-yY9" secondAttribute="centerY" constant="-40" id="gto-a1-ppa"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="nvd-2p-GUa" secondAttribute="trailing" constant="40" id="jz4-wO-k4B"/>
@@ -81,7 +67,6 @@
                     </view>
                     <connections>
                         <outlet property="nextButton" destination="ODI-3H-cEt" id="sA1-ZO-Xu7"/>
-                        <outlet property="skipButton" destination="ZMl-Hv-pPE" id="ee9-o2-kBI"/>
                         <outlet property="subtitleLabel" destination="nvd-2p-GUa" id="8p6-HO-yJO"/>
                         <outlet property="titleLabel" destination="13a-lb-DzA" id="Qzd-Tl-ZjC"/>
                     </connections>
@@ -92,6 +77,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fireworks-icon" width="640" height="640"/>
+        <image name="fireworks-icon" width="512" height="512"/>
     </resources>
 </document>

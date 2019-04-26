@@ -29,69 +29,6 @@ class PearChatAPI: ChatAPI {
 // MARK: Routes
 extension PearChatAPI {
   
-  func getAllChatsForUser(user_id: String, completion: @escaping (Result<[Chat], ChatAPIError>) -> Void) {
-    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
-
-    request.httpMethod = "POST"
-    
-    request.allHTTPHeaderFields = defaultHeaders
-    do {
-      
-      let fullDictionary: [String: Any] = [
-        "query": PearChatAPI.getAllChatsQuery,
-        "variables": [
-//          "phoneNumber": phoneNumber
-        ]
-      ]
-      
-      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
-      request.httpBody = data
-      
-      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-        if let error = error {
-          print(error as Any)
-          completion(.failure(ChatAPIError.unknownError(error: error)))
-          return
-        } else {
-          if  let data = data,
-            let json = try? JSON(data: data) {
-            do {
-              if let profiles = json["data"]["findDetachedProfiles"].array {
-//
-//                var detachedProfiles: [PearDetachedProfile] = []
-//                print("\(profiles.count) Detached profiles found matching your phone number")
-//                for profile in profiles {
-//                  let pearDetachedProfileData = try profile.rawData()
-//                  let pearDetachedUser = try JSONDecoder().decode(PearDetachedProfile.self, from: pearDetachedProfileData)
-//                  detachedProfiles.append(pearDetachedUser)
-//                }
-//                completion(.success(detachedProfiles))
-              } else {
-//                completion(.failure(ChatAPIError.noDetachedProfilesFound))
-              }
-            } catch {
-              print("Error: \(error)")
-              completion(.failure(ChatAPIError.unknownError(error: error)))
-              return
-            }
-          } else {
-            print("Failed Chats Conversions")
-            completion(.failure(ChatAPIError.failedDeserialization))
-            return
-          }
-        }
-      }
-      dataTask.resume()
-    } catch {
-      print(error)
-      completion(.failure(ChatAPIError.unknownError(error: error)))
-    }
-    
-  }
-  
   func getFirebaseChatObject(firebaseDocumentPath: String, completion: @escaping (Result<Chat, ChatAPIError>) -> Void) {
     print("Fetching Firebase chat: \(firebaseDocumentPath)")
     let chat = Firestore.firestore().document(firebaseDocumentPath)

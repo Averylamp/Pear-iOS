@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 extension Notification.Name {
   static let refreshChatsTab = Notification.Name("refreshChatsTab")
@@ -35,12 +36,14 @@ class ChatMainViewController: UIViewController {
   }
   
   @IBAction func inboxButtonClicked(_ sender: Any) {
+    Analytics.logEvent("CHAT_nav_TAP_inboxTab", parameters: nil)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.scrollView.scrollRectToVisible(CGRect(x: 0, y: 0,
                                                width: self.scrollView.frame.width, height: self.scrollView.frame.height), animated: true)
   }
   
   @IBAction func requestsButtonClicked(_ sender: Any) {
+    Analytics.logEvent("CHAT_nav_TAP_requestsTab", parameters: nil)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.scrollView.scrollRectToVisible(CGRect(x: self.scrollView.frame.width, y: 0,
                                                width: self.scrollView.frame.width, height: self.scrollView.frame.height), animated: true)
@@ -155,7 +158,7 @@ extension ChatMainViewController {
     }
     
     self.scrollView.isPagingEnabled = true
-    if let buttonFont = R.font.nunitoSemiBold(size: 18) {
+    if let buttonFont = R.font.openSansExtraBold(size: 17) {
       self.inboxButton.titleLabel?.font = buttonFont
       self.requestsButton.titleLabel?.font = buttonFont
     }
@@ -177,7 +180,7 @@ extension ChatMainViewController {
                  action: #selector(ChatMainViewController.refreshControlChanged(sender:)),
                  for: .valueChanged)
 
-    guard let matchesTVC = ChatRequestsTableViewController.instantiate() else {
+    guard let matchesTVC = ChatRequestsTableViewController.instantiate(tableViewType: .inbox) else {
       print("Failed to instantiate matches TVC")
       return
     }
@@ -199,7 +202,7 @@ extension ChatMainViewController {
     matchesTVC.didMove(toParent: self)
     matchesTVC.updateMatches(matches: DataStore.shared.currentMatches)
     
-    guard let requestsTVC = ChatRequestsTableViewController.instantiate() else {
+    guard let requestsTVC = ChatRequestsTableViewController.instantiate(tableViewType: .requests) else {
       print("Failed to instantiate requests TVC")
       return
     }
@@ -261,18 +264,20 @@ extension ChatMainViewController: ChatRequestTableViewControllerDelegate {
         return
       }
       self.navigationController?.pushViewController(fullChatVC, animated: true)
+      Analytics.logEvent("CHAT_inbox_EV_openedRequest", parameters: nil)
     }
   }
   
-  func selectedProfile(user: MatchingPearUser) {
+  func selectedProfile(user: PearUser) {
     DispatchQueue.main.async {
       HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-      let fullProfile = FullProfileDisplayData(matchingUser: user)
+      let fullProfile = FullProfileDisplayData(user: user)
       guard let fullProfileScrollVC = FullProfileScrollViewController.instantiate(fullProfileData: fullProfile) else {
         print("failed to instantiate full profile scroll VC")
         return
       }
       self.navigationController?.pushViewController(fullProfileScrollVC, animated: true)
+      Analytics.logEvent("CHAT_inbox_EV_openedInboxThread", parameters: nil)
     }
   }
   

@@ -77,6 +77,8 @@ struct ImageViewLayout {
             return CGPoint(x: 0, y: container.height - image.height)
         case .bottomRight:
             return CGPoint(x: container.width - image.width, y: container.height - image.height)
+        @unknown default:
+            return .zero
         }
     }
     

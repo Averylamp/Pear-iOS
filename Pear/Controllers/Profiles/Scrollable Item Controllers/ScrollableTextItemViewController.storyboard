@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3dp-Pa-v2v">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scrollable Text Item View Controller-->
+        <scene sceneID="QvU-g5-C8P">
+            <objects>
+                <viewController id="3dp-Pa-v2v" customClass="ScrollableTextItemViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v2b-Nx-TNP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mld-3S-E8c"/>
+                    </layoutGuides>
+                    <stackView key="view" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" id="5we-y1-4M8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView verifyAmbiguity="off" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivz-MB-IUc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="373"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdY-is-mK0">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="373"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjy-4c-6av">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="373"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" id="dRd-pe-N4H"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="mdY-is-mK0" firstAttribute="leading" secondItem="Ivz-MB-IUc" secondAttribute="leading" id="Blp-jS-Lzg"/>
+                                    <constraint firstItem="mdY-is-mK0" firstAttribute="centerY" secondItem="Ivz-MB-IUc" secondAttribute="centerY" id="Za0-6i-ybk"/>
+                                    <constraint firstItem="mdY-is-mK0" firstAttribute="height" secondItem="Ivz-MB-IUc" secondAttribute="height" id="bY4-E4-q1k"/>
+                                    <constraint firstAttribute="height" priority="900" constant="280" id="qaQ-DG-0tq"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1t-iT-Kv3">
+                                <rect key="frame" x="0.0" y="385" width="375" height="15"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="L6s-Ey-jwd">
+                                        <rect key="frame" x="152" y="-11" width="71" height="37"/>
+                                        <color key="pageIndicatorTintColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="currentPageIndicatorTintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="6Tr-12-LQ1"/>
+                                    <constraint firstItem="L6s-Ey-jwd" firstAttribute="centerX" secondItem="d1t-iT-Kv3" secondAttribute="centerX" id="Qnf-bw-ZpF"/>
+                                    <constraint firstItem="L6s-Ey-jwd" firstAttribute="centerY" secondItem="d1t-iT-Kv3" secondAttribute="centerY" id="mli-uW-3AR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RJV-Df-yfw"/>
+                    </stackView>
+                    <size key="freeformSize" width="375" height="400"/>
+                    <connections>
+                        <outlet property="pageControl" destination="L6s-Ey-jwd" id="3dF-NH-9CC"/>
+                        <outlet property="scrollView" destination="Ivz-MB-IUc" id="NFs-Rg-975"/>
+                        <outlet property="scrollViewHeightConstraint" destination="qaQ-DG-0tq" id="c7H-o2-h6q"/>
+                        <outlet property="stackView" destination="mdY-is-mK0" id="U7Z-xu-tKu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igX-3k-h1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="132.23388305847078"/>
+        </scene>
+    </scenes>
+</document>

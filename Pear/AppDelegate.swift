@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  SubtleAsianMatches
+//  Pear
 //
-//  Created by Kelvin Lau on 2018-12-26.
-//  Copyright © 2018 sam. All rights reserved.
+//  Created by Avery Lamp on 2/17/19.
+//  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
 import UIKit
@@ -25,6 +25,7 @@ final class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+    
     FirebaseApp.configure()
     Messaging.messaging().delegate = self
     
@@ -50,13 +51,16 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     self.stylize()
     
     window = UIWindow(frame: UIScreen.main.bounds)
-    let navController = LandingNavigationViewController.instantiate()
+    guard let navController = LandingNavigationViewController.instantiate() else {
+      fatalError("Something went horribly wrong")
+    }
     window?.rootViewController = navController
     //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()
     
     // register for remote notifications if we have notification authorization
     DataStore.shared.registerForRemoteNotificationsIfAuthorized()
+    DataStore.shared.reloadPossibleQuestions()
     return true
   }
   
