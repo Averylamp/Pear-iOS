@@ -77,7 +77,7 @@ extension ProfileDemographicsViewController {
     }
     
     if let schoolName = self.schoolName {
-      self.extraInfoStackView.addArrangedSubview(self.generateInfoTagItem(name: schoolName, icon: R.image.iconLocationMarker()))
+      self.extraInfoStackView.addArrangedSubview(self.generateInfoTagItem(name: schoolName, icon: R.image.iconSchool()))
     }
 
   }
