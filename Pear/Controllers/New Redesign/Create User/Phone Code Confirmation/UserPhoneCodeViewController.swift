@@ -152,6 +152,7 @@ extension UserPhoneCodeViewController {
                   return
                   
                 }
+                return
               }
               if let mainVC = LoadingScreenViewController.getMainScreenVC() {
                 self.navigationController?.setViewControllers([mainVC], animated: true)
