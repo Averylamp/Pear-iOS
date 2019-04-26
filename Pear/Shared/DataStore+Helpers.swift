@@ -108,7 +108,7 @@ extension DataStore {
             case .success(let pearUser):
               print("Got Existing Pear User \(String(describing: pearUser))")
               DataStore.shared.currentPearUser = pearUser
-              
+              DataStore.shared.reloadAllUserData()
               Crashlytics.sharedInstance().setUserEmail(pearUser.email)
               Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
               Crashlytics.sharedInstance().setUserName(pearUser.fullName)
