@@ -31,7 +31,7 @@ public class DiscoverySetupViewController: UIViewController {
     self.enableLocationButton.layer.cornerRadius = self.enableLocationButton.bounds.height/2
     self.finishSetupButton.layer.cornerRadius = self.finishSetupButton.bounds.height/2
     
-    if CLLocationManager.locationServicesEnabled() {
+    if DataStore.shared.hasEnabledLocation() {
       self.setEnableLocationButton(forStatus: CLLocationManager.authorizationStatus())
     } else {
       self.enableLocationButton.isEnabled = true
@@ -81,6 +81,8 @@ public class DiscoverySetupViewController: UIViewController {
   }
   
   private func setEnableLocationButton(forStatus status: CLAuthorizationStatus) {
+    print("location auth status is:")
+    print(status.rawValue)
     switch status {
     case .notDetermined, .restricted, .denied:
       self.enableLocationButton.isEnabled = true
@@ -117,5 +119,10 @@ extension DiscoverySetupViewController: CLLocationManagerDelegate {
   public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
     print("location status did change")
     self.setEnableLocationButton(forStatus: CLLocationManager.authorizationStatus())
+    guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+      print("Failed to initialize Main VC")
+      return
+    }
+    self.navigationController?.setViewControllers([mainVC], animated: true)
   }
 }
