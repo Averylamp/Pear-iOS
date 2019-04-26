@@ -272,14 +272,18 @@ extension DiscoverySimpleViewController: UITableViewDelegate, UITableViewDataSou
       cell.layoutIfNeeded()
       return cell
     } else {
-      return tableView.dequeueReusableCell(withIdentifier: "DiscoveryEndCell", for: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoveryEndCell", for: indexPath)
+      cell.selectionStyle = .none
+      return cell
     }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    let fullProfile = self.fullProfiles[indexPath.row]
-    self.presentFullProfile(fullProfile: fullProfile)
+    if indexPath.row < self.fullProfiles.count {
+      HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+      let fullProfile = self.fullProfiles[indexPath.row]
+      self.presentFullProfile(fullProfile: fullProfile)
+    }
   }
   
   func presentFullProfile(fullProfile: FullProfileDisplayData) {

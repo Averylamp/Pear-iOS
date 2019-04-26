@@ -19,6 +19,8 @@ class UserContactPermissionsViewController: UIViewController {
   @IBOutlet weak var enableContactsButton: UIButton!
   @IBOutlet weak var tableViewContainerView: UIView!
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var skipButton: UIButton!
+  @IBOutlet weak var skipButtonHeight: NSLayoutConstraint!
   
   var allSampleBoastRoastItems: [LatestRoastBoastItem] = []
   var currentBoastRoastItems: [LatestRoastBoastItem] = []
@@ -61,6 +63,15 @@ class UserContactPermissionsViewController: UIViewController {
     
   }
   
+  @IBAction func skipButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+      print("Failed to create main VC")
+      return
+    }
+    self.navigationController?.setViewControllers([mainVC], animated: true)
+
+  }
 }
 
 // MARK: - Life Cycle
@@ -112,6 +123,13 @@ extension UserContactPermissionsViewController {
     self.tableViewContainerView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
     self.tableView.backgroundColor = nil
     self.tableView.separatorStyle = .none
+    if let pearUser = DataStore.shared.currentPearUser,
+      pearUser.endorsedUserIDs.count + pearUser.detachedProfileIDs.count  > 0 {
+      self.skipButtonHeight.constant = 40
+      self.skipButton.isEnabled = true
+      self.skipButton.isHidden = false
+    }
+    
   }
   
   func setup() {

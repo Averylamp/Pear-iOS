@@ -26,13 +26,16 @@ class SentryHelper {
     "The Internet connection appears to be offline.".lowercased(),
     "A data connection is not currently allowed.".lowercased()
     ]
+    var skipError = false
     skipErrors.forEach({
       if  "\(message) - \(apiName):\(functionName)".lowercased().contains($0) {
         print("Found skippable error message")
-        return
+        skipError = true
       }
     })
-    
+    if skipError {
+      return
+    }
     #if DEVMODE
     APIHelpers.printDataDump(data: responseData)
     fatalError("Some Network Call failed and sentry is generating an error")
