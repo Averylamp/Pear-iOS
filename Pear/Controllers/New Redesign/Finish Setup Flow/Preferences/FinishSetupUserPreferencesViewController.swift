@@ -25,9 +25,7 @@ class FinishSetupUserPreferencesViewController: UIViewController {
   @IBOutlet weak var relationshipSelectedIndicator: UIImageView!
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var nextButtonShadowView: UIView!
-  
-  @IBOutlet weak var titleLabel: UILabel!
-  
+    
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -147,7 +145,6 @@ extension FinishSetupUserPreferencesViewController {
   }
   
   func stylize() {
-    self.titleLabel.stylizePreferencesTitleLabel()
     self.nextButton.layer.cornerRadius = self.nextButton.frame.width / 2.0
     self.nextButtonShadowView.layer.cornerRadius = self.nextButton.frame.width / 2.0
     self.nextButtonShadowView.layer.shadowOpacity = 0.2
@@ -158,34 +155,34 @@ extension FinishSetupUserPreferencesViewController {
   
   func stylizeButtons() {
     if self.genderPreferences.contains(.male) {
-      self.maleGenderButton.stylizeLightSelected()
+      self.maleGenderButton.stylizePreferencesOn()
       self.maleSelectedIndicator.isHidden = false
     } else {
-      self.maleGenderButton.stylizeLight()
+      self.maleGenderButton.stylizePreferencesOff()
       self.maleSelectedIndicator.isHidden = true
     }
     
     if self.genderPreferences.contains(.female) {
-      self.femaleGenderButton.stylizeLightSelected()
+      self.femaleGenderButton.stylizePreferencesOn()
       self.femaleSelectedIndicator.isHidden = false
     } else {
-      self.femaleGenderButton.stylizeLight()
+      self.femaleGenderButton.stylizePreferencesOff()
       self.femaleSelectedIndicator.isHidden = true
     }
     
     if self.genderPreferences.contains(.nonbinary) {
-      self.nonbinaryGenderButton.stylizeLightSelected()
+      self.nonbinaryGenderButton.stylizePreferencesOn()
       self.nonbinarySelectedIndicator.isHidden = false
     } else {
-      self.nonbinaryGenderButton.stylizeLight()
+      self.nonbinaryGenderButton.stylizePreferencesOff()
       self.nonbinarySelectedIndicator.isHidden = true
     }
     
     if !self.isSeeking {
-      self.relationshipButton.stylizeLightSelected()
+      self.relationshipButton.stylizePreferencesOn()
       self.relationshipSelectedIndicator.isHidden = false
     } else {
-      self.relationshipButton.stylizeLight()
+      self.relationshipButton.stylizePreferencesOff()
       self.relationshipSelectedIndicator.isHidden = true
     }
     

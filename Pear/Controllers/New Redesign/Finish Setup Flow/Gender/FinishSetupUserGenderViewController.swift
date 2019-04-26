@@ -42,21 +42,21 @@ class FinishSetupUserGenderViewController: UIViewController {
     switch sender.tag {
     case 0:
       self.gender = GenderEnum.male
-      self.maleButton.stylizeDark()
-      self.femaleButton.stylizeLight()
-      self.nonbinaryButton.stylizeLight()
+      self.maleButton.stylizePreferencesOn()
+      self.femaleButton.stylizePreferencesOff()
+      self.nonbinaryButton.stylizePreferencesOff()
       
     case 1:
       self.gender = GenderEnum.female
-      self.femaleButton.stylizeDark()
-      self.maleButton.stylizeLight()
-      self.nonbinaryButton.stylizeLight()
+      self.femaleButton.stylizePreferencesOn()
+      self.maleButton.stylizePreferencesOff()
+      self.nonbinaryButton.stylizePreferencesOff()
       
     case 2:
       self.gender = GenderEnum.nonbinary
-      self.nonbinaryButton.stylizeDark()
-      self.maleButton.stylizeLight()
-      self.femaleButton.stylizeLight()
+      self.nonbinaryButton.stylizePreferencesOn()
+      self.maleButton.stylizePreferencesOff()
+      self.femaleButton.stylizePreferencesOff()
       
     default:
       break
@@ -112,23 +112,23 @@ extension FinishSetupUserGenderViewController {
   }
   
   func stylize() {
-    self.maleButton.stylizeLight()
+    self.maleButton.stylizePreferencesOff()
     self.maleButton.tag = 0
     
-    self.femaleButton.stylizeLight()
+    self.femaleButton.stylizePreferencesOff()
     self.femaleButton.tag = 1
     
-    self.nonbinaryButton.stylizeLight()
+    self.nonbinaryButton.stylizePreferencesOff()
     self.nonbinaryButton.tag = 2
     
     if let previousGender = self.gender {
       switch previousGender {
       case .male:
-        self.maleButton.stylizeDark()
+        self.maleButton.stylizePreferencesOn()
       case .female:
-        self.femaleButton.stylizeDark()
+        self.femaleButton.stylizePreferencesOn()
       case .nonbinary:
-        self.nonbinaryButton.stylizeDark()
+        self.nonbinaryButton.stylizePreferencesOn()
       }
     }
   }

@@ -37,6 +37,12 @@ public class DiscoverySetupViewController: UIViewController {
       self.enableLocationButton.isEnabled = true
     }
     
+    DataStore.shared.getWaitlistNumber { (userCount) in
+      DispatchQueue.main.async {
+        self.joinMessageLabel.text = "Join \(userCount) people pearing nearby"
+      }
+    }
+    
     self.skippedDetachedProfiles = DataStore.shared.fetchListFromDefaults(type: .skippedDetachedProfiles)
     self.checkForDetachedProfiles()
   }
@@ -103,6 +109,7 @@ public class DiscoverySetupViewController: UIViewController {
       }
     })
   }
+
 }
 
 extension DiscoverySetupViewController: CLLocationManagerDelegate {

@@ -90,7 +90,11 @@ extension LandingScreenWaitlistViewController {
     super.viewDidLoad()
     self.stylize()
     self.stylizeNotificationButton()
-    self.getWaitlistNumber()
+    DataStore.shared.getWaitlistNumber { (userCount) in
+      DispatchQueue.main.async {
+        self.waitlistLabel.text = "\(userCount) people waiting to Pear in Boston"
+      }
+    }
   }
 
   func stylize() {
@@ -102,46 +106,6 @@ extension LandingScreenWaitlistViewController {
     self.notificationsButton.layer.shadowOffset = CGSize(width: 1, height: 1)
     self.notificationsButton.layer.shadowColor = UIColor.black.cgColor
     self.notificationsButton.layer.shadowOpacity = 0.2
-    
-  }
-  
-  func getWaitlistNumber() {
-    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
-    request.httpMethod = "POST"
-  
-    request.allHTTPHeaderFields = [
-      "Content-Type": "application/json"
-    ]
-    do {
-      let fullDictionary: [String: Any] = [
-        "query": "query { getUserCount }"
-      ]
-      
-      guard let data: Data = try? JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted) else {
-        print("Failed to serialize request")
-        return
-      }
-      request.httpBody = data
-      
-      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-        if let error = error {
-          print(error as Any)
-          return
-        }
-        if let data = data,
-          let json = try? JSON(data: data),
-          let userCount = json["data"]["getUserCount"].int {
-          print("Waitlist number \(userCount)")
-          DispatchQueue.main.async {
-            self.waitlistLabel.text = "\(userCount) people waiting to Pear in Boston"
-          }
-        }
-      }
-      dataTask.resume()
-      
-    }
     
   }
 }
