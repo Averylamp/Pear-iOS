@@ -25,11 +25,47 @@ extension UIButton {
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
   }
   
+  func stylizeChatAccept() {
+    self.backgroundColor = R.color.chatAccentColor()!
+    self.layer.cornerRadius = self.frame.height / 2.0
+    self.setTitleColor(UIColor.white, for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+  }
+  
+  func stylizeChatDecline() {
+    self.backgroundColor = UIColor.white
+    self.layer.cornerRadius = self.frame.height / 2.0
+    self.setTitleColor(R.color.chatDeclineColor(), for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+  }
+  
   func stylizeFacebookColor() {
     self.backgroundColor = R.color.facebookColor()
     self.layer.cornerRadius = self.frame.height / 2.0
     self.setTitleColor(UIColor.white, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
+  }
+  
+  func stylizePreferencesOn() {
+    self.backgroundColor = UIColor.white
+    self.layer.cornerRadius = self.frame.height / 2.0
+    self.setTitleColor(UIColor.black, for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+  }
+  
+  func stylizePreferencesOff() {
+    self.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+    self.layer.cornerRadius = self.frame.height / 2.0
+    self.setTitleColor(UIColor.black, for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
   }
   
   func stylizeLight() {
@@ -72,7 +108,9 @@ extension UIButton {
     self.backgroundColor = nil
     self.setTitleColor(StylingConfig.tertiaryTextFontColor, for: .normal)
     self.layer.borderWidth = 0
-    self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
+    if let font = R.font.openSansBold(size: 17) {
+      self.titleLabel?.font = font
+    }
   }
   
   func stylizeTextFieldButton() {

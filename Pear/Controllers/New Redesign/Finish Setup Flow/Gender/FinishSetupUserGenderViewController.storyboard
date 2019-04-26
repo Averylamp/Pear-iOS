@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bdM-0P-eau">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-ExtraBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Finish Setup User Gender View Controller-->
+        <scene sceneID="3Gc-cb-MzY">
+            <objects>
+                <viewController id="bdM-0P-eau" customClass="FinishSetupUserGenderViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m6x-YM-GlP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your gender?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cng-XD-tc0">
+                                <rect key="frame" x="30" y="218" width="315" height="33"/>
+                                <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-VV-Xuj">
+                                <rect key="frame" x="16" y="30" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8s5-D0-BLs"/>
+                                    <constraint firstAttribute="width" constant="40" id="d84-JL-Pz2"/>
+                                </constraints>
+                                <state key="normal" image="icon-cancel-button">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonClicked:" destination="bdM-0P-eau" eventType="touchUpInside" id="hBP-im-U5Q"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-genderqueer" translatesAutoresizingMaskIntoConstraints="NO" id="Wm5-gc-k0s">
+                                <rect key="frame" x="131" y="85" width="113" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="GUD-qc-EwI"/>
+                                    <constraint firstAttribute="width" secondItem="Wm5-gc-k0s" secondAttribute="height" multiplier="1:1" id="qds-tU-aV6"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEq-am-yqb">
+                                <rect key="frame" x="165.5" y="39" width="44" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BP-XK-h7W">
+                                <rect key="frame" x="20" y="345" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="d4h-7j-zXt"/>
+                                </constraints>
+                                <state key="normal" title="Female"/>
+                                <connections>
+                                    <action selector="chooseGenderButtonClicked:" destination="bdM-0P-eau" eventType="touchUpInside" id="JeI-73-3RB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJB-Dt-53A">
+                                <rect key="frame" x="20" y="283" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="sW3-9D-l9h"/>
+                                </constraints>
+                                <state key="normal" title="Male"/>
+                                <connections>
+                                    <action selector="chooseGenderButtonClicked:" destination="bdM-0P-eau" eventType="touchUpInside" id="Cap-pt-DMC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2v-yn-f4e">
+                                <rect key="frame" x="20" y="407" width="335" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bSI-zw-JUS"/>
+                                </constraints>
+                                <state key="normal" title="Non Binary"/>
+                                <connections>
+                                    <action selector="chooseGenderButtonClicked:" destination="bdM-0P-eau" eventType="touchUpInside" id="7xx-qt-y5K"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="preferencesBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="s44-GL-WtE" firstAttribute="trailing" secondItem="lJB-Dt-53A" secondAttribute="trailing" constant="20" id="1lX-6e-zfl"/>
+                            <constraint firstItem="JzT-VV-Xuj" firstAttribute="leading" secondItem="s44-GL-WtE" secondAttribute="leading" constant="16" id="6Ga-ey-kxK"/>
+                            <constraint firstItem="cng-XD-tc0" firstAttribute="top" secondItem="Wm5-gc-k0s" secondAttribute="bottom" constant="20" id="7eb-jo-H35"/>
+                            <constraint firstItem="wEq-am-yqb" firstAttribute="centerY" secondItem="JzT-VV-Xuj" secondAttribute="centerY" id="Bvr-F3-ell"/>
+                            <constraint firstItem="Wm5-gc-k0s" firstAttribute="top" secondItem="wEq-am-yqb" secondAttribute="bottom" constant="24" id="EHX-Nl-0JT"/>
+                            <constraint firstItem="lJB-Dt-53A" firstAttribute="leading" secondItem="s44-GL-WtE" secondAttribute="leading" constant="20" id="EbJ-ja-wGK"/>
+                            <constraint firstItem="s44-GL-WtE" firstAttribute="trailing" secondItem="9BP-XK-h7W" secondAttribute="trailing" constant="20" id="Gkv-xE-8zx"/>
+                            <constraint firstItem="9BP-XK-h7W" firstAttribute="leading" secondItem="s44-GL-WtE" secondAttribute="leading" constant="20" id="I3V-Yp-BEN"/>
+                            <constraint firstItem="J2v-yn-f4e" firstAttribute="leading" secondItem="s44-GL-WtE" secondAttribute="leading" constant="20" id="SEE-y3-02E"/>
+                            <constraint firstItem="s44-GL-WtE" firstAttribute="trailing" secondItem="cng-XD-tc0" secondAttribute="trailing" constant="30" id="XHH-hL-cmw"/>
+                            <constraint firstItem="cng-XD-tc0" firstAttribute="centerX" secondItem="s44-GL-WtE" secondAttribute="centerX" id="aXr-72-Qrm"/>
+                            <constraint firstItem="s44-GL-WtE" firstAttribute="trailing" secondItem="J2v-yn-f4e" secondAttribute="trailing" constant="20" id="d0r-Mc-M8d"/>
+                            <constraint firstItem="Wm5-gc-k0s" firstAttribute="centerX" secondItem="s44-GL-WtE" secondAttribute="centerX" id="eLc-fo-Q8h"/>
+                            <constraint firstItem="9BP-XK-h7W" firstAttribute="top" secondItem="lJB-Dt-53A" secondAttribute="bottom" constant="12" id="fbf-cz-fFy"/>
+                            <constraint firstItem="JzT-VV-Xuj" firstAttribute="top" secondItem="s44-GL-WtE" secondAttribute="top" constant="10" id="gmT-yT-K0f"/>
+                            <constraint firstItem="J2v-yn-f4e" firstAttribute="top" secondItem="9BP-XK-h7W" secondAttribute="bottom" constant="12" id="k3B-fy-7ow"/>
+                            <constraint firstItem="lJB-Dt-53A" firstAttribute="top" secondItem="cng-XD-tc0" secondAttribute="bottom" constant="32" id="ljj-yb-gPS"/>
+                            <constraint firstItem="cng-XD-tc0" firstAttribute="leading" secondItem="s44-GL-WtE" secondAttribute="leading" constant="30" id="zeB-jp-Mcr"/>
+                            <constraint firstItem="wEq-am-yqb" firstAttribute="centerX" secondItem="s44-GL-WtE" secondAttribute="centerX" id="zfp-Rl-egX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="s44-GL-WtE"/>
+                    </view>
+                    <connections>
+                        <outlet property="femaleButton" destination="9BP-XK-h7W" id="hqe-Bb-kor"/>
+                        <outlet property="maleButton" destination="lJB-Dt-53A" id="G54-7W-RkD"/>
+                        <outlet property="nonbinaryButton" destination="J2v-yn-f4e" id="4XT-Aw-k1h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d7x-yj-IoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680.79999999999995" y="-287.40629685157421"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-cancel-button" width="96" height="96"/>
+        <image name="icons8-genderqueer" width="512" height="512"/>
+        <namedColor name="preferencesBackgroundColor">
+            <color red="0.37999999523162842" green="0.77999997138977051" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

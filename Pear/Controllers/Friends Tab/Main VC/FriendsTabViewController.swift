@@ -45,9 +45,9 @@ extension FriendsTabViewController {
                    name: .refreshFriendTab, object: nil)
   }
   
-  func loadNewEndorsedDetachedProfiles(endorsedProfiles: [MatchingPearUser], detachedProfiles: [PearDetachedProfile]) {
-    let newEndorsedProfiles = DataStore.shared.endorsedUsers.map({ FullProfileDisplayData(matchingUser: $0) })
-    let newDetachedProfiles = DataStore.shared.detachedProfiles.map({ FullProfileDisplayData(pdp: $0) })
+  func loadNewEndorsedDetachedProfiles(endorsedProfiles: [PearUser], detachedProfiles: [PearDetachedProfile]) {
+    let newEndorsedProfiles = DataStore.shared.endorsedUsers.map({ FullProfileDisplayData(user: $0) })
+    let newDetachedProfiles = DataStore.shared.detachedProfiles.map({ FullProfileDisplayData(detachedProfile: $0) })
     var fullList: [FullProfileDisplayData] = []
     fullList.append(contentsOf: newEndorsedProfiles)
     fullList.append(contentsOf: newDetachedProfiles)
@@ -103,7 +103,7 @@ extension FriendsTabViewController: UICollectionViewDelegate, UICollectionViewDa
       }
       self.navigationController?.pushViewController(friendFullProfileVC, animated: true)
     } else {
-      guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
+      guard let startFriendVC = LoadingScreenViewController.getProfileCreationVC() else {
         print("Failed to create get started friend profile vc")
         return
       }

@@ -13,7 +13,7 @@ class GetStartedUserGenderViewController: UIViewController {
   @IBOutlet weak var progressWidthConstraint: NSLayoutConstraint!
   let pageNumber: CGFloat = 1.0
   
-  var gettingStartedData: UserCreationData!
+  var gettingStartedData: OldUserCreationData!
   
   @IBOutlet weak var maleButton: UIButton!
   @IBOutlet weak var femaleButton: UIButton!
@@ -22,7 +22,7 @@ class GetStartedUserGenderViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedData: UserCreationData) -> GetStartedUserGenderViewController? {
+  class func instantiate(gettingStartedData: OldUserCreationData) -> GetStartedUserGenderViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedUserGenderViewController.self), bundle: nil)
     guard let chooseGenderVC = storyboard.instantiateInitialViewController() as? GetStartedUserGenderViewController else { return nil }
     chooseGenderVC.gettingStartedData = gettingStartedData

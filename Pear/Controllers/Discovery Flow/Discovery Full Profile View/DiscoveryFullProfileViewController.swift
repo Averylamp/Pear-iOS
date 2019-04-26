@@ -23,7 +23,7 @@ struct MatchButton {
   let button: UIButton
   let buttonEnabled: Bool
   let type: MatchingButtonType
-  var endorsedUser: MatchingPearUser?
+  var endorsedUser: PearUser?
   var user: PearUser?
   var detachedProfile: PearDetachedProfile?
 }
@@ -51,7 +51,7 @@ class DiscoveryFullProfileViewController: UIViewController {
     let storyboard = UIStoryboard(name: String(describing: DiscoveryFullProfileViewController.self), bundle: nil)
     guard let fullDiscoveryVC = storyboard.instantiateInitialViewController() as? DiscoveryFullProfileViewController else { return nil }
     fullDiscoveryVC.fullProfileData = fullProfileData
-    guard let matchingUserObject = fullProfileData.originObject as? MatchingPearUser else {
+    guard let matchingUserObject = fullProfileData.originObject as? PearUser else {
       print("Failed to get matching user object from full profile")
       return nil
     }
@@ -133,31 +133,37 @@ class DiscoveryFullProfileViewController: UIViewController {
         self.removeMatchButtons()
         self.displayPersonalRequestVC(personalUserID: personalUserID,
                                       thumbnailImageURL: requestedThumbnailURL,
-                                      requestPersonName: self.fullProfileData.firstName)
+                                      requestPersonName: self.fullProfileData.firstName ?? "")
       } else {
         if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(personalUserID) {
           self.presentSimpleMessageAlert(title: "You have already Peared!",
-                                         message: "If \(self.fullProfileData.firstName!) pears back you will be dropped into a chat",
+                                         message: "If \(self.fullProfileData.firstName ?? "they") pears back you will be dropped into a chat",
                                          acceptAction: "Okay")
-        } else if let userProfileCount = matchObject.user?.userProfiles.count, userProfileCount > 0 {
+        } else if let userProfileCount = matchObject.user?.endorserIDs.count, userProfileCount > 0 {
           self.presentSimpleMessageAlert(title: "Preference mismatch",
-                                         message: "Either \(self.fullProfileData.firstName!) or You indicated preferences that are not compatible",
+                                         message: "Either \(self.fullProfileData.firstName ?? "this person") or You indicated preferences that are not compatible",
                                           acceptAction: "Okay")
         } else {
           self.promptProfileRequest()
         }
       }
     case .detachedProfile:
-      self.presentSimpleMessageAlert(title: "Your friend has not yet accepted their profile",
-                                     message: "They must have approve their profile first",
-                                     acceptAction: "Okay")
+      if let firstName = matchObject.detachedProfile?.firstName {
+        self.presentSimpleMessageAlert(title: "\(firstName) has not yet accepted their profile",
+                                       message: "They must have approved their profile first",
+                                       acceptAction: "Okay")
+      } else {
+        self.presentSimpleMessageAlert(title: "Your friend has not yet accepted their profile",
+                                       message: "They must have approved their profile first",
+                                       acceptAction: "Okay")
+      }
     case .endorsedUser:
       guard let endorsedUserObject = matchObject.endorsedUser else {
         print("Failed to get endorsed User Object")
         return
       }
       if matchObject.buttonEnabled {
-      guard  let endorsedUserThumbnailString = endorsedUserObject.images.first?.thumbnail.imageURL,
+      guard  let endorsedUserThumbnailString = endorsedUserObject.displayedImages.first?.thumbnail.imageURL,
         let endorsedUserThumbnailURL = URL(string: endorsedUserThumbnailString) else {
           print("Failed to get required endorsed user fields")
           return
@@ -166,17 +172,17 @@ class DiscoveryFullProfileViewController: UIViewController {
       self.displayEndorsedRequestVC(personalUserID: personalUserID,
                                     endorsedUserID: endorsedUserObject.documentID,
                                     thumbnailImageURL: requestedThumbnailURL,
-                                    requestPersonName: self.fullProfileData.firstName,
-                                    userPersonName: endorsedUserObject.firstName,
+                                    requestPersonName: self.fullProfileData.firstName ?? "",
+                                    userPersonName: endorsedUserObject.firstName  ?? "",
                                     userPersonThumbnailURL: endorsedUserThumbnailURL)
       } else {
         if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(endorsedUserObject.documentID) {
-          self.presentSimpleMessageAlert(title: "You have already Peared \(self.fullProfileData.firstName!) and \(endorsedUserObject.firstName)!",
+          self.presentSimpleMessageAlert(title: "You have already Peared \(self.fullProfileData.firstName  ?? "this person") and \(endorsedUserObject.firstName ?? "your friend")!",
             message: "If they both accept, they will be dropped into a chat",
             acceptAction: "Okay")
         } else {
           self.presentSimpleMessageAlert(title: "Preference mismatch",
-            message: "Either \(self.fullProfileData.firstName!) or \(endorsedUserObject.firstName) indicated preferences that are not compatible",
+            message: "Either \(self.fullProfileData.firstName ?? "this person") or \(endorsedUserObject.firstName ?? "your friend") indicated preferences that are not compatible",
             acceptAction: "Okay")
         }
       }
@@ -200,7 +206,7 @@ class DiscoveryFullProfileViewController: UIViewController {
       preferredStyle: .alert)
     let createProfile = UIAlertAction(title: "Continue", style: .default) { (_) in
       DispatchQueue.main.async {
-        guard let startFriendVC = GetStartedStartFriendProfileViewController.instantiate() else {
+        guard let startFriendVC = LoadingScreenViewController.getProfileCreationVC() else {
           print("Failed to create get started friend profile vc")
           return
         }
@@ -426,7 +432,7 @@ extension DiscoveryFullProfileViewController {
     
     var allMatchButtons: [MatchButton] = []
     
-    var youEnabled = user.userProfiles.count > 0 && !alreadyMatchedUsers.contains(user.documentID)
+    var youEnabled = user.endorserIDs.count > 0 && !alreadyMatchedUsers.contains(user.documentID)
     youEnabled = youEnabled && user.matchingPreferences.matchesDemographics(demographics: discoveryUserDemographics)
        && discoveryUserPreferences.matchesDemographics(demographics: user.matchingDemographics)
     let youButton = self.generateMatchButton(enabled: youEnabled)
@@ -444,9 +450,11 @@ extension DiscoveryFullProfileViewController {
       endorsedEnabled = endorsedEnabled && endorsedProfile.matchingPreferences.matchesDemographics(demographics: discoveryUserDemographics)
         && discoveryUserPreferences.matchesDemographics(demographics: endorsedProfile.matchingDemographics)
       let endorsedButton = self.generateMatchButton(enabled: endorsedEnabled)
-      if let imageURLString = endorsedProfile.images.first?.thumbnail.imageURL,
+      if let imageURLString = endorsedProfile.displayedImages.first?.thumbnail.imageURL,
         let imageURL = URL(string: imageURLString) {
         endorsedButton.sd_setImage(with: imageURL, for: .normal, completed: nil)
+      } else {
+        endorsedButton.setImage(R.image.friendsNoImage(), for: .normal)
       }
       let endorsedMatchButton = MatchButton(button: endorsedButton,
                                             buttonEnabled: endorsedEnabled,
@@ -462,6 +470,8 @@ extension DiscoveryFullProfileViewController {
       if let imageURLString = detachedProfile.images.first?.thumbnail.imageURL,
         let imageURL = URL(string: imageURLString) {
         detachedProfileButton.sd_setImage(with: imageURL, for: .normal, completed: nil)
+      } else {
+        detachedProfileButton.setImage(R.image.friendsNoImage(), for: .normal)
       }
       let endorsedMatchButton = MatchButton(button: detachedProfileButton,
                                             buttonEnabled: false,

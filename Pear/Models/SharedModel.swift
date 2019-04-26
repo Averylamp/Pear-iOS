@@ -41,23 +41,30 @@ enum LocationKeys: String, CodingKey {
   case locationName
 }
 
-class LocationObject: Decodable {
+class LocationObject: Decodable, Equatable {
+  
+  static func == (lhs: LocationObject, rhs: LocationObject) -> Bool {
+    return lhs.locationName == rhs.locationName
+  }
   
   static let graphQLLocationFields = "{ coords locationName }"
   
   let locationName: String?
-  let locationCoordinate: CLLocationCoordinate2D!
+  let locationCoordinate: CLLocationCoordinate2D?
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: LocationKeys.self)
     self.locationName = try? values.decode(String.self, forKey: .locationName)
-    let coordFloats = try values.decode([Double].self, forKey: .coords)
-    guard coordFloats.count == 2 else {
+    if let coordFloats = try? values.decode([Double].self, forKey: .coords) {
+      guard coordFloats.count == 2 else {
         throw DecodingError.coordinateDecodingError
+      }
+      let latitude = coordFloats[0]
+      let longitude = coordFloats[1]
+      self.locationCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
+    } else {
+      self.locationCoordinate = nil
     }
-    let latitude = coordFloats[0]
-    let longitude = coordFloats[1]
-    self.locationCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
   }
   
 }
@@ -70,21 +77,35 @@ enum MatchingPreferencesKeys: String, CodingKey {
   case location
 }
 
-class MatchingPreferences: Decodable {
+class MatchingPreferences: Decodable, Equatable {
+  static func == (lhs: MatchingPreferences, rhs: MatchingPreferences) -> Bool {
+    return lhs.seekingGender == rhs.seekingGender &&
+           lhs.maxDistance == rhs.maxDistance &&
+           lhs.minAgeRange == rhs.minAgeRange &&
+           lhs.maxAgeRange == rhs.maxAgeRange &&
+           lhs.location == rhs.location
+  }
   
-  static let graphQLMatchingPreferencesFields = "{ seekingGender maxDistance minAgeRange maxAgeRange location \(LocationObject.graphQLLocationFields) }"
+  static let graphQLMatchingPreferencesFields = "{ seekingGender maxDistance minAgeRange maxAgeRange }"
   
   func matchesDemographics(demographics: MatchingDemographics) -> Bool {
-    return self.seekingGender.contains(demographics.gender) &&
-      self.minAgeRange <= demographics.age &&
-      demographics.age <= self.maxAgeRange
+    if let gender = demographics.gender,
+      !self.seekingGender.contains(gender) {
+      return false
+    }
+    if let age = demographics.age,
+      self.minAgeRange > age ||
+        age > self.maxAgeRange {
+      return false
+    }
+    return true
   }
   
   var seekingGender: [GenderEnum] = []
   var maxDistance: Int
   var minAgeRange: Int
   var maxAgeRange: Int
-  var location: LocationObject!
+  var location: LocationObject?
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: MatchingPreferencesKeys.self)
@@ -93,7 +114,9 @@ class MatchingPreferences: Decodable {
     self.maxDistance = try values.decode(Int.self, forKey: .maxDistance)
     self.minAgeRange = try values.decode(Int.self, forKey: .minAgeRange)
     self.maxAgeRange = try values.decode(Int.self, forKey: .maxAgeRange)
-    self.location = try values.decode(LocationObject.self, forKey: .location)
+    if let location = try? values.decode(LocationObject.self, forKey: .location) {
+      self.location = location
+    }
   }
 }
 
@@ -103,21 +126,31 @@ enum MatchingDemographicsKeys: String, CodingKey {
   case location
 }
 
-class MatchingDemographics: Decodable {
+class MatchingDemographics: Decodable, Equatable {
+  
+  static func == (lhs: MatchingDemographics, rhs: MatchingDemographics) -> Bool {
+    return lhs.gender == rhs.gender &&
+           lhs.age == rhs.age &&
+           lhs.location == rhs.location
+  }
   
   static let graphQLMatchingDemographicsFields = "{ gender age location \(LocationObject.graphQLLocationFields) }"
   
-  var gender: GenderEnum
-  var age: Int!
-  var location: LocationObject!
+  var gender: GenderEnum?
+  var age: Int?
+  var location: LocationObject?
   
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: MatchingDemographicsKeys.self)
-    guard let gender = GenderEnum.init(rawValue: try values.decode(String.self, forKey: .gender)) else {
-      throw DecodingError.enumError
+    if let genderString = try? values.decode(String.self, forKey: .gender),
+      let gender = GenderEnum.init(rawValue: genderString) {
+      self.gender = gender
     }
-    self.gender = gender
-    self.age = try values.decode(Int.self, forKey: .age)
-    self.location = try values.decode(LocationObject.self, forKey: .location)
+    if let age = try? values.decode(Int.self, forKey: .age) {
+      self.age = age
+    }
+    if let location = try? values.decode(LocationObject.self, forKey: .location) {
+      self.location = location
+    }
   }
 }

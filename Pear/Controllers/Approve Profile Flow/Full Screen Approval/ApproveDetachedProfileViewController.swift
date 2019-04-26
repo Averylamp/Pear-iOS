@@ -37,6 +37,9 @@ class ApproveDetachedProfileViewController: UIViewController {
   }
   
   @objc func saveButtonClicked(sender: UIButton) {
+    // @bgu Profile Attach network call here
+    return
+    /*
     if self.isApprovingProfile {
       return
     }
@@ -44,9 +47,7 @@ class ApproveDetachedProfileViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     
     if let currentUserID = DataStore.shared.currentPearUser?.documentID {
-      PearProfileAPI.shared.attachDetachedProfile(user_id: currentUserID,
-                                                  detachedProfile_id: detachedProfile.documentID,
-                                                  creatorUser_id: detachedProfile.creatorUserID) { (result) in
+      PearProfileAPI.shared.attachDetachedProfile(detachedProfile: self.detachedProfile) { (result) in
         DispatchQueue.main.async {
           
           switch result {
@@ -95,8 +96,8 @@ class ApproveDetachedProfileViewController: UIViewController {
         
       }
     }
+     */
   }
-  
 }
 
 // MARK: - Life Cycle
@@ -110,7 +111,7 @@ extension ApproveDetachedProfileViewController {
   
   func addFullStackVC() {
     guard let fullProfileStackVC = FullProfileStackViewController
-      .instantiate(userFullProfileData: FullProfileDisplayData(pdp: self.detachedProfile)) else {
+      .instantiate(userFullProfileData: FullProfileDisplayData(detachedProfile: self.detachedProfile)) else {
         print("Failed to create full profiles stack VC")
         return
     }

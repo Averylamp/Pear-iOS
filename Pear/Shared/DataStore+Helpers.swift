@@ -12,6 +12,7 @@ import FirebasePerformance
 import Crashlytics
 import Sentry
 import UserNotifications
+import SwiftyJSON
 
 extension DataStore {
   
@@ -112,9 +113,10 @@ extension DataStore {
               Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
               Crashlytics.sharedInstance().setUserName(pearUser.fullName)
               Client.shared?.extra = [
-                "email": pearUser.email!,
+                "email": pearUser.email ?? "",
+                "phoneNumber": pearUser.phoneNumber ?? "",
                 "firebaseAuthID": pearUser.firebaseAuthID!,
-                "fullName": pearUser.fullName!,
+                "fullName": pearUser.fullName ?? "",
                 "userDocumentID": pearUser.documentID!
               ]
               trace?.incrementMetric("Existing User Found", by: 1)
@@ -252,7 +254,7 @@ extension DataStore {
     }
   }
   
-  func refreshEndorsedUsers(completion: ((_ endorsedUsers: [MatchingPearUser], _ detachedProfiles: [PearDetachedProfile]) -> Void)?) {
+  func refreshEndorsedUsers(completion: ((_ endorsedUsers: [PearUser], _ detachedProfiles: [PearDetachedProfile]) -> Void)?) {
     self.fetchUIDToken { (result) in
       switch result {
       case .success(let authTokens):
@@ -320,6 +322,57 @@ extension DataStore {
     DataStore.shared.refreshCurrentMatches { (matches) in
       print("Found Current Matches: \(matches.count)")
     }
+  }
+  
+  func reloadPossibleQuestions() {
+    PearContentAPI.shared.getQuestions { (result) in
+      switch result {
+      case .success(let questions):
+        print("\(questions.count) Questions Found")
+        self.possibleQuestions = questions
+      case .failure(let error):
+        print("Error retrieving questions:\(error)")
+      }
+    }
+
+  }
+  
+  func getWaitlistNumber(completion: @escaping (Int) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    
+    request.allHTTPHeaderFields = [
+      "Content-Type": "application/json"
+    ]
+    do {
+      let fullDictionary: [String: Any] = [
+        "query": "query { getUserCount }"
+      ]
+      
+      guard let data: Data = try? JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted) else {
+        print("Failed to serialize request")
+        return
+      }
+      request.httpBody = data
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          return
+        }
+        if let data = data,
+          let json = try? JSON(data: data),
+          let userCount = json["data"]["getUserCount"].int {
+          print("Waitlist number \(userCount)")
+          completion(userCount)
+        }
+      }
+      dataTask.resume()
+      
+    }
+    
   }
   
 }

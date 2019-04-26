@@ -77,10 +77,10 @@ extension Date {
                                                                          options: NSCalendar.Options())
     
     if components.year! >= 2 {
-      return "\(components.year!) years ago"
+      return "\(components.year!)yr ago"
     } else if components.year! >= 1 {
       if numericDates {
-        return "1 year ago"
+        return "1yr ago"
       } else {
         return "Last year"
       }
@@ -101,10 +101,10 @@ extension Date {
         return "Last week"
       }
     } else if components.day! >= 2 {
-      return "\(components.day!) days ago"
+      return "\(components.day!)d ago"
     } else if components.day! >= 1 {
       if numericDates {
-        return "1 day ago"
+        return "1d ago"
       } else {
         return "Yesterday"
       }
@@ -117,15 +117,15 @@ extension Date {
         return "An hour ago"
       }
     } else if components.minute! >= 2 {
-      return "\(components.minute!) minutes ago"
+      return "\(components.minute!) min ago"
     } else if components.minute! >= 1 {
       if numericDates {
-        return "1 minute ago"
+        return "1 min ago"
       } else {
-        return "A minute ago"
+        return "A min ago"
       }
     } else if components.second! >= 3 {
-      return "\(components.second!) seconds ago"
+      return "\(components.second!)s ago"
     } else {
       return "Just now"
     }

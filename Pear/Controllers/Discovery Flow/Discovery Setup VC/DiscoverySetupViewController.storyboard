@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eba-jg-pCh">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Discovery Setup View Controller-->
+        <scene sceneID="B9C-Ea-2RP">
+            <objects>
+                <viewController id="eba-jg-pCh" customClass="DiscoverySetupViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o17-z4-iCy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join people pearing nearby" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20y-80-bNR">
+                                <rect key="frame" x="47" y="268" width="320" height="24.666666666666686"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mw-RB-jhQ">
+                                <rect key="frame" x="20" y="380.66666666666669" width="374" height="60"/>
+                                <color key="backgroundColor" red="0.58823529409999997" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Ci6-r1-4Fn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Finish Setup">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishSetupButtonPressed:" destination="eba-jg-pCh" eventType="touchUpInside" id="IB6-RK-ZGC"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-smiling" translatesAutoresizingMaskIntoConstraints="NO" id="8Ys-cj-kSh">
+                                <rect key="frame" x="147" y="140" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="d2v-8N-h0i"/>
+                                    <constraint firstAttribute="height" constant="120" id="pUX-9a-H0B"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55q-8o-ibQ">
+                                <rect key="frame" x="20" y="312.66666666666669" width="374" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Wg8-Gq-DJS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Enable Location">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="enableLocationButtonPressed:" destination="eba-jg-pCh" eventType="touchUpInside" id="nKa-c5-UtO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="20y-80-bNR" firstAttribute="top" secondItem="8Ys-cj-kSh" secondAttribute="bottom" constant="8" id="E6z-PK-Nir"/>
+                            <constraint firstItem="55q-8o-ibQ" firstAttribute="top" secondItem="20y-80-bNR" secondAttribute="bottom" constant="20" id="Ne6-PN-p2g"/>
+                            <constraint firstItem="xhg-ns-OH5" firstAttribute="trailing" secondItem="3mw-RB-jhQ" secondAttribute="trailing" constant="20" id="OpI-zY-CwV"/>
+                            <constraint firstItem="55q-8o-ibQ" firstAttribute="leading" secondItem="xhg-ns-OH5" secondAttribute="leading" constant="20" id="SwX-tX-3AH"/>
+                            <constraint firstItem="8Ys-cj-kSh" firstAttribute="centerX" secondItem="o17-z4-iCy" secondAttribute="centerX" id="Xgv-Se-lG4"/>
+                            <constraint firstItem="20y-80-bNR" firstAttribute="leading" secondItem="xhg-ns-OH5" secondAttribute="leading" constant="47" id="cuh-Vb-AC2"/>
+                            <constraint firstItem="xhg-ns-OH5" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="8Ys-cj-kSh" secondAttribute="trailing" constant="147" id="eiy-ap-eJs"/>
+                            <constraint firstItem="8Ys-cj-kSh" firstAttribute="top" secondItem="xhg-ns-OH5" secondAttribute="top" constant="120" id="pPY-F3-5Ic"/>
+                            <constraint firstItem="xhg-ns-OH5" firstAttribute="trailing" secondItem="20y-80-bNR" secondAttribute="trailing" constant="47" id="qA9-nT-O2l"/>
+                            <constraint firstItem="xhg-ns-OH5" firstAttribute="trailing" secondItem="55q-8o-ibQ" secondAttribute="trailing" constant="20" id="qaP-DK-70Z"/>
+                            <constraint firstItem="3mw-RB-jhQ" firstAttribute="top" secondItem="55q-8o-ibQ" secondAttribute="bottom" constant="8" id="rK2-cQ-ijT"/>
+                            <constraint firstItem="3mw-RB-jhQ" firstAttribute="leading" secondItem="xhg-ns-OH5" secondAttribute="leading" constant="20" id="sne-GR-Og3"/>
+                            <constraint firstItem="8Ys-cj-kSh" firstAttribute="leading" relation="lessThanOrEqual" secondItem="xhg-ns-OH5" secondAttribute="leading" constant="147" id="vTc-FP-IKi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xhg-ns-OH5"/>
+                    </view>
+                    <connections>
+                        <outlet property="enableLocationButton" destination="55q-8o-ibQ" id="Jsb-fk-5Ah"/>
+                        <outlet property="finishSetupButton" destination="3mw-RB-jhQ" id="fkr-w0-AFu"/>
+                        <outlet property="joinMessageLabel" destination="20y-80-bNR" id="ZOv-fM-5HG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eF-pA-Oii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271.01449275362319" y="37.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icons8-smiling" width="512" height="512"/>
+    </resources>
+</document>

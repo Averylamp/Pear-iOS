@@ -91,6 +91,45 @@ extension String {
     return randomString as String
   }
   
+  public func levenshtein(_ other: String) -> Int {
+    let sCount = self.count
+    let oCount = other.count
+    
+    guard sCount != 0 else {
+      return oCount
+    }
+    
+    guard oCount != 0 else {
+      return sCount
+    }
+    
+    let line: [Int]  = Array(repeating: 0, count: oCount + 1)
+    var mat: [[Int]] = Array(repeating: line, count: sCount + 1)
+    
+    for iIndex in 0...sCount {
+      mat[iIndex][0] = iIndex
+    }
+    
+    for jIndex in 0...oCount {
+      mat[0][jIndex] = jIndex
+    }
+    
+    for jIndex in 1...oCount {
+      for iIndex in 1...sCount {
+        if self[iIndex - 1] == other[jIndex - 1] {
+          mat[iIndex][jIndex] = mat[iIndex - 1][jIndex - 1]       // no operation
+        } else {
+          let del = mat[iIndex - 1][jIndex] + 1         // deletion
+          let ins = mat[iIndex][jIndex - 1] + 1         // insertion
+          let sub = mat[iIndex - 1][jIndex - 1] + 1     // substitution
+          mat[iIndex][jIndex] = min(min(del, ins), sub)
+        }
+      }
+    }
+    
+    return mat[sCount][oCount]
+  }
+
 }
 
 extension StringProtocol {

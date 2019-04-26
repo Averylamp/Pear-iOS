@@ -13,7 +13,7 @@ class GetStartedUserLastNameViewController: UIViewController {
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var inputTextField: UITextField!
   
-  var gettingStartedUserData: UserCreationData!
+  var gettingStartedUserData: OldUserCreationData!
   @IBOutlet weak var titleLabel: UILabel!
   
   @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
@@ -21,7 +21,7 @@ class GetStartedUserLastNameViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(gettingStartedUserData: UserCreationData) -> GetStartedUserLastNameViewController? {
+  class func instantiate(gettingStartedUserData: OldUserCreationData) -> GetStartedUserLastNameViewController? {
     let storyboard = UIStoryboard(name: String(describing: GetStartedUserLastNameViewController.self), bundle: nil)
     guard let userLastNameVC = storyboard.instantiateInitialViewController() as? GetStartedUserLastNameViewController else { return nil }
     userLastNameVC.gettingStartedUserData = gettingStartedUserData

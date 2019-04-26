@@ -24,9 +24,9 @@ class PearImageAPI: ImageAPI {
     "Content-Type": "application/json"
   ]
   
-  static let getImagesQuery: String = "query GetUserImages($userInput: GetUserInput) {getUser(userInput:$userInput){ success message user { displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) } }}"
+  static let getImagesQuery: String = "query GetUserImages($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user { displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) } }}"
   
-  static let updateImagesQuery: String = "mutation UpdateUserPhotos($userInput:UpdateUserPhotosInput) { updateUserPhotos(updateUserPhotosInput:$userInput){ success message }}"
+  static let updateImagesQuery: String = "mutation UpdateUserPhotos($userInput:UpdateUserPhotosInput!) { updateUserPhotos(updateUserPhotosInput:$userInput){ success message }}"
   
 }
 
@@ -89,6 +89,7 @@ extension PearImageAPI {
                                              apiName: "PearImageAPI",
                                              functionName: "uploadImage",
                                              message: "Image upload failure",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: payload)
             completion(.failure(ImageAPIError.unknownError(error: error)))
@@ -108,6 +109,7 @@ extension PearImageAPI {
                                                  apiName: "PearImageAPI",
                                                  functionName: "uploadImage",
                                                  message: "Image Decoding Failure",
+                                                 responseData: data,
                                                  tags: [:],
                                                  paylod: payload)
                 completion(.failure(ImageAPIError.unknownError(error: error)))
@@ -119,6 +121,7 @@ extension PearImageAPI {
                                                apiName: "PearImageAPI",
                                                functionName: "uploadImage",
                                                message: "Image Response Data Missing",
+                                               responseData: data,
                                                tags: [:],
                                                paylod: payload)
               completion(.failure(ImageAPIError.failedDeserialization))
@@ -233,6 +236,7 @@ extension PearImageAPI {
                                            apiName: "PearImageAPI",
                                            functionName: "updateUserPhotos",
                                            message: error.localizedDescription,
+                                           responseData: data,
                                            tags: [:],
                                            paylod: fullDictionary)
           completion(.failure(ImageAPIError.unknownError(error: error)))
@@ -241,25 +245,27 @@ extension PearImageAPI {
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "updateUserPhotos")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
-            print("Failed to Approve Detached Profile: \(helperResult)")
+            print("Failed to Update Images: \(helperResult)")
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearImageAPI",
                                              functionName: "updateUserPhotos",
                                              message: "GraphQL Error: \(helperResult)",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(ImageAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
-            print("Failed to Approve Detached Profile: \(message ?? "")")
+            print("Failed to Update Images: \(message ?? "")")
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearImageAPI",
                                              functionName: "updateUserPhotos",
                                              message: message ?? "GraphQL returned Failure",
+                                             responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(ImageAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
-            print("Successfully attached Detached Profile: \(String(describing: message))")
+            print("Successfully updated images: \(String(describing: message))")
             completion(.success(true))
           }
         }
