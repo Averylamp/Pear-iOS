@@ -212,6 +212,7 @@ extension UserNameInputViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
+    self.nameTextField.becomeFirstResponder()
   }
   
   func stylize() {
