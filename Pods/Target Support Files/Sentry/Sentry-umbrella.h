@@ -45,6 +45,7 @@
 #import "SentrySwizzle.h"
 #import "SentryThread.h"
 #import "SentryUser.h"
+#import "SentryNSUIntegerValue.h"
 #import "SentryCrashInstallation+Private.h"
 #import "SentryCrashInstallation.h"
 #import "SentryCrashMonitor.h"
