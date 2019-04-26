@@ -57,7 +57,7 @@ class AllowLocationViewController: UIViewController {
       }
     } else if status == .authorizedWhenInUse {
       if !CLLocationManager.locationServicesEnabled() {
-        // Location services is not available
+        // Location services is not available on the DEVICE
         return
       }
       if let location = DataStore.shared.lastLocation {

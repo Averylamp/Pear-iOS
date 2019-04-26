@@ -18,7 +18,7 @@ class MainTabBarViewController: UITabBarController {
     if let gender = DataStore.shared.currentPearUser?.gender,
       let birthdate = DataStore.shared.currentPearUser?.birthdate,
       let images = DataStore.shared.currentPearUser?.displayedImages,
-      CLLocationManager.locationServicesEnabled(),
+      DataStore.shared.hasEnabledLocation(),
       images.count > 0 {
       if let discoverVC = DiscoverySimpleViewController.instantiate(),
         let regularImage = R.image.tabIconDiscovery(),
