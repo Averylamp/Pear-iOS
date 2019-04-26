@@ -13,7 +13,7 @@ class MultipleBoastRoastStackViewController: UIViewController {
   @IBOutlet var scrollView: UIScrollView!
   @IBOutlet var stackView: UIStackView!
   var mode: RoastBoastType = .boast
-  @IBOutlet weak var spacerView: UIView!
+//  @IBOutlet weak var spacerView: UIView!
   
   var textVCs: [ExpandingBoastRoastInputViewController] = []
 
@@ -56,11 +56,7 @@ extension MultipleBoastRoastStackViewController {
     expandingTextVC.delegate = self
     self.textVCs.append(expandingTextVC)
     self.addChild(expandingTextVC)
-    if let spacerIndex = self.stackView.arrangedSubviews.firstIndex(of: self.spacerView) {
-      self.stackView.insertArrangedSubview(expandingTextVC.view, at: spacerIndex)
-    } else {
-      self.stackView.addArrangedSubview(expandingTextVC.view)
-    }
+    self.stackView.addArrangedSubview(expandingTextVC.view)
     expandingTextVC.didMove(toParent: self)
     self.view.layoutIfNeeded()
     expandingTextVC.expandingTextView.becomeFirstResponder()
