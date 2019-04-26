@@ -96,9 +96,9 @@ extension DiscoveryTableViewCell {
     }
     if let schoolName = profileData.school {
       if let schoolYear = profileData.schoolYear {
-        self.extraInfoStackView.addArrangedSubview(self.generateInfoTagItem(name: "\(schoolName), \(schoolYear)", icon: R.image.iconLocationMarker()))
+        self.extraInfoStackView.addArrangedSubview(self.generateInfoTagItem(name: "\(schoolName), \(schoolYear)", icon: R.image.iconSchool()))
       } else {
-        self.extraInfoStackView.addArrangedSubview(self.generateInfoTagItem(name: schoolName, icon: R.image.iconLocationMarker()))
+        self.extraInfoStackView.addArrangedSubview(self.generateInfoTagItem(name: schoolName, icon: R.image.iconSchool()))
       }
     }
     self.populateImages(images: profileData.imageContainers)

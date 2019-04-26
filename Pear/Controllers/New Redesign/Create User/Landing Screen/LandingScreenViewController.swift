@@ -122,6 +122,7 @@ extension LandingScreenViewController {
     super.viewDidLoad()
     self.stylize()
     self.inputTextField.delegate = self
+    self.inputTextField.becomeFirstResponder()
     self.addDismissKeyboardOnViewClick()
   }
   
