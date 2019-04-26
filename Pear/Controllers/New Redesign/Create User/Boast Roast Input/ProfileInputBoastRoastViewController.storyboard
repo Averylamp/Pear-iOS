@@ -10,14 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Nunito-SemiBold.ttf">
+            <string>Nunito-SemiBold</string>
+        </array>
         <array key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
         </array>
         <array key="OpenSans-ExtraBold.ttf">
             <string>OpenSans-ExtraBold</string>
-        </array>
-        <array key="OpenSans-Regular.ttf">
-            <string>OpenSans-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -49,10 +49,13 @@
                                             <action selector="cancelButtonClicked:" destination="ldV-yO-okM" eventType="touchUpInside" id="I1h-fB-Lyk"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-UO-m7r">
-                                        <rect key="frame" x="301" y="-28" width="105" height="96"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
-                                        <state key="normal" title="Done" image="icon-cancel-button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEu-UO-m7r">
+                                        <rect key="frame" x="301" y="5" width="105" height="30"/>
+                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito SemiBold" pointSize="13"/>
+                                        <state key="normal" title="DONE"/>
+                                        <connections>
+                                            <action selector="continueButtonClicked:" destination="ldV-yO-okM" eventType="touchUpInside" id="FU7-I0-agz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

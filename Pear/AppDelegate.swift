@@ -47,7 +47,7 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     if CommandLine.arguments.contains("--uitesting") {
       resetState()
     }
-    
+    self.resetState()
     self.stylize()
     
     window = UIWindow(frame: UIScreen.main.bounds)
