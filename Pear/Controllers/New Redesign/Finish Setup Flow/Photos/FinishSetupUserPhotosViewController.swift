@@ -10,6 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 import BSImagePicker
 import Photos
+import FirebaseAnalytics
 
 class FinishSetupUserPhotosViewController: UIViewController {
   
@@ -83,6 +84,8 @@ class FinishSetupUserPhotosViewController: UIViewController {
                                                       print("Failed to initialize Main VC")
                                                       return
                                                   }
+                                                  Analytics.logEvent("FS_photo_DONE", parameters: nil)
+                                                  Analytics.logEvent("FS_success", parameters: nil)
                                                   self.navigationController?.setViewControllers([mainVC], animated: true)
                                                 }
                                               }
