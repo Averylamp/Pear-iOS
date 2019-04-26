@@ -32,7 +32,7 @@ class PearMatchesAPI: MatchesAPI {
   static let getUserCurrentMatchesQuery: String = "query GetUserMatches($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user { currentMatches \(Match.graphQLMatchFields) } }}"
   static let getUserMatchRequests: String = "query GetUserMatches($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user { requestedMatches \(Match.graphQLMatchFields) } }}"
   
-  static let sendMessageNotificationQuery: String = "query SendNotification($fromUser_id:ID!, toUser_ID!) { notifyNewMessage(fromUser_id:$fromUser_id, toUser_id:$toUser_id) }"
+  static let sendMessageNotificationQuery: String = "query SendNotification($fromUser_id:ID!, $toUser_id: ID!) { notifyNewMessage(fromUser_id:$fromUser_id, toUser_id:$toUser_id) }"
   
   // swiftlint:disable:next line_length
   static let unmatchRequestQuery: String = "mutation UnmatchRequest($user_id: ID!, $match_id: ID!, $reason: String) { unmatch(user_id:$user_id, match_id:$match_id, reason: $reason) { success message  } }"
@@ -442,6 +442,7 @@ extension PearMatchesAPI {
       request.httpBody = data
       
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        APIHelpers.printDataDump(data: data)
         if let error = error {
           print(error as Any)
           completion(.failure(MatchesAPIError.unknownError(error: error)))
