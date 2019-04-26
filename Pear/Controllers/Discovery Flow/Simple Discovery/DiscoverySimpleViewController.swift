@@ -75,6 +75,9 @@ extension DiscoverySimpleViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.refreshControl = refreshControl
+    let feedEndImageView = UIImageView(image: R.image.feedEndPhoto())
+    feedEndImageView.contentMode = .scaleAspectFill
+    tableView.tableFooterView = feedEndImageView
     self.refreshControl
       .addTarget(self,
                  action: #selector(DiscoverySimpleViewController.refreshControlChanged(sender:)),

@@ -141,6 +141,18 @@ extension UserPhoneCodeViewController {
             print("Continuing to Main Screen")
             DispatchQueue.main.async {
               DataStore.shared.reloadAllUserData()
+              if user.endorsedUserIDs.count + user.detachedProfileIDs.count  == 0 {
+                DispatchQueue.main.async {
+                  guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
+                    print("Failed to create contact permissions VC")
+                    return
+                  }
+                  print("Creating permissions VC")
+                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+                  return
+                  
+                }
+              }
               if let mainVC = LoadingScreenViewController.getMainScreenVC() {
                 self.navigationController?.setViewControllers([mainVC], animated: true)
               }
