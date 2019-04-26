@@ -43,6 +43,7 @@ extension LoadingScreenViewController {
           DataStore.shared.refreshPearUser(completion: { (pearUser) in
             if let pearUser = pearUser {
               if pearUser.endorsedUserIDs.count + pearUser.detachedProfileIDs.count  == 0 {
+                DataStore.shared.currentPearUser = pearUser
                 DispatchQueue.main.async {
                   if let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() {
                     print("Creating permissions VC")

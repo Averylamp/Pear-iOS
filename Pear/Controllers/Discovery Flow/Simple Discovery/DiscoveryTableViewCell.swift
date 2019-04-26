@@ -110,13 +110,16 @@ extension DiscoveryTableViewCell {
 
     if let boastItem = profileData.boasts.first {
       self.addBoastRoastItem(item: boastItem, userName: profileData.firstName)
+      self.addSpacerView(height: 4)
     }
     if let roastItem = profileData.roasts.first {
       self.addBoastRoastItem(item: roastItem, userName: profileData.firstName)
+      self.addSpacerView(height: 4)
     }
     if profileData.boasts.count + profileData.roasts.count == 0,
       let bioItem = profileData.bios.first {
       self.addBioItem(item: bioItem)
+      self.addSpacerView(height: 4)
     }
     self.updatePageControl()
   }
@@ -226,6 +229,15 @@ extension DiscoveryTableViewCell {
     }
     bioItemVC.view.tag = self.contentItemTag
     self.profileStackView.addArrangedSubview(bioItemVC.view)
+  }
+  
+  func addSpacerView(height: CGFloat) {
+    let spacer = UIView()
+    spacer.translatesAutoresizingMaskIntoConstraints = false
+    spacer.backgroundColor = nil
+    spacer.addConstraint(NSLayoutConstraint(item: spacer, attribute: .height, relatedBy: .equal,
+                                            toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
+    self.profileStackView.addArrangedSubview(spacer)
   }
   
 }
