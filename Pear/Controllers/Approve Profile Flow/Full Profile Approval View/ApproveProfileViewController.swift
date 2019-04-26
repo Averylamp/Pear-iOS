@@ -250,43 +250,10 @@ extension ApproveProfileViewController {
       NSLayoutConstraint(item: continueButton, attribute: .top, relatedBy: .equal,
                          toItem: continueContainerView, attribute: .top, multiplier: 1.0, constant: 10.0),
       NSLayoutConstraint(item: continueButton, attribute: .height, relatedBy: .equal,
-                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50)
-      ])
-    
-    let continueSubtext = UILabel()
-    continueSubtext.stylizeTextFieldTitle()
-    continueSubtext.numberOfLines = 0
-    continueSubtext.textAlignment = .center
-    continueSubtext.text = "This will make your profile visible to other users on Pear and your friend will be able to edit their contributions to your profile in the future."
-    continueSubtext.translatesAutoresizingMaskIntoConstraints = false
-    continueContainerView.addSubview(continueSubtext)
-    continueContainerView.addConstraints([
-      NSLayoutConstraint(item: continueSubtext, attribute: .left, relatedBy: .equal,
-                         toItem: continueContainerView, attribute: .left, multiplier: 1.0, constant: 20.0),
-      NSLayoutConstraint(item: continueSubtext, attribute: .right, relatedBy: .equal,
-                         toItem: continueContainerView, attribute: .right, multiplier: 1.0, constant: -20.0),
-      NSLayoutConstraint(item: continueSubtext, attribute: .top, relatedBy: .equal,
-                         toItem: continueButton, attribute: .bottom, multiplier: 1.0, constant: 10.0)
-      ])
-    
-    let skipButton = UIButton()
-    skipButton.addTarget(self,
-                         action: #selector(ApproveProfileViewController.skipButtonClicked(sender:)), for: .touchUpInside)
-    skipButton.stylizeSubtle()
-    skipButton.setTitle("Skip for now", for: .normal)
-    skipButton.translatesAutoresizingMaskIntoConstraints = false
-    continueContainerView.addSubview(skipButton)
-    continueContainerView.addConstraints([
-      NSLayoutConstraint(item: skipButton, attribute: .left, relatedBy: .equal,
-                         toItem: continueContainerView, attribute: .left, multiplier: 1.0, constant: 20.0),
-      NSLayoutConstraint(item: skipButton, attribute: .right, relatedBy: .equal,
-                         toItem: continueContainerView, attribute: .right, multiplier: 1.0, constant: -20.0),
-      NSLayoutConstraint(item: skipButton, attribute: .top, relatedBy: .equal,
-                         toItem: continueSubtext, attribute: .bottom, multiplier: 1.0, constant: 10.0),
-      NSLayoutConstraint(item: skipButton, attribute: .bottom, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50),
+      NSLayoutConstraint(item: continueButton, attribute: .bottom, relatedBy: .equal,
                          toItem: continueContainerView, attribute: .bottom, multiplier: 1.0, constant: -10.0)
       ])
-    
     self.stackView.addArrangedSubview(continueContainerView)
 
   }
