@@ -22,7 +22,7 @@ extension UILabel {
   }
   
   func stylizeFullPageNameLabel() {
-    if let font = R.font.nunitoBold(size: 34) {
+    if let font = R.font.openSansBold(size: 34) {
      self.font = font
     }
     self.textColor = StylingConfig.textFontColor
@@ -75,7 +75,7 @@ extension UILabel {
   }
   
   func stylizeInfoSubtextLabel() {
-    if let font = R.font.nunitoSemiBold(size: 15) {
+    if let font = R.font.openSansSemiBold(size: 15) {
       self.font = font
     }
     self.minimumScaleFactor = 0.5
@@ -94,28 +94,28 @@ extension UILabel {
   }
   
   func stylizeRequestTitleLabel() {
-    if let font = R.font.nunitoSemiBold(size: 17) {
+    if let font = R.font.openSansSemiBold(size: 17) {
       self.font = font
     }
     self.textColor = UIColor.black
   }
   
   func stylizeRequestSubtitleLabel() {
-    if let font = R.font.nunitoRegular(size: 17) {
+    if let font = R.font.openSansRegular(size: 17) {
       self.font = font
     }
     self.textColor = UIColor.black
   }
   
   func stylizeEditTitleLabel() {
-    if let font = R.font.nunitoBold(size: 18) {
+    if let font = R.font.openSansBold(size: 18) {
       self.font = font
     }
     self.textColor = R.color.primaryTextColor()
   }
   
   func stylizeEditSubtitleLabel() {
-    if let font = R.font.nunitoRegular(size: 15) {
+    if let font = R.font.openSansRegular(size: 15) {
       self.font = font
     }
     self.textColor = R.color.primaryTextColor()
@@ -149,7 +149,7 @@ extension UILabel {
   }
   
   func stylizeFilterName(selected: Bool) {
-    if let font = R.font.nunitoSemiBold(size: 17) {
+    if let font = R.font.openSansSemiBold(size: 17) {
       self.font = font
     }
     if selected {
@@ -188,7 +188,7 @@ extension UILabel {
   }
   
   func sylizeMatchmakerRequestLabel() {
-    if let font = R.font.nunitoSemiBold(size: 17) {
+    if let font = R.font.openSansSemiBold(size: 17) {
       self.font = font
     }
     self.textColor = R.color.primaryTextColor()
@@ -217,7 +217,7 @@ extension UILabel {
   }
   
   func stylizeDiscoveryTagLabel() {
-    if let font = R.font.nunitoBold(size: 12) {
+    if let font = R.font.openSansBold(size: 12) {
       self.font = font
     }
     self.textColor = UIColor.white
