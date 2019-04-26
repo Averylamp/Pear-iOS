@@ -48,7 +48,7 @@
 		BB0628C722463B12000D9B12 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C622463B12000D9B12 /* Match.swift */; };
 		BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */; };
 		BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DB225361DC005DD315 /* splash-background.png */; };
-		BB0AE4DE22536208005DD315 /* splash-leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DD22536208005DD315 /* splash-leaf.png */; };
+		BB0AE4DE22536208005DD315 /* splash-pear.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4DD22536208005DD315 /* splash-pear.png */; };
 		BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AE4DF225364D0005DD315 /* UpdateUserPreferencesViewController.swift */; };
 		BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0AE4E1225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard */; };
 		BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */; };
@@ -404,7 +404,7 @@
 		BB0628C622463B12000D9B12 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		BB08B88D22479F2E005A3EA9 /* APIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelpers.swift; sourceTree = "<group>"; };
 		BB0AE4DB225361DC005DD315 /* splash-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-background.png"; sourceTree = "<group>"; };
-		BB0AE4DD22536208005DD315 /* splash-leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-leaf.png"; sourceTree = "<group>"; };
+		BB0AE4DD22536208005DD315 /* splash-pear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-pear.png"; sourceTree = "<group>"; };
 		BB0AE4DF225364D0005DD315 /* UpdateUserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserPreferencesViewController.swift; sourceTree = "<group>"; };
 		BB0AE4E1225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BB0AE4E622536F9E005DD315 /* UserGenderPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -789,7 +789,7 @@
 				BBB70AD4222336B7006B75A0 /* Fonts */,
 				BB686E2A2210BF34008A263C /* GoogleService-Info.plist */,
 				60C131CE21D342BD0093ECBA /* Info.plist */,
-				BB0AE4DD22536208005DD315 /* splash-leaf.png */,
+				BB0AE4DD22536208005DD315 /* splash-pear.png */,
 				BB0AE4DB225361DC005DD315 /* splash-background.png */,
 				BB9CB6BA225B601200605A98 /* Launch Screen.storyboard */,
 				60C131C921D342BD0093ECBA /* Assets.xcassets */,
@@ -2376,7 +2376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB0AE4DE22536208005DD315 /* splash-leaf.png in Resources */,
+				BB0AE4DE22536208005DD315 /* splash-pear.png in Resources */,
 				BBF93E752267CCB2002841EE /* Cera Pro Light.otf in Resources */,
 				BBF93E602267CA2A002841EE /* UserContactPermissionsViewController.storyboard in Resources */,
 				BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */,

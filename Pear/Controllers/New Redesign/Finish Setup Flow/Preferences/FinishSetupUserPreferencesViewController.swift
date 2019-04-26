@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAnalytics
 
 class FinishSetupUserPreferencesViewController: UIViewController {
   
@@ -79,6 +80,7 @@ class FinishSetupUserPreferencesViewController: UIViewController {
                                                     return
                                                   }
                                                   self.navigationController?.pushViewController(schoolVC, animated: true)
+                                                  Analytics.logEvent("FS_prefs_DONE", parameters: nil)
                                                 }
                                               case .failure(let error):
                                                 print("Update user failure: \(error)")

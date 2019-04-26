@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAnalytics
 
 class FinishSetupUserGenderViewController: UIViewController {
 
@@ -85,6 +86,7 @@ class FinishSetupUserGenderViewController: UIViewController {
                                                   print("Failed to initialize Preferences VC")
                                                   return
                                                 }
+                                                Analytics.logEvent("FS_gender_DONE", parameters: nil)
                                                 self.navigationController?.pushViewController(preferencesVC, animated: true)
                                               }
                                             case .failure(let error):
