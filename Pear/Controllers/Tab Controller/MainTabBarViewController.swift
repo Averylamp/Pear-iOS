@@ -104,6 +104,11 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
       index == 0 {
       NotificationCenter.default.post(name: .refreshDiscoveryFeedAnimated, object: nil)
     }
+    if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
+      index == 1 {
+      DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
+      DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
+    }
   }
   
 }
