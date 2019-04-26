@@ -70,6 +70,7 @@ extension DiscoverySimpleViewController {
   }
   
   func setup() {
+    tableView.estimatedRowHeight = 400
     tableView.separatorStyle = .none
     tableView.delegate = self
     tableView.dataSource = self
