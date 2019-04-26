@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Nunito-Regular.ttf">
-            <string>Nunito-Regular</string>
-        </array>
         <array key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-ExtraBold</string>
         </array>
         <array key="OpenSans-SemiBold.ttf">
             <string>OpenSans-SemiBold</string>
@@ -33,8 +33,8 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join in 3 steps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="egO-Y0-AmT">
-                                        <rect key="frame" x="119" y="0.5" width="176" height="39"/>
-                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                        <rect key="frame" x="121.5" y="3.5" width="171.5" height="33"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

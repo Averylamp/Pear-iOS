@@ -46,11 +46,11 @@ class ProfileInputBoastRoastViewController: UIViewController {
     if sender.tag == 2 {
       self.mode = .boast
       self.scrollView.scrollRectToVisible(self.boastTVC.view.frame, animated: true)
-      Analytics.logEvent("CP_r&b_TAP_boastTab", parameters: nil)
+      Analytics.logEvent("CP_rb_TAP_boastTab", parameters: nil)
     } else if sender.tag == 3 {
       self.mode = .roast
       self.scrollView.scrollRectToVisible(self.roastTVC.view.frame, animated: true)
-      Analytics.logEvent("CP_r&b_TAP_roastTab", parameters: nil)
+      Analytics.logEvent("CP_rb_TAP_roastTab", parameters: nil)
     }
     self.stylizeBoastRoastButtons()
   }
@@ -59,9 +59,9 @@ class ProfileInputBoastRoastViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.addBoastRoastVC(type: self.mode == .boast ? .boast : .roast)
     if self.mode == .boast {
-      Analytics.logEvent("CP_r&b_TAP_addBoast", parameters: nil)
+      Analytics.logEvent("CP_rb_TAP_addBoast", parameters: nil)
     } else if self.mode == .roast {
-      Analytics.logEvent("CP_r&b_TAP_addRoast", parameters: nil)
+      Analytics.logEvent("CP_rb_TAP_addRoast", parameters: nil)
     }
   }
   @IBAction func cancelButtonClicked(_ sender: Any) {
@@ -93,7 +93,7 @@ class ProfileInputBoastRoastViewController: UIViewController {
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CP_r&b_TAP_continue", parameters: nil)
+    Analytics.logEvent("CP_rb_TAP_continue", parameters: nil)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.saveBoastRoasts()
     if self.profileData.boasts.count + self.profileData.roasts.count == 0 {
@@ -108,7 +108,7 @@ class ProfileInputBoastRoastViewController: UIViewController {
       return
     }
     self.navigationController?.pushViewController(firstNameVC, animated: true)
-    Analytics.logEvent("CP_r&b_DONE", parameters: nil)
+    Analytics.logEvent("CP_rb_DONE", parameters: nil)
   }
 }
 

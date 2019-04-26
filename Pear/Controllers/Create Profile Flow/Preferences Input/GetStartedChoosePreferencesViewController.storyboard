@@ -10,8 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Nunito-Regular.ttf">
-            <string>Nunito-Regular</string>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
         </array>
     </customFonts>
     <scenes>
@@ -83,7 +83,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They're interested in..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPm-YY-mOw">
                                 <rect key="frame" x="20" y="78" width="335" height="38.5"/>
-                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="28"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -155,6 +155,6 @@
     <resources>
         <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-close-button" width="120" height="120"/>
-        <image name="user-preferences-icon" width="160" height="160"/>
+        <image name="user-preferences-icon" width="512" height="512"/>
     </resources>
 </document>

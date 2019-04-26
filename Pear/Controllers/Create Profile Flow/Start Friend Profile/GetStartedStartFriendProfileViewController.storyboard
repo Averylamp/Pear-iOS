@@ -10,8 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Nunito-Regular.ttf">
-            <string>Nunito-Regular</string>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
         </array>
         <array key="SF-Pro-Display-Regular.otf">
             <string>SFProDisplay-Regular</string>
@@ -51,7 +54,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your friend's profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nLZ-bu-Vmu">
                                 <rect key="frame" x="20" y="134" width="335" height="39"/>
-                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -74,7 +77,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XAg-3T-EiL">
                                         <rect key="frame" x="10" y="19.5" width="319" height="46.5"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Their First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63K-8D-4xg">
@@ -138,6 +141,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-icon-pear-friends" width="391" height="436"/>
+        <image name="onboarding-icon-pear-friends" width="512" height="512"/>
     </resources>
 </document>

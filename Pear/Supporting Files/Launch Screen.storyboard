@@ -21,7 +21,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-background.png" translatesAutoresizingMaskIntoConstraints="NO" id="7F0-FD-i9I">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-leaf.png" translatesAutoresizingMaskIntoConstraints="NO" id="DZy-02-qJ6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-pear.png" translatesAutoresizingMaskIntoConstraints="NO" id="DZy-02-qJ6">
                                 <rect key="frame" x="132" y="373" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="fTk-hu-iSo"/>
@@ -48,6 +48,6 @@
     </scenes>
     <resources>
         <image name="splash-background.png" width="375" height="812"/>
-        <image name="splash-leaf.png" width="150" height="150"/>
+        <image name="splash-pear.png" width="150" height="150"/>
     </resources>
 </document>
