@@ -72,8 +72,8 @@ extension SMSCanceledViewController {
       activityIndicator.startAnimating()
       
       #if DEVMODE
-      //      self.createDetachedProfile()
-      //      return
+      self.createDetachedProfile()
+      return
       #endif
       
       if MFMessageComposeViewController.canSendText() {
