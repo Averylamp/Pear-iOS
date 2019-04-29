@@ -16,8 +16,10 @@ extension UIViewController {
   ///   - title: Title for the alert.
   ///   - message: Message for the alert.
   func alert(title: String, message: String) {
-    let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-    present(alertVC, animated: true, completion: nil)
+    DispatchQueue.main.async {
+      let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+      self.present(alertVC, animated: true, completion: nil)
+    }
   }
 }

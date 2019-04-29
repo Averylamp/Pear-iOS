@@ -24,7 +24,8 @@ class SentryHelper {
     "The network connection was lost.".lowercased(),
     "The request timed out.".lowercased(),
     "The Internet connection appears to be offline.".lowercased(),
-    "A data connection is not currently allowed.".lowercased()
+    "A data connection is not currently allowed.".lowercased(),
+    "The operation couldn’t be completed. Software caused connection abort".lowercased()
     ]
     var skipError = false
     skipErrors.forEach({

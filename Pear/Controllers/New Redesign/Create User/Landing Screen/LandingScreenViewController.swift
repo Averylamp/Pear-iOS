@@ -91,17 +91,18 @@ class LandingScreenViewController: UIViewController {
           // Sign in using the verificationID and the code sent to the user
           // ...
           UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-          
-          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-          let userCreationData = UserCreationData()
-          userCreationData.phoneNumber = phoneNumber
-          guard let phoneNumberVC = UserPhoneCodeViewController.instantiate(userCreationData: userCreationData,
-                                                                            verificationID: verificationID) else {
-                                                                              print("Failed to create Phone Number Code VC")
-                                                                              return
+          DispatchQueue.main.async {
+            HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+            let userCreationData = UserCreationData()
+            userCreationData.phoneNumber = phoneNumber
+            guard let phoneNumberVC = UserPhoneCodeViewController.instantiate(userCreationData: userCreationData,
+                                                                              verificationID: verificationID) else {
+                                                                                print("Failed to create Phone Number Code VC")
+                                                                                return
+            }
+            Analytics.logEvent("CP_enterPhone_DONE", parameters: nil)
+            self.navigationController?.pushViewController(phoneNumberVC, animated: true)            
           }
-          Analytics.logEvent("CP_enterPhone_DONE", parameters: nil)        
-          self.navigationController?.pushViewController(phoneNumberVC, animated: true)
         }
       }
     } else {
