@@ -52,13 +52,14 @@ extension MultipleBoastRoastStackViewController {
       print("Failed to create expanding b/roast text vc")
       return
     }
-    
     expandingTextVC.delegate = self
     self.textVCs.append(expandingTextVC)
     self.addChild(expandingTextVC)
     self.stackView.addArrangedSubview(expandingTextVC.view)
     expandingTextVC.didMove(toParent: self)
     self.view.layoutIfNeeded()
+    expandingTextVC.expandingTextContainerView.layer.borderWidth = 1
+    expandingTextVC.expandingTextContainerView.layer.borderColor = UIColor(white: 0.0, alpha: 0.05).cgColor
     expandingTextVC.expandingTextView.becomeFirstResponder()
   }
   

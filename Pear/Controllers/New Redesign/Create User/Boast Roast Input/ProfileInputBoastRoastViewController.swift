@@ -124,12 +124,12 @@ extension ProfileInputBoastRoastViewController {
   }
   
   func stylize() {
-    self.view.backgroundColor = R.color.backgroundColorBlue()
+    self.view.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
     if let font = R.font.openSansExtraBold(size: 16) {
       self.titleLabel.font = font
     }
-    self.titleLabel.textColor = UIColor.white
-
+    self.titleLabel.textColor = UIColor(white: 0.0, alpha: 0.5)
+    
     var size: CGFloat = 24
     if self.view.frame.width < 325 {
       size = 20
@@ -139,40 +139,43 @@ extension ProfileInputBoastRoastViewController {
       print("Failed to find font")
       return
     }
+    guard let boastColor = R.color.boastColor(),
+      let roastColor = R.color.roastColor() else {
+        print("Failed to create roast or boast color")
+        return
+    }
     self.boastButton.setAttributedTitle(
-      NSAttributedString(string: "Boast them",
+      
+      NSAttributedString(string: "BOAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                      NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha: 0.5) ]),
+                                      NSAttributedString.Key.foregroundColor: boastColor.withAlphaComponent(0.3)]),
       for: .normal)
     
     self.boastButton.setAttributedTitle(
-      NSAttributedString(string: "Boast them",
+      NSAttributedString(string: "BOAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha: 1.0) ]),
+                                      NSAttributedString.Key.foregroundColor: boastColor]),
       for: .selected)
     
     self.roastButton.setAttributedTitle(
-      NSAttributedString(string: "roast them",
+      NSAttributedString(string: "ROAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                      NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha: 0.5) ]),
+                                      NSAttributedString.Key.foregroundColor: roastColor.withAlphaComponent(0.3)]),
       for: .normal)
     
     self.roastButton.setAttributedTitle(
-      NSAttributedString(string: "roast them",
+      NSAttributedString(string: "ROAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha: 1.0) ]),
+                                      NSAttributedString.Key.foregroundColor: roastColor]),
       for: .selected)
     self.stylizeBoastRoastButtons()
     
     self.addMoreButton.layer.cornerRadius = self.addMoreButton.frame.height / 2.0
-    self.addMoreButton.setTitleColor(UIColor.black, for: .normal)
-    self.addMoreButton.backgroundColor = R.color.backgroundColorYellow()
+    self.addMoreButton.setTitleColor(UIColor.white, for: .normal)
     
     self.continueButton.layer.cornerRadius = self.continueButton.frame.height / 2.0
-    self.continueButton.setTitleColor(UIColor.white, for: .normal)
-    self.continueButton.backgroundColor = UIColor(red: 0.56, green: 0.84, blue: 1.00, alpha: 1.00)
+    self.continueButton.setTitleColor(UIColor.black, for: .normal)
+    self.continueButton.backgroundColor = UIColor(red: 0.88, green: 0.88, blue: 0.88, alpha: 1.00)
     
   }
   
@@ -205,10 +208,14 @@ extension ProfileInputBoastRoastViewController {
       self.boastButton.isSelected = true
       self.roastButton.isSelected = false
       self.subtitleLabel.text = "A “pro” of dating them!\nHype 👏 them 👏 up 👏"
+      self.addMoreButton.backgroundColor = R.color.boastColor()
+      self.addMoreButton.setTitle("Add Boast", for: .normal)
     case .roast:
       self.boastButton.isSelected = false
       self.roastButton.isSelected = true
       self.subtitleLabel.text = "Something people should know;\nnobody’s perfect ;P"
+      self.addMoreButton.backgroundColor = R.color.roastColor()
+      self.addMoreButton.setTitle("Add Roast", for: .normal)
     }
   }
   
@@ -271,7 +278,18 @@ extension ProfileInputBoastRoastViewController {
 
 // MARK: - UIScrollViewDelegate
 extension ProfileInputBoastRoastViewController: UIScrollViewDelegate {
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+  
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    self.scrollViewDidEndScrolling()
+  }
+  
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    if !decelerate {
+      self.scrollViewDidEndScrolling()
+    }
+  }
+  
+  func scrollViewDidEndScrolling() {
     let pageIndex: Int = Int(floor(scrollView.contentOffset.x / scrollView.frame.width))
     if pageIndex == 0 {
       self.mode = .boast
