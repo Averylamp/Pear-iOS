@@ -156,7 +156,7 @@ extension ProfileInputQuestionViewController {
       self.titleLabel.font = font
     }
     self.titleLabel.textColor = UIColor.white
-    self.nextButton.layer.cornerRadius = self.nextButton.frame.width / 2.0
+    self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
     self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)"
     self.questionCountImageView.contentMode = .scaleAspectFill
     self.questionCountImageView.image = self.checkImages[(self.profileData.questionResponses.count + self.profileData.skipCount)
