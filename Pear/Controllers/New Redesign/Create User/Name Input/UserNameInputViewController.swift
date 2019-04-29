@@ -102,8 +102,8 @@ class UserNameInputViewController: UIViewController {
       activityIndicator.startAnimating()
       
       #if DEVMODE
-      self.createDetachedProfile()
-      return
+//      self.createDetachedProfile()
+//      return
       #endif
       
       if MFMessageComposeViewController.canSendText() {
@@ -111,7 +111,15 @@ class UserNameInputViewController: UIViewController {
         messageVC.messageComposeDelegate = self
         
         messageVC.recipients = [phoneNumber]
-        messageVC.body = "I wrote something for you on Pear! Check it out 🍐 https://getpear.com/go/refer"
+        if profileData.roasts.count > 0 {
+          messageVC.body = "I just roasted on getpear.com 🍐! https://getpear.com/go/refer"
+        } else {
+          messageVC.body = "I just boasted on getpear.com 🍐! https://getpear.com/go/refer"
+        }
+        if let memeImage = R.image.inviteMeme(),
+          let pngData = memeImage.pngData() {
+          messageVC.addAttachmentData(pngData, typeIdentifier: "public.data", filename: "Image.png")
+        }
         
         self.present(messageVC, animated: true, completion: nil)
         Analytics.logEvent("CP_sendProfileSMS_START", parameters: nil)
