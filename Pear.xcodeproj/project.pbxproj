@@ -138,6 +138,8 @@
 		BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F88222DB19300E31C7F /* PearUserConstants.swift */; };
 		BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F89222DB19300E31C7F /* PearUser.swift */; };
 		BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB797DEC2276C9C600D38044 /* DataStore+Location.swift */; };
+		BB797DEF2277B56D00D38044 /* SMSCanceledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB797DEE2277B56D00D38044 /* SMSCanceledViewController.swift */; };
+		BB797DF12277B57600D38044 /* SMSCanceledViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB797DF02277B57600D38044 /* SMSCanceledViewController.storyboard */; };
 		BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */; };
 		BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */; };
 		BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11A22437B64001320B0 /* SharedModel.swift */; };
@@ -498,6 +500,8 @@
 		BB796F88222DB19300E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
 		BB796F89222DB19300E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		BB797DEC2276C9C600D38044 /* DataStore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Location.swift"; sourceTree = "<group>"; };
+		BB797DEE2277B56D00D38044 /* SMSCanceledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCanceledViewController.swift; sourceTree = "<group>"; };
+		BB797DF02277B57600D38044 /* SMSCanceledViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SMSCanceledViewController.storyboard; sourceTree = "<group>"; };
 		BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		BB884CF8CFF4C5A51377A2FA /* Pods-PearTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.production.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.production.xcconfig"; sourceTree = "<group>"; };
 		BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitVibeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1382,6 +1386,15 @@
 			path = "Data Store";
 			sourceTree = "<group>";
 		};
+		BB797DF22277B5FD00D38044 /* SMS Canceled */ = {
+			isa = PBXGroup;
+			children = (
+				BB797DEE2277B56D00D38044 /* SMSCanceledViewController.swift */,
+				BB797DF02277B57600D38044 /* SMSCanceledViewController.storyboard */,
+			);
+			path = "SMS Canceled";
+			sourceTree = "<group>";
+		};
 		BB94C11522437AC5001320B0 /* Detached Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -2188,6 +2201,7 @@
 				BBEF226A226FA0B40021B021 /* Input Question */,
 				BBEF226B226FC3F70021B021 /* Boast Roast Input */,
 				BBC0FF2022706A1500632924 /* Name Input */,
+				BB797DF22277B5FD00D38044 /* SMS Canceled */,
 				BB3F02802271452F004855E8 /* Profile Creation Finished */,
 				BBBA574C226DD5FE000BCD5F /* Input Table View */,
 			);
@@ -2393,6 +2407,7 @@
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
 				BBF93E7E2267CCB3002841EE /* Cera Pro Bold Italic.otf in Resources */,
 				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
+				BB797DF12277B57600D38044 /* SMSCanceledViewController.storyboard in Resources */,
 				BBF7968A225956EB00E9A506 /* MeEditUserViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
@@ -2878,6 +2893,7 @@
 				BB178941225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift in Sources */,
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
 				BBA3CEB8225566600020A36C /* ChatRequestEndorsementViewController.swift in Sources */,
+				BB797DEF2277B56D00D38044 /* SMSCanceledViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
