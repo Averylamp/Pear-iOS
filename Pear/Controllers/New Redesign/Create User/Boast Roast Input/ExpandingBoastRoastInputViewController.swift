@@ -90,7 +90,6 @@ extension ExpandingBoastRoastInputViewController {
   }
   
   func configure() {
-    
     self.deleteButton.isHidden = false
     self.deleteButton.isEnabled = true
     self.expandingTextView.delegate = self

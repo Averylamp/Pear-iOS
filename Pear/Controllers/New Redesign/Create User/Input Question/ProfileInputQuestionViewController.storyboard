@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="32" width="320" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Step 2: Answer some questions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mdX-eM-L9H">
-                                        <rect key="frame" x="62" y="9.5" width="196" height="21"/>
+                                        <rect key="frame" x="62" y="11.5" width="196" height="17.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBv-Qg-K3y">
-                                        <rect key="frame" x="262" y="7.5" width="11" height="25"/>
+                                        <rect key="frame" x="262" y="9.5" width="11" height="21"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="18"/>
                                         <color key="textColor" red="0.80000000000000004" green="1" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -82,10 +82,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcd-RB-F3S">
-                                <rect key="frame" x="114" y="89" width="92" height="35"/>
+                                <rect key="frame" x="115" y="89" width="90" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRb-gN-CCp">
-                                        <rect key="frame" x="35" y="0.0" width="57" height="35"/>
+                                        <rect key="frame" x="35" y="0.0" width="55" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Eqb-9W-zWX"/>
                                         </constraints>
@@ -183,7 +183,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-cancel-button" width="96" height="96"/>
+        <image name="icon-cancel-button" width="224" height="224"/>
         <image name="icon-skip-white" width="512" height="512"/>
         <namedColor name="backgroundColorYellow">
             <color red="1" green="0.93999999761581421" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -28,15 +28,12 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     FirebaseApp.configure()
     Messaging.messaging().delegate = self
     
-    //    Forces Remote config fetch
-    print(DataStore.shared.remoteConfig.configSettings)
     Fabric.with([Crashlytics.self])
     
     do {
       Client.shared = try Client(dsn: "https://8383e222e5e946cf8017740102da428e@sentry.io/1423458")
       try Client.shared?.startCrashHandler()
       Client.shared?.trackMemoryPressureAsEvent()
-      
     } catch let error {
       print("\(error)")
     }
@@ -56,8 +53,10 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
       fatalError("Something went horribly wrong")
     }
     window?.rootViewController = navController
-    //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()
+    
+    //    Forces Remote config fetch
+    print(DataStore.shared.remoteConfig.configSettings)
     
     // register for remote notifications if we have notification authorization
     DataStore.shared.registerForRemoteNotificationsIfAuthorized()
