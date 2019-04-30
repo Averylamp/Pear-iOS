@@ -195,6 +195,10 @@
 		BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9D1B202255E0D00074C099 /* MatchesAPI.swift */; };
 		BB9D1B242255E1310074C099 /* PearMatchesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9D1B232255E1310074C099 /* PearMatchesAPI.swift */; };
 		BBA106DE22780951000771CF /* ProfileCreationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA106DD22780951000771CF /* ProfileCreationProtocol.swift */; };
+		BBA106E022783C0F000771CF /* ProfileInputFreeResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA106DF22783C0F000771CF /* ProfileInputFreeResponseViewController.swift */; };
+		BBA106E222783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA106E122783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard */; };
+		BBA106E422784B1C000771CF /* ExpandingFreeResponseInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA106E322784B1C000771CF /* ExpandingFreeResponseInputViewController.swift */; };
+		BBA106E622784B22000771CF /* ExpandingFreeResponseInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA106E522784B22000771CF /* ExpandingFreeResponseInputViewController.storyboard */; };
 		BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */; };
 		BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */; };
 		BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */; };
@@ -559,6 +563,10 @@
 		BB9D1B202255E0D00074C099 /* MatchesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesAPI.swift; sourceTree = "<group>"; };
 		BB9D1B232255E1310074C099 /* PearMatchesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearMatchesAPI.swift; sourceTree = "<group>"; };
 		BBA106DD22780951000771CF /* ProfileCreationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationProtocol.swift; sourceTree = "<group>"; };
+		BBA106DF22783C0F000771CF /* ProfileInputFreeResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInputFreeResponseViewController.swift; sourceTree = "<group>"; };
+		BBA106E122783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInputFreeResponseViewController.storyboard; sourceTree = "<group>"; };
+		BBA106E322784B1C000771CF /* ExpandingFreeResponseInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingFreeResponseInputViewController.swift; sourceTree = "<group>"; };
+		BBA106E522784B22000771CF /* ExpandingFreeResponseInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingFreeResponseInputViewController.storyboard; sourceTree = "<group>"; };
 		BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Helpers.swift"; sourceTree = "<group>"; };
 		BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileStackViewController.swift; sourceTree = "<group>"; };
 		BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileStackViewController.storyboard; sourceTree = "<group>"; };
@@ -2127,6 +2135,10 @@
 			children = (
 				BBF93E572267C8B1002841EE /* ProfileInputQuestionViewController.swift */,
 				BBF93E652267CA56002841EE /* ProfileInputQuestionViewController.storyboard */,
+				BBA106DF22783C0F000771CF /* ProfileInputFreeResponseViewController.swift */,
+				BBA106E122783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard */,
+				BBA106E322784B1C000771CF /* ExpandingFreeResponseInputViewController.swift */,
+				BBA106E522784B22000771CF /* ExpandingFreeResponseInputViewController.storyboard */,
 			);
 			path = "Input Question";
 			sourceTree = "<group>";
@@ -2501,8 +2513,10 @@
 				BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */,
 				911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */,
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
+				BBA106E222783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard in Resources */,
 				BBF93E7C2267CCB3002841EE /* Cera Pro Thin.otf in Resources */,
 				BBF93E762267CCB2002841EE /* Cera Pro Bold.otf in Resources */,
+				BBA106E622784B22000771CF /* ExpandingFreeResponseInputViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BBC0FF1F22706A0600632924 /* UserNameInputViewController.storyboard in Resources */,
 				BBF93E622267CA3A002841EE /* UserContactListViewController.storyboard in Resources */,
@@ -2791,6 +2805,7 @@
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
+				BBA106E022783C0F000771CF /* ProfileInputFreeResponseViewController.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BBBA573F226D9749000BCD5F /* VibeItem.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
@@ -2874,6 +2889,7 @@
 				BB986A29220E1BFD00759A14 /* LandingScreenPage1ViewController.swift in Sources */,
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
+				BBA106E422784B1C000771CF /* ExpandingFreeResponseInputViewController.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,

@@ -1,31 +1,27 @@
 //
-//  ProfileInputQuestionViewController.swift
+//  ProfileInputFreeResponseViewController.swift
 //  Pear
 //
-//  Created by Avery Lamp on 4/17/19.
+//  Created by Avery Lamp on 4/30/19.
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
 import UIKit
 import FirebaseAnalytics
 
-class ProfileInputQuestionViewController: UIViewController {
-  
+class ProfileInputFreeResponseViewController: UIViewController {
+
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var topSeperatorView: UIView!
-  @IBOutlet weak var nextButton: UIButton!
-  @IBOutlet weak var nextButtonShadowView: UIView!
   @IBOutlet weak var questionCountLabel: UILabel!
   @IBOutlet weak var questionCountImageView: UIImageView!
   @IBOutlet weak var skipContainerView: UIView!
-  @IBOutlet weak var continueContainerView: UIView!
   
   var profileData: ProfileCreationData!
-  var inputTVC: InputTableViewController?
-  var tableViewHeightConstraint: NSLayoutConstraint?
+  var freeResponseVC: ExpandingFreeResponseInputViewController?
   var question: QuestionItem!
   var alreadySelectedResponse: Bool = false
   var selectedResponse: QuestionResponseItem?
+  var cardBottomConstraint: NSLayoutConstraint?
   
   let checkImages: [UIImage?] = [R.image.iconCheckRound(),
                                  R.image.iconCheckPointy(),
@@ -37,9 +33,9 @@ class ProfileInputQuestionViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(profileCreationData: ProfileCreationData, question: QuestionItem) -> ProfileInputQuestionViewController? {
-    guard let profileVibeVC = R.storyboard.profileInputQuestionViewController()
-      .instantiateInitialViewController() as? ProfileInputQuestionViewController else { return nil }
+  class func instantiate(profileCreationData: ProfileCreationData, question: QuestionItem) -> ProfileInputFreeResponseViewController? {
+    guard let profileVibeVC = R.storyboard.profileInputFreeResponseViewController()
+      .instantiateInitialViewController() as? ProfileInputFreeResponseViewController else { return nil }
     profileVibeVC.profileData = profileCreationData
     profileVibeVC.question = question
     
@@ -50,15 +46,14 @@ class ProfileInputQuestionViewController: UIViewController {
     DispatchQueue.main.async {
       var questionResponse: QuestionResponseItem?
       questionResponse = self.selectedResponse
-      if let inputTVC = self.inputTVC,
-        let foundResponse = inputTVC.responseItems.filter({ $0.selected }).first?.suggestion,
-        foundResponse.responseBody != questionResponse?.responseBody,
+      if let freeResponseVC = self.freeResponseVC,
+        let foundResponse = freeResponseVC.getResponse(),
         let newResponse = try? QuestionResponseItem(documentID: nil,
-                                                    question: inputTVC.question,
-                                                    responseBody: foundResponse.responseBody,
-                                                    responseTitle: foundResponse.responseTitle,
-                                                    color: foundResponse.color,
-                                                    icon: foundResponse.icon) {
+                                                    question: self.question,
+                                                    responseBody: foundResponse,
+                                                    responseTitle: nil,
+                                                    color: nil,
+                                                    icon: nil) {
         questionResponse = newResponse
       }
       
@@ -72,7 +67,6 @@ class ProfileInputQuestionViewController: UIViewController {
         self.continueToRoastBoast()
         return
       }
-      Analytics.logEvent("CP_Qs_EV_answeredQ", parameters: nil)
       self.goToNextQuestion(nextQuestion: nextQuestion)
     }
   }
@@ -85,6 +79,7 @@ class ProfileInputQuestionViewController: UIViewController {
                                                                                   return
       }
       self.navigationController?.pushViewController(nextQuestionVC, animated: true)
+      Analytics.logEvent("CP_Qs_EV_answeredQ", parameters: nil)
     } else {
       guard let nextQuestionVC = ProfileInputFreeResponseViewController.instantiate(profileCreationData: self.profileData,
                                                                                     question: nextQuestion) else {
@@ -92,8 +87,8 @@ class ProfileInputQuestionViewController: UIViewController {
                                                                                       return
       }
       self.navigationController?.pushViewController(nextQuestionVC, animated: true)
+      Analytics.logEvent("CP_Qs_EV_answeredQ", parameters: nil)
     }
-    
   }
   
   @IBAction func skipButtonClicked(_ sender: Any) {
@@ -103,8 +98,9 @@ class ProfileInputQuestionViewController: UIViewController {
       self.continueToRoastBoast()
       return
     }
-    Analytics.logEvent("CP_Qs_EV_skippedQ", parameters: nil)
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.goToNextQuestion(nextQuestion: nextQuestion)
+    Analytics.logEvent("CP_Qs_EV_skippedQ", parameters: nil)
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
@@ -127,7 +123,7 @@ class ProfileInputQuestionViewController: UIViewController {
     let alertAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
     let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
       DispatchQueue.main.async {
-        self.navigationController?.popToRootViewController(animated: true)        
+        self.navigationController?.popToRootViewController(animated: true)
       }
     }
     alertController.addAction(alertAction)
@@ -136,20 +132,22 @@ class ProfileInputQuestionViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension ProfileInputQuestionViewController {
+extension ProfileInputFreeResponseViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
     print("Answering question: \(String(describing: self.question))")
     self.stylize()
     self.setup()
+    self.addKeyboardSizeNotifications()
+    self.addDismissKeyboardOnViewClick()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    if let tableViewHeightConstraint = self.tableViewHeightConstraint, let tableViewHeight = self.inputTVC?.tableViewContentHeight() {
-      tableViewHeightConstraint.constant = tableViewHeight
-    }
+//    if let tableViewHeightConstraint = self.tableViewHeightConstraint, let tableViewHeight = self.inputTVC?.tableViewContentHeight() {
+//      tableViewHeightConstraint.constant = tableViewHeight
+//    }
   }
   
   func stylize() {
@@ -160,7 +158,6 @@ extension ProfileInputQuestionViewController {
       self.titleLabel.font = font
     }
     self.titleLabel.textColor = UIColor.white
-    self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
     self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)"
     self.questionCountImageView.contentMode = .scaleAspectFill
     self.questionCountImageView.image = self.checkImages[(self.profileData.questionResponses.count + self.profileData.skipCount)
@@ -171,17 +168,6 @@ extension ProfileInputQuestionViewController {
         self.skipContainerView.alpha = 1.0
       }, completion: nil)
     }
-    
-    if self.profileData.questionResponses.count == 0 {
-      self.continueContainerView.alpha = 0.0
-      self.continueContainerView.isUserInteractionEnabled = false
-    }
-    
-    self.nextButtonShadowView.layer.cornerRadius = self.nextButton.frame.width / 2.0
-    self.nextButtonShadowView.layer.shadowOpacity = 0.2
-    self.nextButtonShadowView.layer.shadowColor = UIColor.black.cgColor
-    self.nextButtonShadowView.layer.shadowOffset = CGSize(width: 1, height: 1)
-    self.nextButtonShadowView.layer.shadowRadius = 2
   }
   
   func setup() {
@@ -191,7 +177,7 @@ extension ProfileInputQuestionViewController {
 }
 
 // MARK: - Question Card Setup
-extension ProfileInputQuestionViewController {
+extension ProfileInputFreeResponseViewController {
   
   func addCardQuestion(question: QuestionItem) {
     let cardView = UIView()
@@ -230,28 +216,26 @@ extension ProfileInputQuestionViewController {
       stackView.addArrangedSubview(subtitleView)
     }
     
-    guard let inputTVC = InputTableViewController.instantiate(question: question) else {
-      print("Failed to create answer TVC")
-      return
+    guard let expandingFreeResponseVC = ExpandingFreeResponseInputViewController.instantiate(placeholderText: question.placeholderResponseText) else {
+                                                                            print("Failed to create expanding Text VC")
+                                                                            return
     }
-    self.inputTVC = inputTVC
-    inputTVC.delegate = self
-    
-    self.addChild(inputTVC)
-    stackView.addArrangedSubview(inputTVC.view)
-    
-    inputTVC.didMove(toParent: self)
-    
-    self.view.insertSubview(cardView, belowSubview: self.nextButton)
+    self.freeResponseVC = expandingFreeResponseVC
+    self.addChild(expandingFreeResponseVC)
+    stackView.addArrangedSubview(expandingFreeResponseVC.view)
+    expandingFreeResponseVC.didMove(toParent: self)
+        
+    self.view.addSubview(cardView)
     
     let topConstraint = NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .greaterThanOrEqual,
                                            toItem: self.skipContainerView, attribute: .bottom, multiplier: 1.0, constant: 10.0)
-    topConstraint.priority = .defaultHigh
+    topConstraint.priority = UILayoutPriority(rawValue: 500)
     let bottomConstraint = NSLayoutConstraint(item: cardView, attribute: .bottom, relatedBy: .lessThanOrEqual,
-                                              toItem: self.continueContainerView, attribute: .top, multiplier: 1.0, constant: -10.0)
+                                              toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -10.0)
     bottomConstraint.priority = .defaultHigh
+    self.cardBottomConstraint = bottomConstraint
     let centerYConstraint = NSLayoutConstraint(item: cardView, attribute: .centerY, relatedBy: .equal,
-                                               toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+                                               toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: -10.0)
     centerYConstraint.priority = .defaultLow
     self.view.addConstraints([
       NSLayoutConstraint(item: cardView, attribute: .centerX, relatedBy: .equal,
@@ -263,12 +247,10 @@ extension ProfileInputQuestionViewController {
       bottomConstraint
       ])
     
+    let continueButton = self.createContinueButton()
+    stackView.addArrangedSubview(continueButton)
+
     self.view.layoutIfNeeded()
-    let tableViewHeightConstraint = NSLayoutConstraint(item: inputTVC.view as Any, attribute: .height, relatedBy: .equal,
-                                                       toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: inputTVC.tableViewContentHeight())
-    tableViewHeightConstraint.priority = .defaultLow
-    inputTVC.view.addConstraint(tableViewHeightConstraint)
-    self.tableViewHeightConstraint = tableViewHeightConstraint
   }
   
   func createTitleLabelForCard(title: String) -> UIView {
@@ -322,10 +304,40 @@ extension ProfileInputQuestionViewController {
     return subtitleContainerView
   }
   
+  func createContinueButton() -> UIView {
+    let buttonContainerView = UIView()
+    buttonContainerView.translatesAutoresizingMaskIntoConstraints = false
+    let continueButton = UIButton()
+    continueButton.translatesAutoresizingMaskIntoConstraints = false
+    if let font = R.font.openSansBold(size: 18) {
+      continueButton.titleLabel?.font = font
+    }
+    continueButton.backgroundColor = R.color.backgroundColorYellow()
+    continueButton.setTitle("Continue", for: .normal)
+    continueButton.setTitleColor(UIColor.black, for: .normal)
+    continueButton.addTarget(self, action: #selector(ProfileInputFreeResponseViewController.continueButtonClicked(_:)), for: .touchUpInside)
+    continueButton.addConstraint(NSLayoutConstraint(item: continueButton, attribute: .height, relatedBy: .equal,
+                                                    toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0))
+    continueButton.layer.cornerRadius = 25.0
+    buttonContainerView.addSubview(continueButton)
+    buttonContainerView.addConstraints([
+      NSLayoutConstraint(item: continueButton, attribute: .top, relatedBy: .equal,
+                         toItem: buttonContainerView, attribute: .top, multiplier: 1.0, constant: 16.0),
+      NSLayoutConstraint(item: continueButton, attribute: .bottom, relatedBy: .equal,
+                         toItem: buttonContainerView, attribute: .bottom, multiplier: 1.0, constant: -16.0),
+      NSLayoutConstraint(item: continueButton, attribute: .left, relatedBy: .equal,
+                         toItem: buttonContainerView, attribute: .left, multiplier: 1.0, constant: 16.0),
+      NSLayoutConstraint(item: continueButton, attribute: .right, relatedBy: .equal,
+                         toItem: buttonContainerView, attribute: .right, multiplier: 1.0, constant: -16.0)
+      ])
+    
+    return buttonContainerView
+  }
+  
 }
 
 // MARK: - InputTVDelegate
-extension ProfileInputQuestionViewController: InputTableViewDelegate {
+extension ProfileInputFreeResponseViewController: InputTableViewDelegate {
   func canSelect(response: SuggestedResponseTableItem, allItems: [SuggestedResponseTableItem]) -> Bool {
     let numberSelected = allItems.filter({$0.selected}).count
     return numberSelected <= 2
@@ -345,7 +357,7 @@ extension ProfileInputQuestionViewController: InputTableViewDelegate {
       checkboxImage.contentMode = .scaleAspectFill
       checkboxImage.image = self.checkImages[(self.profileData.questionResponses.count + self.profileData.skipCount)
         % self.checkImages.count]
-
+      
       checkboxImage.alpha = 0.0
       checkboxImage.translatesAutoresizingMaskIntoConstraints = false
       checkboxImage.addConstraints([
@@ -369,4 +381,57 @@ extension ProfileInputQuestionViewController: InputTableViewDelegate {
     }
   }
   
+}
+
+// MARK: - Keybaord Size Notifications
+extension ProfileInputFreeResponseViewController {
+  
+  func addKeyboardSizeNotifications() {
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(ProfileInputFreeResponseViewController.keyboardWillChange(notification:)),
+                   name: UIWindow.keyboardWillChangeFrameNotification,
+                   object: nil)
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(ProfileInputFreeResponseViewController.keyboardWillHide(notification:)),
+                   name: UIWindow.keyboardWillHideNotification,
+                   object: nil)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+      let targetFrame = targetFrameNSValue.cgRectValue
+      if let cardBottomConstraint = self.cardBottomConstraint {
+        cardBottomConstraint.constant = 0 - (targetFrame.height - self.view.safeAreaInsets.bottom + 40)
+      }
+      
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
+    }
+  }
+  @objc func keyboardWillHide(notification: Notification) {
+    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+      if let cardBottomConstraint = self.cardBottomConstraint {
+        cardBottomConstraint.constant = -20
+      }
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
+    }
+  }
+  
+}
+
+// MARK: - Dismiss First Responder on Click
+extension ProfileInputFreeResponseViewController {
+  func addDismissKeyboardOnViewClick() {
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ProfileInputFreeResponseViewController.dismissKeyboard)))
+  }
+  
+  @objc func dismissKeyboard() {
+    self.view.endEditing(true)
+  }
 }

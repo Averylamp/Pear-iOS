@@ -41,14 +41,22 @@ class ProfileInputVibeViewController: UIViewController {
         print("No next question found")
         return
       }
-      guard let questionInputVC = ProfileInputQuestionViewController
-        .instantiate(profileCreationData: self.profileData,
-                     question: nextQuestion) else {
-                      "Failed to create question input VC"
-                      return
-      }
-      self.navigationController?.pushViewController(questionInputVC, animated: true)
       Analytics.logEvent("CP_vibes_DONE", parameters: nil)
+      if nextQuestion.questionType == .multipleChoice || nextQuestion.questionType == .multipleChoiceWithOther {
+        guard let nextQuestionVC = ProfileInputQuestionViewController.instantiate(profileCreationData: self.profileData,
+                                                                                  question: nextQuestion) else {
+                                                                                    print("Failed to create question VC")
+                                                                                    return
+        }
+        self.navigationController?.pushViewController(nextQuestionVC, animated: true)
+      } else {
+        guard let nextQuestionVC = ProfileInputFreeResponseViewController.instantiate(profileCreationData: self.profileData,
+                                                                                      question: nextQuestion) else {
+                                                                                        print("Failed to create question VC")
+                                                                                        return
+        }
+        self.navigationController?.pushViewController(nextQuestionVC, animated: true)
+      }
     }
   }
   
