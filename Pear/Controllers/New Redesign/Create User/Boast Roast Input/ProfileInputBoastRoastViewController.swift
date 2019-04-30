@@ -144,7 +144,7 @@ extension ProfileInputBoastRoastViewController {
       
       NSAttributedString(string: "BOAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.foregroundColor: boastColor.withAlphaComponent(0.3)]),
+                                      NSAttributedString.Key.foregroundColor: UIColor(white: 0.15, alpha: 1.0)]),
       for: .normal)
     
     self.boastButton.setAttributedTitle(
@@ -156,7 +156,7 @@ extension ProfileInputBoastRoastViewController {
     self.roastButton.setAttributedTitle(
       NSAttributedString(string: "ROAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.foregroundColor: roastColor.withAlphaComponent(0.3)]),
+                                      NSAttributedString.Key.foregroundColor: UIColor(white: 0.15, alpha: 1.0)]),
       for: .normal)
     
     self.roastButton.setAttributedTitle(
