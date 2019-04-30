@@ -215,8 +215,6 @@ extension UserNameInputViewController: MFMessageComposeViewControllerDelegate {
   func dismissMessageVC(controller: MFMessageComposeViewController) {
     controller.dismiss(animated: true) {
       DispatchQueue.main.async {
-        self.alert(title: "Tell your friend",
-                   message: "You must let your friend know of their profile, and they must accept it to continue")
         self.continueButton.isEnabled = true
         self.activityIndicator.stopAnimating()
       }
