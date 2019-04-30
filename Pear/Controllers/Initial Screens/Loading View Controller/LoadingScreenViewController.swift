@@ -349,15 +349,4 @@ extension LoadingScreenViewController {
     }
   }
   
-  func fetchFakeUser() {
-    PearUserAPI.shared.getFakeUser { (result) in
-      switch result {
-      case .success(let user):
-        print(user)
-      case .failure(let error):
-        print("Failed to get fake user: \(error)")
-      }
-    }
-  }
-  
 }

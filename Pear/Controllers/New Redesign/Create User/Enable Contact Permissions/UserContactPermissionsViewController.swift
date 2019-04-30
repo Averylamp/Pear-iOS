@@ -10,13 +10,13 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAnalytics
 import CodableFirebase
-import Contacts
+import ContactsUI
 
 class UserContactPermissionsViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var numberProfilesLabel: UILabel!
-  @IBOutlet weak var enableContactsButton: UIButton!
+  @IBOutlet weak var pickContactButton: UIButton!
   @IBOutlet weak var tableViewContainerView: UIView!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var skipButton: UIButton!
@@ -24,6 +24,7 @@ class UserContactPermissionsViewController: UIViewController {
   
   var allSampleBoastRoastItems: [LatestRoastBoastItem] = []
   var currentBoastRoastItems: [LatestRoastBoastItem] = []
+  var lastBoastRoastAddTime: Date = Date(timeIntervalSinceNow: -60)
   
   /// Factory method for creating this view controller.
   ///
@@ -34,33 +35,18 @@ class UserContactPermissionsViewController: UIViewController {
     return contactPermissionsVC
   }
   
-  @IBAction func enableContactsButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CP_enableContacts_TAP_enableContacts", parameters: nil)
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-//    let predicate = CNContact.predicateForContacts(withIdentifiers: [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey])
-    let keysToFetch: [CNKeyDescriptor] = [CNContactGivenNameKey as CNKeyDescriptor,
-                                         CNContactFamilyNameKey as CNKeyDescriptor,
-                                         CNContactPhoneNumbersKey as CNKeyDescriptor]
-    let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-    let store = CNContactStore()
-    var allContacts: [CNContact] = []
-    do {
-      try store.enumerateContacts(with: fetchRequest) { (contact, _) in
-        if contact.phoneNumbers.count > 0 {
-          allContacts.append(contact)
-        }
-      }
-      print("\(allContacts.count) Contacts fetched")
-      guard let contactListVC = UserContactListViewController.instantiate(contacts: allContacts) else {
-        print("Failed to create Contact List VC")
-        return
-      }
-      self.navigationController?.pushViewController(contactListVC, animated: true)
-      Analytics.logEvent("CP_enableContacts_DONE", parameters: nil)
-    } catch {
-      print("Failed to fetch contacts: \(error)")
-    }
+  func promptContactsPicker() {
+    let cnPicker = CNContactPickerViewController()
+    cnPicker.delegate = self
+    cnPicker.predicateForEnablingContact = NSPredicate(format: "phoneNumbers.@count >= 1", argumentArray: nil)
+    cnPicker.predicateForSelectionOfContact = NSPredicate(format: "phoneNumbers.@count == 1", argumentArray: nil)
+//    cnPicker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'phoneNumbers'", argumentArray: nil)
+    cnPicker.displayedPropertyKeys = [CNContactPhoneNumbersKey, CNContactGivenNameKey, CNContactFamilyNameKey]
+    self.present(cnPicker, animated: true, completion: nil)
     
+  }
+  @IBAction func pickContactButtonClicked(_ sender: Any) {
+    self.promptContactsPicker()
   }
   
   @IBAction func skipButtonClicked(_ sender: Any) {
@@ -96,7 +82,7 @@ extension UserContactPermissionsViewController {
     }
     self.numberProfilesLabel.textColor = UIColor.white
     self.numberProfilesLabel.text = ""
-
+    
     DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
       DispatchQueue.main.async {
       print("\(detachedProfiles.count) Detached Profiles Found")
@@ -107,17 +93,21 @@ extension UserContactPermissionsViewController {
             self.numberProfilesLabel.text = "\(writerFirstName) peared you.\nPick a fresh pear to see what they said!"
           }
         } else {
-          self.numberProfilesLabel.text = "No one has peared you yet 😢.  Pear a friend!"
+          DataStore.shared.getWaitlistNumber(completion: { (number) in
+            DispatchQueue.main.async {
+              self.numberProfilesLabel.text = "\(number + Int.random(in: 0..<2)) people in Boston\nare using Pear with their friends."
+            }
+          })
         }
       }
     })
     
     if let font = R.font.openSansBold(size: 18) {
-      self.enableContactsButton.titleLabel?.font = font
+      self.pickContactButton.titleLabel?.font = font
     }
-    self.enableContactsButton.setTitleColor(UIColor.black, for: .normal)
-    self.enableContactsButton.backgroundColor = R.color.backgroundColorYellow()
-    self.enableContactsButton.layer.cornerRadius = self.enableContactsButton.frame.height / 2.0
+    self.pickContactButton.setTitleColor(UIColor.black, for: .normal)
+    self.pickContactButton.backgroundColor = R.color.backgroundColorYellow()
+    self.pickContactButton.layer.cornerRadius = self.pickContactButton.frame.height / 2.0
     
     self.tableViewContainerView.layer.cornerRadius = 12
     self.tableViewContainerView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
@@ -126,7 +116,7 @@ extension UserContactPermissionsViewController {
     if let pearUser = DataStore.shared.currentPearUser,
       pearUser.endorsedUserIDs.count + pearUser.detachedProfileIDs.count  > 0
         || pearUser.phoneNumber == "8901234567" {
-      self.skipButtonHeight.constant = 40
+      self.skipButtonHeight.constant = 30
       self.skipButton.isEnabled = true
       self.skipButton.isHidden = false
     }
@@ -141,7 +131,7 @@ extension UserContactPermissionsViewController {
   
   func startRunLoop() {
     _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (_) in
-      let random = Int.random(in: 0..<6)
+      let random = Int.random(in: 0..<2)
       self.tableView.reloadData()
       if random == 0 {
         self.addRandomBoastRoast()
@@ -151,7 +141,12 @@ extension UserContactPermissionsViewController {
   }
   
   func addRandomBoastRoast(date: Date = Date()) {
+    if date.timeIntervalSince(self.lastBoastRoastAddTime) <= 3 {
+      return
+    }
+    self.lastBoastRoastAddTime = date
     DispatchQueue.main.async {
+      
       if let item = self.allSampleBoastRoastItems.first(where: {!self.currentBoastRoastItems.contains($0) }) {
         
         let newItem = item.copy()
@@ -213,6 +208,40 @@ extension UserContactPermissionsViewController: UITableViewDelegate, UITableView
     let item = self.currentBoastRoastItems[indexPath.row]
     cell.configure(item: item)
     return cell
+  }
+  
+}
+
+extension UserContactPermissionsViewController: CNContactPickerDelegate {
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+    self.didSelectContact(contact: contact)
+  }
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+    self.didSelectContactProperty(contactProperty: contactProperty)
+  }
+  
+}
+
+extension UserContactPermissionsViewController: ProfileCreationProtocol {
+  
+  func receivedProfileCreationData(creationData: ProfileCreationData) {
+    DispatchQueue.main.async {
+      guard let vibesVC = ProfileInputVibeViewController.instantiate(profileCreationData: creationData) else {
+        print("Failed to create Vibes VC")
+        return
+      }
+      self.navigationController?.pushViewController(vibesVC, animated: true)
+    }
+  }
+  
+  func recievedProfileCreationError(title: String, message: String?) {
+    DispatchQueue.main.async {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      self.present(alert, animated: true)
+    }
   }
   
 }

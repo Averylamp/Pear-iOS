@@ -59,4 +59,28 @@ class SentryHelper {
     #endif
   }
   
+  class func generateSentryMessageEvent(level: SentrySeverity,
+                                        message: String,
+                                        tags: [String: String] = [:],
+                                        extra: [String: Any] = [:]) {
+    
+    print("\n***** GENERATING SENTRY REPORT *****")
+    print(message)
+    print(tags)
+    print(extra)
+    #if DEVMODE
+    fatalError("A sentry mesage has been generated: \(message)")
+    #endif
+    
+    #if PROD
+    let event = Event(level: level)
+    event.message = message
+    event.tags = tags
+    var extraTags: [String: Any] = [:]
+    extra.forEach({ extraTags[$0.key] = $0.value })
+    event.extra = extra
+    Client.shared?.send(event: event, completion: nil)
+    #endif
+  }
+  
 }
