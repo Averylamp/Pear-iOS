@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="32" width="320" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Step 2: Answer some questions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mdX-eM-L9H">
-                                        <rect key="frame" x="62" y="11.5" width="196" height="17.5"/>
+                                        <rect key="frame" x="62" y="10" width="196" height="20.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBv-Qg-K3y">
-                                        <rect key="frame" x="262" y="9.5" width="11" height="21"/>
+                                        <rect key="frame" x="262" y="7.5" width="11" height="25"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="18"/>
                                         <color key="textColor" red="0.80000000000000004" green="1" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -82,10 +82,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcd-RB-F3S">
-                                <rect key="frame" x="115" y="89" width="90" height="35"/>
+                                <rect key="frame" x="114" y="89" width="92" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRb-gN-CCp">
-                                        <rect key="frame" x="35" y="0.0" width="55" height="35"/>
+                                        <rect key="frame" x="35" y="0.0" width="57" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Eqb-9W-zWX"/>
                                         </constraints>
@@ -115,7 +115,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6y-W1-9do">
-                                <rect key="frame" x="0.0" y="426" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="410" width="320" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JP-IN-7h6">
                                         <rect key="frame" x="20" y="0.0" width="280" height="50"/>
@@ -157,7 +157,7 @@
                             <constraint firstItem="Fqo-ta-ony" firstAttribute="leading" secondItem="D03-so-fC4" secondAttribute="leading" id="Hrc-t6-pqt"/>
                             <constraint firstItem="Fqo-ta-ony" firstAttribute="centerX" secondItem="D03-so-fC4" secondAttribute="centerX" id="KKz-GK-DJF"/>
                             <constraint firstItem="D03-so-fC4" firstAttribute="trailing" secondItem="Fqo-ta-ony" secondAttribute="trailing" id="Lsq-0U-f6N"/>
-                            <constraint firstItem="Q6y-W1-9do" firstAttribute="bottom" secondItem="D03-so-fC4" secondAttribute="bottom" constant="-4" id="W9f-3R-2Yr"/>
+                            <constraint firstItem="D03-so-fC4" firstAttribute="bottom" secondItem="Q6y-W1-9do" secondAttribute="bottom" constant="20" id="Rif-Ft-lMv"/>
                             <constraint firstItem="Mcd-RB-F3S" firstAttribute="top" secondItem="Fqo-ta-ony" secondAttribute="bottom" constant="8" id="gav-5T-GKL"/>
                             <constraint firstItem="SZK-sq-Ztp" firstAttribute="top" secondItem="D03-so-fC4" secondAttribute="top" constant="12" id="iOe-w4-wXw"/>
                             <constraint firstItem="Mcd-RB-F3S" firstAttribute="centerX" secondItem="D03-so-fC4" secondAttribute="centerX" id="mN6-Oq-sQ9"/>
