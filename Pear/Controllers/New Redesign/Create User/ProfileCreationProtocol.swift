@@ -36,9 +36,9 @@ extension ProfileCreationProtocol {
                                         message: "We have been notified and are working to resolve this issue 😬")
       
       let contactData: [String: Any] = [
-        "firstName": contact.givenName,
-        "lastName": contact.familyName,
-        "phoneNumbers": contact.phoneNumbers.map({ $0.value.stringValue })
+        "contactFirstName": contact.givenName,
+        "contactLastName": contact.familyName,
+        "contactPhoneNumbers": contact.phoneNumbers.map({ $0.value.stringValue })
       ]
       SentryHelper.generateSentryMessageEvent(level: .error,
                                               message: "Invalid_Contact",
@@ -53,7 +53,17 @@ extension ProfileCreationProtocol {
     if let contactValue = contactProperty.value as? CNPhoneNumber {
       self.processContact(contact: contactProperty.contact, phoneNumberValue: contactValue)
     } else {
-      
+      let contact = contactProperty.contact
+      let contactData: [String: Any] = [
+        "contactFirstName": contact.givenName,
+        "contactLastName": contact.familyName,
+        "contactPhoneNumbers": contact.phoneNumbers.map({ $0.value.stringValue })
+      ]
+      SentryHelper.generateSentryMessageEvent(level: .error,
+                                              message: "Invalid_Contact",
+                                              tags: [:],
+                                              extra: contactData)
+
     }
   }
   
@@ -66,14 +76,23 @@ extension ProfileCreationProtocol {
     if phoneNumber.count != 10 {
       self.recievedProfileCreationError(title: "Not a Valid Number", message: "Contact must have a valid US phone number")
       let contactData: [String: Any] = [
-        "firstName": contact.givenName,
-        "lastName": contact.familyName,
-        "phoneNumbers": contact.phoneNumbers.map({ $0.value.stringValue })
+        "contactFirstName": contact.givenName,
+        "contactLastName": contact.familyName,
+        "contactPhoneNumbers": contact.phoneNumbers.map({ $0.value.stringValue })
       ]
       SentryHelper.generateSentryMessageEvent(level: .error,
                                               message: "Invalid_Phone_Number",
                                               tags: ["number": phoneNumber],
                                               extra: contactData)
+      return
+    }
+    
+    if DataStore.shared.endorsedUsers.contains(where: { $0.phoneNumber == phoneNumber}) {
+      self.recievedProfileCreationError(title: "You have already created a profile for this person", message: "You can edit their profile in the friends tab")
+      return
+    }
+    if DataStore.shared.detachedProfiles.contains(where: { $0.phoneNumber == phoneNumber}) {
+      self.recievedProfileCreationError(title: "You have already created a profile for this person", message: "You can edit their profile in the friends tab")
       return
     }
     
