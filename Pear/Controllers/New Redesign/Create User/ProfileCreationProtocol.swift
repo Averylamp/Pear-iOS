@@ -88,11 +88,11 @@ extension ProfileCreationProtocol {
     }
     
     if DataStore.shared.endorsedUsers.contains(where: { $0.phoneNumber == phoneNumber}) {
-      self.recievedProfileCreationError(title: "You have already created a profile for this person", message: "You can edit their profile in the friends tab")
+      self.recievedProfileCreationError(title: "You have already created a profile for this person", message: nil)
       return
     }
     if DataStore.shared.detachedProfiles.contains(where: { $0.phoneNumber == phoneNumber}) {
-      self.recievedProfileCreationError(title: "You have already created a profile for this person", message: "You can edit their profile in the friends tab")
+      self.recievedProfileCreationError(title: "You have already created a profile for this person", message: nil)
       return
     }
     
