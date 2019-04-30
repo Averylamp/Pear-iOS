@@ -20,7 +20,6 @@ class LoadingScreenViewController: UIViewController {
   class func instantiate() -> LoadingScreenViewController? {
     let storyboard = UIStoryboard(name: String(describing: LoadingScreenViewController.self), bundle: nil)
     guard let loadingScreenVC = storyboard.instantiateInitialViewController() as? LoadingScreenViewController else { return nil }
-    
     return loadingScreenVC
   }
   
