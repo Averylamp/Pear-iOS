@@ -18,7 +18,7 @@ class FriendEditProfileViewController: UIViewController {
   @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
   
   var detachedProfile: PearDetachedProfile?
-  var userProfile: FullProfileDisplayData?
+  var userProfile: PearUser?
   var firstName: String!
   let leadingSpace: CGFloat = 12
   var isUpdating: Bool = false
@@ -27,7 +27,7 @@ class FriendEditProfileViewController: UIViewController {
   var textViewVCs: [UpdateExpandingTextViewController] = []
   
   class func instantiate(detachedProfile: PearDetachedProfile?,
-                         userProfile: FullProfileDisplayData?,
+                         userProfile: PearUser?,
                          firstName: String) -> FriendEditProfileViewController? {
     let storyboard = UIStoryboard(name: String(describing: FriendEditProfileViewController.self), bundle: nil)
     guard let editFriendVC = storyboard.instantiateInitialViewController() as? FriendEditProfileViewController else { return nil }
