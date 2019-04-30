@@ -14,9 +14,20 @@ protocol ProfileCreationProtocol {
   func didSelectContactProperty(contactProperty: CNContactProperty)
   func receivedProfileCreationData(creationData: ProfileCreationData)
   func recievedProfileCreationError(title: String, message: String?)
+  func getContactsPicker() -> CNContactPickerViewController
 }
 
 extension ProfileCreationProtocol {
+  
+  func getContactsPicker() -> CNContactPickerViewController {
+    let cnPicker = CNContactPickerViewController()
+    cnPicker.predicateForEnablingContact = NSPredicate(format: "phoneNumbers.@count >= 1", argumentArray: nil)
+    cnPicker.predicateForSelectionOfContact = NSPredicate(format: "phoneNumbers.@count == 1", argumentArray: nil)
+    //    cnPicker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'phoneNumbers'", argumentArray: nil)
+    cnPicker.displayedPropertyKeys = [CNContactPhoneNumbersKey, CNContactGivenNameKey, CNContactFamilyNameKey]
+    return cnPicker
+  }
+  
   func didSelectContact(contact: CNContact) {
     if let phoneNumberContactValue = contact.phoneNumbers.first?.value {
       self.processContact(contact: contact, phoneNumberValue: phoneNumberContactValue)

@@ -11,6 +11,7 @@ import UIKit
 import Sentry
 import SDWebImage
 import Firebase
+import ContactsUI
 
 enum MatchingButtonType: Int {
   case personalUser = 0
@@ -206,11 +207,7 @@ class DiscoveryFullProfileViewController: UIViewController {
       preferredStyle: .alert)
     let createProfile = UIAlertAction(title: "Continue", style: .default) { (_) in
       DispatchQueue.main.async {
-        guard let startFriendVC = LoadingScreenViewController.getProfileCreationVC() else {
-          print("Failed to create get started friend profile vc")
-          return
-        }
-        self.navigationController?.setViewControllers([startFriendVC], animated: true)
+        self.promptContactsPicker()
       }
     }
     
@@ -802,6 +799,43 @@ extension DiscoveryFullProfileViewController {
         self.view.layoutIfNeeded()
       }
     }
+  }
+  
+}
+
+// MARK: ProfileCreationProtocol
+extension DiscoveryFullProfileViewController: ProfileCreationProtocol, CNContactPickerDelegate {
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+    self.didSelectContact(contact: contact)
+  }
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+    self.didSelectContactProperty(contactProperty: contactProperty)
+  }
+  
+  func receivedProfileCreationData(creationData: ProfileCreationData) {
+    DispatchQueue.main.async {
+      guard let vibesVC = ProfileInputVibeViewController.instantiate(profileCreationData: creationData) else {
+        print("Failed to create Vibes VC")
+        return
+      }
+      self.navigationController?.pushViewController(vibesVC, animated: true)
+    }
+  }
+  
+  func recievedProfileCreationError(title: String, message: String?) {
+    DispatchQueue.main.async {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      self.present(alert, animated: true)
+    }
+  }
+  
+  func promptContactsPicker() {
+    let cnPicker = self.getContactsPicker()
+    cnPicker.delegate = self
+    self.present(cnPicker, animated: true, completion: nil)
   }
   
 }

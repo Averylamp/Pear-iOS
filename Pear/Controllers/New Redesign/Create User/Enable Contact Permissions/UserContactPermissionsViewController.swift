@@ -35,16 +35,6 @@ class UserContactPermissionsViewController: UIViewController {
     return contactPermissionsVC
   }
   
-  func promptContactsPicker() {
-    let cnPicker = CNContactPickerViewController()
-    cnPicker.delegate = self
-    cnPicker.predicateForEnablingContact = NSPredicate(format: "phoneNumbers.@count >= 1", argumentArray: nil)
-    cnPicker.predicateForSelectionOfContact = NSPredicate(format: "phoneNumbers.@count == 1", argumentArray: nil)
-//    cnPicker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'phoneNumbers'", argumentArray: nil)
-    cnPicker.displayedPropertyKeys = [CNContactPhoneNumbersKey, CNContactGivenNameKey, CNContactFamilyNameKey]
-    self.present(cnPicker, animated: true, completion: nil)
-    
-  }
   @IBAction func pickContactButtonClicked(_ sender: Any) {
     self.promptContactsPicker()
   }
@@ -212,7 +202,8 @@ extension UserContactPermissionsViewController: UITableViewDelegate, UITableView
   
 }
 
-extension UserContactPermissionsViewController: CNContactPickerDelegate {
+// MARK: ProfileCreationProtocol
+extension UserContactPermissionsViewController: ProfileCreationProtocol, CNContactPickerDelegate {
   
   func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
     self.didSelectContact(contact: contact)
@@ -221,10 +212,6 @@ extension UserContactPermissionsViewController: CNContactPickerDelegate {
   func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
     self.didSelectContactProperty(contactProperty: contactProperty)
   }
-  
-}
-
-extension UserContactPermissionsViewController: ProfileCreationProtocol {
   
   func receivedProfileCreationData(creationData: ProfileCreationData) {
     DispatchQueue.main.async {
@@ -242,6 +229,12 @@ extension UserContactPermissionsViewController: ProfileCreationProtocol {
       alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(alert, animated: true)
     }
+  }
+  
+  func promptContactsPicker() {
+    let cnPicker = self.getContactsPicker()
+    cnPicker.delegate = self
+    self.present(cnPicker, animated: true, completion: nil)
   }
   
 }
