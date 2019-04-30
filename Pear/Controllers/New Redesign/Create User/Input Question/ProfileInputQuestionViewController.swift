@@ -119,11 +119,7 @@ class ProfileInputQuestionViewController: UIViewController {
     let alertAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
     let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
       DispatchQueue.main.async {
-        guard let createProfileVC = LoadingScreenViewController.getProfileCreationVC() else {
-          print("Failure instantiating  create profile VC")
-          return
-        }
-        self.navigationController?.setViewControllers([createProfileVC], animated: true)
+        self.navigationController?.popToRootViewController(animated: true)        
       }
     }
     alertController.addAction(alertAction)

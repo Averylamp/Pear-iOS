@@ -43,9 +43,11 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     
     SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     
+    #if DEVMODE
     if CommandLine.arguments.contains("--uitesting") {
       resetState()
     }
+    #endif
 
     self.stylize()
     
