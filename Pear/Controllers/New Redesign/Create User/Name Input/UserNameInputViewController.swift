@@ -108,9 +108,9 @@ class UserNameInputViewController: UIViewController {
         
         messageVC.recipients = [phoneNumber]
         if profileData.roasts.count > 0 {
-          messageVC.body = "I just roasted on getpear.com 🍐! https://getpear.com/go/refer"
+          messageVC.body = "I just roasted you on getpear.com! 🍐 https://getpear.com/go/refer"
         } else {
-          messageVC.body = "I just boasted on getpear.com 🍐! https://getpear.com/go/refer"
+          messageVC.body = "I just boasted you on getpear.com! 🍐 https://getpear.com/go/refer"
         }
         if let memeImage = R.image.inviteMeme(),
           let pngData = memeImage.pngData() {
