@@ -6,7 +6,6 @@
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
-// swiftlint:disable file_length
 import Foundation
 import SwiftyJSON
 import Sentry
@@ -26,7 +25,6 @@ class PearUserAPI: UserAPI {
   
   static let createUserQuery: String = "mutation CreateUser($userInput: CreationUserInput!) {createUser(userInput: $userInput) { success message user \(PearUser.graphQLAllFields()) }}"
   
-  static let getFakeUserQuery: String = "query{ user(id:\"5ca7ecaa35db345290275f50\") \(PearUser.graphQLAllFields()) }"
   static let getUserQuery: String = "query GetUser($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user \(PearUser.graphQLCurrentUserFields()) }}"
   static let fetchEndorsedUsersQuery: String = "query GetEndorsedUsers($userInput: GetUserInput!) { getUser(userInput:$userInput) { success message user { endorsedUsers \(PearUser.graphQLAllFields()) detachedProfiles \((PearDetachedProfile.graphQLAllFields()))  }  }}"
   // swiftlint:disable:next line_length
@@ -118,44 +116,6 @@ extension PearUserAPI {
               }
               completion(.failure(UserAPIError.failedDeserialization))
             }
-          }
-        }
-      }
-      dataTask.resume()
-    } catch {
-      print(error)
-      SentryHelper.generateSentryEvent(level: .error,
-                                       apiName: "PearUserAPI",
-                                       functionName: "getUser",
-                                       message: error.localizedDescription)
-      completion(.failure(UserAPIError.unknownError(error: error)))
-    }
-  }
-  
-  func getFakeUser(completion: @escaping (Result<PearUser, UserAPIError>) -> Void) {
-    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
-    request.httpMethod = "POST"
-    request.allHTTPHeaderFields = defaultHeaders
-    do {
-      let fullDictionary: [String: Any] = [ "query": PearUserAPI.getFakeUserQuery ]
-      
-      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      request.httpBody = data
-      
-      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-        if let error = error {
-          print(error as Any)
-          completion(.failure(UserAPIError.unknownError(error: error)))
-          return
-        } else {
-          if let data = data,
-            let json = try? JSON(data: data), let userData = try? json["data"]["user"].rawData(),
-              let user = try? JSONDecoder().decode(PearUser.self, from: userData) {
-              completion(.success(user))
-          } else {
-            completion(.failure(UserAPIError.failedDeserialization))
           }
         }
       }

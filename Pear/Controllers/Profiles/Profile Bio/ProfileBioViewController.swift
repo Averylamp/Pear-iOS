@@ -35,7 +35,7 @@ class ProfileBioViewController: UITextViewItemViewController {
   
   override func intrinsicHeight() -> CGFloat {
     return self.contentLabel.sizeThatFits(CGSize(width: self.contentLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height +
-    self.creatorLabel.sizeThatFits(CGSize(width: self.creatorLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height + 12
+    self.creatorLabel.sizeThatFits(CGSize(width: self.creatorLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height + 20
   }
   
 }
