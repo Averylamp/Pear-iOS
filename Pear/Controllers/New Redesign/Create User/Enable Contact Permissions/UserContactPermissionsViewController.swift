@@ -41,12 +41,20 @@ class UserContactPermissionsViewController: UIViewController {
   
   @IBAction func skipButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-      print("Failed to create main VC")
-      return
+    let controller = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
+    let goBackAction = UIAlertAction(title: "Go Back", style: .default, handler: nil)
+    let continueAction = UIAlertAction(title: "Continue", style: .destructive) { (_) in
+      DispatchQueue.main.async {
+        guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+          print("Failed to create main VC")
+          return
+        }
+        self.navigationController?.setViewControllers([mainVC], animated: true)
+      }
     }
-    self.navigationController?.setViewControllers([mainVC], animated: true)
-
+    controller.addAction(goBackAction)
+    controller.addAction(continueAction)
+    self.present(controller, animated: true, completion: nil)
   }
 }
 
@@ -67,7 +75,7 @@ extension UserContactPermissionsViewController {
     }
     
     self.titleLabel.textColor = UIColor.white
-    if let font = R.font.openSansSemiBold(size: 16) {
+    if let font = R.font.openSansSemiBold(size: 20) {
       self.numberProfilesLabel.font = font
     }
     self.numberProfilesLabel.textColor = UIColor.white
@@ -77,15 +85,16 @@ extension UserContactPermissionsViewController {
       DispatchQueue.main.async {
       print("\(detachedProfiles.count) Detached Profiles Found")
         if let writerFirstName = detachedProfiles.first?.creatorFirstName {
+          
           if detachedProfiles.count > 1 {
-            self.numberProfilesLabel.text = "\(writerFirstName) & \(detachedProfiles.count) others are pearing you.\nPick a fresh pear to see what they said!"
+            self.stylizeSubtitleLabel(firstLine: "\(writerFirstName) & \(detachedProfiles.count) others are pearing you.", secondLine: "Pick a fresh pear to see what they said!")
           } else {
-            self.numberProfilesLabel.text = "\(writerFirstName) peared you.\nPick a fresh pear to see what they said!"
+            self.stylizeSubtitleLabel(firstLine: "\(writerFirstName) peared you.", secondLine: "Pick a fresh pear to see what they said!")
           }
         } else {
           DataStore.shared.getWaitlistNumber(completion: { (number) in
             DispatchQueue.main.async {
-              self.numberProfilesLabel.text = "\(number + Int.random(in: 0..<2)) people in Boston\nare using Pear with their friends."
+              self.stylizeSubtitleLabel(firstLine: "\(number + Int.random(in: 0..<2)) people in Boston", secondLine: "are using Pear with their friends.")
             }
           })
         }
@@ -100,17 +109,26 @@ extension UserContactPermissionsViewController {
     self.pickContactButton.layer.cornerRadius = self.pickContactButton.frame.height / 2.0
     
     self.tableViewContainerView.layer.cornerRadius = 12
+    self.tableViewContainerView.clipsToBounds = true
     self.tableViewContainerView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
     self.tableView.backgroundColor = nil
     self.tableView.separatorStyle = .none
-    if let pearUser = DataStore.shared.currentPearUser,
-      pearUser.endorsedUserIDs.count + pearUser.detachedProfileIDs.count  > 0
-        || pearUser.phoneNumber == "8901234567" {
-      self.skipButtonHeight.constant = 30
-      self.skipButton.isEnabled = true
-      self.skipButton.isHidden = false
+    self.skipButtonHeight.constant = 30
+    self.skipButton.isEnabled = true
+    self.skipButton.isHidden = false
+  }
+  
+  func stylizeSubtitleLabel(firstLine: String, secondLine: String) {
+    guard let boldFont = R.font.openSansExtraBold(size: 20),
+      let regularFont = R.font.openSansSemiBold(size: 20) else {
+        print("Unable to get fonts")
+        return
     }
-    
+    let attributedText = NSMutableAttributedString(string: firstLine + "\n",
+                                                  attributes: [NSAttributedString.Key.font: boldFont])
+    attributedText.append(NSAttributedString(string: secondLine,
+                                             attributes: [NSAttributedString.Key.font: regularFont]))
+    self.numberProfilesLabel.attributedText = attributedText
   }
   
   func setup() {
