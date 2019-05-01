@@ -37,6 +37,8 @@ public class DiscoverySetupViewController: UIViewController {
       self.enableLocationButton.isEnabled = true
     }
     
+    self.finishSetupButton.isHidden = DataStore.shared.hasCompletedSetup()
+    
     DataStore.shared.getWaitlistNumber { (userCount) in
       DispatchQueue.main.async {
         self.joinMessageLabel.text = "Join \(userCount) people pearing nearby"
