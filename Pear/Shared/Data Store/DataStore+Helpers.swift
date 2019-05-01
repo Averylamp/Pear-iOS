@@ -53,6 +53,17 @@ extension DataStore {
     }
   }
   
+  func hasCompletedSetup() -> Bool {
+    if DataStore.shared.currentPearUser?.gender != nil,
+      DataStore.shared.currentPearUser?.birthdate != nil,
+      let images = DataStore.shared.currentPearUser?.displayedImages,
+      let isSeeking = DataStore.shared.currentPearUser?.isSeeking,
+      (images.count > 0 || !isSeeking) {
+      return true
+    }
+    return false
+  }
+  
   // is a at least b
   // swiftlint:disable identifier_name
   func compareVersionArrays(a: [Int], b: [Int]) -> Bool {
