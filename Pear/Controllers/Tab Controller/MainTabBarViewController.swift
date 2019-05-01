@@ -15,11 +15,7 @@ class MainTabBarViewController: UITabBarController {
     let storyboard = UIStoryboard(name: String(describing: MainTabBarViewController.self), bundle: nil)
     guard let mainTabVC = storyboard.instantiateInitialViewController() as? MainTabBarViewController else { return nil }
     //      Discovery
-    if let gender = DataStore.shared.currentPearUser?.gender,
-      let birthdate = DataStore.shared.currentPearUser?.birthdate,
-      let images = DataStore.shared.currentPearUser?.displayedImages,
-      DataStore.shared.hasEnabledLocation(),
-      images.count > 0 {
+    if DataStore.shared.hasCompletedSetup() && DataStore.shared.hasEnabledLocation() {
       if let discoverVC = DiscoverySimpleViewController.instantiate(),
         let regularImage = R.image.tabIconDiscovery(),
         let selectedImage = R.image.tabIconDiscoverySelected() {
