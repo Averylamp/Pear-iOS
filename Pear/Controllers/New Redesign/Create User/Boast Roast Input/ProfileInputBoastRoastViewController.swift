@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAnalytics
+import MessageUI
+import NVActivityIndicatorView
 
 class ProfileInputBoastRoastViewController: UIViewController {
   
@@ -28,7 +30,8 @@ class ProfileInputBoastRoastViewController: UIViewController {
   
   var mode: BoastRoastMode = .boast
   var profileData: ProfileCreationData!
-  
+  var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
+
   var boastTVC = MultipleBoastRoastStackViewController.instantiate(type: .boast)!
   var roastTVC = MultipleBoastRoastStackViewController.instantiate(type: .roast)!
   
@@ -99,11 +102,15 @@ class ProfileInputBoastRoastViewController: UIViewController {
       self.present(alertController, animated: true, completion: nil)
       return
     }
-    guard let firstNameVC = UserNameInputViewController.instantiate(profileCreationData: self.profileData) else {
-      print("Couldnt create first name VC")
-      return
+    if let firstName = DataStore.shared.currentPearUser?.firstName, firstName.count > 1 {
+      self.promptMessageComposer()
+    } else {
+      guard let firstNameVC = UserNameInputViewController.instantiate(profileCreationData: self.profileData) else {
+        print("Couldnt create first name VC")
+        return
+      }
+      self.navigationController?.pushViewController(firstNameVC, animated: true)
     }
-    self.navigationController?.pushViewController(firstNameVC, animated: true)
     Analytics.logEvent("CP_rb_DONE", parameters: nil)
   }
 }
@@ -275,6 +282,34 @@ extension ProfileInputBoastRoastViewController {
 // MARK: - UIScrollViewDelegate
 extension ProfileInputBoastRoastViewController: UIScrollViewDelegate {
   
+  func promptMessageComposer() {
+    guard let messageVC = self.getMessageComposer(profileData: self.profileData) else {
+      print("Could not create Message VC")
+      Analytics.logEvent("CP_sendProfileSMS_FAIL", parameters: nil)
+      self.createDetachedProfile(profileData: self.profileData,
+                                 completion: self.createDetachedProfileCompletion(result:))
+      return
+    }
+    messageVC.messageComposeDelegate = self
+    #if DEVMODE
+//    self.createDetachedProfile(profileData: self.profileData,
+//                               completion: self.createDetachedProfileCompletion(result:))
+//    return
+    #endif
+    
+    self.continueButton.isEnabled = false
+    self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                     type: NVActivityIndicatorType.lineScalePulseOut,
+                                                     color: StylingConfig.textFontColor,
+                                                     padding: 0)
+    self.view.addSubview(activityIndicator)
+    activityIndicator.center = CGPoint(x: self.view.center.x,
+                                       y: self.continueButton.frame.origin.y - 40)
+    activityIndicator.startAnimating()
+    self.present(messageVC, animated: true, completion: nil)
+    Analytics.logEvent("CP_sendProfileSMS_START", parameters: nil)
+  }
+  
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     self.scrollViewDidEndScrolling()
   }
@@ -293,5 +328,73 @@ extension ProfileInputBoastRoastViewController: UIScrollViewDelegate {
       self.mode = .roast
     }
     self.stylizeBoastRoastButtons()
+  }
+}
+
+// MARK: - PromptSMSProtocol
+extension ProfileInputBoastRoastViewController: PromptSMSProtocol {
+  
+}
+
+// MARK: - MFMessageComposeViewControllerDelegate
+extension ProfileInputBoastRoastViewController: MFMessageComposeViewControllerDelegate {
+  
+  func createDetachedProfileCompletion(result: Result<PearDetachedProfile, (errorTitle: String, errorMessage: String)?>) {
+    switch result {
+    case .success:
+      DispatchQueue.main.async {
+        guard let profileFinishedVC = ProfileCreationFinishedViewController.instantiate() else {
+          print("Failed to create Profile Finished VC")
+          return
+        }
+        self.navigationController?.setViewControllers([profileFinishedVC], animated: true)
+      }
+    case .failure(let error):
+      if let error = error {
+        DispatchQueue.main.async {
+          self.alert(title: error.errorTitle, message: error.errorMessage)
+        }
+      }
+    }
+    DispatchQueue.main.async {
+      self.activityIndicator.stopAnimating()
+      self.continueButton.isEnabled = true
+    }
+  }
+  
+  func continueToSMSCanceledPage() {
+    DispatchQueue.main.async {
+      guard let smsCancledVC = self.getSMSCanceledVC(profileData: self.profileData) else {
+        print("Failed to create SMS Cancelled VC")
+        return
+      }
+      self.navigationController?.pushViewController(smsCancledVC, animated: true)
+    }
+  }
+  
+  func dismissMessageVC(controller: MFMessageComposeViewController) {
+    controller.dismiss(animated: true) {
+      DispatchQueue.main.async {
+        self.continueButton.isEnabled = true
+        self.activityIndicator.stopAnimating()
+      }
+    }
+  }
+  
+  func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+    switch result {
+    case .cancelled, .failed:
+      self.dismissMessageVC(controller: controller)
+      self.continueToSMSCanceledPage()
+    case .sent:
+      controller.dismiss(animated: true) {
+        DispatchQueue.main.async {
+          self.createDetachedProfile(profileData: self.profileData,
+                                     completion: self.createDetachedProfileCompletion(result:))
+        }
+      }
+    @unknown default:
+      fatalError()
+    }
   }
 }
