@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAnalytics
+import ContactsUI
 
 class ProfileCreationFinishedViewController: UIViewController {
 
@@ -27,11 +28,7 @@ class ProfileCreationFinishedViewController: UIViewController {
   @IBAction func makeAnotherButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     Analytics.logEvent("CP_postCreation_TAP_createAnother", parameters: nil)
-    guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
-      print("Failed to instantiate contact permisssion vc")
-      return
-    }
-    self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+    self.promptContactsPicker()
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
@@ -70,6 +67,43 @@ extension ProfileCreationFinishedViewController {
     self.continueButton.layer.cornerRadius = self.continueButton.frame.height / 2.0
     self.continueButton.backgroundColor = UIColor(red: 0.79, green: 0.74, blue: 1.00, alpha: 1.00)
     
+  }
+  
+}
+
+// MARK: ProfileCreationProtocol
+extension ProfileCreationFinishedViewController: ProfileCreationProtocol, CNContactPickerDelegate {
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+    self.didSelectContact(contact: contact)
+  }
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+    self.didSelectContactProperty(contactProperty: contactProperty)
+  }
+  
+  func receivedProfileCreationData(creationData: ProfileCreationData) {
+    DispatchQueue.main.async {
+      guard let vibesVC = ProfileInputVibeViewController.instantiate(profileCreationData: creationData) else {
+        print("Failed to create Vibes VC")
+        return
+      }
+      self.navigationController?.pushViewController(vibesVC, animated: true)
+    }
+  }
+  
+  func recievedProfileCreationError(title: String, message: String?) {
+    DispatchQueue.main.async {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      self.present(alert, animated: true)
+    }
+  }
+  
+  func promptContactsPicker() {
+    let cnPicker = self.getContactsPicker()
+    cnPicker.delegate = self
+    self.present(cnPicker, animated: true, completion: nil)
   }
   
 }

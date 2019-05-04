@@ -119,7 +119,6 @@ extension DiscoveryTableViewCell {
     if profileData.boasts.count + profileData.roasts.count == 0,
       let bioItem = profileData.bios.first {
       self.addBioItem(item: bioItem)
-      self.addSpacerView(height: 4)
     }
     self.updatePageControl()
   }

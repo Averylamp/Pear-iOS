@@ -32,6 +32,7 @@ class ExpandingBoastRoastInputViewController: UIViewController {
   let roastPlaceholder = "Something people should know; nobody’s perfect ;P"
   
   let placeholderTextColor: UIColor = UIColor(white: 0.0, alpha: 0.3)
+  var initialText: String?
   var type: ExpandingBoastRoastInputType = .boast
   var minTextViewSize: CGFloat = 50
   var animationDuration: Double = 0.3
@@ -39,11 +40,11 @@ class ExpandingBoastRoastInputViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(type: ExpandingBoastRoastInputType) -> ExpandingBoastRoastInputViewController? {
+  class func instantiate(type: ExpandingBoastRoastInputType, initialText: String? = nil) -> ExpandingBoastRoastInputViewController? {
     guard let expandingTextVC = R.storyboard.expandingBoastRoastInputViewController()
       .instantiateInitialViewController() as? ExpandingBoastRoastInputViewController else { return nil }
-
     expandingTextVC.type = type
+    expandingTextVC.initialText = initialText
     return expandingTextVC
   }
   
@@ -76,6 +77,9 @@ extension ExpandingBoastRoastInputViewController {
     super.viewDidLoad()
     self.configure()
     self.stylize()
+    if let initialText = self.initialText {
+      self.expandingTextView.text = initialText
+    }
     self.populatePlaceholder(type: self.type)
   }
   
@@ -90,7 +94,6 @@ extension ExpandingBoastRoastInputViewController {
   }
   
   func configure() {
-    
     self.deleteButton.isHidden = false
     self.deleteButton.isEnabled = true
     self.expandingTextView.delegate = self

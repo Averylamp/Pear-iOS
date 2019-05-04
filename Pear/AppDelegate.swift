@@ -25,29 +25,27 @@ final class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-    
     FirebaseApp.configure()
     Messaging.messaging().delegate = self
     
-    //    Forces Remote config fetch
-    print(DataStore.shared.remoteConfig.configSettings)
     Fabric.with([Crashlytics.self])
     
     do {
       Client.shared = try Client(dsn: "https://8383e222e5e946cf8017740102da428e@sentry.io/1423458")
       try Client.shared?.startCrashHandler()
       Client.shared?.trackMemoryPressureAsEvent()
-      
     } catch let error {
       print("\(error)")
     }
     
     SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     
+    #if DEVMODE
     if CommandLine.arguments.contains("--uitesting") {
       resetState()
     }
-    
+    #endif
+
     self.stylize()
     
     window = UIWindow(frame: UIScreen.main.bounds)
@@ -55,8 +53,10 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
       fatalError("Something went horribly wrong")
     }
     window?.rootViewController = navController
-    //        window?.rootViewController = GetStartedPhotoInputViewController.instantiate(gettingStartedData: GetttingStartedData.fakeData())
     window?.makeKeyAndVisible()
+    
+    //    Forces Remote config fetch
+    print(DataStore.shared.remoteConfig.configSettings)
     
     // register for remote notifications if we have notification authorization
     DataStore.shared.registerForRemoteNotificationsIfAuthorized()

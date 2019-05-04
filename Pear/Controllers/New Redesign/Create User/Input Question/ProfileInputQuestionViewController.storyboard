@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="32" width="320" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Step 2: Answer some questions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mdX-eM-L9H">
-                                        <rect key="frame" x="62" y="9.5" width="196" height="21"/>
+                                        <rect key="frame" x="62" y="10" width="196" height="20.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -114,41 +115,36 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6y-W1-9do">
-                                <rect key="frame" x="0.0" y="416" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="410" width="320" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JP-IN-7h6">
-                                        <rect key="frame" x="240" y="0.0" width="60" height="60"/>
+                                        <rect key="frame" x="20" y="0.0" width="280" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer more! Or continue" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3wa-Lc-vmQ">
-                                        <rect key="frame" x="12" y="17.5" width="220" height="25"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfs-UO-mO3">
-                                        <rect key="frame" x="240" y="0.0" width="60" height="60"/>
-                                        <color key="backgroundColor" red="0.3803921569" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="20" y="0.0" width="280" height="50"/>
+                                        <color key="backgroundColor" name="backgroundColorYellow"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="WmD-az-xsZ"/>
-                                            <constraint firstAttribute="width" secondItem="Tfs-UO-mO3" secondAttribute="height" multiplier="1:1" id="mee-yb-ud8"/>
+                                            <constraint firstAttribute="height" constant="50" id="ad8-Px-3f8"/>
                                         </constraints>
-                                        <state key="normal" image="icon-forward-arrow-white"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="continueButtonClicked:" destination="Olr-3p-iPy" eventType="touchUpInside" id="uar-m0-Quo"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="0JP-IN-7h6" firstAttribute="leading" secondItem="3wa-Lc-vmQ" secondAttribute="trailing" constant="8" id="2aX-xK-lxR"/>
                                     <constraint firstItem="Tfs-UO-mO3" firstAttribute="top" secondItem="Q6y-W1-9do" secondAttribute="top" id="Dhl-AK-AWt"/>
                                     <constraint firstAttribute="bottom" secondItem="Tfs-UO-mO3" secondAttribute="bottom" id="Kvi-sT-bYf"/>
                                     <constraint firstItem="0JP-IN-7h6" firstAttribute="centerY" secondItem="Tfs-UO-mO3" secondAttribute="centerY" id="Nbo-KL-V73"/>
-                                    <constraint firstItem="3wa-Lc-vmQ" firstAttribute="leading" secondItem="Q6y-W1-9do" secondAttribute="leading" constant="12" id="VAQ-zg-jTz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tfs-UO-mO3" secondAttribute="bottom" id="OE7-RY-NJm"/>
+                                    <constraint firstItem="Tfs-UO-mO3" firstAttribute="leading" secondItem="Q6y-W1-9do" secondAttribute="leading" constant="20" id="R9d-H9-fK3"/>
+                                    <constraint firstItem="Tfs-UO-mO3" firstAttribute="top" secondItem="Q6y-W1-9do" secondAttribute="top" id="d0W-rc-V2U"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tfs-UO-mO3" secondAttribute="trailing" constant="20" id="n2A-Im-4ac"/>
                                     <constraint firstItem="0JP-IN-7h6" firstAttribute="height" secondItem="Tfs-UO-mO3" secondAttribute="height" id="oMq-f1-zgL"/>
                                     <constraint firstItem="0JP-IN-7h6" firstAttribute="centerX" secondItem="Tfs-UO-mO3" secondAttribute="centerX" id="oWu-TS-Rtj"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tfs-UO-mO3" secondAttribute="trailing" constant="20" id="p6O-7l-ttd"/>
-                                    <constraint firstItem="3wa-Lc-vmQ" firstAttribute="centerY" secondItem="Tfs-UO-mO3" secondAttribute="centerY" id="uiE-Xe-qER"/>
                                     <constraint firstItem="0JP-IN-7h6" firstAttribute="width" secondItem="Tfs-UO-mO3" secondAttribute="width" id="y8j-cS-O2z"/>
                                 </constraints>
                             </view>
@@ -161,7 +157,7 @@
                             <constraint firstItem="Fqo-ta-ony" firstAttribute="leading" secondItem="D03-so-fC4" secondAttribute="leading" id="Hrc-t6-pqt"/>
                             <constraint firstItem="Fqo-ta-ony" firstAttribute="centerX" secondItem="D03-so-fC4" secondAttribute="centerX" id="KKz-GK-DJF"/>
                             <constraint firstItem="D03-so-fC4" firstAttribute="trailing" secondItem="Fqo-ta-ony" secondAttribute="trailing" id="Lsq-0U-f6N"/>
-                            <constraint firstItem="Q6y-W1-9do" firstAttribute="bottom" secondItem="D03-so-fC4" secondAttribute="bottom" constant="-4" id="W9f-3R-2Yr"/>
+                            <constraint firstItem="D03-so-fC4" firstAttribute="bottom" secondItem="Q6y-W1-9do" secondAttribute="bottom" constant="20" id="Rif-Ft-lMv"/>
                             <constraint firstItem="Mcd-RB-F3S" firstAttribute="top" secondItem="Fqo-ta-ony" secondAttribute="bottom" constant="8" id="gav-5T-GKL"/>
                             <constraint firstItem="SZK-sq-Ztp" firstAttribute="top" secondItem="D03-so-fC4" secondAttribute="top" constant="12" id="iOe-w4-wXw"/>
                             <constraint firstItem="Mcd-RB-F3S" firstAttribute="centerX" secondItem="D03-so-fC4" secondAttribute="centerX" id="mN6-Oq-sQ9"/>
@@ -187,8 +183,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-cancel-button" width="96" height="96"/>
-        <image name="icon-forward-arrow-white" width="512" height="512"/>
+        <image name="icon-cancel-button" width="224" height="224"/>
         <image name="icon-skip-white" width="512" height="512"/>
+        <namedColor name="backgroundColorYellow">
+            <color red="1" green="0.93999999761581421" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

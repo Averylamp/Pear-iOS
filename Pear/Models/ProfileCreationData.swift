@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Contacts
 
 enum ProfileCreationKey: String {
   case phoneNumber
@@ -18,7 +19,7 @@ enum ProfileCreationKey: String {
   case vibes
 }
 
-class ProfileCreationData: GraphQLInput, AuthorGraphQLInput {
+@objc class ProfileCreationData: NSObject, GraphQLInput, AuthorGraphQLInput {
   
   var phoneNumber: String
   var firstName: String
@@ -29,10 +30,28 @@ class ProfileCreationData: GraphQLInput, AuthorGraphQLInput {
   var skipCount: Int = 0
   var vibes: [VibeItem] = []
   
-  init(contactListItem: ContactListItem) {
-    self.phoneNumber = contactListItem.phoneNumber
+  init(contactListItem: ContactListItem, phoneNumber: String? = nil) {
+    if phoneNumber == nil {
+      self.phoneNumber = contactListItem.phoneNumber      
+    } else {
+      self.phoneNumber = phoneNumber!
+    }
     self.firstName = contactListItem.firstName
     self.lastName = contactListItem.lastName
+  }
+  
+  init(contact: CNContact, phoneNumber: String? = nil) {
+    if phoneNumber == nil,
+      var contactPhoneNumber = contact.phoneNumbers.first?.value.stringValue.filter("0123456789".contains) {
+      if contactPhoneNumber.count == 11 && contactPhoneNumber.first == "1" {
+        contactPhoneNumber = contactPhoneNumber.substring(fromIndex: 1)
+      }
+      self.phoneNumber = contactPhoneNumber
+    } else {
+      self.phoneNumber = phoneNumber!
+    }
+    self.firstName = contact.givenName
+    self.lastName = contact.familyName
   }
   
   func updateAuthor(authorID: String, authorFirstName: String) {
@@ -58,9 +77,19 @@ class ProfileCreationData: GraphQLInput, AuthorGraphQLInput {
   func getRandomNextQuestion() -> QuestionItem? {
     var possibleQuestions = DataStore.shared.possibleQuestions.shuffled()
     let questionCount = self.questionResponses.count + skipCount
+    let answeredQuestions = self.questionResponses.count
     if questionCount < 2 {
       possibleQuestions = possibleQuestions.filter({ $0.tags.contains("starter")})
+    } else if answeredQuestions == 2 || answeredQuestions == 4 || answeredQuestions == 5 {
+      possibleQuestions = possibleQuestions.filter({ $0.questionType == .freeResponse})
+    } else {
+      possibleQuestions = possibleQuestions.filter({ $0.questionType == .multipleChoice})
     }
+    
+    if answeredQuestions == 6 {
+      return nil
+    }
+    
     return possibleQuestions.first(where: { (possibleQuestion) -> Bool in
       return !self.questionResponses.contains(where: { $0.questionID == possibleQuestion.documentID })
     })

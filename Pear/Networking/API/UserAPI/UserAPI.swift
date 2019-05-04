@@ -38,5 +38,4 @@ protocol UserAPI {
                   updates: [String: Any],
                   completion: @escaping(Result<Bool, UserAPIError>) -> Void)
   
-  func getFakeUser(completion: @escaping (Result<PearUser, UserAPIError>) -> Void)
 }

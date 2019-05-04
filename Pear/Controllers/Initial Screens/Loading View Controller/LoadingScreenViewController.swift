@@ -20,7 +20,6 @@ class LoadingScreenViewController: UIViewController {
   class func instantiate() -> LoadingScreenViewController? {
     let storyboard = UIStoryboard(name: String(describing: LoadingScreenViewController.self), bundle: nil)
     guard let loadingScreenVC = storyboard.instantiateInitialViewController() as? LoadingScreenViewController else { return nil }
-    
     return loadingScreenVC
   }
   
@@ -112,19 +111,11 @@ extension LoadingScreenViewController {
   
   static func getLandingScreen() -> UIViewController? {
     #if DEVMODE
-    if !DataStore.shared.remoteConfig.configValue(forKey: "pineapple_waitlist_enabled").boolValue {
-      guard let landingScreenVC = LandingScreenWaitlistViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
-        return nil
-      }
-      return landingScreenVC
-    } else {
-      guard let landingScreenVC = LandingScreenViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
-        return nil
-      }
-      return landingScreenVC
+    guard let landingScreenVC = LandingScreenViewController.instantiate() else {
+      print("Failed to create Landing Screen VC")
+      return nil
     }
+    return landingScreenVC
     #else
     if DataStore.shared.remoteConfig.configValue(forKey: "pineapple_waitlist_enabled").boolValue {
       guard let landingScreenVC = LandingScreenWaitlistViewController.instantiate() else {
@@ -353,17 +344,6 @@ extension LoadingScreenViewController {
         print("\(questions.count) Questions Found")
       case .failure(let error):
         print("Error retrieving questions:\(error)")
-      }
-    }
-  }
-  
-  func fetchFakeUser() {
-    PearUserAPI.shared.getFakeUser { (result) in
-      switch result {
-      case .success(let user):
-        print(user)
-      case .failure(let error):
-        print("Failed to get fake user: \(error)")
       }
     }
   }
