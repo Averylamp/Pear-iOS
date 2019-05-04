@@ -140,6 +140,7 @@ extension UserPhoneCodeViewController {
           if let user = user {
             print("Continuing to Main Screen")
             DispatchQueue.main.async {
+              Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
               DataStore.shared.reloadAllUserData()
               if user.endorsedUserIDs.count + user.detachedProfileIDs.count  == 0 {
                 DispatchQueue.main.async {
@@ -163,6 +164,7 @@ extension UserPhoneCodeViewController {
             PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
               switch result {
               case .success(let pearUser):
+                Analytics.logEvent(AnalyticsEventSignUp, parameters: [ AnalyticsParameterSignUpMethod: "phone" ])
                 DispatchQueue.main.async {
                   DataStore.shared.currentPearUser = pearUser
                   DataStore.shared.reloadAllUserData()
