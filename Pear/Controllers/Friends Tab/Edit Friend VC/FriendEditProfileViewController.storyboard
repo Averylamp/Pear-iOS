@@ -48,8 +48,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBh-z2-b4F">
-                                        <rect key="frame" x="326" y="10" width="37" height="30"/>
-                                        <state key="normal" title="Done"/>
+                                        <rect key="frame" x="329" y="10" width="34" height="30"/>
+                                        <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="doneButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="jLa-cM-GST"/>
                                         </connections>
