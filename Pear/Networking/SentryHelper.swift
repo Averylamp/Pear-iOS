@@ -24,15 +24,19 @@ class SentryHelper {
     "The network connection was lost.".lowercased(),
     "The request timed out.".lowercased(),
     "The Internet connection appears to be offline.".lowercased(),
-    "A data connection is not currently allowed.".lowercased()
+    "A data connection is not currently allowed.".lowercased(),
+    "The operation couldn’t be completed. Software caused connection abort".lowercased()
     ]
+    var skipError = false
     skipErrors.forEach({
       if  "\(message) - \(apiName):\(functionName)".lowercased().contains($0) {
         print("Found skippable error message")
-        return
+        skipError = true
       }
     })
-    
+    if skipError {
+      return
+    }
     #if DEVMODE
     APIHelpers.printDataDump(data: responseData)
     fatalError("Some Network Call failed and sentry is generating an error")
@@ -52,6 +56,30 @@ class SentryHelper {
     }
     userErrorEvent.extra = extraTags
     Client.shared?.send(event: userErrorEvent, completion: nil)
+    #endif
+  }
+  
+  class func generateSentryMessageEvent(level: SentrySeverity,
+                                        message: String,
+                                        tags: [String: String] = [:],
+                                        extra: [String: Any] = [:]) {
+    
+    print("\n***** GENERATING SENTRY REPORT *****")
+    print(message)
+    print(tags)
+    print(extra)
+    #if DEVMODE
+    fatalError("A sentry mesage has been generated: \(message)")
+    #endif
+    
+    #if PROD
+    let event = Event(level: level)
+    event.message = message
+    event.tags = tags
+    var extraTags: [String: Any] = [:]
+    extra.forEach({ extraTags[$0.key] = $0.value })
+    event.extra = extra
+    Client.shared?.send(event: event, completion: nil)
     #endif
   }
   

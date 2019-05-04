@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Khw-GL-8Ve">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Expanding Free Response Input View Controller-->
+        <scene sceneID="ti5-Xk-yQ5">
+            <objects>
+                <viewController id="Khw-GL-8Ve" customClass="ExpandingFreeResponseInputViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C7x-Na-nKp"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Gd-Dc-hO7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LxY-uK-eh5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABX-cf-kP8">
+                                <rect key="frame" x="12" y="4" width="351" height="132"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LFr-bu-Uee">
+                                        <rect key="frame" x="4" y="4" width="343" height="124"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="124" id="PVh-Rw-SQC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="LFr-bu-Uee" firstAttribute="leading" secondItem="ABX-cf-kP8" secondAttribute="leading" constant="4" id="8dc-fz-BBE"/>
+                                    <constraint firstAttribute="bottom" secondItem="LFr-bu-Uee" secondAttribute="bottom" constant="4" id="OZq-Xt-GhZ"/>
+                                    <constraint firstItem="LFr-bu-Uee" firstAttribute="top" secondItem="ABX-cf-kP8" secondAttribute="top" constant="4" id="aVX-ZC-35R"/>
+                                    <constraint firstAttribute="trailing" secondItem="LFr-bu-Uee" secondAttribute="trailing" constant="4" id="eOz-P5-Z7n"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ABX-cf-kP8" firstAttribute="leading" secondItem="LxY-uK-eh5" secondAttribute="leading" constant="12" id="Y2a-fe-fs2"/>
+                            <constraint firstAttribute="bottom" secondItem="ABX-cf-kP8" secondAttribute="bottom" constant="4" id="apP-wj-tkY"/>
+                            <constraint firstAttribute="trailing" secondItem="ABX-cf-kP8" secondAttribute="trailing" constant="12" id="kWO-oe-725"/>
+                            <constraint firstItem="ABX-cf-kP8" firstAttribute="top" secondItem="LxY-uK-eh5" secondAttribute="top" constant="4" id="vx2-F4-LwE"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="140"/>
+                    <connections>
+                        <outlet property="expandingTextContainerView" destination="ABX-cf-kP8" id="ftk-yp-FI3"/>
+                        <outlet property="expandingTextView" destination="LFr-bu-Uee" id="yv9-eJ-R4p"/>
+                        <outlet property="expandingTextViewHeightConstraint" destination="PVh-Rw-SQC" id="XHb-xC-y1q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XQL-A8-WCL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="387.68115942028987" y="-306.02678571428572"/>
+        </scene>
+    </scenes>
+</document>

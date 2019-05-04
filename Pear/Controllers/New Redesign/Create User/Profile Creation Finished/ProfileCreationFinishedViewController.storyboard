@@ -38,21 +38,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQ0-sh-BVk">
-                                        <rect key="frame" x="8" y="5" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="mQ0-sh-BVk" secondAttribute="height" multiplier="1:1" id="Duz-zi-kpL"/>
-                                            <constraint firstAttribute="height" constant="30" id="Jka-1D-e2s"/>
-                                        </constraints>
-                                        <state key="normal" image="icon-cancel-button"/>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="nYi-lE-0PF" firstAttribute="centerX" secondItem="NgO-7n-k5s" secondAttribute="centerX" id="Ewe-i1-Zvz"/>
-                                    <constraint firstItem="mQ0-sh-BVk" firstAttribute="leading" secondItem="NgO-7n-k5s" secondAttribute="leading" constant="8" id="G29-QG-DDH"/>
                                     <constraint firstAttribute="height" constant="40" id="MLN-uy-74G"/>
                                     <constraint firstItem="nYi-lE-0PF" firstAttribute="centerY" secondItem="NgO-7n-k5s" secondAttribute="centerY" id="Udc-m0-LWP"/>
-                                    <constraint firstItem="mQ0-sh-BVk" firstAttribute="centerY" secondItem="nYi-lE-0PF" secondAttribute="centerY" id="tif-qe-oeb"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1VX-ek-IBk">
@@ -242,7 +232,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-cancel-button" width="96" height="96"/>
         <image name="icon-emoji-cry" width="512" height="512"/>
         <image name="icon-emoji-hand" width="512" height="512"/>
         <image name="icon-emoji-pear" width="538" height="538"/>

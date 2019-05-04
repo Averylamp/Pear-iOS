@@ -16,11 +16,8 @@ class ApproveDetachedProfileFoundViewController: UIViewController {
   var detachedProfile: PearDetachedProfile!
   
   @IBOutlet weak var titleLabel: UILabel!
-  
   @IBOutlet weak var subtitleLabel: UILabel!
-  
   @IBOutlet weak var nextButton: UIButton!
-  @IBOutlet weak var skipButton: UIButton!
   
   var imageContainers: (displayedImages: [LoadedImageContainer], imageBank: [LoadedImageContainer])?
   var loadedImageContainersFromUser = false
@@ -87,7 +84,6 @@ extension ApproveDetachedProfileFoundViewController {
   
   func stylize() {
     self.nextButton.stylizeDark()
-    self.skipButton.stylizeSubtle()
     self.titleLabel.stylizeTitleLabel()
     self.subtitleLabel.stylizeSubtitleLabel()
     

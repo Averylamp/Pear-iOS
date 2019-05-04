@@ -33,11 +33,7 @@ class UserNameInputViewController: UIViewController {
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     if let name = self.nameTextField.text, name.count > 2 {
-      guard let userID = DataStore.shared.currentPearUser?.documentID else {
-        print("No documentID Found")
-        return
-      }
-      self.profileData.updateAuthor(authorID: userID, authorFirstName: name)
+      DataStore.shared.currentPearUser?.firstName = name
       self.updateUserName()
       self.promptMessageComposer()
     } else {
@@ -50,11 +46,7 @@ class UserNameInputViewController: UIViewController {
     let alertAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
     let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
       DispatchQueue.main.async {
-        guard let createProfileVC = LoadingScreenViewController.getProfileCreationVC() else {
-          print("Failure instantiating  create profile VC")
-          return
-        }
-        self.navigationController?.setViewControllers([createProfileVC], animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
       }
     }
     alertController.addAction(alertAction)
@@ -68,17 +60,17 @@ class UserNameInputViewController: UIViewController {
         return
       }
       PearUserAPI.shared.updateUserFirstName(userID: userID, firstName: firstName) { (result) in
-                                            switch result {
-                                            case .success(let successful):
-                                              if successful {
-                                                print("Update user first name was successful")
-                                              } else {
-                                                print("Update user first name was unsuccessful")
-                                              }
-                                              
-                                            case .failure(let error):
-                                              print("Update user failure: \(error)")
-                                            }
+        switch result {
+        case .success(let successful):
+          if successful {
+            print("Update user first name was successful")
+          } else {
+            print("Update user first name was unsuccessful")
+          }
+          
+        case .failure(let error):
+          print("Update user failure: \(error)")
+        }
         DataStore.shared.refreshPearUser(completion: nil)
       }
     }
@@ -86,123 +78,32 @@ class UserNameInputViewController: UIViewController {
   }
   
   func promptMessageComposer() {
-    let phoneNumber = profileData.phoneNumber.filter("0123456789".contains)
-    if phoneNumber.count == 10 {
-      print("Verifying phone number")
-      self.continueButton.isEnabled = false
-      self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-                                                       type: NVActivityIndicatorType.lineScalePulseOut,
-                                                       color: StylingConfig.textFontColor,
-                                                       padding: 0)
-      self.view.addSubview(activityIndicator)
-      activityIndicator.center = CGPoint(x: self.view.center.x,
-                                         y: self.continueButton.frame.origin.y +
-                                          self.continueButton.frame.height + 40)
-      activityIndicator.startAnimating()
-      
-      #if DEVMODE
-      self.createDetachedProfile()
+    guard let messageVC = self.getMessageComposer(profileData: self.profileData) else {
+      print("Could not create Message VC")
+      Analytics.logEvent("CP_sendProfileSMS_FAIL", parameters: nil)
+      self.createDetachedProfile(profileData: self.profileData,
+                                 completion: self.createDetachedProfileCompletion(result:))
       return
-      #endif
-      
-      if MFMessageComposeViewController.canSendText() {
-        let messageVC = MFMessageComposeViewController()
-        messageVC.messageComposeDelegate = self
-        
-        messageVC.recipients = [phoneNumber]
-        messageVC.body = "I wrote something for you on Pear! Check it out 🍐 https://getpear.com/go/refer"
-        
-        self.present(messageVC, animated: true, completion: nil)
-        Analytics.logEvent("CP_sendProfileSMS_START", parameters: nil)
-      } else {
-        Analytics.logEvent("CP_sendProfileSMS_FAIL", parameters: nil)
-        createDetachedProfile()
-      }
     }
+    messageVC.messageComposeDelegate = self
+    #if DEVMODE
+    self.createDetachedProfile(profileData: self.profileData,
+                               completion: self.createDetachedProfileCompletion(result:))
+    return
+    #endif
     
-  }
-  
-  func createDetachedProfile() {
-    PearProfileAPI.shared.createNewDetachedProfile(profileCreationData: self.profileData) { (result) in
-      switch result {
-      case .success(let detachedProfile):
-        Analytics.logEvent("CP_SUCCESS", parameters: nil)
-        print(detachedProfile)
-        DataStore.shared.reloadAllUserData()
-        DispatchQueue.main.async {
-          guard let profileFinishedVC = ProfileCreationFinishedViewController.instantiate() else {
-            print("Failed to create Profile Finished VC")
-            return
-          }
-          self.navigationController?.setViewControllers([profileFinishedVC], animated: true)
-        }
-      case .failure(let error):
-        print(error)
-        Analytics.logEvent("CP_FAIL", parameters: nil)
-        DispatchQueue.main.async {
-          switch error {
-          case .graphQLError(let message):
-            self.alert(title: "Failed to Create Profile", message: message)
-          case .userNotLoggedIn:
-            self.alert(title: "Please login first", message: "You muust be logged in to create profiles")
-          default:
-            self.alert(title: "Oopsie", message: "Our server made an oopsie woopsie.  Please try again or let us know and we will do our best to fix it ASAP (support@getpear.com)")
-          }
-          self.activityIndicator.stopAnimating()
-        }
-      }
-      DispatchQueue.main.async {
-        self.continueButton.isEnabled = true
-      }
-      
-    }
-    //    PearProfileAPI.shared.createNewDetachedProfile(gettingStartedUserProfileData: self.gettingStartedData) { (result) in
-    //      print("Create Detached Profile Called")
-    //      switch result {
-    //      case .success(let detachedProfile):
-    //        Analytics.logEvent("CP_success", parameters: nil)
-    //        print(detachedProfile)
-    //        DataStore.shared.refreshEndorsedUsers(completion: nil)
-    //        DataStore.shared.getNotificationAuthorizationStatus { status in
-    //          if status == .notDetermined {
-    //            DispatchQueue.main.async {
-    //              guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
-    //                print("Failed to create Allow Notifications VC")
-    //                return
-    //              }
-    //              self.navigationController?.pushViewController(allowNotificationVC, animated: true)
-    //            }
-    //          } else {
-    //            DispatchQueue.main.async {
-    //              guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-    //                print("Failed to initialize main VC")
-    //                return
-    //              }
-    //              self.navigationController?.setViewControllers([mainVC], animated: true)
-    //            }
-    //          }
-    //        }
-    //      case .failure(let error):
-    //        print(error)
-    //        DispatchQueue.main.async {
-    //          switch error {
-    //          case .graphQLError(let message):
-    //            self.alert(title: "Failed to Create Profile", message: message)
-    //          case .userNotLoggedIn:
-    //            self.alert(title: "Please login first", message: "You muust be logged in to create profiles")
-    //          default:
-    //            self.alert(title: "Oopsie",
-    // message: "Our server made an oopsie woopsie.  Please try again or let us know and we will do our best to fix it ASAP (support@getpear.com)")
-    //          }
-    //          self.stylize()
-    //          self.inputTextField.text = ""
-    //          self.inputTextField.isEnabled = true
-    //          self.nextButton.isEnabled = true
-    //          self.activityIndicator.stopAnimating()
-    //        }
-    //
-    //      }
-    //    }
+    self.continueButton.isEnabled = false
+    self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                     type: NVActivityIndicatorType.lineScalePulseOut,
+                                                     color: StylingConfig.textFontColor,
+                                                     padding: 0)
+    self.view.addSubview(activityIndicator)
+    activityIndicator.center = CGPoint(x: self.view.center.x,
+                                       y: self.continueButton.frame.origin.y +
+                                        self.continueButton.frame.height + 40)
+    activityIndicator.startAnimating()
+    self.present(messageVC, animated: true, completion: nil)
+    Analytics.logEvent("CP_sendProfileSMS_START", parameters: nil)
   }
   
 }
@@ -242,27 +143,66 @@ extension UserNameInputViewController {
   }
 }
 
+// MARK: - PromptSMSProtocol
+extension UserNameInputViewController: PromptSMSProtocol {
+  
+}
+
+// MARK: - MFMessageComposeViewControllerDelegate
 extension UserNameInputViewController: MFMessageComposeViewControllerDelegate {
+  
+  func createDetachedProfileCompletion(result: Result<PearDetachedProfile, (errorTitle: String, errorMessage: String)?>) {
+    switch result {
+    case .success:
+      DispatchQueue.main.async {
+        guard let profileFinishedVC = ProfileCreationFinishedViewController.instantiate() else {
+          print("Failed to create Profile Finished VC")
+          return
+        }
+        self.navigationController?.setViewControllers([profileFinishedVC], animated: true)
+      }
+    case .failure(let error):
+      if let error = error {
+        DispatchQueue.main.async {
+          self.alert(title: error.errorTitle, message: error.errorMessage)
+        }
+      }
+    }
+    DispatchQueue.main.async {
+      self.activityIndicator.stopAnimating()
+      self.continueButton.isEnabled = true
+    }
+  }
+  
+  func continueToSMSCanceledPage() {
+    DispatchQueue.main.async {
+      guard let smsCancledVC = self.getSMSCanceledVC(profileData: self.profileData) else {
+        print("Failed to create SMS Cancelled VC")
+        return
+      }
+      self.navigationController?.pushViewController(smsCancledVC, animated: true)
+    }
+  }
   
   func dismissMessageVC(controller: MFMessageComposeViewController) {
     controller.dismiss(animated: true) {
       DispatchQueue.main.async {
-        self.alert(title: "Tell your friend",
-                   message: "You must let your friend know of their profile, and they must accept it to continue")
+        self.continueButton.isEnabled = true
+        self.activityIndicator.stopAnimating()
       }
     }
   }
   
   func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
     switch result {
-    case .cancelled:
+    case .cancelled, .failed:
       self.dismissMessageVC(controller: controller)
-    case .failed:
-      self.dismissMessageVC(controller: controller)
+      self.continueToSMSCanceledPage()
     case .sent:
       controller.dismiss(animated: true) {
         DispatchQueue.main.async {
-          self.createDetachedProfile()
+          self.createDetachedProfile(profileData: self.profileData,
+                                     completion: self.createDetachedProfileCompletion(result:))
         }
       }
     @unknown default:

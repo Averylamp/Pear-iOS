@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAnalytics
+import MessageUI
+import NVActivityIndicatorView
 
 class ProfileInputBoastRoastViewController: UIViewController {
   
@@ -28,7 +30,8 @@ class ProfileInputBoastRoastViewController: UIViewController {
   
   var mode: BoastRoastMode = .boast
   var profileData: ProfileCreationData!
-  
+  var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
+
   var boastTVC = MultipleBoastRoastStackViewController.instantiate(type: .boast)!
   var roastTVC = MultipleBoastRoastStackViewController.instantiate(type: .roast)!
   
@@ -69,11 +72,7 @@ class ProfileInputBoastRoastViewController: UIViewController {
     let alertAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
     let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
       DispatchQueue.main.async {
-        guard let createProfileVC = LoadingScreenViewController.getProfileCreationVC() else {
-          print("Failure instantiating  create profile VC")
-          return
-        }
-        self.navigationController?.setViewControllers([createProfileVC], animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
       }
     }
     alertController.addAction(alertAction)
@@ -103,11 +102,15 @@ class ProfileInputBoastRoastViewController: UIViewController {
       self.present(alertController, animated: true, completion: nil)
       return
     }
-    guard let firstNameVC = UserNameInputViewController.instantiate(profileCreationData: self.profileData) else {
-      print("Couldnt create first name VC")
-      return
+    if let firstName = DataStore.shared.currentPearUser?.firstName, firstName.count > 1 {
+      self.promptMessageComposer()
+    } else {
+      guard let firstNameVC = UserNameInputViewController.instantiate(profileCreationData: self.profileData) else {
+        print("Couldnt create first name VC")
+        return
+      }
+      self.navigationController?.pushViewController(firstNameVC, animated: true)
     }
-    self.navigationController?.pushViewController(firstNameVC, animated: true)
     Analytics.logEvent("CP_rb_DONE", parameters: nil)
   }
 }
@@ -124,50 +127,58 @@ extension ProfileInputBoastRoastViewController {
   }
   
   func stylize() {
-    self.view.backgroundColor = R.color.backgroundColorBlue()
+    self.view.backgroundColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
     if let font = R.font.openSansExtraBold(size: 16) {
       self.titleLabel.font = font
     }
-    self.titleLabel.textColor = UIColor.white
-
-    guard let font = R.font.openSansExtraBold(size: 24) else {
+    self.titleLabel.textColor = UIColor(white: 0.0, alpha: 0.5)
+    
+    var size: CGFloat = 24
+    if self.view.frame.width < 325 {
+      size = 20
+    }
+    
+    guard let font = R.font.openSansExtraBold(size: size) else {
       print("Failed to find font")
       return
     }
+    guard let boastColor = R.color.boastColor(),
+      let roastColor = R.color.roastColor() else {
+        print("Failed to create roast or boast color")
+        return
+    }
     self.boastButton.setAttributedTitle(
-      NSAttributedString(string: "Boast them",
+      
+      NSAttributedString(string: "BOAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                      NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha: 0.5) ]),
+                                      NSAttributedString.Key.foregroundColor: UIColor(white: 0.15, alpha: 1.0)]),
       for: .normal)
     
     self.boastButton.setAttributedTitle(
-      NSAttributedString(string: "Boast them",
+      NSAttributedString(string: "BOAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha: 1.0) ]),
+                                      NSAttributedString.Key.foregroundColor: boastColor]),
       for: .selected)
     
     self.roastButton.setAttributedTitle(
-      NSAttributedString(string: "roast them",
+      NSAttributedString(string: "ROAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                      NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha: 0.5) ]),
+                                      NSAttributedString.Key.foregroundColor: UIColor(white: 0.15, alpha: 1.0)]),
       for: .normal)
     
     self.roastButton.setAttributedTitle(
-      NSAttributedString(string: "roast them",
+      NSAttributedString(string: "ROAST 'EM",
                          attributes: [NSAttributedString.Key.font: font,
-                                      NSAttributedString.Key.foregroundColor: UIColor(white: 1.0, alpha: 1.0) ]),
+                                      NSAttributedString.Key.foregroundColor: roastColor]),
       for: .selected)
     self.stylizeBoastRoastButtons()
     
     self.addMoreButton.layer.cornerRadius = self.addMoreButton.frame.height / 2.0
-    self.addMoreButton.setTitleColor(UIColor.black, for: .normal)
-    self.addMoreButton.backgroundColor = R.color.backgroundColorYellow()
+    self.addMoreButton.setTitleColor(UIColor.white, for: .normal)
     
     self.continueButton.layer.cornerRadius = self.continueButton.frame.height / 2.0
-    self.continueButton.setTitleColor(UIColor.white, for: .normal)
-    self.continueButton.backgroundColor = UIColor(red: 0.56, green: 0.84, blue: 1.00, alpha: 1.00)
+    self.continueButton.setTitleColor(UIColor.black, for: .normal)
+    self.continueButton.backgroundColor = UIColor(red: 0.88, green: 0.88, blue: 0.88, alpha: 1.00)
     
   }
   
@@ -200,10 +211,14 @@ extension ProfileInputBoastRoastViewController {
       self.boastButton.isSelected = true
       self.roastButton.isSelected = false
       self.subtitleLabel.text = "A “pro” of dating them!\nHype 👏 them 👏 up 👏"
+      self.addMoreButton.backgroundColor = R.color.boastColor()
+      self.addMoreButton.setTitle("Add Boast", for: .normal)
     case .roast:
       self.boastButton.isSelected = false
       self.roastButton.isSelected = true
       self.subtitleLabel.text = "Something people should know;\nnobody’s perfect ;P"
+      self.addMoreButton.backgroundColor = R.color.roastColor()
+      self.addMoreButton.setTitle("Add Roast", for: .normal)
     }
   }
   
@@ -266,7 +281,46 @@ extension ProfileInputBoastRoastViewController {
 
 // MARK: - UIScrollViewDelegate
 extension ProfileInputBoastRoastViewController: UIScrollViewDelegate {
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+  
+  func promptMessageComposer() {
+    guard let messageVC = self.getMessageComposer(profileData: self.profileData) else {
+      print("Could not create Message VC")
+      Analytics.logEvent("CP_sendProfileSMS_FAIL", parameters: nil)
+      self.createDetachedProfile(profileData: self.profileData,
+                                 completion: self.createDetachedProfileCompletion(result:))
+      return
+    }
+    messageVC.messageComposeDelegate = self
+    #if DEVMODE
+//    self.createDetachedProfile(profileData: self.profileData,
+//                               completion: self.createDetachedProfileCompletion(result:))
+//    return
+    #endif
+    
+    self.continueButton.isEnabled = false
+    self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                     type: NVActivityIndicatorType.lineScalePulseOut,
+                                                     color: StylingConfig.textFontColor,
+                                                     padding: 0)
+    self.view.addSubview(activityIndicator)
+    activityIndicator.center = CGPoint(x: self.view.center.x,
+                                       y: self.continueButton.frame.origin.y - 40)
+    activityIndicator.startAnimating()
+    self.present(messageVC, animated: true, completion: nil)
+    Analytics.logEvent("CP_sendProfileSMS_START", parameters: nil)
+  }
+  
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    self.scrollViewDidEndScrolling()
+  }
+  
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    if !decelerate {
+      self.scrollViewDidEndScrolling()
+    }
+  }
+  
+  func scrollViewDidEndScrolling() {
     let pageIndex: Int = Int(floor(scrollView.contentOffset.x / scrollView.frame.width))
     if pageIndex == 0 {
       self.mode = .boast
@@ -274,5 +328,73 @@ extension ProfileInputBoastRoastViewController: UIScrollViewDelegate {
       self.mode = .roast
     }
     self.stylizeBoastRoastButtons()
+  }
+}
+
+// MARK: - PromptSMSProtocol
+extension ProfileInputBoastRoastViewController: PromptSMSProtocol {
+  
+}
+
+// MARK: - MFMessageComposeViewControllerDelegate
+extension ProfileInputBoastRoastViewController: MFMessageComposeViewControllerDelegate {
+  
+  func createDetachedProfileCompletion(result: Result<PearDetachedProfile, (errorTitle: String, errorMessage: String)?>) {
+    switch result {
+    case .success:
+      DispatchQueue.main.async {
+        guard let profileFinishedVC = ProfileCreationFinishedViewController.instantiate() else {
+          print("Failed to create Profile Finished VC")
+          return
+        }
+        self.navigationController?.setViewControllers([profileFinishedVC], animated: true)
+      }
+    case .failure(let error):
+      if let error = error {
+        DispatchQueue.main.async {
+          self.alert(title: error.errorTitle, message: error.errorMessage)
+        }
+      }
+    }
+    DispatchQueue.main.async {
+      self.activityIndicator.stopAnimating()
+      self.continueButton.isEnabled = true
+    }
+  }
+  
+  func continueToSMSCanceledPage() {
+    DispatchQueue.main.async {
+      guard let smsCancledVC = self.getSMSCanceledVC(profileData: self.profileData) else {
+        print("Failed to create SMS Cancelled VC")
+        return
+      }
+      self.navigationController?.pushViewController(smsCancledVC, animated: true)
+    }
+  }
+  
+  func dismissMessageVC(controller: MFMessageComposeViewController) {
+    controller.dismiss(animated: true) {
+      DispatchQueue.main.async {
+        self.continueButton.isEnabled = true
+        self.activityIndicator.stopAnimating()
+      }
+    }
+  }
+  
+  func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+    switch result {
+    case .cancelled, .failed:
+      self.dismissMessageVC(controller: controller)
+      self.continueToSMSCanceledPage()
+    case .sent:
+      controller.dismiss(animated: true) {
+        DispatchQueue.main.async {
+          self.createDetachedProfile(profileData: self.profileData,
+                                     completion: self.createDetachedProfileCompletion(result:))
+        }
+      }
+    @unknown default:
+      fatalError()
+    }
   }
 }

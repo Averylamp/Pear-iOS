@@ -11,16 +11,19 @@ import UIKit
 
 extension UIButton {
   
-  func stylizeDark() {
-    self.backgroundColor = R.color.brandPrimaryLight()!
-    self.layer.shadowColor = R.color.shadowColor()!.cgColor
+  func addButtonShadow() {
     self.layer.shadowOpacity = 1
     self.layer.shadowRadius = 1
     self.layer.shadowOffset = CGSize(width: 0, height: 1)
+    self.layer.shadowColor = R.color.shadowColor()!.cgColor
+  }
+  
+  func stylizeDark() {
+    self.addButtonShadow()
+    self.backgroundColor = R.color.brandPrimaryLight()!
     self.layer.cornerRadius = self.frame.height / 2.0
     self.layer.borderWidth = 2
     self.layer.borderColor = R.color.brandPrimaryDark()!.cgColor
-    
     self.setTitleColor(UIColor.white, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
   }

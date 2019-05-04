@@ -72,14 +72,28 @@ class ProfileInputQuestionViewController: UIViewController {
         self.continueToRoastBoast()
         return
       }
+      Analytics.logEvent("CP_Qs_EV_answeredQ", parameters: nil)
+      self.goToNextQuestion(nextQuestion: nextQuestion)
+    }
+  }
+  
+  func goToNextQuestion(nextQuestion: QuestionItem ) {
+    if nextQuestion.questionType == .multipleChoice || nextQuestion.questionType == .multipleChoiceWithOther {
       guard let nextQuestionVC = ProfileInputQuestionViewController.instantiate(profileCreationData: self.profileData,
                                                                                 question: nextQuestion) else {
                                                                                   print("Failed to create question VC")
                                                                                   return
       }
       self.navigationController?.pushViewController(nextQuestionVC, animated: true)
-      Analytics.logEvent("CP_Qs_EV_answeredQ", parameters: nil)
+    } else {
+      guard let nextQuestionVC = ProfileInputFreeResponseViewController.instantiate(profileCreationData: self.profileData,
+                                                                                    question: nextQuestion) else {
+                                                                                      print("Failed to create question VC")
+                                                                                      return
+      }
+      self.navigationController?.pushViewController(nextQuestionVC, animated: true)
     }
+    
   }
   
   @IBAction func skipButtonClicked(_ sender: Any) {
@@ -89,14 +103,8 @@ class ProfileInputQuestionViewController: UIViewController {
       self.continueToRoastBoast()
       return
     }
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let nextQuestionVC = ProfileInputQuestionViewController.instantiate(profileCreationData: self.profileData,
-                                                                              question: nextQuestion) else {
-                                                                                print("Failed to create question VC")
-                                                                                return
-    }
-    self.navigationController?.pushViewController(nextQuestionVC, animated: true)
     Analytics.logEvent("CP_Qs_EV_skippedQ", parameters: nil)
+    self.goToNextQuestion(nextQuestion: nextQuestion)
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
@@ -119,11 +127,7 @@ class ProfileInputQuestionViewController: UIViewController {
     let alertAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
     let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
       DispatchQueue.main.async {
-        guard let createProfileVC = LoadingScreenViewController.getProfileCreationVC() else {
-          print("Failure instantiating  create profile VC")
-          return
-        }
-        self.navigationController?.setViewControllers([createProfileVC], animated: true)
+        self.navigationController?.popToRootViewController(animated: true)        
       }
     }
     alertController.addAction(alertAction)
@@ -156,7 +160,7 @@ extension ProfileInputQuestionViewController {
       self.titleLabel.font = font
     }
     self.titleLabel.textColor = UIColor.white
-    self.nextButton.layer.cornerRadius = self.nextButton.frame.width / 2.0
+    self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
     self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)"
     self.questionCountImageView.contentMode = .scaleAspectFill
     self.questionCountImageView.image = self.checkImages[(self.profileData.questionResponses.count + self.profileData.skipCount)
