@@ -19,10 +19,12 @@ class FriendFullProfileViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(fullProfileData: FullProfileDisplayData!) -> FriendFullProfileViewController? {
-    let storyboard = UIStoryboard(name: String(describing: FriendFullProfileViewController.self), bundle: nil)
-    guard let doDontVC = storyboard.instantiateInitialViewController() as? FriendFullProfileViewController else { return nil }
-    doDontVC.fullProfileData = fullProfileData
-    return doDontVC
+    guard let friendFullProfileVC = R.storyboard.friendFullProfileViewController()
+      .instantiateInitialViewController() as? FriendFullProfileViewController else {
+        return nil
+    }
+    friendFullProfileVC.fullProfileData = fullProfileData
+    return friendFullProfileVC
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -31,27 +33,30 @@ class FriendFullProfileViewController: UIViewController {
   
   @IBAction func editProfileButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-//    let detachedProfile = fullProfileData.originObject as? PearDetachedProfile
-//    var userProfile: PearUser?
-//    guard let userID = DataStore.shared.currentPearUser?.documentID else {
-//      print("Failed to get current user")
-//      return
-//    }
-//
-//    if let matchingUser = fullProfileData.originObject as? PearUser {
-//      for matchingUserProfile in matchingUser.userProfiles where matchingUserProfile.creatorUserID == userID {
-//        userProfile = matchingUserProfile
-//        break
-//      }
-//    }
-//
-//    guard let editFriendProfileVC = FriendEditProfileViewController.instantiate(detachedProfile: detachedProfile,
-//                                                                                userProfile: userProfile,
-//                                                                                firstName: fullProfileData.firstName) else {
-//                                                                                  print("Failed to create edit friend VC")
-//                                                                                  return
-//    }
-//    self.navigationController?.pushViewController(editFriendProfileVC, animated: true)
+    var editProfileObject: UpdateProfileData?
+    if let detachedProfile = fullProfileData.originObject as? PearDetachedProfile {
+      do {
+        editProfileObject = try UpdateProfileData(detachedProfile: detachedProfile)
+      } catch {
+        print("Unable to create Update Profile Data Object")
+      }
+    } else if let pearUser = fullProfileData.originObject as? PearUser {
+      do {
+        editProfileObject = try UpdateProfileData(pearUser: pearUser)
+      } catch {
+        print("Unable to create Update Profile Data Object")
+      }
+    }
+    guard let editProfileData = editProfileObject else {
+      print("Failed update profile data creation")
+      return
+    }
+    guard let editFriendProfileVC = FriendEditProfileViewController.instantiate(updateProfileData: editProfileData,
+                                                                                firstName: self.fullProfileData.firstName ?? "") else {
+                                                                                  print("Failed to create edit friend profile VC")
+                                                                                  return
+    }
+    self.navigationController?.pushViewController(editFriendProfileVC, animated: true)
   }
   
 }
