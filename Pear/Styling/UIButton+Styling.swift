@@ -124,10 +124,10 @@ extension UIButton {
   }
   
   func stylizeEditAddSection() {
-    if let font = R.font.nunitoBold(size: 17) {
+    if let font = R.font.openSansBold(size: 17) {
       self.titleLabel?.font = font
     }
-    self.setTitleColor(R.color.brandPrimaryDark(), for: .normal)
+    self.setTitleColor(UIColor(red: 0.13, green: 0.59, blue: 0.95, alpha: 1.00), for: .normal)
   }
   
 }

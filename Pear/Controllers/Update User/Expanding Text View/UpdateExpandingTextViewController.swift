@@ -22,10 +22,10 @@ enum ExpandingTextViewControllerType: String {
 class UpdateExpandingTextViewController: UpdateUIViewController {
   
   var initialText: String!
+  var placeholderText: String?
   
   @IBOutlet weak var deleteButton: UIButton!
   @IBOutlet weak var expandingTextView: UITextView!
-  
   @IBOutlet weak var expandingTextContainerView: UIView!
   @IBOutlet weak var expandingTextViewHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var deleteButtonWidthConstraint: NSLayoutConstraint!
@@ -39,19 +39,13 @@ class UpdateExpandingTextViewController: UpdateUIViewController {
   var maxHeight: CGFloat?
   var minTextViewSize: CGFloat = 32
   var animationDuration: Double = 0.3
+  var placeholderColor: UIColor = UIColor(red: 0.27, green: 0.29, blue: 0.33, alpha: 1.00).withAlphaComponent(0.5)
+  var textColor: UIColor = R.color.primaryTextColor()!
   
-  class func instantiate(initialText: String,
-                         type: ExpandingTextViewControllerType,
-                         fixedHeight: CGFloat? = nil,
-                         allowDeleteButton: Bool = false,
-                         maxHeight: CGFloat? = nil) -> UpdateExpandingTextViewController? {
+  class func instantiate(initialText: String = "") -> UpdateExpandingTextViewController? {
     let storyboard = UIStoryboard(name: String(describing: UpdateExpandingTextViewController.self), bundle: nil)
     guard let expandingTextVC = storyboard.instantiateInitialViewController() as? UpdateExpandingTextViewController else { return nil }
     expandingTextVC.initialText = initialText
-    expandingTextVC.fixedHeight = fixedHeight
-    expandingTextVC.allowDelete = allowDeleteButton
-    expandingTextVC.type = type
-    expandingTextVC.maxHeight = maxHeight
     return expandingTextVC
   }
   
@@ -63,6 +57,11 @@ class UpdateExpandingTextViewController: UpdateUIViewController {
     if let expandingTVDelegate = self.delegate {
       expandingTVDelegate.deleteButtonPressed(controller: self)
     }
+  }
+  
+  func setPlaceholderText(placeholderText: String) {
+    self.placeholderText = placeholderText
+    self.updatePlaceholder()
   }
   
 }
@@ -104,9 +103,7 @@ extension UpdateExpandingTextViewController {
     self.expandingTextContainerView.layer.cornerRadius = 8
     self.expandingTextView.text = self.initialText
     self.expandingTextView.stylizeEditTextLabel()
-    if let primaryTextColor = R.color.primaryTextColor() {
-      self.expandingTextView.tintColor = primaryTextColor
-    }
+    self.expandingTextView.tintColor = self.textColor
   }
   
 }
@@ -119,7 +116,7 @@ extension UpdateExpandingTextViewController: UITextViewDelegate {
       self.view.layoutIfNeeded()
       let textHeight = self.expandingTextView.sizeThatFits(CGSize(width: self.expandingTextView.frame.width,
                                                                   height: CGFloat.greatestFiniteMagnitude)).height
-      viewHeightConstraint.constant = max(minTextViewSize, textHeight)
+      viewHeightConstraint.constant = max(self.minTextViewSize, textHeight)
       if let maxHeight = self.maxHeight, maxHeight < viewHeightConstraint.constant {
         self.expandingTextView.isScrollEnabled = true
         viewHeightConstraint.constant = maxHeight
@@ -138,6 +135,29 @@ extension UpdateExpandingTextViewController: UITextViewDelegate {
   
   func textViewDidChange(_ textView: UITextView) {
     self.recalculateTextViewHeight()
+  }
+  
+  func textViewDidEndEditing(_ textView: UITextView) {
+    self.updatePlaceholder()
+  }
+  
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    self.updatePlaceholder(removePlaceholder: true)
+  }
+  
+  func updatePlaceholder(removePlaceholder: Bool = false) {
+    if let placeholder = self.placeholderText {
+      if self.expandingTextView.text == "" || self.expandingTextView.text == placeholder {
+        self.expandingTextView.textColor = self.placeholderColor
+        self.expandingTextView.text = placeholder
+      } else {
+        self.expandingTextView.textColor = self.textColor
+      }
+      if removePlaceholder {
+        self.expandingTextView.textColor = self.textColor
+        self.expandingTextView.text = ""
+      }
+    }
   }
   
 }

@@ -21,7 +21,8 @@ enum TextContentItemKey: String, CodingKey {
   case hidden
 }
 
-class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput, Equatable, CustomStringConvertible {
+class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput, Equatable, CustomStringConvertible, NSCopying {
+  
   var description: String {
     return "Content Item:  \(self.content)"
   }
@@ -76,6 +77,14 @@ class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLI
            lhs.authorFirstName == rhs.authorFirstName &&
            lhs.content == rhs.content &&
            lhs.hidden == rhs.hidden
+  }
+  
+  func copy(with zone: NSZone? = nil) -> Any {
+    let item = TextContentItem(content: self.content, hidden: self.hidden)
+    item.documentID = self.documentID
+    item.authorID = self.authorID
+    item.authorFirstName = self.authorFirstName
+    return item
   }
   
 }

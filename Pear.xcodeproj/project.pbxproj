@@ -1567,6 +1567,8 @@
 			children = (
 				BB9CB69A2259E13300605A98 /* UpdateExpandingTextViewController.swift */,
 				BB9CB69C2259E14100605A98 /* UpdateExpandingTextViewController.storyboard */,
+				BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */,
+				BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */,
 			);
 			path = "Expanding Text View";
 			sourceTree = "<group>";
@@ -2150,8 +2152,6 @@
 			children = (
 				BBF93E592267C9F3002841EE /* ProfileInputBoastRoastViewController.swift */,
 				BBF93E672267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard */,
-				BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */,
-				BBC0FF1A22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard */,
 				BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */,
 				BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */,
 			);
