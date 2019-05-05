@@ -165,6 +165,11 @@ extension UserPhoneCodeViewController {
               switch result {
               case .success(let pearUser):
                 Analytics.logEvent(AnalyticsEventSignUp, parameters: [ AnalyticsParameterMethod: "phone" ])
+                if let mondayDate = Calendar(identifier: .iso8601).date(from: Calendar(identifier: .iso8601).dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date())) {
+                  let dateFormatter = DateFormatter()
+                  dateFormatter.dateFormat = "yy-MM-dd"
+                  Analytics.setUserProperty(dateFormatter.string(from: mondayDate), forName: "signup_week")
+                }
                 DispatchQueue.main.async {
                   DataStore.shared.currentPearUser = pearUser
                   DataStore.shared.reloadAllUserData()

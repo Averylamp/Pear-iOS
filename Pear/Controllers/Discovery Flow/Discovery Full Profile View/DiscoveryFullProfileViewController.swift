@@ -649,7 +649,7 @@ extension DiscoveryFullProfileViewController {
     centerYConstraint.constant = 0.0
     Analytics.logEvent("tapped_send_personal_request", parameters: nil)
     Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-      AnalyticsParameterItemID: self.fullProfileData.userID ?? "",
+      AnalyticsParameterItemID: self.fullProfileData.userID ?? "unknownID",
       AnalyticsParameterContentType: "profile",
       AnalyticsParameterMethod: "personal_request",
       "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "" ])
@@ -706,10 +706,10 @@ extension DiscoveryFullProfileViewController {
     centerYConstraint.constant = 0.0
     Analytics.logEvent("tapped_send_matchmaker_request", parameters: nil)
     Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-      AnalyticsParameterItemID: self.fullProfileData.userID ?? "",
+      AnalyticsParameterItemID: self.fullProfileData.userID ?? "unknownID",
       AnalyticsParameterContentType: "profile",
       AnalyticsParameterMethod: "matchmaker_request",
-      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "" ])
+      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown" ])
     UIView.animate(withDuration: self.requestAnimationTime,
                    delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
                    animations: {
