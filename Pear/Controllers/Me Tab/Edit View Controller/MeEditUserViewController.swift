@@ -365,23 +365,6 @@ extension MeEditUserViewController {
     textFieldVC.didMove(toParent: self)
   }
   
-  func addSingleField(title: String, initialText: String = "") {
-    self.addTitleSection(title: title)
-    guard let expandingTextVC = UpdateExpandingTextViewController
-      .instantiate(initialText: initialText,
-                   type: .bio,
-                   fixedHeight: nil,
-                   allowDeleteButton: true,
-                   maxHeight: nil) else {
-                    print("Failed to create expanding text vc")
-                    return
-    }
-    self.addChild(expandingTextVC)
-    self.stackView.addArrangedSubview(expandingTextVC.view)
-    expandingTextVC.didMove(toParent: self)
-    
-  }
-  
   func addUserPreferences() {
     guard let currentUser = DataStore.shared.currentPearUser else {
       print("Failed to fetch user")
