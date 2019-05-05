@@ -164,7 +164,7 @@ extension UserPhoneCodeViewController {
             PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
               switch result {
               case .success(let pearUser):
-                Analytics.logEvent(AnalyticsEventSignUp, parameters: [ AnalyticsParameterSignUpMethod: "phone" ])
+                Analytics.logEvent(AnalyticsEventSignUp, parameters: [ AnalyticsParameterMethod: "phone" ])
                 DispatchQueue.main.async {
                   DataStore.shared.currentPearUser = pearUser
                   DataStore.shared.reloadAllUserData()
