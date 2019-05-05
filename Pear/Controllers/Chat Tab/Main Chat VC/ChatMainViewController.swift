@@ -88,14 +88,18 @@ extension ChatMainViewController {
       print("Updating currentMatchesTVC with :\(DataStore.shared.currentMatches.count) matches")
       matchesVC.updateMatches(matches: DataStore.shared.currentMatches)
       DataStore.shared.currentMatches.compactMap({$0.chat}).forEach({
-        if let lastMessageTimestamp = $0.messages.last?.timestamp, $0.lastActivity.compare(lastMessageTimestamp) == .orderedAscending {
+        if let lastMessageTimestamp = $0.messages.last?.timestamp, $0.lastActivity.compare(lastMessageTimestamp) == .orderedDescending {
           iconNumber += 1
         }
       })
     }
-//    DispatchQueue.main.async {
-//      UIApplication.shared.applicationIconBadgeNumber = iconNumber
-//    }
+    DispatchQueue.main.async {
+      if iconNumber > 0 {
+        self.tabBarItem.badgeValue = "\(iconNumber)"
+      } else {
+        self.tabBarItem.badgeValue = nil
+      }
+    }
   }
   
   func refreshMatchesObjects() {
