@@ -140,6 +140,7 @@ extension UserPhoneCodeViewController {
           if let user = user {
             print("Continuing to Main Screen")
             DispatchQueue.main.async {
+              Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
               DataStore.shared.reloadAllUserData()
               if user.endorsedUserIDs.count + user.detachedProfileIDs.count  == 0 {
                 DispatchQueue.main.async {
@@ -163,6 +164,12 @@ extension UserPhoneCodeViewController {
             PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
               switch result {
               case .success(let pearUser):
+                Analytics.logEvent(AnalyticsEventSignUp, parameters: [ AnalyticsParameterMethod: "phone" ])
+                if let mondayDate = Calendar(identifier: .iso8601).date(from: Calendar(identifier: .iso8601).dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date())) {
+                  let dateFormatter = DateFormatter()
+                  dateFormatter.dateFormat = "yy-MM-dd"
+                  Analytics.setUserProperty(dateFormatter.string(from: mondayDate), forName: "signup_week")
+                }
                 DispatchQueue.main.async {
                   DataStore.shared.currentPearUser = pearUser
                   DataStore.shared.reloadAllUserData()
