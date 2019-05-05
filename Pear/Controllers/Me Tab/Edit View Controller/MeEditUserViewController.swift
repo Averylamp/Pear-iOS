@@ -154,6 +154,13 @@ extension MeEditUserViewController {
     if isUpdating {
       return
     }
+    if let images = self.photoUpdateVC?.images, images.count != images.compactMap({ $0.imageContainer }).count {
+      self.delay(delay: 0.5) {
+        self.saveChanges(completion: completion)
+        return
+      }
+      return
+    }
     self.isUpdating = true
     let userUpdates = self.getUserUpdates()
     let photoUpdates = self.getPhotoUpdates()
