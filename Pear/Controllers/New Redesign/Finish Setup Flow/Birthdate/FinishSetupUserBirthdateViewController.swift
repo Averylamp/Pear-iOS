@@ -38,6 +38,7 @@ class FinishSetupUserBirthdateViewController: UIViewController {
       }
       self.nextButton.isEnabled = false
       self.nextButton.alpha = 0.3
+      Analytics.setUserProperty("\(age)", forName: "age")
       PearUserAPI.shared.updateUserBirthdateAge(userID: userID, age: age, birthdate: birthdate) { (result) in
         switch result {
         case .success(let successful):
