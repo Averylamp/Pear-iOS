@@ -651,7 +651,8 @@ extension DiscoveryFullProfileViewController {
     Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
       AnalyticsParameterItemID: self.fullProfileData.userID ?? "",
       AnalyticsParameterContentType: "profile",
-      AnalyticsParameterMethod: "personal_request" ])
+      AnalyticsParameterMethod: "personal_request",
+      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "" ])
     UIView.animate(withDuration: self.requestAnimationTime,
                    delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
                    animations: {
@@ -707,7 +708,8 @@ extension DiscoveryFullProfileViewController {
     Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
       AnalyticsParameterItemID: self.fullProfileData.userID ?? "",
       AnalyticsParameterContentType: "profile",
-      AnalyticsParameterMethod: "matchmaker_request" ])
+      AnalyticsParameterMethod: "matchmaker_request",
+      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "" ])
     UIView.animate(withDuration: self.requestAnimationTime,
                    delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
                    animations: {
