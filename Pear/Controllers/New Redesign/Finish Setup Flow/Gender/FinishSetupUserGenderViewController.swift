@@ -74,6 +74,7 @@ class FinishSetupUserGenderViewController: UIViewController {
     self.femaleButton.alpha = 0.3
     self.nonbinaryButton.alpha = 0.3
     if let gender = self.gender {
+      Analytics.setUserProperty(gender.rawValue, forName: "gender")
       PearUserAPI.shared.updateUserGender(userID: userID, gender: gender) { (result) in
                                             switch result {
                                             case .success(let successful):
