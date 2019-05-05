@@ -984,8 +984,8 @@
 		917F20C7227170310023EC69 /* Gender */ = {
 			isa = PBXGroup;
 			children = (
-				917F20C02271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard */,
 				917F20C12271701C0023EC69 /* FinishSetupUserGenderViewController.swift */,
+				917F20C02271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard */,
 			);
 			path = Gender;
 			sourceTree = "<group>";
