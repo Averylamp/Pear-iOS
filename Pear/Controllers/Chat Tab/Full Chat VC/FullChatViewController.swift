@@ -175,6 +175,13 @@ extension FullChatViewController {
                                                       self.match = match
                                                       self.chat = match.chat!
                                                       if match.otherUserStatus == .accepted && match.currentUserStatus == .accepted {
+                                                        let isMatchmakerMade = match.sentByUser === match.sentForUser
+                                                        let matchmakerGender = match.sentByUser.gender?.toString() ?? ""
+                                                        Analytics.logEvent("new_chat_started", parameters: [
+                                                          "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "",
+                                                          "isMatchmakerMade": isMatchmakerMade,
+                                                          "matchmakerGender": isMatchmakerMade ? matchmakerGender : ""
+                                                        ])
                                                         DispatchQueue.main.async {
                                                           HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                                                           self.chat.delegate = self
