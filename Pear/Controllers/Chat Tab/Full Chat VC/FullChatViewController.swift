@@ -144,13 +144,15 @@ extension FullChatViewController {
   }
   
   @objc func acceptRequestButtonClicked() {
-    Analytics.logEvent("CHAT_request_TAP_acceptButton", parameters: nil)
+    Analytics.logEvent("accepted_match_request", parameters: [
+      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "" ])
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
   }
   
   @objc func declineRequestButtonClicked() {
-    Analytics.logEvent("CHAT_request_TAP_declineButton", parameters: nil)
+    Analytics.logEvent("declined_match_request", parameters: [
+      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "" ])
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
   }
