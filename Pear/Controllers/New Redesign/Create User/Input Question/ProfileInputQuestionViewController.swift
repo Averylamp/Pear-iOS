@@ -108,8 +108,7 @@ class ProfileInputQuestionViewController: UIViewController {
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CP_Qs_TAP_continueToRoastBoast", parameters: nil)
-    self.continueToRoastBoast()
+    self.continueToNextQuestion()
   }
   
   func continueToRoastBoast() {
@@ -161,7 +160,7 @@ extension ProfileInputQuestionViewController {
     }
     self.titleLabel.textColor = UIColor.white
     self.nextButton.layer.cornerRadius = self.nextButton.frame.height / 2.0
-    self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)"
+    self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)/7"
     self.questionCountImageView.contentMode = .scaleAspectFill
     self.questionCountImageView.image = self.checkImages[(self.profileData.questionResponses.count + self.profileData.skipCount)
       % checkImages.count]
@@ -172,10 +171,8 @@ extension ProfileInputQuestionViewController {
       }, completion: nil)
     }
     
-    if self.profileData.questionResponses.count == 0 {
-      self.continueContainerView.alpha = 0.0
-      self.continueContainerView.isUserInteractionEnabled = false
-    }
+    self.continueContainerView.alpha = 0.0
+    self.continueContainerView.isUserInteractionEnabled = false
     
     self.nextButtonShadowView.layer.cornerRadius = self.nextButton.frame.width / 2.0
     self.nextButtonShadowView.layer.shadowOpacity = 0.2
