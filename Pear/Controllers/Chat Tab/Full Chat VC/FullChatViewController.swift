@@ -144,14 +144,14 @@ extension FullChatViewController {
   }
   
   @objc func acceptRequestButtonClicked() {
-    Analytics.logEvent("accepted_match_request", parameters: [
-      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown" ])
+    Analytics.logEvent("accept_match_request", parameters: [
+      "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown" ])
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
   }
   
   @objc func declineRequestButtonClicked() {
-    Analytics.logEvent("declined_match_request", parameters: [
+    Analytics.logEvent("decline_match_request", parameters: [
       "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown" ])
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
@@ -177,8 +177,8 @@ extension FullChatViewController {
                                                       if match.otherUserStatus == .accepted && match.currentUserStatus == .accepted {
                                                         let isMatchmakerMade = match.sentByUser.documentID == match.sentForUser.documentID
                                                         let matchmakerGender = match.sentByUser.gender?.toString() ?? "unknown"
-                                                        Analytics.logEvent("new_chat_started", parameters: [
-                                                          "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown",
+                                                        Analytics.logEvent("new_chat_start", parameters: [
+                                                          "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown",
                                                           "isMatchmakerMade": isMatchmakerMade,
                                                           "matchmakerGender": isMatchmakerMade ? matchmakerGender : ""
                                                         ])
