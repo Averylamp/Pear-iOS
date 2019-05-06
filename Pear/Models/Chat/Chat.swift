@@ -226,9 +226,9 @@ extension Chat {
   }
   
   func sendMessage(text: String, completion: ((Error?) -> Void)?) {
-    Analytics.logEvent("sent_message", parameters: [
+    Analytics.logEvent("send_message", parameters: [
       "messageCount": self.messages.count,
-      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown"
+      "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown"
     ])
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       print("Pear user not found:")
