@@ -17,7 +17,13 @@ enum UpdateProfileType {
   case userProfile
 }
 
-class UpdateProfileData {
+enum UpdateProfileKeys: String {
+  case boasts
+  case roasts
+  case bio
+}
+
+class UpdateProfileData: GraphQLInput {
   
   var documentID: String
   let initialBio: BioItem?
@@ -50,12 +56,12 @@ class UpdateProfileData {
     }
     self.documentID = pearUser.documentID
     let filteredBios = pearUser.bios.filter({ $0.authorID == userID })
-    self.initialBio = filteredBios.first
-    self.updatedBio = filteredBios.first
-    self.initialRoasts = pearUser.roasts.filter({ $0.authorID == userID })
-    self.updatedRoasts = pearUser.roasts.filter({ $0.authorID == userID })
-    self.initialBoasts = pearUser.boasts.filter({ $0.authorID == userID })
-    self.updatedBoasts = pearUser.boasts.filter({ $0.authorID == userID })
+    self.initialBio = filteredBios.first?.copy() as? BioItem
+    self.updatedBio = filteredBios.first?.copy() as? BioItem
+    self.initialRoasts = pearUser.roasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? RoastItem})
+    self.updatedRoasts = pearUser.roasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? RoastItem})
+    self.initialBoasts = pearUser.boasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? BoastItem})
+    self.updatedBoasts = pearUser.boasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? BoastItem})
     self.updateProfileType = .userProfile
   }
   
@@ -65,12 +71,12 @@ class UpdateProfileData {
       throw UpdateProfileError.userNotLoggedIn
     }
     self.documentID = detachedProfile.documentID
-    self.initialBio = detachedProfile.bio
-    self.updatedBio = detachedProfile.bio
-    self.initialRoasts = detachedProfile.roasts.filter({ $0.authorID == userID })
-    self.updatedRoasts = detachedProfile.roasts.filter({ $0.authorID == userID })
-    self.initialBoasts = detachedProfile.boasts.filter({ $0.authorID == userID })
-    self.updatedBoasts = detachedProfile.boasts.filter({ $0.authorID == userID })
+    self.initialBio = detachedProfile.bio?.copy() as? BioItem
+    self.updatedBio = detachedProfile.bio?.copy() as? BioItem
+    self.initialRoasts = detachedProfile.roasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? RoastItem})
+    self.updatedRoasts = detachedProfile.roasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? RoastItem})
+    self.initialBoasts = detachedProfile.boasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? BoastItem})
+    self.updatedBoasts = detachedProfile.boasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? BoastItem})
     self.updateProfileType = .detachedProfile
   }
   
@@ -96,6 +102,50 @@ class UpdateProfileData {
     }
     
     return false
+  }
+  
+  func saveChanges(completion: @escaping ((_ success: Bool) -> Void)) {
+    switch self.updateProfileType {
+    case .detachedProfile:
+      var updates = self.toGraphQLInput()
+      updates["_id"] = self.documentID
+      updates["creatorUser_id"] = DataStore.shared.currentPearUser?.documentID ?? ""
+      PearProfileAPI.shared.updateDetachedProfile(updates: updates) { (result) in
+        switch result {
+        case .success(let success):
+          print("Update Succeeded")
+          completion(success)
+        case .failure(let error):
+          print("Update Failed: \(error)")
+          completion(false)
+        }
+      }
+    case .userProfile:
+      var updates = self.toGraphQLInput()
+      updates["endorser_id"] = DataStore.shared.currentPearUser?.documentID ?? ""
+      updates["user_id"] = self.documentID
+      PearProfileAPI.shared.updateEndorsedProfile(updates: updates) { (result) in
+        switch result {
+        case .success(let success):
+          print("Update Succeeded")
+          completion(success)
+        case .failure(let error):
+          print("Update Failed: \(error)")
+          completion(false)
+        }
+      }
+    }
+  }
+  
+  func toGraphQLInput() -> [String: Any] {
+    var input: [String: Any] = [
+      UpdateProfileKeys.boasts.rawValue: self.updatedBoasts.map({ $0.toGraphQLInput() }),
+      UpdateProfileKeys.roasts.rawValue: self.updatedRoasts.map({ $0.toGraphQLInput() })
+    ]
+    if let bio = updatedBio {
+      input[UpdateProfileKeys.bio.rawValue] = bio.toGraphQLInput()
+    }
+    return input
   }
   
 }

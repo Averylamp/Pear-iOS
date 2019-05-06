@@ -100,7 +100,6 @@ extension ScrollableTextItemViewController {
       print("Added text item \(count), \(item.content)")
       self.view.layoutIfNeeded()
       self.intrinsicContentHeights.append(createdVC.intrinsicHeight())
-      print("Intrinsic Height: \(createdVC.intrinsicHeight())")
     }
     self.pageControl.numberOfPages = count
     if let firstIntrinsicHeight = self.intrinsicContentHeights.first {

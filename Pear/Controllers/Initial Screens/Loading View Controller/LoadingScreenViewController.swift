@@ -300,42 +300,42 @@ extension LoadingScreenViewController {
                                               }
     }
   }
-  
-  func testUserProfileUpdates() {
-    PearProfileAPI.shared.editUserProfile(profileDocumentID: "5ca7e1bea4b35e29efff5258",
-                                          userID: "5c82162afec46c84e924a337",
-                                          updates: ["bio": "Heres a new bio for you"]) { (result) in
-                                            switch result {
-                                            case .success(let successful):
-                                              if successful {
-                                                print("Successfully updated user profile")
-                                              } else {
-                                                print("Failure updating user profile")
-                                              }
-                                            case .failure(let error):
-                                              print("Failure updating user profile: \(error)")
-                                            }
-    }
-    
-  }
-  
-  func testDetachedProfileUpdates() {
-    PearProfileAPI.shared.editDetachedProfile(profileDocumentID: "5c82162afec46c84e9241117",
-                                              userID: "5c82162afec46c84e924a334",
-                                              updates: ["bio": "Heres a new bio for you"]) { (result) in
-                                                switch result {
-                                                case .success(let successful):
-                                                  if successful {
-                                                    print("Successfully updated detached user profile")
-                                                  } else {
-                                                    print("Failure updating detached user profile")
-                                                  }
-                                                case .failure(let error):
-                                                  print("Failure updating detached user profile: \(error)")
-                                                }
-    }
-    
-  }
+//  
+//  func testUserProfileUpdates() {
+//    PearProfileAPI.shared.editUserProfile(profileDocumentID: "5ca7e1bea4b35e29efff5258",
+//                                          userID: "5c82162afec46c84e924a337",
+//                                          updates: ["bio": "Heres a new bio for you"]) { (result) in
+//                                            switch result {
+//                                            case .success(let successful):
+//                                              if successful {
+//                                                print("Successfully updated user profile")
+//                                              } else {
+//                                                print("Failure updating user profile")
+//                                              }
+//                                            case .failure(let error):
+//                                              print("Failure updating user profile: \(error)")
+//                                            }
+//    }
+//    
+//  }
+//  
+//  func testDetachedProfileUpdates() {
+//    PearProfileAPI.shared.editDetachedProfile(profileDocumentID: "5c82162afec46c84e9241117",
+//                                              userID: "5c82162afec46c84e924a334",
+//                                              updates: ["bio": "Heres a new bio for you"]) { (result) in
+//                                                switch result {
+//                                                case .success(let successful):
+//                                                  if successful {
+//                                                    print("Successfully updated detached user profile")
+//                                                  } else {
+//                                                    print("Failure updating detached user profile")
+//                                                  }
+//                                                case .failure(let error):
+//                                                  print("Failure updating detached user profile: \(error)")
+//                                                }
+//    }
+//    
+//  }
   
   func testGetAllQuestions() {
     PearContentAPI.shared.getQuestions { (result) in

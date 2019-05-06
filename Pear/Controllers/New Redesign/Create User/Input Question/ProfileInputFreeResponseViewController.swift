@@ -105,7 +105,7 @@ class ProfileInputFreeResponseViewController: UIViewController {
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     Analytics.logEvent("CP_Qs_TAP_continueToRoastBoast", parameters: nil)
-    self.continueToRoastBoast()
+    self.continueToNextQuestion()
   }
   
   func continueToRoastBoast() {
@@ -158,7 +158,7 @@ extension ProfileInputFreeResponseViewController {
       self.titleLabel.font = font
     }
     self.titleLabel.textColor = UIColor.white
-    self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)"
+    self.questionCountLabel.text = "\(self.profileData.questionResponses.count + 1)/7"
     self.questionCountImageView.contentMode = .scaleAspectFill
     self.questionCountImageView.image = self.checkImages[(self.profileData.questionResponses.count + self.profileData.skipCount)
       % checkImages.count]

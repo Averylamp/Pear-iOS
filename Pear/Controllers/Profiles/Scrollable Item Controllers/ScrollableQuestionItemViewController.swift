@@ -70,7 +70,6 @@ extension ScrollableQuestionItemViewController {
       print("Added text item \(count), \(item.question)")
       self.view.layoutIfNeeded()
       self.intrinsicContentHeights.append(questionResponseVC.intrinsicHeight())
-      print("Intrinsic Height: \(questionResponseVC.intrinsicHeight())")
     }
     self.pageControl.numberOfPages = count
     if let firstIntrinsicHeight = self.intrinsicContentHeights.first {
