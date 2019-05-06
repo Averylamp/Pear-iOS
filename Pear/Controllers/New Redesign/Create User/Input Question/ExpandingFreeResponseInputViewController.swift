@@ -15,7 +15,7 @@ class ExpandingFreeResponseInputViewController: UIViewController {
   @IBOutlet weak var expandingTextContainerView: UIView!
   @IBOutlet weak var expandingTextViewHeightConstraint: NSLayoutConstraint!
   
-  var minTextViewSize: CGFloat = 32
+  var minTextViewSize: CGFloat = 64
   var animationDuration: Double = 0.3
   
   class func instantiate(placeholderText: String?) -> ExpandingFreeResponseInputViewController? {
