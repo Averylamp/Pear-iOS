@@ -82,8 +82,11 @@ enum ProfileCreationKey: String {
       possibleQuestions = possibleQuestions.filter({ $0.tags.contains("starter")})
     } else if answeredQuestions == 2 || answeredQuestions == 4 || answeredQuestions == 5 {
       possibleQuestions = possibleQuestions.filter({ $0.questionType == .freeResponse})
+      if possibleQuestions.count == 0 {
+        possibleQuestions = possibleQuestions.filter({ $0.questionType == .multipleChoice})
+      }
     } else {
-      possibleQuestions = possibleQuestions.filter({ $0.questionType == .multipleChoice})
+        possibleQuestions = possibleQuestions.filter({ $0.questionType == .multipleChoice})
     }
     
     if answeredQuestions == 6 {

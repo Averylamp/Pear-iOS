@@ -32,7 +32,7 @@ class PearProfileAPI: ProfileAPI {
 //  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(PearUser.graphQLMatchedUserFieldsAll) }"
   
   // swiftlint:disable:next line_length
-  static let editUserProfileQuery: String = "mutation EditUserProfile($editUserProfileInput:EditUserProfileInput!){ editUserProfile(editUserProfileInput: $editUserProfileInput){ success message}}"
+  static let editEndorsedProfileQuery: String = "mutation EditEndorsedProfile($editEndorsementInput:EditEndorsementInput!){ editEndorsement(editEndorsementInput: $editEndorsementInput){ success message}}"
   // swiftlint:disable:next line_length
   static let editDetachedProfileQuery: String = "mutation EditDetachedProfile($editDetachedProfileInput:EditDetachedProfileInput!){ editDetachedProfile(editDetachedProfileInput: $editDetachedProfileInput){ success message}}"
   
@@ -353,190 +353,56 @@ extension PearProfileAPI {
       completion(.failure(DetachedProfileError.unknownError(error: error)))
     }
   }
-    
-  func validateDetachedProfileUpdates(updates: [String: Any]) -> Bool {
-    let allowedKeys: [String] = ["firstName", "lastName", "boasts", "roasts", "questionResponses", "vibes", "bio", "dos", "donts", "interests", "images", "school", "schoolYear"]
-    var allowed = true
-    updates.forEach { (item) in
-      if !allowedKeys.contains(item.key) {
-        print(item)
-        allowed = false
-      }
-    }
-    return allowed
-  }
   
-  func validateUserProfileUpdates(updates: [String: Any]) -> Bool {
-    let allowedKeys: [String] = ["boasts", "roasts", "questionResponses", "vibes", "bio", "dos", "donts", "interests"]
-    var allowed = true
-    updates.forEach { (item) in
-      if !allowedKeys.contains(item.key) {
-        print(item)
-        allowed = false
-      }
-    }
-    return allowed
-  }
-  
-  func editUserProfile(profileDocumentID: String,
-                       userID: String,
-                       updates: [String: Any],
-                       completion: @escaping (Result<Bool, ProfileAPIError>) -> Void) {
-    return
-    /*
+  func updateDetachedProfile(updates: [String: Any], completion: @escaping(Result<Bool, ProfileAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
     request.allHTTPHeaderFields = defaultHeaders
-    
-    guard validateUserProfileUpdates(updates: updates) else {
-      print("Invalid update values")
-      SentryHelper.generateSentryEvent(level: .error,
-                                       apiName: "PearProfileAPI",
-                                       functionName: "editUserProfile",
-                                       message: "Invalid Updates",
-                                       responseData: nil,
-                                       tags: [:],
-                                       paylod: updates)
-      completion(.failure(ProfileAPIError.invalidVariables))
-      return
-    }
-    var finalUpdates = updates
-    finalUpdates["creatorUser_id"] = userID
-    finalUpdates["_id"] = profileDocumentID
-    let fullDictionary: [String: Any] = [
-      "query": PearProfileAPI.editUserProfileQuery,
-      "variables": [
-        "editUserProfileInput": finalUpdates
-      ]
-    ]
-    
-    do {
-      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
-      request.httpBody = data
-      
-      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-        if let error = error {
-          print(error as Any)
-          completion(.failure(ProfileAPIError.unknownError(error: error)))
-          return
-        } else {
-          if let data = data,
-            let json = try? JSON(data: data) {
-            print(json)
-          }
-          let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "editUserProfile")
-          switch helperResult {
-          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
-            print("Failed to Edit User Profile: \(helperResult)")
-            SentryHelper.generateSentryEvent(level: .error,
-                                             apiName: "PearProfileAPI",
-                                             functionName: "editUserProfile",
-                                             message: "GraphQL Error: \(helperResult)",
-                                             responseData: data,
-                                             tags: [:],
-                                             paylod: fullDictionary)
-            completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
-          case .failure(let message):
-            print("Failed to Approve Detached Profile: \(message ?? "")")
-            SentryHelper.generateSentryEvent(level: .error,
-                                             apiName: "PearProfileAPI",
-                                             functionName: "editUserProfile",
-                                             message: message ?? "Failed to Edit User Profile",
-                                             responseData: data,
-                                             tags: [:],
-                                             paylod: fullDictionary)
-            completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))
-          case .success(let message):
-            print("Successfully attached Detached Profile: \(String(describing: message))")
-            completion(.success(true))
-          }
-        }
-      }
-      dataTask.resume()
-    } catch {
-      print(error)
-      SentryHelper.generateSentryEvent(level: .error,
-                                       apiName: "PearProfileAPI",
-                                       functionName: "editUserProfile",
-                                       message: error.localizedDescription)
-      completion(.failure(ProfileAPIError.unknownError(error: error)))
-    }
- */
-  }
-  
-  func editDetachedProfile(profileDocumentID: String,
-                           userID: String,
-                           updates: [String: Any],
-                           completion: @escaping (Result<Bool, ProfileAPIError>) -> Void) {
-    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
-    request.httpMethod = "POST"
-    request.allHTTPHeaderFields = defaultHeaders
-    guard validateDetachedProfileUpdates(updates: updates) else {
-      print("Invalid update values")
-      SentryHelper.generateSentryEvent(level: .error,
-                                       apiName: "PearProfileAPI",
-                                       functionName: "editDetachedProfile",
-                                       message: "Invalid Updates",
-                                       responseData: nil,
-                                       tags: [:],
-                                       paylod: updates)
-      completion(.failure(ProfileAPIError.invalidVariables))
-      return
-    }
-    var finalUpdates = updates
-    finalUpdates["creatorUser_id"] = userID
-    finalUpdates["_id"] = profileDocumentID
     let fullDictionary: [String: Any] = [
       "query": PearProfileAPI.editDetachedProfileQuery,
       "variables": [
-        "editDetachedProfileInput": finalUpdates
+        "editDetachedProfileInput": updates
       ]
     ]
     
     do {
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
       request.httpBody = data
-      
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
         if let error = error {
           print(error as Any)
           completion(.failure(ProfileAPIError.unknownError(error: error)))
+          SentryHelper.generateSentryEvent(level: .error,
+                                           apiName: "PearProfileAPI",
+                                           functionName: "updateDetachedProfile",
+                                           message: error.localizedDescription,
+                                           responseData: data)
           return
         } else {
-          if let data = data,
-            let json = try? JSON(data: data) {
-            print(json)
-          }
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "editDetachedProfile")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
-            print("Failed to Edit Detached Profile: \(helperResult)")
+            print("Failed to Update Detached Profile Request: \(helperResult)")
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearProfileAPI",
-                                             functionName: "editDetachedProfile",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             functionName: "updateDetachedProfile",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
-                                             tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
-            print("Failed to Approve Detached Profile: \(message ?? "")")
+            print("Failed to Create Match Request: \(message ?? "")")
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearProfileAPI",
-                                             functionName: "editDetachedProfile",
-                                             message: message ?? "Failed to Edit Detached Profile",
+                                             functionName: "updateDetachedProfile",
+                                             message: message ?? "Failed to Update",
                                              responseData: data,
-                                             tags: [:],
                                              paylod: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
-            print("Successfully Edited Detached Profile: \(String(describing: message))")
+            print("Update Profile Network Message: \(String(describing: message))")
             completion(.success(true))
           }
         }
@@ -546,10 +412,75 @@ extension PearProfileAPI {
       print(error)
       SentryHelper.generateSentryEvent(level: .error,
                                        apiName: "PearProfileAPI",
-                                       functionName: "editDetachedProfile",
+                                       functionName: "updateDetachedProfile",
                                        message: error.localizedDescription)
       completion(.failure(ProfileAPIError.unknownError(error: error)))
     }
+  }
+  
+  func updateEndorsedProfile(updates: [String: Any], completion: @escaping(Result<Bool, ProfileAPIError>) -> Void) {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    request.allHTTPHeaderFields = defaultHeaders
+    let fullDictionary: [String: Any] = [
+      "query": PearProfileAPI.editEndorsedProfileQuery,
+      "variables": [
+        "editEndorsementInput": updates
+      ]
+    ]
+    
+    do {
+      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+      request.httpBody = data
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          completion(.failure(ProfileAPIError.unknownError(error: error)))
+          SentryHelper.generateSentryEvent(level: .error,
+                                           apiName: "PearProfileAPI",
+                                           functionName: "updateEndorsedUserProfile",
+                                           message: error.localizedDescription,
+                                           responseData: data)
+          return
+        } else {
+          let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "editEndorsement")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
+            print("Failed to Update Detached Profile Request: \(helperResult)")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearProfileAPI",
+                                             functionName: "updateEndorsedUserProfile",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
+                                             responseData: data,
+                                             paylod: fullDictionary)
+            completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Create Match Request: \(message ?? "")")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearProfileAPI",
+                                             functionName: "updateEndorsedUserProfile",
+                                             message: message ?? "Failed to Update",
+                                             responseData: data,
+                                             paylod: fullDictionary)
+            completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))
+          case .success(let message):
+            print("Update Profile Network Message: \(String(describing: message))")
+            completion(.success(true))
+          }
+        }
+      }
+      dataTask.resume()
+    } catch {
+      print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearProfileAPI",
+                                       functionName: "updateEndorsedUserProfile",
+                                       message: error.localizedDescription)
+      completion(.failure(ProfileAPIError.unknownError(error: error)))
+    }
+
   }
   
 }

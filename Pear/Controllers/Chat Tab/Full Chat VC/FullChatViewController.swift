@@ -144,13 +144,15 @@ extension FullChatViewController {
   }
   
   @objc func acceptRequestButtonClicked() {
-    Analytics.logEvent("CHAT_request_TAP_acceptButton", parameters: nil)
+    Analytics.logEvent("accepted_match_request", parameters: [
+      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown" ])
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
   }
   
   @objc func declineRequestButtonClicked() {
-    Analytics.logEvent("CHAT_request_TAP_declineButton", parameters: nil)
+    Analytics.logEvent("declined_match_request", parameters: [
+      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown" ])
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
   }
@@ -173,6 +175,13 @@ extension FullChatViewController {
                                                       self.match = match
                                                       self.chat = match.chat!
                                                       if match.otherUserStatus == .accepted && match.currentUserStatus == .accepted {
+                                                        let isMatchmakerMade = match.sentByUser.documentID == match.sentForUser.documentID
+                                                        let matchmakerGender = match.sentByUser.gender?.toString() ?? "unknown"
+                                                        Analytics.logEvent("new_chat_started", parameters: [
+                                                          "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown",
+                                                          "isMatchmakerMade": isMatchmakerMade,
+                                                          "matchmakerGender": isMatchmakerMade ? matchmakerGender : ""
+                                                        ])
                                                         DispatchQueue.main.async {
                                                           HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                                                           self.chat.delegate = self

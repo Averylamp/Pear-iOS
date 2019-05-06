@@ -154,6 +154,13 @@ extension MeEditUserViewController {
     if isUpdating {
       return
     }
+    if let images = self.photoUpdateVC?.images, images.count != images.compactMap({ $0.imageContainer }).count {
+      self.delay(delay: 0.5) {
+        self.saveChanges(completion: completion)
+        return
+      }
+      return
+    }
     self.isUpdating = true
     let userUpdates = self.getUserUpdates()
     let photoUpdates = self.getPhotoUpdates()
@@ -363,23 +370,6 @@ extension MeEditUserViewController {
     self.addChild(textFieldVC)
     self.stackView.addArrangedSubview(textFieldVC.view)
     textFieldVC.didMove(toParent: self)
-  }
-  
-  func addSingleField(title: String, initialText: String = "") {
-    self.addTitleSection(title: title)
-    guard let expandingTextVC = UpdateExpandingTextViewController
-      .instantiate(initialText: initialText,
-                   type: .bio,
-                   fixedHeight: nil,
-                   allowDeleteButton: true,
-                   maxHeight: nil) else {
-                    print("Failed to create expanding text vc")
-                    return
-    }
-    self.addChild(expandingTextVC)
-    self.stackView.addArrangedSubview(expandingTextVC.view)
-    expandingTextVC.didMove(toParent: self)
-    
   }
   
   func addUserPreferences() {
