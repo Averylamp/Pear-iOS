@@ -51,7 +51,6 @@ extension ScrollableQuestionItemViewController {
     print(self.items)
     var count = 0
     for item in self.items {
-      
       guard let questionResponseVC = ProfileQuestionResponseViewController.instantiate(questionItem: item) else {
         print("Unable to instantiate question response item VC")
         continue
@@ -69,7 +68,7 @@ extension ScrollableQuestionItemViewController {
       questionResponseVC.didMove(toParent: self)
       print("Added text item \(count), \(item.question)")
       self.view.layoutIfNeeded()
-      self.intrinsicContentHeights.append(questionResponseVC.intrinsicHeight())
+//      self.intrinsicContentHeights.append(questionResponseVC.intrinsicHeight())
     }
     self.pageControl.numberOfPages = count
     if let firstIntrinsicHeight = self.intrinsicContentHeights.first {
