@@ -129,26 +129,28 @@ extension ApproveProfileViewController {
       switch sectionItem.sectionType {
       case .image:
         break
-      case .textItems:
-        if let textItems = sectionItem.textItems {
-          if sectionItem.textItems is [BioItem]? {
-            self.addSectionTitle(title: "BIOS", backgroundColor: R.color.backgroundColorBlue())
-          } else if sectionItem.textItems is [BoastItem]? {
-            self.addSectionTitle(title: "BOASTS", backgroundColor: R.color.backgroundColorOrange())
-          } else if sectionItem.textItems is [RoastItem]? {
-            self.addSectionTitle(title: "ROASTS", backgroundColor: R.color.backgroundColorRed())
-          }
-          self.addSpacerView(height: 8)
-          self.addScrollableTextContent(content: textItems)
-          self.addSpacerView(height: 8)
-        }
-      case .questions:
-        if let questionItems = sectionItem.question {
-          self.addSectionTitle(title: "Q&A", backgroundColor: R.color.backgroundColorYellow())
-          self.addSpacerView(height: 8)
-          self.addScrollableQuestionContent(content: questionItems)
-          self.addSpacerView(height: 8)
-        }
+      default:
+        break
+//      case .textItems:
+//        if let textItems = sectionItem.textItems {
+//          if sectionItem.textItems is [BioItem]? {
+//            self.addSectionTitle(title: "BIOS", backgroundColor: R.color.backgroundColorBlue())
+//          } else if sectionItem.textItems is [BoastItem]? {
+//            self.addSectionTitle(title: "BOASTS", backgroundColor: R.color.backgroundColorOrange())
+//          } else if sectionItem.textItems is [RoastItem]? {
+//            self.addSectionTitle(title: "ROASTS", backgroundColor: R.color.backgroundColorRed())
+//          }
+//          self.addSpacerView(height: 8)
+//          self.addScrollableTextContent(content: textItems)
+//          self.addSpacerView(height: 8)
+//        }
+//      case .questions:
+//        if let questionItems = sectionItem.question {
+//          self.addSectionTitle(title: "Q&A", backgroundColor: R.color.backgroundColorYellow())
+//          self.addSpacerView(height: 8)
+//          self.addScrollableQuestionContent(content: questionItems)
+//          self.addSpacerView(height: 8)
+//        }
       }
     }
     self.addApprovalButtons()
