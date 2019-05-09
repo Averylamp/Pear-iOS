@@ -140,7 +140,7 @@ extension UserPhoneCodeViewController {
           if let user = user {
             print("Continuing to Main Screen")
             DispatchQueue.main.async {
-              Analytics.logEvent(AnalyticsEventLogin, parameters: nil)
+              Analytics.logEvent(AnalyticsEventLogin, parameters: [ AnalyticsParameterMethod: "phone" ])
               DataStore.shared.reloadAllUserData()
               if user.endorsedUserIDs.count + user.detachedProfileIDs.count  == 0 {
                 DispatchQueue.main.async {
