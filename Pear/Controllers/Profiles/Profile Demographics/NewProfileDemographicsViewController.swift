@@ -85,11 +85,14 @@ extension NewProfileDemographicsViewController {
     self.stylizeLabel(label: textLabel)
     containerView.addSubview(textLabel)
     textLabel.translatesAutoresizingMaskIntoConstraints = false
+    textLabel.text = text
+    textLabel.addConstraint(NSLayoutConstraint(item: textLabel, attribute: .height, relatedBy: .equal,
+                                               toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40.0))
     containerView.addConstraints([
-      NSLayoutConstraint(item: textLabel, attribute: .centerY, relatedBy: .equal,
-                         toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: textLabel, attribute: .height, relatedBy: .equal,
-                         toItem: containerView, attribute: .height, multiplier: 1.0, constant: -10.0),
+      NSLayoutConstraint(item: textLabel, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 8.0),
+      NSLayoutConstraint(item: textLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -8.0),
       NSLayoutConstraint(item: textLabel, attribute: .right, relatedBy: .equal,
                          toItem: containerView, attribute: .right, multiplier: 1.0, constant: -8.0)
       ])
@@ -104,6 +107,8 @@ extension NewProfileDemographicsViewController {
         NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal,
                            toItem: imageView, attribute: .height, multiplier: 1.0, constant: 0.0),
         NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal,
+                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30.0),
+        NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal,
                            toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30.0)
         ])
       containerView.addConstraints([
@@ -111,7 +116,8 @@ extension NewProfileDemographicsViewController {
                            toItem: containerView, attribute: .left, multiplier: 1.0, constant: 8.0),
         NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal,
                            toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal, toItem: textLabel, attribute: .left, multiplier: 1.0, constant: -8)
+        NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal,
+                           toItem: textLabel, attribute: .left, multiplier: 1.0, constant: -8)
         ])
     } else {
       containerView.addConstraint(NSLayoutConstraint(item: textLabel, attribute: .left, relatedBy: .equal,
