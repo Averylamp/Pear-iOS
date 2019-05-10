@@ -109,6 +109,8 @@
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */; };
 		BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */; };
+		BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */; };
+		BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */; };
 		BB6479DA226A679F00652318 /* LandingScreenWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6479D8226A679F00652318 /* LandingScreenWaitlistViewController.storyboard */; };
 		BB6479DB226A679F00652318 /* LandingScreenWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6479D9226A679F00652318 /* LandingScreenWaitlistViewController.swift */; };
 		BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */; };
@@ -482,6 +484,8 @@
 		BB58D48F22425D4500A6A910 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styling.swift"; sourceTree = "<group>"; };
 		BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Helpers.swift"; sourceTree = "<group>"; };
+		BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryDecisionViewController.swift; sourceTree = "<group>"; };
+		BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoveryDecisionViewController.storyboard; sourceTree = "<group>"; };
 		BB6479D8226A679F00652318 /* LandingScreenWaitlistViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingScreenWaitlistViewController.storyboard; sourceTree = "<group>"; };
 		BB6479D9226A679F00652318 /* LandingScreenWaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenWaitlistViewController.swift; sourceTree = "<group>"; };
 		BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestRoastBoastTableViewCell.swift; sourceTree = "<group>"; };
@@ -841,7 +845,7 @@
 				BB9D1B1A2255CFFA0074C099 /* Request Profile Flow */,
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
 				BB0AE4E422536F75005DD315 /* Update User */,
-				BBDF1FEB21E2B61F00520881 /* Tab Controller */,
+				BBDF1FEB21E2B61F00520881 /* Main Tab Controller */,
 				BB178928225BFFD40033ACC6 /* Chat Tab */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
 				BB5F1DA0225318040042D443 /* Me Tab */,
@@ -1191,6 +1195,7 @@
 				BB9D1B8122562CF20074C099 /* Personal Chat Request */,
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
 				917F20B422716F6A0023EC69 /* Discovery Setup VC */,
+				BB633D3422862D76005E120F /* Decision Discovery */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -1305,6 +1310,15 @@
 				BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */,
 			);
 			path = "Expanding Text View Controller";
+			sourceTree = "<group>";
+		};
+		BB633D3422862D76005E120F /* Decision Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */,
+				BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */,
+			);
+			path = "Decision Discovery";
 			sourceTree = "<group>";
 		};
 		BB6479DE226A7FDF00652318 /* New Models */ = {
@@ -1937,13 +1951,13 @@
 			path = PearUITests;
 			sourceTree = "<group>";
 		};
-		BBDF1FEB21E2B61F00520881 /* Tab Controller */ = {
+		BBDF1FEB21E2B61F00520881 /* Main Tab Controller */ = {
 			isa = PBXGroup;
 			children = (
 				BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */,
 				BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */,
 			);
-			path = "Tab Controller";
+			path = "Main Tab Controller";
 			sourceTree = "<group>";
 		};
 		BBE5BFAF224D0BBC00D99217 /* Create User Flow */ = {
@@ -2575,6 +2589,7 @@
 				BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
 				BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */,
+				BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
 				BB986A20220E08ED00759A14 /* OldLandingScreenViewController.storyboard in Resources */,
 				BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */,
@@ -2796,6 +2811,7 @@
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
+				BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
 				BBBE7B872272170800C32EBE /* NewProfileQuestionResponseViewController.swift in Sources */,
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
