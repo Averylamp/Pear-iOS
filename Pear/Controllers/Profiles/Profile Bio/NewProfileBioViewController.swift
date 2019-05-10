@@ -33,18 +33,27 @@ class NewProfileBioViewController: UIViewController {
   }
   
   @IBAction func expandButtonClicked(_ sender: Any) {
-    UIView.animate(withDuration: 0.5) {
-      if !self.expanded {
-        self.expanded = true
+    if !self.expanded {
+      self.expanded = true
+    } else {
+      self.expanded = false
+    }
+    UIView.animate(withDuration: 0.5, animations: {
+      if self.expanded {
         self.expandButton.setTitle("Show less", for: .normal)
         self.bioContentLabel.numberOfLines = 0
+        self.bioContentLabel.layoutIfNeeded()
       } else {
-        self.expanded = false
-        self.expandButton.setTitle("Show more", for: .normal)
         self.bioContentLabel.numberOfLines = self.collapsedNumberOfLines
+        self.expandButton.setTitle("Show more", for: .normal)
+        self.bioContentLabel.layoutIfNeeded()
       }
-      self.view.layoutIfNeeded()
-    }
+    }, completion: { (_) in
+      UIView.animate(withDuration: 0.2, animations: {
+        self.view.layoutIfNeeded()
+      })
+    })
+
   }
 }
 

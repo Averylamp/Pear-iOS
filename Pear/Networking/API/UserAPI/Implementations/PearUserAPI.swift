@@ -198,6 +198,7 @@ extension PearUserAPI {
               var detachedProfiles: [PearDetachedProfile] = []
               if let detachedProfilesJSON = (try JSON(data: objectData)["detachedProfiles"]).array {
                 for detachedProfile in detachedProfilesJSON {
+                  print(detachedProfile)
                   if let detachedProfileData = try? detachedProfile.rawData(),
                     let detachedProfileObj = try? JSONDecoder().decode(PearDetachedProfile.self, from: detachedProfileData) {
                     detachedProfiles.append(detachedProfileObj)

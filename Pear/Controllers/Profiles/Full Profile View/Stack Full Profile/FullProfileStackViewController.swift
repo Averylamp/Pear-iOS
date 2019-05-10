@@ -250,7 +250,7 @@ extension FullProfileStackViewController {
   
   func addQuestionResponseItem(responseItem: QuestionResponseItem) {
     guard let questionItemVC = NewProfileQuestionResponseViewController.instantiate(questionItem: responseItem) else {
-      print("Failed to instantiate Bio ItemVC")
+      print("Failed to instantiate Question Response ItemVC")
       return
     }
     self.addChild(questionItemVC)

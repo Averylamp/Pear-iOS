@@ -263,6 +263,7 @@ extension DiscoveryFullProfileViewController {
   }
   
   func stylize() {
+    self.scrollView.backgroundColor = R.color.cardBackgroundColor()
     self.profileNameLabel.stylizeSubtitleLabelSmall()
     self.profileNameLabel.text = self.fullProfileData.firstName
     
