@@ -108,7 +108,7 @@
 		BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */; };
-		BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */; };
+		BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */; };
 		BB6479DA226A679F00652318 /* LandingScreenWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6479D8226A679F00652318 /* LandingScreenWaitlistViewController.storyboard */; };
 		BB6479DB226A679F00652318 /* LandingScreenWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6479D9226A679F00652318 /* LandingScreenWaitlistViewController.swift */; };
 		BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */; };
@@ -481,7 +481,7 @@
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
 		BB58D48F22425D4500A6A910 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styling.swift"; sourceTree = "<group>"; };
-		BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Kerning.swift"; sourceTree = "<group>"; };
+		BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Helpers.swift"; sourceTree = "<group>"; };
 		BB6479D8226A679F00652318 /* LandingScreenWaitlistViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingScreenWaitlistViewController.storyboard; sourceTree = "<group>"; };
 		BB6479D9226A679F00652318 /* LandingScreenWaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenWaitlistViewController.swift; sourceTree = "<group>"; };
 		BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestRoastBoastTableViewCell.swift; sourceTree = "<group>"; };
@@ -1103,7 +1103,7 @@
 				BB686E44221231FA008A263C /* UIImage+Helpers.swift */,
 				BB686E3C22120E64008A263C /* String+Helpers.swift */,
 				BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */,
-				BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */,
+				BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */,
 				BB1C670F2237205700D75848 /* Coding.swift */,
 				BB178933225DE73E0033ACC6 /* Date+Helpers.swift */,
 				BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */,
@@ -2880,7 +2880,7 @@
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BBAC0960227029780095F27E /* FullProfileDisplayData.swift in Sources */,
 				BBF93E522267C861002841EE /* UserContactPermissionsViewController.swift in Sources */,
-				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
+				BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */,
 				BB94C12722438F00001320B0 /* Chat.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */,
