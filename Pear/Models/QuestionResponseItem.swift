@@ -29,6 +29,8 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
                                                 responseTitle: responseTitle,
                                                 color: color,
                                                 icon: icon) {
+      copyItem.authorID = authorID
+      copyItem.authorFirstName = authorFirstName
       return copyItem
     }
     fatalError("Can't Copy The Question Response")

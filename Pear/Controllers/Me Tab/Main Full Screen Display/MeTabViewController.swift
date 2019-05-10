@@ -100,6 +100,7 @@ extension MeTabViewController {
   }
   
   func stylize() {
+    self.scrollView.backgroundColor = R.color.cardBackgroundColor()
     self.floatingEditButton.layer.cornerRadius = 30
     self.floatingEditButton.layer.shadowOpacity = 0.2
     self.floatingEditButton.layer.shadowColor = UIColor.black.cgColor

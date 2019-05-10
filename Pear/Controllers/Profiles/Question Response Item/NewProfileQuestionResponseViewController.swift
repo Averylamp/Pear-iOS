@@ -22,7 +22,7 @@ class NewProfileQuestionResponseViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(questionItem: QuestionResponseItem) -> NewProfileQuestionResponseViewController? {
-    guard let questionResponseVC = R.storyboard.profileQuestionResponseViewController()
+    guard let questionResponseVC = R.storyboard.newProfileQuestionResponseViewController()
       .instantiateInitialViewController() as? NewProfileQuestionResponseViewController else { return nil }
     questionResponseVC.questionItem = questionItem
     return questionResponseVC
