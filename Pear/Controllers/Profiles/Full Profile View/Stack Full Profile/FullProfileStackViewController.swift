@@ -14,7 +14,7 @@ class FullProfileStackViewController: UIViewController {
   
   @IBOutlet var stackView: UIStackView!
   
-  let backgroundColor: UIColor = UIColor(white: 0.94, alpha: 1.0)
+  let backgroundColor: UIColor? = R.color.cardBackgroundColor()
   let cardEdgeSpacing: CGFloat = 12.0
   let cardBetweenSpacing: CGFloat = 12.0
   
@@ -168,64 +168,6 @@ extension FullProfileStackViewController {
     self.stackView.addArrangedSubview(spacer)
   }
   
-  func addLineView() {
-    let containerView = UIView()
-    containerView.translatesAutoresizingMaskIntoConstraints = false
-    
-    let lineView = UIView()
-    lineView.translatesAutoresizingMaskIntoConstraints = false
-    lineView.backgroundColor = UIColor(white: 0.5, alpha: 0.125)
-    
-    containerView.addSubview(lineView)
-    containerView.addConstraints([
-      NSLayoutConstraint(item: lineView, attribute: .width, relatedBy: .equal, toItem: containerView, attribute: .width, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: lineView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0),
-      NSLayoutConstraint(item: lineView, attribute: .centerX, relatedBy: .equal, toItem: containerView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-      ])
-    
-    self.stackView.addArrangedSubview(containerView)
-    self.stackView.addConstraints([
-      NSLayoutConstraint(item: containerView, attribute: .width, relatedBy: .equal, toItem: self.stackView, attribute: .width, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0),
-      NSLayoutConstraint(item: containerView, attribute: .centerX, relatedBy: .equal, toItem: self.stackView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
-      ])
-  }
-  
-  func addSectionTitle(title: String) {
-    let containerView = UIView()
-    containerView.translatesAutoresizingMaskIntoConstraints = false
-    containerView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
-    let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    containerView.addSubview(titleLabel)
-    if let font = R.font.openSansExtraBold(size: 16) {
-      titleLabel.font = font
-    }
-    titleLabel.text = title
-    containerView.addConstraints([
-      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
-                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 12),
-      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: 12),
-      NSLayoutConstraint(item: titleLabel, attribute: .centerY, relatedBy: .equal,
-                         toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .equal,
-                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 40)
-      ])
-    self.stackView.addArrangedSubview(containerView)
-  }
-  
-  func addImageVC(imageContainer: ImageContainer) {
-    guard let imageVC = ProfileImageViewController.instantiate(imageContainer: imageContainer) else {
-      print("Failed to create Image VC")
-      return
-    }
-    self.addChild(imageVC)
-    imageVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.addVCToCard(view: imageVC.view)
-    imageVC.didMove(toParent: self)
-  }
-  
   func addVCToCard(view: UIView) {
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -269,6 +211,17 @@ extension FullProfileStackViewController {
     self.stackView.addArrangedSubview(containerView)
   }
   
+  func addImageVC(imageContainer: ImageContainer) {
+    guard let imageVC = ProfileImageViewController.instantiate(imageContainer: imageContainer) else {
+      print("Failed to create Image VC")
+      return
+    }
+    self.addChild(imageVC)
+    imageVC.view.translatesAutoresizingMaskIntoConstraints = false
+    self.addVCToCard(view: imageVC.view)
+    imageVC.didMove(toParent: self)
+  }
+  
   func addDemographicsVC(locationName: String?,
                          schoolName: String?,
                          schoolYear: String?) {
@@ -285,11 +238,25 @@ extension FullProfileStackViewController {
   }
   
   func addBioItem(bioItem: BioItem) {
-    
+    guard let bioItemVC = NewProfileBioViewController.instantiate(bioItem: bioItem) else {
+      print("Failed to instantiate Bio ItemVC")
+      return
+    }
+    self.addChild(bioItemVC)
+    bioItemVC.view.translatesAutoresizingMaskIntoConstraints = false
+    self.addVCToCard(view: bioItemVC.view)
+    bioItemVC.didMove(toParent: self)
   }
   
   func addQuestionResponseItem(responseItem: QuestionResponseItem) {
-    
+    guard let questionItemVC = NewProfileQuestionResponseViewController.instantiate(questionItem: responseItem) else {
+      print("Failed to instantiate Bio ItemVC")
+      return
+    }
+    self.addChild(questionItemVC)
+    questionItemVC.view.translatesAutoresizingMaskIntoConstraints = false
+    self.addVCToCard(view: questionItemVC.view)
+    questionItemVC.didMove(toParent: self)
   }
   
   func addScrollableTextContent(content: [TextContentItem]) {

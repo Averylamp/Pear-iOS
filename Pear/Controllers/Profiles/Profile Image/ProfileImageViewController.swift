@@ -61,5 +61,8 @@ extension ProfileImageViewController {
       let imageURL = URL(string: imageContainer.large.imageURL) {
       self.imageView.sd_setImage(with: imageURL, completed: nil)
     }
+//    self.imageViewAspectConstraint.isActive = false
+//    self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView!, attribute: .height, relatedBy: .equal,
+//                                                    toItem: self.imageView, attribute: .width, multiplier: aspectRatio, constant: 0.0))
   }
 }
