@@ -16,7 +16,7 @@ class MainTabBarViewController: UITabBarController {
     guard let mainTabVC = storyboard.instantiateInitialViewController() as? MainTabBarViewController else { return nil }
     //      Discovery
     if DataStore.shared.hasCompletedSetup() && DataStore.shared.hasEnabledLocation() {
-      if let discoverVC = DiscoverySimpleViewController.instantiate(),
+      if let discoverVC = DiscoveryDecisionViewController.instantiate(),
         let regularImage = R.image.tabIconDiscovery(),
         let selectedImage = R.image.tabIconDiscoverySelected() {
         discoverVC.tabBarItem = UITabBarItem(title: "Discover",

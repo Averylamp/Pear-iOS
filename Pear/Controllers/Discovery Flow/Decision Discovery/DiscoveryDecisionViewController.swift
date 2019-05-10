@@ -9,22 +9,26 @@
 import UIKit
 
 class DiscoveryDecisionViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+  
+  /// Factory method for creating this view controller.
+  ///
+  /// - Returns: Returns an instance of this view controller.
+  class func instantiate() -> DiscoveryDecisionViewController? {
+    guard let decisionDiscoveryVC = R.storyboard.discoveryDecisionViewController()
+      .instantiateInitialViewController() as? DiscoveryDecisionViewController else {
+        print("Failed to create decision based discovery VC")
+        return nil
     }
-    
+    return decisionDiscoveryVC
+  }
+  
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+// MARK: - Life Cycle
+extension DiscoveryDecisionViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+  
 }
