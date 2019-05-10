@@ -180,7 +180,7 @@ extension FullChatViewController {
                                                         Analytics.logEvent("new_chat_start", parameters: [
                                                           "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown",
                                                           "isMatchmakerMade": isMatchmakerMade,
-                                                          "matchmakerGender": isMatchmakerMade ? matchmakerGender : "n/a"
+                                                          "matchmakerGender": isMatchmakerMade ? matchmakerGender : "na"
                                                         ])
                                                         DispatchQueue.main.async {
                                                           HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
