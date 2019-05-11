@@ -111,6 +111,8 @@
 		BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */; };
 		BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */; };
 		BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */; };
+		BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D35228632A7005E120F /* DisoveryAPI.swift */; };
+		BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D38228632BA005E120F /* PearDiscoveryAPI.swift */; };
 		BB6479DA226A679F00652318 /* LandingScreenWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6479D8226A679F00652318 /* LandingScreenWaitlistViewController.storyboard */; };
 		BB6479DB226A679F00652318 /* LandingScreenWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6479D9226A679F00652318 /* LandingScreenWaitlistViewController.swift */; };
 		BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */; };
@@ -486,6 +488,8 @@
 		BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Helpers.swift"; sourceTree = "<group>"; };
 		BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryDecisionViewController.swift; sourceTree = "<group>"; };
 		BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoveryDecisionViewController.storyboard; sourceTree = "<group>"; };
+		BB633D35228632A7005E120F /* DisoveryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisoveryAPI.swift; sourceTree = "<group>"; };
+		BB633D38228632BA005E120F /* PearDiscoveryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDiscoveryAPI.swift; sourceTree = "<group>"; };
 		BB6479D8226A679F00652318 /* LandingScreenWaitlistViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingScreenWaitlistViewController.storyboard; sourceTree = "<group>"; };
 		BB6479D9226A679F00652318 /* LandingScreenWaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenWaitlistViewController.swift; sourceTree = "<group>"; };
 		BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestRoastBoastTableViewCell.swift; sourceTree = "<group>"; };
@@ -868,6 +872,7 @@
 		60C131DC21D344E90093ECBA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BB633D37228632AD005E120F /* DiscoveryAPI */,
 				BB9D1B1F2255E0C00074C099 /* MatchesAPI */,
 				BBB70AC922233456006B75A0 /* ProfileAPI */,
 				BBB70AC822233452006B75A0 /* UserAPI */,
@@ -1319,6 +1324,23 @@
 				BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */,
 			);
 			path = "Decision Discovery";
+			sourceTree = "<group>";
+		};
+		BB633D37228632AD005E120F /* DiscoveryAPI */ = {
+			isa = PBXGroup;
+			children = (
+				BB633D35228632A7005E120F /* DisoveryAPI.swift */,
+				BB633D3A228632C0005E120F /* Implementations */,
+			);
+			path = DiscoveryAPI;
+			sourceTree = "<group>";
+		};
+		BB633D3A228632C0005E120F /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				BB633D38228632BA005E120F /* PearDiscoveryAPI.swift */,
+			);
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 		BB6479DE226A7FDF00652318 /* New Models */ = {
@@ -2806,6 +2828,7 @@
 				91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,
 				BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */,
+				BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */,
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
@@ -2934,6 +2957,7 @@
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BBA106E422784B1C000771CF /* ExpandingFreeResponseInputViewController.swift in Sources */,
+				BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,

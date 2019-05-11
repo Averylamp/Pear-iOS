@@ -28,6 +28,21 @@ enum GraphQLInterpretationSuccessResponse {
 
 class APIHelpers {
   
+  static func getRequestWith(query: String, variables: [String: Any], headers: [String: String] = ["Content-Type": "application/json"]) throws -> URLRequest {
+    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
+                                      cachePolicy: .useProtocolCachePolicy,
+                                      timeoutInterval: 15.0)
+    request.httpMethod = "POST"
+    request.allHTTPHeaderFields = headers
+    let fullDictionary: [String: Any] = [
+      "query": query,
+      "variables": variables
+    ]
+    let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
+    request.httpBody = data
+    return request as URLRequest
+  }
+  
   static func printDataDump(data: Data?) {
     if let data = data,
       let json = try? JSON(data: data) {
