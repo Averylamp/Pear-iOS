@@ -72,7 +72,7 @@ extension DiscoveryDecisionViewController {
         self.updateProfilesToDisplay()
         DispatchQueue.main.async {
           self.activityIndicator.stopAnimating()
-          self.messageLabel.text = "Hey!  \nCheck out some of these profiles ;)"
+          self.messageLabel.text = ""
         }
         self.showNextProfile()
       case .failure(let error):
@@ -80,15 +80,17 @@ extension DiscoveryDecisionViewController {
       }
     }
   }
-
+  
   func showNextProfile() {
-    if let nextProfile = self.profilesToShow.popLast() {
-      if self.profilesToShow.count == 0 {
-        DispatchQueue.main.async {
-          self.messageLabel.text = "That's all your profiles.\nCheck back in a couple hours for some more"
-        }
+    
+    if self.profilesToShow.count == 0 {
+      DispatchQueue.main.async {
+        self.messageLabel.text = "That's all your profiles.\nCheck back in a couple hours for some more"
       }
-      self.hideProfileVC {
+    }
+    self.hideProfileVC {
+      if self.profilesToShow.count > 0 {
+        let nextProfile = self.profilesToShow.popLast()
         guard let nextProfileVC = DiscoveryFullProfileViewController.instantiate(fullProfileData: nextProfile) else {
           print("Failed to instantiate Discovery Full Profile")
           return
@@ -109,7 +111,7 @@ extension DiscoveryDecisionViewController {
           profileVC.view.alpha = 0.0
           profileVC.view.center.y  += 40
         }, completion: { (_) in
-//          profileVC.dismiss(animated: true, completion: completion)
+          //          profileVC.dismiss(animated: true, completion: completion)
           profileVC.view.removeFromSuperview()
           profileVC.removeFromParent()
           completion()
@@ -123,7 +125,7 @@ extension DiscoveryDecisionViewController {
   func showProfileVC(profileVC: DiscoveryFullProfileViewController, completion: @escaping() -> Void) {
     DispatchQueue.main.async {
       self.currentDiscoveryProfileVC = profileVC
-//    self.present(profileVC, animated: true, completion: completion)
+      //    self.present(profileVC, animated: true, completion: completion)
       self.addChild(profileVC)
       self.view.addSubview(profileVC.view)
       profileVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -141,9 +143,10 @@ extension DiscoveryDecisionViewController {
       self.view.layoutIfNeeded()
       profileVC.didMove(toParent: self)
       profileVC.view.alpha = 0.0
-      UIView.animate(withDuration: 1.0, animations: {
+      UIView.animate(withDuration: 0.7, animations: {
         profileVC.view.alpha = 1.0
         yConstraint.constant = 0.0
+        self.view.layoutIfNeeded()
       }, completion: { (_) in
         completion()
       })
