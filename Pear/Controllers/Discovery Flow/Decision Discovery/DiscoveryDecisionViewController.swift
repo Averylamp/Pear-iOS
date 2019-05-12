@@ -59,6 +59,7 @@ extension DiscoveryDecisionViewController {
           print("Failed to instantiate Discovery Full Profile")
           return
         }
+        nextProfileVC.delegate = self
         self.showProfileVC(profileVC: nextProfileVC, completion: {
           
         })
@@ -93,7 +94,7 @@ extension DiscoveryDecisionViewController {
       self.view.addSubview(profileVC.view)
       profileVC.view.translatesAutoresizingMaskIntoConstraints = false
       let yConstraint = NSLayoutConstraint(item: profileVC.view as Any, attribute: .centerY, relatedBy: .equal,
-                                           toItem: nil, attribute: .centerY, multiplier: 1.0, constant: -40)
+                                           toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: -40)
       self.view.addConstraints([
         yConstraint,
         NSLayoutConstraint(item: profileVC.view as Any, attribute: .centerX, relatedBy: .equal,
@@ -115,6 +116,15 @@ extension DiscoveryDecisionViewController {
       
     }
     
+  }
+  
+}
+
+// MARK: - DiscoveryFullProfileDelegate
+extension DiscoveryDecisionViewController: DiscoveryFullProfileDelegate {
+  
+  func decisionMade() {
+    self.showNextProfile()
   }
   
 }

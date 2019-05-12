@@ -94,7 +94,7 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: "createMatchRequest",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
@@ -171,7 +171,7 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: "getMatchesForUser",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
@@ -293,7 +293,7 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: "unmatchRequest",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
@@ -366,7 +366,7 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: requestFunction,
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
@@ -421,6 +421,10 @@ extension PearMatchesAPI {
   func sendNotification(fromID: String,
                         toID: String,
                         completion: @escaping(Result<Bool, MatchesAPIError>) -> Void) {
+    #if DEVMODE
+    print("Skipping sending Notification")
+    return
+    #endif
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)

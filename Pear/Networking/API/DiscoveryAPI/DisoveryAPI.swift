@@ -8,7 +8,7 @@
 
 import Foundation
 enum DiscoveryAPIError: Error {
-  case unknownError(error: Error)
+  case unknownError(error: Error?)
   case invalidVariables
   case failedDeserialization
   case unauthenticated
