@@ -10,9 +10,12 @@ import UIKit
 
 class DiscoveryDecisionViewController: UIViewController {
   
+  var allFetchedProfiles: [FullProfileDisplayData] = []
   var profilesToShow: [FullProfileDisplayData] = []
   var currentDiscoveryProfileVC: DiscoveryFullProfileViewController?
   
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet weak var messageLabel: UILabel!
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -35,6 +38,23 @@ extension DiscoveryDecisionViewController {
     self.fetchDiscoveryQueue()
   }
   
+  func updateProfilesToDisplay() {
+    self.profilesToShow = []
+    self.allFetchedProfiles.filter({$0.decisionMade == false}).forEach({
+      if let matchingPreferences = $0.matchingPreferences,
+        let matchingDemographics = $0.matchingDemographics,
+        let userDemographics = DataStore.shared.currentPearUser?.matchingDemographics,
+        let userPreferences = DataStore.shared.currentPearUser?.matchingPreferences {
+        if userPreferences.matchesDemographics(demographics: matchingDemographics) &&
+          matchingPreferences.matchesDemographics(demographics: userDemographics) {
+          self.profilesToShow.append($0)
+        }
+      } else {
+        self.profilesToShow.append($0)
+      }
+    })
+  }
+  
   func fetchDiscoveryQueue() {
     guard let userID = DataStore.shared.currentPearUser?.documentID  else {
       print("Cant find logged in user")
@@ -44,7 +64,16 @@ extension DiscoveryDecisionViewController {
       switch result {
       case .success(let profiles):
         print("Profiles Found: \(profiles.count)")
-        self.profilesToShow = profiles
+        profiles.forEach({
+          if !self.allFetchedProfiles.contains($0) {
+            self.allFetchedProfiles.append($0)
+          }
+        })
+        self.updateProfilesToDisplay()
+        DispatchQueue.main.async {
+          self.activityIndicator.stopAnimating()
+          self.messageLabel.text = "Hey!  \nCheck out some of these profiles ;)"
+        }
         self.showNextProfile()
       case .failure(let error):
         print("Error getting profiles: \(error)")
@@ -54,6 +83,11 @@ extension DiscoveryDecisionViewController {
 
   func showNextProfile() {
     if let nextProfile = self.profilesToShow.popLast() {
+      if self.profilesToShow.count == 0 {
+        DispatchQueue.main.async {
+          self.messageLabel.text = "That's all your profiles.\nCheck back in a couple hours for some more"
+        }
+      }
       self.hideProfileVC {
         guard let nextProfileVC = DiscoveryFullProfileViewController.instantiate(fullProfileData: nextProfile) else {
           print("Failed to instantiate Discovery Full Profile")
