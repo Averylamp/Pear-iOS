@@ -45,6 +45,7 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
     """
   }
   
+  var decisionMade: Bool = false
   var discoveryItemID: String?
   var userID: String?
   var firstName: String?
@@ -119,6 +120,7 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
   static func == (lhs: FullProfileDisplayData, rhs: FullProfileDisplayData) -> Bool {
     
     return lhs.userID == rhs.userID &&
+           lhs.discoveryItemID == rhs.discoveryItemID &&
            lhs.firstName == rhs.firstName &&
            lhs.age == rhs.age &&
            lhs.gender == rhs.gender &&

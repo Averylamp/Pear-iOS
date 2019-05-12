@@ -135,6 +135,7 @@ class DiscoveryFullProfileViewController: UIViewController {
     }
     #endif
     if let delegate = self.delegate {
+      self.fullProfileData.decisionMade = true
       delegate.decisionMade()
     }
   }
@@ -811,6 +812,7 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
         self.isSendingRequest = false
         self.dismissRequestModal()
         if let delegate = self.delegate {
+          self.fullProfileData.decisionMade = true
           delegate.decisionMade()
         }
       }
