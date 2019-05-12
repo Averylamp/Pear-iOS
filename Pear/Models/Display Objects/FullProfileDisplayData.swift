@@ -45,6 +45,7 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
     """
   }
   
+  var discoveryItemID: String?
   var userID: String?
   var firstName: String?
   var age: Int?

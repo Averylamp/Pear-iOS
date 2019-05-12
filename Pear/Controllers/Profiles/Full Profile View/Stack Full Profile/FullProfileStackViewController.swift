@@ -127,6 +127,7 @@ extension FullProfileStackViewController {
         }
       }
     }
+    self.addSpacerView(height: 100)
   }
   
   func addNameAge(name: String, age: Int?) {

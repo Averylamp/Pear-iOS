@@ -74,7 +74,7 @@ extension PearUserAPI {
               SentryHelper.generateSentryEvent(level: .error,
                                                apiName: "PearUserAPI",
                                                functionName: "getUser",
-                                               message: "GraphQL Error: \(helperResult)",
+                                               message: "GraphQL Error: \(String(describing: helperResult))",
                                                responseData: data,
                                                tags: [:],
                                                paylod: fullDictionary)
@@ -169,7 +169,7 @@ extension PearUserAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearUserAPI",
                                              functionName: "fetchEndorsedUsers",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
@@ -278,7 +278,7 @@ extension PearUserAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearUserAPI",
                                              functionName: "createUser",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
@@ -451,7 +451,7 @@ extension PearUserAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearUserAPI",
                                              functionName: mutationName,
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)

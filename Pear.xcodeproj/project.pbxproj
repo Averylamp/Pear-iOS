@@ -291,6 +291,7 @@
 		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
 		BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418F2227E137009CEC4A /* UIView+Styling.swift */; };
 		BBD2402222531FB000380315 /* FriendProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2402122531FB000380315 /* FriendProfileCollectionViewCell.swift */; };
+		BBD266212288165B00DB29A9 /* UITabBarController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD266202288165B00DB29A9 /* UITabBarController+Helpers.swift */; };
 		BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2842D223BFC1000AC6E30 /* PearUITests.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
@@ -670,6 +671,7 @@
 		BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Styling.swift"; sourceTree = "<group>"; };
 		BBCF418F2227E137009CEC4A /* UIView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Styling.swift"; sourceTree = "<group>"; };
 		BBD2402122531FB000380315 /* FriendProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		BBD266202288165B00DB29A9 /* UITabBarController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Helpers.swift"; sourceTree = "<group>"; };
 		BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD2842D223BFC1000AC6E30 /* PearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUITests.swift; sourceTree = "<group>"; };
 		BBD2842F223BFC1000AC6E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1113,6 +1115,7 @@
 				BB686E3C22120E64008A263C /* String+Helpers.swift */,
 				BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */,
 				BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */,
+				BBD266202288165B00DB29A9 /* UITabBarController+Helpers.swift */,
 				BB1C670F2237205700D75848 /* Coding.swift */,
 				BB178933225DE73E0033ACC6 /* Date+Helpers.swift */,
 				BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */,
@@ -2987,6 +2990,7 @@
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
 				BBF93E582267C8B1002841EE /* ProfileInputQuestionViewController.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
+				BBD266212288165B00DB29A9 /* UITabBarController+Helpers.swift in Sources */,
 				BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */,
 				BB77E7A12252211700A12B12 /* ApproveDetachedProfileSchoolViewController.swift in Sources */,
 				BBC0FF1D227069FC00632924 /* UserNameInputViewController.swift in Sources */,
