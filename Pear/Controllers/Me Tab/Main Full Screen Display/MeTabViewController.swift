@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseAnalytics
 import MessageUI
 
 extension Notification.Name {
@@ -99,6 +100,7 @@ extension MeTabViewController {
   }
   
   func stylize() {
+    self.scrollView.backgroundColor = R.color.cardBackgroundColor()
     self.floatingEditButton.layer.cornerRadius = 30
     self.floatingEditButton.layer.shadowOpacity = 0.2
     self.floatingEditButton.layer.shadowColor = UIColor.black.cgColor
@@ -152,6 +154,7 @@ extension MeTabViewController {
   }
   
   @objc func logoutButtonClicked() {
+    Analytics.logEvent("logout", parameters: nil)
     let defaultsName = Bundle.main.bundleIdentifier!
     UserDefaults.standard.removePersistentDomain(forName: defaultsName)
     do {
@@ -183,6 +186,9 @@ extension MeTabViewController {
         self.isDeleting = false
       })
       let deleteAlert = UIAlertAction(title: "Continue with Deletion", style: .destructive) { (_) in
+        Analytics.logEvent("delete_profile", parameters: [
+          "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown"
+        ])
         DispatchQueue.main.async {
           let mailComposer = MFMailComposeViewController()
           mailComposer.setSubject("[DELETE] Delete my profile please!")

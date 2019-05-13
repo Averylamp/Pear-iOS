@@ -75,7 +75,7 @@ extension PearProfileAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearProfileAPI",
                                              functionName: "createDetachedProfile",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              paylod: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
@@ -231,7 +231,7 @@ extension PearProfileAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearProfileAPI",
                                              functionName: "approveNewDetachedProfile",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)

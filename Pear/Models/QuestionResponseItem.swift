@@ -20,7 +20,21 @@ enum QuestionResponseItemKey: String, CodingKey {
   case hidden
 }
 
-class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable {
+class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable, NSCopying {
+  
+  func copy(with zone: NSZone? = nil) -> Any {
+    if let copyItem = try? QuestionResponseItem(documentID: documentID,
+                                                question: question,
+                                                responseBody: responseBody,
+                                                responseTitle: responseTitle,
+                                                color: color,
+                                                icon: icon) {
+      copyItem.authorID = authorID
+      copyItem.authorFirstName = authorFirstName
+      return copyItem
+    }
+    fatalError("Can't Copy The Question Response")
+  }
   
   static func == (lhs: QuestionResponseItem, rhs: QuestionResponseItem) -> Bool {
     return  lhs.documentID == rhs.documentID &&

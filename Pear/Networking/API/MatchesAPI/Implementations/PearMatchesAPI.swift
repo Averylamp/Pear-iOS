@@ -94,7 +94,7 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: "createMatchRequest",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
@@ -110,11 +110,11 @@ extension PearMatchesAPI {
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
-            if sentByUserID == sentForUserID {
-              Analytics.logEvent("sent_personal_request", parameters: nil)
-            } else {
-              Analytics.logEvent("sent_matchmaker_request", parameters: nil)
-            }
+//            if sentByUserID == sentForUserID {
+//              Analytics.logEvent("sent_personal_request", parameters: nil)
+//            } else {
+//              Analytics.logEvent("sent_matchmaker_request", parameters: nil)
+//            }
             print("Successfully Create Match Request: \(String(describing: message))")
             completion(.success(true))
           }
@@ -171,7 +171,7 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: "getMatchesForUser",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
@@ -293,7 +293,7 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: "unmatchRequest",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
@@ -307,7 +307,7 @@ extension PearMatchesAPI {
                                              paylod: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
-            Analytics.logEvent("sent_unmatch_request", parameters: nil)
+            Analytics.logEvent("send_unmatch_request", parameters: nil)
             print("Successfully Create Unmatch Match Request: \(String(describing: message))")
             completion(.success(true))
           }
@@ -366,7 +366,7 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: requestFunction,
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
@@ -421,6 +421,10 @@ extension PearMatchesAPI {
   func sendNotification(fromID: String,
                         toID: String,
                         completion: @escaping(Result<Bool, MatchesAPIError>) -> Void) {
+    #if DEVMODE
+    print("Skipping sending Notification")
+    return
+    #endif
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)

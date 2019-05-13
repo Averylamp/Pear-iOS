@@ -292,9 +292,9 @@ extension ProfileInputBoastRoastViewController: UIScrollViewDelegate {
     }
     messageVC.messageComposeDelegate = self
     #if DEVMODE
-//    self.createDetachedProfile(profileData: self.profileData,
-//                               completion: self.createDetachedProfileCompletion(result:))
-//    return
+    self.createDetachedProfile(profileData: self.profileData,
+                               completion: self.createDetachedProfileCompletion(result:))
+    return
     #endif
     
     self.continueButton.isEnabled = false

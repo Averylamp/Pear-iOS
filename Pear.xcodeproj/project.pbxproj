@@ -108,7 +108,11 @@
 		BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */; };
-		BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */; };
+		BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */; };
+		BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */; };
+		BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */; };
+		BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D35228632A7005E120F /* DisoveryAPI.swift */; };
+		BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D38228632BA005E120F /* PearDiscoveryAPI.swift */; };
 		BB6479DA226A679F00652318 /* LandingScreenWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6479D8226A679F00652318 /* LandingScreenWaitlistViewController.storyboard */; };
 		BB6479DB226A679F00652318 /* LandingScreenWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6479D9226A679F00652318 /* LandingScreenWaitlistViewController.swift */; };
 		BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */; };
@@ -204,11 +208,11 @@
 		BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */; };
 		BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */; };
 		BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */; };
-		BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */; };
+		BBA2B42A223504D100D8C27B /* NewProfileDemographicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B429223504D100D8C27B /* NewProfileDemographicsViewController.swift */; };
 		BBA2B42C223504E200D8C27B /* ProfileBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */; };
 		BBA2B430223504FE00D8C27B /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B42F223504FE00D8C27B /* ProfileImageViewController.swift */; };
 		BBA2B4322235051400D8C27B /* ProfileDoDontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2B4312235051400D8C27B /* ProfileDoDontViewController.swift */; };
-		BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */; };
+		BBA2B434223505DD00D8C27B /* NewProfileDemographicsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B433223505DD00D8C27B /* NewProfileDemographicsViewController.storyboard */; };
 		BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */; };
 		BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B437223505F000D8C27B /* ProfileImageViewController.storyboard */; };
 		BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */; };
@@ -259,8 +263,8 @@
 		BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */; };
 		BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */; };
 		BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */; };
-		BBBE7B872272170800C32EBE /* ProfileQuestionResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */; };
-		BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */; };
+		BBBE7B872272170800C32EBE /* NewProfileQuestionResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B862272170800C32EBE /* NewProfileQuestionResponseViewController.swift */; };
+		BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B882272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard */; };
 		BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */; };
 		BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */; };
 		BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */; };
@@ -272,6 +276,12 @@
 		BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A0812257F624009D9867 /* SentryHelper.swift */; };
 		BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */; };
 		BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */; };
+		BBC4F501228214A100C79148 /* NewProfileBioViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4F500228214A100C79148 /* NewProfileBioViewController.storyboard */; };
+		BBC4F503228214AF00C79148 /* NewProfileBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F502228214AF00C79148 /* NewProfileBioViewController.swift */; };
+		BBC4F5062282217600C79148 /* ProfileQuestionResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F5042282217600C79148 /* ProfileQuestionResponseViewController.swift */; };
+		BBC4F5072282217600C79148 /* ProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4F5052282217600C79148 /* ProfileQuestionResponseViewController.storyboard */; };
+		BBC4F50A22822A6800C79148 /* ProfileDemographicsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4F50822822A6800C79148 /* ProfileDemographicsViewController.storyboard */; };
+		BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */; };
 		BBC8DD5B2272753700C157E2 /* MultipleBoastRoastStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */; };
 		BBC8DD5D2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */; };
 		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
@@ -281,6 +291,7 @@
 		BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */; };
 		BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF418F2227E137009CEC4A /* UIView+Styling.swift */; };
 		BBD2402222531FB000380315 /* FriendProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2402122531FB000380315 /* FriendProfileCollectionViewCell.swift */; };
+		BBD266212288165B00DB29A9 /* UITabBarController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD266202288165B00DB29A9 /* UITabBarController+Helpers.swift */; };
 		BBD2842E223BFC1000AC6E30 /* PearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2842D223BFC1000AC6E30 /* PearUITests.swift */; };
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
@@ -475,7 +486,11 @@
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
 		BB58D48F22425D4500A6A910 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styling.swift"; sourceTree = "<group>"; };
-		BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Kerning.swift"; sourceTree = "<group>"; };
+		BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Helpers.swift"; sourceTree = "<group>"; };
+		BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryDecisionViewController.swift; sourceTree = "<group>"; };
+		BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoveryDecisionViewController.storyboard; sourceTree = "<group>"; };
+		BB633D35228632A7005E120F /* DisoveryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisoveryAPI.swift; sourceTree = "<group>"; };
+		BB633D38228632BA005E120F /* PearDiscoveryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDiscoveryAPI.swift; sourceTree = "<group>"; };
 		BB6479D8226A679F00652318 /* LandingScreenWaitlistViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LandingScreenWaitlistViewController.storyboard; sourceTree = "<group>"; };
 		BB6479D9226A679F00652318 /* LandingScreenWaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenWaitlistViewController.swift; sourceTree = "<group>"; };
 		BB6479DC226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestRoastBoastTableViewCell.swift; sourceTree = "<group>"; };
@@ -573,11 +588,11 @@
 		BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Helpers.swift"; sourceTree = "<group>"; };
 		BBA2B4252235038000D8C27B /* FullProfileStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullProfileStackViewController.swift; sourceTree = "<group>"; };
 		BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileStackViewController.storyboard; sourceTree = "<group>"; };
-		BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDemographicsViewController.swift; sourceTree = "<group>"; };
+		BBA2B429223504D100D8C27B /* NewProfileDemographicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileDemographicsViewController.swift; sourceTree = "<group>"; };
 		BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBioViewController.swift; sourceTree = "<group>"; };
 		BBA2B42F223504FE00D8C27B /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		BBA2B4312235051400D8C27B /* ProfileDoDontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoDontViewController.swift; sourceTree = "<group>"; };
-		BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDemographicsViewController.storyboard; sourceTree = "<group>"; };
+		BBA2B433223505DD00D8C27B /* NewProfileDemographicsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProfileDemographicsViewController.storyboard; sourceTree = "<group>"; };
 		BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileBioViewController.storyboard; sourceTree = "<group>"; };
 		BBA2B437223505F000D8C27B /* ProfileImageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileImageViewController.storyboard; sourceTree = "<group>"; };
 		BBA2B439223505FB00D8C27B /* ProfileDoDontViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDoDontViewController.storyboard; sourceTree = "<group>"; };
@@ -628,8 +643,8 @@
 		BBBA574A226DCBE7000BCD5F /* InputItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputItemTableViewCell.swift; sourceTree = "<group>"; };
 		BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
 		BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewItemViewController.swift; sourceTree = "<group>"; };
-		BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQuestionResponseViewController.swift; sourceTree = "<group>"; };
-		BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileQuestionResponseViewController.storyboard; sourceTree = "<group>"; };
+		BBBE7B862272170800C32EBE /* NewProfileQuestionResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileQuestionResponseViewController.swift; sourceTree = "<group>"; };
+		BBBE7B882272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProfileQuestionResponseViewController.storyboard; sourceTree = "<group>"; };
 		BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableQuestionItemViewController.swift; sourceTree = "<group>"; };
 		BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollableQuestionItemViewController.storyboard; sourceTree = "<group>"; };
 		BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileViewController.swift; sourceTree = "<group>"; };
@@ -641,6 +656,12 @@
 		BBC4A0812257F624009D9867 /* SentryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryHelper.swift; sourceTree = "<group>"; };
 		BBC4A08722587472009D9867 /* UpdateImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateImagesViewController.swift; sourceTree = "<group>"; };
 		BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateImagesViewController.storyboard; sourceTree = "<group>"; };
+		BBC4F500228214A100C79148 /* NewProfileBioViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProfileBioViewController.storyboard; sourceTree = "<group>"; };
+		BBC4F502228214AF00C79148 /* NewProfileBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileBioViewController.swift; sourceTree = "<group>"; };
+		BBC4F5042282217600C79148 /* ProfileQuestionResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileQuestionResponseViewController.swift; path = "Pear/Controllers/Profiles/Question Response Item/ProfileQuestionResponseViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BBC4F5052282217600C79148 /* ProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileQuestionResponseViewController.storyboard; path = "Pear/Controllers/Profiles/Question Response Item/ProfileQuestionResponseViewController.storyboard"; sourceTree = SOURCE_ROOT; };
+		BBC4F50822822A6800C79148 /* ProfileDemographicsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileDemographicsViewController.storyboard; sourceTree = "<group>"; };
+		BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDemographicsViewController.swift; sourceTree = "<group>"; };
 		BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBoastRoastStackViewController.swift; sourceTree = "<group>"; };
 		BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultipleBoastRoastStackViewController.storyboard; sourceTree = "<group>"; };
 		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
@@ -650,6 +671,7 @@
 		BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Styling.swift"; sourceTree = "<group>"; };
 		BBCF418F2227E137009CEC4A /* UIView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Styling.swift"; sourceTree = "<group>"; };
 		BBD2402122531FB000380315 /* FriendProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		BBD266202288165B00DB29A9 /* UITabBarController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Helpers.swift"; sourceTree = "<group>"; };
 		BBD2842B223BFC1000AC6E30 /* PearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD2842D223BFC1000AC6E30 /* PearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUITests.swift; sourceTree = "<group>"; };
 		BBD2842F223BFC1000AC6E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -829,7 +851,7 @@
 				BB9D1B1A2255CFFA0074C099 /* Request Profile Flow */,
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
 				BB0AE4E422536F75005DD315 /* Update User */,
-				BBDF1FEB21E2B61F00520881 /* Tab Controller */,
+				BBDF1FEB21E2B61F00520881 /* Main Tab Controller */,
 				BB178928225BFFD40033ACC6 /* Chat Tab */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
 				BB5F1DA0225318040042D443 /* Me Tab */,
@@ -852,6 +874,7 @@
 		60C131DC21D344E90093ECBA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BB633D37228632AD005E120F /* DiscoveryAPI */,
 				BB9D1B1F2255E0C00074C099 /* MatchesAPI */,
 				BBB70AC922233456006B75A0 /* ProfileAPI */,
 				BBB70AC822233452006B75A0 /* UserAPI */,
@@ -1091,7 +1114,8 @@
 				BB686E44221231FA008A263C /* UIImage+Helpers.swift */,
 				BB686E3C22120E64008A263C /* String+Helpers.swift */,
 				BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */,
-				BB610E99222A1E8500901FC3 /* UILabel+Kerning.swift */,
+				BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */,
+				BBD266202288165B00DB29A9 /* UITabBarController+Helpers.swift */,
 				BB1C670F2237205700D75848 /* Coding.swift */,
 				BB178933225DE73E0033ACC6 /* Date+Helpers.swift */,
 				BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */,
@@ -1179,6 +1203,7 @@
 				BB9D1B8122562CF20074C099 /* Personal Chat Request */,
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
 				917F20B422716F6A0023EC69 /* Discovery Setup VC */,
+				BB633D3422862D76005E120F /* Decision Discovery */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -1239,7 +1264,7 @@
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
 				BB3F02852271B178004855E8 /* Profile Boast Roast */,
 				BBBE7B8B22721ADF00C32EBE /* Scrollable Item Controllers */,
-				BBBE7B8A22721AD900C32EBE /* New Group */,
+				BBBE7B8A22721AD900C32EBE /* Question Response Item */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -1293,6 +1318,32 @@
 				BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */,
 			);
 			path = "Expanding Text View Controller";
+			sourceTree = "<group>";
+		};
+		BB633D3422862D76005E120F /* Decision Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */,
+				BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */,
+			);
+			path = "Decision Discovery";
+			sourceTree = "<group>";
+		};
+		BB633D37228632AD005E120F /* DiscoveryAPI */ = {
+			isa = PBXGroup;
+			children = (
+				BB633D35228632A7005E120F /* DisoveryAPI.swift */,
+				BB633D3A228632C0005E120F /* Implementations */,
+			);
+			path = DiscoveryAPI;
+			sourceTree = "<group>";
+		};
+		BB633D3A228632C0005E120F /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				BB633D38228632BA005E120F /* PearDiscoveryAPI.swift */,
+			);
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 		BB6479DE226A7FDF00652318 /* New Models */ = {
@@ -1839,13 +1890,15 @@
 			path = "Vibes Input";
 			sourceTree = "<group>";
 		};
-		BBBE7B8A22721AD900C32EBE /* New Group */ = {
+		BBBE7B8A22721AD900C32EBE /* Question Response Item */ = {
 			isa = PBXGroup;
 			children = (
-				BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */,
-				BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */,
+				BBC4F5042282217600C79148 /* ProfileQuestionResponseViewController.swift */,
+				BBC4F5052282217600C79148 /* ProfileQuestionResponseViewController.storyboard */,
+				BBBE7B862272170800C32EBE /* NewProfileQuestionResponseViewController.swift */,
+				BBBE7B882272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard */,
 			);
-			path = "New Group";
+			path = "Question Response Item";
 			sourceTree = "<group>";
 		};
 		BBBE7B8B22721ADF00C32EBE /* Scrollable Item Controllers */ = {
@@ -1923,13 +1976,13 @@
 			path = PearUITests;
 			sourceTree = "<group>";
 		};
-		BBDF1FEB21E2B61F00520881 /* Tab Controller */ = {
+		BBDF1FEB21E2B61F00520881 /* Main Tab Controller */ = {
 			isa = PBXGroup;
 			children = (
 				BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */,
 				BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */,
 			);
-			path = "Tab Controller";
+			path = "Main Tab Controller";
 			sourceTree = "<group>";
 		};
 		BBE5BFAF224D0BBC00D99217 /* Create User Flow */ = {
@@ -2067,8 +2120,10 @@
 		BBECBEBA2237D940008E8E91 /* Profile Demographics */ = {
 			isa = PBXGroup;
 			children = (
-				BBA2B429223504D100D8C27B /* ProfileDemographicsViewController.swift */,
-				BBA2B433223505DD00D8C27B /* ProfileDemographicsViewController.storyboard */,
+				BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */,
+				BBC4F50822822A6800C79148 /* ProfileDemographicsViewController.storyboard */,
+				BBA2B429223504D100D8C27B /* NewProfileDemographicsViewController.swift */,
+				BBA2B433223505DD00D8C27B /* NewProfileDemographicsViewController.storyboard */,
 			);
 			path = "Profile Demographics";
 			sourceTree = "<group>";
@@ -2078,6 +2133,8 @@
 			children = (
 				BBA2B42B223504E200D8C27B /* ProfileBioViewController.swift */,
 				BBA2B435223505E600D8C27B /* ProfileBioViewController.storyboard */,
+				BBC4F502228214AF00C79148 /* NewProfileBioViewController.swift */,
+				BBC4F500228214A100C79148 /* NewProfileBioViewController.storyboard */,
 			);
 			path = "Profile Bio";
 			sourceTree = "<group>";
@@ -2441,7 +2498,7 @@
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
 				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
 				BBF93E7D2267CCB3002841EE /* Cera Pro Medium.otf in Resources */,
-				BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */,
+				BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */,
 				BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */,
 				917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
@@ -2479,6 +2536,7 @@
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
 				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
 				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
+				BBC4F5072282217600C79148 /* ProfileQuestionResponseViewController.storyboard in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
@@ -2513,7 +2571,7 @@
 				BB986A57220F807E00759A14 /* GetStartedStartFriendProfileViewController.storyboard in Resources */,
 				911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */,
 				BBF93E8D2267CF7A002841EE /* OpenSans-Light.ttf in Resources */,
-				BBA2B434223505DD00D8C27B /* ProfileDemographicsViewController.storyboard in Resources */,
+				BBA2B434223505DD00D8C27B /* NewProfileDemographicsViewController.storyboard in Resources */,
 				911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */,
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
 				BBA106E222783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard in Resources */,
@@ -2546,6 +2604,8 @@
 				BBBA5747226DC9E4000BCD5F /* InputTableViewController.storyboard in Resources */,
 				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BBF93E662267CA56002841EE /* ProfileInputQuestionViewController.storyboard in Resources */,
+				BBC4F501228214A100C79148 /* NewProfileBioViewController.storyboard in Resources */,
+				BBC4F50A22822A6800C79148 /* ProfileDemographicsViewController.storyboard in Resources */,
 				BBF93E782267CCB3002841EE /* Cera Pro Regular.otf in Resources */,
 				BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
@@ -2554,6 +2614,7 @@
 				BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
 				BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */,
+				BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
 				BB986A20220E08ED00759A14 /* OldLandingScreenViewController.storyboard in Resources */,
 				BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */,
@@ -2769,16 +2830,19 @@
 				BB3F027D2271451C004855E8 /* ProfileCreationFinishedViewController.swift in Sources */,
 				91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,
+				BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */,
+				BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */,
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
+				BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
-				BBBE7B872272170800C32EBE /* ProfileQuestionResponseViewController.swift in Sources */,
+				BBBE7B872272170800C32EBE /* NewProfileQuestionResponseViewController.swift in Sources */,
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
 				BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */,
-				BBA2B42A223504D100D8C27B /* ProfileDemographicsViewController.swift in Sources */,
+				BBA2B42A223504D100D8C27B /* NewProfileDemographicsViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
@@ -2806,6 +2870,7 @@
 				BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BB17892E225DE26F0033ACC6 /* ChatRequestsTableViewController.swift in Sources */,
+				BBC4F503228214AF00C79148 /* NewProfileBioViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
@@ -2857,7 +2922,7 @@
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BBAC0960227029780095F27E /* FullProfileDisplayData.swift in Sources */,
 				BBF93E522267C861002841EE /* UserContactPermissionsViewController.swift in Sources */,
-				BB610E9A222A1E8500901FC3 /* UILabel+Kerning.swift in Sources */,
+				BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */,
 				BB94C12722438F00001320B0 /* Chat.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */,
@@ -2880,6 +2945,7 @@
 				BB6479E0226A7FF300652318 /* LatestRoastBoastItem.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */,
+				BBC4F5062282217600C79148 /* ProfileQuestionResponseViewController.swift in Sources */,
 				BBC8DD5B2272753700C157E2 /* MultipleBoastRoastStackViewController.swift in Sources */,
 				BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
@@ -2894,6 +2960,7 @@
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BBA106E422784B1C000771CF /* ExpandingFreeResponseInputViewController.swift in Sources */,
+				BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,
@@ -2923,6 +2990,7 @@
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
 				BBF93E582267C8B1002841EE /* ProfileInputQuestionViewController.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
+				BBD266212288165B00DB29A9 /* UITabBarController+Helpers.swift in Sources */,
 				BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */,
 				BB77E7A12252211700A12B12 /* ApproveDetachedProfileSchoolViewController.swift in Sources */,
 				BBC0FF1D227069FC00632924 /* UserNameInputViewController.swift in Sources */,
@@ -3106,7 +3174,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 102;
+				CURRENT_PROJECT_VERSION = 104;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3131,7 +3199,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 102;
+				CURRENT_PROJECT_VERSION = 104;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3330,7 +3398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 102;
+				CURRENT_PROJECT_VERSION = 104;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3526,7 +3594,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 102;
+				CURRENT_PROJECT_VERSION = 104;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";

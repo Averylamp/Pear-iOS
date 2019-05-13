@@ -249,7 +249,7 @@ extension PearImageAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearImageAPI",
                                              functionName: "updateUserPhotos",
-                                             message: "GraphQL Error: \(helperResult)",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
                                              paylod: fullDictionary)
