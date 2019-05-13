@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nm1-IY-Q9N">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Discovery Decision View Controller-->
+        <scene sceneID="rW1-gw-a7l">
+            <objects>
+                <viewController id="Nm1-IY-Q9N" customClass="DiscoveryDecisionViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fa4-GH-hoY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading your discovery... We pick 5-10 profiles for you each day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daT-l3-Kc3">
+                                <rect key="frame" x="30" y="428.5" width="354" height="49.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wbs-JX-9qf">
+                                <rect key="frame" x="188.5" y="371.5" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="daT-l3-Kc3" firstAttribute="top" secondItem="wbs-JX-9qf" secondAttribute="bottom" constant="20" id="3eJ-hF-Qj3"/>
+                            <constraint firstItem="wbs-JX-9qf" firstAttribute="centerX" secondItem="daT-l3-Kc3" secondAttribute="centerX" id="5WJ-WF-DPT"/>
+                            <constraint firstItem="daT-l3-Kc3" firstAttribute="centerX" secondItem="HHx-HB-puo" secondAttribute="centerX" id="Z3t-cV-9IO"/>
+                            <constraint firstItem="daT-l3-Kc3" firstAttribute="centerY" secondItem="HHx-HB-puo" secondAttribute="centerY" id="g7z-9K-D0A"/>
+                            <constraint firstItem="daT-l3-Kc3" firstAttribute="leading" secondItem="HHx-HB-puo" secondAttribute="leading" constant="30" id="hJU-fl-6DO"/>
+                            <constraint firstItem="HHx-HB-puo" firstAttribute="trailing" secondItem="daT-l3-Kc3" secondAttribute="trailing" constant="30" id="iyv-A4-si1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HHx-HB-puo"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="wbs-JX-9qf" id="kTG-8f-zqq"/>
+                        <outlet property="messageLabel" destination="daT-l3-Kc3" id="Sn5-9q-IDp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZX-jJ-RcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="-253"/>
+        </scene>
+    </scenes>
+</document>

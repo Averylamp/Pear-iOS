@@ -42,7 +42,7 @@ extension FullProfileScrollViewController {
   func stylize() {
     self.firstNameLabel.stylizeSubtitleLabelSmall()
     self.firstNameLabel.text = self.fullProfileData.firstName
-
+    self.scrollView.backgroundColor = R.color.cardBackgroundColor()
   }
   
   func addFullStackVC() {

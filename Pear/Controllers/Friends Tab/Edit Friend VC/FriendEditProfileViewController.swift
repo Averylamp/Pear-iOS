@@ -146,22 +146,22 @@ extension FriendEditProfileViewController {
     self.addBioSection(bio: bio)
     
     self.addSpacer(space: 15)
-    self.addBoastRoastTitle(type: .boast)
-    boasts.forEach({
-      self.addBoastRoastSection(type: .boast, initialItem: $0)
-    })
-    if boasts.count == 0 {
-      self.addBoastRoastSection(type: .boast)
-    }
-    self.addSpacer(space: 15)
-    self.addBoastRoastTitle(type: .roast)
-    roasts.forEach({
-      self.addBoastRoastSection(type: .roast, initialItem: $0)
-    })
-    if roasts.count == 0 {
-      self.addBoastRoastSection(type: .roast)
-    }
-    self.addSpacer(space: 30)
+//    self.addBoastRoastTitle(type: .boast)
+//    boasts.forEach({
+//      self.addBoastRoastSection(type: .boast, initialItem: $0)
+//    })
+//    if boasts.count == 0 {
+//      self.addBoastRoastSection(type: .boast)
+//    }
+//    self.addSpacer(space: 15)
+//    self.addBoastRoastTitle(type: .roast)
+//    roasts.forEach({
+//      self.addBoastRoastSection(type: .roast, initialItem: $0)
+//    })
+//    if roasts.count == 0 {
+//      self.addBoastRoastSection(type: .roast)
+//    }
+//    self.addSpacer(space: 30)
   }
   
   func addSpacer(space: CGFloat) {

@@ -75,6 +75,7 @@ extension FriendFullProfileViewController {
   }
   
   func stylize() {
+    self.scrollView.backgroundColor = R.color.cardBackgroundColor()
     self.editButton.layer.cornerRadius = 30
     self.editButton.layer.shadowOpacity = 0.2
     self.editButton.layer.shadowColor = UIColor.black.cgColor

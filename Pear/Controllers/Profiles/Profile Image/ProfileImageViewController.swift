@@ -55,17 +55,14 @@ extension ProfileImageViewController {
     self.imageView.contentMode = .scaleAspectFill
     self.imageView.clipsToBounds = true
     self.view.layoutIfNeeded()
-    var aspectRatio: CGFloat = 1
     if let image = self.image {
       self.imageView.image = image
-      aspectRatio = image.size.height / image.size.width
     } else if let imageContainer = self.imageContainer,
       let imageURL = URL(string: imageContainer.large.imageURL) {
       self.imageView.sd_setImage(with: imageURL, completed: nil)
-      aspectRatio = CGFloat(imageContainer.large.height) / CGFloat(imageContainer.large.width)
     }
-    self.imageViewAspectConstraint.isActive = false
-    self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView!, attribute: .height, relatedBy: .equal,
-                                                    toItem: self.imageView, attribute: .width, multiplier: aspectRatio, constant: 0.0))
+//    self.imageViewAspectConstraint.isActive = false
+//    self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView!, attribute: .height, relatedBy: .equal,
+//                                                    toItem: self.imageView, attribute: .width, multiplier: aspectRatio, constant: 0.0))
   }
 }

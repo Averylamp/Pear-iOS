@@ -76,14 +76,15 @@ enum ProfileCreationKey: String {
   
   func getRandomNextQuestion() -> QuestionItem? {
     var possibleQuestions = DataStore.shared.possibleQuestions.shuffled()
+    let originalQuestions = possibleQuestions.map({ $0 })
     let questionCount = self.questionResponses.count + skipCount
     let answeredQuestions = self.questionResponses.count
-    if questionCount < 2 {
+    if answeredQuestions < 2 {
       possibleQuestions = possibleQuestions.filter({ $0.tags.contains("starter")})
     } else if answeredQuestions == 2 || answeredQuestions == 4 || answeredQuestions == 5 {
       possibleQuestions = possibleQuestions.filter({ $0.questionType == .freeResponse})
       if possibleQuestions.count == 0 {
-        possibleQuestions = possibleQuestions.filter({ $0.questionType == .multipleChoice})
+        possibleQuestions = originalQuestions.filter({ $0.questionType == .multipleChoice})
       }
     } else {
         possibleQuestions = possibleQuestions.filter({ $0.questionType == .multipleChoice})

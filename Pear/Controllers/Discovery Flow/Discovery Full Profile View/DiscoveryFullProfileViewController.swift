@@ -29,15 +29,25 @@ struct MatchButton {
   var detachedProfile: PearDetachedProfile?
 }
 
+protocol DiscoveryFullProfileDelegate: class {
+  func decisionMade()
+}
+
 class DiscoveryFullProfileViewController: UIViewController {
   
+  weak var delegate: DiscoveryFullProfileDelegate?
   var fullProfileData: FullProfileDisplayData!
   var profileID: String!
+  var lastContentOffset: CGFloat = 0
   
   @IBOutlet weak var profileNameLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pearButton: UIButton!
+  @IBOutlet weak var likeButton: UIButton!
+  @IBOutlet weak var skipButton: UIButton!
+  @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
   
+  var lastTabBarVisible: Bool = true
   let requestAnimationTime: Double = 0.4
   var matchButtons: [MatchButton] = []
   var matchButtonShadows: [UIView] = []
@@ -100,6 +110,55 @@ class DiscoveryFullProfileViewController: UIViewController {
     actionController.addAction(reportAction)
     actionController.addAction(cancelAction)
     self.present(actionController, animated: true, completion: nil)
+  }
+  
+  @IBAction func skipProfileButtonClicked(_ sender: Any) {
+   HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let userID = DataStore.shared.currentPearUser?.documentID,
+      let discoveryItemID = self.fullProfileData.discoveryItemID else {
+          print("Unable to get required information")
+        return
+    }
+    #if PROD
+    PearDiscoveryAPI.shared.skipDiscoveryItem(userID: userID,
+                                              discoveryItemID: discoveryItemID) { (result) in
+                                                switch result {
+                                                case .success(let successful):
+                                                  if successful {
+                                                    print("Sucessfully skipped person")
+                                                  } else {
+                                                    print("Failed to skip person")
+                                                  }
+                                                case .failure(let error):
+                                                  print("Error skipping person: \(error)")
+                                                }
+    }
+    #endif
+    if let delegate = self.delegate {
+      self.fullProfileData.decisionMade = true
+      delegate.decisionMade()
+    }
+  }
+  
+  @IBAction func personalRequestButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
+      let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
+        print("Failed to pull relavant discover user fields")
+        return
+    }
+    guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
+      print("Failed to get personal User ID")
+      return
+    }
+    if let profileCount = DataStore.shared.currentPearUser?.endorserIDs.count,
+      profileCount > 0 {
+      self.displayPersonalRequestVC(personalUserID: personalUserID,
+                                    thumbnailImageURL: requestedThumbnailURL,
+                                    requestPersonName: self.fullProfileData.firstName ?? "")
+    } else {
+      self.promptProfileRequest()
+    }
   }
   
   @objc func matchOptionClicked(sender: UIButton) {
@@ -192,6 +251,11 @@ class DiscoveryFullProfileViewController: UIViewController {
     
   }
   
+}
+
+// MARK: - Presentation Helpers
+extension DiscoveryFullProfileViewController {
+  
   func presentSimpleMessageAlert(title: String, message: String?, acceptAction: String) {
     let alertController = UIAlertController(title: title,
                                             message: message,
@@ -254,30 +318,39 @@ extension DiscoveryFullProfileViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
+    self.setup()
     self.addFullStackVC()
     self.addKeyboardSizeNotifications()
   }
   
-  override func viewDidAppear(_ animated: Bool) {
-    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-  }
-  
   func stylize() {
+    self.scrollView.backgroundColor = R.color.cardBackgroundColor()
     self.profileNameLabel.stylizeSubtitleLabelSmall()
     self.profileNameLabel.text = self.fullProfileData.firstName
-    
-    if DataStore.shared.remoteConfig.configValue(forKey: "pear_button_enabled").boolValue {
-      self.pearButton.isHidden = false
-    } else {
-      self.pearButton.isHidden = false
-//      self.pearButton.isHidden = true
+    if let firstName = self.fullProfileData.firstName,
+      let age = self.fullProfileData.age {
+      self.profileNameLabel.text = "\(firstName), \(age)"
     }
-    self.pearButton.setImage(R.image.discoveryPearButtonSelected(), for: .selected)
-    self.pearButton.layer.cornerRadius = 30
-    self.pearButton.layer.shadowOpacity = 0.2
-    self.pearButton.layer.shadowColor = UIColor.black.cgColor
-    self.pearButton.layer.shadowRadius = 6
-    self.pearButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+    
+    self.pearButton.setImage(R.image.discoveryIconPearSelected(), for: .selected)
+    self.stylizeActionButton(button: self.pearButton)
+    self.stylizeActionButton(button: self.likeButton)
+    self.stylizeActionButton(button: self.skipButton)
+  }
+  
+  func setup() {
+    self.scrollView.delegate = self
+    if let visible = self.tabBarController?.tabBarIsVisible() {
+      self.lastTabBarVisible = visible
+    }
+  }
+  
+  func stylizeActionButton(button: UIButton) {
+    button.layer.cornerRadius = button.frame.height / 2.0
+    button.layer.shadowOpacity = 0.2
+    button.layer.shadowColor = UIColor.black.cgColor
+    button.layer.shadowRadius = 6
+    button.layer.shadowOffset = CGSize(width: 2, height: 2)
   }
   
   func addFullStackVC() {
@@ -429,19 +502,6 @@ extension DiscoveryFullProfileViewController {
     
     var allMatchButtons: [MatchButton] = []
     
-    var youEnabled = user.endorserIDs.count > 0 && !alreadyMatchedUsers.contains(user.documentID)
-    youEnabled = youEnabled && user.matchingPreferences.matchesDemographics(demographics: discoveryUserDemographics)
-       && discoveryUserPreferences.matchesDemographics(demographics: user.matchingDemographics)
-    let youButton = self.generateMatchButton(enabled: youEnabled)
-    youButton.setImage(R.image.discoveryYouButton(), for: .normal)
-    
-    let youMatchButton = MatchButton(button: youButton,
-                                     buttonEnabled: youEnabled,
-                                     type: .personalUser,
-                                     endorsedUser: nil,
-                                     user: user,
-                                     detachedProfile: nil)
-    
     for endorsedProfile in DataStore.shared.endorsedUsers {
       var endorsedEnabled = !alreadyMatchedUsers.contains(endorsedProfile.documentID)
       endorsedEnabled = endorsedEnabled && endorsedProfile.matchingPreferences.matchesDemographics(demographics: discoveryUserDemographics)
@@ -501,8 +561,6 @@ extension DiscoveryFullProfileViewController {
       
       return true
     }
-    
-    allMatchButtons.insert(youMatchButton, at: 0)
     
     // Only You in match buttons, generate placeholder endorsed
     if allMatchButtons.count == 1 {
@@ -652,7 +710,7 @@ extension DiscoveryFullProfileViewController {
       AnalyticsParameterItemID: self.fullProfileData.userID ?? "unknownID",
       AnalyticsParameterContentType: "profile",
       AnalyticsParameterMethod: "personal_request",
-      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "" ])
+      "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown" ])
     UIView.animate(withDuration: self.requestAnimationTime,
                    delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
                    animations: {
@@ -709,7 +767,7 @@ extension DiscoveryFullProfileViewController {
       AnalyticsParameterItemID: self.fullProfileData.userID ?? "unknownID",
       AnalyticsParameterContentType: "profile",
       AnalyticsParameterMethod: "matchmaker_request",
-      "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown" ])
+      "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown" ])
     UIView.animate(withDuration: self.requestAnimationTime,
                    delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 5.0, options: .curveEaseOut,
                    animations: {
@@ -753,6 +811,10 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
         }
         self.isSendingRequest = false
         self.dismissRequestModal()
+        if let delegate = self.delegate {
+          self.fullProfileData.decisionMade = true
+          delegate.decisionMade()
+        }
       }
     }
   }
@@ -846,6 +908,43 @@ extension DiscoveryFullProfileViewController: ProfileCreationProtocol, CNContact
     let cnPicker = self.getContactsPicker()
     cnPicker.delegate = self
     self.present(cnPicker, animated: true, completion: nil)
+  }
+  
+}
+
+// MARK: - UIScrollViewDelegate
+extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if self.scrollView.contentOffset.y > self.lastContentOffset + 5.0 {
+      if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
+        tabBarVisible == self.lastTabBarVisible {
+        self.tabBarController?.setTabBarVisible(visible: false, duration: 0.4, animated: true)
+        self.lastTabBarVisible = false
+      }
+    } else if self.scrollView.contentOffset.y < self.lastContentOffset - 5.0 {
+      if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
+        tabBarVisible == self.lastTabBarVisible {
+        self.tabBarController?.setTabBarVisible(visible: true, duration: 0.4, animated: true)
+        self.lastTabBarVisible = true
+      }
+    }
+    self.lastContentOffset = self.scrollView.contentOffset.y
+    if scrollView.contentOffset.y > 50 {
+      if headerHeightConstraint.constant != 50 {
+        headerHeightConstraint.constant = 50
+        UIView.animate(withDuration: 0.5) {
+          self.view.layoutIfNeeded()
+        }
+      }
+    } else {
+      if headerHeightConstraint.constant != 0 {
+        headerHeightConstraint.constant = 0
+        UIView.animate(withDuration: 0.5) {
+          self.view.layoutIfNeeded()
+        }
+      }
+    }
   }
   
 }
