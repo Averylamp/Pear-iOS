@@ -137,6 +137,7 @@
 		BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */; };
 		BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */; };
 		BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */; };
+		BB714123228B4F6500129C93 /* Cera-Pro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */; };
 		BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */; };
 		BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */; };
 		BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB77E79E2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard */; };
@@ -487,6 +488,7 @@
 		BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedWaitlistViewController.swift; sourceTree = "<group>"; };
 		BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedWaitlistViewController.storyboard; sourceTree = "<group>"; };
+		BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera-Pro-Black.otf"; sourceTree = "<group>"; };
 		BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedNotifyFriendViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedNotifyFriendViewController.swift; sourceTree = "<group>"; };
 		BB77E79E2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ApproveDetachedProfileSchoolViewController.storyboard; sourceTree = "<group>"; };
@@ -1337,6 +1339,14 @@
 			path = "New New Redesign";
 			sourceTree = "<group>";
 		};
+		BB714121228B4F5100129C93 /* Cera Pro */ = {
+			isa = PBXGroup;
+			children = (
+				BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */,
+			);
+			path = "Cera Pro";
+			sourceTree = "<group>";
+		};
 		BB75BFCA22155F9100BAB800 /* Full Profile View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1775,6 +1785,7 @@
 		BBB70AD4222336B7006B75A0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				BB714121228B4F5100129C93 /* Cera Pro */,
 				BBF93E962267CF8F002841EE /* Open Sans */,
 			);
 			path = Fonts;
@@ -2457,6 +2468,7 @@
 				911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */,
 				BBF93E8D2267CF7A002841EE /* OpenSans-Light.ttf in Resources */,
 				BBA2B434223505DD00D8C27B /* NewProfileDemographicsViewController.storyboard in Resources */,
+				BB714123228B4F6500129C93 /* Cera-Pro-Black.otf in Resources */,
 				911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */,
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
 				BBA106E222783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard in Resources */,
