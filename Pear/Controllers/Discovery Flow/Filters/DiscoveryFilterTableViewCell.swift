@@ -34,7 +34,7 @@ extension DiscoveryFilterTableViewCell {
     case .personalUser:
       if let user = discoveryFilterItem.user {
         self.nameLabel.text = user.firstName
-        self.thumbnailImage.image = R.image.discoveryYouButton()
+//        self.thumbnailImage.image = R.image.discoveryYouButton()
       }
     case .endorsedUser:
       if let endorsedUser = discoveryFilterItem.endorsedUser {
