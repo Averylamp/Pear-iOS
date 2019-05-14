@@ -144,12 +144,13 @@ extension UserPhoneCodeViewController {
               DataStore.shared.reloadAllUserData()
               if user.endorsedUserIDs.count + user.detachedProfileIDs.count  == 0 {
                 DispatchQueue.main.async {
-                  guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
-                    print("Failed to create contact permissions VC")
-                    return
-                  }
-                  print("Creating permissions VC")
-                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+                  // TODO(@averylamp): Fix
+//                  guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
+//                    print("Failed to create contact permissions VC")
+//                    return
+//                  }
+//                  print("Creating permissions VC")
+//                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
                   return
                   
                 }
@@ -174,11 +175,12 @@ extension UserPhoneCodeViewController {
                   DataStore.shared.currentPearUser = pearUser
                   DataStore.shared.reloadAllUserData()
                   DataStore.shared.refreshPearUser(completion: nil)
-                  guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
-                    print("Failed to instantiate contact permisssion vc")
-                    return
-                  }
-                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+                  // TODO(@averylamp): Fix
+//                  guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
+//                    print("Failed to instantiate contact permisssion vc")
+//                    return
+//                  }
+//                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
                 }
               case .failure(let error):
                 print("Failure creating Pear User: \(error)")

@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Cera Pro Black.otf">
+        <array key="Cera-Pro-Black.otf">
             <string>CeraPro-Black</string>
         </array>
         <array key="OpenSans-Bold.ttf">
@@ -33,27 +33,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pear-icon-white" translatesAutoresizingMaskIntoConstraints="NO" id="Yfc-4O-4AC">
-                                <rect key="frame" x="142.5" y="102.5" width="90" height="90"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pear-icon-green" translatesAutoresizingMaskIntoConstraints="NO" id="Yfc-4O-4AC">
+                                <rect key="frame" x="142.5" y="106" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="mln-QQ-gkQ"/>
                                     <constraint firstAttribute="width" secondItem="Yfc-4O-4AC" secondAttribute="height" multiplier="1:1" id="xK1-LB-5Qs"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXf-y1-8Al">
-                                <rect key="frame" x="20" y="200.5" width="335" height="70"/>
+                                <rect key="frame" x="20" y="204" width="335" height="60"/>
                                 <fontDescription key="fontDescription" name="CeraPro-Black" family="Cera Pro" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dating + friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eht-Lt-t1k">
-                                <rect key="frame" x="30" y="278.5" width="315" height="28"/>
+                                <rect key="frame" x="30" y="272" width="315" height="28"/>
                                 <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans SemiBold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LX-bT-a7M">
-                                <rect key="frame" x="30" y="318.5" width="315" height="50"/>
+                                <rect key="frame" x="30" y="312" width="315" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0R5-Sw-ieU">
                                         <rect key="frame" x="8" y="8" width="30" height="34"/>
@@ -84,7 +84,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdH-2H-OCq">
-                                <rect key="frame" x="20" y="388.5" width="335" height="20"/>
+                                <rect key="frame" x="20" y="382" width="335" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="jqR-0K-BQa"/>
                                 </constraints>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCs-n7-FWi">
-                                <rect key="frame" x="20" y="420.5" width="335" height="33"/>
+                                <rect key="frame" x="20" y="414" width="335" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Got an event code?">
                                     <color key="titleColor" name="primaryTextColor"/>
@@ -106,8 +106,8 @@
                             <constraint firstItem="WCs-n7-FWi" firstAttribute="top" secondItem="mdH-2H-OCq" secondAttribute="bottom" constant="12" id="8Vc-HN-kZN"/>
                             <constraint firstItem="Yfc-4O-4AC" firstAttribute="centerX" secondItem="3yk-8c-7g0" secondAttribute="centerX" id="AM8-QT-k9y"/>
                             <constraint firstItem="6LX-bT-a7M" firstAttribute="centerX" secondItem="3yk-8c-7g0" secondAttribute="centerX" id="GFs-jn-nTU"/>
+                            <constraint firstItem="3yk-8c-7g0" firstAttribute="bottom" secondItem="WCs-n7-FWi" secondAttribute="bottom" constant="220" id="Ltk-vk-ZfX"/>
                             <constraint firstItem="gXf-y1-8Al" firstAttribute="leading" secondItem="3yk-8c-7g0" secondAttribute="leading" constant="20" id="RZ8-yT-s58"/>
-                            <constraint firstItem="6LX-bT-a7M" firstAttribute="centerY" secondItem="3yk-8c-7g0" secondAttribute="centerY" id="Rty-BM-9ew"/>
                             <constraint firstItem="eht-Lt-t1k" firstAttribute="leading" secondItem="3yk-8c-7g0" secondAttribute="leading" constant="30" id="Sgx-ZS-vtE"/>
                             <constraint firstItem="3yk-8c-7g0" firstAttribute="trailing" secondItem="gXf-y1-8Al" secondAttribute="trailing" constant="20" id="WSA-07-Klb"/>
                             <constraint firstItem="gXf-y1-8Al" firstAttribute="top" secondItem="Yfc-4O-4AC" secondAttribute="bottom" constant="8" id="XLI-7G-s0h"/>
@@ -125,6 +125,7 @@
                         <viewLayoutGuide key="safeArea" id="3yk-8c-7g0"/>
                     </view>
                     <connections>
+                        <outlet property="eventCodeBottomConstraint" destination="Ltk-vk-ZfX" id="geI-W2-trR"/>
                         <outlet property="inputTextField" destination="j1o-6t-8ui" id="pDH-YO-Y6B"/>
                         <outlet property="logoImageView" destination="Yfc-4O-4AC" id="hNa-J6-fG3"/>
                         <outlet property="phoneNumberContainerView" destination="6LX-bT-a7M" id="Cp5-HC-2bO"/>
@@ -136,7 +137,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pear-icon-white" width="118" height="145"/>
+        <image name="pear-icon-green" width="118" height="145"/>
         <namedColor name="primaryTextColor">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -45,11 +45,12 @@ class DiscoveryFilterViewController: UIViewController {
   }
   
   func promptEndorsedProfileCreation() {
-    guard let startFriendVC = LoadingScreenViewController.getProfileCreationVC() else {
-      print("Failed to create get started friend profile vc")
-      return
-    }
-    self.navigationController?.setViewControllers([startFriendVC], animated: true)
+    // TODO(@averylamp): Fix
+//    guard let startFriendVC = LoadingScreenViewController.getProfileCreationVC() else {
+//      print("Failed to create get started friend profile vc")
+//      return
+//    }
+//    self.navigationController?.setViewControllers([startFriendVC], animated: true)
   }
   
 }

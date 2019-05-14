@@ -18,6 +18,7 @@ class LandingScreenViewController: UIViewController {
   @IBOutlet weak var termsButton: UIButton!
   @IBOutlet weak var phoneNumberContainerView: UIView!
   @IBOutlet weak var inputTextField: UITextField!
+  @IBOutlet weak var eventCodeBottomConstraint: NSLayoutConstraint!
   
   var isValidatingPhoneNumber: Bool = false
   /// Factory method for creating this view controller.
@@ -122,13 +123,14 @@ extension LandingScreenViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
+    self.addKeyboardSizeNotifications()
+//    self.addDismissKeyboardOnViewClick()
     self.inputTextField.delegate = self
     self.inputTextField.becomeFirstResponder()
-    self.addDismissKeyboardOnViewClick()
   }
   
   func stylize() {
-    self.view.backgroundColor = R.color.backgroundColorGreen()
+    self.view.backgroundColor = UIColor.white
     
     guard let textFont = R.font.openSansLight(size: 11),
       let boldFont = R.font.openSansSemiBold(size: 11) else {
@@ -136,9 +138,9 @@ extension LandingScreenViewController {
         return
     }
     let subtleAttributes = [NSAttributedString.Key.font: textFont,
-                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.95, alpha: 1.0)]
+                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.8, alpha: 1.0)]
     let boldAttributes = [NSAttributedString.Key.font: boldFont,
-                          NSAttributedString.Key.foregroundColor: UIColor(white: 0.95, alpha: 1.0)]
+                          NSAttributedString.Key.foregroundColor: UIColor(white: 0.8, alpha: 1.0)]
     let termsString = NSMutableAttributedString(string: "By continuing you agree to Pear's ",
                                                 attributes: subtleAttributes)
     let eulaString = NSMutableAttributedString(string: "EULA",
@@ -153,7 +155,8 @@ extension LandingScreenViewController {
     self.termsButton.setAttributedTitle(termsString, for: .normal)
     
     self.phoneNumberContainerView.layer.cornerRadius = 8
-    
+    self.phoneNumberContainerView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
+    self.phoneNumberContainerView.layer.borderWidth = 1.0
   }
   
 }
@@ -198,4 +201,41 @@ extension LandingScreenViewController {
     self.view.endEditing(true)
   }
   
+}
+
+// MARK: - Keybaord Size Notifications
+extension LandingScreenViewController {
+  
+  func addKeyboardSizeNotifications() {
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(LandingScreenViewController.keyboardWillChange(notification:)),
+                   name: UIWindow.keyboardWillChangeFrameNotification,
+                   object: nil)
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(LandingScreenViewController.keyboardWillHide(notification:)),
+                   name: UIWindow.keyboardWillHideNotification,
+                   object: nil)
+  }
+  
+  @objc func keyboardWillChange(notification: Notification) {
+    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
+      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+      let targetFrame = targetFrameNSValue.cgRectValue
+      let keyboardBottomPadding: CGFloat = 20
+      self.eventCodeBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
+    }
+  }
+  @objc func keyboardWillHide(notification: Notification) {
+    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
+      self.eventCodeBottomConstraint.constant = 220
+      UIView.animate(withDuration: duration) {
+        self.view.layoutIfNeeded()
+      }
+    }
+  }
 }
