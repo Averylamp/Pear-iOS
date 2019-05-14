@@ -149,7 +149,7 @@ extension ChatMainViewController {
   }
   
   func stylize() {
-    if let refreshFont = UIFont(name: R.font.nunitoRegular.fontName, size: 14) {
+    if let refreshFont = R.font.openSansRegular(size: 14) {
       
       self.currentChatsRefreshControl
         .attributedTitle = NSAttributedString(string: "Refreshing Your Chats...",

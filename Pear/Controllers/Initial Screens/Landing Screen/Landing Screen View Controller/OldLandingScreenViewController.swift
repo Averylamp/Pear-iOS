@@ -103,8 +103,8 @@ extension OldLandingScreenViewController {
     self.emailButton.stylizeLight()
     self.emailButton.addMotionEffect(MotionEffectGroupGenerator.getMotionEffectGroup(maxDistance: 3.0))
     
-    guard let textFont = R.font.nunitoLight(size: 11),
-      let boldFont = R.font.nunitoSemiBold(size: 11) else {
+    guard let textFont = R.font.openSansLight(size: 11),
+      let boldFont = R.font.openSansSemiBold(size: 11) else {
         print("Failed to load in fonts")
         return
     }

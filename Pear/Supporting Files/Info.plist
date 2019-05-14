@@ -101,39 +101,10 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
-		<string>OpenSans-BoldItalic.ttf</string>
 		<string>OpenSans-ExtraBold.ttf</string>
-		<string>OpenSans-ExtraBoldItalic.ttf</string>
-		<string>OpenSans-Italic.ttf</string>
 		<string>OpenSans-Light.ttf</string>
-		<string>OpenSans-LightItalic.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
 		<string>OpenSans-SemiBold.ttf</string>
-		<string>OpenSans-SemiBoldItalic.ttf</string>
-		<string>Cera Pro Black Italic.otf</string>
-		<string>Cera Pro Black.otf</string>
-		<string>Cera Pro Bold Italic.otf</string>
-		<string>Cera Pro Bold.otf</string>
-		<string>Cera Pro Light Italic.otf</string>
-		<string>Cera Pro Light.otf</string>
-		<string>Cera Pro Medium Italic.otf</string>
-		<string>Cera Pro Medium.otf</string>
-		<string>Cera Pro Regular Italic.otf</string>
-		<string>Cera Pro Regular.otf</string>
-		<string>Cera Pro Thin Italic.otf</string>
-		<string>Cera Pro Thin.otf</string>
-		<string>FredokaOne-Regular.ttf</string>
-		<string>SF-Pro-Display-Bold.otf</string>
-		<string>SF-Pro-Display-Medium.otf</string>
-		<string>SF-Pro-Display-Regular.otf</string>
-		<string>SF-Pro-Display-Light.otf</string>
-		<string>Nunito-Black.tff</string>
-		<string>Nunito-Bold.tff</string>
-		<string>Nunito-ExtraBold.ttf</string>
-		<string>Nunito-ExtraLight.ttf</string>
-		<string>Nunito-Light.ttf</string>
-		<string>Nunito-Regular.ttf</string>
-		<string>Nunito-SemiBold.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
@@ -152,9 +123,6 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

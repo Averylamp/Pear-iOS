@@ -88,7 +88,7 @@ extension DiscoverySimpleViewController {
   }
   
   func stylize() {
-    if let refreshFont = UIFont(name: R.font.nunitoRegular.fontName, size: 14) {
+    if let refreshFont = R.font.openSansRegular(size: 14) {
       
       self.refreshControl
         .attributedTitle = NSAttributedString(string: "Finding Your Latest Matches...",
