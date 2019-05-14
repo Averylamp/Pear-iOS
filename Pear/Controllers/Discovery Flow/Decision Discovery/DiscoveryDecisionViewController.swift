@@ -36,6 +36,24 @@ extension DiscoveryDecisionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.fetchDiscoveryQueue()
+    self.checkForDetachedProfiles()
+  }
+  
+  func checkForDetachedProfiles() {
+    DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
+      print("\(detachedProfiles.count) Detached Profiles Found")
+      for detachedProfile in detachedProfiles {
+          DispatchQueue.main.async {
+            guard let detachedProfileApprovalVC = ApproveDetachedProfileNavigationViewController
+              .instantiate(detachedProfile: detachedProfile) else {
+                print("Failed to create detached profile navigation vc")
+                return
+            }
+            self.present(detachedProfileApprovalVC, animated: true, completion: nil)
+            return
+          }
+      }
+    })
   }
   
   func updateProfilesToDisplay() {
@@ -86,6 +104,7 @@ extension DiscoveryDecisionViewController {
     if self.profilesToShow.count == 0 {
       DispatchQueue.main.async {
         self.messageLabel.text = "That's all your profiles.\nCheck back in a couple hours for some more"
+        self.tabBarController?.setTabBarVisible(visible: true, duration: 0.5, animated: true)
       }
     }
     self.hideProfileVC {
