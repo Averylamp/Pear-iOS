@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>location_blocking_enabled</key>
+	<true/>
 	<key>pineapple_waitlist_enabled</key>
 	<string>NO</string>
 	<key>pear_button_string</key>
@@ -11,6 +13,6 @@
 	<key>waitlist_enabled</key>
 	<true/>
 	<key>version_blocking_enabled</key>
-	<false/>
+	<true/>
 </dict>
 </plist>
