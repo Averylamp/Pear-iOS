@@ -81,12 +81,12 @@ extension ChatRequestEndorsementViewController {
     self.view.layer.cornerRadius = 20.0
     self.thumbnailImageView.layer.cornerRadius = self.thumbnailImageView.frame.width / 2.0
     self.thumbnailImageView.layer.borderWidth = 1.0
-    self.thumbnailImageView.layer.borderColor = R.color.brandPrimaryLight()?.cgColor
+    self.thumbnailImageView.layer.borderColor = R.color.primaryBrandColor()?.cgColor
     self.thumbnailImageView.clipsToBounds = true
     self.thumbnailImageView.contentMode = .scaleAspectFill
     self.endorsedThumbnailImageView.layer.cornerRadius = self.thumbnailImageView.frame.width / 2.0
     self.endorsedThumbnailImageView.layer.borderWidth = 1.0
-    self.endorsedThumbnailImageView.layer.borderColor = R.color.brandPrimaryLight()?.cgColor
+    self.endorsedThumbnailImageView.layer.borderColor = R.color.primaryBrandColor()?.cgColor
     self.endorsedThumbnailImageView.clipsToBounds = true
     self.endorsedThumbnailImageView.contentMode = .scaleAspectFill
     
