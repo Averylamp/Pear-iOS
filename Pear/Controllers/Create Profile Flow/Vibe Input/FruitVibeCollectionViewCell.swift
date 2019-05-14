@@ -15,8 +15,8 @@ class FruitVibeCollectionViewCell: UICollectionViewCell {
   
   func setSelected(selected: Bool) {
     if selected {
-      self.layer.borderColor = R.color.brandPrimaryLight()!.cgColor
-      self.backgroundColor = R.color.brandPrimaryLight()!.withAlphaComponent(0.4)
+      self.layer.borderColor = R.color.primaryBrandColor()!.cgColor
+      self.backgroundColor = R.color.primaryBrandColor()!.withAlphaComponent(0.4)
       self.layer.shadowOpacity = 1.0
       self.layer.shadowColor = R.color.shadowColor()!.cgColor
       self.layer.shadowOffset = CGSize(width: 0, height: 1)

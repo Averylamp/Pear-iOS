@@ -215,22 +215,22 @@ extension UserPhoneCodeViewController {
   }
   
   func stylize() {
-    self.view.backgroundColor = R.color.backgroundColorPurple()
+    self.view.backgroundColor = UIColor.white
     self.headerContainerView.backgroundColor = nil
 //    self.headerContainerView.layer.borderWidth = 1.0
 //    self.headerContainerView.layer.borderColor = R.color.backgroundColorDarkPurple()?.cgColor
     if let phoneNumber = self.userCreationData.phoneNumber {
       self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
     }
-    self.titleLabel.textColor = UIColor.white
-    self.subtitleLabel.textColor = UIColor(white: 1.0, alpha: 0.5)
+    self.titleLabel.textColor = R.color.primaryTextColor()
+    self.subtitleLabel.textColor = R.color.primaryTextColor()
     self.backButton.setImage(R.image.iconLeftArrow(), for: .normal)
     if let font = R.font.openSansExtraBold(size: 16) {
       self.resendButton.titleLabel?.font = font
       self.titleLabel.font = font
     }
     self.resendButton.backgroundColor = nil
-    self.resendButton.setTitleColor(UIColor(white: 0.0, alpha: 0.3), for: .normal)
+    self.resendButton.setTitleColor(UIColor(white: 0.8, alpha: 1.0), for: .normal)
     self.resendButton.setTitle("Resend in 0:\(String(format: "%02d", self.resendButtonTime))", for: .normal)
     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (_) in
       self.resendButtonTime -= 1
@@ -251,8 +251,6 @@ extension UserPhoneCodeViewController {
     for codeItemNumber in 0..<6 {
       let circleView = UIView(frame: CGRect(x: sideInsets + CGFloat(codeItemNumber) * ( lineWidth + numberSpacing), y: 0, width: lineWidth, height: lineWidth))
       circleView.layer.cornerRadius = lineWidth / 2.0
-      circleView.layer.borderWidth = 1
-      circleView.layer.borderColor = UIColor(red: 0.87, green: 0.87, blue: 0.87, alpha: 1.00).cgColor
       circleView.tag = codeItemNumber
       self.circleViews.append(circleView)
       self.verificationView.addSubview(circleView)
@@ -260,8 +258,8 @@ extension UserPhoneCodeViewController {
       let numberLabel = UILabel(frame: CGRect(x: circleView.frame.origin.x, y: circleView.frame.origin.y, width: circleView.frame.width, height: circleView.frame.height))
       if let font = R.font.openSansExtraBold(size: 24) {
         numberLabel.font = font
-        numberLabel.textColor = UIColor.white
       }
+      numberLabel.textColor = R.color.primaryTextColor()
       numberLabel.tag = codeItemNumber
       numberLabel.textAlignment = .center
       self.numberLabels.append(numberLabel)
@@ -298,17 +296,13 @@ extension UserPhoneCodeViewController: UITextFieldDelegate {
       for labelNumber in 0 ..< self.numberLabels.count {
         if labelNumber < text.count {
           self.numberLabels[labelNumber].text = text[labelNumber..<labelNumber+1]
-          self.circleViews[labelNumber].backgroundColor = UIColor(white: 1.0, alpha: 0.3)
-          self.circleViews[labelNumber].layer.borderWidth = 0.0
+          self.circleViews[labelNumber].backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         } else if labelNumber == text.count {
           self.numberLabels[labelNumber].text = ""
-          self.circleViews[labelNumber].backgroundColor = UIColor.white
-          self.circleViews[labelNumber].layer.borderWidth = 1.0
-          self.circleViews[labelNumber].layer.borderColor = UIColor.white.cgColor
+          self.circleViews[labelNumber].backgroundColor = R.color.primaryBrandColor()
         } else {
           self.numberLabels[labelNumber].text = ""
-          self.circleViews[labelNumber].backgroundColor = UIColor(white: 1.0, alpha: 0.3)
-          self.circleViews[labelNumber].layer.borderWidth = 0.0
+          self.circleViews[labelNumber].backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         }
         self.numberLabels[labelNumber].textColor = UIColor.white
       }
