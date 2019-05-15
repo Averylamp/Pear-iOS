@@ -46,6 +46,7 @@ extension UserEmailInfoViewController {
     self.stylize()
     self.setup()
     self.addKeyboardNotifications(animated: true)
+    self.addKeyboardDismissOnTap()
   }
   
   func stylize() {
@@ -68,7 +69,7 @@ extension UserEmailInfoViewController {
   
 }
 
-// MARK: KeyboardEventsProtocol
+// MARK: - KeyboardEventsBottomProtocol
 extension UserEmailInfoViewController: KeyboardEventsBottomProtocol {
   
   var bottomKeyboardConstraint: NSLayoutConstraint? {
@@ -79,4 +80,15 @@ extension UserEmailInfoViewController: KeyboardEventsBottomProtocol {
     return 20.0
   }
   
+}
+
+// MARK: - KeyboardEventsDismissTapProtocol
+extension UserEmailInfoViewController: KeyboardEventsDismissTapProtocol {
+  func addKeyboardDismissOnTap() {
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UserEmailInfoViewController.backgroundViewTapped)))
+  }
+  
+  @objc func backgroundViewTapped() {
+    self.dismissKeyboard()
+  }
 }
