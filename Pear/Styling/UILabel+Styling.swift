@@ -11,6 +11,13 @@ import UIKit
 
 extension UILabel {
   
+  func stylizeOnboardingTitleLabel() {
+    self.textColor = R.color.primaryTextColor()
+    if let font = R.font.openSansExtraBold(size: 16) {
+      self.font = font
+    }
+  }
+  
   func stylizeLogoLabel() {
     self.font = UIFont(name: StylingConfig.logoFont, size: 32)
     self.kerning = 3.0
