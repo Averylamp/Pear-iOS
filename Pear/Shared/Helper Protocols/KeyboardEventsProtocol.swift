@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-protocol KeyboardEventsBottomProtocol: UIViewController {
+protocol KeyboardEventsBottomProtocol {
   var bottomKeyboardConstraint: NSLayoutConstraint? {get}
   var bottomKeyboardPadding: CGFloat {get}
   func addKeyboardNotifications(animated: Bool)
 }
 
-extension KeyboardEventsBottomProtocol {
+extension KeyboardEventsBottomProtocol where Self: UIViewController {
   func addKeyboardNotifications(animated: Bool) {
     NotificationCenter.default.addObserver(forName: UIWindow.keyboardWillChangeFrameNotification, object: nil, queue: nil) { (notification) in
       if let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -44,9 +44,19 @@ extension KeyboardEventsBottomProtocol {
         } else {
           self.view.layoutIfNeeded()
         }
-
       })
     }
   }
 
+}
+
+protocol KeyboardEventsDismissTapProtocol {
+  func addKeyboardDismissOnTap()
+}
+
+extension KeyboardEventsDismissTapProtocol where Self: UIViewController {
+  
+  func dismissKeyboard() {
+    self.view.endEditing(true)
+  }
 }

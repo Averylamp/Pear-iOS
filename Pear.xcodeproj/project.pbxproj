@@ -878,6 +878,7 @@
 				BB94C1302243C73B001320B0 /* Strings.strings */,
 				BB610E9B222A1EDB00901FC3 /* Generators */,
 				BB0F16BA222EE73F00915C1C /* UX */,
+				BB4625EC228CDC990027C266 /* Helper Protocols */,
 				BB0F16B9222EE72800915C1C /* Helpers */,
 			);
 			path = Shared;
@@ -1204,6 +1205,16 @@
 			path = "Birthday Input";
 			sourceTree = "<group>";
 		};
+		BB4625EC228CDC990027C266 /* Helper Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */,
+				BBA106DD22780951000771CF /* ProfileCreationProtocol.swift */,
+				BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */,
+			);
+			path = "Helper Protocols";
+			sourceTree = "<group>";
+		};
 		BB51524C228BE2DD0094670A /* User Email */ = {
 			isa = PBXGroup;
 			children = (
@@ -1346,9 +1357,6 @@
 		BB714120228B3BB400129C93 /* New New Redesign */ = {
 			isa = PBXGroup;
 			children = (
-				BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */,
-				BBA106DD22780951000771CF /* ProfileCreationProtocol.swift */,
-				BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */,
 				BBBA574D226DD60E000BCD5F /* Landing Screen */,
 				BBBA574E226DD619000BCD5F /* Phone Code Confirmation */,
 				BB51524C228BE2DD0094670A /* User Email */,
