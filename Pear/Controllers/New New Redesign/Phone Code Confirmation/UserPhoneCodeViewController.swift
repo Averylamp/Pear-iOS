@@ -142,15 +142,14 @@ extension UserPhoneCodeViewController {
             DispatchQueue.main.async {
               Analytics.logEvent(AnalyticsEventLogin, parameters: [ AnalyticsParameterMethod: "phone" ])
               DataStore.shared.reloadAllUserData()
-              if user.endorsedUserIDs.count + user.detachedProfileIDs.count  == 0 {
+              if user.email != nil {
                 DispatchQueue.main.async {
                   // TODO(@averylamp): Fix
-//                  guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
-//                    print("Failed to create contact permissions VC")
-//                    return
-//                  }
-//                  print("Creating permissions VC")
-//                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
+                  guard let userEmailVC = UserEmailInfoViewController.instantiate() else {
+                    print("Failed to create user email VC")
+                    return
+                  }
+                  self.navigationController?.setViewControllers([userEmailVC], animated: true)
                   return
                   
                 }
@@ -222,12 +221,12 @@ extension UserPhoneCodeViewController {
     if let phoneNumber = self.userCreationData.phoneNumber {
       self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
     }
-    self.titleLabel.textColor = R.color.primaryTextColor()
+    self.titleLabel.stylizeOnboardingTitleLabel()
     self.subtitleLabel.textColor = R.color.primaryTextColor()
     self.backButton.setImage(R.image.iconLeftArrow(), for: .normal)
     if let font = R.font.openSansExtraBold(size: 16) {
       self.resendButton.titleLabel?.font = font
-      self.titleLabel.font = font
+      
     }
     self.resendButton.backgroundColor = nil
     self.resendButton.setTitleColor(UIColor(white: 0.8, alpha: 1.0), for: .normal)
@@ -304,7 +303,7 @@ extension UserPhoneCodeViewController: UITextFieldDelegate {
           self.numberLabels[labelNumber].text = ""
           self.circleViews[labelNumber].backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         }
-        self.numberLabels[labelNumber].textColor = UIColor.white
+        self.numberLabels[labelNumber].textColor = R.color.primaryTextColor()
       }
     }
   }

@@ -96,6 +96,7 @@
 		BB3F219A2226765C00DC4489 /* OldUserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F21992226765C00DC4489 /* OldUserCreationData.swift */; };
 		BB3F219D22267B8000DC4489 /* GetStartedUserLastNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F219B22267B8000DC4489 /* GetStartedUserLastNameViewController.swift */; };
 		BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F219C22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard */; };
+		BB3F30A7228C9CBD001947EF /* KeyboardEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */; };
 		BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */; };
 		BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE42233973400F99C8E /* GetStartedBirthdateViewController.swift */; };
 		BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F4AE62233973F00F99C8E /* GetStartedBirthdateViewController.storyboard */; };
@@ -104,6 +105,8 @@
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
 		BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C8A42225148BD00F7BA1A /* DiscoveryTableViewCell.swift */; };
 		BB4C8A47225152EC00F7BA1A /* DoDontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C8A46225152EC00F7BA1A /* DoDontView.swift */; };
+		BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB515248228BE2C70094670A /* UserEmailInfoViewController.swift */; };
+		BB51524B228BE2D20094670A /* UserEmailInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB51524A228BE2D20094670A /* UserEmailInfoViewController.storyboard */; };
 		BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB541B41223B5AA0002239C8 /* RemoteConfig.plist */; };
 		BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */; };
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
@@ -445,6 +448,7 @@
 		BB3F21992226765C00DC4489 /* OldUserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldUserCreationData.swift; sourceTree = "<group>"; };
 		BB3F219B22267B8000DC4489 /* GetStartedUserLastNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedUserLastNameViewController.swift; sourceTree = "<group>"; };
 		BB3F219C22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedUserLastNameViewController.storyboard; sourceTree = "<group>"; };
+		BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEventsProtocol.swift; sourceTree = "<group>"; };
 		BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfile.swift; sourceTree = "<group>"; };
 		BB3F4AE42233973400F99C8E /* GetStartedBirthdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedBirthdateViewController.swift; sourceTree = "<group>"; };
 		BB3F4AE62233973F00F99C8E /* GetStartedBirthdateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedBirthdateViewController.storyboard; sourceTree = "<group>"; };
@@ -453,6 +457,8 @@
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
 		BB4C8A42225148BD00F7BA1A /* DiscoveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewCell.swift; sourceTree = "<group>"; };
 		BB4C8A46225152EC00F7BA1A /* DoDontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDontView.swift; sourceTree = "<group>"; };
+		BB515248228BE2C70094670A /* UserEmailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmailInfoViewController.swift; sourceTree = "<group>"; };
+		BB51524A228BE2D20094670A /* UserEmailInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserEmailInfoViewController.storyboard; sourceTree = "<group>"; };
 		BB541B41223B5AA0002239C8 /* RemoteConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfig.plist; sourceTree = "<group>"; };
 		BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptSMSProtocol.swift; sourceTree = "<group>"; };
 		BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
@@ -1198,6 +1204,15 @@
 			path = "Birthday Input";
 			sourceTree = "<group>";
 		};
+		BB51524C228BE2DD0094670A /* User Email */ = {
+			isa = PBXGroup;
+			children = (
+				BB515248228BE2C70094670A /* UserEmailInfoViewController.swift */,
+				BB51524A228BE2D20094670A /* UserEmailInfoViewController.storyboard */,
+			);
+			path = "User Email";
+			sourceTree = "<group>";
+		};
 		BB56D22922142E2400A652E7 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -1331,10 +1346,12 @@
 		BB714120228B3BB400129C93 /* New New Redesign */ = {
 			isa = PBXGroup;
 			children = (
+				BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */,
 				BBA106DD22780951000771CF /* ProfileCreationProtocol.swift */,
 				BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */,
 				BBBA574D226DD60E000BCD5F /* Landing Screen */,
 				BBBA574E226DD619000BCD5F /* Phone Code Confirmation */,
+				BB51524C228BE2DD0094670A /* User Email */,
 			);
 			path = "New New Redesign";
 			sourceTree = "<group>";
@@ -2445,6 +2462,7 @@
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
+				BB51524B228BE2D20094670A /* UserEmailInfoViewController.storyboard in Resources */,
 				917F20D02271A1F20023EC69 /* FinishSetupUserBirthdateViewController.storyboard in Resources */,
 				BBF93E942267CF7A002841EE /* OpenSans-Regular.ttf in Resources */,
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
@@ -2851,6 +2869,7 @@
 				BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
+				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
 				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,
 				BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
@@ -2870,6 +2889,7 @@
 				BBF93E502267C80B002841EE /* UserPhoneCodeViewController.swift in Sources */,
 				BBECBEB12237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift in Sources */,
 				BB178941225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift in Sources */,
+				BB3F30A7228C9CBD001947EF /* KeyboardEventsProtocol.swift in Sources */,
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
 				BBA3CEB8225566600020A36C /* ChatRequestEndorsementViewController.swift in Sources */,
 				BB797DEF2277B56D00D38044 /* SMSCanceledViewController.swift in Sources */,
