@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class UserEmailInfoViewController: UIViewController {
 
@@ -46,7 +47,88 @@ class UserEmailInfoViewController: UIViewController {
         }
       }
     }
+    let locationStatus = CLLocationManager.authorizationStatus()
+    if locationStatus != .authorizedWhenInUse && locationStatus != .authorizedAlways {
+      guard let locationAuthorizationVC = AllowLocationViewController.instantiate() else {
+        print("Unable to create Location Auth VC")
+        return
+      }
+      self.navigationController?.setViewControllers([locationAuthorizationVC], animated: true)
+      return
+    }
+    DataStore.shared.withinBostonArea { (withinBoston) in
+      if let withinBoston = withinBoston {
+        if withinBoston  || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
+          DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
+          self.continueToNotificationsPageIfNotEnabled()
+        } else {
+          self.continueToLocationBlockedPage()
+        }
+      } else {
+        DataStore.shared.locationDelegate = self
+        DataStore.shared.firstLocationReceived = false
+        DataStore.shared.startReceivingLocationChanges()
+      }
+    }
+  }
+  
+  func continueToNotificationsPageIfNotEnabled() {
+    DataStore.shared.getNotificationAuthorizationStatus { (status) in
+      if status != .authorized {
+        guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
+          print("Failed to create allow Notifications VC")
+          return
+        }
+        self.navigationController?.setViewControllers([allowNotificationsVC], animated: true)
+        return
+      } else {
+        if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
+          self.continueToMainScreen()
+        } else {
+          self.continueToOnboarding()
+        }
+        return
+      }
+    }
+  }
+  
+  func continueToMainScreen() {
+    DispatchQueue.main.async {
+      guard let mainVC = MainTabBarViewController.instantiate() else {
+        print("Failed to create main VC")
+        return
+      }
+      self.navigationController?.setViewControllers([mainVC], animated: true)
+    }
+  }
+  
+  func continueToOnboarding() {
     
+  }
+  
+  func continueToLocationBlockedPage() {
+    //TODO(@briangu33): Please add the blocked page
+  }
+  
+}
+
+// MARK: - First Location Delegate Manager
+extension UserEmailInfoViewController: DataStoreLocationDelegate {
+  func firstLocationReceived(location: CLLocationCoordinate2D) {
+    DataStore.shared.withinBostonArea { (withinBoston) in
+      if let withinBoston = withinBoston {
+        if withinBoston   || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
+          DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
+          self.continueToNotificationsPageIfNotEnabled()
+        } else {
+          self.continueToLocationBlockedPage()
+        }
+      }
+    }
+  }
+  
+  func authorizationStatusChanged(status: CLAuthorizationStatus) {
+    // no-op
   }
   
 }

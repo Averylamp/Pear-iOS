@@ -38,7 +38,7 @@ class GetStartedLocationViewController: UIViewController {
   func validateLocation(location: CLLocationCoordinate2D) {
     
     print("validateLocation")
-    if let location = DataStore.shared.lastLocation {
+    if let location = DataStore.shared.locationManager.location?.coordinate {
       self.gettingStartedUserData.lastLocation = location
     }
     guard let nextVC = self.gettingStartedUserData.getNextInputViewController() else {
@@ -75,7 +75,7 @@ class GetStartedLocationViewController: UIViewController {
         // Location services is not available on the device
         return
       }
-      if let location = DataStore.shared.lastLocation {
+      if let location = DataStore.shared.locationManager.location?.coordinate {
         self.validateLocation(location: location)
       } else {
         DataStore.shared.startReceivingLocationChanges()

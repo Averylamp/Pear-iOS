@@ -48,7 +48,7 @@ class DataStore: NSObject {
   var remoteConfig: RemoteConfig
   var locationManager: CLLocationManager
   var firstLocationReceived: Bool = false
-  var lastLocation: CLLocationCoordinate2D?
+  
   var firebaseRemoteInstanceID: String? // for push notifications via Firebase Cloud Messaging
   var possibleQuestions: [QuestionItem] = []
   

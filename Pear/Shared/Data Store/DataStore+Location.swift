@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftyJSON
 
 extension DataStore: CLLocationManagerDelegate {
   
@@ -33,15 +34,12 @@ extension DataStore: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     if let location = locations.last {
-      self.lastLocation = location.coordinate
       if let locationDelegate = self.locationDelegate {
         if !self.firstLocationReceived {
           locationDelegate.firstLocationReceived(location: location.coordinate)
           self.firstLocationReceived = true
         }
       }
-      
-      DataStore.shared.updateLatestLocationAndToken()
     }
   }
   
@@ -69,4 +67,36 @@ extension DataStore: CLLocationManagerDelegate {
       return false
     }
   }
+  
+  func withinBostonArea(completion: (Bool?) -> Void) {
+    if let lastLocation = locationManager.location?.coordinate,
+      DataStore.shared.remoteConfig.configValue(forKey: "location_blocking_enabled").boolValue {
+      let bostonLocation = CLLocationCoordinate2D(latitude: 42.362485733571845, longitude: -71.1014485358899)
+      let milesDistance = bostonLocation.distanceMiles(other: lastLocation)
+      var foundWithin = false
+      if let milesFromBoston = DataStore.shared.remoteConfig.configValue(forKey: "distance_from_boston").numberValue?.doubleValue {
+        foundWithin = milesDistance <= milesFromBoston
+      } else {
+        foundWithin = milesDistance <= 200.0
+      }
+      foundWithin = false
+      if !foundWithin {
+        let whitelistedNumbersData = DataStore.shared.remoteConfig.configValue(forKey: "whitelisted_phone_numbers").dataValue
+        if let whitelistedNumbersArray = try? JSON(data: whitelistedNumbersData).array,
+          let userPhoneNumber = DataStore.shared.currentPearUser?.phoneNumber {
+          let whitelistedNumbersStringArray = whitelistedNumbersArray.compactMap({ $0.string })
+          print(whitelistedNumbersStringArray)
+          if whitelistedNumbersStringArray.contains(userPhoneNumber) {
+            foundWithin = true
+          }
+        } else {
+          print("failed to find whitelisted numbers")
+        }
+      }
+      completion(foundWithin)
+      return
+    }
+    completion(nil)
+  }
+  
 }
