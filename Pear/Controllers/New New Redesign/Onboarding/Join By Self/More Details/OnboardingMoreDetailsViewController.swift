@@ -12,7 +12,7 @@ class OnboardingMoreDetailsViewController: UIViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
-  @IBOutlet weak var stackView: UIStackView!t
+  @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var continueButton: UIButton!
   
   @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
