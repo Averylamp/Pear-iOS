@@ -1360,6 +1360,8 @@
 				BBBA574D226DD60E000BCD5F /* Landing Screen */,
 				BBBA574E226DD619000BCD5F /* Phone Code Confirmation */,
 				BB51524C228BE2DD0094670A /* User Email */,
+				911AD0F42261AE3900A743C2 /* Allow Location Screen */,
+				911AD0EF22619E3200A743C2 /* Allow Notifications Screen */,
 			);
 			path = "New New Redesign";
 			sourceTree = "<group>";
@@ -1539,8 +1541,6 @@
 				BB9CB6B9225A3BFB00605A98 /* Landing Navigation View Controller */,
 				BB9CB6B8225A3BED00605A98 /* Loading View Controller */,
 				BB986A38220E439800759A14 /* Landing Screen */,
-				911AD0EF22619E3200A743C2 /* Allow Notifications Screen */,
-				911AD0F42261AE3900A743C2 /* Allow Location Screen */,
 			);
 			path = "Initial Screens";
 			sourceTree = "<group>";

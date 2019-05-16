@@ -25,23 +25,22 @@ extension DataStore: CLLocationManagerDelegate {
       return
     }
     // Configure and start the service.
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-    self.locationManager.distanceFilter = 2000.0  // In meters.
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+    self.locationManager.distanceFilter = 100.0  // In meters.
     self.locationManager.startUpdatingLocation()
     
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("UPDATED LOCATION")
     if let location = locations.last {
       self.lastLocation = location.coordinate
-      if let locationDelegate = self.delegate {
+      if let locationDelegate = self.locationDelegate {
         if !self.firstLocationReceived {
           locationDelegate.firstLocationReceived(location: location.coordinate)
           self.firstLocationReceived = true
         }
       }
-      // [Brian] hmm usually by this point, on the first location update we haven't actually retrieved the pear user, so this will no-op
+      
       DataStore.shared.updateLatestLocationAndToken()
     }
   }
@@ -54,7 +53,7 @@ extension DataStore: CLLocationManagerDelegate {
   }
   
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    if let locationDelegate = self.delegate {
+    if let locationDelegate = self.locationDelegate {
       locationDelegate.authorizationStatusChanged(status: status)
     }
   }

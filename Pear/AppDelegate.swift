@@ -56,12 +56,8 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     window?.rootViewController = navController
     window?.makeKeyAndVisible()
     
-    //    Forces Remote config fetch
-    print(DataStore.shared.remoteConfig.configSettings)
-    
     // register for remote notifications if we have notification authorization
     DataStore.shared.registerForRemoteNotificationsIfAuthorized()
-    DataStore.shared.reloadPossibleQuestions()
     return true
   }
   

@@ -23,7 +23,8 @@ class DataStore: NSObject {
   
   static let shared = DataStore()
   
-  weak var delegate: DataStoreLocationDelegate?
+  weak var locationDelegate: DataStoreLocationDelegate?
+  
   var currentPearUser: PearUser? {
     didSet {
       NotificationCenter.default.post(name: .refreshMeTab, object: nil)

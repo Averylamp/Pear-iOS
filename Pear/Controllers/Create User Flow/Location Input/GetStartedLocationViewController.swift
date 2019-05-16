@@ -90,7 +90,7 @@ extension GetStartedLocationViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    DataStore.shared.delegate = self
+    DataStore.shared.locationDelegate = self
     
     self.stylize()
   }
