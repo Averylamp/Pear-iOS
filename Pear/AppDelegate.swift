@@ -44,7 +44,6 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     if CommandLine.arguments.contains("--uitesting") {
       resetState()
     }
-    self.resetState()
     #endif
 
     self.stylize()

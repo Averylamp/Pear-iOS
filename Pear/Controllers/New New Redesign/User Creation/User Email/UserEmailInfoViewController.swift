@@ -127,7 +127,7 @@ extension UserEmailInfoViewController {
   }
   
   func stylize() {
-    self.titleLabel.stylizeOnboardingTitleLabel()
+    self.titleLabel.stylizeUserSignupTitleLabel()
     self.phoneNumberContainerView.layer.cornerRadius = 12
     self.emailContainerView.layer.cornerRadius = 12
     self.emailContainerView.layer.borderWidth = 1

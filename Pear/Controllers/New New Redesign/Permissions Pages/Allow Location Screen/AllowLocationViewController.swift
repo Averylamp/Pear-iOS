@@ -89,8 +89,8 @@ extension AllowLocationViewController {
   
   func stylize() {
     self.enableLocationButton.stylizeDark()
-    self.titleLabel.stylizeOnboardingTitleLabel()
-    self.subtitleLabel.stylizeOnboardingSubtitleLabel()
+    self.titleLabel.stylizeUserSignupTitleLabel()
+    self.subtitleLabel.stylizeUserSignupSubtitleLabel()
     let status = CLLocationManager.authorizationStatus()
     if status == .denied {
       self.enableLocationButton.setTitle("Open Settings", for: .normal)

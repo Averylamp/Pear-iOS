@@ -55,8 +55,8 @@ extension LocationBlockedViewController {
   
   func stylize() {
     
-    self.titleLabel.stylizeOnboardingTitleLabel()
-    self.subtitleLabel.stylizeOnboardingSubtitleLabel()
+    self.titleLabel.stylizeUserSignupTitleLabel()
+    self.subtitleLabel.stylizeUserSignupSubtitleLabel()
     
   }
   

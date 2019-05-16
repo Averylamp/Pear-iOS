@@ -141,6 +141,13 @@
 		BB687E5C228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */; };
 		BB687E5E228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */; };
 		BB687E61228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E60228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift */; };
+		BB687E63228D6B7500F45C9D /* UIImageView+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E62228D6B7500F45C9D /* UIImageView+Styling.swift */; };
+		BB687E6A228D6D1100F45C9D /* OnboardingExplainationPage2ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E64228D6D0F00F45C9D /* OnboardingExplainationPage2ViewController.storyboard */; };
+		BB687E6B228D6D1100F45C9D /* OnboardingExplainationPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E65228D6D1000F45C9D /* OnboardingExplainationPage2ViewController.swift */; };
+		BB687E6C228D6D1100F45C9D /* OnboardingExplainationPage3ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E66228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.storyboard */; };
+		BB687E6D228D6D1100F45C9D /* OnboardingExplainationPage3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */; };
+		BB687E6E228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */; };
+		BB687E6F228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */; };
 		BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */; };
 		BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */; };
 		BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */; };
@@ -502,6 +509,13 @@
 		BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingExplainationPage1ViewController.swift; sourceTree = "<group>"; };
 		BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingExplainationPage1ViewController.storyboard; sourceTree = "<group>"; };
 		BB687E60228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PermissionsFlowProtocol+UIViewController.swift"; sourceTree = "<group>"; };
+		BB687E62228D6B7500F45C9D /* UIImageView+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Styling.swift"; sourceTree = "<group>"; };
+		BB687E64228D6D0F00F45C9D /* OnboardingExplainationPage2ViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingExplainationPage2ViewController.storyboard; sourceTree = "<group>"; };
+		BB687E65228D6D1000F45C9D /* OnboardingExplainationPage2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingExplainationPage2ViewController.swift; sourceTree = "<group>"; };
+		BB687E66228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingExplainationPage3ViewController.storyboard; sourceTree = "<group>"; };
+		BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingExplainationPage3ViewController.swift; sourceTree = "<group>"; };
+		BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingExplainationPage4ViewController.storyboard; sourceTree = "<group>"; };
+		BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingExplainationPage4ViewController.swift; sourceTree = "<group>"; };
 		BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedWaitlistViewController.swift; sourceTree = "<group>"; };
@@ -1280,6 +1294,7 @@
 				BB686E3E22120F1A008A263C /* StylingConfig.swift */,
 				BB9CB69E2259E55D00605A98 /* UITextView+Styling.swift */,
 				BBCF418F2227E137009CEC4A /* UIView+Styling.swift */,
+				BB687E62228D6B7500F45C9D /* UIImageView+Styling.swift */,
 				BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */,
 				BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */,
 				BBCF418D2227DE47009CEC4A /* UITextField+Styling.swift */,
@@ -1364,6 +1379,8 @@
 			isa = PBXGroup;
 			children = (
 				BB687E5F228D5A4200F45C9D /* Onboarding Explaination Pages */,
+				BB687E70228D704500F45C9D /* Join With Friend */,
+				BB687E71228D704900F45C9D /* Join By Self */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1394,8 +1411,28 @@
 			children = (
 				BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */,
 				BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */,
+				BB687E65228D6D1000F45C9D /* OnboardingExplainationPage2ViewController.swift */,
+				BB687E64228D6D0F00F45C9D /* OnboardingExplainationPage2ViewController.storyboard */,
+				BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */,
+				BB687E66228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.storyboard */,
+				BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */,
+				BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */,
 			);
 			path = "Onboarding Explaination Pages";
+			sourceTree = "<group>";
+		};
+		BB687E70228D704500F45C9D /* Join With Friend */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Join With Friend";
+			sourceTree = "<group>";
+		};
+		BB687E71228D704900F45C9D /* Join By Self */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Join By Self";
 			sourceTree = "<group>";
 		};
 		BB6C065022280FCA007A5C96 /* Allow Notifications */ = {
@@ -2502,8 +2539,10 @@
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
 				BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */,
 				BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */,
+				BB687E6E228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.storyboard in Resources */,
 				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
 				BBC8DD5D2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard in Resources */,
+				BB687E6A228D6D1100F45C9D /* OnboardingExplainationPage2ViewController.storyboard in Resources */,
 				BB3F02892271C4E6004855E8 /* ScrollableTextItemViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
@@ -2512,6 +2551,7 @@
 				9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */,
 				BBA3CEBA2255666E0020A36C /* ChatRequestPersonalViewController.storyboard in Resources */,
 				BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */,
+				BB687E6C228D6D1100F45C9D /* OnboardingExplainationPage3ViewController.storyboard in Resources */,
 				BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */,
 				BBF93E8E2267CF7A002841EE /* OpenSans-ExtraBold.ttf in Resources */,
 				BB9CB69D2259E14100605A98 /* UpdateExpandingTextViewController.storyboard in Resources */,
@@ -2894,6 +2934,7 @@
 				BB17892A225D96D60033ACC6 /* ChatMainViewController.swift in Sources */,
 				BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
+				BB687E6D228D6D1100F45C9D /* OnboardingExplainationPage3ViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
 				BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */,
 				BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */,
@@ -2915,6 +2956,7 @@
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
 				BB687E61228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift in Sources */,
 				91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */,
+				BB687E6B228D6D1100F45C9D /* OnboardingExplainationPage2ViewController.swift in Sources */,
 				911AD0F122619FDD00A743C2 /* AllowNotificationsViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */,
@@ -2946,6 +2988,7 @@
 				BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
+				BB687E63228D6B7500F45C9D /* UIImageView+Styling.swift in Sources */,
 				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,
 				BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
@@ -2960,6 +3003,7 @@
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
+				BB687E6F228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift in Sources */,
 				917F20CC22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift in Sources */,
 				BB17893D225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift in Sources */,
 				BBF93E502267C80B002841EE /* UserPhoneCodeViewController.swift in Sources */,
