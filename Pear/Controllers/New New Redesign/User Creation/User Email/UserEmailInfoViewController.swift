@@ -75,15 +75,11 @@ class UserEmailInfoViewController: UIViewController {
   func continueToNotificationsPageIfNotEnabled() {
     DataStore.shared.getNotificationAuthorizationStatus { (status) in
       if status != .authorized {
-        guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
-          print("Failed to create allow Notifications VC")
-          return
-        }
-        self.navigationController?.setViewControllers([allowNotificationsVC], animated: true)
+        self.continueToAllowNotifications()
         return
       } else {
         if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
-          self.continueToMainScreen()
+          self.continueToMainVC()
         } else {
           self.continueToOnboarding()
         }
@@ -91,25 +87,11 @@ class UserEmailInfoViewController: UIViewController {
       }
     }
   }
-  
-  func continueToMainScreen() {
-    DispatchQueue.main.async {
-      guard let mainVC = MainTabBarViewController.instantiate() else {
-        print("Failed to create main VC")
-        return
-      }
-      self.navigationController?.setViewControllers([mainVC], animated: true)
-    }
-  }
-  
-  func continueToOnboarding() {
-    
-  }
-  
-  func continueToLocationBlockedPage() {
-    //TODO(@briangu33): Please add the blocked page
-  }
-  
+}
+
+// MARK: - Permissions Flow Protocol
+extension UserEmailInfoViewController: PermissionsFlowProtocol {
+  // No-Op
 }
 
 // MARK: - First Location Delegate Manager

@@ -129,7 +129,6 @@ extension UserPhoneCodeViewController {
         }
       }
       if let result = result {
-        print(result)
         HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
         self.userCreationData.phoneNumberVerified = true
         guard let authUID = Auth.auth().currentUser?.uid else {
@@ -137,27 +136,12 @@ extension UserPhoneCodeViewController {
           return
         }
         DataStore.shared.refreshPearUser { (user) in
-          if let user = user {
+          if user != nil {
             print("Continuing to Main Screen")
             DispatchQueue.main.async {
               Analytics.logEvent(AnalyticsEventLogin, parameters: [ AnalyticsParameterMethod: "phone" ])
               DataStore.shared.reloadAllUserData()
-              if user.email != nil {
-                DispatchQueue.main.async {
-                  // TODO(@averylamp): Fix
-                  guard let userEmailVC = UserEmailInfoViewController.instantiate() else {
-                    print("Failed to create user email VC")
-                    return
-                  }
-                  self.navigationController?.setViewControllers([userEmailVC], animated: true)
-                  return
-                  
-                }
-                return
-              }
-              if let mainVC = LoadingScreenViewController.getMainScreenVC() {
-                self.navigationController?.setViewControllers([mainVC], animated: true)
-              }
+              self.continueToEmailOrNext()
             }
           } else {
             self.userCreationData.firebaseAuthID = authUID
@@ -170,17 +154,10 @@ extension UserPhoneCodeViewController {
                   dateFormatter.dateFormat = "yy-MM-dd"
                   Analytics.setUserProperty(dateFormatter.string(from: mondayDate), forName: "signup_week")
                 }
-                DispatchQueue.main.async {
-                  DataStore.shared.currentPearUser = pearUser
-                  DataStore.shared.reloadAllUserData()
-                  DataStore.shared.refreshPearUser(completion: nil)
-                  // TODO(@averylamp): Fix
-//                  guard let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() else {
-//                    print("Failed to instantiate contact permisssion vc")
-//                    return
-//                  }
-//                  self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
-                }
+                DataStore.shared.currentPearUser = pearUser
+                DataStore.shared.reloadAllUserData()
+                DataStore.shared.refreshPearUser(completion: nil)
+                self.continueToEmailOrNext()
               case .failure(let error):
                 print("Failure creating Pear User: \(error)")
                 DispatchQueue.main.async {
@@ -201,6 +178,11 @@ extension UserPhoneCodeViewController {
 
 }
 
+// MARK: - Permissions Flow Protocol
+extension UserPhoneCodeViewController: PermissionsFlowProtocol {
+  // No-Op
+}
+
 // MARK: - Life Cycle
 extension UserPhoneCodeViewController {
   
@@ -216,14 +198,11 @@ extension UserPhoneCodeViewController {
   func stylize() {
     self.view.backgroundColor = UIColor.white
     self.headerContainerView.backgroundColor = nil
-//    self.headerContainerView.layer.borderWidth = 1.0
-//    self.headerContainerView.layer.borderColor = R.color.backgroundColorDarkPurple()?.cgColor
     if let phoneNumber = self.userCreationData.phoneNumber {
       self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
     }
     self.titleLabel.stylizeOnboardingTitleLabel()
     self.subtitleLabel.textColor = R.color.primaryTextColor()
-    self.backButton.setImage(R.image.iconLeftArrow(), for: .normal)
     if let font = R.font.openSansExtraBold(size: 16) {
       self.resendButton.titleLabel?.font = font
       

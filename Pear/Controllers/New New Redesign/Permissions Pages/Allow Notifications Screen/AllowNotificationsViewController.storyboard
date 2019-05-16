@@ -71,6 +71,9 @@
                                     <constraint firstAttribute="height" constant="50" id="oKj-rn-4d9"/>
                                 </constraints>
                                 <state key="normal" title="Enable Notifications"/>
+                                <connections>
+                                    <action selector="enableNotificationsClicked:" destination="7C8-uY-LH3" eventType="touchUpInside" id="wXv-PR-eZL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't miss out" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-Nb-Mnw">
                                 <rect key="frame" x="50" y="315.5" width="275" height="20"/>

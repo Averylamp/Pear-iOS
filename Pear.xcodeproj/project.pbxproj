@@ -138,6 +138,9 @@
 		BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */; };
 		BB687E55228D535700F45C9D /* LocationBlockedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E53228D535600F45C9D /* LocationBlockedViewController.swift */; };
 		BB687E56228D535700F45C9D /* LocationBlockedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */; };
+		BB687E5C228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */; };
+		BB687E5E228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */; };
+		BB687E61228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E60228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift */; };
 		BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */; };
 		BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */; };
 		BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */; };
@@ -496,6 +499,9 @@
 		BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingTextViewController.storyboard; sourceTree = "<group>"; };
 		BB687E53228D535600F45C9D /* LocationBlockedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationBlockedViewController.swift; sourceTree = "<group>"; };
 		BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationBlockedViewController.storyboard; sourceTree = "<group>"; };
+		BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingExplainationPage1ViewController.swift; sourceTree = "<group>"; };
+		BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingExplainationPage1ViewController.storyboard; sourceTree = "<group>"; };
+		BB687E60228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PermissionsFlowProtocol+UIViewController.swift"; sourceTree = "<group>"; };
 		BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedWaitlistViewController.swift; sourceTree = "<group>"; };
@@ -1354,6 +1360,44 @@
 			path = "Location Blocked";
 			sourceTree = "<group>";
 		};
+		BB687E58228D59E100F45C9D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E5F228D5A4200F45C9D /* Onboarding Explaination Pages */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		BB687E59228D59ED00F45C9D /* User Creation */ = {
+			isa = PBXGroup;
+			children = (
+				BBBA574D226DD60E000BCD5F /* Landing Screen */,
+				BBBA574E226DD619000BCD5F /* Phone Code Confirmation */,
+				BB51524C228BE2DD0094670A /* User Email */,
+			);
+			path = "User Creation";
+			sourceTree = "<group>";
+		};
+		BB687E5A228D59F800F45C9D /* Permissions Pages */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E60228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift */,
+				911AD0F42261AE3900A743C2 /* Allow Location Screen */,
+				911AD0EF22619E3200A743C2 /* Allow Notifications Screen */,
+				BB687E57228D535C00F45C9D /* Location Blocked */,
+			);
+			path = "Permissions Pages";
+			sourceTree = "<group>";
+		};
+		BB687E5F228D5A4200F45C9D /* Onboarding Explaination Pages */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */,
+				BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */,
+			);
+			path = "Onboarding Explaination Pages";
+			sourceTree = "<group>";
+		};
 		BB6C065022280FCA007A5C96 /* Allow Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1375,12 +1419,9 @@
 		BB714120228B3BB400129C93 /* New New Redesign */ = {
 			isa = PBXGroup;
 			children = (
-				BBBA574D226DD60E000BCD5F /* Landing Screen */,
-				BBBA574E226DD619000BCD5F /* Phone Code Confirmation */,
-				BB51524C228BE2DD0094670A /* User Email */,
-				911AD0F42261AE3900A743C2 /* Allow Location Screen */,
-				911AD0EF22619E3200A743C2 /* Allow Notifications Screen */,
-				BB687E57228D535C00F45C9D /* Location Blocked */,
+				BB687E59228D59ED00F45C9D /* User Creation */,
+				BB687E5A228D59F800F45C9D /* Permissions Pages */,
+				BB687E58228D59E100F45C9D /* Onboarding */,
 			);
 			path = "New New Redesign";
 			sourceTree = "<group>";
@@ -2532,6 +2573,7 @@
 				BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
+				BB687E5E228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard in Resources */,
 				BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */,
 				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
 				BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */,
@@ -2842,6 +2884,7 @@
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
+				BB687E5C228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift in Sources */,
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
 				BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */,
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
@@ -2870,6 +2913,7 @@
 				BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
+				BB687E61228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift in Sources */,
 				91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */,
 				911AD0F122619FDD00A743C2 /* AllowNotificationsViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,

@@ -117,7 +117,6 @@ extension DataStore {
                                    completion: { (result) in
                                     switch result {
                                     case .success(let pearUser):
-                                      print("Got Existing Pear User \(String(describing: pearUser))")
                                       DataStore.shared.currentPearUser = pearUser
                                       DataStore.shared.reloadAllUserData()
                                       Crashlytics.sharedInstance().setUserEmail(pearUser.email)
