@@ -233,7 +233,7 @@ extension DataStore {
     if let remoteInstanceID = DataStore.shared.firebaseRemoteInstanceID {
       updates["firebaseRemoteInstanceID"] = remoteInstanceID
     }
-    if let lastLocation = DataStore.shared.lastLocation {
+    if let lastLocation = DataStore.shared.locationManager.location?.coordinate {
       var coordinates: [Double] = []
       coordinates.append(lastLocation.longitude)
       coordinates.append(lastLocation.latitude)
@@ -296,22 +296,6 @@ extension DataStore {
         })
       case .failure(let error):
         print("Failure getting auth tokens: \(error)")
-      }
-    }
-  }
-  
-  func getNotificationAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
-    UNUserNotificationCenter.current().getNotificationSettings { settings in
-      completion(settings.authorizationStatus)
-    }
-  }
-  
-  func registerForRemoteNotificationsIfAuthorized() {
-    UNUserNotificationCenter.current().getNotificationSettings { settings in
-      guard settings.authorizationStatus == .authorized else { return }
-      print("Registering for remote notifications")
-      DispatchQueue.main.async {
-        UIApplication.shared.registerForRemoteNotifications()
       }
     }
   }

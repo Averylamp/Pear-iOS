@@ -136,11 +136,15 @@
 		BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E44221231FA008A263C /* UIImage+Helpers.swift */; };
 		BB686E4922126706008A263C /* ExpandingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB686E4822126706008A263C /* ExpandingTextViewController.swift */; };
 		BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */; };
+		BB687E55228D535700F45C9D /* LocationBlockedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E53228D535600F45C9D /* LocationBlockedViewController.swift */; };
+		BB687E56228D535700F45C9D /* LocationBlockedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */; };
 		BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */; };
 		BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */; };
 		BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */; };
 		BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */; };
 		BB714123228B4F6500129C93 /* Cera-Pro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */; };
+		BB719A43228D3FDE00007D69 /* CoreLocation+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A42228D3FDE00007D69 /* CoreLocation+Helpers.swift */; };
+		BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A44228D447000007D69 /* DataStore+Notifications.swift */; };
 		BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */; };
 		BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */; };
 		BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB77E79E2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard */; };
@@ -490,11 +494,15 @@
 		BB686E44221231FA008A263C /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
 		BB686E4822126706008A263C /* ExpandingTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextViewController.swift; sourceTree = "<group>"; };
 		BB686E4A22126713008A263C /* ExpandingTextViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandingTextViewController.storyboard; sourceTree = "<group>"; };
+		BB687E53228D535600F45C9D /* LocationBlockedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationBlockedViewController.swift; sourceTree = "<group>"; };
+		BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationBlockedViewController.storyboard; sourceTree = "<group>"; };
 		BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedWaitlistViewController.swift; sourceTree = "<group>"; };
 		BB6C064E2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedWaitlistViewController.storyboard; sourceTree = "<group>"; };
 		BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera-Pro-Black.otf"; sourceTree = "<group>"; };
+		BB719A42228D3FDE00007D69 /* CoreLocation+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreLocation+Helpers.swift"; sourceTree = "<group>"; };
+		BB719A44228D447000007D69 /* DataStore+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Notifications.swift"; sourceTree = "<group>"; };
 		BB75BFD522156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedNotifyFriendViewController.storyboard; sourceTree = "<group>"; };
 		BB75BFD722156C9800BAB800 /* GetStartedNotifyFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedNotifyFriendViewController.swift; sourceTree = "<group>"; };
 		BB77E79E2252211600A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ApproveDetachedProfileSchoolViewController.storyboard; sourceTree = "<group>"; };
@@ -1071,6 +1079,7 @@
 				BB1C670F2237205700D75848 /* Coding.swift */,
 				BB178933225DE73E0033ACC6 /* Date+Helpers.swift */,
 				BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */,
+				BB719A42228D3FDE00007D69 /* CoreLocation+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1336,6 +1345,15 @@
 			name = "New Models";
 			sourceTree = "<group>";
 		};
+		BB687E57228D535C00F45C9D /* Location Blocked */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */,
+				BB687E53228D535600F45C9D /* LocationBlockedViewController.swift */,
+			);
+			path = "Location Blocked";
+			sourceTree = "<group>";
+		};
 		BB6C065022280FCA007A5C96 /* Allow Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1362,6 +1380,7 @@
 				BB51524C228BE2DD0094670A /* User Email */,
 				911AD0F42261AE3900A743C2 /* Allow Location Screen */,
 				911AD0EF22619E3200A743C2 /* Allow Notifications Screen */,
+				BB687E57228D535C00F45C9D /* Location Blocked */,
 			);
 			path = "New New Redesign";
 			sourceTree = "<group>";
@@ -1435,6 +1454,7 @@
 			children = (
 				BB0F16B7222EE6D200915C1C /* DataStore.swift */,
 				BB797DEC2276C9C600D38044 /* DataStore+Location.swift */,
+				BB719A44228D447000007D69 /* DataStore+Notifications.swift */,
 				BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */,
 				BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */,
 			);
@@ -2526,6 +2546,7 @@
 				BBC4F50A22822A6800C79148 /* ProfileDemographicsViewController.storyboard in Resources */,
 				BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
+				BB687E56228D535700F45C9D /* LocationBlockedViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
 				BB178938225DFCAA0033ACC6 /* FullChatViewController.storyboard in Resources */,
 				BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */,
@@ -2784,6 +2805,7 @@
 				BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BB17892E225DE26F0033ACC6 /* ChatRequestsTableViewController.swift in Sources */,
+				BB719A43228D3FDE00007D69 /* CoreLocation+Helpers.swift in Sources */,
 				BBC4F503228214AF00C79148 /* NewProfileBioViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
@@ -2860,6 +2882,7 @@
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
 				BB3F21972226754D00DC4489 /* GetStartedEmailProviderViewController.swift in Sources */,
 				BBC4F5062282217600C79148 /* ProfileQuestionResponseViewController.swift in Sources */,
+				BB687E55228D535700F45C9D /* LocationBlockedViewController.swift in Sources */,
 				BBC8DD5B2272753700C157E2 /* MultipleBoastRoastStackViewController.swift in Sources */,
 				BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
@@ -2876,6 +2899,7 @@
 				BBA106E422784B1C000771CF /* ExpandingFreeResponseInputViewController.swift in Sources */,
 				BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
+				BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
 				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,

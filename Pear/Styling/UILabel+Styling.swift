@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
+// MARK: - Onboarding
 extension UILabel {
-  
   func stylizeOnboardingTitleLabel() {
     self.textColor = R.color.primaryTextColor()
     if let font = R.font.openSansExtraBold(size: 16) {
@@ -18,10 +18,15 @@ extension UILabel {
     }
   }
   
-  func stylizeLogoLabel() {
-    self.font = UIFont(name: StylingConfig.logoFont, size: 32)
-    self.kerning = 3.0
+  func stylizeOnboardingSubtitleLabel() {
+    self.textColor = R.color.primaryTextColor()
+    if let font = R.font.openSansExtraBold(size: 20) {
+      self.font = font
+    }
   }
+}
+
+extension UILabel {
   
   func stylizeTitleLabel() {
     self.font = UIFont(name: StylingConfig.displayFontRegular, size: 28)

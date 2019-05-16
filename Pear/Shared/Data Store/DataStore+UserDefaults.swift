@@ -18,7 +18,8 @@ extension DataStore {
     case notFilteringForEndorsedUsers
     case notFilteringForDetachedProfiles
     case hasCreatedUser
-    case secondTimeUser
+    case hasCompletedOnboarding
+    case hasBeenInBostonArea
   }
   
   func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {

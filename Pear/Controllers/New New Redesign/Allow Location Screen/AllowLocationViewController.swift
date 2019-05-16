@@ -29,7 +29,6 @@ class AllowLocationViewController: UIViewController {
   
   @IBAction func enableLocationClicked(_ sender: Any) {
     let status = CLLocationManager.authorizationStatus()
-    print("Location Authorization status is \(status)")
     self.handleAuthorizationStatus(status: status)
   }
   
@@ -55,18 +54,61 @@ class AllowLocationViewController: UIViewController {
         // Location services is not available on the DEVICE
         return
       }
-      if let location = DataStore.shared.lastLocation {
-        DispatchQueue.main.async {
-          guard let mainVC = MainTabBarViewController.instantiate() else {
-            print("Failed to create main VC")
-            return
+      DataStore.shared.withinBostonArea { (withinBoston) in
+        if let withinBoston = withinBoston {
+          if withinBoston  || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
+            DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
+            self.continueToNotificationsPageIfNotEnabled()
+          } else {
+            self.continueToLocationBlockedPage()
           }
-          self.navigationController?.setViewControllers([mainVC], animated: true)
+        } else {
+          DataStore.shared.locationDelegate = self
+          DataStore.shared.firstLocationReceived = false
+          DataStore.shared.startReceivingLocationChanges()
         }
-      } else {
-        DataStore.shared.startReceivingLocationChanges()
       }
     }
+  }
+  
+  func continueToNotificationsPageIfNotEnabled() {
+    DataStore.shared.getNotificationAuthorizationStatus { (status) in
+      if status != .authorized {
+        DispatchQueue.main.async {
+          guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
+            print("Failed to create allow Notifications VC")
+            return
+          }
+          self.navigationController?.setViewControllers([allowNotificationsVC], animated: true)
+        }
+        return
+      } else {
+        if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
+          self.continueToMainScreen()
+        } else {
+          self.continueToOnboarding()
+        }
+        return
+      }
+    }
+  }
+  
+  func continueToMainScreen() {
+    DispatchQueue.main.async {
+      guard let mainVC = MainTabBarViewController.instantiate() else {
+        print("Failed to create main VC")
+        return
+      }
+      self.navigationController?.setViewControllers([mainVC], animated: true)
+    }
+  }
+  
+  func continueToOnboarding() {
+    
+  }
+  
+  func continueToLocationBlockedPage() {
+    //TODO(@briangu33): Please add the blocked page
   }
   
 }
@@ -82,8 +124,8 @@ extension AllowLocationViewController {
   
   func stylize() {
     self.enableLocationButton.stylizeDark()
-    self.titleLabel.stylizeTitleLabel()
-    self.subtitleLabel.stylizeSubtitleLabel()
+    self.titleLabel.stylizeOnboardingTitleLabel()
+    self.subtitleLabel.stylizeOnboardingSubtitleLabel()
     let status = CLLocationManager.authorizationStatus()
     if status == .denied {
       self.enableLocationButton.setTitle("Open Settings", for: .normal)
@@ -95,13 +137,15 @@ extension AllowLocationViewController {
 extension AllowLocationViewController: DataStoreLocationDelegate {
   
   func firstLocationReceived(location: CLLocationCoordinate2D) {
-    print("firstLocationReceived")
-    DispatchQueue.main.async {
-      guard let mainVC = MainTabBarViewController.instantiate() else {
-        print("Failed to create main VC")
-        return
+    DataStore.shared.withinBostonArea { (withinBoston) in
+      if let withinBoston = withinBoston {
+        if withinBoston   || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
+          DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
+          self.continueToNotificationsPageIfNotEnabled()
+        } else {
+          self.continueToLocationBlockedPage()
+        }
       }
-      self.navigationController?.setViewControllers([mainVC], animated: true)
     }
   }
   

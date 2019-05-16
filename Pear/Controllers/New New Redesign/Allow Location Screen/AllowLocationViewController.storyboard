@@ -13,6 +13,9 @@
         <array key="OpenSans-ExtraBold.ttf">
             <string>OpenSans-ExtraBold</string>
         </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Allow Location View Controller-->
@@ -50,14 +53,14 @@
                                     <constraint firstAttribute="bottom" secondItem="IlU-qP-cr8" secondAttribute="bottom" id="nQz-R0-HJz"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4z-qx-l1q">
-                                <rect key="frame" x="20" y="634" width="335" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your location is not shared with others on Pear. It’s only used to surface nearby profiles." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4z-qx-l1q">
+                                <rect key="frame" x="20" y="616.5" width="335" height="38.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HrN-M7-eSN">
-                                <rect key="frame" x="20" y="572" width="335" height="50"/>
+                                <rect key="frame" x="20" y="554.5" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BLK-bK-RiM"/>
                                 </constraints>
@@ -67,22 +70,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To use Pear, we need to verify your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeY-cb-tcr">
-                                <rect key="frame" x="50" y="323.5" width="275" height="40"/>
+                                <rect key="frame" x="50" y="315.5" width="275" height="40"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3km-iZ-VVq">
-                                <rect key="frame" x="127.5" y="191.5" width="120" height="120"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-location" translatesAutoresizingMaskIntoConstraints="NO" id="3km-iZ-VVq">
+                                <rect key="frame" x="157.5" y="243.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3km-iZ-VVq" secondAttribute="height" multiplier="1:1" id="DAd-JK-bOE"/>
-                                    <constraint firstAttribute="height" constant="120" id="nfc-pq-Emh"/>
+                                    <constraint firstAttribute="height" constant="60" id="nfc-pq-Emh"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aeY-cb-tcr" firstAttribute="centerY" secondItem="9DF-Is-ykn" secondAttribute="centerY" id="0FJ-kw-DzR"/>
                             <constraint firstItem="w4z-qx-l1q" firstAttribute="top" secondItem="HrN-M7-eSN" secondAttribute="bottom" constant="12" id="4DP-BR-k2a"/>
                             <constraint firstItem="aeY-cb-tcr" firstAttribute="leading" secondItem="9DF-Is-ykn" secondAttribute="leading" constant="50" id="B0E-KN-Gnu"/>
                             <constraint firstItem="9DF-Is-ykn" firstAttribute="bottom" secondItem="w4z-qx-l1q" secondAttribute="bottom" constant="12" id="CVJ-cH-jXG"/>
@@ -90,6 +92,7 @@
                             <constraint firstAttribute="trailing" secondItem="h4d-WB-Zq5" secondAttribute="trailing" id="NgS-hG-j1a"/>
                             <constraint firstItem="3km-iZ-VVq" firstAttribute="centerX" secondItem="aeY-cb-tcr" secondAttribute="centerX" id="Pm2-rT-gnV"/>
                             <constraint firstItem="9DF-Is-ykn" firstAttribute="trailing" secondItem="w4z-qx-l1q" secondAttribute="trailing" constant="20" id="Rbw-dZ-pWv"/>
+                            <constraint firstItem="3km-iZ-VVq" firstAttribute="centerY" secondItem="9DF-Is-ykn" secondAttribute="centerY" constant="-70" id="ShN-4e-GoM"/>
                             <constraint firstItem="9DF-Is-ykn" firstAttribute="trailing" secondItem="aeY-cb-tcr" secondAttribute="trailing" constant="50" id="WLE-qa-1NJ"/>
                             <constraint firstItem="h4d-WB-Zq5" firstAttribute="top" secondItem="9DF-Is-ykn" secondAttribute="top" id="ZhI-Hp-jjF"/>
                             <constraint firstItem="aeY-cb-tcr" firstAttribute="top" secondItem="3km-iZ-VVq" secondAttribute="bottom" constant="12" id="dgw-tG-kJx"/>
@@ -111,4 +114,7 @@
             <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="onboarding-icon-location" width="512" height="512"/>
+    </resources>
 </document>

@@ -10,18 +10,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="OpenSans-Bold.ttf">
-            <string>OpenSans-Bold</string>
-        </array>
         <array key="OpenSans-ExtraBold.ttf">
             <string>OpenSans-ExtraBold</string>
         </array>
     </customFonts>
     <scenes>
-        <!--Allow Notifications View Controller-->
+        <!--Location Blocked View Controller-->
         <scene sceneID="SQd-gY-DAl">
             <objects>
-                <viewController id="7C8-uY-LH3" customClass="AllowNotificationsViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7C8-uY-LH3" customClass="LocationBlockedViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dhf-Ww-eqW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,25 +39,13 @@
                                             <constraint firstAttribute="height" constant="1" id="vVg-1k-oEc"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-mX-Klx">
-                                        <rect key="frame" x="329" y="8" width="34" height="34"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
-                                        <state key="normal" title="Skip">
-                                            <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="skipNotificationsClicked:" destination="7C8-uY-LH3" eventType="touchUpInside" id="XcQ-Sl-11S"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Omx-FR-pGY" firstAttribute="leading" secondItem="836-W6-BBr" secondAttribute="leading" id="15E-Sq-azw"/>
-                                    <constraint firstAttribute="trailing" secondItem="XHh-mX-Klx" secondAttribute="trailing" constant="12" id="784-C2-OzA"/>
                                     <constraint firstItem="eop-IM-ZXN" firstAttribute="centerY" secondItem="836-W6-BBr" secondAttribute="centerY" id="7qv-dP-0bC"/>
                                     <constraint firstAttribute="trailing" secondItem="Omx-FR-pGY" secondAttribute="trailing" id="Uw7-zg-IVK"/>
                                     <constraint firstItem="eop-IM-ZXN" firstAttribute="centerX" secondItem="836-W6-BBr" secondAttribute="centerX" id="dVp-pM-eRA"/>
-                                    <constraint firstItem="XHh-mX-Klx" firstAttribute="centerY" secondItem="eop-IM-ZXN" secondAttribute="centerY" id="dsv-a3-8Fn"/>
                                     <constraint firstAttribute="bottom" secondItem="Omx-FR-pGY" secondAttribute="bottom" id="frO-TJ-62O"/>
                                     <constraint firstAttribute="height" constant="50" id="idE-Vg-rGc"/>
                                 </constraints>
@@ -71,8 +56,11 @@
                                     <constraint firstAttribute="height" constant="50" id="oKj-rn-4d9"/>
                                 </constraints>
                                 <state key="normal" title="Enable Notifications"/>
+                                <connections>
+                                    <action selector="enableNotificationsClicked:" destination="7C8-uY-LH3" eventType="touchUpInside" id="HB0-7g-MVN"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't miss out" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-Nb-Mnw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pear isn't available in your area yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-Nb-Mnw">
                                 <rect key="frame" x="50" y="315.5" width="275" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -104,9 +92,9 @@
                         <viewLayoutGuide key="safeArea" id="EOZ-30-Rb8"/>
                     </view>
                     <connections>
-                        <outlet property="enableNotificationsButton" destination="WeZ-3u-AV7" id="h3F-2y-gVN"/>
-                        <outlet property="subtitleLabel" destination="N0W-Nb-Mnw" id="e2r-XZ-icO"/>
-                        <outlet property="titleLabel" destination="eop-IM-ZXN" id="YA0-XN-fgc"/>
+                        <outlet property="enableNotificationsButton" destination="WeZ-3u-AV7" id="d3x-LW-k7B"/>
+                        <outlet property="subtitleLabel" destination="N0W-Nb-Mnw" id="8n6-b4-Nuc"/>
+                        <outlet property="titleLabel" destination="eop-IM-ZXN" id="AVF-eO-I2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zL-tp-1QW" userLabel="First Responder" sceneMemberID="firstResponder"/>
