@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Drx-Bf-jh4">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-ExtraBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboarding Friend Name View Controller-->
+        <scene sceneID="K1R-ea-iM1">
+            <objects>
+                <viewController id="Drx-Bf-jh4" customClass="OnboardingFriendNameViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gel-9x-Q3r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxt-ph-8h6" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaj-ea-lFB">
+                                        <rect key="frame" x="8" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="LFw-TA-bBb"/>
+                                            <constraint firstAttribute="width" constant="40" id="Uq4-yv-pQX"/>
+                                        </constraints>
+                                        <state key="normal" image="onboarding-back-button"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="Drx-Bf-jh4" eventType="touchUpInside" id="v4O-ox-7QF"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join with a friend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FW8-ft-x22">
+                                        <rect key="frame" x="60" y="8.5" width="294" height="33"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaZ-14-hD4" userLabel="BorderLine">
+                                        <rect key="frame" x="0.0" y="48" width="414" height="2"/>
+                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="gjm-b5-Ob2"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEE-bD-DHq" userLabel="Progress Bar">
+                                        <rect key="frame" x="0.0" y="48" width="0.0" height="2"/>
+                                        <color key="backgroundColor" name="primaryBrandColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="8RA-sb-I4H"/>
+                                            <constraint firstAttribute="width" id="CR1-OE-ATn"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JaZ-14-hD4" secondAttribute="trailing" id="G9g-NA-dR2"/>
+                                    <constraint firstItem="yaj-ea-lFB" firstAttribute="leading" secondItem="Dxt-ph-8h6" secondAttribute="leading" constant="8" id="Psm-bc-ohQ"/>
+                                    <constraint firstItem="FW8-ft-x22" firstAttribute="leading" secondItem="yaj-ea-lFB" secondAttribute="trailing" constant="12" id="TJv-Rr-isR"/>
+                                    <constraint firstAttribute="bottom" secondItem="JaZ-14-hD4" secondAttribute="bottom" id="Xxg-43-FLu"/>
+                                    <constraint firstItem="FW8-ft-x22" firstAttribute="centerY" secondItem="yaj-ea-lFB" secondAttribute="centerY" id="ara-ur-mxX"/>
+                                    <constraint firstItem="FW8-ft-x22" firstAttribute="centerX" secondItem="Dxt-ph-8h6" secondAttribute="centerX" id="b6A-el-3oj"/>
+                                    <constraint firstItem="NEE-bD-DHq" firstAttribute="centerY" secondItem="JaZ-14-hD4" secondAttribute="centerY" id="f36-pC-KM5"/>
+                                    <constraint firstItem="NEE-bD-DHq" firstAttribute="leading" secondItem="JaZ-14-hD4" secondAttribute="leading" id="hQY-9G-7dC"/>
+                                    <constraint firstItem="FW8-ft-x22" firstAttribute="centerY" secondItem="Dxt-ph-8h6" secondAttribute="centerY" id="n6y-hL-D6x"/>
+                                    <constraint firstItem="JaZ-14-hD4" firstAttribute="leading" secondItem="Dxt-ph-8h6" secondAttribute="leading" id="vVx-Wt-E26"/>
+                                    <constraint firstAttribute="height" constant="50" id="zwa-nQ-K2y"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lle-7C-15D">
+                                <rect key="frame" x="20" y="782" width="374" height="60"/>
+                                <color key="backgroundColor" name="primaryBrandColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="CZ7-Y0-Z1b"/>
+                                </constraints>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonClicked:" destination="Drx-Bf-jh4" eventType="touchUpInside" id="GfA-dS-9Is"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdi-76-YbR">
+                                <rect key="frame" x="0.0" y="94" width="414" height="688"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3nM-vV-YMj">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8N-AP-ESf">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="5Ap-eE-10J"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3nM-vV-YMj" firstAttribute="centerX" secondItem="Rdi-76-YbR" secondAttribute="centerX" id="5QR-62-03o"/>
+                                    <constraint firstAttribute="trailing" secondItem="3nM-vV-YMj" secondAttribute="trailing" id="ByB-si-Hiz"/>
+                                    <constraint firstItem="3nM-vV-YMj" firstAttribute="leading" secondItem="Rdi-76-YbR" secondAttribute="leading" id="ERa-UP-fBb"/>
+                                    <constraint firstItem="3nM-vV-YMj" firstAttribute="top" secondItem="Rdi-76-YbR" secondAttribute="top" id="XlQ-Gu-tTR"/>
+                                    <constraint firstItem="3nM-vV-YMj" firstAttribute="width" secondItem="Rdi-76-YbR" secondAttribute="width" id="g45-TZ-fBd"/>
+                                    <constraint firstAttribute="bottom" secondItem="3nM-vV-YMj" secondAttribute="bottom" id="lR7-Vd-i3n"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dxt-ph-8h6" firstAttribute="trailing" secondItem="pc8-Og-SLq" secondAttribute="trailing" id="4o4-gB-LMQ"/>
+                            <constraint firstItem="pc8-Og-SLq" firstAttribute="bottom" secondItem="Lle-7C-15D" secondAttribute="bottom" constant="20" id="8Ie-e8-ubu"/>
+                            <constraint firstItem="pc8-Og-SLq" firstAttribute="trailing" secondItem="Lle-7C-15D" secondAttribute="trailing" constant="20" id="D35-xF-ApB"/>
+                            <constraint firstItem="Lle-7C-15D" firstAttribute="top" secondItem="Rdi-76-YbR" secondAttribute="bottom" id="O7R-Ae-sgP"/>
+                            <constraint firstItem="Lle-7C-15D" firstAttribute="leading" secondItem="pc8-Og-SLq" secondAttribute="leading" constant="20" id="Y0m-9N-mYt"/>
+                            <constraint firstItem="Dxt-ph-8h6" firstAttribute="leading" secondItem="pc8-Og-SLq" secondAttribute="leading" id="b3h-tn-Jae"/>
+                            <constraint firstItem="Rdi-76-YbR" firstAttribute="leading" secondItem="pc8-Og-SLq" secondAttribute="leading" id="c52-hr-5gf"/>
+                            <constraint firstItem="pc8-Og-SLq" firstAttribute="trailing" secondItem="Rdi-76-YbR" secondAttribute="trailing" id="hi4-hS-JdS"/>
+                            <constraint firstItem="Dxt-ph-8h6" firstAttribute="top" secondItem="pc8-Og-SLq" secondAttribute="top" id="xCE-c3-RBj"/>
+                            <constraint firstItem="Rdi-76-YbR" firstAttribute="top" secondItem="Dxt-ph-8h6" secondAttribute="bottom" id="xPJ-MH-bLA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pc8-Og-SLq"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="Lle-7C-15D" id="AJX-E3-Lq5"/>
+                        <outlet property="continueButtonBottomConstraint" destination="8Ie-e8-ubu" id="5gr-qe-bZF"/>
+                        <outlet property="progressBarWidthConstraint" destination="CR1-OE-ATn" id="m6k-1r-w49"/>
+                        <outlet property="scrollView" destination="Rdi-76-YbR" id="B5g-Xf-gdr"/>
+                        <outlet property="stackView" destination="3nM-vV-YMj" id="ZKH-2p-q7C"/>
+                        <outlet property="titleLabel" destination="FW8-ft-x22" id="hO4-7K-qpF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P0y-IF-FzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
+        <namedColor name="primaryBrandColor">
+            <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

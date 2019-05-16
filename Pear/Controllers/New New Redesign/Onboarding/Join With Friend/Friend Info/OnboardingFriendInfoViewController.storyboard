@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZzD-hy-USi">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-ExtraBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboarding Friend Info View Controller-->
+        <scene sceneID="3ZO-KQ-PXp">
+            <objects>
+                <viewController id="ZzD-hy-USi" customClass="OnboardingFriendInfoViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mhB-uj-Ucm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4F-Do-nQI" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtc-P0-wIM">
+                                        <rect key="frame" x="8" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="K9U-TG-0WK"/>
+                                            <constraint firstAttribute="width" constant="40" id="vYT-oP-fHo"/>
+                                        </constraints>
+                                        <state key="normal" image="onboarding-back-button"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="ZzD-hy-USi" eventType="touchUpInside" id="9ER-QN-ODW"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join with a friend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Lu0-uH-x2m">
+                                        <rect key="frame" x="60" y="8.5" width="294" height="33"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvA-jJ-Txr" userLabel="BorderLine">
+                                        <rect key="frame" x="0.0" y="48" width="414" height="2"/>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="iOr-Gd-F2E"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDT-ty-k85" userLabel="Progress Bar">
+                                        <rect key="frame" x="0.0" y="48" width="0.0" height="2"/>
+                                        <color key="backgroundColor" name="primaryBrandColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" id="sNd-E9-lzc"/>
+                                            <constraint firstAttribute="height" constant="2" id="v2b-N5-PkB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Xtc-P0-wIM" firstAttribute="leading" secondItem="R4F-Do-nQI" secondAttribute="leading" constant="8" id="2PC-Su-XXy"/>
+                                    <constraint firstItem="Lu0-uH-x2m" firstAttribute="centerY" secondItem="Xtc-P0-wIM" secondAttribute="centerY" id="6g1-Vy-jsy"/>
+                                    <constraint firstItem="DDT-ty-k85" firstAttribute="leading" secondItem="cvA-jJ-Txr" secondAttribute="leading" id="Bnb-jg-Xiv"/>
+                                    <constraint firstAttribute="bottom" secondItem="cvA-jJ-Txr" secondAttribute="bottom" id="FlA-Xe-akB"/>
+                                    <constraint firstItem="Lu0-uH-x2m" firstAttribute="centerX" secondItem="R4F-Do-nQI" secondAttribute="centerX" id="G2A-Fv-E2I"/>
+                                    <constraint firstItem="Lu0-uH-x2m" firstAttribute="centerY" secondItem="R4F-Do-nQI" secondAttribute="centerY" id="OZl-6g-bVC"/>
+                                    <constraint firstItem="Lu0-uH-x2m" firstAttribute="leading" secondItem="Xtc-P0-wIM" secondAttribute="trailing" constant="12" id="ShF-mc-5jv"/>
+                                    <constraint firstItem="cvA-jJ-Txr" firstAttribute="leading" secondItem="R4F-Do-nQI" secondAttribute="leading" id="h3R-TQ-nA0"/>
+                                    <constraint firstAttribute="height" constant="50" id="mEP-rE-jeJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="cvA-jJ-Txr" secondAttribute="trailing" id="mLf-Xt-uFI"/>
+                                    <constraint firstItem="DDT-ty-k85" firstAttribute="centerY" secondItem="cvA-jJ-Txr" secondAttribute="centerY" id="uSj-0z-sit"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbJ-PE-Cg6">
+                                <rect key="frame" x="20" y="782" width="374" height="60"/>
+                                <color key="backgroundColor" name="primaryBrandColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="FQa-qA-Z7k"/>
+                                </constraints>
+                                <state key="normal" title="Invite">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonClicked:" destination="ZzD-hy-USi" eventType="touchUpInside" id="UXV-Ch-p5K"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7re-RY-9t0" firstAttribute="trailing" secondItem="VbJ-PE-Cg6" secondAttribute="trailing" constant="20" id="4ko-7M-UuA"/>
+                            <constraint firstItem="VbJ-PE-Cg6" firstAttribute="leading" secondItem="7re-RY-9t0" secondAttribute="leading" constant="20" id="5Lx-nP-UgT"/>
+                            <constraint firstItem="7re-RY-9t0" firstAttribute="bottom" secondItem="VbJ-PE-Cg6" secondAttribute="bottom" constant="20" id="Acu-cn-0nH"/>
+                            <constraint firstItem="R4F-Do-nQI" firstAttribute="leading" secondItem="7re-RY-9t0" secondAttribute="leading" id="Ue3-CO-1Yd"/>
+                            <constraint firstItem="R4F-Do-nQI" firstAttribute="trailing" secondItem="7re-RY-9t0" secondAttribute="trailing" id="glG-Q1-NlB"/>
+                            <constraint firstItem="R4F-Do-nQI" firstAttribute="top" secondItem="7re-RY-9t0" secondAttribute="top" id="lAl-cf-hR9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7re-RY-9t0"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="VbJ-PE-Cg6" id="w82-Xp-2ZQ"/>
+                        <outlet property="progressBarWidthConstraint" destination="sNd-E9-lzc" id="UDE-E5-aZx"/>
+                        <outlet property="titleLabel" destination="Lu0-uH-x2m" id="G8F-u9-JJj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqw-aN-Zft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
+        <namedColor name="primaryBrandColor">
+            <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
