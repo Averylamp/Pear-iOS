@@ -148,6 +148,19 @@
 		BB687E6D228D6D1100F45C9D /* OnboardingExplainationPage3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */; };
 		BB687E6E228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */; };
 		BB687E6F228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */; };
+		BB687E73228D716900F45C9D /* OnboardingFriendNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E72228D716900F45C9D /* OnboardingFriendNameViewController.swift */; };
+		BB687E75228D717000F45C9D /* OnboardingFriendNameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E74228D717000F45C9D /* OnboardingFriendNameViewController.storyboard */; };
+		BB687E77228D7A7900F45C9D /* ProgressBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E76228D7A7900F45C9D /* ProgressBarProtocol.swift */; };
+		BB687E79228D7F5000F45C9D /* OnboardingBasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E78228D7F5000F45C9D /* OnboardingBasicInfoViewController.swift */; };
+		BB687E7B228D7F6D00F45C9D /* OnboardingBasicInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E7A228D7F6D00F45C9D /* OnboardingBasicInfoViewController.storyboard */; };
+		BB687E7D228D810F00F45C9D /* OnboardingFriendInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E7C228D810F00F45C9D /* OnboardingFriendInfoViewController.swift */; };
+		BB687E7F228D812100F45C9D /* OnboardingFriendInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E7E228D812100F45C9D /* OnboardingFriendInfoViewController.storyboard */; };
+		BB687E81228D828700F45C9D /* OnboardingPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E80228D828700F45C9D /* OnboardingPreferencesViewController.swift */; };
+		BB687E83228D828E00F45C9D /* OnboardingPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E82228D828E00F45C9D /* OnboardingPreferencesViewController.storyboard */; };
+		BB687E85228D829900F45C9D /* OnboardingPicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E84228D829900F45C9D /* OnboardingPicturesViewController.swift */; };
+		BB687E87228D82A300F45C9D /* OnboardingPicturesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */; };
+		BB687E89228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */; };
+		BB687E8B228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */; };
 		BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */; };
 		BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */; };
 		BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */; };
@@ -516,6 +529,19 @@
 		BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingExplainationPage3ViewController.swift; sourceTree = "<group>"; };
 		BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnboardingExplainationPage4ViewController.storyboard; sourceTree = "<group>"; };
 		BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingExplainationPage4ViewController.swift; sourceTree = "<group>"; };
+		BB687E72228D716900F45C9D /* OnboardingFriendNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFriendNameViewController.swift; sourceTree = "<group>"; };
+		BB687E74228D717000F45C9D /* OnboardingFriendNameViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingFriendNameViewController.storyboard; sourceTree = "<group>"; };
+		BB687E76228D7A7900F45C9D /* ProgressBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarProtocol.swift; sourceTree = "<group>"; };
+		BB687E78228D7F5000F45C9D /* OnboardingBasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBasicInfoViewController.swift; sourceTree = "<group>"; };
+		BB687E7A228D7F6D00F45C9D /* OnboardingBasicInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingBasicInfoViewController.storyboard; sourceTree = "<group>"; };
+		BB687E7C228D810F00F45C9D /* OnboardingFriendInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFriendInfoViewController.swift; sourceTree = "<group>"; };
+		BB687E7E228D812100F45C9D /* OnboardingFriendInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingFriendInfoViewController.storyboard; sourceTree = "<group>"; };
+		BB687E80228D828700F45C9D /* OnboardingPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPreferencesViewController.swift; sourceTree = "<group>"; };
+		BB687E82228D828E00F45C9D /* OnboardingPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingPreferencesViewController.storyboard; sourceTree = "<group>"; };
+		BB687E84228D829900F45C9D /* OnboardingPicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPicturesViewController.swift; sourceTree = "<group>"; };
+		BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingPicturesViewController.storyboard; sourceTree = "<group>"; };
+		BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingMoreDetailsViewController.storyboard; sourceTree = "<group>"; };
+		BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMoreDetailsViewController.swift; sourceTree = "<group>"; };
 		BB6C06422227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedAllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		BB6C06442227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedAllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		BB6C064A2227F758007A5C96 /* GetStartedWaitlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedWaitlistViewController.swift; sourceTree = "<group>"; };
@@ -1378,6 +1404,7 @@
 		BB687E58228D59E100F45C9D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				BB687E76228D7A7900F45C9D /* ProgressBarProtocol.swift */,
 				BB687E5F228D5A4200F45C9D /* Onboarding Explaination Pages */,
 				BB687E70228D704500F45C9D /* Join With Friend */,
 				BB687E71228D704900F45C9D /* Join By Self */,
@@ -1424,6 +1451,8 @@
 		BB687E70228D704500F45C9D /* Join With Friend */ = {
 			isa = PBXGroup;
 			children = (
+				BB687E8C228D862D00F45C9D /* Friend Name Input */,
+				BB687E8D228D864600F45C9D /* Friend Info */,
 			);
 			path = "Join With Friend";
 			sourceTree = "<group>";
@@ -1431,8 +1460,66 @@
 		BB687E71228D704900F45C9D /* Join By Self */ = {
 			isa = PBXGroup;
 			children = (
+				BB687E8E228D865600F45C9D /* Basic Info */,
+				BB687E8F228D865E00F45C9D /* More Details */,
+				BB687E90228D866F00F45C9D /* Preferences */,
+				BB687E91228D867A00F45C9D /* Pictures */,
 			);
 			path = "Join By Self";
+			sourceTree = "<group>";
+		};
+		BB687E8C228D862D00F45C9D /* Friend Name Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E72228D716900F45C9D /* OnboardingFriendNameViewController.swift */,
+				BB687E74228D717000F45C9D /* OnboardingFriendNameViewController.storyboard */,
+			);
+			path = "Friend Name Input";
+			sourceTree = "<group>";
+		};
+		BB687E8D228D864600F45C9D /* Friend Info */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E7C228D810F00F45C9D /* OnboardingFriendInfoViewController.swift */,
+				BB687E7E228D812100F45C9D /* OnboardingFriendInfoViewController.storyboard */,
+			);
+			path = "Friend Info";
+			sourceTree = "<group>";
+		};
+		BB687E8E228D865600F45C9D /* Basic Info */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E78228D7F5000F45C9D /* OnboardingBasicInfoViewController.swift */,
+				BB687E7A228D7F6D00F45C9D /* OnboardingBasicInfoViewController.storyboard */,
+			);
+			path = "Basic Info";
+			sourceTree = "<group>";
+		};
+		BB687E8F228D865E00F45C9D /* More Details */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */,
+				BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */,
+			);
+			path = "More Details";
+			sourceTree = "<group>";
+		};
+		BB687E90228D866F00F45C9D /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E80228D828700F45C9D /* OnboardingPreferencesViewController.swift */,
+				BB687E82228D828E00F45C9D /* OnboardingPreferencesViewController.storyboard */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		BB687E91228D867A00F45C9D /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E84228D829900F45C9D /* OnboardingPicturesViewController.swift */,
+				BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */,
+			);
+			path = Pictures;
 			sourceTree = "<group>";
 		};
 		BB6C065022280FCA007A5C96 /* Allow Notifications */ = {
@@ -2524,6 +2611,7 @@
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
 				BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
+				BB687E87228D82A300F45C9D /* OnboardingPicturesViewController.storyboard in Resources */,
 				917F20D52271B03B0023EC69 /* FinishSetupUserPhotosViewController.storyboard in Resources */,
 				BBA2E1EE224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard in Resources */,
 				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
@@ -2568,6 +2656,7 @@
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
 				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
 				BBC4F5072282217600C79148 /* ProfileQuestionResponseViewController.storyboard in Resources */,
+				BB687E75228D717000F45C9D /* OnboardingFriendNameViewController.storyboard in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
@@ -2586,6 +2675,7 @@
 				9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */,
 				BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */,
 				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
+				BB687E7F228D812100F45C9D /* OnboardingFriendInfoViewController.storyboard in Resources */,
 				BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */,
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
 				917F20DA2271BB340023EC69 /* FinishSetupUserSchoolViewController.storyboard in Resources */,
@@ -2612,15 +2702,18 @@
 				BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */,
 				BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
+				BB687E83228D828E00F45C9D /* OnboardingPreferencesViewController.storyboard in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				BB687E5E228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard in Resources */,
 				BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */,
 				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
 				BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */,
+				BB687E89228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBF93E5C2267CA11002841EE /* LandingScreenViewController.storyboard in Resources */,
 				BBA3CEBC2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard in Resources */,
+				BB687E7B228D7F6D00F45C9D /* OnboardingBasicInfoViewController.storyboard in Resources */,
 				BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */,
 				BBBA5747226DC9E4000BCD5F /* InputTableViewController.storyboard in Resources */,
 				BBF93E662267CA56002841EE /* ProfileInputQuestionViewController.storyboard in Resources */,
@@ -2860,6 +2953,7 @@
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
 				BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* NewProfileDemographicsViewController.swift in Sources */,
+				BB687E73228D716900F45C9D /* OnboardingFriendNameViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
 				BB75BFD822156C9800BAB800 /* GetStartedNotifyFriendViewController.swift in Sources */,
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
@@ -2887,6 +2981,7 @@
 				BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */,
 				BB986A45220F793000759A14 /* GetStartedUserFirstNameViewController.swift in Sources */,
 				BB17892E225DE26F0033ACC6 /* ChatRequestsTableViewController.swift in Sources */,
+				BB687E81228D828700F45C9D /* OnboardingPreferencesViewController.swift in Sources */,
 				BB719A43228D3FDE00007D69 /* CoreLocation+Helpers.swift in Sources */,
 				BBC4F503228214AF00C79148 /* NewProfileBioViewController.swift in Sources */,
 				BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */,
@@ -2921,6 +3016,7 @@
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
 				60C131E121D345630093ECBA /* Result.swift in Sources */,
 				BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */,
+				BB687E79228D7F5000F45C9D /* OnboardingBasicInfoViewController.swift in Sources */,
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
 				BB986A53220F79F200759A14 /* GetStartedCreateAccountViewController.swift in Sources */,
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
@@ -2954,6 +3050,7 @@
 				BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
 				BB986A49220F79A500759A14 /* GetStartedAgeViewController.swift in Sources */,
+				BB687E8B228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift in Sources */,
 				BB687E61228D5B6200F45C9D /* PermissionsFlowProtocol+UIViewController.swift in Sources */,
 				91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */,
 				BB687E6B228D6D1100F45C9D /* OnboardingExplainationPage2ViewController.swift in Sources */,
@@ -2973,6 +3070,7 @@
 				BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
 				BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */,
+				BB687E85228D829900F45C9D /* OnboardingPicturesViewController.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
 				BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
@@ -3005,6 +3103,7 @@
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
 				BB687E6F228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift in Sources */,
 				917F20CC22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift in Sources */,
+				BB687E77228D7A7900F45C9D /* ProgressBarProtocol.swift in Sources */,
 				BB17893D225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift in Sources */,
 				BBF93E502267C80B002841EE /* UserPhoneCodeViewController.swift in Sources */,
 				BBECBEB12237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift in Sources */,
@@ -3013,6 +3112,7 @@
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
 				BBA3CEB8225566600020A36C /* ChatRequestEndorsementViewController.swift in Sources */,
 				BB797DEF2277B56D00D38044 /* SMSCanceledViewController.swift in Sources */,
+				BB687E7D228D810F00F45C9D /* OnboardingFriendInfoViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,

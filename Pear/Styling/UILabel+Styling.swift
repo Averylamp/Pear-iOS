@@ -36,6 +36,13 @@ extension UILabel {
     }
   }
   
+  func stylizeOnboardingHeaderTitleLabel() {
+    self.textColor = R.color.primaryTextColor()
+    if let font = R.font.openSansBold(size: 16) {
+      self.font = font
+    }
+  }
+  
 }
 
 extension UILabel {
