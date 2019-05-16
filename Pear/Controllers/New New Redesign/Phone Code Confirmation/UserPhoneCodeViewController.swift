@@ -208,7 +208,7 @@ extension UserPhoneCodeViewController {
     super.viewDidLoad()
     self.stylize()
     self.setupVerificationView()
-    self.addKeyboardSizeNotifications()
+    self.addKeyboardNotifications(animated: true)
     self.hiddenInputField.becomeFirstResponder()
     self.hiddenInputField.delegate = self
   }
@@ -310,39 +310,13 @@ extension UserPhoneCodeViewController: UITextFieldDelegate {
 }
 
 // MARK: - Keybaord Size Notifications
-extension UserPhoneCodeViewController {
-  func addKeyboardSizeNotifications() {
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(UserPhoneCodeViewController.keyboardWillChange(notification:)),
-                   name: UIWindow.keyboardWillChangeFrameNotification,
-                   object: nil)
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(UserPhoneCodeViewController.keyboardWillHide(notification:)),
-                   name: UIWindow.keyboardWillHideNotification,
-                   object: nil)
+extension UserPhoneCodeViewController: KeyboardEventsBottomProtocol {
+  var bottomKeyboardConstraint: NSLayoutConstraint? {
+    return self.resendButtonBottomConstraint
   }
   
-  @objc func keyboardWillChange(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let targetFrame = targetFrameNSValue.cgRectValue
-      let keyboardBottomPadding: CGFloat = 20
-      self.resendButtonBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  @objc func keyboardWillHide(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      let keyboardBottomPadding: CGFloat = 20
-      self.resendButtonBottomConstraint.constant = keyboardBottomPadding
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
+  var bottomKeyboardPadding: CGFloat {
+    return 20.0
   }
   
 }

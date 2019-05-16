@@ -16,7 +16,7 @@ class UserEmailInfoViewController: UIViewController {
   @IBOutlet weak var phoneNumberInputTextField: UITextField!
   @IBOutlet weak var emailContainerView: UIView!
   @IBOutlet weak var emailInputTextField: UITextField!
-  @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var subtextLabelBottomConstraint: NSLayoutConstraint!
   
   /// Factory method for creating this view controller.
   ///
@@ -27,12 +27,25 @@ class UserEmailInfoViewController: UIViewController {
     return emailInfoVC
   }
   
-  @IBAction func backButtonClicked(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
-  }
-  
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    if let email = self.emailInputTextField.text,
+      email.count > 3, email.contains("@"),
+      let userID = DataStore.shared.currentPearUser?.documentID {
+      PearUserAPI.shared.updateUser(userID: userID, updates: [
+        "email": email]) { (result) in
+        switch result {
+        case .success(let successful):
+          if successful {
+            print("Successfully updated email")
+          } else {
+            print("Failed to update email")
+          }
+        case .failure(let error):
+          print("Failed to update email: \(error)")
+        }
+      }
+    }
     
   }
   
@@ -73,7 +86,7 @@ extension UserEmailInfoViewController {
 extension UserEmailInfoViewController: KeyboardEventsBottomProtocol {
   
   var bottomKeyboardConstraint: NSLayoutConstraint? {
-    return continueButtonBottomConstraint
+    return self.subtextLabelBottomConstraint
   }
   
   var bottomKeyboardPadding: CGFloat {

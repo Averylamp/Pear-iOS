@@ -28,18 +28,13 @@ class AllowLocationViewController: UIViewController {
   }
   
   @IBAction func enableLocationClicked(_ sender: Any) {
-    print("enable location clicked")
     let status = CLLocationManager.authorizationStatus()
-    print("authorization status is \(status)")
+    print("Location Authorization status is \(status)")
     self.handleAuthorizationStatus(status: status)
   }
   
   func handleAuthorizationStatus(status: CLAuthorizationStatus) {
     if status == .notDetermined {
-      // present an alert indicating location authorization required
-      // and offer to take the user to Settings for the app via
-      // UIApplication -openUrl: and UIApplicationOpenSettingsURLString
-      
       DataStore.shared.locationManager.requestWhenInUseAuthorization()
     } else if status == .denied {
       DispatchQueue.main.async {
@@ -81,8 +76,7 @@ extension AllowLocationViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    DataStore.shared.delegate = self
-    
+    DataStore.shared.locationDelegate = self
     self.stylize()
   }
   
@@ -90,6 +84,10 @@ extension AllowLocationViewController {
     self.enableLocationButton.stylizeDark()
     self.titleLabel.stylizeTitleLabel()
     self.subtitleLabel.stylizeSubtitleLabel()
+    let status = CLLocationManager.authorizationStatus()
+    if status == .denied {
+      self.enableLocationButton.setTitle("Open Settings", for: .normal)
+    }
   }
   
 }
@@ -98,7 +96,6 @@ extension AllowLocationViewController: DataStoreLocationDelegate {
   
   func firstLocationReceived(location: CLLocationCoordinate2D) {
     print("firstLocationReceived")
-    // not totally sure if or why this delegate function is necessary?? -Brian
     DispatchQueue.main.async {
       guard let mainVC = MainTabBarViewController.instantiate() else {
         print("Failed to create main VC")
