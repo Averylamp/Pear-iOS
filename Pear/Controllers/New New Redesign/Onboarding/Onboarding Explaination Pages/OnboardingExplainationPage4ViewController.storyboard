@@ -16,49 +16,64 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Onboarding Explaination Page1 View Controller-->
+        <!--Onboarding Explaination Page4 View Controller-->
         <scene sceneID="tvC-Z9-dcT">
             <objects>
-                <viewController id="mJ8-wo-IG8" customClass="OnboardingExplainationPage1ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mJ8-wo-IG8" customClass="OnboardingExplainationPage4ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bQA-7c-lJe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMf-C0-kyc">
-                                <rect key="frame" x="20" y="698" width="335" height="60"/>
+                                <rect key="frame" x="20" y="634" width="335" height="60"/>
                                 <color key="backgroundColor" name="primaryBrandColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="JLg-gj-etk"/>
                                 </constraints>
-                                <state key="normal" title="Continue">
+                                <state key="normal" title="Join with a friend">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="continueButtonClicked:" destination="mJ8-wo-IG8" eventType="touchUpInside" id="MQa-ni-0D0"/>
+                                    <action selector="joinWithFriendClicked:" destination="mJ8-wo-IG8" eventType="touchUpInside" id="GhR-CG-gS3"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-meme-1" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
-                                <rect key="frame" x="20" y="251.33333333333334" width="335" height="430.66666666666663"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-meme-4" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
+                                <rect key="frame" x="20" y="283" width="335.00000000000023" height="335.00000000000023"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="L3Q-s1-RX1" secondAttribute="height" multiplier="1029:1323" id="hpY-Qg-Lqf"/>
+                                    <constraint firstAttribute="width" secondItem="L3Q-s1-RX1" secondAttribute="height" multiplier="1:1" id="hpY-Qg-Lqf"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Pear, every profile is  written by friends" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
-                                <rect key="frame" x="30" y="64.000000000000014" width="315" height="167.33333333333337"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Pear, friends can answer prompts for each other's profile" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
+                                <rect key="frame" x="30" y="64" width="315" height="199"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SM-vS-V3l">
+                                <rect key="frame" x="20" y="702" width="335" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="BDF-Wx-V1S"/>
+                                </constraints>
+                                <state key="normal" title="Just me for now">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="joinBySelfClicked:" destination="mJ8-wo-IG8" eventType="touchUpInside" id="cEL-lG-Ssb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mUb-Hy-RWF" firstAttribute="trailing" secondItem="L3Q-s1-RX1" secondAttribute="trailing" constant="20" id="3yJ-q2-zz4"/>
+                            <constraint firstItem="mUb-Hy-RWF" firstAttribute="trailing" secondItem="7SM-vS-V3l" secondAttribute="trailing" constant="20" id="4Q5-zM-Bsk"/>
                             <constraint firstItem="L3Q-s1-RX1" firstAttribute="top" secondItem="he2-Fq-k2b" secondAttribute="bottom" constant="20" id="LAi-mq-vuz"/>
                             <constraint firstItem="EMf-C0-kyc" firstAttribute="top" secondItem="L3Q-s1-RX1" secondAttribute="bottom" constant="16" id="OJ9-Hn-7Lq"/>
                             <constraint firstItem="L3Q-s1-RX1" firstAttribute="leading" secondItem="mUb-Hy-RWF" secondAttribute="leading" constant="20" id="RVz-Ct-pce"/>
-                            <constraint firstItem="mUb-Hy-RWF" firstAttribute="bottom" secondItem="EMf-C0-kyc" secondAttribute="bottom" constant="20" id="S4j-0X-FHY"/>
                             <constraint firstItem="mUb-Hy-RWF" firstAttribute="trailing" secondItem="EMf-C0-kyc" secondAttribute="trailing" constant="20" id="kSG-nH-bjB"/>
+                            <constraint firstItem="7SM-vS-V3l" firstAttribute="top" secondItem="EMf-C0-kyc" secondAttribute="bottom" constant="8" id="kbN-ll-QXy"/>
+                            <constraint firstItem="7SM-vS-V3l" firstAttribute="leading" secondItem="mUb-Hy-RWF" secondAttribute="leading" constant="20" id="knX-6c-VGe"/>
                             <constraint firstItem="EMf-C0-kyc" firstAttribute="leading" secondItem="mUb-Hy-RWF" secondAttribute="leading" constant="20" id="nnb-Le-yMH"/>
+                            <constraint firstItem="mUb-Hy-RWF" firstAttribute="bottom" secondItem="7SM-vS-V3l" secondAttribute="bottom" constant="16" id="sGM-WU-KQO"/>
                             <constraint firstItem="he2-Fq-k2b" firstAttribute="top" secondItem="mUb-Hy-RWF" secondAttribute="top" constant="20" id="t4i-7F-a2G"/>
                             <constraint firstItem="mUb-Hy-RWF" firstAttribute="trailing" secondItem="he2-Fq-k2b" secondAttribute="trailing" constant="30" id="tOt-aq-xtN"/>
                             <constraint firstItem="he2-Fq-k2b" firstAttribute="leading" secondItem="mUb-Hy-RWF" secondAttribute="leading" constant="30" id="zQq-8L-9l9"/>
@@ -66,9 +81,10 @@
                         <viewLayoutGuide key="safeArea" id="mUb-Hy-RWF"/>
                     </view>
                     <connections>
-                        <outlet property="continueButton" destination="EMf-C0-kyc" id="st0-M7-gYS"/>
-                        <outlet property="memeImageView" destination="L3Q-s1-RX1" id="nxC-Yh-wsW"/>
-                        <outlet property="titleLabel" destination="he2-Fq-k2b" id="xgZ-YL-p1M"/>
+                        <outlet property="joinBySelfButton" destination="7SM-vS-V3l" id="rsE-Xg-hmP"/>
+                        <outlet property="joinWithFriendButton" destination="EMf-C0-kyc" id="7M7-is-BhP"/>
+                        <outlet property="memeImageView" destination="L3Q-s1-RX1" id="1Eu-Ja-MSx"/>
+                        <outlet property="titleLabel" destination="he2-Fq-k2b" id="NVC-YJ-FLr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSm-z6-ixv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,7 +93,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-meme-1" width="1029" height="1323"/>
+        <image name="onboarding-meme-4" width="1005" height="1005"/>
         <namedColor name="primaryBrandColor">
             <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

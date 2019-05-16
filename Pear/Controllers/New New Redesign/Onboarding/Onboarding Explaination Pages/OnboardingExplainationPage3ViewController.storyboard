@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Onboarding Explaination Page1 View Controller-->
+        <!--Onboarding Explaination Page3 View Controller-->
         <scene sceneID="tvC-Z9-dcT">
             <objects>
-                <viewController id="mJ8-wo-IG8" customClass="OnboardingExplainationPage1ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mJ8-wo-IG8" customClass="OnboardingExplainationPage3ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bQA-7c-lJe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,16 +34,16 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="continueButtonClicked:" destination="mJ8-wo-IG8" eventType="touchUpInside" id="MQa-ni-0D0"/>
+                                    <action selector="continueButtonClicked:" destination="mJ8-wo-IG8" eventType="touchUpInside" id="IGV-I1-M32"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-meme-1" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-meme-3" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
                                 <rect key="frame" x="20" y="251.33333333333334" width="335" height="430.66666666666663"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="L3Q-s1-RX1" secondAttribute="height" multiplier="1029:1323" id="hpY-Qg-Lqf"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Pear, every profile is  written by friends" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plus, they usually know us well for a reason" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
                                 <rect key="frame" x="30" y="64.000000000000014" width="315" height="167.33333333333337"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -66,9 +66,9 @@
                         <viewLayoutGuide key="safeArea" id="mUb-Hy-RWF"/>
                     </view>
                     <connections>
-                        <outlet property="continueButton" destination="EMf-C0-kyc" id="st0-M7-gYS"/>
-                        <outlet property="memeImageView" destination="L3Q-s1-RX1" id="nxC-Yh-wsW"/>
-                        <outlet property="titleLabel" destination="he2-Fq-k2b" id="xgZ-YL-p1M"/>
+                        <outlet property="continueButton" destination="EMf-C0-kyc" id="MSE-bc-doy"/>
+                        <outlet property="memeImageView" destination="L3Q-s1-RX1" id="vXN-0N-tLN"/>
+                        <outlet property="titleLabel" destination="he2-Fq-k2b" id="ofX-6K-CDg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSm-z6-ixv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,7 +77,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-meme-1" width="1029" height="1323"/>
+        <image name="onboarding-meme-3" width="1029" height="1323"/>
         <namedColor name="primaryBrandColor">
             <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

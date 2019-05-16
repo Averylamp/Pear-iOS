@@ -9,6 +9,18 @@
 import Foundation
 import UIKit
 
+// MARK: - Onboarding
+extension UIButton {
+  func stylizeOnboardingContinueButton() {
+    self.backgroundColor = R.color.primaryBrandColor()
+    self.setTitleColor(UIColor.white, for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+    self.layer.cornerRadius = 12
+  }
+}
+
 extension UIButton {
   
   func addButtonShadow() {

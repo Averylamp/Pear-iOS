@@ -201,7 +201,7 @@ extension UserPhoneCodeViewController {
     if let phoneNumber = self.userCreationData.phoneNumber {
       self.subtitleLabel.text = "Sent to +1 \(String.formatPhoneNumber(phoneNumber: phoneNumber))"
     }
-    self.titleLabel.stylizeOnboardingTitleLabel()
+    self.titleLabel.stylizeUserSignupTitleLabel()
     self.subtitleLabel.textColor = R.color.primaryTextColor()
     if let font = R.font.openSansExtraBold(size: 16) {
       self.resendButton.titleLabel?.font = font

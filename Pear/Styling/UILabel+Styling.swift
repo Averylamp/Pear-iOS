@@ -9,21 +9,33 @@
 import Foundation
 import UIKit
 
-// MARK: - Onboarding
+// MARK: - User Signup
 extension UILabel {
-  func stylizeOnboardingTitleLabel() {
+  func stylizeUserSignupTitleLabel() {
     self.textColor = R.color.primaryTextColor()
     if let font = R.font.openSansExtraBold(size: 16) {
       self.font = font
     }
   }
   
-  func stylizeOnboardingSubtitleLabel() {
+  func stylizeUserSignupSubtitleLabel() {
     self.textColor = R.color.primaryTextColor()
     if let font = R.font.openSansExtraBold(size: 20) {
       self.font = font
     }
   }
+}
+
+// MARK: - Onboarding
+extension UILabel {
+  
+  func stylizeOnboardingMemeTitleLabel() {
+    self.textColor = R.color.primaryTextColor()
+    if let font = R.font.openSansBold(size: 20) {
+      self.font = font
+    }
+  }
+  
 }
 
 extension UILabel {

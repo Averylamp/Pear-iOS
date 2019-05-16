@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardingExplainationPage1ViewController: UIViewController {
+class OnboardingExplainationPage3ViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
@@ -17,16 +17,16 @@ class OnboardingExplainationPage1ViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> OnboardingExplainationPage1ViewController? {
-    guard let onboardingPage1VC = R.storyboard.onboardingExplainationPage1ViewController()
-      .instantiateInitialViewController() as? OnboardingExplainationPage1ViewController else { return nil }
+  class func instantiate() -> OnboardingExplainationPage3ViewController? {
+    guard let onboardingPage1VC = R.storyboard.onboardingExplainationPage3ViewController()
+      .instantiateInitialViewController() as? OnboardingExplainationPage3ViewController else { return nil }
     
     return onboardingPage1VC
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let nextOnboardingInfoPage = OnboardingExplainationPage2ViewController.instantiate() else {
+    guard let nextOnboardingInfoPage = OnboardingExplainationPage4ViewController.instantiate() else {
       print("Failed to create next Onboarding Info Page")
       return
     }
@@ -36,7 +36,7 @@ class OnboardingExplainationPage1ViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension OnboardingExplainationPage1ViewController {
+extension OnboardingExplainationPage3ViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
