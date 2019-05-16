@@ -43,21 +43,11 @@ class AllowNotificationsViewController: UIViewController {
   @IBAction func skipNotificationsClicked(_ sender: Any) {
     self.continueToOnboardingOrMain()
   }
-  
-  func continueToOnboardingOrMain() {
-    DispatchQueue.main.async {
-      if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
-        guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-          print("Failed to initialize main VC")
-          return
-        }
-        self.navigationController?.setViewControllers([mainVC], animated: true)
-      } else {
-//        guard let onboardingVC =
-      }
-    }
-  }
-  
+}
+
+// MARK: - Permissions Flow Protocol
+extension AllowNotificationsViewController: PermissionsFlowProtocol {
+  // No-Op
 }
 
 // MARK: - Life Cycle

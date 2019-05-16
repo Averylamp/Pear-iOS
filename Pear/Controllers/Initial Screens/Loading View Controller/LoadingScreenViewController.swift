@@ -37,66 +37,18 @@ extension LoadingScreenViewController {
     DataStore.shared.reloadRemoteConfig { (_) in
       DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
         if !versionIsSufficient && DataStore.shared.remoteConfig.configValue(forKey: "version_blocking_enabled").boolValue {
-          self.continueToVersionBlockScreen()
+          self.continueToVersionBlockingScreen()
         } else {
           DataStore.shared.refreshPearUser(completion: { (pearUser) in
             if let pearUser = pearUser {
               DataStore.shared.currentPearUser = pearUser
-              let locationAuthStatus = CLLocationManager.authorizationStatus()
-              if locationAuthStatus == .authorizedWhenInUse || locationAuthStatus == .authorizedAlways {
-                self.continueToMainScreen()
-              } else {
-                guard let allowLocationVC = AllowLocationViewController.instantiate() else {
-                  print("Failed to create Allow Location VC")
-                  return
-                }
-                DispatchQueue.main.async {
-                  self.navigationController?.pushViewController(allowLocationVC, animated: true)
-                }
-              }
-              
+              self.continueToNotificationOrNext()
             } else {
-              self.continueToLandingScreen()
+              self.continueToLandingPage()
             }
           })
         }
       })
-    }
-  }
-  
-  static func getVersionBlockScreen() -> UIViewController? {
-    guard let versionBlockVC = VersionBlockViewController.instantiate() else {
-      print("Failed to create Version Block VC")
-      return nil
-    }
-    return versionBlockVC
-  }
-  
-  func continueToVersionBlockScreen() {
-    print("Continuing to version block screen")
-    DispatchQueue.main.async {
-      if let versionBlockVC = LoadingScreenViewController.getVersionBlockScreen() {
-        self.navigationController?.setViewControllers([versionBlockVC], animated: true)
-      } else {
-        print("couldn't create version block VC")
-      }
-    }
-  }
-  
-  static func getLandingScreen() -> UIViewController? {
-    guard let landingScreenVC = LandingScreenViewController.instantiate() else {
-      print("Failed to create Landing Screen VC")
-      return nil
-    }
-    return landingScreenVC
-  }
-  
-  func continueToLandingScreen() {
-    print("Continuing to Landing Screen")
-    DispatchQueue.main.async {
-      if let landingVC = LoadingScreenViewController.getLandingScreen() {
-        self.navigationController?.setViewControllers([landingVC], animated: true)
-      }
     }
   }
   
@@ -106,33 +58,6 @@ extension LoadingScreenViewController {
       return nil
     }
     return mainVC
-  }
-
-  func continueToMainScreen() {
-    print("Continuing to Main Screen")
-    DispatchQueue.main.async {
-      DataStore.shared.reloadAllUserData()
-      if let mainVC = LoadingScreenViewController.getMainScreenVC() {
-        self.navigationController?.setViewControllers([mainVC], animated: true)
-      }
-    }
-  }
-
-  static func getWaitlistVC() -> UIViewController? {
-    guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
-      print("Failed to create Landing Screen VC")
-      return nil
-    }
-    return waitlistVC
-  }
-  
-  func continueToWaitlistVC() {
-    print("Continuing to Waitlist Screen")
-    DispatchQueue.main.async {
-      if let waitlistVC = LoadingScreenViewController.getWaitlistVC() {
-        self.navigationController?.setViewControllers([waitlistVC], animated: true)
-      }
-    }
   }
   
   func testImageUpload() {
@@ -293,4 +218,8 @@ extension LoadingScreenViewController {
     }
   }
   
+}
+
+extension LoadingScreenViewController: PermissionsFlowProtocol {
+  // No-Op
 }
