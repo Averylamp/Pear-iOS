@@ -48,7 +48,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See 3x more people every day of the week" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="toJ-76-ucU">
-                                        <rect key="frame" x="90" y="18" width="256" height="44"/>
+                                        <rect key="frame" x="90" y="21.5" width="256" height="37.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -75,7 +75,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send unlimited Pears for you &amp; your friends" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Mkc-XF-bcw">
-                                        <rect key="frame" x="90" y="18" width="256" height="44"/>
+                                        <rect key="frame" x="90" y="21.5" width="256" height="37.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -102,7 +102,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get notified when people match with you!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yNf-tf-Yh3">
-                                        <rect key="frame" x="90" y="18" width="256" height="44"/>
+                                        <rect key="frame" x="90" y="21.5" width="256" height="37.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -119,19 +119,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’re missing out!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3w-tK-cUD">
-                                <rect key="frame" x="30" y="329" width="354" height="25"/>
+                                <rect key="frame" x="30" y="339.5" width="354" height="21"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People join Pear with friends. Join with yours to unlock the full experience:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SgO-9Q-v3a">
-                                <rect key="frame" x="20" y="359" width="374" height="44"/>
+                                <rect key="frame" x="20" y="365.5" width="374" height="37.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-emoji-surprised" translatesAutoresizingMaskIntoConstraints="NO" id="35a-YF-2mD">
-                                <rect key="frame" x="132" y="174" width="150" height="150"/>
+                                <rect key="frame" x="199" y="318.5" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="RnQ-lw-hCm"/>
                                     <constraint firstAttribute="width" secondItem="35a-YF-2mD" secondAttribute="height" multiplier="1:1" id="Zpg-eb-Ftv"/>
@@ -198,9 +198,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-emoji-heart-eyes" width="408" height="408"/>
-        <image name="icon-emoji-laughing-with-heart" width="408" height="408"/>
-        <image name="icon-emoji-surprised" width="472" height="472"/>
-        <image name="icon-lock-open" width="408" height="408"/>
+        <image name="icon-emoji-heart-eyes" width="136" height="136"/>
+        <image name="icon-emoji-laughing-with-heart" width="136" height="136"/>
+        <image name="icon-emoji-surprised" width="157.33332824707031" height="157.33332824707031"/>
+        <image name="icon-lock-open" width="136" height="136"/>
     </resources>
 </document>

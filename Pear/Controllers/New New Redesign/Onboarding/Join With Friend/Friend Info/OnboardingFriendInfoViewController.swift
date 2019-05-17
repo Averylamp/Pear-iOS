@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class OnboardingFriendInfoViewController: UIViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
+  @IBOutlet var labelGroup: [UILabel]!
+  @IBOutlet var headerLabelGroup: [UILabel]!
   
   @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
   
@@ -50,6 +53,18 @@ extension OnboardingFriendInfoViewController {
   func stylize() {
     self.titleLabel.stylizeOnboardingHeaderTitleLabel()
     self.continueButton.stylizeOnboardingContinueButton()
+    if UIScreen.main.bounds.width <= 320 {
+      labelGroup.forEach {
+        if let font = R.font.openSansSemiBold(size: 13) {
+          $0.font = font
+        }
+      }
+      headerLabelGroup.forEach {
+        if let font = R.font.openSansBold(size: 16) {
+          $0.font = font
+        }
+      }
+    }
   }
   
   func setup() {
