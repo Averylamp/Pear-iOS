@@ -146,7 +146,6 @@
 		BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB797DEC2276C9C600D38044 /* DataStore+Location.swift */; };
 		BB797DEF2277B56D00D38044 /* SMSCanceledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB797DEE2277B56D00D38044 /* SMSCanceledViewController.swift */; };
 		BB797DF12277B57600D38044 /* SMSCanceledViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB797DF02277B57600D38044 /* SMSCanceledViewController.storyboard */; };
-		BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */; };
 		BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */; };
 		BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11A22437B64001320B0 /* SharedModel.swift */; };
 		BB94C12522438502001320B0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12422438502001320B0 /* Message.swift */; };
@@ -239,17 +238,6 @@
 		BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACC222334E6006B75A0 /* UserAPI.swift */; };
 		BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */; };
 		BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AD022233508006B75A0 /* PearProfileAPI.swift */; };
-		BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */; };
-		BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */; };
-		BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */; };
-		BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AD92223390A006B75A0 /* SF-Pro-Display-Regular.otf */; };
-		BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70ADD22233A76006B75A0 /* Nunito-Regular.ttf */; };
-		BBB70AE522233A77006B75A0 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70ADE22233A76006B75A0 /* Nunito-SemiBold.ttf */; };
-		BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70ADF22233A76006B75A0 /* Nunito-ExtraLight.ttf */; };
-		BBB70AE722233A77006B75A0 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE022233A76006B75A0 /* Nunito-ExtraBold.ttf */; };
-		BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE122233A76006B75A0 /* Nunito-Bold.ttf */; };
-		BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */; };
-		BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */; };
 		BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
@@ -331,27 +319,10 @@
 		BBF93E642267CA4A002841EE /* ProfileInputVibeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E632267CA4A002841EE /* ProfileInputVibeViewController.storyboard */; };
 		BBF93E662267CA56002841EE /* ProfileInputQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E652267CA56002841EE /* ProfileInputQuestionViewController.storyboard */; };
 		BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E672267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard */; };
-		BBF93E752267CCB2002841EE /* Cera Pro Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E692267CCB0002841EE /* Cera Pro Light.otf */; };
-		BBF93E762267CCB2002841EE /* Cera Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E6A2267CCB0002841EE /* Cera Pro Bold.otf */; };
-		BBF93E772267CCB3002841EE /* Cera Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E6B2267CCB0002841EE /* Cera Pro Black.otf */; };
-		BBF93E782267CCB3002841EE /* Cera Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E6C2267CCB0002841EE /* Cera Pro Regular.otf */; };
-		BBF93E792267CCB3002841EE /* Cera Pro Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E6D2267CCB1002841EE /* Cera Pro Light Italic.otf */; };
-		BBF93E7A2267CCB3002841EE /* Cera Pro Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E6E2267CCB1002841EE /* Cera Pro Medium Italic.otf */; };
-		BBF93E7B2267CCB3002841EE /* Cera Pro Regular Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E6F2267CCB1002841EE /* Cera Pro Regular Italic.otf */; };
-		BBF93E7C2267CCB3002841EE /* Cera Pro Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E702267CCB1002841EE /* Cera Pro Thin.otf */; };
-		BBF93E7D2267CCB3002841EE /* Cera Pro Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E712267CCB2002841EE /* Cera Pro Medium.otf */; };
-		BBF93E7E2267CCB3002841EE /* Cera Pro Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E722267CCB2002841EE /* Cera Pro Bold Italic.otf */; };
-		BBF93E7F2267CCB3002841EE /* Cera Pro Thin Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E732267CCB2002841EE /* Cera Pro Thin Italic.otf */; };
-		BBF93E802267CCB3002841EE /* Cera Pro Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E742267CCB2002841EE /* Cera Pro Black Italic.otf */; };
 		BBF93E8B2267CF7A002841EE /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E812267CF77002841EE /* OpenSans-SemiBold.ttf */; };
-		BBF93E8C2267CF7A002841EE /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E822267CF77002841EE /* OpenSans-BoldItalic.ttf */; };
 		BBF93E8D2267CF7A002841EE /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E832267CF77002841EE /* OpenSans-Light.ttf */; };
 		BBF93E8E2267CF7A002841EE /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E842267CF77002841EE /* OpenSans-ExtraBold.ttf */; };
-		BBF93E8F2267CF7A002841EE /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E852267CF78002841EE /* OpenSans-Italic.ttf */; };
-		BBF93E902267CF7A002841EE /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E862267CF78002841EE /* OpenSans-SemiBoldItalic.ttf */; };
 		BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E872267CF78002841EE /* OpenSans-Bold.ttf */; };
-		BBF93E922267CF7A002841EE /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E882267CF78002841EE /* OpenSans-ExtraBoldItalic.ttf */; };
-		BBF93E932267CF7A002841EE /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E892267CF79002841EE /* OpenSans-LightItalic.ttf */; };
 		BBF93E942267CF7A002841EE /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E8A2267CF79002841EE /* OpenSans-Regular.ttf */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
@@ -525,7 +496,6 @@
 		BB797DEC2276C9C600D38044 /* DataStore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Location.swift"; sourceTree = "<group>"; };
 		BB797DEE2277B56D00D38044 /* SMSCanceledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCanceledViewController.swift; sourceTree = "<group>"; };
 		BB797DF02277B57600D38044 /* SMSCanceledViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SMSCanceledViewController.storyboard; sourceTree = "<group>"; };
-		BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		BB884CF8CFF4C5A51377A2FA /* Pods-PearTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.production.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.production.xcconfig"; sourceTree = "<group>"; };
 		BB928579222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitVibeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB94C11A22437B64001320B0 /* SharedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
@@ -619,17 +589,6 @@
 		BBB70ACC222334E6006B75A0 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserAPI.swift; sourceTree = "<group>"; };
 		BBB70AD022233508006B75A0 /* PearProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearProfileAPI.swift; sourceTree = "<group>"; };
-		BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
-		BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
-		BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
-		BBB70AD92223390A006B75A0 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
-		BBB70ADD22233A76006B75A0 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
-		BBB70ADE22233A76006B75A0 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
-		BBB70ADF22233A76006B75A0 /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
-		BBB70AE022233A76006B75A0 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
-		BBB70AE122233A76006B75A0 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
-		BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
-		BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styling.swift"; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
@@ -715,27 +674,10 @@
 		BBF93E632267CA4A002841EE /* ProfileInputVibeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInputVibeViewController.storyboard; sourceTree = "<group>"; };
 		BBF93E652267CA56002841EE /* ProfileInputQuestionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInputQuestionViewController.storyboard; sourceTree = "<group>"; };
 		BBF93E672267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInputBoastRoastViewController.storyboard; sourceTree = "<group>"; };
-		BBF93E692267CCB0002841EE /* Cera Pro Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Light.otf"; sourceTree = "<group>"; };
-		BBF93E6A2267CCB0002841EE /* Cera Pro Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Bold.otf"; sourceTree = "<group>"; };
-		BBF93E6B2267CCB0002841EE /* Cera Pro Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Black.otf"; sourceTree = "<group>"; };
-		BBF93E6C2267CCB0002841EE /* Cera Pro Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Regular.otf"; sourceTree = "<group>"; };
-		BBF93E6D2267CCB1002841EE /* Cera Pro Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Light Italic.otf"; sourceTree = "<group>"; };
-		BBF93E6E2267CCB1002841EE /* Cera Pro Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Medium Italic.otf"; sourceTree = "<group>"; };
-		BBF93E6F2267CCB1002841EE /* Cera Pro Regular Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Regular Italic.otf"; sourceTree = "<group>"; };
-		BBF93E702267CCB1002841EE /* Cera Pro Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Thin.otf"; sourceTree = "<group>"; };
-		BBF93E712267CCB2002841EE /* Cera Pro Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Medium.otf"; sourceTree = "<group>"; };
-		BBF93E722267CCB2002841EE /* Cera Pro Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Bold Italic.otf"; sourceTree = "<group>"; };
-		BBF93E732267CCB2002841EE /* Cera Pro Thin Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Thin Italic.otf"; sourceTree = "<group>"; };
-		BBF93E742267CCB2002841EE /* Cera Pro Black Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera Pro Black Italic.otf"; sourceTree = "<group>"; };
 		BBF93E812267CF77002841EE /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		BBF93E822267CF77002841EE /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		BBF93E832267CF77002841EE /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		BBF93E842267CF77002841EE /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		BBF93E852267CF78002841EE /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
-		BBF93E862267CF78002841EE /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		BBF93E872267CF78002841EE /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		BBF93E882267CF78002841EE /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		BBF93E892267CF79002841EE /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		BBF93E8A2267CF79002841EE /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
@@ -842,6 +784,7 @@
 		60C131D521D343560093ECBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB714120228B3BB400129C93 /* New New Redesign */,
 				BBF93E4B2267C785002841EE /* New Redesign */,
 				BB986A1C220E08B300759A14 /* Initial Screens */,
 				BBE5BFAF224D0BBC00D99217 /* Create User Flow */,
@@ -1383,6 +1326,17 @@
 			path = "Waitlist VC";
 			sourceTree = "<group>";
 		};
+		BB714120228B3BB400129C93 /* New New Redesign */ = {
+			isa = PBXGroup;
+			children = (
+				BBA106DD22780951000771CF /* ProfileCreationProtocol.swift */,
+				BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */,
+				BBBA574D226DD60E000BCD5F /* Landing Screen */,
+				BBBA574E226DD619000BCD5F /* Phone Code Confirmation */,
+			);
+			path = "New New Redesign";
+			sourceTree = "<group>";
+		};
 		BB75BFCA22155F9100BAB800 /* Full Profile View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1821,14 +1775,7 @@
 		BBB70AD4222336B7006B75A0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				BBF93E952267CF7F002841EE /* Cera Pro */,
 				BBF93E962267CF8F002841EE /* Open Sans */,
-				BBF93E972267CF99002841EE /* Nunito */,
-				BBB70AD722233909006B75A0 /* SF-Pro-Display-Light.otf */,
-				BBB70AD92223390A006B75A0 /* SF-Pro-Display-Regular.otf */,
-				BBB70AD822233909006B75A0 /* SF-Pro-Display-Medium.otf */,
-				BB7AD8C0222F5EFE000CC63A /* SF-Pro-Display-Bold.otf */,
-				BBB70AD5222336C8006B75A0 /* FredokaOne-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -2266,10 +2213,6 @@
 		BBF93E4C2267C7E6002841EE /* Create User */ = {
 			isa = PBXGroup;
 			children = (
-				BBA106DD22780951000771CF /* ProfileCreationProtocol.swift */,
-				BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */,
-				BBBA574D226DD60E000BCD5F /* Landing Screen */,
-				BBBA574E226DD619000BCD5F /* Phone Code Confirmation */,
 				BBBA574F226DD627000BCD5F /* Enable Contact Permissions */,
 				BBBA5750226DD631000BCD5F /* Pick Endorsed Contact */,
 				BBBA5751226DD641000BCD5F /* Vibes Input */,
@@ -2283,54 +2226,16 @@
 			path = "Create User";
 			sourceTree = "<group>";
 		};
-		BBF93E952267CF7F002841EE /* Cera Pro */ = {
-			isa = PBXGroup;
-			children = (
-				BBF93E742267CCB2002841EE /* Cera Pro Black Italic.otf */,
-				BBF93E6B2267CCB0002841EE /* Cera Pro Black.otf */,
-				BBF93E722267CCB2002841EE /* Cera Pro Bold Italic.otf */,
-				BBF93E6A2267CCB0002841EE /* Cera Pro Bold.otf */,
-				BBF93E6D2267CCB1002841EE /* Cera Pro Light Italic.otf */,
-				BBF93E692267CCB0002841EE /* Cera Pro Light.otf */,
-				BBF93E6E2267CCB1002841EE /* Cera Pro Medium Italic.otf */,
-				BBF93E712267CCB2002841EE /* Cera Pro Medium.otf */,
-				BBF93E6F2267CCB1002841EE /* Cera Pro Regular Italic.otf */,
-				BBF93E6C2267CCB0002841EE /* Cera Pro Regular.otf */,
-				BBF93E732267CCB2002841EE /* Cera Pro Thin Italic.otf */,
-				BBF93E702267CCB1002841EE /* Cera Pro Thin.otf */,
-			);
-			path = "Cera Pro";
-			sourceTree = "<group>";
-		};
 		BBF93E962267CF8F002841EE /* Open Sans */ = {
 			isa = PBXGroup;
 			children = (
 				BBF93E872267CF78002841EE /* OpenSans-Bold.ttf */,
-				BBF93E822267CF77002841EE /* OpenSans-BoldItalic.ttf */,
 				BBF93E842267CF77002841EE /* OpenSans-ExtraBold.ttf */,
-				BBF93E882267CF78002841EE /* OpenSans-ExtraBoldItalic.ttf */,
-				BBF93E852267CF78002841EE /* OpenSans-Italic.ttf */,
 				BBF93E832267CF77002841EE /* OpenSans-Light.ttf */,
-				BBF93E892267CF79002841EE /* OpenSans-LightItalic.ttf */,
 				BBF93E8A2267CF79002841EE /* OpenSans-Regular.ttf */,
 				BBF93E812267CF77002841EE /* OpenSans-SemiBold.ttf */,
-				BBF93E862267CF78002841EE /* OpenSans-SemiBoldItalic.ttf */,
 			);
 			path = "Open Sans";
-			sourceTree = "<group>";
-		};
-		BBF93E972267CF99002841EE /* Nunito */ = {
-			isa = PBXGroup;
-			children = (
-				BBB70AE222233A77006B75A0 /* Nunito-Black.ttf */,
-				BBB70AE122233A76006B75A0 /* Nunito-Bold.ttf */,
-				BBB70AE022233A76006B75A0 /* Nunito-ExtraBold.ttf */,
-				BBB70ADF22233A76006B75A0 /* Nunito-ExtraLight.ttf */,
-				BBB70AE322233A77006B75A0 /* Nunito-Light.ttf */,
-				BBB70ADD22233A76006B75A0 /* Nunito-Regular.ttf */,
-				BBB70ADE22233A76006B75A0 /* Nunito-SemiBold.ttf */,
-			);
-			path = Nunito;
 			sourceTree = "<group>";
 		};
 		BBFFBBD722211749002E1B54 /* ImagesAPI */ = {
@@ -2475,20 +2380,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0AE4DE22536208005DD315 /* splash-pear.png in Resources */,
-				BBF93E752267CCB2002841EE /* Cera Pro Light.otf in Resources */,
 				BBF93E602267CA2A002841EE /* UserContactPermissionsViewController.storyboard in Resources */,
 				BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */,
-				BBF93E7F2267CCB3002841EE /* Cera Pro Thin Italic.otf in Resources */,
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
-				BBF93E7E2267CCB3002841EE /* Cera Pro Bold Italic.otf in Resources */,
 				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
 				BB797DF12277B57600D38044 /* SMSCanceledViewController.storyboard in Resources */,
 				BBF7968A225956EB00E9A506 /* MeEditUserViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
 				BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */,
-				BBF93E902267CF7A002841EE /* OpenSans-SemiBoldItalic.ttf in Resources */,
-				BBF93E7B2267CCB3002841EE /* Cera Pro Regular Italic.otf in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
 				917F20D52271B03B0023EC69 /* FinishSetupUserPhotosViewController.storyboard in Resources */,
 				BBA2E1EE224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard in Resources */,
@@ -2496,8 +2396,6 @@
 				BBF93E8B2267CF7A002841EE /* OpenSans-SemiBold.ttf in Resources */,
 				BB986A5B220FD0C600759A14 /* GetStartedInterestsViewController.storyboard in Resources */,
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
-				BBB70ADA2223390A006B75A0 /* SF-Pro-Display-Light.otf in Resources */,
-				BBF93E7D2267CCB3002841EE /* Cera Pro Medium.otf in Resources */,
 				BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */,
 				BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */,
 				917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
@@ -2505,7 +2403,6 @@
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
-				BBB70AE422233A77006B75A0 /* Nunito-Regular.ttf in Resources */,
 				BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */,
 				BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */,
 				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
@@ -2515,14 +2412,12 @@
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
 				BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */,
 				BB686E422212213A008A263C /* GetStartedDoDontViewController.storyboard in Resources */,
-				BBB70AE522233A77006B75A0 /* Nunito-SemiBold.ttf in Resources */,
 				9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */,
 				BBA3CEBA2255666E0020A36C /* ChatRequestPersonalViewController.storyboard in Resources */,
 				BB686E4B22126713008A263C /* ExpandingTextViewController.storyboard in Resources */,
 				BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */,
 				BBF93E8E2267CF7A002841EE /* OpenSans-ExtraBold.ttf in Resources */,
 				BB9CB69D2259E14100605A98 /* UpdateExpandingTextViewController.storyboard in Resources */,
-				BBF93E8C2267CF7A002841EE /* OpenSans-BoldItalic.ttf in Resources */,
 				BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */,
 				917F20C32271701C0023EC69 /* FinishSetupUserPreferencesViewController.storyboard in Resources */,
 				BB3F4AEB2234259D00F99C8E /* GetStartedUserGenderViewController.storyboard in Resources */,
@@ -2535,28 +2430,21 @@
 				BB6479DA226A679F00652318 /* LandingScreenWaitlistViewController.storyboard in Resources */,
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
 				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
-				BBB70AD6222336C8006B75A0 /* FredokaOne-Regular.ttf in Resources */,
 				BBC4F5072282217600C79148 /* ProfileQuestionResponseViewController.storyboard in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
 				917F20D02271A1F20023EC69 /* FinishSetupUserBirthdateViewController.storyboard in Resources */,
-				BBF93E932267CF7A002841EE /* OpenSans-LightItalic.ttf in Resources */,
-				BBF93E792267CCB3002841EE /* Cera Pro Light Italic.otf in Resources */,
 				BBF93E942267CF7A002841EE /* OpenSans-Regular.ttf in Resources */,
 				BB33E7492223EF1B001BFA8F /* GetStartedSeeSamplesViewController.storyboard in Resources */,
 				917F20B222716F380023EC69 /* DiscoverySetupViewController.storyboard in Resources */,
 				BB986A2F220E1C8D00759A14 /* LandingScreenPage4ViewController.storyboard in Resources */,
-				BBF93E772267CCB3002841EE /* Cera Pro Black.otf in Resources */,
 				BBA2E1F9224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard in Resources */,
 				BB0AE4EF22536FE0005DD315 /* UserAgePreferencesViewController.storyboard in Resources */,
 				BBF93E5E2267CA20002841EE /* UserPhoneCodeViewController.storyboard in Resources */,
 				BB94C1312243C73B001320B0 /* Strings.strings in Resources */,
-				BBF93E922267CF7A002841EE /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
-				BBF93E7A2267CCB3002841EE /* Cera Pro Medium Italic.otf in Resources */,
 				BB9CB6AC225A11F900605A98 /* FriendEditProfileViewController.storyboard in Resources */,
-				BBF93E802267CCB3002841EE /* Cera Pro Black Italic.otf in Resources */,
 				9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */,
 				BB3F21982226754D00DC4489 /* GetStartedEmailProviderViewController.storyboard in Resources */,
 				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
@@ -2564,10 +2452,7 @@
 				BB986A63220FE93E00759A14 /* GetStartedCreateAccountViewController.storyboard in Resources */,
 				917F20DA2271BB340023EC69 /* FinishSetupUserSchoolViewController.storyboard in Resources */,
 				BB9CB6BB225B601200605A98 /* Launch Screen.storyboard in Resources */,
-				BBB70AEA22233A77006B75A0 /* Nunito-Light.ttf in Resources */,
 				BB6C06452227F70E007A5C96 /* GetStartedAllowNotificationsViewController.storyboard in Resources */,
-				BBB70AE722233A77006B75A0 /* Nunito-ExtraBold.ttf in Resources */,
-				BBB70AE822233A77006B75A0 /* Nunito-Bold.ttf in Resources */,
 				BB986A57220F807E00759A14 /* GetStartedStartFriendProfileViewController.storyboard in Resources */,
 				911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */,
 				BBF93E8D2267CF7A002841EE /* OpenSans-Light.ttf in Resources */,
@@ -2575,8 +2460,6 @@
 				911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */,
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
 				BBA106E222783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard in Resources */,
-				BBF93E7C2267CCB3002841EE /* Cera Pro Thin.otf in Resources */,
-				BBF93E762267CCB2002841EE /* Cera Pro Bold.otf in Resources */,
 				BBA106E622784B22000771CF /* ExpandingFreeResponseInputViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BBC0FF1F22706A0600632924 /* UserNameInputViewController.storyboard in Resources */,
@@ -2590,7 +2473,6 @@
 				BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */,
 				BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */,
 				BB686E312210DA80008A263C /* GetStartedValidatePhoneNumberViewController.storyboard in Resources */,
-				BBB70AE922233A77006B75A0 /* Nunito-Black.ttf in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */,
 				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
@@ -2598,29 +2480,23 @@
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBF93E5C2267CA11002841EE /* LandingScreenViewController.storyboard in Resources */,
-				BBB70ADB2223390A006B75A0 /* SF-Pro-Display-Medium.otf in Resources */,
 				BBA3CEBC2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard in Resources */,
 				BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */,
 				BBBA5747226DC9E4000BCD5F /* InputTableViewController.storyboard in Resources */,
-				BBB70AE622233A77006B75A0 /* Nunito-ExtraLight.ttf in Resources */,
 				BBF93E662267CA56002841EE /* ProfileInputQuestionViewController.storyboard in Resources */,
 				BBC4F501228214A100C79148 /* NewProfileBioViewController.storyboard in Resources */,
 				BBC4F50A22822A6800C79148 /* ProfileDemographicsViewController.storyboard in Resources */,
-				BBF93E782267CCB3002841EE /* Cera Pro Regular.otf in Resources */,
 				BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */,
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
 				BB178938225DFCAA0033ACC6 /* FullChatViewController.storyboard in Resources */,
 				BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
-				BB7AD8C1222F62F9000CC63A /* SF-Pro-Display-Bold.otf in Resources */,
 				BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
 				BB986A20220E08ED00759A14 /* OldLandingScreenViewController.storyboard in Resources */,
-				BBB70ADC2223390A006B75A0 /* SF-Pro-Display-Regular.otf in Resources */,
 				BB75BFD622156C7E00BAB800 /* GetStartedNotifyFriendViewController.storyboard in Resources */,
 				BB9D1B1E2255D02C0074C099 /* RequestProfileViewController.storyboard in Resources */,
-				BBF93E8F2267CF7A002841EE /* OpenSans-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3174,7 +3050,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 104;
+				CURRENT_PROJECT_VERSION = 105;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3199,7 +3075,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 104;
+				CURRENT_PROJECT_VERSION = 105;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3398,7 +3274,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 104;
+				CURRENT_PROJECT_VERSION = 105;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3594,7 +3470,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 104;
+				CURRENT_PROJECT_VERSION = 105;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";

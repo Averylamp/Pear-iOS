@@ -18,7 +18,7 @@ extension UITextField {
   }
   
   func stylizeUpdateInputTextField() {
-    if let font = R.font.nunitoRegular(size: 18) {
+    if let font = R.font.openSansRegular(size: 18) {
       self.font = font
     }
     self.textColor = R.color.primaryTextColor()

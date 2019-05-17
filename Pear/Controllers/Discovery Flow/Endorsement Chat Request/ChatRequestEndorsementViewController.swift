@@ -96,7 +96,7 @@ extension ChatRequestEndorsementViewController {
     self.subtitleLabel.text = "Get the conversation started"
     self.sendRequestButton.stylizeDark()
     
-    if let textFont = R.font.nunitoRegular(size: 17) {
+    if let textFont = R.font.openSansRegular(size: 17) {
       self.inputTextView.font = textFont
     }
     self.inputTextView.textColor = UIColor(white: 0.7, alpha: 1.0)
