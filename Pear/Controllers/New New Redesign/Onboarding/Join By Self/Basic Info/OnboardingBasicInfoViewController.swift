@@ -11,9 +11,8 @@ import UIKit
 class OnboardingBasicInfoViewController: UIViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var scrollView: UIScrollView!
-  @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var continueButton: UIButton!
+  @IBOutlet weak var tableView: UITableView!
   
   @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
