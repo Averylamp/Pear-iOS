@@ -78,6 +78,13 @@
 		BB1C67102237205700D75848 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C670F2237205700D75848 /* Coding.swift */; };
 		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
 		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
+		BB20118B228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */; };
+		BB20118D228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */; };
+		BB20118F228EAB4100BC85C0 /* InfoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */; };
+		BB201191228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB201190228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift */; };
+		BB201193228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB201192228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard */; };
+		BB201195228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */; };
+		BB201197228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */; };
 		BB20186E227B9EAE0070F0B3 /* UpdateProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20186D227B9EAE0070F0B3 /* UpdateProfileData.swift */; };
 		BB30B4582243D8D000B2845C /* ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB30B4572243D8D000B2845C /* ImageAPITests.swift */; };
 		BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */; };
@@ -457,6 +464,13 @@
 		BB1C670F2237205700D75848 /* Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding.swift; sourceTree = "<group>"; };
 		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
+		BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFieldInputViewController.swift; sourceTree = "<group>"; };
+		BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimpleFieldInputViewController.storyboard; sourceTree = "<group>"; };
+		BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemTableViewCell.swift; sourceTree = "<group>"; };
+		BB201190228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBasicInfoTableViewController.swift; sourceTree = "<group>"; };
+		BB201192228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserBasicInfoViewController.storyboard; sourceTree = "<group>"; };
+		BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMoreDetailsTableViewController.swift; sourceTree = "<group>"; };
+		BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserMoreDetailsTableViewController.storyboard; sourceTree = "<group>"; };
 		BB20186D227B9EAE0070F0B3 /* UpdateProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileData.swift; sourceTree = "<group>"; };
 		BB30B4572243D8D000B2845C /* ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPITests.swift; sourceTree = "<group>"; };
 		BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSeeSamplesViewController.swift; sourceTree = "<group>"; };
@@ -1215,6 +1229,20 @@
 			path = "Discovery Flow";
 			sourceTree = "<group>";
 		};
+		BB201189228DFAD700BC85C0 /* Shared Components */ = {
+			isa = PBXGroup;
+			children = (
+				BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */,
+				BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */,
+				BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */,
+				BB201190228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift */,
+				BB201192228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard */,
+				BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */,
+				BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */,
+			);
+			path = "Shared Components";
+			sourceTree = "<group>";
+		};
 		BB33E7552224A088001BFA8F /* See Samples */ = {
 			isa = PBXGroup;
 			children = (
@@ -1408,6 +1436,7 @@
 				BB687E5F228D5A4200F45C9D /* Onboarding Explaination Pages */,
 				BB687E70228D704500F45C9D /* Join With Friend */,
 				BB687E71228D704900F45C9D /* Join By Self */,
+				BB201189228DFAD700BC85C0 /* Shared Components */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -2621,6 +2650,7 @@
 				BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */,
 				BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */,
 				917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
+				BB201193228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */,
@@ -2634,6 +2664,7 @@
 				BB3F02892271C4E6004855E8 /* ScrollableTextItemViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
+				BB201197228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard in Resources */,
 				BB986A59220FCDFE00759A14 /* GetStartedAgeViewController.storyboard in Resources */,
 				BB686E422212213A008A263C /* GetStartedDoDontViewController.storyboard in Resources */,
 				9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */,
@@ -2669,6 +2700,7 @@
 				BBA2E1F9224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.storyboard in Resources */,
 				BB0AE4EF22536FE0005DD315 /* UserAgePreferencesViewController.storyboard in Resources */,
 				BBF93E5E2267CA20002841EE /* UserPhoneCodeViewController.storyboard in Resources */,
+				BB20118D228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard in Resources */,
 				BB94C1312243C73B001320B0 /* Strings.strings in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
 				BB9CB6AC225A11F900605A98 /* FriendEditProfileViewController.storyboard in Resources */,
@@ -2946,6 +2978,7 @@
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
+				BB20118F228EAB4100BC85C0 /* InfoItemTableViewCell.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
@@ -2968,9 +3001,11 @@
 				BB686E3F22120F1A008A263C /* StylingConfig.swift in Sources */,
 				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
 				BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */,
+				BB201191228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift in Sources */,
 				BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */,
 				BB17893F225E064F0033ACC6 /* ChatRequestTableViewCell.swift in Sources */,
 				BBF93E542267C86C002841EE /* UserContactListViewController.swift in Sources */,
+				BB20118B228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift in Sources */,
 				917F20C52271701C0023EC69 /* FinishSetupUserGenderViewController.swift in Sources */,
 				BB4C8A47225152EC00F7BA1A /* DoDontView.swift in Sources */,
 				BB178934225DE73E0033ACC6 /* Date+Helpers.swift in Sources */,
@@ -2988,6 +3023,7 @@
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
 				BBA106E022783C0F000771CF /* ProfileInputFreeResponseViewController.swift in Sources */,
+				BB201195228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift in Sources */,
 				BB986A37220E21CB00759A14 /* LandingScreenPageViewController.swift in Sources */,
 				BBBA573F226D9749000BCD5F /* VibeItem.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
