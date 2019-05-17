@@ -24,7 +24,7 @@ class PearImageAPI: ImageAPI {
     "Content-Type": "application/json"
   ]
   
-  static let getImagesQuery: String = "query GetUserImages($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user { displayedImages \(ImageContainer.graphQLImageFields) bankImages \(ImageContainer.graphQLImageFields) } }}"
+  static let getImagesQuery: String = "query GetUserImages($userInput: GetUserInput!) {getUser(userInput:$userInput){ success message user { displayedImages \(ImageContainer.graphQLAllFields()) bankImages \(ImageContainer.graphQLAllFields()) } }}"
   
   static let updateImagesQuery: String = "mutation UpdateUserPhotos($userInput:UpdateUserPhotosInput!) { updateUserPhotos(updateUserPhotosInput:$userInput){ success message }}"
   

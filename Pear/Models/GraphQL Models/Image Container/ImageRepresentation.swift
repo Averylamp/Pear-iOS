@@ -24,9 +24,10 @@ enum ImageRepresentationCodingKeys: String, CodingKey {
   case imageType
 }
 
-class ImageRepresentation: Codable, CustomStringConvertible {
-  
-  static let graphQLImageRepresentationFields: String = "{ imageURL imageType width height }"
+class ImageRepresentation: Codable, CustomStringConvertible, GraphQLDecodable {
+  static func graphQLAllFields() -> String {
+    return "{ imageURL imageType width height }"
+  }
   
   let imageType: ImageType
   let imageURL: String
