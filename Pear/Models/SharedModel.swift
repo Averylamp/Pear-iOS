@@ -41,13 +41,15 @@ enum LocationKeys: String, CodingKey {
   case locationName
 }
 
-class LocationObject: Decodable, Equatable {
+class LocationObject: Decodable, Equatable, GraphQLDecodable {
+  
+  static func graphQLAllFields() -> String {
+    return "{ coords locationName }"
+  }
   
   static func == (lhs: LocationObject, rhs: LocationObject) -> Bool {
     return lhs.locationName == rhs.locationName
   }
-  
-  static let graphQLLocationFields = "{ coords locationName }"
   
   let locationName: String?
   let locationCoordinate: CLLocationCoordinate2D?
@@ -77,7 +79,12 @@ enum MatchingPreferencesKeys: String, CodingKey {
   case location
 }
 
-class MatchingPreferences: Decodable, Equatable {
+class MatchingPreferences: Decodable, Equatable, GraphQLDecodable {
+  
+  static func graphQLAllFields() -> String {
+    return "{ seekingGender maxDistance minAgeRange maxAgeRange }"
+  }
+  
   static func == (lhs: MatchingPreferences, rhs: MatchingPreferences) -> Bool {
     return lhs.seekingGender == rhs.seekingGender &&
            lhs.maxDistance == rhs.maxDistance &&
@@ -85,9 +92,7 @@ class MatchingPreferences: Decodable, Equatable {
            lhs.maxAgeRange == rhs.maxAgeRange &&
            lhs.location == rhs.location
   }
-  
-  static let graphQLMatchingPreferencesFields = "{ seekingGender maxDistance minAgeRange maxAgeRange }"
-  
+    
   func matchesDemographics(demographics: MatchingDemographics) -> Bool {
     if let gender = demographics.gender,
       !self.seekingGender.contains(gender) {
@@ -114,41 +119,6 @@ class MatchingPreferences: Decodable, Equatable {
     self.maxDistance = try values.decode(Int.self, forKey: .maxDistance)
     self.minAgeRange = try values.decode(Int.self, forKey: .minAgeRange)
     self.maxAgeRange = try values.decode(Int.self, forKey: .maxAgeRange)
-    if let location = try? values.decode(LocationObject.self, forKey: .location) {
-      self.location = location
-    }
-  }
-}
-
-enum MatchingDemographicsKeys: String, CodingKey {
-  case gender
-  case age
-  case location
-}
-
-class MatchingDemographics: Decodable, Equatable {
-  
-  static func == (lhs: MatchingDemographics, rhs: MatchingDemographics) -> Bool {
-    return lhs.gender == rhs.gender &&
-           lhs.age == rhs.age &&
-           lhs.location == rhs.location
-  }
-  
-  static let graphQLMatchingDemographicsFields = "{ gender age location \(LocationObject.graphQLLocationFields) }"
-  
-  var gender: GenderEnum?
-  var age: Int?
-  var location: LocationObject?
-  
-  required init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: MatchingDemographicsKeys.self)
-    if let genderString = try? values.decode(String.self, forKey: .gender),
-      let gender = GenderEnum.init(rawValue: genderString) {
-      self.gender = gender
-    }
-    if let age = try? values.decode(Int.self, forKey: .age) {
-      self.age = age
-    }
     if let location = try? values.decode(LocationObject.self, forKey: .location) {
       self.location = location
     }
