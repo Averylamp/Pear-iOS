@@ -10,20 +10,34 @@ import UIKit
 
 class UserMoreDetailsTableViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+  /// Factory method for creating this view controller.
+  ///
+  /// - Returns: Returns an instance of this view controller.
+  class func instantiate() -> UserMoreDetailsTableViewController? {
+    guard let userMoreDetailsVC = R.storyboard.userMoreDetailsTableViewController()
+      .instantiateInitialViewController() as? UserMoreDetailsTableViewController else {
+        return nil
     }
+    return userMoreDetailsVC
+  }
+  
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+// MARK: - Life Cycle
+extension UserMoreDetailsTableViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.stylize()
+    self.setup()
+  }
+  
+  func stylize() {
+    
+  }
+  
+  func setup() {
+    
+  }
+  
 }
