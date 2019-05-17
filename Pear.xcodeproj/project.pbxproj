@@ -86,6 +86,8 @@
 		BB201195228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */; };
 		BB201197228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */; };
 		BB201199228F27F500BC85C0 /* MatchingDemographics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB201198228F27F500BC85C0 /* MatchingDemographics.swift */; };
+		BB20119B228F2B4A00BC85C0 /* MatchingPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20119A228F2B4A00BC85C0 /* MatchingPreferences.swift */; };
+		BB20119D228F3FAE00BC85C0 /* DemographicsItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20119C228F3FAE00BC85C0 /* DemographicsItems.swift */; };
 		BB20186E227B9EAE0070F0B3 /* UpdateProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20186D227B9EAE0070F0B3 /* UpdateProfileData.swift */; };
 		BB30B4582243D8D000B2845C /* ImageAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB30B4572243D8D000B2845C /* ImageAPITests.swift */; };
 		BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */; };
@@ -473,6 +475,8 @@
 		BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMoreDetailsTableViewController.swift; sourceTree = "<group>"; };
 		BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserMoreDetailsTableViewController.storyboard; sourceTree = "<group>"; };
 		BB201198228F27F500BC85C0 /* MatchingDemographics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingDemographics.swift; sourceTree = "<group>"; };
+		BB20119A228F2B4A00BC85C0 /* MatchingPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingPreferences.swift; sourceTree = "<group>"; };
+		BB20119C228F3FAE00BC85C0 /* DemographicsItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemographicsItems.swift; sourceTree = "<group>"; };
 		BB20186D227B9EAE0070F0B3 /* UpdateProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileData.swift; sourceTree = "<group>"; };
 		BB30B4572243D8D000B2845C /* ImageAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPITests.swift; sourceTree = "<group>"; };
 		BB33E7462223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedSeeSamplesViewController.swift; sourceTree = "<group>"; };
@@ -1681,6 +1685,8 @@
 				BB796F89222DB19300E31C7F /* PearUser.swift */,
 				BB796F88222DB19300E31C7F /* PearUserConstants.swift */,
 				BB201198228F27F500BC85C0 /* MatchingDemographics.swift */,
+				BB20119C228F3FAE00BC85C0 /* DemographicsItems.swift */,
+				BB20119A228F2B4A00BC85C0 /* MatchingPreferences.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -3007,6 +3013,7 @@
 				BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */,
 				BB201191228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift in Sources */,
 				BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */,
+				BB20119B228F2B4A00BC85C0 /* MatchingPreferences.swift in Sources */,
 				BB17893F225E064F0033ACC6 /* ChatRequestTableViewCell.swift in Sources */,
 				BBF93E542267C86C002841EE /* UserContactListViewController.swift in Sources */,
 				BB20118B228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift in Sources */,
@@ -3181,6 +3188,7 @@
 				BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */,
 				917F20D32271A72D0023EC69 /* FinishSetupUserPhotosViewController.swift in Sources */,
 				BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */,
+				BB20119D228F3FAE00BC85C0 /* DemographicsItems.swift in Sources */,
 				BB33E7472223EF09001BFA8F /* GetStartedSeeSamplesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
