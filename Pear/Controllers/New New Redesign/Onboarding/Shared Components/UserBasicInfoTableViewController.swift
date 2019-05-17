@@ -10,6 +10,17 @@ import UIKit
 
 class UserBasicInfoTableViewController: UIViewController {
 
+  /// Factory method for creating this view controller.
+  ///
+  /// - Returns: Returns an instance of this view controller.
+  class func instantiate() -> UserBasicInfoTableViewController? {
+    guard let userBasicInfoVC = R.storyboard.userBasicInfoTableViewController()
+      .instantiateInitialViewController() as? UserBasicInfoTableViewController else {
+        return nil
+    }
+    return userBasicInfoVC
+  }
+  
 }
 
 // MARK: - Life Cycle

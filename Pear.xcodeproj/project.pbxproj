@@ -82,7 +82,7 @@
 		BB20118D228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */; };
 		BB20118F228EAB4100BC85C0 /* InfoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */; };
 		BB201191228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB201190228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift */; };
-		BB201193228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB201192228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard */; };
+		BB201193228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB201192228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard */; };
 		BB201195228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */; };
 		BB201197228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */; };
 		BB20186E227B9EAE0070F0B3 /* UpdateProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20186D227B9EAE0070F0B3 /* UpdateProfileData.swift */; };
@@ -468,7 +468,7 @@
 		BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimpleFieldInputViewController.storyboard; sourceTree = "<group>"; };
 		BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemTableViewCell.swift; sourceTree = "<group>"; };
 		BB201190228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBasicInfoTableViewController.swift; sourceTree = "<group>"; };
-		BB201192228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserBasicInfoViewController.storyboard; sourceTree = "<group>"; };
+		BB201192228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserBasicInfoTableViewController.storyboard; sourceTree = "<group>"; };
 		BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMoreDetailsTableViewController.swift; sourceTree = "<group>"; };
 		BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserMoreDetailsTableViewController.storyboard; sourceTree = "<group>"; };
 		BB20186D227B9EAE0070F0B3 /* UpdateProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileData.swift; sourceTree = "<group>"; };
@@ -1232,11 +1232,11 @@
 		BB201189228DFAD700BC85C0 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
-				BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */,
 				BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */,
 				BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */,
+				BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */,
 				BB201190228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift */,
-				BB201192228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard */,
+				BB201192228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard */,
 				BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */,
 				BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */,
 			);
@@ -2650,7 +2650,7 @@
 				BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */,
 				BB3F027F22714527004855E8 /* ProfileCreationFinishedViewController.storyboard in Resources */,
 				917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
-				BB201193228F1CAF00BC85C0 /* UserBasicInfoViewController.storyboard in Resources */,
+				BB201193228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */,
