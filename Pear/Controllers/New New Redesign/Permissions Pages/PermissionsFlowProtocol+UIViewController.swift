@@ -162,7 +162,11 @@ extension PermissionsFlowProtocol {
   
   func continueToOnboarding() {
     DispatchQueue.main.async {
-      guard let initialOnboardingVC = OnboardingExplainationPage1ViewController.instantiate() else {
+//      guard let initialOnboardingVC = OnboardingExplainationPage1ViewController.instantiate() else {
+//        print("Unable to create initial onboarding VC")
+//        return
+//      }
+      guard let initialOnboardingVC = OnboardingBasicInfoViewController.instantiate() else {
         print("Unable to create initial onboarding VC")
         return
       }
