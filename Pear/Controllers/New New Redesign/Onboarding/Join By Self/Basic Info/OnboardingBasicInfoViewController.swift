@@ -12,8 +12,8 @@ class OnboardingBasicInfoViewController: UIViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
-  @IBOutlet weak var tableView: UITableView!
-  
+  @IBOutlet weak var headerView: UIView!
+
   @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
   
@@ -60,7 +60,24 @@ extension OnboardingBasicInfoViewController {
   }
   
   func setup() {
-    
+    guard let basicInfoInputVC = UserBasicInfoTableViewController.instantiate() else {
+      print("Unable to instantiate basic info VC")
+      return
+    }
+    self.addChild(basicInfoInputVC)
+    self.view.addSubview(basicInfoInputVC.view)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: basicInfoInputVC.view as Any, attribute: .top, relatedBy: .equal,
+                         toItem: self.headerView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: basicInfoInputVC.view as Any, attribute: .bottom, relatedBy: .equal,
+                         toItem: self.continueButton, attribute: .top, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: basicInfoInputVC.view as Any, attribute: .left, relatedBy: .equal,
+                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: basicInfoInputVC.view as Any, attribute: .right, relatedBy: .equal,
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0)
+      ])
+    basicInfoInputVC.view.translatesAutoresizingMaskIntoConstraints = false
+    basicInfoInputVC.didMove(toParent: self)
   }
   
 }
