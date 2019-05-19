@@ -11,8 +11,7 @@ import UIKit
 class OnboardingMoreDetailsViewController: UIViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var scrollView: UIScrollView!
-  @IBOutlet weak var stackView: UIStackView!
+  @IBOutlet weak var headerView: UIView!
   @IBOutlet weak var continueButton: UIButton!
   
   @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
@@ -61,7 +60,28 @@ extension OnboardingMoreDetailsViewController {
   }
   
   func setup() {
-    
+    guard let user = DataStore.shared.currentPearUser else {
+      print("Unable to find user")
+      return
+    }
+    guard let moreDetailsVC = UserMoreDetailsTableViewController.instantiate(user: user) else {
+      print("Unable to instantiate basic info VC")
+      return
+    }
+    self.addChild(moreDetailsVC)
+    self.view.addSubview(moreDetailsVC.view)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: moreDetailsVC.view as Any, attribute: .top, relatedBy: .equal,
+                         toItem: self.headerView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: moreDetailsVC.view as Any, attribute: .bottom, relatedBy: .equal,
+                         toItem: self.continueButton, attribute: .top, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: moreDetailsVC.view as Any, attribute: .left, relatedBy: .equal,
+                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: moreDetailsVC.view as Any, attribute: .right, relatedBy: .equal,
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0)
+      ])
+    moreDetailsVC.view.translatesAutoresizingMaskIntoConstraints = false
+    moreDetailsVC.didMove(toParent: self)
   }
   
 }

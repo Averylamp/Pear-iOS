@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum BasicInfoType {
+enum UserInfoType {
   case name
   case age
   case gender
@@ -17,10 +17,75 @@ enum BasicInfoType {
   case school
   case work
   case jobTitle
+  case hometown
+  case education
+  case religion
+  case political
+  case drinking
+  case smoking
+  case cannabis
+  case drugs
+  
+  func toTitleString() -> String {
+    switch self {
+    case .name:
+      return "Name"
+    case .age:
+      return "Age"
+    case .gender:
+      return "Gender"
+    case .height:
+      return "Height"
+    case .ethnicity:
+      return "Ethnicity"
+    case .school:
+      return "School"
+    case .work:
+      return "Work"
+    case .jobTitle:
+      return "Job Title"
+    case .hometown:
+      return "Hometown"
+    case .education:
+      return "Education Level"
+    case .religion:
+      return "Religion & Spirituality"
+    case .political:
+      return "Political Views"
+    case .drinking:
+      return "Drinking"
+    case .smoking:
+      return "Smoking"
+    case .cannabis:
+      return "Cannabis"
+    case .drugs:
+      return "Drugs"
+    }
+  }
+  
+  func defaultVisibility() -> Bool {
+    switch self {
+    case .name, .age, .gender, .school, .work, .jobTitle, .hometown:
+      return true
+    case .height, .ethnicity, .education, .religion, .political, .drinking, .smoking, .cannabis, .drugs:
+      return false
+    }
+  }
+  
+  func requiredItem() -> Bool {
+    switch self {
+    case .name, .age, .gender:
+      return true
+    case .height, .ethnicity, .school, .work, .jobTitle, .hometown, .education,
+         .religion, .political, .drinking, .smoking, .cannabis, .drugs:
+      return false
+    }
+  }
+  
 }
 
 struct InfoTableViewItem {
-  let titleText: String
+  let type: UserInfoType
   let subtitleText: String
   let visibility: Bool
   let filledOut: Bool
@@ -63,16 +128,16 @@ class UserBasicInfoTableViewController: UIViewController {
     if user.firstName == nil || user.lastName == nil {
       nameNeeded = true
     }
-    infoItems.append(InfoTableViewItem(titleText: "Name", subtitleText: name.count > 0 ? name : "Required",
+    infoItems.append(InfoTableViewItem(type: .name, subtitleText: name.count > 0 ? name : "Required",
                                        visibility: true, filledOut: !nameNeeded, requiredFilledOut: true))
-    infoItems.append(InfoTableViewItem(titleText: "Age", subtitleText: user.age != nil ?  "\(user.age!)": "Required",
+    infoItems.append(InfoTableViewItem(type: .age, subtitleText: user.age != nil ?  "\(user.age!)": "Required",
                                        visibility: true, filledOut: user.age != nil, requiredFilledOut: true))
-    infoItems.append(InfoTableViewItem(titleText: "Gender", subtitleText: user.gender != nil ?  "\(user.gender!.toString())": "Required",
+    infoItems.append(InfoTableViewItem(type: .gender, subtitleText: user.gender != nil ?  "\(user.gender!.toString())": "Required",
                                        visibility: true, filledOut: user.gender != nil, requiredFilledOut: true))
 //    infoItems.append(InfoTableViewItem(titleText: "Height", subtitleText: user.age != nil ?  "\(user.age!)": "Required",
 //                                       visibility: true, filledOut: user.age != nil, requiredFilledOut: true))
     let ethnicityString = user.matchingDemographics.ethnicity.toOptionalString(mapFunction: { $0.toString()})
-    infoItems.append(InfoTableViewItem(titleText: "Ethnicity", subtitleText: ethnicityString  != nil ?  "\(ethnicityString!)": "Optional",
+    infoItems.append(InfoTableViewItem(type: .ethnicity, subtitleText: ethnicityString  != nil ?  "\(ethnicityString!)": "Optional",
                                        visibility: false, filledOut: ethnicityString != nil, requiredFilledOut: false))
     
     return infoItems

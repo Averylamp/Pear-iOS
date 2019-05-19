@@ -44,6 +44,14 @@ class DemographicsItem<E: RawRepresentable>: Decodable, Equatable, GraphQLDecoda
     return self.responses.map(mapFunction).joined(separator: ", ")
   }
   
+  func toInfoItem(type: UserInfoType, mapFunction: (E) -> String) -> InfoTableViewItem {
+    let response = self.toOptionalString(mapFunction: mapFunction)
+    return InfoTableViewItem(type: type,
+                      subtitleText: response != nil ? response! : (type.requiredItem() ? "Required": "Optional"),
+                      visibility: self.visible, filledOut: self.userHasResponded, requiredFilledOut: type.requiredItem())
+    
+  }
+  
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: DemographicsItemKey.self)
     self.visible = try values.decode(Bool.self, forKey: .visible)
