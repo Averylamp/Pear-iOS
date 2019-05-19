@@ -64,6 +64,6 @@ class MatchingDemographics: Decodable, Equatable, GraphQLDecodable {
     self.drinking = try values.decode(DemographicsItem<HabitsEnum>.self, forKey: .drinking)
     self.smoking = try values.decode(DemographicsItem<HabitsEnum>.self, forKey: .smoking)
     self.cannabis = try values.decode(DemographicsItem<HabitsEnum>.self, forKey: .cannabis)
-    self.drugs = try values.decode(DemographicsItem<HabitsEnum>.self, forKey: .drugs)    
+    self.drugs = try values.decode(DemographicsItem<HabitsEnum>.self, forKey: .drugs)
   }
 }
