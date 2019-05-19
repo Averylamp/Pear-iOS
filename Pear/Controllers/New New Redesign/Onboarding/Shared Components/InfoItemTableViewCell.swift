@@ -27,7 +27,7 @@ class InfoItemTableViewCell: UITableViewCell {
   }
   
   func stylize(item: InfoTableViewItem) {
-    self.fieldNameLabel.text = item.titleText
+    self.fieldNameLabel.text = item.type.toTitleString()
     self.subtitleLabel.text = item.subtitleText
     if item.filledOut {
       self.subtitleLabel.textColor = UIColor(white: 0.6, alpha: 1.0)

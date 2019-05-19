@@ -88,41 +88,12 @@
                                     <action selector="continueButtonClicked:" destination="g00-N2-Y3s" eventType="touchUpInside" id="dTX-lM-M0D"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fas-MC-e6f">
-                                <rect key="frame" x="0.0" y="94" width="414" height="688"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SAW-x4-nx6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6O-di-iuW">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" id="ZY2-hT-DbX"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="SAW-x4-nx6" secondAttribute="trailing" id="416-RY-0kP"/>
-                                    <constraint firstItem="SAW-x4-nx6" firstAttribute="leading" secondItem="fas-MC-e6f" secondAttribute="leading" id="Gvq-6a-xrL"/>
-                                    <constraint firstAttribute="bottom" secondItem="SAW-x4-nx6" secondAttribute="bottom" id="LYG-2Q-YeU"/>
-                                    <constraint firstItem="SAW-x4-nx6" firstAttribute="top" secondItem="fas-MC-e6f" secondAttribute="top" id="Mio-rx-hQS"/>
-                                    <constraint firstItem="SAW-x4-nx6" firstAttribute="centerX" secondItem="fas-MC-e6f" secondAttribute="centerX" id="Ztk-bw-4W9"/>
-                                    <constraint firstItem="SAW-x4-nx6" firstAttribute="width" secondItem="fas-MC-e6f" secondAttribute="width" id="vCB-GB-kRo"/>
-                                </constraints>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bfp-3g-wmX" firstAttribute="leading" secondItem="P0Y-rQ-nug" secondAttribute="leading" constant="20" id="1mJ-jf-CPa"/>
                             <constraint firstItem="sFK-ly-Lsc" firstAttribute="leading" secondItem="P0Y-rQ-nug" secondAttribute="leading" id="3vA-yZ-YbZ"/>
-                            <constraint firstItem="P0Y-rQ-nug" firstAttribute="trailing" secondItem="fas-MC-e6f" secondAttribute="trailing" id="FLe-py-mFN"/>
-                            <constraint firstItem="bfp-3g-wmX" firstAttribute="top" secondItem="fas-MC-e6f" secondAttribute="bottom" id="Ils-8h-5Gm"/>
                             <constraint firstItem="P0Y-rQ-nug" firstAttribute="trailing" secondItem="bfp-3g-wmX" secondAttribute="trailing" constant="20" id="Xk4-dT-3Xi"/>
-                            <constraint firstItem="fas-MC-e6f" firstAttribute="leading" secondItem="P0Y-rQ-nug" secondAttribute="leading" id="csL-q6-38p"/>
-                            <constraint firstItem="fas-MC-e6f" firstAttribute="top" secondItem="sFK-ly-Lsc" secondAttribute="bottom" id="fED-bF-zp9"/>
                             <constraint firstItem="sFK-ly-Lsc" firstAttribute="top" secondItem="P0Y-rQ-nug" secondAttribute="top" id="j4T-2c-GHm"/>
                             <constraint firstItem="P0Y-rQ-nug" firstAttribute="bottom" secondItem="bfp-3g-wmX" secondAttribute="bottom" constant="20" id="waY-oT-FNs"/>
                             <constraint firstItem="sFK-ly-Lsc" firstAttribute="trailing" secondItem="P0Y-rQ-nug" secondAttribute="trailing" id="x6K-to-YN9"/>
@@ -132,9 +103,8 @@
                     <connections>
                         <outlet property="continueButton" destination="bfp-3g-wmX" id="wWb-2v-gH1"/>
                         <outlet property="continueButtonBottomConstraint" destination="waY-oT-FNs" id="ejp-ZX-WMl"/>
+                        <outlet property="headerView" destination="sFK-ly-Lsc" id="cUe-HF-uZC"/>
                         <outlet property="progressBarWidthConstraint" destination="dEM-Se-HuK" id="l7K-L6-Nix"/>
-                        <outlet property="scrollView" destination="fas-MC-e6f" id="rBO-Xe-ugh"/>
-                        <outlet property="stackView" destination="SAW-x4-nx6" id="cxA-Ey-SL5"/>
                         <outlet property="titleLabel" destination="CV2-Ip-Jva" id="nge-7H-Ol5"/>
                     </connections>
                 </viewController>
