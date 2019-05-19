@@ -33,11 +33,26 @@ extension PromptSMSProtocol {
         let messageVC = MFMessageComposeViewController()
         
         messageVC.recipients = [phoneNumber]
-        if profileData.roasts.count > 0 {
-          messageVC.body = "I just roasted you on getpear.com! 🍐 https://getpear.com/go/refer"
-        } else {
-          messageVC.body = "I just boasted you on getpear.com! 🍐 https://getpear.com/go/refer"
+        messageVC.body = "Join me on Pear! 🍐 https://getpear.com/go/refer"
+        if let memeImage = R.image.inviteMeme(),
+          let pngData = memeImage.pngData() {
+          messageVC.addAttachmentData(pngData, typeIdentifier: "public.data", filename: "Image.png")
         }
+        return messageVC
+      } else {
+        return nil
+      }
+    }
+    return nil
+  }
+  
+  func getMessageComposer(phoneNumber: String) -> MFMessageComposeViewController? {
+    let filteredNumber = phoneNumber.filter("0123456789".contains)
+    if filteredNumber.count == 10 {
+      if MFMessageComposeViewController.canSendText() {
+        let messageVC = MFMessageComposeViewController()
+        messageVC.recipients = [phoneNumber]
+        messageVC.body = "Join me on Pear! 🍐 https://getpear.com/go/refer"
         if let memeImage = R.image.inviteMeme(),
           let pngData = memeImage.pngData() {
           messageVC.addAttachmentData(pngData, typeIdentifier: "public.data", filename: "Image.png")
@@ -56,8 +71,7 @@ extension PromptSMSProtocol {
         completion(.failure((errorTitle: "Please login first", errorMessage: "You muust be logged in to create profiles")))
         return
     }
-  profileData.updateAuthor(authorID: userID,
-                           authorFirstName: userFirstName)
+    profileData.updateAuthor(authorID: userID, authorFirstName: userFirstName)
     PearProfileAPI.shared.createNewDetachedProfile(profileCreationData: profileData) { (result) in
       switch result {
       case .success(let detachedProfile):

@@ -13,6 +13,7 @@ enum ProfileCreationKey: String {
   case phoneNumber
   case firstName
   case lastName
+  case gender
   case boasts
   case roasts
   case questionResponses
@@ -24,6 +25,7 @@ enum ProfileCreationKey: String {
   var phoneNumber: String
   var firstName: String
   var lastName: String
+  var gender: GenderEnum?
   var boasts: [BoastItem] = []
   var roasts: [RoastItem] = []
   var questionResponses: [QuestionResponseItem] = []
