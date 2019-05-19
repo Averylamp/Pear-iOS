@@ -25,5 +25,17 @@ class InfoItemTableViewCell: UITableViewCell {
     
     // Configure the view for the selected state
   }
-
+  
+  func stylize(item: InfoTableViewItem) {
+    self.fieldNameLabel.text = item.titleText
+    self.subtitleLabel.text = item.subtitleText
+    if item.filledOut {
+      self.subtitleLabel.textColor = UIColor(white: 0.6, alpha: 1.0)
+    } else {
+      self.subtitleLabel.textColor = UIColor(white: 0.8, alpha: 1.0)
+    }
+    self.visibilityLabel.text = item.visibility ? "Visible" : "Hidden"
+    
+  }
+  
 }

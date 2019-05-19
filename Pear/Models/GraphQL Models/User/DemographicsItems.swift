@@ -37,6 +37,13 @@ class DemographicsItem<E: RawRepresentable>: Decodable, Equatable, GraphQLDecoda
     return false
   }
   
+  func toOptionalString(mapFunction: (E) -> String) -> String? {
+    if self.responses.count == 0 {
+      return nil
+    }
+    return self.responses.map(mapFunction).joined(separator: ", ")
+  }
+  
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: DemographicsItemKey.self)
     self.visible = try values.decode(Bool.self, forKey: .visible)
