@@ -33,7 +33,7 @@ class OnboardingFriendNameViewController: UIViewController {
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let friendInfoVC = OnboardingFriendInfoViewController.instantiate() else {
+    guard let friendInfoVC = OnboardingFriendInfoViewController.instantiate(friendFirstName: "TestName", friendGender: GenderEnum.female) else {
       print("Failed to instantiate friend info VC")
       return
     }

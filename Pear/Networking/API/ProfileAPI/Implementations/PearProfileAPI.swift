@@ -497,7 +497,7 @@ extension PearProfileAPI {
       throw DetachedProfileError.userNotLoggedIn
     }
     
-    let variablesDictionary: [String: Any] = [
+    var variablesDictionary: [String: Any] = [
       "creatorUser_id": userID,
       "creatorFirstName": creatorFirstName,
       "firstName": profileData.firstName,
@@ -508,6 +508,10 @@ extension PearProfileAPI {
       "questionResponses": profileData.questionResponses.map({ $0.toGraphQLInput() }),
       "vibes": profileData.vibes.map({ $0.toGraphQLInput() })
     ]
+    
+    if let gender = profileData.gender {
+      variablesDictionary["gender"] = gender.rawValue
+    }
     
     return variablesDictionary
   }
