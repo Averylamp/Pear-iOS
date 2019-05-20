@@ -60,11 +60,11 @@ class OnboardingFriendInfoViewController: UIViewController {
       return
     }
     messageVC.messageComposeDelegate = self
-    // #if DEVMODE
-    // self.createDetachedProfile(profileData: profileData,
-    //                            completion: self.createDetachedProfileCompletion(result:))
-    // return
-    // #endif
+     #if DEVMODE
+     self.createDetachedProfile(profileData: profileData,
+                                completion: self.createDetachedProfileCompletion(result:))
+     return
+     #endif
     self.present(messageVC, animated: true, completion: nil)
     Analytics.logEvent("CP_sendProfileSMS_START", parameters: nil)
   }
@@ -153,6 +153,8 @@ extension OnboardingFriendInfoViewController: ProfileCreationProtocol, CNContact
       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
       self.present(alert, animated: true)
+      self.activityIndicator.stopAnimating()
+      self.continueButton.isEnabled = true
     }
   }
   
@@ -167,8 +169,7 @@ extension OnboardingFriendInfoViewController: ProfileCreationProtocol, CNContact
                                                      padding: 0)
     self.view.addSubview(activityIndicator)
     activityIndicator.center = CGPoint(x: self.view.center.x,
-                                       y: self.continueButton.frame.origin.y +
-                                        self.continueButton.frame.height + 40)
+                                       y: self.continueButton.frame.origin.y - 40)
     activityIndicator.startAnimating()
     self.present(cnPicker, animated: true, completion: nil)
   }
@@ -185,7 +186,15 @@ extension OnboardingFriendInfoViewController: MFMessageComposeViewControllerDele
           print("Failed to create basic info VC")
           return
         }
-        self.navigationController?.setViewControllers([basicInfoVC], animated: true)
+        
+        guard var viewControllers = self.navigationController?.viewControllers else {
+          print("No view controllers detected")
+          return
+        }
+        viewControllers.popLast()
+        viewControllers.popLast()
+        viewControllers.append(basicInfoVC)
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
       }
     case .failure(let error):
       if let error = error {
