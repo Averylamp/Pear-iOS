@@ -82,11 +82,11 @@ extension OnboardingPreferencesViewController: ProgressBarProtocol {
   var progressWidthConstraint: NSLayoutConstraint {
     return progressBarWidthConstraint
   }
-  
+
   var progressBarCurrentPage: Int {
     return 3
   }
-  
+
   var progressBarTotalPages: Int {
     return 4
   }
@@ -97,7 +97,7 @@ extension OnboardingPreferencesViewController: KeyboardEventsBottomProtocol {
   var bottomKeyboardConstraint: NSLayoutConstraint? {
     return self.relationshipButtonBottomConstraint
   }
-  
+
   var bottomKeyboardPadding: CGFloat {
     return 20.0
   }
