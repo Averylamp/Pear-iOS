@@ -280,8 +280,8 @@
 		BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */; };
 		BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AD022233508006B75A0 /* PearProfileAPI.swift */; };
 		BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */; };
-		BBB71B51229446B8002CDDD1 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B50229446B8002CDDD1 /* UserNameInputViewController.swift */; };
-		BBB71B53229446C6002CDDD1 /* UserNameInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B52229446C6002CDDD1 /* UserNameInputViewController.storyboard */; };
+		BBB71B572294509E002CDDD1 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B552294509E002CDDD1 /* UserNameInputViewController.swift */; };
+		BBB71B582294509E002CDDD1 /* UserNameInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B562294509E002CDDD1 /* UserNameInputViewController.storyboard */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -672,8 +672,8 @@
 		BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserAPI.swift; sourceTree = "<group>"; };
 		BBB70AD022233508006B75A0 /* PearProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearProfileAPI.swift; sourceTree = "<group>"; };
 		BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styling.swift"; sourceTree = "<group>"; };
-		BBB71B50229446B8002CDDD1 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserNameInputViewController.swift; path = "Pear/Controllers/New New Redesign/Onboarding/Shared Components/New Group/UserNameInputViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BBB71B52229446C6002CDDD1 /* UserNameInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserNameInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B552294509E002CDDD1 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B562294509E002CDDD1 /* UserNameInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserNameInputViewController.storyboard; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -2067,8 +2067,8 @@
 		BBB71B542294501D002CDDD1 /* User Name Input */ = {
 			isa = PBXGroup;
 			children = (
-				BBB71B50229446B8002CDDD1 /* UserNameInputViewController.swift */,
-				BBB71B52229446C6002CDDD1 /* UserNameInputViewController.storyboard */,
+				BBB71B552294509E002CDDD1 /* UserNameInputViewController.swift */,
+				BBB71B562294509E002CDDD1 /* UserNameInputViewController.storyboard */,
 			);
 			path = "User Name Input";
 			sourceTree = "<group>";
@@ -2679,7 +2679,6 @@
 				BBF7968A225956EB00E9A506 /* MeEditUserViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
-				BBB71B53229446C6002CDDD1 /* UserNameInputViewController.storyboard in Resources */,
 				BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
 				BB687E87228D82A300F45C9D /* OnboardingPicturesViewController.storyboard in Resources */,
@@ -2697,6 +2696,7 @@
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
+				BBB71B582294509E002CDDD1 /* UserNameInputViewController.storyboard in Resources */,
 				BB9CB6B4225A139600605A98 /* FriendFullProfileViewController.storyboard in Resources */,
 				BBEA635C225B68FA00A50422 /* GetStartedSchoolViewController.storyboard in Resources */,
 				BB687E6E228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.storyboard in Resources */,
@@ -3001,6 +3001,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */,
+				BBB71B572294509E002CDDD1 /* UserNameInputViewController.swift in Sources */,
 				BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */,
 				BB20186E227B9EAE0070F0B3 /* UpdateProfileData.swift in Sources */,
 				BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */,
@@ -3013,7 +3014,6 @@
 				BB3F027D2271451C004855E8 /* ProfileCreationFinishedViewController.swift in Sources */,
 				91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */,
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,
-				BBB71B51229446B8002CDDD1 /* UserNameInputViewController.swift in Sources */,
 				BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */,
 				BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */,
 				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
