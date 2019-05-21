@@ -35,10 +35,10 @@ extension PearUpdateUserAPI {
   func updateUserName(firstName: String?,
                       lastName: String?,
                       completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
-    self.updateUserWithPreferenceDictionary(inputDictionary: ["firstName": (firstName ?? nil) as Any,
-                                                              "lastName": (lastName ?? nil) as Any],
-                                            mutationName: "UpdateUserName",
-                                            completion: completion)
+    self.updateUserWithDictionary(inputDictionary: ["firstName": (firstName ?? nil) as Any,
+                                                    "lastName": (lastName ?? nil) as Any],
+                                  mutationName: "UpdateUserName",
+                                  completion: completion)
   }
   
   func updateUserAge(birthdate: Date,
@@ -52,9 +52,15 @@ extension PearUpdateUserAPI {
       .dateComponents([.year], from: birthdate, to: Date()).year {
       inputs["age"] = age
     }
-    self.updateUserWithPreferenceDictionary(inputDictionary: inputs,
-                                            mutationName: "UpdateUserAge",
-                                            completion: completion)
+    self.updateUserWithDictionary(inputDictionary: inputs,
+                                  mutationName: "UpdateUserAge",
+                                  completion: completion)
+  }
+  
+  func updateUserGender(gender: GenderEnum,
+                        completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+    self.updateUserWithDictionary(inputDictionary: ["gender": gender.rawValue as Any],
+                                  mutationName: "UpdateUserGender", completion: completion)
   }
   
 }
@@ -75,14 +81,14 @@ extension PearUpdateUserAPI {
   ///   - inputDictionary: Fields to update
   ///   - mutationName: Mutation name for analytics
   ///   - completion: completion handler
-  private func updateUserWithPreferenceDictionary(inputDictionary: [String: Any],
-                                                  mutationName: String,
-                                                  completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+  private func updateUserWithDictionary(inputDictionary: [String: Any],
+                                        mutationName: String,
+                                        completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
     do {
       let userID = try self.getCurrentUserID()
-      self.updateUserWithPreferenceDictionary(userID: userID,
-                                              inputDictionary: inputDictionary,
-                                              mutationName: mutationName, completion: completion)
+      self.updateUserWithDictionary(userID: userID,
+                                    inputDictionary: inputDictionary,
+                                    mutationName: mutationName, completion: completion)
     } catch UpdateUserAPIError.currentUserNotFound {
       completion(.failure(.currentUserNotFound))
     } catch {
@@ -97,10 +103,10 @@ extension PearUpdateUserAPI {
   ///   - inputDictionary: Fields to update
   ///   - mutationName: Mutation name for analytics
   ///   - completion: completion handler
-  private func updateUserWithPreferenceDictionary(userID: String,
-                                                  inputDictionary: [String: Any],
-                                                  mutationName: String = "UpdateUser",
-                                                  completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+  private func updateUserWithDictionary(userID: String,
+                                        inputDictionary: [String: Any],
+                                        mutationName: String = "UpdateUser",
+                                        completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
     var variables = inputDictionary
     variables["user_id"] = userID
     do {
