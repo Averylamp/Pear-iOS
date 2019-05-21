@@ -287,6 +287,8 @@
 		BBB71B6022945B99002CDDD1 /* PearUpdateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B5F22945B99002CDDD1 /* PearUpdateUserAPI.swift */; };
 		BBB71B6522946CB4002CDDD1 /* UserAgeInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B6322946CB4002CDDD1 /* UserAgeInputViewController.storyboard */; };
 		BBB71B6622946CB4002CDDD1 /* UserAgeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B6422946CB4002CDDD1 /* UserAgeInputViewController.swift */; };
+		BBB71B6A22947934002CDDD1 /* UserGenderInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B6922947934002CDDD1 /* UserGenderInputViewController.swift */; };
+		BBB71B6C2294793E002CDDD1 /* UserGenderInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B6B2294793E002CDDD1 /* UserGenderInputViewController.storyboard */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -684,6 +686,8 @@
 		BBB71B5F22945B99002CDDD1 /* PearUpdateUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUpdateUserAPI.swift; sourceTree = "<group>"; };
 		BBB71B6322946CB4002CDDD1 /* UserAgeInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserAgeInputViewController.storyboard; sourceTree = "<group>"; };
 		BBB71B6422946CB4002CDDD1 /* UserAgeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgeInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B6922947934002CDDD1 /* UserGenderInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B6B2294793E002CDDD1 /* UserGenderInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserGenderInputViewController.storyboard; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -2116,8 +2120,18 @@
 			children = (
 				BBB71B542294501D002CDDD1 /* User Name Input */,
 				BBB71B6722946CE5002CDDD1 /* User Age Input */,
+				BBB71B6D22947C60002CDDD1 /* User Gender Input */,
 			);
 			path = "Basic Info Input";
+			sourceTree = "<group>";
+		};
+		BBB71B6D22947C60002CDDD1 /* User Gender Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B6922947934002CDDD1 /* UserGenderInputViewController.swift */,
+				BBB71B6B2294793E002CDDD1 /* UserGenderInputViewController.storyboard */,
+			);
+			path = "User Gender Input";
 			sourceTree = "<group>";
 		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
@@ -2831,6 +2845,7 @@
 				BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */,
 				BB687E89228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
+				BBB71B6C2294793E002CDDD1 /* UserGenderInputViewController.storyboard in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBF93E5C2267CA11002841EE /* LandingScreenViewController.storyboard in Resources */,
 				BBA3CEBC2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard in Resources */,
@@ -3143,6 +3158,7 @@
 				BB986A1E220E08E000759A14 /* OldLandingScreenViewController.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,
 				BB92857A222F4DED006B9B1E /* FruitVibeCollectionViewCell.swift in Sources */,
+				BBB71B6A22947934002CDDD1 /* UserGenderInputViewController.swift in Sources */,
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
 				60C131E121D345630093ECBA /* Result.swift in Sources */,
 				BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */,

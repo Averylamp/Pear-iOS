@@ -224,6 +224,13 @@ extension UserBasicInfoTableViewController: UITableViewDataSource, UITableViewDe
         return
       }
       self.navigationController?.pushViewController(userAgeInputVC, animated: true)
+    case .gender:
+      guard let userGenderInputVC = UserGenderInputViewController.instantiate() else {
+        print("Unable to instantiate Gender Input VC")
+        return
+      }
+      self.navigationController?.pushViewController(userGenderInputVC, animated: true)
+
     default:
       break
     }
