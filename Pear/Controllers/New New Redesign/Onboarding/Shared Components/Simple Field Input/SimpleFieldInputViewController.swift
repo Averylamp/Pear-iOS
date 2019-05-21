@@ -35,10 +35,11 @@ class SimpleFieldInputViewController: UIViewController {
   }
 
   func getNewFieldValue() -> String? {
-    if self.inputTextField.text != self.previousValue {
+    if let text = self.inputTextField.text, text.count > 0 {
       return self.inputTextField.text
+    } else {
+      return nil
     }
-    return nil
   }
   
 }
