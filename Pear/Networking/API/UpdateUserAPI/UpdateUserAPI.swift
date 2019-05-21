@@ -24,4 +24,7 @@ protocol UpdateUserAPI {
                      completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
   func updateUserGender(gender: GenderEnum,
                         completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
+  func updateUserSchool(schoolName: String?,
+                        schoolYear: String?,
+                        completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
 }

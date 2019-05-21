@@ -35,8 +35,8 @@ extension PearUpdateUserAPI {
   func updateUserName(firstName: String?,
                       lastName: String?,
                       completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
-    self.updateUserWithDictionary(inputDictionary: ["firstName": (firstName ?? nil) as Any,
-                                                    "lastName": (lastName ?? nil) as Any],
+    self.updateUserWithDictionary(inputDictionary: ["firstName": (firstName?.trimmed() ?? nil) as Any,
+                                                    "lastName": (lastName?.trimmed() ?? nil) as Any],
                                   mutationName: "UpdateUserName",
                                   completion: completion)
   }
@@ -61,6 +61,15 @@ extension PearUpdateUserAPI {
                         completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
     self.updateUserWithDictionary(inputDictionary: ["gender": gender.rawValue as Any],
                                   mutationName: "UpdateUserGender", completion: completion)
+  }
+  
+  func updateUserSchool(schoolName: String?,
+                        schoolYear: String?,
+                        completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+    self.updateUserWithDictionary(inputDictionary: ["school": (schoolName?.trimmed() ?? nil) as Any,
+                                                    "schoolYear": (schoolYear?.trimmed() ?? nil) as Any],
+                                  mutationName: "UpdateUserSchool",
+                                  completion: completion)
   }
   
 }

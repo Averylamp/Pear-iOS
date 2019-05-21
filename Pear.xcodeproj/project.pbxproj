@@ -289,6 +289,8 @@
 		BBB71B6622946CB4002CDDD1 /* UserAgeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B6422946CB4002CDDD1 /* UserAgeInputViewController.swift */; };
 		BBB71B6A22947934002CDDD1 /* UserGenderInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B6922947934002CDDD1 /* UserGenderInputViewController.swift */; };
 		BBB71B6C2294793E002CDDD1 /* UserGenderInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B6B2294793E002CDDD1 /* UserGenderInputViewController.storyboard */; };
+		BBB71B6F22947F42002CDDD1 /* UserSchoolInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B6E22947F42002CDDD1 /* UserSchoolInputViewController.swift */; };
+		BBB71B7122947F4C002CDDD1 /* UserSchoolInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B7022947F4C002CDDD1 /* UserSchoolInputViewController.storyboard */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -688,6 +690,8 @@
 		BBB71B6422946CB4002CDDD1 /* UserAgeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgeInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B6922947934002CDDD1 /* UserGenderInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGenderInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B6B2294793E002CDDD1 /* UserGenderInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserGenderInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B6E22947F42002CDDD1 /* UserSchoolInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSchoolInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B7022947F4C002CDDD1 /* UserSchoolInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserSchoolInputViewController.storyboard; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -2121,6 +2125,7 @@
 				BBB71B542294501D002CDDD1 /* User Name Input */,
 				BBB71B6722946CE5002CDDD1 /* User Age Input */,
 				BBB71B6D22947C60002CDDD1 /* User Gender Input */,
+				BBB71B7222948C3E002CDDD1 /* User School Input */,
 			);
 			path = "Basic Info Input";
 			sourceTree = "<group>";
@@ -2132,6 +2137,15 @@
 				BBB71B6B2294793E002CDDD1 /* UserGenderInputViewController.storyboard */,
 			);
 			path = "User Gender Input";
+			sourceTree = "<group>";
+		};
+		BBB71B7222948C3E002CDDD1 /* User School Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B6E22947F42002CDDD1 /* UserSchoolInputViewController.swift */,
+				BBB71B7022947F4C002CDDD1 /* UserSchoolInputViewController.storyboard */,
+			);
+			path = "User School Input";
 			sourceTree = "<group>";
 		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
@@ -2764,6 +2778,7 @@
 				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
 				BBC8DD5D2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard in Resources */,
 				BB687E6A228D6D1100F45C9D /* OnboardingExplainationPage2ViewController.storyboard in Resources */,
+				BBB71B7122947F4C002CDDD1 /* UserSchoolInputViewController.storyboard in Resources */,
 				BB3F02892271C4E6004855E8 /* ScrollableTextItemViewController.storyboard in Resources */,
 				BB986A5D220FE8FC00759A14 /* GetStartedShortBioViewController.storyboard in Resources */,
 				BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */,
@@ -3259,6 +3274,7 @@
 				BB3F30A7228C9CBD001947EF /* KeyboardEventsProtocol.swift in Sources */,
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
 				BBA3CEB8225566600020A36C /* ChatRequestEndorsementViewController.swift in Sources */,
+				BBB71B6F22947F42002CDDD1 /* UserSchoolInputViewController.swift in Sources */,
 				BB797DEF2277B56D00D38044 /* SMSCanceledViewController.swift in Sources */,
 				BB687E7D228D810F00F45C9D /* OnboardingFriendInfoViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
