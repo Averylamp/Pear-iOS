@@ -96,7 +96,7 @@ extension PearUpdateUserAPI {
     variables["user_id"] = userID
     do {
       let (request, fullDictionary) = try APIHelpers.getRequestWith(query: getUpdateUserQueryWithName(name: mutationName),
-                                                                    variables: variables)
+                                                                    variables: ["userInput": variables])
       
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
         if let error = error {
@@ -111,7 +111,6 @@ extension PearUpdateUserAPI {
           completion(.failure(UpdateUserAPIError.unknownError(error: error)))
           return
         } else {
-          APIHelpers.printDataDump(data: data)
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "updateUser")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:

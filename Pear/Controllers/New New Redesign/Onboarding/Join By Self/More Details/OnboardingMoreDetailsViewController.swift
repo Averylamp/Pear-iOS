@@ -60,11 +60,7 @@ extension OnboardingMoreDetailsViewController {
   }
   
   func setup() {
-    guard let user = DataStore.shared.currentPearUser else {
-      print("Unable to find user")
-      return
-    }
-    guard let moreDetailsVC = UserMoreDetailsTableViewController.instantiate(user: user) else {
+    guard let moreDetailsVC = UserMoreDetailsTableViewController.instantiate() else {
       print("Unable to instantiate basic info VC")
       return
     }
