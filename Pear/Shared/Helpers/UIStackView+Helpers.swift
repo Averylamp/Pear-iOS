@@ -18,4 +18,27 @@ extension UIStackView {
     self.addArrangedSubview(view)
   }
   
+  func addInformationLabel(text: String, insets: UIEdgeInsets) {
+    let containerView = UIView()
+    let infoLabel = UILabel()
+    infoLabel.translatesAutoresizingMaskIntoConstraints = false
+    if let font = R.font.openSansSemiBold(size: 14.0) {
+      infoLabel.font = font
+    }
+    infoLabel.text = text
+    infoLabel.textColor = UIColor(white: 0.8, alpha: 1.0)
+    containerView.addSubview(infoLabel)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: infoLabel, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: insets.left),
+      NSLayoutConstraint(item: infoLabel, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -insets.right),
+      NSLayoutConstraint(item: infoLabel, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: insets.top),
+      NSLayoutConstraint(item: infoLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -insets.bottom)
+      ])
+    self.addArrangedSubview(containerView)
+  }
+  
 }

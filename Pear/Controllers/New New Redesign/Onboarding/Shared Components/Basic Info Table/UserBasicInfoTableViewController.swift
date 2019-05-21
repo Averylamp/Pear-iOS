@@ -129,7 +129,14 @@ class UserBasicInfoTableViewController: UIViewController {
     }
     infoItems.append(InfoTableViewItem(type: .name, subtitleText: name.count > 0 ? name : "Required",
                                        visibility: true, filledOut: !nameNeeded, requiredFilledOut: true))
-    infoItems.append(InfoTableViewItem(type: .age, subtitleText: user.age != nil ?  "\(user.age!)": "Required",
+    var ageText = user.age != nil ?  "\(user.age!) years old": "Required"
+    if let birthday = DataStore.shared.currentPearUser?.birthdate, user.age != nil {
+      let birthdayFormatter = DateFormatter()
+      birthdayFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+      birthdayFormatter.dateFormat = "MM/dd/yyyy"
+      ageText += ", \(birthdayFormatter.string(from: birthday))"
+    }
+    infoItems.append(InfoTableViewItem(type: .age, subtitleText: ageText,
                                        visibility: true, filledOut: user.age != nil, requiredFilledOut: true))
     infoItems.append(InfoTableViewItem(type: .gender, subtitleText: user.gender != nil ?  "\(user.gender!.toString())": "Required",
                                        visibility: true, filledOut: user.gender != nil, requiredFilledOut: true))

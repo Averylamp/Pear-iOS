@@ -1254,8 +1254,7 @@
 				BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */,
 				BBB71B4E2294467B002CDDD1 /* Basic Info Table */,
 				BBB71B4F22944682002CDDD1 /* More Details Table */,
-				BBB71B542294501D002CDDD1 /* User Name Input */,
-				BBB71B6722946CE5002CDDD1 /* User Age Input */,
+				BBB71B682294788A002CDDD1 /* Basic Info Input */,
 			);
 			path = "Shared Components";
 			sourceTree = "<group>";
@@ -2110,6 +2109,15 @@
 				BBB71B6322946CB4002CDDD1 /* UserAgeInputViewController.storyboard */,
 			);
 			path = "User Age Input";
+			sourceTree = "<group>";
+		};
+		BBB71B682294788A002CDDD1 /* Basic Info Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B542294501D002CDDD1 /* User Name Input */,
+				BBB71B6722946CE5002CDDD1 /* User Age Input */,
+			);
+			path = "Basic Info Input";
 			sourceTree = "<group>";
 		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
