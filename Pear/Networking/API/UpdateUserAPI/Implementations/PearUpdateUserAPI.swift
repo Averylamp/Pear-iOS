@@ -45,9 +45,9 @@ extension PearUpdateUserAPI {
                      completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
     var inputs: [String: Any] = [:]
     let birthdayFormatter = DateFormatter()
+    birthdayFormatter.timeZone = TimeZone(secondsFromGMT: 0)
     birthdayFormatter.dateFormat = "yyyy-MM-dd"
     inputs["birthdate"] = birthdayFormatter.string(from: birthdate)
-    print(inputs["birthdate"])
     if let age = Calendar.init(identifier: .gregorian)
       .dateComponents([.year], from: birthdate, to: Date()).year {
       inputs["age"] = age
