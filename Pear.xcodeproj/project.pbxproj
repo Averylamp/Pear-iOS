@@ -1238,13 +1238,10 @@
 		BB201189228DFAD700BC85C0 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
-				BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */,
-				BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */,
+				BBB71B4D22944667002CDDD1 /* Simple Field Input */,
 				BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */,
-				BB201190228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift */,
-				BB201192228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard */,
-				BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */,
-				BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */,
+				BBB71B4E2294467B002CDDD1 /* Basic Info Table */,
+				BBB71B4F22944682002CDDD1 /* More Details Table */,
 			);
 			path = "Shared Components";
 			sourceTree = "<group>";
@@ -2037,6 +2034,33 @@
 				BBF93E962267CF8F002841EE /* Open Sans */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BBB71B4D22944667002CDDD1 /* Simple Field Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */,
+				BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */,
+			);
+			path = "Simple Field Input";
+			sourceTree = "<group>";
+		};
+		BBB71B4E2294467B002CDDD1 /* Basic Info Table */ = {
+			isa = PBXGroup;
+			children = (
+				BB201190228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift */,
+				BB201192228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard */,
+			);
+			path = "Basic Info Table";
+			sourceTree = "<group>";
+		};
+		BBB71B4F22944682002CDDD1 /* More Details Table */ = {
+			isa = PBXGroup;
+			children = (
+				BB201194228F1DB500BC85C0 /* UserMoreDetailsTableViewController.swift */,
+				BB201196228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard */,
+			);
+			path = "More Details Table";
 			sourceTree = "<group>";
 		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
