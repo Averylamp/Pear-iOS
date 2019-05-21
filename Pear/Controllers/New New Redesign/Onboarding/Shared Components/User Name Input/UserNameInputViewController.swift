@@ -14,6 +14,10 @@ class UserNameInputViewController: UIViewController {
   @IBOutlet weak var stackView: UIStackView!
   
   @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+  
+  var firstNameVC: SimpleFieldInputViewController?
+  var lastNameVC: SimpleFieldInputViewController?
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -57,11 +61,13 @@ extension UserNameInputViewController {
                                                                               print("Unable to instantiate Simple Field Input VC")
                                                                               return
     }
+    self.firstNameVC = firstNameInputVC
     self.addChild(firstNameInputVC)
     self.stackView.addSpacer(height: 10)
     self.stackView.addArrangedSubview(firstNameInputVC.view)
     firstNameInputVC.didMove(toParent: self)
-    
+    firstNameInputVC.inputTextField.textContentType = .givenName
+    firstNameInputVC.inputTextField.autocapitalizationType = .words
     guard let lastNameInputVC = SimpleFieldInputViewController.instantiate(fieldName: "Last Name",
                                                                             previousValue: user.lastName,
                                                                             placeholder: "Enter your last name",
@@ -69,10 +75,13 @@ extension UserNameInputViewController {
       print("Unable to instantiate Simple Field Input VC")
       return
     }
+    self.lastNameVC = lastNameInputVC
     self.addChild(lastNameInputVC)
-    self.stackView.addSpacer(height: 10)
+    self.stackView.addSpacer(height: 5)
     self.stackView.addArrangedSubview(lastNameInputVC.view)
     lastNameInputVC.didMove(toParent: self)
+    lastNameInputVC.inputTextField.textContentType = .familyName
+    lastNameInputVC.inputTextField.autocapitalizationType = .words
   }
   
 }

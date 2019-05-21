@@ -283,6 +283,8 @@
 		BBB71B582294509E002CDDD1 /* UserNameInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B562294509E002CDDD1 /* UserNameInputViewController.storyboard */; };
 		BBB71B5A229451C6002CDDD1 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B59229451C6002CDDD1 /* UserNameInputViewController.swift */; };
 		BBB71B5C229454A3002CDDD1 /* UIStackView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B5B229454A3002CDDD1 /* UIStackView+Helpers.swift */; };
+		BBB71B5E22945B8D002CDDD1 /* UpdateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B5D22945B8D002CDDD1 /* UpdateUserAPI.swift */; };
+		BBB71B6022945B99002CDDD1 /* PearUpdateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B5F22945B99002CDDD1 /* PearUpdateUserAPI.swift */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -676,6 +678,8 @@
 		BBB71B562294509E002CDDD1 /* UserNameInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserNameInputViewController.storyboard; sourceTree = "<group>"; };
 		BBB71B59229451C6002CDDD1 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B5B229454A3002CDDD1 /* UIStackView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Helpers.swift"; sourceTree = "<group>"; };
+		BBB71B5D22945B8D002CDDD1 /* UpdateUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserAPI.swift; sourceTree = "<group>"; };
+		BBB71B5F22945B99002CDDD1 /* PearUpdateUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUpdateUserAPI.swift; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -901,6 +905,7 @@
 		60C131DC21D344E90093ECBA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				BBB71B6122945B9E002CDDD1 /* UpdateUserAPI */,
 				BB633D37228632AD005E120F /* DiscoveryAPI */,
 				BB9D1B1F2255E0C00074C099 /* MatchesAPI */,
 				BBB70AC922233456006B75A0 /* ProfileAPI */,
@@ -2076,6 +2081,23 @@
 			path = "User Name Input";
 			sourceTree = "<group>";
 		};
+		BBB71B6122945B9E002CDDD1 /* UpdateUserAPI */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B5D22945B8D002CDDD1 /* UpdateUserAPI.swift */,
+				BBB71B6222945D27002CDDD1 /* Implementations */,
+			);
+			path = UpdateUserAPI;
+			sourceTree = "<group>";
+		};
+		BBB71B6222945D27002CDDD1 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B5F22945B99002CDDD1 /* PearUpdateUserAPI.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
 			isa = PBXGroup;
 			children = (
@@ -3045,6 +3067,7 @@
 				BBF93E4E2267C7F8002841EE /* LandingScreenViewController.swift in Sources */,
 				BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* StylingConfig.swift in Sources */,
+				BBB71B5E22945B8D002CDDD1 /* UpdateUserAPI.swift in Sources */,
 				BBB71B5C229454A3002CDDD1 /* UIStackView+Helpers.swift in Sources */,
 				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
 				BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */,
@@ -3124,6 +3147,7 @@
 				BBF93E522267C861002841EE /* UserContactPermissionsViewController.swift in Sources */,
 				BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */,
 				BB94C12722438F00001320B0 /* Chat.swift in Sources */,
+				BBB71B6022945B99002CDDD1 /* PearUpdateUserAPI.swift in Sources */,
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */,
 				BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */,
