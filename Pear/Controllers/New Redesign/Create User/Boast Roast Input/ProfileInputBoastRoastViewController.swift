@@ -102,15 +102,15 @@ class ProfileInputBoastRoastViewController: UIViewController {
       self.present(alertController, animated: true, completion: nil)
       return
     }
-    if let firstName = DataStore.shared.currentPearUser?.firstName, firstName.count > 1 {
-      self.promptMessageComposer()
-    } else {
-      guard let firstNameVC = UserNameInputViewController.instantiate(profileCreationData: self.profileData) else {
-        print("Couldnt create first name VC")
-        return
-      }
-      self.navigationController?.pushViewController(firstNameVC, animated: true)
-    }
+    self.promptMessageComposer()
+//    if let firstName = DataStore.shared.currentPearUser?.firstName, firstName.count > 1 {
+//    } else {
+//      guard let firstNameVC = UserNameInputViewController.instantiate(profileCreationData: self.profileData) else {
+//        print("Couldnt create first name VC")
+//        return
+//      }
+//      self.navigationController?.pushViewController(firstNameVC, animated: true)
+//    }
     Analytics.logEvent("CP_rb_DONE", parameters: nil)
   }
 }

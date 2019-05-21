@@ -186,4 +186,20 @@ extension UserBasicInfoTableViewController: UITableViewDataSource, UITableViewDe
     return cell
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let infoItem = self.infoItems[indexPath.row]
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    switch infoItem.type {
+    case .name:
+      guard let userNameInputVC = UserNameInputViewController.instantiate() else {
+        print("Unable to instantiate User Name Input")
+        return
+      }
+      self.navigationController?.pushViewController(userNameInputVC, animated: true)
+    default:
+      break
+    }
+    
+  }
+  
 }
