@@ -62,6 +62,7 @@ extension UserNameInputViewController {
     self.stylize()
     self.setup()
     self.addKeyboardNotifications(animated: true)
+    self.addKeyboardDismissOnTap()
     self.navigationController?.interactivePopGestureRecognizer?.delegate = self
   }
   
@@ -126,4 +127,15 @@ extension UserNameInputViewController: UIGestureRecognizerDelegate {
     return true
   }
   
+}
+
+// MARK: - KeyboardEventsDismissTapProtocol
+extension UserNameInputViewController: KeyboardEventsDismissTapProtocol {
+  func addKeyboardDismissOnTap() {
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UserNameInputViewController.backgroundViewTapped)))
+  }
+  
+  @objc func backgroundViewTapped() {
+    self.dismissKeyboard()
+  }
 }

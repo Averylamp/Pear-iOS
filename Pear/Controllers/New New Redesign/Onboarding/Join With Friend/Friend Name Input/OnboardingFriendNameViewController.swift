@@ -99,7 +99,7 @@ extension OnboardingFriendNameViewController: KeyboardEventsDismissTapProtocol {
   func addKeyboardDismissOnTap() {
     self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(OnboardingFriendNameViewController.backgroundViewTapped)))
   }
-  
+
   @objc func backgroundViewTapped() {
     self.dismissKeyboard()
   }

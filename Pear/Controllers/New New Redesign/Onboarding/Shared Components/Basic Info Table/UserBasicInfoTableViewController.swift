@@ -145,6 +145,12 @@ class UserBasicInfoTableViewController: UIViewController {
     let ethnicityString = user.matchingDemographics.ethnicity.toOptionalString(mapFunction: { $0.toString()})
     infoItems.append(InfoTableViewItem(type: .ethnicity, subtitleText: ethnicityString  != nil ?  "\(ethnicityString!)": "Optional",
                                        visibility: false, filledOut: ethnicityString != nil, requiredFilledOut: false))
+    var schoolString = user.school ?? "Required"
+    if let schoolYear = user.schoolYear, schoolString != "Required" {
+      schoolString += ", Class of \(schoolYear)"
+    }
+    infoItems.append(InfoTableViewItem(type: .school,
+                                       subtitleText: schoolString, visibility: true, filledOut: schoolString != "Required", requiredFilledOut: false))
     
     return infoItems
   }
@@ -230,7 +236,12 @@ extension UserBasicInfoTableViewController: UITableViewDataSource, UITableViewDe
         return
       }
       self.navigationController?.pushViewController(userGenderInputVC, animated: true)
-
+    case .school:
+      guard let userSchoolInputVC = UserSchoolInputViewController.instantiate() else {
+        print("Unable to instantiate School Input VC")
+        return
+      }
+      self.navigationController?.pushViewController(userSchoolInputVC, animated: true)
     default:
       break
     }

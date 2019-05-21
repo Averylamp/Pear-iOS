@@ -30,7 +30,7 @@ class UserGenderInputViewController: UIViewController {
   }
   
   func updateUser() {
-    if let selectedButton = self.genderButtons.filter({ $0.isSelected }).first{
+    if let selectedButton = self.genderButtons.filter({ $0.isSelected }).first {
       var updatedGender: GenderEnum = .male
       switch selectedButton.tag {
       case 0:
@@ -62,6 +62,7 @@ class UserGenderInputViewController: UIViewController {
   }
   
   @IBAction func genderButtonClicked(_ sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.genderButtons.forEach({ $0.isSelected = false})
     sender.isSelected = true
     self.genderButtons.forEach({
@@ -82,6 +83,7 @@ extension UserGenderInputViewController {
     super.viewDidLoad()
     self.stylize()
     self.setup()
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
   }
   
   func stylize() {
@@ -114,6 +116,15 @@ extension UserGenderInputViewController {
   
   func setup() {
     
+  }
+  
+}
+
+// MARK: - UIGestureRecognizerDelegate
+extension UserGenderInputViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
 }

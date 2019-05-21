@@ -19,6 +19,8 @@ class SimpleFieldInputViewController: UIViewController {
   var fieldName: String!
   var previousValue: String?
   var placeholder: String?
+  var characterLimit: Int = 0
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -76,7 +78,24 @@ extension SimpleFieldInputViewController {
   }
   
   func setup() {
-    
+    self.inputTextField.delegate = self
+    self.inputTextField.smartInsertDeleteType = .no
   }
 
+}
+
+extension SimpleFieldInputViewController: UITextFieldDelegate {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let textFieldText = textField.text,
+      let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+        return false
+    }
+    let substringToReplace = textFieldText[rangeOfTextToReplace]
+    let count = textFieldText.count - substringToReplace.count + string.count
+    if self.characterLimit > 0 {
+      return count <= characterLimit
+    }
+    return true
+
+  }
 }
