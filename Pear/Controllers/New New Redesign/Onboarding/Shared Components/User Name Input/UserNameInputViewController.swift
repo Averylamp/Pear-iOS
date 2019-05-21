@@ -9,7 +9,7 @@
 import UIKit
 
 class UserNameInputViewController: UIViewController {
-
+  
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var stackView: UIStackView!
   
@@ -46,7 +46,33 @@ extension UserNameInputViewController {
   }
   
   func setup() {
+        guard let user = DataStore.shared.currentPearUser else {
+          print("Unable to get current user")
+          return
+        }
+    guard let firstNameInputVC = SimpleFieldInputViewController.instantiate(fieldName: "First Name",
+                                                                            previousValue: user.firstName,
+                                                                            placeholder: "Enter your first name",
+                                                                            visibility: true) else {
+                                                                              print("Unable to instantiate Simple Field Input VC")
+                                                                              return
+    }
+    self.addChild(firstNameInputVC)
+    self.stackView.addSpacer(height: 10)
+    self.stackView.addArrangedSubview(firstNameInputVC.view)
+    firstNameInputVC.didMove(toParent: self)
     
+    guard let lastNameInputVC = SimpleFieldInputViewController.instantiate(fieldName: "Last Name",
+                                                                            previousValue: user.lastName,
+                                                                            placeholder: "Enter your last name",
+                                                                            visibility: false) else {
+      print("Unable to instantiate Simple Field Input VC")
+      return
+    }
+    self.addChild(lastNameInputVC)
+    self.stackView.addSpacer(height: 10)
+    self.stackView.addArrangedSubview(lastNameInputVC.view)
+    lastNameInputVC.didMove(toParent: self)
   }
   
 }

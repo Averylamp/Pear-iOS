@@ -280,8 +280,9 @@
 		BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */; };
 		BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AD022233508006B75A0 /* PearProfileAPI.swift */; };
 		BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */; };
-		BBB71B572294509E002CDDD1 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B552294509E002CDDD1 /* UserNameInputViewController.swift */; };
 		BBB71B582294509E002CDDD1 /* UserNameInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B562294509E002CDDD1 /* UserNameInputViewController.storyboard */; };
+		BBB71B5A229451C6002CDDD1 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B59229451C6002CDDD1 /* UserNameInputViewController.swift */; };
+		BBB71B5C229454A3002CDDD1 /* UIStackView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B5B229454A3002CDDD1 /* UIStackView+Helpers.swift */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -672,8 +673,9 @@
 		BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUserAPI.swift; sourceTree = "<group>"; };
 		BBB70AD022233508006B75A0 /* PearProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearProfileAPI.swift; sourceTree = "<group>"; };
 		BBB70AEB2223C0CC006B75A0 /* UILabel+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styling.swift"; sourceTree = "<group>"; };
-		BBB71B552294509E002CDDD1 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B562294509E002CDDD1 /* UserNameInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserNameInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B59229451C6002CDDD1 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B5B229454A3002CDDD1 /* UIStackView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Helpers.swift"; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -1146,6 +1148,7 @@
 				BB178933225DE73E0033ACC6 /* Date+Helpers.swift */,
 				BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */,
 				BB719A42228D3FDE00007D69 /* CoreLocation+Helpers.swift */,
+				BBB71B5B229454A3002CDDD1 /* UIStackView+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2067,7 +2070,7 @@
 		BBB71B542294501D002CDDD1 /* User Name Input */ = {
 			isa = PBXGroup;
 			children = (
-				BBB71B552294509E002CDDD1 /* UserNameInputViewController.swift */,
+				BBB71B59229451C6002CDDD1 /* UserNameInputViewController.swift */,
 				BBB71B562294509E002CDDD1 /* UserNameInputViewController.storyboard */,
 			);
 			path = "User Name Input";
@@ -3001,7 +3004,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				600FA61121D358B500A40EAC /* UIViewController+Alert.swift in Sources */,
-				BBB71B572294509E002CDDD1 /* UserNameInputViewController.swift in Sources */,
+				BBB71B5A229451C6002CDDD1 /* UserNameInputViewController.swift in Sources */,
 				BB6C06432227F702007A5C96 /* GetStartedAllowNotificationsViewController.swift in Sources */,
 				BB20186E227B9EAE0070F0B3 /* UpdateProfileData.swift in Sources */,
 				BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */,
@@ -3042,6 +3045,7 @@
 				BBF93E4E2267C7F8002841EE /* LandingScreenViewController.swift in Sources */,
 				BB3F4AEC2234259D00F99C8E /* GetStartedUserGenderViewController.swift in Sources */,
 				BB686E3F22120F1A008A263C /* StylingConfig.swift in Sources */,
+				BBB71B5C229454A3002CDDD1 /* UIStackView+Helpers.swift in Sources */,
 				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
 				BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */,
 				BB201191228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift in Sources */,
