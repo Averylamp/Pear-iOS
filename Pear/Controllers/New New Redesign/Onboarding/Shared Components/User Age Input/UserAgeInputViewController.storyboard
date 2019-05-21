@@ -35,10 +35,10 @@
                                         </constraints>
                                         <state key="normal" image="onboarding-back-button"/>
                                         <connections>
-                                            <action selector="backButtonClicked:" destination="Fe0-XT-3RT" eventType="touchUpInside" id="cIg-Kn-26I"/>
+                                            <action selector="backButtonClicked:" destination="Fe0-XT-3RT" eventType="touchUpInside" id="BY8-YQ-3P3"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Basic Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vEY-59-wnn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vEY-59-wnn">
                                         <rect key="frame" x="60" y="8.5" width="294" height="33"/>
                                         <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="24"/>
                                         <nil key="textColor"/>
@@ -75,48 +75,32 @@
                                     <constraint firstAttribute="bottom" secondItem="1sf-O9-DDF" secondAttribute="bottom" id="rV0-HE-OgW"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbF-1q-SBp">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lL-zZ-irq">
                                 <rect key="frame" x="0.0" y="94" width="414" height="768"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Jy-FJ-7bG">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoK-k9-rW6">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" id="iS9-Ba-XTb"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="9Jy-FJ-7bG" secondAttribute="trailing" id="CbL-Va-pKV"/>
-                                    <constraint firstItem="9Jy-FJ-7bG" firstAttribute="centerX" secondItem="cbF-1q-SBp" secondAttribute="centerX" id="Otl-TE-PL3"/>
-                                    <constraint firstItem="9Jy-FJ-7bG" firstAttribute="leading" secondItem="cbF-1q-SBp" secondAttribute="leading" id="RXv-WC-siN"/>
-                                    <constraint firstAttribute="bottom" secondItem="9Jy-FJ-7bG" secondAttribute="bottom" id="tL5-Ak-6OJ"/>
-                                    <constraint firstItem="9Jy-FJ-7bG" firstAttribute="width" secondItem="cbF-1q-SBp" secondAttribute="width" id="taW-Xc-mwU"/>
-                                    <constraint firstItem="9Jy-FJ-7bG" firstAttribute="top" secondItem="cbF-1q-SBp" secondAttribute="top" id="zM6-7A-f3k"/>
-                                </constraints>
-                            </scrollView>
+                                <color key="tintColor" name="primaryBrandColor"/>
+                                <date key="date" timeIntervalSinceReferenceDate="-94676399.288192749">
+                                    <!--1998-01-01 05:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="31554000">
+                                    <!--2002-01-01 05:00:00 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XVB-pA-LrE" firstAttribute="trailing" secondItem="cbF-1q-SBp" secondAttribute="trailing" id="3nz-fh-vfg"/>
+                            <constraint firstItem="8lL-zZ-irq" firstAttribute="top" secondItem="PJ0-Sc-yqH" secondAttribute="bottom" id="Cgz-Xe-EOX"/>
+                            <constraint firstItem="XVB-pA-LrE" firstAttribute="bottom" secondItem="8lL-zZ-irq" secondAttribute="bottom" id="EjZ-AR-ivj"/>
+                            <constraint firstItem="8lL-zZ-irq" firstAttribute="leading" secondItem="777-Ev-1IN" secondAttribute="leading" id="PIP-ZZ-4Sf"/>
                             <constraint firstItem="PJ0-Sc-yqH" firstAttribute="trailing" secondItem="XVB-pA-LrE" secondAttribute="trailing" id="UNt-0Z-KH5"/>
-                            <constraint firstItem="XVB-pA-LrE" firstAttribute="bottom" secondItem="cbF-1q-SBp" secondAttribute="bottom" id="ZSD-9U-epb"/>
-                            <constraint firstItem="cbF-1q-SBp" firstAttribute="top" secondItem="PJ0-Sc-yqH" secondAttribute="bottom" id="bf6-q2-abd"/>
+                            <constraint firstItem="XVB-pA-LrE" firstAttribute="trailing" secondItem="8lL-zZ-irq" secondAttribute="trailing" id="VIt-Uc-AzM"/>
                             <constraint firstItem="PJ0-Sc-yqH" firstAttribute="leading" secondItem="XVB-pA-LrE" secondAttribute="leading" id="i78-Fk-DAv"/>
                             <constraint firstItem="PJ0-Sc-yqH" firstAttribute="top" secondItem="XVB-pA-LrE" secondAttribute="top" id="rCm-t1-4PJ"/>
-                            <constraint firstItem="cbF-1q-SBp" firstAttribute="leading" secondItem="XVB-pA-LrE" secondAttribute="leading" id="sBp-VB-gMR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XVB-pA-LrE"/>
                     </view>
                     <connections>
-                        <outlet property="scrollViewBottomConstraint" destination="ZSD-9U-epb" id="xjh-4J-qCC"/>
-                        <outlet property="stackView" destination="9Jy-FJ-7bG" id="bxM-B1-ZHC"/>
-                        <outlet property="titleLabel" destination="vEY-59-wnn" id="Qyd-hF-2GJ"/>
+                        <outlet property="datePicker" destination="8lL-zZ-irq" id="PZu-SX-zDy"/>
+                        <outlet property="titleLabel" destination="vEY-59-wnn" id="lQC-Tg-eyn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csx-5i-O2S" userLabel="First Responder" sceneMemberID="firstResponder"/>

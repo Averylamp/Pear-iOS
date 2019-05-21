@@ -41,9 +41,18 @@ extension PearUpdateUserAPI {
                                             completion: completion)
   }
   
-  func updateUserAge(age: Int,
+  func updateUserAge(birthdate: Date,
                      completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
-    self.updateUserWithPreferenceDictionary(inputDictionary: ["age": age as Any],
+    var inputs: [String: Any] = [:]
+    let birthdayFormatter = DateFormatter()
+    birthdayFormatter.dateFormat = "yyyy-MM-dd"
+    inputs["birthdate"] = birthdayFormatter.string(from: birthdate)
+    print(inputs["birthdate"])
+    if let age = Calendar.init(identifier: .gregorian)
+      .dateComponents([.year], from: birthdate, to: Date()).year {
+      inputs["age"] = age
+    }
+    self.updateUserWithPreferenceDictionary(inputDictionary: inputs,
                                             mutationName: "UpdateUserAge",
                                             completion: completion)
   }

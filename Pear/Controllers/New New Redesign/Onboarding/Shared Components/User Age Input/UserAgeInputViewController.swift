@@ -11,18 +11,13 @@ import UIKit
 class UserAgeInputViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var stackView: UIStackView!
-  
-  @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
-  
-  var firstNameVC: SimpleFieldInputViewController?
-  var lastNameVC: SimpleFieldInputViewController?
+  @IBOutlet weak var datePicker: UIDatePicker!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserAgeInputViewController? {
-    guard let userNameVC = R.storyboard.userNameInputViewController()
+    guard let userNameVC = R.storyboard.userAgeInputViewController()
       .instantiateInitialViewController() as? UserAgeInputViewController else { return nil }
     return userNameVC
   }
@@ -34,24 +29,24 @@ class UserAgeInputViewController: UIViewController {
   }
   
   func updateUser() {
-    let firstName = firstNameVC?.getNewFieldValue()
-    let lastName = lastNameVC?.getNewFieldValue()
-    DataStore.shared.currentPearUser?.firstName = firstName
-    DataStore.shared.currentPearUser?.lastName  = lastName
-    PearUpdateUserAPI.shared.updateUserName(firstName: firstName, lastName: lastName) { (result) in
+    DataStore.shared.currentPearUser?.birthdate = self.datePicker.date
+    if let age = Calendar.init(identifier: .gregorian)
+      .dateComponents([.year], from: self.datePicker.date, to: Date()).year {
+        DataStore.shared.currentPearUser?.age = age
+    }
+    PearUpdateUserAPI.shared.updateUserAge(birthdate: self.datePicker.date) { (result) in
       switch result {
       case .success(let successful):
         if successful {
-          print("Successfully update user name")
+          print("Successfully update user birthdate/age")
         } else {
-          print("Failed to update user name")
+          print("Failed to update user birthdate/age")
         }
       case .failure(let error):
-        print("Failed to update user name: \(error)")
+        print("Failed to update user birthdate/age: \(error)")
       }
     }
   }
-  
 }
 
 // MARK: - Life Cycle
@@ -61,60 +56,24 @@ extension UserAgeInputViewController {
     super.viewDidLoad()
     self.stylize()
     self.setup()
-    self.addKeyboardNotifications(animated: true)
     self.navigationController?.interactivePopGestureRecognizer?.delegate = self
   }
   
   func stylize() {
     self.titleLabel.stylizeOnboardingHeaderTitleLabel()
+    if let currentBirthday = DataStore.shared.currentPearUser?.birthdate {
+      print(currentBirthday)
+      self.datePicker.timeZone = TimeZone(secondsFromGMT: 0)
+      self.datePicker.date = currentBirthday
+    }
   }
   
   func setup() {
-        guard let user = DataStore.shared.currentPearUser else {
-          print("Unable to get current user")
-          return
-        }
-    guard let firstNameInputVC = SimpleFieldInputViewController.instantiate(fieldName: "First Name",
-                                                                            previousValue: user.firstName,
-                                                                            placeholder: "Enter your first name",
-                                                                            visibility: true) else {
-                                                                              print("Unable to instantiate Simple Field Input VC")
-                                                                              return
-    }
-    self.firstNameVC = firstNameInputVC
-    self.addChild(firstNameInputVC)
-    self.stackView.addSpacer(height: 10)
-    self.stackView.addArrangedSubview(firstNameInputVC.view)
-    firstNameInputVC.didMove(toParent: self)
-    firstNameInputVC.inputTextField.textContentType = .givenName
-    firstNameInputVC.inputTextField.autocapitalizationType = .words
-    guard let lastNameInputVC = SimpleFieldInputViewController.instantiate(fieldName: "Last Name",
-                                                                            previousValue: user.lastName,
-                                                                            placeholder: "Enter your last name",
-                                                                            visibility: false) else {
-      print("Unable to instantiate Simple Field Input VC")
-      return
-    }
-    self.lastNameVC = lastNameInputVC
-    self.addChild(lastNameInputVC)
-    self.stackView.addSpacer(height: 5)
-    self.stackView.addArrangedSubview(lastNameInputVC.view)
-    lastNameInputVC.didMove(toParent: self)
-    lastNameInputVC.inputTextField.textContentType = .familyName
-    lastNameInputVC.inputTextField.autocapitalizationType = .words
+    self.datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -18, to: Date())
+    self.datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -99, to: Date())
+    self.datePicker.timeZone = TimeZone(secondsFromGMT: 0)
   }
   
-}
-
-// MARK: - KeyboardEventsBottomProtocol
-extension UserAgeInputViewController: KeyboardEventsBottomProtocol {
-  var bottomKeyboardConstraint: NSLayoutConstraint? {
-    return self.scrollViewBottomConstraint
-  }
-  
-  var bottomKeyboardPadding: CGFloat {
-    return 0.0
-  }
 }
 
 // MARK: - UIGestureRecognizerDelegate

@@ -20,6 +20,6 @@ protocol UpdateUserAPI {
   func updateUserName(firstName: String?,
                       lastName: String?,
                       completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
-  func updateUserAge(age: Int,
+  func updateUserAge(birthdate: Date,
                      completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
 }

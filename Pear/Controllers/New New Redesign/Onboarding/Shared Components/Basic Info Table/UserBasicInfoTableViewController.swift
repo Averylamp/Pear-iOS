@@ -211,6 +211,12 @@ extension UserBasicInfoTableViewController: UITableViewDataSource, UITableViewDe
         return
       }
       self.navigationController?.pushViewController(userNameInputVC, animated: true)
+    case .age:
+      guard let userAgeInputVC = UserAgeInputViewController.instantiate() else {
+        print("Unable to instantiate Age Input VC")
+        return
+      }
+      self.navigationController?.pushViewController(userAgeInputVC, animated: true)
     default:
       break
     }
