@@ -2106,8 +2106,8 @@
 		BBB71B6722946CE5002CDDD1 /* User Age Input */ = {
 			isa = PBXGroup;
 			children = (
-				BBB71B6322946CB4002CDDD1 /* UserAgeInputViewController.storyboard */,
 				BBB71B6422946CB4002CDDD1 /* UserAgeInputViewController.swift */,
+				BBB71B6322946CB4002CDDD1 /* UserAgeInputViewController.storyboard */,
 			);
 			path = "User Age Input";
 			sourceTree = "<group>";
