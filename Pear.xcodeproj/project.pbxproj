@@ -285,6 +285,8 @@
 		BBB71B5C229454A3002CDDD1 /* UIStackView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B5B229454A3002CDDD1 /* UIStackView+Helpers.swift */; };
 		BBB71B5E22945B8D002CDDD1 /* UpdateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B5D22945B8D002CDDD1 /* UpdateUserAPI.swift */; };
 		BBB71B6022945B99002CDDD1 /* PearUpdateUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B5F22945B99002CDDD1 /* PearUpdateUserAPI.swift */; };
+		BBB71B6522946CB4002CDDD1 /* UserAgeInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B6322946CB4002CDDD1 /* UserAgeInputViewController.storyboard */; };
+		BBB71B6622946CB4002CDDD1 /* UserAgeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B6422946CB4002CDDD1 /* UserAgeInputViewController.swift */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -680,6 +682,8 @@
 		BBB71B5B229454A3002CDDD1 /* UIStackView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Helpers.swift"; sourceTree = "<group>"; };
 		BBB71B5D22945B8D002CDDD1 /* UpdateUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserAPI.swift; sourceTree = "<group>"; };
 		BBB71B5F22945B99002CDDD1 /* PearUpdateUserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearUpdateUserAPI.swift; sourceTree = "<group>"; };
+		BBB71B6322946CB4002CDDD1 /* UserAgeInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserAgeInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B6422946CB4002CDDD1 /* UserAgeInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAgeInputViewController.swift; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -1251,6 +1255,7 @@
 				BBB71B4E2294467B002CDDD1 /* Basic Info Table */,
 				BBB71B4F22944682002CDDD1 /* More Details Table */,
 				BBB71B542294501D002CDDD1 /* User Name Input */,
+				BBB71B6722946CE5002CDDD1 /* User Age Input */,
 			);
 			path = "Shared Components";
 			sourceTree = "<group>";
@@ -2098,6 +2103,15 @@
 			path = Implementations;
 			sourceTree = "<group>";
 		};
+		BBB71B6722946CE5002CDDD1 /* User Age Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B6322946CB4002CDDD1 /* UserAgeInputViewController.storyboard */,
+				BBB71B6422946CB4002CDDD1 /* UserAgeInputViewController.swift */,
+			);
+			path = "User Age Input";
+			sourceTree = "<group>";
+		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2750,6 +2764,7 @@
 				BB986A27220E1BEF00759A14 /* LandingScreenPage1ViewController.storyboard in Resources */,
 				BBECBEB32237BA10008E8E91 /* GetStartedFullProfileReviewViewController.storyboard in Resources */,
 				91BEE2AC225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard in Resources */,
+				BBB71B6522946CB4002CDDD1 /* UserAgeInputViewController.storyboard in Resources */,
 				BB6479DA226A679F00652318 /* LandingScreenWaitlistViewController.storyboard in Resources */,
 				BB3F219E22267B8000DC4489 /* GetStartedUserLastNameViewController.storyboard in Resources */,
 				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
@@ -3151,6 +3166,7 @@
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */,
 				BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */,
+				BBB71B6622946CB4002CDDD1 /* UserAgeInputViewController.swift in Sources */,
 				BBF93E562267C881002841EE /* ProfileInputVibeViewController.swift in Sources */,
 				BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */,
 				BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */,

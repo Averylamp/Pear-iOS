@@ -18,13 +18,12 @@ class UserMoreDetailsTableViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(user: PearUser) -> UserMoreDetailsTableViewController? {
+  class func instantiate() -> UserMoreDetailsTableViewController? {
     guard let userMoreDetailsVC = R.storyboard.userMoreDetailsTableViewController()
       .instantiateInitialViewController() as? UserMoreDetailsTableViewController else {
         return nil
     }
-    userMoreDetailsVC.user = user
-    userMoreDetailsVC.infoItems = UserMoreDetailsTableViewController.getInfoItems(user: user)
+    userMoreDetailsVC.updateWithUser()
     return userMoreDetailsVC
   }
   
@@ -38,6 +37,15 @@ class UserMoreDetailsTableViewController: UIViewController {
     infoItems.append(user.matchingDemographics.educationLevel.toInfoItem(type: .cannabis, mapFunction: { $0.toString() }))
     infoItems.append(user.matchingDemographics.drugs.toInfoItem(type: .drugs, mapFunction: { $0.toString() }))
     return infoItems
+  }
+  
+  func updateWithUser() {
+    guard let user = DataStore.shared.currentPearUser else {
+      print("Failed to find current user for more info")
+      return
+    }
+    self.user = user
+    self.infoItems = UserMoreDetailsTableViewController.getInfoItems(user: user)
   }
   
 }

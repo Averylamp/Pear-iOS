@@ -60,11 +60,7 @@ extension OnboardingBasicInfoViewController {
   }
   
   func setup() {
-    guard let user = DataStore.shared.currentPearUser else {
-      print("Unable to find user")
-      return
-    }
-    guard let basicInfoInputVC = UserBasicInfoTableViewController.instantiate(user: user) else {
+    guard let basicInfoInputVC = UserBasicInfoTableViewController.instantiate() else {
       print("Unable to instantiate basic info VC")
       return
     }

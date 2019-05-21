@@ -102,13 +102,12 @@ class UserBasicInfoTableViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(user: PearUser) -> UserBasicInfoTableViewController? {
+  class func instantiate() -> UserBasicInfoTableViewController? {
     guard let userBasicInfoVC = R.storyboard.userBasicInfoTableViewController()
       .instantiateInitialViewController() as? UserBasicInfoTableViewController else {
         return nil
     }
-    userBasicInfoVC.user = user
-    userBasicInfoVC.infoItems = UserBasicInfoTableViewController.getInfoItems(user: user)
+    userBasicInfoVC.updateWithUser()
     return userBasicInfoVC
   }
   
@@ -143,6 +142,15 @@ class UserBasicInfoTableViewController: UIViewController {
     return infoItems
   }
   
+  func updateWithUser() {
+    guard let user = DataStore.shared.currentPearUser else {
+      print("Failed to find current user for basic info")
+      return
+    }
+    self.user = user
+    self.infoItems = UserBasicInfoTableViewController.getInfoItems(user: user)
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -152,6 +160,13 @@ extension UserBasicInfoTableViewController {
     super.viewDidLoad()
     self.stylize()
     self.setup()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    print("Appearing")
+    self.updateWithUser()
+    self.tableView.reloadData()
   }
   
   func stylize() {
