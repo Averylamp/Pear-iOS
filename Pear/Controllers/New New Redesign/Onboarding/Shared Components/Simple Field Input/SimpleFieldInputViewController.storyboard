@@ -73,7 +73,10 @@
                     </view>
                     <size key="freeformSize" width="375" height="200"/>
                     <connections>
+                        <outlet property="inputFieldContainerView" destination="Vrq-ev-ZbM" id="hLJ-fy-SxU"/>
+                        <outlet property="inputTextField" destination="MxN-Ab-jh6" id="CBR-KD-LUh"/>
                         <outlet property="titleLabel" destination="eRc-MH-qDH" id="SqY-eU-VvY"/>
+                        <outlet property="visibilityLabel" destination="S99-Md-YaR" id="Fqu-BR-8m1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIs-Lc-NyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
