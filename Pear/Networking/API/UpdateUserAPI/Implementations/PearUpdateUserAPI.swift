@@ -35,18 +35,19 @@ extension PearUpdateUserAPI {
   func updateUserName(firstName: String?,
                       lastName: String?,
                       completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
-    do {
-      let userID = try self.getCurrentUserID()
-      self.updateUserWithPreferenceDictionary(userID: userID,
-                                              inputDictionary: ["firstName": firstName as Any,
-                                                                "lastName": lastName as Any],
-                                              mutationName: "UpdateUserName", completion: completion)
-    } catch UpdateUserAPIError.currentUserNotFound {
-      completion(.failure(.currentUserNotFound))
-    } catch {
-      completion(.failure(.unknownError(error: error)))
-    }
+    self.updateUserWithPreferenceDictionary(inputDictionary: ["firstName": (firstName ?? nil) as Any,
+                                                              "lastName": (lastName ?? nil) as Any],
+                                            mutationName: "UpdateUserName",
+                                            completion: completion)
   }
+  
+  func updateUserAge(age: Int,
+                     completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+    self.updateUserWithPreferenceDictionary(inputDictionary: ["age": age as Any],
+                                            mutationName: "UpdateUserAge",
+                                            completion: completion)
+  }
+  
 }
 
 // MARK: - Generic Update Function
@@ -59,6 +60,34 @@ extension PearUpdateUserAPI {
     return userID
   }
   
+  /// Update Current User With Variables
+  ///
+  /// - Parameters:
+  ///   - inputDictionary: Fields to update
+  ///   - mutationName: Mutation name for analytics
+  ///   - completion: completion handler
+  private func updateUserWithPreferenceDictionary(inputDictionary: [String: Any],
+                                                  mutationName: String,
+                                                  completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+    do {
+      let userID = try self.getCurrentUserID()
+      self.updateUserWithPreferenceDictionary(userID: userID,
+                                              inputDictionary: inputDictionary,
+                                              mutationName: mutationName, completion: completion)
+    } catch UpdateUserAPIError.currentUserNotFound {
+      completion(.failure(.currentUserNotFound))
+    } catch {
+      completion(.failure(.unknownError(error: error)))
+    }
+  }
+  
+  /// Update User With Variables
+  ///
+  /// - Parameters:
+  ///   - userID: userID To update
+  ///   - inputDictionary: Fields to update
+  ///   - mutationName: Mutation name for analytics
+  ///   - completion: completion handler
   private func updateUserWithPreferenceDictionary(userID: String,
                                                   inputDictionary: [String: Any],
                                                   mutationName: String = "UpdateUser",
@@ -123,5 +152,5 @@ extension PearUpdateUserAPI {
       
     }
   }
-
+  
 }

@@ -29,7 +29,27 @@ class UserNameInputViewController: UIViewController {
   
   @IBAction func backButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.updateUser()
     self.navigationController?.popViewController(animated: true)
+  }
+  
+  func updateUser() {
+    let firstName = firstNameVC?.getNewFieldValue()
+    let lastName = lastNameVC?.getNewFieldValue()
+    DataStore.shared.currentPearUser?.firstName = firstName
+    DataStore.shared.currentPearUser?.lastName  = lastName
+    PearUpdateUserAPI.shared.updateUserName(firstName: firstName, lastName: lastName) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Successfully update user name")
+        } else {
+          print("Failed to update user name")
+        }
+      case .failure(let error):
+        print("Failed to update user name: \(error)")
+      }
+    }
   }
   
 }
