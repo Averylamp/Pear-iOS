@@ -238,17 +238,19 @@ extension OnboardingPreferencesViewController {
       $0.addTarget(self, action: #selector(OnboardingPreferencesViewController.genderButtonClicked(_:)), for: .touchUpInside)
     })
     if let seekingGenders = DataStore.shared.currentPearUser?.matchingPreferences.seekingGender {
-      seekingGenders.forEach({
-        switch $0 {
-        case .female:
-          femaleButton.isSelected = true
-        case .male:
-          maleButton.isSelected = true
-        case .nonbinary:
-          nonbinaryButton.isSelected = true
-        }
-      })
-      if seekingGenders.count == 0,
+      if seekingGenders.count != 3 {
+        seekingGenders.forEach({
+          switch $0 {
+          case .female:
+            femaleButton.isSelected = true
+          case .male:
+            maleButton.isSelected = true
+          case .nonbinary:
+            nonbinaryButton.isSelected = true
+          }
+        })
+      }
+      if seekingGenders.count == 0 || seekingGenders.count == 3,
         let currentGender = DataStore.shared.currentPearUser?.gender {
         switch currentGender {
         case .male:

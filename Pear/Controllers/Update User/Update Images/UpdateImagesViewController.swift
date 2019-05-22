@@ -234,9 +234,9 @@ extension UpdateImagesViewController: UICollectionViewDataSource, ImageUploadCol
       cell.tag = indexPath.item
       cell.imageCellDelegate = self
       if indexPath.item == self.images.count {
-        cell.imageView.image = UIImage(named: "onboarding-add-image-primary")
+        cell.imageView.image = R.image.updateUserImageCameraPlaceholder()
       } else {
-        cell.imageView.image = UIImage(named: "onboarding-add-image-secondary")
+        cell.imageView.image = R.image.updateUserImageEmptyPlaceholder()
       }
       cell.imageView.contentMode = .scaleAspectFill
       return cell
