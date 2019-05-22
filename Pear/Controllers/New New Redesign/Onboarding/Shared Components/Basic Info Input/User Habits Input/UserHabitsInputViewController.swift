@@ -8,7 +8,14 @@
 
 import UIKit
 
-class UserPoliticalViewsInputViewController: UIViewController {
+enum HabitInputType: String {
+  case drinking
+  case smoking
+  case cannabis
+  case drugs
+}
+
+class UserHabitsInputViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   
@@ -16,14 +23,16 @@ class UserPoliticalViewsInputViewController: UIViewController {
   @IBOutlet weak var noAnswerButton: UIButton!
   
   var allowsMultipleSelection: Bool = false
+  var habitType: HabitInputType!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> UserPoliticalViewsInputViewController? {
-    guard let ethnicityInputVC = R.storyboard.userPoliticalViewsInputViewController()
-      .instantiateInitialViewController() as? UserPoliticalViewsInputViewController else { return nil }
-    return ethnicityInputVC
+  class func instantiate(habitType: HabitInputType) -> UserHabitsInputViewController? {
+    guard let habitInputVC = R.storyboard.userHabitsInputViewController()
+      .instantiateInitialViewController() as? UserHabitsInputViewController else { return nil }
+    habitInputVC.habitType = habitType
+    return habitInputVC
   }
 
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -54,40 +63,44 @@ class UserPoliticalViewsInputViewController: UIViewController {
   }
   
   func updateUser() {
-    var updatedPoliticalView: PoliticsEnum = .preferNotToSay
+    var updatedHabit: HabitsEnum = .preferNotToSay
     self.optionButtons.filter({ $0.isSelected}).forEach({
       switch $0.tag {
       case 0:
-        updatedPoliticalView = .liberal
+        updatedHabit = .yes
       case 1:
-        updatedPoliticalView = .moderate
+        updatedHabit = .sometimes
       case 2:
-        updatedPoliticalView = .conservative
+        updatedHabit = .no
       case 3:
-        updatedPoliticalView = .other
-      case 4:
-        updatedPoliticalView = .preferNotToSay
+        updatedHabit = .preferNotToSay
       default:
-        updatedPoliticalView = .preferNotToSay
+        updatedHabit = .preferNotToSay
       }
     })
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
-      updatedPoliticalView = .preferNotToSay
+      updatedHabit = .preferNotToSay
     }
-    DataStore.shared.currentPearUser?.matchingDemographics.politicalView.responses = [updatedPoliticalView]
-    if updatedPoliticalView == .preferNotToSay {
-      DataStore.shared.currentPearUser?.matchingDemographics.politicalView.userHasResponded = false
+    switch self.habitType! {
+    case .drinking:
+      DataStore.shared.currentPearUser?.matchingDemographics.drinking.responses = [updatedHabit]
+    case .smoking:
+      DataStore.shared.currentPearUser?.matchingDemographics.smoking.responses = [updatedHabit]
+    case .cannabis:
+      DataStore.shared.currentPearUser?.matchingDemographics.cannabis.responses = [updatedHabit]
+    case .drugs:
+      DataStore.shared.currentPearUser?.matchingDemographics.drugs.responses = [updatedHabit]
     }
-    PearUpdateUserAPI.shared.updateUserDemographicsItem(item: updatedPoliticalView, keyName: "politicalView") { (result) in
+    PearUpdateUserAPI.shared.updateUserDemographicsItem(item: updatedHabit, keyName: self.habitType!.rawValue) { (result) in
       switch result {
       case .success(let successful):
         if successful {
-          print("Successfully update user PoliticalView")
+          print("Successfully update user \(self.habitType.rawValue)")
         } else {
-          print("Failed to update user PoliticalView")
+          print("Failed to update user \(self.habitType.rawValue)")
         }
       case .failure(let error):
-        print("Failed to update user PoliticalView: \(error)")
+        print("Failed to update user \(self.habitType.rawValue): \(error)")
       }
 
     }
@@ -96,7 +109,7 @@ class UserPoliticalViewsInputViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension UserPoliticalViewsInputViewController {
+extension UserHabitsInputViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -106,6 +119,7 @@ extension UserPoliticalViewsInputViewController {
   }
   
   func stylize() {
+    self.titleLabel.text = self.habitType.rawValue.firstCapitalized
     self.optionButtons.forEach({
       $0.setTitleColor(R.color.primaryTextColor(), for: .normal)
       $0.setTitleColor(UIColor.white, for: .selected)
@@ -120,26 +134,40 @@ extension UserPoliticalViewsInputViewController {
   }
   
   func setup() {
-    guard let ethnicities = DataStore.shared.currentPearUser?.matchingDemographics.politicalView.responses else {
-      print("Current User not Found")
-      return
+    var habits: [HabitsEnum] = []
+    switch self.habitType! {
+    case .drinking:
+      if let foundHabits = DataStore.shared.currentPearUser?.matchingDemographics.drinking.responses {
+        habits = foundHabits
+      }
+    case .smoking:
+      if let foundHabits = DataStore.shared.currentPearUser?.matchingDemographics.smoking.responses {
+        habits = foundHabits
+      }
+    case .cannabis:
+      if let foundHabits = DataStore.shared.currentPearUser?.matchingDemographics.cannabis.responses {
+        habits = foundHabits
+      }
+    case .drugs:
+      if let foundHabits = DataStore.shared.currentPearUser?.matchingDemographics.drugs.responses {
+        habits = foundHabits
+      }
     }
-    if ethnicities.count == 0 {
+    
+    if habits.count == 0 {
       self.buttonOptionClicked(self.noAnswerButton)
     } else {
-      ethnicities.forEach({
+      habits.forEach({
         var buttonTag = -1
         switch $0 {
-        case .liberal:
+        case .yes:
           buttonTag = 0
-        case .moderate:
+        case .sometimes:
           buttonTag = 1
-        case .conservative:
+        case .no:
           buttonTag = 2
-        case .other:
-          buttonTag = 3
         case .preferNotToSay:
-          buttonTag = 4
+          buttonTag = 3
         }
         if let button = self.optionButtons.filter({ $0.tag == buttonTag }).first {
           self.buttonOptionClicked(button)
@@ -151,7 +179,7 @@ extension UserPoliticalViewsInputViewController {
 }
 
 // MARK: - UIGestureRecognizerDelegate
-extension UserPoliticalViewsInputViewController: UIGestureRecognizerDelegate {
+extension UserHabitsInputViewController: UIGestureRecognizerDelegate {
   
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     return true

@@ -8,90 +8,6 @@
 
 import UIKit
 
-enum UserInfoType {
-  case name
-  case age
-  case gender
-  case height
-  case ethnicity
-  case school
-  case work
-  case jobTitle
-  case hometown
-  case education
-  case religion
-  case political
-  case drinking
-  case smoking
-  case cannabis
-  case drugs
-  
-  func toTitleString() -> String {
-    switch self {
-    case .name:
-      return "Name"
-    case .age:
-      return "Age"
-    case .gender:
-      return "Gender"
-    case .height:
-      return "Height"
-    case .ethnicity:
-      return "Ethnicity"
-    case .school:
-      return "School"
-    case .work:
-      return "Work"
-    case .jobTitle:
-      return "Job Title"
-    case .hometown:
-      return "Hometown"
-    case .education:
-      return "Education Level"
-    case .religion:
-      return "Religion & Spirituality"
-    case .political:
-      return "Political Views"
-    case .drinking:
-      return "Drinking"
-    case .smoking:
-      return "Smoking"
-    case .cannabis:
-      return "Cannabis"
-    case .drugs:
-      return "Drugs"
-    }
-  }
-  
-  func defaultVisibility() -> Bool {
-    switch self {
-    case .name, .age, .gender, .school, .work, .jobTitle, .hometown:
-      return true
-    case .height, .ethnicity, .education, .religion, .political, .drinking, .smoking, .cannabis, .drugs:
-      return false
-    }
-  }
-  
-  func requiredItem() -> Bool {
-    switch self {
-    case .name, .age, .gender:
-      return true
-    case .height, .ethnicity, .school, .work, .jobTitle, .hometown, .education,
-         .religion, .political, .drinking, .smoking, .cannabis, .drugs:
-      return false
-    }
-  }
-  
-}
-
-struct InfoTableViewItem {
-  let type: UserInfoType
-  let subtitleText: String
-  let visibility: Bool
-  let filledOut: Bool
-  let requiredFilledOut: Bool
-}
-
 class UserBasicInfoTableViewController: UIViewController {
 
   @IBOutlet var tableView: UITableView!
@@ -141,12 +57,12 @@ class UserBasicInfoTableViewController: UIViewController {
     infoItems.append(InfoTableViewItem(type: .gender, subtitleText: user.gender != nil ?  "\(user.gender!.toString())": "Required",
                                        visibility: true, filledOut: user.gender != nil, requiredFilledOut: true))
 
-    var schoolString = user.school ?? "Required"
-    if let schoolYear = user.schoolYear, schoolString != "Required" {
+    var schoolString = user.school ?? "Optional"
+    if let schoolYear = user.schoolYear, schoolString != "Optional" {
       schoolString += ", Class of \(schoolYear)"
     }
     infoItems.append(InfoTableViewItem(type: .school,
-                                       subtitleText: schoolString, visibility: true, filledOut: schoolString != "Required", requiredFilledOut: false))
+                                       subtitleText: schoolString, visibility: true, filledOut: schoolString != "Optional", requiredFilledOut: false))
 
     //    infoItems.append(InfoTableViewItem(titleText: "Height", subtitleText: user.age != nil ?  "\(user.age!)": "Required",
     //                                       visibility: true, filledOut: user.age != nil, requiredFilledOut: true))

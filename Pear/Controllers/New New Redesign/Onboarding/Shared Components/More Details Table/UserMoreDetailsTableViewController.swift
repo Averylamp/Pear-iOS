@@ -34,7 +34,7 @@ class UserMoreDetailsTableViewController: UIViewController {
     infoItems.append(user.matchingDemographics.politicalView.toInfoItem(type: .political, mapFunction: { $0.toString() }))
     infoItems.append(user.matchingDemographics.drinking.toInfoItem(type: .drinking, mapFunction: { $0.toString() }))
     infoItems.append(user.matchingDemographics.smoking.toInfoItem(type: .smoking, mapFunction: { $0.toString() }))
-    infoItems.append(user.matchingDemographics.educationLevel.toInfoItem(type: .cannabis, mapFunction: { $0.toString() }))
+    infoItems.append(user.matchingDemographics.cannabis.toInfoItem(type: .cannabis, mapFunction: { $0.toString() }))
     infoItems.append(user.matchingDemographics.drugs.toInfoItem(type: .drugs, mapFunction: { $0.toString() }))
     return infoItems
   }
@@ -119,7 +119,30 @@ extension UserMoreDetailsTableViewController: UITableViewDataSource, UITableView
         return
       }
       self.navigationController?.pushViewController(userEducationLevelVC, animated: true)
-    
+    case .drinking:
+      guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .drinking) else {
+        print("Unable to instantiate Habit Drinking VC")
+        return
+      }
+      self.navigationController?.pushViewController(userHabitInputVC, animated: true)
+    case .smoking:
+      guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .smoking) else {
+        print("Unable to instantiate Habit Smoking VC")
+        return
+      }
+      self.navigationController?.pushViewController(userHabitInputVC, animated: true)
+    case .cannabis:
+      guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .cannabis) else {
+        print("Unable to instantiate Habit Cannabis VC")
+        return
+      }
+      self.navigationController?.pushViewController(userHabitInputVC, animated: true)
+    case .drugs:
+        guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .drugs) else {
+          print("Unable to instantiate Habit Drugs VC")
+          return
+        }
+        self.navigationController?.pushViewController(userHabitInputVC, animated: true)
     default:
       break
     }

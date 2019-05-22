@@ -85,6 +85,9 @@ class UserEthnicityInputViewController: UIViewController {
       updatedEthnicities = []
     }
     DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.responses = updatedEthnicities
+    if updatedEthnicities.count == 0 {
+      DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.userHasResponded = false
+    }
     PearUpdateUserAPI.shared.updateUserDemographicsItems(items: updatedEthnicities, keyName: "ethnicity") { (result) in
       switch result {
       case .success(let successful):

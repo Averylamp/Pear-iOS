@@ -87,6 +87,9 @@ class UserReligionInputViewController: UIViewController {
       updatedReligion = []
     }
     DataStore.shared.currentPearUser?.matchingDemographics.religion.responses = updatedReligion
+    if updatedReligion.count == 0 {
+      DataStore.shared.currentPearUser?.matchingDemographics.religion.userHasResponded = false
+    }
     PearUpdateUserAPI.shared.updateUserDemographicsItems(items: updatedReligion, keyName: "religion") { (result) in
       switch result {
       case .success(let successful):
