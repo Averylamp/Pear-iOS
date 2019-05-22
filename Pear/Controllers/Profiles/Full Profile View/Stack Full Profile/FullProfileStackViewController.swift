@@ -95,7 +95,7 @@ extension FullProfileStackViewController {
   
   func setup() {
     self.addSpacerView(height: 10)
-    self.addNameAge(name: self.fullProfileData.firstName ?? "¯\\_(ツ)_/¯",
+    self.addNameAge(name: self.fullProfileData.firstName ?? "Name Hidden",
                     age: self.fullProfileData.age)
     self.addSpacerView(height: 10)
     //    self.addDemographcsVC(firstName: self.fullProfileData.firstName,
