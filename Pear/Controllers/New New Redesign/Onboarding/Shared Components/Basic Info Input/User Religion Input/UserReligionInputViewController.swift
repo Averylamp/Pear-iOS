@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserEthnicityInputViewController: UIViewController {
+class UserReligionInputViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   
@@ -20,9 +20,9 @@ class UserEthnicityInputViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> UserEthnicityInputViewController? {
-    guard let ethnicityInputVC = R.storyboard.userEthnicityInputViewController()
-      .instantiateInitialViewController() as? UserEthnicityInputViewController else { return nil }
+  class func instantiate() -> UserReligionInputViewController? {
+    guard let ethnicityInputVC = R.storyboard.userReligionInputViewController()
+      .instantiateInitialViewController() as? UserReligionInputViewController else { return nil }
     return ethnicityInputVC
   }
 
@@ -54,47 +54,49 @@ class UserEthnicityInputViewController: UIViewController {
   }
   
   func updateUser() {
-    var updatedEthnicities: [EthnicityEnum] = []
+    var updatedReligion: [ReligionEnum] = []
     self.optionButtons.filter({ $0.isSelected}).forEach({
       switch $0.tag {
       case 0:
-        updatedEthnicities.append(.americanIndian)
+        updatedReligion.append(.buddhist)
       case 1:
-        updatedEthnicities.append(.blackAfrican)
+        updatedReligion.append(.catholic)
       case 2:
-        updatedEthnicities.append(.eastAsian)
+        updatedReligion.append(.christian)
       case 3:
-        updatedEthnicities.append(.hispanicLatino)
+        updatedReligion.append(.hindu)
       case 4:
-        updatedEthnicities.append(.middleEastern)
+        updatedReligion.append(.jewish)
       case 5:
-        updatedEthnicities.append(.pacificIslander)
+        updatedReligion.append(.muslim)
       case 6:
-        updatedEthnicities.append(.southAsian)
+        updatedReligion.append(.spiritual)
       case 7:
-        updatedEthnicities.append(.whiteCaucasian)
+        updatedReligion.append(.agnostic)
       case 8:
-        updatedEthnicities.append(.other)
+        updatedReligion.append(.atheist)
       case 9:
-        updatedEthnicities = []
+        updatedReligion.append(.other)
+      case 10:
+        updatedReligion = []
       default:
         break
       }
     })
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
-      updatedEthnicities = []
+      updatedReligion = []
     }
-    DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.responses = updatedEthnicities
-    PearUpdateUserAPI.shared.updateUserDemographicsItems(items: updatedEthnicities, keyName: "ethnicity") { (result) in
+    DataStore.shared.currentPearUser?.matchingDemographics.religion.responses = updatedReligion
+    PearUpdateUserAPI.shared.updateUserDemographicsItems(items: updatedReligion, keyName: "religion") { (result) in
       switch result {
       case .success(let successful):
         if successful {
-          print("Successfully update user ethnicity")
+          print("Successfully update user religion")
         } else {
-          print("Failed to update user ethnicity")
+          print("Failed to update user religion")
         }
       case .failure(let error):
-        print("Failed to update user ethnicity: \(error)")
+        print("Failed to update user religion: \(error)")
       }
 
     }
@@ -103,7 +105,7 @@ class UserEthnicityInputViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension UserEthnicityInputViewController {
+extension UserReligionInputViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -127,34 +129,36 @@ extension UserEthnicityInputViewController {
   }
   
   func setup() {
-    guard let ethnicities = DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.responses else {
+    guard let religion = DataStore.shared.currentPearUser?.matchingDemographics.religion.responses else {
       print("Current User not Found")
       return
     }
-    if ethnicities.count == 0 {
+    if religion.count == 0 {
       self.buttonOptionClicked(self.noAnswerButton)
     } else {
-      ethnicities.forEach({
+      religion.forEach({
         var buttonTag = -1
         switch $0 {
-        case .americanIndian:
+        case .buddhist:
           buttonTag = 0
-        case .blackAfrican:
+        case .catholic:
           buttonTag = 1
-        case .eastAsian:
+        case .christian:
           buttonTag = 2
-        case .hispanicLatino:
+        case .hindu:
           buttonTag = 3
-        case .middleEastern:
+        case .jewish:
           buttonTag = 4
-        case .pacificIslander:
+        case .muslim:
           buttonTag = 5
-        case .southAsian:
+        case .spiritual:
           buttonTag = 6
-        case .whiteCaucasian:
+        case .agnostic:
           buttonTag = 7
-        case .other:
+        case .atheist:
           buttonTag = 8
+        case .other:
+          buttonTag = 9
         }
         if let button = self.optionButtons.filter({ $0.tag == buttonTag }).first {
           self.buttonOptionClicked(button)
@@ -166,7 +170,7 @@ extension UserEthnicityInputViewController {
 }
 
 // MARK: - UIGestureRecognizerDelegate
-extension UserEthnicityInputViewController: UIGestureRecognizerDelegate {
+extension UserReligionInputViewController: UIGestureRecognizerDelegate {
   
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     return true

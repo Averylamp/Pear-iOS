@@ -293,6 +293,12 @@
 		BBB71B7122947F4C002CDDD1 /* UserSchoolInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B7022947F4C002CDDD1 /* UserSchoolInputViewController.storyboard */; };
 		BBB71B742294E871002CDDD1 /* UserEthnicityInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B732294E871002CDDD1 /* UserEthnicityInputViewController.swift */; };
 		BBB71B762294E878002CDDD1 /* UserEthnicityInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B752294E878002CDDD1 /* UserEthnicityInputViewController.storyboard */; };
+		BBB71B7A2295272E002CDDD1 /* UserEducationLevelInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B782295272C002CDDD1 /* UserEducationLevelInputViewController.swift */; };
+		BBB71B7B2295272E002CDDD1 /* UserEducationLevelInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B792295272D002CDDD1 /* UserEducationLevelInputViewController.storyboard */; };
+		BBB71B7E2295273A002CDDD1 /* UserReligionInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B7C22952739002CDDD1 /* UserReligionInputViewController.storyboard */; };
+		BBB71B7F2295273A002CDDD1 /* UserReligionInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B7D2295273A002CDDD1 /* UserReligionInputViewController.swift */; };
+		BBB71B8222952748002CDDD1 /* UserPoliticalViewsInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B8022952746002CDDD1 /* UserPoliticalViewsInputViewController.swift */; };
+		BBB71B8322952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B8122952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -696,6 +702,12 @@
 		BBB71B7022947F4C002CDDD1 /* UserSchoolInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserSchoolInputViewController.storyboard; sourceTree = "<group>"; };
 		BBB71B732294E871002CDDD1 /* UserEthnicityInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEthnicityInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B752294E878002CDDD1 /* UserEthnicityInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserEthnicityInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B782295272C002CDDD1 /* UserEducationLevelInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEducationLevelInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B792295272D002CDDD1 /* UserEducationLevelInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserEducationLevelInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B7C22952739002CDDD1 /* UserReligionInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserReligionInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B7D2295273A002CDDD1 /* UserReligionInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReligionInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B8022952746002CDDD1 /* UserPoliticalViewsInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoliticalViewsInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B8122952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPoliticalViewsInputViewController.storyboard; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -2131,6 +2143,9 @@
 				BBB71B6D22947C60002CDDD1 /* User Gender Input */,
 				BBB71B7222948C3E002CDDD1 /* User School Input */,
 				BBB71B772294E902002CDDD1 /* User Ethnicity Input */,
+				BBB71B8622952ABE002CDDD1 /* User Political Views Input */,
+				BBB71B8522952AAF002CDDD1 /* User Religion Input */,
+				BBB71B8422952AA3002CDDD1 /* User Education Level Input */,
 			);
 			path = "Basic Info Input";
 			sourceTree = "<group>";
@@ -2160,6 +2175,33 @@
 				BBB71B752294E878002CDDD1 /* UserEthnicityInputViewController.storyboard */,
 			);
 			path = "User Ethnicity Input";
+			sourceTree = "<group>";
+		};
+		BBB71B8422952AA3002CDDD1 /* User Education Level Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B782295272C002CDDD1 /* UserEducationLevelInputViewController.swift */,
+				BBB71B792295272D002CDDD1 /* UserEducationLevelInputViewController.storyboard */,
+			);
+			path = "User Education Level Input";
+			sourceTree = "<group>";
+		};
+		BBB71B8522952AAF002CDDD1 /* User Religion Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B7D2295273A002CDDD1 /* UserReligionInputViewController.swift */,
+				BBB71B7C22952739002CDDD1 /* UserReligionInputViewController.storyboard */,
+			);
+			path = "User Religion Input";
+			sourceTree = "<group>";
+		};
+		BBB71B8622952ABE002CDDD1 /* User Political Views Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B8022952746002CDDD1 /* UserPoliticalViewsInputViewController.swift */,
+				BBB71B8122952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard */,
+			);
+			path = "User Political Views Input";
 			sourceTree = "<group>";
 		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
@@ -2824,6 +2866,7 @@
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
+				BBB71B7E2295273A002CDDD1 /* UserReligionInputViewController.storyboard in Resources */,
 				BB51524B228BE2D20094670A /* UserEmailInfoViewController.storyboard in Resources */,
 				917F20D02271A1F20023EC69 /* FinishSetupUserBirthdateViewController.storyboard in Resources */,
 				BBF93E942267CF7A002841EE /* OpenSans-Regular.ttf in Resources */,
@@ -2878,6 +2921,7 @@
 				BBB71B6C2294793E002CDDD1 /* UserGenderInputViewController.storyboard in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBF93E5C2267CA11002841EE /* LandingScreenViewController.storyboard in Resources */,
+				BBB71B7B2295272E002CDDD1 /* UserEducationLevelInputViewController.storyboard in Resources */,
 				BBA3CEBC2255667E0020A36C /* ChatRequestEndorsementViewController.storyboard in Resources */,
 				BB687E7B228D7F6D00F45C9D /* OnboardingBasicInfoViewController.storyboard in Resources */,
 				BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */,
@@ -2892,6 +2936,7 @@
 				BB178938225DFCAA0033ACC6 /* FullChatViewController.storyboard in Resources */,
 				BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
+				BBB71B8322952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard in Resources */,
 				BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */,
 				60C131CA21D342BD0093ECBA /* Assets.xcassets in Resources */,
 				BB986A20220E08ED00759A14 /* OldLandingScreenViewController.storyboard in Resources */,
@@ -3170,6 +3215,7 @@
 				BBF79688225956E200E9A506 /* MeEditUserViewController.swift in Sources */,
 				BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
+				BBB71B8222952748002CDDD1 /* UserPoliticalViewsInputViewController.swift in Sources */,
 				9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */,
 				BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */,
 				BBA3CEB6225566560020A36C /* ChatRequestPersonalViewController.swift in Sources */,
@@ -3199,6 +3245,7 @@
 				BB687E5C228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift in Sources */,
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
 				BBB71B742294E871002CDDD1 /* UserEthnicityInputViewController.swift in Sources */,
+				BBB71B7A2295272E002CDDD1 /* UserEducationLevelInputViewController.swift in Sources */,
 				BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */,
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
@@ -3248,6 +3295,7 @@
 				BBC8DD5B2272753700C157E2 /* MultipleBoastRoastStackViewController.swift in Sources */,
 				BB33E75022249910001BFA8F /* GetStartedChooseGenderViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
+				BBB71B7F2295273A002CDDD1 /* UserReligionInputViewController.swift in Sources */,
 				BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */,
 				BB687E85228D829900F45C9D /* OnboardingPicturesViewController.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,

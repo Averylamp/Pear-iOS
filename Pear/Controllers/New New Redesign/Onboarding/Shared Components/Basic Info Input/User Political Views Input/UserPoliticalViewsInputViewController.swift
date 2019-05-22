@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserEthnicityInputViewController: UIViewController {
+class UserPoliticalViewsInputViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   
@@ -20,9 +20,9 @@ class UserEthnicityInputViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> UserEthnicityInputViewController? {
-    guard let ethnicityInputVC = R.storyboard.userEthnicityInputViewController()
-      .instantiateInitialViewController() as? UserEthnicityInputViewController else { return nil }
+  class func instantiate() -> UserPoliticalViewsInputViewController? {
+    guard let ethnicityInputVC = R.storyboard.userPoliticalViewsInputViewController()
+      .instantiateInitialViewController() as? UserPoliticalViewsInputViewController else { return nil }
     return ethnicityInputVC
   }
 
@@ -103,7 +103,7 @@ class UserEthnicityInputViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension UserEthnicityInputViewController {
+extension UserPoliticalViewsInputViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -166,7 +166,7 @@ extension UserEthnicityInputViewController {
 }
 
 // MARK: - UIGestureRecognizerDelegate
-extension UserEthnicityInputViewController: UIGestureRecognizerDelegate {
+extension UserPoliticalViewsInputViewController: UIGestureRecognizerDelegate {
   
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     return true

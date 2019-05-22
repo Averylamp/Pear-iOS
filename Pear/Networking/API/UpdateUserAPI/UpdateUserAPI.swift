@@ -27,9 +27,11 @@ protocol UpdateUserAPI {
   func updateUserSchool(schoolName: String?,
                         schoolYear: String?,
                         completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
-  func updateUserDemographicsItem<E: RawRepresentable>(items: [E],
+  func updateUserDemographicsItems<E: RawRepresentable>(items: [E],
+                                                        keyName: String,
+                                                        completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) where E.RawValue == String
+  func updateUserDemographicsItem<E: RawRepresentable>(item: E,
                                                        keyName: String,
-                                                       completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
-    where E.RawValue == String
+                                                       completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) where E.RawValue == String
   
 }

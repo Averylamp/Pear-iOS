@@ -91,4 +91,32 @@ extension UserMoreDetailsTableViewController: UITableViewDataSource, UITableView
     return cell
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let infoItem = self.infoItems[indexPath.row]
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    switch infoItem.type {
+    case .political:
+      guard let politicalViewsVC = UserPoliticalViewsInputViewController.instantiate() else {
+        print("Unable to instantiate Political Views Input")
+        return
+      }
+      self.navigationController?.pushViewController(politicalViewsVC, animated: true)
+    case .religion:
+      guard let userReligionVC = UserReligionInputViewController.instantiate() else {
+        print("Unable to instantiate Religion Input VC")
+        return
+      }
+      self.navigationController?.pushViewController(userReligionVC, animated: true)
+    case .education:
+      guard let userEducationLevelVC = UserEducationLevelInputViewController.instantiate() else {
+        print("Unable to instantiate Education Level Input VC")
+        return
+      }
+      self.navigationController?.pushViewController(userEducationLevelVC, animated: true)
+    
+    default:
+      break
+    }
+  }
+  
 }

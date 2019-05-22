@@ -8,21 +8,21 @@
 
 import UIKit
 
-class UserEthnicityInputViewController: UIViewController {
+class UserEducationLevelInputViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   
   @IBOutlet var optionButtons: [UIButton]!
   @IBOutlet weak var noAnswerButton: UIButton!
   
-  var allowsMultipleSelection: Bool = true
+  var allowsMultipleSelection: Bool = false
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> UserEthnicityInputViewController? {
-    guard let ethnicityInputVC = R.storyboard.userEthnicityInputViewController()
-      .instantiateInitialViewController() as? UserEthnicityInputViewController else { return nil }
+  class func instantiate() -> UserEducationLevelInputViewController? {
+    guard let ethnicityInputVC = R.storyboard.userEducationLevelInputViewController()
+      .instantiateInitialViewController() as? UserEducationLevelInputViewController else { return nil }
     return ethnicityInputVC
   }
 
@@ -54,47 +54,36 @@ class UserEthnicityInputViewController: UIViewController {
   }
   
   func updateUser() {
-    var updatedEthnicities: [EthnicityEnum] = []
+    var educationLevel: EducationLevelEnum = .highSchool
     self.optionButtons.filter({ $0.isSelected}).forEach({
       switch $0.tag {
       case 0:
-        updatedEthnicities.append(.americanIndian)
+        educationLevel = .highSchool
       case 1:
-        updatedEthnicities.append(.blackAfrican)
+        educationLevel = .underGrad
       case 2:
-        updatedEthnicities.append(.eastAsian)
+        educationLevel = .postGrad
       case 3:
-        updatedEthnicities.append(.hispanicLatino)
-      case 4:
-        updatedEthnicities.append(.middleEastern)
-      case 5:
-        updatedEthnicities.append(.pacificIslander)
-      case 6:
-        updatedEthnicities.append(.southAsian)
-      case 7:
-        updatedEthnicities.append(.whiteCaucasian)
-      case 8:
-        updatedEthnicities.append(.other)
-      case 9:
-        updatedEthnicities = []
+        educationLevel = .highSchool
       default:
         break
       }
     })
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
-      updatedEthnicities = []
+      educationLevel = .highSchool
     }
-    DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.responses = updatedEthnicities
-    PearUpdateUserAPI.shared.updateUserDemographicsItems(items: updatedEthnicities, keyName: "ethnicity") { (result) in
+    
+    DataStore.shared.currentPearUser?.matchingDemographics.educationLevel.responses = [educationLevel]
+    PearUpdateUserAPI.shared.updateUserDemographicsItem(item: educationLevel, keyName: "educationLevel") { (result) in
       switch result {
       case .success(let successful):
         if successful {
-          print("Successfully update user ethnicity")
+          print("Successfully update user educationLevel")
         } else {
-          print("Failed to update user ethnicity")
+          print("Failed to update user educationLevel")
         }
       case .failure(let error):
-        print("Failed to update user ethnicity: \(error)")
+        print("Failed to update user educationLevel: \(error)")
       }
 
     }
@@ -103,7 +92,7 @@ class UserEthnicityInputViewController: UIViewController {
 }
 
 // MARK: - Life Cycle
-extension UserEthnicityInputViewController {
+extension UserEducationLevelInputViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -127,34 +116,22 @@ extension UserEthnicityInputViewController {
   }
   
   func setup() {
-    guard let ethnicities = DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.responses else {
+    guard let educationLevels = DataStore.shared.currentPearUser?.matchingDemographics.educationLevel.responses else {
       print("Current User not Found")
       return
     }
-    if ethnicities.count == 0 {
+    if educationLevels.count == 0 {
       self.buttonOptionClicked(self.noAnswerButton)
     } else {
-      ethnicities.forEach({
+      educationLevels.forEach({
         var buttonTag = -1
         switch $0 {
-        case .americanIndian:
+        case .highSchool:
           buttonTag = 0
-        case .blackAfrican:
+        case .underGrad:
           buttonTag = 1
-        case .eastAsian:
+        case .postGrad:
           buttonTag = 2
-        case .hispanicLatino:
-          buttonTag = 3
-        case .middleEastern:
-          buttonTag = 4
-        case .pacificIslander:
-          buttonTag = 5
-        case .southAsian:
-          buttonTag = 6
-        case .whiteCaucasian:
-          buttonTag = 7
-        case .other:
-          buttonTag = 8
         }
         if let button = self.optionButtons.filter({ $0.tag == buttonTag }).first {
           self.buttonOptionClicked(button)
@@ -166,7 +143,7 @@ extension UserEthnicityInputViewController {
 }
 
 // MARK: - UIGestureRecognizerDelegate
-extension UserEthnicityInputViewController: UIGestureRecognizerDelegate {
+extension UserEducationLevelInputViewController: UIGestureRecognizerDelegate {
   
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     return true

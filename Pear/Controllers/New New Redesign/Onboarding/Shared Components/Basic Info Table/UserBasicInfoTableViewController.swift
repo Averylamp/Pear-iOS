@@ -140,17 +140,20 @@ class UserBasicInfoTableViewController: UIViewController {
                                        visibility: true, filledOut: user.age != nil, requiredFilledOut: true))
     infoItems.append(InfoTableViewItem(type: .gender, subtitleText: user.gender != nil ?  "\(user.gender!.toString())": "Required",
                                        visibility: true, filledOut: user.gender != nil, requiredFilledOut: true))
-//    infoItems.append(InfoTableViewItem(titleText: "Height", subtitleText: user.age != nil ?  "\(user.age!)": "Required",
-//                                       visibility: true, filledOut: user.age != nil, requiredFilledOut: true))
-    let ethnicityString = user.matchingDemographics.ethnicity.toOptionalString(mapFunction: { $0.toString()})
-    infoItems.append(InfoTableViewItem(type: .ethnicity, subtitleText: ethnicityString  != nil ?  "\(ethnicityString!)": "Optional",
-                                       visibility: false, filledOut: ethnicityString != nil, requiredFilledOut: false))
+
     var schoolString = user.school ?? "Required"
     if let schoolYear = user.schoolYear, schoolString != "Required" {
       schoolString += ", Class of \(schoolYear)"
     }
     infoItems.append(InfoTableViewItem(type: .school,
                                        subtitleText: schoolString, visibility: true, filledOut: schoolString != "Required", requiredFilledOut: false))
+
+    //    infoItems.append(InfoTableViewItem(titleText: "Height", subtitleText: user.age != nil ?  "\(user.age!)": "Required",
+    //                                       visibility: true, filledOut: user.age != nil, requiredFilledOut: true))
+    
+    let ethnicityString = user.matchingDemographics.ethnicity.toOptionalString(mapFunction: { $0.toString()})
+    infoItems.append(InfoTableViewItem(type: .ethnicity, subtitleText: ethnicityString  != nil ?  "\(ethnicityString!)": "Optional",
+                                       visibility: false, filledOut: ethnicityString != nil, requiredFilledOut: false))
     
     return infoItems
   }

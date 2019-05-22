@@ -63,7 +63,7 @@ extension UserNameInputViewController {
     self.setup()
     self.addKeyboardNotifications(animated: true)
     self.addKeyboardDismissOnTap()
-    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+//    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
   }
   
   func stylize() {
