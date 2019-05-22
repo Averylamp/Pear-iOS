@@ -17,6 +17,8 @@ class OnboardingBasicInfoViewController: UIViewController {
   @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
   
+  var basicInfoVC: UserBasicInfoTableViewController?
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -32,6 +34,24 @@ class OnboardingBasicInfoViewController: UIViewController {
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    if let basicInfoVC = self.basicInfoVC {
+      let requiredUnfilledItems = basicInfoVC.infoItems.filter({ $0.requiredFilledOut == true && $0.filledOut == false })
+      if requiredUnfilledItems.count > 0 {
+        let alertController = UIAlertController(title: "You have missing required information",
+                                                message: "Please fill out \(requiredUnfilledItems.map({ $0.type.toTitleString()}).joined(separator: ", "))",
+          preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+        self.present(alertController, animated: true, completion: nil)
+      } else {
+        self.continueToMoreDetailsVC()
+      }
+    } else {
+      self.continueToMoreDetailsVC()
+    }
+  }
+  
+  func continueToMoreDetailsVC() {
     guard let moreDetailsVC = OnboardingMoreDetailsViewController.instantiate() else {
       print("Failed to instantiate more details VC")
       return
@@ -64,6 +84,7 @@ extension OnboardingBasicInfoViewController {
       print("Unable to instantiate basic info VC")
       return
     }
+    self.basicInfoVC = basicInfoInputVC
     self.addChild(basicInfoInputVC)
     self.view.addSubview(basicInfoInputVC.view)
     self.view.addConstraints([

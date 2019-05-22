@@ -299,6 +299,9 @@
 		BBB71B7F2295273A002CDDD1 /* UserReligionInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B7D2295273A002CDDD1 /* UserReligionInputViewController.swift */; };
 		BBB71B8222952748002CDDD1 /* UserPoliticalViewsInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B8022952746002CDDD1 /* UserPoliticalViewsInputViewController.swift */; };
 		BBB71B8322952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B8122952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard */; };
+		BBB71B89229553AC002CDDD1 /* UserHabitsInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B87229553AB002CDDD1 /* UserHabitsInputViewController.swift */; };
+		BBB71B8A229553AC002CDDD1 /* UserHabitsInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B88229553AC002CDDD1 /* UserHabitsInputViewController.storyboard */; };
+		BBB71B8D229558CD002CDDD1 /* UserInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B8C229558CD002CDDD1 /* UserInfoType.swift */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -708,6 +711,9 @@
 		BBB71B7D2295273A002CDDD1 /* UserReligionInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReligionInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B8022952746002CDDD1 /* UserPoliticalViewsInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoliticalViewsInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B8122952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPoliticalViewsInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B87229553AB002CDDD1 /* UserHabitsInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHabitsInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B88229553AC002CDDD1 /* UserHabitsInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserHabitsInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B8C229558CD002CDDD1 /* UserInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoType.swift; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -1276,6 +1282,7 @@
 			children = (
 				BBB71B4D22944667002CDDD1 /* Simple Field Input */,
 				BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */,
+				BBB71B8C229558CD002CDDD1 /* UserInfoType.swift */,
 				BBB71B4E2294467B002CDDD1 /* Basic Info Table */,
 				BBB71B4F22944682002CDDD1 /* More Details Table */,
 				BBB71B682294788A002CDDD1 /* Basic Info Input */,
@@ -2146,6 +2153,7 @@
 				BBB71B8622952ABE002CDDD1 /* User Political Views Input */,
 				BBB71B8522952AAF002CDDD1 /* User Religion Input */,
 				BBB71B8422952AA3002CDDD1 /* User Education Level Input */,
+				BBB71B8B2295541E002CDDD1 /* User Habits Input */,
 			);
 			path = "Basic Info Input";
 			sourceTree = "<group>";
@@ -2202,6 +2210,15 @@
 				BBB71B8122952748002CDDD1 /* UserPoliticalViewsInputViewController.storyboard */,
 			);
 			path = "User Political Views Input";
+			sourceTree = "<group>";
+		};
+		BBB71B8B2295541E002CDDD1 /* User Habits Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B87229553AB002CDDD1 /* UserHabitsInputViewController.swift */,
+				BBB71B88229553AC002CDDD1 /* UserHabitsInputViewController.storyboard */,
+			);
+			path = "User Habits Input";
 			sourceTree = "<group>";
 		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
@@ -2919,6 +2936,7 @@
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
 				BBB71B762294E878002CDDD1 /* UserEthnicityInputViewController.storyboard in Resources */,
 				BBB71B6C2294793E002CDDD1 /* UserGenderInputViewController.storyboard in Resources */,
+				BBB71B8A229553AC002CDDD1 /* UserHabitsInputViewController.storyboard in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBF93E5C2267CA11002841EE /* LandingScreenViewController.storyboard in Resources */,
 				BBB71B7B2295272E002CDDD1 /* UserEducationLevelInputViewController.storyboard in Resources */,
@@ -3249,6 +3267,7 @@
 				BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */,
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
+				BBB71B89229553AC002CDDD1 /* UserHabitsInputViewController.swift in Sources */,
 				BB9CB6AD225A11F900605A98 /* FriendEditProfileViewController.swift in Sources */,
 				BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */,
 				BB17892A225D96D60033ACC6 /* ChatMainViewController.swift in Sources */,
@@ -3337,6 +3356,7 @@
 				BB178941225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift in Sources */,
 				BB3F30A7228C9CBD001947EF /* KeyboardEventsProtocol.swift in Sources */,
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
+				BBB71B8D229558CD002CDDD1 /* UserInfoType.swift in Sources */,
 				BBA3CEB8225566600020A36C /* ChatRequestEndorsementViewController.swift in Sources */,
 				BBB71B6F22947F42002CDDD1 /* UserSchoolInputViewController.swift in Sources */,
 				BB797DEF2277B56D00D38044 /* SMSCanceledViewController.swift in Sources */,

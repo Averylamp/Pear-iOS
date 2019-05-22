@@ -48,7 +48,7 @@ class DemographicsItem<E: RawRepresentable>: Decodable, Equatable, GraphQLDecoda
     let response = self.toOptionalString(mapFunction: mapFunction)
     return InfoTableViewItem(type: type,
                       subtitleText: response != nil ? response! : (type.requiredItem() ? "Required": "Optional"),
-                      visibility: self.visible, filledOut: self.userHasResponded, requiredFilledOut: type.requiredItem())
+                      visibility: self.visible, filledOut: response != nil, requiredFilledOut: type.requiredItem())
   }
   
   required init(from decoder: Decoder) throws {

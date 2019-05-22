@@ -72,8 +72,10 @@ class UserEducationLevelInputViewController: UIViewController {
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
       educationLevel = .preferNotToSay
     }
-    
     DataStore.shared.currentPearUser?.matchingDemographics.educationLevel.responses = [educationLevel]
+    if educationLevel == .preferNotToSay {
+      DataStore.shared.currentPearUser?.matchingDemographics.educationLevel.userHasResponded = false
+    }
     PearUpdateUserAPI.shared.updateUserDemographicsItem(item: educationLevel, keyName: "educationLevel") { (result) in
       switch result {
       case .success(let successful):

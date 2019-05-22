@@ -8,6 +8,14 @@
 
 import UIKit
 
+struct InfoTableViewItem {
+  let type: UserInfoType
+  let subtitleText: String
+  let visibility: Bool
+  let filledOut: Bool
+  let requiredFilledOut: Bool
+}
+
 class InfoItemTableViewCell: UITableViewCell {
   
   @IBOutlet weak var fieldNameLabel: UILabel!
