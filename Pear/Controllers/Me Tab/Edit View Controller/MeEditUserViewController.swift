@@ -260,33 +260,36 @@ extension MeEditUserViewController {
     self.addSpacer(space: 20)
     self.addTitleSection(title: "Photos")
     self.addPhotosSection()
-    self.addTitleSection(title: "Basic Information")
-    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName ?? "")
-    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName ?? "")
-//    let dateFormatter = DateFormatter()
-//    dateFormatter.dateFormat = "MMM d, yyyy"
-//    let birthdate = dateFormatter.string(from: self.pearUser.birthdate)
-//    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate)
-    
-    self.addTextField(type: .gender,
-                      title: "Gender",
-                      initialText: self.pearUser.matchingDemographics.gender?.toString() ?? "")
-    
-    self.addTextField(type: .location,
-                      title: "Location (City, State)",
-                      initialText: self.pearUser.matchingDemographics.location?.locationName ?? "")
-    
-    self.addTextField(type: .schoolName,
-                      title: "School Name",
-                      initialText: self.pearUser.school ?? "")
-    self.addTextField(type: .schoolYear,
-                      title: "School Year",
-                      initialText: self.pearUser.schoolYear ?? "")
-    
+//    self.addTitleSection(title: "Basic Information")
+//    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName ?? "")
+//    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName ?? "")
+////    let dateFormatter = DateFormatter()
+////    dateFormatter.dateFormat = "MMM d, yyyy"
+////    let birthdate = dateFormatter.string(from: self.pearUser.birthdate)
+////    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate)
+//
+//    self.addTextField(type: .gender,
+//                      title: "Gender",
+//                      initialText: self.pearUser.matchingDemographics.gender?.toString() ?? "")
+//
+//    self.addTextField(type: .location,
+//                      title: "Location (City, State)",
+//                      initialText: self.pearUser.matchingDemographics.location?.locationName ?? "")
+//
+//    self.addTextField(type: .schoolName,
+//                      title: "School Name",
+//                      initialText: self.pearUser.school ?? "")
+//    self.addTextField(type: .schoolYear,
+//                      title: "School Year",
+//                      initialText: self.pearUser.schoolYear ?? "")
+//
     self.addSpacer(space: 20)
     self.addTitleSection(title: "Matching Preferences")
     self.addUserPreferences()
     self.addSpacer(space: 30)
+    self.addBasicInfo()
+    self.addSpacer(space: 20)
+    self.addMoreInfo()
   }
   
   func addSpacer(space: CGFloat) {
@@ -410,6 +413,42 @@ extension MeEditUserViewController {
     self.agePreferenceVC = agePreferencesVC
     agePreferencesVC.didMove(toParent: self)
     
+  }
+  
+  func addBasicInfo() {
+    self.addTitleSection(title: "Basic Information")
+    guard let basicInfoInputVC = UserBasicInfoTableViewController.instantiate() else {
+      print("Unable to instantiate basic info VC")
+      return
+    }
+    self.addChild(basicInfoInputVC)
+    basicInfoInputVC.view.translatesAutoresizingMaskIntoConstraints = false
+    self.stackView.addArrangedSubview(basicInfoInputVC.view)
+    let height = CGFloat(basicInfoInputVC.infoItems.count * 60)
+    basicInfoInputVC.view.addConstraint(NSLayoutConstraint(item: basicInfoInputVC.view as Any, attribute: .height, relatedBy: .equal,
+                                                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
+    
+    basicInfoInputVC.tableView.isScrollEnabled = false
+    basicInfoInputVC.didMove(toParent: self)
+    self.addSpacer(space: 10.0)
+  }
+  
+  func addMoreInfo() {
+    self.addTitleSection(title: "More Information")
+    guard let moreDetailsVC = UserMoreDetailsTableViewController.instantiate() else {
+      print("Unable to instantiate basic info VC")
+      return
+    }
+    self.addChild(moreDetailsVC)
+    moreDetailsVC.view.translatesAutoresizingMaskIntoConstraints = false
+    self.stackView.addArrangedSubview(moreDetailsVC.view)
+    let height = CGFloat(moreDetailsVC.infoItems.count * 60)
+    moreDetailsVC.view.addConstraint(NSLayoutConstraint(item: moreDetailsVC.view as Any, attribute: .height, relatedBy: .equal,
+                                                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
+    moreDetailsVC.view.isUserInteractionEnabled = true
+    moreDetailsVC.tableView.isScrollEnabled = false
+    moreDetailsVC.didMove(toParent: self)
+    self.addSpacer(space: 10.0)
   }
   
 }

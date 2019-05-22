@@ -31,6 +31,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYp-X6-gmA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7q-cr-Bdc">
                                             <rect key="frame" x="24" y="8" width="290" height="19.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
@@ -66,8 +69,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="rXB-rY-Wlu" secondAttribute="trailing" id="1CK-ue-BAh"/>
+                                        <constraint firstItem="hYp-X6-gmA" firstAttribute="width" secondItem="xYu-PI-ORP" secondAttribute="width" id="1MH-av-fYH"/>
                                         <constraint firstItem="pi4-3R-l7m" firstAttribute="leading" secondItem="Z7q-cr-Bdc" secondAttribute="leading" id="1oj-SV-ddR"/>
                                         <constraint firstItem="yOO-99-DBq" firstAttribute="centerY" secondItem="xYu-PI-ORP" secondAttribute="centerY" id="3yM-eY-VnI"/>
+                                        <constraint firstItem="hYp-X6-gmA" firstAttribute="height" secondItem="xYu-PI-ORP" secondAttribute="height" id="5a1-pm-EPg"/>
                                         <constraint firstAttribute="trailing" secondItem="yOO-99-DBq" secondAttribute="trailing" constant="12" id="7Pi-ya-rWE"/>
                                         <constraint firstItem="ZRd-p0-wOz" firstAttribute="leading" secondItem="Z7q-cr-Bdc" secondAttribute="trailing" constant="12" id="7XJ-dP-E0s"/>
                                         <constraint firstItem="rXB-rY-Wlu" firstAttribute="leading" secondItem="Z7q-cr-Bdc" secondAttribute="leading" id="ATU-Cl-jv4"/>
@@ -76,13 +81,16 @@
                                         <constraint firstItem="Z7q-cr-Bdc" firstAttribute="leading" secondItem="xYu-PI-ORP" secondAttribute="leading" constant="24" id="Y8W-za-eKx"/>
                                         <constraint firstAttribute="bottom" secondItem="rXB-rY-Wlu" secondAttribute="bottom" id="jec-Ev-NaJ"/>
                                         <constraint firstAttribute="bottom" secondItem="pi4-3R-l7m" secondAttribute="bottom" constant="8" id="nE4-Zv-aRO"/>
+                                        <constraint firstItem="hYp-X6-gmA" firstAttribute="centerY" secondItem="xYu-PI-ORP" secondAttribute="centerY" id="r90-nK-8HX"/>
                                         <constraint firstItem="pi4-3R-l7m" firstAttribute="trailing" secondItem="Z7q-cr-Bdc" secondAttribute="trailing" id="rJj-b6-x2X"/>
                                         <constraint firstItem="Z7q-cr-Bdc" firstAttribute="top" secondItem="xYu-PI-ORP" secondAttribute="top" constant="8" id="sTJ-dU-DEw"/>
+                                        <constraint firstItem="hYp-X6-gmA" firstAttribute="centerX" secondItem="xYu-PI-ORP" secondAttribute="centerX" id="ud6-8u-5fs"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="fieldNameLabel" destination="Z7q-cr-Bdc" id="4dh-v3-GVU"/>
                                     <outlet property="infoImageView" destination="yOO-99-DBq" id="d8s-G5-RLa"/>
+                                    <outlet property="infoItemButton" destination="hYp-X6-gmA" id="Dcp-EZ-7aY"/>
                                     <outlet property="subtitleLabel" destination="pi4-3R-l7m" id="ahf-jp-mQE"/>
                                     <outlet property="visibilityLabel" destination="ZRd-p0-wOz" id="rqQ-rd-I15"/>
                                 </connections>

@@ -126,16 +126,25 @@ extension UserBasicInfoTableViewController: UITableViewDataSource, UITableViewDe
     guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.infoItemTVC.identifier, for: indexPath) as? InfoItemTableViewCell else {
       print("Unable to dequeue cell")
       return UITableViewCell()
+      
     }
     let item = infoItems[indexPath.row]
     cell.stylize(item: item)
+    cell.infoItemButton.tag = indexPath.row
+    cell.infoItemButton.addTarget(self, action: #selector(UserBasicInfoTableViewController.tappedItemButton(sender:)), for: .touchUpInside)
     return cell
   }
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let infoItem = self.infoItems[indexPath.row]
+  @objc func tappedItemButton(sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    switch infoItem.type {
+    if sender.tag <  self.infoItems.count {
+      let infoItem = self.infoItems[sender.tag]
+      self.tappedItemOfType(type: infoItem.type)
+    }
+  }
+  
+  func tappedItemOfType(type: UserInfoType) {
+    switch type {
     case .name:
       guard let userNameInputVC = UserNameInputViewController.instantiate() else {
         print("Unable to instantiate User Name Input")
@@ -169,7 +178,12 @@ extension UserBasicInfoTableViewController: UITableViewDataSource, UITableViewDe
     default:
       break
     }
-    
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let infoItem = self.infoItems[indexPath.row]
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.tappedItemOfType(type: infoItem.type)
   }
   
 }
