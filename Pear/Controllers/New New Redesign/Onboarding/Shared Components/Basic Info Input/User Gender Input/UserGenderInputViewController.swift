@@ -83,7 +83,7 @@ extension UserGenderInputViewController {
     super.viewDidLoad()
     self.stylize()
     self.setup()
-    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+//    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
   }
   
   func stylize() {

@@ -72,12 +72,22 @@ extension PearUpdateUserAPI {
                                   completion: completion)
   }
   
-  func updateUserDemographicsItem<E: RawRepresentable>(items: [E],
-                                                       keyName: String,
-                                                       completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
+  func updateUserDemographicsItems<E: RawRepresentable>(items: [E],
+                                                        keyName: String,
+                                                        completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
     where E.RawValue == String {
     let mutationName = "UpdateUser\(keyName.firstCapitalized)"
       self.updateUserWithDictionary(inputDictionary: [keyName: items.map({ $0.rawValue })],
+                                    mutationName: mutationName,
+                                    completion: completion)
+  }
+
+  func updateUserDemographicsItem<E: RawRepresentable>(item: E,
+                                                       keyName: String,
+                                                       completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
+    where E.RawValue == String {
+      let mutationName = "UpdateUser\(keyName.firstCapitalized)"
+      self.updateUserWithDictionary(inputDictionary: [keyName: item.rawValue],
                                     mutationName: mutationName,
                                     completion: completion)
   }
