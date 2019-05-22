@@ -11,7 +11,6 @@ import UIKit
 class OnboardingFriendNameViewController: UIViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var continueButton: UIButton!
   
@@ -129,7 +128,6 @@ extension OnboardingFriendNameViewController {
     
     self.stackView.addSpacer(height: 10)
     let containerView = UIView()
-    
     let titleLabel = UILabel()
     titleLabel.text = "Their gender is..."
     titleLabel.textColor = R.color.primaryTextColor()

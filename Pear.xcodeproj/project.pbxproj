@@ -302,6 +302,8 @@
 		BBB71B89229553AC002CDDD1 /* UserHabitsInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B87229553AB002CDDD1 /* UserHabitsInputViewController.swift */; };
 		BBB71B8A229553AC002CDDD1 /* UserHabitsInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B88229553AC002CDDD1 /* UserHabitsInputViewController.storyboard */; };
 		BBB71B8D229558CD002CDDD1 /* UserInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B8C229558CD002CDDD1 /* UserInfoType.swift */; };
+		BBB71B8F2295644B002CDDD1 /* AgeRangeInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B8E2295644A002CDDD1 /* AgeRangeInputViewController.swift */; };
+		BBB71B9122956456002CDDD1 /* AgeRangeInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B9022956456002CDDD1 /* AgeRangeInputViewController.storyboard */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -714,6 +716,8 @@
 		BBB71B87229553AB002CDDD1 /* UserHabitsInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHabitsInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B88229553AC002CDDD1 /* UserHabitsInputViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserHabitsInputViewController.storyboard; sourceTree = "<group>"; };
 		BBB71B8C229558CD002CDDD1 /* UserInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoType.swift; sourceTree = "<group>"; };
+		BBB71B8E2295644A002CDDD1 /* AgeRangeInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRangeInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B9022956456002CDDD1 /* AgeRangeInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AgeRangeInputViewController.storyboard; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -1286,6 +1290,7 @@
 				BBB71B4E2294467B002CDDD1 /* Basic Info Table */,
 				BBB71B4F22944682002CDDD1 /* More Details Table */,
 				BBB71B682294788A002CDDD1 /* Basic Info Input */,
+				BBB71B9222956987002CDDD1 /* Age Range Input */,
 			);
 			path = "Shared Components";
 			sourceTree = "<group>";
@@ -2221,6 +2226,15 @@
 			path = "User Habits Input";
 			sourceTree = "<group>";
 		};
+		BBB71B9222956987002CDDD1 /* Age Range Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B8E2295644A002CDDD1 /* AgeRangeInputViewController.swift */,
+				BBB71B9022956456002CDDD1 /* AgeRangeInputViewController.storyboard */,
+			);
+			path = "Age Range Input";
+			sourceTree = "<group>";
+		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2937,6 +2951,7 @@
 				BBB71B762294E878002CDDD1 /* UserEthnicityInputViewController.storyboard in Resources */,
 				BBB71B6C2294793E002CDDD1 /* UserGenderInputViewController.storyboard in Resources */,
 				BBB71B8A229553AC002CDDD1 /* UserHabitsInputViewController.storyboard in Resources */,
+				BBB71B9122956456002CDDD1 /* AgeRangeInputViewController.storyboard in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBF93E5C2267CA11002841EE /* LandingScreenViewController.storyboard in Resources */,
 				BBB71B7B2295272E002CDDD1 /* UserEducationLevelInputViewController.storyboard in Resources */,
@@ -3269,6 +3284,7 @@
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,
 				BBB71B89229553AC002CDDD1 /* UserHabitsInputViewController.swift in Sources */,
 				BB9CB6AD225A11F900605A98 /* FriendEditProfileViewController.swift in Sources */,
+				BBB71B8F2295644B002CDDD1 /* AgeRangeInputViewController.swift in Sources */,
 				BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */,
 				BB17892A225D96D60033ACC6 /* ChatMainViewController.swift in Sources */,
 				BB3F4AE52233973400F99C8E /* GetStartedBirthdateViewController.swift in Sources */,

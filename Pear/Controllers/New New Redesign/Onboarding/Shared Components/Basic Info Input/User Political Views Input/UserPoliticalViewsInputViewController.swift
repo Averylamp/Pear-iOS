@@ -89,7 +89,6 @@ class UserPoliticalViewsInputViewController: UIViewController {
       case .failure(let error):
         print("Failed to update user PoliticalView: \(error)")
       }
-
     }
   }
   
