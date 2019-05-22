@@ -94,13 +94,21 @@ extension UserMoreDetailsTableViewController: UITableViewDataSource, UITableView
     }
     let item = infoItems[indexPath.row]
     cell.stylize(item: item)
+    cell.infoItemButton.tag = indexPath.row
+    cell.infoItemButton.addTarget(self, action: #selector(UserMoreDetailsTableViewController.tappedItemButton(sender:)), for: .touchUpInside)
     return cell
   }
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let infoItem = self.infoItems[indexPath.row]
+  @objc func tappedItemButton(sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    switch infoItem.type {
+    if sender.tag <  self.infoItems.count {
+      let infoItem = self.infoItems[sender.tag]
+      self.tappedItemOfType(type: infoItem.type)
+    }
+  }
+
+  func tappedItemOfType(type: UserInfoType) {
+    switch type {
     case .political:
       guard let politicalViewsVC = UserPoliticalViewsInputViewController.instantiate() else {
         print("Unable to instantiate Political Views Input")
@@ -138,14 +146,20 @@ extension UserMoreDetailsTableViewController: UITableViewDataSource, UITableView
       }
       self.navigationController?.pushViewController(userHabitInputVC, animated: true)
     case .drugs:
-        guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .drugs) else {
-          print("Unable to instantiate Habit Drugs VC")
-          return
-        }
-        self.navigationController?.pushViewController(userHabitInputVC, animated: true)
+      guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .drugs) else {
+        print("Unable to instantiate Habit Drugs VC")
+        return
+      }
+      self.navigationController?.pushViewController(userHabitInputVC, animated: true)
     default:
       break
     }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let infoItem = self.infoItems[indexPath.row]
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.tappedItemOfType(type: infoItem.type)
   }
   
 }

@@ -22,6 +22,7 @@ class InfoItemTableViewCell: UITableViewCell {
   @IBOutlet weak var subtitleLabel: UILabel!
   @IBOutlet weak var visibilityLabel: UILabel!
   @IBOutlet weak var infoImageView: UIImageView!
+  @IBOutlet weak var infoItemButton: UIButton!
   
   override func awakeFromNib() {
     super.awakeFromNib()

@@ -31,6 +31,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpw-iO-1RA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRm-cS-Ddf">
                                             <rect key="frame" x="24" y="8" width="290" height="19.5"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
@@ -65,6 +68,7 @@
                                         </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="cpw-iO-1RA" firstAttribute="width" secondItem="2XP-YT-8mC" secondAttribute="width" id="EMR-0Z-uyT"/>
                                         <constraint firstItem="uRm-cS-Ddf" firstAttribute="top" secondItem="2XP-YT-8mC" secondAttribute="top" constant="8" id="JBO-fA-3Cm"/>
                                         <constraint firstAttribute="bottom" secondItem="Wxg-GI-cZG" secondAttribute="bottom" id="LnT-Sl-Th2"/>
                                         <constraint firstItem="6Uf-Pg-bZl" firstAttribute="leading" secondItem="uRm-cS-Ddf" secondAttribute="trailing" constant="12" id="U1b-5s-dyp"/>
@@ -72,17 +76,21 @@
                                         <constraint firstItem="3ge-NQ-MU7" firstAttribute="leading" secondItem="6Uf-Pg-bZl" secondAttribute="trailing" constant="8" id="hHx-kB-nLX"/>
                                         <constraint firstAttribute="trailing" secondItem="Wxg-GI-cZG" secondAttribute="trailing" id="hX5-Gu-JeL"/>
                                         <constraint firstAttribute="trailing" secondItem="3ge-NQ-MU7" secondAttribute="trailing" constant="12" id="j9z-3S-hwr"/>
+                                        <constraint firstItem="cpw-iO-1RA" firstAttribute="centerY" secondItem="2XP-YT-8mC" secondAttribute="centerY" id="kdl-qk-jss"/>
+                                        <constraint firstItem="cpw-iO-1RA" firstAttribute="height" secondItem="2XP-YT-8mC" secondAttribute="height" id="mKa-5T-jb6"/>
                                         <constraint firstItem="5ne-1y-09a" firstAttribute="trailing" secondItem="uRm-cS-Ddf" secondAttribute="trailing" id="oXS-NR-LbF"/>
                                         <constraint firstItem="3ge-NQ-MU7" firstAttribute="centerY" secondItem="2XP-YT-8mC" secondAttribute="centerY" id="pxj-X3-GRF"/>
                                         <constraint firstItem="6Uf-Pg-bZl" firstAttribute="centerY" secondItem="3ge-NQ-MU7" secondAttribute="centerY" id="r25-AA-Bj1"/>
                                         <constraint firstItem="Wxg-GI-cZG" firstAttribute="leading" secondItem="uRm-cS-Ddf" secondAttribute="leading" id="rPS-se-CuU"/>
                                         <constraint firstItem="uRm-cS-Ddf" firstAttribute="leading" secondItem="2XP-YT-8mC" secondAttribute="leading" constant="24" id="umg-cZ-hnq"/>
                                         <constraint firstAttribute="bottom" secondItem="5ne-1y-09a" secondAttribute="bottom" constant="8" id="xv7-yN-sv6"/>
+                                        <constraint firstItem="cpw-iO-1RA" firstAttribute="centerX" secondItem="2XP-YT-8mC" secondAttribute="centerX" id="ys0-Ms-YWY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="fieldNameLabel" destination="uRm-cS-Ddf" id="DfY-KL-nbD"/>
                                     <outlet property="infoImageView" destination="3ge-NQ-MU7" id="yoW-Ft-Zjo"/>
+                                    <outlet property="infoItemButton" destination="cpw-iO-1RA" id="toE-Ta-9F6"/>
                                     <outlet property="subtitleLabel" destination="5ne-1y-09a" id="Ynz-yR-DtO"/>
                                     <outlet property="visibilityLabel" destination="6Uf-Pg-bZl" id="5ci-t6-hcB"/>
                                 </connections>
