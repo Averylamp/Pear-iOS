@@ -291,6 +291,8 @@
 		BBB71B6C2294793E002CDDD1 /* UserGenderInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B6B2294793E002CDDD1 /* UserGenderInputViewController.storyboard */; };
 		BBB71B6F22947F42002CDDD1 /* UserSchoolInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B6E22947F42002CDDD1 /* UserSchoolInputViewController.swift */; };
 		BBB71B7122947F4C002CDDD1 /* UserSchoolInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B7022947F4C002CDDD1 /* UserSchoolInputViewController.storyboard */; };
+		BBB71B742294E871002CDDD1 /* UserEthnicityInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB71B732294E871002CDDD1 /* UserEthnicityInputViewController.swift */; };
+		BBB71B762294E878002CDDD1 /* UserEthnicityInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB71B752294E878002CDDD1 /* UserEthnicityInputViewController.storyboard */; };
 		BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */; };
 		BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */; };
 		BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA573C226D9741000BCD5F /* QuestionItem.swift */; };
@@ -692,6 +694,8 @@
 		BBB71B6B2294793E002CDDD1 /* UserGenderInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserGenderInputViewController.storyboard; sourceTree = "<group>"; };
 		BBB71B6E22947F42002CDDD1 /* UserSchoolInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSchoolInputViewController.swift; sourceTree = "<group>"; };
 		BBB71B7022947F4C002CDDD1 /* UserSchoolInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserSchoolInputViewController.storyboard; sourceTree = "<group>"; };
+		BBB71B732294E871002CDDD1 /* UserEthnicityInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEthnicityInputViewController.swift; sourceTree = "<group>"; };
+		BBB71B752294E878002CDDD1 /* UserEthnicityInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserEthnicityInputViewController.storyboard; sourceTree = "<group>"; };
 		BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreationData.swift; sourceTree = "<group>"; };
 		BBBA573A226D93D6000BCD5F /* BoastRoastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoastRoastItem.swift; sourceTree = "<group>"; };
 		BBBA573C226D9741000BCD5F /* QuestionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionItem.swift; sourceTree = "<group>"; };
@@ -2126,6 +2130,7 @@
 				BBB71B6722946CE5002CDDD1 /* User Age Input */,
 				BBB71B6D22947C60002CDDD1 /* User Gender Input */,
 				BBB71B7222948C3E002CDDD1 /* User School Input */,
+				BBB71B772294E902002CDDD1 /* User Ethnicity Input */,
 			);
 			path = "Basic Info Input";
 			sourceTree = "<group>";
@@ -2146,6 +2151,15 @@
 				BBB71B7022947F4C002CDDD1 /* UserSchoolInputViewController.storyboard */,
 			);
 			path = "User School Input";
+			sourceTree = "<group>";
+		};
+		BBB71B772294E902002CDDD1 /* User Ethnicity Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBB71B732294E871002CDDD1 /* UserEthnicityInputViewController.swift */,
+				BBB71B752294E878002CDDD1 /* UserEthnicityInputViewController.storyboard */,
+			);
+			path = "User Ethnicity Input";
 			sourceTree = "<group>";
 		};
 		BBBA574C226DD5FE000BCD5F /* Input Table View */ = {
@@ -2860,6 +2874,7 @@
 				BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */,
 				BB687E89228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard in Resources */,
 				BB686E2B2210BF34008A263C /* GoogleService-Info.plist in Resources */,
+				BBB71B762294E878002CDDD1 /* UserEthnicityInputViewController.storyboard in Resources */,
 				BBB71B6C2294793E002CDDD1 /* UserGenderInputViewController.storyboard in Resources */,
 				BB986A5F220FE92100759A14 /* GetStartedSampleBiosViewController.storyboard in Resources */,
 				BBF93E5C2267CA11002841EE /* LandingScreenViewController.storyboard in Resources */,
@@ -3183,6 +3198,7 @@
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
 				BB687E5C228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift in Sources */,
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
+				BBB71B742294E871002CDDD1 /* UserEthnicityInputViewController.swift in Sources */,
 				BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */,
 				BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */,
 				BBCF418E2227DE47009CEC4A /* UITextField+Styling.swift in Sources */,

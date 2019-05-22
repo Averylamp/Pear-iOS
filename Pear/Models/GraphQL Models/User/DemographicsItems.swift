@@ -49,7 +49,6 @@ class DemographicsItem<E: RawRepresentable>: Decodable, Equatable, GraphQLDecoda
     return InfoTableViewItem(type: type,
                       subtitleText: response != nil ? response! : (type.requiredItem() ? "Required": "Optional"),
                       visibility: self.visible, filledOut: self.userHasResponded, requiredFilledOut: type.requiredItem())
-    
   }
   
   required init(from decoder: Decoder) throws {
@@ -72,7 +71,6 @@ enum EthnicityEnum: String {
   case southAsian = "SOUTH_ASIAN"
   case whiteCaucasian = "WHITE_CAUCASIAN"
   case other = "OTHER"
-  case preferNotToSay = "PREFER_NOT_TO_SAY"
   
   func toString() -> String {
     switch self {
@@ -94,9 +92,11 @@ enum EthnicityEnum: String {
       return "White/Caucasian"
     case .other:
       return "Other"
-    case .preferNotToSay:
-      return "Prefer Not To Say"
     }
+  }
+  
+  func itemKey() -> String {
+    return "ethnicity"
   }
   
 }
@@ -105,7 +105,6 @@ enum EducationLevelEnum: String {
   case highSchool = "HIGH_SCHOOL"
   case underGrad = "UNDERGRAD"
   case postGrad = "POSTGRAD"
-  case preferNotToSay = "PREFER_NOT_TO_SAY"
   
   func toString() -> String {
     switch self {
@@ -115,10 +114,13 @@ enum EducationLevelEnum: String {
       return "Undergrad"
     case .postGrad:
       return "Post Grad"
-    case .preferNotToSay:
-      return "Prefer Not To Say"
     }
   }
+  
+  func itemKey() -> String {
+    return "educationLevel"
+  }
+  
 }
 
 enum ReligionEnum: String {
@@ -132,7 +134,6 @@ enum ReligionEnum: String {
   case agnostic = "AGNOSTIC"
   case atheist = "ATHEIST"
   case other = "OTHER"
-  case preferNotToSay = "PREFER_NOT_TO_SAY"
   
   func toString() -> String {
     switch self {
@@ -156,10 +157,13 @@ enum ReligionEnum: String {
       return "Atheist"
     case .other:
       return "Other"
-    case .preferNotToSay:
-      return "Prefer Not To Say"
     }
   }
+  
+  func itemKey() -> String {
+    return "religion"
+  }
+  
 }
 
 enum PoliticsEnum: String {
@@ -167,7 +171,6 @@ enum PoliticsEnum: String {
   case moderate = "MODERATE"
   case conservative = "CONSERVATIVE"
   case other = "OTHER"
-  case preferNotToSay = "PREFER_NOT_TO_SAY"
   
   func toString() -> String {
     switch self {
@@ -179,10 +182,13 @@ enum PoliticsEnum: String {
       return "Conservative"
     case .other:
       return "Other"
-    case .preferNotToSay:
-      return "Prefer Not To Say"
     }
   }
+  
+  func itemKey() -> String {
+    return "politicalView"
+  }
+  
 }
 
 enum HabitsEnum: String {
@@ -190,7 +196,6 @@ enum HabitsEnum: String {
   case sometimes = "SOMETIMES"
   // swiftlint:disable:next identifier_name
   case no = "NO"
-  case preferNotToSay = "PREFER_NOT_TO_SAY"
   
   func toString() -> String {
     switch self {
@@ -200,8 +205,6 @@ enum HabitsEnum: String {
       return "Sometimes"
     case .no:
       return "No"
-    case .preferNotToSay:
-      return "Prefer Not To Say"
     }
   }
 }

@@ -242,6 +242,12 @@ extension UserBasicInfoTableViewController: UITableViewDataSource, UITableViewDe
         return
       }
       self.navigationController?.pushViewController(userSchoolInputVC, animated: true)
+    case .ethnicity:
+      guard let userEthnicityInputVC = UserEthnicityInputViewController.instantiate() else {
+        print("Unable to instantiate Ethnicity Input VC")
+        return
+      }
+      self.navigationController?.pushViewController(userEthnicityInputVC, animated: true)
     default:
       break
     }
