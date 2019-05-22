@@ -10,7 +10,13 @@ import UIKit
 import BSImagePicker
 import Photos
 
+protocol UpdateImagesDelegate: class {
+  func loadedAllImageContainers(imageContainers: [ImageContainer])
+}
+
 class UpdateImagesViewController: UpdateUIViewController {
+  
+  weak var imageUploadDelegate: UpdateImagesDelegate?
   
   @IBOutlet weak var collectionView: UICollectionView!
   var images: [LoadedImageContainer] = []
@@ -272,7 +278,12 @@ extension UpdateImagesViewController {
           case .success( let imageAllSizesRepresentation):
             print("Uploaded Image Successfully")
             loadingImageContainer.imageContainer = imageAllSizesRepresentation
-            
+            if let imageUploadDelegate = self.imageUploadDelegate {
+              if self.images.filter({ $0.imageContainer != nil }).count == self.images.count {
+                print("Loaded all image containers")
+                imageUploadDelegate.loadedAllImageContainers(imageContainers: self.images.compactMap({$0.imageContainer}))
+              }
+            }
           case .failure:
             print("Failed Uploading Image")
           }
