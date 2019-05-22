@@ -133,7 +133,6 @@
                         <outlet property="continueButton" destination="Lle-7C-15D" id="AJX-E3-Lq5"/>
                         <outlet property="continueButtonBottomConstraint" destination="8Ie-e8-ubu" id="5gr-qe-bZF"/>
                         <outlet property="progressBarWidthConstraint" destination="CR1-OE-ATn" id="m6k-1r-w49"/>
-                        <outlet property="scrollView" destination="Rdi-76-YbR" id="B5g-Xf-gdr"/>
                         <outlet property="stackView" destination="3nM-vV-YMj" id="ZKH-2p-q7C"/>
                         <outlet property="titleLabel" destination="FW8-ft-x22" id="hO4-7K-qpF"/>
                     </connections>

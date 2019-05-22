@@ -100,18 +100,47 @@
                                     <action selector="relationshipButtonClicked:" destination="V8r-of-G8m" eventType="touchUpInside" id="vp9-ld-htm"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NK6-Pe-Ied">
+                                <rect key="frame" x="0.0" y="94" width="414" height="616"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dsx-ta-jXx">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfJ-Kk-i5V">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="hsB-aa-7c5"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dsx-ta-jXx" firstAttribute="leading" secondItem="NK6-Pe-Ied" secondAttribute="leading" id="AkM-eI-rJY"/>
+                                    <constraint firstItem="dsx-ta-jXx" firstAttribute="width" secondItem="NK6-Pe-Ied" secondAttribute="width" id="PNM-pN-e1g"/>
+                                    <constraint firstItem="dsx-ta-jXx" firstAttribute="centerX" secondItem="NK6-Pe-Ied" secondAttribute="centerX" id="Rff-e5-QbG"/>
+                                    <constraint firstItem="dsx-ta-jXx" firstAttribute="top" secondItem="NK6-Pe-Ied" secondAttribute="top" id="ebE-HX-cbM"/>
+                                    <constraint firstAttribute="trailing" secondItem="dsx-ta-jXx" secondAttribute="trailing" id="klB-q4-R88"/>
+                                    <constraint firstAttribute="bottom" secondItem="dsx-ta-jXx" secondAttribute="bottom" id="rcr-LU-D8J"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SfR-ns-75X" firstAttribute="bottom" secondItem="PAy-41-VDh" secondAttribute="bottom" constant="20" id="1xa-Vs-A3t"/>
                             <constraint firstItem="SfR-ns-75X" firstAttribute="trailing" secondItem="PAy-41-VDh" secondAttribute="trailing" constant="20" id="7P7-G1-Hfw"/>
+                            <constraint firstItem="NK6-Pe-Ied" firstAttribute="leading" secondItem="SfR-ns-75X" secondAttribute="leading" id="Cbt-Cx-5K0"/>
                             <constraint firstItem="V7F-Za-0aN" firstAttribute="leading" secondItem="SfR-ns-75X" secondAttribute="leading" constant="20" id="TmJ-TP-W9r"/>
                             <constraint firstItem="SfR-ns-75X" firstAttribute="trailing" secondItem="V7F-Za-0aN" secondAttribute="trailing" constant="20" id="Tpc-zd-PX6"/>
                             <constraint firstItem="PAy-41-VDh" firstAttribute="top" secondItem="V7F-Za-0aN" secondAttribute="bottom" constant="12" id="U8a-Ps-akx"/>
                             <constraint firstItem="LVD-DD-vso" firstAttribute="leading" secondItem="SfR-ns-75X" secondAttribute="leading" id="XXm-Q9-6a0"/>
+                            <constraint firstItem="NK6-Pe-Ied" firstAttribute="trailing" secondItem="SfR-ns-75X" secondAttribute="trailing" id="aAr-OW-4Rg"/>
                             <constraint firstItem="LVD-DD-vso" firstAttribute="trailing" secondItem="SfR-ns-75X" secondAttribute="trailing" id="cAQ-tA-QmQ"/>
                             <constraint firstItem="LVD-DD-vso" firstAttribute="top" secondItem="SfR-ns-75X" secondAttribute="top" id="oEr-b7-vg4"/>
+                            <constraint firstItem="NK6-Pe-Ied" firstAttribute="top" secondItem="LVD-DD-vso" secondAttribute="bottom" id="qgh-xf-ifO"/>
                             <constraint firstItem="PAy-41-VDh" firstAttribute="leading" secondItem="SfR-ns-75X" secondAttribute="leading" constant="20" id="wEf-zg-ovK"/>
+                            <constraint firstItem="V7F-Za-0aN" firstAttribute="top" secondItem="NK6-Pe-Ied" secondAttribute="bottom" id="y8O-tG-DMq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SfR-ns-75X"/>
                     </view>
@@ -120,11 +149,13 @@
                         <outlet property="progressBarWidthConstraint" destination="Qvj-bo-X3Z" id="McH-Gz-L1L"/>
                         <outlet property="relationshipButton" destination="PAy-41-VDh" id="1w8-N1-Eq0"/>
                         <outlet property="relationshipButtonBottomConstraint" destination="1xa-Vs-A3t" id="fcg-sM-f4a"/>
+                        <outlet property="stackView" destination="dsx-ta-jXx" id="VVy-Bs-WIh"/>
                         <outlet property="titleLabel" destination="eJ3-gh-inb" id="D1v-kd-8ac"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19Q-nq-4Cb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
     <resources>

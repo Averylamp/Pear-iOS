@@ -92,6 +92,23 @@ extension PearUpdateUserAPI {
                                     completion: completion)
   }
   
+  func updateUserMatchingPreferences(seekingGenders: [GenderEnum],
+                                     minAge: Int,
+                                     maxAge: Int,
+                                     completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+    self.updateUserWithDictionary(inputDictionary: ["seekingGender": seekingGenders.map({ $0.rawValue }),
+                                                    "minAgeRange": minAge,
+                                                    "maxAgeRange": maxAge],
+                                  mutationName: "UpdateUserPreferences",
+                                  completion: completion)
+  }
+  
+  func updateUserIsSeeking(seeking: Bool,
+                           completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+    self.updateUserWithDictionary(inputDictionary: ["isSeeking": seeking],
+                                  mutationName: "UpdateUserSeeking",
+                                  completion: completion)
+  }
 }
 
 // MARK: - Generic Update Function
