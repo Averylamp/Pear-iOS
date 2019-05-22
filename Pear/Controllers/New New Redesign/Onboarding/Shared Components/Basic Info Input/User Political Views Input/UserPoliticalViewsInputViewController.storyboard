@@ -76,7 +76,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xUm-3I-tPi">
-                                <rect key="frame" x="6" y="106" width="198" height="265"/>
+                                <rect key="frame" x="6" y="106" width="198" height="106"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYj-qM-Ycm">
                                         <rect key="frame" x="0.0" y="0.0" width="198" height="53"/>
@@ -86,7 +86,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="f3L-ux-W8F"/>
                                                 </constraints>
-                                                <state key="normal" title="American Indian">
+                                                <state key="normal" title="Liberal">
                                                     <color key="titleColor" name="primaryTextColor"/>
                                                 </state>
                                                 <connections>
@@ -107,7 +107,7 @@
                                         <subviews>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6C-WW-WNx">
                                                 <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="East Asian">
+                                                <state key="normal" title="Conservative">
                                                     <color key="titleColor" name="primaryTextColor"/>
                                                 </state>
                                                 <connections>
@@ -123,86 +123,20 @@
                                             <constraint firstAttribute="bottom" secondItem="G6C-WW-WNx" secondAttribute="bottom" constant="4" id="FpZ-4B-yFW"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOj-8f-Bby">
-                                        <rect key="frame" x="0.0" y="106" width="198" height="53"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7k-Rq-Yoa">
-                                                <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="Middle Eastern">
-                                                    <color key="titleColor" name="primaryTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="buttonOptionClicked:" destination="35H-LN-t67" eventType="touchUpInside" id="BE4-RR-KFW"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="f7k-Rq-Yoa" firstAttribute="leading" secondItem="WOj-8f-Bby" secondAttribute="leading" id="3UT-Wu-L5y"/>
-                                            <constraint firstAttribute="bottom" secondItem="f7k-Rq-Yoa" secondAttribute="bottom" constant="4" id="K99-0S-PuC"/>
-                                            <constraint firstAttribute="trailing" secondItem="f7k-Rq-Yoa" secondAttribute="trailing" id="PAu-ux-ZwV"/>
-                                            <constraint firstItem="f7k-Rq-Yoa" firstAttribute="top" secondItem="WOj-8f-Bby" secondAttribute="top" constant="4" id="VxN-bi-Xtc"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giJ-fT-8C9">
-                                        <rect key="frame" x="0.0" y="159" width="198" height="53"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geH-Mk-s7y">
-                                                <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="South Asian">
-                                                    <color key="titleColor" name="primaryTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="buttonOptionClicked:" destination="35H-LN-t67" eventType="touchUpInside" id="9tR-dF-W36"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="geH-Mk-s7y" secondAttribute="bottom" constant="4" id="6fb-rK-59z"/>
-                                            <constraint firstItem="geH-Mk-s7y" firstAttribute="leading" secondItem="giJ-fT-8C9" secondAttribute="leading" id="L64-Or-737"/>
-                                            <constraint firstAttribute="trailing" secondItem="geH-Mk-s7y" secondAttribute="trailing" id="MD0-o4-FmY"/>
-                                            <constraint firstItem="geH-Mk-s7y" firstAttribute="top" secondItem="giJ-fT-8C9" secondAttribute="top" constant="4" id="UZe-cP-zur"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mN5-bO-JF8">
-                                        <rect key="frame" x="0.0" y="212" width="198" height="53"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imF-FZ-4kB">
-                                                <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="Other">
-                                                    <color key="titleColor" name="primaryTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="buttonOptionClicked:" destination="35H-LN-t67" eventType="touchUpInside" id="ekN-1a-nOc"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="imF-FZ-4kB" secondAttribute="trailing" id="5N6-7x-XPb"/>
-                                            <constraint firstAttribute="bottom" secondItem="imF-FZ-4kB" secondAttribute="bottom" constant="4" id="BA6-EU-kJJ"/>
-                                            <constraint firstItem="imF-FZ-4kB" firstAttribute="leading" secondItem="mN5-bO-JF8" secondAttribute="leading" id="EUk-jF-Vq0"/>
-                                            <constraint firstItem="imF-FZ-4kB" firstAttribute="top" secondItem="mN5-bO-JF8" secondAttribute="top" constant="4" id="Pei-rl-Leh"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="geH-Mk-s7y" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="41M-dX-85G"/>
                                     <constraint firstItem="G6C-WW-WNx" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="ddN-FD-Pks"/>
-                                    <constraint firstItem="imF-FZ-4kB" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="gL1-0h-vR8"/>
-                                    <constraint firstItem="f7k-Rq-Yoa" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="mcb-5q-J0k"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JgL-IO-x0v">
-                                <rect key="frame" x="210" y="106" width="198" height="265"/>
+                                <rect key="frame" x="210" y="106" width="198" height="106"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8e-YR-0V1">
                                         <rect key="frame" x="0.0" y="0.0" width="198" height="53"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qu-BS-5dW">
                                                 <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="Black/African Descent">
+                                                <state key="normal" title="Moderate">
                                                     <color key="titleColor" name="primaryTextColor"/>
                                                 </state>
                                                 <connections>
@@ -223,7 +157,7 @@
                                         <subviews>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vF-bB-bPa">
                                                 <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="Hispanic/Latino">
+                                                <state key="normal" title="Other">
                                                     <color key="titleColor" name="primaryTextColor"/>
                                                 </state>
                                                 <connections>
@@ -239,104 +173,47 @@
                                             <constraint firstItem="9vF-bB-bPa" firstAttribute="top" secondItem="Bjm-Xg-rkK" secondAttribute="top" constant="4" id="u9q-DE-0Zk"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2p-je-hCA">
-                                        <rect key="frame" x="0.0" y="106" width="198" height="53"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53Y-RJ-t8u">
-                                                <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="Pacific Islander">
-                                                    <color key="titleColor" name="primaryTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="buttonOptionClicked:" destination="35H-LN-t67" eventType="touchUpInside" id="ctc-1x-UTN"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="53Y-RJ-t8u" firstAttribute="top" secondItem="S2p-je-hCA" secondAttribute="top" constant="4" id="1I5-tS-DxW"/>
-                                            <constraint firstAttribute="bottom" secondItem="53Y-RJ-t8u" secondAttribute="bottom" constant="4" id="7zs-RD-jom"/>
-                                            <constraint firstAttribute="trailing" secondItem="53Y-RJ-t8u" secondAttribute="trailing" id="D8a-qh-7H0"/>
-                                            <constraint firstItem="53Y-RJ-t8u" firstAttribute="leading" secondItem="S2p-je-hCA" secondAttribute="leading" id="Sbk-R7-qMv"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ec-7L-6ab">
-                                        <rect key="frame" x="0.0" y="159" width="198" height="53"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etW-0N-B6Q">
-                                                <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="White/Caucasian">
-                                                    <color key="titleColor" name="primaryTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="buttonOptionClicked:" destination="35H-LN-t67" eventType="touchUpInside" id="fld-i6-EN3"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="etW-0N-B6Q" secondAttribute="bottom" constant="4" id="Cnp-8R-8h0"/>
-                                            <constraint firstItem="etW-0N-B6Q" firstAttribute="leading" secondItem="5ec-7L-6ab" secondAttribute="leading" id="EOR-VM-ISS"/>
-                                            <constraint firstAttribute="trailing" secondItem="etW-0N-B6Q" secondAttribute="trailing" id="UZn-8c-RZF"/>
-                                            <constraint firstItem="etW-0N-B6Q" firstAttribute="top" secondItem="5ec-7L-6ab" secondAttribute="top" constant="4" id="huM-8o-im3"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMx-WX-qqN">
-                                        <rect key="frame" x="0.0" y="212" width="198" height="53"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8u-cw-fhH">
-                                                <rect key="frame" x="0.0" y="4" width="198" height="45"/>
-                                                <state key="normal" title="Prefer not to say">
-                                                    <color key="titleColor" name="primaryTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="buttonOptionClicked:" destination="35H-LN-t67" eventType="touchUpInside" id="UuJ-FE-Lk1"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="P8u-cw-fhH" firstAttribute="leading" secondItem="oMx-WX-qqN" secondAttribute="leading" id="MCn-0x-DxE"/>
-                                            <constraint firstItem="P8u-cw-fhH" firstAttribute="top" secondItem="oMx-WX-qqN" secondAttribute="top" constant="4" id="OlA-II-Ul4"/>
-                                            <constraint firstAttribute="bottom" secondItem="P8u-cw-fhH" secondAttribute="bottom" constant="4" id="cTu-1f-gXn"/>
-                                            <constraint firstAttribute="trailing" secondItem="P8u-cw-fhH" secondAttribute="trailing" id="zYI-fJ-ZUA"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkO-Pz-ebz">
+                                <rect key="frame" x="6" y="220" width="402" height="45"/>
+                                <state key="normal" title="Prefer not to say">
+                                    <color key="titleColor" name="primaryTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonOptionClicked:" destination="35H-LN-t67" eventType="touchUpInside" id="BGw-uh-DFa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="P8u-cw-fhH" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="2Qa-f8-uvD"/>
                             <constraint firstItem="zC3-vS-Kyp" firstAttribute="leading" secondItem="z6h-gj-gMY" secondAttribute="leading" id="2Wx-8D-dOQ"/>
+                            <constraint firstItem="CkO-Pz-ebz" firstAttribute="trailing" secondItem="JgL-IO-x0v" secondAttribute="trailing" id="4Tt-pq-Kpn"/>
                             <constraint firstItem="z6h-gj-gMY" firstAttribute="trailing" secondItem="JgL-IO-x0v" secondAttribute="trailing" constant="6" id="5yp-eL-5g6"/>
                             <constraint firstItem="JgL-IO-x0v" firstAttribute="leading" secondItem="xUm-3I-tPi" secondAttribute="trailing" constant="6" id="FAD-33-aZE"/>
-                            <constraint firstItem="etW-0N-B6Q" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="MGc-Xu-coE"/>
+                            <constraint firstItem="CkO-Pz-ebz" firstAttribute="centerX" secondItem="z6h-gj-gMY" secondAttribute="centerX" id="FFp-I4-bZv"/>
+                            <constraint firstItem="CkO-Pz-ebz" firstAttribute="top" secondItem="xUm-3I-tPi" secondAttribute="bottom" constant="8" id="FNH-Dj-MSL"/>
                             <constraint firstItem="9vF-bB-bPa" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="Tn2-VW-oqg"/>
                             <constraint firstItem="xUm-3I-tPi" firstAttribute="top" secondItem="zC3-vS-Kyp" secondAttribute="bottom" constant="12" id="UL9-0o-3b1"/>
                             <constraint firstItem="xUm-3I-tPi" firstAttribute="leading" secondItem="z6h-gj-gMY" secondAttribute="leading" constant="6" id="XsN-37-98d"/>
                             <constraint firstItem="JgL-IO-x0v" firstAttribute="width" secondItem="xUm-3I-tPi" secondAttribute="width" id="cO0-QI-3d9"/>
                             <constraint firstItem="4Qu-BS-5dW" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="gb7-vB-dhx"/>
+                            <constraint firstItem="CkO-Pz-ebz" firstAttribute="leading" secondItem="xUm-3I-tPi" secondAttribute="leading" id="oDb-ht-3MW"/>
                             <constraint firstItem="JgL-IO-x0v" firstAttribute="top" secondItem="xUm-3I-tPi" secondAttribute="top" id="pAf-lu-FQ7"/>
+                            <constraint firstItem="CkO-Pz-ebz" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="rR2-Fp-fAY"/>
                             <constraint firstItem="zC3-vS-Kyp" firstAttribute="trailing" secondItem="z6h-gj-gMY" secondAttribute="trailing" id="sR4-Tz-itQ"/>
-                            <constraint firstItem="53Y-RJ-t8u" firstAttribute="height" secondItem="XNI-OF-7RW" secondAttribute="height" id="tJG-jm-PLE"/>
                             <constraint firstItem="zC3-vS-Kyp" firstAttribute="top" secondItem="z6h-gj-gMY" secondAttribute="top" id="uyl-uV-WOk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z6h-gj-gMY"/>
                     </view>
                     <connections>
-                        <outlet property="noAnswerButton" destination="P8u-cw-fhH" id="Pob-dR-Zk4"/>
+                        <outlet property="noAnswerButton" destination="CkO-Pz-ebz" id="3ny-QF-5bE"/>
                         <outlet property="titleLabel" destination="ZOr-h0-xcA" id="zYN-RF-cMo"/>
                         <outletCollection property="optionButtons" destination="G6C-WW-WNx" collectionClass="NSMutableArray" id="ldN-hI-kev"/>
-                        <outletCollection property="optionButtons" destination="f7k-Rq-Yoa" collectionClass="NSMutableArray" id="a6y-0X-LKu"/>
-                        <outletCollection property="optionButtons" destination="geH-Mk-s7y" collectionClass="NSMutableArray" id="gAh-fV-QXy"/>
-                        <outletCollection property="optionButtons" destination="imF-FZ-4kB" collectionClass="NSMutableArray" id="bVf-al-ipS"/>
                         <outletCollection property="optionButtons" destination="4Qu-BS-5dW" collectionClass="NSMutableArray" id="uqo-uv-vs0"/>
                         <outletCollection property="optionButtons" destination="9vF-bB-bPa" collectionClass="NSMutableArray" id="HEH-K6-36G"/>
-                        <outletCollection property="optionButtons" destination="53Y-RJ-t8u" collectionClass="NSMutableArray" id="21n-kr-6VU"/>
-                        <outletCollection property="optionButtons" destination="etW-0N-B6Q" collectionClass="NSMutableArray" id="FLs-Rc-rKn"/>
-                        <outletCollection property="optionButtons" destination="P8u-cw-fhH" collectionClass="NSMutableArray" id="A4j-R4-yRC"/>
                         <outletCollection property="optionButtons" destination="XNI-OF-7RW" collectionClass="NSMutableArray" id="igy-MZ-ViF"/>
+                        <outletCollection property="optionButtons" destination="CkO-Pz-ebz" collectionClass="NSMutableArray" id="FsL-H2-I0S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfA-8S-UiB" userLabel="First Responder" sceneMemberID="firstResponder"/>

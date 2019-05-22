@@ -12,10 +12,10 @@ class UserPoliticalViewsInputViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   
-  @IBOutlet var optionButtons: [UIButton]!
+  @IBOutlet var optionButtons: [UIButton]!t
   @IBOutlet weak var noAnswerButton: UIButton!
   
-  var allowsMultipleSelection: Bool = true
+  var allowsMultipleSelection: Bool = false
   
   /// Factory method for creating this view controller.
   ///
@@ -54,47 +54,37 @@ class UserPoliticalViewsInputViewController: UIViewController {
   }
   
   func updateUser() {
-    var updatedEthnicities: [EthnicityEnum] = []
+    var updatedPoliticalView: PoliticsEnum = .preferNotToSay
     self.optionButtons.filter({ $0.isSelected}).forEach({
       switch $0.tag {
       case 0:
-        updatedEthnicities.append(.americanIndian)
+        updatedPoliticalView = .liberal
       case 1:
-        updatedEthnicities.append(.blackAfrican)
+        updatedPoliticalView = .moderate
       case 2:
-        updatedEthnicities.append(.eastAsian)
+        updatedPoliticalView = .conservative
       case 3:
-        updatedEthnicities.append(.hispanicLatino)
+        updatedPoliticalView = .other
       case 4:
-        updatedEthnicities.append(.middleEastern)
-      case 5:
-        updatedEthnicities.append(.pacificIslander)
-      case 6:
-        updatedEthnicities.append(.southAsian)
-      case 7:
-        updatedEthnicities.append(.whiteCaucasian)
-      case 8:
-        updatedEthnicities.append(.other)
-      case 9:
-        updatedEthnicities = []
+        updatedPoliticalView = .preferNotToSay
       default:
-        break
+        updatedPoliticalView = .preferNotToSay
       }
     })
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
-      updatedEthnicities = []
+      updatedPoliticalView = .preferNotToSay
     }
-    DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.responses = updatedEthnicities
-    PearUpdateUserAPI.shared.updateUserDemographicsItems(items: updatedEthnicities, keyName: "ethnicity") { (result) in
+    DataStore.shared.currentPearUser?.matchingDemographics.politicalView.responses = [updatedPoliticalView]
+    PearUpdateUserAPI.shared.updateUserDemographicsItem(item: updatedPoliticalView, keyName: "politicalView") { (result) in
       switch result {
       case .success(let successful):
         if successful {
-          print("Successfully update user ethnicity")
+          print("Successfully update user PoliticalView")
         } else {
-          print("Failed to update user ethnicity")
+          print("Failed to update user PoliticalView")
         }
       case .failure(let error):
-        print("Failed to update user ethnicity: \(error)")
+        print("Failed to update user PoliticalView: \(error)")
       }
 
     }
@@ -127,7 +117,7 @@ extension UserPoliticalViewsInputViewController {
   }
   
   func setup() {
-    guard let ethnicities = DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.responses else {
+    guard let ethnicities = DataStore.shared.currentPearUser?.matchingDemographics.politicalView.responses else {
       print("Current User not Found")
       return
     }
@@ -137,24 +127,16 @@ extension UserPoliticalViewsInputViewController {
       ethnicities.forEach({
         var buttonTag = -1
         switch $0 {
-        case .americanIndian:
+        case .liberal:
           buttonTag = 0
-        case .blackAfrican:
+        case .moderate:
           buttonTag = 1
-        case .eastAsian:
+        case .conservative:
           buttonTag = 2
-        case .hispanicLatino:
-          buttonTag = 3
-        case .middleEastern:
-          buttonTag = 4
-        case .pacificIslander:
-          buttonTag = 5
-        case .southAsian:
-          buttonTag = 6
-        case .whiteCaucasian:
-          buttonTag = 7
         case .other:
-          buttonTag = 8
+          buttonTag = 3
+        case .preferNotToSay:
+          buttonTag = 4
         }
         if let button = self.optionButtons.filter({ $0.tag == buttonTag }).first {
           self.buttonOptionClicked(button)

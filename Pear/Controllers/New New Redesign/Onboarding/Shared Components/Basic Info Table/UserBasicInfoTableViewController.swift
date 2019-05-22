@@ -180,7 +180,6 @@ extension UserBasicInfoTableViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    print("Appearing")
     self.updateWithUser()
     self.tableView.reloadData()
   }
