@@ -90,6 +90,7 @@ extension OnboardingFriendNameViewController {
     self.stylize()
     self.setPreviousPageProgress()
     self.addKeyboardDismissOnTap()
+    self.addKeyboardNotifications(animated: true)
   }
   
   override func viewDidAppear(_ animated: Bool) {

@@ -90,7 +90,7 @@ extension UserGenderInputViewController {
     self.genderButtons.forEach({
       $0.setTitleColor(R.color.primaryTextColor(), for: .normal)
       $0.setTitleColor(UIColor.white, for: .selected)
-      $0.layer.cornerRadius = 20.0
+      $0.layer.cornerRadius = $0.frame.height / 2.0
       $0.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
       if let font = R.font.openSansBold(size: 14.0) {
         $0.titleLabel?.font = font
