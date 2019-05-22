@@ -105,6 +105,7 @@ enum EducationLevelEnum: String {
   case highSchool = "HIGH_SCHOOL"
   case underGrad = "UNDERGRAD"
   case postGrad = "POSTGRAD"
+  case preferNotToSay = "PREFER_NOT_TO_SAY"
   
   func toString() -> String {
     switch self {
@@ -114,6 +115,8 @@ enum EducationLevelEnum: String {
       return "Undergrad"
     case .postGrad:
       return "Post Grad"
+    case .preferNotToSay:
+      return "Prefer not to say"
     }
   }
   
@@ -171,6 +174,7 @@ enum PoliticsEnum: String {
   case moderate = "MODERATE"
   case conservative = "CONSERVATIVE"
   case other = "OTHER"
+  case preferNotToSay = "PREFER_NOT_TO_SAY"
   
   func toString() -> String {
     switch self {
@@ -182,6 +186,8 @@ enum PoliticsEnum: String {
       return "Conservative"
     case .other:
       return "Other"
+    case .preferNotToSay:
+      return "Prefer not to say"
     }
   }
   
@@ -196,7 +202,8 @@ enum HabitsEnum: String {
   case sometimes = "SOMETIMES"
   // swiftlint:disable:next identifier_name
   case no = "NO"
-  
+  case preferNotToSay = "PREFER_NOT_TO_SAY"
+
   func toString() -> String {
     switch self {
     case .yes:
@@ -205,6 +212,8 @@ enum HabitsEnum: String {
       return "Sometimes"
     case .no:
       return "No"
+    case .preferNotToSay:
+      return "Prefer not to say"
     }
   }
 }

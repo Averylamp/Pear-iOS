@@ -64,13 +64,13 @@ class UserEducationLevelInputViewController: UIViewController {
       case 2:
         educationLevel = .postGrad
       case 3:
-        educationLevel = .highSchool
+        educationLevel = .preferNotToSay
       default:
         break
       }
     })
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
-      educationLevel = .highSchool
+      educationLevel = .preferNotToSay
     }
     
     DataStore.shared.currentPearUser?.matchingDemographics.educationLevel.responses = [educationLevel]
@@ -132,6 +132,8 @@ extension UserEducationLevelInputViewController {
           buttonTag = 1
         case .postGrad:
           buttonTag = 2
+        case .preferNotToSay:
+          buttonTag = 3
         }
         if let button = self.optionButtons.filter({ $0.tag == buttonTag }).first {
           self.buttonOptionClicked(button)

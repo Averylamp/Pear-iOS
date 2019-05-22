@@ -59,6 +59,12 @@ extension UserMoreDetailsTableViewController {
     self.setup()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.updateWithUser()
+    self.tableView.reloadData()
+  }
+  
   func stylize() {
     
   }
