@@ -43,12 +43,12 @@ class UserSchoolInputViewController: UIViewController {
                                                 switch result {
                                                 case .success(let successful):
                                                   if successful {
-                                                    print("Successfully update user schoo")
+                                                    print("Successfully update user school")
                                                   } else {
-                                                    print("Failed to update user schoo")
+                                                    print("Failed to update user school")
                                                   }
                                                 case .failure(let error):
-                                                  print("Failed to update user schoo: \(error)")
+                                                  print("Failed to update user school: \(error)")
                                                 }
     }
   }
