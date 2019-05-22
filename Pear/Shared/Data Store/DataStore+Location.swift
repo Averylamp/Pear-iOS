@@ -79,7 +79,6 @@ extension DataStore: CLLocationManagerDelegate {
       } else {
         foundWithin = milesDistance <= 200.0
       }
-      foundWithin = false
       if !foundWithin {
         let whitelistedNumbersData = DataStore.shared.remoteConfig.configValue(forKey: "whitelisted_phone_numbers").dataValue
         if let whitelistedNumbersArray = try? JSON(data: whitelistedNumbersData).array,
