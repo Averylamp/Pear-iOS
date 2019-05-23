@@ -1475,8 +1475,8 @@
 		BB687E57228D535C00F45C9D /* Location Blocked */ = {
 			isa = PBXGroup;
 			children = (
-				BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */,
 				BB687E53228D535600F45C9D /* LocationBlockedViewController.swift */,
+				BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */,
 			);
 			path = "Location Blocked";
 			sourceTree = "<group>";
