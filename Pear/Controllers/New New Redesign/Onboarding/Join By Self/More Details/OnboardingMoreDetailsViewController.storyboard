@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g00-N2-Y3s">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-ExtraBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboarding More Details View Controller-->
+        <scene sceneID="dKt-BE-80c">
+            <objects>
+                <viewController id="g00-N2-Y3s" customClass="OnboardingMoreDetailsViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zxv-dX-B25">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFK-ly-Lsc" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-OE-Ycn">
+                                        <rect key="frame" x="8" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="D80-gf-V5g"/>
+                                            <constraint firstAttribute="height" constant="40" id="Of4-og-6t5"/>
+                                        </constraints>
+                                        <state key="normal" image="onboarding-back-button"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="g00-N2-Y3s" eventType="touchUpInside" id="zth-iQ-JqD"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add more details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CV2-Ip-Jva">
+                                        <rect key="frame" x="60" y="8.5" width="294" height="33"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jf6-ZF-VCQ" userLabel="BorderLine">
+                                        <rect key="frame" x="0.0" y="48" width="414" height="2"/>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="n1O-BQ-eXJ"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1p-WT-hhp" userLabel="Progress Bar">
+                                        <rect key="frame" x="0.0" y="48" width="0.0" height="2"/>
+                                        <color key="backgroundColor" name="primaryBrandColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="CjF-l4-g8A"/>
+                                            <constraint firstAttribute="width" id="dEM-Se-HuK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="CV2-Ip-Jva" firstAttribute="leading" secondItem="pw4-OE-Ycn" secondAttribute="trailing" constant="12" id="6Rp-xk-gJg"/>
+                                    <constraint firstAttribute="trailing" secondItem="jf6-ZF-VCQ" secondAttribute="trailing" id="7tt-VJ-60R"/>
+                                    <constraint firstAttribute="height" constant="50" id="AWj-qJ-Xqh"/>
+                                    <constraint firstItem="jf6-ZF-VCQ" firstAttribute="leading" secondItem="sFK-ly-Lsc" secondAttribute="leading" id="Dyy-KA-hga"/>
+                                    <constraint firstItem="CV2-Ip-Jva" firstAttribute="centerX" secondItem="sFK-ly-Lsc" secondAttribute="centerX" id="Irk-y6-eUs"/>
+                                    <constraint firstItem="CV2-Ip-Jva" firstAttribute="centerY" secondItem="sFK-ly-Lsc" secondAttribute="centerY" id="LWX-BY-btg"/>
+                                    <constraint firstItem="CV2-Ip-Jva" firstAttribute="centerY" secondItem="pw4-OE-Ycn" secondAttribute="centerY" id="Xkv-1s-n7a"/>
+                                    <constraint firstAttribute="bottom" secondItem="jf6-ZF-VCQ" secondAttribute="bottom" id="XtD-2j-B9W"/>
+                                    <constraint firstItem="pw4-OE-Ycn" firstAttribute="leading" secondItem="sFK-ly-Lsc" secondAttribute="leading" constant="8" id="azl-oW-eYD"/>
+                                    <constraint firstItem="c1p-WT-hhp" firstAttribute="centerY" secondItem="jf6-ZF-VCQ" secondAttribute="centerY" id="uaX-X7-VPR"/>
+                                    <constraint firstItem="c1p-WT-hhp" firstAttribute="leading" secondItem="jf6-ZF-VCQ" secondAttribute="leading" id="xTJ-c7-wd9"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfp-3g-wmX">
+                                <rect key="frame" x="20" y="782" width="374" height="60"/>
+                                <color key="backgroundColor" name="primaryBrandColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="sF1-dT-Cso"/>
+                                </constraints>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonClicked:" destination="g00-N2-Y3s" eventType="touchUpInside" id="dTX-lM-M0D"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bfp-3g-wmX" firstAttribute="leading" secondItem="P0Y-rQ-nug" secondAttribute="leading" constant="20" id="1mJ-jf-CPa"/>
+                            <constraint firstItem="sFK-ly-Lsc" firstAttribute="leading" secondItem="P0Y-rQ-nug" secondAttribute="leading" id="3vA-yZ-YbZ"/>
+                            <constraint firstItem="P0Y-rQ-nug" firstAttribute="trailing" secondItem="bfp-3g-wmX" secondAttribute="trailing" constant="20" id="Xk4-dT-3Xi"/>
+                            <constraint firstItem="sFK-ly-Lsc" firstAttribute="top" secondItem="P0Y-rQ-nug" secondAttribute="top" id="j4T-2c-GHm"/>
+                            <constraint firstItem="P0Y-rQ-nug" firstAttribute="bottom" secondItem="bfp-3g-wmX" secondAttribute="bottom" constant="20" id="waY-oT-FNs"/>
+                            <constraint firstItem="sFK-ly-Lsc" firstAttribute="trailing" secondItem="P0Y-rQ-nug" secondAttribute="trailing" id="x6K-to-YN9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="P0Y-rQ-nug"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="bfp-3g-wmX" id="wWb-2v-gH1"/>
+                        <outlet property="continueButtonBottomConstraint" destination="waY-oT-FNs" id="ejp-ZX-WMl"/>
+                        <outlet property="headerView" destination="sFK-ly-Lsc" id="cUe-HF-uZC"/>
+                        <outlet property="progressBarWidthConstraint" destination="dEM-Se-HuK" id="l7K-L6-Nix"/>
+                        <outlet property="titleLabel" destination="CV2-Ip-Jva" id="nge-7H-Ol5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wkt-N4-hqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
+        <namedColor name="primaryBrandColor">
+            <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

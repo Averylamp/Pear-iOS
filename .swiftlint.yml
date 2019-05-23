@@ -3,6 +3,7 @@
 disabled_rules: 
   - trailing_whitespace
   - todo
+  - discarded_notification_center_observer
 excluded:
   - Pods**
   - R.generated.swift

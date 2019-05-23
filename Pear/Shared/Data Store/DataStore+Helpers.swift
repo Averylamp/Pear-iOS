@@ -42,7 +42,7 @@ extension DataStore {
         completion(compareVersionArrays(a: deviceVersionArr, b: [minVersion, minMajor, minMinor]))
       } else if deviceVersionArr.count == 2 {
         if deviceVersionArr[1] > minMajor && deviceVersionArr[0] > minVersion ||
-           deviceVersionArr[0] > minVersion {
+          deviceVersionArr[0] > minVersion {
           completion(true)
         } else {
           completion(true)
@@ -115,40 +115,39 @@ extension DataStore {
         PearUserAPI.shared.getUser(uid: authTokens.uid,
                                    token: authTokens.token,
                                    completion: { (result) in
-            switch result {
-            case .success(let pearUser):
-              print("Got Existing Pear User \(String(describing: pearUser))")
-              DataStore.shared.currentPearUser = pearUser
-              DataStore.shared.reloadAllUserData()
-              Crashlytics.sharedInstance().setUserEmail(pearUser.email)
-              Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
-              Crashlytics.sharedInstance().setUserName(pearUser.fullName)
-              Client.shared?.extra = [
-                "email": pearUser.email ?? "",
-                "phoneNumber": pearUser.phoneNumber ?? "",
-                "firebaseAuthID": pearUser.firebaseAuthID!,
-                "fullName": pearUser.fullName ?? "",
-                "userDocumentID": pearUser.documentID!
-              ]
-              trace?.incrementMetric("Existing User Found", by: 1)
-              trace?.stop()
-              DataStore.shared.updateLatestLocationAndToken()
-              if let completion = completion {
-                completion(pearUser)
-              }
-              return
-            case .failure(let error):
-              print("Error getting Pear User: \(error)")
-              trace?.incrementMetric("No Existing User Found", by: 1)
-              trace?.stop()
-              if let completion = completion {
-                completion(nil)
-              }
-              return
-            }
+                                    switch result {
+                                    case .success(let pearUser):
+                                      DataStore.shared.currentPearUser = pearUser
+                                      DataStore.shared.reloadAllUserData()
+                                      Crashlytics.sharedInstance().setUserEmail(pearUser.email)
+                                      Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
+                                      Crashlytics.sharedInstance().setUserName(pearUser.fullName)
+                                      Client.shared?.extra = [
+                                        "email": pearUser.email ?? "",
+                                        "phoneNumber": pearUser.phoneNumber ?? "",
+                                        "firebaseAuthID": pearUser.firebaseAuthID!,
+                                        "fullName": pearUser.fullName ?? "",
+                                        "userDocumentID": pearUser.documentID!
+                                      ]
+                                      trace?.incrementMetric("Existing User Found", by: 1)
+                                      trace?.stop()
+                                      DataStore.shared.updateLatestLocationAndToken()
+                                      if let completion = completion {
+                                        completion(pearUser)
+                                      }
+                                      return
+                                    case .failure(let error):
+                                      print("Error getting Pear User: \(error)")
+                                      trace?.incrementMetric("No Existing User Found", by: 1)
+                                      trace?.stop()
+                                      if let completion = completion {
+                                        completion(nil)
+                                      }
+                                      return
+                                    }
         })
       case .failure(let error):
-        print("Failure getting Tokens: \(error)")
+        print("Could not find existing tokens: \(error)")
         if let completion = completion {
           completion(nil)
         }
@@ -156,7 +155,7 @@ extension DataStore {
       }
     }
   }
-
+  
   func refreshCurrentMatches(matchRequestsFound: (([Match]) -> Void)?) {
     self.fetchUIDToken { (result) in
       switch result {
@@ -224,23 +223,33 @@ extension DataStore {
   }
   
   func updateLatestLocationAndToken() {
-    print("***UPDATING LATEST LOCATION AND TOKEN IF USER EXISTS***")
-    if let user = DataStore.shared.currentPearUser {
-      print("***UPDATING LATEST LOCATION AND TOKEN***")
-      var updates: [String: Any] = [:]
-      if let remoteInstanceID = DataStore.shared.firebaseRemoteInstanceID {
-        updates["firebaseRemoteInstanceID"] = remoteInstanceID
-      }
-      if let lastLocation = DataStore.shared.lastLocation {
-        var coordinates: [Double] = []
-        coordinates.append(lastLocation.longitude)
-        coordinates.append(lastLocation.latitude)
-        updates["location"] = coordinates
-        print("inserting location into update object")
-      }
-      PearUserAPI.shared.updateUser(userID: user.documentID, updates: updates) { (result) in
-        print("attempted to update location and remote instance ID")
-        print(result)
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Unable to update locaiton or token for not logged in user")
+      return
+    }
+    
+    var updates: [String: Any] = [:]
+    if let remoteInstanceID = DataStore.shared.firebaseRemoteInstanceID {
+      updates["firebaseRemoteInstanceID"] = remoteInstanceID
+    }
+    if let lastLocation = DataStore.shared.locationManager.location?.coordinate {
+      var coordinates: [Double] = []
+      coordinates.append(lastLocation.longitude)
+      coordinates.append(lastLocation.latitude)
+      updates["location"] = coordinates
+      
+    }
+    PearUserAPI.shared.updateUser(userID: userID, updates: updates) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Updated User Location and Firebase Remote Instance ID")
+          print(updates)
+        } else {
+          print("** Unsuccessful User Locaiton and Remote ID Update \n\(updates)")
+        }
+      case .failure(let error):
+        print("** Unsuccessful User Locaiton and Remote ID Update \n\(updates)\nerror:\(error)")
       }
       
     }
@@ -288,25 +297,6 @@ extension DataStore {
         print("Failure getting auth tokens: \(error)")
       }
     }
-    
-  }
-  
-  func getNotificationAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
-    UNUserNotificationCenter.current().getNotificationSettings { settings in
-      print("Notification settings: \(settings)")
-      completion(settings.authorizationStatus)
-    }
-  }
-  
-  func registerForRemoteNotificationsIfAuthorized() {
-    UNUserNotificationCenter.current().getNotificationSettings { settings in
-      print("Notification settings: \(settings)")
-      guard settings.authorizationStatus == .authorized else { return }
-      print("registering for remote notifications")
-      DispatchQueue.main.async {
-        UIApplication.shared.registerForRemoteNotifications()
-      }
-    }
   }
   
   func hasUpdatedPreferences() -> Bool {
@@ -345,7 +335,6 @@ extension DataStore {
         print("Error retrieving questions:\(error)")
       }
     }
-
   }
   
   func getWaitlistNumber(completion: @escaping (Int) -> Void) {
@@ -381,7 +370,6 @@ extension DataStore {
         }
       }
       dataTask.resume()
-      
     }
     
   }

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7C8-uY-LH3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-ExtraBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Allow Notifications View Controller-->
+        <scene sceneID="SQd-gY-DAl">
+            <objects>
+                <viewController id="7C8-uY-LH3" customClass="AllowNotificationsViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dhf-Ww-eqW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="836-W6-BBr" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eop-IM-ZXN">
+                                        <rect key="frame" x="89.5" y="8.5" width="196" height="33"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans ExtraBold" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-FR-pGY" userLabel="BorderLine">
+                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="vVg-1k-oEc"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHh-mX-Klx">
+                                        <rect key="frame" x="329" y="8" width="34" height="34"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                        <state key="normal" title="Skip">
+                                            <color key="titleColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="skipNotificationsClicked:" destination="7C8-uY-LH3" eventType="touchUpInside" id="XcQ-Sl-11S"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Omx-FR-pGY" firstAttribute="leading" secondItem="836-W6-BBr" secondAttribute="leading" id="15E-Sq-azw"/>
+                                    <constraint firstAttribute="trailing" secondItem="XHh-mX-Klx" secondAttribute="trailing" constant="12" id="784-C2-OzA"/>
+                                    <constraint firstItem="eop-IM-ZXN" firstAttribute="centerY" secondItem="836-W6-BBr" secondAttribute="centerY" id="7qv-dP-0bC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Omx-FR-pGY" secondAttribute="trailing" id="Uw7-zg-IVK"/>
+                                    <constraint firstItem="eop-IM-ZXN" firstAttribute="centerX" secondItem="836-W6-BBr" secondAttribute="centerX" id="dVp-pM-eRA"/>
+                                    <constraint firstItem="XHh-mX-Klx" firstAttribute="centerY" secondItem="eop-IM-ZXN" secondAttribute="centerY" id="dsv-a3-8Fn"/>
+                                    <constraint firstAttribute="bottom" secondItem="Omx-FR-pGY" secondAttribute="bottom" id="frO-TJ-62O"/>
+                                    <constraint firstAttribute="height" constant="50" id="idE-Vg-rGc"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeZ-3u-AV7">
+                                <rect key="frame" x="20" y="597" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oKj-rn-4d9"/>
+                                </constraints>
+                                <state key="normal" title="Enable Notifications"/>
+                                <connections>
+                                    <action selector="enableNotificationsClicked:" destination="7C8-uY-LH3" eventType="touchUpInside" id="wXv-PR-eZL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't miss out" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-Nb-Mnw">
+                                <rect key="frame" x="50" y="315.5" width="275" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-icon-notifications" translatesAutoresizingMaskIntoConstraints="NO" id="hWp-0I-cGw">
+                                <rect key="frame" x="157.5" y="243.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="8WZ-cv-itc"/>
+                                    <constraint firstAttribute="width" secondItem="hWp-0I-cGw" secondAttribute="height" multiplier="1:1" id="VKO-V9-JLP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hWp-0I-cGw" firstAttribute="centerX" secondItem="N0W-Nb-Mnw" secondAttribute="centerX" id="13W-zf-TJL"/>
+                            <constraint firstItem="N0W-Nb-Mnw" firstAttribute="centerX" secondItem="EOZ-30-Rb8" secondAttribute="centerX" id="9pw-xy-1T0"/>
+                            <constraint firstAttribute="trailing" secondItem="836-W6-BBr" secondAttribute="trailing" id="B0V-aX-tFJ"/>
+                            <constraint firstItem="EOZ-30-Rb8" firstAttribute="trailing" secondItem="N0W-Nb-Mnw" secondAttribute="trailing" constant="50" id="BNt-O7-8hd"/>
+                            <constraint firstItem="EOZ-30-Rb8" firstAttribute="trailing" secondItem="WeZ-3u-AV7" secondAttribute="trailing" constant="20" id="E3r-wr-NXT"/>
+                            <constraint firstItem="EOZ-30-Rb8" firstAttribute="bottom" secondItem="WeZ-3u-AV7" secondAttribute="bottom" constant="20" id="IjB-A1-Blu"/>
+                            <constraint firstItem="N0W-Nb-Mnw" firstAttribute="top" secondItem="hWp-0I-cGw" secondAttribute="bottom" constant="12" id="Rui-It-oGr"/>
+                            <constraint firstItem="836-W6-BBr" firstAttribute="leading" secondItem="dhf-Ww-eqW" secondAttribute="leading" id="bhb-j8-mAB"/>
+                            <constraint firstItem="836-W6-BBr" firstAttribute="top" secondItem="EOZ-30-Rb8" secondAttribute="top" id="gIU-Hh-axf"/>
+                            <constraint firstItem="hWp-0I-cGw" firstAttribute="centerY" secondItem="EOZ-30-Rb8" secondAttribute="centerY" constant="-70" id="psk-sy-bWZ"/>
+                            <constraint firstItem="WeZ-3u-AV7" firstAttribute="leading" secondItem="EOZ-30-Rb8" secondAttribute="leading" constant="20" id="u9j-Ba-zmb"/>
+                            <constraint firstItem="N0W-Nb-Mnw" firstAttribute="leading" secondItem="EOZ-30-Rb8" secondAttribute="leading" constant="50" id="uH6-Dy-Eod"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EOZ-30-Rb8"/>
+                    </view>
+                    <connections>
+                        <outlet property="enableNotificationsButton" destination="WeZ-3u-AV7" id="h3F-2y-gVN"/>
+                        <outlet property="subtitleLabel" destination="N0W-Nb-Mnw" id="e2r-XZ-icO"/>
+                        <outlet property="titleLabel" destination="eop-IM-ZXN" id="YA0-XN-fgc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zL-tp-1QW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-icon-notifications" width="512" height="512"/>
+    </resources>
+</document>

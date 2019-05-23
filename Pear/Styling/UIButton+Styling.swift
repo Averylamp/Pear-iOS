@@ -9,6 +9,18 @@
 import Foundation
 import UIKit
 
+// MARK: - Onboarding
+extension UIButton {
+  func stylizeOnboardingContinueButton() {
+    self.backgroundColor = R.color.primaryBrandColor()
+    self.setTitleColor(UIColor.white, for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+    self.layer.cornerRadius = 12
+  }
+}
+
 extension UIButton {
   
   func addButtonShadow() {
@@ -20,10 +32,10 @@ extension UIButton {
   
   func stylizeDark() {
     self.addButtonShadow()
-    self.backgroundColor = R.color.brandPrimaryLight()!
+    self.backgroundColor = R.color.primaryBrandColor()!
     self.layer.cornerRadius = self.frame.height / 2.0
     self.layer.borderWidth = 2
-    self.layer.borderColor = R.color.brandPrimaryDark()!.cgColor
+    self.layer.borderColor = R.color.primaryBrandColor()!.cgColor
     self.setTitleColor(UIColor.white, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
   }
@@ -79,7 +91,7 @@ extension UIButton {
     self.layer.shadowOffset = CGSize(width: 1, height: 1)
     self.layer.shadowOpacity = 1.0
     self.setTitleColor(StylingConfig.textFontColor, for: .normal)
-    self.setTitleColor(R.color.brandPrimaryDark()!, for: .normal)
+    self.setTitleColor(R.color.primaryBrandColor()!, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
     self.layer.borderWidth = 0
   }
@@ -92,10 +104,10 @@ extension UIButton {
     self.layer.shadowOffset = CGSize(width: 1, height: 1)
     self.layer.shadowOpacity = 1.0
     self.setTitleColor(StylingConfig.textFontColor, for: .normal)
-    self.setTitleColor(R.color.brandPrimaryDark()!, for: .normal)
+    self.setTitleColor(R.color.primaryBrandColor()!, for: .normal)
     self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
     
-    self.layer.borderColor = R.color.brandPrimaryLight()?.cgColor
+    self.layer.borderColor = R.color.primaryBrandColor()?.cgColor
     self.layer.borderWidth = 2
   }
   

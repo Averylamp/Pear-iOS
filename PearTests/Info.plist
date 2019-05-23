@@ -17,6 +17,10 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
+<<<<<<< HEAD
+	<string>106</string>
+=======
 	<string>109</string>
+>>>>>>> 1.0.13
 </dict>
 </plist>

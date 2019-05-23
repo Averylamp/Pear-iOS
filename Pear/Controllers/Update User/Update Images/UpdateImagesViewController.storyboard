@@ -87,7 +87,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-add-image-dotted-rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="OLq-Tw-DQH">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="update-user-add-image-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="OLq-Tw-DQH">
                                                     <rect key="frame" x="10" y="10" width="100" height="100"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gh9-6R-Xbp">
@@ -134,7 +134,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-add-image-dotted-rectangle" width="330" height="330"/>
         <image name="onboarding-close-button" width="120" height="120"/>
+        <image name="update-user-add-image-placeholder" width="330" height="330"/>
     </resources>
 </document>
