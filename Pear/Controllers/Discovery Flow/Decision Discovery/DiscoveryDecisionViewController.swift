@@ -180,7 +180,7 @@ extension DiscoveryDecisionViewController {
   
 }
 
-// MARK: onboarding overlays
+// MARK: Onboarding Overlays
 extension DiscoveryDecisionViewController {
   
   func createOverlay(frame: CGRect,
