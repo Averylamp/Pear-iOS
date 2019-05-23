@@ -113,6 +113,10 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
       DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
       DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
     }
+    if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
+      index > 0 {
+      self.setTabBarVisible(visible: true, duration: 0.3, animated: true)
+    }
   }
   
 }
