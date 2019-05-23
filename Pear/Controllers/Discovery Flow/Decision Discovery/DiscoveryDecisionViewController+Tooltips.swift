@@ -57,27 +57,31 @@ extension DiscoveryDecisionViewController {
       ])
     
     // add number icons
-    var image1 = R.image.unselected1()
-    if stepNumber == 1 {
-      image1 = R.image.selected1()
-    }
-    let imageView1 = UIImageView(image: image1?.imageWith(newSize: CGSize(width: 24, height: 24)))
+    let imageView1 = UIImageView(image: stepNumber == 1 ? R.image.selected1(): R.image.unselected1())
     imageView1.translatesAutoresizingMaskIntoConstraints = false
     overlayView.addSubview(imageView1)
+    imageView1.addConstraints([
+      NSLayoutConstraint(item: imageView1, attribute: .width, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24.0),
+      NSLayoutConstraint(item: imageView1, attribute: .height, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24.0)
+      ])
     overlayView.addConstraints([
       NSLayoutConstraint(item: imageView1, attribute: .bottom, relatedBy: .equal,
                          toItem: labelView, attribute: .top, multiplier: 1.0, constant: -10),
       NSLayoutConstraint(item: imageView1, attribute: .left, relatedBy: .equal,
-                         toItem: labelView, attribute: .left, multiplier: 1.0, constant: 0)
+                         toItem: labelView, attribute: .left, multiplier: 1.0, constant: 0),
       ])
     
-    var image2 = R.image.unselected2()
-    if stepNumber == 2 {
-      image2 = R.image.selected2()
-    }
-    let imageView2 = UIImageView(image: image2?.imageWith(newSize: CGSize(width: 24, height: 24)))
+    let imageView2 = UIImageView(image: stepNumber == 2 ? R.image.selected2(): R.image.unselected2())
     imageView2.translatesAutoresizingMaskIntoConstraints = false
     overlayView.addSubview(imageView2)
+    imageView2.addConstraints([
+      NSLayoutConstraint(item: imageView2, attribute: .width, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24.0),
+      NSLayoutConstraint(item: imageView2, attribute: .height, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24.0)
+      ])
     overlayView.addConstraints([
       NSLayoutConstraint(item: imageView2, attribute: .bottom, relatedBy: .equal,
                          toItem: labelView, attribute: .top, multiplier: 1.0, constant: -10),
@@ -85,13 +89,15 @@ extension DiscoveryDecisionViewController {
                          toItem: imageView1, attribute: .right, multiplier: 1.0, constant: 7)
       ])
     
-    var image3 = R.image.unselected3()
-    if stepNumber == 3 {
-      image3 = R.image.selected3()
-    }
-    let imageView3 = UIImageView(image: image3?.imageWith(newSize: CGSize(width: 24, height: 24)))
+    let imageView3 = UIImageView(image: stepNumber == 3 ? R.image.selected3() : R.image.unselected3())
     imageView3.translatesAutoresizingMaskIntoConstraints = false
     overlayView.addSubview(imageView3)
+    imageView3.addConstraints([
+      NSLayoutConstraint(item: imageView3, attribute: .width, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24.0),
+      NSLayoutConstraint(item: imageView3, attribute: .height, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24.0)
+      ])
     overlayView.addConstraints([
       NSLayoutConstraint(item: imageView3, attribute: .bottom, relatedBy: .equal,
                          toItem: labelView, attribute: .top, multiplier: 1.0, constant: -10),
@@ -116,7 +122,7 @@ extension DiscoveryDecisionViewController {
       likeOverlay.addGestureRecognizer(gesture)
       self.view.addSubview(likeOverlay)
       likeOverlay.alpha = 0.0
-      UIView.animate(withDuration: 0.4, animations: {
+      UIView.animate(withDuration: 0.6, animations: {
         likeOverlay.alpha = 1.0
       })
     }
@@ -137,7 +143,7 @@ extension DiscoveryDecisionViewController {
         pearOverlay.addGestureRecognizer(gesture)
         pearOverlay.alpha = 0.0
         self.view.addSubview(pearOverlay)
-        UIView.animate(withDuration: 0.4, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
           pearOverlay.alpha = 1.0
           likeOverlay.alpha = 0.0
         }, completion: { (_) in
@@ -162,7 +168,7 @@ extension DiscoveryDecisionViewController {
         skipOverlay.addGestureRecognizer(gesture)
         self.view.addSubview(skipOverlay)
         skipOverlay.alpha = 0.0
-        UIView.animate(withDuration: 0.4, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
           pearOverlay.alpha = 0.0
           skipOverlay.alpha = 1.0
         }, completion: { (_) in
