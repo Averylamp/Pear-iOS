@@ -52,7 +52,7 @@ extension ProfileDemographicsViewController {
         self.nameLabel.text = "\(firstName)"
       }
     } else {
-      self.nameLabel.text = "¯\\_(ツ)_/¯"
+      self.nameLabel.text = "Name Hidden"
     }
     
     for vibe in self.vibes {
