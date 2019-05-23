@@ -19,22 +19,24 @@ class MainTabBarViewController: UITabBarController {
       if let discoverVC = DiscoveryDecisionViewController.instantiate(),
         let regularImage = R.image.tabIconDiscovery(),
         let selectedImage = R.image.tabIconDiscoverySelected() {
-        discoverVC.tabBarItem = UITabBarItem(title: "Discover",
+        discoverVC.tabBarItem = UITabBarItem(title: nil,
                                              image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal),
                                              selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal))
+        discoverVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
         mainTabVC.addChild(discoverVC)
       }
     } else {
       if let discoverVC = DiscoverySetupViewController.instantiate(),
         let regularImage = R.image.tabIconDiscovery(),
         let selectedImage = R.image.tabIconDiscoverySelected() {
-        discoverVC.tabBarItem = UITabBarItem(title: "Discover",
+        discoverVC.tabBarItem = UITabBarItem(title: nil,
                                              image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal),
                                              selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal))
+        discoverVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
         mainTabVC.addChild(discoverVC)
       }
     }
@@ -43,12 +45,12 @@ class MainTabBarViewController: UITabBarController {
     if let chatTabVC = ChatMainViewController.instantiate(),
       let regularImage = R.image.tabIconChat(),
       let selectedImage = R.image.tabIconChatSelected() {
-      chatTabVC.tabBarItem = UITabBarItem(title: "Chat",
+      chatTabVC.tabBarItem = UITabBarItem(title: nil,
                                              image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal),
                                              selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal))
-      
+      chatTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(chatTabVC)
     }
     
@@ -56,12 +58,12 @@ class MainTabBarViewController: UITabBarController {
     if let friendsTabVC = FriendsTabViewController.instantiate(),
       let regularImage = R.image.tabIconFriends(),
       let selectedImage = R.image.tabIconFriendsSelected() {
-      friendsTabVC.tabBarItem = UITabBarItem(title: "Friends",
+      friendsTabVC.tabBarItem = UITabBarItem(title: nil,
                                              image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal),
                                              selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                               .withRenderingMode(.alwaysOriginal))
-      
+      friendsTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(friendsTabVC)
     }
     
@@ -69,11 +71,12 @@ class MainTabBarViewController: UITabBarController {
     if let meTabVC = MeTabViewController.instantiate(),
       let regularImage = R.image.tabIconYou(),
       let selectedImage = R.image.tabIconYouSelected() {
-      meTabVC.tabBarItem =  UITabBarItem(title: "Me",
+      meTabVC.tabBarItem =  UITabBarItem(title: nil,
                                          image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                           .withRenderingMode(.alwaysOriginal),
                                          selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
                                           .withRenderingMode(.alwaysOriginal))
+      meTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(meTabVC)
     }
     
@@ -88,6 +91,11 @@ extension MainTabBarViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.delegate = self
+    self.stylize()
+  }
+  
+  func stylize() {
+    self.tabBar.barTintColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
   }
   
 }

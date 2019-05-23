@@ -19,6 +19,7 @@ extension DataStore {
     case notFilteringForDetachedProfiles
     case hasCreatedUser
     case hasCompletedOnboarding
+    case hasCompletedDiscoveryOnboarding
     case hasBeenInBostonArea
   }
   
