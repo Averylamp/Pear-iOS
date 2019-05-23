@@ -9,7 +9,7 @@
 import Foundation
 class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable {
   static func graphQLAllFields() -> String {
-    return "{ _id creatorUser_id creatorFirstName firstName lastName phoneNumber age gender bio \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) images \(ImageContainer.graphQLImageFields) matchingPreferences \(MatchingPreferences.graphQLMatchingPreferencesFields) matchingDemographics \(MatchingDemographics.graphQLMatchingDemographicsFields) school schoolYear }"
+    return "{ _id creatorUser_id creatorFirstName firstName lastName phoneNumber age gender bio \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) images \(ImageContainer.graphQLAllFields()) matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) school schoolYear }"
   }
   
   var documentID: String!

@@ -354,7 +354,7 @@ private extension OldLandingScreenViewController {
             self.userGraphRequest(gettingStartedUser: gettingStartedUser,
                                   permissions: permissions,
                                   completion: { (fbGraphFilledGSUser  ) in
-                if let location = DataStore.shared.lastLocation {
+                if let location = DataStore.shared.locationManager.location?.coordinate {
                   fbGraphFilledGSUser.lastLocation = location
                 }
                 DispatchQueue.main.async {

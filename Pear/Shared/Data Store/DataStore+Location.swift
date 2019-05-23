@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftyJSON
 
 extension DataStore: CLLocationManagerDelegate {
   
@@ -25,24 +26,20 @@ extension DataStore: CLLocationManagerDelegate {
       return
     }
     // Configure and start the service.
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-    self.locationManager.distanceFilter = 2000.0  // In meters.
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+    self.locationManager.distanceFilter = 100.0  // In meters.
     self.locationManager.startUpdatingLocation()
     
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("UPDATED LOCATION")
     if let location = locations.last {
-      self.lastLocation = location.coordinate
-      if let locationDelegate = self.delegate {
+      if let locationDelegate = self.locationDelegate {
         if !self.firstLocationReceived {
           locationDelegate.firstLocationReceived(location: location.coordinate)
           self.firstLocationReceived = true
         }
       }
-      // [Brian] hmm usually by this point, on the first location update we haven't actually retrieved the pear user, so this will no-op
-      DataStore.shared.updateLatestLocationAndToken()
     }
   }
   
@@ -54,7 +51,7 @@ extension DataStore: CLLocationManagerDelegate {
   }
   
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-    if let locationDelegate = self.delegate {
+    if let locationDelegate = self.locationDelegate {
       locationDelegate.authorizationStatusChanged(status: status)
     }
   }
@@ -70,4 +67,35 @@ extension DataStore: CLLocationManagerDelegate {
       return false
     }
   }
+  
+  func withinBostonArea(completion: (Bool?) -> Void) {
+    if let lastLocation = locationManager.location?.coordinate,
+      DataStore.shared.remoteConfig.configValue(forKey: "location_blocking_enabled").boolValue {
+      let bostonLocation = CLLocationCoordinate2D(latitude: 42.362485733571845, longitude: -71.1014485358899)
+      let milesDistance = bostonLocation.distanceMiles(other: lastLocation)
+      var foundWithin = false
+      if let milesFromBoston = DataStore.shared.remoteConfig.configValue(forKey: "distance_from_boston").numberValue?.doubleValue {
+        foundWithin = milesDistance <= milesFromBoston
+      } else {
+        foundWithin = milesDistance <= 200.0
+      }
+      if !foundWithin {
+        let whitelistedNumbersData = DataStore.shared.remoteConfig.configValue(forKey: "whitelisted_phone_numbers").dataValue
+        if let whitelistedNumbersArray = try? JSON(data: whitelistedNumbersData).array,
+          let userPhoneNumber = DataStore.shared.currentPearUser?.phoneNumber {
+          let whitelistedNumbersStringArray = whitelistedNumbersArray.compactMap({ $0.string })
+          print(whitelistedNumbersStringArray)
+          if whitelistedNumbersStringArray.contains(userPhoneNumber) {
+            foundWithin = true
+          }
+        } else {
+          print("failed to find whitelisted numbers")
+        }
+      }
+      completion(foundWithin)
+      return
+    }
+    completion(nil)
+  }
+  
 }

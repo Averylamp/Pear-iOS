@@ -37,52 +37,14 @@ extension LoadingScreenViewController {
     DataStore.shared.reloadRemoteConfig { (_) in
       DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
         if !versionIsSufficient && DataStore.shared.remoteConfig.configValue(forKey: "version_blocking_enabled").boolValue {
-          self.continueToVersionBlockScreen()
+          self.continueToVersionBlockingScreen()
         } else {
           DataStore.shared.refreshPearUser(completion: { (pearUser) in
             if let pearUser = pearUser {
-              if pearUser.endorsedUserIDs.count + pearUser.detachedProfileIDs.count  == 0 {
-                DataStore.shared.currentPearUser = pearUser
-                DispatchQueue.main.async {
-                  if let contactPermissionVC = LoadingScreenViewController.getProfileCreationVC() {
-                    print("Creating permissions VC")
-                    self.navigationController?.setViewControllers([contactPermissionVC], animated: true)
-                    return
-                  } else {
-                    self.continueToLandingScreen()
-                  }
-                }
-                return
-              }
-              print("pear user refreshed")
-              DataStore.shared.getNotificationAuthorizationStatus { status in
-                if status == .notDetermined {
-                  // user exists but notification auth status undetermined (likely reinstalled the app?), so prompt again
-                  if let allowNotificationsVC = AllowNotificationsViewController.instantiate() {
-                    DispatchQueue.main.async {
-                      self.navigationController?.pushViewController(allowNotificationsVC, animated: true)
-                    }
-                  } else {
-                    print("Failed to create Allow Notifications VC")
-                    self.continueToMainScreen()
-                  }
-                } else {
-                  let locationAuthStatus = CLLocationManager.authorizationStatus()
-                  if locationAuthStatus == .authorizedWhenInUse || locationAuthStatus == .authorizedAlways {
-                    self.continueToMainScreen()
-                  } else {
-                    guard let allowLocationVC = AllowLocationViewController.instantiate() else {
-                      print("Failed to create Allow Location VC")
-                      return
-                    }
-                    DispatchQueue.main.async {
-                      self.navigationController?.pushViewController(allowLocationVC, animated: true)
-                    }
-                  }
-                }
-              }
+              DataStore.shared.currentPearUser = pearUser
+              self.continueToNotificationOrNext()
             } else {
-              self.continueToLandingScreen()
+              self.continueToLandingPage()
             }
           })
         }
@@ -90,106 +52,14 @@ extension LoadingScreenViewController {
     }
   }
   
-  static func getVersionBlockScreen() -> UIViewController? {
-    guard let versionBlockVC = VersionBlockViewController.instantiate() else {
-      print("Failed to create Version Block VC")
-      return nil
-    }
-    return versionBlockVC
-  }
-  
-  func continueToVersionBlockScreen() {
-    print("Continuing to version block screen")
-    DispatchQueue.main.async {
-      if let versionBlockVC = LoadingScreenViewController.getVersionBlockScreen() {
-        self.navigationController?.setViewControllers([versionBlockVC], animated: true)
-      } else {
-        print("couldn't create version block VC")
-      }
-    }
-  }
-  
-  static func getLandingScreen() -> UIViewController? {
-    #if DEVMODE
-    guard let landingScreenVC = LandingScreenViewController.instantiate() else {
-      print("Failed to create Landing Screen VC")
-      return nil
-    }
-    return landingScreenVC
-    #else
-    if DataStore.shared.remoteConfig.configValue(forKey: "pineapple_waitlist_enabled").boolValue {
-      guard let landingScreenVC = LandingScreenWaitlistViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
-        return nil
-      }
-      return landingScreenVC
-    } else {
-      guard let landingScreenVC = LandingScreenViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
-        return nil
-      }
-      return landingScreenVC
-    }
-    #endif
-  }
-  
-  func continueToLandingScreen() {
-    print("Continuing to Landing Screen")
-    DispatchQueue.main.async {
-      if let landingVC = LoadingScreenViewController.getLandingScreen() {
-        self.navigationController?.setViewControllers([landingVC], animated: true)
-      }
-    }
-  }
-  
   static func getMainScreenVC() -> UIViewController? {
-    if DataStore.shared.remoteConfig.configValue(forKey: "waitlist_enabled").boolValue {
-      guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
-        print("Failed to create Waitlist VC")
-        return nil
-      }
-      return waitlistVC
-    } else if DataStore.shared.remoteConfig.configValue(forKey: "pineapple_waitlist_enabled_all_users").boolValue {
-      guard let landingScreenVC = LandingScreenWaitlistViewController.instantiate() else {
-        print("Failed to create Landing Screen VC")
-        return nil
-      }
-      return landingScreenVC
-    } else {
-      guard let mainVC = MainTabBarViewController.instantiate() else {
-        print("Failed to create Simple Discovery VC")
-        return nil
-      }
-      return mainVC
-    }
-  }
-  
-  static func getWaitlistVC() -> UIViewController? {
-    guard let waitlistVC = GetStartedWaitlistViewController.instantiate() else {
-      print("Failed to create Landing Screen VC")
+    guard let mainVC = MainTabBarViewController.instantiate() else {
+      print("Failed to create Simple Discovery VC")
       return nil
     }
-    return waitlistVC
+    return mainVC
   }
   
-  static func getProfileCreationVC() -> UIViewController? {
-    guard let profileCreationVC = UserContactPermissionsViewController.instantiate() else {
-      print("Failed to instantiate contacts enabled VC")
-      return nil
-    }
-    return profileCreationVC
-  }
-  
-  func continueToMainScreen() {
-    print("Continuing to Main Screen")
-    DispatchQueue.main.async {
-      DataStore.shared.reloadAllUserData()
-      if let mainVC = LoadingScreenViewController.getMainScreenVC() {
-        self.navigationController?.setViewControllers([mainVC], animated: true)
-      }
-    }
-  }
-    
   func testImageUpload() {
     if let testImage = UIImage(named: "sample-profile-brooke-1") {
       let testUserID = "5c82162afec46c84e924a332"
@@ -348,4 +218,8 @@ extension LoadingScreenViewController {
     }
   }
   
+}
+
+extension LoadingScreenViewController: PermissionsFlowProtocol {
+  // No-Op
 }

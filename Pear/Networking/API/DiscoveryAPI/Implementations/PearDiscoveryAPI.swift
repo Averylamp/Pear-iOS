@@ -34,7 +34,7 @@ extension PearDiscoveryAPI {
       "last": last
     ]
     do {
-      let request = try APIHelpers.getRequestWith(query: PearDiscoveryAPI.getDiscoveryFeedQuery,
+      let (request, fullDictionary) = try APIHelpers.getRequestWith(query: PearDiscoveryAPI.getDiscoveryFeedQuery,
                                               variables: variables)
       let dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
         if let error = error {
@@ -100,7 +100,7 @@ extension PearDiscoveryAPI {
       "discoveryItem_id": discoveryItemID
     ]
     do {
-      let request = try APIHelpers.getRequestWith(query: PearDiscoveryAPI.skipDiscoveryItemMutation,
+      let (request, fullDictionary) = try APIHelpers.getRequestWith(query: PearDiscoveryAPI.skipDiscoveryItemMutation,
                                                   variables: variables)
       let dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
         if let error = error {
@@ -122,7 +122,7 @@ extension PearDiscoveryAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: variables)
+                                             paylod: fullDictionary)
             completion(.failure(DiscoveryAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create Match Request: \(message ?? "")")
@@ -132,7 +132,7 @@ extension PearDiscoveryAPI {
                                              message: message ?? "Unknown message",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: variables)
+                                             paylod: fullDictionary)
             completion(.failure(DiscoveryAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Skip Discovery Item Message: \(String(describing: message))")
