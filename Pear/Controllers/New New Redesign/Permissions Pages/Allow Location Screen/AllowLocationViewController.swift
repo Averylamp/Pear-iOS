@@ -40,8 +40,6 @@ class AllowLocationViewController: UIViewController {
         let alert = UIAlertController(title: "Location Required",
                                       message: "Location is required, please enable Location in the Settings app.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Go to Settings now", style: .default, handler: { (_: UIAlertAction) in
-          print("")
-          
           UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: { (finished) in
             print(finished)
             print("Finished")

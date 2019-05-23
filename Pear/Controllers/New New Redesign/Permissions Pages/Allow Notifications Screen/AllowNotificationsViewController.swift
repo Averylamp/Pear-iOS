@@ -37,6 +37,16 @@ class AllowNotificationsViewController: UIViewController {
           self.continueToOnboardingOrMain()
         }
     }
+    DataStore.shared.getNotificationAuthorizationStatus { (status) in
+      if status == .denied {
+        DispatchQueue.main.async {
+          UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: { (finished) in
+            print(finished)
+            print("Finished")
+          })
+        }
+      }
+    }
     
   }
   
@@ -61,6 +71,14 @@ extension AllowNotificationsViewController {
   func stylize() {
     self.titleLabel.stylizeUserSignupTitleLabel()
     self.subtitleLabel.stylizeUserSignupSubtitleLabel()
+    self.enableNotificationsButton.stylizeDark()
+    DataStore.shared.getNotificationAuthorizationStatus { (status) in
+      if status == .denied {
+        DispatchQueue.main.async {
+          self.enableNotificationsButton.setTitle("Open Settings", for: .normal)
+        }
+      }
+    }
   }
   
 }
