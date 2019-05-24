@@ -19,6 +19,15 @@ extension UIButton {
     }
     self.layer.cornerRadius = 12
   }
+  
+  func stylizeSaveToProfileButton() {
+    self.backgroundColor = R.color.primaryBrandColor()
+    self.setTitleColor(UIColor.white, for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+    self.layer.cornerRadius = 12
+  }
 }
 
 extension UIButton {
