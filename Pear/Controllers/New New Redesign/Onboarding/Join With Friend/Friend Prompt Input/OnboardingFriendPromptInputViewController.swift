@@ -24,6 +24,7 @@ class OnboardingFriendPromptInputViewController: UIViewController {
   var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
   var friendFirstName: String!
   var friendGender: GenderEnum!
+  var answeredPrompts: [QuestionResponseItem] = []
   
   /// Factory method for creating this view controller.
   ///
@@ -75,8 +76,8 @@ extension OnboardingFriendPromptInputViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.stylize()
     self.setup()
+    self.stylize()
     self.setPreviousPageProgress()
   }
   
@@ -90,7 +91,92 @@ extension OnboardingFriendPromptInputViewController {
   }
   
   func setup() {
+    self.setupStackView()
+  }
+  
+  func setupStackView() {
+    if self.answeredPrompts.count < 3 {
+      for index in 0..<(3 - self.answeredPrompts.count) {
+        self.addPromptButton(number: self.answeredPrompts.count + index + 1)
+      }
+    }
+  }
+  
+  func addPromptButton(number: Int? = nil) {
+    let containerButton = UIButton()
+    containerButton.translatesAutoresizingMaskIntoConstraints = false
+    containerButton.addTarget(self, action: #selector(OnboardingFriendPromptInputViewController.promptResponsePickerVC), for: .touchUpInside)
+    let cardView = UIView()
+    cardView.isUserInteractionEnabled = false
+    cardView.translatesAutoresizingMaskIntoConstraints = false
+    containerButton.addSubview(cardView)
+    cardView.layer.cornerRadius = 12
+    cardView.layer.borderWidth = 2.0
+    cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
     
+    containerButton.addConstraints([
+      NSLayoutConstraint(item: cardView, attribute: .left, relatedBy: .equal,
+                         toItem: containerButton, attribute: .left, multiplier: 1.0, constant: 20.0),
+      NSLayoutConstraint(item: cardView, attribute: .right, relatedBy: .equal,
+                         toItem: containerButton, attribute: .right, multiplier: 1.0, constant: -20.0),
+      NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .equal,
+                         toItem: containerButton, attribute: .top, multiplier: 1.0, constant: 6.0),
+      NSLayoutConstraint(item: cardView, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerButton, attribute: .bottom, multiplier: 1.0, constant: -6.0)
+      ])
+    
+    let promptLabel = UILabel()
+    promptLabel.translatesAutoresizingMaskIntoConstraints = false
+    if let font = R.font.openSansBold(size: 18.0) {
+      promptLabel.font = font
+    }
+    if let number = number {
+      promptLabel.text = "Answer prompt #\(number)"
+      promptLabel.textColor = R.color.primaryTextColor()
+    } else {
+      promptLabel.text = "Add another"
+      promptLabel.textColor = UIColor(red: 0.29, green: 0.86, blue: 0.52, alpha: 1.00)
+    }
+    promptLabel.addConstraint(NSLayoutConstraint(item: promptLabel, attribute: .height, relatedBy: .equal,
+                                                 toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0))
+    cardView.addSubview(promptLabel)
+    cardView.addConstraints([
+      NSLayoutConstraint(item: promptLabel, attribute: .top, relatedBy: .equal,
+                         toItem: cardView, attribute: .top, multiplier: 1.0, constant: 4.0),
+      NSLayoutConstraint(item: promptLabel, attribute: .left, relatedBy: .equal,
+                         toItem: cardView, attribute: .left, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: promptLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: cardView, attribute: .bottom, multiplier: 1.0, constant: -4.0)
+      ])
+    
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    cardView.addSubview(imageView)
+    cardView.addConstraints([
+      NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
+                         toItem: imageView, attribute: .left, multiplier: 1.0, constant: 4.0),
+      NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal,
+                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal,
+                         toItem: cardView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 26.0),
+      NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 26.0)
+      ])
+    
+    self.stackView.addArrangedSubview(containerButton)
+  }
+  
+  @objc func promptResponsePickerVC() {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let promptResponseVC = PromptInputViewController.instantiate(prompts: DataStore.shared.possibleQuestions) else {
+      print("Prompt response VC")
+      return
+    }
+    let navigationController = UINavigationController(rootViewController: promptResponseVC)
+    navigationController.isNavigationBarHidden = true
+    self.present(navigationController, animated: true, completion: nil)
   }
   
 }

@@ -275,6 +275,8 @@
 		BBA8AE952297D63A003F1D79 /* PromptInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */; };
 		BBA8AE972297D646003F1D79 /* PromptInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */; };
 		BBA8AE9A2297D731003F1D79 /* PromptInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */; };
+		BBA8AE9C2297F97E003F1D79 /* PromptInputResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE9B2297F97E003F1D79 /* PromptInputResponseViewController.swift */; };
+		BBA8AE9E2297F986003F1D79 /* PromptInputResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA8AE9D2297F986003F1D79 /* PromptInputResponseViewController.storyboard */; };
 		BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0957227009D20095F27E /* ContentAPI.swift */; };
 		BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095A22700A770095F27E /* PearContentAPI.swift */; };
 		BBAC095E22700B900095F27E /* GraphQLDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */; };
@@ -695,6 +697,8 @@
 		BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputViewController.swift; sourceTree = "<group>"; };
 		BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptInputViewController.storyboard; sourceTree = "<group>"; };
 		BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputTableViewCell.swift; sourceTree = "<group>"; };
+		BBA8AE9B2297F97E003F1D79 /* PromptInputResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputResponseViewController.swift; sourceTree = "<group>"; };
+		BBA8AE9D2297F986003F1D79 /* PromptInputResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptInputResponseViewController.storyboard; sourceTree = "<group>"; };
 		BBAC0957227009D20095F27E /* ContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAPI.swift; sourceTree = "<group>"; };
 		BBAC095A22700A770095F27E /* PearContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearContentAPI.swift; sourceTree = "<group>"; };
 		BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDecodable.swift; sourceTree = "<group>"; };
@@ -2055,6 +2059,8 @@
 				BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */,
 				BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */,
 				BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */,
+				BBA8AE9B2297F97E003F1D79 /* PromptInputResponseViewController.swift */,
+				BBA8AE9D2297F986003F1D79 /* PromptInputResponseViewController.storyboard */,
 			);
 			path = "Prompt Input";
 			sourceTree = "<group>";
@@ -2931,6 +2937,7 @@
 				BB687E75228D717000F45C9D /* OnboardingFriendNameViewController.storyboard in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
+				BBA8AE9E2297F986003F1D79 /* PromptInputResponseViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
 				BBB71B7E2295273A002CDDD1 /* UserReligionInputViewController.storyboard in Resources */,
 				BB51524B228BE2D20094670A /* UserEmailInfoViewController.storyboard in Resources */,
@@ -3401,6 +3408,7 @@
 				917F20C22271701C0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
+				BBA8AE9C2297F97E003F1D79 /* PromptInputResponseViewController.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
 				BB687E6F228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift in Sources */,
 				917F20CC22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift in Sources */,

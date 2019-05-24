@@ -79,13 +79,30 @@
                                 <rect key="frame" x="0.0" y="94" width="375" height="684"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="LPF-tx-3E5">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromptInputTVC" rowHeight="87" id="LPF-tx-3E5" customClass="PromptInputTableViewCell" customModule="Pear" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LPF-tx-3E5" id="7ge-gw-bjD">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQN-yn-KD9">
+                                                    <rect key="frame" x="35" y="17" width="305" height="53"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yQN-yn-KD9" firstAttribute="top" secondItem="7ge-gw-bjD" secondAttribute="topMargin" constant="6" id="1Ai-oZ-tKK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yQN-yn-KD9" secondAttribute="bottom" constant="6" id="c10-sx-CAW"/>
+                                                <constraint firstItem="yQN-yn-KD9" firstAttribute="leading" secondItem="7ge-gw-bjD" secondAttribute="leadingMargin" constant="20" id="ggh-O3-z3f"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yQN-yn-KD9" secondAttribute="trailing" constant="20" id="t6M-Xw-gUE"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="promptLabel" destination="yQN-yn-KD9" id="aTn-H4-l8y"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -103,12 +120,13 @@
                         <viewLayoutGuide key="safeArea" id="KC3-Aj-Han"/>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="VhR-0w-UTH" id="kQb-h8-Fd0"/>
                         <outlet property="titleLabel" destination="4XK-tI-l81" id="NGA-TS-QSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWB-c7-TKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352" y="100"/>
+            <point key="canvasLocation" x="351.19999999999999" y="99.753694581280797"/>
         </scene>
     </scenes>
     <resources>
