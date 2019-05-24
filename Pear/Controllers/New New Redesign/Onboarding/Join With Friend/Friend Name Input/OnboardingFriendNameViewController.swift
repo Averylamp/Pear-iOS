@@ -58,11 +58,12 @@ class OnboardingFriendNameViewController: UIViewController {
       return
     }
     
-    guard let friendInfoVC = OnboardingFriendInfoViewController.instantiate(friendFirstName: friendFirstName, friendGender: friendsGender) else {
+    guard let friendPromptInputVC = OnboardingFriendPromptInputViewController
+      .instantiate(friendFirstName: friendFirstName, gender: friendsGender) else {
       print("Failed to instantiate friend info VC")
       return
     }
-    self.navigationController?.pushViewController(friendInfoVC, animated: true)
+    self.navigationController?.pushViewController(friendPromptInputVC, animated: true)
 
   }
   
@@ -215,11 +216,11 @@ extension OnboardingFriendNameViewController: ProgressBarProtocol {
   }
   
   var progressBarCurrentPage: Int {
-    return 1
+    return 2
   }
   
   var progressBarTotalPages: Int {
-    return 2
+    return 3
   }
 }
 

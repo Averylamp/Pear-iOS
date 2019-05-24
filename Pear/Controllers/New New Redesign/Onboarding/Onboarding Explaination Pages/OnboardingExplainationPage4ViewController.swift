@@ -28,11 +28,11 @@ class OnboardingExplainationPage4ViewController: UIViewController {
   
   @IBAction func joinWithFriendClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let joinFriendNameVC = OnboardingFriendNameViewController.instantiate() else {
+    guard let joinFriendInfoVC = OnboardingFriendInfoViewController.instantiate() else {
       print("Failed to create next Onboarding Info Page")
       return
     }
-    self.navigationController?.pushViewController(joinFriendNameVC, animated: true)
+    self.navigationController?.pushViewController(joinFriendInfoVC, animated: true)
   }
   
   @IBAction func joinBySelfClicked(_ sender: Any) {
