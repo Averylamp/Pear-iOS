@@ -117,6 +117,7 @@
                         <outlet property="questionResponseLabel" destination="lWI-2X-ToF" id="jgC-hJ-43o"/>
                         <outlet property="questionTitleLabel" destination="5zZ-9h-xas" id="TiT-7T-hXg"/>
                         <outlet property="stackView" destination="Jfe-sz-G5s" id="Q0U-5k-YaK"/>
+                        <outlet property="thumbnailImage" destination="zjY-va-XYJ" id="Weh-XA-JkG"/>
                         <outlet property="writtenByImageView" destination="zjY-va-XYJ" id="Bf9-Ny-ApE"/>
                         <outlet property="writtenByLabel" destination="qA7-dW-gG6" id="pgl-9N-Xm8"/>
                     </connections>
@@ -127,7 +128,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="writtenByThumbnailPlaceholder" width="600" height="600"/>
+        <image name="writtenByThumbnailPlaceholder" width="200" height="200"/>
         <namedColor name="primaryTextColor">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

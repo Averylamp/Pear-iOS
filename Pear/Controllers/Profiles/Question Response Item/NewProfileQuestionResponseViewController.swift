@@ -15,6 +15,7 @@ class NewProfileQuestionResponseViewController: UIViewController {
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var questionTitleLabel: UILabel!
   @IBOutlet weak var questionResponseLabel: UILabel!
+  @IBOutlet weak var thumbnailImage: UIImageView!
   
   var questionItem: QuestionResponseItem!
   
@@ -49,6 +50,11 @@ extension NewProfileQuestionResponseViewController {
     self.writtenByLabel.text = questionItem.authorFirstName
     self.questionTitleLabel.text = questionItem.question.questionText
     self.questionResponseLabel.text = questionItem.responseBody
+    if let authorThumbnailURL = self.questionItem.authorThumbnailURL,
+      let thumbnailImage = self.thumbnailImage,
+      let imageURL = URL(string: authorThumbnailURL) {
+      thumbnailImage.sd_setImage(with: imageURL, completed: nil)
+    }
   }
   
 }

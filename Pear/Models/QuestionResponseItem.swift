@@ -11,6 +11,7 @@ enum QuestionResponseItemKey: String, CodingKey {
   case documentID = "_id"
   case authorID = "author_id"
   case authorFirstName
+  case authorThumbnailURL
   case questionID = "question_id"
   case question
   case responseBody
@@ -31,6 +32,7 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
                                                 icon: icon) {
       copyItem.authorID = authorID
       copyItem.authorFirstName = authorFirstName
+      copyItem.authorThumbnailURL = authorThumbnailURL
       return copyItem
     }
     fatalError("Can't Copy The Question Response")
@@ -40,6 +42,7 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
     return  lhs.documentID == rhs.documentID &&
             lhs.authorID == rhs.authorID &&
             lhs.authorFirstName == rhs.authorFirstName &&
+            lhs.authorThumbnailURL == rhs.authorThumbnailURL &&
             lhs.questionID == rhs.questionID &&
             lhs.question == rhs.question &&
             lhs.responseBody == rhs.responseBody &&
@@ -50,12 +53,13 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
   }
   
   static func graphQLAllFields() -> String {
-    return "{ _id author_id authorFirstName question_id question \(QuestionItem.graphQLAllFields()) responseBody responseTitle color \(Color.graphQLAllFields()) icon \(IconAsset.graphQLAllFields()) hidden }"
+    return "{ _id author_id authorFirstName authorThumbnailURL question_id question \(QuestionItem.graphQLAllFields()) responseBody responseTitle color \(Color.graphQLAllFields()) icon \(IconAsset.graphQLAllFields()) hidden }"
   }
   
   var documentID: String?
   var authorID: String
   var authorFirstName: String
+  var authorThumbnailURL: String?
   var questionID: String
   var question: QuestionItem
   var responseBody: String
@@ -74,6 +78,7 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
     self.documentID = documentID
     self.authorID = ""
     self.authorFirstName = ""
+    self.authorThumbnailURL = nil
     guard let questionID = question.documentID else {
       print("Question without ID cant be saved")
       throw QuestionItemError.missingEssentialInformation
@@ -92,6 +97,7 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
     self.documentID = try values.decode(String.self, forKey: .documentID)
     self.authorID = try values.decode(String.self, forKey: .authorID)
     self.authorFirstName = try values.decode(String.self, forKey: .authorFirstName)
+    self.authorThumbnailURL = try? values.decode(String.self, forKey: .authorThumbnailURL)
     self.questionID = try values.decode(String.self, forKey: .questionID)
     self.question = try values.decode(QuestionItem.self, forKey: .question)
     self.responseBody = try values.decode(String.self, forKey: .responseBody)
