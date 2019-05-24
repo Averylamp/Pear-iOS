@@ -10,7 +10,9 @@ import UIKit
 
 class PromptInputTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+  @IBOutlet weak var promptLabel: UILabel!
+  
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }

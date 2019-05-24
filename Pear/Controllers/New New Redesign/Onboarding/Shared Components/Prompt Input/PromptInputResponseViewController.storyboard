@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q5b-nz-7gJ">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Prompt Input Response View Controller-->
+        <scene sceneID="laD-4O-2Z7">
+            <objects>
+                <viewController id="Q5b-nz-7gJ" customClass="PromptInputResponseViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fpy-3q-RyW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qye-3l-Rt1" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wr0-zd-v2K">
+                                        <rect key="frame" x="8" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="KxR-Md-3av"/>
+                                            <constraint firstAttribute="width" constant="40" id="TOC-9X-Upu"/>
+                                        </constraints>
+                                        <state key="normal" image="onboarding-back-button"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="Q5b-nz-7gJ" eventType="touchUpInside" id="m0F-Vi-Da7"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Response" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h9K-mS-w2L">
+                                        <rect key="frame" x="60" y="14" width="294" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sol-Kj-QQQ" userLabel="BorderLine">
+                                        <rect key="frame" x="0.0" y="48" width="414" height="2"/>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="CTL-FG-YWI"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSC-8x-avc" userLabel="Progress Bar">
+                                        <rect key="frame" x="0.0" y="48" width="0.0" height="2"/>
+                                        <color key="backgroundColor" name="primaryBrandColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" id="6we-xv-3VD"/>
+                                            <constraint firstAttribute="height" constant="2" id="yss-Tp-uav"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="61t-Vz-qVZ"/>
+                                    <constraint firstItem="wSC-8x-avc" firstAttribute="leading" secondItem="Sol-Kj-QQQ" secondAttribute="leading" id="6ps-aC-eR1"/>
+                                    <constraint firstAttribute="bottom" secondItem="Sol-Kj-QQQ" secondAttribute="bottom" id="9PC-X9-pxd"/>
+                                    <constraint firstItem="Sol-Kj-QQQ" firstAttribute="leading" secondItem="qye-3l-Rt1" secondAttribute="leading" id="AYw-Y9-blQ"/>
+                                    <constraint firstItem="h9K-mS-w2L" firstAttribute="leading" secondItem="wr0-zd-v2K" secondAttribute="trailing" constant="12" id="GyR-hd-Yjl"/>
+                                    <constraint firstItem="h9K-mS-w2L" firstAttribute="centerY" secondItem="qye-3l-Rt1" secondAttribute="centerY" id="aQa-Jf-rWs"/>
+                                    <constraint firstItem="wr0-zd-v2K" firstAttribute="leading" secondItem="qye-3l-Rt1" secondAttribute="leading" constant="8" id="eEA-8E-wgB"/>
+                                    <constraint firstItem="wSC-8x-avc" firstAttribute="centerY" secondItem="Sol-Kj-QQQ" secondAttribute="centerY" id="eJq-b6-5ph"/>
+                                    <constraint firstItem="h9K-mS-w2L" firstAttribute="centerY" secondItem="wr0-zd-v2K" secondAttribute="centerY" id="pkB-Kh-AQ4"/>
+                                    <constraint firstItem="h9K-mS-w2L" firstAttribute="centerX" secondItem="qye-3l-Rt1" secondAttribute="centerX" id="qTG-3V-bb5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sol-Kj-QQQ" secondAttribute="trailing" id="tUH-V5-b0u"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qye-3l-Rt1" firstAttribute="top" secondItem="FN7-3d-ZuW" secondAttribute="top" id="JeQ-Kj-pvX"/>
+                            <constraint firstItem="qye-3l-Rt1" firstAttribute="trailing" secondItem="FN7-3d-ZuW" secondAttribute="trailing" id="i89-hR-o1J"/>
+                            <constraint firstItem="qye-3l-Rt1" firstAttribute="leading" secondItem="FN7-3d-ZuW" secondAttribute="leading" id="iBp-tO-iRt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FN7-3d-ZuW"/>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="h9K-mS-w2L" id="6ci-Fg-mP4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEd-Zo-IOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351.19999999999999" y="99.753694581280797"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
+        <namedColor name="primaryBrandColor">
+            <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
