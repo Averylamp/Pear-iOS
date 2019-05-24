@@ -70,7 +70,7 @@ extension DiscoveryDecisionViewController {
       NSLayoutConstraint(item: imageView1, attribute: .bottom, relatedBy: .equal,
                          toItem: labelView, attribute: .top, multiplier: 1.0, constant: -10),
       NSLayoutConstraint(item: imageView1, attribute: .left, relatedBy: .equal,
-                         toItem: labelView, attribute: .left, multiplier: 1.0, constant: 0),
+                         toItem: labelView, attribute: .left, multiplier: 1.0, constant: 0)
       ])
     
     let imageView2 = UIImageView(image: stepNumber == 2 ? R.image.selected2(): R.image.unselected2())
