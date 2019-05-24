@@ -13,6 +13,7 @@ enum PearDetachedProfileKeys: String, CodingKey {
   case documentID = "_id"
   case creatorUserID = "creatorUser_id"
   case creatorFirstName
+  case creatorThumbnailURL
   case firstName
   case lastName
   case phoneNumber
