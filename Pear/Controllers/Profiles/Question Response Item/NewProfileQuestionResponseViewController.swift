@@ -47,14 +47,12 @@ extension NewProfileQuestionResponseViewController {
   }
   
   func setup() {
-    print("setup")
     self.writtenByLabel.text = questionItem.authorFirstName
     self.questionTitleLabel.text = questionItem.question.questionText
     self.questionResponseLabel.text = questionItem.responseBody
     if let authorThumbnailURL = self.questionItem.authorThumbnailURL,
       let thumbnailImage = self.thumbnailImage,
       let imageURL = URL(string: authorThumbnailURL) {
-      print("setting thumbnail image")
       thumbnailImage.sd_setImage(with: imageURL, completed: nil)
     }
   }
