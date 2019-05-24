@@ -270,6 +270,11 @@
 		BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */; };
 		BBA757AD225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA757AB225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift */; };
 		BBA8AE8E229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE8D229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift */; };
+		BBA8AE902297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE8F2297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift */; };
+		BBA8AE922297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA8AE912297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard */; };
+		BBA8AE952297D63A003F1D79 /* PromptInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */; };
+		BBA8AE972297D646003F1D79 /* PromptInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */; };
+		BBA8AE9A2297D731003F1D79 /* PromptInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */; };
 		BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0957227009D20095F27E /* ContentAPI.swift */; };
 		BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095A22700A770095F27E /* PearContentAPI.swift */; };
 		BBAC095E22700B900095F27E /* GraphQLDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */; };
@@ -685,6 +690,11 @@
 		BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedChoosePreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BBA757AB225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedChoosePreferencesViewController.swift; sourceTree = "<group>"; };
 		BBA8AE8D229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryDecisionViewController+Tooltips.swift"; sourceTree = "<group>"; };
+		BBA8AE8F2297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFriendPromptInputViewController.swift; sourceTree = "<group>"; };
+		BBA8AE912297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingFriendPromptInputViewController.storyboard; sourceTree = "<group>"; };
+		BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputViewController.swift; sourceTree = "<group>"; };
+		BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptInputViewController.storyboard; sourceTree = "<group>"; };
+		BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputTableViewCell.swift; sourceTree = "<group>"; };
 		BBAC0957227009D20095F27E /* ContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAPI.swift; sourceTree = "<group>"; };
 		BBAC095A22700A770095F27E /* PearContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearContentAPI.swift; sourceTree = "<group>"; };
 		BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDecodable.swift; sourceTree = "<group>"; };
@@ -1293,6 +1303,7 @@
 				BBB71B4F22944682002CDDD1 /* More Details Table */,
 				BBB71B682294788A002CDDD1 /* Basic Info Input */,
 				BBB71B9222956987002CDDD1 /* Age Range Input */,
+				BBA8AE982297D651003F1D79 /* Prompt Input */,
 			);
 			path = "Shared Components";
 			sourceTree = "<group>";
@@ -1535,8 +1546,9 @@
 		BB687E70228D704500F45C9D /* Join With Friend */ = {
 			isa = PBXGroup;
 			children = (
-				BB687E8C228D862D00F45C9D /* Friend Name Input */,
 				BB687E8D228D864600F45C9D /* Friend Info */,
+				BB687E8C228D862D00F45C9D /* Friend Name Input */,
+				BBA8AE932297C7D7003F1D79 /* Friend Prompt Input */,
 			);
 			path = "Join With Friend";
 			sourceTree = "<group>";
@@ -2026,6 +2038,25 @@
 				BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */,
 			);
 			path = "Preferences Input";
+			sourceTree = "<group>";
+		};
+		BBA8AE932297C7D7003F1D79 /* Friend Prompt Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8AE8F2297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift */,
+				BBA8AE912297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard */,
+			);
+			path = "Friend Prompt Input";
+			sourceTree = "<group>";
+		};
+		BBA8AE982297D651003F1D79 /* Prompt Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */,
+				BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */,
+				BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */,
+			);
+			path = "Prompt Input";
 			sourceTree = "<group>";
 		};
 		BBAC095922700A670095F27E /* ContentAPI */ = {
@@ -2858,6 +2889,7 @@
 				917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
 				BB201193228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
+				BBA8AE922297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
@@ -2934,6 +2966,7 @@
 				BBA106E622784B22000771CF /* ExpandingFreeResponseInputViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BBF93E622267CA3A002841EE /* UserContactListViewController.storyboard in Resources */,
+				BBA8AE972297D646003F1D79 /* PromptInputViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BBC0FF1B22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard in Resources */,
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
@@ -3221,6 +3254,7 @@
 				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
 				BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */,
 				BB201191228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift in Sources */,
+				BBA8AE9A2297D731003F1D79 /* PromptInputTableViewCell.swift in Sources */,
 				BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */,
 				BB20119B228F2B4A00BC85C0 /* MatchingPreferences.swift in Sources */,
 				BB17893F225E064F0033ACC6 /* ChatRequestTableViewCell.swift in Sources */,
@@ -3353,6 +3387,7 @@
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
 				BB687E63228D6B7500F45C9D /* UIImageView+Styling.swift in Sources */,
+				BBA8AE952297D63A003F1D79 /* PromptInputViewController.swift in Sources */,
 				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,
 				BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
@@ -3383,6 +3418,7 @@
 				BB687E7D228D810F00F45C9D /* OnboardingFriendInfoViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
+				BBA8AE902297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift in Sources */,
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
 				BBF93E582267C8B1002841EE /* ProfileInputQuestionViewController.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,

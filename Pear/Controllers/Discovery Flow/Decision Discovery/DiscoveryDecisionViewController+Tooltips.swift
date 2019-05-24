@@ -59,6 +59,7 @@ extension DiscoveryDecisionViewController {
     // add number icons
     let imageView1 = UIImageView(image: stepNumber == 1 ? R.image.selected1(): R.image.unselected1())
     imageView1.translatesAutoresizingMaskIntoConstraints = false
+    imageView1.contentMode = .scaleAspectFit
     overlayView.addSubview(imageView1)
     imageView1.addConstraints([
       NSLayoutConstraint(item: imageView1, attribute: .width, relatedBy: .equal,
@@ -70,11 +71,12 @@ extension DiscoveryDecisionViewController {
       NSLayoutConstraint(item: imageView1, attribute: .bottom, relatedBy: .equal,
                          toItem: labelView, attribute: .top, multiplier: 1.0, constant: -10),
       NSLayoutConstraint(item: imageView1, attribute: .left, relatedBy: .equal,
-                         toItem: labelView, attribute: .left, multiplier: 1.0, constant: 0),
+                         toItem: labelView, attribute: .left, multiplier: 1.0, constant: 0)
       ])
     
     let imageView2 = UIImageView(image: stepNumber == 2 ? R.image.selected2(): R.image.unselected2())
     imageView2.translatesAutoresizingMaskIntoConstraints = false
+    imageView2.contentMode = .scaleAspectFit
     overlayView.addSubview(imageView2)
     imageView2.addConstraints([
       NSLayoutConstraint(item: imageView2, attribute: .width, relatedBy: .equal,
@@ -91,6 +93,7 @@ extension DiscoveryDecisionViewController {
     
     let imageView3 = UIImageView(image: stepNumber == 3 ? R.image.selected3() : R.image.unselected3())
     imageView3.translatesAutoresizingMaskIntoConstraints = false
+    imageView3.contentMode = .scaleAspectFit
     overlayView.addSubview(imageView3)
     imageView3.addConstraints([
       NSLayoutConstraint(item: imageView3, attribute: .width, relatedBy: .equal,
