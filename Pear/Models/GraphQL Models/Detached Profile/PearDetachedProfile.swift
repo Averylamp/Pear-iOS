@@ -9,12 +9,13 @@
 import Foundation
 class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable {
   static func graphQLAllFields() -> String {
-    return "{ _id creatorUser_id creatorFirstName firstName lastName phoneNumber age gender bio \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) images \(ImageContainer.graphQLAllFields()) matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) school schoolYear }"
+    return "{ _id creatorUser_id creatorFirstName creatorThumbnailURL firstName lastName phoneNumber age gender bio \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) images \(ImageContainer.graphQLAllFields()) matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) school schoolYear }"
   }
   
   var documentID: String!
   var creatorUserID: String!
   var creatorFirstName: String!
+  var creatorThumbnailURL: String?
   var firstName: String!
   var lastName: String?
   var phoneNumber: String!
@@ -40,6 +41,7 @@ class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable 
     documentID: \(String(describing: documentID)),
     creatorUserID: \(String(describing: creatorUserID)),
     creatorFirstName: \(String(describing: creatorFirstName)),
+    creatorThumbnailURL: \(String(describing: creatorThumbnailURL)),
     firstName: \(String(describing: firstName)),
     phoneNumber: \(String(describing: phoneNumber)),
     age: \(String(describing: age)),
@@ -65,6 +67,7 @@ class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable 
     self.documentID = try values.decode(String.self, forKey: .documentID)
     self.creatorUserID = try values.decode(String.self, forKey: .creatorUserID)
     self.creatorFirstName = try values.decode(String.self, forKey: .creatorFirstName)
+    self.creatorThumbnailURL = try? values.decode(String.self, forKey: .creatorThumbnailURL)
     self.firstName = try values.decode(String.self, forKey: .firstName)
     self.lastName = try? values.decode(String.self, forKey: .lastName)
     self.phoneNumber = try values.decode(String.self, forKey: .phoneNumber)
