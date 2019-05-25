@@ -12,6 +12,12 @@ import ContactsUI
 import MessageUI
 import FirebaseAnalytics
 
+protocol PromptInputDelegate: class {
+  func didAnswerPrompt(questionResponse: QuestionResponseItem)
+  func editResponseAtIndex(questionResponse: QuestionResponseItem, index: Int)
+  func deleteResponseAtIndex(index: Int)
+}
+
 class OnboardingFriendPromptInputViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
@@ -95,15 +101,92 @@ extension OnboardingFriendPromptInputViewController {
   }
   
   func setupStackView() {
+    var count = 0
+    for index in 0..<self.answeredPrompts.count {
+      self.addAnsweredPromptButton(response: self.answeredPrompts[index], index: count)
+      count += 1
+    }
     if self.answeredPrompts.count < 3 {
-      for index in 0..<(3 - self.answeredPrompts.count) {
-        self.addPromptButton(number: self.answeredPrompts.count + index + 1)
+      for _ in 0..<(3 - self.answeredPrompts.count) {
+        self.addPromptButton(number: count + 1, index: count)
+        count += 1
       }
     }
   }
   
-  func addPromptButton(number: Int? = nil) {
+  func refreshStackView() {
+    self.stackView.subviews.forEach {
+      self.stackView.removeArrangedSubview($0)
+      $0.removeFromSuperview()
+    }
+    self.setupStackView()
+  }
+  
+  func addAnsweredPromptButton(response: QuestionResponseItem, index: Int) {
     let containerButton = UIButton()
+    containerButton.tag = index
+    containerButton.translatesAutoresizingMaskIntoConstraints = false
+    containerButton.addTarget(self, action: #selector(OnboardingFriendPromptInputViewController.promptResponseActionSheet), for: .touchUpInside)
+    let cardView = UIView()
+    cardView.isUserInteractionEnabled = false
+    cardView.translatesAutoresizingMaskIntoConstraints = false
+    containerButton.addSubview(cardView)
+    cardView.layer.cornerRadius = 12
+    cardView.layer.borderWidth = 2.0
+    cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
+    
+    containerButton.addConstraints([
+      NSLayoutConstraint(item: cardView, attribute: .left, relatedBy: .equal,
+                         toItem: containerButton, attribute: .left, multiplier: 1.0, constant: 20.0),
+      NSLayoutConstraint(item: cardView, attribute: .right, relatedBy: .equal,
+                         toItem: containerButton, attribute: .right, multiplier: 1.0, constant: -20.0),
+      NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .equal,
+                         toItem: containerButton, attribute: .top, multiplier: 1.0, constant: 6.0),
+      NSLayoutConstraint(item: cardView, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerButton, attribute: .bottom, multiplier: 1.0, constant: -6.0)
+      ])
+    
+    let promptLabel = UILabel()
+    promptLabel.translatesAutoresizingMaskIntoConstraints = false
+    if let font = R.font.openSansBold(size: 18.0) {
+      promptLabel.font = font
+    }
+    promptLabel.text = response.question.questionText
+    promptLabel.textColor = R.color.primaryTextColor()
+    promptLabel.addConstraint(NSLayoutConstraint(item: promptLabel, attribute: .height, relatedBy: .equal,
+                                                 toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0))
+    cardView.addSubview(promptLabel)
+    cardView.addConstraints([
+      NSLayoutConstraint(item: promptLabel, attribute: .top, relatedBy: .equal,
+                         toItem: cardView, attribute: .top, multiplier: 1.0, constant: 4.0),
+      NSLayoutConstraint(item: promptLabel, attribute: .left, relatedBy: .equal,
+                         toItem: cardView, attribute: .left, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: promptLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: cardView, attribute: .bottom, multiplier: 1.0, constant: -4.0)
+      ])
+    
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    cardView.addSubview(imageView)
+    cardView.addConstraints([
+      NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
+                         toItem: imageView, attribute: .left, multiplier: 1.0, constant: 4.0),
+      NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal,
+                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal,
+                         toItem: cardView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 26.0),
+      NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 26.0)
+      ])
+    
+    self.stackView.addArrangedSubview(containerButton)
+  }
+  
+  func addPromptButton(number: Int? = nil, index: Int) {
+    let containerButton = UIButton()
+    containerButton.tag = index
     containerButton.translatesAutoresizingMaskIntoConstraints = false
     containerButton.addTarget(self, action: #selector(OnboardingFriendPromptInputViewController.promptResponsePickerVC), for: .touchUpInside)
     let cardView = UIView()
@@ -168,12 +251,51 @@ extension OnboardingFriendPromptInputViewController {
     self.stackView.addArrangedSubview(containerButton)
   }
   
-  @objc func promptResponsePickerVC() {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let promptResponseVC = PromptInputViewController.instantiate(prompts: DataStore.shared.possibleQuestions) else {
-      print("Prompt response VC")
+  @objc func promptResponseActionSheet(_ sender: UIButton) {
+    print("tapped answered response")
+    let index = sender.tag
+    if index >= self.answeredPrompts.count || index < 0 {
       return
     }
+    let questionResponse = self.answeredPrompts[index]
+    let actionSheet = UIAlertController(title: nil,
+                                        message: nil,
+                                        preferredStyle: .actionSheet)
+    let editResponseAction = UIAlertAction(title: "Edit Response", style: .default) { (_) in
+      print("tapped edit response")
+      guard let promptInputResponseVC = PromptInputResponseViewController.instantiate(question: questionResponse.question,
+                                                                                      editMode: true,
+                                                                                      previousResponse: questionResponse,
+                                                                                      index: index) else {
+        print("couldn't initialize prompt input response VC")
+        return
+      }
+      promptInputResponseVC.promptInputDelegate = self
+      let navigationController = UINavigationController(rootViewController: promptInputResponseVC)
+      navigationController.isNavigationBarHidden = true
+      self.present(navigationController, animated: true, completion: nil)
+    }
+    let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+      self.deleteResponseAtIndex(index: index)
+    }
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    actionSheet.addAction(editResponseAction)
+    actionSheet.addAction(deleteAction)
+    actionSheet.addAction(cancelAction)
+    self.present(actionSheet, animated: true, completion: nil)
+    return
+  }
+  
+  @objc func promptResponsePickerVC() {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    let possiblePrompts = DataStore.shared.possibleQuestions.filter {
+      $0.questionType == .freeResponse
+    }
+    guard let promptResponseVC = PromptInputViewController.instantiate(prompts: possiblePrompts, answeredPrompts: self.answeredPrompts) else {
+      print("couldn't initialize prompt response VC")
+      return
+    }
+    promptResponseVC.promptInputDelegate = self
     let navigationController = UINavigationController(rootViewController: promptResponseVC)
     navigationController.isNavigationBarHidden = true
     self.present(navigationController, animated: true, completion: nil)
@@ -241,6 +363,13 @@ extension OnboardingFriendPromptInputViewController: ProfileCreationProtocol, CN
                                        y: self.continueButton.frame.origin.y - 40)
     activityIndicator.startAnimating()
     self.present(cnPicker, animated: true, completion: nil)
+  }
+  
+  func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+    self.continueButton.isEnabled = true
+    self.activityIndicator.stopAnimating()
+    self.activityIndicator.removeFromSuperview()
+    print("Cancel Contact Picker")
   }
   
 }
@@ -312,4 +441,23 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
 // MARK: - PromptSMSProtocol
 extension OnboardingFriendPromptInputViewController: PromptSMSProtocol {
   
+}
+
+extension OnboardingFriendPromptInputViewController: PromptInputDelegate {
+  func didAnswerPrompt(questionResponse: QuestionResponseItem) {
+    self.answeredPrompts.append(questionResponse)
+    self.refreshStackView()
+  }
+  
+  func editResponseAtIndex(questionResponse: QuestionResponseItem, index: Int) {
+    if index < self.answeredPrompts.count && index >= 0 {
+      self.answeredPrompts[index] = questionResponse
+      self.refreshStackView()
+    }
+  }
+  
+  func deleteResponseAtIndex(index: Int) {
+    self.answeredPrompts.remove(at: index)
+    self.refreshStackView()
+  }
 }
