@@ -72,6 +72,8 @@ class OnboardingFriendPromptInputViewController: UIViewController {
     #if DEVMODE
     if let profileData = self.profileData {
       profileData.questionResponses = self.answeredPrompts
+      profileData.firstName = self.friendFirstName
+      profileData.gender = self.friendGender
     }
     self.createDetachedProfile(profileData: profileData,
                                completion: self.createDetachedProfileCompletion(result:))
@@ -421,7 +423,11 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
         viewControllers.popLast()
         viewControllers.popLast()
         viewControllers.append(basicInfoVC)
-        self.navigationController?.setViewControllers(viewControllers, animated: true)
+        if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
+          self.continueToMainVC()
+        } else {
+          self.navigationController?.setViewControllers(viewControllers, animated: true)
+        }
       }
     case .failure(let error):
       if let error = error {
@@ -469,6 +475,10 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
 
 // MARK: - PromptSMSProtocol
 extension OnboardingFriendPromptInputViewController: PromptSMSProtocol {
+  
+}
+
+extension OnboardingFriendPromptInputViewController: PermissionsFlowProtocol {
   
 }
 
