@@ -13,14 +13,17 @@ class PromptInputViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var titleLabel: UILabel!
   var questionItems: [QuestionItem]!
+  var answeredPrompts: [QuestionResponseItem]!
+  weak var promptInputDelegate: PromptInputDelegate?
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(prompts: [QuestionItem]) -> PromptInputViewController? {
+  class func instantiate(prompts: [QuestionItem], answeredPrompts: [QuestionResponseItem]) -> PromptInputViewController? {
     guard let promptInputVC = R.storyboard.promptInputViewController()
       .instantiateInitialViewController() as? PromptInputViewController else { return nil }
     promptInputVC.questionItems = prompts
+    promptInputVC.answeredPrompts = answeredPrompts
     return promptInputVC
   }
   
@@ -66,14 +69,22 @@ extension PromptInputViewController: UITableViewDelegate, UITableViewDataSource 
     }
     let promptItem = self.questionItems[indexPath.row]
     cell.promptLabel.text = promptItem.questionText
+    for answeredPrompt in self.answeredPrompts where answeredPrompt.question.questionText == promptItem.questionText {
+      cell.promptLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+    }
     return cell
   }
-  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let questionItem = self.questionItems[indexPath.row]
-    guard let promptResponseVC = PromptInputResponseViewController.instantiate(question: questionItem) else {
+    for answeredPrompt in self.answeredPrompts where answeredPrompt.question.questionText == questionItem.questionText {
+      return
+    }
+    guard let promptResponseVC = PromptInputResponseViewController.instantiate(question: questionItem, editMode: false, previousResponse: nil, index: nil) else {
       print("Question Item Response VC unable to create")
       return
+    }
+    if let delegate = self.promptInputDelegate {
+      promptResponseVC.promptInputDelegate = delegate
     }
     self.navigationController?.pushViewController(promptResponseVC, animated: true)
   }
