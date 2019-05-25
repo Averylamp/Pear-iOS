@@ -148,21 +148,40 @@ extension OnboardingFriendPromptInputViewController {
     
     let promptLabel = UILabel()
     promptLabel.translatesAutoresizingMaskIntoConstraints = false
-    if let font = R.font.openSansBold(size: 18.0) {
+    if let font = R.font.openSansBold(size: 14.0) {
       promptLabel.font = font
     }
     promptLabel.text = response.question.questionText
     promptLabel.textColor = R.color.primaryTextColor()
-    promptLabel.addConstraint(NSLayoutConstraint(item: promptLabel, attribute: .height, relatedBy: .equal,
-                                                 toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0))
+    promptLabel.numberOfLines = 0
     cardView.addSubview(promptLabel)
     cardView.addConstraints([
       NSLayoutConstraint(item: promptLabel, attribute: .top, relatedBy: .equal,
-                         toItem: cardView, attribute: .top, multiplier: 1.0, constant: 4.0),
+                         toItem: cardView, attribute: .top, multiplier: 1.0, constant: 12.0),
       NSLayoutConstraint(item: promptLabel, attribute: .left, relatedBy: .equal,
                          toItem: cardView, attribute: .left, multiplier: 1.0, constant: 12.0),
-      NSLayoutConstraint(item: promptLabel, attribute: .bottom, relatedBy: .equal,
-                         toItem: cardView, attribute: .bottom, multiplier: 1.0, constant: -4.0)
+      NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
+                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0)
+      ])
+    
+    let responseLabel = UILabel()
+    responseLabel.translatesAutoresizingMaskIntoConstraints = false
+    if let font = R.font.openSansSemiBold(size: 14) {
+      responseLabel.font = font
+    }
+    responseLabel.text = response.responseBody
+    responseLabel.textColor = R.color.secondaryTextColor()
+    responseLabel.numberOfLines = 1
+    cardView.addSubview(responseLabel)
+    cardView.addConstraints([
+      NSLayoutConstraint(item: responseLabel, attribute: .top, relatedBy: .equal,
+                         toItem: promptLabel, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: responseLabel, attribute: .left, relatedBy: .equal,
+                         toItem: cardView, attribute: .left, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: responseLabel, attribute: .right, relatedBy: .equal,
+                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0),
+      NSLayoutConstraint(item: responseLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: cardView, attribute: .bottom, multiplier: 1.0, constant: -12.0)
       ])
     
     let imageView = UIImageView()
