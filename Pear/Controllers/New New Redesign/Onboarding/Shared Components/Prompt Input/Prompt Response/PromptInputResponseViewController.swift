@@ -17,7 +17,6 @@ class PromptInputResponseViewController: UIViewController {
   @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
   
   var question: QuestionItem!
-  var characterLimit: Int!
   var editMode: Bool!
   var previousResponse: QuestionResponseItem?
   var editIndex: Int?
@@ -25,6 +24,8 @@ class PromptInputResponseViewController: UIViewController {
   weak var promptInputDelegate: PromptInputDelegate?
   
   let inputTextViewMinHeight: CGFloat = 70
+  let inputTextViewMaxHeight: CGFloat = 160
+  var maxCharacterResponse: Int = 200
   
   /// Factory method for creating this view controller.
   ///
@@ -33,7 +34,6 @@ class PromptInputResponseViewController: UIViewController {
     guard let promptInputResponseVC = R.storyboard.promptInputResponseViewController()
       .instantiateInitialViewController() as? PromptInputResponseViewController else { return nil }
     promptInputResponseVC.question = question
-    promptInputResponseVC.characterLimit = 5
     promptInputResponseVC.editMode = editMode
     promptInputResponseVC.previousResponse = previousResponse
     promptInputResponseVC.editIndex = index
@@ -131,9 +131,12 @@ extension PromptInputResponseViewController: UITextViewDelegate {
       self.view.layoutIfNeeded()
       let textHeight = self.inputTextView.sizeThatFits(CGSize(width: self.inputTextView.frame.width,
                                                                   height: CGFloat.greatestFiniteMagnitude)).height
-      viewHeightConstraint.constant = max(self.inputTextViewMinHeight, textHeight)
-
-      self.inputTextView.isScrollEnabled = false
+      viewHeightConstraint.constant = min(max(self.inputTextViewMinHeight, textHeight), self.inputTextViewMaxHeight)
+      if viewHeightConstraint.constant == self.inputTextViewMaxHeight {
+        self.inputTextView.isScrollEnabled = true
+      } else {
+        self.inputTextView.isScrollEnabled = false
+      }
       if animated {
         UIView.animate(withDuration: 0.4) {
           self.view.layoutIfNeeded()
@@ -144,18 +147,19 @@ extension PromptInputResponseViewController: UITextViewDelegate {
     }
   }
   
-  func textView(_ textView: UITextView, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     guard let textViewText = textView.text,
       let rangeOfTextToReplace = Range(range, in: textViewText) else {
         return false
     }
     let substringToReplace = textViewText[rangeOfTextToReplace]
-    let count = textViewText.count - substringToReplace.count + string.count
-    if self.characterLimit > 0 {
-      return count <= characterLimit
+    let count = textViewText.count - substringToReplace.count + text.count
+    if self.maxCharacterResponse > 0 {
+      return count <= maxCharacterResponse
     }
     return true
   }
+  
 }
 
 // MARK: - KeyboardEventsDismissTapProtocol

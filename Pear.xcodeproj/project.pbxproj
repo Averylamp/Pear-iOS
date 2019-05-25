@@ -1233,6 +1233,25 @@
 			path = "Vibe Input";
 			sourceTree = "<group>";
 		};
+		BB1112B82299D6AA0024800C /* Prompt Picker */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */,
+				BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */,
+				BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */,
+			);
+			path = "Prompt Picker";
+			sourceTree = "<group>";
+		};
+		BB1112B92299D6B70024800C /* Prompt Response */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8AE9B2297F97E003F1D79 /* PromptInputResponseViewController.swift */,
+				BBA8AE9D2297F986003F1D79 /* PromptInputResponseViewController.storyboard */,
+			);
+			path = "Prompt Response";
+			sourceTree = "<group>";
+		};
 		BB1435FF2243D25800B8C3EB /* PearTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2059,11 +2078,8 @@
 		BBA8AE982297D651003F1D79 /* Prompt Input */ = {
 			isa = PBXGroup;
 			children = (
-				BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */,
-				BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */,
-				BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */,
-				BBA8AE9B2297F97E003F1D79 /* PromptInputResponseViewController.swift */,
-				BBA8AE9D2297F986003F1D79 /* PromptInputResponseViewController.storyboard */,
+				BB1112B82299D6AA0024800C /* Prompt Picker */,
+				BB1112B92299D6B70024800C /* Prompt Response */,
 			);
 			path = "Prompt Input";
 			sourceTree = "<group>";

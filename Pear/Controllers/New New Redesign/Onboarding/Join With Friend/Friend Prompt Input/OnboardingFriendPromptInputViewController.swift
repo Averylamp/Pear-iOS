@@ -176,9 +176,8 @@ extension OnboardingFriendPromptInputViewController {
       NSLayoutConstraint(item: promptLabel, attribute: .top, relatedBy: .equal,
                          toItem: cardView, attribute: .top, multiplier: 1.0, constant: 12.0),
       NSLayoutConstraint(item: promptLabel, attribute: .left, relatedBy: .equal,
-                         toItem: cardView, attribute: .left, multiplier: 1.0, constant: 12.0),
-      NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
-                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0)
+                         toItem: cardView, attribute: .left, multiplier: 1.0, constant: 12.0)
+
       ])
     
     let responseLabel = UILabel()
@@ -195,8 +194,6 @@ extension OnboardingFriendPromptInputViewController {
                          toItem: promptLabel, attribute: .bottom, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: responseLabel, attribute: .left, relatedBy: .equal,
                          toItem: cardView, attribute: .left, multiplier: 1.0, constant: 12.0),
-      NSLayoutConstraint(item: responseLabel, attribute: .right, relatedBy: .equal,
-                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0),
       NSLayoutConstraint(item: responseLabel, attribute: .bottom, relatedBy: .equal,
                          toItem: cardView, attribute: .bottom, multiplier: 1.0, constant: -12.0)
       ])
@@ -208,6 +205,8 @@ extension OnboardingFriendPromptInputViewController {
     cardView.addSubview(imageView)
     cardView.addConstraints([
       NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
+                         toItem: imageView, attribute: .left, multiplier: 1.0, constant: 4.0),
+      NSLayoutConstraint(item: responseLabel, attribute: .right, relatedBy: .equal,
                          toItem: imageView, attribute: .left, multiplier: 1.0, constant: 4.0),
       NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal,
                          toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0),
