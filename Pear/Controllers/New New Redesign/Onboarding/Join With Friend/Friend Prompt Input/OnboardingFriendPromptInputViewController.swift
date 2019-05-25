@@ -61,12 +61,18 @@ class OnboardingFriendPromptInputViewController: UIViewController {
     guard let messageVC = self.getMessageComposer(profileData: profileData) else {
       print("Could not create Message VC")
       Analytics.logEvent("CP_sendProfileSMS_FAIL", parameters: nil)
+      if let profileData = self.profileData {
+        profileData.questionResponses = self.answeredPrompts
+      }
       self.createDetachedProfile(profileData: profileData,
                                  completion: self.createDetachedProfileCompletion(result:))
       return
     }
     messageVC.messageComposeDelegate = self
     #if DEVMODE
+    if let profileData = self.profileData {
+      profileData.questionResponses = self.answeredPrompts
+    }
     self.createDetachedProfile(profileData: profileData,
                                completion: self.createDetachedProfileCompletion(result:))
     return
@@ -307,9 +313,12 @@ extension OnboardingFriendPromptInputViewController {
   
   @objc func promptResponsePickerVC() {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    print(DataStore.shared.possibleQuestions)
     let possiblePrompts = DataStore.shared.possibleQuestions.filter {
-      $0.questionType == .freeResponse
+      print($0.questionType)
+      return $0.questionType == .freeResponse
     }
+    print(possiblePrompts)
     guard let promptResponseVC = PromptInputViewController.instantiate(prompts: possiblePrompts, answeredPrompts: self.answeredPrompts) else {
       print("couldn't initialize prompt response VC")
       return
@@ -443,6 +452,7 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
     case .sent:
       controller.dismiss(animated: true) {
         if let profileData = self.profileData {
+          profileData.questionResponses = self.answeredPrompts
           DispatchQueue.main.async {
             self.createDetachedProfile(profileData: profileData,
                                        completion: self.createDetachedProfileCompletion(result:))
