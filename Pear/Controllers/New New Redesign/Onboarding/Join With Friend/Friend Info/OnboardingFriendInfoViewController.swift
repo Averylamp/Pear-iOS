@@ -81,17 +81,6 @@ extension OnboardingFriendInfoViewController {
   }
   
   func setup() {
-    guard let responseInputVC = SimpleFieldInputViewController.instantiate(fieldName: "Their first name is...",
-                                                                            previousValue: nil,
-                                                                            placeholder: "Enter their first name",
-                                                                            visibility: true) else {
-                                                                              print("Unable to instantiate Simple Field Input VC")
-                                                                              return
-    }
-    self.responseInputVC = responseInputVC
-    self.addChild(responseInputVC)
-    self.view.addSubview(responseInputVC.view)
-    responseInputVC.didMove(toParent: self)
   }
   
 }
