@@ -83,9 +83,9 @@ extension PromptInputViewController: UITableViewDelegate, UITableViewDataSource 
       print("Question Item Response VC unable to create")
       return
     }
-    if let delegate = self.promptInputDelegate {
-      promptResponseVC.promptInputDelegate = delegate
-    }
+    
+    promptResponseVC.promptInputDelegate = self.promptInputDelegate
+
     self.navigationController?.pushViewController(promptResponseVC, animated: true)
   }
   

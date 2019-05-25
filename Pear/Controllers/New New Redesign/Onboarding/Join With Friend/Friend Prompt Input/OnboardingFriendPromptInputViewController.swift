@@ -49,6 +49,13 @@ class OnboardingFriendPromptInputViewController: UIViewController {
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    if answeredPrompts.count < 3 {
+      let alertController = UIAlertController(title: "You must fill out 3 prompts to continue", message: "You can edit them later", preferredStyle: .alert)
+      let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+      alertController.addAction(okayAction)
+      self.present(alertController, animated: true, completion: nil)
+      return
+    }
     self.promptContactsPicker()
   }
   
@@ -119,6 +126,8 @@ extension OnboardingFriendPromptInputViewController {
         self.addPromptButton(number: count + 1, index: count)
         count += 1
       }
+    } else {
+      self.addAnotherButton()
     }
   }
   
@@ -179,7 +188,7 @@ extension OnboardingFriendPromptInputViewController {
     }
     responseLabel.text = response.responseBody
     responseLabel.textColor = R.color.secondaryTextColor()
-    responseLabel.numberOfLines = 1
+    responseLabel.numberOfLines = 0
     cardView.addSubview(responseLabel)
     cardView.addConstraints([
       NSLayoutConstraint(item: responseLabel, attribute: .top, relatedBy: .equal,
@@ -193,13 +202,15 @@ extension OnboardingFriendPromptInputViewController {
       ])
     
     let imageView = UIImageView()
+    imageView.contentMode = .scaleAspectFit
+    imageView.image = R.image.updateUserIconMoreIcon()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     cardView.addSubview(imageView)
     cardView.addConstraints([
       NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
                          toItem: imageView, attribute: .left, multiplier: 1.0, constant: 4.0),
       NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal,
-                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: 12.0),
+                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0),
       NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal,
                          toItem: cardView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal,
@@ -260,19 +271,71 @@ extension OnboardingFriendPromptInputViewController {
       ])
     
     let imageView = UIImageView()
+    imageView.contentMode = .scaleAspectFit
+    imageView.image = R.image.updateUserIconForwardArrow()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     cardView.addSubview(imageView)
     cardView.addConstraints([
       NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
                          toItem: imageView, attribute: .left, multiplier: 1.0, constant: 4.0),
       NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal,
-                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: 12.0),
+                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0),
       NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal,
                          toItem: cardView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal,
                          toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 26.0),
       NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal,
                          toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 26.0)
+      ])
+    
+    self.stackView.addArrangedSubview(containerButton)
+  }
+  
+  func addAnotherButton() {
+    let containerButton = UIButton()
+    containerButton.translatesAutoresizingMaskIntoConstraints = false
+    containerButton.addTarget(self, action: #selector(OnboardingFriendPromptInputViewController.promptResponsePickerVC), for: .touchUpInside)
+    let cardView = UIView()
+    cardView.isUserInteractionEnabled = false
+    cardView.translatesAutoresizingMaskIntoConstraints = false
+    containerButton.addSubview(cardView)
+    cardView.layer.cornerRadius = 12
+    cardView.layer.borderWidth = 2.0
+    cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
+    
+    containerButton.addConstraints([
+      NSLayoutConstraint(item: cardView, attribute: .left, relatedBy: .equal,
+                         toItem: containerButton, attribute: .left, multiplier: 1.0, constant: 20.0),
+      NSLayoutConstraint(item: cardView, attribute: .right, relatedBy: .equal,
+                         toItem: containerButton, attribute: .right, multiplier: 1.0, constant: -20.0),
+      NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .equal,
+                         toItem: containerButton, attribute: .top, multiplier: 1.0, constant: 6.0),
+      NSLayoutConstraint(item: cardView, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerButton, attribute: .bottom, multiplier: 1.0, constant: -6.0)
+      ])
+    
+    let promptLabel = UILabel()
+    promptLabel.translatesAutoresizingMaskIntoConstraints = false
+    if let font = R.font.openSansBold(size: 18.0) {
+      promptLabel.font = font
+    }
+ 
+    promptLabel.text = "Add another"
+    promptLabel.textAlignment = .center
+    promptLabel.textColor = R.color.primaryBrandColor()
+    
+    promptLabel.addConstraint(NSLayoutConstraint(item: promptLabel, attribute: .height, relatedBy: .equal,
+                                                 toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0))
+    cardView.addSubview(promptLabel)
+    cardView.addConstraints([
+      NSLayoutConstraint(item: promptLabel, attribute: .top, relatedBy: .equal,
+                         toItem: cardView, attribute: .top, multiplier: 1.0, constant: 4.0),
+      NSLayoutConstraint(item: promptLabel, attribute: .left, relatedBy: .equal,
+                         toItem: cardView, attribute: .left, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: promptLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: cardView, attribute: .bottom, multiplier: 1.0, constant: -4.0),
+      NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
+                         toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0)
       ])
     
     self.stackView.addArrangedSubview(containerButton)
@@ -289,21 +352,25 @@ extension OnboardingFriendPromptInputViewController {
                                         message: nil,
                                         preferredStyle: .actionSheet)
     let editResponseAction = UIAlertAction(title: "Edit Response", style: .default) { (_) in
-      print("tapped edit response")
-      guard let promptInputResponseVC = PromptInputResponseViewController.instantiate(question: questionResponse.question,
-                                                                                      editMode: true,
-                                                                                      previousResponse: questionResponse,
-                                                                                      index: index) else {
-        print("couldn't initialize prompt input response VC")
-        return
+      DispatchQueue.main.async {
+        print("tapped edit response")
+        guard let promptInputResponseVC = PromptInputResponseViewController.instantiate(question: questionResponse.question,
+                                                                                        editMode: true,
+                                                                                        previousResponse: questionResponse,
+                                                                                        index: index) else {
+                                                                                          print("couldn't initialize prompt input response VC")
+                                                                                          return
+        }
+        promptInputResponseVC.promptInputDelegate = self
+        let navigationController = UINavigationController(rootViewController: promptInputResponseVC)
+        navigationController.isNavigationBarHidden = true
+        self.present(navigationController, animated: true, completion: nil)
       }
-      promptInputResponseVC.promptInputDelegate = self
-      let navigationController = UINavigationController(rootViewController: promptInputResponseVC)
-      navigationController.isNavigationBarHidden = true
-      self.present(navigationController, animated: true, completion: nil)
     }
     let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-      self.deleteResponseAtIndex(index: index)
+      DispatchQueue.main.async {
+        self.deleteResponseAtIndex(index: index)
+      }
     }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     actionSheet.addAction(editResponseAction)
@@ -315,12 +382,10 @@ extension OnboardingFriendPromptInputViewController {
   
   @objc func promptResponsePickerVC() {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    print(DataStore.shared.possibleQuestions)
     let possiblePrompts = DataStore.shared.possibleQuestions.filter {
-      print($0.questionType)
       return $0.questionType == .freeResponse
     }
-    print(possiblePrompts)
+  
     guard let promptResponseVC = PromptInputViewController.instantiate(prompts: possiblePrompts, answeredPrompts: self.answeredPrompts) else {
       print("couldn't initialize prompt response VC")
       return
@@ -423,11 +488,7 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
         viewControllers.popLast()
         viewControllers.popLast()
         viewControllers.append(basicInfoVC)
-        if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
-          self.continueToMainVC()
-        } else {
-          self.navigationController?.setViewControllers(viewControllers, animated: true)
-        }
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
       }
     case .failure(let error):
       if let error = error {
