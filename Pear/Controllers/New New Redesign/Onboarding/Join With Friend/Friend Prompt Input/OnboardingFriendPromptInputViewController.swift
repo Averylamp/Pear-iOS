@@ -50,7 +50,7 @@ class OnboardingFriendPromptInputViewController: UIViewController {
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if answeredPrompts.count < 3 {
-      let alertController = UIAlertController(title: "You must fill out 3 prompts to continue", message: "You can edit them later", preferredStyle: .alert)
+      let alertController = UIAlertController(title: "You must fill out 3 prompts to continue", message: "You have \(3 - self.answeredPrompts.count) left.  You can edit them later", preferredStyle: .alert)
       let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
       alertController.addAction(okayAction)
       self.present(alertController, animated: true, completion: nil)
@@ -205,9 +205,9 @@ extension OnboardingFriendPromptInputViewController {
     cardView.addSubview(imageView)
     cardView.addConstraints([
       NSLayoutConstraint(item: promptLabel, attribute: .right, relatedBy: .equal,
-                         toItem: imageView, attribute: .left, multiplier: 1.0, constant: 4.0),
+                         toItem: imageView, attribute: .left, multiplier: 1.0, constant: -4.0),
       NSLayoutConstraint(item: responseLabel, attribute: .right, relatedBy: .equal,
-                         toItem: imageView, attribute: .left, multiplier: 1.0, constant: 4.0),
+                         toItem: imageView, attribute: .left, multiplier: 1.0, constant: -4.0),
       NSLayoutConstraint(item: imageView, attribute: .right, relatedBy: .equal,
                          toItem: cardView, attribute: .right, multiplier: 1.0, constant: -12.0),
       NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal,
