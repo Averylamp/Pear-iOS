@@ -77,7 +77,7 @@ extension PearProfileAPI {
                                              functionName: "createDetachedProfile",
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
@@ -86,7 +86,7 @@ extension PearProfileAPI {
                                              functionName: "createDetachedProfile",
                                              message: message ?? "Failed to create user",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -100,7 +100,7 @@ extension PearProfileAPI {
                                                functionName: "createDetachedProfile",
                                                message: "DeserializationError: \(error.localizedDescription)",
                                                responseData: data,
-                                               paylod: fullDictionary)
+                                               payload: fullDictionary)
               completion(.failure(DetachedProfileError.failedDeserialization))
             }
           }
@@ -171,7 +171,7 @@ extension PearProfileAPI {
                                                message: error.localizedDescription,
                                                responseData: data,
                                                tags: [:],
-                                               paylod: fullDictionary)
+                                               payload: fullDictionary)
               completion(.failure(DetachedProfileError.unknownError(error: error)))
               return
             }
@@ -183,7 +183,7 @@ extension PearProfileAPI {
                                              message: "Failed to convert inputs",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(DetachedProfileError.failedDeserialization))
             return
           }
@@ -234,7 +234,7 @@ extension PearProfileAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Approve Detached Profile: \(message ?? "")")
@@ -244,7 +244,7 @@ extension PearProfileAPI {
                                              message: message ?? "Failed to Approve Detached Profile",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(DetachedProfileError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Successfully attached Detached Profile: \(String(describing: message))")
@@ -294,7 +294,7 @@ extension PearProfileAPI {
                                            message: "Unknown Error: \(error.localizedDescription)",
                                            responseData: data,
                                            tags: [:],
-                                           paylod: fullDictionary)
+                                           payload: fullDictionary)
           completion(.failure(DetachedProfileError.unknownError(error: error)))
           return
         } else {
@@ -322,7 +322,7 @@ extension PearProfileAPI {
                                                    message: "Failed Discovery Serialization: \(error.localizedDescription)",
                                                    responseData: data,
                                                    tags: [:],
-                                                   paylod: fullDictionary)
+                                                   payload: fullDictionary)
                   print("Failed to deserialize pear user from feed: \(error)")
                   print(userData)
                 }
@@ -337,7 +337,7 @@ extension PearProfileAPI {
                                              message: "Failed Data Serialization",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(DetachedProfileError.failedDeserialization))
             return
           }
@@ -390,7 +390,7 @@ extension PearProfileAPI {
                                              functionName: "updateDetachedProfile",
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create Match Request: \(message ?? "")")
@@ -399,7 +399,7 @@ extension PearProfileAPI {
                                              functionName: "updateDetachedProfile",
                                              message: message ?? "Failed to Update",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Update Profile Network Message: \(String(describing: message))")
@@ -454,7 +454,7 @@ extension PearProfileAPI {
                                              functionName: "updateEndorsedUserProfile",
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create Match Request: \(message ?? "")")
@@ -463,7 +463,7 @@ extension PearProfileAPI {
                                              functionName: "updateEndorsedUserProfile",
                                              message: message ?? "Failed to Update",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(ProfileAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Update Profile Network Message: \(String(describing: message))")

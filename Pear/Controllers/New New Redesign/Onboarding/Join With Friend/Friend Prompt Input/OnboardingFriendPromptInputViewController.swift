@@ -474,20 +474,28 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
     switch result {
     case .success:
       DispatchQueue.main.async {
-        guard let basicInfoVC = OnboardingBasicInfoViewController.instantiate() else {
-          print("Failed to create basic info VC")
-          return
+        if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
+          guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
+            print("Failed to create main VC")
+            return
+          }
+          self.navigationController?.popToRootViewController(animated: true)
+        } else {
+          guard let basicInfoVC = OnboardingBasicInfoViewController.instantiate() else {
+            print("Failed to create basic info VC")
+            return
+          }
+          
+          guard var viewControllers = self.navigationController?.viewControllers else {
+            print("No view controllers detected")
+            return
+          }
+          viewControllers.popLast()
+          viewControllers.popLast()
+          viewControllers.popLast()
+          viewControllers.append(basicInfoVC)
+          self.navigationController?.setViewControllers(viewControllers, animated: true)
         }
-        
-        guard var viewControllers = self.navigationController?.viewControllers else {
-          print("No view controllers detected")
-          return
-        }
-        viewControllers.popLast()
-        viewControllers.popLast()
-        viewControllers.popLast()
-        viewControllers.append(basicInfoVC)
-        self.navigationController?.setViewControllers(viewControllers, animated: true)
       }
     case .failure(let error):
       if let error = error {

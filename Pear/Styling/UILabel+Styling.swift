@@ -45,6 +45,16 @@ extension UILabel {
   
 }
 
+// MARK: - General Use
+extension UILabel {
+  func stylizeGeneralHeaderTitleLabel() {
+    self.textColor = R.color.primaryTextColor()
+    if let font = R.font.openSansBold(size: 16) {
+      self.font = font
+    }
+  }
+}
+
 extension UILabel {
   
   func stylizeTitleLabel() {

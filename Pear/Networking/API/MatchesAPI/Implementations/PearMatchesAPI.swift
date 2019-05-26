@@ -97,7 +97,7 @@ extension PearMatchesAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create Match Request: \(message ?? "")")
@@ -107,7 +107,7 @@ extension PearMatchesAPI {
                                              message: message ?? "Failed to Approve Detached Profile",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
 //            if sentByUserID == sentForUserID {
@@ -173,7 +173,7 @@ extension PearMatchesAPI {
                                              functionName: "getMatchesForUser",
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Get Matches for User: \(message ?? "")")
@@ -182,7 +182,7 @@ extension PearMatchesAPI {
                                              functionName: "getMatchesForUser",
                                              message: "Failure: \(helperResult)",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -295,7 +295,7 @@ extension PearMatchesAPI {
                                              functionName: "unmatchRequest",
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create Match Request: \(message ?? "")")
@@ -304,7 +304,7 @@ extension PearMatchesAPI {
                                              functionName: "unmatchRequest",
                                              message: message ?? "Failed to Unmatch",
                                              responseData: data,
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             Analytics.logEvent("send_unmatch_request", parameters: nil)
@@ -369,7 +369,7 @@ extension PearMatchesAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
@@ -379,7 +379,7 @@ extension PearMatchesAPI {
                                              message: message ?? "Returned Error",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -399,7 +399,7 @@ extension PearMatchesAPI {
                                                message: "Deserialization Error: \(error.localizedDescription)",
                                                responseData: data,
                                                tags: [:],
-                                               paylod: fullDictionary)
+                                               payload: fullDictionary)
               completion(.failure(MatchesAPIError.failedDeserialization))
             }
           }
