@@ -172,7 +172,7 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
       self.present(mailComposer, animated: true, completion: nil)
     case .feedback:
       let mailComposer = MFMailComposeViewController()
-      mailComposer.setSubject("[Feedback] Hey I've got some Feedback'!")
+      mailComposer.setSubject("[Feedback] Hey I've got some Feedback!")
       mailComposer.setToRecipients(["support@getpear.com"])
       let messageBody = """
       
