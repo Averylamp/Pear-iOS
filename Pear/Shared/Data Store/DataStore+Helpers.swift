@@ -126,7 +126,7 @@ extension DataStore {
                                         "email": pearUser.email ?? "",
                                         "phoneNumber": pearUser.phoneNumber ?? "",
                                         "firebaseAuthID": pearUser.firebaseAuthID!,
-                                        "fullName": pearUser.fullName ?? "",
+                                        "fullName": pearUser.fullName(),
                                         "userDocumentID": pearUser.documentID!
                                       ]
                                       trace?.incrementMetric("Existing User Found", by: 1)
