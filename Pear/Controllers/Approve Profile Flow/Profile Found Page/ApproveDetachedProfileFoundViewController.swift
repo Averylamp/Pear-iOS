@@ -121,7 +121,7 @@ extension ApproveDetachedProfileFoundViewController {
   }
 }
 
-//MARK: - Prompt Generation
+// MARK: - Prompt Generation
 extension ApproveDetachedProfileFoundViewController {
   
   func addAnsweredPrompt(response: QuestionResponseItem) {
