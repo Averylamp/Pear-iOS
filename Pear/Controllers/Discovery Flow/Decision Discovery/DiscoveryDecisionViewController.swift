@@ -103,7 +103,7 @@ extension DiscoveryDecisionViewController {
     
     if self.profilesToShow.count == 0 {
       DispatchQueue.main.async {
-        self.messageLabel.text = "That's all your profiles.\nCheck back in a couple hours for some more"
+        self.messageLabel.text = "There are no more profiles for you right now. \nCheck back in a few hours!"
         self.tabBarController?.setTabBarVisible(visible: true, duration: 0.5, animated: true)
       }
     }
