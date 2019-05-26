@@ -47,6 +47,19 @@ class MeTabMainViewController: UIViewController {
     return meTabMainVC
   }
   
+  @IBAction func imageViewClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let user = DataStore.shared.currentPearUser else {
+      print("Unable to get user")
+      return
+    }
+    guard let fullProfileScrollView = FullProfileScrollViewController.instantiate(fullProfileData: FullProfileDisplayData(user: user))else {
+      print("Unable to instantiate full profile scroll view")
+      return
+    }
+    self.navigationController?.pushViewController(fullProfileScrollView, animated: true)
+  }
+  
 }
 // MARK: - Life Cycle
 extension MeTabMainViewController {

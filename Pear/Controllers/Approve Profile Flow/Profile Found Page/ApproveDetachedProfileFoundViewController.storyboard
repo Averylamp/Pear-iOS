@@ -54,6 +54,31 @@
                                     <action selector="nextButtonClicked:" destination="wXA-gq-gcr" eventType="touchUpInside" id="bcI-M5-vga"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5l8-fa-P3y">
+                                <rect key="frame" x="0.0" y="250" width="375" height="288.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-6r-Yz8">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kX0-g2-2rk">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="y4H-dB-f4d"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4IY-6r-Yz8" firstAttribute="centerX" secondItem="5l8-fa-P3y" secondAttribute="centerX" id="0UC-89-Yxu"/>
+                                    <constraint firstAttribute="bottom" secondItem="4IY-6r-Yz8" secondAttribute="bottom" id="5gs-5o-zWF"/>
+                                    <constraint firstItem="4IY-6r-Yz8" firstAttribute="top" secondItem="5l8-fa-P3y" secondAttribute="top" id="KD2-ne-DDV"/>
+                                    <constraint firstAttribute="trailing" secondItem="4IY-6r-Yz8" secondAttribute="trailing" id="Px6-ul-13d"/>
+                                    <constraint firstItem="4IY-6r-Yz8" firstAttribute="leading" secondItem="5l8-fa-P3y" secondAttribute="leading" id="WRl-by-DZ7"/>
+                                    <constraint firstItem="4IY-6r-Yz8" firstAttribute="width" secondItem="5l8-fa-P3y" secondAttribute="width" id="XB0-FM-5Ol"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -61,14 +86,18 @@
                             <constraint firstItem="VlL-Dh-foD" firstAttribute="centerX" secondItem="gQ4-0s-yY9" secondAttribute="centerX" id="1Vf-1D-Nem"/>
                             <constraint firstItem="ODI-3H-cEt" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="30" id="2S4-uD-feh"/>
                             <constraint firstItem="1M0-2N-JNX" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" constant="30" id="9zX-Nj-VJV"/>
+                            <constraint firstItem="5l8-fa-P3y" firstAttribute="leading" secondItem="gQ4-0s-yY9" secondAttribute="leading" id="Den-IE-C3b"/>
                             <constraint firstItem="VlL-Dh-foD" firstAttribute="top" secondItem="gQ4-0s-yY9" secondAttribute="top" constant="30" id="G9r-s8-5ZZ"/>
                             <constraint firstItem="13a-lb-DzA" firstAttribute="centerX" secondItem="gQ4-0s-yY9" secondAttribute="centerX" id="JNx-Bc-qKY"/>
+                            <constraint firstItem="ODI-3H-cEt" firstAttribute="top" secondItem="5l8-fa-P3y" secondAttribute="bottom" id="NS1-NX-2nd"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="1M0-2N-JNX" secondAttribute="trailing" constant="30" id="Nud-I0-d8K"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="ODI-3H-cEt" secondAttribute="trailing" constant="30" id="RdE-46-tBD"/>
                             <constraint firstItem="1M0-2N-JNX" firstAttribute="top" secondItem="ODI-3H-cEt" secondAttribute="bottom" constant="10" id="UYU-LN-BPd"/>
                             <constraint firstItem="13a-lb-DzA" firstAttribute="top" secondItem="VlL-Dh-foD" secondAttribute="bottom" constant="20" id="W0d-pl-HIJ"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="trailing" secondItem="13a-lb-DzA" secondAttribute="trailing" constant="30" id="WVd-0d-VZg"/>
+                            <constraint firstItem="5l8-fa-P3y" firstAttribute="top" secondItem="13a-lb-DzA" secondAttribute="bottom" id="eFo-tM-eTY"/>
                             <constraint firstItem="gQ4-0s-yY9" firstAttribute="bottom" secondItem="1M0-2N-JNX" secondAttribute="bottom" constant="30" id="zAc-RO-PT7"/>
+                            <constraint firstAttribute="trailing" secondItem="5l8-fa-P3y" secondAttribute="trailing" id="zlH-BY-pQ5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gQ4-0s-yY9"/>
                     </view>
@@ -76,12 +105,13 @@
                         <outlet property="friendImage" destination="VlL-Dh-foD" id="1pq-Tl-g6A"/>
                         <outlet property="friendImageHeightConstraint" destination="IfP-RH-OQA" id="svA-DC-q7G"/>
                         <outlet property="nextButton" destination="ODI-3H-cEt" id="sA1-ZO-Xu7"/>
+                        <outlet property="stackView" destination="4IY-6r-Yz8" id="b6s-bS-H80"/>
                         <outlet property="titleLabel" destination="13a-lb-DzA" id="Qzd-Tl-ZjC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6On-TU-cFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
     <resources>
