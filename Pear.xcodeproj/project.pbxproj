@@ -1294,6 +1294,42 @@
 			path = "Account Settings";
 			sourceTree = "<group>";
 		};
+		BB139F08229AB65D00D7955A /* Page 1 */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */,
+				BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */,
+			);
+			path = "Page 1";
+			sourceTree = "<group>";
+		};
+		BB139F09229AB66600D7955A /* Page 2 */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E65228D6D1000F45C9D /* OnboardingExplainationPage2ViewController.swift */,
+				BB687E64228D6D0F00F45C9D /* OnboardingExplainationPage2ViewController.storyboard */,
+			);
+			path = "Page 2";
+			sourceTree = "<group>";
+		};
+		BB139F0A229AB66F00D7955A /* Page 3 */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */,
+				BB687E66228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.storyboard */,
+			);
+			path = "Page 3";
+			sourceTree = "<group>";
+		};
+		BB139F0B229AB67500D7955A /* Page 4 */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */,
+				BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */,
+			);
+			path = "Page 4";
+			sourceTree = "<group>";
+		};
 		BB1435FF2243D25800B8C3EB /* PearTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1602,14 +1638,10 @@
 		BB687E5F228D5A4200F45C9D /* Onboarding Explaination Pages */ = {
 			isa = PBXGroup;
 			children = (
-				BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */,
-				BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */,
-				BB687E65228D6D1000F45C9D /* OnboardingExplainationPage2ViewController.swift */,
-				BB687E64228D6D0F00F45C9D /* OnboardingExplainationPage2ViewController.storyboard */,
-				BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */,
-				BB687E66228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.storyboard */,
-				BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */,
-				BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */,
+				BB139F08229AB65D00D7955A /* Page 1 */,
+				BB139F09229AB66600D7955A /* Page 2 */,
+				BB139F0A229AB66F00D7955A /* Page 3 */,
+				BB139F0B229AB67500D7955A /* Page 4 */,
 			);
 			path = "Onboarding Explaination Pages";
 			sourceTree = "<group>";

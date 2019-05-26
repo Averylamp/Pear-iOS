@@ -41,9 +41,8 @@ extension LoadingScreenViewController {
         } else {
           DataStore.shared.refreshPearUser(completion: { (pearUser) in
             if let pearUser = pearUser {
-              self.testEventCode()
               DataStore.shared.currentPearUser = pearUser
-              self.continueToNotificationOrNext()
+              self.continueToLocationOrNext()
             } else {
               self.continueToLandingPage()
             }

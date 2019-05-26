@@ -21,6 +21,7 @@ extension DataStore {
     case hasCompletedOnboarding
     case hasCompletedDiscoveryOnboarding
     case hasBeenInBostonArea
+    case hasSetGenderPreferences
   }
   
   func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {

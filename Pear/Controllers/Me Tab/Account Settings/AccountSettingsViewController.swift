@@ -49,7 +49,7 @@ extension AccountSettingsViewController {
   func stylize() {
    self.titleLabel.stylizeGeneralHeaderTitleLabel()
     self.stackView.addSpacer(height: 30)
-    let inviteButtonView = self.getInviteButton()
+    let inviteButtonView = self.getFeedbackButton()
     self.stackView.addArrangedSubview(inviteButtonView)
     
     let logOutButtonView = self.logoutButton()
@@ -134,6 +134,10 @@ extension AccountSettingsViewController {
     self.present(requestProfileVC, animated: true, completion: nil)
   }
   
+  @objc func sendFeedbackClicked(sender: UIButton) {
+    
+  }
+  
 }
 
 // MARK: - Button Generation/Layout
@@ -143,8 +147,9 @@ extension AccountSettingsViewController {
     let (containerView, button) = self.getButton()
     button.setTitle("Delete Profile", for: .normal)
     button.addTarget(self, action: #selector(AccountSettingsViewController.deleleProfileButtonClicked), for: .touchUpInside)
-    button.backgroundColor = R.color.backgroundColorRed()
-    button.addButtonShadow()
+    button.layer.borderWidth = 1
+    button.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
+    button.setTitleColor(UIColor(red: 0.88, green: 0.38, blue: 0.25, alpha: 1.00), for: .normal)
     return containerView
   }
   
@@ -152,17 +157,19 @@ extension AccountSettingsViewController {
     let (containerView, button) = self.getButton()
     button.setTitle("Log Out", for: .normal)
     button.addTarget(self, action: #selector(AccountSettingsViewController.logoutButtonClicked), for: .touchUpInside)
-    button.backgroundColor = R.color.backgroundColorOrange()
-    button.addButtonShadow()
+    button.layer.borderWidth = 1
+    button.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
+    button.setTitleColor(R.color.primaryTextColor(), for: .normal)
     return containerView
   }
   
-  func getInviteButton() -> UIView {
+  func getFeedbackButton() -> UIView {
     let (containerView, button) = self.getButton()
-    button.setTitle("Invite Friends", for: .normal)
-    button.addTarget(self, action: #selector(AccountSettingsViewController.inviteFriendsButtonClicked(sender:)), for: .touchUpInside)
+    button.setTitle("Send Feedback", for: .normal)
+    button.addTarget(self, action: #selector(AccountSettingsViewController.sendFeedbackClicked(sender:)), for: .touchUpInside)
     containerView.layoutIfNeeded()
-    button.stylizeDark()
+    button.backgroundColor = R.color.primaryBrandColor()
+    button.setTitleColor(UIColor.white, for: .normal)
     return containerView
   }
   
@@ -174,7 +181,10 @@ extension AccountSettingsViewController {
     containerView.addSubview(button)
     button.addConstraint(NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal,
                                             toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50))
-    button.layer.cornerRadius = 25
+    button.layer.cornerRadius = 12
+    if let font = R.font.openSansBold(size: 18) {
+      button.titleLabel?.font = font
+    }
     
     containerView.addConstraints([
       NSLayoutConstraint(item: button, attribute: .left, relatedBy: .equal,

@@ -10,313 +10,291 @@ import UIKit
 import FirebaseAnalytics
 
 class MeEditUserPreferencesViewController: UIViewController {
-  
-  @IBOutlet weak var scrollView: UIScrollView!
+
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var stackView: UIStackView!
-  @IBOutlet weak var cancelButton: UIButton!
-  @IBOutlet weak var doneButton: UIButton!
-  @IBOutlet weak var profileNameLabel: UILabel!
-  @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
   
-  var profile: FullProfileDisplayData!
-  var pearUser: PearUser!
-  let leadingSpace: CGFloat = 12
-  var isUpdating: Bool = false
+  var genderButtons: [UIButton] = []
+  var ageRangeVC: AgeRangeInputViewController?
   
-  weak var genderPreferencesVC: UserGenderPreferencesViewController?
-  weak var agePreferenceVC: UserAgePreferencesViewController?
-  
-  class func instantiate(profile: FullProfileDisplayData, pearUser: PearUser) -> MeEditUserPreferencesViewController? {
-    let storyboard = UIStoryboard(name: String(describing: MeEditUserPreferencesViewController.self), bundle: nil)
-    guard let editMeVC = storyboard.instantiateInitialViewController() as? MeEditUserPreferencesViewController else { return nil }
-    editMeVC.profile = profile
-    editMeVC.pearUser = pearUser
-    return editMeVC
+  /// Factory method for creating this view controller.
+  ///
+  /// - Returns: Returns an instance of this view controller.
+  class func instantiate() -> MeEditUserPreferencesViewController? {
+    guard let userPreferencesVC = R.storyboard.meEditUserPreferencesViewController()
+      .instantiateInitialViewController() as? MeEditUserPreferencesViewController else { return nil }
+    return userPreferencesVC
   }
   
-  @IBAction func cancelButtonClicked(_ sender: Any) {
-    Analytics.logEvent("ME_edit_TAP_cancel", parameters: nil)
-    if checkForEdits() {
-      HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .warning)
-      let alertController = UIAlertController(title: "Are you sure?",
-                                              message: "Your unsaved changes will be lost.",
-                                              preferredStyle: .alert)
-      let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-      let goBackAction = UIAlertAction(title: "Don't Save", style: .destructive) { (_) in
-        DispatchQueue.main.async {
-          self.navigationController?.popViewController(animated: true)
-          Analytics.logEvent("ME_edit_EV_discardEdits", parameters: nil)
+  @IBAction func backButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.updateUserPreferences()
+    self.updateUserSeeking(seeking: true)
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  @IBAction func continueButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.updateUserPreferences()
+    self.updateUserSeeking(seeking: true)
+    self.navigationController?.popViewController(animated: true)
+  }
+  
+  @objc func genderButtonClicked(_ sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    sender.isSelected = !sender.isSelected
+    self.genderButtons.forEach({
+      if $0.isSelected {
+        $0.backgroundColor = R.color.primaryBrandColor()
+      } else {
+        $0.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+      }
+    })
+  }
+  
+  func updateUserPreferences() {
+    var seekingGenders: [GenderEnum] = []
+    self.genderButtons.filter({$0.isSelected}).forEach({
+      switch $0.tag {
+      case 0:
+        seekingGenders.append(.female)
+      case 1:
+        seekingGenders.append(.male)
+      case 2:
+        seekingGenders.append(.nonbinary)
+      default:
+        break
+      }
+    })
+    guard let minAge = self.ageRangeVC?.minAge,
+      let maxAge = self.ageRangeVC?.maxAge else {
+        print("Unable to get age range")
+        return
+    }
+   
+    DataStore.shared.currentPearUser?.matchingPreferences.seekingGender = seekingGenders
+    DataStore.shared.currentPearUser?.matchingPreferences.minAgeRange = minAge
+    DataStore.shared.currentPearUser?.matchingPreferences.maxAgeRange = maxAge
+    PearUpdateUserAPI.shared.updateUserMatchingPreferences(seekingGenders: seekingGenders,
+                                                           minAge: minAge, maxAge: maxAge) { (result) in
+                                                            switch result {
+                                                            case .success(let successful):
+                                                              if successful {
+                                                                print("Successfully update user preferences")
+                                                              } else {
+                                                                print("Failed to update user preferences")
+                                                              }
+                                                            case .failure(let error):
+                                                              print("Failed to update user preferences: \(error)")
+                                                            }
+    }
+  }
+  
+  func updateUserSeeking(seeking: Bool) {
+    PearUpdateUserAPI.shared.updateUserIsSeeking(seeking: seeking) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Successfully update user seeking \(seeking)")
+        } else {
+          print("Failed to update user seeking \(seeking)")
         }
+      case .failure(let error):
+        print("Failed to update user seeking \(seeking): \(error)")
       }
-      alertController.addAction(goBackAction)
-      alertController.addAction(cancelAction)
-      self.present(alertController, animated: true, completion: nil)
-    } else {
-      self.navigationController?.popViewController(animated: true)
-      Analytics.logEvent("ME_edit_EV_viewWithNoEdits", parameters: nil)
     }
   }
   
-  @IBAction func doneButtonClicked(_ sender: Any) {
-    self.view.endEditing(true)
-    self.saveChanges {
-      DispatchQueue.main.async {
-        HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-        DataStore.shared.refreshPearUser(completion: nil)
-        self.navigationController?.popViewController(animated: true)
-        Analytics.logEvent("ME_edit_TAP_done", parameters: nil)
-      }
-    }
-
-  }
-  
-}
-
-// MARK: - Updating and Saving
-extension MeEditUserPreferencesViewController {
-  
-  func checkForEdits() -> Bool {
-    
-    if let genderPrefVC = self.genderPreferencesVC,
-      genderPrefVC.didMakeUpdates() {
-      return true
-    }
-    
-    if let agePrefVC = self.agePreferenceVC,
-      agePrefVC.didMakeUpdates() {
-      return true
-    }
-    
-    return false
-  }
-  
-  func getUserUpdates() -> [String: Any] {
-    var updates: [String: Any] = [:]
-    if let genderPrefVC = self.genderPreferencesVC,
-      genderPrefVC.didMakeUpdates() {
-      updates["seekingGender"] = genderPrefVC.genderPreferences.map({ $0.rawValue })
-    }
-    
-    if let agePrefVC = self.agePreferenceVC,
-      agePrefVC.didMakeUpdates() {
-      updates["minAgeRange"] = agePrefVC.minAge
-      updates["maxAgeRange"] = agePrefVC.maxAge
-    }
-    
-    return updates
-  }
-  
-  func saveChanges(completion: (() -> Void)?) {
-    if isUpdating {
-      return
-    }
-    self.isUpdating = true
-    let userUpdates = self.getUserUpdates()
-    
-    if userUpdates.count == 0 {
-      if let completion = completion {
-        print("Skipping updates")
-        completion()
-      }
-      return
-    }
-    guard let userID = DataStore.shared.currentPearUser?.documentID else {
-      print("Failed to get current user")
-      if let completion = completion {
-        print("Skipping updates")
-        completion()
-      }
-      return
-    }
-
-    if userUpdates.count > 0 {
-      PearUserAPI.shared.updateUser(userID: userID,
-                                    updates: userUpdates) { (result) in
-                                      switch result {
-                                      case .success(let successful):
-                                        if successful {
-                                          print("Updating user successful")
-                                        } else {
-                                          print("Updating user failure")
-                                        }
-                                        
-                                      case .failure(let error):
-                                        print("Updating user failure: \(error)")
-                                      }
-                                      self.isUpdating = false
-                                      if let completion = completion {
-                                        completion()
-                                      }
-                                      
-      }
-    }
-    
-  }
 }
 
 // MARK: - Life Cycle
 extension MeEditUserPreferencesViewController {
-  
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.setup()
     self.stylize()
-    self.constructEditProfile()
-    self.addKeyboardSizeNotifications()
-    self.addDismissKeyboardOnViewClick()
-
+    self.addKeyboardDismissOnTap()
   }
   
   func stylize() {
-    self.profileNameLabel.stylizeSubtitleLabelSmall()
-    self.doneButton.stylizeEditAddSection()
-  }
-  
-  func constructEditProfile() {
-    self.addSpacer(space: 20)
-    self.addTitleSection(title: "Matching Preferences")
-    self.addUserPreferences()
-    self.addSpacer(space: 30)
-  }
-  
-  func addSpacer(space: CGFloat) {
-    let spacer = UIView()
-    spacer.translatesAutoresizingMaskIntoConstraints = false
-    spacer.addConstraint(NSLayoutConstraint(item: spacer, attribute: .height, relatedBy: .equal,
-                                            toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: space))
-    self.stackView.addArrangedSubview(spacer)
-  }
-  
-  func addTitleSection(title: String) {
-    let containerView = UIView()
-    containerView.translatesAutoresizingMaskIntoConstraints = false
-    
-    let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.stylizeEditTitleLabel()
-    titleLabel.text = title
-    containerView.addSubview(titleLabel)
-    containerView.addConstraints([
-      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
-                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
-      NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal,
-                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
-      ])
-    self.stackView.addArrangedSubview(containerView)
-  }
-  
-  func addSubtitleSection(subtitle: String) {
-    let containerView = UIView()
-    containerView.translatesAutoresizingMaskIntoConstraints = false
-    
-    let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.stylizeEditSubtitleLabel()
-    titleLabel.text = title
-    containerView.addSubview(titleLabel)
-    containerView.addConstraints([
-      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
-                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
-      NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal,
-                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
-      ])
-    self.stackView.addArrangedSubview(containerView)
-  }
-
-  func addUserPreferences() {
-    guard let currentUser = DataStore.shared.currentPearUser else {
-      print("Failed to fetch user")
-      return
-    }
-    
-    var genderPreferences = currentUser.matchingPreferences.seekingGender
-    if genderPreferences.count == 0,
-      let currentGender = currentUser.gender {
-      if currentGender == .male {
-        genderPreferences.append(.female)
-      } else if currentGender == .female {
-        genderPreferences.append(.male)
-      } else if currentGender == .nonbinary {
-        genderPreferences = [.male, .female, .nonbinary]
+    self.titleLabel.stylizeOnboardingHeaderTitleLabel()
+    self.genderButtons.forEach({
+      $0.setTitleColor(R.color.primaryTextColor(), for: .normal)
+      $0.setTitleColor(UIColor.white, for: .selected)
+      $0.layer.cornerRadius = 20.0
+      if $0.isSelected {
+        $0.backgroundColor = R.color.primaryBrandColor()
+      } else {
+        $0.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
       }
+      if let font = R.font.openSansBold(size: 14.0) {
+        $0.titleLabel?.font = font
+      }
+    })
+    
+  }
+  
+  func setup() {
+    self.addGenderButtons()
+    self.addAgeRange()
+  }
+  
+  func addGenderButtons() {
+    self.stackView.addSpacer(height: 10)
+    let containerView = UIView()
+    let titleLabel = UILabel()
+    titleLabel.text = "Seeking Gender"
+    titleLabel.textColor = R.color.primaryTextColor()
+    if let font = R.font.openSansBold(size: 14.0) {
+      titleLabel.font = font
+    }
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(titleLabel)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 20.0),
+      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -20.0),
+      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4.0)
+      ])
+    
+    let femaleButton = UIButton()
+    
+    femaleButton.setTitle("Female", for: .normal)
+    femaleButton.translatesAutoresizingMaskIntoConstraints = false
+    femaleButton.addConstraint(NSLayoutConstraint(item: femaleButton, attribute: .height, relatedBy: .equal,
+                                                  toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 45))
+    containerView.addSubview(femaleButton)
+    
+    let maleButton = UIButton()
+    maleButton.tag = 1
+    maleButton.setTitle("Male", for: .normal)
+    maleButton.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(maleButton)
+    
+    let nonbinaryButton = UIButton()
+    nonbinaryButton.tag = 2
+    nonbinaryButton.setTitle("Non Binary", for: .normal)
+    nonbinaryButton.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(nonbinaryButton)
+    
+    // Adds position button constraints
+    containerView.addConstraints([
+      NSLayoutConstraint(item: femaleButton, attribute: .top, relatedBy: .equal,
+                         toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: 8.0),
+      NSLayoutConstraint(item: femaleButton, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -8.0),
+      NSLayoutConstraint(item: femaleButton, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 20.0),
+      NSLayoutConstraint(item: nonbinaryButton, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -20.0)
+      ])
+    
+    // Adds relative button constraints
+    containerView.addConstraints([
+      NSLayoutConstraint(item: femaleButton, attribute: .width, relatedBy: .equal,
+                         toItem: maleButton, attribute: .width, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: femaleButton, attribute: .height, relatedBy: .equal,
+                         toItem: maleButton, attribute: .height, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: femaleButton, attribute: .centerY, relatedBy: .equal,
+                         toItem: maleButton, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: femaleButton, attribute: .width, relatedBy: .equal,
+                         toItem: nonbinaryButton, attribute: .width, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: femaleButton, attribute: .height, relatedBy: .equal,
+                         toItem: nonbinaryButton, attribute: .height, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: femaleButton, attribute: .centerY, relatedBy: .equal,
+                         toItem: nonbinaryButton, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: femaleButton, attribute: .right, relatedBy: .equal,
+                         toItem: maleButton, attribute: .left, multiplier: 1.0, constant: -12.0),
+      NSLayoutConstraint(item: maleButton, attribute: .right, relatedBy: .equal,
+                         toItem: nonbinaryButton, attribute: .left, multiplier: 1.0, constant: -12.0)
+      ])
+    
+    self.genderButtons = [femaleButton, maleButton, nonbinaryButton]
+    self.genderButtons.forEach({
+      $0.addTarget(self, action: #selector(OnboardingPreferencesViewController.genderButtonClicked(_:)), for: .touchUpInside)
+    })
+    if let seekingGenders = DataStore.shared.currentPearUser?.matchingPreferences.seekingGender {
+      
+      seekingGenders.forEach({
+        switch $0 {
+        case .female:
+          femaleButton.isSelected = true
+        case .male:
+          maleButton.isSelected = true
+        case .nonbinary:
+          nonbinaryButton.isSelected = true
+        }
+      })
     }
     
-    guard let userGenderPreferencesVC = UserGenderPreferencesViewController.instantiate(genderPreferences: genderPreferences) else {
-      print("Unable to instantiate user gender preferences vc")
+    self.stackView.addArrangedSubview(containerView)
+  }
+  
+  func addAgeRange() {
+    self.stackView.addSpacer(height: 10)
+    let containerView = UIView()
+    let titleLabel = UILabel()
+    titleLabel.text = "Age Range"
+    titleLabel.textColor = R.color.primaryTextColor()
+    if let font = R.font.openSansBold(size: 14.0) {
+      titleLabel.font = font
+    }
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(titleLabel)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 20.0),
+      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -20.0),
+      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4.0)
+      ])
+    var defaultMin: Int = 18
+    var defaultMax: Int = 25
+    if let currentAge = DataStore.shared.currentPearUser?.age {
+      defaultMin = max(18, currentAge - 4)
+      defaultMax = min(80, currentAge + 4)
+    }
+    if let previousMin = DataStore.shared.currentPearUser?.matchingPreferences.minAgeRange {
+      defaultMin = previousMin
+    }
+    if let previousMax = DataStore.shared.currentPearUser?.matchingPreferences.maxAgeRange {
+      defaultMax = previousMax
+    }
+    guard let ageRangeInputVC = AgeRangeInputViewController.instantiate(minAge: defaultMin, maxAge: defaultMax) else {
+      print("Unable to create age range input VC")
       return
     }
-    stackView.addArrangedSubview(userGenderPreferencesVC.view)
-    self.addChild(userGenderPreferencesVC)
-    self.genderPreferencesVC = userGenderPreferencesVC
-    userGenderPreferencesVC.didMove(toParent: self)
+    self.ageRangeVC = ageRangeInputVC
+    self.addChild(ageRangeInputVC)
+    ageRangeInputVC.view.translatesAutoresizingMaskIntoConstraints = false
     
-    guard let agePreferencesVC = UserAgePreferencesViewController
-      .instantiate(minAge: currentUser.matchingPreferences.minAgeRange,
-                   maxAge: currentUser.matchingPreferences.maxAgeRange) else {
-                    print("Unable to instantiate user gender preferences vc")
-                    return
-    }
-    stackView.addArrangedSubview(agePreferencesVC.view)
-    self.addChild(agePreferencesVC)
-    self.agePreferenceVC = agePreferencesVC
-    agePreferencesVC.didMove(toParent: self)
-    
+    containerView.addSubview(ageRangeInputVC.view)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: ageRangeInputVC.view as Any, attribute: .top, relatedBy: .equal,
+                         toItem: titleLabel, attribute: .top, multiplier: 1.0, constant: 4.0),
+      NSLayoutConstraint(item: ageRangeInputVC.view as Any, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: ageRangeInputVC.view as Any, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: ageRangeInputVC.view as Any, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4.0)
+      ])
+    ageRangeInputVC.didMove(toParent: self)
+    self.stackView.addArrangedSubview(containerView)
   }
   
 }
 
-// MARK: - Keybaord Size Notifications
-extension MeEditUserPreferencesViewController {
-  
-  func addKeyboardSizeNotifications() {
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(MeEditUserPreferencesViewController.keyboardWillChange(notification:)),
-                   name: UIWindow.keyboardWillChangeFrameNotification,
-                   object: nil)
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(MeEditUserPreferencesViewController.keyboardWillHide(notification:)),
-                   name: UIWindow.keyboardWillHideNotification,
-                   object: nil)
+// MARK: - KeyboardEventsDismissTapProtocol
+extension MeEditUserPreferencesViewController: KeyboardEventsDismissTapProtocol {
+  func addKeyboardDismissOnTap() {
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MeEditUserPreferencesViewController.backgroundViewTapped)))
   }
   
-  @objc func keyboardWillChange(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let targetHeight = targetFrameNSValue.cgRectValue.size.height
-      self.scrollViewBottomConstraint.constant = targetHeight - self.view.safeAreaInsets.bottom
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  
-  @objc func keyboardWillHide(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      let keyboardBottomPadding: CGFloat = 20
-      self.scrollViewBottomConstraint.constant = keyboardBottomPadding
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-}
-
-// MARK: - Dismiss First Responder on Click
-extension MeEditUserPreferencesViewController {
-  func addDismissKeyboardOnViewClick() {
-    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MeEditUserPreferencesViewController.dismissKeyboard)))
-  }
-  
-  @objc func dismissKeyboard() {
-    self.view.endEditing(true)
+  @objc func backgroundViewTapped() {
+    self.dismissKeyboard()
   }
 }

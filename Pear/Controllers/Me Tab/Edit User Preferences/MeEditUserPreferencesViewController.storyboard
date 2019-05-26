@@ -28,8 +28,8 @@
                                             <constraint firstAttribute="height" constant="1" id="cD4-pg-mI3"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Your Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz7-4z-i8h">
-                                        <rect key="frame" x="127" y="15" width="121.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Your Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz7-4z-i8h">
+                                        <rect key="frame" x="105" y="15" width="165" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -44,14 +44,14 @@
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="vwc-cT-hB5"/>
+                                            <action selector="backButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="bL6-AX-0cC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBh-z2-b4F">
                                         <rect key="frame" x="326" y="10" width="37" height="30"/>
                                         <state key="normal" title="Done"/>
                                         <connections>
-                                            <action selector="doneButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="R74-Qf-nSY"/>
+                                            <action selector="continueButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="fo6-bx-mMY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -107,12 +107,8 @@
                         <viewLayoutGuide key="safeArea" id="SIR-1c-p7i"/>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="WZP-gN-Rsq" id="ogn-IG-KKR"/>
-                        <outlet property="doneButton" destination="OBh-z2-b4F" id="bD7-Ej-SKp"/>
-                        <outlet property="profileNameLabel" destination="Vz7-4z-i8h" id="Iok-HX-fRQ"/>
-                        <outlet property="scrollView" destination="sKx-em-e81" id="Yn6-gN-sde"/>
-                        <outlet property="scrollViewBottomConstraint" destination="cz9-TE-hgG" id="WWd-dJ-DFe"/>
                         <outlet property="stackView" destination="lpG-Cn-3kF" id="6Me-x0-hXA"/>
+                        <outlet property="titleLabel" destination="Vz7-4z-i8h" id="dXS-mo-6yD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMp-nq-df4" userLabel="First Responder" sceneMemberID="firstResponder"/>
