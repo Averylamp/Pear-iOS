@@ -37,6 +37,9 @@ class PromptInputResponseViewController: UIViewController {
     promptInputResponseVC.editMode = editMode
     promptInputResponseVC.previousResponse = previousResponse
     promptInputResponseVC.editIndex = index
+    if question.tags.contains("bio") || question.tags.contains("boastroast") || question.tags.contains("dodont") {
+      promptInputResponseVC.maxCharacterResponse = 600
+    }
     return promptInputResponseVC
   }
 
