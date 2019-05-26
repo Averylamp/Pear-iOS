@@ -72,6 +72,9 @@
                                             <constraint firstAttribute="width" secondItem="6tn-cC-aMG" secondAttribute="height" multiplier="1:1" id="tG6-oH-kKK"/>
                                         </constraints>
                                         <state key="normal" image="discovery-icon-filters"/>
+                                        <connections>
+                                            <action selector="filterButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="acx-57-MqV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
