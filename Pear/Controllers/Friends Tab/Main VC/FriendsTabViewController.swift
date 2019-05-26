@@ -104,7 +104,11 @@ extension FriendsTabViewController: UICollectionViewDelegate, UICollectionViewDa
       }
       self.navigationController?.pushViewController(friendFullProfileVC, animated: true)
     } else {
-      self.promptContactsPicker()
+      guard let joinFriendInfoVC = OnboardingFriendInfoViewController.instantiate() else {
+        print("Failed to create next Onboarding Info Page")
+        return
+      }
+      self.navigationController?.pushViewController(joinFriendInfoVC, animated: true)
     }
   }
   

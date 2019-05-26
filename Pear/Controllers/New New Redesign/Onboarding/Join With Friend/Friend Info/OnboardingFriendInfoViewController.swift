@@ -21,6 +21,8 @@ class OnboardingFriendInfoViewController: UIViewController {
   
   @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
   
+  var responseInputVC: SimpleFieldInputViewController?
+  
   var profileData: ProfileCreationData?
   var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
   
@@ -79,7 +81,6 @@ extension OnboardingFriendInfoViewController {
   }
   
   func setup() {
-    
   }
   
 }
