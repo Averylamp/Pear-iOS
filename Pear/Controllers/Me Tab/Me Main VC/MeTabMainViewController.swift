@@ -142,7 +142,7 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
         return
       }
       let fullProfileDisplay = FullProfileDisplayData(user: user)
-      guard let editUserPreferencesVC = MeEditUserPreferencesViewController.instantiate(profile: fullProfileDisplay, pearUser: user) else {
+      guard let editUserPreferencesVC = MeEditUserPreferencesViewController.instantiate() else {
         print("Unable to instantiate edit user preferences")
         return
       }

@@ -130,16 +130,6 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToAllowNotifications() {
-    DispatchQueue.main.async {
-      guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
-        print("Failed to create allow Notifications VC")
-        return
-      }
-      self.navigationController?.setViewControllers([allowNotificationsVC], animated: true)
-    }
-  }
-  
   func continueToAllowLocation() {
     DispatchQueue.main.async {
       guard let allowLocationVC = AllowLocationViewController.instantiate() else {
@@ -147,6 +137,16 @@ extension PermissionsFlowProtocol {
         return
       }
       self.navigationController?.setViewControllers([allowLocationVC], animated: true)
+    }
+  }
+  
+  func continueToAllowNotifications() {
+    DispatchQueue.main.async {
+      guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
+        print("Failed to create allow Notifications VC")
+        return
+      }
+      self.navigationController?.setViewControllers([allowNotificationsVC], animated: true)
     }
   }
   
