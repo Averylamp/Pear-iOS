@@ -35,7 +35,11 @@ class JoinEventViewController: UIViewController {
     if self.isAddingEvent {
       return
     }
-    self.continueToLocationOrNext()
+    if self.isInOnboarding {
+      self.continueToLocationOrNext()
+    } else {
+      self.dismiss(animated: true, completion: nil)
+    }
   }
   
 }
@@ -176,7 +180,11 @@ extension JoinEventViewController {
       switch result {
       case .success(let successful):
         if successful {
-          self.continueToLocationOrNext()
+          if self.isInOnboarding {
+            self.continueToLocationOrNext()
+          } else {
+            self.dismiss(animated: true, completion: nil)
+          }
         } else {
           DispatchQueue.main.async {
             self.alert(title: "Error adding event",
@@ -215,7 +223,11 @@ extension JoinEventViewController {
         switch result {
         case .success(let successful):
           if successful {
-            self.continueToLocationOrNext()
+            if self.isInOnboarding {
+              self.continueToLocationOrNext()
+            } else {
+              self.dismiss(animated: true, completion: nil)
+            }
           } else {
             DispatchQueue.main.async {
               self.alert(title: "No event found",
