@@ -51,6 +51,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Dos-bK-Pe5">
+                                                    <rect key="frame" x="38" y="38.5" width="20" height="20"/>
+                                                </activityIndicatorView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r4R-ks-lmm">
                                                     <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
                                                 </imageView>
@@ -68,7 +71,9 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="Dos-bK-Pe5" firstAttribute="centerY" secondItem="N3z-Dm-iG3" secondAttribute="centerY" id="2iB-I0-888"/>
                                             <constraint firstItem="r4R-ks-lmm" firstAttribute="width" secondItem="N3z-Dm-iG3" secondAttribute="width" id="Eax-p5-Si9"/>
+                                            <constraint firstItem="Dos-bK-Pe5" firstAttribute="centerX" secondItem="N3z-Dm-iG3" secondAttribute="centerX" id="Ocs-kd-Vyj"/>
                                             <constraint firstAttribute="trailing" secondItem="dTv-H4-Roj" secondAttribute="trailing" constant="2" id="fXt-hl-965"/>
                                             <constraint firstItem="r4R-ks-lmm" firstAttribute="height" secondItem="N3z-Dm-iG3" secondAttribute="height" id="gXL-Sy-Ba2"/>
                                             <constraint firstItem="r4R-ks-lmm" firstAttribute="centerY" secondItem="N3z-Dm-iG3" secondAttribute="centerY" id="pCz-ev-Mfk"/>
@@ -199,6 +204,6 @@
         <image name="onboarding-add-image-dotted-rectangle" width="330" height="330"/>
         <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
         <image name="onboarding-close-button" width="120" height="120"/>
-        <image name="onboarding-icon-camera" width="160" height="160"/>
+        <image name="onboarding-icon-camera" width="512" height="512"/>
     </resources>
 </document>

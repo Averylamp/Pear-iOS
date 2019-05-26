@@ -95,7 +95,7 @@
 	<key>NSContactsUsageDescription</key>
 	<string>To roast/boast your friends</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To make better matches!</string>
+	<string>Without location, we can&apos;t show you people nearby!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To find your latest and greatest photos!</string>
 	<key>UIAppFonts</key>
