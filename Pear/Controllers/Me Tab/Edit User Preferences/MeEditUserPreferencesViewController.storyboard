@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Me Edit User View Controller-->
+        <!--Me Edit User Preferences View Controller-->
         <scene sceneID="sYA-Gg-tdR">
             <objects>
-                <viewController id="1d6-oB-8PO" customClass="MeEditUserViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1d6-oB-8PO" customClass="MeEditUserPreferencesViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZO0-rP-Cgi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -87,7 +87,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="me-icon-edit" width="144" height="144"/>
-        <image name="tab-icon-you-selected" width="512" height="512"/>
+        <image name="me-icon-edit" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="tab-icon-you-selected" width="66.666664123535156" height="66.666664123535156"/>
     </resources>
 </document>

@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAnalytics
 
-class MeEditUserViewController: UIViewController {
+class MeEditUserPreferencesViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var stackView: UIStackView!
@@ -23,14 +23,12 @@ class MeEditUserViewController: UIViewController {
   let leadingSpace: CGFloat = 12
   var isUpdating: Bool = false
   
-  weak var photoUpdateVC: UpdateImagesViewController?
-  var textFieldVCs: [UpdateTextFieldController] = []
   weak var genderPreferencesVC: UserGenderPreferencesViewController?
   weak var agePreferenceVC: UserAgePreferencesViewController?
   
-  class func instantiate(profile: FullProfileDisplayData, pearUser: PearUser) -> MeEditUserViewController? {
-    let storyboard = UIStoryboard(name: String(describing: MeEditUserViewController.self), bundle: nil)
-    guard let editMeVC = storyboard.instantiateInitialViewController() as? MeEditUserViewController else { return nil }
+  class func instantiate(profile: FullProfileDisplayData, pearUser: PearUser) -> MeEditUserPreferencesViewController? {
+    let storyboard = UIStoryboard(name: String(describing: MeEditUserPreferencesViewController.self), bundle: nil)
+    guard let editMeVC = storyboard.instantiateInitialViewController() as? MeEditUserPreferencesViewController else { return nil }
     editMeVC.profile = profile
     editMeVC.pearUser = pearUser
     return editMeVC
@@ -75,15 +73,9 @@ class MeEditUserViewController: UIViewController {
 }
 
 // MARK: - Updating and Saving
-extension MeEditUserViewController {
+extension MeEditUserPreferencesViewController {
   
   func checkForEdits() -> Bool {
-    if let photoVC = self.photoUpdateVC, photoVC.didMakeUpdates() {
-      return true
-    }
-    for textFieldVC in self.textFieldVCs where textFieldVC.didMakeUpdates() {
-      return true
-    }
     
     if let genderPrefVC = self.genderPreferencesVC,
       genderPrefVC.didMakeUpdates() {
@@ -98,44 +90,8 @@ extension MeEditUserViewController {
     return false
   }
   
-  func getPhotoUpdates() -> [ImageContainer] {
-    var updates: [ImageContainer] = []
-    if let photoVC = self.photoUpdateVC, photoVC.didMakeUpdates() {
-      updates = photoVC.images
-        .compactMap({ $0.imageContainer })
-    }
-    return updates
-  }
-  
   func getUserUpdates() -> [String: Any] {
     var updates: [String: Any] = [:]
-    
-    for fieldVC in self.textFieldVCs where fieldVC.didMakeUpdates() {
-      guard let inputText = fieldVC.inputTextField.text else {
-        print("Failed to get input text to update")
-        continue
-      }
-      switch fieldVC.type {
-      case .firstName:
-        updates["firstName"] = inputText
-      case .lastName:
-        updates["lastName"] = inputText
-      case .birthday:
-        updates["birthdate"] = inputText
-      case .gender:
-        print("Gender currently can't be updated")
-//        updates["gender"] = inputText
-      case .location:
-        updates["locationName"] = inputText
-      case .schoolName:
-        updates["school"] = inputText
-      case .schoolYear:
-        updates["schoolYear"] = inputText
-      case .unknown:
-        break
-      }
-    }
-    
     if let genderPrefVC = self.genderPreferencesVC,
       genderPrefVC.didMakeUpdates() {
       updates["seekingGender"] = genderPrefVC.genderPreferences.map({ $0.rawValue })
@@ -154,24 +110,10 @@ extension MeEditUserViewController {
     if isUpdating {
       return
     }
-    if let images = self.photoUpdateVC?.images, images.count != images.compactMap({ $0.imageContainer }).count {
-      self.delay(delay: 0.5) {
-        self.saveChanges(completion: completion)
-        return
-      }
-      return
-    }
     self.isUpdating = true
     let userUpdates = self.getUserUpdates()
-    let photoUpdates = self.getPhotoUpdates()
-    var updateCalls = 0
-    if userUpdates.count > 0 {
-      updateCalls += 1
-    }
-    if photoUpdates.count > 0 {
-      updateCalls += 1
-    }
-    if updateCalls == 0 {
+    
+    if userUpdates.count == 0 {
       if let completion = completion {
         print("Skipping updates")
         completion()
@@ -201,38 +143,11 @@ extension MeEditUserViewController {
                                       case .failure(let error):
                                         print("Updating user failure: \(error)")
                                       }
-                                      updateCalls -= 1
-                                      if updateCalls == 0 {
-                                        self.isUpdating = false
-                                        if let completion = completion {
-                                          completion()
-                                        }
+                                      self.isUpdating = false
+                                      if let completion = completion {
+                                        completion()
                                       }
-      }
-    }
-    
-    if photoUpdates.count > 0 {
-      PearImageAPI.shared.updateImages(userID: userID,
-                                       displayedImages: photoUpdates,
-                                       additionalImages: []) { (result) in
-                                        switch result {
-                                        case .success(let successful):
-                                          if successful {
-                                            print("Updating Images successful")
-                                          } else {
-                                            print("Updating Images failure")
-                                          }
-                                          
-                                        case .failure(let error):
-                                          print("Updating Images failure: \(error)")
-                                        }
-                                        updateCalls -= 1
-                                        if updateCalls == 0 {
-                                          self.isUpdating = false
-                                          if let completion = completion {
-                                            completion()
-                                          }
-                                        }
+                                      
       }
     }
     
@@ -240,7 +155,7 @@ extension MeEditUserViewController {
 }
 
 // MARK: - Life Cycle
-extension MeEditUserViewController {
+extension MeEditUserPreferencesViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -258,38 +173,9 @@ extension MeEditUserViewController {
   
   func constructEditProfile() {
     self.addSpacer(space: 20)
-    self.addTitleSection(title: "Photos")
-    self.addPhotosSection()
-//    self.addTitleSection(title: "Basic Information")
-//    self.addTextField(type: .firstName, title: "First Name", initialText: self.pearUser.firstName ?? "")
-//    self.addTextField(type: .lastName, title: "Last Name", initialText: self.pearUser.lastName ?? "")
-////    let dateFormatter = DateFormatter()
-////    dateFormatter.dateFormat = "MMM d, yyyy"
-////    let birthdate = dateFormatter.string(from: self.pearUser.birthdate)
-////    self.addTextField(type: .birthday, title: "Birthday", initialText: birthdate)
-//
-//    self.addTextField(type: .gender,
-//                      title: "Gender",
-//                      initialText: self.pearUser.matchingDemographics.gender?.toString() ?? "")
-//
-//    self.addTextField(type: .location,
-//                      title: "Location (City, State)",
-//                      initialText: self.pearUser.matchingDemographics.location?.locationName ?? "")
-//
-//    self.addTextField(type: .schoolName,
-//                      title: "School Name",
-//                      initialText: self.pearUser.school ?? "")
-//    self.addTextField(type: .schoolYear,
-//                      title: "School Year",
-//                      initialText: self.pearUser.schoolYear ?? "")
-//
-    self.addSpacer(space: 20)
     self.addTitleSection(title: "Matching Preferences")
     self.addUserPreferences()
     self.addSpacer(space: 30)
-    self.addBasicInfo()
-    self.addSpacer(space: 20)
-    self.addMoreInfo()
   }
   
   func addSpacer(space: CGFloat) {
@@ -343,38 +229,7 @@ extension MeEditUserViewController {
       ])
     self.stackView.addArrangedSubview(containerView)
   }
-  
-  func addPhotosSection() {
-    var allImages: [LoadedImageContainer] = []
-    self.pearUser.displayedImages.forEach({
-      allImages.append($0.loadedImageContainer())
-    })
-    guard let photosVC = UpdateImagesViewController.instantiate(images: allImages) else {
-      print("failed to create photo edit VC")
-      return
-    }
-    self.photoUpdateVC = photosVC
-    
-    self.addChild(photosVC)
-    self.stackView.addArrangedSubview(photosVC.view)
-    photosVC.didMove(toParent: self)
-  }
-  
-  func addTextField(type: UpdateTextFieldType,
-                    title: String,
-                    initialText: String) {
-    guard let textFieldVC = UpdateTextFieldController.instantiate(type: type,
-                                                                  initialText: initialText,
-                                                                  textFieldTitle: title) else {
-      print("Failed to initialize text field")
-      return
-    }
-    self.textFieldVCs.append(textFieldVC)
-    self.addChild(textFieldVC)
-    self.stackView.addArrangedSubview(textFieldVC.view)
-    textFieldVC.didMove(toParent: self)
-  }
-  
+
   func addUserPreferences() {
     guard let currentUser = DataStore.shared.currentPearUser else {
       print("Failed to fetch user")
@@ -415,56 +270,20 @@ extension MeEditUserViewController {
     
   }
   
-  func addBasicInfo() {
-    self.addTitleSection(title: "Basic Information")
-    guard let basicInfoInputVC = UserBasicInfoTableViewController.instantiate() else {
-      print("Unable to instantiate basic info VC")
-      return
-    }
-    self.addChild(basicInfoInputVC)
-    basicInfoInputVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.stackView.addArrangedSubview(basicInfoInputVC.view)
-    let height = CGFloat(basicInfoInputVC.infoItems.count * 60)
-    basicInfoInputVC.view.addConstraint(NSLayoutConstraint(item: basicInfoInputVC.view as Any, attribute: .height, relatedBy: .equal,
-                                                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-    
-    basicInfoInputVC.tableView.isScrollEnabled = false
-    basicInfoInputVC.didMove(toParent: self)
-    self.addSpacer(space: 10.0)
-  }
-  
-  func addMoreInfo() {
-    self.addTitleSection(title: "More Information")
-    guard let moreDetailsVC = UserMoreDetailsTableViewController.instantiate() else {
-      print("Unable to instantiate basic info VC")
-      return
-    }
-    self.addChild(moreDetailsVC)
-    moreDetailsVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.stackView.addArrangedSubview(moreDetailsVC.view)
-    let height = CGFloat(moreDetailsVC.infoItems.count * 60)
-    moreDetailsVC.view.addConstraint(NSLayoutConstraint(item: moreDetailsVC.view as Any, attribute: .height, relatedBy: .equal,
-                                                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-    moreDetailsVC.view.isUserInteractionEnabled = true
-    moreDetailsVC.tableView.isScrollEnabled = false
-    moreDetailsVC.didMove(toParent: self)
-    self.addSpacer(space: 10.0)
-  }
-  
 }
 
 // MARK: - Keybaord Size Notifications
-extension MeEditUserViewController {
+extension MeEditUserPreferencesViewController {
   
   func addKeyboardSizeNotifications() {
     NotificationCenter.default
       .addObserver(self,
-                   selector: #selector(MeEditUserViewController.keyboardWillChange(notification:)),
+                   selector: #selector(MeEditUserPreferencesViewController.keyboardWillChange(notification:)),
                    name: UIWindow.keyboardWillChangeFrameNotification,
                    object: nil)
     NotificationCenter.default
       .addObserver(self,
-                   selector: #selector(MeEditUserViewController.keyboardWillHide(notification:)),
+                   selector: #selector(MeEditUserPreferencesViewController.keyboardWillHide(notification:)),
                    name: UIWindow.keyboardWillHideNotification,
                    object: nil)
   }
@@ -492,9 +311,9 @@ extension MeEditUserViewController {
 }
 
 // MARK: - Dismiss First Responder on Click
-extension MeEditUserViewController {
+extension MeEditUserPreferencesViewController {
   func addDismissKeyboardOnViewClick() {
-    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MeEditUserViewController.dismissKeyboard)))
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MeEditUserPreferencesViewController.dismissKeyboard)))
   }
   
   @objc func dismissKeyboard() {

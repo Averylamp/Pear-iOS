@@ -28,6 +28,11 @@ class FriendsTabViewController: UIViewController {
     return matchesVC
   }
   
+  @IBAction func backButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.navigationController?.popViewController(animated: true)
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -44,6 +49,7 @@ extension FriendsTabViewController {
       .addObserver(self,
                    selector: #selector(FriendsTabViewController.reloadEndorsedProfiles),
                    name: .refreshFriendTab, object: nil)
+    self.navigationController?.interactivePopGestureRecognizer?.delegate = self
   }
   
   func loadNewEndorsedDetachedProfiles(endorsedProfiles: [PearUser], detachedProfiles: [PearDetachedProfile]) {
@@ -165,6 +171,15 @@ extension FriendsTabViewController: ProfileCreationProtocol, CNContactPickerDele
     let cnPicker = self.getContactsPicker()
     cnPicker.delegate = self
     self.present(cnPicker, animated: true, completion: nil)
+  }
+  
+}
+
+// MARK: - UIGestureRecognizerDelegate
+extension FriendsTabViewController: UIGestureRecognizerDelegate {
+  
+  func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
   }
   
 }
