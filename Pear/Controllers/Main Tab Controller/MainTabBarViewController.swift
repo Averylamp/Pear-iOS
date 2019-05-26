@@ -11,44 +11,36 @@ import CoreLocation
 
 class MainTabBarViewController: UITabBarController {
   
+  static let iconSize: CGFloat = 40
+  
   class func instantiate() -> MainTabBarViewController? {
     let storyboard = UIStoryboard(name: String(describing: MainTabBarViewController.self), bundle: nil)
     guard let mainTabVC = storyboard.instantiateInitialViewController() as? MainTabBarViewController else { return nil }
     //      Discovery
-    if DataStore.shared.hasCompletedSetup() && DataStore.shared.hasEnabledLocation() {
-      if let discoverVC = DiscoveryDecisionViewController.instantiate(),
-        let regularImage = R.image.tabIconDiscovery(),
-        let selectedImage = R.image.tabIconDiscoverySelected() {
-        discoverVC.tabBarItem = UITabBarItem(title: nil,
-                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal))
-        discoverVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
-        mainTabVC.addChild(discoverVC)
-      }
-    } else {
-      if let discoverVC = DiscoverySetupViewController.instantiate(),
-        let regularImage = R.image.tabIconDiscovery(),
-        let selectedImage = R.image.tabIconDiscoverySelected() {
-        discoverVC.tabBarItem = UITabBarItem(title: nil,
-                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal))
-        discoverVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
-        mainTabVC.addChild(discoverVC)
-      }
+    if let discoverVC = DiscoveryDecisionViewController.instantiate(),
+      let regularImage = R.image.tabIconDiscovery(),
+      let selectedImage = R.image.tabIconDiscoverySelected() {
+      discoverVC.tabBarItem = UITabBarItem(title: nil,
+                                           image: regularImage.imageWith(newSize:
+                                            CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+                                            .withRenderingMode(.alwaysOriginal),
+                                           selectedImage: selectedImage.imageWith(newSize:
+                                            CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+                                            .withRenderingMode(.alwaysOriginal))
+      discoverVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+      mainTabVC.addChild(discoverVC)
     }
-
+    
     //      Chat
     if let chatTabVC = ChatMainViewController.instantiate(),
       let regularImage = R.image.tabIconChat(),
       let selectedImage = R.image.tabIconChatSelected() {
       chatTabVC.tabBarItem = UITabBarItem(title: nil,
-                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                             image: regularImage.imageWith(newSize:
+                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                               .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                             selectedImage: selectedImage.imageWith(newSize:
+                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                               .withRenderingMode(.alwaysOriginal))
       chatTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(chatTabVC)
@@ -59,9 +51,11 @@ class MainTabBarViewController: UITabBarController {
       let regularImage = R.image.tabIconFriends(),
       let selectedImage = R.image.tabIconFriendsSelected() {
       friendsTabVC.tabBarItem = UITabBarItem(title: nil,
-                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                             image: regularImage.imageWith(newSize:
+                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                               .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                             selectedImage: selectedImage.imageWith(newSize:
+                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                               .withRenderingMode(.alwaysOriginal))
       friendsTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(friendsTabVC)
@@ -72,9 +66,11 @@ class MainTabBarViewController: UITabBarController {
       let regularImage = R.image.tabIconYou(),
       let selectedImage = R.image.tabIconYouSelected() {
       meTabVC.tabBarItem =  UITabBarItem(title: nil,
-                                         image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                         image: regularImage.imageWith(newSize:
+                                          CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                           .withRenderingMode(.alwaysOriginal),
-                                         selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                         selectedImage: selectedImage.imageWith(newSize:
+                                          CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                           .withRenderingMode(.alwaysOriginal))
       meTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(meTabVC)
