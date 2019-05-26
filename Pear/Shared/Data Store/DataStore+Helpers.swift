@@ -121,7 +121,7 @@ extension DataStore {
                                       DataStore.shared.reloadAllUserData()
                                       Crashlytics.sharedInstance().setUserEmail(pearUser.email)
                                       Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
-                                      Crashlytics.sharedInstance().setUserName(pearUser.fullName)
+                                      Crashlytics.sharedInstance().setUserName(pearUser.fullName())
                                       Client.shared?.extra = [
                                         "email": pearUser.email ?? "",
                                         "phoneNumber": pearUser.phoneNumber ?? "",

@@ -31,7 +31,23 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
   var phoneNumberVerified: Bool!
   var firstName: String?
   var lastName: String?
-  var fullName: String?
+  func fullName() -> String {
+      var returnName = ""
+      if let firstName = firstName {
+        returnName += firstName
+      }
+      if let lastName = lastName {
+        if returnName.count > 0 {
+          returnName += " " + lastName
+        } else {
+          returnName += lastName
+        }
+      }
+      if returnName.count == 0 {
+        returnName = "No Name"
+      }
+      return returnName
+  }
   var thumbnailURL: String?
   var gender: GenderEnum?
   var age: Int?
@@ -78,7 +94,6 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
     self.phoneNumberVerified = try values.decode(Bool.self, forKey: .phoneNumberVerified)
     self.firstName = try? values.decode(String.self, forKey: .firstName)
     self.lastName = try? values.decode(String.self, forKey: .lastName)
-    self.fullName = try? values.decode(String.self, forKey: .fullName)
     self.thumbnailURL = try? values.decode(String.self, forKey: .thumbnailURL)
     if let genderString = try? values.decode(String.self, forKey: .gender),
       let gender = GenderEnum.init(rawValue: genderString) {
