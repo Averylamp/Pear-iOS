@@ -253,6 +253,12 @@ class DiscoveryFullProfileViewController: UIViewController {
   
   @IBAction func filterButtonClicked(_ sender: Any) {
     //TODO(@bgu): Filter Button Implementation
+    print("filter button clicked")
+    guard let addEventVC = JoinEventViewController.instantiate(isInOnboarding: false) else {
+      print ("Failed to create join event VC")
+      return
+    }
+    self.present(addEventVC, animated: true, completion: nil)
   }
   
 }
