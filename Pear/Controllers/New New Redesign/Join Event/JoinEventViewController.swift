@@ -15,12 +15,15 @@ class JoinEventViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var skipEventButton: UIButton!
   
+  var eventCode: String!
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> JoinEventViewController? {
     guard let joinEventVC = R.storyboard.joinEventViweController()
       .instantiateInitialViewController() as? JoinEventViewController else { return nil }
+    joinEventVC.eventCode = ""
     return joinEventVC
   }
   
@@ -84,7 +87,11 @@ extension JoinEventViewController {
       ])
     let promptLabel = UILabel()
     promptLabel.translatesAutoresizingMaskIntoConstraints = false
-    if let font = R.font.openSansBold(size: 16.0) {
+    var promptLabelFontSize = 18.0
+    if UIScreen.main.bounds.width <= 320 {
+      promptLabelFontSize = 16.0
+    }
+    if let font = R.font.openSansBold(size: CGFloat(promptLabelFontSize)) {
       promptLabel.font = font
     }
     promptLabel.text = "Date My Friend.ppt, 6/2"
@@ -118,10 +125,60 @@ extension JoinEventViewController {
       NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal,
                          toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 26.0)
       ])
+    
+    let seeEventLabel = UILabel()
+    seeEventLabel.translatesAutoresizingMaskIntoConstraints = false
+    if let font = R.font.openSansSemiBold(size: 14.0) {
+      seeEventLabel.font = font
+    }
+    seeEventLabel.text = "Don't see your event?"
+    seeEventLabel.textColor = R.color.tertiaryTextColor()
+    self.view.addSubview(seeEventLabel)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: seeEventLabel, attribute: .top, relatedBy: .equal,
+                         toItem: containerButton, attribute: .bottom, multiplier: 1.0, constant: 5.0),
+      NSLayoutConstraint(item: seeEventLabel, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+      ])
+    
+    let enterCodeButton = UIButton()
+    enterCodeButton.addTarget(self, action: #selector(JoinEventViewController.enterCodeClicked), for: .touchUpInside)
+    enterCodeButton.translatesAutoresizingMaskIntoConstraints = false
+    enterCodeButton.setTitle("Enter event code", for: .normal)
+    if let font = R.font.openSansBold(size: 14.0) {
+      enterCodeButton.titleLabel?.font = font
+    }
+    enterCodeButton.setTitleColor(R.color.primaryBrandColor(), for: .normal)
+    self.view.addSubview(enterCodeButton)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: enterCodeButton, attribute: .top, relatedBy: .equal,
+                         toItem: seeEventLabel, attribute: .bottom, multiplier: 1.0, constant: -2.0),
+      NSLayoutConstraint(item: enterCodeButton, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+      ])
   }
   
   @objc func addDMFEvent(_ sender: UIButton) {
     print("tapped DMF button")
+  }
+  
+  @objc func enterCodeClicked(_ sender: UIButton) {
+    print("tapped enter code button")
+    let alertController = UIAlertController(title: "Welcome!", message: "Please enter your event code to continue.", preferredStyle: .alert)
+    alertController.addTextField { (textField) in
+      textField.placeholder = "Enter the code"
+    }
+    let submitAction = UIAlertAction(title: "Continue", style: .default) { (_) in
+      let textField = alertController.textFields![0] as UITextField
+      if let text = textField.text {
+        self.eventCode = text
+      }
+      print(self.eventCode)
+    }
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    alertController.addAction(submitAction)
+    alertController.addAction(cancelAction)
+    self.present(alertController, animated: true, completion: nil)
   }
   
 }
