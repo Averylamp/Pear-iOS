@@ -44,7 +44,7 @@ extension PearDiscoveryAPI {
                                            message: "\(String(describing: error.localizedDescription))",
                                            responseData: data,
                                            tags: [:],
-                                           paylod: variables)
+                                           payload: variables)
         } else {
           if let data = data,
             let json = try? JSON(data: data),
@@ -73,7 +73,7 @@ extension PearDiscoveryAPI {
                                              message: "Failed Discovery Serialization",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: [:])
+                                             payload: [:])
             completion(.failure(DiscoveryAPIError.unknownError(error: nil)))
           }
         }
@@ -110,7 +110,7 @@ extension PearDiscoveryAPI {
                                            message: "\(String(describing: error.localizedDescription))",
             responseData: data,
             tags: [:],
-            paylod: variables)
+            payload: variables)
         } else {
           let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "skipDiscoveryItem")
           switch helperResult {
@@ -122,7 +122,7 @@ extension PearDiscoveryAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(DiscoveryAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create Match Request: \(message ?? "")")
@@ -132,7 +132,7 @@ extension PearDiscoveryAPI {
                                              message: message ?? "Unknown message",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(DiscoveryAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Skip Discovery Item Message: \(String(describing: message))")

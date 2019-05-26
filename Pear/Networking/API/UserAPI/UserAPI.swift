@@ -38,4 +38,7 @@ protocol UserAPI {
                   updates: [String: Any],
                   completion: @escaping(Result<Bool, UserAPIError>) -> Void)
   
+  func addEventCode(code: String,
+                    completion: @escaping(Result<Bool, UserAPIError>) -> Void)
+  
 }
