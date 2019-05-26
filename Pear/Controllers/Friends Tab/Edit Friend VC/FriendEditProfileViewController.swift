@@ -142,6 +142,7 @@ extension FriendEditProfileViewController {
     let bio: String = self.updateProfileData.updatedBio?.content ?? ""
     let boasts: [BoastItem] = self.updateProfileData.updatedBoasts
     let roasts: [RoastItem] = self.updateProfileData.updatedRoasts
+    let questionResponses: [QuestionResponseItem] = self.updateProfileData.updatedQuestionResponses
     self.addTitleSection(title: "Bio")
     self.addBioSection(bio: bio)
     
