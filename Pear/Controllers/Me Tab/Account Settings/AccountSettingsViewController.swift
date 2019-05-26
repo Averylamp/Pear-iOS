@@ -162,7 +162,7 @@ extension AccountSettingsViewController {
     let (containerView, button) = self.getButton()
     button.setTitle("Delete Profile", for: .normal)
     button.addTarget(self, action: #selector(AccountSettingsViewController.deleleProfileButtonClicked), for: .touchUpInside)
-    button.layer.borderWidth = 1
+    button.layer.borderWidth = 2
     button.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
     button.setTitleColor(UIColor(red: 0.88, green: 0.38, blue: 0.25, alpha: 1.00), for: .normal)
     return containerView
@@ -172,7 +172,7 @@ extension AccountSettingsViewController {
     let (containerView, button) = self.getButton()
     button.setTitle("Log Out", for: .normal)
     button.addTarget(self, action: #selector(AccountSettingsViewController.logoutButtonClicked), for: .touchUpInside)
-    button.layer.borderWidth = 1
+    button.layer.borderWidth = 2
     button.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
     button.setTitleColor(R.color.primaryTextColor(), for: .normal)
     return containerView
