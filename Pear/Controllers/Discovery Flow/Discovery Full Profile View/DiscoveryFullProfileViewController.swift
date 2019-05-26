@@ -251,6 +251,10 @@ class DiscoveryFullProfileViewController: UIViewController {
     
   }
   
+  @IBAction func filterButtonClicked(_ sender: Any) {
+    //TODO(@bgu): Filter Button Implementation
+  }
+  
 }
 
 // MARK: - Presentation Helpers

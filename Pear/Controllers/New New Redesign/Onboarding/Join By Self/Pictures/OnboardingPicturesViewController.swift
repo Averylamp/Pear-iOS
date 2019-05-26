@@ -35,12 +35,12 @@ class OnboardingPicturesViewController: UIViewController {
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    if photoUpdateVC?.images.count == 0 {
+      self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
+      return
+    }
+
     self.updateUserImages()
-//    guard let preferencesVC = OnboardingBasicInfoViewController.instantiate() else {
-//      print("Failed to instantiate preferences VC")
-//      return
-//    }
-//    self.navigationController?.pushViewController(preferencesVC, animated: true)
   }
   
 }
