@@ -168,7 +168,7 @@ extension PearUpdateUserAPI {
                                            message: error.localizedDescription,
                                            responseData: data,
                                            tags: [:],
-                                           paylod: fullDictionary)
+                                           payload: fullDictionary)
           completion(.failure(UpdateUserAPIError.unknownError(error: error)))
           return
         } else {
@@ -182,7 +182,7 @@ extension PearUpdateUserAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
               responseData: data,
               tags: [:],
-              paylod: fullDictionary)
+              payload: fullDictionary)
             completion(.failure(UpdateUserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Update User: \(message ?? "")")
@@ -192,7 +192,7 @@ extension PearUpdateUserAPI {
                                              message: message ?? "Returned Failure",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(UpdateUserAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Successfully Updated User: \(String(describing: message))")
