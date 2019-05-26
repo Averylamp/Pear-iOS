@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,13 +48,6 @@
                                             <action selector="cancelButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="nX1-8U-yvn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBh-z2-b4F">
-                                        <rect key="frame" x="329" y="10" width="34" height="30"/>
-                                        <state key="normal" title="Save"/>
-                                        <connections>
-                                            <action selector="doneButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="jLa-cM-GST"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -63,13 +57,11 @@
                                     <constraint firstItem="WZP-gN-Rsq" firstAttribute="leading" secondItem="REG-GK-LWC" secondAttribute="leading" constant="12" id="YsJ-5j-TPN"/>
                                     <constraint firstAttribute="bottom" secondItem="lx0-7n-BkB" secondAttribute="bottom" id="aKb-yj-bc4"/>
                                     <constraint firstAttribute="height" constant="50" id="hpx-JM-omo"/>
-                                    <constraint firstAttribute="trailing" secondItem="OBh-z2-b4F" secondAttribute="trailing" constant="12" id="s6T-KO-QTo"/>
-                                    <constraint firstItem="OBh-z2-b4F" firstAttribute="centerY" secondItem="REG-GK-LWC" secondAttribute="centerY" id="tS0-Ad-FZG"/>
                                     <constraint firstItem="WZP-gN-Rsq" firstAttribute="centerY" secondItem="REG-GK-LWC" secondAttribute="centerY" id="tlH-cF-5Kl"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKx-em-e81">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="517"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lpG-Cn-3kF">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -92,12 +84,28 @@
                                     <constraint firstItem="lpG-Cn-3kF" firstAttribute="top" secondItem="sKx-em-e81" secondAttribute="top" id="fC2-rH-NU8"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-td-jTo">
+                                <rect key="frame" x="20" y="587" width="335" height="60"/>
+                                <color key="backgroundColor" name="primaryBrandColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="gkr-m7-EOE"/>
+                                </constraints>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonClicked:" destination="1d6-oB-8PO" eventType="touchUpInside" id="Obt-01-a2O"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="SIR-1c-p7i" firstAttribute="bottom" secondItem="gj0-td-jTo" secondAttribute="bottom" constant="20" id="BpG-4y-R6R"/>
+                            <constraint firstItem="SIR-1c-p7i" firstAttribute="trailing" secondItem="gj0-td-jTo" secondAttribute="trailing" constant="20" id="Mdv-pm-6N1"/>
                             <constraint firstItem="sKx-em-e81" firstAttribute="top" secondItem="REG-GK-LWC" secondAttribute="bottom" id="O7t-qM-Mig"/>
+                            <constraint firstItem="gj0-td-jTo" firstAttribute="top" secondItem="sKx-em-e81" secondAttribute="bottom" id="Oaq-hh-g3T"/>
+                            <constraint firstItem="gj0-td-jTo" firstAttribute="leading" secondItem="SIR-1c-p7i" secondAttribute="leading" constant="20" id="Obz-2j-cNh"/>
                             <constraint firstItem="REG-GK-LWC" firstAttribute="top" secondItem="SIR-1c-p7i" secondAttribute="top" id="awX-ZA-GVV"/>
-                            <constraint firstItem="SIR-1c-p7i" firstAttribute="bottom" secondItem="sKx-em-e81" secondAttribute="bottom" id="cz9-TE-hgG"/>
                             <constraint firstItem="lx0-7n-BkB" firstAttribute="width" secondItem="ZO0-rP-Cgi" secondAttribute="width" id="efr-Uh-jMw"/>
                             <constraint firstItem="SIR-1c-p7i" firstAttribute="trailing" secondItem="sKx-em-e81" secondAttribute="trailing" id="fhi-D3-FTj"/>
                             <constraint firstItem="REG-GK-LWC" firstAttribute="trailing" secondItem="SIR-1c-p7i" secondAttribute="trailing" id="fvF-PO-dc2"/>
@@ -108,10 +116,9 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="WZP-gN-Rsq" id="010-VP-uv9"/>
-                        <outlet property="doneButton" destination="OBh-z2-b4F" id="7nZ-K1-3Ys"/>
+                        <outlet property="doneButton" destination="gj0-td-jTo" id="EYo-OP-VEf"/>
                         <outlet property="profileNameLabel" destination="Vz7-4z-i8h" id="8J1-Gz-EEH"/>
                         <outlet property="scrollView" destination="sKx-em-e81" id="wVt-7M-C14"/>
-                        <outlet property="scrollViewBottomConstraint" destination="cz9-TE-hgG" id="Bof-6H-0ps"/>
                         <outlet property="stackView" destination="lpG-Cn-3kF" id="hjd-6F-96M"/>
                     </connections>
                 </viewController>
@@ -122,5 +129,8 @@
     </scenes>
     <resources>
         <image name="onboarding-close-button" width="120" height="120"/>
+        <namedColor name="primaryBrandColor">
+            <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

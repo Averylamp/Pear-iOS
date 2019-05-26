@@ -123,6 +123,15 @@ class UpdateProfileData: GraphQLInput {
   }
   
   func saveChanges(completion: @escaping ((_ success: Bool) -> Void)) {
+    guard let pearUser = DataStore.shared.currentPearUser else {
+      print("not logged in!")
+      return
+    }
+    guard let pearUserFirstName = pearUser.firstName else {
+      print("user has no first name")
+      return
+    }
+    self.updatedQuestionResponses.forEach({ $0.updateAuthor(authorID: pearUser.documentID, authorFirstName: pearUserFirstName) })
     switch self.updateProfileType {
     case .detachedProfile:
       var updates = self.toGraphQLInput()
