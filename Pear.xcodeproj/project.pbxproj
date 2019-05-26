@@ -25,6 +25,8 @@
 		911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */; };
 		911AD0F62261AE6900A743C2 /* AllowLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */; };
 		911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */; };
+		911E2C4C229A993500E11860 /* JoinEventViweController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911E2C4A229A993400E11860 /* JoinEventViweController.storyboard */; };
+		911E2C4D229A993500E11860 /* JoinEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E2C4B229A993500E11860 /* JoinEventViewController.swift */; };
 		9142D08C2298ACCA0037E199 /* PromptInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142D08B2298ACCA0037E199 /* PromptInputDelegate.swift */; };
 		917F20B222716F380023EC69 /* DiscoverySetupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */; };
 		917F20B322716F380023EC69 /* DiscoverySetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */; };
@@ -443,6 +445,8 @@
 		911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationViewController.swift; sourceTree = "<group>"; };
 		911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowLocationViewController.storyboard; sourceTree = "<group>"; };
+		911E2C4A229A993400E11860 /* JoinEventViweController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JoinEventViweController.storyboard; sourceTree = "<group>"; };
+		911E2C4B229A993500E11860 /* JoinEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinEventViewController.swift; sourceTree = "<group>"; };
 		9142D08B2298ACCA0037E199 /* PromptInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputDelegate.swift; sourceTree = "<group>"; };
 		917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverySetupViewController.storyboard; sourceTree = "<group>"; };
 		917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverySetupViewController.swift; sourceTree = "<group>"; };
@@ -1072,6 +1076,15 @@
 			path = "Allow Location Screen";
 			sourceTree = "<group>";
 		};
+		911E2C49229A991800E11860 /* Join Event */ = {
+			isa = PBXGroup;
+			children = (
+				911E2C4B229A993500E11860 /* JoinEventViewController.swift */,
+				911E2C4A229A993400E11860 /* JoinEventViweController.storyboard */,
+			);
+			path = "Join Event";
+			sourceTree = "<group>";
+		};
 		917F20B422716F6A0023EC69 /* Discovery Setup VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1666,6 +1679,7 @@
 			isa = PBXGroup;
 			children = (
 				BB687E59228D59ED00F45C9D /* User Creation */,
+				911E2C49229A991800E11860 /* Join Event */,
 				BB687E5A228D59F800F45C9D /* Permissions Pages */,
 				BB687E58228D59E100F45C9D /* Onboarding */,
 			);
@@ -2970,6 +2984,7 @@
 				BBF93E5E2267CA20002841EE /* UserPhoneCodeViewController.storyboard in Resources */,
 				BB20118D228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard in Resources */,
 				BB94C1312243C73B001320B0 /* Strings.strings in Resources */,
+				911E2C4C229A993500E11860 /* JoinEventViweController.storyboard in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
 				BB9CB6AC225A11F900605A98 /* FriendEditProfileViewController.storyboard in Resources */,
 				9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */,
@@ -3398,6 +3413,7 @@
 				BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */,
 				BB687E85228D829900F45C9D /* OnboardingPicturesViewController.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
+				911E2C4D229A993500E11860 /* JoinEventViewController.swift in Sources */,
 				BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */,
