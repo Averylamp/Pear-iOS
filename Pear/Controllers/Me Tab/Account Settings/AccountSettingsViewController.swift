@@ -135,7 +135,22 @@ extension AccountSettingsViewController {
   }
   
   @objc func sendFeedbackClicked(sender: UIButton) {
+    let mailComposer = MFMailComposeViewController()
+    mailComposer.setSubject("[Feedback] Hey I've got some Feedback'!")
+    mailComposer.setToRecipients(["support@getpear.com"])
+    let messageBody = """
     
+    
+    
+    
+    App Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown")
+    Name: \(DataStore.shared.currentPearUser?.firstName ?? "") \(DataStore.shared.currentPearUser?.lastName ?? "")
+    Phone Number: \(DataStore.shared.currentPearUser?.phoneNumber ?? "")
+    """
+    mailComposer.setMessageBody(messageBody, isHTML: false)
+    mailComposer.mailComposeDelegate = self
+    self.present(mailComposer, animated: true, completion: nil)
+
   }
   
 }
@@ -205,6 +220,11 @@ extension AccountSettingsViewController {
 extension AccountSettingsViewController: MFMailComposeViewControllerDelegate {
   
   func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    if !isDeleting {
+      DispatchQueue.main.async {
+        controller.dismiss(animated: true, completion: nil)
+      }
+    }
     switch result {
     case .sent:
       DispatchQueue.main.async {

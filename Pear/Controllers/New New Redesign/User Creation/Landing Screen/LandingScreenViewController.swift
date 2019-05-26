@@ -18,7 +18,6 @@ class LandingScreenViewController: UIViewController {
   @IBOutlet weak var termsButton: UIButton!
   @IBOutlet weak var phoneNumberContainerView: UIView!
   @IBOutlet weak var inputTextField: UITextField!
-  @IBOutlet weak var eventCodeBottomConstraint: NSLayoutConstraint!
   
   var isValidatingPhoneNumber: Bool = false
   /// Factory method for creating this view controller.
@@ -224,7 +223,6 @@ extension LandingScreenViewController {
       let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
       let targetFrame = targetFrameNSValue.cgRectValue
       let keyboardBottomPadding: CGFloat = 20
-      self.eventCodeBottomConstraint.constant = targetFrame.size.height - self.view.safeAreaInsets.bottom + keyboardBottomPadding
       UIView.animate(withDuration: duration) {
         self.view.layoutIfNeeded()
       }
@@ -232,7 +230,6 @@ extension LandingScreenViewController {
   }
   @objc func keyboardWillHide(notification: Notification) {
     if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      self.eventCodeBottomConstraint.constant = 220
       UIView.animate(withDuration: duration) {
         self.view.layoutIfNeeded()
       }
