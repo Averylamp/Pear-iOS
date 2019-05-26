@@ -16,18 +16,25 @@ class JoinEventViewController: UIViewController {
   @IBOutlet weak var skipEventButton: UIButton!
   
   var eventCode: String!
+  var isAddingEvent: Bool!
+  var isInOnboarding: Bool!
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> JoinEventViewController? {
+  class func instantiate(isInOnboarding: Bool) -> JoinEventViewController? {
     guard let joinEventVC = R.storyboard.joinEventViweController()
       .instantiateInitialViewController() as? JoinEventViewController else { return nil }
     joinEventVC.eventCode = ""
+    joinEventVC.isAddingEvent = false
+    joinEventVC.isInOnboarding = isInOnboarding
     return joinEventVC
   }
   
   @IBAction func skipButtonClicked(_ sender: Any) {
+    if self.isAddingEvent {
+      return
+    }
     self.continueToLocationOrNext()
   }
   
@@ -159,10 +166,38 @@ extension JoinEventViewController {
   }
   
   @objc func addDMFEvent(_ sender: UIButton) {
+    if self.isAddingEvent {
+      return
+    }
     print("tapped DMF button")
+    self.isAddingEvent = true
+    PearUserAPI.shared.addEventCode(code: "SUMMERLOVE") { (result) in
+      self.isAddingEvent = false
+      switch result {
+      case .success(let successful):
+        if successful {
+          self.continueToLocationOrNext()
+        } else {
+          DispatchQueue.main.async {
+            self.alert(title: "Error adding event",
+                       message: "Unfortunately we are unable to complete this operation at this time. Please try again later")
+          }
+        }
+      case .failure(let error):
+        print("Failure adding event code SUMMERLOVE: \(error)")
+        DispatchQueue.main.async {
+          self.alert(title: "Error adding event",
+                     message: "Unfortunately we are unable to complete this operation at this time. Please try again later")
+        }
+      }
+      
+    }
   }
   
   @objc func enterCodeClicked(_ sender: UIButton) {
+    if self.isAddingEvent {
+      return
+    }
     print("tapped enter code button")
     let alertController = UIAlertController(title: "Welcome!", message: "Please enter your event code to continue.", preferredStyle: .alert)
     alertController.addTextField { (textField) in
@@ -174,6 +209,28 @@ extension JoinEventViewController {
         self.eventCode = text
       }
       print(self.eventCode)
+      self.isAddingEvent = true
+      PearUserAPI.shared.addEventCode(code: self.eventCode) { (result) in
+        self.isAddingEvent = false
+        switch result {
+        case .success(let successful):
+          if successful {
+            self.continueToLocationOrNext()
+          } else {
+            DispatchQueue.main.async {
+              self.alert(title: "No event found",
+                         message: "We couldn't find an event with this code.")
+            }
+          }
+        case .failure(let error):
+          print("Failure adding event code SUMMERLOVE: \(error)")
+          DispatchQueue.main.async {
+            self.alert(title: "No event found",
+                       message: "We couldn't find an event with this code.")
+          }
+        }
+        
+      }
     }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
     alertController.addAction(submitAction)

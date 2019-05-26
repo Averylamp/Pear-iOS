@@ -143,7 +143,7 @@ extension PermissionsFlowProtocol {
   
   func continueToEventCode() {
     DispatchQueue.main.async {
-      guard let joinEventVC = JoinEventViewController.instantiate() else {
+      guard let joinEventVC = JoinEventViewController.instantiate(isInOnboarding: true) else {
         print("Failed to create Join Event VC")
         return
       }
