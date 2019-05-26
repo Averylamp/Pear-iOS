@@ -46,23 +46,23 @@ class MainTabBarViewController: UITabBarController {
       mainTabVC.addChild(chatTabVC)
     }
     
-    //      Friendos
-    if let friendsTabVC = FriendsTabViewController.instantiate(),
-      let regularImage = R.image.tabIconFriends(),
-      let selectedImage = R.image.tabIconFriendsSelected() {
-      friendsTabVC.tabBarItem = UITabBarItem(title: nil,
-                                             image: regularImage.imageWith(newSize:
-                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
-                                              .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize:
-                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
-                                              .withRenderingMode(.alwaysOriginal))
-      friendsTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
-      mainTabVC.addChild(friendsTabVC)
-    }
+//    //      Friendos
+//    if let friendsTabVC = FriendsTabViewController.instantiate(),
+//      let regularImage = R.image.tabIconFriends(),
+//      let selectedImage = R.image.tabIconFriendsSelected() {
+//      friendsTabVC.tabBarItem = UITabBarItem(title: nil,
+//                                             image: regularImage.imageWith(newSize:
+//                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+//                                              .withRenderingMode(.alwaysOriginal),
+//                                             selectedImage: selectedImage.imageWith(newSize:
+//                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+//                                              .withRenderingMode(.alwaysOriginal))
+//      friendsTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+//      mainTabVC.addChild(friendsTabVC)
+//    }
     
     //      You
-    if let meTabVC = MeTabViewController.instantiate(),
+    if let meTabVC = MeTabMainViewController.instantiate(),
       let regularImage = R.image.tabIconYou(),
       let selectedImage = R.image.tabIconYouSelected() {
       meTabVC.tabBarItem =  UITabBarItem(title: nil,
