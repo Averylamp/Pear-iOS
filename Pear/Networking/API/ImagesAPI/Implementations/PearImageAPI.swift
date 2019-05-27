@@ -91,7 +91,7 @@ extension PearImageAPI {
                                              message: "Image upload failure",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: payload)
+                                             payload: payload)
             completion(.failure(ImageAPIError.unknownError(error: error)))
           } else {
             trace?.incrementMetric("Image Request Successful", by: 1)
@@ -111,7 +111,7 @@ extension PearImageAPI {
                                                  message: "Image Decoding Failure",
                                                  responseData: data,
                                                  tags: [:],
-                                                 paylod: payload)
+                                                 payload: payload)
                 completion(.failure(ImageAPIError.unknownError(error: error)))
               }
             } else {
@@ -123,7 +123,7 @@ extension PearImageAPI {
                                                message: "Image Response Data Missing",
                                                responseData: data,
                                                tags: [:],
-                                               paylod: payload)
+                                               payload: payload)
               completion(.failure(ImageAPIError.failedDeserialization))
             }
           }
@@ -238,7 +238,7 @@ extension PearImageAPI {
                                            message: error.localizedDescription,
                                            responseData: data,
                                            tags: [:],
-                                           paylod: fullDictionary)
+                                           payload: fullDictionary)
           completion(.failure(ImageAPIError.unknownError(error: error)))
           return
         } else {
@@ -252,7 +252,7 @@ extension PearImageAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(ImageAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Update Images: \(message ?? "")")
@@ -262,7 +262,7 @@ extension PearImageAPI {
                                              message: message ?? "GraphQL returned Failure",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(ImageAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Successfully updated images: \(String(describing: message))")

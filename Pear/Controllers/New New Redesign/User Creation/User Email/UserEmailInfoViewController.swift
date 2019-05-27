@@ -47,72 +47,13 @@ class UserEmailInfoViewController: UIViewController {
         }
       }
     }
-    let locationStatus = CLLocationManager.authorizationStatus()
-    if locationStatus != .authorizedWhenInUse && locationStatus != .authorizedAlways {
-      guard let locationAuthorizationVC = AllowLocationViewController.instantiate() else {
-        print("Unable to create Location Auth VC")
-        return
-      }
-      self.navigationController?.setViewControllers([locationAuthorizationVC], animated: true)
-      return
-    }
-    DataStore.shared.withinBostonArea { (withinBoston) in
-      if let withinBoston = withinBoston {
-        if withinBoston  || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
-          DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
-          self.continueToNotificationsPageIfNotEnabled()
-        } else {
-          self.continueToLocationBlockedPage()
-        }
-      } else {
-        DataStore.shared.locationDelegate = self
-        DataStore.shared.firstLocationReceived = false
-        DataStore.shared.startReceivingLocationChanges()
-      }
-    }
-  }
-  
-  func continueToNotificationsPageIfNotEnabled() {
-    DataStore.shared.getNotificationAuthorizationStatus { (status) in
-      if status != .authorized {
-        self.continueToAllowNotifications()
-        return
-      } else {
-        if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
-          self.continueToMainVC()
-        } else {
-          self.continueToOnboarding()
-        }
-        return
-      }
-    }
+    self.continueToEventCodeOrNext()
   }
 }
 
 // MARK: - Permissions Flow Protocol
 extension UserEmailInfoViewController: PermissionsFlowProtocol {
   // No-Op
-}
-
-// MARK: - First Location Delegate Manager
-extension UserEmailInfoViewController: DataStoreLocationDelegate {
-  func firstLocationReceived(location: CLLocationCoordinate2D) {
-    DataStore.shared.withinBostonArea { (withinBoston) in
-      if let withinBoston = withinBoston {
-        if withinBoston   || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
-          DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
-          self.continueToNotificationsPageIfNotEnabled()
-        } else {
-          self.continueToLocationBlockedPage()
-        }
-      }
-    }
-  }
-  
-  func authorizationStatusChanged(status: CLAuthorizationStatus) {
-    // no-op
-  }
-  
 }
 
 // MARK: - Life Cycle

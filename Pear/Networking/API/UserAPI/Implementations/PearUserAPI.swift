@@ -5,6 +5,7 @@
 //  Created by Avery Lamp on 2/24/19.
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
+// swiftlint:disable file_length
 
 import Foundation
 import SwiftyJSON
@@ -33,6 +34,8 @@ class PearUserAPI: UserAPI {
   func getUpdateUserQueryWithName(name: String) -> String {
     return "mutation \(name)($userInput: UpdateUserInput!){ updateUser(updateUserInput:$userInput){ success message } }"
   }
+  
+  static let addEventCodeQuery: String = "mutation AddEventCode($user_id: ID!, $code: String!) { addEventCode(user_id: $user_id, code: $code) { success message } }"
   
 }
 
@@ -77,7 +80,7 @@ extension PearUserAPI {
                                                message: "GraphQL Error: \(String(describing: helperResult))",
                                                responseData: data,
                                                tags: [:],
-                                               paylod: fullDictionary)
+                                               payload: fullDictionary)
               #endif
             }
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
@@ -90,7 +93,7 @@ extension PearUserAPI {
                                                message: message ?? "Returned Failure",
                                                responseData: data,
                                                tags: [:],
-                                               paylod: fullDictionary)
+                                               payload: fullDictionary)
             }
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
@@ -112,7 +115,7 @@ extension PearUserAPI {
                                                  message: error.localizedDescription,
                                                  responseData: data,
                                                  tags: [:],
-                                                 paylod: fullDictionary)
+                                                 payload: fullDictionary)
               }
               completion(.failure(UserAPIError.failedDeserialization))
             }
@@ -172,7 +175,7 @@ extension PearUserAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Get User: \(message ?? "")")
@@ -182,7 +185,7 @@ extension PearUserAPI {
                                              message: message ?? "Returned Failure",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -213,7 +216,7 @@ extension PearUserAPI {
                                                message: error.localizedDescription,
                                                responseData: data,
                                                tags: [:],
-                                               paylod: fullDictionary)
+                                               payload: fullDictionary)
               
               completion(.failure(UserAPIError.failedDeserialization))
             }
@@ -266,7 +269,7 @@ extension PearUserAPI {
                                            message: error.localizedDescription,
                                            responseData: data,
                                            tags: [:],
-                                           paylod: fullDictionary)
+                                           payload: fullDictionary)
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
@@ -280,7 +283,7 @@ extension PearUserAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Create User: \(message ?? "")")
@@ -290,7 +293,7 @@ extension PearUserAPI {
                                              message: message ?? "Returned Error",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .foundObjectData(let objectData):
             do {
@@ -308,7 +311,7 @@ extension PearUserAPI {
                                                message: "Deserialization Error: \(String(describing: error.localizedDescription))",
                                                responseData: data,
                                                tags: [:],
-                                               paylod: fullDictionary)
+                                               payload: fullDictionary)
               completion(.failure(UserAPIError.failedDeserialization))
             }
           }
@@ -438,7 +441,7 @@ extension PearUserAPI {
                                            message: error.localizedDescription,
                                            responseData: data,
                                            tags: [:],
-                                           paylod: fullDictionary)
+                                           payload: fullDictionary)
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
@@ -453,7 +456,7 @@ extension PearUserAPI {
                                              message: "GraphQL Error: \(String(describing: helperResult))",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
           case .failure(let message):
             print("Failed to Update User: \(message ?? "")")
@@ -463,7 +466,7 @@ extension PearUserAPI {
                                              message: message ?? "Returned Failure",
                                              responseData: data,
                                              tags: [:],
-                                             paylod: fullDictionary)
+                                             payload: fullDictionary)
             completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
             print("Successfully Updated User: \(String(describing: message))")
@@ -514,7 +517,7 @@ extension PearUserAPI {
                                            message: error.localizedDescription,
                                            responseData: data,
                                            tags: [:],
-                                           paylod: fullDictionary)
+                                           payload: fullDictionary)
           completion(.failure(UserAPIError.unknownError(error: error)))
           return
         } else {
@@ -537,6 +540,76 @@ extension PearUserAPI {
                                        message: error.localizedDescription)
       completion(.failure(UserAPIError.unknownError(error: error)))
     }
+  }
+  
+  func addEventCode(code: String,
+                    completion: @escaping(Result<Bool, UserAPIError>) -> Void) {
+    var variables: [String: Any] = ["code": code]
+    do {
+      let userID = try self.getCurrentUserID()
+      variables["user_id"] = userID
+      let (request, fullDictionary) = try APIHelpers.getRequestWith(query: PearUserAPI.addEventCodeQuery,
+                                                                    variables: variables)
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          SentryHelper.generateSentryEvent(level: .error,
+                                           apiName: "PearUserAPI",
+                                           functionName: "AddEventCode",
+                                           message: error.localizedDescription,
+                                           responseData: data,
+                                           tags: [:],
+                                           payload: fullDictionary)
+          completion(.failure(UserAPIError.unknownError(error: error)))
+          return
+        } else {
+          let helperResult = APIHelpers.interpretGraphQLResponseSuccess(data: data, functionName: "addEventCode")
+          switch helperResult {
+          case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage:
+            print("Failed to Update User: \(helperResult)")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: "AddEventCode",
+                                             message: "GraphQL Error: \(String(describing: helperResult))",
+              responseData: data,
+              tags: [:],
+              payload: fullDictionary)
+            completion(.failure(UserAPIError.graphQLError(message: "\(helperResult)")))
+          case .failure(let message):
+            print("Failed to Update User: \(message ?? "")")
+            SentryHelper.generateSentryEvent(level: .error,
+                                             apiName: "PearUserAPI",
+                                             functionName: "AddEventCode",
+                                             message: message ?? "Returned Failure",
+                                             responseData: data,
+                                             tags: [:],
+                                             payload: fullDictionary)
+            completion(.failure(UserAPIError.graphQLError(message: message ?? "")))
+          case .success(let message):
+            print("Successfully Added Event code to User: \(String(describing: message))")
+            completion(.success(true))
+          }
+        }
+      }
+      dataTask.resume()
+      
+    } catch {
+      print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearUserAPI",
+                                       functionName: "AddEventCode",
+                                       message: error.localizedDescription)
+      completion(.failure(UserAPIError.unknownError(error: error)))
+      
+    }
+  }
+  
+  private func getCurrentUserID()throws  -> String {
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      throw UpdateUserAPIError.currentUserNotFound
+    }
+    return userID
   }
   
 }

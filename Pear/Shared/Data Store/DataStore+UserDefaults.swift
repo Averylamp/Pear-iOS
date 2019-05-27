@@ -19,7 +19,9 @@ extension DataStore {
     case notFilteringForDetachedProfiles
     case hasCreatedUser
     case hasCompletedOnboarding
+    case hasCompletedDiscoveryOnboarding
     case hasBeenInBostonArea
+    case hasSetGenderPreferences
   }
   
   func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {

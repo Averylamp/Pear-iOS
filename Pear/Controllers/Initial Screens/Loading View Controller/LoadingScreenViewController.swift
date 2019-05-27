@@ -42,7 +42,7 @@ extension LoadingScreenViewController {
           DataStore.shared.refreshPearUser(completion: { (pearUser) in
             if let pearUser = pearUser {
               DataStore.shared.currentPearUser = pearUser
-              self.continueToNotificationOrNext()
+              self.continueToLocationOrNext()
             } else {
               self.continueToLandingPage()
             }
@@ -168,6 +168,21 @@ extension LoadingScreenViewController {
                                               case .failure(let error):
                                                 print("Create Match Request 2 failure: \(error)")
                                               }
+    }
+  }
+  
+  func testEventCode() {
+    PearUserAPI.shared.addEventCode(code: "TESTCODE") { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Adding event code successful")
+        } else {
+          print("Adding event code unsuccessful")
+        }
+      case .failure(let error):
+        print("Failure adding event code: \(error)")
+      }
     }
   }
 //  

@@ -103,16 +103,7 @@ extension ApproveProfileViewController {
   }
   
   func stylize() {
-    if let authorName = self.profileData.bios.first?.authorFirstName {
-      self.titleLabel.text = "\(authorName) added to your profile"
-    }
-    if let authorName = self.profileData.boasts.first?.authorFirstName {
-      self.titleLabel.text = "\(authorName) added to your profile"
-    }
-    if let authorName = self.profileData.roasts.first?.authorFirstName {
-      self.titleLabel.text = "\(authorName) added to your profile"
-    }
-    if let authorName = self.profileData.vibes.first?.authorFirstName {
+    if let authorName = self.detachedProfile.creatorFirstName {
       self.titleLabel.text = "\(authorName) added to your profile"
     }
   }
