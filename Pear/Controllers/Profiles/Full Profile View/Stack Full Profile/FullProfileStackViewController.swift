@@ -60,6 +60,7 @@ extension FullProfileStackViewController {
       .compactMap({ $0.copy() as? QuestionResponseItem })
     var demographics: [FullProfileDisplayData] = [profile]
     var sectionItems: [SectionItem] = []
+    var questionResponseCount: Int = 0
     while true {
       var addedItems = false
       if images.count > 0 {
@@ -72,11 +73,13 @@ extension FullProfileStackViewController {
         sectionItems.append(SectionItem(sectionType: .demographics, image: nil, demographics: demographic, bio: nil, question: nil))
         addedItems = true
       }
-      if bioItems.count > 0 {
+      if bioItems.count > 0 && questionResponseCount < 5 {
+        questionResponseCount += 1
         let bioItem = bioItems.removeFirst()
         sectionItems.append(SectionItem(sectionType: .bio, image: nil, demographics: nil, bio: bioItem, question: nil))
         addedItems = true
-      } else if questionResponses.count > 0 {
+      } else if questionResponses.count > 0 && questionResponseCount < 5 {
+        questionResponseCount += 1
         let questionResponse = questionResponses.removeFirst()
         sectionItems.append(SectionItem(sectionType: .question, image: nil, demographics: nil, bio: nil, question: questionResponse))
         addedItems = true
@@ -98,11 +101,6 @@ extension FullProfileStackViewController {
     self.addNameAge(name: self.fullProfileData.firstName ?? "Name Hidden",
                     age: self.fullProfileData.age)
     self.addSpacerView(height: 10)
-    //    self.addDemographcsVC(firstName: self.fullProfileData.firstName,
-    //                          age: self.fullProfileData.age,
-    //                          schoolName: self.fullProfileData.school,
-    //                          locationName: self.fullProfileData.locationName,
-    //                          vibes: self.fullProfileData.vibes)
     
     let sectionItems = FullProfileStackViewController.sectionItemsFromProfile(profile: self.fullProfileData)
     for sectionItem in sectionItems {
