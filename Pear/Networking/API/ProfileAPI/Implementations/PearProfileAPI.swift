@@ -493,13 +493,10 @@ extension PearProfileAPI {
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       throw DetachedProfileError.userNotLoggedIn
     }
-    guard let creatorFirstName = DataStore.shared.currentPearUser?.firstName  else {
-      throw DetachedProfileError.userNotLoggedIn
-    }
     
     var variablesDictionary: [String: Any] = [
       "creatorUser_id": userID,
-      "creatorFirstName": creatorFirstName,
+      "creatorFirstName": DataStore.shared.currentPearUser?.firstName ?? "",
       "firstName": profileData.firstName,
       "lastName": profileData.lastName,
       "phoneNumber": profileData.phoneNumber,
