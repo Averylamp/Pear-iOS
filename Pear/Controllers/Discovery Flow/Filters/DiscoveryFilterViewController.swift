@@ -167,11 +167,11 @@ extension DiscoveryFilterViewController {
     var name = ""
     switch item.type {
     case .personalUser:
-      if let fullName = item.user?.fullName {
+      if let fullName = item.user?.fullName() {
         name = fullName
       }
     case .endorsedUser:
-      if let fullName = item.endorsedUser?.fullName {
+      if let fullName = item.endorsedUser?.fullName() {
         name = fullName
       }
     case .detachedProfile:

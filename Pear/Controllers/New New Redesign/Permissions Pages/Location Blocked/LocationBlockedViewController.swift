@@ -57,7 +57,7 @@ extension LocationBlockedViewController {
     
     self.titleLabel.stylizeUserSignupTitleLabel()
     self.subtitleLabel.stylizeUserSignupSubtitleLabel()
-    
+    self.enableNotificationsButton.stylizeDark()
   }
   
 }

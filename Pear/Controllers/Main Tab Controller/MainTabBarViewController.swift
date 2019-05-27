@@ -11,69 +11,68 @@ import CoreLocation
 
 class MainTabBarViewController: UITabBarController {
   
+  static let iconSize: CGFloat = 40
+  
   class func instantiate() -> MainTabBarViewController? {
     let storyboard = UIStoryboard(name: String(describing: MainTabBarViewController.self), bundle: nil)
     guard let mainTabVC = storyboard.instantiateInitialViewController() as? MainTabBarViewController else { return nil }
     //      Discovery
-    if DataStore.shared.hasCompletedSetup() && DataStore.shared.hasEnabledLocation() {
-      if let discoverVC = DiscoveryDecisionViewController.instantiate(),
-        let regularImage = R.image.tabIconDiscovery(),
-        let selectedImage = R.image.tabIconDiscoverySelected() {
-        discoverVC.tabBarItem = UITabBarItem(title: "Discover",
-                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal))
-        mainTabVC.addChild(discoverVC)
-      }
-    } else {
-      if let discoverVC = DiscoverySetupViewController.instantiate(),
-        let regularImage = R.image.tabIconDiscovery(),
-        let selectedImage = R.image.tabIconDiscoverySelected() {
-        discoverVC.tabBarItem = UITabBarItem(title: "Discover",
-                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal))
-        mainTabVC.addChild(discoverVC)
-      }
+    if let discoverVC = DiscoveryDecisionViewController.instantiate(),
+      let regularImage = R.image.tabIconDiscovery(),
+      let selectedImage = R.image.tabIconDiscoverySelected() {
+      discoverVC.tabBarItem = UITabBarItem(title: nil,
+                                           image: regularImage.imageWith(newSize:
+                                            CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+                                            .withRenderingMode(.alwaysOriginal),
+                                           selectedImage: selectedImage.imageWith(newSize:
+                                            CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+                                            .withRenderingMode(.alwaysOriginal))
+      discoverVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+      mainTabVC.addChild(discoverVC)
     }
-
+    
     //      Chat
     if let chatTabVC = ChatMainViewController.instantiate(),
       let regularImage = R.image.tabIconChat(),
       let selectedImage = R.image.tabIconChatSelected() {
-      chatTabVC.tabBarItem = UITabBarItem(title: "Chat",
-                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
+      chatTabVC.tabBarItem = UITabBarItem(title: nil,
+                                             image: regularImage.imageWith(newSize:
+                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                               .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                             selectedImage: selectedImage.imageWith(newSize:
+                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                               .withRenderingMode(.alwaysOriginal))
-      
+      chatTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(chatTabVC)
     }
     
-    //      Friendos
-    if let friendsTabVC = FriendsTabViewController.instantiate(),
-      let regularImage = R.image.tabIconFriends(),
-      let selectedImage = R.image.tabIconFriendsSelected() {
-      friendsTabVC.tabBarItem = UITabBarItem(title: "Friends",
-                                             image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal),
-                                             selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
-                                              .withRenderingMode(.alwaysOriginal))
-      
-      mainTabVC.addChild(friendsTabVC)
-    }
+//    //      Friendos
+//    if let friendsTabVC = FriendsTabViewController.instantiate(),
+//      let regularImage = R.image.tabIconFriends(),
+//      let selectedImage = R.image.tabIconFriendsSelected() {
+//      friendsTabVC.tabBarItem = UITabBarItem(title: nil,
+//                                             image: regularImage.imageWith(newSize:
+//                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+//                                              .withRenderingMode(.alwaysOriginal),
+//                                             selectedImage: selectedImage.imageWith(newSize:
+//                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+//                                              .withRenderingMode(.alwaysOriginal))
+//      friendsTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+//      mainTabVC.addChild(friendsTabVC)
+//    }
     
     //      You
-    if let meTabVC = MeTabViewController.instantiate(),
+    if let meTabVC = MeTabMainViewController.instantiate(),
       let regularImage = R.image.tabIconYou(),
       let selectedImage = R.image.tabIconYouSelected() {
-      meTabVC.tabBarItem =  UITabBarItem(title: "Me",
-                                         image: regularImage.imageWith(newSize: CGSize(width: 30, height: 30))
+      meTabVC.tabBarItem =  UITabBarItem(title: nil,
+                                         image: regularImage.imageWith(newSize:
+                                          CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                           .withRenderingMode(.alwaysOriginal),
-                                         selectedImage: selectedImage.imageWith(newSize: CGSize(width: 30, height: 30))
+                                         selectedImage: selectedImage.imageWith(newSize:
+                                          CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                           .withRenderingMode(.alwaysOriginal))
+      meTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(meTabVC)
     }
     
@@ -88,6 +87,11 @@ extension MainTabBarViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.delegate = self
+    self.stylize()
+  }
+  
+  func stylize() {
+    self.tabBar.barTintColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
   }
   
 }
@@ -104,6 +108,10 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
       index == 1 {
       DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
       DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
+    }
+    if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
+      index > 0 {
+      self.setTabBarVisible(visible: true, duration: 0.3, animated: true)
     }
   }
   

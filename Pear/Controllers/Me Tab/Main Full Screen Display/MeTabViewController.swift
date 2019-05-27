@@ -32,9 +32,8 @@ class MeTabViewController: UIViewController {
   
   @IBAction func editButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let profile = self.fullProfile,
-      let pearUser = self.currentPearUser,
-      let editMeVC = MeEditUserViewController.instantiate(profile: profile, pearUser: pearUser) else {
+    guard 
+      let editMeVC = MeEditUserPreferencesViewController.instantiate() else {
         print("Failed to instantiate edit user profile")
         return
     }

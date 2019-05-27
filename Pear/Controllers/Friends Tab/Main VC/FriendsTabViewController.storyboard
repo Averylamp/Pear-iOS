@@ -155,6 +155,17 @@
                                     <constraint firstAttribute="bottom" secondItem="fSx-vJ-JRE" secondAttribute="bottom" id="zXa-hm-4Sa"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaW-hb-w0n">
+                                <rect key="frame" x="8" y="25" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="7Xt-xl-XV6"/>
+                                    <constraint firstAttribute="width" constant="40" id="mh0-mz-Cot"/>
+                                </constraints>
+                                <state key="normal" image="onboarding-back-button"/>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="vOf-S4-6q3" eventType="touchUpInside" id="bRf-BK-XdA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -163,8 +174,10 @@
                             <constraint firstItem="iMQ-Ki-GK9" firstAttribute="top" secondItem="wkT-Wy-p4M" secondAttribute="top" id="9UG-UA-75t"/>
                             <constraint firstItem="wkT-Wy-p4M" firstAttribute="trailing" secondItem="csA-WV-ddP" secondAttribute="trailing" constant="16" id="Gp6-wl-NI8"/>
                             <constraint firstItem="iMQ-Ki-GK9" firstAttribute="trailing" secondItem="wkT-Wy-p4M" secondAttribute="trailing" id="U90-z7-7Ji"/>
+                            <constraint firstItem="FaW-hb-w0n" firstAttribute="centerY" secondItem="iMQ-Ki-GK9" secondAttribute="centerY" id="WYa-rI-HEc"/>
                             <constraint firstItem="iMQ-Ki-GK9" firstAttribute="leading" secondItem="wkT-Wy-p4M" secondAttribute="leading" id="Xis-ST-twl"/>
                             <constraint firstItem="csA-WV-ddP" firstAttribute="top" secondItem="iMQ-Ki-GK9" secondAttribute="bottom" id="gRd-Li-RgQ"/>
+                            <constraint firstItem="FaW-hb-w0n" firstAttribute="leading" secondItem="wkT-Wy-p4M" secondAttribute="leading" constant="8" id="nx3-f1-G1V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wkT-Wy-p4M"/>
                     </view>
@@ -178,7 +191,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="friends-create-profile" width="498" height="498"/>
-        <image name="tab-icon-friends-selected" width="512" height="512"/>
+        <image name="friends-create-profile" width="167.66667175292969" height="174"/>
+        <image name="onboarding-back-button" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="tab-icon-friends-selected" width="66.666664123535156" height="66.666664123535156"/>
     </resources>
 </document>

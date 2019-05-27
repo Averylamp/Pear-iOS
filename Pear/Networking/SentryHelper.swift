@@ -17,7 +17,7 @@ class SentryHelper {
                                  message: String,
                                  responseData: Data? = nil,
                                  tags: [String: String] = [:],
-                                 paylod: [String: Any] = [:]) {
+                                 payload: [String: Any] = [:]) {
     print("\n***** GENERATING SENTRY REPORT *****")
     print("***** \(apiName):\(functionName) - \(message) *****\n")
     let skipErrors: [String] = [
@@ -38,8 +38,9 @@ class SentryHelper {
       return
     }
     #if DEVMODE
+    print(payload)
     APIHelpers.printDataDump(data: responseData)
-//    fatalError("Some Network Call failed and sentry is generating an error")
+    fatalError("Some Network Call failed and sentry is generating an error")
     #endif
     
     #if PROD
@@ -50,7 +51,7 @@ class SentryHelper {
     tags.forEach({ allTags[$0.key] = $0.value })
     userErrorEvent.tags = allTags
     var extraTags: [String: Any] = [:]
-    paylod.forEach({ extraTags[$0.key] = $0.value })
+    payload.forEach({ extraTags[$0.key] = $0.value })
     if let responseString = APIHelpers.dataDumpToString(data: responseData) {
       extraTags["response"] = responseString
     }

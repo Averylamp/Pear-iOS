@@ -13,6 +13,7 @@ import CoreLocation
 protocol PermissionsFlowProtocol: UIViewController {
   // Nested Functions
   func continueToEmailOrNext()
+  func continueToEventCodeOrNext()
   func continueToLocationOrNext()
   func continueToNotificationOrNext()
   func continueToOnboardingOrMain()
@@ -42,6 +43,16 @@ extension PermissionsFlowProtocol {
       self.continueToUpdateEmail()
     } else {
       print("Skipping Update Email Page")
+      self.continueToEventCodeOrNext()
+    }
+  }
+  
+  func continueToEventCodeOrNext() {
+    let now = Date()
+    let end = Date(timeIntervalSince1970: TimeInterval(1559620800.0))
+    if now < end {
+      self.continueToEventCode()
+    } else {
       self.continueToLocationOrNext()
     }
   }
@@ -130,13 +141,13 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToAllowNotifications() {
+  func continueToEventCode() {
     DispatchQueue.main.async {
-      guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
-        print("Failed to create allow Notifications VC")
+      guard let joinEventVC = JoinEventViewController.instantiate(isInOnboarding: true) else {
+        print("Failed to create Join Event VC")
         return
       }
-      self.navigationController?.setViewControllers([allowNotificationsVC], animated: true)
+      self.navigationController?.setViewControllers([joinEventVC], animated: true)
     }
   }
   
@@ -147,6 +158,16 @@ extension PermissionsFlowProtocol {
         return
       }
       self.navigationController?.setViewControllers([allowLocationVC], animated: true)
+    }
+  }
+  
+  func continueToAllowNotifications() {
+    DispatchQueue.main.async {
+      guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
+        print("Failed to create allow Notifications VC")
+        return
+      }
+      self.navigationController?.setViewControllers([allowNotificationsVC], animated: true)
     }
   }
   

@@ -25,6 +25,9 @@
 		911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */; };
 		911AD0F62261AE6900A743C2 /* AllowLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */; };
 		911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */; };
+		911E2C4C229A993500E11860 /* JoinEventViweController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911E2C4A229A993400E11860 /* JoinEventViweController.storyboard */; };
+		911E2C4D229A993500E11860 /* JoinEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E2C4B229A993500E11860 /* JoinEventViewController.swift */; };
+		9142D08C2298ACCA0037E199 /* PromptInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142D08B2298ACCA0037E199 /* PromptInputDelegate.swift */; };
 		917F20B222716F380023EC69 /* DiscoverySetupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */; };
 		917F20B322716F380023EC69 /* DiscoverySetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */; };
 		917F20C22271701C0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20BE2271701B0023EC69 /* FinishSetupUserPreferencesViewController.swift */; };
@@ -62,6 +65,13 @@
 		BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */; };
 		BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F16BD222F20CD00915C1C /* GetStartedVibeViewController.swift */; };
 		BB0F16C0222F20E500915C1C /* GetStartedVibeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0F16BF222F20E500915C1C /* GetStartedVibeViewController.storyboard */; };
+		BB139EFA229A913000D7955A /* MeTabMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB139EF7229A912F00D7955A /* MeTabMainViewController.storyboard */; };
+		BB139EFB229A913000D7955A /* MeTabItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB139EF8229A913000D7955A /* MeTabItemTableViewCell.swift */; };
+		BB139EFC229A913000D7955A /* MeTabMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB139EF9229A913000D7955A /* MeTabMainViewController.swift */; };
+		BB139EFF229A9AA800D7955A /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB139EFE229A9AA800D7955A /* AccountSettingsViewController.swift */; };
+		BB139F01229A9AB200D7955A /* AccountSettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB139F00229A9AB200D7955A /* AccountSettingsViewController.storyboard */; };
+		BB139F04229A9D7B00D7955A /* MeEditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB139F02229A9D7B00D7955A /* MeEditUserInfoViewController.swift */; };
+		BB139F05229A9D7B00D7955A /* MeEditUserInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB139F03229A9D7B00D7955A /* MeEditUserInfoViewController.storyboard */; };
 		BB1436012243D25800B8C3EB /* PearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1436002243D25800B8C3EB /* PearTests.swift */; };
 		BB17892A225D96D60033ACC6 /* ChatMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB178929225D96D60033ACC6 /* ChatMainViewController.swift */; };
 		BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB17892B225D96E20033ACC6 /* ChatMainViewController.storyboard */; };
@@ -269,6 +279,14 @@
 		BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */; };
 		BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */; };
 		BBA757AD225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA757AB225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift */; };
+		BBA8AE8E229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE8D229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift */; };
+		BBA8AE902297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE8F2297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift */; };
+		BBA8AE922297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA8AE912297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard */; };
+		BBA8AE952297D63A003F1D79 /* PromptInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */; };
+		BBA8AE972297D646003F1D79 /* PromptInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */; };
+		BBA8AE9A2297D731003F1D79 /* PromptInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */; };
+		BBA8AE9C2297F97E003F1D79 /* PromptInputResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8AE9B2297F97E003F1D79 /* PromptInputResponseViewController.swift */; };
+		BBA8AE9E2297F986003F1D79 /* PromptInputResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA8AE9D2297F986003F1D79 /* PromptInputResponseViewController.storyboard */; };
 		BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0957227009D20095F27E /* ContentAPI.swift */; };
 		BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095A22700A770095F27E /* PearContentAPI.swift */; };
 		BBAC095E22700B900095F27E /* GraphQLDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */; };
@@ -366,8 +384,8 @@
 		BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */; };
 		BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */; };
 		BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */; };
-		BBF79688225956E200E9A506 /* MeEditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF79687225956E200E9A506 /* MeEditUserViewController.swift */; };
-		BBF7968A225956EB00E9A506 /* MeEditUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF79689225956EB00E9A506 /* MeEditUserViewController.storyboard */; };
+		BBF79688225956E200E9A506 /* MeEditUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */; };
+		BBF7968A225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */; };
 		BBF93E4E2267C7F8002841EE /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E4D2267C7F8002841EE /* LandingScreenViewController.swift */; };
 		BBF93E502267C80B002841EE /* UserPhoneCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E4F2267C80B002841EE /* UserPhoneCodeViewController.swift */; };
 		BBF93E522267C861002841EE /* UserContactPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E512267C861002841EE /* UserContactPermissionsViewController.swift */; };
@@ -434,6 +452,9 @@
 		911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationViewController.swift; sourceTree = "<group>"; };
 		911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowLocationViewController.storyboard; sourceTree = "<group>"; };
+		911E2C4A229A993400E11860 /* JoinEventViweController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JoinEventViweController.storyboard; sourceTree = "<group>"; };
+		911E2C4B229A993500E11860 /* JoinEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinEventViewController.swift; sourceTree = "<group>"; };
+		9142D08B2298ACCA0037E199 /* PromptInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputDelegate.swift; sourceTree = "<group>"; };
 		917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverySetupViewController.storyboard; sourceTree = "<group>"; };
 		917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverySetupViewController.swift; sourceTree = "<group>"; };
 		917F20BE2271701B0023EC69 /* FinishSetupUserPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishSetupUserPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -471,6 +492,13 @@
 		BB0F16BB222EE7D500915C1C /* NetworkingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConfig.swift; sourceTree = "<group>"; };
 		BB0F16BD222F20CD00915C1C /* GetStartedVibeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedVibeViewController.swift; sourceTree = "<group>"; };
 		BB0F16BF222F20E500915C1C /* GetStartedVibeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetStartedVibeViewController.storyboard; sourceTree = "<group>"; };
+		BB139EF7229A912F00D7955A /* MeTabMainViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeTabMainViewController.storyboard; sourceTree = "<group>"; };
+		BB139EF8229A913000D7955A /* MeTabItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTabItemTableViewCell.swift; sourceTree = "<group>"; };
+		BB139EF9229A913000D7955A /* MeTabMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTabMainViewController.swift; sourceTree = "<group>"; };
+		BB139EFE229A9AA800D7955A /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
+		BB139F00229A9AB200D7955A /* AccountSettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountSettingsViewController.storyboard; sourceTree = "<group>"; };
+		BB139F02229A9D7B00D7955A /* MeEditUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeEditUserInfoViewController.swift; sourceTree = "<group>"; };
+		BB139F03229A9D7B00D7955A /* MeEditUserInfoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MeEditUserInfoViewController.storyboard; sourceTree = "<group>"; };
 		BB1435FE2243D25700B8C3EB /* PearTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PearTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1436002243D25800B8C3EB /* PearTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearTests.swift; sourceTree = "<group>"; };
 		BB1436022243D25800B8C3EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -683,6 +711,14 @@
 		BBA5F0B5226CC5FF00BA2036 /* ContactListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListItemTableViewCell.swift; sourceTree = "<group>"; };
 		BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GetStartedChoosePreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BBA757AB225FA04F00D2986A /* GetStartedChoosePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetStartedChoosePreferencesViewController.swift; sourceTree = "<group>"; };
+		BBA8AE8D229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryDecisionViewController+Tooltips.swift"; sourceTree = "<group>"; };
+		BBA8AE8F2297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFriendPromptInputViewController.swift; sourceTree = "<group>"; };
+		BBA8AE912297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingFriendPromptInputViewController.storyboard; sourceTree = "<group>"; };
+		BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputViewController.swift; sourceTree = "<group>"; };
+		BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptInputViewController.storyboard; sourceTree = "<group>"; };
+		BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputTableViewCell.swift; sourceTree = "<group>"; };
+		BBA8AE9B2297F97E003F1D79 /* PromptInputResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputResponseViewController.swift; sourceTree = "<group>"; };
+		BBA8AE9D2297F986003F1D79 /* PromptInputResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptInputResponseViewController.storyboard; sourceTree = "<group>"; };
 		BBAC0957227009D20095F27E /* ContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAPI.swift; sourceTree = "<group>"; };
 		BBAC095A22700A770095F27E /* PearContentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearContentAPI.swift; sourceTree = "<group>"; };
 		BBAC095D22700B8F0095F27E /* GraphQLDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLDecodable.swift; sourceTree = "<group>"; };
@@ -784,8 +820,8 @@
 		BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsTabViewController.storyboard; sourceTree = "<group>"; };
 		BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeTabViewController.storyboard; sourceTree = "<group>"; };
-		BBF79687225956E200E9A506 /* MeEditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeEditUserViewController.swift; sourceTree = "<group>"; };
-		BBF79689225956EB00E9A506 /* MeEditUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeEditUserViewController.storyboard; sourceTree = "<group>"; };
+		BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeEditUserPreferencesViewController.swift; sourceTree = "<group>"; };
+		BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeEditUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BBF93E4D2267C7F8002841EE /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		BBF93E4F2267C80B002841EE /* UserPhoneCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoneCodeViewController.swift; sourceTree = "<group>"; };
 		BBF93E512267C861002841EE /* UserContactPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContactPermissionsViewController.swift; sourceTree = "<group>"; };
@@ -1054,6 +1090,15 @@
 			path = "Allow Location Screen";
 			sourceTree = "<group>";
 		};
+		911E2C49229A991800E11860 /* Join Event */ = {
+			isa = PBXGroup;
+			children = (
+				911E2C4B229A993500E11860 /* JoinEventViewController.swift */,
+				911E2C4A229A993400E11860 /* JoinEventViweController.storyboard */,
+			);
+			path = "Join Event";
+			sourceTree = "<group>";
+		};
 		917F20B422716F6A0023EC69 /* Discovery Setup VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1215,6 +1260,89 @@
 			path = "Vibe Input";
 			sourceTree = "<group>";
 		};
+		BB1112B82299D6AA0024800C /* Prompt Picker */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8AE942297D63A003F1D79 /* PromptInputViewController.swift */,
+				BBA8AE962297D646003F1D79 /* PromptInputViewController.storyboard */,
+				BBA8AE992297D731003F1D79 /* PromptInputTableViewCell.swift */,
+			);
+			path = "Prompt Picker";
+			sourceTree = "<group>";
+		};
+		BB1112B92299D6B70024800C /* Prompt Response */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8AE9B2297F97E003F1D79 /* PromptInputResponseViewController.swift */,
+				BBA8AE9D2297F986003F1D79 /* PromptInputResponseViewController.storyboard */,
+			);
+			path = "Prompt Response";
+			sourceTree = "<group>";
+		};
+		BB139EFD229A913400D7955A /* Me Main VC */ = {
+			isa = PBXGroup;
+			children = (
+				BB139EF9229A913000D7955A /* MeTabMainViewController.swift */,
+				BB139EF7229A912F00D7955A /* MeTabMainViewController.storyboard */,
+				BB139EF8229A913000D7955A /* MeTabItemTableViewCell.swift */,
+			);
+			path = "Me Main VC";
+			sourceTree = "<group>";
+		};
+		BB139F06229A9F2B00D7955A /* Edit User Info */ = {
+			isa = PBXGroup;
+			children = (
+				BB139F02229A9D7B00D7955A /* MeEditUserInfoViewController.swift */,
+				BB139F03229A9D7B00D7955A /* MeEditUserInfoViewController.storyboard */,
+			);
+			path = "Edit User Info";
+			sourceTree = "<group>";
+		};
+		BB139F07229AA13F00D7955A /* Account Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BB139EFE229A9AA800D7955A /* AccountSettingsViewController.swift */,
+				BB139F00229A9AB200D7955A /* AccountSettingsViewController.storyboard */,
+			);
+			path = "Account Settings";
+			sourceTree = "<group>";
+		};
+		BB139F08229AB65D00D7955A /* Page 1 */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */,
+				BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */,
+			);
+			path = "Page 1";
+			sourceTree = "<group>";
+		};
+		BB139F09229AB66600D7955A /* Page 2 */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E65228D6D1000F45C9D /* OnboardingExplainationPage2ViewController.swift */,
+				BB687E64228D6D0F00F45C9D /* OnboardingExplainationPage2ViewController.storyboard */,
+			);
+			path = "Page 2";
+			sourceTree = "<group>";
+		};
+		BB139F0A229AB66F00D7955A /* Page 3 */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */,
+				BB687E66228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.storyboard */,
+			);
+			path = "Page 3";
+			sourceTree = "<group>";
+		};
+		BB139F0B229AB67500D7955A /* Page 4 */ = {
+			isa = PBXGroup;
+			children = (
+				BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */,
+				BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */,
+			);
+			path = "Page 4";
+			sourceTree = "<group>";
+		};
 		BB1435FF2243D25800B8C3EB /* PearTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1291,6 +1419,7 @@
 				BBB71B4F22944682002CDDD1 /* More Details Table */,
 				BBB71B682294788A002CDDD1 /* Basic Info Input */,
 				BBB71B9222956987002CDDD1 /* Age Range Input */,
+				BBA8AE982297D651003F1D79 /* Prompt Input */,
 			);
 			path = "Shared Components";
 			sourceTree = "<group>";
@@ -1346,6 +1475,7 @@
 				BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */,
 				BBA106DD22780951000771CF /* ProfileCreationProtocol.swift */,
 				BB551D8C2279E1A200CD2C88 /* PromptSMSProtocol.swift */,
+				9142D08B2298ACCA0037E199 /* PromptInputDelegate.swift */,
 			);
 			path = "Helper Protocols";
 			sourceTree = "<group>";
@@ -1379,7 +1509,10 @@
 			isa = PBXGroup;
 			children = (
 				BBF79686225956C200E9A506 /* Main Full Screen Display */,
-				BBF7968B22595B9A00E9A506 /* Edit View Controller */,
+				BBF7968B22595B9A00E9A506 /* Edit User Preferences */,
+				BB139F06229A9F2B00D7955A /* Edit User Info */,
+				BB139EFD229A913400D7955A /* Me Main VC */,
+				BB139F07229AA13F00D7955A /* Account Settings */,
 			);
 			path = "Me Tab";
 			sourceTree = "<group>";
@@ -1431,6 +1564,7 @@
 			isa = PBXGroup;
 			children = (
 				BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */,
+				BBA8AE8D229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift */,
 				BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */,
 			);
 			path = "Decision Discovery";
@@ -1475,8 +1609,8 @@
 		BB687E57228D535C00F45C9D /* Location Blocked */ = {
 			isa = PBXGroup;
 			children = (
-				BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */,
 				BB687E53228D535600F45C9D /* LocationBlockedViewController.swift */,
+				BB687E54228D535600F45C9D /* LocationBlockedViewController.storyboard */,
 			);
 			path = "Location Blocked";
 			sourceTree = "<group>";
@@ -1517,14 +1651,10 @@
 		BB687E5F228D5A4200F45C9D /* Onboarding Explaination Pages */ = {
 			isa = PBXGroup;
 			children = (
-				BB687E5B228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift */,
-				BB687E5D228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard */,
-				BB687E65228D6D1000F45C9D /* OnboardingExplainationPage2ViewController.swift */,
-				BB687E64228D6D0F00F45C9D /* OnboardingExplainationPage2ViewController.storyboard */,
-				BB687E67228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.swift */,
-				BB687E66228D6D1000F45C9D /* OnboardingExplainationPage3ViewController.storyboard */,
-				BB687E69228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift */,
-				BB687E68228D6D1000F45C9D /* OnboardingExplainationPage4ViewController.storyboard */,
+				BB139F08229AB65D00D7955A /* Page 1 */,
+				BB139F09229AB66600D7955A /* Page 2 */,
+				BB139F0A229AB66F00D7955A /* Page 3 */,
+				BB139F0B229AB67500D7955A /* Page 4 */,
 			);
 			path = "Onboarding Explaination Pages";
 			sourceTree = "<group>";
@@ -1532,8 +1662,9 @@
 		BB687E70228D704500F45C9D /* Join With Friend */ = {
 			isa = PBXGroup;
 			children = (
-				BB687E8C228D862D00F45C9D /* Friend Name Input */,
 				BB687E8D228D864600F45C9D /* Friend Info */,
+				BB687E8C228D862D00F45C9D /* Friend Name Input */,
+				BBA8AE932297C7D7003F1D79 /* Friend Prompt Input */,
 			);
 			path = "Join With Friend";
 			sourceTree = "<group>";
@@ -1625,6 +1756,7 @@
 			isa = PBXGroup;
 			children = (
 				BB687E59228D59ED00F45C9D /* User Creation */,
+				911E2C49229A991800E11860 /* Join Event */,
 				BB687E5A228D59F800F45C9D /* Permissions Pages */,
 				BB687E58228D59E100F45C9D /* Onboarding */,
 			);
@@ -2023,6 +2155,24 @@
 				BBA757AA225FA04E00D2986A /* GetStartedChoosePreferencesViewController.storyboard */,
 			);
 			path = "Preferences Input";
+			sourceTree = "<group>";
+		};
+		BBA8AE932297C7D7003F1D79 /* Friend Prompt Input */ = {
+			isa = PBXGroup;
+			children = (
+				BBA8AE8F2297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift */,
+				BBA8AE912297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard */,
+			);
+			path = "Friend Prompt Input";
+			sourceTree = "<group>";
+		};
+		BBA8AE982297D651003F1D79 /* Prompt Input */ = {
+			isa = PBXGroup;
+			children = (
+				BB1112B82299D6AA0024800C /* Prompt Picker */,
+				BB1112B92299D6B70024800C /* Prompt Response */,
+			);
+			path = "Prompt Input";
 			sourceTree = "<group>";
 		};
 		BBAC095922700A670095F27E /* ContentAPI */ = {
@@ -2634,13 +2784,13 @@
 			path = "Main Full Screen Display";
 			sourceTree = "<group>";
 		};
-		BBF7968B22595B9A00E9A506 /* Edit View Controller */ = {
+		BBF7968B22595B9A00E9A506 /* Edit User Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				BBF79687225956E200E9A506 /* MeEditUserViewController.swift */,
-				BBF79689225956EB00E9A506 /* MeEditUserViewController.storyboard */,
+				BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */,
+				BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */,
 			);
-			path = "Edit View Controller";
+			path = "Edit User Preferences";
 			sourceTree = "<group>";
 		};
 		BBF7968C225962A800E9A506 /* Update Images */ = {
@@ -2838,11 +2988,12 @@
 				BB686E332210DA8E008A263C /* GetStartedCreateAccountEmailViewController.storyboard in Resources */,
 				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
 				BB797DF12277B57600D38044 /* SMSCanceledViewController.storyboard in Resources */,
-				BBF7968A225956EB00E9A506 /* MeEditUserViewController.storyboard in Resources */,
+				BBF7968A225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard in Resources */,
 				BB986A2D220E1C8D00759A14 /* LandingScreenPage2ViewController.storyboard in Resources */,
 				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
 				BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
+				BB139EFA229A913000D7955A /* MeTabMainViewController.storyboard in Resources */,
 				BB687E87228D82A300F45C9D /* OnboardingPicturesViewController.storyboard in Resources */,
 				917F20D52271B03B0023EC69 /* FinishSetupUserPhotosViewController.storyboard in Resources */,
 				BBA2E1EE224B2E890088A7A7 /* ApproveDetachedProfileFoundViewController.storyboard in Resources */,
@@ -2855,6 +3006,7 @@
 				917F20C42271701C0023EC69 /* FinishSetupUserGenderViewController.storyboard in Resources */,
 				BB201193228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard in Resources */,
 				BB986A55220F7AC700759A14 /* GetStartedUserFirstNameViewController.storyboard in Resources */,
+				BBA8AE922297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard in Resources */,
 				BBCF418C2227D5DA009CEC4A /* GetStartedPhoneVerificationCompleteViewController.storyboard in Resources */,
 				BBF93E682267CA62002841EE /* ProfileInputBoastRoastViewController.storyboard in Resources */,
 				BB686E3A22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.storyboard in Resources */,
@@ -2896,6 +3048,7 @@
 				BB687E75228D717000F45C9D /* OnboardingFriendNameViewController.storyboard in Resources */,
 				BB686E362210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
+				BBA8AE9E2297F986003F1D79 /* PromptInputResponseViewController.storyboard in Resources */,
 				BB6C064F2227F778007A5C96 /* GetStartedWaitlistViewController.storyboard in Resources */,
 				BBB71B7E2295273A002CDDD1 /* UserReligionInputViewController.storyboard in Resources */,
 				BB51524B228BE2D20094670A /* UserEmailInfoViewController.storyboard in Resources */,
@@ -2909,6 +3062,7 @@
 				BBF93E5E2267CA20002841EE /* UserPhoneCodeViewController.storyboard in Resources */,
 				BB20118D228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard in Resources */,
 				BB94C1312243C73B001320B0 /* Strings.strings in Resources */,
+				911E2C4C229A993500E11860 /* JoinEventViweController.storyboard in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
 				BB9CB6AC225A11F900605A98 /* FriendEditProfileViewController.storyboard in Resources */,
 				9101E0D1224F22E9009646AB /* GetStartedLocationViewController.storyboard in Resources */,
@@ -2929,8 +3083,10 @@
 				BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */,
 				BBA106E222783C1A000771CF /* ProfileInputFreeResponseViewController.storyboard in Resources */,
 				BBA106E622784B22000771CF /* ExpandingFreeResponseInputViewController.storyboard in Resources */,
+				BB139F05229A9D7B00D7955A /* MeEditUserInfoViewController.storyboard in Resources */,
 				BB3F4AE72233973F00F99C8E /* GetStartedBirthdateViewController.storyboard in Resources */,
 				BBF93E622267CA3A002841EE /* UserContactListViewController.storyboard in Resources */,
+				BBA8AE972297D646003F1D79 /* PromptInputViewController.storyboard in Resources */,
 				BB986A61220FE93100759A14 /* GetStartedPhotoInputViewController.storyboard in Resources */,
 				BBC0FF1B22705A3D00632924 /* ExpandingBoastRoastInputViewController.storyboard in Resources */,
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
@@ -2944,6 +3100,7 @@
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				BB687E5E228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard in Resources */,
 				BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */,
+				BB139F01229A9AB200D7955A /* AccountSettingsViewController.storyboard in Resources */,
 				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
 				BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */,
 				BB687E89228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard in Resources */,
@@ -3218,6 +3375,7 @@
 				BB94C12D2243C558001320B0 /* R.generated.swift in Sources */,
 				BB0AE4E722536F9E005DD315 /* UserGenderPreferencesViewController.swift in Sources */,
 				BB201191228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift in Sources */,
+				BBA8AE9A2297D731003F1D79 /* PromptInputTableViewCell.swift in Sources */,
 				BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */,
 				BB20119B228F2B4A00BC85C0 /* MatchingPreferences.swift in Sources */,
 				BB17893F225E064F0033ACC6 /* ChatRequestTableViewCell.swift in Sources */,
@@ -3245,7 +3403,7 @@
 				BBBA573F226D9749000BCD5F /* VibeItem.swift in Sources */,
 				BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */,
 				BBBA5745226DB094000BCD5F /* TextContentItem.swift in Sources */,
-				BBF79688225956E200E9A506 /* MeEditUserViewController.swift in Sources */,
+				BBF79688225956E200E9A506 /* MeEditUserPreferencesViewController.swift in Sources */,
 				BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */,
 				BB986A4F220F79DC00759A14 /* GetStartedSampleBiosViewController.swift in Sources */,
 				BBB71B8222952748002CDDD1 /* UserPoliticalViewsInputViewController.swift in Sources */,
@@ -3270,6 +3428,7 @@
 				BBB71B6A22947934002CDDD1 /* UserGenderInputViewController.swift in Sources */,
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
 				60C131E121D345630093ECBA /* Result.swift in Sources */,
+				BBA8AE8E229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift in Sources */,
 				BBBA574B226DCBE7000BCD5F /* InputItemTableViewCell.swift in Sources */,
 				BB687E79228D7F5000F45C9D /* OnboardingBasicInfoViewController.swift in Sources */,
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
@@ -3319,6 +3478,7 @@
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,
+				BB139F04229A9D7B00D7955A /* MeEditUserInfoViewController.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* PearImageAPI.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB3F0282227189C8004855E8 /* ProfileBoastRoastViewController.swift in Sources */,
@@ -3334,6 +3494,7 @@
 				BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */,
 				BB687E85228D829900F45C9D /* OnboardingPicturesViewController.swift in Sources */,
 				BB986A34220E1C9500759A14 /* LandingScreenPage2ViewController.swift in Sources */,
+				911E2C4D229A993500E11860 /* JoinEventViewController.swift in Sources */,
 				BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */,
@@ -3349,10 +3510,13 @@
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
 				BB687E63228D6B7500F45C9D /* UIImageView+Styling.swift in Sources */,
+				9142D08C2298ACCA0037E199 /* PromptInputDelegate.swift in Sources */,
+				BBA8AE952297D63A003F1D79 /* PromptInputViewController.swift in Sources */,
 				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,
 				BB6479DD226A7E4F00652318 /* LatestRoastBoastTableViewCell.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BBECBEC52237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift in Sources */,
+				BB139EFB229A913000D7955A /* MeTabItemTableViewCell.swift in Sources */,
 				917F20D82271BB230023EC69 /* FinishSetupUserSchoolViewController.swift in Sources */,
 				BB0F16BE222F20CD00915C1C /* GetStartedVibeViewController.swift in Sources */,
 				BBA106DE22780951000771CF /* ProfileCreationProtocol.swift in Sources */,
@@ -3362,6 +3526,7 @@
 				917F20C22271701C0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
+				BBA8AE9C2297F97E003F1D79 /* PromptInputResponseViewController.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
 				BB687E6F228D6D1100F45C9D /* OnboardingExplainationPage4ViewController.swift in Sources */,
 				917F20CC22719D600023EC69 /* FinishSetupUserBirthdateViewController.swift in Sources */,
@@ -3369,6 +3534,7 @@
 				BB17893D225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift in Sources */,
 				BBF93E502267C80B002841EE /* UserPhoneCodeViewController.swift in Sources */,
 				BBECBEB12237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift in Sources */,
+				BB139EFC229A913000D7955A /* MeTabMainViewController.swift in Sources */,
 				BB178941225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift in Sources */,
 				BB3F30A7228C9CBD001947EF /* KeyboardEventsProtocol.swift in Sources */,
 				BB0F16B8222EE6D200915C1C /* DataStore.swift in Sources */,
@@ -3379,6 +3545,7 @@
 				BB687E7D228D810F00F45C9D /* OnboardingFriendInfoViewController.swift in Sources */,
 				BB686E2D2210DA66008A263C /* GetStartedCreateAccountEmailViewController.swift in Sources */,
 				BB686E45221231FA008A263C /* UIImage+Helpers.swift in Sources */,
+				BBA8AE902297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift in Sources */,
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
 				BBF93E582267C8B1002841EE /* ProfileInputQuestionViewController.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
@@ -3398,6 +3565,7 @@
 				BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */,
 				BB178932225DE28F0033ACC6 /* ChatRequestsTableViewCell.swift in Sources */,
 				BBAC095E22700B900095F27E /* GraphQLDecodable.swift in Sources */,
+				BB139EFF229A9AA800D7955A /* AccountSettingsViewController.swift in Sources */,
 				BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */,
 				BB986A33220E1C9500759A14 /* LandingScreenPage4ViewController.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
@@ -3566,7 +3734,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 114;
+				CURRENT_PROJECT_VERSION = 117;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3591,7 +3759,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 114;
+				CURRENT_PROJECT_VERSION = 117;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3790,7 +3958,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 114;
+				CURRENT_PROJECT_VERSION = 117;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3986,7 +4154,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 114;
+				CURRENT_PROJECT_VERSION = 117;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";

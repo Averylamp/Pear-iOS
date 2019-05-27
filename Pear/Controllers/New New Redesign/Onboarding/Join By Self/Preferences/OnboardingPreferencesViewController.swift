@@ -70,7 +70,7 @@ class OnboardingPreferencesViewController: UIViewController {
   
   func updateUserPreferences() {
     var seekingGenders: [GenderEnum] = []
-    self.genderButtons.forEach({
+    self.genderButtons.filter({$0.isSelected}).forEach({
       switch $0.tag {
       case 0:
         seekingGenders.append(.female)
@@ -87,6 +87,9 @@ class OnboardingPreferencesViewController: UIViewController {
       print("Unable to get age range")
         return
     }
+    DataStore.shared.currentPearUser?.matchingPreferences.seekingGender = seekingGenders
+    DataStore.shared.currentPearUser?.matchingPreferences.minAgeRange = minAge
+    DataStore.shared.currentPearUser?.matchingPreferences.maxAgeRange = maxAge
     PearUpdateUserAPI.shared.updateUserMatchingPreferences(seekingGenders: seekingGenders,
                                                            minAge: minAge, maxAge: maxAge) { (result) in
                                                             switch result {
@@ -196,7 +199,7 @@ extension OnboardingPreferencesViewController {
     containerView.addSubview(maleButton)
     
     let nonbinaryButton = UIButton()
-    nonbinaryButton.tag = 1
+    nonbinaryButton.tag = 2
     nonbinaryButton.setTitle("Non Binary", for: .normal)
     nonbinaryButton.translatesAutoresizingMaskIntoConstraints = false
     containerView.addSubview(nonbinaryButton)
@@ -302,6 +305,7 @@ extension OnboardingPreferencesViewController {
       print("Unable to create age range input VC")
       return
     }
+    self.ageRangeVC = ageRangeInputVC
     self.addChild(ageRangeInputVC)
     ageRangeInputVC.view.translatesAutoresizingMaskIntoConstraints = false
     
