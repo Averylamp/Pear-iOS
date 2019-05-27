@@ -412,6 +412,7 @@ extension OnboardingFriendPromptInputViewController: ProgressBarProtocol {
   }
 }
 
+// MARK: - Contact Picker Delegate
 extension OnboardingFriendPromptInputViewController: ProfileCreationProtocol, CNContactPickerDelegate {
   
   func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
