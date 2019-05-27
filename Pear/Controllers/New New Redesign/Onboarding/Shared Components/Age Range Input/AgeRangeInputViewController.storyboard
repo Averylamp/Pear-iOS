@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Age Range Input View Controller-->
         <scene sceneID="q0Z-AS-dpQ">
@@ -19,11 +24,11 @@
                         <viewControllerLayoutGuide type="bottom" id="mpS-Yv-Rtf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a9Z-8D-SJJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flf-MQ-cnb">
-                                <rect key="frame" x="20" y="4" width="161.5" height="50"/>
+                                <rect key="frame" x="20" y="24" width="161.5" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QWF-1Q-N7M">
                                         <rect key="frame" x="12" y="4" width="137.5" height="42"/>
@@ -42,7 +47,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxR-ol-fjt">
-                                <rect key="frame" x="193.5" y="4" width="161.5" height="50"/>
+                                <rect key="frame" x="193.5" y="24" width="161.5" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="viz-Qq-VmX">
                                         <rect key="frame" x="12" y="4" width="137.5" height="42"/>
@@ -54,12 +59,22 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VF2-UY-riI"/>
-                                    <constraint firstItem="viz-Qq-VmX" firstAttribute="top" secondItem="zxR-ol-fjt" secondAttribute="top" constant="4" id="ZAR-xX-tSs"/>
                                     <constraint firstAttribute="trailing" secondItem="viz-Qq-VmX" secondAttribute="trailing" constant="12" id="cLi-PR-TYp"/>
-                                    <constraint firstAttribute="bottom" secondItem="viz-Qq-VmX" secondAttribute="bottom" constant="4" id="eQg-oU-KWA"/>
                                     <constraint firstItem="viz-Qq-VmX" firstAttribute="leading" secondItem="zxR-ol-fjt" secondAttribute="leading" constant="12" id="flz-b8-Y0H"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vlt-JB-HZu">
+                                <rect key="frame" x="20" y="0.0" width="39" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="11"/>
+                                <color key="textColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2T-3w-Jr6">
+                                <rect key="frame" x="193.5" y="0.0" width="42" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans Light" pointSize="11"/>
+                                <color key="textColor" white="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -67,14 +82,21 @@
                             <constraint firstItem="zxR-ol-fjt" firstAttribute="width" secondItem="flf-MQ-cnb" secondAttribute="width" id="7Ce-ms-Cmc"/>
                             <constraint firstItem="zxR-ol-fjt" firstAttribute="centerY" secondItem="flf-MQ-cnb" secondAttribute="centerY" id="CU6-S2-8e8"/>
                             <constraint firstItem="flf-MQ-cnb" firstAttribute="leading" secondItem="QFa-dp-TJu" secondAttribute="leading" constant="20" id="NdV-0O-M7Z"/>
+                            <constraint firstItem="u2T-3w-Jr6" firstAttribute="leading" secondItem="zxR-ol-fjt" secondAttribute="leading" id="OId-AY-6qf"/>
                             <constraint firstItem="zxR-ol-fjt" firstAttribute="leading" secondItem="flf-MQ-cnb" secondAttribute="trailing" constant="12" id="S7m-i1-VTM"/>
-                            <constraint firstItem="flf-MQ-cnb" firstAttribute="top" secondItem="a9Z-8D-SJJ" secondAttribute="top" constant="4" id="W3U-HO-yB5"/>
+                            <constraint firstItem="u2T-3w-Jr6" firstAttribute="top" secondItem="a9Z-8D-SJJ" secondAttribute="top" id="VOH-80-lKp"/>
+                            <constraint firstItem="viz-Qq-VmX" firstAttribute="centerY" secondItem="QWF-1Q-N7M" secondAttribute="centerY" id="VSp-vq-RdG"/>
                             <constraint firstAttribute="bottom" secondItem="flf-MQ-cnb" secondAttribute="bottom" constant="4" id="WTr-m1-LaH"/>
+                            <constraint firstItem="zxR-ol-fjt" firstAttribute="top" secondItem="u2T-3w-Jr6" secondAttribute="bottom" id="ZAu-Bd-qVD"/>
+                            <constraint firstItem="viz-Qq-VmX" firstAttribute="height" secondItem="QWF-1Q-N7M" secondAttribute="height" id="bO2-xe-Uba"/>
+                            <constraint firstItem="flf-MQ-cnb" firstAttribute="top" secondItem="Vlt-JB-HZu" secondAttribute="bottom" id="gH9-Jd-XrN"/>
                             <constraint firstItem="QFa-dp-TJu" firstAttribute="trailing" secondItem="zxR-ol-fjt" secondAttribute="trailing" constant="20" id="iGC-xa-XES"/>
+                            <constraint firstItem="Vlt-JB-HZu" firstAttribute="top" secondItem="a9Z-8D-SJJ" secondAttribute="top" id="oqD-oS-e5j"/>
+                            <constraint firstItem="Vlt-JB-HZu" firstAttribute="leading" secondItem="flf-MQ-cnb" secondAttribute="leading" id="zmp-SF-RKX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QFa-dp-TJu"/>
                     </view>
-                    <size key="freeformSize" width="375" height="58"/>
+                    <size key="freeformSize" width="375" height="78"/>
                     <connections>
                         <outlet property="maximumTextField" destination="viz-Qq-VmX" id="LUP-xK-736"/>
                         <outlet property="maximumTextInputContainer" destination="zxR-ol-fjt" id="Om8-31-dty"/>
