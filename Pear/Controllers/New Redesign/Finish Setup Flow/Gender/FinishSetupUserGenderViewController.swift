@@ -22,7 +22,6 @@ class FinishSetupUserGenderViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> FinishSetupUserGenderViewController? {
-    Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: nil)
     let storyboard = UIStoryboard(name: String(describing: FinishSetupUserGenderViewController.self), bundle: nil)
     guard let genderVC = storyboard.instantiateInitialViewController() as? FinishSetupUserGenderViewController else { return nil }
     return genderVC

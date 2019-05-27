@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import FirebaseAnalytics
 
 class UserEmailInfoViewController: UIViewController {
 
@@ -37,6 +38,7 @@ class UserEmailInfoViewController: UIViewController {
         "email": email]) { (result) in
         switch result {
         case .success(let successful):
+          Analytics.logEvent(AnalyticsEventSignUp, parameters: nil)
           if successful {
             print("Successfully updated email")
           } else {

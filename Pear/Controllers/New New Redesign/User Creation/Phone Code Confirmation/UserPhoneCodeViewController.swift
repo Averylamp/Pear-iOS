@@ -148,7 +148,6 @@ extension UserPhoneCodeViewController {
             PearUserAPI.shared.createNewUser(userCreationData: self.userCreationData, completion: { (result) in
               switch result {
               case .success(let pearUser):
-                Analytics.logEvent(AnalyticsEventSignUp, parameters: [ AnalyticsParameterMethod: "phone" ])
                 if let mondayDate = Calendar(identifier: .iso8601).date(from: Calendar(identifier: .iso8601).dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date())) {
                   let dateFormatter = DateFormatter()
                   dateFormatter.dateFormat = "yy-MM-dd"

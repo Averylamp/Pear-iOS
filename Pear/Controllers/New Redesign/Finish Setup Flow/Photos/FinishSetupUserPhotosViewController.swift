@@ -86,7 +86,6 @@ class FinishSetupUserPhotosViewController: UIViewController {
                                                   }
                                                   Analytics.logEvent("FS_photo_DONE", parameters: nil)
                                                   Analytics.logEvent("FS_success", parameters: nil)
-                                                  Analytics.logEvent(AnalyticsEventTutorialComplete, parameters: nil)
                                                   self.navigationController?.setViewControllers([mainVC], animated: true)
                                                 }
                                               }
