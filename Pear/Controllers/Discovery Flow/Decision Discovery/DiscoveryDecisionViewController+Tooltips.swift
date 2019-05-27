@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 import UIKit
 // MARK: Onboarding Overlays
 extension DiscoveryDecisionViewController {
@@ -183,6 +184,7 @@ extension DiscoveryDecisionViewController {
   
   @objc func dismissOverlay(_ sender: UITapGestureRecognizer) {
     DataStore.shared.setFlagToDefaults(value: true, flag: .hasCompletedDiscoveryOnboarding)
+    Analytics.logEvent(AnalyticsEventTutorialComplete, parameters: nil)
     DispatchQueue.main.async {
       if let skipOverlay = sender.view {
         UIView.animate(withDuration: 0.3, animations: {

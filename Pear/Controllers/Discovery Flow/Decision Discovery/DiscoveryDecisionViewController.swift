@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class DiscoveryDecisionViewController: UIViewController {
   
@@ -171,6 +172,7 @@ extension DiscoveryDecisionViewController {
       })
       
       if !DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedDiscoveryOnboarding) {
+        Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: nil)
         print("showing onboarding overlays")
         self.onboardingOverlay1()
       }
