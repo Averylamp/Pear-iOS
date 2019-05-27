@@ -82,54 +82,7 @@ class GetStartedNotifyFriendViewController: UIViewController {
   }
   
   func createDetachedProfile() {
-    /*
-    PearProfileAPI.shared.createNewDetachedProfile(gettingStartedUserProfileData: self.gettingStartedData) { (result) in
-      print("Create Detached Profile Called")
-      switch result {
-      case .success(let detachedProfile):
-        Analytics.logEvent("CP_success", parameters: nil)
-        print(detachedProfile)
-        DataStore.shared.refreshEndorsedUsers(completion: nil)
-        DataStore.shared.getNotificationAuthorizationStatus { status in
-          if status == .notDetermined {
-            DispatchQueue.main.async {
-              guard let allowNotificationVC = GetStartedAllowNotificationsViewController.instantiate(friendName: self.gettingStartedData.firstName) else {
-                print("Failed to create Allow Notifications VC")
-                return
-              }
-              self.navigationController?.pushViewController(allowNotificationVC, animated: true)
-            }
-          } else {
-            DispatchQueue.main.async {
-              guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-                print("Failed to initialize main VC")
-                return
-              }
-              self.navigationController?.setViewControllers([mainVC], animated: true)
-            }
-          }
-        }
-      case .failure(let error):
-        print(error)
-        DispatchQueue.main.async {
-          switch error {
-          case .graphQLError(let message):
-            self.alert(title: "Failed to Create Profile", message: message)
-          case .userNotLoggedIn:
-            self.alert(title: "Please login first", message: "You muust be logged in to create profiles")
-          default:
-            self.alert(title: "Oopsie", message: "Our server made an oopsie woopsie.  Please try again or let us know and we will do our best to fix it ASAP (support@getpear.com)")
-          }
-          self.stylize()
-          self.inputTextField.text = ""
-          self.inputTextField.isEnabled = true
-          self.nextButton.isEnabled = true
-          self.activityIndicator.stopAnimating()
-        }
-        
-      }
-    }
-*/
+   
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
