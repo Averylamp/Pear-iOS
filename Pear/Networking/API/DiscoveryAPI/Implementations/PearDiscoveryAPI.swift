@@ -44,7 +44,7 @@ extension PearDiscoveryAPI {
                                            message: "\(String(describing: error.localizedDescription))",
                                            responseData: data,
                                            tags: [:],
-                                           payload: variables)
+                                           payload: fullDictionary)
         } else {
           if let data = data,
             let json = try? JSON(data: data),
@@ -73,7 +73,7 @@ extension PearDiscoveryAPI {
                                              message: "Failed Discovery Serialization",
                                              responseData: data,
                                              tags: [:],
-                                             payload: [:])
+                                             payload: fullDictionary)
             completion(.failure(DiscoveryAPIError.unknownError(error: nil)))
           }
         }

@@ -24,9 +24,6 @@ class LandingScreenPageViewController: UIViewController {
   }
   
   func stylize() {
-    if let titleLabel = self.titleLabel {
-//      titleLabel.stylizeLogoLabel()
-    }
     if let subtitleLabel = self.subtitleLabel {
       subtitleLabel.stylizeSubtitleLabel()
     }

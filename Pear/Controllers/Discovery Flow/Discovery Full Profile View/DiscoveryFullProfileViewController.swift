@@ -496,10 +496,6 @@ extension DiscoveryFullProfileViewController {
   }
   
   func createMatchButtons() -> [MatchButton] {
-    guard let user = DataStore.shared.currentPearUser else {
-      print("User not found")
-      return []
-    }
     let alreadyMatchedUsers = DataStore.shared.matchedUsersFromDefaults(userID: self.profileID)
     
     guard let discoveryUserPreferences = self.fullProfileData.matchingPreferences,
