@@ -77,7 +77,7 @@ extension PearUserAPI {
   }
 
   func getUserFromQRCode(userID: String,
-                         completion: @escaping(Result<PearUser, UserAPIError>) -> Void) {
+                         completion: @escaping(Result<FullProfileDisplayData, UserAPIError>) -> Void) {
     let variables: [String: Any] = ["user_id": userID]
     do {
       let (request, fullDictionary) = try APIHelpers.getRequestWith(query: PearUserAPI.getUserFromIDQuery,
@@ -100,7 +100,11 @@ extension PearUserAPI {
             let json = try? JSON(data: data),
             let userData = try? json["data"]["user"].rawData(),
             let user = try? JSONDecoder().decode(PearUser.self, from: userData) {
-            completion(.success(user))
+            let pearUserDisplayData = FullProfileDisplayData(user: user)
+            if let discoveryItemID = json["data"]["user"]["_id"].string {
+              pearUserDisplayData.discoveryItemID = discoveryItemID
+            }
+            completion(.success(pearUserDisplayData))
           } else {
             completion(.failure(UserAPIError.errorWithMessage(message: "Could not find that user")))
           }

@@ -13,6 +13,7 @@ import Firebase
 
 protocol DiscoveryFullProfileDelegate: class {
   func decisionMade()
+  func scannedUser(fullProfileDisplay: FullProfileDisplayData)
 }
 
 class DiscoveryFullProfileViewController: UIViewController {
@@ -245,12 +246,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   
   @IBAction func qrScannerButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let scannerVC = QRCodeScannerViewController.instantiate() else {
-      print("Unable to instantiate QR Code scanner")
-      return
-    }
-    scannerVC.scannerDelegate = self
-    self.present(scannerVC, animated: true, completion: nil)
+    self.presentScanner()
   }
   
 }

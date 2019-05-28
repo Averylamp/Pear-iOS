@@ -187,4 +187,9 @@ extension DiscoveryDecisionViewController: DiscoveryFullProfileDelegate {
     self.showNextProfile()
   }
   
+  func scannedUser(fullProfileDisplay: FullProfileDisplayData) {
+    self.profilesToShow.append(fullProfileDisplay)
+    self.showNextProfile()
+  }
+  
 }
