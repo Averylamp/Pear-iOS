@@ -27,7 +27,7 @@ class MeEditUserInfoViewController: UIViewController {
   
   class func instantiate(profile: FullProfileDisplayData, pearUser: PearUser) -> MeEditUserInfoViewController? {
     guard let editUserInfoVC = R.storyboard.meEditUserInfoViewController
-      .instantiateInitialViewController() as? MeEditUserInfoViewController else { return nil }
+      .instantiateInitialViewController() else { return nil }
     editUserInfoVC.profile = profile
     editUserInfoVC.pearUser = pearUser
     return editUserInfoVC

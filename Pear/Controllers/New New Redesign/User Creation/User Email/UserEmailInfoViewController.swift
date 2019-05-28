@@ -23,7 +23,7 @@ class UserEmailInfoViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserEmailInfoViewController? {
-    guard let emailInfoVC = R.storyboard.userEmailInfoViewController().instantiateInitialViewController() as? UserEmailInfoViewController else { return nil }
+    guard let emailInfoVC = R.storyboard.userEmailInfoViewController.instantiateInitialViewController() else { return nil }
     
     return emailInfoVC
   }

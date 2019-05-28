@@ -18,8 +18,8 @@ class UserGenderInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserGenderInputViewController? {
-    guard let genderInputVC = R.storyboard.userGenderInputViewController()
-      .instantiateInitialViewController() as? UserGenderInputViewController else { return nil }
+    guard let genderInputVC = R.storyboard.userGenderInputViewController
+      .instantiateInitialViewController()  else { return nil }
     return genderInputVC
   }
 

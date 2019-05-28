@@ -24,8 +24,8 @@ class OnboardingPicturesViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> OnboardingPicturesViewController? {
-    guard let onboardingPicturesVC = R.storyboard.onboardingPicturesViewController()
-      .instantiateInitialViewController() as? OnboardingPicturesViewController else { return nil }
+    guard let onboardingPicturesVC = R.storyboard.onboardingPicturesViewController
+      .instantiateInitialViewController()  else { return nil }
     return onboardingPicturesVC
   }
   

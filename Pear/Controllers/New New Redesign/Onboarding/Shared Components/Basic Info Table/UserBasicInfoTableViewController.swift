@@ -19,8 +19,8 @@ class UserBasicInfoTableViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserBasicInfoTableViewController? {
-    guard let userBasicInfoVC = R.storyboard.userBasicInfoTableViewController()
-      .instantiateInitialViewController() as? UserBasicInfoTableViewController else {
+    guard let userBasicInfoVC = R.storyboard.userBasicInfoTableViewController
+      .instantiateInitialViewController()  else {
         return nil
     }
     userBasicInfoVC.updateWithUser()

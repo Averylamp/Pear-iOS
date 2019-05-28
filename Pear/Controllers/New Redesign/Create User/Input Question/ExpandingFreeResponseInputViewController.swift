@@ -19,8 +19,8 @@ class ExpandingFreeResponseInputViewController: UIViewController {
   var animationDuration: Double = 0.3
   
   class func instantiate(placeholderText: String?) -> ExpandingFreeResponseInputViewController? {
-    guard let expandingTextVC = R.storyboard.expandingFreeResponseInputViewController()
-      .instantiateInitialViewController() as? ExpandingFreeResponseInputViewController else {
+    guard let expandingTextVC = R.storyboard.expandingFreeResponseInputViewController
+      .instantiateInitialViewController() else {
         print("Failed to instantiate Expanding Text VC")
         return nil
     }

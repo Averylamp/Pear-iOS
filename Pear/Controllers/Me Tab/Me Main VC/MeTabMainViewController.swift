@@ -42,8 +42,8 @@ class MeTabMainViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> MeTabMainViewController? {
-    guard let meTabMainVC = R.storyboard.meTabMainViewController()
-      .instantiateInitialViewController() as? MeTabMainViewController else { return nil }
+    guard let meTabMainVC = R.storyboard.meTabMainViewController
+      .instantiateInitialViewController()  else { return nil }
     return meTabMainVC
   }
   

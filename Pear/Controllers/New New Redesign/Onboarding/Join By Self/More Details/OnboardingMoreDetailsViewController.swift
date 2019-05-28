@@ -21,8 +21,8 @@ class OnboardingMoreDetailsViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> OnboardingMoreDetailsViewController? {
-    guard let onboardingMoreDetailsVC = R.storyboard.onboardingMoreDetailsViewController()
-      .instantiateInitialViewController() as? OnboardingMoreDetailsViewController else { return nil }
+    guard let onboardingMoreDetailsVC = R.storyboard.onboardingMoreDetailsViewController
+      .instantiateInitialViewController()  else { return nil }
     return onboardingMoreDetailsVC
   }
   

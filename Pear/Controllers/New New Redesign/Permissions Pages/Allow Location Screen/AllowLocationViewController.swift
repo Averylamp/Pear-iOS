@@ -22,8 +22,8 @@ class AllowLocationViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> AllowLocationViewController? {
-    guard let allowLocationVC = R.storyboard.allowLocationViewController()
-      .instantiateInitialViewController() as? AllowLocationViewController else { return nil }
+    guard let allowLocationVC = R.storyboard.allowLocationViewController
+      .instantiateInitialViewController()  else { return nil }
     return allowLocationVC
   }
   

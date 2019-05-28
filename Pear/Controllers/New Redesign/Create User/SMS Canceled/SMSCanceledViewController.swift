@@ -23,8 +23,8 @@ class SMSCanceledViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(profileCreationData: ProfileCreationData) -> SMSCanceledViewController? {
-    guard let smsCancelledVC = R.storyboard.smsCanceledViewController()
-      .instantiateInitialViewController() as? SMSCanceledViewController else { return nil }
+    guard let smsCancelledVC = R.storyboard.smsCanceledViewController
+      .instantiateInitialViewController() else { return nil }
     smsCancelledVC.profileData = profileCreationData
     return smsCancelledVC
   }

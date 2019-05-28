@@ -19,8 +19,8 @@ class FriendFullProfileViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(fullProfileData: FullProfileDisplayData!) -> FriendFullProfileViewController? {
-    guard let friendFullProfileVC = R.storyboard.friendFullProfileViewController()
-      .instantiateInitialViewController() as? FriendFullProfileViewController else {
+    guard let friendFullProfileVC = R.storyboard.friendFullProfileViewController
+      .instantiateInitialViewController() else {
         return nil
     }
     friendFullProfileVC.fullProfileData = fullProfileData

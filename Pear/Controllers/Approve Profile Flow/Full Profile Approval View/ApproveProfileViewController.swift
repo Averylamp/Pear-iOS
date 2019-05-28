@@ -20,8 +20,8 @@ class ApproveProfileViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(profileData: FullProfileDisplayData, detachedProfile: PearDetachedProfile) -> ApproveProfileViewController? {
-    guard let approveDetachedProfileVC = R.storyboard.approveProfileViewController()
-      .instantiateInitialViewController() as? ApproveProfileViewController else { return nil }
+    guard let approveDetachedProfileVC = R.storyboard.approveProfileViewController
+      .instantiateInitialViewController() else { return nil }
     approveDetachedProfileVC.profileData = profileData
     approveDetachedProfileVC.detachedProfile = detachedProfile
     return approveDetachedProfileVC
