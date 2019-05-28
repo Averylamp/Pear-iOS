@@ -41,4 +41,7 @@ protocol UserAPI {
   func addEventCode(code: String,
                     completion: @escaping(Result<Bool, UserAPIError>) -> Void)
   
+  func getUserFromQRCode(userID: String,
+                         completion: @escaping(Result<PearUser, UserAPIError>) -> Void)
+  
 }

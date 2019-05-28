@@ -355,6 +355,9 @@
 		BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */; };
 		BBC8DD5B2272753700C157E2 /* MultipleBoastRoastStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */; };
 		BBC8DD5D2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */; };
+		BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */; };
+		BBCA2D6C229DCFA00057491A /* PearUserAPI+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */; };
+		BBCA2D6E229DD00D0057491A /* PearUserAPI+Updates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */; };
 		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
 		BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
@@ -789,6 +792,9 @@
 		BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDemographicsViewController.swift; sourceTree = "<group>"; };
 		BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBoastRoastStackViewController.swift; sourceTree = "<group>"; };
 		BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultipleBoastRoastStackViewController.storyboard; sourceTree = "<group>"; };
+		BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Events.swift"; sourceTree = "<group>"; };
+		BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Helpers.swift"; sourceTree = "<group>"; };
+		BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Updates.swift"; sourceTree = "<group>"; };
 		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
@@ -2220,6 +2226,9 @@
 			isa = PBXGroup;
 			children = (
 				BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */,
+				BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */,
+				BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */,
+				BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -3459,6 +3468,7 @@
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
 				BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */,
 				BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */,
+				BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */,
 				BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */,
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BBAC0960227029780095F27E /* FullProfileDisplayData.swift in Sources */,
@@ -3556,6 +3566,7 @@
 				BBA8AE902297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift in Sources */,
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
 				BBF93E582267C8B1002841EE /* ProfileInputQuestionViewController.swift in Sources */,
+				BBCA2D6E229DD00D0057491A /* PearUserAPI+Updates.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
 				BBD266212288165B00DB29A9 /* UITabBarController+Helpers.swift in Sources */,
 				BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */,
@@ -3564,6 +3575,7 @@
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				BB178943225E8B6A0033ACC6 /* ServerMessageTableViewCell.swift in Sources */,
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
+				BBCA2D6C229DCFA00057491A /* PearUserAPI+Helpers.swift in Sources */,
 				BB9CB69B2259E13300605A98 /* UpdateExpandingTextViewController.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */,
 				BBA2B42C223504E200D8C27B /* ProfileBioViewController.swift in Sources */,
