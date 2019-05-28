@@ -358,6 +358,10 @@
 		BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */; };
 		BBCA2D6C229DCFA00057491A /* PearUserAPI+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */; };
 		BBCA2D6E229DD00D0057491A /* PearUserAPI+Updates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */; };
+		BBCA2D71229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */; };
+		BBCA2D73229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */; };
+		BBCA2D75229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */; };
+		BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */; };
 		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
 		BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
@@ -795,6 +799,10 @@
 		BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Events.swift"; sourceTree = "<group>"; };
 		BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Helpers.swift"; sourceTree = "<group>"; };
 		BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Updates.swift"; sourceTree = "<group>"; };
+		BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+Scanner.swift"; sourceTree = "<group>"; };
+		BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+MatchingButtons.swift"; sourceTree = "<group>"; };
+		BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+PromptVCs.swift"; sourceTree = "<group>"; };
+		BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+ProfileCreation.swift"; sourceTree = "<group>"; };
 		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
@@ -2009,6 +2017,10 @@
 			isa = PBXGroup;
 			children = (
 				BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */,
+				BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */,
+				BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */,
+				BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */,
+				BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */,
 				BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */,
 			);
 			path = "Discovery Full Profile View";
@@ -3376,10 +3388,12 @@
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
+				BBCA2D71229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift in Sources */,
 				BBBE7B872272170800C32EBE /* NewProfileQuestionResponseViewController.swift in Sources */,
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
 				BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */,
 				BB201199228F27F500BC85C0 /* MatchingDemographics.swift in Sources */,
+				BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* NewProfileDemographicsViewController.swift in Sources */,
 				BB687E73228D716900F45C9D /* OnboardingFriendNameViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
@@ -3460,6 +3474,7 @@
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
 				BB687E5C228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift in Sources */,
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
+				BBCA2D75229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift in Sources */,
 				BBB71B742294E871002CDDD1 /* UserEthnicityInputViewController.swift in Sources */,
 				BBB71B7A2295272E002CDDD1 /* UserEducationLevelInputViewController.swift in Sources */,
 				BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */,
@@ -3534,6 +3549,7 @@
 				BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
+				BBCA2D73229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift in Sources */,
 				BB687E63228D6B7500F45C9D /* UIImageView+Styling.swift in Sources */,
 				9142D08C2298ACCA0037E199 /* PromptInputDelegate.swift in Sources */,
 				BBA8AE952297D63A003F1D79 /* PromptInputViewController.swift in Sources */,
