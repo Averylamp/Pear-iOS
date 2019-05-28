@@ -22,8 +22,8 @@ class NewProfileDemographicsViewController: UIViewController {
   class func instantiate(locationName: String?,
                          schoolName: String?,
                          schoolYear: String?) -> NewProfileDemographicsViewController? {
-    guard let demographicsVC = R.storyboard.newProfileDemographicsViewController()
-      .instantiateInitialViewController()as? NewProfileDemographicsViewController else {
+    guard let demographicsVC = R.storyboard.newProfileDemographicsViewController
+      .instantiateInitialViewController() else {
       return nil
     }
     demographicsVC.locationName = locationName

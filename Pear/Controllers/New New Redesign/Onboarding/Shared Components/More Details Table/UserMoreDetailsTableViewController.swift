@@ -19,8 +19,8 @@ class UserMoreDetailsTableViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserMoreDetailsTableViewController? {
-    guard let userMoreDetailsVC = R.storyboard.userMoreDetailsTableViewController()
-      .instantiateInitialViewController() as? UserMoreDetailsTableViewController else {
+    guard let userMoreDetailsVC = R.storyboard.userMoreDetailsTableViewController
+      .instantiateInitialViewController()  else {
         return nil
     }
     userMoreDetailsVC.updateWithUser()

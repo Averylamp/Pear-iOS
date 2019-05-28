@@ -23,8 +23,8 @@ class JoinEventViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(isInOnboarding: Bool) -> JoinEventViewController? {
-    guard let joinEventVC = R.storyboard.joinEventViweController()
-      .instantiateInitialViewController() as? JoinEventViewController else { return nil }
+    guard let joinEventVC = R.storyboard.joinEventViweController
+      .instantiateInitialViewController() else { return nil }
     joinEventVC.eventCode = ""
     joinEventVC.isAddingEvent = false
     joinEventVC.isInOnboarding = isInOnboarding

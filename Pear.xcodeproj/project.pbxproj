@@ -132,6 +132,8 @@
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */; };
 		BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */; };
+		BB61B7B7229D131F004FA81C /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B7B6229D131F004FA81C /* QRCodeScannerViewController.swift */; };
+		BB61B7B9229D1327004FA81C /* QRCodeScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB61B7B8229D1327004FA81C /* QRCodeScannerViewController.storyboard */; };
 		BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */; };
 		BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */; };
 		BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D35228632A7005E120F /* DisoveryAPI.swift */; };
@@ -562,6 +564,8 @@
 		BB58D48F22425D4500A6A910 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styling.swift"; sourceTree = "<group>"; };
 		BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Helpers.swift"; sourceTree = "<group>"; };
+		BB61B7B6229D131F004FA81C /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
+		BB61B7B8229D1327004FA81C /* QRCodeScannerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScannerViewController.storyboard; sourceTree = "<group>"; };
 		BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryDecisionViewController.swift; sourceTree = "<group>"; };
 		BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoveryDecisionViewController.storyboard; sourceTree = "<group>"; };
 		BB633D35228632A7005E120F /* DisoveryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisoveryAPI.swift; sourceTree = "<group>"; };
@@ -1405,6 +1409,8 @@
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
 				917F20B422716F6A0023EC69 /* Discovery Setup VC */,
 				BB633D3422862D76005E120F /* Decision Discovery */,
+				BB61B7B6229D131F004FA81C /* QRCodeScannerViewController.swift */,
+				BB61B7B8229D1327004FA81C /* QRCodeScannerViewController.storyboard */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -3123,6 +3129,7 @@
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
 				BB687E56228D535700F45C9D /* LocationBlockedViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
+				BB61B7B9229D1327004FA81C /* QRCodeScannerViewController.storyboard in Resources */,
 				BB178938225DFCAA0033ACC6 /* FullChatViewController.storyboard in Resources */,
 				BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
@@ -3525,6 +3532,7 @@
 				BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */,
 				917F20C22271701C0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
+				BB61B7B7229D131F004FA81C /* QRCodeScannerViewController.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
 				BBA8AE9C2297F97E003F1D79 /* PromptInputResponseViewController.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,

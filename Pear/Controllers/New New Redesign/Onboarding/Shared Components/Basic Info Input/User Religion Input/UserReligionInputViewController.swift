@@ -21,8 +21,8 @@ class UserReligionInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserReligionInputViewController? {
-    guard let ethnicityInputVC = R.storyboard.userReligionInputViewController()
-      .instantiateInitialViewController() as? UserReligionInputViewController else { return nil }
+    guard let ethnicityInputVC = R.storyboard.userReligionInputViewController
+      .instantiateInitialViewController() else { return nil }
     return ethnicityInputVC
   }
 

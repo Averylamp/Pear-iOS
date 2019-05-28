@@ -31,8 +31,8 @@ class PromptInputResponseViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(question: QuestionItem, editMode: Bool, previousResponse: QuestionResponseItem?, index: Int?) -> PromptInputResponseViewController? {
-    guard let promptInputResponseVC = R.storyboard.promptInputResponseViewController()
-      .instantiateInitialViewController() as? PromptInputResponseViewController else { return nil }
+    guard let promptInputResponseVC = R.storyboard.promptInputResponseViewController
+      .instantiateInitialViewController() else { return nil }
     promptInputResponseVC.question = question
     promptInputResponseVC.editMode = editMode
     promptInputResponseVC.previousResponse = previousResponse

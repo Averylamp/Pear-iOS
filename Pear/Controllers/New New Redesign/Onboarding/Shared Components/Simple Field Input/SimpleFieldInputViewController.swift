@@ -25,8 +25,8 @@ class SimpleFieldInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(fieldName: String, previousValue: String?, placeholder: String?, visibility: Bool = true) -> SimpleFieldInputViewController? {
-    guard let inputFieldVC = R.storyboard.simpleFieldInputViewController()
-      .instantiateInitialViewController() as? SimpleFieldInputViewController else {
+    guard let inputFieldVC = R.storyboard.simpleFieldInputViewController
+      .instantiateInitialViewController()  else {
         return nil
     }
     inputFieldVC.fieldName = fieldName

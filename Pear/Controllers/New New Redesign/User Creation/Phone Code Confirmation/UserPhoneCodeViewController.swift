@@ -33,7 +33,7 @@ class UserPhoneCodeViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(userCreationData: UserCreationData, verificationID: String) -> UserPhoneCodeViewController? {
-    guard let phoneCodeVC = R.storyboard.userPhoneCodeViewController().instantiateInitialViewController() as? UserPhoneCodeViewController else { return nil }
+    guard let phoneCodeVC = R.storyboard.userPhoneCodeViewController.instantiateInitialViewController() else { return nil }
     phoneCodeVC.userCreationData = userCreationData
     phoneCodeVC.verificationID = verificationID
     return phoneCodeVC

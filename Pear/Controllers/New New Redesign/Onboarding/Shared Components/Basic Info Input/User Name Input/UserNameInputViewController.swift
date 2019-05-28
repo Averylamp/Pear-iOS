@@ -22,8 +22,8 @@ class UserNameInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserNameInputViewController? {
-    guard let userNameVC = R.storyboard.userNameInputViewController()
-      .instantiateInitialViewController() as? UserNameInputViewController else { return nil }
+    guard let userNameVC = R.storyboard.userNameInputViewController
+      .instantiateInitialViewController() else { return nil }
     return userNameVC
   }
   

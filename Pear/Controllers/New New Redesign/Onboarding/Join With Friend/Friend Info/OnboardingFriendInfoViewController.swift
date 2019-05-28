@@ -30,8 +30,8 @@ class OnboardingFriendInfoViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> OnboardingFriendInfoViewController? {
-    guard let onboardingFriendInfoVC = R.storyboard.onboardingFriendInfoViewController()
-      .instantiateInitialViewController() as? OnboardingFriendInfoViewController else { return nil }
+    guard let onboardingFriendInfoVC = R.storyboard.onboardingFriendInfoViewController
+      .instantiateInitialViewController()  else { return nil }
     return onboardingFriendInfoVC
   }
   

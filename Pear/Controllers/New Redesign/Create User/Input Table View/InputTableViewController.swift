@@ -33,8 +33,8 @@ class InputTableViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(question: QuestionItem, multiselect: Bool = false, vibesInput: Bool = false) -> InputTableViewController? {
-    guard let inputTableVC = R.storyboard.inputTableViewController()
-      .instantiateInitialViewController() as? InputTableViewController else { return nil }
+    guard let inputTableVC = R.storyboard.inputTableViewController
+      .instantiateInitialViewController() else { return nil }
     inputTableVC.question = question
     inputTableVC.responseItems = question.suggestedResponses.map({ SuggestedResponseTableItem(suggestion: $0, selected: false) })
     inputTableVC.multiselect = multiselect

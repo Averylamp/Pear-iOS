@@ -21,8 +21,8 @@ class UserEducationLevelInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserEducationLevelInputViewController? {
-    guard let ethnicityInputVC = R.storyboard.userEducationLevelInputViewController()
-      .instantiateInitialViewController() as? UserEducationLevelInputViewController else { return nil }
+    guard let ethnicityInputVC = R.storyboard.userEducationLevelInputViewController
+      .instantiateInitialViewController()  else { return nil }
     return ethnicityInputVC
   }
 

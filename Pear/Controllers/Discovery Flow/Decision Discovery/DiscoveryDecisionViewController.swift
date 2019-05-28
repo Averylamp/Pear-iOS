@@ -20,8 +20,8 @@ class DiscoveryDecisionViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> DiscoveryDecisionViewController? {
-    guard let decisionDiscoveryVC = R.storyboard.discoveryDecisionViewController()
-      .instantiateInitialViewController() as? DiscoveryDecisionViewController else {
+    guard let decisionDiscoveryVC = R.storyboard.discoveryDecisionViewController
+      .instantiateInitialViewController()  else {
         print("Failed to create decision based discovery VC")
         return nil
     }

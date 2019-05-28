@@ -36,8 +36,8 @@ class OnboardingFriendPromptInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(friendFirstName: String, gender: GenderEnum) -> OnboardingFriendPromptInputViewController? {
-    guard let friendPromptVC = R.storyboard.onboardingFriendPromptInputViewController()
-      .instantiateInitialViewController() as? OnboardingFriendPromptInputViewController else { return nil }
+    guard let friendPromptVC = R.storyboard.onboardingFriendPromptInputViewController
+      .instantiateInitialViewController() else { return nil }
     friendPromptVC.friendFirstName = friendFirstName
     friendPromptVC.friendGender = gender
     return friendPromptVC
