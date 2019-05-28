@@ -29,6 +29,10 @@ class QRCodeScannerViewController: UIViewController {
                                     AVMetadataObject.ObjectType.interleaved2of5,
                                     AVMetadataObject.ObjectType.qr]
   
+  var isReadingQRCode: Bool = false
+  let qrCodePrefixes: [String] = [
+  "https://getpear.com/go/userid?id="
+  ]
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -81,25 +85,21 @@ extension QRCodeScannerViewController {
     videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
     videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
     videoPreviewLayer?.frame = view.layer.bounds
-    view.layer.addSublayer(videoPreviewLayer!)
+    view.layer.insertSublayer(videoPreviewLayer!, at: 0)
     
     // Start video capture.
     captureSession.startRunning()
     
-    // Move the message label and top bar to the front
-//    view.bringSubview(toFront: messageLabel)
-//    view.bringSubview(toFront: topbar)
-    
     // Initialize QR Code Frame to highlight the QR code
-    qrCodeFrameView = UIView()
-    
-    if let qrCodeFrameView = qrCodeFrameView {
-      qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
-      qrCodeFrameView.layer.borderWidth = 2
-      view.addSubview(qrCodeFrameView)
-//      view.bringSubview(toFront: qrCodeFrameView)
+    self.qrCodeFrameView =  UIView()
+    guard let qrCodeFrameView = self.qrCodeFrameView else {
+      return
     }
-
+    qrCodeFrameView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+    qrCodeFrameView.layer.borderColor = R.color.primaryBrandColor()?.cgColor
+    qrCodeFrameView.layer.borderWidth = 4
+    qrCodeFrameView.layer.cornerRadius = 8
+    view.addSubview(qrCodeFrameView)
   }
   
   func stylize() {
@@ -113,23 +113,34 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
   func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
     // Check if the metadataObjects array is not nil and it contains at least one object.
     if metadataObjects.count == 0 {
-      qrCodeFrameView?.frame = CGRect.zero
+      self.qrCodeFrameView?.frame = CGRect.zero
       //      messageLabel.text = "No QR code is detected"
       return
     }
     
     if let metadataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject,
-      supportedCodeTypes.contains(metadataObj.type) {
-      print(metadataObj)
-      print(metadataObj.stringValue)
-      // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
-      let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-      qrCodeFrameView?.frame = barCodeObject!.bounds
+      supportedCodeTypes.contains(metadataObj.type),
+      let qrCodeString = metadataObj.stringValue,
+      self.qrCodePrefixes.contains(where: { qrCodeString.hasPrefix($0)}) {
       
-      //      if metadataObj.stringValue != nil {
-      //        launchApp(decodedURL: metadataObj.stringValue!)
-      //        messageLabel.text = metadataObj.stringValue
-      //      }
+      guard !self.isReadingQRCode else {
+        print("Already Checking QR Code")
+        return
+      }
+      self.isReadingQRCode = true
+      
+      print(qrCodeString)
+      if let prefixLength = self.qrCodePrefixes.filter({ qrCodeString.hasPrefix($0)}).first?.length {
+        let userID = qrCodeString.substring(fromIndex: prefixLength)
+        print(userID)
+        self.isReadingQRCode = false
+      }
+//      let userID = qrCodeString.
+      // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
+      if let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj) {
+        self.qrCodeFrameView?.frame = barCodeObject.bounds
+      }
+      
     }
   }
 }
