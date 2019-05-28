@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 
 protocol QRCodeScannerDelegate: class {
-  func didScanUser(user: PearUser)
+  func didScanUser(fullProfileDisplay: FullProfileDisplayData)
 }
 
 class QRCodeScannerViewController: UIViewController {
@@ -127,7 +127,6 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     // Check if the metadataObjects array is not nil and it contains at least one object.
     if metadataObjects.count == 0 {
       self.qrCodeFrameView?.frame = CGRect.zero
-      //      messageLabel.text = "No QR code is detected"
       return
     }
     
@@ -147,12 +146,13 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         PearUserAPI.shared.getUserFromQRCode(userID: userID) { (result) in
           DispatchQueue.main.async {
             switch result {
-            case .success(let user):
-              print(user)
+            case .success(let fullProfileDisplay):
               if let scannerDelegate = self.scannerDelegate {
-                scannerDelegate.didScanUser(user: user)
+                scannerDelegate.didScanUser(fullProfileDisplay: fullProfileDisplay)
               }
-              self.dismiss(animated: true, completion: nil)
+              self.dismiss(animated: true, completion: {
+                self.isReadingQRCode = false
+              })
             case .failure(let error):
               print("Failed to get qr code user: \(error)")
               switch error {
@@ -161,10 +161,9 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
               default:
                 self.alert(title: "Unable to find user", message: "Sorry, please try again later")
               }
+              self.isReadingQRCode = false
             }
-            
           }
-          self.isReadingQRCode = false
         }
       }
 //      let userID = qrCodeString.
