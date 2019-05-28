@@ -150,11 +150,6 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
       }
       self.navigationController?.pushViewController(editMeVC, animated: true)
     case .myPreferences:
-      guard let user = DataStore.shared.currentPearUser else {
-        print("Unable to get pear user")
-        return
-      }
-      let fullProfileDisplay = FullProfileDisplayData(user: user)
       guard let editUserPreferencesVC = MeEditUserPreferencesViewController.instantiate() else {
         print("Unable to instantiate edit user preferences")
         return

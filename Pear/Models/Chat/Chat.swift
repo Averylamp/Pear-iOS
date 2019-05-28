@@ -156,7 +156,7 @@ extension Chat {
               return
             }
             message.configureMessageForID(userID: userID)
-            self.addMessage(message: message)
+            _ = self.addMessage(message: message)
           } catch {
             print("Error Deserializing Message Object")
             print(error)
