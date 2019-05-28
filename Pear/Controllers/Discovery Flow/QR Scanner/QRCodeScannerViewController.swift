@@ -6,11 +6,18 @@
 //  Copyright © 2019 Setup and Matchmake Inc. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import AVFoundation
 
+protocol QRCodeScannerDelegate: class {
+  func didScanUser(user: PearUser)
+}
+
 class QRCodeScannerViewController: UIViewController {
 
+  weak var scannerDelegate: QRCodeScannerDelegate?
+  
   var captureSession: AVCaptureSession = AVCaptureSession()
   var videoPreviewLayer: AVCaptureVideoPreviewLayer?
   var qrCodeFrameView: UIView?
@@ -31,7 +38,8 @@ class QRCodeScannerViewController: UIViewController {
   
   var isReadingQRCode: Bool = false
   let qrCodePrefixes: [String] = [
-  "https://getpear.com/go/userid?id="
+  "https://getpear.com/go/userid?id=",
+  "https://getpear.com/go/refer?id="
   ]
   /// Factory method for creating this view controller.
   ///
@@ -77,6 +85,7 @@ extension QRCodeScannerViewController {
 
     } catch {
       // If any error occurs, simply print it out and don't continue any more.
+      print("FAILURE SETTING UP QR CODE METADATA")
       print(error)
       return
     }
@@ -122,9 +131,7 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
       supportedCodeTypes.contains(metadataObj.type),
       let qrCodeString = metadataObj.stringValue,
       self.qrCodePrefixes.contains(where: { qrCodeString.hasPrefix($0)}) {
-      
       guard !self.isReadingQRCode else {
-        print("Already Checking QR Code")
         return
       }
       self.isReadingQRCode = true
@@ -132,8 +139,29 @@ extension QRCodeScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
       print(qrCodeString)
       if let prefixLength = self.qrCodePrefixes.filter({ qrCodeString.hasPrefix($0)}).first?.length {
         let userID = qrCodeString.substring(fromIndex: prefixLength)
-        print(userID)
-        self.isReadingQRCode = false
+        print("Finding user: \(userID)")
+        PearUserAPI.shared.getUserFromQRCode(userID: userID) { (result) in
+          DispatchQueue.main.async {
+            switch result {
+            case .success(let user):
+              print(user)
+              if let scannerDelegate = self.scannerDelegate {
+                scannerDelegate.didScanUser(user: user)
+              }
+              self.dismiss(animated: true, completion: nil)
+            case .failure(let error):
+              print("Failed to get qr code user: \(error)")
+              switch error {
+              case .errorWithMessage(let message):
+                self.alert(title: message, message: "Please try again later")
+              default:
+                self.alert(title: "Unable to find user", message: "Sorry, please try again later")
+              }
+            }
+            
+          }
+          self.isReadingQRCode = false
+        }
       }
 //      let userID = qrCodeString.
       // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds

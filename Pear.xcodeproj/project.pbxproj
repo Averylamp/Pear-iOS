@@ -1415,8 +1415,7 @@
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
 				917F20B422716F6A0023EC69 /* Discovery Setup VC */,
 				BB633D3422862D76005E120F /* Decision Discovery */,
-				BB61B7B6229D131F004FA81C /* QRCodeScannerViewController.swift */,
-				BB61B7B8229D1327004FA81C /* QRCodeScannerViewController.storyboard */,
+				BBCA2D6F229DF1150057491A /* QR Scanner */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -2529,6 +2528,15 @@
 				BBC4A08522586F58009D9867 /* Location Demographics */,
 			);
 			path = Demographics;
+			sourceTree = "<group>";
+		};
+		BBCA2D6F229DF1150057491A /* QR Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				BB61B7B6229D131F004FA81C /* QRCodeScannerViewController.swift */,
+				BB61B7B8229D1327004FA81C /* QRCodeScannerViewController.storyboard */,
+			);
+			path = "QR Scanner";
 			sourceTree = "<group>";
 		};
 		BBD2842C223BFC1000AC6E30 /* PearUITests */ = {
