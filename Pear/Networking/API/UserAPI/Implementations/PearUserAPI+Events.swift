@@ -78,7 +78,42 @@ extension PearUserAPI {
 
   func getUserFromQRCode(userID: String,
                          completion: @escaping(Result<PearUser, UserAPIError>) -> Void) {
-    
+    let variables: [String: Any] = ["user_id": userID]
+    do {
+      let (request, fullDictionary) = try APIHelpers.getRequestWith(query: PearUserAPI.getUserFromIDQuery,
+                                                                    variables: variables)
+      
+      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
+        if let error = error {
+          print(error as Any)
+          SentryHelper.generateSentryEvent(level: .error,
+                                           apiName: "PearUserAPI",
+                                           functionName: "GetUserFromID",
+                                           message: error.localizedDescription,
+                                           responseData: data,
+                                           tags: [:],
+                                           payload: fullDictionary)
+          completion(.failure(UserAPIError.unknownError(error: error)))
+          return
+        } else {
+          if let data = data,
+            let json = try? JSON(data: data) {
+            print(json)
+          }
+        }
+      }
+      dataTask.resume()
+      
+    } catch {
+      print(error)
+      SentryHelper.generateSentryEvent(level: .error,
+                                       apiName: "PearUserAPI",
+                                       functionName: "GetUserFromID",
+                                       message: error.localizedDescription)
+      completion(.failure(UserAPIError.unknownError(error: error)))
+      
+    }
+
   }
   
 }
