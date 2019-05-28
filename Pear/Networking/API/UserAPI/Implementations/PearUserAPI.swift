@@ -35,7 +35,7 @@ class PearUserAPI: UserAPI {
   }
   
   static let addEventCodeQuery: String = "mutation AddEventCode($user_id: ID!, $code: String!) { addEventCode(user_id: $user_id, code: $code) { success message } }"
-  static let getUserFromIDQuery: String = "query GetUserFromID($user_id: ID!) { user(id: $user_id) }"
+  static let getUserFromIDQuery: String = "query GetUserFromID($user_id: ID!) { user(id: $user_id)  \(PearUser.graphQLAllFields()) }"
 }
 
 // MARK: - Routes

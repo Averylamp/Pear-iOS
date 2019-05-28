@@ -97,8 +97,12 @@ extension PearUserAPI {
           return
         } else {
           if let data = data,
-            let json = try? JSON(data: data) {
-            print(json)
+            let json = try? JSON(data: data),
+            let userData = try? json["data"]["user"].rawData(),
+            let user = try? JSONDecoder().decode(PearUser.self, from: userData) {
+            completion(.success(user))
+          } else {
+            completion(.failure(UserAPIError.errorWithMessage(message: "Could not find that user")))
           }
         }
       }

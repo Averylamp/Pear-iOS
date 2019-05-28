@@ -14,6 +14,7 @@ enum UserAPIError: Error {
   case failedDeserialization
   case unauthenticated
   case graphQLError(message: String)
+  case errorWithMessage(message: String)
 }
 
 protocol UserAPI {
