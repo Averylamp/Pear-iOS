@@ -53,7 +53,10 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     guard let navController = LandingNavigationViewController.instantiate() else {
       fatalError("Something went horribly wrong")
     }
-    window?.rootViewController = navController
+    guard let scannerVC = QRCodeScannerViewController.instantiate() else {
+      fatalError()
+    }
+    window?.rootViewController = scannerVC
     window?.makeKeyAndVisible()
     
     // register for remote notifications if we have notification authorization
