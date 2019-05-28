@@ -18,9 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTd-2h-5Qa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTd-2h-5Qa">
                                 <rect key="frame" x="20" y="64" width="30" height="30"/>
-                                <state key="normal" title="X"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pTd-2h-5Qa" secondAttribute="height" multiplier="1:1" id="4C9-e6-BDE"/>
+                                    <constraint firstAttribute="width" constant="30" id="LJj-fA-LLK"/>
+                                </constraints>
+                                <state key="normal" image="discovery-icon-cancel-scan"/>
+                                <connections>
+                                    <action selector="cancelButtonClicked:" destination="kRx-pY-Ke9" eventType="touchUpInside" id="jET-BK-16I"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -36,4 +43,7 @@
             <point key="canvasLocation" x="165" y="149"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="discovery-icon-cancel-scan" width="96" height="96"/>
+    </resources>
 </document>

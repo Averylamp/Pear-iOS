@@ -49,6 +49,10 @@ class QRCodeScannerViewController: UIViewController {
     return qrCodeScannerVC
   }
   
+  @IBAction func cancelButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.dismiss(animated: true, completion: nil)
+  }
 }
 
 // MARK: - Life Cycle
