@@ -362,6 +362,7 @@
 		BBCA2D73229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */; };
 		BBCA2D75229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */; };
 		BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */; };
+		BBCA2D79229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */; };
 		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
 		BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
@@ -803,6 +804,7 @@
 		BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+MatchingButtons.swift"; sourceTree = "<group>"; };
 		BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+PromptVCs.swift"; sourceTree = "<group>"; };
 		BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+ProfileCreation.swift"; sourceTree = "<group>"; };
+		BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryDecisionViewController+Scanner.swift"; sourceTree = "<group>"; };
 		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
@@ -1583,6 +1585,7 @@
 			isa = PBXGroup;
 			children = (
 				BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */,
+				BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */,
 				BBA8AE8D229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift */,
 				BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */,
 			);
@@ -3502,6 +3505,7 @@
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */,
 				BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */,
+				BBCA2D79229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift in Sources */,
 				BBB71B6622946CB4002CDDD1 /* UserAgeInputViewController.swift in Sources */,
 				BBF93E562267C881002841EE /* ProfileInputVibeViewController.swift in Sources */,
 				BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */,
