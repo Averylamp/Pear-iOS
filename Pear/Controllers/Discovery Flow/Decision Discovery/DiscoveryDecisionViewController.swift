@@ -112,7 +112,7 @@ extension DiscoveryDecisionViewController {
   func showNextProfile() {
     
     if self.profilesToShow.count == 0 {
-      self.currentDiscoveryProfileVC = nil
+      
       DispatchQueue.main.async {
         self.messageLabel.text = "There are no more profiles for you right now. \nCheck back in a few hours!"
         self.tabBarController?.setTabBarVisible(visible: true, duration: 0.5, animated: true)
@@ -133,6 +133,8 @@ extension DiscoveryDecisionViewController {
         self.showProfileVC(profileVC: nextProfileVC, completion: {
           
         })
+      } else {
+        self.currentDiscoveryProfileVC = nil
       }
     }
     
