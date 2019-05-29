@@ -31,17 +31,7 @@ enum ProfileCreationKey: String {
   var questionResponses: [QuestionResponseItem] = []
   var skipCount: Int = 0
   var vibes: [VibeItem] = []
-  
-  init(contactListItem: ContactListItem, phoneNumber: String? = nil) {
-    if phoneNumber == nil {
-      self.phoneNumber = contactListItem.phoneNumber      
-    } else {
-      self.phoneNumber = phoneNumber!
-    }
-    self.firstName = contactListItem.firstName
-    self.lastName = contactListItem.lastName
-  }
-  
+    
   init(contact: CNContact, phoneNumber: String? = nil) {
     if phoneNumber == nil,
       var contactPhoneNumber = contact.phoneNumbers.first?.value.stringValue.filter("0123456789".contains) {
