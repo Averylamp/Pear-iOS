@@ -256,4 +256,8 @@ extension UpdateUserPromptsStackViewController {
     self.present(requestFriendVC, animated: true, completion: nil)
   }
   
+  @objc func replacePromptClicked(sender: UIButton) {
+    
+  }
+  
 }
