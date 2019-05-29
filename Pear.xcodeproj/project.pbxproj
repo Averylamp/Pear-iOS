@@ -138,6 +138,8 @@
 		BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57151A22159D8F00EF9C4A /* UIButton+Closures.swift */; };
 		BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */; };
 		BB610E9A222A1E8500901FC3 /* UILabel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */; };
+		BB61B7B7229D131F004FA81C /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61B7B6229D131F004FA81C /* QRCodeScannerViewController.swift */; };
+		BB61B7B9229D1327004FA81C /* QRCodeScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB61B7B8229D1327004FA81C /* QRCodeScannerViewController.storyboard */; };
 		BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */; };
 		BB633D3322862D5A005E120F /* DiscoveryDecisionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */; };
 		BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB633D35228632A7005E120F /* DisoveryAPI.swift */; };
@@ -359,6 +361,14 @@
 		BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */; };
 		BBC8DD5B2272753700C157E2 /* MultipleBoastRoastStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */; };
 		BBC8DD5D2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */; };
+		BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */; };
+		BBCA2D6C229DCFA00057491A /* PearUserAPI+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */; };
+		BBCA2D6E229DD00D0057491A /* PearUserAPI+Updates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */; };
+		BBCA2D71229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */; };
+		BBCA2D73229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */; };
+		BBCA2D75229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */; };
+		BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */; };
+		BBCA2D79229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */; };
 		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
 		BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */; };
 		BBCF418A2227D5D0009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */; };
@@ -574,6 +584,8 @@
 		BB58D48F22425D4500A6A910 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		BB610E96222A1E2700901FC3 /* UIButton+Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styling.swift"; sourceTree = "<group>"; };
 		BB610E99222A1E8500901FC3 /* UILabel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Helpers.swift"; sourceTree = "<group>"; };
+		BB61B7B6229D131F004FA81C /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
+		BB61B7B8229D1327004FA81C /* QRCodeScannerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QRCodeScannerViewController.storyboard; sourceTree = "<group>"; };
 		BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryDecisionViewController.swift; sourceTree = "<group>"; };
 		BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoveryDecisionViewController.storyboard; sourceTree = "<group>"; };
 		BB633D35228632A7005E120F /* DisoveryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisoveryAPI.swift; sourceTree = "<group>"; };
@@ -797,6 +809,14 @@
 		BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDemographicsViewController.swift; sourceTree = "<group>"; };
 		BBC8DD5A2272753700C157E2 /* MultipleBoastRoastStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleBoastRoastStackViewController.swift; sourceTree = "<group>"; };
 		BBC8DD5C2272754800C157E2 /* MultipleBoastRoastStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultipleBoastRoastStackViewController.storyboard; sourceTree = "<group>"; };
+		BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Events.swift"; sourceTree = "<group>"; };
+		BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Helpers.swift"; sourceTree = "<group>"; };
+		BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Updates.swift"; sourceTree = "<group>"; };
+		BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+Scanner.swift"; sourceTree = "<group>"; };
+		BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+MatchingButtons.swift"; sourceTree = "<group>"; };
+		BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+PromptVCs.swift"; sourceTree = "<group>"; };
+		BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+ProfileCreation.swift"; sourceTree = "<group>"; };
+		BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryDecisionViewController+Scanner.swift"; sourceTree = "<group>"; };
 		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
 		BBCD0AAE222CBF6000FE5456 /* LoadingScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingScreenViewController.storyboard; sourceTree = "<group>"; };
 		BBCF41892227D5CF009CEC4A /* GetStartedPhoneVerificationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedPhoneVerificationCompleteViewController.swift; sourceTree = "<group>"; };
@@ -1446,6 +1466,7 @@
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
 				917F20B422716F6A0023EC69 /* Discovery Setup VC */,
 				BB633D3422862D76005E120F /* Decision Discovery */,
+				BBCA2D6F229DF1150057491A /* QR Scanner */,
 			);
 			path = "Discovery Flow";
 			sourceTree = "<group>";
@@ -1605,6 +1626,7 @@
 			isa = PBXGroup;
 			children = (
 				BB633D3022862D50005E120F /* DiscoveryDecisionViewController.swift */,
+				BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */,
 				BBA8AE8D229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift */,
 				BB633D3222862D5A005E120F /* DiscoveryDecisionViewController.storyboard */,
 			);
@@ -2040,6 +2062,10 @@
 			isa = PBXGroup;
 			children = (
 				BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */,
+				BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */,
+				BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */,
+				BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */,
+				BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */,
 				BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */,
 			);
 			path = "Discovery Full Profile View";
@@ -2256,6 +2282,9 @@
 			isa = PBXGroup;
 			children = (
 				BBB70ACE222334FC006B75A0 /* PearUserAPI.swift */,
+				BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */,
+				BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */,
+				BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -2556,6 +2585,15 @@
 				BBC4A08522586F58009D9867 /* Location Demographics */,
 			);
 			path = Demographics;
+			sourceTree = "<group>";
+		};
+		BBCA2D6F229DF1150057491A /* QR Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				BB61B7B6229D131F004FA81C /* QRCodeScannerViewController.swift */,
+				BB61B7B8229D1327004FA81C /* QRCodeScannerViewController.storyboard */,
+			);
+			path = "QR Scanner";
 			sourceTree = "<group>";
 		};
 		BBD2842C223BFC1000AC6E30 /* PearUITests */ = {
@@ -3165,6 +3203,7 @@
 				BB33E75322249926001BFA8F /* GetStartedChooseGenderViewController.storyboard in Resources */,
 				BB687E56228D535700F45C9D /* LocationBlockedViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
+				BB61B7B9229D1327004FA81C /* QRCodeScannerViewController.storyboard in Resources */,
 				BB178938225DFCAA0033ACC6 /* FullChatViewController.storyboard in Resources */,
 				BBA757AC225FA04F00D2986A /* GetStartedChoosePreferencesViewController.storyboard in Resources */,
 				BB986A41220E85C100759A14 /* LandingNavigationViewController.storyboard in Resources */,
@@ -3395,10 +3434,12 @@
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
+				BBCA2D71229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift in Sources */,
 				BBBE7B872272170800C32EBE /* NewProfileQuestionResponseViewController.swift in Sources */,
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
 				BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */,
 				BB201199228F27F500BC85C0 /* MatchingDemographics.swift in Sources */,
+				BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* NewProfileDemographicsViewController.swift in Sources */,
 				BB687E73228D716900F45C9D /* OnboardingFriendNameViewController.swift in Sources */,
 				BB986A4B220F79B400759A14 /* GetStartedInterestsViewController.swift in Sources */,
@@ -3480,6 +3521,7 @@
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
 				BB687E5C228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift in Sources */,
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
+				BBCA2D75229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift in Sources */,
 				BBB71B742294E871002CDDD1 /* UserEthnicityInputViewController.swift in Sources */,
 				BBB71B7A2295272E002CDDD1 /* UserEducationLevelInputViewController.swift in Sources */,
 				BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */,
@@ -3496,6 +3538,7 @@
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
 				BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */,
 				BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */,
+				BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */,
 				BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */,
 				BBECBED0223848E7008E8E91 /* FullProfileScrollViewController.swift in Sources */,
 				BBAC0960227029780095F27E /* FullProfileDisplayData.swift in Sources */,
@@ -3506,6 +3549,7 @@
 				BB686E372210E061008A263C /* GetStartedCreateAccountEmailPasswordViewController.swift in Sources */,
 				BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */,
 				BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */,
+				BBCA2D79229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift in Sources */,
 				BBB71B6622946CB4002CDDD1 /* UserAgeInputViewController.swift in Sources */,
 				BBF93E562267C881002841EE /* ProfileInputVibeViewController.swift in Sources */,
 				BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */,
@@ -3555,6 +3599,7 @@
 				BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
+				BBCA2D73229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift in Sources */,
 				BB687E63228D6B7500F45C9D /* UIImageView+Styling.swift in Sources */,
 				9142D08C2298ACCA0037E199 /* PromptInputDelegate.swift in Sources */,
 				BBA8AE952297D63A003F1D79 /* PromptInputViewController.swift in Sources */,
@@ -3571,6 +3616,7 @@
 				BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */,
 				917F20C22271701C0023EC69 /* FinishSetupUserPreferencesViewController.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
+				BB61B7B7229D131F004FA81C /* QRCodeScannerViewController.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
 				BBA8AE9C2297F97E003F1D79 /* PromptInputResponseViewController.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
@@ -3595,6 +3641,7 @@
 				BBA8AE902297C7C1003F1D79 /* OnboardingFriendPromptInputViewController.swift in Sources */,
 				BBEA635B225B68FA00A50422 /* GetStartedSchoolViewController.swift in Sources */,
 				BBF93E582267C8B1002841EE /* ProfileInputQuestionViewController.swift in Sources */,
+				BBCA2D6E229DD00D0057491A /* PearUserAPI+Updates.swift in Sources */,
 				BB686E2F2210DA71008A263C /* GetStartedValidatePhoneNumberViewController.swift in Sources */,
 				BBD266212288165B00DB29A9 /* UITabBarController+Helpers.swift in Sources */,
 				BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */,
@@ -3603,6 +3650,7 @@
 				60C131EC21D348840093ECBA /* UIViewController+Loading.swift in Sources */,
 				BB178943225E8B6A0033ACC6 /* ServerMessageTableViewCell.swift in Sources */,
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
+				BBCA2D6C229DCFA00057491A /* PearUserAPI+Helpers.swift in Sources */,
 				BB9CB69B2259E13300605A98 /* UpdateExpandingTextViewController.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */,
 				913E3AEE229CCAC9000B70A8 /* PearEvent.swift in Sources */,

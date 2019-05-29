@@ -30,8 +30,8 @@ class UserContactPermissionsViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserContactPermissionsViewController? {
-    guard let contactPermissionsVC = R.storyboard.userContactPermissionsViewController()
-      .instantiateInitialViewController() as? UserContactPermissionsViewController else { return nil }
+    guard let contactPermissionsVC = R.storyboard.userContactPermissionsViewController
+      .instantiateInitialViewController()  else { return nil }
     return contactPermissionsVC
   }
   

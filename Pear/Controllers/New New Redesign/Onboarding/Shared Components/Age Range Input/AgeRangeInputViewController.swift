@@ -25,7 +25,7 @@ class AgeRangeInputViewController: UIViewController {
     /// - Returns: Returns an instance of this view controller.
     class func instantiate(minAge: Int, maxAge: Int) -> AgeRangeInputViewController? {
       guard let agePrefVC = R.storyboard.ageRangeInputViewController
-        .instantiateInitialViewController() as? AgeRangeInputViewController else { return nil }
+        .instantiateInitialViewController() else { return nil }
       agePrefVC.initialMinAge = minAge
       agePrefVC.initialMaxAge = maxAge
       agePrefVC.minAge = minAge

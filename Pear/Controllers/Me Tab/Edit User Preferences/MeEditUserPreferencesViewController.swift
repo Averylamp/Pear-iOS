@@ -21,8 +21,8 @@ class MeEditUserPreferencesViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> MeEditUserPreferencesViewController? {
-    guard let userPreferencesVC = R.storyboard.meEditUserPreferencesViewController()
-      .instantiateInitialViewController() as? MeEditUserPreferencesViewController else { return nil }
+    guard let userPreferencesVC = R.storyboard.meEditUserPreferencesViewController
+      .instantiateInitialViewController()  else { return nil }
     return userPreferencesVC
   }
   

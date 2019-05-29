@@ -17,8 +17,8 @@ class UserAgeInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserAgeInputViewController? {
-    guard let userNameVC = R.storyboard.userAgeInputViewController()
-      .instantiateInitialViewController() as? UserAgeInputViewController else { return nil }
+    guard let userNameVC = R.storyboard.userAgeInputViewController
+      .instantiateInitialViewController()  else { return nil }
     return userNameVC
   }
   

@@ -16,16 +16,26 @@ class DiscoveryDecisionViewController: UIViewController {
   
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var messageLabel: UILabel!
+  @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> DiscoveryDecisionViewController? {
-    guard let decisionDiscoveryVC = R.storyboard.discoveryDecisionViewController()
-      .instantiateInitialViewController() as? DiscoveryDecisionViewController else {
+    guard let decisionDiscoveryVC = R.storyboard.discoveryDecisionViewController
+      .instantiateInitialViewController()  else {
         print("Failed to create decision based discovery VC")
         return nil
     }
     return decisionDiscoveryVC
+  }
+  
+  @IBAction func filterButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+  }
+  
+  @IBAction func qrCodeButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.presentScanner()
   }
   
 }
@@ -102,9 +112,14 @@ extension DiscoveryDecisionViewController {
   func showNextProfile() {
     
     if self.profilesToShow.count == 0 {
+      
       DispatchQueue.main.async {
         self.messageLabel.text = "There are no more profiles for you right now. \nCheck back in a few hours!"
         self.tabBarController?.setTabBarVisible(visible: true, duration: 0.5, animated: true)
+        self.headerHeightConstraint.constant = 50.0
+        UIView.animate(withDuration: 0.5, animations: {
+          self.view.layoutIfNeeded()
+        })
       }
     }
     self.hideProfileVC {
@@ -118,6 +133,8 @@ extension DiscoveryDecisionViewController {
         self.showProfileVC(profileVC: nextProfileVC, completion: {
           
         })
+      } else {
+        self.currentDiscoveryProfileVC = nil
       }
     }
     
@@ -184,6 +201,14 @@ extension DiscoveryDecisionViewController {
 extension DiscoveryDecisionViewController: DiscoveryFullProfileDelegate {
   
   func decisionMade() {
+    self.showNextProfile()
+  }
+  
+  func scannedUser(fullProfileDisplay: FullProfileDisplayData) {
+    if let previousPerson = self.currentDiscoveryProfileVC?.fullProfileData {
+      self.profilesToShow.append(previousPerson)
+    }
+    self.profilesToShow.append(fullProfileDisplay)
     self.showNextProfile()
   }
   

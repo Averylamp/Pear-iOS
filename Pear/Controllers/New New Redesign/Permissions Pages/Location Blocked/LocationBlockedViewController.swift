@@ -21,8 +21,8 @@ class LocationBlockedViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> LocationBlockedViewController? {
-    guard let locationBlockedVC = R.storyboard.locationBlockedViewController()
-      .instantiateInitialViewController() as? LocationBlockedViewController else {
+    guard let locationBlockedVC = R.storyboard.locationBlockedViewController
+      .instantiateInitialViewController()  else {
         return nil
     }
     return locationBlockedVC

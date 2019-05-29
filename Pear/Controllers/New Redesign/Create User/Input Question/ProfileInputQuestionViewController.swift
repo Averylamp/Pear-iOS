@@ -38,8 +38,8 @@ class ProfileInputQuestionViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(profileCreationData: ProfileCreationData, question: QuestionItem) -> ProfileInputQuestionViewController? {
-    guard let profileVibeVC = R.storyboard.profileInputQuestionViewController()
-      .instantiateInitialViewController() as? ProfileInputQuestionViewController else { return nil }
+    guard let profileVibeVC = R.storyboard.profileInputQuestionViewController
+      .instantiateInitialViewController()  else { return nil }
     profileVibeVC.profileData = profileCreationData
     profileVibeVC.question = question
     

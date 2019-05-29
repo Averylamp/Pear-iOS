@@ -21,8 +21,8 @@ class UserEthnicityInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserEthnicityInputViewController? {
-    guard let ethnicityInputVC = R.storyboard.userEthnicityInputViewController()
-      .instantiateInitialViewController() as? UserEthnicityInputViewController else { return nil }
+    guard let ethnicityInputVC = R.storyboard.userEthnicityInputViewController
+      .instantiateInitialViewController() else { return nil }
     return ethnicityInputVC
   }
 

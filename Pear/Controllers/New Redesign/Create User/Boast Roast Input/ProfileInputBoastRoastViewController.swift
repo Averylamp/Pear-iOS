@@ -39,8 +39,8 @@ class ProfileInputBoastRoastViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(profileCreationData: ProfileCreationData) -> ProfileInputBoastRoastViewController? {
-    guard let profileRoastBoast = R.storyboard.profileInputBoastRoastViewController()
-      .instantiateInitialViewController() as? ProfileInputBoastRoastViewController else { return nil }
+    guard let profileRoastBoast = R.storyboard.profileInputBoastRoastViewController
+      .instantiateInitialViewController() else { return nil }
     profileRoastBoast.profileData = profileCreationData
     return profileRoastBoast
   }

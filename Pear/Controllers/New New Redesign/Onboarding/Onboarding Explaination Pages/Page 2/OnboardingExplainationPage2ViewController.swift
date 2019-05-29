@@ -18,8 +18,8 @@ class OnboardingExplainationPage2ViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> OnboardingExplainationPage2ViewController? {
-    guard let onboardingPage1VC = R.storyboard.onboardingExplainationPage2ViewController()
-      .instantiateInitialViewController() as? OnboardingExplainationPage2ViewController else { return nil }
+    guard let onboardingPage1VC = R.storyboard.onboardingExplainationPage2ViewController
+      .instantiateInitialViewController()  else { return nil }
     
     return onboardingPage1VC
   }

@@ -29,7 +29,6 @@ class PearProfileAPI: ProfileAPI {
   static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($approveDetachedProfileInput: ApproveDetachedProfileInput!) { approveNewDetachedProfile(approveDetachedProfileInput: $approveDetachedProfileInput){ message success } }"
   
   static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLAllFields()) timestamp } }}"
-//  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(PearUser.graphQLMatchedUserFieldsAll) }"
   
   // swiftlint:disable:next line_length
   static let editEndorsedProfileQuery: String = "mutation EditEndorsedProfile($editEndorsementInput:EditEndorsementInput!){ editEndorsement(editEndorsementInput: $editEndorsementInput){ success message}}"

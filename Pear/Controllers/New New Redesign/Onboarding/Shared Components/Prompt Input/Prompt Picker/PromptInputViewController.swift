@@ -20,8 +20,8 @@ class PromptInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(prompts: [QuestionItem], answeredPrompts: [QuestionResponseItem]) -> PromptInputViewController? {
-    guard let promptInputVC = R.storyboard.promptInputViewController()
-      .instantiateInitialViewController() as? PromptInputViewController else { return nil }
+    guard let promptInputVC = R.storyboard.promptInputViewController
+      .instantiateInitialViewController() else { return nil }
     promptInputVC.questionItems = prompts
     promptInputVC.answeredPrompts = answeredPrompts
     return promptInputVC

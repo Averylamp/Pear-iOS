@@ -36,8 +36,8 @@ class OnboardingFriendPromptInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(friendFirstName: String, gender: GenderEnum) -> OnboardingFriendPromptInputViewController? {
-    guard let friendPromptVC = R.storyboard.onboardingFriendPromptInputViewController()
-      .instantiateInitialViewController() as? OnboardingFriendPromptInputViewController else { return nil }
+    guard let friendPromptVC = R.storyboard.onboardingFriendPromptInputViewController
+      .instantiateInitialViewController() else { return nil }
     friendPromptVC.friendFirstName = friendFirstName
     friendPromptVC.friendGender = gender
     return friendPromptVC
@@ -476,10 +476,6 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
     case .success:
       DispatchQueue.main.async {
         if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
-          guard let mainVC = LoadingScreenViewController.getMainScreenVC() else {
-            print("Failed to create main VC")
-            return
-          }
           self.navigationController?.popToRootViewController(animated: true)
         } else {
           guard let basicInfoVC = OnboardingBasicInfoViewController.instantiate() else {
@@ -491,9 +487,9 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
             print("No view controllers detected")
             return
           }
-          viewControllers.popLast()
-          viewControllers.popLast()
-          viewControllers.popLast()
+          _ = viewControllers.popLast()
+          _ = viewControllers.popLast()
+          _ = viewControllers.popLast()
           viewControllers.append(basicInfoVC)
           self.navigationController?.setViewControllers(viewControllers, animated: true)
         }
