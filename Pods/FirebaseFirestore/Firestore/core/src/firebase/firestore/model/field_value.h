@@ -18,6 +18,7 @@
 #define FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_MODEL_FIELD_VALUE_H_
 
 #include <cstdint>
+#include <iosfwd>
 #include <memory>
 #include <string>
 #include <utility>
@@ -32,27 +33,23 @@
 #include "Firestore/core/src/firebase/firestore/util/hard_assert.h"
 #include "absl/types/optional.h"
 
+#if __OBJC__
+@class FSTFieldValue;
+#endif  // __OBJC__
+
 namespace firebase {
 namespace firestore {
 namespace model {
 
-struct ServerTimestamp {
-  Timestamp local_write_time;
-  absl::optional<Timestamp> previous_value;
-};
-
-struct ReferenceValue {
-  DocumentKey reference;
-  // Does not own the DatabaseId instance.
-  const DatabaseId* database_id;
-};
+struct ReferenceValue;
+struct ServerTimestamp;
 
 /**
  * tagged-union class representing an immutable data value as stored in
  * Firestore. FieldValue represents all the different kinds of values
  * that can be stored in fields in a document.
  */
-class FieldValue {
+class FieldValue : public util::Comparable<FieldValue> {
  public:
   using Map = immutable::SortedMap<std::string, FieldValue>;
 
@@ -80,6 +77,14 @@ class FieldValue {
     // position instead, see the doc comment above.
   };
 
+  /**
+   * Checks if the given type is a numeric, such as Type::Integer or
+   * Type::Double.
+   */
+  static bool IsNumber(Type type) {
+    return type == Type::Integer || type == Type::Double;
+  }
+
   FieldValue() {
   }
 
@@ -92,6 +97,10 @@ class FieldValue {
 
   FieldValue& operator=(const FieldValue& value);
   FieldValue& operator=(FieldValue&& value);
+
+#if __OBJC__
+  FSTFieldValue* Wrap() &&;
+#endif  // __OBJC__
 
   /** Returns the true type for this value. */
   Type type() const {
@@ -137,6 +146,12 @@ class FieldValue {
     return *blob_value_;
   }
 
+  /**
+   * Returns a string_view of the blob_value(). This can be useful when using
+   * abseil bytewise APIs that accept this type.
+   */
+  absl::string_view blob_value_as_string_view() const;
+
   const GeoPoint& geo_point_value() const {
     HARD_ASSERT(tag_ == Type::GeoPoint);
     return *geo_point_value_;
@@ -158,7 +173,7 @@ class FieldValue {
   static FieldValue FromDouble(double value);
   static FieldValue FromTimestamp(const Timestamp& value);
   static FieldValue FromServerTimestamp(const Timestamp& local_write_time,
-                                        const Timestamp& previous_value);
+                                        const FieldValue& previous_value);
   static FieldValue FromServerTimestamp(const Timestamp& local_write_time);
   static FieldValue FromString(const char* value);
   static FieldValue FromString(const std::string& value);
@@ -174,7 +189,12 @@ class FieldValue {
   static FieldValue FromMap(const Map& value);
   static FieldValue FromMap(Map&& value);
 
-  friend bool operator<(const FieldValue& lhs, const FieldValue& rhs);
+  size_t Hash() const;
+
+  util::ComparisonResult CompareTo(const FieldValue& rhs) const;
+
+  std::string ToString() const;
+  friend std::ostream& operator<<(std::ostream& os, const FieldValue& value);
 
  private:
   friend class ObjectValue;
@@ -206,7 +226,7 @@ class FieldValue {
 };
 
 /** A structured object value stored in Firestore. */
-class ObjectValue {
+class ObjectValue : public util::Comparable<ObjectValue> {
  public:
   explicit ObjectValue(FieldValue fv) : fv_(std::move(fv)) {
     HARD_ASSERT(fv_.type() == FieldValue::Type::Object);
@@ -257,64 +277,42 @@ class ObjectValue {
     return *fv_.object_value_;
   }
 
- private:
-  friend bool operator<(const ObjectValue& lhs, const ObjectValue& rhs);
+  util::ComparisonResult CompareTo(const ObjectValue& rhs) const;
 
+  std::string ToString() const;
+  friend std::ostream& operator<<(std::ostream& os, const ObjectValue& value);
+
+  size_t Hash() const;
+
+ private:
   ObjectValue SetChild(const std::string& child_name,
                        const FieldValue& value) const;
 
   FieldValue fv_;
 };
 
-bool operator<(const FieldValue::Map& lhs, const FieldValue::Map& rhs);
+struct ServerTimestamp {
+  Timestamp local_write_time;
+  absl::optional<FieldValue> previous_value;
 
-/** Compares against another FieldValue. */
-bool operator<(const FieldValue& lhs, const FieldValue& rhs);
+  std::string ToString() const;
+  friend std::ostream& operator<<(std::ostream& os,
+                                  const ServerTimestamp& value);
 
-inline bool operator>(const FieldValue& lhs, const FieldValue& rhs) {
-  return rhs < lhs;
-}
+  size_t Hash() const;
+};
 
-inline bool operator>=(const FieldValue& lhs, const FieldValue& rhs) {
-  return !(lhs < rhs);
-}
+struct ReferenceValue {
+  DocumentKey reference;
+  // Does not own the DatabaseId instance.
+  const DatabaseId* database_id = nullptr;
 
-inline bool operator<=(const FieldValue& lhs, const FieldValue& rhs) {
-  return !(lhs > rhs);
-}
+  std::string ToString() const;
+  friend std::ostream& operator<<(std::ostream& os,
+                                  const ReferenceValue& value);
 
-inline bool operator!=(const FieldValue& lhs, const FieldValue& rhs) {
-  return lhs < rhs || lhs > rhs;
-}
-
-inline bool operator==(const FieldValue& lhs, const FieldValue& rhs) {
-  return !(lhs != rhs);
-}
-
-/** Compares against another ObjectValue. */
-inline bool operator<(const ObjectValue& lhs, const ObjectValue& rhs) {
-  return lhs.fv_ < rhs.fv_;
-}
-
-inline bool operator>(const ObjectValue& lhs, const ObjectValue& rhs) {
-  return rhs < lhs;
-}
-
-inline bool operator>=(const ObjectValue& lhs, const ObjectValue& rhs) {
-  return !(lhs < rhs);
-}
-
-inline bool operator<=(const ObjectValue& lhs, const ObjectValue& rhs) {
-  return !(lhs > rhs);
-}
-
-inline bool operator!=(const ObjectValue& lhs, const ObjectValue& rhs) {
-  return lhs < rhs || lhs > rhs;
-}
-
-inline bool operator==(const ObjectValue& lhs, const ObjectValue& rhs) {
-  return !(lhs != rhs);
-}
+  size_t Hash() const;
+};
 
 }  // namespace model
 }  // namespace firestore

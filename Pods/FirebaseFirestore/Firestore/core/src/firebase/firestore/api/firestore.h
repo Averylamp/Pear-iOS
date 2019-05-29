@@ -17,46 +17,40 @@
 #ifndef FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_API_FIRESTORE_H_
 #define FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_API_FIRESTORE_H_
 
-#if !defined(__OBJC__)
-#error "This header only supports Objective-C++"
-#endif  // !defined(__OBJC__)
-
-#import <Foundation/Foundation.h>
+#include <dispatch/dispatch.h>
 
 #include <memory>
 #include <mutex>  // NOLINT(build/c++11)
 #include <string>
 #include <utility>
-#include "dispatch/dispatch.h"
 
+#include "Firestore/core/src/firebase/firestore/api/settings.h"
 #include "Firestore/core/src/firebase/firestore/auth/credentials_provider.h"
+#include "Firestore/core/src/firebase/firestore/core/transaction.h"
 #include "Firestore/core/src/firebase/firestore/model/database_id.h"
+#include "Firestore/core/src/firebase/firestore/objc/objc_class.h"
 #include "Firestore/core/src/firebase/firestore/util/async_queue.h"
+#include "Firestore/core/src/firebase/firestore/util/status.h"
+#include "Firestore/core/src/firebase/firestore/util/statusor_callback.h"
+#include "absl/types/any.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class FIRApp;
-@class FIRCollectionReference;
-@class FIRFirestore;
-@class FIRFirestoreSettings;
-@class FIRQuery;
-@class FIRTransaction;
-@class FIRWriteBatch;
-@class FSTFirestoreClient;
+OBJC_CLASS(FIRCollectionReference);
+OBJC_CLASS(FIRQuery);
+OBJC_CLASS(FIRTransaction);
+OBJC_CLASS(FSTFirestoreClient);
+OBJC_CLASS(NSString);
 
 namespace firebase {
 namespace firestore {
 namespace api {
 
 class DocumentReference;
+class WriteBatch;
 
-class Firestore {
+class Firestore : public std::enable_shared_from_this<Firestore> {
  public:
-  using TransactionBlock = id _Nullable (^)(FIRTransaction*, NSError** error);
-  using ErrorCompletion = void (^)(NSError* _Nullable error);
-  using ResultOrErrorCompletion = void (^)(id _Nullable result,
-                                           NSError* _Nullable error);
-
   Firestore() = default;
 
   Firestore(std::string project_id,
@@ -74,9 +68,7 @@ class Firestore {
     return persistence_key_;
   }
 
-  FSTFirestoreClient* client() {
-    return client_;
-  }
+  FSTFirestoreClient* client();
 
   util::AsyncQueue* worker_queue();
 
@@ -84,22 +76,23 @@ class Firestore {
     return extension_;
   }
 
-  FIRFirestoreSettings* settings() const;
-  void set_settings(FIRFirestoreSettings* settings);
+  const Settings& settings() const;
+  void set_settings(const Settings& settings);
+
+  void set_user_executor(std::unique_ptr<util::Executor> user_executor);
 
   FIRCollectionReference* GetCollection(absl::string_view collection_path);
   DocumentReference GetDocument(absl::string_view document_path);
-  FIRWriteBatch* GetBatch();
+  WriteBatch GetBatch();
   FIRQuery* GetCollectionGroup(NSString* collection_id);
 
-  void RunTransaction(TransactionBlock update_block,
-                      dispatch_queue_t queue,
-                      ResultOrErrorCompletion completion);
+  void RunTransaction(core::TransactionUpdateCallback update_callback,
+                      core::TransactionResultCallback result_callback);
 
-  void Shutdown(ErrorCompletion completion);
+  void Shutdown(util::StatusCallback callback);
 
-  void EnableNetwork(ErrorCompletion completion);
-  void DisableNetwork(ErrorCompletion completion);
+  void EnableNetwork(util::StatusCallback callback);
+  void DisableNetwork(util::StatusCallback callback);
 
  private:
   void EnsureClientConfigured();
@@ -107,15 +100,16 @@ class Firestore {
   model::DatabaseId database_id_;
   std::unique_ptr<auth::CredentialsProvider> credentials_provider_;
   std::string persistence_key_;
-  FSTFirestoreClient* client_ = nil;
+  objc::Handle<FSTFirestoreClient> client_;
 
-  // Ownership will be transferred to `FSTFirestoreClient` as soon as the
-  // client is created.
+  // Ownership of these will be transferred to `FSTFirestoreClient` as soon as
+  // the client is created.
+  std::unique_ptr<util::Executor> user_executor_;
   std::unique_ptr<util::AsyncQueue> worker_queue_;
 
   void* extension_ = nullptr;
 
-  FIRFirestoreSettings* settings_ = nil;
+  Settings settings_;
 
   mutable std::mutex mutex_;
 };
