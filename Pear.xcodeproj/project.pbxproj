@@ -27,6 +27,12 @@
 		911AD0F82261AE7700A743C2 /* AllowLocationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */; };
 		911E2C4C229A993500E11860 /* JoinEventViweController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911E2C4A229A993400E11860 /* JoinEventViweController.storyboard */; };
 		911E2C4D229A993500E11860 /* JoinEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911E2C4B229A993500E11860 /* JoinEventViewController.swift */; };
+		913E3AEE229CCAC9000B70A8 /* PearEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E3AED229CCAC9000B70A8 /* PearEvent.swift */; };
+		913E3AF0229CCD65000B70A8 /* PearEventConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E3AEF229CCD65000B70A8 /* PearEventConstants.swift */; };
+		913E3AF3229CD911000B70A8 /* EventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E3AF2229CD911000B70A8 /* EventAPI.swift */; };
+		913E3AF6229CD929000B70A8 /* PearEventAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E3AF5229CD929000B70A8 /* PearEventAPI.swift */; };
+		913E3AF8229DEBA3000B70A8 /* EventFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E3AF7229DEBA3000B70A8 /* EventFilterTableViewCell.swift */; };
+		913E3AFA229E3823000B70A8 /* AddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913E3AF9229E3823000B70A8 /* AddEventTableViewCell.swift */; };
 		9142D08C2298ACCA0037E199 /* PromptInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9142D08B2298ACCA0037E199 /* PromptInputDelegate.swift */; };
 		917F20B222716F380023EC69 /* DiscoverySetupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */; };
 		917F20B322716F380023EC69 /* DiscoverySetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */; };
@@ -454,6 +460,12 @@
 		911AD0F72261AE7700A743C2 /* AllowLocationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowLocationViewController.storyboard; sourceTree = "<group>"; };
 		911E2C4A229A993400E11860 /* JoinEventViweController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = JoinEventViweController.storyboard; sourceTree = "<group>"; };
 		911E2C4B229A993500E11860 /* JoinEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinEventViewController.swift; sourceTree = "<group>"; };
+		913E3AED229CCAC9000B70A8 /* PearEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearEvent.swift; sourceTree = "<group>"; };
+		913E3AEF229CCD65000B70A8 /* PearEventConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearEventConstants.swift; sourceTree = "<group>"; };
+		913E3AF2229CD911000B70A8 /* EventAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPI.swift; sourceTree = "<group>"; };
+		913E3AF5229CD929000B70A8 /* PearEventAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearEventAPI.swift; sourceTree = "<group>"; };
+		913E3AF7229DEBA3000B70A8 /* EventFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterTableViewCell.swift; sourceTree = "<group>"; };
+		913E3AF9229E3823000B70A8 /* AddEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTableViewCell.swift; sourceTree = "<group>"; };
 		9142D08B2298ACCA0037E199 /* PromptInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptInputDelegate.swift; sourceTree = "<group>"; };
 		917F20B022716F380023EC69 /* DiscoverySetupViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoverySetupViewController.storyboard; sourceTree = "<group>"; };
 		917F20B122716F380023EC69 /* DiscoverySetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverySetupViewController.swift; sourceTree = "<group>"; };
@@ -979,6 +991,7 @@
 		60C131DC21D344E90093ECBA /* API */ = {
 			isa = PBXGroup;
 			children = (
+				913E3AF1229CD903000B70A8 /* EventAPI */,
 				BBB71B6122945B9E002CDDD1 /* UpdateUserAPI */,
 				BB633D37228632AD005E120F /* DiscoveryAPI */,
 				BB9D1B1F2255E0C00074C099 /* MatchesAPI */,
@@ -1099,6 +1112,32 @@
 			path = "Join Event";
 			sourceTree = "<group>";
 		};
+		913E3AEA229CCA63000B70A8 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				913E3AED229CCAC9000B70A8 /* PearEvent.swift */,
+				913E3AEF229CCD65000B70A8 /* PearEventConstants.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		913E3AF1229CD903000B70A8 /* EventAPI */ = {
+			isa = PBXGroup;
+			children = (
+				913E3AF2229CD911000B70A8 /* EventAPI.swift */,
+				913E3AF4229CD917000B70A8 /* Implementations */,
+			);
+			path = EventAPI;
+			sourceTree = "<group>";
+		};
+		913E3AF4229CD917000B70A8 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				913E3AF5229CD929000B70A8 /* PearEventAPI.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		917F20B422716F6A0023EC69 /* Discovery Setup VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1219,8 @@
 				91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */,
 				91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */,
 				91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */,
+				913E3AF7229DEBA3000B70A8 /* EventFilterTableViewCell.swift */,
+				913E3AF9229E3823000B70A8 /* AddEventTableViewCell.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -1891,6 +1932,7 @@
 		BB94C11E22437BF0001320B0 /* GraphQL Models */ = {
 			isa = PBXGroup;
 			children = (
+				913E3AEA229CCA63000B70A8 /* Event */,
 				BB94C11622437AD3001320B0 /* User */,
 				BB94C11522437AC5001320B0 /* Detached Profile */,
 				BB94C11C22437B7A001320B0 /* Image Container */,
@@ -3338,6 +3380,7 @@
 				9101E0CF224F2024009646AB /* GetStartedLocationViewController.swift in Sources */,
 				BBA2E1E8224B23440088A7A7 /* ApproveDetachedProfileNavigationViewController.swift in Sources */,
 				BB686E3B22113C9A008A263C /* GetStartedValidatePhoneNumberCodeViewController.swift in Sources */,
+				913E3AF0229CCD65000B70A8 /* PearEventConstants.swift in Sources */,
 				BB610E97222A1E2700901FC3 /* UIButton+Styling.swift in Sources */,
 				BB3F027D2271451C004855E8 /* ProfileCreationFinishedViewController.swift in Sources */,
 				91BEE296225A791E00A53171 /* ApproveProfileAllowNotificationsViewController.swift in Sources */,
@@ -3363,6 +3406,7 @@
 				BB686E432212213A008A263C /* GetStartedDoDontViewController.swift in Sources */,
 				BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */,
 				BBD2402222531FB000380315 /* FriendProfileCollectionViewCell.swift in Sources */,
+				913E3AF3229CD911000B70A8 /* EventAPI.swift in Sources */,
 				BBA2B4322235051400D8C27B /* ProfileDoDontViewController.swift in Sources */,
 				BBBA5743226DA4E5000BCD5F /* GraphQLInput.swift in Sources */,
 				BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */,
@@ -3466,6 +3510,7 @@
 				BBF93E562267C881002841EE /* ProfileInputVibeViewController.swift in Sources */,
 				BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */,
 				BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */,
+				913E3AFA229E3823000B70A8 /* AddEventTableViewCell.swift in Sources */,
 				BB6479DB226A679F00652318 /* LandingScreenWaitlistViewController.swift in Sources */,
 				BBA5F0B6226CC5FF00BA2036 /* ContactListItemTableViewCell.swift in Sources */,
 				BBB70ACF222334FC006B75A0 /* PearUserAPI.swift in Sources */,
@@ -3481,6 +3526,7 @@
 				BB139F04229A9D7B00D7955A /* MeEditUserInfoViewController.swift in Sources */,
 				BBFFBBE022212E82002E1B54 /* PearImageAPI.swift in Sources */,
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
+				913E3AF6229CD929000B70A8 /* PearEventAPI.swift in Sources */,
 				BB3F0282227189C8004855E8 /* ProfileBoastRoastViewController.swift in Sources */,
 				BB6479E0226A7FF300652318 /* LatestRoastBoastItem.swift in Sources */,
 				BB986A51220F79E800759A14 /* GetStartedPhotoInputViewController.swift in Sources */,
@@ -3533,6 +3579,7 @@
 				BB687E77228D7A7900F45C9D /* ProgressBarProtocol.swift in Sources */,
 				BB17893D225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift in Sources */,
 				BBF93E502267C80B002841EE /* UserPhoneCodeViewController.swift in Sources */,
+				913E3AF8229DEBA3000B70A8 /* EventFilterTableViewCell.swift in Sources */,
 				BBECBEB12237BA05008E8E91 /* GetStartedFullProfileReviewViewController.swift in Sources */,
 				BB139EFC229A913000D7955A /* MeTabMainViewController.swift in Sources */,
 				BB178941225E0B8A0033ACC6 /* ChatMessageTableViewCell.swift in Sources */,
@@ -3558,6 +3605,7 @@
 				BB6C064B2227F758007A5C96 /* GetStartedWaitlistViewController.swift in Sources */,
 				BB9CB69B2259E13300605A98 /* UpdateExpandingTextViewController.swift in Sources */,
 				BBB70ACB222334E0006B75A0 /* ProfileAPI.swift in Sources */,
+				913E3AEE229CCAC9000B70A8 /* PearEvent.swift in Sources */,
 				BBA2B42C223504E200D8C27B /* ProfileBioViewController.swift in Sources */,
 				BBC4A08822587472009D9867 /* UpdateImagesViewController.swift in Sources */,
 				60C131C321D342BC0093ECBA /* AppDelegate.swift in Sources */,
