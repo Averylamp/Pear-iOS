@@ -151,11 +151,12 @@ extension FriendsTabViewController: ProfileCreationProtocol, CNContactPickerDele
   
   func receivedProfileCreationData(creationData: ProfileCreationData) {
     DispatchQueue.main.async {
-      guard let vibesVC = ProfileInputVibeViewController.instantiate(profileCreationData: creationData) else {
-        print("Failed to create Vibes VC")
-        return
-      }
-      self.navigationController?.pushViewController(vibesVC, animated: true)
+      // TODO(@averylamp): Fix
+//      guard let vibesVC = ProfileInputVibeViewController.instantiate(profileCreationData: creationData) else {
+//        print("Failed to create Vibes VC")
+//        return
+//      }
+//      self.navigationController?.pushViewController(vibesVC, animated: true)
     }
   }
   
