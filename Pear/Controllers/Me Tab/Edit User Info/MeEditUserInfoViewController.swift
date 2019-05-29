@@ -149,9 +149,9 @@ extension MeEditUserInfoViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.setup()
     self.stylize()
-    self.constructEditProfile()
-    self.addKeyboardSizeNotifications()
+    self.addKeyboardNotifications(animated: true)
     self.addDismissKeyboardOnViewClick()
 
   }
@@ -161,22 +161,17 @@ extension MeEditUserInfoViewController {
     self.doneButton.stylizeEditAddSection()
   }
   
-  func constructEditProfile() {
-    self.addSpacer(space: 20)
+  func setup() {
+    self.stackView.addSpacer(height: 20.0)
     self.addTitleSection(title: "Photos")
     self.addPhotosSection()
-    self.addSpacer(space: 30)
+    self.stackView.addSpacer(height: 10.0)
+    self.addTitleSection(title: "Prompts")
+    self.addPromptsSection()
+    self.stackView.addSpacer(height: 30.0)
     self.addBasicInfo()
-    self.addSpacer(space: 20)
+    self.stackView.addSpacer(height: 20.0)
     self.addMoreInfo()
-  }
-  
-  func addSpacer(space: CGFloat) {
-    let spacer = UIView()
-    spacer.translatesAutoresizingMaskIntoConstraints = false
-    spacer.addConstraint(NSLayoutConstraint(item: spacer, attribute: .height, relatedBy: .equal,
-                                            toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: space))
-    self.stackView.addArrangedSubview(spacer)
   }
   
   func addTitleSection(title: String) {
@@ -239,6 +234,19 @@ extension MeEditUserInfoViewController {
     photosVC.didMove(toParent: self)
   }
   
+  func addPromptsSection() {
+    
+    guard let promptsVC = UpdateUserPromptsStackViewController.instantiate() else {
+      print("Unable to instantiate prompts vc")
+      return
+    }
+    self.addChild(promptsVC)
+    
+    self.stackView.addArrangedSubview(promptsVC.view)
+    promptsVC.didMove(toParent: self)
+    
+  }
+  
   func addBasicInfo() {
     self.addTitleSection(title: "Basic Information")
     guard let basicInfoInputVC = UserBasicInfoTableViewController.instantiate() else {
@@ -254,7 +262,7 @@ extension MeEditUserInfoViewController {
     
     basicInfoInputVC.tableView.isScrollEnabled = false
     basicInfoInputVC.didMove(toParent: self)
-    self.addSpacer(space: 10.0)
+    self.stackView.addSpacer(height: 10.0)
   }
   
   func addMoreInfo() {
@@ -272,46 +280,19 @@ extension MeEditUserInfoViewController {
     moreDetailsVC.view.isUserInteractionEnabled = true
     moreDetailsVC.tableView.isScrollEnabled = false
     moreDetailsVC.didMove(toParent: self)
-    self.addSpacer(space: 10.0)
+    self.stackView.addSpacer(height: 10.0)
   }
   
 }
 
-// MARK: - Keybaord Size Notifications
-extension MeEditUserInfoViewController {
-  
-  func addKeyboardSizeNotifications() {
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(MeEditUserInfoViewController.keyboardWillChange(notification:)),
-                   name: UIWindow.keyboardWillChangeFrameNotification,
-                   object: nil)
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(MeEditUserInfoViewController.keyboardWillHide(notification:)),
-                   name: UIWindow.keyboardWillHideNotification,
-                   object: nil)
+// MARK: - KeyboardEventsBottomProtocol
+extension MeEditUserInfoViewController: KeyboardEventsBottomProtocol {
+  var bottomKeyboardConstraint: NSLayoutConstraint? {
+    return self.scrollViewBottomConstraint
   }
   
-  @objc func keyboardWillChange(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let targetHeight = targetFrameNSValue.cgRectValue.size.height
-      self.scrollViewBottomConstraint.constant = targetHeight - self.view.safeAreaInsets.bottom
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  
-  @objc func keyboardWillHide(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      let keyboardBottomPadding: CGFloat = 20
-      self.scrollViewBottomConstraint.constant = keyboardBottomPadding
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
+  var bottomKeyboardPadding: CGFloat {
+    return 0.0
   }
 }
 
