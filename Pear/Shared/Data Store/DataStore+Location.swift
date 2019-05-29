@@ -88,6 +88,9 @@ extension DataStore: CLLocationManagerDelegate {
           if whitelistedNumbersStringArray.contains(userPhoneNumber) {
             foundWithin = true
           }
+          if localPhoneNumberWhitelist.contains(userPhoneNumber) {
+            foundWithin = true
+          }
         } else {
           print("failed to find whitelisted numbers")
         }

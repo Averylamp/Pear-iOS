@@ -69,8 +69,10 @@ extension PromptInputViewController: UITableViewDelegate, UITableViewDataSource 
     }
     let promptItem = self.questionItems[indexPath.row]
     cell.promptLabel.text = promptItem.questionText
-    for answeredPrompt in self.answeredPrompts where answeredPrompt.question.questionText == promptItem.questionText {
-      cell.promptLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+    if self.answeredPrompts.contains(where: { $0.question.questionText == promptItem.questionText}) {
+       cell.promptLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+    } else {
+      cell.promptLabel.textColor = R.color.primaryTextColor()
     }
     return cell
   }

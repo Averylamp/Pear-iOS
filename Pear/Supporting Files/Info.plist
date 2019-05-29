@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.15</string>
+	<string>1.0.16</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -46,7 +46,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>117</string>
+	<string>119</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -89,15 +89,15 @@
 		<true/>
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>To find your latest and greatest photos!</string>
+	<string>This allows you to upload photos to your profile.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Quick!  Take a photo of them before they run away!</string>
+	<string>This allows you to upload photos to your profile.</string>
 	<key>NSContactsUsageDescription</key>
-	<string>To roast/boast your friends</string>
+	<string>This allows you to matchmake and be matchmade for by your friends!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Without location, we can't show you people nearby!</string>
+	<string>Without location, we can&apos;t show you people nearby!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To find your latest and greatest photos!</string>
+	<string>This allows you to upload photos to your profile.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Cera-Pro-Black.otf</string>
