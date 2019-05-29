@@ -18,6 +18,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <iostream>
 #include <memory>
 #include <new>
 #include <utility>
@@ -26,16 +27,50 @@
 #include "Firestore/core/src/firebase/firestore/immutable/sorted_map.h"
 #include "Firestore/core/src/firebase/firestore/util/comparison.h"
 #include "Firestore/core/src/firebase/firestore/util/hard_assert.h"
+#include "Firestore/core/src/firebase/firestore/util/hashing.h"
+#include "Firestore/core/src/firebase/firestore/util/to_string.h"
 #include "absl/memory/memory.h"
-
-using firebase::firestore::util::Comparator;
+#include "absl/strings/escaping.h"
 
 namespace firebase {
 namespace firestore {
 namespace model {
 
 using Type = FieldValue::Type;
-using firebase::firestore::util::ComparisonResult;
+
+using util::Compare;
+using util::ComparisonResult;
+
+std::string ServerTimestamp::ToString() const {
+  std::string time = local_write_time.ToString();
+  return absl::StrCat("ServerTimestamp(local_write_time=", time, ")");
+}
+
+std::ostream& operator<<(std::ostream& os, const ServerTimestamp& value) {
+  return os << value.ToString();
+}
+
+size_t ServerTimestamp::Hash() const {
+  size_t result =
+      util::Hash(local_write_time.seconds(), local_write_time.nanoseconds());
+
+  if (previous_value) {
+    result = util::Hash(result, *previous_value);
+  }
+  return result;
+}
+
+std::string ReferenceValue::ToString() const {
+  return absl::StrCat("Reference(key=", reference.ToString(), ")");
+}
+
+std::ostream& operator<<(std::ostream& os, const ReferenceValue& value) {
+  return os << value.ToString();
+}
+
+size_t ReferenceValue::Hash() const {
+  return util::Hash(reference, *database_id);
+}
 
 FieldValue::FieldValue(const FieldValue& value) {
   *this = value;
@@ -96,8 +131,6 @@ FieldValue& FieldValue::operator=(const FieldValue& value) {
       std::swap(*object_value_, tmp);
       break;
     }
-    default:
-      HARD_FAIL("Unsupported type %s", value.type());
   }
   return *this;
 }
@@ -209,6 +242,14 @@ ObjectValue ObjectValue::SetChild(const std::string& child_name,
   return ObjectValue::FromMap(fv_.object_value_->insert(child_name, value));
 }
 
+absl::string_view FieldValue::blob_value_as_string_view() const {
+  const std::vector<uint8_t>& blob = blob_value();
+
+  // string_view accepts const char*, but treats it internally as unsigned.
+  auto data = reinterpret_cast<const char*>(blob.data());
+  return absl::string_view(data, blob.size());
+}
+
 FieldValue FieldValue::Null() {
   return FieldValue();
 }
@@ -255,7 +296,7 @@ FieldValue FieldValue::FromTimestamp(const Timestamp& value) {
 }
 
 FieldValue FieldValue::FromServerTimestamp(const Timestamp& local_write_time,
-                                           const Timestamp& previous_value) {
+                                           const FieldValue& previous_value) {
   FieldValue result;
   result.SwitchTo(Type::ServerTimestamp);
   result.server_timestamp_value_->local_write_time = local_write_time;
@@ -347,73 +388,141 @@ FieldValue FieldValue::FromMap(FieldValue::Map&& value) {
   return result;
 }
 
-bool operator<(const FieldValue::Map& lhs, const FieldValue::Map& rhs) {
-  return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(),
-                                      rhs.end());
+static size_t HashObject(const FieldValue::Map& object) {
+  size_t result = 0;
+  for (auto&& entry : object) {
+    result = util::Hash(result, entry.first, entry.second);
+  }
+  return result;
 }
 
-bool operator<(const FieldValue& lhs, const FieldValue& rhs) {
-  if (!FieldValue::Comparable(lhs.type(), rhs.type())) {
-    return lhs.type() < rhs.type();
+size_t FieldValue::Hash() const {
+  switch (type()) {
+    case FieldValue::Type::Null:
+      // std::hash is not defined for nullptr_t.
+      return util::Hash(static_cast<void*>(nullptr));
+    case FieldValue::Type::Boolean:
+      return util::Hash(boolean_value_);
+    case FieldValue::Type::Integer:
+      return util::Hash(integer_value_);
+    case FieldValue::Type::Double:
+      return util::DoubleBitwiseHash(double_value_);
+    case FieldValue::Type::Timestamp:
+      return util::Hash(timestamp_value_->seconds(),
+                        timestamp_value_->nanoseconds());
+    case FieldValue::Type::ServerTimestamp:
+      return util::Hash(*server_timestamp_value_);
+    case FieldValue::Type::String:
+      return util::Hash(*string_value_);
+    case FieldValue::Type::Blob:
+      return util::Hash(*blob_value_);
+    case FieldValue::Type::Reference:
+      return util::Hash(*reference_value_);
+    case FieldValue::Type::GeoPoint:
+      return util::Hash(geo_point_value_->latitude(),
+                        geo_point_value_->longitude());
+    case FieldValue::Type::Array:
+      return util::Hash(*array_value_);
+    case FieldValue::Type::Object:
+      return HashObject(*object_value_);
   }
 
-  switch (lhs.type()) {
+  UNREACHABLE();
+}
+
+ComparisonResult FieldValue::CompareTo(const FieldValue& rhs) const {
+  if (!FieldValue::Comparable(type(), rhs.type())) {
+    return Compare(type(), rhs.type());
+  }
+
+  ComparisonResult cmp;
+  switch (type()) {
     case Type::Null:
-      return false;
+      return ComparisonResult::Same;
     case Type::Boolean:
-      return Comparator<bool>()(lhs.boolean_value_, rhs.boolean_value_);
+      return Compare(boolean_value_, rhs.boolean_value_);
     case Type::Integer:
       if (rhs.type() == Type::Integer) {
-        return Comparator<int64_t>()(lhs.integer_value_, rhs.integer_value_);
+        return Compare(integer_value_, rhs.integer_value_);
       } else {
-        return util::CompareMixedNumber(rhs.double_value_,
-                                        lhs.integer_value_) ==
-               ComparisonResult::Descending;
+        return util::ReverseOrder(
+            util::CompareMixedNumber(rhs.double_value_, integer_value_));
       }
     case Type::Double:
       if (rhs.type() == Type::Double) {
-        return Comparator<double>()(lhs.double_value_, rhs.double_value_);
+        return Compare(double_value_, rhs.double_value_);
       } else {
-        return util::CompareMixedNumber(lhs.double_value_,
-                                        rhs.integer_value_) ==
-               ComparisonResult::Ascending;
+        return util::CompareMixedNumber(double_value_, rhs.integer_value_);
       }
     case Type::Timestamp:
       if (rhs.type() == Type::Timestamp) {
-        return *lhs.timestamp_value_ < *rhs.timestamp_value_;
+        return Compare(*timestamp_value_, *rhs.timestamp_value_);
       } else {
-        return true;
+        return ComparisonResult::Ascending;
       }
     case Type::ServerTimestamp:
       if (rhs.type() == Type::ServerTimestamp) {
-        return lhs.server_timestamp_value_->local_write_time <
-               rhs.server_timestamp_value_->local_write_time;
+        return Compare(server_timestamp_value_->local_write_time,
+                       rhs.server_timestamp_value_->local_write_time);
       } else {
-        return false;
+        return ComparisonResult::Descending;
       }
     case Type::String:
-      return lhs.string_value_->compare(*rhs.string_value_) < 0;
+      return Compare(*string_value_, *rhs.string_value_);
     case Type::Blob:
-      return *lhs.blob_value_ < *rhs.blob_value_;
+      return Compare(*blob_value_, *rhs.blob_value_);
     case Type::Reference:
-      return *lhs.reference_value_->database_id <
-                 *rhs.reference_value_->database_id ||
-             (*lhs.reference_value_->database_id ==
-                  *rhs.reference_value_->database_id &&
-              lhs.reference_value_->reference <
-                  rhs.reference_value_->reference);
+      cmp = Compare(reference_value_->database_id,
+                    rhs.reference_value_->database_id);
+      if (!util::Same(cmp)) return cmp;
+
+      return Compare(reference_value_->reference,
+                     rhs.reference_value_->reference);
     case Type::GeoPoint:
-      return *lhs.geo_point_value_ < *rhs.geo_point_value_;
+      return Compare(*geo_point_value_, *rhs.geo_point_value_);
     case Type::Array:
-      return *lhs.array_value_ < *rhs.array_value_;
+      return CompareContainer(*array_value_, *rhs.array_value_);
     case Type::Object:
-      return *lhs.object_value_ < *rhs.object_value_;
-    default:
-      HARD_FAIL("Unsupported type %s", lhs.type());
-      // return false if assertion does not abort the program. We will say
-      // each unsupported type takes only one value thus everything is equal.
-      return false;
+      return CompareContainer(*object_value_, *rhs.object_value_);
   }
+
+  UNREACHABLE();
+}
+
+std::string FieldValue::ToString() const {
+  switch (tag_) {
+    case Type::Null:
+      return util::ToString(nullptr);
+    case Type::Boolean:
+      return util::ToString(boolean_value_);
+    case Type::Integer:
+      return util::ToString(integer_value_);
+    case Type::Double:
+      return util::ToString(double_value_);
+    case Type::Timestamp:
+      return util::ToString(*timestamp_value_);
+    case Type::ServerTimestamp:
+      return util::ToString(*server_timestamp_value_);
+    case Type::String:
+      return util::ToString(*string_value_);
+    case Type::Blob:
+      return absl::StrCat(
+          "<", absl::BytesToHexString(blob_value_as_string_view()), ">");
+    case Type::Reference:
+      return util::ToString(*reference_value_);
+    case Type::GeoPoint:
+      return util::ToString(*geo_point_value_);
+    case Type::Array:
+      return util::ToString(*array_value_);
+    case Type::Object:
+      return util::ToString(*object_value_);
+  }
+
+  UNREACHABLE();
+}
+
+std::ostream& operator<<(std::ostream& os, const FieldValue& value) {
+  return os << value.ToString();
 }
 
 void FieldValue::SwitchTo(const Type type) {
@@ -494,6 +603,22 @@ ObjectValue ObjectValue::FromMap(const FieldValue::Map& value) {
 
 ObjectValue ObjectValue::FromMap(FieldValue::Map&& value) {
   return ObjectValue(FieldValue::FromMap(std::move(value)));
+}
+
+ComparisonResult ObjectValue::CompareTo(const ObjectValue& rhs) const {
+  return fv_.CompareTo(rhs.fv_);
+}
+
+std::string ObjectValue::ToString() const {
+  return fv_.ToString();
+}
+
+std::ostream& operator<<(std::ostream& os, const ObjectValue& value) {
+  return os << value.ToString();
+}
+
+size_t ObjectValue::Hash() const {
+  return fv_.Hash();
 }
 
 }  // namespace model
