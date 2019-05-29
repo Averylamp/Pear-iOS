@@ -31,6 +31,12 @@ class DiscoveryDecisionViewController: UIViewController {
   
   @IBAction func filterButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    print("filter button clicked from decision VC")
+    guard let filtersVC = DiscoveryFilterViewController.instantiate() else {
+      print("Failed to create Filters VC")
+      return
+    }
+    self.navigationController?.pushViewController(filtersVC, animated: true)
   }
   
   @IBAction func qrCodeButtonClicked(_ sender: Any) {
