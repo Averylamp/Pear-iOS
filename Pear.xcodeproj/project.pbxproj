@@ -242,6 +242,8 @@
 		BBBA5743226DA4E5000BCD5F /* GraphQLInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5742226DA4E5000BCD5F /* GraphQLInput.swift */; };
 		BBBA5745226DB094000BCD5F /* TextContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5744226DB094000BCD5F /* TextContentItem.swift */; };
 		BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */; };
+		BBBB38AA229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBB38A9229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift */; };
+		BBBB38AC229F207E00DEFF5E /* UpdateUserPromptsStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBB38AB229F207D00DEFF5E /* UpdateUserPromptsStackViewController.storyboard */; };
 		BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */; };
 		BBBE7B872272170800C32EBE /* NewProfileQuestionResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B862272170800C32EBE /* NewProfileQuestionResponseViewController.swift */; };
 		BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B882272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard */; };
@@ -571,6 +573,8 @@
 		BBBA5742226DA4E5000BCD5F /* GraphQLInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLInput.swift; sourceTree = "<group>"; };
 		BBBA5744226DB094000BCD5F /* TextContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContentItem.swift; sourceTree = "<group>"; };
 		BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
+		BBBB38A9229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserPromptsStackViewController.swift; sourceTree = "<group>"; };
+		BBBB38AB229F207D00DEFF5E /* UpdateUserPromptsStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateUserPromptsStackViewController.storyboard; sourceTree = "<group>"; };
 		BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewItemViewController.swift; sourceTree = "<group>"; };
 		BBBE7B862272170800C32EBE /* NewProfileQuestionResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileQuestionResponseViewController.swift; sourceTree = "<group>"; };
 		BBBE7B882272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProfileQuestionResponseViewController.storyboard; sourceTree = "<group>"; };
@@ -925,6 +929,15 @@
 			isa = PBXGroup;
 			children = (
 				BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */,
+				BBB71B8C229558CD002CDDD1 /* UserInfoType.swift */,
+				BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */,
+				BBB71B4E2294467B002CDDD1 /* Basic Info Table */,
+				BBB71B4F22944682002CDDD1 /* More Details Table */,
+				BBB71B682294788A002CDDD1 /* Basic Info Input */,
+				BBB71B9222956987002CDDD1 /* Age Range Input */,
+				BBA8AE982297D651003F1D79 /* Prompt Input */,
+				BBB71B4D22944667002CDDD1 /* Simple Field Input */,
+				BBBB38AD229F218700DEFF5E /* User Prompts */,
 				BB9CB6A9225A020C00605A98 /* Update Text Field */,
 				BBC4A08622586F60009D9867 /* Demographics */,
 				BB0AE4E522536F85005DD315 /* Preferences */,
@@ -1121,14 +1134,6 @@
 		BB201189228DFAD700BC85C0 /* Shared Components */ = {
 			isa = PBXGroup;
 			children = (
-				BBB71B4D22944667002CDDD1 /* Simple Field Input */,
-				BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */,
-				BBB71B8C229558CD002CDDD1 /* UserInfoType.swift */,
-				BBB71B4E2294467B002CDDD1 /* Basic Info Table */,
-				BBB71B4F22944682002CDDD1 /* More Details Table */,
-				BBB71B682294788A002CDDD1 /* Basic Info Input */,
-				BBB71B9222956987002CDDD1 /* Age Range Input */,
-				BBA8AE982297D651003F1D79 /* Prompt Input */,
 			);
 			path = "Shared Components";
 			sourceTree = "<group>";
@@ -1928,6 +1933,15 @@
 			path = "Phone Code Confirmation";
 			sourceTree = "<group>";
 		};
+		BBBB38AD229F218700DEFF5E /* User Prompts */ = {
+			isa = PBXGroup;
+			children = (
+				BBBB38A9229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift */,
+				BBBB38AB229F207D00DEFF5E /* UpdateUserPromptsStackViewController.storyboard */,
+			);
+			path = "User Prompts";
+			sourceTree = "<group>";
+		};
 		BBBE7B8A22721AD900C32EBE /* Question Response Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -2325,6 +2339,7 @@
 				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
 				BBC4F5072282217600C79148 /* ProfileQuestionResponseViewController.storyboard in Resources */,
 				BB687E75228D717000F45C9D /* OnboardingFriendNameViewController.storyboard in Resources */,
+				BBBB38AC229F207E00DEFF5E /* UpdateUserPromptsStackViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
 				BBA8AE9E2297F986003F1D79 /* PromptInputResponseViewController.storyboard in Resources */,
 				BBB71B7E2295273A002CDDD1 /* UserReligionInputViewController.storyboard in Resources */,
@@ -2618,6 +2633,7 @@
 				BB178934225DE73E0033ACC6 /* Date+Helpers.swift in Sources */,
 				BB178936225DFCA00033ACC6 /* FullChatViewController.swift in Sources */,
 				BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */,
+				BBBB38AA229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift in Sources */,
 				BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */,
 				BB17892E225DE26F0033ACC6 /* ChatRequestsTableViewController.swift in Sources */,
 				BB687E81228D828700F45C9D /* OnboardingPreferencesViewController.swift in Sources */,
