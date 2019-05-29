@@ -94,15 +94,14 @@ extension UIButton {
   
   func stylizeLight() {
     self.backgroundColor = UIColor.white
-    self.layer.cornerRadius = self.frame.height / 2.0
-    
-    self.layer.shadowColor = UIColor(white: 0.0, alpha: 0.25).cgColor
-    self.layer.shadowOffset = CGSize(width: 1, height: 1)
-    self.layer.shadowOpacity = 1.0
+    self.layer.cornerRadius = 12
     self.setTitleColor(StylingConfig.textFontColor, for: .normal)
     self.setTitleColor(R.color.primaryBrandColor()!, for: .normal)
-    self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
-    self.layer.borderWidth = 0
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+    self.layer.borderColor = R.color.primaryBrandColor()?.cgColor
+    self.layer.borderWidth = 2
   }
   
   func stylizeLightSelected() {

@@ -299,6 +299,28 @@ extension DataStore {
     }
   }
   
+  func refreshEvents(completion: (([PearEvent]) -> Void)?) {
+    self.fetchUIDToken { (result) in
+      switch result {
+      case .success(let authTokens):
+        PearEventAPI.shared.getEventsForUser(uid: authTokens.uid, token: authTokens.token, completion: { (result) in
+          switch result {
+          case .success(let events):
+            print("Fetched events")
+            self.userEvents = events
+            if let completion = completion {
+              completion(events)
+            }
+          case .failure(let error):
+            print("Failure getting events: \(error)")
+          }
+        })
+      case .failure(let error):
+        print("Failure getting auth tokens: \(error)")
+      }
+    }
+  }
+  
   func hasUpdatedPreferences() -> Bool {
     // we should do something more robust in the future, but for now just check if the settings are defaults
     if let user = DataStore.shared.currentPearUser {
@@ -322,6 +344,9 @@ extension DataStore {
     }
     DataStore.shared.refreshCurrentMatches { (matches) in
       print("Found Current Matches: \(matches.count)")
+    }
+    DataStore.shared.refreshEvents { (events) in
+      print("Found events for this user: \(events.count)")
     }
   }
   

@@ -172,6 +172,7 @@ extension DiscoverySimpleViewController {
   
   func refreshFeed(animated: Bool = false) {
     // FPDD
+    /*
     if let userID = DataStore.shared.currentPearUser?.documentID {
       PearProfileAPI.shared.getDiscoveryFeed(user_id: userID, completion: { (result) in
         switch result {
@@ -246,6 +247,7 @@ extension DiscoverySimpleViewController {
       })
       
     }
+     */
   }
 }
 
