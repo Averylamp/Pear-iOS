@@ -19,6 +19,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <viewLayoutGuide key="safeArea" id="gn3-1V-1Oe"/>
                     </stackView>
+                    <connections>
+                        <outlet property="stackView" destination="gzl-o8-AGY" id="gN2-hp-jmb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwq-Hb-G5f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
