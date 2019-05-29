@@ -122,8 +122,7 @@ extension LandingScreenViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
-    self.addKeyboardSizeNotifications()
-//    self.addDismissKeyboardOnViewClick()
+    self.addKeyboardDismissOnTap()
     self.inputTextField.delegate = self
     self.inputTextField.becomeFirstResponder()
   }
@@ -189,50 +188,13 @@ extension LandingScreenViewController: UITextFieldDelegate {
   
 }
 
-// MARK: - Dismiss First Responder on Click
-extension LandingScreenViewController {
-  
-  func addDismissKeyboardOnViewClick() {
-    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LandingScreenViewController.dismissKeyboard)))
+// MARK: - KeyboardEventsDismissTapProtocol
+extension LandingScreenViewController: KeyboardEventsDismissTapProtocol {
+  func addKeyboardDismissOnTap() {
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LandingScreenViewController.backgroundViewTapped)))
   }
   
-  @objc func dismissKeyboard() {
-    self.view.endEditing(true)
-  }
-  
-}
-
-// MARK: - Keybaord Size Notifications
-extension LandingScreenViewController {
-  
-  func addKeyboardSizeNotifications() {
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(LandingScreenViewController.keyboardWillChange(notification:)),
-                   name: UIWindow.keyboardWillChangeFrameNotification,
-                   object: nil)
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(LandingScreenViewController.keyboardWillHide(notification:)),
-                   name: UIWindow.keyboardWillHideNotification,
-                   object: nil)
-  }
-  
-  @objc func keyboardWillChange(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let targetFrame = targetFrameNSValue.cgRectValue
-      let keyboardBottomPadding: CGFloat = 20
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  @objc func keyboardWillHide(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
+  @objc func backgroundViewTapped() {
+    self.dismissKeyboard()
   }
 }

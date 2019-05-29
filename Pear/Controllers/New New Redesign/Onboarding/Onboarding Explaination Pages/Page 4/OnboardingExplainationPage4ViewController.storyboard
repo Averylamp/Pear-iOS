@@ -37,14 +37,11 @@
                                     <action selector="joinWithFriendClicked:" destination="mJ8-wo-IG8" eventType="touchUpInside" id="GhR-CG-gS3"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-meme-4" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
-                                <rect key="frame" x="20" y="283" width="335" height="335"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="L3Q-s1-RX1" secondAttribute="height" multiplier="1:1" id="hpY-Qg-Lqf"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="onboarding-meme-4" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
+                                <rect key="frame" x="20" y="138.66666666666669" width="335" height="479.33333333333354"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Pear, friends can answer prompts for each other's profile" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
-                                <rect key="frame" x="30" y="64" width="315" height="199"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="On Pear, friends can answer prompts for each other's profile" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
+                                <rect key="frame" x="30" y="64" width="315" height="54.666666666666657"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
