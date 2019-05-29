@@ -92,7 +92,6 @@
 		BB3F30A7228C9CBD001947EF /* KeyboardEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */; };
 		BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
-		BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C8A42225148BD00F7BA1A /* DiscoveryTableViewCell.swift */; };
 		BB4C8A47225152EC00F7BA1A /* DoDontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C8A46225152EC00F7BA1A /* DoDontView.swift */; };
 		BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB515248228BE2C70094670A /* UserEmailInfoViewController.swift */; };
 		BB51524B228BE2D20094670A /* UserEmailInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB51524A228BE2D20094670A /* UserEmailInfoViewController.storyboard */; };
@@ -281,8 +280,6 @@
 		BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */; };
 		BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91C832268D24800D285E3 /* UserCreationData.swift */; };
 		BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */; };
-		BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */; };
-		BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */; };
 		BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEC12237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard */; };
 		BBECBEC52237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBECBEC42237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift */; };
 		BBECBECD223848C0008E8E91 /* FullProfileScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */; };
@@ -421,7 +418,6 @@
 		BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEventsProtocol.swift; sourceTree = "<group>"; };
 		BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfile.swift; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
-		BB4C8A42225148BD00F7BA1A /* DiscoveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewCell.swift; sourceTree = "<group>"; };
 		BB4C8A46225152EC00F7BA1A /* DoDontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDontView.swift; sourceTree = "<group>"; };
 		BB515248228BE2C70094670A /* UserEmailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmailInfoViewController.swift; sourceTree = "<group>"; };
 		BB51524A228BE2D20094670A /* UserEmailInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserEmailInfoViewController.storyboard; sourceTree = "<group>"; };
@@ -617,8 +613,6 @@
 		BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+UserDefaults.swift"; sourceTree = "<group>"; };
 		BBE91C832268D24800D285E3 /* UserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationData.swift; sourceTree = "<group>"; };
 		BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUIViewController.swift; sourceTree = "<group>"; };
-		BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverySimpleViewController.swift; sourceTree = "<group>"; };
-		BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverySimpleViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEC12237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveDetachedProfileViewController.storyboard; sourceTree = "<group>"; };
 		BBECBEC42237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveDetachedProfileViewController.swift; sourceTree = "<group>"; };
 		BBECBECC223848C0008E8E91 /* FullProfileScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FullProfileScrollViewController.storyboard; sourceTree = "<group>"; };
@@ -1114,12 +1108,11 @@
 		BB18788E21E2B1D900964F26 /* Discovery Flow */ = {
 			isa = PBXGroup;
 			children = (
+				BB633D3422862D76005E120F /* Decision Discovery */,
 				91BEE2A3225C3C8000A53171 /* Filters */,
 				BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */,
-				BB94C12222437CF1001320B0 /* Simple Discovery */,
 				BB9D1B8122562CF20074C099 /* Personal Chat Request */,
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
-				BB633D3422862D76005E120F /* Decision Discovery */,
 				BBCA2D6F229DF1150057491A /* QR Scanner */,
 			);
 			path = "Discovery Flow";
@@ -1188,10 +1181,10 @@
 		BB5F1DA0225318040042D443 /* Me Tab */ = {
 			isa = PBXGroup;
 			children = (
+				BB139EFD229A913400D7955A /* Me Main VC */,
 				BBF79686225956C200E9A506 /* Main Full Screen Display */,
 				BBF7968B22595B9A00E9A506 /* Edit User Preferences */,
 				BB139F06229A9F2B00D7955A /* Edit User Info */,
-				BB139EFD229A913400D7955A /* Me Main VC */,
 				BB139F07229AA13F00D7955A /* Account Settings */,
 			);
 			path = "Me Tab";
@@ -1506,16 +1499,6 @@
 				BBA2B4272235038C00D8C27B /* FullProfileStackViewController.storyboard */,
 			);
 			path = "Stack Full Profile";
-			sourceTree = "<group>";
-		};
-		BB94C12222437CF1001320B0 /* Simple Discovery */ = {
-			isa = PBXGroup;
-			children = (
-				BBECBEB62237D476008E8E91 /* DiscoverySimpleViewController.swift */,
-				BBECBEB82237D482008E8E91 /* DiscoverySimpleViewController.storyboard */,
-				BB4C8A42225148BD00F7BA1A /* DiscoveryTableViewCell.swift */,
-			);
-			path = "Simple Discovery";
 			sourceTree = "<group>";
 		};
 		BB94C123224384F1001320B0 /* Chat */ = {
@@ -2117,9 +2100,9 @@
 		BBF694EE223B7E3600E13ABB /* Friends Tab */ = {
 			isa = PBXGroup;
 			children = (
+				BB5F1DA122531CE90042D443 /* Main VC */,
 				BB9CB6B6225A303E00605A98 /* Full Screen Friend VC */,
 				BB9CB6B7225A305300605A98 /* Edit Friend VC */,
-				BB5F1DA122531CE90042D443 /* Main VC */,
 			);
 			path = "Friends Tab";
 			sourceTree = "<group>";
@@ -2310,7 +2293,6 @@
 				BB0AE4DC225361DC005DD315 /* splash-background.png in Resources */,
 				BBA2B436223505E600D8C27B /* ProfileBioViewController.storyboard in Resources */,
 				BBF7968A225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard in Resources */,
-				BBECBEB92237D482008E8E91 /* DiscoverySimpleViewController.storyboard in Resources */,
 				BB77E7A02252211700A12B12 /* ApproveDetachedProfileSchoolViewController.storyboard in Resources */,
 				BBA2B438223505F000D8C27B /* ProfileImageViewController.storyboard in Resources */,
 				BB139EFA229A913000D7955A /* MeTabMainViewController.storyboard in Resources */,
@@ -2530,7 +2512,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2599,7 +2581,6 @@
 				BBB70ACD222334E6006B75A0 /* UserAPI.swift in Sources */,
 				BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */,
 				BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */,
-				BBECBEB72237D476008E8E91 /* DiscoverySimpleViewController.swift in Sources */,
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
@@ -2721,7 +2702,6 @@
 				BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */,
 				BB687E85228D829900F45C9D /* OnboardingPicturesViewController.swift in Sources */,
 				911E2C4D229A993500E11860 /* JoinEventViewController.swift in Sources */,
-				BB4C8A43225148BD00F7BA1A /* DiscoveryTableViewCell.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */,
 				BB9D1B242255E1310074C099 /* PearMatchesAPI.swift in Sources */,
@@ -2944,7 +2924,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 119;
+				CURRENT_PROJECT_VERSION = 120;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2969,7 +2949,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 119;
+				CURRENT_PROJECT_VERSION = 120;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3168,7 +3148,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 119;
+				CURRENT_PROJECT_VERSION = 120;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3364,7 +3344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 119;
+				CURRENT_PROJECT_VERSION = 120;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
