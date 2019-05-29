@@ -136,6 +136,8 @@
 		BB687E87228D82A300F45C9D /* OnboardingPicturesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */; };
 		BB687E89228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */; };
 		BB687E8B228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */; };
+		BB70B034229F418600EB2BD9 /* PromptPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */; };
+		BB70B036229F419000EB2BD9 /* PromptPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */; };
 		BB714123228B4F6500129C93 /* Cera-Pro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */; };
 		BB719A43228D3FDE00007D69 /* CoreLocation+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A42228D3FDE00007D69 /* CoreLocation+Helpers.swift */; };
 		BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A44228D447000007D69 /* DataStore+Notifications.swift */; };
@@ -466,6 +468,8 @@
 		BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingPicturesViewController.storyboard; sourceTree = "<group>"; };
 		BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingMoreDetailsViewController.storyboard; sourceTree = "<group>"; };
 		BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMoreDetailsViewController.swift; sourceTree = "<group>"; };
+		BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptPickerViewController.swift; sourceTree = "<group>"; };
+		BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptPickerViewController.storyboard; sourceTree = "<group>"; };
 		BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera-Pro-Black.otf"; sourceTree = "<group>"; };
 		BB719A42228D3FDE00007D69 /* CoreLocation+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreLocation+Helpers.swift"; sourceTree = "<group>"; };
 		BB719A44228D447000007D69 /* DataStore+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Notifications.swift"; sourceTree = "<group>"; };
@@ -1938,6 +1942,8 @@
 			children = (
 				BBBB38A9229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift */,
 				BBBB38AB229F207D00DEFF5E /* UpdateUserPromptsStackViewController.storyboard */,
+				BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */,
+				BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */,
 			);
 			path = "User Prompts";
 			sourceTree = "<group>";
@@ -2334,6 +2340,7 @@
 				BB9CB69D2259E14100605A98 /* UpdateExpandingTextViewController.storyboard in Resources */,
 				BBCD0AAF222CBF6000FE5456 /* LoadingScreenViewController.storyboard in Resources */,
 				BBA2E1F0224B2E980088A7A7 /* ApproveDetachedProfileNavigationViewController.storyboard in Resources */,
+				BB70B036229F419000EB2BD9 /* PromptPickerViewController.storyboard in Resources */,
 				91BEE2AC225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard in Resources */,
 				BBB71B6522946CB4002CDDD1 /* UserAgeInputViewController.storyboard in Resources */,
 				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
@@ -2613,6 +2620,7 @@
 				BB687E73228D716900F45C9D /* OnboardingFriendNameViewController.swift in Sources */,
 				BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */,
 				BBD2402222531FB000380315 /* FriendProfileCollectionViewCell.swift in Sources */,
+				BB70B034229F418600EB2BD9 /* PromptPickerViewController.swift in Sources */,
 				BBA2B4322235051400D8C27B /* ProfileDoDontViewController.swift in Sources */,
 				BBBA5743226DA4E5000BCD5F /* GraphQLInput.swift in Sources */,
 				BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */,
