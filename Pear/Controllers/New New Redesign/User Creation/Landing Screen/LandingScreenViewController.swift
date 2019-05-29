@@ -24,7 +24,7 @@ class LandingScreenViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> LandingScreenViewController? {
-    let landingScreenVC = R.storyboard.landingScreenViewController().instantiateInitialViewController() as? LandingScreenViewController
+    let landingScreenVC = R.storyboard.landingScreenViewController.instantiateInitialViewController()
     return landingScreenVC
   }
   

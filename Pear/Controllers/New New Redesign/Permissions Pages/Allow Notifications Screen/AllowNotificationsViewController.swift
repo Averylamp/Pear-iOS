@@ -21,8 +21,8 @@ class AllowNotificationsViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> AllowNotificationsViewController? {
-    guard let allowNotificationsVC = R.storyboard.allowNotificationsViewController()
-      .instantiateInitialViewController() as? AllowNotificationsViewController else { return nil }
+    guard let allowNotificationsVC = R.storyboard.allowNotificationsViewController
+      .instantiateInitialViewController()  else { return nil }
     return allowNotificationsVC
   }
   

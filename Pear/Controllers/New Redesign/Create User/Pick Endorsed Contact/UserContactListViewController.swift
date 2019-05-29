@@ -44,8 +44,8 @@ class UserContactListViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(contacts: [CNContact]) -> UserContactListViewController? {
-    guard let contactListVC = R.storyboard.userContactListViewController()
-      .instantiateInitialViewController() as? UserContactListViewController else { return nil }
+    guard let contactListVC = R.storyboard.userContactListViewController
+      .instantiateInitialViewController() else { return nil }
     contacts.forEach({
       guard var phone = $0.phoneNumbers.first?.value.stringValue.filter("0123456789".contains) else {
         return

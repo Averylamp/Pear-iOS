@@ -26,8 +26,8 @@ class NewProfileBioViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(bioItem: BioItem) -> NewProfileBioViewController? {
-    guard let profileBioVC = R.storyboard.newProfileBioViewController()
-      .instantiateInitialViewController() as? NewProfileBioViewController else { return nil }
+    guard let profileBioVC = R.storyboard.newProfileBioViewController
+      .instantiateInitialViewController()  else { return nil }
     profileBioVC.bioItem = bioItem
     return profileBioVC
   }

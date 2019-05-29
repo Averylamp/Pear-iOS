@@ -20,8 +20,8 @@ class ProfileCreationFinishedViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> ProfileCreationFinishedViewController? {
-    guard let profileVibeVC = R.storyboard.profileCreationFinishedViewController()
-      .instantiateInitialViewController() as? ProfileCreationFinishedViewController else { return nil }
+    guard let profileVibeVC = R.storyboard.profileCreationFinishedViewController
+      .instantiateInitialViewController() else { return nil }
     return profileVibeVC
   }
   

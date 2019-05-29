@@ -79,7 +79,6 @@ enum ProfileCreationKey: String {
   func getRandomNextQuestion() -> QuestionItem? {
     var possibleQuestions = DataStore.shared.possibleQuestions.shuffled()
     let originalQuestions = possibleQuestions.map({ $0 })
-    let questionCount = self.questionResponses.count + skipCount
     let answeredQuestions = self.questionResponses.count
     if answeredQuestions < 2 {
       possibleQuestions = possibleQuestions.filter({ $0.tags.contains("starter")})

@@ -22,8 +22,8 @@ class UserSchoolInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserSchoolInputViewController? {
-    guard let userSchoolVC = R.storyboard.userSchoolInputViewController()
-      .instantiateInitialViewController() as? UserSchoolInputViewController else { return nil }
+    guard let userSchoolVC = R.storyboard.userSchoolInputViewController
+      .instantiateInitialViewController() else { return nil }
     return userSchoolVC
   }
   

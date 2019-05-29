@@ -29,8 +29,8 @@ class UserHabitsInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(habitType: HabitInputType) -> UserHabitsInputViewController? {
-    guard let habitInputVC = R.storyboard.userHabitsInputViewController()
-      .instantiateInitialViewController() as? UserHabitsInputViewController else { return nil }
+    guard let habitInputVC = R.storyboard.userHabitsInputViewController
+      .instantiateInitialViewController() else { return nil }
     habitInputVC.habitType = habitType
     return habitInputVC
   }

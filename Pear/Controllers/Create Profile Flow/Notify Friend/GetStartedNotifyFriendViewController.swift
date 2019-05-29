@@ -278,7 +278,7 @@ extension GetStartedNotifyFriendViewController: CNContactPickerDelegate {
       }
     } else {
       self.inputTextField.text = phoneNumber
-      self.textField(self.inputTextField, shouldChangeCharactersIn: NSRange(location: 0, length: phoneNumber.count), replacementString: phoneNumber)
+      _ = self.textField(self.inputTextField, shouldChangeCharactersIn: NSRange(location: 0, length: phoneNumber.count), replacementString: phoneNumber)
     }
   }
   

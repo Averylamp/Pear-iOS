@@ -21,8 +21,8 @@ class UserPoliticalViewsInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> UserPoliticalViewsInputViewController? {
-    guard let ethnicityInputVC = R.storyboard.userPoliticalViewsInputViewController()
-      .instantiateInitialViewController() as? UserPoliticalViewsInputViewController else { return nil }
+    guard let ethnicityInputVC = R.storyboard.userPoliticalViewsInputViewController
+      .instantiateInitialViewController()  else { return nil }
     return ethnicityInputVC
   }
 

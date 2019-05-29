@@ -21,8 +21,8 @@ class MultipleBoastRoastStackViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(type: RoastBoastType) -> MultipleBoastRoastStackViewController? {
-    guard let multiBoastRoastVC = R.storyboard.multipleBoastRoastStackViewController()
-      .instantiateInitialViewController() as? MultipleBoastRoastStackViewController else { return nil }
+    guard let multiBoastRoastVC = R.storyboard.multipleBoastRoastStackViewController
+      .instantiateInitialViewController() else { return nil }
     multiBoastRoastVC.mode = type
     return multiBoastRoastVC
   }

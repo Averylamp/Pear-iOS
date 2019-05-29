@@ -19,8 +19,8 @@ class LandingScreenWaitlistViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> LandingScreenWaitlistViewController? {
-    guard let landingScreenWaitlistVC = R.storyboard.landingScreenWaitlistViewController()
-      .instantiateInitialViewController() as? LandingScreenWaitlistViewController else {
+    guard let landingScreenWaitlistVC = R.storyboard.landingScreenWaitlistViewController
+      .instantiateInitialViewController() else {
       print("Failed to create landing screen waitlist VC")
       return nil
     }

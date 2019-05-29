@@ -23,8 +23,8 @@ class ScrollableTextItemViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(items: [TextContentItem], userName: String? = nil, maxLines: Int = 0) -> ScrollableTextItemViewController? {
-    guard let scrollingItemVC = R.storyboard.scrollableTextItemViewController()
-      .instantiateInitialViewController() as? ScrollableTextItemViewController else { return nil }
+    guard let scrollingItemVC = R.storyboard.scrollableTextItemViewController
+      .instantiateInitialViewController()  else { return nil }
     scrollingItemVC.items = items
     scrollingItemVC.userName = userName
     scrollingItemVC.maxLines = maxLines

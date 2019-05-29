@@ -24,8 +24,8 @@ class ProfileInputVibeViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(profileCreationData: ProfileCreationData) -> ProfileInputVibeViewController? {
-    guard let profileVibeVC = R.storyboard.profileInputVibeViewController()
-      .instantiateInitialViewController() as? ProfileInputVibeViewController else { return nil }
+    guard let profileVibeVC = R.storyboard.profileInputVibeViewController
+      .instantiateInitialViewController() else { return nil }
     profileVibeVC.profileData = profileCreationData
     return profileVibeVC
   }
