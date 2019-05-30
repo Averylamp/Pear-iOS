@@ -19,8 +19,6 @@ class PearDiscoveryAPI: DiscoveryAPI {
   
   let defaultHeaders: [String: String] = ["Content-Type": "application/json"]
   
-  static let getDiscoveryFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLAllFields()) timestamp _id } }}"
-  
   static let getDiscoveryCardsQuery: String = "query GetDiscoveryCards($user_id: ID!, $filters: FiltersInput){ getDiscoveryCards(user_id: $user_id, filters: $filters){ success message items { user \(PearUser.graphQLAllFields()) timestamp _id } }}"
   // swiftlint:disable:next line_length
   static let skipDiscoveryItemMutation: String = "mutation SkipDiscoveryItem($user_id:ID!, $discoveryItem_id: ID!){ skipDiscoveryItem(user_id:$user_id, discoveryItem_id:$discoveryItem_id){ success message }}"
@@ -29,67 +27,6 @@ class PearDiscoveryAPI: DiscoveryAPI {
 
 // MARK: - Get Discovery Feed
 extension PearDiscoveryAPI {
-  
-  func getDiscoveryFeed(userID: String, last: Int, completion: @escaping (Result<[FullProfileDisplayData], DiscoveryAPIError>) -> Void) {
-    let variables: [String: Any] = [
-      "user_id": userID,
-      "last": last
-    ]
-    do {
-      let (request, fullDictionary) = try APIHelpers.getRequestWith(query: PearDiscoveryAPI.getDiscoveryFeedQuery,
-                                              variables: variables)
-      let dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
-        if let error = error {
-          SentryHelper.generateSentryEvent(level: .error,
-                                           apiName: "GetDiscoveryFeed",
-                                           functionName: "GetDiscoveryFeed",
-                                           message: "\(String(describing: error.localizedDescription))",
-                                           responseData: data,
-                                           tags: [:],
-                                           payload: fullDictionary)
-        } else {
-          if let data = data,
-            let json = try? JSON(data: data),
-            let discoveryUser = json["data"]["getDiscoveryFeed"]["currentDiscoveryItems"].array {
-            var allFullProfiles: [FullProfileDisplayData] = []
-            for userData in discoveryUser {
-              do {
-                let rawData = try userData["user"].rawData()
-                let pearUser = try JSONDecoder().decode(PearUser.self, from: rawData)
-                let pearUserDisplayData = FullProfileDisplayData(user: pearUser)
-                if let discoveryItemID = userData["_id"].string {
-                  pearUserDisplayData.discoveryItemID = discoveryItemID
-                } else {
-                  print(userData)
-                }
-                allFullProfiles.append(pearUserDisplayData)
-              } catch {
-                print("Error converting single user" )
-              }
-            }
-            completion(.success(allFullProfiles))
-          } else {
-            SentryHelper.generateSentryEvent(level: .error,
-                                             apiName: "PearDiscoveryAPI",
-                                             functionName: "GetDiscoveryFeed",
-                                             message: "Failed Discovery Serialization",
-                                             responseData: data,
-                                             tags: [:],
-                                             payload: fullDictionary)
-            completion(.failure(DiscoveryAPIError.unknownError(error: nil)))
-          }
-        }
-      }
-      dataTask.resume()
-      
-    } catch {
-      print("Error Creating API Request: \(error)")
-      SentryHelper.generateSentryEvent(level: .error,
-                                       apiName: "PearDiscoveryAPI",
-                                       functionName: "GetDiscoveryFeed",
-                                       message: "\(String(describing: error.localizedDescription))")
-    }
-  }
   
   func getDiscoveryCards(completion: @escaping (Result<[FullProfileDisplayData], DiscoveryAPIError>) -> Void) {
     guard let user = DataStore.shared.currentPearUser else {

@@ -46,7 +46,7 @@ class DiscoveryFilterViewController: UIViewController {
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.saveFilters()
-    NotificationCenter.default.post(name: .refreshDiscoveryFeedAnimated, object: nil)
+    NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
     self.navigationController?.popViewController(animated: true)
   }
   

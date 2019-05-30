@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension Notification.Name {
+  static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
+}
+
 class DiscoveryDecisionViewController: UIViewController {
   
   var allFetchedProfiles: [FullProfileDisplayData] = []
@@ -51,8 +55,20 @@ extension DiscoveryDecisionViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.fetchDiscoveryQueue()
+    self.setup()
+    self.refreshDiscovery()
     self.checkForDetachedProfiles()
+  }
+  
+  func setup() {
+    self.registerNotifications()
+  }
+  
+  func registerNotifications() {
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(DiscoveryDecisionViewController.refreshDiscovery),
+                                           name: .refreshDiscoveryFeed,
+                                           object: nil)
   }
   
   func checkForDetachedProfiles() {
@@ -72,57 +88,57 @@ extension DiscoveryDecisionViewController {
     })
   }
   
-  func updateProfilesToDisplay() {
+  @objc func refreshDiscovery() {
+    self.allFetchedProfiles = []
     self.profilesToShow = []
-    self.allFetchedProfiles.filter({$0.decisionMade == false}).forEach({
-      if let matchingPreferences = $0.matchingPreferences,
-        let matchingDemographics = $0.matchingDemographics,
-        let userDemographics = DataStore.shared.currentPearUser?.matchingDemographics,
-        let userPreferences = DataStore.shared.currentPearUser?.matchingPreferences {
-        if userPreferences.matchesDemographics(demographics: matchingDemographics) &&
-          matchingPreferences.matchesDemographics(demographics: userDemographics) {
-          self.profilesToShow.append($0)
-        }
-      } else {
-        self.profilesToShow.append($0)
+    self.hideProfileVC {
+      DispatchQueue.main.async {
+        self.activityIndicator.startAnimating()
+        self.messageLabel.text = "Fetching new profiles"
       }
-    })
+      PearDiscoveryAPI.shared.getDiscoveryCards { (result) in
+        switch result {
+        case .success(let profiles):
+          print("Profiles Found: \(profiles.count)")
+          if profiles.count == 0 {
+            self.didReceiveNoProfiles()
+          } else {
+            self.allFetchedProfiles = []
+            profiles.forEach({
+              if !self.allFetchedProfiles.contains($0) {
+                self.allFetchedProfiles.append($0)
+              }
+            })
+            self.profilesToShow = []
+            self.allFetchedProfiles.filter({$0.decisionMade == false}).forEach({
+              self.profilesToShow.append($0)
+            })
+            DispatchQueue.main.async {
+              self.activityIndicator.stopAnimating()
+              self.messageLabel.text = ""
+            }
+            self.showNextProfile()
+          }
+        case .failure(let error):
+          print("Error getting profiles: \(error)")
+        }
+      }
+    }
   }
   
-  func fetchDiscoveryQueue() {
-    PearDiscoveryAPI.shared.getDiscoveryCards { (result) in
-      switch result {
-      case .success(let profiles):
-        print("Profiles Found: \(profiles.count)")
-        profiles.forEach({
-          if !self.allFetchedProfiles.contains($0) {
-            self.allFetchedProfiles.append($0)
-          }
-        })
-        self.updateProfilesToDisplay()
-        DispatchQueue.main.async {
-          self.activityIndicator.stopAnimating()
-          self.messageLabel.text = ""
-        }
-        self.showNextProfile()
-      case .failure(let error):
-        print("Error getting profiles: \(error)")
-      }
+  func didReceiveNoProfiles() {
+    self.profilesToShow = []
+    self.allFetchedProfiles = []
+    DispatchQueue.main.async {
+      self.activityIndicator.stopAnimating()
+      self.messageLabel.text = "There are no more profiles for you right now.\nCheck back in a few hours!"
     }
   }
   
   func showNextProfile() {
     
     if self.profilesToShow.count == 0 {
-      
-      DispatchQueue.main.async {
-        self.messageLabel.text = "There are no more profiles for you right now. \nCheck back in a few hours!"
-        self.tabBarController?.setTabBarVisible(visible: true, duration: 0.5, animated: true)
-        self.headerHeightConstraint.constant = 50.0
-        UIView.animate(withDuration: 0.5, animations: {
-          self.view.layoutIfNeeded()
-        })
-      }
+      self.refreshDiscovery()
     }
     self.hideProfileVC {
       if self.profilesToShow.count > 0 {

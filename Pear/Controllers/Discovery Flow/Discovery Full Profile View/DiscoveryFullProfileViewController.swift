@@ -11,11 +11,6 @@ import Sentry
 import SDWebImage
 import Firebase
 
-extension Notification.Name {
-  static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
-  static let refreshDiscoveryFeedAnimated = Notification.Name("refreshDiscoveryFeedAnimated")
-}
-
 protocol DiscoveryFullProfileDelegate: class {
   func decisionMade()
   func scannedUser(fullProfileDisplay: FullProfileDisplayData)
