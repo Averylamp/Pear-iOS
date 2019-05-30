@@ -11,11 +11,6 @@ import Sentry
 import SDWebImage
 import Firebase
 
-extension Notification.Name {
-  static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
-  static let refreshDiscoveryFeedAnimated = Notification.Name("refreshDiscoveryFeedAnimated")
-}
-
 protocol DiscoveryFullProfileDelegate: class {
   func decisionMade()
   func scannedUser(fullProfileDisplay: FullProfileDisplayData)
@@ -241,13 +236,12 @@ class DiscoveryFullProfileViewController: UIViewController {
   }
   
   @IBAction func filterButtonClicked(_ sender: Any) {
-    //TODO(@bgu): Filter Button Implementation
     print("filter button clicked")
-    guard let addEventVC = JoinEventViewController.instantiate(isInOnboarding: false) else {
-      print ("Failed to create join event VC")
+    guard let filtersVC = DiscoveryFilterViewController.instantiate() else {
+      print("Failed to create Filters VC")
       return
     }
-    self.present(addEventVC, animated: true, completion: nil)
+    self.navigationController?.pushViewController(filtersVC, animated: true)
   }
   
   @IBAction func qrScannerButtonClicked(_ sender: Any) {

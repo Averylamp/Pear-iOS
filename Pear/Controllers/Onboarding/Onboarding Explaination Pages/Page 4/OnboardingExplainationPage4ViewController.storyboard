@@ -38,9 +38,9 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" ambiguous="YES" image="onboarding-meme-4" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
-                                <rect key="frame" x="20" y="138.66666666666669" width="335" height="479.33333333333354"/>
+                                <rect key="frame" x="20" y="138.66666666666663" width="335" height="479.33333333333348"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="On Pear, friends can answer prompts for each other's profile" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="To get started, answer some prompts about a friend." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
                                 <rect key="frame" x="30" y="64" width="315" height="54.666666666666657"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -90,7 +90,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-meme-4" width="1005" height="1005"/>
+        <image name="onboarding-meme-4" width="1053" height="729"/>
         <namedColor name="primaryBrandColor">
             <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
