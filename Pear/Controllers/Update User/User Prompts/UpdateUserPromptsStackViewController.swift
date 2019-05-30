@@ -87,7 +87,7 @@ extension UpdateUserPromptsStackViewController {
     
     let thumbnailImageView = UIImageView()
     thumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
-    thumbnailImageView.contentMode = .scaleToFill
+    thumbnailImageView.contentMode = .scaleAspectFill
     if let imageURLString = response.authorThumbnailURL,
       let imageURL = URL(string: imageURLString) {
       thumbnailImageView.sd_setImage(with: imageURL, completed: nil)
