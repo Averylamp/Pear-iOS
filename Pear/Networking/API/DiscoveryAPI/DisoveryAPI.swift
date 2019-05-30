@@ -16,6 +16,6 @@ enum DiscoveryAPIError: Error {
 }
 
 protocol DiscoveryAPI {
-  func getDiscoveryFeed(userID: String, last: Int, completion: @escaping(Result<[FullProfileDisplayData], DiscoveryAPIError>) -> Void)
+  func getDiscoveryCards(completion: @escaping(Result<[FullProfileDisplayData], DiscoveryAPIError>) -> Void)
   func skipDiscoveryItem(userID: String, discoveryItemID: String, completion: @escaping(Result<Bool, DiscoveryAPIError>) -> Void)
 }

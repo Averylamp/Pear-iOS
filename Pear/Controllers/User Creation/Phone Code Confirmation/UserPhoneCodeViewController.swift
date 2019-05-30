@@ -140,7 +140,7 @@ extension UserPhoneCodeViewController {
             print("Continuing to Main Screen")
             DispatchQueue.main.async {
               Analytics.logEvent(AnalyticsEventLogin, parameters: [ AnalyticsParameterMethod: "phone" ])
-              DataStore.shared.reloadAllUserData()
+              DataStore.shared.reloadAllUserData(completion: nil)
               self.continueToEmailOrNext()
             }
           } else {
@@ -155,7 +155,7 @@ extension UserPhoneCodeViewController {
                   Analytics.setUserProperty(dateFormatter.string(from: mondayDate), forName: "signup_week")
                 }
                 DataStore.shared.currentPearUser = pearUser
-                DataStore.shared.reloadAllUserData()
+                DataStore.shared.reloadAllUserData(completion: nil)
                 DataStore.shared.refreshPearUser(completion: nil)
                 self.continueToEmailOrNext()
               case .failure(let error):

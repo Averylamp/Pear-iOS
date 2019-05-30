@@ -34,7 +34,12 @@ extension DiscoveryFilterTableViewCell {
     case .personalUser:
       if let user = discoveryFilterItem.user {
         self.nameLabel.text = user.firstName
-//        self.thumbnailImage.image = R.image.discoveryYouButton()
+        if let firstImageURLString = user.displayedImages.first?.thumbnail.imageURL,
+          let firstImageURL = URL(string: firstImageURLString) {
+          self.thumbnailImage.sd_setImage(with: firstImageURL, completed: nil)
+        } else {
+          self.thumbnailImage.image = R.image.friendsNoImage()
+        }
       }
     case .endorsedUser:
       if let endorsedUser = discoveryFilterItem.endorsedUser {
@@ -58,7 +63,7 @@ extension DiscoveryFilterTableViewCell {
       }
     }
     checkboxChecked.isHidden = !discoveryFilterItem.checked
-    self.nameLabel.stylizeFilterName(selected: discoveryFilterItem.checked)
+    self.nameLabel.stylizeFilterName(enabled: discoveryFilterItem.type != .detachedProfile)
   }
   
 }

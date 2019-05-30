@@ -189,11 +189,11 @@ extension UILabel {
     }
   }
   
-  func stylizeFilterName(selected: Bool) {
+  func stylizeFilterName(enabled: Bool) {
     if let font = R.font.openSansSemiBold(size: 17) {
       self.font = font
     }
-    if selected {
+    if enabled {
       self.textColor = R.color.primaryTextColor()
     } else {
       self.textColor = R.color.tertiaryTextColor()
