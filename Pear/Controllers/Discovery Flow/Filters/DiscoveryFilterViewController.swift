@@ -155,6 +155,7 @@ extension DiscoveryFilterViewController {
     }
     if let eventID = filterForEventID {
       DataStore.shared.updateFilterForEventId(eventID: eventID)
+      print("event filter updated")
     } else {
       DataStore.shared.unsetFilterForEventId()
     }
@@ -167,6 +168,7 @@ extension DiscoveryFilterViewController {
       let now = Date()
       var allEventFilterItems: [EventFilterItem] = []
       for event in DataStore.shared.userEvents {
+        // don't show events that have already passed
         if event.endTime < now {
           continue
         }

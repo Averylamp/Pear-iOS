@@ -27,9 +27,11 @@ class EventFilterTableViewCell: UITableViewCell {
 extension EventFilterTableViewCell {
   
   func configure(eventFilterItem: EventFilterItem) {
+    let now = Date()
     self.eventNameLabel.text = eventFilterItem.event.name
     checkboxChecked.isHidden = !eventFilterItem.checked
     self.eventNameLabel.stylizeFilterName(enabled: eventFilterItem.checked)
+    self.eventNameLabel.stylizeFilterName(enabled: now > eventFilterItem.event.startTime && now < eventFilterItem.event.endTime)
   }
   
 }
