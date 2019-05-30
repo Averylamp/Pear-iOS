@@ -121,6 +121,7 @@ extension DiscoveryDecisionViewController {
           }
         case .failure(let error):
           print("Error getting profiles: \(error)")
+          self.didReceiveNoProfiles()
         }
       }
     }
@@ -132,6 +133,11 @@ extension DiscoveryDecisionViewController {
     DispatchQueue.main.async {
       self.activityIndicator.stopAnimating()
       self.messageLabel.text = "There are no more profiles for you right now.\nCheck back in a few hours!"
+      self.tabBarController?.setTabBarVisible(visible: true, duration: 0.5, animated: true)
+      self.headerHeightConstraint.constant = 50.0
+      UIView.animate(withDuration: 0.5, animations: {
+        self.view.layoutIfNeeded()
+      })
     }
   }
   

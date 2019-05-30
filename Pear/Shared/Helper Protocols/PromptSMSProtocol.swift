@@ -76,7 +76,7 @@ extension PromptSMSProtocol {
       switch result {
       case .success(let detachedProfile):
         Analytics.logEvent("CP_SUCCESS", parameters: nil)
-        DataStore.shared.reloadAllUserData()
+        DataStore.shared.reloadAllUserData(completion: nil)
         completion(.success(detachedProfile))
       case .failure(let error):
         Analytics.logEvent("CP_FAIL", parameters: nil)
