@@ -90,11 +90,7 @@ extension DiscoveryDecisionViewController {
   }
   
   func fetchDiscoveryQueue() {
-    guard let userID = DataStore.shared.currentPearUser?.documentID  else {
-      print("Cant find logged in user")
-      return
-    }
-    PearDiscoveryAPI.shared.getDiscoveryFeed(userID: userID, last: 15) { (result) in
+    PearDiscoveryAPI.shared.getDiscoveryCards { (result) in
       switch result {
       case .success(let profiles):
         print("Profiles Found: \(profiles.count)")
