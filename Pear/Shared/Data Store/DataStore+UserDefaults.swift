@@ -14,6 +14,8 @@ extension DataStore {
     case skippedDetachedProfiles
     case blockedUsers
     case matchedUsers
+    case filterForEventId
+    case filterForUserId
     case isFilteringForSelfDisabled
     case notFilteringForEndorsedUsers
     case notFilteringForDetachedProfiles
@@ -62,35 +64,31 @@ extension DataStore {
     }
     UserDefaults.standard.set(existingMatchedUsers, forKey: matchedUserKey(userID: userID))
   }
-  
-  func filteringDisabledForSelfFromDefaults() -> Bool {
-    return UserDefaults.standard.bool(forKey: UserDefaultKeys.isFilteringForSelfDisabled.rawValue)
+
+  func filteringForEventIdFromDefaults() -> String? {
+    return UserDefaults.standard.string(forKey: UserDefaultKeys.filterForEventId.rawValue)
   }
   
-  func filteredEndorsedUsersFromDefaults() -> [String] {
-    if let result = UserDefaults.standard.array(forKey: UserDefaultKeys.notFilteringForEndorsedUsers.rawValue) as? [String] {
-      return result
+  func filteringForUserIdFromDefaults() -> String? {
+    return UserDefaults.standard.string(forKey: UserDefaultKeys.filterForUserId.rawValue)
+  }
+  
+  func updateFilterForEventId(eventID: String) {
+    UserDefaults.standard.set(eventID, forKey: UserDefaultKeys.filterForEventId.rawValue)
+  }
+  
+  func unsetFilterForEventId() {
+    UserDefaults.standard.removeObject(forKey: UserDefaultKeys.filterForEventId.rawValue)
+  }
+  
+  func updateFilterForUserId(userID: String) {
+    UserDefaults.standard.set(userID, forKey: UserDefaultKeys.filterForUserId.rawValue)
+  }
+  
+  func updateFilterForMeUserId() {
+    if let user = DataStore.shared.currentPearUser {
+      UserDefaults.standard.set(user.documentID, forKey: UserDefaultKeys.filterForUserId.rawValue)
     }
-    return []
-  }
-  
-  func filteredDetachedProfilesFromDefaults() -> [String] {
-    if let result = UserDefaults.standard.array(forKey: UserDefaultKeys.notFilteringForDetachedProfiles.rawValue) as? [String] {
-      return result
-    }
-    return []
-  }
-  
-  func updateFilteringDisabledForSelfInDefault(disabled: Bool) {
-    UserDefaults.standard.set(disabled, forKey: UserDefaultKeys.isFilteringForSelfDisabled.rawValue)
-  }
-  
-  func updateFilteredEndorsedUsersInDefault(filteredEndorsedUserIDs: [String]) {
-    UserDefaults.standard.set(filteredEndorsedUserIDs, forKey: UserDefaultKeys.notFilteringForEndorsedUsers.rawValue)
-  }
-  
-  func updateFilteredDetachedProfilesInDefault(filteredDetachedProfileIDs: [String]) {
-    UserDefaults.standard.set(filteredDetachedProfileIDs, forKey: UserDefaultKeys.notFilteringForDetachedProfiles.rawValue)
   }
   
 }

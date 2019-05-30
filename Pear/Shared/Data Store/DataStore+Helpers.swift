@@ -118,24 +118,26 @@ extension DataStore {
                                     switch result {
                                     case .success(let pearUser):
                                       DataStore.shared.currentPearUser = pearUser
-                                      DataStore.shared.reloadAllUserData()
-                                      Crashlytics.sharedInstance().setUserEmail(pearUser.email)
-                                      Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
-                                      Crashlytics.sharedInstance().setUserName(pearUser.fullName())
-                                      Client.shared?.extra = [
-                                        "email": pearUser.email ?? "",
-                                        "phoneNumber": pearUser.phoneNumber ?? "",
-                                        "firebaseAuthID": pearUser.firebaseAuthID!,
-                                        "fullName": pearUser.fullName(),
-                                        "userDocumentID": pearUser.documentID!
-                                      ]
-                                      trace?.incrementMetric("Existing User Found", by: 1)
-                                      trace?.stop()
-                                      DataStore.shared.updateLatestLocationAndToken()
-                                      if let completion = completion {
-                                        completion(pearUser)
+                                      DataStore.shared.reloadAllUserData {
+                                        print("reloaded all user data")
+                                        Crashlytics.sharedInstance().setUserEmail(pearUser.email)
+                                        Crashlytics.sharedInstance().setUserIdentifier(pearUser.firebaseAuthID)
+                                        Crashlytics.sharedInstance().setUserName(pearUser.fullName())
+                                        Client.shared?.extra = [
+                                          "email": pearUser.email ?? "",
+                                          "phoneNumber": pearUser.phoneNumber ?? "",
+                                          "firebaseAuthID": pearUser.firebaseAuthID!,
+                                          "fullName": pearUser.fullName(),
+                                          "userDocumentID": pearUser.documentID!
+                                        ]
+                                        trace?.incrementMetric("Existing User Found", by: 1)
+                                        trace?.stop()
+                                        DataStore.shared.updateLatestLocationAndToken()
+                                        if let completion = completion {
+                                          completion(pearUser)
+                                        }
+                                        return
                                       }
-                                      return
                                     case .failure(let error):
                                       print("Error getting Pear User: \(error)")
                                       trace?.incrementMetric("No Existing User Found", by: 1)
@@ -299,6 +301,28 @@ extension DataStore {
     }
   }
   
+  func refreshEvents(completion: (([PearEvent]) -> Void)?) {
+    self.fetchUIDToken { (result) in
+      switch result {
+      case .success(let authTokens):
+        PearEventAPI.shared.getEventsForUser(uid: authTokens.uid, token: authTokens.token, completion: { (result) in
+          switch result {
+          case .success(let events):
+            print("Fetched events")
+            self.userEvents = events
+            if let completion = completion {
+              completion(events)
+            }
+          case .failure(let error):
+            print("Failure getting events: \(error)")
+          }
+        })
+      case .failure(let error):
+        print("Failure getting auth tokens: \(error)")
+      }
+    }
+  }
+  
   func hasUpdatedPreferences() -> Bool {
     // we should do something more robust in the future, but for now just check if the settings are defaults
     if let user = DataStore.shared.currentPearUser {
@@ -315,13 +339,31 @@ extension DataStore {
     return false
   }
   
-  func reloadAllUserData() {
-    DataStore.shared.refreshEndorsedUsers(completion: nil)
-    DataStore.shared.refreshMatchRequests { (matchRequests) in
-      print("Found Match Requests: \(matchRequests.count)")
-    }
-    DataStore.shared.refreshCurrentMatches { (matches) in
-      print("Found Current Matches: \(matches.count)")
+  func reloadAllUserData(completion: (() -> Void)?) {
+    DispatchQueue.global(qos: .userInitiated).async {
+      print("reloading user data")
+      DataStore.shared.refreshMatchRequests { (matchRequests) in
+        print("Found Match Requests: \(matchRequests.count)")
+      }
+      DataStore.shared.refreshCurrentMatches { (matches) in
+        print("Found Current Matches: \(matches.count)")
+      }
+      
+      let refreshGroup = DispatchGroup()
+      refreshGroup.enter()
+      DataStore.shared.refreshEndorsedUsers { (_, _) in
+        print("refreshed endorsed users")
+        refreshGroup.leave()
+      }
+      refreshGroup.enter()
+      DataStore.shared.refreshEvents { (events) in
+        print("Found events for this user: \(events.count)")
+        refreshGroup.leave()
+      }
+      refreshGroup.wait()
+      if let completion = completion {
+        completion()
+      }
     }
   }
   

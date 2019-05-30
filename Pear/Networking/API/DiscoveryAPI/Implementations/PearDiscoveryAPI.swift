@@ -19,7 +19,7 @@ class PearDiscoveryAPI: DiscoveryAPI {
   
   let defaultHeaders: [String: String] = ["Content-Type": "application/json"]
   
-  static let getDiscoveryFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLAllFields()) timestamp _id } }}"
+  static let getDiscoveryCardsQuery: String = "query GetDiscoveryCards($user_id: ID!, $filters: FiltersInput){ getDiscoveryCards(user_id: $user_id, filters: $filters){ success message items { user \(PearUser.graphQLAllFields()) timestamp _id } }}"
   // swiftlint:disable:next line_length
   static let skipDiscoveryItemMutation: String = "mutation SkipDiscoveryItem($user_id:ID!, $discoveryItem_id: ID!){ skipDiscoveryItem(user_id:$user_id, discoveryItem_id:$discoveryItem_id){ success message }}"
   
@@ -28,27 +28,68 @@ class PearDiscoveryAPI: DiscoveryAPI {
 // MARK: - Get Discovery Feed
 extension PearDiscoveryAPI {
   
-  func getDiscoveryFeed(userID: String, last: Int, completion: @escaping (Result<[FullProfileDisplayData], DiscoveryAPIError>) -> Void) {
+  func getDiscoveryCards(completion: @escaping (Result<[FullProfileDisplayData], DiscoveryAPIError>) -> Void) {
+    guard let user = DataStore.shared.currentPearUser else {
+      print("Cant find logged in user")
+      completion(.failure(DiscoveryAPIError.unauthenticated))
+      return
+    }
+    
+    var filteringForUserID: String = user.documentID
+    if let userID = DataStore.shared.filteringForUserIdFromDefaults() {
+      filteringForUserID = userID
+    }
+    var filteringForEventID: String?
+    if let eventID = DataStore.shared.filteringForEventIdFromDefaults() {
+      let now = Date()
+      for event in DataStore.shared.userEvents where event.documentID == eventID {
+        if now > event.startTime && now < event.endTime {
+          filteringForEventID = eventID
+        }
+      }
+    }
+    if filteringForEventID == nil {
+      DataStore.shared.unsetFilterForEventId()
+    }
+    var filteringForUser = user
+    for endorsedUser in DataStore.shared.endorsedUsers where endorsedUser.documentID == filteringForUserID {
+      filteringForUser = endorsedUser
+    }
+    
+    var filters: [String: Any] = [
+      "seekingGender": filteringForUser.matchingPreferences.seekingGender.map({ $0.rawValue }),
+      "minAgeRange": filteringForUser.matchingPreferences.minAgeRange,
+      "maxAgeRange": filteringForUser.matchingPreferences.maxAgeRange
+    ]
+    if let myGender = filteringForUser.gender {
+      filters["myGender"] = myGender.rawValue
+    }
+    if let coords = filteringForUser.matchingPreferences.location?.locationCoordinate {
+      filters["locationCoords"] = [coords.longitude, coords.latitude]
+    }
+    if let eventID = filteringForEventID {
+      filters["event_id"] = eventID
+    }
     let variables: [String: Any] = [
-      "user_id": userID,
-      "last": last
+      "user_id": user.documentID,
+      "filters": filters
     ]
     do {
-      let (request, fullDictionary) = try APIHelpers.getRequestWith(query: PearDiscoveryAPI.getDiscoveryFeedQuery,
-                                              variables: variables)
+      let (request, fullDictionary) = try APIHelpers.getRequestWith(query: PearDiscoveryAPI.getDiscoveryCardsQuery,
+                                                                    variables: variables)
       let dataTask = URLSession.shared.dataTask(with: request) { (data, _, error) in
         if let error = error {
           SentryHelper.generateSentryEvent(level: .error,
-                                           apiName: "GetDiscoveryFeed",
-                                           functionName: "GetDiscoveryFeed",
+                                           apiName: "PearDiscoveryAPI",
+                                           functionName: "GetDiscoveryCards",
                                            message: "\(String(describing: error.localizedDescription))",
-                                           responseData: data,
-                                           tags: [:],
-                                           payload: fullDictionary)
+            responseData: data,
+            tags: [:],
+            payload: fullDictionary)
         } else {
           if let data = data,
             let json = try? JSON(data: data),
-            let discoveryUser = json["data"]["getDiscoveryFeed"]["currentDiscoveryItems"].array {
+            let discoveryUser = json["data"]["getDiscoveryCards"]["items"].array {
             var allFullProfiles: [FullProfileDisplayData] = []
             for userData in discoveryUser {
               do {
@@ -69,7 +110,7 @@ extension PearDiscoveryAPI {
           } else {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearDiscoveryAPI",
-                                             functionName: "GetDiscoveryFeed",
+                                             functionName: "GetDiscoveryCards",
                                              message: "Failed Discovery Serialization",
                                              responseData: data,
                                              tags: [:],
@@ -84,7 +125,7 @@ extension PearDiscoveryAPI {
       print("Error Creating API Request: \(error)")
       SentryHelper.generateSentryEvent(level: .error,
                                        apiName: "PearDiscoveryAPI",
-                                       functionName: "GetDiscoveryFeed",
+                                       functionName: "GetDiscoveryCards",
                                        message: "\(String(describing: error.localizedDescription))")
     }
   }
