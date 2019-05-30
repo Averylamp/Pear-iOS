@@ -38,10 +38,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="onboarding-meme-2" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
-                                <rect key="frame" x="20" y="138.66666666666669" width="335" height="543.33333333333326"/>
+                                <rect key="frame" x="20" y="111.33333333333331" width="335" height="570.66666666666674"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;It takes a village,&quot; after all" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
-                                <rect key="frame" x="30" y="64" width="315" height="54.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After all, it takes a village." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
+                                <rect key="frame" x="30" y="64" width="315" height="27.333333333333329"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
