@@ -138,6 +138,7 @@
 		BB687E8B228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */; };
 		BB70B034229F418600EB2BD9 /* PromptPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */; };
 		BB70B036229F419000EB2BD9 /* PromptPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */; };
+		BB70B038229F543400EB2BD9 /* PromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */; };
 		BB714123228B4F6500129C93 /* Cera-Pro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */; };
 		BB719A43228D3FDE00007D69 /* CoreLocation+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A42228D3FDE00007D69 /* CoreLocation+Helpers.swift */; };
 		BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB719A44228D447000007D69 /* DataStore+Notifications.swift */; };
@@ -470,6 +471,7 @@
 		BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMoreDetailsViewController.swift; sourceTree = "<group>"; };
 		BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptPickerViewController.swift; sourceTree = "<group>"; };
 		BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptPickerViewController.storyboard; sourceTree = "<group>"; };
+		BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTableViewCell.swift; sourceTree = "<group>"; };
 		BB714122228B4F6500129C93 /* Cera-Pro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera-Pro-Black.otf"; sourceTree = "<group>"; };
 		BB719A42228D3FDE00007D69 /* CoreLocation+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreLocation+Helpers.swift"; sourceTree = "<group>"; };
 		BB719A44228D447000007D69 /* DataStore+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Notifications.swift"; sourceTree = "<group>"; };
@@ -1944,6 +1946,7 @@
 				BBBB38AB229F207D00DEFF5E /* UpdateUserPromptsStackViewController.storyboard */,
 				BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */,
 				BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */,
+				BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */,
 			);
 			path = "User Prompts";
 			sourceTree = "<group>";
@@ -2604,6 +2607,7 @@
 				BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */,
 				BB633D36228632A7005E120F /* DisoveryAPI.swift in Sources */,
 				BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */,
+				BB70B038229F543400EB2BD9 /* PromptTableViewCell.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
 				BB20118F228EAB4100BC85C0 /* InfoItemTableViewCell.swift in Sources */,

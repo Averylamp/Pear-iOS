@@ -9,11 +9,15 @@
 import UIKit
 
 class PromptPickerViewController: UIViewController {
-
+  
+  var allPrompts: [QuestionResponseItem] = []
+  var visiblePrompts: [QuestionResponseItem] = []
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> PromptPickerViewController? {
+  class func instantiate(allPrompts: [QuestionResponseItem],
+                         visiblePrompts: [QuestionResponseItem]) -> PromptPickerViewController? {
     guard let promptPickerVC = R.storyboard.promptPickerViewController
       .instantiateInitialViewController() else { return nil }
     return promptPickerVC
