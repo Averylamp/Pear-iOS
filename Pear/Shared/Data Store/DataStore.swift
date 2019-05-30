@@ -49,6 +49,8 @@ class DataStore: NSObject {
   var locationManager: CLLocationManager
   var firstLocationReceived: Bool = false
   
+  var userEvents: [PearEvent] = []
+  
   var firebaseRemoteInstanceID: String? // for push notifications via Firebase Cloud Messaging
   var possibleQuestions: [QuestionItem] = []
   
