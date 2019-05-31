@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class OnboardingBasicInfoViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class OnboardingBasicInfoViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> OnboardingBasicInfoViewController? {
+    Analytics.logEvent("setup_profile_begin", parameters: nil)
     guard let onboardingFriendNameVC = R.storyboard.onboardingBasicInfoViewController()
       .instantiateInitialViewController() as? OnboardingBasicInfoViewController else { return nil }
     return onboardingFriendNameVC

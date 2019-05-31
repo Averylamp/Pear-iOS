@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class OnboardingExplainationPage4ViewController: UIViewController {
   
@@ -28,6 +29,7 @@ class OnboardingExplainationPage4ViewController: UIViewController {
   
   @IBAction func joinWithFriendClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("how_it_works_complete", parameters: nil)
     guard let joinFriendInfoVC = OnboardingFriendInfoViewController.instantiate() else {
       print("Failed to create next Onboarding Info Page")
       return
@@ -37,6 +39,7 @@ class OnboardingExplainationPage4ViewController: UIViewController {
   
   @IBAction func joinBySelfClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    Analytics.logEvent("how_it_works_complete", parameters: nil)
     guard let basicInfoVC = OnboardingBasicInfoViewController.instantiate() else {
       print("Failed to create next Onboarding Info Page")
       return

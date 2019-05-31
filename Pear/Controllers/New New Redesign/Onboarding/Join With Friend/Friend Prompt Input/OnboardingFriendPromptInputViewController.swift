@@ -524,6 +524,7 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
     case .cancelled, .failed:
       self.dismissMessageVC(controller: controller)
     case .sent:
+      Analytics.logEvent("invite_friend_complete", parameters: nil)
       controller.dismiss(animated: true) {
         if let profileData = self.profileData {
           profileData.questionResponses = self.answeredPrompts
