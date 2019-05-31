@@ -23,8 +23,7 @@ class ChatMainViewController: UIViewController {
 
   var requestsTVC: ChatRequestsTableViewController?
   var matchesTVC: ChatRequestsTableViewController?
-  private var messageRequestRefreshTimer: Timer = Timer()
-  private var requestRefreshTimer: Timer = Timer()
+  private var messageRefreshTimer: Timer = Timer()
 
   /// Factory method for creating this view controller.
   ///
@@ -125,16 +124,11 @@ extension ChatMainViewController {
   
   func setup() {
     self.scrollView.delegate = self
-    self.messageRequestRefreshTimer = Timer.scheduledTimer(timeInterval: 10,
+    self.messageRefreshTimer = Timer.scheduledTimer(timeInterval: 15,
                                              target: self,
                                              selector: #selector(ChatMainViewController.reloadChatVCData),
                                              userInfo: nil,
                                              repeats: true)
-    self.requestRefreshTimer = Timer.scheduledTimer(timeInterval: 10,
-                                                           target: self,
-                                                           selector: #selector(ChatMainViewController.reloadChatVCData),
-                                                           userInfo: nil,
-                                                           repeats: true)
   }
   
   override func viewWillAppear(_ animated: Bool) {
