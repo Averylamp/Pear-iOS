@@ -20,8 +20,9 @@ class PromptTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     self.cardView.translatesAutoresizingMaskIntoConstraints = false
-    self.cardView.backgroundColor = UIColor(red: 1.00, green: 0.93, blue: 0.88, alpha: 1.00)
-    self.cardView.layer.cornerRadius = 12.0
+    self.cardView.layer.cornerRadius = 12
+    self.cardView.layer.borderWidth = 1.0
+    self.cardView.layer.borderColor = UIColor(white: 0.95, alpha: 1.0).cgColor
     self.thumbnailImage.contentMode = .scaleAspectFill
     self.thumbnailImage.layer.cornerRadius = self.thumbnailImage.frame.height / 2.0
     self.thumbnailImage.clipsToBounds = true
@@ -40,6 +41,7 @@ class PromptTableViewCell: UITableViewCell {
       self.responseLabel.font = font
     }
     self.responseLabel.textColor = UIColor(white: 0.6, alpha: 1.0)
+    self.selectionStyle = .none
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,6 +51,22 @@ class PromptTableViewCell: UITableViewCell {
   }
   
   func stylize(prompt: QuestionResponseItem) {
+    self.questionLabel.text = prompt.question.questionText
+    self.creatorNameLabel.text = prompt.authorFirstName
+    self.responseLabel.text = prompt.responseBody
+
+    if let thumbnailImageString = prompt.authorThumbnailURL,
+      let thumbnailURL = URL(string: thumbnailImageString) {
+      self.thumbnailImage.sd_setImage(with: thumbnailURL, completed: nil)
+    } else {
+      self.thumbnailImage.image = R.image.friendsNoImage()
+    }
+    
+    if prompt.hidden == false {
+      self.cardView.alpha = 0.3
+    } else {
+      self.cardView.alpha = 1.0
+    }
     
   }
   

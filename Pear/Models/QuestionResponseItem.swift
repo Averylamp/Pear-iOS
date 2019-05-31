@@ -133,6 +133,9 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
     if let icon = self.icon {
       input[QuestionResponseItemKey.icon.rawValue] = icon
     }
+    if let authorThumbnailURL = self.authorThumbnailURL {
+      input[QuestionResponseItemKey.authorThumbnailURL.rawValue] = authorThumbnailURL
+    }
     return input
   }
   
