@@ -135,14 +135,9 @@ class DiscoveryFullProfileViewController: UIViewController {
       print("Failed to get personal User ID")
       return
     }
-    if let profileCount = DataStore.shared.currentPearUser?.endorserIDs.count,
-      profileCount > 0 {
-      self.displayPersonalRequestVC(personalUserID: personalUserID,
-                                    thumbnailImageURL: requestedThumbnailURL,
-                                    requestPersonName: self.fullProfileData.firstName ?? "")
-    } else {
-      self.promptProfileRequest()
-    }
+    self.displayPersonalRequestVC(personalUserID: personalUserID,
+                                  thumbnailImageURL: requestedThumbnailURL,
+                                  requestPersonName: self.fullProfileData.firstName ?? "")
   }
   
   @objc func matchOptionClicked(sender: UIButton) {
