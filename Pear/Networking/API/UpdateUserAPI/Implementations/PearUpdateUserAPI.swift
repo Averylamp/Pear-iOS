@@ -109,6 +109,13 @@ extension PearUpdateUserAPI {
                                   mutationName: "UpdateUserSeeking",
                                   completion: completion)
   }
+  
+  func updateUserPrompts(prompts: [QuestionResponseItem],
+                         completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void) {
+    self.updateUserWithDictionary(inputDictionary: ["questionResponses": prompts.map({ $0.toGraphQLInput()})],
+                                  mutationName: "UpdateUserPrompts",
+                                  completion: completion)
+  }
 }
 
 // MARK: - Generic Update Function
