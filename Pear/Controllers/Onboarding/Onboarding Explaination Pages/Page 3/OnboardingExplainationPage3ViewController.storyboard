@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mJ8-wo-IG8">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboarding Explaination Page3 View Controller-->
+        <scene sceneID="tvC-Z9-dcT">
+            <objects>
+                <viewController id="mJ8-wo-IG8" customClass="OnboardingExplainationPage3ViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bQA-7c-lJe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMf-C0-kyc">
+                                <rect key="frame" x="20" y="587" width="335" height="60"/>
+                                <color key="backgroundColor" name="primaryBrandColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="JLg-gj-etk"/>
+                                </constraints>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueButtonClicked:" destination="mJ8-wo-IG8" eventType="touchUpInside" id="IGV-I1-M32"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="onboarding-meme-3" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-s1-RX1">
+                                <rect key="frame" x="20" y="114.5" width="335" height="456.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plus, our friends usually know us well for a reason." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="he2-Fq-k2b">
+                                <rect key="frame" x="30" y="40" width="315" height="54.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mUb-Hy-RWF" firstAttribute="trailing" secondItem="L3Q-s1-RX1" secondAttribute="trailing" constant="20" id="3yJ-q2-zz4"/>
+                            <constraint firstItem="L3Q-s1-RX1" firstAttribute="top" secondItem="he2-Fq-k2b" secondAttribute="bottom" constant="20" id="LAi-mq-vuz"/>
+                            <constraint firstItem="EMf-C0-kyc" firstAttribute="top" secondItem="L3Q-s1-RX1" secondAttribute="bottom" constant="16" id="OJ9-Hn-7Lq"/>
+                            <constraint firstItem="L3Q-s1-RX1" firstAttribute="leading" secondItem="mUb-Hy-RWF" secondAttribute="leading" constant="20" id="RVz-Ct-pce"/>
+                            <constraint firstItem="mUb-Hy-RWF" firstAttribute="bottom" secondItem="EMf-C0-kyc" secondAttribute="bottom" constant="20" id="S4j-0X-FHY"/>
+                            <constraint firstItem="mUb-Hy-RWF" firstAttribute="trailing" secondItem="EMf-C0-kyc" secondAttribute="trailing" constant="20" id="kSG-nH-bjB"/>
+                            <constraint firstItem="EMf-C0-kyc" firstAttribute="leading" secondItem="mUb-Hy-RWF" secondAttribute="leading" constant="20" id="nnb-Le-yMH"/>
+                            <constraint firstItem="he2-Fq-k2b" firstAttribute="top" secondItem="mUb-Hy-RWF" secondAttribute="top" constant="20" id="t4i-7F-a2G"/>
+                            <constraint firstItem="mUb-Hy-RWF" firstAttribute="trailing" secondItem="he2-Fq-k2b" secondAttribute="trailing" constant="30" id="tOt-aq-xtN"/>
+                            <constraint firstItem="he2-Fq-k2b" firstAttribute="leading" secondItem="mUb-Hy-RWF" secondAttribute="leading" constant="30" id="zQq-8L-9l9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mUb-Hy-RWF"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="EMf-C0-kyc" id="MSE-bc-doy"/>
+                        <outlet property="memeImageView" destination="L3Q-s1-RX1" id="vXN-0N-tLN"/>
+                        <outlet property="titleLabel" destination="he2-Fq-k2b" id="ofX-6K-CDg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rSm-z6-ixv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="691" y="-62"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onboarding-meme-3" width="1077" height="1089"/>
+        <namedColor name="primaryBrandColor">
+            <color red="0.29411764705882354" green="0.86274509803921573" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -185,6 +185,17 @@ extension LoadingScreenViewController {
       }
     }
   }
+  
+  func testGetEvent() {
+    PearEventAPI.shared.getEvent(eventID: "5cec470fcbfa9d14ed04c8e5") { (result) in
+      switch result {
+      case .success(let successful):
+        print(successful)
+      case .failure(let error):
+        print("Failure getting event: \(error)")
+      }
+    }
+  }
 //  
 //  func testUserProfileUpdates() {
 //    PearProfileAPI.shared.editUserProfile(profileDocumentID: "5ca7e1bea4b35e29efff5258",

@@ -8,8 +8,6 @@
 
 import UIKit
 import Firebase
-import FacebookCore
-import FacebookLogin
 import Fabric
 import Crashlytics
 import Sentry
@@ -27,7 +25,7 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
     FirebaseApp.configure()
     Messaging.messaging().delegate = self
-    
+
     Fabric.with([Crashlytics.self])
     
     do {
@@ -37,8 +35,6 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     } catch let error {
       print("\(error)")
     }
-    
-    SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     
     #if DEVMODE
     if CommandLine.arguments.contains("--uitesting") {
@@ -74,14 +70,9 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     } catch {
       print("Failed Firebase Auth")
     }
-    LoginManager().logOut()
   }
   
   func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-    if SDKApplicationDelegate.shared.application(app, open: url, options: options) {
-      print("FBSDK LINK DETECTED")
-      return true
-    }
     return application(app, open: url,
                        sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                        annotation: "")
