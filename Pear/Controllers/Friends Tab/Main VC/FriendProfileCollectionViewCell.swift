@@ -44,7 +44,7 @@ class FriendProfileCollectionViewCell: UICollectionViewCell {
       self.firstImageView.sd_setImage(with: firstImageURL, completed: nil)
       self.nameLabel.isHidden = true
     } else {
-      self.firstImageView.image = R.image.friendsNoImage()
+      self.firstImageView.image = R.image.discoveryPlacholderUserImage()
       self.nameLabel.isHidden = false
       self.nameLabel.text = profileData.firstName
     }

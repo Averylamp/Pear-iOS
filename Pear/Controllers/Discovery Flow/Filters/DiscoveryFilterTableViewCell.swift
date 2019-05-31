@@ -38,7 +38,7 @@ extension DiscoveryFilterTableViewCell {
           let firstImageURL = URL(string: firstImageURLString) {
           self.thumbnailImage.sd_setImage(with: firstImageURL, completed: nil)
         } else {
-          self.thumbnailImage.image = R.image.friendsNoImage()
+          self.thumbnailImage.image = R.image.discoveryPlacholderUserImage()
         }
       }
     case .endorsedUser:
@@ -48,7 +48,7 @@ extension DiscoveryFilterTableViewCell {
           let firstImageURL = URL(string: firstImageURLString) {
           self.thumbnailImage.sd_setImage(with: firstImageURL, completed: nil)
         } else {
-          self.thumbnailImage.image = R.image.friendsNoImage()
+          self.thumbnailImage.image = R.image.discoveryPlacholderUserImage()
         }
       }
     case .detachedProfile:
@@ -58,7 +58,7 @@ extension DiscoveryFilterTableViewCell {
           let firstImageURL = URL(string: firstImageURLString) {
           self.thumbnailImage.sd_setImage(with: firstImageURL, completed: nil)
         } else {
-          self.thumbnailImage.image = R.image.friendsNoImage()
+          self.thumbnailImage.image = R.image.discoveryPlacholderUserImage()
         }
       }
     }

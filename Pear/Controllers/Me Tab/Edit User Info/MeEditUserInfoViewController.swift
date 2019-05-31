@@ -163,11 +163,9 @@ extension MeEditUserInfoViewController {
   
   func setup() {
     self.stackView.addSpacer(height: 20.0)
-    self.addTitleSection(title: "Photos")
     self.addPhotosSection()
-//    self.stackView.addSpacer(height: 10.0)
-//    self.addTitleSection(title: "Prompts")
-//    self.addPromptsSection()
+    self.stackView.addSpacer(height: 10.0)
+    self.addPromptsSection()
     self.stackView.addSpacer(height: 30.0)
     self.addBasicInfo()
     self.stackView.addSpacer(height: 20.0)
@@ -180,7 +178,10 @@ extension MeEditUserInfoViewController {
     
     let titleLabel = UILabel()
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.stylizeEditTitleLabel()
+    if let font = R.font.openSansBold(size: 16) {
+      titleLabel.font = font
+    }
+    titleLabel.textColor =  UIColor(white: 0.6, alpha: 1.0)
     titleLabel.text = title
     containerView.addSubview(titleLabel)
     containerView.addConstraints([
@@ -219,6 +220,7 @@ extension MeEditUserInfoViewController {
   }
   
   func addPhotosSection() {
+    self.addTitleSection(title: "Photos")
     var allImages: [LoadedImageContainer] = []
     self.pearUser.displayedImages.forEach({
       allImages.append($0.loadedImageContainer())
@@ -235,7 +237,7 @@ extension MeEditUserInfoViewController {
   }
   
   func addPromptsSection() {
-    
+    self.addTitleSection(title: "Prompts")
     guard let promptsVC = UpdateUserPromptsStackViewController.instantiate() else {
       print("Unable to instantiate prompts vc")
       return
