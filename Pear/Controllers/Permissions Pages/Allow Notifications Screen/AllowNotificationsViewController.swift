@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import CoreLocation
+import FirebaseAnalytics
 
 class AllowNotificationsViewController: UIViewController {
   
@@ -32,6 +33,7 @@ class AllowNotificationsViewController: UIViewController {
       options: [.badge, .alert, .sound]) { (granted, _) in
         print("Permission granted: \(granted)")
         if granted {
+          Analytics.logEvent("enable_notifications", parameters: nil)
           // register for remote notifications
           DataStore.shared.registerForRemoteNotificationsIfAuthorized()
           self.continueToOnboardingOrMain()
