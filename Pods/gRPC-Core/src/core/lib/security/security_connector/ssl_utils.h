@@ -26,6 +26,7 @@
 #include <grpc/grpc_security.h>
 #include <grpc/slice_buffer.h>
 
+#include "src/core/lib/gprpp/ref_counted_ptr.h"
 #include "src/core/tsi/ssl_transport_security.h"
 #include "src/core/tsi/transport_security_interface.h"
 
@@ -47,7 +48,8 @@ grpc_get_tsi_client_certificate_request_type(
 const char** grpc_fill_alpn_protocol_strings(size_t* num_alpn_protocols);
 
 /* Exposed for testing only. */
-grpc_auth_context* grpc_ssl_peer_to_auth_context(const tsi_peer* peer);
+grpc_core::RefCountedPtr<grpc_auth_context> grpc_ssl_peer_to_auth_context(
+    const tsi_peer* peer);
 tsi_peer grpc_shallow_peer_from_ssl_auth_context(
     const grpc_auth_context* auth_context);
 void grpc_shallow_peer_destruct(tsi_peer* peer);
@@ -85,6 +87,39 @@ class DefaultSslRootStore {
 
   // Default PEM root certificates.
   static grpc_slice default_pem_root_certs_;
+};
+
+class PemKeyCertPair {
+ public:
+  // Construct from the C struct.  We steal its members and then immediately
+  // free it.
+  explicit PemKeyCertPair(grpc_ssl_pem_key_cert_pair* pair)
+      : private_key_(const_cast<char*>(pair->private_key)),
+        cert_chain_(const_cast<char*>(pair->cert_chain)) {
+    gpr_free(pair);
+  }
+
+  // Movable.
+  PemKeyCertPair(PemKeyCertPair&& other) {
+    private_key_ = std::move(other.private_key_);
+    cert_chain_ = std::move(other.cert_chain_);
+  }
+  PemKeyCertPair& operator=(PemKeyCertPair&& other) {
+    private_key_ = std::move(other.private_key_);
+    cert_chain_ = std::move(other.cert_chain_);
+    return *this;
+  }
+
+  // Not copyable.
+  PemKeyCertPair(const PemKeyCertPair&) = delete;
+  PemKeyCertPair& operator=(const PemKeyCertPair&) = delete;
+
+  char* private_key() const { return private_key_.get(); }
+  char* cert_chain() const { return cert_chain_.get(); }
+
+ private:
+  grpc_core::UniquePtr<char> private_key_;
+  grpc_core::UniquePtr<char> cert_chain_;
 };
 
 }  // namespace grpc_core

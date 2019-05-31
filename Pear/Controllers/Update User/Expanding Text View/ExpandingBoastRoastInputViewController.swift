@@ -41,8 +41,8 @@ class ExpandingBoastRoastInputViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(type: ExpandingBoastRoastInputType, initialText: String? = nil) -> ExpandingBoastRoastInputViewController? {
-    guard let expandingTextVC = R.storyboard.expandingBoastRoastInputViewController()
-      .instantiateInitialViewController() as? ExpandingBoastRoastInputViewController else { return nil }
+    guard let expandingTextVC = R.storyboard.expandingBoastRoastInputViewController
+      .instantiateInitialViewController() else { return nil }
     expandingTextVC.type = type
     expandingTextVC.initialText = initialText
     return expandingTextVC

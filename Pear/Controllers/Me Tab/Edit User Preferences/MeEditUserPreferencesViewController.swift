@@ -21,8 +21,8 @@ class MeEditUserPreferencesViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> MeEditUserPreferencesViewController? {
-    guard let userPreferencesVC = R.storyboard.meEditUserPreferencesViewController()
-      .instantiateInitialViewController() as? MeEditUserPreferencesViewController else { return nil }
+    guard let userPreferencesVC = R.storyboard.meEditUserPreferencesViewController
+      .instantiateInitialViewController()  else { return nil }
     return userPreferencesVC
   }
   
@@ -81,6 +81,15 @@ class MeEditUserPreferencesViewController: UIViewController {
                                                             case .success(let successful):
                                                               if successful {
                                                                 print("Successfully update user preferences")
+                                                                // refresh discovery feed if browsing for self and preferences updated
+                                                                if let user = DataStore.shared.currentPearUser {
+                                                                  if DataStore.shared.filteringForUserIdFromDefaults() == nil {
+                                                                    NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
+                                                                  } else if let filteringForID = DataStore.shared.filteringForUserIdFromDefaults(),
+                                                                    filteringForID == user.documentID {
+                                                                    NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
+                                                                  }
+                                                                }
                                                               } else {
                                                                 print("Failed to update user preferences")
                                                               }

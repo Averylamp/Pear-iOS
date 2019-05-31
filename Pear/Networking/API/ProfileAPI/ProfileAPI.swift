@@ -29,8 +29,6 @@ protocol ProfileAPI {
                                 completion: @escaping(Result<PearDetachedProfile, DetachedProfileError>) -> Void)
   func checkDetachedProfiles(phoneNumber: String, completion: @escaping(Result<[PearDetachedProfile], DetachedProfileError>) -> Void)
   func attachDetachedProfile(detachedProfile: PearDetachedProfile, completion: @escaping(Result<Bool, DetachedProfileError>) -> Void)
-  func getDiscoveryFeed(user_id: String,
-                        completion: @escaping(Result<[FullProfileDisplayData], DetachedProfileError>) -> Void)
   func updateDetachedProfile(updates: [String: Any], completion: @escaping(Result<Bool, ProfileAPIError>) -> Void)
   func updateEndorsedProfile(updates: [String: Any], completion: @escaping(Result<Bool, ProfileAPIError>) -> Void)
 }

@@ -19,11 +19,12 @@ protocol PromptSMSProtocol {
 extension PromptSMSProtocol {
   
   func getSMSCanceledVC(profileData: ProfileCreationData) -> UIViewController? {
-    guard let smsCancledVC = SMSCanceledViewController.instantiate(profileCreationData: profileData) else {
-      print("Failed to create SMS Cancelled VC")
-      return nil
-    }
-    return smsCancledVC
+    // TODO(@averylamp): Fix
+//    guard let smsCancledVC = SMSCanceledViewController.instantiate(profileCreationData: profileData) else {
+//      print("Failed to create SMS Cancelled VC")
+//      return nil
+//    }
+    return nil
   }
   
   func getMessageComposer(profileData: ProfileCreationData) -> MFMessageComposeViewController? {
@@ -75,7 +76,7 @@ extension PromptSMSProtocol {
       switch result {
       case .success(let detachedProfile):
         Analytics.logEvent("CP_SUCCESS", parameters: nil)
-        DataStore.shared.reloadAllUserData()
+        DataStore.shared.reloadAllUserData(completion: nil)
         completion(.success(detachedProfile))
       case .failure(let error):
         Analytics.logEvent("CP_FAIL", parameters: nil)
