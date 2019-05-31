@@ -30,8 +30,8 @@ extension DiscoveryFullProfileViewController {
   }
   
   func promptProfileRequest() {
-    let alertController = UIAlertController(title: "Match with yourself?",
-                                            message: "To match this person with yourself, ask a friend to make you a profile first!",
+    let alertController = UIAlertController(title: "Complete your profile?",
+                                            message: "Complete profiles recieve 2.4x as many matches!  Invite a friend to write something about you.",
                                             preferredStyle: .alert)
     let createProfile = UIAlertAction(title: "Ask a friend", style: .default) { (_) in
       DispatchQueue.main.async {
