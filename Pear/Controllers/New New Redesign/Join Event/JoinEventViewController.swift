@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import CoreLocation
+import FirebaseAnalytics
 
 class JoinEventViewController: UIViewController {
   
@@ -174,6 +175,7 @@ extension JoinEventViewController {
       return
     }
     print("tapped DMF button")
+    Analytics.logEvent("join_event", parameters: nil)
     self.isAddingEvent = true
     PearUserAPI.shared.addEventCode(code: "SUMMERLOVE") { (result) in
       self.isAddingEvent = false

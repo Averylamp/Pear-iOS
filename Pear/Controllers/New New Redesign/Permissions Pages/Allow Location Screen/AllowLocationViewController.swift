@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import FirebaseAnalytics
 
 // if you're logging in and have a PearUser assigned to you, but for whatever reason don't have location authorized
 // After you complete the flow of this VC, you're taken to the main VC
@@ -29,6 +30,7 @@ class AllowLocationViewController: UIViewController {
   
   @IBAction func enableLocationClicked(_ sender: Any) {
     let status = CLLocationManager.authorizationStatus()
+    Analytics.logEvent("enable_location", parameters: nil)
     self.handleAuthorizationStatus(status: status)
   }
   
