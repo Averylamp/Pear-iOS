@@ -99,7 +99,7 @@ extension UpdateUserPromptsStackViewController {
       let imageURL = URL(string: imageURLString) {
       thumbnailImageView.sd_setImage(with: imageURL, completed: nil)
     } else {
-      thumbnailImageView.image = R.image.friendsNoImage()
+      thumbnailImageView.image = R.image.discoveryPlacholderUserImage()
     }
     let thumbnailSize: CGFloat = 24
     thumbnailImageView.layer.cornerRadius = thumbnailSize / 2.0

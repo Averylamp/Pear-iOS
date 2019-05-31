@@ -23,15 +23,17 @@ class OnboardingFriendInfoViewController: UIViewController {
   
   var responseInputVC: SimpleFieldInputViewController?
   
-  var profileData: ProfileCreationData?
+  var profileData: ProfileCreationData!
   var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
-  
+  var titleLabelText: String?
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> OnboardingFriendInfoViewController? {
+  class func instantiate(profileData: ProfileCreationData, titleLabelText: String? = nil) -> OnboardingFriendInfoViewController? {
     guard let onboardingFriendInfoVC = R.storyboard.onboardingFriendInfoViewController
       .instantiateInitialViewController()  else { return nil }
+    onboardingFriendInfoVC.titleLabelText = titleLabelText
+    onboardingFriendInfoVC.profileData = profileData
     return onboardingFriendInfoVC
   }
   
@@ -41,7 +43,8 @@ class OnboardingFriendInfoViewController: UIViewController {
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let friendNameInputVC = OnboardingFriendNameViewController.instantiate() else {
+    guard let friendNameInputVC = OnboardingFriendNameViewController.instantiate(profileData: self.profileData,
+                                                                                 titleLabelText: self.titleLabelText) else {
       print("Unable to create friend name input VC")
       return
     }
@@ -65,6 +68,9 @@ extension OnboardingFriendInfoViewController {
   
   func stylize() {
     self.titleLabel.stylizeOnboardingHeaderTitleLabel()
+    if let titleLabelText = self.titleLabelText {
+      self.titleLabel.text = titleLabelText
+    }
     self.continueButton.stylizeOnboardingContinueButton()
     if UIScreen.main.bounds.width <= 320 {
       labelGroup.forEach {

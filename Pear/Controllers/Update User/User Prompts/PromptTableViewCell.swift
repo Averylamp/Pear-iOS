@@ -59,7 +59,7 @@ class PromptTableViewCell: UITableViewCell {
       let thumbnailURL = URL(string: thumbnailImageString) {
       self.thumbnailImage.sd_setImage(with: thumbnailURL, completed: nil)
     } else {
-      self.thumbnailImage.image = R.image.friendsNoImage()
+      self.thumbnailImage.image = R.image.discoveryPlacholderUserImage()
     }
     
     if prompt.hidden == false {
