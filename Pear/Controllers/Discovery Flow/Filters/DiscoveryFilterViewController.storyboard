@@ -33,7 +33,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="y16-WM-9hJ" secondAttribute="height" multiplier="1:1" id="fHl-Vr-ItU"/>
                                         </constraints>
-                                        <state key="normal" image="icon-filter-back"/>
+                                        <state key="normal" image="filters-back-icon"/>
                                         <connections>
                                             <action selector="backButtonClicked:" destination="S1D-m6-yiu" eventType="touchUpInside" id="zmw-4D-iCv"/>
                                         </connections>
@@ -117,35 +117,86 @@
                                             <outlet property="thumbnailImage" destination="hKy-UC-BZe" id="sKQ-uV-HX5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CreateProfileTVC" rowHeight="60" id="KDz-5C-KRv" customClass="DiscoveryFilterTableViewCell" customModule="Pear" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="382" width="414" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventFilterTVC" rowHeight="354" id="7qB-Gw-4Kv" customClass="EventFilterTableViewCell" customModule="Pear" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="382" width="414" height="354"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KDz-5C-KRv" id="5aT-21-2yz">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7qB-Gw-4Kv" id="6ZN-SY-uEp">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="354"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AU5-Iu-Kuq">
-                                                    <rect key="frame" x="91.999999999999986" y="27.666666666666671" width="139.66666666666663" height="21"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-checkbox-unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="Lx9-2U-skv">
+                                                    <rect key="frame" x="380" y="89.333333333333329" width="18" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Lx9-2U-skv" secondAttribute="height" multiplier="1:1" id="TaN-pX-dGP"/>
+                                                        <constraint firstAttribute="width" constant="18" id="wbw-MB-Hob"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIf-pZ-PXw">
+                                                    <rect key="frame" x="214.66666666666663" y="87.999999999999986" width="157.33333333333337" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-icon-plus" translatesAutoresizingMaskIntoConstraints="NO" id="MUG-5h-bHN">
-                                                    <rect key="frame" x="28" y="13" width="48" height="48"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discovery-icon-event" translatesAutoresizingMaskIntoConstraints="NO" id="fOd-R0-Qll">
+                                                    <rect key="frame" x="28" y="13" width="170.66666666666666" height="170.66666666666666"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="MUG-5h-bHN" secondAttribute="height" multiplier="1:1" id="1p9-bU-VVy"/>
-                                                        <constraint firstAttribute="width" constant="48" id="ycB-gh-AVu"/>
+                                                        <constraint firstAttribute="width" constant="48" id="CY7-xb-WRZ"/>
+                                                        <constraint firstAttribute="width" secondItem="fOd-R0-Qll" secondAttribute="height" multiplier="1:1" id="sjo-UE-tUb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter-checkbox-checked" translatesAutoresizingMaskIntoConstraints="NO" id="5Pb-vc-7ru">
+                                                    <rect key="frame" x="377" y="86.333333333333329" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="5Pb-vc-7ru" secondAttribute="height" multiplier="1:1" id="5XV-vA-dJI"/>
+                                                        <constraint firstAttribute="width" constant="24" id="IUL-vf-tGG"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="AU5-Iu-Kuq" firstAttribute="centerY" secondItem="5aT-21-2yz" secondAttribute="centerY" id="ART-uT-yEf"/>
-                                                <constraint firstItem="AU5-Iu-Kuq" firstAttribute="leading" secondItem="MUG-5h-bHN" secondAttribute="trailing" constant="16" id="KtB-rv-Hj9"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="MUG-5h-bHN" secondAttribute="bottom" constant="4" id="OvO-H6-BPd"/>
-                                                <constraint firstItem="MUG-5h-bHN" firstAttribute="top" secondItem="5aT-21-2yz" secondAttribute="topMargin" constant="2" id="R14-3v-1cH"/>
-                                                <constraint firstItem="MUG-5h-bHN" firstAttribute="leading" secondItem="5aT-21-2yz" secondAttribute="leadingMargin" constant="8" id="gSA-Xo-9mb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fOd-R0-Qll" secondAttribute="bottom" constant="2" id="ALq-b0-xTn"/>
+                                                <constraint firstItem="Lx9-2U-skv" firstAttribute="centerY" secondItem="6ZN-SY-uEp" secondAttribute="centerY" id="IMa-ha-wAL"/>
+                                                <constraint firstItem="WIf-pZ-PXw" firstAttribute="leading" secondItem="fOd-R0-Qll" secondAttribute="trailing" constant="16" id="JhB-Nx-kRZ"/>
+                                                <constraint firstItem="fOd-R0-Qll" firstAttribute="leading" secondItem="6ZN-SY-uEp" secondAttribute="leadingMargin" constant="8" id="Mfz-TN-SY5"/>
+                                                <constraint firstItem="Lx9-2U-skv" firstAttribute="leading" secondItem="WIf-pZ-PXw" secondAttribute="trailing" constant="8" id="Ny8-iB-PIB"/>
+                                                <constraint firstItem="5Pb-vc-7ru" firstAttribute="centerY" secondItem="Lx9-2U-skv" secondAttribute="centerY" id="Pf5-Bk-9wY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Lx9-2U-skv" secondAttribute="trailing" constant="16" id="Y8I-zT-hxe"/>
+                                                <constraint firstItem="WIf-pZ-PXw" firstAttribute="centerY" secondItem="6ZN-SY-uEp" secondAttribute="centerY" id="mK6-5V-Og4"/>
+                                                <constraint firstItem="fOd-R0-Qll" firstAttribute="top" secondItem="6ZN-SY-uEp" secondAttribute="topMargin" constant="2" id="rgA-ao-j19"/>
+                                                <constraint firstItem="5Pb-vc-7ru" firstAttribute="centerX" secondItem="Lx9-2U-skv" secondAttribute="centerX" id="svd-Td-VG1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxBackground" destination="Lx9-2U-skv" id="hLp-c8-k2w"/>
+                                            <outlet property="checkboxChecked" destination="5Pb-vc-7ru" id="Wy4-on-jbU"/>
+                                            <outlet property="eventNameLabel" destination="WIf-pZ-PXw" id="ChY-sO-QFq"/>
+                                            <outlet property="thumbnailImage" destination="fOd-R0-Qll" id="owb-x0-bsJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddEventTVC" id="X4m-6c-lci" customClass="AddEventTableViewCell" customModule="Pear" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="736" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X4m-6c-lci" id="MQ5-Df-Wtk">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrZ-Md-CtB">
+                                                    <rect key="frame" x="20" y="10.000000000000004" width="374" height="50.333333333333343"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="gWn-xD-7FN"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Enter an event code"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="FrZ-Md-CtB" secondAttribute="bottom" constant="12" id="6Rw-wq-jON"/>
+                                                <constraint firstItem="FrZ-Md-CtB" firstAttribute="leading" secondItem="MQ5-Df-Wtk" secondAttribute="leading" constant="20" id="DYd-xr-wPw"/>
+                                                <constraint firstItem="FrZ-Md-CtB" firstAttribute="top" secondItem="MQ5-Df-Wtk" secondAttribute="top" constant="10" id="Zou-hQ-6hv"/>
+                                                <constraint firstAttribute="trailing" secondItem="FrZ-Md-CtB" secondAttribute="trailing" constant="20" id="n7W-zH-nTQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addEventButton" destination="FrZ-Md-CtB" id="hne-Rl-XUZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -153,11 +204,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7OV-Og-1PI" firstAttribute="trailing" secondItem="eQw-r2-k1L" secondAttribute="trailing" id="5Ir-2K-ANP"/>
+                            <constraint firstItem="eQw-r2-k1L" firstAttribute="bottom" secondItem="TpW-Jd-bnH" secondAttribute="bottom" id="ByC-hu-I9v"/>
                             <constraint firstItem="TpW-Jd-bnH" firstAttribute="top" secondItem="7OV-Og-1PI" secondAttribute="bottom" id="LJY-FX-nVm"/>
                             <constraint firstItem="eQw-r2-k1L" firstAttribute="trailing" secondItem="TpW-Jd-bnH" secondAttribute="trailing" id="OOs-dr-igi"/>
                             <constraint firstItem="7OV-Og-1PI" firstAttribute="leading" secondItem="eQw-r2-k1L" secondAttribute="leading" id="d8L-4Z-8Ch"/>
                             <constraint firstItem="TpW-Jd-bnH" firstAttribute="leading" secondItem="eQw-r2-k1L" secondAttribute="leading" id="leZ-tT-oXj"/>
-                            <constraint firstItem="eQw-r2-k1L" firstAttribute="bottom" secondItem="TpW-Jd-bnH" secondAttribute="bottom" id="rgG-P6-ZXU"/>
                             <constraint firstItem="7OV-Og-1PI" firstAttribute="top" secondItem="eQw-r2-k1L" secondAttribute="top" id="yec-Bv-k1I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eQw-r2-k1L"/>
@@ -172,9 +223,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="filter-checkbox-checked" width="24" height="24"/>
-        <image name="filter-checkbox-unchecked" width="18" height="18"/>
-        <image name="filter-icon-plus" width="48" height="48"/>
-        <image name="icon-filter-back" width="9.3333330154418945" height="14.666666984558105"/>
+        <image name="discovery-icon-event" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="filter-checkbox-checked" width="8" height="8"/>
+        <image name="filter-checkbox-unchecked" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="filters-back-icon" width="170.66667175292969" height="170.66667175292969"/>
     </resources>
 </document>

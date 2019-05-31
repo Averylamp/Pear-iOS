@@ -21,8 +21,8 @@ class ProfileQuestionResponseViewController: UITextViewItemViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(questionItem: QuestionResponseItem) -> ProfileQuestionResponseViewController? {
-    guard let bioVC = R.storyboard.profileQuestionResponseViewController()
-      .instantiateInitialViewController() as? ProfileQuestionResponseViewController else { return nil }
+    guard let bioVC = R.storyboard.profileQuestionResponseViewController
+      .instantiateInitialViewController() else { return nil }
     bioVC.questionItem = questionItem
     return bioVC
   }

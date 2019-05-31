@@ -29,8 +29,8 @@ class ProfileBoastRoastViewController: UITextViewItemViewController {
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(boastRoastItem: BoastRoastItem, userName: String?,
                          style: ItemStyle, maxLines: Int = 0) -> ProfileBoastRoastViewController? {
-    guard let profileBoastRoastVC = R.storyboard.profileBoastRoastViewController()
-      .instantiateInitialViewController() as? ProfileBoastRoastViewController else { return nil }
+    guard let profileBoastRoastVC = R.storyboard.profileBoastRoastViewController
+      .instantiateInitialViewController() else { return nil }
     profileBoastRoastVC.boastRoastItem = boastRoastItem
     profileBoastRoastVC.userName = userName
     profileBoastRoastVC.itemStyle = style

@@ -22,8 +22,8 @@ class ScrollableQuestionItemViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(items: [QuestionResponseItem]) -> ScrollableQuestionItemViewController? {
-    guard let scrollingItemVC = R.storyboard.scrollableQuestionItemViewController()
-      .instantiateInitialViewController() as? ScrollableQuestionItemViewController else { return nil }
+    guard let scrollingItemVC = R.storyboard.scrollableQuestionItemViewController
+      .instantiateInitialViewController()  else { return nil }
     scrollingItemVC.items = items
     return scrollingItemVC
   }

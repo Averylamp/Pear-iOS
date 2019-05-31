@@ -42,8 +42,8 @@ class MeTabMainViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> MeTabMainViewController? {
-    guard let meTabMainVC = R.storyboard.meTabMainViewController()
-      .instantiateInitialViewController() as? MeTabMainViewController else { return nil }
+    guard let meTabMainVC = R.storyboard.meTabMainViewController
+      .instantiateInitialViewController()  else { return nil }
     return meTabMainVC
   }
   
@@ -150,11 +150,6 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
       }
       self.navigationController?.pushViewController(editMeVC, animated: true)
     case .myPreferences:
-      guard let user = DataStore.shared.currentPearUser else {
-        print("Unable to get pear user")
-        return
-      }
-      let fullProfileDisplay = FullProfileDisplayData(user: user)
       guard let editUserPreferencesVC = MeEditUserPreferencesViewController.instantiate() else {
         print("Unable to instantiate edit user preferences")
         return
