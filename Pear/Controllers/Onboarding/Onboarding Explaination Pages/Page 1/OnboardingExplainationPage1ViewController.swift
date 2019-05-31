@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class OnboardingExplainationPage1ViewController: UIViewController {
   
@@ -18,6 +19,7 @@ class OnboardingExplainationPage1ViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> OnboardingExplainationPage1ViewController? {
+    Analytics.logEvent("how_it_works_begin", parameters: nil)
     guard let onboardingPage1VC = R.storyboard.onboardingExplainationPage1ViewController
       .instantiateInitialViewController()  else { return nil }
     
