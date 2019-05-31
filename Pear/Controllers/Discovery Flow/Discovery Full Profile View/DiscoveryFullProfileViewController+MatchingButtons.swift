@@ -176,7 +176,7 @@ extension DiscoveryFullProfileViewController {
     }
     
     // Only You in match buttons, generate placeholder endorsed
-    if allMatchButtons.count == 1 {
+    if allMatchButtons.count == 0 {
       let placeholderEndorsedButton = self.generateMatchButton(enabled: true)
       placeholderEndorsedButton.setImage(R.image.discoveryPlaceholderEndorsement(), for: .normal)
       
