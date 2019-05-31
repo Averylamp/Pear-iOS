@@ -61,7 +61,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKx-em-e81">
-                                <rect key="frame" x="0.0" y="70" width="375" height="517"/>
+                                <rect key="frame" x="0.0" y="82" width="375" height="505"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lpG-Cn-3kF">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -102,7 +102,7 @@
                         <constraints>
                             <constraint firstItem="SIR-1c-p7i" firstAttribute="bottom" secondItem="gj0-td-jTo" secondAttribute="bottom" constant="20" id="BpG-4y-R6R"/>
                             <constraint firstItem="SIR-1c-p7i" firstAttribute="trailing" secondItem="gj0-td-jTo" secondAttribute="trailing" constant="20" id="Mdv-pm-6N1"/>
-                            <constraint firstItem="sKx-em-e81" firstAttribute="top" secondItem="REG-GK-LWC" secondAttribute="bottom" id="O7t-qM-Mig"/>
+                            <constraint firstItem="sKx-em-e81" firstAttribute="top" secondItem="REG-GK-LWC" secondAttribute="bottom" constant="12" id="O7t-qM-Mig"/>
                             <constraint firstItem="gj0-td-jTo" firstAttribute="top" secondItem="sKx-em-e81" secondAttribute="bottom" id="Oaq-hh-g3T"/>
                             <constraint firstItem="gj0-td-jTo" firstAttribute="leading" secondItem="SIR-1c-p7i" secondAttribute="leading" constant="20" id="Obz-2j-cNh"/>
                             <constraint firstItem="REG-GK-LWC" firstAttribute="top" secondItem="SIR-1c-p7i" secondAttribute="top" id="awX-ZA-GVV"/>

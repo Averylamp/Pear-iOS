@@ -14,6 +14,7 @@ enum UserAPIError: Error {
   case failedDeserialization
   case unauthenticated
   case graphQLError(message: String)
+  case errorWithMessage(message: String)
 }
 
 protocol UserAPI {
@@ -40,5 +41,8 @@ protocol UserAPI {
   
   func addEventCode(code: String,
                     completion: @escaping(Result<Bool, UserAPIError>) -> Void)
+  
+  func getUserFromQRCode(userID: String,
+                         completion: @escaping(Result<FullProfileDisplayData, UserAPIError>) -> Void)
   
 }

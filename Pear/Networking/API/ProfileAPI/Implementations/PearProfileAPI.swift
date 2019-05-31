@@ -28,9 +28,6 @@ class PearProfileAPI: ProfileAPI {
   // swiftlint:disable:next line_length
   static let attachDetachedProfileQuery: String = "mutation AttachDetachedProfile($approveDetachedProfileInput: ApproveDetachedProfileInput!) { approveNewDetachedProfile(approveDetachedProfileInput: $approveDetachedProfileInput){ message success } }"
   
-  static let fetchCurrentFeedQuery: String = "query GetDiscoveryFeed($user_id: ID!){ getDiscoveryFeed(user_id:$user_id){ currentDiscoveryItems { user \(PearUser.graphQLAllFields()) timestamp } }}"
-//  static let fetchMatchingUserQuery: String = "query GetMatchUser($user_id: ID!){ user(id: $user_id) { user \(PearUser.graphQLMatchedUserFieldsAll) }"
-  
   // swiftlint:disable:next line_length
   static let editEndorsedProfileQuery: String = "mutation EditEndorsedProfile($editEndorsementInput:EditEndorsementInput!){ editEndorsement(editEndorsementInput: $editEndorsementInput){ success message}}"
   // swiftlint:disable:next line_length
@@ -264,96 +261,6 @@ extension PearProfileAPI {
     
   }
   
-  func getDiscoveryFeed(user_id: String,
-                        completion: @escaping(Result<[FullProfileDisplayData], DetachedProfileError>) -> Void) {
-    let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
-                                      cachePolicy: .useProtocolCachePolicy,
-                                      timeoutInterval: 15.0)
-    request.httpMethod = "POST"
-    
-    request.allHTTPHeaderFields = defaultHeaders
-    
-    do {
-      
-      let fullDictionary: [String: Any] = [
-        "query": PearProfileAPI.fetchCurrentFeedQuery,
-        "variables": [
-          "user_id": user_id
-        ]
-      ]
-      let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
-      request.httpBody = data
-      
-      let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
-        if let error = error {
-          print(error as Any)
-          SentryHelper.generateSentryEvent(level: .error,
-                                           apiName: "PearProfileAPI",
-                                           functionName: "getDiscoveryFeed",
-                                           message: "Unknown Error: \(error.localizedDescription)",
-                                           responseData: data,
-                                           tags: [:],
-                                           payload: fullDictionary)
-          completion(.failure(DetachedProfileError.unknownError(error: error)))
-          return
-        } else {
-          if  let data = data,
-            let json = try? JSON(data: data) {
-            print("Retreived Feed")
-            if let discoveryUsers = json["data"]["getDiscoveryFeed"]["currentDiscoveryItems"].array {
-              var allFullProfiles: [FullProfileDisplayData] = []
-              for userData in discoveryUsers {
-                do {
-                  let userRawData = try userData["user"].rawData()
-                  let pearUser = try JSONDecoder().decode(PearUser.self, from: userRawData)
-                  if pearUser.endorserIDs.count > 0 {
-                    let fullProfile = FullProfileDisplayData(user: pearUser)
-                    if let timestamp = userData["timestamp"].string,
-                      let timestampValue = Double(timestamp) {
-                      fullProfile.discoveryTimestamp = Date(timeIntervalSince1970: timestampValue / 1000.0)
-                    }
-                    allFullProfiles.append(fullProfile)
-                  }
-                } catch {
-                  SentryHelper.generateSentryEvent(level: .error,
-                                                   apiName: "PearProfileAPI",
-                                                   functionName: "getDiscoveryFeed",
-                                                   message: "Failed Discovery Serialization: \(error.localizedDescription)",
-                                                   responseData: data,
-                                                   tags: [:],
-                                                   payload: fullDictionary)
-                  print("Failed to deserialize pear user from feed: \(error)")
-                  print(userData)
-                }
-              }
-              completion(.success(allFullProfiles))
-            }            
-          } else {
-            print("Failed Discovery Feed Conversions")
-            SentryHelper.generateSentryEvent(level: .error,
-                                             apiName: "PearProfileAPI",
-                                             functionName: "getDiscoveryFeed",
-                                             message: "Failed Data Serialization",
-                                             responseData: data,
-                                             tags: [:],
-                                             payload: fullDictionary)
-            completion(.failure(DetachedProfileError.failedDeserialization))
-            return
-          }
-        }
-      }
-      dataTask.resume()
-    } catch {
-      print(error)
-      SentryHelper.generateSentryEvent(level: .error,
-                                       apiName: "PearProfileAPI",
-                                       functionName: "getDiscoveryFeed",
-                                       message: error.localizedDescription)
-      completion(.failure(DetachedProfileError.unknownError(error: error)))
-    }
-  }
-  
   func updateDetachedProfile(updates: [String: Any], completion: @escaping(Result<Bool, ProfileAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
@@ -493,13 +400,10 @@ extension PearProfileAPI {
     guard let userID = DataStore.shared.currentPearUser?.documentID else {
       throw DetachedProfileError.userNotLoggedIn
     }
-    guard let creatorFirstName = DataStore.shared.currentPearUser?.firstName  else {
-      throw DetachedProfileError.userNotLoggedIn
-    }
     
     var variablesDictionary: [String: Any] = [
       "creatorUser_id": userID,
-      "creatorFirstName": creatorFirstName,
+      "creatorFirstName": DataStore.shared.currentPearUser?.firstName ?? "",
       "firstName": profileData.firstName,
       "lastName": profileData.lastName,
       "phoneNumber": profileData.phoneNumber,

@@ -21,8 +21,8 @@ class AccountSettingsViewController: UIViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> AccountSettingsViewController? {
-    guard let accountSettingsVC = R.storyboard.accountSettingsViewController()
-      .instantiateInitialViewController() as? AccountSettingsViewController else { return nil }
+    guard let accountSettingsVC = R.storyboard.accountSettingsViewController
+      .instantiateInitialViewController()  else { return nil }
     return accountSettingsVC
   }
   

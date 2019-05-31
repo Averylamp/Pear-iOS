@@ -31,8 +31,8 @@ class FriendEditProfileViewController: UIViewController {
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(updateProfileData: UpdateProfileData,
                          firstName: String) -> FriendEditProfileViewController? {
-    guard let editFriendVC = R.storyboard.friendEditProfileViewController()
-      .instantiateInitialViewController() as? FriendEditProfileViewController else { return nil }
+    guard let editFriendVC = R.storyboard.friendEditProfileViewController
+      .instantiateInitialViewController() else { return nil }
     editFriendVC.updateProfileData = updateProfileData
     editFriendVC.firstName = firstName
     return editFriendVC

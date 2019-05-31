@@ -1,6 +1,6 @@
 /*
  *
- * Copyright 2015 gRPC authors.
+ * Copyright 2018 gRPC authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@
 #include <grpc/support/log.h>
 #include <grpc/support/string_util.h>
 
+#include "src/core/ext/transport/chttp2/transport/context_list.h"
 #include "src/core/ext/transport/chttp2/transport/frame_data.h"
 #include "src/core/ext/transport/chttp2/transport/internal.h"
 #include "src/core/ext/transport/chttp2/transport/varint.h"
@@ -42,6 +43,7 @@
 #include "src/core/lib/gprpp/memory.h"
 #include "src/core/lib/http/parser.h"
 #include "src/core/lib/iomgr/executor.h"
+#include "src/core/lib/iomgr/iomgr.h"
 #include "src/core/lib/iomgr/timer.h"
 #include "src/core/lib/profiling/timers.h"
 #include "src/core/lib/slice/slice_internal.h"
@@ -154,6 +156,7 @@ bool g_flow_control_enabled = true;
 /*******************************************************************************
  * CONSTRUCTION/DESTRUCTION/REFCOUNTING
  */
+
 grpc_chttp2_transport::~grpc_chttp2_transport() {
   size_t i;
 
@@ -167,6 +170,14 @@ grpc_chttp2_transport::~grpc_chttp2_transport() {
 
   grpc_slice_buffer_destroy_internal(&outbuf);
   grpc_chttp2_hpack_compressor_destroy(&hpack_compressor);
+
+  grpc_error* error =
+      GRPC_ERROR_CREATE_FROM_STATIC_STRING("Transport destroyed");
+  // ContextList::Execute follows semantics of a callback function and does not
+  // take a ref on error
+  grpc_core::ContextList::Execute(cl, nullptr, error);
+  GRPC_ERROR_UNREF(error);
+  cl = nullptr;
 
   grpc_slice_buffer_destroy_internal(&read_buffer);
   grpc_chttp2_hpack_parser_destroy(&hpack_parser);
@@ -201,38 +212,6 @@ grpc_chttp2_transport::~grpc_chttp2_transport() {
   gpr_free(ping_acks);
   gpr_free(peer_string);
 }
-
-#ifndef NDEBUG
-void grpc_chttp2_unref_transport(grpc_chttp2_transport* t, const char* reason,
-                                 const char* file, int line) {
-  if (grpc_trace_chttp2_refcount.enabled()) {
-    gpr_atm val = gpr_atm_no_barrier_load(&t->refs.count);
-    gpr_log(GPR_DEBUG, "chttp2:unref:%p %" PRIdPTR "->%" PRIdPTR " %s [%s:%d]",
-            t, val, val - 1, reason, file, line);
-  }
-  if (!gpr_unref(&t->refs)) return;
-  t->~grpc_chttp2_transport();
-  gpr_free(t);
-}
-
-void grpc_chttp2_ref_transport(grpc_chttp2_transport* t, const char* reason,
-                               const char* file, int line) {
-  if (grpc_trace_chttp2_refcount.enabled()) {
-    gpr_atm val = gpr_atm_no_barrier_load(&t->refs.count);
-    gpr_log(GPR_DEBUG, "chttp2:  ref:%p %" PRIdPTR "->%" PRIdPTR " %s [%s:%d]",
-            t, val, val + 1, reason, file, line);
-  }
-  gpr_ref(&t->refs);
-}
-#else
-void grpc_chttp2_unref_transport(grpc_chttp2_transport* t) {
-  if (!gpr_unref(&t->refs)) return;
-  t->~grpc_chttp2_transport();
-  gpr_free(t);
-}
-
-void grpc_chttp2_ref_transport(grpc_chttp2_transport* t) { gpr_ref(&t->refs); }
-#endif
 
 static const grpc_transport_vtable* get_vtable(void);
 
@@ -485,7 +464,8 @@ static void init_keepalive_pings_if_enabled(grpc_chttp2_transport* t) {
 grpc_chttp2_transport::grpc_chttp2_transport(
     const grpc_channel_args* channel_args, grpc_endpoint* ep, bool is_client,
     grpc_resource_user* resource_user)
-    : ep(ep),
+    : refs(1, &grpc_trace_chttp2_refcount),
+      ep(ep),
       peer_string(grpc_endpoint_get_peer(ep)),
       resource_user(resource_user),
       combiner(grpc_combiner_create()),
@@ -495,8 +475,6 @@ grpc_chttp2_transport::grpc_chttp2_transport(
   GPR_ASSERT(strlen(GRPC_CHTTP2_CLIENT_CONNECT_STRING) ==
              GRPC_CHTTP2_CLIENT_CONNECT_STRLEN);
   base.vtable = get_vtable();
-  /* one ref is for destroy */
-  gpr_ref_init(&refs, 1);
   /* 8 is a random stab in the dark as to a good initial size: it's small enough
      that it shouldn't waste memory for infrequently used connections, yet
      large enough that the exponential growth should happen nicely when it's
@@ -986,24 +964,28 @@ void grpc_chttp2_mark_stream_writable(grpc_chttp2_transport* t,
 static grpc_closure_scheduler* write_scheduler(grpc_chttp2_transport* t,
                                                bool early_results_scheduled,
                                                bool partial_write) {
+  // If we're already in a background poller, don't offload this to an executor
+  if (grpc_iomgr_is_any_background_poller_thread()) {
+    return grpc_schedule_on_exec_ctx;
+  }
   /* if it's not the first write in a batch, always offload to the executor:
      we'll probably end up queuing against the kernel anyway, so we'll likely
      get better latency overall if we switch writing work elsewhere and continue
      with application work above */
   if (!t->is_first_write_in_batch) {
-    return grpc_executor_scheduler(GRPC_EXECUTOR_SHORT);
+    return grpc_core::Executor::Scheduler(grpc_core::ExecutorJobType::SHORT);
   }
   /* equivalently, if it's a partial write, we *know* we're going to be taking a
      thread jump to write it because of the above, may as well do so
      immediately */
   if (partial_write) {
-    return grpc_executor_scheduler(GRPC_EXECUTOR_SHORT);
+    return grpc_core::Executor::Scheduler(grpc_core::ExecutorJobType::SHORT);
   }
   switch (t->opt_target) {
     case GRPC_CHTTP2_OPTIMIZE_FOR_THROUGHPUT:
       /* executor gives us the largest probability of being able to batch a
        * write with others on this transport */
-      return grpc_executor_scheduler(GRPC_EXECUTOR_SHORT);
+      return grpc_core::Executor::Scheduler(grpc_core::ExecutorJobType::SHORT);
     case GRPC_CHTTP2_OPTIMIZE_FOR_LATENCY:
       return grpc_schedule_on_exec_ctx;
   }
@@ -1065,11 +1047,13 @@ static void write_action_begin_locked(void* gt, grpc_error* error_ignored) {
 static void write_action(void* gt, grpc_error* error) {
   GPR_TIMER_SCOPE("write_action", 0);
   grpc_chttp2_transport* t = static_cast<grpc_chttp2_transport*>(gt);
+  void* cl = t->cl;
+  t->cl = nullptr;
   grpc_endpoint_write(
       t->ep, &t->outbuf,
       GRPC_CLOSURE_INIT(&t->write_action_end_locked, write_action_end_locked, t,
                         grpc_combiner_scheduler(t->combiner)),
-      nullptr);
+      cl);
 }
 
 /* Callback from the grpc_endpoint after bytes have been written by calling
@@ -1135,9 +1119,6 @@ static void queue_setting_update(grpc_chttp2_transport* t,
 void grpc_chttp2_add_incoming_goaway(grpc_chttp2_transport* t,
                                      uint32_t goaway_error,
                                      grpc_slice goaway_text) {
-  // GRPC_CHTTP2_IF_TRACING(
-  //     gpr_log(GPR_INFO, "got goaway [%d]: %s", goaway_error, msg));
-
   // Discard the error from a previous goaway frame (if any)
   if (t->goaway_error != GRPC_ERROR_NONE) {
     GRPC_ERROR_UNREF(t->goaway_error);
@@ -1147,6 +1128,10 @@ void grpc_chttp2_add_incoming_goaway(grpc_chttp2_transport* t,
           GRPC_ERROR_CREATE_FROM_STATIC_STRING("GOAWAY received"),
           GRPC_ERROR_INT_HTTP2_ERROR, static_cast<intptr_t>(goaway_error)),
       GRPC_ERROR_STR_RAW_BYTES, goaway_text);
+
+  /* We want to log this irrespective of whether http tracing is enabled */
+  gpr_log(GPR_INFO, "%s: Got goaway [%d] err=%s", t->peer_string, goaway_error,
+          grpc_error_string(t->goaway_error));
 
   /* When a client receives a GOAWAY with error code ENHANCE_YOUR_CALM and debug
    * data equal to "too_many_pings", it should log the occurrence at a log level
@@ -1393,6 +1378,8 @@ static void perform_stream_op_locked(void* stream_op,
 
   GRPC_STATS_INC_HTTP2_OP_BATCHES();
 
+  s->context = op->payload->context;
+  s->traced = op->is_traced;
   if (grpc_http_trace.enabled()) {
     char* str = grpc_transport_stream_op_batch_string(op);
     gpr_log(GPR_INFO, "perform_stream_op_locked: %s; on_complete = %p", str,
@@ -1788,6 +1775,9 @@ void grpc_chttp2_ack_ping(grpc_chttp2_transport* t, uint64_t id) {
 }
 
 static void send_goaway(grpc_chttp2_transport* t, grpc_error* error) {
+  /* We want to log this irrespective of whether http tracing is enabled */
+  gpr_log(GPR_INFO, "%s: Sending goaway err=%s", t->peer_string,
+          grpc_error_string(error));
   t->sent_goaway_state = GRPC_CHTTP2_GOAWAY_SEND_SCHEDULED;
   grpc_http2_error_code http_error;
   grpc_slice slice;
@@ -2568,6 +2558,10 @@ static void read_action_locked(void* tp, grpc_error* error) {
   } else if (t->closed_with_error == GRPC_ERROR_NONE) {
     keep_reading = true;
     GRPC_CHTTP2_REF_TRANSPORT(t, "keep_reading");
+    /* Since we have read a byte, reset the keepalive timer */
+    if (t->keepalive_state == GRPC_CHTTP2_KEEPALIVE_STATE_WAITING) {
+      grpc_timer_cancel(&t->keepalive_ping_timer);
+    }
   }
   grpc_slice_buffer_reset_and_unref_internal(&t->read_buffer);
 
@@ -2737,6 +2731,9 @@ static void start_keepalive_ping_locked(void* arg, grpc_error* error) {
   if (t->channelz_socket != nullptr) {
     t->channelz_socket->RecordKeepaliveSent();
   }
+  if (grpc_http_trace.enabled()) {
+    gpr_log(GPR_INFO, "%s: Start keepalive ping", t->peer_string);
+  }
   GRPC_CHTTP2_REF_TRANSPORT(t, "keepalive watchdog");
   grpc_timer_init(&t->keepalive_watchdog_timer,
                   grpc_core::ExecCtx::Get()->Now() + t->keepalive_timeout,
@@ -2747,6 +2744,9 @@ static void finish_keepalive_ping_locked(void* arg, grpc_error* error) {
   grpc_chttp2_transport* t = static_cast<grpc_chttp2_transport*>(arg);
   if (t->keepalive_state == GRPC_CHTTP2_KEEPALIVE_STATE_PINGING) {
     if (error == GRPC_ERROR_NONE) {
+      if (grpc_http_trace.enabled()) {
+        gpr_log(GPR_INFO, "%s: Finish keepalive ping", t->peer_string);
+      }
       t->keepalive_state = GRPC_CHTTP2_KEEPALIVE_STATE_WAITING;
       grpc_timer_cancel(&t->keepalive_watchdog_timer);
       GRPC_CHTTP2_REF_TRANSPORT(t, "init keepalive ping");
@@ -2762,6 +2762,8 @@ static void keepalive_watchdog_fired_locked(void* arg, grpc_error* error) {
   grpc_chttp2_transport* t = static_cast<grpc_chttp2_transport*>(arg);
   if (t->keepalive_state == GRPC_CHTTP2_KEEPALIVE_STATE_PINGING) {
     if (error == GRPC_ERROR_NONE) {
+      gpr_log(GPR_ERROR, "%s: Keepalive watchdog fired. Closing transport.",
+              t->peer_string);
       t->keepalive_state = GRPC_CHTTP2_KEEPALIVE_STATE_DYING;
       close_transport_locked(
           t, grpc_error_set_int(GRPC_ERROR_CREATE_FROM_STATIC_STRING(
@@ -2837,8 +2839,8 @@ Chttp2IncomingByteStream::Chttp2IncomingByteStream(
     : ByteStream(frame_size, flags),
       transport_(transport),
       stream_(stream),
+      refs_(2),
       remaining_bytes_(frame_size) {
-  gpr_ref_init(&refs_, 2);
   GRPC_ERROR_UNREF(stream->byte_stream_error);
   stream->byte_stream_error = GRPC_ERROR_NONE;
 }
@@ -2862,14 +2864,6 @@ void Chttp2IncomingByteStream::Orphan() {
                         grpc_combiner_scheduler(transport_->combiner)),
       GRPC_ERROR_NONE);
 }
-
-void Chttp2IncomingByteStream::Unref() {
-  if (gpr_unref(&refs_)) {
-    Delete(this);
-  }
-}
-
-void Chttp2IncomingByteStream::Ref() { gpr_ref(&refs_); }
 
 void Chttp2IncomingByteStream::NextLocked(void* arg,
                                           grpc_error* error_ignored) {
@@ -3177,21 +3171,18 @@ static const grpc_transport_vtable vtable = {sizeof(grpc_chttp2_stream),
 
 static const grpc_transport_vtable* get_vtable(void) { return &vtable; }
 
-intptr_t grpc_chttp2_transport_get_socket_uuid(grpc_transport* transport) {
+grpc_core::RefCountedPtr<grpc_core::channelz::SocketNode>
+grpc_chttp2_transport_get_socket_node(grpc_transport* transport) {
   grpc_chttp2_transport* t =
       reinterpret_cast<grpc_chttp2_transport*>(transport);
-  if (t->channelz_socket != nullptr) {
-    return t->channelz_socket->uuid();
-  } else {
-    return 0;
-  }
+  return t->channelz_socket;
 }
 
 grpc_transport* grpc_create_chttp2_transport(
     const grpc_channel_args* channel_args, grpc_endpoint* ep, bool is_client,
     grpc_resource_user* resource_user) {
-  auto t = new (gpr_malloc(sizeof(grpc_chttp2_transport)))
-      grpc_chttp2_transport(channel_args, ep, is_client, resource_user);
+  auto t = grpc_core::New<grpc_chttp2_transport>(channel_args, ep, is_client,
+                                                 resource_user);
   return &t->base;
 }
 

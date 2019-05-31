@@ -1,185 +1,161 @@
 PODS:
-  - Bolts (1.9.0):
-    - Bolts/AppLinks (= 1.9.0)
-    - Bolts/Tasks (= 1.9.0)
-  - Bolts/AppLinks (1.9.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.9.0)
-  - BoringSSL-GRPC (0.0.2):
-    - BoringSSL-GRPC/Implementation (= 0.0.2)
-    - BoringSSL-GRPC/Interface (= 0.0.2)
-  - BoringSSL-GRPC/Implementation (0.0.2):
-    - BoringSSL-GRPC/Interface (= 0.0.2)
-  - BoringSSL-GRPC/Interface (0.0.2)
+  - BoringSSL-GRPC (0.0.3):
+    - BoringSSL-GRPC/Implementation (= 0.0.3)
+    - BoringSSL-GRPC/Interface (= 0.0.3)
+  - BoringSSL-GRPC/Implementation (0.0.3):
+    - BoringSSL-GRPC/Interface (= 0.0.3)
+  - BoringSSL-GRPC/Interface (0.0.3)
   - BSGridCollectionViewLayout (1.2.3)
   - BSImagePicker (2.10.0):
     - BSGridCollectionViewLayout (= 1.2.3)
     - BSImageView (= 1.0.3)
   - BSImageView (1.0.3)
   - CodableFirebase (0.2.1)
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
-  - Fabric (1.9.0)
-  - FacebookCore (0.6.0):
-    - Bolts (~> 1.9)
-    - FBSDKCoreKit (~> 4.43)
-  - FacebookLogin (0.6.0):
-    - Bolts (~> 1.9)
-    - FacebookCore (~> 0.5)
-    - FBSDKCoreKit (~> 4.43)
-    - FBSDKLoginKit (~> 4.43)
-  - FacebookShare (0.6.1):
-    - Bolts (~> 1.9)
-    - FacebookCore (~> 0.5)
-    - FBSDKCoreKit (~> 4.43)
-    - FBSDKShareKit (~> 4.43)
-  - FBSDKCoreKit (4.44.1):
-    - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.44.1):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.44.1):
-    - FBSDKCoreKit
-  - Firebase/Auth (5.20.2):
+  - Crashlytics (3.13.1):
+    - Fabric (~> 1.10.1)
+  - Fabric (1.10.1)
+  - Firebase/Auth (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (= 5.4.2)
-  - Firebase/Core (5.20.2):
+    - FirebaseAuth (~> 6.1.0)
+  - Firebase/Core (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.8.1)
-  - Firebase/CoreOnly (5.20.2):
-    - FirebaseCore (= 5.4.1)
-  - Firebase/DynamicLinks (5.20.2):
+    - FirebaseAnalytics (= 6.0.1)
+  - Firebase/CoreOnly (6.1.0):
+    - FirebaseCore (= 6.0.1)
+  - Firebase/DynamicLinks (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseDynamicLinks (= 3.4.3)
-  - Firebase/Firestore (5.20.2):
+    - FirebaseDynamicLinks (~> 4.0.0)
+  - Firebase/Firestore (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseFirestore (= 1.2.1)
-  - Firebase/Messaging (5.20.2):
+    - FirebaseFirestore (~> 1.3.1)
+  - Firebase/Messaging (6.1.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.5.0)
-  - Firebase/Performance (5.20.2):
-    - Firebase/Core
-    - FirebasePerformance (= 2.2.4)
-  - Firebase/RemoteConfig (5.20.2):
-    - Firebase/Core
-    - FirebaseRemoteConfig (= 3.1.0)
-  - FirebaseABTesting (2.0.0):
-    - FirebaseCore (~> 5.0)
+    - FirebaseMessaging (~> 4.0.1)
+  - Firebase/Performance (6.1.0):
+    - Firebase/CoreOnly
+    - FirebasePerformance (~> 3.0.0)
+  - Firebase/RemoteConfig (6.1.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 4.0.0)
+  - FirebaseABTesting (3.0.0):
+    - FirebaseCore (~> 6.0)
     - Protobuf (~> 3.5)
-  - FirebaseAnalytics (5.8.1):
-    - FirebaseCore (~> 5.4)
-    - FirebaseInstanceID (~> 3.8)
-    - GoogleAppMeasurement (= 5.8.1)
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+  - FirebaseAnalytics (6.0.1):
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.1)
+    - GoogleAppMeasurement (= 6.0.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.2.0)
-  - FirebaseAuth (5.4.2):
+  - FirebaseAuth (6.1.0):
     - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 5.2)
-    - GoogleUtilities/Environment (~> 5.2)
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseAuthInterop (1.0.0)
-  - FirebaseCore (5.4.1):
-    - GoogleUtilities/Environment (~> 5.2)
-    - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseDynamicLinks (3.4.3):
-    - FirebaseAnalytics (~> 5.1)
+  - FirebaseCore (6.0.1):
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Logger (~> 6.0)
+  - FirebaseDynamicLinks (4.0.0):
     - FirebaseAnalyticsInterop (~> 1.0)
-    - FirebaseCore (~> 5.2)
-  - FirebaseFirestore (1.2.1):
+    - FirebaseCore (~> 6.0)
+  - FirebaseFirestore (1.3.1):
     - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 5.2)
-    - FirebaseFirestore/abseil-cpp (= 1.2.1)
-    - "gRPC-C++ (= 0.0.6)"
+    - FirebaseCore (~> 6.0)
+    - FirebaseFirestore/abseil-cpp (= 1.3.1)
+    - "gRPC-C++ (= 0.0.8)"
     - leveldb-library (~> 1.20)
     - nanopb (~> 0.3.901)
     - Protobuf (~> 3.1)
-  - FirebaseFirestore/abseil-cpp (1.2.1):
+  - FirebaseFirestore/abseil-cpp (1.3.1):
     - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 5.2)
-    - "gRPC-C++ (= 0.0.6)"
+    - FirebaseCore (~> 6.0)
+    - "gRPC-C++ (= 0.0.8)"
     - leveldb-library (~> 1.20)
     - nanopb (~> 0.3.901)
     - Protobuf (~> 3.1)
-  - FirebaseInstanceID (3.8.1):
-    - FirebaseCore (~> 5.2)
-    - GoogleUtilities/Environment (~> 5.2)
-    - GoogleUtilities/UserDefaults (~> 5.2)
-  - FirebaseMessaging (3.5.0):
+  - FirebaseInstanceID (4.1.0):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+  - FirebaseMessaging (4.0.1):
     - FirebaseAnalyticsInterop (~> 1.1)
-    - FirebaseCore (~> 5.2)
-    - FirebaseInstanceID (~> 3.6)
-    - GoogleUtilities/Environment (~> 5.3)
-    - GoogleUtilities/Reachability (~> 5.3)
-    - GoogleUtilities/UserDefaults (~> 5.3)
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Reachability (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
     - Protobuf (~> 3.1)
-  - FirebasePerformance (2.2.4):
-    - FirebaseAnalytics (~> 5.8)
-    - FirebaseInstanceID (~> 3.8)
-    - FirebaseRemoteConfig (~> 3.1)
+  - FirebasePerformance (3.0.0):
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.0)
+    - FirebaseRemoteConfig (~> 4.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - GoogleUtilities/ISASwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/ISASwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GTMSessionFetcher/Core (~> 1.1)
     - Protobuf (~> 3.5)
-  - FirebaseRemoteConfig (3.1.0):
-    - FirebaseABTesting (~> 2.0)
-    - FirebaseAnalytics (~> 5.3)
-    - FirebaseCore (~> 5.1)
-    - FirebaseInstanceID (~> 3.3)
-    - GoogleUtilities/Environment (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+  - FirebaseRemoteConfig (4.0.0):
+    - FirebaseABTesting (~> 3.0)
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - Protobuf (~> 3.5)
-  - GoogleAppMeasurement (5.8.1):
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+  - GoogleAppMeasurement (6.0.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - GoogleToolboxForMac/Defines (2.2.0)
-  - GoogleToolboxForMac/Logger (2.2.0):
-    - GoogleToolboxForMac/Defines (= 2.2.0)
-  - "GoogleToolboxForMac/NSData+zlib (2.2.0)":
-    - GoogleToolboxForMac/Defines (= 2.2.0)
-  - GoogleUtilities/AppDelegateSwizzler (5.8.0):
+  - GoogleToolboxForMac/Defines (2.2.1)
+  - GoogleToolboxForMac/Logger (2.2.1):
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - "GoogleToolboxForMac/NSData+zlib (2.2.1)":
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - GoogleUtilities/AppDelegateSwizzler (6.2.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.8.0)
-  - GoogleUtilities/ISASwizzler (5.8.0)
-  - GoogleUtilities/Logger (5.8.0):
+  - GoogleUtilities/Environment (6.2.0)
+  - GoogleUtilities/ISASwizzler (6.2.0)
+  - GoogleUtilities/Logger (6.2.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.8.0):
+  - GoogleUtilities/MethodSwizzler (6.2.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.8.0):
+  - GoogleUtilities/Network (6.2.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.8.0)"
-  - GoogleUtilities/Reachability (5.8.0):
+  - "GoogleUtilities/NSData+zlib (6.2.0)"
+  - GoogleUtilities/Reachability (6.2.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.8.0):
+  - GoogleUtilities/UserDefaults (6.2.0):
     - GoogleUtilities/Logger
-  - "gRPC-C++ (0.0.6)":
-    - "gRPC-C++/Implementation (= 0.0.6)"
-    - "gRPC-C++/Interface (= 0.0.6)"
-  - "gRPC-C++/Implementation (0.0.6)":
-    - "gRPC-C++/Interface (= 0.0.6)"
-    - gRPC-Core (= 1.17.0)
+  - "gRPC-C++ (0.0.8)":
+    - "gRPC-C++/Implementation (= 0.0.8)"
+    - "gRPC-C++/Interface (= 0.0.8)"
+  - "gRPC-C++/Implementation (0.0.8)":
+    - "gRPC-C++/Interface (= 0.0.8)"
+    - gRPC-Core (= 1.19.0)
     - nanopb (~> 0.3)
-  - "gRPC-C++/Interface (0.0.6)"
-  - gRPC-Core (1.17.0):
-    - gRPC-Core/Implementation (= 1.17.0)
-    - gRPC-Core/Interface (= 1.17.0)
-  - gRPC-Core/Implementation (1.17.0):
-    - BoringSSL-GRPC (= 0.0.2)
-    - gRPC-Core/Interface (= 1.17.0)
+  - "gRPC-C++/Interface (0.0.8)"
+  - gRPC-Core (1.19.0):
+    - gRPC-Core/Implementation (= 1.19.0)
+    - gRPC-Core/Interface (= 1.19.0)
+  - gRPC-Core/Implementation (1.19.0):
+    - BoringSSL-GRPC (= 0.0.3)
+    - gRPC-Core/Interface (= 1.19.0)
     - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.17.0)
-  - GTMSessionFetcher/Core (1.2.1)
+  - gRPC-Core/Interface (1.19.0)
+  - GTMSessionFetcher/Core (1.2.2)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -189,17 +165,17 @@ PODS:
   - NVActivityIndicatorView (4.7.0):
     - NVActivityIndicatorView/Presenter (= 4.7.0)
   - NVActivityIndicatorView/Presenter (4.7.0)
-  - Protobuf (3.7.0)
+  - Protobuf (3.8.0)
   - R.swift (5.0.3):
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.1)
-  - SDWebImage (5.0.2):
-    - SDWebImage/Core (= 5.0.2)
-  - SDWebImage/Core (5.0.2)
-  - Sentry (4.3.3):
-    - Sentry/Core (= 4.3.3)
-  - Sentry/Core (4.3.3)
-  - SwiftLint (0.31.0)
+  - SDWebImage (5.0.4):
+    - SDWebImage/Core (= 5.0.4)
+  - SDWebImage/Core (5.0.4)
+  - Sentry (4.3.4):
+    - Sentry/Core (= 4.3.4)
+  - Sentry/Core (4.3.4)
+  - SwiftLint (0.32.0)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
@@ -207,10 +183,6 @@ DEPENDENCIES:
   - CodableFirebase
   - Crashlytics
   - Fabric
-  - FacebookCore
-  - FacebookLogin
-  - FacebookShare
-  - FBSDKCoreKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/DynamicLinks
@@ -227,7 +199,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Bolts
     - BoringSSL-GRPC
     - BSGridCollectionViewLayout
     - BSImagePicker
@@ -235,12 +206,6 @@ SPEC REPOS:
     - CodableFirebase
     - Crashlytics
     - Fabric
-    - FacebookCore
-    - FacebookLogin
-    - FacebookShare
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - FBSDKShareKit
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -272,50 +237,43 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
+  BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   BSGridCollectionViewLayout: 568273e113fbc815f868f1898ef0465aee68f955
   BSImagePicker: fa0c15b6740e8aa7a7b7f0fe38a71ad4cfa0ec4a
   BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  FacebookCore: 38cd3a4078738d6f648eb9b6b9d35b02d693e9a1
-  FacebookLogin: 658b0569961a081a0890f5f4dbf69ced00657d9e
-  FacebookShare: 84bccbc222fc09c839b851925ad6c295a4ab7840
-  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
-  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
-  FBSDKShareKit: 526d4cfb713d24855fa23d0dd74e191accd3a720
-  Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
-  FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
-  FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
+  Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
+  Fabric: f6f21452846788bb44595d73e9909d79d328e617
+  Firebase: 8d77bb33624ae9b62d745d82ec023de5f70f7e4f
+  FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
+  FirebaseAnalytics: 629301c2b9925f3537d4093a17a72751ae5b7084
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
-  FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
+  FirebaseAuth: 4281d6d98a90881e00710fa8d9e37c2ccdfc7d80
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
-  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
-  FirebaseDynamicLinks: f7a8717e2c7ea652923882a2d60b0045d6fd99d5
-  FirebaseFirestore: faca891c0f0d1d6c10c793473e2f6a29d75014b5
-  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
-  FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
-  FirebasePerformance: 25ecee2a260bcf398d7f32d6f4804438df953100
-  FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
-  GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
-  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
-  GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
-  "gRPC-C++": e76441995900ac90e9bd98644ab4733f12521edf
-  gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
-  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  FirebaseCore: 66bdef3b310a026880e2a5bc8aa586ab62ce4543
+  FirebaseDynamicLinks: 25fc45fdf2557ee2ee630999c301245d8911792e
+  FirebaseFirestore: 8feac73d330bf7ed6945518e5ffc0aeb164a07f6
+  FirebaseInstanceID: 27bed93a59b6685f5c3e0c028a878a764fd75c33
+  FirebaseMessaging: 31377e05331d16dc6c9fd82554f9a5c49aa70aed
+  FirebasePerformance: 3dd8dbe6eb1258b8d148eb33768f6aa6e1684127
+  FirebaseRemoteConfig: 40f75c6ea20a52bf65ef44e3898910dd5b57c532
+  GoogleAppMeasurement: 51d8d9ea48f0ca44484d29cfbdef976fbd4fc336
+  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
+  GoogleUtilities: 996e0db07153674fd1b54b220fda3a3dc3547cba
+  "gRPC-C++": 98be881723177d8c4faf5fdffacb582c7b4971a2
+  gRPC-Core: bd9472c8daa2e414b9f8038ba667bf56ce0e02b8
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
-  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
-  SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
-  Sentry: e5e1d4434cf8cc5c62c16c37ceb90ac746948623
-  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  SDWebImage: c739016e4bdf0a4a1f9a04b5e0385395ad63a282
+  Sentry: 26f0e6492b103e87434d1a5eea2d241a36f2c2a2
+  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: ec4dc60bc01bcc8024d3bc1808b1aeec1e66ac01
+PODFILE CHECKSUM: 380f98fb11966ba5b37f8fe31a85f8b5a0957bb3
 
 COCOAPODS: 1.6.1

@@ -9,6 +9,10 @@
 import UIKit
 import FirebaseAnalytics
 
+extension Notification.Name {
+  static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
+}
+
 class DiscoveryDecisionViewController: UIViewController {
   
   var allFetchedProfiles: [FullProfileDisplayData] = []
@@ -17,16 +21,32 @@ class DiscoveryDecisionViewController: UIViewController {
   
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var messageLabel: UILabel!
+  @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> DiscoveryDecisionViewController? {
-    guard let decisionDiscoveryVC = R.storyboard.discoveryDecisionViewController()
-      .instantiateInitialViewController() as? DiscoveryDecisionViewController else {
+    guard let decisionDiscoveryVC = R.storyboard.discoveryDecisionViewController
+      .instantiateInitialViewController()  else {
         print("Failed to create decision based discovery VC")
         return nil
     }
     return decisionDiscoveryVC
+  }
+  
+  @IBAction func filterButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    print("filter button clicked from decision VC")
+    guard let filtersVC = DiscoveryFilterViewController.instantiate() else {
+      print("Failed to create Filters VC")
+      return
+    }
+    self.navigationController?.pushViewController(filtersVC, animated: true)
+  }
+  
+  @IBAction func qrCodeButtonClicked(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.presentScanner()
   }
   
 }
@@ -36,8 +56,20 @@ extension DiscoveryDecisionViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.fetchDiscoveryQueue()
+    self.setup()
+    self.refreshDiscovery()
     self.checkForDetachedProfiles()
+  }
+  
+  func setup() {
+    self.registerNotifications()
+  }
+  
+  func registerNotifications() {
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(DiscoveryDecisionViewController.refreshDiscovery),
+                                           name: .refreshDiscoveryFeed,
+                                           object: nil)
   }
   
   func checkForDetachedProfiles() {
@@ -57,56 +89,63 @@ extension DiscoveryDecisionViewController {
     })
   }
   
-  func updateProfilesToDisplay() {
+  @objc func refreshDiscovery() {
+    self.allFetchedProfiles = []
     self.profilesToShow = []
-    self.allFetchedProfiles.filter({$0.decisionMade == false}).forEach({
-      if let matchingPreferences = $0.matchingPreferences,
-        let matchingDemographics = $0.matchingDemographics,
-        let userDemographics = DataStore.shared.currentPearUser?.matchingDemographics,
-        let userPreferences = DataStore.shared.currentPearUser?.matchingPreferences {
-        if userPreferences.matchesDemographics(demographics: matchingDemographics) &&
-          matchingPreferences.matchesDemographics(demographics: userDemographics) {
-          self.profilesToShow.append($0)
-        }
-      } else {
-        self.profilesToShow.append($0)
+    self.hideProfileVC {
+      DispatchQueue.main.async {
+        self.activityIndicator.startAnimating()
+        self.messageLabel.text = "Fetching new profiles"
       }
-    })
+      PearDiscoveryAPI.shared.getDiscoveryCards { (result) in
+        switch result {
+        case .success(let profiles):
+          print("Profiles Found: \(profiles.count)")
+          if profiles.count == 0 {
+            self.didReceiveNoProfiles()
+          } else {
+            self.allFetchedProfiles = []
+            profiles.forEach({
+              if !self.allFetchedProfiles.contains($0) {
+                self.allFetchedProfiles.append($0)
+              }
+            })
+            self.profilesToShow = []
+            self.allFetchedProfiles.filter({$0.decisionMade == false}).forEach({
+              self.profilesToShow.append($0)
+            })
+            DispatchQueue.main.async {
+              self.activityIndicator.stopAnimating()
+              self.messageLabel.text = ""
+            }
+            self.showNextProfile()
+          }
+        case .failure(let error):
+          print("Error getting profiles: \(error)")
+          self.didReceiveNoProfiles()
+        }
+      }
+    }
   }
   
-  func fetchDiscoveryQueue() {
-    guard let userID = DataStore.shared.currentPearUser?.documentID  else {
-      print("Cant find logged in user")
-      return
-    }
-    PearDiscoveryAPI.shared.getDiscoveryFeed(userID: userID, last: 15) { (result) in
-      switch result {
-      case .success(let profiles):
-        print("Profiles Found: \(profiles.count)")
-        profiles.forEach({
-          if !self.allFetchedProfiles.contains($0) {
-            self.allFetchedProfiles.append($0)
-          }
-        })
-        self.updateProfilesToDisplay()
-        DispatchQueue.main.async {
-          self.activityIndicator.stopAnimating()
-          self.messageLabel.text = ""
-        }
-        self.showNextProfile()
-      case .failure(let error):
-        print("Error getting profiles: \(error)")
-      }
+  func didReceiveNoProfiles() {
+    self.profilesToShow = []
+    self.allFetchedProfiles = []
+    DispatchQueue.main.async {
+      self.activityIndicator.stopAnimating()
+      self.messageLabel.text = "There are no more profiles for you right now.\nCheck back in a few hours!"
+      self.tabBarController?.setTabBarVisible(visible: true, duration: 0.5, animated: true)
+      self.headerHeightConstraint.constant = 50.0
+      UIView.animate(withDuration: 0.5, animations: {
+        self.view.layoutIfNeeded()
+      })
     }
   }
   
   func showNextProfile() {
     
     if self.profilesToShow.count == 0 {
-      DispatchQueue.main.async {
-        self.messageLabel.text = "There are no more profiles for you right now. \nCheck back in a few hours!"
-        self.tabBarController?.setTabBarVisible(visible: true, duration: 0.5, animated: true)
-      }
+      self.refreshDiscovery()
     }
     self.hideProfileVC {
       if self.profilesToShow.count > 0 {
@@ -119,6 +158,8 @@ extension DiscoveryDecisionViewController {
         self.showProfileVC(profileVC: nextProfileVC, completion: {
           
         })
+      } else {
+        self.currentDiscoveryProfileVC = nil
       }
     }
     
@@ -186,6 +227,14 @@ extension DiscoveryDecisionViewController {
 extension DiscoveryDecisionViewController: DiscoveryFullProfileDelegate {
   
   func decisionMade() {
+    self.showNextProfile()
+  }
+  
+  func scannedUser(fullProfileDisplay: FullProfileDisplayData) {
+    if let previousPerson = self.currentDiscoveryProfileVC?.fullProfileData {
+      self.profilesToShow.append(previousPerson)
+    }
+    self.profilesToShow.append(fullProfileDisplay)
     self.showNextProfile()
   }
   

@@ -51,8 +51,7 @@ HealthCheckClient::HealthCheckClient(
     RefCountedPtr<ConnectedSubchannel> connected_subchannel,
     grpc_pollset_set* interested_parties,
     grpc_core::RefCountedPtr<grpc_core::channelz::SubchannelNode> channelz_node)
-    : InternallyRefCountedWithTracing<HealthCheckClient>(
-          &grpc_health_check_client_trace),
+    : InternallyRefCounted<HealthCheckClient>(&grpc_health_check_client_trace),
       service_name_(service_name),
       connected_subchannel_(std::move(connected_subchannel)),
       interested_parties_(interested_parties),
@@ -281,8 +280,7 @@ bool DecodeResponse(grpc_slice_buffer* slice_buffer, grpc_error** error) {
 HealthCheckClient::CallState::CallState(
     RefCountedPtr<HealthCheckClient> health_check_client,
     grpc_pollset_set* interested_parties)
-    : InternallyRefCountedWithTracing<CallState>(
-          &grpc_health_check_client_trace),
+    : InternallyRefCounted<CallState>(&grpc_health_check_client_trace),
       health_check_client_(std::move(health_check_client)),
       pollent_(grpc_polling_entity_create_from_pollset_set(interested_parties)),
       arena_(gpr_arena_create(health_check_client_->connected_subchannel_
@@ -297,7 +295,9 @@ HealthCheckClient::CallState::~CallState() {
     gpr_log(GPR_INFO, "HealthCheckClient %p: destroying CallState %p",
             health_check_client_.get(), this);
   }
-  if (call_ != nullptr) GRPC_SUBCHANNEL_CALL_UNREF(call_, "call_ended");
+  // The subchannel call is in the arena, so reset the pointer before we destroy
+  // the arena.
+  call_.reset();
   for (size_t i = 0; i < GRPC_CONTEXT_COUNT; i++) {
     if (context_[i].destroy != nullptr) {
       context_[i].destroy(context_[i].value);
@@ -331,8 +331,8 @@ void HealthCheckClient::CallState::StartCall() {
       &call_combiner_,
       0,  // parent_data_size
   };
-  grpc_error* error =
-      health_check_client_->connected_subchannel_->CreateCall(args, &call_);
+  grpc_error* error = GRPC_ERROR_NONE;
+  call_ = health_check_client_->connected_subchannel_->CreateCall(args, &error);
   if (error != GRPC_ERROR_NONE) {
     gpr_log(GPR_ERROR,
             "HealthCheckClient %p CallState %p: error creating health "
@@ -425,14 +425,14 @@ void HealthCheckClient::CallState::StartBatchInCallCombiner(void* arg,
                                                             grpc_error* error) {
   grpc_transport_stream_op_batch* batch =
       static_cast<grpc_transport_stream_op_batch*>(arg);
-  grpc_subchannel_call* call =
-      static_cast<grpc_subchannel_call*>(batch->handler_private.extra_arg);
-  grpc_subchannel_call_process_op(call, batch);
+  SubchannelCall* call =
+      static_cast<SubchannelCall*>(batch->handler_private.extra_arg);
+  call->StartTransportStreamOpBatch(batch);
 }
 
 void HealthCheckClient::CallState::StartBatch(
     grpc_transport_stream_op_batch* batch) {
-  batch->handler_private.extra_arg = call_;
+  batch->handler_private.extra_arg = call_.get();
   GRPC_CLOSURE_INIT(&batch->handler_private.closure, StartBatchInCallCombiner,
                     batch, grpc_schedule_on_exec_ctx);
   GRPC_CALL_COMBINER_START(&call_combiner_, &batch->handler_private.closure,
@@ -454,7 +454,7 @@ void HealthCheckClient::CallState::StartCancel(void* arg, grpc_error* error) {
       GRPC_CLOSURE_CREATE(OnCancelComplete, self, grpc_schedule_on_exec_ctx));
   batch->cancel_stream = true;
   batch->payload->cancel_stream.cancel_error = GRPC_ERROR_CANCELLED;
-  grpc_subchannel_call_process_op(self->call_, batch);
+  self->call_->StartTransportStreamOpBatch(batch);
 }
 
 void HealthCheckClient::CallState::Cancel() {

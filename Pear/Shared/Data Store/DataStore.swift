@@ -49,8 +49,12 @@ class DataStore: NSObject {
   var locationManager: CLLocationManager
   var firstLocationReceived: Bool = false
   
+  var userEvents: [PearEvent] = []
+  
   var firebaseRemoteInstanceID: String? // for push notifications via Firebase Cloud Messaging
   var possibleQuestions: [QuestionItem] = []
+  
+  let localPhoneNumberWhitelist: [String] = ["6506666666"]
   
   private override init() {
     self.remoteConfig = RemoteConfig.remoteConfig()
