@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ContactsUI
 
 class OnboardingExplainationPage4ViewController: UIViewController {
   
@@ -28,11 +29,7 @@ class OnboardingExplainationPage4ViewController: UIViewController {
   
   @IBAction func joinWithFriendClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let joinFriendInfoVC = OnboardingFriendInfoViewController.instantiate() else {
-      print("Failed to create next Onboarding Info Page")
-      return
-    }
-    self.navigationController?.pushViewController(joinFriendInfoVC, animated: true)
+    self.promptContactsPicker()
   }
   
   @IBAction func joinBySelfClicked(_ sender: Any) {
@@ -59,6 +56,44 @@ extension OnboardingExplainationPage4ViewController {
     self.joinBySelfButton.stylizeOnboardingContinueButton()
     self.joinBySelfButton.backgroundColor = UIColor(white: 0.87, alpha: 1.0)
     self.joinBySelfButton.setTitleColor(UIColor(white: 0.6, alpha: 1.0), for: .normal)
+  }
+  
+}
+
+// MARK: ProfileCreationProtocol
+extension OnboardingExplainationPage4ViewController: ProfileCreationProtocol, CNContactPickerDelegate {
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+    self.didSelectContact(contact: contact)
+  }
+  
+  func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+    self.didSelectContactProperty(contactProperty: contactProperty)
+  }
+  
+  func receivedProfileCreationData(creationData: ProfileCreationData) {
+    DispatchQueue.main.async {
+      guard let friendInfoVC = OnboardingFriendInfoViewController.instantiate(profileData: creationData,
+                                                                              titleLabelText: "Join with a friend") else {
+                                                                                print("Unable to create friend Info VC")
+                                                                                return
+      }
+      self.navigationController?.pushViewController(friendInfoVC, animated: true)
+    }
+  }
+  
+  func recievedProfileCreationError(title: String, message: String?) {
+    DispatchQueue.main.async {
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      self.present(alert, animated: true)
+    }
+  }
+  
+  func promptContactsPicker() {
+    let cnPicker = self.getContactsPicker()
+    cnPicker.delegate = self
+    self.present(cnPicker, animated: true, completion: nil)
   }
   
 }

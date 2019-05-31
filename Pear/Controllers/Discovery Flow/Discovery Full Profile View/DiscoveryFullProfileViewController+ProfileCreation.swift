@@ -64,12 +64,11 @@ extension DiscoveryFullProfileViewController: ProfileCreationProtocol, CNContact
   
   func receivedProfileCreationData(creationData: ProfileCreationData) {
     DispatchQueue.main.async {
-      // TODO(@averylamp) : Profile creation
-//      guard let vibesVC = ProfileInputVibeViewController.instantiate(profileCreationData: creationData) else {
-//        print("Failed to create Vibes VC")
-//        return
-//      }
-//      self.navigationController?.pushViewController(vibesVC, animated: true)
+      guard let friendInfoVC = OnboardingFriendInfoViewController.instantiate(profileData: creationData, titleLabelText: "Add friend") else {
+        print("Unable to create friend Info VC")
+        return
+      }
+      self.navigationController?.pushViewController(friendInfoVC, animated: true)
     }
   }
   
