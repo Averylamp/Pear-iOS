@@ -1245,6 +1245,7 @@
 			children = (
 				BB139EFD229A913400D7955A /* Me Main VC */,
 				BBF79686225956C200E9A506 /* Main Full Screen Display */,
+				BB68EB2522A3189400CDB114 /* Edit Preview Page */,
 				BBF7968B22595B9A00E9A506 /* Edit User Preferences */,
 				BB139F06229A9F2B00D7955A /* Edit User Info */,
 				BB139F07229AA13F00D7955A /* Account Settings */,
@@ -1455,6 +1456,15 @@
 				BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */,
 			);
 			path = Pictures;
+			sourceTree = "<group>";
+		};
+		BB68EB2522A3189400CDB114 /* Edit Preview Page */ = {
+			isa = PBXGroup;
+			children = (
+				BB855B1022A2FDA500F54EA4 /* EditPreviewViewController.swift */,
+				BB855B1222A2FDB000F54EA4 /* EditPreviewViewController.storyboard */,
+			);
+			path = "Edit Preview Page";
 			sourceTree = "<group>";
 		};
 		BB714121228B4F5100129C93 /* Cera Pro */ = {
@@ -2196,8 +2206,6 @@
 			children = (
 				BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */,
 				BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */,
-				BB855B1022A2FDA500F54EA4 /* EditPreviewViewController.swift */,
-				BB855B1222A2FDB000F54EA4 /* EditPreviewViewController.storyboard */,
 			);
 			path = "Edit User Preferences";
 			sourceTree = "<group>";
