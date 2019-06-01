@@ -102,7 +102,7 @@ extension PromptInputResponseViewController {
   func setup() {
     self.questionLabel.text = self.question.questionText
     if let previousResponse = self.previousResponse {
-      self.inputTextView.text = previousResponse.responseBody + previousResponse.responseBody + previousResponse.responseBody + previousResponse.responseBody + previousResponse.responseBody + previousResponse.responseBody
+      self.inputTextView.text = previousResponse.responseBody
     }
     self.inputTextView.delegate = self
   }
