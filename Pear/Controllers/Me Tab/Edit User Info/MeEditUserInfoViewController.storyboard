@@ -70,27 +70,6 @@
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKx-em-e81">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lpG-Cn-3kF">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMJ-W3-XCZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" id="cx9-VD-iGS"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="lpG-Cn-3kF" firstAttribute="leading" secondItem="sKx-em-e81" secondAttribute="leading" id="0EA-zq-DUe"/>
-                                    <constraint firstAttribute="bottom" secondItem="lpG-Cn-3kF" secondAttribute="bottom" id="P7q-Uu-1gN"/>
-                                    <constraint firstItem="lpG-Cn-3kF" firstAttribute="width" secondItem="sKx-em-e81" secondAttribute="width" id="bpX-5v-aer"/>
-                                    <constraint firstAttribute="trailing" secondItem="lpG-Cn-3kF" secondAttribute="trailing" id="cKR-04-2Cb"/>
-                                    <constraint firstItem="lpG-Cn-3kF" firstAttribute="top" secondItem="sKx-em-e81" secondAttribute="top" id="fC2-rH-NU8"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,7 +91,6 @@
                         <outlet property="profileNameLabel" destination="Vz7-4z-i8h" id="Iok-HX-fRQ"/>
                         <outlet property="scrollView" destination="sKx-em-e81" id="Yn6-gN-sde"/>
                         <outlet property="scrollViewBottomConstraint" destination="cz9-TE-hgG" id="WWd-dJ-DFe"/>
-                        <outlet property="stackView" destination="lpG-Cn-3kF" id="6Me-x0-hXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMp-nq-df4" userLabel="First Responder" sceneMemberID="firstResponder"/>

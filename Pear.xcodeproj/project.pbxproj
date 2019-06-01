@@ -153,6 +153,10 @@
 		BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F88222DB19300E31C7F /* PearUserConstants.swift */; };
 		BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F89222DB19300E31C7F /* PearUser.swift */; };
 		BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB797DEC2276C9C600D38044 /* DataStore+Location.swift */; };
+		BB855B1122A2FDA500F54EA4 /* EditPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB855B1022A2FDA500F54EA4 /* EditPreviewViewController.swift */; };
+		BB855B1322A2FDB100F54EA4 /* EditPreviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB855B1222A2FDB000F54EA4 /* EditPreviewViewController.storyboard */; };
+		BB855B1522A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB855B1422A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift */; };
+		BB855B1722A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB855B1622A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard */; };
 		BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11A22437B64001320B0 /* SharedModel.swift */; };
 		BB94C12522438502001320B0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12422438502001320B0 /* Message.swift */; };
 		BB94C12722438F00001320B0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12622438F00001320B0 /* Chat.swift */; };
@@ -492,6 +496,10 @@
 		BB796F88222DB19300E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
 		BB796F89222DB19300E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		BB797DEC2276C9C600D38044 /* DataStore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Location.swift"; sourceTree = "<group>"; };
+		BB855B1022A2FDA500F54EA4 /* EditPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPreviewViewController.swift; sourceTree = "<group>"; };
+		BB855B1222A2FDB000F54EA4 /* EditPreviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditPreviewViewController.storyboard; sourceTree = "<group>"; };
+		BB855B1422A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeEditUserInfoStackViewController.swift; sourceTree = "<group>"; };
+		BB855B1622A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeEditUserInfoStackViewController.storyboard; sourceTree = "<group>"; };
 		BB884CF8CFF4C5A51377A2FA /* Pods-PearTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.production.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.production.xcconfig"; sourceTree = "<group>"; };
 		BB94C11A22437B64001320B0 /* SharedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
 		BB94C12422438502001320B0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -1064,6 +1072,8 @@
 			children = (
 				BB139F02229A9D7B00D7955A /* MeEditUserInfoViewController.swift */,
 				BB139F03229A9D7B00D7955A /* MeEditUserInfoViewController.storyboard */,
+				BB855B1422A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift */,
+				BB855B1622A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard */,
 			);
 			path = "Edit User Info";
 			sourceTree = "<group>";
@@ -2186,6 +2196,8 @@
 			children = (
 				BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */,
 				BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */,
+				BB855B1022A2FDA500F54EA4 /* EditPreviewViewController.swift */,
+				BB855B1222A2FDB000F54EA4 /* EditPreviewViewController.storyboard */,
 			);
 			path = "Edit User Preferences";
 			sourceTree = "<group>";
@@ -2367,6 +2379,8 @@
 				BBF93E8B2267CF7A002841EE /* OpenSans-SemiBold.ttf in Resources */,
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
 				BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */,
+				BB855B1722A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard in Resources */,
+				BB855B1322A2FDB100F54EA4 /* EditPreviewViewController.storyboard in Resources */,
 				BB201193228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard in Resources */,
 				BBA8AE922297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard in Resources */,
 				BBB71B582294509E002CDDD1 /* UserNameInputViewController.storyboard in Resources */,
@@ -2664,6 +2678,7 @@
 				BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */,
 				BB201199228F27F500BC85C0 /* MatchingDemographics.swift in Sources */,
 				BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */,
+				BB855B1122A2FDA500F54EA4 /* EditPreviewViewController.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* NewProfileDemographicsViewController.swift in Sources */,
 				BB687E73228D716900F45C9D /* OnboardingFriendNameViewController.swift in Sources */,
 				BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */,
@@ -2785,6 +2800,7 @@
 				BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */,
+				BB855B1522A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
 				BBCA2D73229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift in Sources */,
