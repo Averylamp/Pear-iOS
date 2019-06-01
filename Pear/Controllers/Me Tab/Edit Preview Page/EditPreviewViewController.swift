@@ -19,6 +19,9 @@ class EditPreviewViewController: UIViewController {
   @IBOutlet weak var stackView: UIStackView!
   
   weak var editUserVC: MeEditUserInfoStackViewController?
+  var previousFullProfileDisplayData: FullProfileDisplayData?
+  var lastRefesthTime = CACurrentMediaTime()
+  var lastScrollPosition: CGFloat = 0.0
   
   /// Factory method for creating this view controller.
   ///
@@ -54,7 +57,7 @@ class EditPreviewViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.editButton.isSelected = false
     self.previewButton.isSelected = true
-    self.refreshPreviewVC()
+    self.refreshPreviewVCIfNeeded()
     self.scrollView.setContentOffset(CGPoint(x: self.view.frame.width, y: 0), animated: true)
   }
   
@@ -72,6 +75,7 @@ extension EditPreviewViewController {
   /// Setup should only be called once
   func setup() {
     self.scrollView.isPagingEnabled = true
+    self.scrollView.delegate = self
     self.editButton.isSelected = true
     self.previewButton.isSelected = false
     self.scrollView.contentOffset = CGPoint.zero
@@ -80,7 +84,7 @@ extension EditPreviewViewController {
       self.stackView.removeArrangedSubview($0)
     })
     self.addEditUserVC()
-    self.refreshPreviewVC()
+    self.refreshPreviewVCIfNeeded()
   }
   
   func addEditUserVC() {
@@ -125,12 +129,9 @@ extension EditPreviewViewController {
     editUserVC.didMove(toParent: self)
   }
   
-  func refreshPreviewVC() {
-    if self.stackView.arrangedSubviews.count == 2 {
-      let previousPreviewVCView = self.stackView.arrangedSubviews[1]
-      self.stackView.removeArrangedSubview(previousPreviewVCView)
-      previousPreviewVCView.removeFromSuperview()
-    }
+  func refreshPreviewVCIfNeeded() {
+    self.lastRefesthTime = CACurrentMediaTime()
+    print("Refresh preview if needed")
     guard let user = DataStore.shared.currentPearUser else {
       print("Unable to find user")
       return
@@ -141,6 +142,21 @@ extension EditPreviewViewController {
       let editedImageContainers = self.editUserVC?.photoUpdateVC?.images.compactMap({ $0.imageContainer }) {
       fullProfileDisplayData.imageContainers = editedImageContainers
     }
+
+    if let previousFullProfileDisplayData = self.previousFullProfileDisplayData {
+      if fullProfileDisplayData == previousFullProfileDisplayData {
+        print("No Refresh Needed")
+        return
+      }
+    }
+    print("Refreshing Full Profile Display Preview")
+    self.previousFullProfileDisplayData = fullProfileDisplayData
+    if self.stackView.arrangedSubviews.count == 2 {
+      let previousPreviewVCView = self.stackView.arrangedSubviews[1]
+      self.stackView.removeArrangedSubview(previousPreviewVCView)
+      previousPreviewVCView.removeFromSuperview()
+    }
+  
     guard let profileStackVC = FullProfileStackViewController.instantiate(userFullProfileData: fullProfileDisplayData) else {
       print("Unable to create full profile stack View")
       return
@@ -188,6 +204,18 @@ extension EditPreviewViewController {
       self.editButton.titleLabel?.font = font
       self.previewButton.titleLabel?.font = font
     }
+  }
+  
+}
+
+// MARK: - UIScrollViewDelegate
+extension EditPreviewViewController: UIScrollViewDelegate {
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if scrollView.contentOffset.x > self.lastScrollPosition && CACurrentMediaTime() - self.lastRefesthTime > 2.0 {
+      self.refreshPreviewVCIfNeeded()
+    }
+    self.lastScrollPosition = scrollView.contentOffset.x
   }
   
 }
