@@ -136,12 +136,12 @@ class DiscoveryFullProfileViewController: UIViewController {
       return
     }
     if let profileCount = DataStore.shared.currentPearUser?.endorserIDs.count,
-      profileCount > 0 {
+      profileCount ==  0 && Int.random(in: 0..<5) == 0 {
+      self.promptProfileRequest()
+    } else {
       self.displayPersonalRequestVC(personalUserID: personalUserID,
                                     thumbnailImageURL: requestedThumbnailURL,
                                     requestPersonName: self.fullProfileData.firstName ?? "")
-    } else {
-      self.promptProfileRequest()
     }
   }
   

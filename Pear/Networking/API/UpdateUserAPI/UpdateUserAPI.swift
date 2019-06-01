@@ -48,4 +48,7 @@ protocol UpdateUserAPI {
   func updateUserIsSeeking(seeking: Bool,
                            completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
   
+  func updateUserPrompts(prompts: [QuestionResponseItem],
+                         completion: @escaping(Result<Bool, UpdateUserAPIError>) -> Void)
+  
 }

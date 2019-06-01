@@ -43,6 +43,9 @@
                                         <state key="normal" image="onboarding-close-button">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="lER-Ka-uEl" eventType="touchUpInside" id="MNe-11-QH9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,6 +146,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oDq-Jd-u1G"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="dBA-H5-i6g" id="AHq-vQ-PDo"/>
+                        <outlet property="titleLabel" destination="E5w-Ih-xl6" id="Af6-td-Ayn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7T-Nq-Kb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

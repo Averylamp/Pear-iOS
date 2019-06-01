@@ -110,11 +110,7 @@ extension FriendsTabViewController: UICollectionViewDelegate, UICollectionViewDa
       }
       self.navigationController?.pushViewController(friendFullProfileVC, animated: true)
     } else {
-      guard let joinFriendInfoVC = OnboardingFriendInfoViewController.instantiate() else {
-        print("Failed to create next Onboarding Info Page")
-        return
-      }
-      self.navigationController?.pushViewController(joinFriendInfoVC, animated: true)
+      self.promptContactsPicker()
     }
   }
   
@@ -151,12 +147,12 @@ extension FriendsTabViewController: ProfileCreationProtocol, CNContactPickerDele
   
   func receivedProfileCreationData(creationData: ProfileCreationData) {
     DispatchQueue.main.async {
-      // TODO(@averylamp): Fix
-//      guard let vibesVC = ProfileInputVibeViewController.instantiate(profileCreationData: creationData) else {
-//        print("Failed to create Vibes VC")
-//        return
-//      }
-//      self.navigationController?.pushViewController(vibesVC, animated: true)
+      guard let friendInfoVC = OnboardingFriendInfoViewController.instantiate(profileData: creationData,
+                                                                              titleLabelText: "Add friend") else {
+        print("Unable to create friend Info VC")
+        return
+      }
+      self.navigationController?.pushViewController(friendInfoVC, animated: true)
     }
   }
   
