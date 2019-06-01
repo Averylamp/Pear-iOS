@@ -182,6 +182,11 @@ extension EditPreviewViewController {
     self.editButton.setTitleColor(UIColor(white: 0.6, alpha: 1.0), for: .normal)
     self.previewButton.setTitleColor(R.color.primaryTextColor(), for: .selected)
     self.previewButton.setTitleColor(UIColor(white: 0.6, alpha: 1.0), for: .normal)
+    self.titleLabel.stylizeGeneralHeaderTitleLabel()
+    if let font = R.font.openSansBold(size: 16){
+      self.editButton.titleLabel?.font = font
+      self.previewButton.titleLabel?.font = font
+    }
   }
   
 }
