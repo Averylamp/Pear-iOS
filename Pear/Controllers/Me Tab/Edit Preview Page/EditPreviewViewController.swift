@@ -212,6 +212,14 @@ extension EditPreviewViewController {
 extension EditPreviewViewController: UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
+    if pageIndex == 0 {
+      self.editButton.isSelected = true
+      self.previewButton.isSelected = false
+    }else if pageIndex == 1 {
+      self.editButton.isSelected = false
+      self.previewButton.isSelected = true
+    }
     if scrollView.contentOffset.x > self.lastScrollPosition && CACurrentMediaTime() - self.lastRefesthTime > 2.0 {
       self.refreshPreviewVCIfNeeded()
     }
