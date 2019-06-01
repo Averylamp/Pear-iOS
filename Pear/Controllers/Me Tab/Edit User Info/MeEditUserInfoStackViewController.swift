@@ -185,6 +185,7 @@ extension MeEditUserInfoStackViewController {
                                         switch result {
                                         case .success(let successful):
                                           if successful {
+                                            DataStore.shared.refreshPearUser(completion: nil)
                                             print("Updating Images successful")
                                           } else {
                                             print("Updating Images failure")

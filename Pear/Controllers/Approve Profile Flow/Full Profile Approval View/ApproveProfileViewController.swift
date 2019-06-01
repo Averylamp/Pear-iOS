@@ -124,36 +124,6 @@ extension ApproveProfileViewController {
     self.addApprovalButtons()
   }
   
-  func addScrollableTextContent(content: [TextContentItem]) {
-    guard let scrollableContentVC = ScrollableTextItemViewController.instantiate(items: content) else {
-      print("failed to instantiate scrollable text item")
-      return
-    }
-    self.addChild(scrollableContentVC)
-    self.stackView.addArrangedSubview(scrollableContentVC.view)
-    scrollableContentVC.didMove(toParent: self)
-    
-  }
-  
-  func addScrollableQuestionContent(content: [QuestionResponseItem]) {
-    guard let scrollableContentVC = ScrollableQuestionItemViewController.instantiate(items: content) else {
-      print("failed to instantiate scrollable questions item")
-      return
-    }
-    self.addChild(scrollableContentVC)
-    self.stackView.addArrangedSubview(scrollableContentVC.view)
-    scrollableContentVC.didMove(toParent: self)
-  }
-  
-  func addSpacerView(height: CGFloat) {
-    let spacer = UIView()
-    spacer.translatesAutoresizingMaskIntoConstraints = false
-    spacer.backgroundColor = nil
-    spacer.addConstraint(NSLayoutConstraint(item: spacer, attribute: .height, relatedBy: .equal,
-                                            toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-    self.stackView.addArrangedSubview(spacer)
-  }
-  
   func addDemographcsVC(firstName: String?,
                         age: Int?,
                         schoolName: String?,
