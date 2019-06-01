@@ -38,7 +38,7 @@ class PromptInputResponseViewController: UIViewController {
     promptInputResponseVC.previousResponse = previousResponse
     promptInputResponseVC.editIndex = index
     if question.tags.contains("bio") || question.tags.contains("boastroast") || question.tags.contains("dodont") {
-      promptInputResponseVC.maxCharacterResponse = 600
+      promptInputResponseVC.maxCharacterResponse = 300
     }
     return promptInputResponseVC
   }
@@ -102,7 +102,7 @@ extension PromptInputResponseViewController {
   func setup() {
     self.questionLabel.text = self.question.questionText
     if let previousResponse = self.previousResponse {
-      self.inputTextView.text = previousResponse.responseBody
+      self.inputTextView.text = previousResponse.responseBody + previousResponse.responseBody + previousResponse.responseBody + previousResponse.responseBody + previousResponse.responseBody + previousResponse.responseBody
     }
     self.inputTextView.delegate = self
   }
@@ -157,6 +157,9 @@ extension PromptInputResponseViewController: UITextViewDelegate {
     }
     let substringToReplace = textViewText[rangeOfTextToReplace]
     let count = textViewText.count - substringToReplace.count + text.count
+    if substringToReplace.count - text.count >= 0 {
+      return true
+    }
     if self.maxCharacterResponse > 0 {
       return count <= maxCharacterResponse
     }
