@@ -26,20 +26,17 @@ class OnboardingFriendPromptInputViewController: UIViewController {
   
   @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
   
-  var profileData: ProfileCreationData?
+  var profileData: ProfileCreationData!
   var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
-  var friendFirstName: String!
-  var friendGender: GenderEnum!
   var answeredPrompts: [QuestionResponseItem] = []
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(friendFirstName: String, gender: GenderEnum) -> OnboardingFriendPromptInputViewController? {
+  class func instantiate(profileData: ProfileCreationData) -> OnboardingFriendPromptInputViewController? {
     guard let friendPromptVC = R.storyboard.onboardingFriendPromptInputViewController
       .instantiateInitialViewController() else { return nil }
-    friendPromptVC.friendFirstName = friendFirstName
-    friendPromptVC.friendGender = gender
+    friendPromptVC.profileData = profileData
     return friendPromptVC
   }
 
@@ -56,7 +53,7 @@ class OnboardingFriendPromptInputViewController: UIViewController {
       self.present(alertController, animated: true, completion: nil)
       return
     }
-    self.promptContactsPicker()
+    self.promptMessageComposer()
   }
   
   func promptMessageComposer() {
@@ -79,8 +76,6 @@ class OnboardingFriendPromptInputViewController: UIViewController {
     #if DEVMODE
     if let profileData = self.profileData {
       profileData.questionResponses = self.answeredPrompts
-      profileData.firstName = self.friendFirstName
-      profileData.gender = self.friendGender
     }
     self.createDetachedProfile(profileData: profileData,
                                completion: self.createDetachedProfileCompletion(result:))
@@ -412,63 +407,6 @@ extension OnboardingFriendPromptInputViewController: ProgressBarProtocol {
   }
 }
 
-// MARK: - Contact Picker Delegate
-extension OnboardingFriendPromptInputViewController: ProfileCreationProtocol, CNContactPickerDelegate {
-  
-  func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-    self.didSelectContact(contact: contact)
-    picker.dismiss(animated: true)
-  }
-  
-  func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
-    self.didSelectContactProperty(contactProperty: contactProperty)
-    picker.dismiss(animated: true)
-  }
-  
-  func receivedProfileCreationData(creationData: ProfileCreationData) {
-    self.profileData = creationData
-    self.profileData?.firstName = self.friendFirstName
-    self.profileData?.gender = self.friendGender
-    DispatchQueue.main.async {
-      self.promptMessageComposer()
-    }
-  }
-  
-  func recievedProfileCreationError(title: String, message: String?) {
-    DispatchQueue.main.async {
-      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-      self.present(alert, animated: true)
-      self.activityIndicator.stopAnimating()
-      self.continueButton.isEnabled = true
-    }
-  }
-  
-  func promptContactsPicker() {
-    let cnPicker = self.getContactsPicker()
-    cnPicker.delegate = self
-    
-    self.continueButton.isEnabled = false
-    self.activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-                                                     type: NVActivityIndicatorType.lineScalePulseOut,
-                                                     color: StylingConfig.textFontColor,
-                                                     padding: 0)
-    self.view.addSubview(activityIndicator)
-    activityIndicator.center = CGPoint(x: self.view.center.x,
-                                       y: self.continueButton.frame.origin.y - 40)
-    activityIndicator.startAnimating()
-    self.present(cnPicker, animated: true, completion: nil)
-  }
-  
-  func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
-    self.continueButton.isEnabled = true
-    self.activityIndicator.stopAnimating()
-    self.activityIndicator.removeFromSuperview()
-    print("Cancel Contact Picker")
-  }
-  
-}
-
 // MARK: - MFMessageComposeViewControllerDelegate
 extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControllerDelegate {
   func createDetachedProfileCompletion(result: Result<PearDetachedProfile, (errorTitle: String, errorMessage: String)?>) {
@@ -521,6 +459,7 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
     case .cancelled, .failed:
       self.dismissMessageVC(controller: controller)
     case .sent:
+      Analytics.logEvent("invite_friend_complete", parameters: nil)
       controller.dismiss(animated: true) {
         if let profileData = self.profileData {
           profileData.questionResponses = self.answeredPrompts

@@ -30,8 +30,8 @@ extension DiscoveryFullProfileViewController {
   }
   
   func promptProfileRequest() {
-    let alertController = UIAlertController(title: "Match with yourself?",
-                                            message: "To match this person with yourself, ask a friend to make you a profile first!",
+    let alertController = UIAlertController(title: "Complete your profile?",
+                                            message: "Complete profiles recieve 2.4x as many matches!  Invite a friend to write something about you.",
                                             preferredStyle: .alert)
     let createProfile = UIAlertAction(title: "Ask a friend", style: .default) { (_) in
       DispatchQueue.main.async {
@@ -64,12 +64,11 @@ extension DiscoveryFullProfileViewController: ProfileCreationProtocol, CNContact
   
   func receivedProfileCreationData(creationData: ProfileCreationData) {
     DispatchQueue.main.async {
-      // TODO(@averylamp) : Profile creation
-//      guard let vibesVC = ProfileInputVibeViewController.instantiate(profileCreationData: creationData) else {
-//        print("Failed to create Vibes VC")
-//        return
-//      }
-//      self.navigationController?.pushViewController(vibesVC, animated: true)
+      guard let friendInfoVC = OnboardingFriendInfoViewController.instantiate(profileData: creationData, titleLabelText: "Add friend") else {
+        print("Unable to create friend Info VC")
+        return
+      }
+      self.navigationController?.pushViewController(friendInfoVC, animated: true)
     }
   }
   

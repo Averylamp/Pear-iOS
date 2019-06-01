@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 import NVActivityIndicatorView
 
 class OnboardingPicturesViewController: UIViewController {
@@ -93,6 +94,7 @@ extension OnboardingPicturesViewController {
                                         case .failure(let error):
                                           print("Updating Images failure: \(error)")
                                         }
+                                        Analytics.logEvent("setup_profile_complete", parameters: nil)
                                         DispatchQueue.main.async {
                                           self.activityIndicator.stopAnimating()
                                           DataStore.shared.setFlagToDefaults(value: true, flag: .hasCompletedOnboarding)

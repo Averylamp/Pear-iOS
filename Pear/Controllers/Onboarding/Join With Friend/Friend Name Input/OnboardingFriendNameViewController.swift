@@ -19,13 +19,16 @@ class OnboardingFriendNameViewController: UIViewController {
   
   var firstNameVC: SimpleFieldInputViewController?
   var genderButtons: [UIButton] = []
-  
+  var titleLabelText: String?
+  var profileData: ProfileCreationData!
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate() -> OnboardingFriendNameViewController? {
+  class func instantiate(profileData: ProfileCreationData, titleLabelText: String? = nil) -> OnboardingFriendNameViewController? {
     guard let onboardingFriendNameVC = R.storyboard.onboardingFriendNameViewController
       .instantiateInitialViewController() else { return nil }
+    onboardingFriendNameVC.titleLabelText = titleLabelText
+    onboardingFriendNameVC.profileData = profileData
     return onboardingFriendNameVC
   }
   
@@ -57,9 +60,10 @@ class OnboardingFriendNameViewController: UIViewController {
       self.alert(title: "Missing Info", message: "You must fill out your friend's gender")
       return
     }
-    
+    self.profileData.firstName = friendFirstName
+    self.profileData.gender = friendsGender
     guard let friendPromptInputVC = OnboardingFriendPromptInputViewController
-      .instantiate(friendFirstName: friendFirstName, gender: friendsGender) else {
+      .instantiate(profileData: self.profileData) else {
       print("Failed to instantiate friend info VC")
       return
     }
@@ -98,6 +102,9 @@ extension OnboardingFriendNameViewController {
   }
   
   func stylize() {
+    if let titleLabelText = self.titleLabelText {
+      self.titleLabel.text = titleLabelText
+    }
     self.titleLabel.stylizeOnboardingHeaderTitleLabel()
     self.continueButton.stylizeOnboardingContinueButton()
     self.genderButtons.forEach({
@@ -113,7 +120,7 @@ extension OnboardingFriendNameViewController {
   
   func setup() {
     guard let firstNameInputVC = SimpleFieldInputViewController.instantiate(fieldName: "Their first name is...",
-                                                                            previousValue: nil,
+                                                                            previousValue: self.profileData.firstName,
                                                                             placeholder: "Enter their first name",
                                                                             visibility: true) else {
                                                                               print("Unable to instantiate Simple Field Input VC")

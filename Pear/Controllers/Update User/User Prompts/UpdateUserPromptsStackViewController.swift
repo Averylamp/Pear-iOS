@@ -35,17 +35,23 @@ extension UpdateUserPromptsStackViewController {
   }
   
   func setup() {
+    self.refreshPrompts()
+  }
+  
+  func refreshPrompts() {
     guard let user = DataStore.shared.currentPearUser else {
       print("Unable to get Pear User")
       return
     }
+    self.stackView.arrangedSubviews.forEach({
+      $0.removeFromSuperview()
+      self.stackView.removeArrangedSubview($0)
+    })
     let questionResponses = user.questionResponses.filter({ $0.question.questionType == .freeResponse})
     var index: Int = 0
     if questionResponses.count > 0 {
+      print("Count: \(questionResponses.count)")
       for response in questionResponses.filter({ $0.hidden == false}) {
-        if index >= 5 {
-          break
-        }
         self.addPromptCard(response: response, index: index)
         index += 1
       }
@@ -68,6 +74,7 @@ extension UpdateUserPromptsStackViewController {
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false
     let cardView = UIButton()
+    cardView.addTarget(self, action: #selector(UpdateUserPromptsStackViewController.replacePromptClicked(sender:)), for: .touchUpInside)
     cardView.tag = index
     cardView.translatesAutoresizingMaskIntoConstraints = false
     cardView.layer.cornerRadius = 12
@@ -92,7 +99,7 @@ extension UpdateUserPromptsStackViewController {
       let imageURL = URL(string: imageURLString) {
       thumbnailImageView.sd_setImage(with: imageURL, completed: nil)
     } else {
-      thumbnailImageView.image = R.image.friendsNoImage()
+      thumbnailImageView.image = R.image.discoveryPlacholderUserImage()
     }
     let thumbnailSize: CGFloat = 24
     thumbnailImageView.layer.cornerRadius = thumbnailSize / 2.0
@@ -257,7 +264,48 @@ extension UpdateUserPromptsStackViewController {
   }
   
   @objc func replacePromptClicked(sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let promptPickerVC = PromptPickerViewController.instantiate(replaceIndex: sender.tag) else {
+      print("Unable to create prompt picker VC")
+      return
+    }
+    promptPickerVC.promptPickerDelegate = self
+    self.navigationController?.pushViewController(promptPickerVC, animated: true)
+  }
+  
+}
+
+// MARK: - PromptPickerDelegate
+extension UpdateUserPromptsStackViewController: PromptPickerDelegate {
+  
+  func didReplacePrompt(prompt: QuestionResponseItem, atIndex: Int?) {
+    guard let user = DataStore.shared.currentPearUser else {
+      print("Unable to get pear user")
+      return
+    }
+    if let pickedPromptIndex = user.questionResponses.firstIndex(of: prompt),
+      let index = atIndex {
+      user.questionResponses.remove(at: pickedPromptIndex)
+      user.questionResponses[index].hidden = true
+      user.questionResponses.insert(prompt, at: index)
+      prompt.hidden = false
+    }
     
+    PearUpdateUserAPI.shared.updateUserPrompts(prompts: user.questionResponses) { (result) in
+      switch result {
+      case .success(let successful):
+        if successful {
+          print("Updated user prompts successfully")
+        } else {
+           print("Failed to update user prompts")
+        }
+      case .failure(let error):
+        print("Failed to update user prompts: \(error)")
+      }
+    }
+    DispatchQueue.main.async {
+      self.refreshPrompts()
+    }
   }
   
 }

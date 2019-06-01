@@ -72,6 +72,7 @@ class SentryHelper {
     print(extra)
     #if DEVMODE
     fatalError("A sentry mesage has been generated: \(message)")
+    return
     #endif
     
     #if PROD

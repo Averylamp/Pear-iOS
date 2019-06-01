@@ -124,7 +124,7 @@ extension DiscoveryFullProfileViewController {
         let imageURL = URL(string: imageURLString) {
         endorsedButton.sd_setImage(with: imageURL, for: .normal, completed: nil)
       } else {
-        endorsedButton.setImage(R.image.friendsNoImage(), for: .normal)
+        endorsedButton.setImage(R.image.discoveryPlacholderUserImage(), for: .normal)
       }
       let endorsedMatchButton = MatchButton(button: endorsedButton,
                                             buttonEnabled: endorsedEnabled,
@@ -141,7 +141,7 @@ extension DiscoveryFullProfileViewController {
         let imageURL = URL(string: imageURLString) {
         detachedProfileButton.sd_setImage(with: imageURL, for: .normal, completed: nil)
       } else {
-        detachedProfileButton.setImage(R.image.friendsNoImage(), for: .normal)
+        detachedProfileButton.setImage(R.image.discoveryPlacholderUserImage(), for: .normal)
       }
       let endorsedMatchButton = MatchButton(button: detachedProfileButton,
                                             buttonEnabled: false,
@@ -176,7 +176,7 @@ extension DiscoveryFullProfileViewController {
     }
     
     // Only You in match buttons, generate placeholder endorsed
-    if allMatchButtons.count == 1 {
+    if allMatchButtons.count == 0 {
       let placeholderEndorsedButton = self.generateMatchButton(enabled: true)
       placeholderEndorsedButton.setImage(R.image.discoveryPlaceholderEndorsement(), for: .normal)
       
