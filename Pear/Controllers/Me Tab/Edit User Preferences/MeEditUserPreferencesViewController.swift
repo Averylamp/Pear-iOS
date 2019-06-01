@@ -146,27 +146,13 @@ extension MeEditUserPreferencesViewController {
   func setup() {
     self.addGenderButtons()
     self.addAgeRange()
+    self.addSeeking()
   }
   
   func addGenderButtons() {
     self.stackView.addSpacer(height: 10)
+    self.stackView.addTitleLabel(text: "Seeking Gender")
     let containerView = UIView()
-    let titleLabel = UILabel()
-    titleLabel.text = "Seeking Gender"
-    titleLabel.textColor = R.color.primaryTextColor()
-    if let font = R.font.openSansBold(size: 14.0) {
-      titleLabel.font = font
-    }
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    containerView.addSubview(titleLabel)
-    containerView.addConstraints([
-      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
-                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 20.0),
-      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -20.0),
-      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4.0)
-      ])
     
     let femaleButton = UIButton()
     
@@ -191,7 +177,7 @@ extension MeEditUserPreferencesViewController {
     // Adds position button constraints
     containerView.addConstraints([
       NSLayoutConstraint(item: femaleButton, attribute: .top, relatedBy: .equal,
-                         toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: 8.0),
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4.0),
       NSLayoutConstraint(item: femaleButton, attribute: .bottom, relatedBy: .equal,
                          toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -8.0),
       NSLayoutConstraint(item: femaleButton, attribute: .left, relatedBy: .equal,
@@ -243,6 +229,7 @@ extension MeEditUserPreferencesViewController {
   
   func addAgeRange() {
     self.stackView.addSpacer(height: 10)
+    self.stackView.addTitleLabel(text: "Age Range")
     let containerView = UIView()
     let titleLabel = UILabel()
     titleLabel.text = "Age Range"
@@ -292,6 +279,46 @@ extension MeEditUserPreferencesViewController {
                          toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4.0)
       ])
     ageRangeInputVC.didMove(toParent: self)
+    self.stackView.addArrangedSubview(containerView)
+  }
+  
+  func addSeeking() {
+    guard let seeking = DataStore.shared.currentPearUser?.isSeeking else {
+      print("Unable to determine if seeking")
+      return
+    }
+    let containerView = UIView()
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let seekingLabel = UILabel()
+    seekingLabel.translatesAutoresizingMaskIntoConstraints = false
+    seekingLabel.text = "Seeking?"
+    if let font = R.font.openSansBold(size: 16) {
+      seekingLabel.font = font
+    }
+    seekingLabel.textColor = R.color.primaryTextColor()
+    containerView.addSubview(seekingLabel)
+    
+    let seekingSwitch = UISwitch()
+    seekingSwitch.translatesAutoresizingMaskIntoConstraints = false
+    seekingSwitch.isOn = seeking
+    containerView.addSubview(seekingSwitch)
+    
+    containerView.addConstraints([
+      NSLayoutConstraint(item: seekingLabel, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: seekingLabel, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4.0),
+      NSLayoutConstraint(item: seekingLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4.0),
+      NSLayoutConstraint(item: seekingLabel, attribute: .right, relatedBy: .equal,
+                         toItem: seekingSwitch, attribute: .left, multiplier: 1.0, constant: -8.0),
+      NSLayoutConstraint(item: seekingLabel, attribute: .centerY, relatedBy: .equal,
+                         toItem: seekingSwitch, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: seekingSwitch, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -12.0)
+      ])
+    
     self.stackView.addArrangedSubview(containerView)
   }
   

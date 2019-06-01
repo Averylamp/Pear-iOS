@@ -172,31 +172,6 @@ extension MeEditUserInfoViewController {
     self.addMoreInfo()
   }
   
-  func addTitleSection(title: String) {
-    let containerView = UIView()
-    containerView.translatesAutoresizingMaskIntoConstraints = false
-    
-    let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    if let font = R.font.openSansBold(size: 16) {
-      titleLabel.font = font
-    }
-    titleLabel.textColor =  UIColor(white: 0.6, alpha: 1.0)
-    titleLabel.text = title
-    containerView.addSubview(titleLabel)
-    containerView.addConstraints([
-      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
-                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
-      NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal,
-                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
-      ])
-    self.stackView.addArrangedSubview(containerView)
-  }
-  
   func addSubtitleSection(subtitle: String) {
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -220,7 +195,7 @@ extension MeEditUserInfoViewController {
   }
   
   func addPhotosSection() {
-    self.addTitleSection(title: "Photos")
+    self.stackView.addTitleLabel(text: "Photos")
     var allImages: [LoadedImageContainer] = []
     self.pearUser.displayedImages.forEach({
       allImages.append($0.loadedImageContainer())
@@ -237,7 +212,7 @@ extension MeEditUserInfoViewController {
   }
   
   func addPromptsSection() {
-    self.addTitleSection(title: "Prompts")
+    self.stackView.addTitleLabel(text: "Prompts")
     guard let promptsVC = UpdateUserPromptsStackViewController.instantiate() else {
       print("Unable to instantiate prompts vc")
       return
@@ -250,7 +225,7 @@ extension MeEditUserInfoViewController {
   }
   
   func addBasicInfo() {
-    self.addTitleSection(title: "Basic Information")
+    self.stackView.addTitleLabel(text: "Basic Information")
     guard let basicInfoInputVC = UserBasicInfoTableViewController.instantiate() else {
       print("Unable to instantiate basic info VC")
       return
@@ -268,7 +243,7 @@ extension MeEditUserInfoViewController {
   }
   
   func addMoreInfo() {
-    self.addTitleSection(title: "More Information")
+    self.stackView.addTitleLabel(text: "More Information")
     guard let moreDetailsVC = UserMoreDetailsTableViewController.instantiate() else {
       print("Unable to instantiate basic info VC")
       return
