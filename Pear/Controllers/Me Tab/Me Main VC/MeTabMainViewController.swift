@@ -100,7 +100,7 @@ extension MeTabMainViewController {
   
   @objc func updateWithCurrentUser() {
     DispatchQueue.main.async {
-      self.stylize()      
+      self.stylize()
     }
   }
   
