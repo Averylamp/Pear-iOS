@@ -71,6 +71,7 @@ extension EditPreviewViewController {
   
   /// Setup should only be called once
   func setup() {
+    self.scrollView.isPagingEnabled = true
     self.editButton.isSelected = true
     self.previewButton.isSelected = false
     self.scrollView.contentOffset = CGPoint.zero
@@ -183,7 +184,7 @@ extension EditPreviewViewController {
     self.previewButton.setTitleColor(R.color.primaryTextColor(), for: .selected)
     self.previewButton.setTitleColor(UIColor(white: 0.6, alpha: 1.0), for: .normal)
     self.titleLabel.stylizeGeneralHeaderTitleLabel()
-    if let font = R.font.openSansBold(size: 16){
+    if let font = R.font.openSansBold(size: 16) {
       self.editButton.titleLabel?.font = font
       self.previewButton.titleLabel?.font = font
     }
