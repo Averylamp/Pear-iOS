@@ -139,16 +139,21 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
       }
       self.navigationController?.pushViewController(friendMainVC, animated: true)
     case .editProfile:
-      guard let user = DataStore.shared.currentPearUser else {
-        print("Unable to get pear user")
+      guard let editPreviewVC = EditPreviewViewController.instantiate() else {
+        print("Unable to create edit preview VC")
         return
       }
-      let fullProfileDisplay = FullProfileDisplayData(user: user)
-      guard let editMeVC = MeEditUserInfoViewController.instantiate(profile: fullProfileDisplay, pearUser: user) else {
-        print("Unable to instantiate edit user info VC")
-        return
-      }
-      self.navigationController?.pushViewController(editMeVC, animated: true)
+      self.navigationController?.pushViewController(editPreviewVC, animated: true)
+//      guard let user = DataStore.shared.currentPearUser else {
+//        print("Unable to get pear user")
+//        return
+//      }
+//      let fullProfileDisplay = FullProfileDisplayData(user: user)
+//      guard let editMeVC = MeEditUserInfoViewController.instantiate(profile: fullProfileDisplay, pearUser: user) else {
+//        print("Unable to instantiate edit user info VC")
+//        return
+//      }
+//      self.navigationController?.pushViewController(editMeVC, animated: true)
     case .myPreferences:
       guard let editUserPreferencesVC = MeEditUserPreferencesViewController.instantiate() else {
         print("Unable to instantiate edit user preferences")
