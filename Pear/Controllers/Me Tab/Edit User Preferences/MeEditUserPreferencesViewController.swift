@@ -16,7 +16,7 @@ class MeEditUserPreferencesViewController: UIViewController {
   
   var genderButtons: [UIButton] = []
   var ageRangeVC: AgeRangeInputViewController?
-  
+  var seekingSwitch: UISwitch?
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -29,14 +29,18 @@ class MeEditUserPreferencesViewController: UIViewController {
   @IBAction func backButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.updateUserPreferences()
-    self.updateUserSeeking(seeking: true)
+    if let seeking = self.seekingSwitch?.isOn {
+      self.updateUserSeeking(seeking: seeking)
+    }
     self.navigationController?.popViewController(animated: true)
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.updateUserPreferences()
-    self.updateUserSeeking(seeking: true)
+    if let seeking = self.seekingSwitch?.isOn {
+      self.updateUserSeeking(seeking: seeking)
+    }
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -100,6 +104,7 @@ class MeEditUserPreferencesViewController: UIViewController {
   }
   
   func updateUserSeeking(seeking: Bool) {
+    DataStore.shared.currentPearUser?.isSeeking = seeking
     PearUpdateUserAPI.shared.updateUserIsSeeking(seeking: seeking) { (result) in
       switch result {
       case .success(let successful):
@@ -283,6 +288,7 @@ extension MeEditUserPreferencesViewController {
   }
   
   func addSeeking() {
+    self.stackView.addSpacer(height: 20.0)
     guard let seeking = DataStore.shared.currentPearUser?.isSeeking else {
       print("Unable to determine if seeking")
       return
@@ -301,6 +307,8 @@ extension MeEditUserPreferencesViewController {
     
     let seekingSwitch = UISwitch()
     seekingSwitch.translatesAutoresizingMaskIntoConstraints = false
+    self.seekingSwitch = seekingSwitch
+    seekingSwitch.tintColor = R.color.primaryBrandColor()
     seekingSwitch.isOn = seeking
     containerView.addSubview(seekingSwitch)
     
@@ -314,9 +322,9 @@ extension MeEditUserPreferencesViewController {
       NSLayoutConstraint(item: seekingLabel, attribute: .right, relatedBy: .equal,
                          toItem: seekingSwitch, attribute: .left, multiplier: 1.0, constant: -8.0),
       NSLayoutConstraint(item: seekingLabel, attribute: .centerY, relatedBy: .equal,
-                         toItem: seekingSwitch, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: seekingSwitch, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -12.0)
+                         toItem: seekingSwitch, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+//      NSLayoutConstraint(item: seekingSwitch, attribute: .right, relatedBy: .equal,
+//                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -12.0)
       ])
     
     self.stackView.addArrangedSubview(containerView)

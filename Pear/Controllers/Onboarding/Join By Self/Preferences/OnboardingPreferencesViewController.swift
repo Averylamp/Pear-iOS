@@ -106,6 +106,7 @@ class OnboardingPreferencesViewController: UIViewController {
   }
   
   func updateUserSeeking(seeking: Bool) {
+    DataStore.shared.currentPearUser?.isSeeking = seeking
     PearUpdateUserAPI.shared.updateUserIsSeeking(seeking: seeking) { (result) in
       switch result {
       case .success(let successful):
