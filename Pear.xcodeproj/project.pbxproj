@@ -296,10 +296,8 @@
 		BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */; };
 		BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF2268226F8F9F0021B021 /* QuestionResponseItem.swift */; };
 		BBF09A6B224AF69F00BC82B9 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */; };
-		BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */; };
 		BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */; };
 		BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */; };
-		BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */; };
 		BBF79688225956E200E9A506 /* MeEditUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */; };
 		BBF7968A225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */; };
 		BBF93E4E2267C7F8002841EE /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E4D2267C7F8002841EE /* LandingScreenViewController.swift */; };
@@ -638,10 +636,8 @@
 		BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSuggestedResponse.swift; sourceTree = "<group>"; };
 		BBEF2268226F8F9F0021B021 /* QuestionResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionResponseItem.swift; sourceTree = "<group>"; };
 		BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
-		BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsTabViewController.storyboard; sourceTree = "<group>"; };
-		BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeTabViewController.storyboard; sourceTree = "<group>"; };
 		BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeEditUserPreferencesViewController.swift; sourceTree = "<group>"; };
 		BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeEditUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BBF93E4D2267C7F8002841EE /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
@@ -1231,7 +1227,6 @@
 			isa = PBXGroup;
 			children = (
 				BB139EFD229A913400D7955A /* Me Main VC */,
-				BBF79686225956C200E9A506 /* Main Full Screen Display */,
 				BB68EB2522A3189400CDB114 /* Edit Preview Page */,
 				BBF7968B22595B9A00E9A506 /* Edit User Preferences */,
 				BB139F06229A9F2B00D7955A /* Edit User Info */,
@@ -2166,15 +2161,6 @@
 			path = "Friends Tab";
 			sourceTree = "<group>";
 		};
-		BBF79686225956C200E9A506 /* Main Full Screen Display */ = {
-			isa = PBXGroup;
-			children = (
-				BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */,
-				BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */,
-			);
-			path = "Main Full Screen Display";
-			sourceTree = "<group>";
-		};
 		BBF7968B22595B9A00E9A506 /* Edit User Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -2399,7 +2385,6 @@
 				911E2C4C229A993500E11860 /* JoinEventViweController.storyboard in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
 				BB9CB6AC225A11F900605A98 /* FriendEditProfileViewController.storyboard in Resources */,
-				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
 				BB687E7F228D812100F45C9D /* OnboardingFriendInfoViewController.storyboard in Resources */,
 				BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */,
 				BB9CB6BB225B601200605A98 /* Launch Screen.storyboard in Resources */,
@@ -2829,7 +2814,6 @@
 				BB139EFF229A9AA800D7955A /* AccountSettingsViewController.swift in Sources */,
 				BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
-				BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */,
 				BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */,
 				BB20119D228F3FAE00BC85C0 /* DemographicsItems.swift in Sources */,
 			);

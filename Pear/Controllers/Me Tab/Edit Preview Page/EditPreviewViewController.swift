@@ -216,7 +216,7 @@ extension EditPreviewViewController: UIScrollViewDelegate {
     if pageIndex == 0 {
       self.editButton.isSelected = true
       self.previewButton.isSelected = false
-    }else if pageIndex == 1 {
+    } else if pageIndex == 1 {
       self.editButton.isSelected = false
       self.previewButton.isSelected = true
     }
