@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAnalytics
 import NVActivityIndicatorView
 
-class OnboardingPicturesViewController: UIViewController {
+class OnboardingPicturesViewController: OnboardingViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
@@ -44,11 +44,6 @@ class OnboardingPicturesViewController: UIViewController {
     self.updateUserImages()
   }
   
-}
-
-// MARK: - Permissions Flow Protocol
-extension OnboardingPicturesViewController: PermissionsFlowProtocol {
-  // No-Op
 }
 
 // MARK: - Update User Images

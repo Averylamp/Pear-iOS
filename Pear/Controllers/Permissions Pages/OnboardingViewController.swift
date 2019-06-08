@@ -10,26 +10,12 @@ import Foundation
 import UIKit
 import CoreLocation
 
-protocol PermissionsFlowProtocol: UIViewController {
-  // Nested Functions
-  func continueToEmailOrNext()
-  func continueToEventCodeOrNext()
-  func continueToLocationOrNext()
-  func continueToNotificationOrNext()
-  func continueToOnboardingOrMain()
-  // Redirect functions
-  func continueToVersionBlockingScreen()
-  func continueToLandingPage()
-  func continueToUpdateEmail()
-  func continueToAllowNotifications()
-  func continueToAllowLocation()
-  func continueToMainVC()
-  func continueToOnboarding()
-  func continueToLocationBlockedPage()
+class OnboardingViewController: UIViewController {
+
 }
 
 // MARK: - Permissions Flow
-extension PermissionsFlowProtocol {
+extension OnboardingViewController {
   
   func continueToEmailOrNext() {
     guard let user = DataStore.shared.currentPearUser else {
@@ -109,7 +95,7 @@ extension PermissionsFlowProtocol {
 }
 
 // MARK: - Continue To VCs
-extension PermissionsFlowProtocol {
+extension OnboardingViewController {
   
   func continueToVersionBlockingScreen() {
     DispatchQueue.main.async {
@@ -131,7 +117,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToUpdateEmail() {
+  private func continueToUpdateEmail() {
     DispatchQueue.main.async {
       guard let userEmailVC = UserEmailInfoViewController.instantiate() else {
         print("Failed to create user email VC")
@@ -141,7 +127,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToEventCode() {
+  private func continueToEventCode() {
     DispatchQueue.main.async {
       guard let joinEventVC = JoinEventViewController.instantiate(isInOnboarding: true) else {
         print("Failed to create Join Event VC")
@@ -151,7 +137,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToAllowLocation() {
+  private func continueToAllowLocation() {
     DispatchQueue.main.async {
       guard let allowLocationVC = AllowLocationViewController.instantiate() else {
         print("Failed to create allow Location VC")
@@ -161,7 +147,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToAllowNotifications() {
+  private func continueToAllowNotifications() {
     DispatchQueue.main.async {
       guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
         print("Failed to create allow Notifications VC")
@@ -181,7 +167,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToOnboarding() {
+  private func continueToOnboarding() {
     DispatchQueue.main.async {
       guard let initialOnboardingVC = OnboardingExplainationPage1ViewController.instantiate() else {
         print("Unable to create initial onboarding VC")

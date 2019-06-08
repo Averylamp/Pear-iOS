@@ -12,7 +12,7 @@ import FirebasePerformance
 import CodableFirebase
 import CoreLocation
 
-class LoadingScreenViewController: UIViewController {
+class LoadingScreenViewController: OnboardingViewController {
   
   /// Factory method for creating this view controller.
   ///
@@ -244,8 +244,4 @@ extension LoadingScreenViewController {
     }
   }
   
-}
-
-extension LoadingScreenViewController: PermissionsFlowProtocol {
-  // No-Op
 }
