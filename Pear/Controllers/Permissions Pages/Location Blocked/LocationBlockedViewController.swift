@@ -40,7 +40,7 @@ class LocationBlockedViewController: UIViewController {
         DataStore.shared.getNotificationAuthorizationStatus { (status) in
           self.stylizeForNotificationStatus(status: status)
         }
-    } 
+    }
   }
   
   func stylizeForNotificationStatus(status: UNAuthorizationStatus) {
