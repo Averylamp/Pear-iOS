@@ -12,7 +12,6 @@ import FirebaseAnalytics
 class MeEditUserInfoViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
-  @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var cancelButton: UIButton!
   @IBOutlet weak var doneButton: UIButton!
   @IBOutlet weak var profileNameLabel: UILabel!
@@ -23,7 +22,7 @@ class MeEditUserInfoViewController: UIViewController {
   let leadingSpace: CGFloat = 12
   var isUpdating: Bool = false
   
-  weak var photoUpdateVC: UpdateImagesViewController?
+  weak var editUserStackVC: MeEditUserInfoStackViewController?
   
   class func instantiate(profile: FullProfileDisplayData, pearUser: PearUser) -> MeEditUserInfoViewController? {
     guard let editUserInfoVC = R.storyboard.meEditUserInfoViewController
@@ -35,7 +34,8 @@ class MeEditUserInfoViewController: UIViewController {
   
   @IBAction func cancelButtonClicked(_ sender: Any) {
     Analytics.logEvent("ME_edit_TAP_cancel", parameters: nil)
-    if checkForEdits() {
+    
+    if let editsMade = self.editUserStackVC?.checkForEdits(), editsMade {
       HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .warning)
       let alertController = UIAlertController(title: "Are you sure?",
                                               message: "Your unsaved changes will be lost.",
@@ -58,7 +58,7 @@ class MeEditUserInfoViewController: UIViewController {
   
   @IBAction func doneButtonClicked(_ sender: Any) {
     self.view.endEditing(true)
-    self.saveChanges {
+    self.editUserStackVC?.saveChanges {
       DispatchQueue.main.async {
         HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
         DataStore.shared.refreshPearUser(completion: nil)
@@ -69,79 +69,6 @@ class MeEditUserInfoViewController: UIViewController {
 
   }
   
-}
-
-// MARK: - Updating and Saving
-extension MeEditUserInfoViewController {
-  
-  func checkForEdits() -> Bool {
-    if let photoVC = self.photoUpdateVC, photoVC.didMakeUpdates() {
-      return true
-    }
-    return false
-  }
-  
-  func getPhotoUpdates() -> [ImageContainer] {
-    var updates: [ImageContainer] = []
-    if let photoVC = self.photoUpdateVC, photoVC.didMakeUpdates() {
-      updates = photoVC.images
-        .compactMap({ $0.imageContainer })
-    }
-    return updates
-  }
-  
-  func saveChanges(completion: (() -> Void)?) {
-    if isUpdating {
-      return
-    }
-    if let images = self.photoUpdateVC?.images, images.count != images.compactMap({ $0.imageContainer }).count {
-      self.delay(delay: 0.5) {
-        self.saveChanges(completion: completion)
-        return
-      }
-      return
-    }
-    self.isUpdating = true
-    let photoUpdates = self.getPhotoUpdates()
-    if photoUpdates.count == 0 {
-      if let completion = completion {
-        print("Skipping updates")
-        completion()
-      }
-      return
-    }
-    guard let userID = DataStore.shared.currentPearUser?.documentID else {
-      print("Failed to get current user")
-      if let completion = completion {
-        print("Skipping updates")
-        completion()
-      }
-      return
-    }
-    
-    if photoUpdates.count > 0 {
-      PearImageAPI.shared.updateImages(userID: userID,
-                                       displayedImages: photoUpdates,
-                                       additionalImages: []) { (result) in
-                                        switch result {
-                                        case .success(let successful):
-                                          if successful {
-                                            print("Updating Images successful")
-                                          } else {
-                                            print("Updating Images failure")
-                                          }
-                                          
-                                        case .failure(let error):
-                                          print("Updating Images failure: \(error)")
-                                        }
-                                        self.isUpdating = false
-                                        if let completion = completion {
-                                          completion()
-                                        }
-      }
-    }
-    
-  }
 }
 
 // MARK: - Life Cycle
@@ -162,127 +89,27 @@ extension MeEditUserInfoViewController {
   }
   
   func setup() {
-    self.stackView.addSpacer(height: 20.0)
-    self.addPhotosSection()
-    self.stackView.addSpacer(height: 10.0)
-    self.addPromptsSection()
-    self.stackView.addSpacer(height: 30.0)
-    self.addBasicInfo()
-    self.stackView.addSpacer(height: 20.0)
-    self.addMoreInfo()
-  }
-  
-  func addTitleSection(title: String) {
-    let containerView = UIView()
-    containerView.translatesAutoresizingMaskIntoConstraints = false
-    
-    let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    if let font = R.font.openSansBold(size: 16) {
-      titleLabel.font = font
+    guard let editUserInfoStackVC = MeEditUserInfoStackViewController.instantiate(profile: self.profile, pearUser: self.pearUser) else {
+      print("Unable to create edit user info Stack VC")
+      return
     }
-    titleLabel.textColor =  UIColor(white: 0.6, alpha: 1.0)
-    titleLabel.text = title
-    containerView.addSubview(titleLabel)
-    containerView.addConstraints([
-      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
-                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
-      NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal,
-                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
+    self.editUserStackVC = editUserInfoStackVC
+    self.addChild(editUserInfoStackVC)
+    editUserInfoStackVC.view.translatesAutoresizingMaskIntoConstraints = false
+    self.scrollView.addSubview(editUserInfoStackVC.view)
+    self.scrollView.addConstraints([
+      NSLayoutConstraint(item: editUserInfoStackVC.view as Any, attribute: .left, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .left, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: editUserInfoStackVC.view as Any, attribute: .right, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .right, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: editUserInfoStackVC.view as Any, attribute: .top, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .top, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: editUserInfoStackVC.view as Any, attribute: .bottom, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: editUserInfoStackVC.view as Any, attribute: .width, relatedBy: .equal,
+                         toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0.0)
       ])
-    self.stackView.addArrangedSubview(containerView)
-  }
-  
-  func addSubtitleSection(subtitle: String) {
-    let containerView = UIView()
-    containerView.translatesAutoresizingMaskIntoConstraints = false
-    
-    let titleLabel = UILabel()
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.stylizeEditSubtitleLabel()
-    titleLabel.text = title
-    containerView.addSubview(titleLabel)
-    containerView.addConstraints([
-      NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal,
-                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -leadingSpace),
-      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 4),
-      NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal,
-                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -4)
-      ])
-    self.stackView.addArrangedSubview(containerView)
-  }
-  
-  func addPhotosSection() {
-    self.addTitleSection(title: "Photos")
-    var allImages: [LoadedImageContainer] = []
-    self.pearUser.displayedImages.forEach({
-      allImages.append($0.loadedImageContainer())
-    })
-    guard let photosVC = UpdateImagesViewController.instantiate(images: allImages) else {
-      print("failed to create photo edit VC")
-      return
-    }
-    self.photoUpdateVC = photosVC
-    
-    self.addChild(photosVC)
-    self.stackView.addArrangedSubview(photosVC.view)
-    photosVC.didMove(toParent: self)
-  }
-  
-  func addPromptsSection() {
-    self.addTitleSection(title: "Prompts")
-    guard let promptsVC = UpdateUserPromptsStackViewController.instantiate() else {
-      print("Unable to instantiate prompts vc")
-      return
-    }
-    self.addChild(promptsVC)
-    
-    self.stackView.addArrangedSubview(promptsVC.view)
-    promptsVC.didMove(toParent: self)
-    
-  }
-  
-  func addBasicInfo() {
-    self.addTitleSection(title: "Basic Information")
-    guard let basicInfoInputVC = UserBasicInfoTableViewController.instantiate() else {
-      print("Unable to instantiate basic info VC")
-      return
-    }
-    self.addChild(basicInfoInputVC)
-    basicInfoInputVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.stackView.addArrangedSubview(basicInfoInputVC.view)
-    let height = CGFloat(basicInfoInputVC.infoItems.count * 60)
-    basicInfoInputVC.view.addConstraint(NSLayoutConstraint(item: basicInfoInputVC.view as Any, attribute: .height, relatedBy: .equal,
-                                                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-    
-    basicInfoInputVC.tableView.isScrollEnabled = false
-    basicInfoInputVC.didMove(toParent: self)
-    self.stackView.addSpacer(height: 10.0)
-  }
-  
-  func addMoreInfo() {
-    self.addTitleSection(title: "More Information")
-    guard let moreDetailsVC = UserMoreDetailsTableViewController.instantiate() else {
-      print("Unable to instantiate basic info VC")
-      return
-    }
-    self.addChild(moreDetailsVC)
-    moreDetailsVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.stackView.addArrangedSubview(moreDetailsVC.view)
-    let height = CGFloat(moreDetailsVC.infoItems.count * 60)
-    moreDetailsVC.view.addConstraint(NSLayoutConstraint(item: moreDetailsVC.view as Any, attribute: .height, relatedBy: .equal,
-                                                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-    moreDetailsVC.view.isUserInteractionEnabled = true
-    moreDetailsVC.tableView.isScrollEnabled = false
-    moreDetailsVC.didMove(toParent: self)
-    self.stackView.addSpacer(height: 10.0)
+    editUserInfoStackVC.didMove(toParent: self)
   }
   
 }

@@ -248,7 +248,7 @@ extension FullProfileStackViewController {
   }
   
   func addQuestionResponseItem(responseItem: QuestionResponseItem) {
-    guard let questionItemVC = NewProfileQuestionResponseViewController.instantiate(questionItem: responseItem) else {
+    guard let questionItemVC = ProfileQuestionResponseViewController.instantiate(questionItem: responseItem) else {
       print("Failed to instantiate Question Response ItemVC")
       return
     }
@@ -256,26 +256,6 @@ extension FullProfileStackViewController {
     questionItemVC.view.translatesAutoresizingMaskIntoConstraints = false
     self.addVCToCard(view: questionItemVC.view)
     questionItemVC.didMove(toParent: self)
-  }
-  
-  func addScrollableTextContent(content: [TextContentItem]) {
-    guard let scrollableContentVC = ScrollableTextItemViewController.instantiate(items: content) else {
-      print("failed to instantiate scrollable text item")
-      return
-    }
-    self.addChild(scrollableContentVC)
-    self.stackView.addArrangedSubview(scrollableContentVC.view)
-    scrollableContentVC.didMove(toParent: self)
-  }
-  
-  func addScrollableQuestionContent(content: [QuestionResponseItem]) {
-    guard let scrollableContentVC = ScrollableQuestionItemViewController.instantiate(items: content) else {
-      print("failed to instantiate scrollable questions item")
-      return
-    }
-    self.addChild(scrollableContentVC)
-    self.stackView.addArrangedSubview(scrollableContentVC.view)
-    scrollableContentVC.didMove(toParent: self)
   }
   
   func addInterestsVC(interests: [String]) {

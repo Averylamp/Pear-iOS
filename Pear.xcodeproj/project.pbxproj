@@ -93,8 +93,6 @@
 		BB33E74D22248B5A001BFA8F /* UIViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */; };
 		BB3F0282227189C8004855E8 /* ProfileBoastRoastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */; };
 		BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */; };
-		BB3F02872271C4D6004855E8 /* ScrollableTextItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */; };
-		BB3F02892271C4E6004855E8 /* ScrollableTextItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */; };
 		BB3F30A7228C9CBD001947EF /* KeyboardEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */; };
 		BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
@@ -142,6 +140,7 @@
 		BB687E87228D82A300F45C9D /* OnboardingPicturesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */; };
 		BB687E89228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */; };
 		BB687E8B228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */; };
+		BB68EB2722A31D2A00CDB114 /* UITextViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB68EB2622A31D2900CDB114 /* UITextViewItemViewController.swift */; };
 		BB70B034229F418600EB2BD9 /* PromptPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */; };
 		BB70B036229F419000EB2BD9 /* PromptPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */; };
 		BB70B038229F543400EB2BD9 /* PromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */; };
@@ -153,6 +152,10 @@
 		BB796F8A222DB19300E31C7F /* PearUserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F88222DB19300E31C7F /* PearUserConstants.swift */; };
 		BB796F8B222DB19300E31C7F /* PearUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB796F89222DB19300E31C7F /* PearUser.swift */; };
 		BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB797DEC2276C9C600D38044 /* DataStore+Location.swift */; };
+		BB855B1122A2FDA500F54EA4 /* EditPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB855B1022A2FDA500F54EA4 /* EditPreviewViewController.swift */; };
+		BB855B1322A2FDB100F54EA4 /* EditPreviewViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB855B1222A2FDB000F54EA4 /* EditPreviewViewController.storyboard */; };
+		BB855B1522A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB855B1422A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift */; };
+		BB855B1722A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB855B1622A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard */; };
 		BB94C11B22437B64001320B0 /* SharedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C11A22437B64001320B0 /* SharedModel.swift */; };
 		BB94C12522438502001320B0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12422438502001320B0 /* Message.swift */; };
 		BB94C12722438F00001320B0 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB94C12622438F00001320B0 /* Chat.swift */; };
@@ -253,11 +256,8 @@
 		BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */; };
 		BBBB38AA229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBB38A9229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift */; };
 		BBBB38AC229F207E00DEFF5E /* UpdateUserPromptsStackViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBB38AB229F207D00DEFF5E /* UpdateUserPromptsStackViewController.storyboard */; };
-		BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */; };
-		BBBE7B872272170800C32EBE /* NewProfileQuestionResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B862272170800C32EBE /* NewProfileQuestionResponseViewController.swift */; };
-		BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B882272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard */; };
-		BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */; };
-		BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */; };
+		BBBE7B872272170800C32EBE /* ProfileQuestionResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */; };
+		BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */; };
 		BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */; };
 		BBBE7B9322721E1200C32EBE /* ApproveProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBBE7B9222721E1200C32EBE /* ApproveProfileViewController.storyboard */; };
 		BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */; };
@@ -267,8 +267,6 @@
 		BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */; };
 		BBC4F501228214A100C79148 /* NewProfileBioViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4F500228214A100C79148 /* NewProfileBioViewController.storyboard */; };
 		BBC4F503228214AF00C79148 /* NewProfileBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F502228214AF00C79148 /* NewProfileBioViewController.swift */; };
-		BBC4F5062282217600C79148 /* ProfileQuestionResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F5042282217600C79148 /* ProfileQuestionResponseViewController.swift */; };
-		BBC4F5072282217600C79148 /* ProfileQuestionResponseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4F5052282217600C79148 /* ProfileQuestionResponseViewController.storyboard */; };
 		BBC4F50A22822A6800C79148 /* ProfileDemographicsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC4F50822822A6800C79148 /* ProfileDemographicsViewController.storyboard */; };
 		BBC4F50B22822A6800C79148 /* ProfileDemographicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */; };
 		BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */; };
@@ -298,10 +296,8 @@
 		BBEF2267226F8F810021B021 /* QuestionSuggestedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */; };
 		BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEF2268226F8F9F0021B021 /* QuestionResponseItem.swift */; };
 		BBF09A6B224AF69F00BC82B9 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */; };
-		BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */; };
 		BBF694F2223B7E5B00E13ABB /* FriendsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */; };
 		BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */; };
-		BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */; };
 		BBF79688225956E200E9A506 /* MeEditUserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */; };
 		BBF7968A225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */; };
 		BBF93E4E2267C7F8002841EE /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E4D2267C7F8002841EE /* LandingScreenViewController.swift */; };
@@ -430,8 +426,6 @@
 		BB33E74C22248B5A001BFA8F /* UIViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helpers.swift"; sourceTree = "<group>"; };
 		BB3F0281227189C8004855E8 /* ProfileBoastRoastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBoastRoastViewController.swift; sourceTree = "<group>"; };
 		BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileBoastRoastViewController.storyboard; sourceTree = "<group>"; };
-		BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTextItemViewController.swift; sourceTree = "<group>"; };
-		BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollableTextItemViewController.storyboard; sourceTree = "<group>"; };
 		BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEventsProtocol.swift; sourceTree = "<group>"; };
 		BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfile.swift; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
@@ -481,6 +475,7 @@
 		BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingPicturesViewController.storyboard; sourceTree = "<group>"; };
 		BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingMoreDetailsViewController.storyboard; sourceTree = "<group>"; };
 		BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMoreDetailsViewController.swift; sourceTree = "<group>"; };
+		BB68EB2622A31D2900CDB114 /* UITextViewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextViewItemViewController.swift; path = "Pear/Controllers/Profiles/Question Response Item/UITextViewItemViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptPickerViewController.swift; sourceTree = "<group>"; };
 		BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptPickerViewController.storyboard; sourceTree = "<group>"; };
 		BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTableViewCell.swift; sourceTree = "<group>"; };
@@ -492,6 +487,10 @@
 		BB796F88222DB19300E31C7F /* PearUserConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUserConstants.swift; sourceTree = "<group>"; };
 		BB796F89222DB19300E31C7F /* PearUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearUser.swift; sourceTree = "<group>"; };
 		BB797DEC2276C9C600D38044 /* DataStore+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Location.swift"; sourceTree = "<group>"; };
+		BB855B1022A2FDA500F54EA4 /* EditPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPreviewViewController.swift; sourceTree = "<group>"; };
+		BB855B1222A2FDB000F54EA4 /* EditPreviewViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditPreviewViewController.storyboard; sourceTree = "<group>"; };
+		BB855B1422A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeEditUserInfoStackViewController.swift; sourceTree = "<group>"; };
+		BB855B1622A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeEditUserInfoStackViewController.storyboard; sourceTree = "<group>"; };
 		BB884CF8CFF4C5A51377A2FA /* Pods-PearTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PearTests.production.xcconfig"; path = "Target Support Files/Pods-PearTests/Pods-PearTests.production.xcconfig"; sourceTree = "<group>"; };
 		BB94C11A22437B64001320B0 /* SharedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedModel.swift; sourceTree = "<group>"; };
 		BB94C12422438502001320B0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -593,11 +592,8 @@
 		BBBA5752226E8BA5000BCD5F /* UIColor+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Helpers.swift"; sourceTree = "<group>"; };
 		BBBB38A9229F207300DEFF5E /* UpdateUserPromptsStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserPromptsStackViewController.swift; sourceTree = "<group>"; };
 		BBBB38AB229F207D00DEFF5E /* UpdateUserPromptsStackViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateUserPromptsStackViewController.storyboard; sourceTree = "<group>"; };
-		BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewItemViewController.swift; sourceTree = "<group>"; };
-		BBBE7B862272170800C32EBE /* NewProfileQuestionResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileQuestionResponseViewController.swift; sourceTree = "<group>"; };
-		BBBE7B882272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProfileQuestionResponseViewController.storyboard; sourceTree = "<group>"; };
-		BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableQuestionItemViewController.swift; sourceTree = "<group>"; };
-		BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScrollableQuestionItemViewController.storyboard; sourceTree = "<group>"; };
+		BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQuestionResponseViewController.swift; sourceTree = "<group>"; };
+		BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileQuestionResponseViewController.storyboard; sourceTree = "<group>"; };
 		BBBE7B9022721E0100C32EBE /* ApproveProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveProfileViewController.swift; sourceTree = "<group>"; };
 		BBBE7B9222721E1200C32EBE /* ApproveProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveProfileViewController.storyboard; sourceTree = "<group>"; };
 		BBC0FF18227059B900632924 /* ExpandingBoastRoastInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingBoastRoastInputViewController.swift; sourceTree = "<group>"; };
@@ -607,8 +603,6 @@
 		BBC4A08922587487009D9867 /* UpdateImagesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateImagesViewController.storyboard; sourceTree = "<group>"; };
 		BBC4F500228214A100C79148 /* NewProfileBioViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewProfileBioViewController.storyboard; sourceTree = "<group>"; };
 		BBC4F502228214AF00C79148 /* NewProfileBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileBioViewController.swift; sourceTree = "<group>"; };
-		BBC4F5042282217600C79148 /* ProfileQuestionResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileQuestionResponseViewController.swift; path = "Pear/Controllers/Profiles/Question Response Item/ProfileQuestionResponseViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BBC4F5052282217600C79148 /* ProfileQuestionResponseViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileQuestionResponseViewController.storyboard; path = "Pear/Controllers/Profiles/Question Response Item/ProfileQuestionResponseViewController.storyboard"; sourceTree = SOURCE_ROOT; };
 		BBC4F50822822A6800C79148 /* ProfileDemographicsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileDemographicsViewController.storyboard; sourceTree = "<group>"; };
 		BBC4F50922822A6800C79148 /* ProfileDemographicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDemographicsViewController.swift; sourceTree = "<group>"; };
 		BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Events.swift"; sourceTree = "<group>"; };
@@ -642,10 +636,8 @@
 		BBEF2266226F8F810021B021 /* QuestionSuggestedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSuggestedResponse.swift; sourceTree = "<group>"; };
 		BBEF2268226F8F9F0021B021 /* QuestionResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionResponseItem.swift; sourceTree = "<group>"; };
 		BBF09A6A224AF69F00BC82B9 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
-		BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F1223B7E5B00E13ABB /* FriendsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTabViewController.swift; sourceTree = "<group>"; };
 		BBF694F3223B7E6500E13ABB /* FriendsTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendsTabViewController.storyboard; sourceTree = "<group>"; };
-		BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeTabViewController.storyboard; sourceTree = "<group>"; };
 		BBF79687225956E200E9A506 /* MeEditUserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeEditUserPreferencesViewController.swift; sourceTree = "<group>"; };
 		BBF79689225956EB00E9A506 /* MeEditUserPreferencesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeEditUserPreferencesViewController.storyboard; sourceTree = "<group>"; };
 		BBF93E4D2267C7F8002841EE /* LandingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
@@ -1064,6 +1056,8 @@
 			children = (
 				BB139F02229A9D7B00D7955A /* MeEditUserInfoViewController.swift */,
 				BB139F03229A9D7B00D7955A /* MeEditUserInfoViewController.storyboard */,
+				BB855B1422A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift */,
+				BB855B1622A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard */,
 			);
 			path = "Edit User Info";
 			sourceTree = "<group>";
@@ -1224,7 +1218,6 @@
 				BBECBEBD2237D960008E8E91 /* Profile Image */,
 				BBECBEBE2237D967008E8E91 /* Profile Do Dont */,
 				BB3F02852271B178004855E8 /* Profile Boast Roast */,
-				BBBE7B8B22721ADF00C32EBE /* Scrollable Item Controllers */,
 				BBBE7B8A22721AD900C32EBE /* Question Response Item */,
 			);
 			path = Profiles;
@@ -1234,7 +1227,7 @@
 			isa = PBXGroup;
 			children = (
 				BB139EFD229A913400D7955A /* Me Main VC */,
-				BBF79686225956C200E9A506 /* Main Full Screen Display */,
+				BB68EB2522A3189400CDB114 /* Edit Preview Page */,
 				BBF7968B22595B9A00E9A506 /* Edit User Preferences */,
 				BB139F06229A9F2B00D7955A /* Edit User Info */,
 				BB139F07229AA13F00D7955A /* Account Settings */,
@@ -1445,6 +1438,15 @@
 				BB687E86228D82A300F45C9D /* OnboardingPicturesViewController.storyboard */,
 			);
 			path = Pictures;
+			sourceTree = "<group>";
+		};
+		BB68EB2522A3189400CDB114 /* Edit Preview Page */ = {
+			isa = PBXGroup;
+			children = (
+				BB855B1022A2FDA500F54EA4 /* EditPreviewViewController.swift */,
+				BB855B1222A2FDB000F54EA4 /* EditPreviewViewController.storyboard */,
+			);
+			path = "Edit Preview Page";
 			sourceTree = "<group>";
 		};
 		BB714121228B4F5100129C93 /* Cera Pro */ = {
@@ -1996,24 +1998,11 @@
 		BBBE7B8A22721AD900C32EBE /* Question Response Item */ = {
 			isa = PBXGroup;
 			children = (
-				BBC4F5042282217600C79148 /* ProfileQuestionResponseViewController.swift */,
-				BBC4F5052282217600C79148 /* ProfileQuestionResponseViewController.storyboard */,
-				BBBE7B862272170800C32EBE /* NewProfileQuestionResponseViewController.swift */,
-				BBBE7B882272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard */,
+				BB68EB2622A31D2900CDB114 /* UITextViewItemViewController.swift */,
+				BBBE7B862272170800C32EBE /* ProfileQuestionResponseViewController.swift */,
+				BBBE7B882272171700C32EBE /* ProfileQuestionResponseViewController.storyboard */,
 			);
 			path = "Question Response Item";
-			sourceTree = "<group>";
-		};
-		BBBE7B8B22721ADF00C32EBE /* Scrollable Item Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				BB3F02862271C4D6004855E8 /* ScrollableTextItemViewController.swift */,
-				BB3F02882271C4E6004855E8 /* ScrollableTextItemViewController.storyboard */,
-				BBBE7B8C22721B1800C32EBE /* ScrollableQuestionItemViewController.swift */,
-				BBBE7B8E22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard */,
-				BBBE7B842272003300C32EBE /* UITextViewItemViewController.swift */,
-			);
-			path = "Scrollable Item Controllers";
 			sourceTree = "<group>";
 		};
 		BBBE7B9422722CE400C32EBE /* Full Profile Approval View */ = {
@@ -2170,15 +2159,6 @@
 				BB9CB6B7225A305300605A98 /* Edit Friend VC */,
 			);
 			path = "Friends Tab";
-			sourceTree = "<group>";
-		};
-		BBF79686225956C200E9A506 /* Main Full Screen Display */ = {
-			isa = PBXGroup;
-			children = (
-				BBF694EF223B7E5300E13ABB /* MeTabViewController.swift */,
-				BBF694F5223B7E7000E13ABB /* MeTabViewController.storyboard */,
-			);
-			path = "Main Full Screen Display";
 			sourceTree = "<group>";
 		};
 		BBF7968B22595B9A00E9A506 /* Edit User Preferences */ = {
@@ -2366,7 +2346,9 @@
 				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
 				BBF93E8B2267CF7A002841EE /* OpenSans-SemiBold.ttf in Resources */,
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
-				BBBE7B892272171700C32EBE /* NewProfileQuestionResponseViewController.storyboard in Resources */,
+				BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */,
+				BB855B1722A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard in Resources */,
+				BB855B1322A2FDB100F54EA4 /* EditPreviewViewController.storyboard in Resources */,
 				BB201193228F1CAF00BC85C0 /* UserBasicInfoTableViewController.storyboard in Resources */,
 				BBA8AE922297C7C7003F1D79 /* OnboardingFriendPromptInputViewController.storyboard in Resources */,
 				BBB71B582294509E002CDDD1 /* UserNameInputViewController.storyboard in Resources */,
@@ -2375,7 +2357,6 @@
 				BB0AE4F122536FEA005DD315 /* UserLocationViewController.storyboard in Resources */,
 				BB687E6A228D6D1100F45C9D /* OnboardingExplainationPage2ViewController.storyboard in Resources */,
 				BBB71B7122947F4C002CDDD1 /* UserSchoolInputViewController.storyboard in Resources */,
-				BB3F02892271C4E6004855E8 /* ScrollableTextItemViewController.storyboard in Resources */,
 				BB201197228F1DC000BC85C0 /* UserMoreDetailsTableViewController.storyboard in Resources */,
 				9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */,
 				BBA3CEBA2255666E0020A36C /* ChatRequestPersonalViewController.storyboard in Resources */,
@@ -2389,7 +2370,6 @@
 				91BEE2AC225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard in Resources */,
 				BBB71B6522946CB4002CDDD1 /* UserAgeInputViewController.storyboard in Resources */,
 				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
-				BBC4F5072282217600C79148 /* ProfileQuestionResponseViewController.storyboard in Resources */,
 				BB687E75228D717000F45C9D /* OnboardingFriendNameViewController.storyboard in Resources */,
 				BBBB38AC229F207E00DEFF5E /* UpdateUserPromptsStackViewController.storyboard in Resources */,
 				BBA2B43A223505FB00D8C27B /* ProfileDoDontViewController.storyboard in Resources */,
@@ -2405,7 +2385,6 @@
 				911E2C4C229A993500E11860 /* JoinEventViweController.storyboard in Resources */,
 				BBF694F4223B7E6500E13ABB /* FriendsTabViewController.storyboard in Resources */,
 				BB9CB6AC225A11F900605A98 /* FriendEditProfileViewController.storyboard in Resources */,
-				BBF694F6223B7E7000E13ABB /* MeTabViewController.storyboard in Resources */,
 				BB687E7F228D812100F45C9D /* OnboardingFriendInfoViewController.storyboard in Resources */,
 				BB0AE4E2225364E0005DD315 /* UpdateUserPreferencesViewController.storyboard in Resources */,
 				BB9CB6BB225B601200605A98 /* Launch Screen.storyboard in Resources */,
@@ -2444,7 +2423,6 @@
 				BBC4A08A22587487009D9867 /* UpdateImagesViewController.storyboard in Resources */,
 				BBC4F501228214A100C79148 /* NewProfileBioViewController.storyboard in Resources */,
 				BBC4F50A22822A6800C79148 /* ProfileDemographicsViewController.storyboard in Resources */,
-				BBBE7B8F22721B2600C32EBE /* ScrollableQuestionItemViewController.storyboard in Resources */,
 				BB687E56228D535700F45C9D /* LocationBlockedViewController.storyboard in Resources */,
 				BBA2B4282235038C00D8C27B /* FullProfileStackViewController.storyboard in Resources */,
 				BB61B7B9229D1327004FA81C /* QRCodeScannerViewController.storyboard in Resources */,
@@ -2659,11 +2637,12 @@
 				BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */,
 				BBBA5741226D9751000BCD5F /* BioItem.swift in Sources */,
 				BBCA2D71229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift in Sources */,
-				BBBE7B872272170800C32EBE /* NewProfileQuestionResponseViewController.swift in Sources */,
+				BBBE7B872272170800C32EBE /* ProfileQuestionResponseViewController.swift in Sources */,
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
 				BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */,
 				BB201199228F27F500BC85C0 /* MatchingDemographics.swift in Sources */,
 				BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */,
+				BB855B1122A2FDA500F54EA4 /* EditPreviewViewController.swift in Sources */,
 				BBA2B42A223504D100D8C27B /* NewProfileDemographicsViewController.swift in Sources */,
 				BB687E73228D716900F45C9D /* OnboardingFriendNameViewController.swift in Sources */,
 				BBBA573B226D93D6000BCD5F /* BoastRoastItem.swift in Sources */,
@@ -2714,7 +2693,6 @@
 				BB0AE4E922536FAC005DD315 /* UserAgePreferencesViewController.swift in Sources */,
 				913E3B07229F4869000B70A8 /* PearEvent.swift in Sources */,
 				BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */,
-				BB3F02872271C4D6004855E8 /* ScrollableTextItemViewController.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,
 				BBB71B6A22947934002CDDD1 /* UserGenderInputViewController.swift in Sources */,
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
@@ -2739,7 +2717,6 @@
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BB687E6D228D6D1100F45C9D /* OnboardingExplainationPage3ViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,
-				BBBE7B8D22721B1800C32EBE /* ScrollableQuestionItemViewController.swift in Sources */,
 				BBC0FF19227059B900632924 /* ExpandingBoastRoastInputViewController.swift in Sources */,
 				BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */,
 				BBAC0958227009D20095F27E /* ContentAPI.swift in Sources */,
@@ -2749,6 +2726,7 @@
 				BB94C12722438F00001320B0 /* Chat.swift in Sources */,
 				BBB71B6022945B99002CDDD1 /* PearUpdateUserAPI.swift in Sources */,
 				BB797DED2276C9C600D38044 /* DataStore+Location.swift in Sources */,
+				BB68EB2722A31D2A00CDB114 /* UITextViewItemViewController.swift in Sources */,
 				BB0AE4EB22536FC3005DD315 /* UserLocationViewController.swift in Sources */,
 				BBCA2D79229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift in Sources */,
 				BBB71B6622946CB4002CDDD1 /* UserAgeInputViewController.swift in Sources */,
@@ -2770,7 +2748,6 @@
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB3F0282227189C8004855E8 /* ProfileBoastRoastViewController.swift in Sources */,
 				BB6479E0226A7FF300652318 /* LatestRoastBoastItem.swift in Sources */,
-				BBC4F5062282217600C79148 /* ProfileQuestionResponseViewController.swift in Sources */,
 				BB687E55228D535700F45C9D /* LocationBlockedViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
 				BBB71B7F2295273A002CDDD1 /* UserReligionInputViewController.swift in Sources */,
@@ -2785,13 +2762,13 @@
 				BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */,
 				BB57151B22159D8F00EF9C4A /* UIButton+Closures.swift in Sources */,
 				BB719A45228D447000007D69 /* DataStore+Notifications.swift in Sources */,
+				BB855B1522A30D9E00F54EA4 /* MeEditUserInfoStackViewController.swift in Sources */,
 				BB686E3D22120E64008A263C /* String+Helpers.swift in Sources */,
 				BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */,
 				BBCA2D73229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift in Sources */,
 				BB687E63228D6B7500F45C9D /* UIImageView+Styling.swift in Sources */,
 				9142D08C2298ACCA0037E199 /* PromptInputDelegate.swift in Sources */,
 				BBA8AE952297D63A003F1D79 /* PromptInputViewController.swift in Sources */,
-				BBBE7B852272003300C32EBE /* UITextViewItemViewController.swift in Sources */,
 				BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */,
 				BBECBEC52237E6AA008E8E91 /* ApproveDetachedProfileViewController.swift in Sources */,
 				BB139EFB229A913000D7955A /* MeTabItemTableViewCell.swift in Sources */,
@@ -2837,7 +2814,6 @@
 				BB139EFF229A9AA800D7955A /* AccountSettingsViewController.swift in Sources */,
 				BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
-				BBF694F0223B7E5300E13ABB /* MeTabViewController.swift in Sources */,
 				BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */,
 				BB20119D228F3FAE00BC85C0 /* DemographicsItems.swift in Sources */,
 			);
@@ -3000,7 +2976,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 130;
+				CURRENT_PROJECT_VERSION = 131;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3025,7 +3001,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 130;
+				CURRENT_PROJECT_VERSION = 131;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3224,7 +3200,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 130;
+				CURRENT_PROJECT_VERSION = 131;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3420,7 +3396,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 130;
+				CURRENT_PROJECT_VERSION = 131;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
