@@ -37,8 +37,25 @@ class LocationBlockedViewController: UIViewController {
           // register for remote notifications
           DataStore.shared.registerForRemoteNotificationsIfAuthorized()
         }
+        DataStore.shared.getNotificationAuthorizationStatus { (status) in
+          self.stylizeForNotificationStatus(status: status)
+        }
+    } 
+  }
+  
+  func stylizeForNotificationStatus(status: UNAuthorizationStatus) {
+    DispatchQueue.main.async {
+      switch status {
+      case .denied:
+        self.enableNotificationsButton.setTitle("Open Settings", for: .normal)
+      case .notDetermined, .provisional:
+        self.enableNotificationsButton.setTitle("Enable Notifications", for: .normal)
+      case .authorized:
+        self.enableNotificationsButton.setTitle("You're all set!", for: .normal)
+      default:
+        self.enableNotificationsButton.setTitle("Enable Notifications", for: .normal)
+      }
     }
-    
   }
   
 }
@@ -51,6 +68,13 @@ extension LocationBlockedViewController {
     
     self.stylize()
     
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    DataStore.shared.getNotificationAuthorizationStatus { (status) in
+      self.stylizeForNotificationStatus(status: status)
+    }
   }
   
   func stylize() {

@@ -9,9 +9,19 @@
 import Foundation
 import UIKit
 import CoreLocation
+import UserNotifications
 
 class OnboardingViewController: UIViewController {
 
+  var firstLocationCompletion: (() -> Void)?
+
+  @objc func didReceiveNewLocationAuthorizationStatus(status: CLAuthorizationStatus) {
+    
+  }
+  
+  @objc func didReceiveNewNotificationAuthorizationStatus(status: UNAuthorizationStatus) {
+    
+  }
 }
 
 // MARK: - Permissions Flow
@@ -186,5 +196,44 @@ extension OnboardingViewController {
       self.navigationController?.setViewControllers([locationBlockedVC], animated: true)
     }
   }
+  
+}
+
+// MARK: - FetchFirstLocation
+extension OnboardingViewController {
+  
+  func fetchFirstLocation(completion: @escaping () -> Void) {
+    if DataStore.shared.locationManager.location?.coordinate != nil {
+      completion()
+      return
+    } else {
+      self.firstLocationCompletion = completion
+      DataStore.shared.locationDelegate = self
+      DataStore.shared.firstLocationReceived = false
+      DataStore.shared.startReceivingLocationChanges()
+    }
+  }
+  
+}
+
+// MARK: - Data Store Location Delegate
+extension OnboardingViewController: DataStoreLocationDelegate {
+  
+  func firstLocationReceived(location: CLLocationCoordinate2D) {
+    if let locationCompletion = self.firstLocationCompletion {
+      locationCompletion()
+      self.firstLocationCompletion = nil
+    }
+  }
+  
+  @objc func authorizationStatusChanged(status: CLAuthorizationStatus) {
+    print("authorization status changed; handling new status \(status)")
+    self.didReceiveNewLocationAuthorizationStatus(status: status)
+  }
+  
+}
+
+// MARK: - Notificaiton Status Changed
+extension OnboardingViewController {
   
 }
