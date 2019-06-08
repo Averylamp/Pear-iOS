@@ -54,21 +54,26 @@ class AllowLocationViewController: OnboardingViewController {
         // Location services is not available on the DEVICE
         return
       }
-      DataStore.shared.withinBostonArea { (withinBoston) in
-        if let withinBoston = withinBoston {
-          if withinBoston  || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
-            DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
-            self.continueToNotificationOrNext()
+      self.fetchFirstLocation {
+        DataStore.shared.withinBostonArea { (withinBoston) in
+          if let withinBoston = withinBoston {
+            if withinBoston  || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
+              DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
+              self.continueToNotificationOrNext()
+            } else {
+              self.continueToLocationBlockedPage()
+            }
           } else {
+            SentryHelper.generateSentryMessageEvent(level: .debug, message: "LocationBlockingPageTriggeredWithoutLocation")
             self.continueToLocationBlockedPage()
           }
-        } else {
-          DataStore.shared.locationDelegate = self
-          DataStore.shared.firstLocationReceived = false
-          DataStore.shared.startReceivingLocationChanges()
         }
       }
     }
+  }
+  
+  override func didReceiveNewLocationAuthorizationStatus(status: CLAuthorizationStatus) {
+    self.handleAuthorizationStatus(status: status)
   }
   
 }
@@ -90,28 +95,6 @@ extension AllowLocationViewController {
     if status == .denied {
       self.enableLocationButton.setTitle("Open Settings", for: .normal)
     }
-  }
-  
-}
-
-extension AllowLocationViewController: DataStoreLocationDelegate {
-  
-  func firstLocationReceived(location: CLLocationCoordinate2D) {
-    DataStore.shared.withinBostonArea { (withinBoston) in
-      if let withinBoston = withinBoston {
-        if withinBoston   || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
-          DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
-          self.self.continueToNotificationOrNext()
-        } else {
-          self.continueToLocationBlockedPage()
-        }
-      }
-    }
-  }
-  
-  func authorizationStatusChanged(status: CLAuthorizationStatus) {
-    print("authorization status changed; handling new status \(status)")
-    self.handleAuthorizationStatus(status: status)
   }
   
 }
