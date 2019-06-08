@@ -12,7 +12,7 @@ import FirebaseAnalytics
 
 // if you're logging in and have a PearUser assigned to you, but for whatever reason don't have location authorized
 // After you complete the flow of this VC, you're taken to the main VC
-class AllowLocationViewController: UIViewController {
+class AllowLocationViewController: OnboardingViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
@@ -71,11 +71,6 @@ class AllowLocationViewController: UIViewController {
     }
   }
   
-}
-
-// MARK: - Permissions Flow Protocol
-extension AllowLocationViewController: PermissionsFlowProtocol {
-  // No-Op
 }
 
 // MARK: - Life Cycle

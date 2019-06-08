@@ -18,7 +18,7 @@ protocol PromptInputDelegate: class {
   func deleteResponseAtIndex(index: Int)
 }
 
-class OnboardingFriendPromptInputViewController: UIViewController {
+class OnboardingFriendPromptInputViewController: OnboardingViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
@@ -479,10 +479,6 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
 
 // MARK: - PromptSMSProtocol
 extension OnboardingFriendPromptInputViewController: PromptSMSProtocol {
-  
-}
-
-extension OnboardingFriendPromptInputViewController: PermissionsFlowProtocol {
   
 }
 

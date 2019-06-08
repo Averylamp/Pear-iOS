@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import FirebaseAnalytics
 
-class UserEmailInfoViewController: UIViewController {
+class UserEmailInfoViewController: OnboardingViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
@@ -51,11 +51,6 @@ class UserEmailInfoViewController: UIViewController {
     }
     self.continueToEventCodeOrNext()
   }
-}
-
-// MARK: - Permissions Flow Protocol
-extension UserEmailInfoViewController: PermissionsFlowProtocol {
-  // No-Op
 }
 
 // MARK: - Life Cycle

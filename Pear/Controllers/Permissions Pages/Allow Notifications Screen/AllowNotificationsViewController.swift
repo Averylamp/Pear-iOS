@@ -11,7 +11,7 @@ import UserNotifications
 import CoreLocation
 import FirebaseAnalytics
 
-class AllowNotificationsViewController: UIViewController {
+class AllowNotificationsViewController: OnboardingViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
@@ -55,11 +55,6 @@ class AllowNotificationsViewController: UIViewController {
   @IBAction func skipNotificationsClicked(_ sender: Any) {
     self.continueToOnboardingOrMain()
   }
-}
-
-// MARK: - Permissions Flow Protocol
-extension AllowNotificationsViewController: PermissionsFlowProtocol {
-  // No-Op
 }
 
 // MARK: - Life Cycle
