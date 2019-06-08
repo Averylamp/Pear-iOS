@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ProfileQuestionResponseViewController: UITextViewItemViewController {
+class ProfileQuestionResponseViewController: UIViewController {
 
-  @IBOutlet weak var questionTitleLabel: UILabel!
+  @IBOutlet weak var writtenByImageView: UIImageView!
+  @IBOutlet weak var writtenByLabel: UILabel!
   @IBOutlet weak var stackView: UIStackView!
-  @IBOutlet weak var responseSubtitleLabel: UILabel!
-  @IBOutlet weak var responseBodyLabel: UILabel!
+  @IBOutlet weak var questionTitleLabel: UILabel!
+  @IBOutlet weak var questionResponseLabel: UILabel!
+  @IBOutlet weak var thumbnailImage: UIImageView!
   
   var questionItem: QuestionResponseItem!
   
@@ -21,19 +23,12 @@ class ProfileQuestionResponseViewController: UITextViewItemViewController {
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(questionItem: QuestionResponseItem) -> ProfileQuestionResponseViewController? {
-    guard let bioVC = R.storyboard.profileQuestionResponseViewController
+    guard let questionResponseVC = R.storyboard.profileQuestionResponseViewController
       .instantiateInitialViewController() else { return nil }
-    bioVC.questionItem = questionItem
-    return bioVC
+    questionResponseVC.questionItem = questionItem
+    return questionResponseVC
   }
   
-  override func intrinsicHeight() -> CGFloat {
-    let responseTitleHeight = self.responseSubtitleLabel.isHidden ? 8 :
-      self.responseSubtitleLabel.sizeThatFits(CGSize(width: self.responseSubtitleLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height + 12
-    return self.questionTitleLabel.sizeThatFits(CGSize(width: self.questionTitleLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height +
-      self.responseBodyLabel.sizeThatFits(CGSize(width: self.responseBodyLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)).height +
-      responseTitleHeight + 16
-  }
 }
 
 // MARK: - Life Cycle
@@ -42,16 +37,24 @@ extension ProfileQuestionResponseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
+    self.setup()
   }
   
   func stylize() {
-    self.questionTitleLabel.text = self.questionItem.question.questionText
-    if let responseSubText = self.questionItem.responseTitle {
-      self.responseSubtitleLabel.text = responseSubText
-    } else {
-      self.responseSubtitleLabel.isHidden = true
+    self.writtenByImageView.contentMode = .scaleAspectFill
+    self.writtenByImageView.layer.cornerRadius = self.writtenByImageView.frame.width / 2.0
+    self.writtenByImageView.clipsToBounds = true
+  }
+  
+  func setup() {
+    self.writtenByLabel.text = questionItem.authorFirstName
+    self.questionTitleLabel.text = questionItem.question.questionText
+    self.questionResponseLabel.text = questionItem.responseBody
+    if let authorThumbnailURL = self.questionItem.authorThumbnailURL,
+      let thumbnailImage = self.thumbnailImage,
+      let imageURL = URL(string: authorThumbnailURL) {
+      thumbnailImage.sd_setImage(with: imageURL, completed: nil)
     }
-    self.responseBodyLabel.text = self.questionItem.responseBody    
   }
   
 }
