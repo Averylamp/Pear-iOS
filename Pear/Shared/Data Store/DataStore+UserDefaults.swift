@@ -8,23 +8,24 @@
 
 import Foundation
 
+enum UserDefaultKeys: String {
+  case skippedDetachedProfiles
+  case blockedUsers
+  case matchedUsers
+  case filterForEventId
+  case filterForUserId
+  case isFilteringForSelfDisabled
+  case notFilteringForEndorsedUsers
+  case notFilteringForDetachedProfiles
+  case hasCreatedUser
+  case hasCompletedOnboarding
+  case hasCompletedDiscoveryOnboarding
+  case hasBeenInBostonArea
+  case hasSetGenderPreferences
+  case userSessionNumber
+}
+
 extension DataStore {
-  
-  enum UserDefaultKeys: String {
-    case skippedDetachedProfiles
-    case blockedUsers
-    case matchedUsers
-    case filterForEventId
-    case filterForUserId
-    case isFilteringForSelfDisabled
-    case notFilteringForEndorsedUsers
-    case notFilteringForDetachedProfiles
-    case hasCreatedUser
-    case hasCompletedOnboarding
-    case hasCompletedDiscoveryOnboarding
-    case hasBeenInBostonArea
-    case hasSetGenderPreferences
-  }
   
   func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {
     if let result = UserDefaults.standard.array(forKey: type.rawValue) as? [String] {

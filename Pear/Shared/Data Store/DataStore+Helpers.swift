@@ -118,6 +118,9 @@ extension DataStore {
                                     switch result {
                                     case .success(let pearUser):
                                       DataStore.shared.currentPearUser = pearUser
+                                      if SlackHelper.shared.userEvents.count < 2 {
+                                        SlackHelper.shared.addUserInformation()
+                                      }
                                       DataStore.shared.reloadAllUserData {
                                         print("reloaded all user data")
                                         Crashlytics.sharedInstance().setUserEmail(pearUser.email)

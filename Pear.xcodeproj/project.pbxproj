@@ -286,6 +286,7 @@
 		BBDF1FEA21E2B61900520881 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */; };
 		BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */; };
 		BBE5BFB1224F262C00D99217 /* DataStore+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */; };
+		BBE7F76322ADBA52005621E1 /* SlackHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE7F76222ADBA52005621E1 /* SlackHelper.swift */; };
 		BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE91C832268D24800D285E3 /* UserCreationData.swift */; };
 		BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */; };
 		BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBECBEC12237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard */; };
@@ -625,6 +626,7 @@
 		BBDF1FE921E2B61900520881 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BBDF1FEC21E2B62D00520881 /* MainTabBarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarViewController.storyboard; sourceTree = "<group>"; };
 		BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+UserDefaults.swift"; sourceTree = "<group>"; };
+		BBE7F76222ADBA52005621E1 /* SlackHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackHelper.swift; sourceTree = "<group>"; };
 		BBE91C832268D24800D285E3 /* UserCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationData.swift; sourceTree = "<group>"; };
 		BBEA6362225BB22E00A50422 /* UpdateUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUIViewController.swift; sourceTree = "<group>"; };
 		BBECBEC12237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveDetachedProfileViewController.storyboard; sourceTree = "<group>"; };
@@ -837,6 +839,7 @@
 			children = (
 				BB94C12C2243C558001320B0 /* R.generated.swift */,
 				BB797DEB2276C8D000D38044 /* Data Store */,
+				BBE7F76222ADBA52005621E1 /* SlackHelper.swift */,
 				BB541B41223B5AA0002239C8 /* RemoteConfig.plist */,
 				BB94C1302243C73B001320B0 /* Strings.strings */,
 				BB610E9B222A1EDB00901FC3 /* Generators */,
@@ -1161,8 +1164,8 @@
 			isa = PBXGroup;
 			children = (
 				BB633D3422862D76005E120F /* Decision Discovery */,
-				91BEE2A3225C3C8000A53171 /* Filters */,
 				BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */,
+				91BEE2A3225C3C8000A53171 /* Filters */,
 				BB9D1B8122562CF20074C099 /* Personal Chat Request */,
 				BB9D1B8222562D050074C099 /* Endorsement Chat Request */,
 				BBCA2D6F229DF1150057491A /* QR Scanner */,
@@ -2711,6 +2714,7 @@
 				BBB71B8F2295644B002CDDD1 /* AgeRangeInputViewController.swift in Sources */,
 				BBAC095B22700A770095F27E /* PearContentAPI.swift in Sources */,
 				BB17892A225D96D60033ACC6 /* ChatMainViewController.swift in Sources */,
+				BBE7F76322ADBA52005621E1 /* SlackHelper.swift in Sources */,
 				BB986A3F220E85B200759A14 /* LandingNavigationViewController.swift in Sources */,
 				BB687E6D228D6D1100F45C9D /* OnboardingExplainationPage3ViewController.swift in Sources */,
 				BBB70AD122233508006B75A0 /* PearProfileAPI.swift in Sources */,

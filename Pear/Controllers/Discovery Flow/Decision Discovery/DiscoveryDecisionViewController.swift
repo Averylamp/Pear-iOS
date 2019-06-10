@@ -110,10 +110,14 @@ extension DiscoveryDecisionViewController {
                 self.allFetchedProfiles.append($0)
               }
             })
+            let oldProfilesToShow = self.profilesToShow
             self.profilesToShow = []
             self.allFetchedProfiles.filter({$0.decisionMade == false}).forEach({
               self.profilesToShow.append($0)
             })
+            if oldProfilesToShow.count != self.profilesToShow.count {
+              SlackHelper.shared.addEvent(text: "Fetched \(self.profilesToShow.count) profiles, Showing \(self.profilesToShow.count) profiles", color: UIColor.orange)
+            }
             DispatchQueue.main.async {
               self.activityIndicator.stopAnimating()
               self.messageLabel.text = ""

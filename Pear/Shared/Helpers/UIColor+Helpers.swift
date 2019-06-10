@@ -19,4 +19,9 @@ extension UIColor {
     getRed(&red, green: &green, blue: &blue, alpha: &alpha)
     return (red, green, blue, alpha)
   }
+  
+  var hexColor: String {
+    return String(format: "#%02x%02x%02x", Int(rgba.red * 255), Int(rgba.green * 255), Int(rgba.blue * 255))
+  }
+  
 }
