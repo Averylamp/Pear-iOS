@@ -103,6 +103,8 @@ class DiscoveryFullProfileViewController: UIViewController {
           print("Unable to get required information")
         return
     }
+    SlackHelper.shared.addEvent(text: "User Skipped profile: \(self.fullProfileData.firstName ?? "") (\(self.fullProfileData.age ?? 0)) \(self.fullProfileData.gender?.toString() ?? "Unknown Gender"), Images: \(self.fullProfileData.imageContainers.count), prompts: \(self.fullProfileData.questionResponses.count)",
+      color: UIColor.yellow)
     #if PROD
     PearDiscoveryAPI.shared.skipDiscoveryItem(userID: userID,
                                               discoveryItemID: discoveryItemID) { (result) in

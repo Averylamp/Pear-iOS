@@ -146,6 +146,7 @@ extension FullChatViewController {
   @objc func acceptRequestButtonClicked() {
     Analytics.logEvent("accept_match_request", parameters: [
       "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown" ])
+//    SlackHelper.shared.addEvent(text: "User Accepted Match Request! other: \()", color: <#T##UIColor#>)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
   }
