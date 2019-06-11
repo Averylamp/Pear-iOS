@@ -162,4 +162,40 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
     
     """
   }
+  
+  func toSlackStorySummary(profileStats: Bool = false, currentUserStats: Bool = false) -> String {
+    var text = ""
+    if let firstName = self.firstName {
+      text += firstName + " "
+    }
+    if let lastName = self.lastName {
+      text += lastName.firstCapitalized + ". "
+    }
+    if let age = self.age {
+      text += "(\(age)) "
+    }
+    if let gender = self.gender {
+      text += gender.toString() + " "
+    }
+    if profileStats == true {
+      text += "\n"
+      let profileStats = "Images: \(self.displayedImages.count), Prompts: \(self.questionResponses.count), Friends: \(self.endorsedUserIDs.count)"
+      text += profileStats
+    }
+    if currentUserStats == true {
+      text +=  "\n"
+      let unreadMessages = DataStore.shared.currentMatches.filter({ if
+        let lastMessage = $0.chat?.messages.last,
+        let lastOpened = $0.chat?.lastOpenedDate
+      {
+        let unread = lastOpened.compare(lastMessage.timestamp) == .orderedAscending
+        return unread
+        }
+        return false
+      }).count
+      let userStats = "Unread Messages: \(unreadMessages), \(DataStore.shared.matchRequests.count > 0 ? "Requests: \(DataStore.shared.matchRequests.count)," : "") \(DataStore.shared.detachedProfiles.count > 0 ? "Detached Profiles: \(DataStore.shared.detachedProfiles.count)" : "") "
+      text += userStats
+    }
+    return text
+  }
 }

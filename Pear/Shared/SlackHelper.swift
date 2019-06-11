@@ -35,22 +35,12 @@ class SlackHelper: NSObject {
   
   func addUserInformation() {
     if let user = DataStore.shared.currentPearUser {
-      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(20 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {
-        let demographicsText = "User: \(user.firstName ?? "") \((user.lastName ?? "").firstCapitalized). (\(user.age ?? 0)) \(user.gender?.toString() ?? "Unknown Gender")"
-        let unreadMessages = DataStore.shared.currentMatches.filter({ if
-          let lastMessage = $0.chat?.messages.last,
-          let lastOpened = $0.chat?.lastOpenedDate
-        {
-          let unread = lastOpened.compare(lastMessage.timestamp) == .orderedAscending
-          return unread
-          }
-          return false
-        }).count
-        let userStats = "Images: \(user.displayedImages.count), Friends: \(user.endorsedUserIDs.count), Matches: \(DataStore.shared.currentMatches.count), Unread Messages: \(unreadMessages), \(DataStore.shared.matchRequests.count > 0 ? "Requests: \(DataStore.shared.matchRequests.count)," : "") \(DataStore.shared.detachedProfiles.count > 0 ? "Detached Profiles: \(DataStore.shared.detachedProfiles.count)" : "") "
+      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(20 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {        
         if !self.userEvents.contains(where: {
-          $0.text == "\(demographicsText)\n\(userStats)"
+          $0.text == user.toSlackStorySummary(profileStats: true, currentUserStats: true)
         }) {
-          self.userEvents.insert(SlackEvent(text: "\(demographicsText)\n\(userStats)", color: UIColor.green.hexColor), at: 0)
+          self.userEvents.insert(SlackEvent(text: user.toSlackStorySummary(profileStats: true, currentUserStats: true),
+                                            color: UIColor.green.hexColor), at: 0)
         }
       }
     }
@@ -79,7 +69,7 @@ class SlackHelper: NSObject {
     }
     let sessionNumber = UserDefaults.standard.integer(forKey: UserDefaultKeys.userSessionNumber.rawValue)
     UserDefaults.standard.set(sessionNumber + 1, forKey: UserDefaultKeys.userSessionNumber.rawValue)
-    self.userEvents.insert(SlackEvent(text: "Session Duration: \(Int(timePassed))s, Session Number: \(sessionNumber)\nEvents: \(self.userEvents.count)", color: UIColor.green.hexColor), at: 0)
+    self.userEvents.insert(SlackEvent(text: "Session Duration: \(Int(timePassed))s, Session Number: \(sessionNumber), Events: \(self.userEvents.count)", color: UIColor.purple.hexColor), at: 0)
     let urlString = "https://hooks.slack.com/services/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"
     let url = URL(string: urlString)
     let rawData: [String: Any] = [

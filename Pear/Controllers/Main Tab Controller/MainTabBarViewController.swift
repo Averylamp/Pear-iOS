@@ -91,7 +91,6 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
       index == 1 {
-      DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
       DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),

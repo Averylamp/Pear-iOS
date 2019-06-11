@@ -37,6 +37,7 @@ extension LoadingScreenViewController {
     DataStore.shared.reloadRemoteConfig { (_) in
       DataStore.shared.getVersionNumber(versionSufficientCompletion: { (versionIsSufficient) in
         if !versionIsSufficient && DataStore.shared.remoteConfig.configValue(forKey: "version_blocking_enabled").boolValue {
+          SlackHelper.shared.addEvent(text: "This user is version blocked", color: UIColor.red)
           self.continueToVersionBlockingScreen()
         } else {
           DataStore.shared.refreshPearUser(completion: { (pearUser) in
@@ -44,6 +45,7 @@ extension LoadingScreenViewController {
               DataStore.shared.currentPearUser = pearUser
               self.continueToLocationOrNext()
             } else {
+              SlackHelper.shared.addEvent(text: "Showing user landing page", color: UIColor.yellow)
               self.continueToLandingPage()
             }
           })
