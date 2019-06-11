@@ -39,7 +39,7 @@ class OnboardingMoreDetailsViewController: UIViewController {
       print("Failed to instantiate preferences VC")
       return
     }
-    SlackHelper.shared.addEvent(text: "Continuing to User Preferences VC in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.)", color: UIColor.green)
+    SlackHelper.shared.addEvent(text: "Continuing to User Preferences VC in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.", color: UIColor.green)
     self.navigationController?.pushViewController(preferencesVC, animated: true)
   }
   
