@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 class SlackHelper: NSObject {
   
@@ -67,10 +68,23 @@ class SlackHelper: NSObject {
     if timePassed < 30 || self.userEvents.count < 4 {
       return
     }
+    if !DataStore.shared.remoteConfig.configValue(forKey: "slack_stores_enabled").boolValue {
+      return
+    }
+    if let phoneNumber = DataStore.shared.currentPearUser?.phoneNumber {
+      let skippedStoresData = DataStore.shared.remoteConfig.configValue(forKey: "slack_stores_skipped_phone_numbers").dataValue
+      if let skippedPhoneNumberArray = try? JSON(data: skippedStoresData).array {
+        let skippedPhoneNumbers = skippedPhoneNumberArray.compactMap({ $0.string })
+        if skippedPhoneNumbers.contains(phoneNumber) {
+          return
+        }
+      }
+    }
+    
     let sessionNumber = UserDefaults.standard.integer(forKey: UserDefaultKeys.userSessionNumber.rawValue)
     UserDefaults.standard.set(sessionNumber + 1, forKey: UserDefaultKeys.userSessionNumber.rawValue)
     self.userEvents.insert(SlackEvent(text: "Session Duration: \(Int(timePassed))s, Session Number: \(sessionNumber), Events: \(self.userEvents.count)", color: UIColor.purple.hexColor), at: 0)
-    let urlString = "https://hooks.slack.com/services/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"
+    let urlString = "https://hooks.slack.com/services/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"
     let url = URL(string: urlString)
     let rawData: [String: Any] = [
       "attachments": self.getAttachmentsFromEvents()
