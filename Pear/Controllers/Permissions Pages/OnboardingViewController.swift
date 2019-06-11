@@ -56,6 +56,7 @@ extension OnboardingViewController {
   func continueToLocationOrNext() {
     let locationStatus = CLLocationManager.authorizationStatus()
     if locationStatus != .authorizedWhenInUse && locationStatus != .authorizedAlways {
+      SlackHelper.shared.addEvent(text: "Showing user location permissions page", color: UIColor.yellow)
       self.continueToAllowLocation()
       return
     }
@@ -67,10 +68,12 @@ extension OnboardingViewController {
           self.continueToNotificationOrNext()
         } else {
           print("Found Location Blocking Condition")
+          SlackHelper.shared.addEvent(text: "Showing user location blocked", color: UIColor.red)
           self.continueToLocationBlockedPage()
         }
         return
       } else {
+        SlackHelper.shared.addEvent(text: "Showing user location permissions page", color: UIColor.yellow)
         self.continueToAllowLocation()
       }
     }
@@ -80,6 +83,7 @@ extension OnboardingViewController {
   func continueToNotificationOrNext() {
     DataStore.shared.getNotificationAuthorizationStatus { (status) in
       if status != .authorized {
+        SlackHelper.shared.addEvent(text: "Showing user notifications permissions page", color: UIColor.yellow)
         self.continueToAllowNotifications()
         return
       } else {
@@ -94,9 +98,11 @@ extension OnboardingViewController {
     DispatchQueue.main.async {
       if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
         print("Continuing to Main VC")
+        SlackHelper.shared.addEvent(text: "Showing user Main Tab Controller", color: UIColor.yellow)
         self.continueToMainVC()
       } else {
         print("Continuing to Onboarding")
+        SlackHelper.shared.addEvent(text: "Showing user Onboarding Flow", color: UIColor.yellow)
         self.continueToOnboarding()
       }
     }

@@ -95,6 +95,9 @@ extension DataStore: CLLocationManagerDelegate {
           print("failed to find whitelisted numbers")
         }
       }
+      if !foundWithin {
+        SlackHelper.shared.addEvent(text: "User is \(milesDistance) Miles from Boston", color: UIColor.red)
+      }
       completion(foundWithin)
       return
     }
