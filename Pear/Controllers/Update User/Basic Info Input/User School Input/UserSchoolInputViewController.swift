@@ -38,19 +38,24 @@ class UserSchoolInputViewController: UIViewController {
     let schoolYear = self.schoolYearVC?.getNewFieldValue()
     DataStore.shared.currentPearUser?.school = schoolName
     DataStore.shared.currentPearUser?.schoolYear  = schoolYear
-    PearUpdateUserAPI.shared.updateUserSchool(schoolName: schoolName,
-                                              schoolYear: schoolYear) { (result) in
-                                                switch result {
-                                                case .success(let successful):
-                                                  if successful {
-                                                    print("Successfully update user school")
-                                                  } else {
-                                                    print("Failed to update user school")
+    if DataStore.shared.currentPearUser?.school != schoolName ||
+      DataStore.shared.currentPearUser?.schoolYear != schoolYear {
+      SlackHelper.shared.addEvent(text: "User updated BasicInfo-User Name from \(DataStore.shared.currentPearUser?.school ?? "") \(DataStore.shared.currentPearUser?.schoolYear ?? "") -> \(schoolName ?? "") \(schoolYear ?? "")", color: UIColor.green)
+      PearUpdateUserAPI.shared.updateUserSchool(schoolName: schoolName,
+                                                schoolYear: schoolYear) { (result) in
+                                                  switch result {
+                                                  case .success(let successful):
+                                                    if successful {
+                                                      print("Successfully update user school")
+                                                    } else {
+                                                      print("Failed to update user school")
+                                                    }
+                                                  case .failure(let error):
+                                                    print("Failed to update user school: \(error)")
                                                   }
-                                                case .failure(let error):
-                                                  print("Failed to update user school: \(error)")
-                                                }
+      }
     }
+    
   }
   
 }

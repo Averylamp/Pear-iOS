@@ -74,6 +74,7 @@ class UserPoliticalViewsInputViewController: UIViewController {
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
       updatedPoliticalView = .preferNotToSay
     }
+    SlackHelper.shared.addEvent(text: "User updated BasicInfo-User Political Views from \(DataStore.shared.currentPearUser?.matchingDemographics.politicalView != nil ? DataStore.shared.currentPearUser!.matchingDemographics.politicalView.responses.map({ $0.toString() }).joined(separator: ", ") : "None")  -> \([updatedPoliticalView].map({ $0.toString() }))", color: UIColor.green)
     DataStore.shared.currentPearUser?.matchingDemographics.politicalView.responses = [updatedPoliticalView]
     if updatedPoliticalView == .preferNotToSay {
       DataStore.shared.currentPearUser?.matchingDemographics.politicalView.userHasResponded = false

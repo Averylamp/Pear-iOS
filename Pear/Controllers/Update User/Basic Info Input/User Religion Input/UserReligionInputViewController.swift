@@ -86,6 +86,7 @@ class UserReligionInputViewController: UIViewController {
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
       updatedReligion = []
     }
+    SlackHelper.shared.addEvent(text: "User updated BasicInfo-User Religion from \(DataStore.shared.currentPearUser?.matchingDemographics.religion != nil ? DataStore.shared.currentPearUser!.matchingDemographics.religion.responses.map({ $0.toString() }).joined(separator: ", ") : "None")  -> \(updatedReligion.map({ $0.toString() }))", color: UIColor.green)
     DataStore.shared.currentPearUser?.matchingDemographics.religion.responses = updatedReligion
     if updatedReligion.count == 0 {
       DataStore.shared.currentPearUser?.matchingDemographics.religion.userHasResponded = false
