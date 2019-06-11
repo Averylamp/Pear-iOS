@@ -114,42 +114,49 @@ extension UserMoreDetailsTableViewController: UITableViewDataSource, UITableView
         print("Unable to instantiate Political Views Input")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on MoreInfo-User Political Views", color: UIColor.orange)
       self.navigationController?.pushViewController(politicalViewsVC, animated: true)
     case .religion:
       guard let userReligionVC = UserReligionInputViewController.instantiate() else {
         print("Unable to instantiate Religion Input VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on MoreInfo-User Religion", color: UIColor.orange)
       self.navigationController?.pushViewController(userReligionVC, animated: true)
     case .education:
       guard let userEducationLevelVC = UserEducationLevelInputViewController.instantiate() else {
         print("Unable to instantiate Education Level Input VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on MoreInfo-User Education", color: UIColor.orange)
       self.navigationController?.pushViewController(userEducationLevelVC, animated: true)
     case .drinking:
       guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .drinking) else {
         print("Unable to instantiate Habit Drinking VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on MoreInfo-User Drinking Habits", color: UIColor.orange)
       self.navigationController?.pushViewController(userHabitInputVC, animated: true)
     case .smoking:
       guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .smoking) else {
         print("Unable to instantiate Habit Smoking VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on MoreInfo-User Smoking Habits", color: UIColor.orange)
       self.navigationController?.pushViewController(userHabitInputVC, animated: true)
     case .cannabis:
       guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .cannabis) else {
         print("Unable to instantiate Habit Cannabis VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on MoreInfo-User Cannabis Habits", color: UIColor.orange)
       self.navigationController?.pushViewController(userHabitInputVC, animated: true)
     case .drugs:
       guard let userHabitInputVC = UserHabitsInputViewController.instantiate(habitType: .drugs) else {
         print("Unable to instantiate Habit Drugs VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on MoreInfo-User Drugs Habits", color: UIColor.orange)
       self.navigationController?.pushViewController(userHabitInputVC, animated: true)
     default:
       break

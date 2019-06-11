@@ -36,6 +36,10 @@ class UserNameInputViewController: UIViewController {
   func updateUser() {
     let firstName = firstNameVC?.getNewFieldValue()
     let lastName = lastNameVC?.getNewFieldValue()
+    if DataStore.shared.currentPearUser?.firstName != firstName ||
+      DataStore.shared.currentPearUser?.lastName != lastName {
+      SlackHelper.shared.addEvent(text: "User updated BasicInfo-User Name from \(DataStore.shared.currentPearUser?.firstName ?? "") \(DataStore.shared.currentPearUser?.lastName ?? "") -> \(firstName ?? "") \(lastName ?? "")", color: UIColor.green)
+    }
     DataStore.shared.currentPearUser?.firstName = firstName
     DataStore.shared.currentPearUser?.lastName  = lastName
     PearUpdateUserAPI.shared.updateUserName(firstName: firstName, lastName: lastName) { (result) in

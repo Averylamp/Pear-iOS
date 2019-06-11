@@ -17,6 +17,8 @@ class OnboardingMoreDetailsViewController: UIViewController {
   @IBOutlet weak var continueButtonBottomConstraint: NSLayoutConstraint!
   @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
   
+  let initializationTime: Double = CACurrentMediaTime()
+
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -27,6 +29,7 @@ class OnboardingMoreDetailsViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    SlackHelper.shared.addEvent(text: "User went back from More Details VC in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s", color: UIColor.red)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -36,6 +39,7 @@ class OnboardingMoreDetailsViewController: UIViewController {
       print("Failed to instantiate preferences VC")
       return
     }
+    SlackHelper.shared.addEvent(text: "Continuing to User Preferences VC in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.)", color: UIColor.green)
     self.navigationController?.pushViewController(preferencesVC, animated: true)
   }
   

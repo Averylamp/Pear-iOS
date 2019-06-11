@@ -44,6 +44,7 @@ class UserGenderInputViewController: UIViewController {
         return
       }
       if DataStore.shared.currentPearUser?.gender != updatedGender {
+        SlackHelper.shared.addEvent(text: "User updated BasicInfo-User Gender from \(DataStore.shared.currentPearUser?.gender?.toString() ?? "")  -> \(updatedGender.toString())", color: UIColor.green)
         DataStore.shared.currentPearUser?.gender = updatedGender
         PearUpdateUserAPI.shared.updateUserGender(gender: updatedGender) { (result) in
           switch result {

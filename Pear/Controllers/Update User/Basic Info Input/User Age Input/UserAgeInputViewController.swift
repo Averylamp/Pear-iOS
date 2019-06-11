@@ -33,6 +33,11 @@ class UserAgeInputViewController: UIViewController {
     if let age = Calendar.init(identifier: .gregorian)
       .dateComponents([.year], from: self.datePicker.date, to: Date()).year {
         DataStore.shared.currentPearUser?.age = age
+      if DataStore.shared.currentPearUser?.birthdate != self.datePicker.date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        SlackHelper.shared.addEvent(text: "User updated BasicInfo-User Birthday from \(DataStore.shared.currentPearUser?.birthdate != nil ? dateFormatter.string(from: DataStore.shared.currentPearUser!.birthdate!) : "None") -> \(dateFormatter.string(from: self.datePicker.date))", color: UIColor.green)
+      }
     }
     PearUpdateUserAPI.shared.updateUserAge(birthdate: self.datePicker.date) { (result) in
       switch result {

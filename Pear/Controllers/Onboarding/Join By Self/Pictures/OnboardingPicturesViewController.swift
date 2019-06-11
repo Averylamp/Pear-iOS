@@ -21,6 +21,8 @@ class OnboardingPicturesViewController: OnboardingViewController {
   var isContinuing: Bool = false
   var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
   
+  let initializationTime: Double = CACurrentMediaTime()
+
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -31,6 +33,7 @@ class OnboardingPicturesViewController: OnboardingViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    SlackHelper.shared.addEvent(text: "User went back from User Pictures VC in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s", color: UIColor.red)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -38,6 +41,7 @@ class OnboardingPicturesViewController: OnboardingViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if photoUpdateVC?.images.count == 0 {
       self.alert(title: "Please Upload 🎑", message: "You must have at least one image")
+      SlackHelper.shared.addEvent(text: "User tried to continue without uploading images in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.)", color: UIColor.orange)
       return
     }
 
@@ -75,6 +79,7 @@ extension OnboardingPicturesViewController {
     if let userID = DataStore.shared.currentPearUser?.documentID,
       let photoVC = self.photoUpdateVC {
       let currentImageContainers = photoVC.images.compactMap({ $0.imageContainer })
+      SlackHelper.shared.addEvent(text: "User Uploaded \(currentImageContainers.count) in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.)", color: UIColor.green)
       PearImageAPI.shared.updateImages(userID: userID,
                                        displayedImages: currentImageContainers,
                                        additionalImages: []) { (result) in
@@ -94,6 +99,7 @@ extension OnboardingPicturesViewController {
                                           self.activityIndicator.stopAnimating()
                                           DataStore.shared.setFlagToDefaults(value: true, flag: .hasCompletedOnboarding)
                                           DataStore.shared.refreshPearUser(completion: { (_) in
+                                            SlackHelper.shared.addEvent(text: "User Continuing to Main VC. Onboarding COMPLETE!", color: UIColor.green)
                                             self.continueToMainVC()
                                           })
                                         }
