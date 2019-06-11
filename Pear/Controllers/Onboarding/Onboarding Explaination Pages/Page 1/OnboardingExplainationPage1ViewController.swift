@@ -15,6 +15,8 @@ class OnboardingExplainationPage1ViewController: UIViewController {
   @IBOutlet weak var continueButton: UIButton!
   @IBOutlet weak var memeImageView: UIImageView!
   
+  let initializationTime: Double = CACurrentMediaTime()
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -22,7 +24,6 @@ class OnboardingExplainationPage1ViewController: UIViewController {
     Analytics.logEvent("how_it_works_begin", parameters: nil)
     guard let onboardingPage1VC = R.storyboard.onboardingExplainationPage1ViewController
       .instantiateInitialViewController()  else { return nil }
-    
     return onboardingPage1VC
   }
   
@@ -32,6 +33,7 @@ class OnboardingExplainationPage1ViewController: UIViewController {
       print("Failed to create next Onboarding Info Page")
       return
     }
+    SlackHelper.shared.addEvent(text: "User Continued to 2nd Onboarding page in \(round((CACurrentMediaTime() - initializationTime) * 100) / 100)s", color: UIColor.yellow)
     self.navigationController?.pushViewController(nextOnboardingInfoPage, animated: true)
   }
   

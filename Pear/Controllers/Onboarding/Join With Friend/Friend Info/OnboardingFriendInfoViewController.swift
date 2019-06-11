@@ -26,6 +26,9 @@ class OnboardingFriendInfoViewController: UIViewController {
   var profileData: ProfileCreationData!
   var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
   var titleLabelText: String?
+
+  let initializationTime: Double = CACurrentMediaTime()
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -39,6 +42,7 @@ class OnboardingFriendInfoViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    SlackHelper.shared.addEvent(text: "User went back from Friend Info VC", color: UIColor.red)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -49,6 +53,7 @@ class OnboardingFriendInfoViewController: UIViewController {
       print("Unable to create friend name input VC")
       return
     }
+    SlackHelper.shared.addEvent(text: "User Continued past Friend Info in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.  Continuing to Friend Name VC", color: UIColor.green)
     self.navigationController?.pushViewController(friendNameInputVC, animated: true)
   }
   
