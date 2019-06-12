@@ -14,14 +14,15 @@ class OnboardingExplainationPage3ViewController: UIViewController {
   @IBOutlet weak var continueButton: UIButton!
   @IBOutlet weak var memeImageView: UIImageView!
   
+let initializationTime: Double = CACurrentMediaTime()
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> OnboardingExplainationPage3ViewController? {
-    guard let onboardingPage1VC = R.storyboard.onboardingExplainationPage3ViewController
+    guard let onboardingPage3VC = R.storyboard.onboardingExplainationPage3ViewController
       .instantiateInitialViewController()  else { return nil }
-    
-    return onboardingPage1VC
+    return onboardingPage3VC
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
@@ -30,6 +31,7 @@ class OnboardingExplainationPage3ViewController: UIViewController {
       print("Failed to create next Onboarding Info Page")
       return
     }
+    SlackHelper.shared.addEvent(text: "User Continued to 3rd Onboarding page in \(round((CACurrentMediaTime() - initializationTime) * 100) / 100)s", color: UIColor.yellow)
     self.navigationController?.pushViewController(nextOnboardingInfoPage, animated: true)
   }
   

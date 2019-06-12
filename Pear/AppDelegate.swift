@@ -82,6 +82,15 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     UIApplication.shared.applicationIconBadgeNumber = 0
   }
   
+  func applicationWillResignActive(_ application: UIApplication) {
+    print("Application will resign active")
+    SlackHelper.shared.sendStory()
+  }
+  
+  func applicationWillTerminate(_ application: UIApplication) {
+    print("Application will terminate")
+  }
+  
   func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
     if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
       // Handle the deep link. For example, show the deep-linked content or

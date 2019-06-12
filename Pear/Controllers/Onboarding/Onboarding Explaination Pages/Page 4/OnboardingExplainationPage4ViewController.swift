@@ -18,13 +18,14 @@ class OnboardingExplainationPage4ViewController: UIViewController {
   @IBOutlet weak var joinWithFriendButton: UIButton!
   @IBOutlet weak var joinBySelfButton: UIButton!
   
+let initializationTime: Double = CACurrentMediaTime()
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate() -> OnboardingExplainationPage4ViewController? {
     guard let onboardingPage4VC = R.storyboard.onboardingExplainationPage4ViewController
       .instantiateInitialViewController()  else { return nil }
-    
     return onboardingPage4VC
   }
   
@@ -32,6 +33,8 @@ class OnboardingExplainationPage4ViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     Analytics.logEvent("how_it_works_complete", parameters: nil)
     self.promptContactsPicker()
+    SlackHelper.shared.addEvent(text: "User Clicked Join with Friend in \(round((CACurrentMediaTime() - initializationTime) * 100) / 100)", color: UIColor.yellow)
+
   }
   
   @IBAction func joinBySelfClicked(_ sender: Any) {
@@ -41,6 +44,7 @@ class OnboardingExplainationPage4ViewController: UIViewController {
       print("Failed to create next Onboarding Info Page")
       return
     }
+    SlackHelper.shared.addEvent(text: "User Clicked Join Alone in \(round((CACurrentMediaTime() - initializationTime) * 100) / 100)", color: UIColor.yellow)
     self.navigationController?.pushViewController(basicInfoVC, animated: true)
   }
 }
@@ -81,6 +85,7 @@ extension OnboardingExplainationPage4ViewController: ProfileCreationProtocol, CN
                                                                                 print("Unable to create friend Info VC")
                                                                                 return
       }
+      SlackHelper.shared.addEvent(text: "User Picked Contact in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.  Continuing to friend info VC", color: UIColor.yellow)
       self.navigationController?.pushViewController(friendInfoVC, animated: true)
     }
   }

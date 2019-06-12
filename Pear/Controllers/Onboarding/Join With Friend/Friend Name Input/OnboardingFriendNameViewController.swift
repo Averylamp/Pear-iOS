@@ -21,6 +21,9 @@ class OnboardingFriendNameViewController: UIViewController {
   var genderButtons: [UIButton] = []
   var titleLabelText: String?
   var profileData: ProfileCreationData!
+
+  let initializationTime: Double = CACurrentMediaTime()
+
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -33,6 +36,7 @@ class OnboardingFriendNameViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    SlackHelper.shared.addEvent(text: "User went back from Friend Name VC", color: UIColor.red)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -40,6 +44,7 @@ class OnboardingFriendNameViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     
     guard let friendFirstName = self.firstNameVC?.getNewFieldValue() else {
+      SlackHelper.shared.addEvent(text: "User tried to continue without filling out friend's name", color: UIColor.red)
       self.alert(title: "Missing Info", message: "You must fill out your friend's first name")
       return
     }
@@ -57,6 +62,7 @@ class OnboardingFriendNameViewController: UIViewController {
         return
       }
     } else {
+      SlackHelper.shared.addEvent(text: "User tried to continue without filling out friend's gender", color: UIColor.red)
       self.alert(title: "Missing Info", message: "You must fill out your friend's gender")
       return
     }
@@ -67,6 +73,7 @@ class OnboardingFriendNameViewController: UIViewController {
       print("Failed to instantiate friend info VC")
       return
     }
+    SlackHelper.shared.addEvent(text: "User filled out friends info in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s., continuing to Friend Prompt VC", color: UIColor.green)
     self.navigationController?.pushViewController(friendPromptInputVC, animated: true)
 
   }

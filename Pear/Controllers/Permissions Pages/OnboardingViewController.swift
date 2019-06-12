@@ -9,27 +9,23 @@
 import Foundation
 import UIKit
 import CoreLocation
+import UserNotifications
 
-protocol PermissionsFlowProtocol: UIViewController {
-  // Nested Functions
-  func continueToEmailOrNext()
-  func continueToEventCodeOrNext()
-  func continueToLocationOrNext()
-  func continueToNotificationOrNext()
-  func continueToOnboardingOrMain()
-  // Redirect functions
-  func continueToVersionBlockingScreen()
-  func continueToLandingPage()
-  func continueToUpdateEmail()
-  func continueToAllowNotifications()
-  func continueToAllowLocation()
-  func continueToMainVC()
-  func continueToOnboarding()
-  func continueToLocationBlockedPage()
+class OnboardingViewController: UIViewController {
+
+  var firstLocationCompletion: (() -> Void)?
+
+  @objc func didReceiveNewLocationAuthorizationStatus(status: CLAuthorizationStatus) {
+    
+  }
+  
+  @objc func didReceiveNewNotificationAuthorizationStatus(status: UNAuthorizationStatus) {
+    
+  }
 }
 
 // MARK: - Permissions Flow
-extension PermissionsFlowProtocol {
+extension OnboardingViewController {
   
   func continueToEmailOrNext() {
     guard let user = DataStore.shared.currentPearUser else {
@@ -60,6 +56,7 @@ extension PermissionsFlowProtocol {
   func continueToLocationOrNext() {
     let locationStatus = CLLocationManager.authorizationStatus()
     if locationStatus != .authorizedWhenInUse && locationStatus != .authorizedAlways {
+      SlackHelper.shared.addEvent(text: "Showing user location permissions page", color: UIColor.yellow)
       self.continueToAllowLocation()
       return
     }
@@ -71,10 +68,12 @@ extension PermissionsFlowProtocol {
           self.continueToNotificationOrNext()
         } else {
           print("Found Location Blocking Condition")
+          SlackHelper.shared.addEvent(text: "Showing user location blocked", color: UIColor.red)
           self.continueToLocationBlockedPage()
         }
         return
       } else {
+        SlackHelper.shared.addEvent(text: "Showing user location permissions page", color: UIColor.yellow)
         self.continueToAllowLocation()
       }
     }
@@ -84,6 +83,7 @@ extension PermissionsFlowProtocol {
   func continueToNotificationOrNext() {
     DataStore.shared.getNotificationAuthorizationStatus { (status) in
       if status != .authorized {
+        SlackHelper.shared.addEvent(text: "Showing user notifications permissions page", color: UIColor.yellow)
         self.continueToAllowNotifications()
         return
       } else {
@@ -98,9 +98,11 @@ extension PermissionsFlowProtocol {
     DispatchQueue.main.async {
       if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
         print("Continuing to Main VC")
+        SlackHelper.shared.addEvent(text: "Showing user Main Tab Controller", color: UIColor.yellow)
         self.continueToMainVC()
       } else {
         print("Continuing to Onboarding")
+        SlackHelper.shared.addEvent(text: "Showing user Onboarding Flow", color: UIColor.yellow)
         self.continueToOnboarding()
       }
     }
@@ -109,7 +111,7 @@ extension PermissionsFlowProtocol {
 }
 
 // MARK: - Continue To VCs
-extension PermissionsFlowProtocol {
+extension OnboardingViewController {
   
   func continueToVersionBlockingScreen() {
     DispatchQueue.main.async {
@@ -131,7 +133,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToUpdateEmail() {
+  private func continueToUpdateEmail() {
     DispatchQueue.main.async {
       guard let userEmailVC = UserEmailInfoViewController.instantiate() else {
         print("Failed to create user email VC")
@@ -141,7 +143,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToEventCode() {
+  private func continueToEventCode() {
     DispatchQueue.main.async {
       guard let joinEventVC = JoinEventViewController.instantiate(isInOnboarding: true) else {
         print("Failed to create Join Event VC")
@@ -151,7 +153,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToAllowLocation() {
+  private func continueToAllowLocation() {
     DispatchQueue.main.async {
       guard let allowLocationVC = AllowLocationViewController.instantiate() else {
         print("Failed to create allow Location VC")
@@ -161,7 +163,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToAllowNotifications() {
+  private func continueToAllowNotifications() {
     DispatchQueue.main.async {
       guard let allowNotificationsVC = AllowNotificationsViewController.instantiate() else {
         print("Failed to create allow Notifications VC")
@@ -181,7 +183,7 @@ extension PermissionsFlowProtocol {
     }
   }
   
-  func continueToOnboarding() {
+  private func continueToOnboarding() {
     DispatchQueue.main.async {
       guard let initialOnboardingVC = OnboardingExplainationPage1ViewController.instantiate() else {
         print("Unable to create initial onboarding VC")
@@ -200,5 +202,44 @@ extension PermissionsFlowProtocol {
       self.navigationController?.setViewControllers([locationBlockedVC], animated: true)
     }
   }
+  
+}
+
+// MARK: - FetchFirstLocation
+extension OnboardingViewController {
+  
+  func fetchFirstLocation(completion: @escaping () -> Void) {
+    if DataStore.shared.locationManager.location?.coordinate != nil {
+      completion()
+      return
+    } else {
+      self.firstLocationCompletion = completion
+      DataStore.shared.locationDelegate = self
+      DataStore.shared.firstLocationReceived = false
+      DataStore.shared.startReceivingLocationChanges()
+    }
+  }
+  
+}
+
+// MARK: - Data Store Location Delegate
+extension OnboardingViewController: DataStoreLocationDelegate {
+  
+  func firstLocationReceived(location: CLLocationCoordinate2D) {
+    if let locationCompletion = self.firstLocationCompletion {
+      locationCompletion()
+      self.firstLocationCompletion = nil
+    }
+  }
+  
+  @objc func authorizationStatusChanged(status: CLAuthorizationStatus) {
+    print("authorization status changed; handling new status \(status)")
+    self.didReceiveNewLocationAuthorizationStatus(status: status)
+  }
+  
+}
+
+// MARK: - Notificaiton Status Changed
+extension OnboardingViewController {
   
 }

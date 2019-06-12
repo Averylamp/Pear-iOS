@@ -18,7 +18,7 @@ protocol PromptInputDelegate: class {
   func deleteResponseAtIndex(index: Int)
 }
 
-class OnboardingFriendPromptInputViewController: UIViewController {
+class OnboardingFriendPromptInputViewController: OnboardingViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
@@ -29,6 +29,8 @@ class OnboardingFriendPromptInputViewController: UIViewController {
   var profileData: ProfileCreationData!
   var activityIndicator = NVActivityIndicatorView(frame: CGRect.zero)
   var answeredPrompts: [QuestionResponseItem] = []
+  
+  let initializationTime: Double = CACurrentMediaTime()
   
   /// Factory method for creating this view controller.
   ///
@@ -41,12 +43,14 @@ class OnboardingFriendPromptInputViewController: UIViewController {
   }
 
   @IBAction func backButtonClicked(_ sender: Any) {
+    SlackHelper.shared.addEvent(text: "User clicked the back button from Friend Prompts in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s. with \(self.answeredPrompts.count) prompts filled out", color: UIColor.red)
     self.navigationController?.popViewController(animated: true)
   }
   
   @IBAction func continueButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     if answeredPrompts.count < 3 {
+      SlackHelper.shared.addEvent(text: "User Tried to continued past Friend Prompts in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s. with \(self.answeredPrompts.count) prompts filled out", color: UIColor.orange)
       let alertController = UIAlertController(title: "You must fill out 3 prompts to continue", message: "You have \(3 - self.answeredPrompts.count) left.  You can edit them later", preferredStyle: .alert)
       let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
       alertController.addAction(okayAction)
@@ -348,6 +352,7 @@ extension OnboardingFriendPromptInputViewController {
     let editResponseAction = UIAlertAction(title: "Edit Response", style: .default) { (_) in
       DispatchQueue.main.async {
         print("tapped edit response")
+        SlackHelper.shared.addEvent(text: "User tapped edit response in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.", color: UIColor.green)
         guard let promptInputResponseVC = PromptInputResponseViewController.instantiate(question: questionResponse.question,
                                                                                         editMode: true,
                                                                                         previousResponse: questionResponse,
@@ -363,6 +368,7 @@ extension OnboardingFriendPromptInputViewController {
     }
     let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
       DispatchQueue.main.async {
+        SlackHelper.shared.addEvent(text: "User tapped delete response in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.", color: UIColor.orange)
         self.deleteResponseAtIndex(index: index)
       }
     }
@@ -379,7 +385,7 @@ extension OnboardingFriendPromptInputViewController {
     let possiblePrompts = DataStore.shared.possibleQuestions.filter {
       return $0.questionType == .freeResponse
     }
-  
+    SlackHelper.shared.addEvent(text: "User tapped add response in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.", color: UIColor.green)
     guard let promptResponseVC = PromptInputViewController.instantiate(prompts: possiblePrompts, answeredPrompts: self.answeredPrompts) else {
       print("couldn't initialize prompt response VC")
       return
@@ -413,6 +419,7 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
     switch result {
     case .success:
       DispatchQueue.main.async {
+        SlackHelper.shared.addEvent(text: "User completed prompts in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.\nOnboarding complete!", color: UIColor.green)
         if DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedOnboarding) {
           self.navigationController?.popToRootViewController(animated: true)
         } else {
@@ -430,6 +437,7 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
           _ = viewControllers.popLast()
           viewControllers.append(basicInfoVC)
           self.navigationController?.setViewControllers(viewControllers, animated: true)
+          SlackHelper.shared.addEvent(text: "Continuing to User Basic Info", color: UIColor.green)
         }
       }
     case .failure(let error):
@@ -457,10 +465,12 @@ extension OnboardingFriendPromptInputViewController: MFMessageComposeViewControl
   func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
     switch result {
     case .cancelled, .failed:
+      SlackHelper.shared.addEvent(text: "User Cancelled sending SMS", color: UIColor.red)
       self.dismissMessageVC(controller: controller)
     case .sent:
       Analytics.logEvent("invite_friend_complete", parameters: nil)
       controller.dismiss(animated: true) {
+        SlackHelper.shared.addEvent(text: "User Sent SMS", color: UIColor.green)
         if let profileData = self.profileData {
           profileData.questionResponses = self.answeredPrompts
           DispatchQueue.main.async {
@@ -482,17 +492,16 @@ extension OnboardingFriendPromptInputViewController: PromptSMSProtocol {
   
 }
 
-extension OnboardingFriendPromptInputViewController: PermissionsFlowProtocol {
-  
-}
-
 extension OnboardingFriendPromptInputViewController: PromptInputDelegate {
   func didAnswerPrompt(questionResponse: QuestionResponseItem) {
     self.answeredPrompts.append(questionResponse)
+    SlackHelper.shared.addEvent(text: "User answered new prompt in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.\n\(questionResponse.question.questionText):\n\(questionResponse.responseBody)", color: UIColor.green)
+
     self.refreshStackView()
   }
   
   func editResponseAtIndex(questionResponse: QuestionResponseItem, index: Int) {
+    SlackHelper.shared.addEvent(text: "User edited prompt in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.\n\(questionResponse.question.questionText):\n\(questionResponse.responseBody)", color: UIColor.green)
     if index < self.answeredPrompts.count && index >= 0 {
       self.answeredPrompts[index] = questionResponse
       self.refreshStackView()
@@ -500,6 +509,8 @@ extension OnboardingFriendPromptInputViewController: PromptInputDelegate {
   }
   
   func deleteResponseAtIndex(index: Int) {
+    let questionResponse = self.answeredPrompts[index]
+    SlackHelper.shared.addEvent(text: "User removed prompt in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.\n\(questionResponse.question.questionText):\n\(questionResponse.responseBody)", color: UIColor.red)
     self.answeredPrompts.remove(at: index)
     self.refreshStackView()
   }

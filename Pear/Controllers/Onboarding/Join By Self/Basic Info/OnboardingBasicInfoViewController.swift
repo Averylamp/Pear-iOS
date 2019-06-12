@@ -20,6 +20,8 @@ class OnboardingBasicInfoViewController: UIViewController {
   
   var basicInfoVC: UserBasicInfoTableViewController?
   
+  let initializationTime: Double = CACurrentMediaTime()
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -31,6 +33,7 @@ class OnboardingBasicInfoViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    SlackHelper.shared.addEvent(text: "User went back from Join Alone flow in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s", color: UIColor.red)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -42,14 +45,17 @@ class OnboardingBasicInfoViewController: UIViewController {
         let alertController = UIAlertController(title: "You have missing required information",
                                                 message: "Please fill out \(requiredUnfilledItems.map({ $0.type.toTitleString()}).joined(separator: ", "))",
           preferredStyle: .alert)
+        SlackHelper.shared.addEvent(text: "User tried to continue without filling out \(requiredUnfilledItems.map({ $0.type.toTitleString()}).joined(separator: ", ")) in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.", color: UIColor.red)
         let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
         alertController.addAction(okayAction)
         self.present(alertController, animated: true, completion: nil)
       } else {
+        SlackHelper.shared.addEvent(text: "Continuing to More User Details in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.)", color: UIColor.green)
         self.continueToMoreDetailsVC()
       }
     } else {
       self.continueToMoreDetailsVC()
+      SlackHelper.shared.addEvent(text: "Continuing to More User Details in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.)", color: UIColor.green)
     }
   }
   

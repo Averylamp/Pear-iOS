@@ -150,30 +150,35 @@ extension UserBasicInfoTableViewController: UITableViewDataSource, UITableViewDe
         print("Unable to instantiate User Name Input")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on BasicInfo-User Name", color: UIColor.orange)
       self.navigationController?.pushViewController(userNameInputVC, animated: true)
     case .age:
       guard let userAgeInputVC = UserAgeInputViewController.instantiate() else {
         print("Unable to instantiate Age Input VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on BasicInfo-User Age", color: UIColor.orange)
       self.navigationController?.pushViewController(userAgeInputVC, animated: true)
     case .gender:
       guard let userGenderInputVC = UserGenderInputViewController.instantiate() else {
         print("Unable to instantiate Gender Input VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on BasicInfo-User Gender", color: UIColor.orange)
       self.navigationController?.pushViewController(userGenderInputVC, animated: true)
     case .school:
       guard let userSchoolInputVC = UserSchoolInputViewController.instantiate() else {
         print("Unable to instantiate School Input VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on BasicInfo-User School", color: UIColor.orange)
       self.navigationController?.pushViewController(userSchoolInputVC, animated: true)
     case .ethnicity:
       guard let userEthnicityInputVC = UserEthnicityInputViewController.instantiate() else {
         print("Unable to instantiate Ethnicity Input VC")
         return
       }
+      SlackHelper.shared.addEvent(text: "User clicked on BasicInfo-User Ethnicity", color: UIColor.orange)
       self.navigationController?.pushViewController(userEthnicityInputVC, animated: true)
     default:
       break

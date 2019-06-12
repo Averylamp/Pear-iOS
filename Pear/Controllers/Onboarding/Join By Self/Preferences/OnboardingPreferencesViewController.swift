@@ -21,6 +21,8 @@ class OnboardingPreferencesViewController: UIViewController {
   var genderButtons: [UIButton] = []
   var ageRangeVC: AgeRangeInputViewController?
   
+  let initializationTime: Double = CACurrentMediaTime()
+
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -31,6 +33,7 @@ class OnboardingPreferencesViewController: UIViewController {
   }
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    SlackHelper.shared.addEvent(text: "User went back from User Preferences VC in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s", color: UIColor.red)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -53,6 +56,7 @@ class OnboardingPreferencesViewController: UIViewController {
       print("Failed to instantiate pictures VC")
       return
     }
+    SlackHelper.shared.addEvent(text: "Continuing to User Pictures VC in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.", color: UIColor.green)
     self.navigationController?.pushViewController(picturesVC, animated: true)
   }
   
@@ -90,6 +94,7 @@ class OnboardingPreferencesViewController: UIViewController {
     DataStore.shared.currentPearUser?.matchingPreferences.seekingGender = seekingGenders
     DataStore.shared.currentPearUser?.matchingPreferences.minAgeRange = minAge
     DataStore.shared.currentPearUser?.matchingPreferences.maxAgeRange = maxAge
+    SlackHelper.shared.addEvent(text: "User Picked Preferences, gender(s): \(seekingGenders.map({ $0.toString() }).joined(separator: ", ")), minAge: \(minAge), maxAge: \(maxAge) in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.)", color: UIColor.blue)
     PearUpdateUserAPI.shared.updateUserMatchingPreferences(seekingGenders: seekingGenders,
                                                            minAge: minAge, maxAge: maxAge) { (result) in
                                                             switch result {
@@ -107,6 +112,7 @@ class OnboardingPreferencesViewController: UIViewController {
   
   func updateUserSeeking(seeking: Bool) {
     DataStore.shared.currentPearUser?.isSeeking = seeking
+    SlackHelper.shared.addEvent(text: "User Picked Preferences, seeking: \(seeking) in \(round((CACurrentMediaTime() - self.initializationTime) * 100) / 100)s.)", color: UIColor.blue)
     PearUpdateUserAPI.shared.updateUserIsSeeking(seeking: seeking) { (result) in
       switch result {
       case .success(let successful):

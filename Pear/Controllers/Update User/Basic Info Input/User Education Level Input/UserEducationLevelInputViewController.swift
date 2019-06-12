@@ -72,6 +72,7 @@ class UserEducationLevelInputViewController: UIViewController {
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
       educationLevel = .preferNotToSay
     }
+    SlackHelper.shared.addEvent(text: "User updated BasicInfo-User Education Level from \(DataStore.shared.currentPearUser?.matchingDemographics.educationLevel != nil ? DataStore.shared.currentPearUser!.matchingDemographics.educationLevel.responses.map({ $0.toString() }).joined(separator: ", ") : "None")  -> \([educationLevel].map({ $0.toString() }))", color: UIColor.green)
     DataStore.shared.currentPearUser?.matchingDemographics.educationLevel.responses = [educationLevel]
     if educationLevel == .preferNotToSay {
       DataStore.shared.currentPearUser?.matchingDemographics.educationLevel.userHasResponded = false
