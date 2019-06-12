@@ -66,8 +66,9 @@ class SlackHelper: NSObject {
   
   func sendStory() {
     #if DEVMODE
-    //    return
+    return
     #endif
+    
     let timePassed = CACurrentMediaTime() - self.startTime
     if timePassed < 30 || self.userEvents.count < 4 {
       return
