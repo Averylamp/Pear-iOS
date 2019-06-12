@@ -70,11 +70,9 @@ class DiscoveryFullProfileViewController: UIViewController {
             print(blockedUsers)
           }
           DataStore.shared.saveListToDefaults(list: blockedUsers, type: .blockedUsers)
-          
-          NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
         }
-        self.navigationController?.popViewController(animated: true)
-        self.alert(title: "User Reported", message: "Thank you for your report and making Pear a safe place")
+        self.alert(title: "User Blocked", message: "You won't see this user again")
+        self.skipProfileButtonClicked(self.skipButton as Any)
       }
     }
     let reportAction = UIAlertAction(title: "Report User", style: .destructive) { (_) in
@@ -87,6 +85,7 @@ class DiscoveryFullProfileViewController: UIViewController {
           Client.shared?.send(event: reportEvent, completion: nil)
         }
         self.alert(title: "User Reported", message: "Thank you for your report and making Pear a safe place")
+        self.skipProfileButtonClicked(self.skipButton as Any)
       }
     }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
