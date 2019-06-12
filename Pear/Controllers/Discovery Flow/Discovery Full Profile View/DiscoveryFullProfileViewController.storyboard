@@ -86,19 +86,32 @@
                                             <action selector="qrScannerButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="4mb-6r-OiP"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlZ-cY-x1G">
+                                        <rect key="frame" x="337" y="12" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="26" id="r0A-PU-nSK"/>
+                                        </constraints>
+                                        <state key="normal" image="discovery-icon-more"/>
+                                        <connections>
+                                            <action selector="moreButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="04N-aN-GaY"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="LlZ-cY-x1G" firstAttribute="centerY" secondItem="K0Z-6W-wFm" secondAttribute="centerY" id="6Ko-xt-qt1"/>
                                     <constraint firstItem="Jst-Tn-iZQ" firstAttribute="leading" secondItem="lb2-5H-MMS" secondAttribute="leading" id="8sG-uV-Aj5"/>
                                     <constraint firstItem="K0Z-6W-wFm" firstAttribute="leading" secondItem="6tn-cC-aMG" secondAttribute="trailing" constant="8" id="MPM-6e-L3x"/>
                                     <constraint firstAttribute="height" constant="50" id="MYw-Fe-fYx"/>
                                     <constraint firstItem="YVo-UZ-U0x" firstAttribute="centerX" secondItem="lb2-5H-MMS" secondAttribute="centerX" id="U20-El-KLV"/>
                                     <constraint firstItem="Jst-Tn-iZQ" firstAttribute="width" secondItem="lb2-5H-MMS" secondAttribute="width" id="WFM-nM-gj8"/>
                                     <constraint firstItem="6tn-cC-aMG" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="ZlZ-hC-ruo"/>
+                                    <constraint firstAttribute="trailing" secondItem="LlZ-cY-x1G" secondAttribute="trailing" constant="12" id="Zqj-IC-IW2"/>
                                     <constraint firstItem="K0Z-6W-wFm" firstAttribute="centerY" secondItem="6tn-cC-aMG" secondAttribute="centerY" id="bNf-k0-b0m"/>
                                     <constraint firstItem="YVo-UZ-U0x" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="dvJ-O5-ucl"/>
                                     <constraint firstItem="6tn-cC-aMG" firstAttribute="leading" secondItem="lb2-5H-MMS" secondAttribute="leading" constant="12" id="hHk-zP-sgo"/>
                                     <constraint firstAttribute="bottom" secondItem="Jst-Tn-iZQ" secondAttribute="bottom" id="iIU-eZ-hbX"/>
+                                    <constraint firstItem="LlZ-cY-x1G" firstAttribute="width" secondItem="LlZ-cY-x1G" secondAttribute="height" multiplier="1:1" id="kGW-fJ-OjU"/>
                                     <constraint firstItem="K0Z-6W-wFm" firstAttribute="width" secondItem="K0Z-6W-wFm" secondAttribute="height" multiplier="1:1" id="o36-3K-wFK"/>
                                 </constraints>
                             </view>
@@ -143,6 +156,7 @@
     <resources>
         <image name="discovery-icon-filters" width="96" height="96"/>
         <image name="discovery-icon-like" width="73.333335876464844" height="73.333335876464844"/>
+        <image name="discovery-icon-more" width="170.66667175292969" height="170.66667175292969"/>
         <image name="discovery-icon-pear" width="73.333335876464844" height="73.333335876464844"/>
         <image name="discovery-icon-scan" width="96" height="96"/>
         <image name="discovery-icon-skip" width="66.666664123535156" height="66.666664123535156"/>
