@@ -83,12 +83,16 @@ class UserHabitsInputViewController: UIViewController {
     }
     switch self.habitType! {
     case .drinking:
+      SlackHelper.shared.addEvent(text: "User updated MoreInfo-User Habit Drinking from \(DataStore.shared.currentPearUser?.matchingDemographics.drinking != nil ? DataStore.shared.currentPearUser!.matchingDemographics.drinking.responses.map({ $0.toString() }).joined(separator: ", ") : "None")  -> \([updatedHabit].map({ $0.toString() }))", color: UIColor.green)
       DataStore.shared.currentPearUser?.matchingDemographics.drinking.responses = [updatedHabit]
     case .smoking:
+      SlackHelper.shared.addEvent(text: "User updated MoreInfo-User Habit Smoking from \(DataStore.shared.currentPearUser?.matchingDemographics.smoking != nil ? DataStore.shared.currentPearUser!.matchingDemographics.smoking.responses.map({ $0.toString() }).joined(separator: ", ") : "None")  -> \([updatedHabit].map({ $0.toString() }))", color: UIColor.green)
       DataStore.shared.currentPearUser?.matchingDemographics.smoking.responses = [updatedHabit]
     case .cannabis:
+      SlackHelper.shared.addEvent(text: "User updated MoreInfo-User Habit Cannabis from \(DataStore.shared.currentPearUser?.matchingDemographics.cannabis != nil ? DataStore.shared.currentPearUser!.matchingDemographics.cannabis.responses.map({ $0.toString() }).joined(separator: ", ") : "None")  -> \([updatedHabit].map({ $0.toString() }))", color: UIColor.green)
       DataStore.shared.currentPearUser?.matchingDemographics.cannabis.responses = [updatedHabit]
     case .drugs:
+      SlackHelper.shared.addEvent(text: "User updated MoreInfo-User Habit Drugs from \(DataStore.shared.currentPearUser?.matchingDemographics.drugs != nil ? DataStore.shared.currentPearUser!.matchingDemographics.drugs.responses.map({ $0.toString() }).joined(separator: ", ") : "None")  -> \([updatedHabit].map({ $0.toString() }))", color: UIColor.green)
       DataStore.shared.currentPearUser?.matchingDemographics.drugs.responses = [updatedHabit]
     }
     PearUpdateUserAPI.shared.updateUserDemographicsItem(item: updatedHabit, keyName: self.habitType!.rawValue) { (result) in

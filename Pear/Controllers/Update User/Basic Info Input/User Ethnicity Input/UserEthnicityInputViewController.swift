@@ -84,6 +84,7 @@ class UserEthnicityInputViewController: UIViewController {
     if self.optionButtons.filter({ $0.isSelected }).contains(self.noAnswerButton) {
       updatedEthnicities = []
     }
+    SlackHelper.shared.addEvent(text: "User updated BasicInfo-User Ethnicity from \(DataStore.shared.currentPearUser?.matchingDemographics.ethnicity != nil ? DataStore.shared.currentPearUser!.matchingDemographics.ethnicity.responses.map({ $0.toString() }).joined(separator: ", ") : "None")  -> \(updatedEthnicities.map({ $0.toString() }))", color: UIColor.green)
     DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.responses = updatedEthnicities
     if updatedEthnicities.count == 0 {
       DataStore.shared.currentPearUser?.matchingDemographics.ethnicity.userHasResponded = false

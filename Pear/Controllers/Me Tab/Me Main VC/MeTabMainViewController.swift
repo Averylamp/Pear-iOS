@@ -53,6 +53,7 @@ class MeTabMainViewController: UIViewController {
   
   @IBAction func imageViewClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    SlackHelper.shared.addEvent(text: "Clicked on Profile Image", color: UIColor.green)
     guard let user = DataStore.shared.currentPearUser else {
       print("Unable to get user")
       return
@@ -147,12 +148,14 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
     let item = self.meTabItems[indexPath.row]
     switch item.type {
     case .myFriends:
+      SlackHelper.shared.addEvent(text: "User clicked on `My Friends` option", color: UIColor.orange)
       guard let friendMainVC = FriendsTabViewController.instantiate() else {
         print("Unable to instantiate friends tab VC")
         return
       }
       self.navigationController?.pushViewController(friendMainVC, animated: true)
     case .editProfile:
+      SlackHelper.shared.addEvent(text: "User clicked on `Edit Profile` option", color: UIColor.orange)
       guard let editPreviewVC = EditPreviewViewController.instantiate() else {
         print("Unable to create edit preview VC")
         return
@@ -169,18 +172,21 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
 //      }
 //      self.navigationController?.pushViewController(editMeVC, animated: true)
     case .myPreferences:
+      SlackHelper.shared.addEvent(text: "User clicked on `Edit Preferences` option", color: UIColor.orange)
       guard let editUserPreferencesVC = MeEditUserPreferencesViewController.instantiate() else {
         print("Unable to instantiate edit user preferences")
         return
       }
       self.navigationController?.pushViewController(editUserPreferencesVC, animated: true)
     case .accountSettings:
+      SlackHelper.shared.addEvent(text: "User clicked on `Account Settings` option", color: UIColor.orange)
       guard let accountSettingsVC = AccountSettingsViewController.instantiate() else {
         print("Unable to instantiate Account settings preferences")
         return
       }
       self.navigationController?.pushViewController(accountSettingsVC, animated: true)
     case .needHelp:
+      SlackHelper.shared.addEvent(text: "User clicked on `Need Help` option", color: UIColor.orange)
       let mailComposer = MFMailComposeViewController()
       mailComposer.setSubject("[Help] Hey I need some help!")
       mailComposer.setToRecipients(["support@getpear.com"])
@@ -198,6 +204,7 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
       mailComposer.mailComposeDelegate = self
       self.present(mailComposer, animated: true, completion: nil)
     case .feedback:
+      SlackHelper.shared.addEvent(text: "User clicked on `Feedback` option", color: UIColor.orange)
       let mailComposer = MFMailComposeViewController()
       mailComposer.setSubject("[Feedback] Hey I've got some Feedback!")
       mailComposer.setToRecipients(["support@getpear.com"])

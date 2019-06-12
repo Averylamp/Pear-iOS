@@ -36,7 +36,7 @@ class LandingScreenViewController: UIViewController {
       self.present(SFSafariViewController(url: NetworkingConfig.eulaURL), animated: true, completion: nil)
     }
     let privacyPolicyAction = UIAlertAction(title: "Privacy Policy", style: .default) { (_) in
-      self.present(SFSafariViewController(url: NetworkingConfig.eulaURL), animated: true, completion: nil)
+      self.present(SFSafariViewController(url: NetworkingConfig.privacyPolicyURL), animated: true, completion: nil)
     }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     actionSheet.addAction(eulaAction)

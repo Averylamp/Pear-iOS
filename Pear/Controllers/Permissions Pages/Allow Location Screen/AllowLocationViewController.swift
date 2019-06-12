@@ -12,7 +12,7 @@ import FirebaseAnalytics
 
 // if you're logging in and have a PearUser assigned to you, but for whatever reason don't have location authorized
 // After you complete the flow of this VC, you're taken to the main VC
-class AllowLocationViewController: UIViewController {
+class AllowLocationViewController: OnboardingViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
@@ -54,28 +54,28 @@ class AllowLocationViewController: UIViewController {
         // Location services is not available on the DEVICE
         return
       }
-      DataStore.shared.withinBostonArea { (withinBoston) in
-        if let withinBoston = withinBoston {
-          if withinBoston  || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
-            DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
-            self.continueToNotificationOrNext()
+      self.fetchFirstLocation {
+        DataStore.shared.withinBostonArea { (withinBoston) in
+          if let withinBoston = withinBoston {
+            if withinBoston  || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
+              DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
+              self.continueToNotificationOrNext()
+            } else {
+              self.continueToLocationBlockedPage()
+            }
           } else {
+            SentryHelper.generateSentryMessageEvent(level: .debug, message: "LocationBlockingPageTriggeredWithoutLocation")
             self.continueToLocationBlockedPage()
           }
-        } else {
-          DataStore.shared.locationDelegate = self
-          DataStore.shared.firstLocationReceived = false
-          DataStore.shared.startReceivingLocationChanges()
         }
       }
     }
   }
   
-}
-
-// MARK: - Permissions Flow Protocol
-extension AllowLocationViewController: PermissionsFlowProtocol {
-  // No-Op
+  override func didReceiveNewLocationAuthorizationStatus(status: CLAuthorizationStatus) {
+    self.handleAuthorizationStatus(status: status)
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -95,28 +95,6 @@ extension AllowLocationViewController {
     if status == .denied {
       self.enableLocationButton.setTitle("Open Settings", for: .normal)
     }
-  }
-  
-}
-
-extension AllowLocationViewController: DataStoreLocationDelegate {
-  
-  func firstLocationReceived(location: CLLocationCoordinate2D) {
-    DataStore.shared.withinBostonArea { (withinBoston) in
-      if let withinBoston = withinBoston {
-        if withinBoston   || DataStore.shared.fetchFlagFromDefaults(flag: .hasBeenInBostonArea) {
-          DataStore.shared.setFlagToDefaults(value: true, flag: .hasBeenInBostonArea)
-          self.self.continueToNotificationOrNext()
-        } else {
-          self.continueToLocationBlockedPage()
-        }
-      }
-    }
-  }
-  
-  func authorizationStatusChanged(status: CLAuthorizationStatus) {
-    print("authorization status changed; handling new status \(status)")
-    self.handleAuthorizationStatus(status: status)
   }
   
 }

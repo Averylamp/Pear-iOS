@@ -46,21 +46,6 @@ class MainTabBarViewController: UITabBarController {
       mainTabVC.addChild(chatTabVC)
     }
     
-//    //      Friendos
-//    if let friendsTabVC = FriendsTabViewController.instantiate(),
-//      let regularImage = R.image.tabIconFriends(),
-//      let selectedImage = R.image.tabIconFriendsSelected() {
-//      friendsTabVC.tabBarItem = UITabBarItem(title: nil,
-//                                             image: regularImage.imageWith(newSize:
-//                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
-//                                              .withRenderingMode(.alwaysOriginal),
-//                                             selectedImage: selectedImage.imageWith(newSize:
-//                                              CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
-//                                              .withRenderingMode(.alwaysOriginal))
-//      friendsTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
-//      mainTabVC.addChild(friendsTabVC)
-//    }
-    
     //      You
     if let meTabVC = MeTabMainViewController.instantiate(),
       let regularImage = R.image.tabIconYou(),
@@ -106,12 +91,23 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
       index == 1 {
-      DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
       DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
       index > 0 {
       self.setTabBarVisible(visible: true, duration: 0.3, animated: true)
+    }
+    if let index = tabBarController.viewControllers?.firstIndex(of: viewController) {
+      switch index {
+      case 0:
+        SlackHelper.shared.addEvent(text: "User switched to Discovery", color: UIColor.orange)
+      case 1:
+        SlackHelper.shared.addEvent(text: "User switched to Chat", color: UIColor.orange)
+      case 2:
+        SlackHelper.shared.addEvent(text: "User switched to Profile", color: UIColor.orange)
+      default:
+        break        
+      }
     }
   }
   

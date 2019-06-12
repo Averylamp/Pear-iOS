@@ -11,7 +11,7 @@ import UserNotifications
 import CoreLocation
 import FirebaseAnalytics
 
-class JoinEventViewController: UIViewController {
+class JoinEventViewController: OnboardingViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var skipEventButton: UIButton!
@@ -43,11 +43,6 @@ class JoinEventViewController: UIViewController {
     }
   }
   
-}
-
-// MARK: - Permissions Flow Protocol
-extension JoinEventViewController: PermissionsFlowProtocol {
-  // No-Op
 }
 
 // MARK: - Life Cycle

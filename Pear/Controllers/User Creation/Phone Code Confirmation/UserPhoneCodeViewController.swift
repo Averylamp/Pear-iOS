@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseAnalytics
 import NVActivityIndicatorView
 
-class UserPhoneCodeViewController: UIViewController {
+class UserPhoneCodeViewController: OnboardingViewController {
 
   var userCreationData: UserCreationData!
   var verificationID: String!
@@ -175,11 +175,6 @@ extension UserPhoneCodeViewController {
     }
   }
 
-}
-
-// MARK: - Permissions Flow Protocol
-extension UserPhoneCodeViewController: PermissionsFlowProtocol {
-  // No-Op
 }
 
 // MARK: - Life Cycle
