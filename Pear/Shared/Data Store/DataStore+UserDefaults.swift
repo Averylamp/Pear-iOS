@@ -23,6 +23,7 @@ enum UserDefaultKeys: String {
   case hasBeenInBostonArea
   case hasSetGenderPreferences
   case userSessionNumber
+  case userLastSlackStoryDate
 }
 
 extension DataStore {
@@ -40,6 +41,18 @@ extension DataStore {
   
   func setFlagToDefaults(value: Bool, flag: UserDefaultKeys) {
     UserDefaults.standard.set(value, forKey: flag.rawValue)
+  }
+  
+  func fetchDateFromDefaults(flag: UserDefaultKeys) -> Date? {
+    let lastTimeInt = UserDefaults.standard.double(forKey: flag.rawValue)
+    if lastTimeInt == 0 {
+      return nil
+    }
+    return Date(timeIntervalSince1970: lastTimeInt)
+  }
+  
+  func setDateToDefaults(flag: UserDefaultKeys, date: Date) {
+    UserDefaults.standard.set(date.timeIntervalSince1970, forKey: flag.rawValue)
   }
   
   func saveListToDefaults(list: [String], type: UserDefaultKeys) {
