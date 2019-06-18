@@ -233,6 +233,7 @@ extension PearMatchesAPI {
                   })
                 } catch {
                   print("Failure deserializing match object: \(error)")
+                  matchesToLoad -= 1
                 }
               }
               
