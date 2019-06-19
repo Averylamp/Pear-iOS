@@ -284,6 +284,7 @@ extension DiscoveryFullProfileViewController {
     self.setup()
     self.addFullStackVC()
     self.addKeyboardSizeNotifications()
+    self.caching()
   }
   
   func stylize() {
@@ -305,6 +306,13 @@ extension DiscoveryFullProfileViewController {
     self.scrollView.delegate = self
     if let visible = self.tabBarController?.tabBarIsVisible() {
       self.lastTabBarVisible = visible
+    }
+  }
+  
+  func caching() {
+    if let requestImageURLString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
+      let requestURL = URL(string: requestImageURLString) {
+      SDWebImagePrefetcher.shared.prefetchURLs([requestURL])
     }
   }
   
