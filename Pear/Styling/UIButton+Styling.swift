@@ -95,12 +95,22 @@ extension UIButton {
   func stylizeLight() {
     self.backgroundColor = UIColor.white
     self.layer.cornerRadius = 12
-    self.setTitleColor(StylingConfig.textFontColor, for: .normal)
     self.setTitleColor(R.color.primaryBrandColor()!, for: .normal)
     if let font = R.font.openSansBold(size: 18) {
       self.titleLabel?.font = font
     }
     self.layer.borderColor = R.color.primaryBrandColor()?.cgColor
+    self.layer.borderWidth = 2
+  }
+  
+  func stylizeDescructive() {
+    self.backgroundColor = UIColor.white
+    self.layer.cornerRadius = 12
+    self.setTitleColor(UIColor.red, for: .normal)
+    if let font = R.font.openSansBold(size: 18) {
+      self.titleLabel?.font = font
+    }
+    self.layer.borderColor = UIColor.red.cgColor
     self.layer.borderWidth = 2
   }
   
