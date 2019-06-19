@@ -310,6 +310,8 @@
 		BBF93E8E2267CF7A002841EE /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E842267CF77002841EE /* OpenSans-ExtraBold.ttf */; };
 		BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E872267CF78002841EE /* OpenSans-Bold.ttf */; };
 		BBF93E942267CF7A002841EE /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E8A2267CF79002841EE /* OpenSans-Regular.ttf */; };
+		BBF9E8A422BAEE5800FB6814 /* DataStore+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9E8A322BAEE5800FB6814 /* DataStore+User.swift */; };
+		BBF9E8A622BAEE6300FB6814 /* DataStore+Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9E8A522BAEE6300FB6814 /* DataStore+Matches.swift */; };
 		BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBD822211855002E1B54 /* ImageAPI.swift */; };
 		BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */; };
 		BBFFBBDE22211A70002E1B54 /* ImageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */; };
@@ -651,6 +653,8 @@
 		BBF93E842267CF77002841EE /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		BBF93E872267CF78002841EE /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		BBF93E8A2267CF79002841EE /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		BBF9E8A322BAEE5800FB6814 /* DataStore+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+User.swift"; sourceTree = "<group>"; };
+		BBF9E8A522BAEE6300FB6814 /* DataStore+Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Matches.swift"; sourceTree = "<group>"; };
 		BBFFBBD822211855002E1B54 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
 		BBFFBBDA222118B1002E1B54 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		BBFFBBDD22211A70002E1B54 /* ImageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainer.swift; sourceTree = "<group>"; };
@@ -1484,6 +1488,8 @@
 				BB797DEC2276C9C600D38044 /* DataStore+Location.swift */,
 				BB719A44228D447000007D69 /* DataStore+Notifications.swift */,
 				BBA2B4232234F0E600D8C27B /* DataStore+Helpers.swift */,
+				BBF9E8A322BAEE5800FB6814 /* DataStore+User.swift */,
+				BBF9E8A522BAEE6300FB6814 /* DataStore+Matches.swift */,
 				BBE5BFB0224F262C00D99217 /* DataStore+UserDefaults.swift */,
 			);
 			path = "Data Store";
@@ -2662,6 +2668,7 @@
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
 				60C131E121D345630093ECBA /* Result.swift in Sources */,
 				BBA8AE8E229686AB003F1D79 /* DiscoveryDecisionViewController+Tooltips.swift in Sources */,
+				BBF9E8A622BAEE6300FB6814 /* DataStore+Matches.swift in Sources */,
 				BB687E79228D7F5000F45C9D /* OnboardingBasicInfoViewController.swift in Sources */,
 				60C131E921D346DA0093ECBA /* FakeAuthAPI.swift in Sources */,
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
@@ -2778,6 +2785,7 @@
 				BBAC095E22700B900095F27E /* GraphQLDecodable.swift in Sources */,
 				BB139EFF229A9AA800D7955A /* AccountSettingsViewController.swift in Sources */,
 				BB08B88E22479F2E005A3EA9 /* APIHelpers.swift in Sources */,
+				BBF9E8A422BAEE5800FB6814 /* DataStore+User.swift in Sources */,
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
 				BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */,
 				BB20119D228F3FAE00BC85C0 /* DemographicsItems.swift in Sources */,
