@@ -22,7 +22,12 @@ class DiscoveryFullProfileViewController: UIViewController {
   var fullProfileData: FullProfileDisplayData!
   var profileID: String!
   var lastContentOffset: CGFloat = 0
-  
+  var exactLastContentOffset: CGFloat = 0
+  var totalScrollDistance: CGFloat = 0
+  var maxContentOffset: CGFloat = 0
+
+  let initializationTime: Double = CACurrentMediaTime()
+
   @IBOutlet weak var profileNameLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var pearButton: UIButton!
@@ -102,7 +107,7 @@ class DiscoveryFullProfileViewController: UIViewController {
           print("Unable to get required information")
         return
     }
-    SlackHelper.shared.addEvent(text: "User Skipped profile: \(self.fullProfileData.firstName ?? "") (\(self.fullProfileData.age ?? 0)) \(self.fullProfileData.gender?.toString() ?? "Unknown Gender"), Images: \(self.fullProfileData.imageContainers.count), prompts: \(self.fullProfileData.questionResponses.count)",
+    SlackHelper.shared.addEvent(text: "User Skipped profile: \(self.fullProfileData.firstName ?? "") (\(self.fullProfileData.age ?? 0)) \(self.fullProfileData.gender?.toString() ?? "Unknown Gender"), Images: \(self.fullProfileData.imageContainers.count), prompts: \(self.fullProfileData.questionResponses.count) \(self.slackHelperDetails())",
       color: UIColor.yellow)
     #if PROD
     PearDiscoveryAPI.shared.skipDiscoveryItem(userID: userID,
@@ -433,6 +438,11 @@ extension DiscoveryFullProfileViewController {
 extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    self.totalScrollDistance += abs(self.scrollView.contentOffset.y - self.exactLastContentOffset)
+    self.exactLastContentOffset = self.scrollView.contentOffset.y
+    if self.scrollView.contentOffset.y > self.maxContentOffset {
+      self.maxContentOffset = self.scrollView.contentOffset.y
+    }
     if self.scrollView.contentOffset.y > self.lastContentOffset + 5.0 {
       if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
         tabBarVisible == self.lastTabBarVisible {
