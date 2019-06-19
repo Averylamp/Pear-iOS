@@ -21,7 +21,7 @@ enum QuestionResponseItemKey: String, CodingKey {
   case hidden
 }
 
-class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable, NSCopying {
+class QuestionResponseItem: Codable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable, NSCopying {
   
   func copy(with zone: NSZone? = nil) -> Any {
     if let copyItem = try? QuestionResponseItem(documentID: documentID,

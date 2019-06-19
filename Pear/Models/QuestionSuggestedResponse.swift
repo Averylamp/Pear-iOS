@@ -14,7 +14,7 @@ enum QuestionSuggestedResponseKey: String, CodingKey {
   case icon
 }
 
-class QuestionSuggestedResponse: Decodable, GraphQLInput, GraphQLDecodable, Equatable {
+class QuestionSuggestedResponse: Codable, GraphQLInput, GraphQLDecodable, Equatable {
   
   static func == (lhs: QuestionSuggestedResponse, rhs: QuestionSuggestedResponse) -> Bool {
     return lhs.responseBody == rhs.responseBody &&

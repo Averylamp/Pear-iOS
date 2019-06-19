@@ -44,7 +44,7 @@ enum PearUserKeys: String, CodingKey {
   case pearPoints
   
   case endorsedUserIDs = "endorsedUser_ids"
-  case endorserUserIDs = "endorser_ids"
+  case endorserIDs = "endorser_ids"
   case detachedProfileIDs = "detachedProfile_ids"
   
   case matchingDemographics

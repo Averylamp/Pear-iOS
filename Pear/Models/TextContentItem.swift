@@ -21,7 +21,7 @@ enum TextContentItemKey: String, CodingKey {
   case hidden
 }
 
-class TextContentItem: Decodable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput, Equatable, CustomStringConvertible, NSCopying {
+class TextContentItem: Codable, GraphQLDecodable, GraphQLInput, AuthorGraphQLInput, Equatable, CustomStringConvertible, NSCopying {
   
   var description: String {
     return "Content Item:  \(self.content)"
