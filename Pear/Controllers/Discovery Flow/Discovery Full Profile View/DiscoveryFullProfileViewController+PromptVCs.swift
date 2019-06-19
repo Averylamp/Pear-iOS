@@ -194,7 +194,7 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
                                              receivedByUserID: self.profileID,
                                              requestText: requestText) { (result) in
                                               DispatchQueue.main.async {
-                                                SlackHelper.shared.addEvent(text: "User Sent \(sentByUserID == sentForUserID ? "Personal" : "Matchmaker") Request. to profile: \(self.fullProfileData.firstName ?? "") (\(self.fullProfileData.age ?? 0)) \(self.fullProfileData.gender?.toString() ?? "Unknown Gender"), Images: \(self.fullProfileData.imageContainers.count), prompts: \(self.fullProfileData.questionResponses.count)\(requestText != nil ? "\nRequest Text: \(requestText!)" : ""))",
+                                                SlackHelper.shared.addEvent(text: "User Sent \(sentByUserID == sentForUserID ? "Personal" : "Matchmaker") Request. to profile: \(self.fullProfileData.firstName ?? "") (\(self.fullProfileData.age ?? 0)) \(self.fullProfileData.gender?.toString() ?? "Unknown Gender"), Images: \(self.fullProfileData.imageContainers.count), prompts: \(self.fullProfileData.questionResponses.count)\(requestText != nil ? "\nRequest Text: \(requestText!)" : "")) \(self.slackHelperDetails())",
                                                   color: UIColor.green)
                                                 DataStore.shared.addMatchedUserToDefaults(userID: self.profileID, matchedUserID: sentForUserID)
                                                 switch result {
