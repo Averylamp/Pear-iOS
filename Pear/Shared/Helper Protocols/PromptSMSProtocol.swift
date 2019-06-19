@@ -9,6 +9,7 @@
 import Foundation
 import MessageUI
 import FirebaseAnalytics
+import Firebase
 
 protocol PromptSMSProtocol {
   func getMessageComposer(profileData: ProfileCreationData) -> MFMessageComposeViewController?
@@ -29,28 +30,14 @@ extension PromptSMSProtocol {
   
   func getMessageComposer(profileData: ProfileCreationData) -> MFMessageComposeViewController? {
     let phoneNumber = profileData.phoneNumber.filter("0123456789".contains)
-    if phoneNumber.count == 10 {      
-      if MFMessageComposeViewController.canSendText() {
-        let messageVC = MFMessageComposeViewController()
-        
-        messageVC.recipients = [phoneNumber]
-        messageVC.body = "Join me on Pear! 🍐 https://getpear.com/go/refer"
-        if let memeImage = R.image.inviteMeme(),
-          let pngData = memeImage.pngData() {
-          messageVC.addAttachmentData(pngData, typeIdentifier: "public.data", filename: "Image.png")
-        }
-        return messageVC
-      } else {
-        return nil
-      }
-    }
-    return nil
+    return self.getMessageComposer(phoneNumber: phoneNumber)
   }
   
   func getMessageComposer(phoneNumber: String) -> MFMessageComposeViewController? {
     let filteredNumber = phoneNumber.filter("0123456789".contains)
     if filteredNumber.count == 10 {
       if MFMessageComposeViewController.canSendText() {
+
         let messageVC = MFMessageComposeViewController()
         messageVC.recipients = [phoneNumber]
         messageVC.body = "Join me on Pear! 🍐 https://getpear.com/go/refer"
