@@ -184,7 +184,11 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
       print("Is already sending request")
       return
     }
-    self.isSendingRequest = true
+    self.dismissRequestModal()
+    if let delegate = self.delegate {
+      self.fullProfileData.decisionMade = true
+      delegate.decisionMade()
+    }
     PearMatchesAPI.shared.createMatchRequest(sentByUserID: sentByUserID,
                                              sentForUserID: sentForUserID,
                                              receivedByUserID: self.profileID,
@@ -194,28 +198,22 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
                                                   color: UIColor.green)
                                                 DataStore.shared.addMatchedUserToDefaults(userID: self.profileID, matchedUserID: sentForUserID)
                                                 switch result {
-                                                case .success(let success):
-                                                  if success {
-                                                    self.alert(title: "Successfully sent request!", message: "If they accept, a chat will be opened")
-                                                  } else {
-                                                    self.alert(title: "Failed to create request 😢", message: "The error has been reported and we are working to resolve it")
-                                                  }
+                                                case .success:
+                                                  break
                                                 case .failure(let error):
                                                   print("Error creating Request: \(error)")
+                                                  SentryHelper.generateSentryEvent(message: "Failed to send match request from:\(sentByUserID) for:\(sentForUserID) to:\(self.profileID!)")
                                                   switch error {
                                                   case .graphQLError(let message ):
-                                                    self.alert(title: "Failed to create request 😢", message: message)
+                                                    break
+//                                                    self.alert(title: "Failed to create request 😢", message: message)
                                                   default:
-                                                    self.alert(title: "Failed to create request 😢", message: "Our servers had an oopsie woopsie")
+                                                    break
+//                                                    self.alert(title: "Failed to create request 😢", message: "Our servers had an oopsie woopsie")
                                                   }
                                                   
                                                 }
-                                                self.isSendingRequest = false
-                                                self.dismissRequestModal()
-                                                if let delegate = self.delegate {
-                                                  self.fullProfileData.decisionMade = true
-                                                  delegate.decisionMade()
-                                                }
+                                                
                                               }
     }
   }
