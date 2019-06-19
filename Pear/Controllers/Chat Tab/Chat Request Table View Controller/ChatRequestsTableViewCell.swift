@@ -52,7 +52,11 @@ extension ChatRequestsTableViewCell {
     self.thumbnailImage.image = nil
     if let thumbnailURLString = match.otherUser.displayedImages.first?.thumbnail.imageURL,
       let thumbnailURL = URL(string: thumbnailURLString) {
-      self.thumbnailImage.sd_setImage(with: thumbnailURL, completed: nil)
+      self.thumbnailImage.sd_setImage(with: thumbnailURL) { (_, _, _, _) in
+        DispatchQueue.main.async {
+          self.thumbnailImage.layer.cornerRadius = self.thumbnailImage.frame.width / 2.0
+        }
+      }
     }
     
     if let mostRecentMessage = match.chat?.messages.last {
