@@ -18,7 +18,7 @@ enum VibeKey: String, CodingKey {
   case hidden
 }
 
-class VibeItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable {
+class VibeItem: Codable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable {
   static func == (lhs: VibeItem, rhs: VibeItem) -> Bool {
     return lhs.documentID == rhs.documentID &&
            lhs.authorID == rhs.authorID &&

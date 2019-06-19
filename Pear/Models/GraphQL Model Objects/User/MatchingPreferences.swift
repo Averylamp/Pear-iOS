@@ -15,7 +15,7 @@ enum MatchingPreferencesKeys: String, CodingKey {
   case location
 }
 
-class MatchingPreferences: Decodable, Equatable, GraphQLDecodable {
+class MatchingPreferences: Codable, Equatable, GraphQLDecodable {
   
   static func graphQLAllFields() -> String {
     return "{ seekingGender maxDistance minAgeRange maxAgeRange }"

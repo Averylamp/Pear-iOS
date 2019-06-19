@@ -22,7 +22,7 @@ enum MatchingDemographicsKeys: String, CodingKey {
   case drugs
 }
 
-class MatchingDemographics: Decodable, Equatable, GraphQLDecodable {
+class MatchingDemographics: Codable, Equatable, GraphQLDecodable {
   static func graphQLAllFields() -> String {
    return "{ gender age location \(LocationObject.graphQLAllFields()) ethnicity \(DemographicsItem<EthnicityEnum>.graphQLAllFields()) educationLevel \(DemographicsItem<EducationLevelEnum>.graphQLAllFields()) religion \(DemographicsItem<ReligionEnum>.graphQLAllFields()) politicalView \(DemographicsItem<PoliticsEnum>.graphQLAllFields()) drinking \(DemographicsItem<HabitsEnum>.graphQLAllFields()) smoking \(DemographicsItem<HabitsEnum>.graphQLAllFields()) cannabis \(DemographicsItem<HabitsEnum>.graphQLAllFields()) drugs \(DemographicsItem<HabitsEnum>.graphQLAllFields()) }"
   }
