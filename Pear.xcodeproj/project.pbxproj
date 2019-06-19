@@ -755,10 +755,10 @@
 			isa = PBXGroup;
 			children = (
 				BBDF1FEB21E2B61F00520881 /* Main Tab Controller */,
+				BB687E59228D59ED00F45C9D /* User Creation */,
 				BB986A1C220E08B300759A14 /* Initial Screens */,
 				BB687E5A228D59F800F45C9D /* Permissions Pages */,
 				BB687E58228D59E100F45C9D /* Onboarding */,
-				BB687E59228D59ED00F45C9D /* User Creation */,
 				911E2C49229A991800E11860 /* Join Event */,
 				BB56D22922142E2400A652E7 /* Profiles */,
 				BB9D1B1A2255CFFA0074C099 /* Request Profile Flow */,

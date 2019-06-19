@@ -9,6 +9,7 @@
 import Foundation
 
 enum UserDefaultKeys: String {
+  case lastDynamicLinkCode
   case skippedDetachedProfiles
   case blockedUsers
   case matchedUsers
@@ -53,6 +54,14 @@ extension DataStore {
   
   func setDateToDefaults(flag: UserDefaultKeys, date: Date) {
     UserDefaults.standard.set(date.timeIntervalSince1970, forKey: flag.rawValue)
+  }
+  
+  func fetchStringFromDefaults(flag: UserDefaultKeys) -> String? {
+    return UserDefaults.standard.string(forKey: flag.rawValue)
+  }
+  
+  func saveStringToDefaults(string: String, flag: UserDefaultKeys) {
+    UserDefaults.standard.set(string, forKey: flag.rawValue)
   }
   
   func saveListToDefaults(list: [String], type: UserDefaultKeys) {

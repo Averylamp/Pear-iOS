@@ -50,6 +50,9 @@ class UserCreationData: CustomStringConvertible {
     if let remoteInstanceID = self.firebaseRemoteInstanceID {
       input["firebaseRemoteInstanceID"] = remoteInstanceID
     }
+    if let referredCode = DataStore.shared.fetchStringFromDefaults(flag: .lastDynamicLinkCode) {
+      input["referredByCode"] = referredCode
+    }
     if let referredCode = self.referredByCode {
       input["referredByCode"] = referredCode
     }

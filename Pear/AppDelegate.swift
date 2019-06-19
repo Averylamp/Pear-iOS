@@ -40,7 +40,7 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     if CommandLine.arguments.contains("--uitesting") {
       resetState()
     }
-//    resetState()
+    resetState()
     #endif
 
     self.stylize()
@@ -96,9 +96,9 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
       // Handle the deep link. For example, show the deep-linked content or
       // apply a promotional offer to the user's account.
       // ...
-      print("DYNAMIC LINK FOUND")
-      print(dynamicLink)
-      print("DYNAMIC LINK END")
+      
+      self.handleDynamicLink(url: dynamicLink.url)
+      
       return true
     }
     return false
@@ -112,13 +112,24 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
         print(error)
       }
       if let link = link {
-        print(link)
-        print(link.matchType)
-        
+        self.handleDynamicLink(url: link.url)
       }
     }
     
     return handled
+  }
+  
+  func handleDynamicLink(url: URL?) {
+    print("DYNAMIC LINK FOUND: \(url)")
+    if let urlString = url?.absoluteString,
+      let refIndex = urlString.endIndex(of: "ref=") {
+      
+      let referalCode = String(urlString.suffix(from: refIndex))
+      SlackHelper.shared.addEvent(text: "User entered with referal code: \(referalCode)", color: UIColor.green)
+      print(referalCode)
+      DataStore.shared.saveStringToDefaults(string: referalCode, flag: .lastDynamicLinkCode)
+    }
+    print("Finished dynamic link")
   }
 }
 

@@ -97,6 +97,8 @@ extension DataStore: CLLocationManagerDelegate {
       }
       if !foundWithin {
         SlackHelper.shared.addEvent(text: "User is \(milesDistance) Miles from Boston", color: UIColor.red)
+      } else {
+        SlackHelper.shared.addEvent(text: "User is \(milesDistance) Miles from Boston", color: UIColor.green)
       }
       completion(foundWithin)
       return
