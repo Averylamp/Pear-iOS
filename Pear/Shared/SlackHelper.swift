@@ -30,21 +30,6 @@ class SlackHelper: NSObject {
   func startNewSession() {
     self.userEvents = []
     self.startTime = CACurrentMediaTime()
-    
-    self.addUserInformation()
-  }
-  
-  func addUserInformation() {
-    if let user = DataStore.shared.currentPearUser {
-      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(20 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {        
-        if !self.userEvents.contains(where: {
-          $0.text == user.toSlackStorySummary(profileStats: true, currentUserStats: true)
-        }) {
-          self.userEvents.insert(SlackEvent(text: user.toSlackStorySummary(profileStats: true, currentUserStats: true),
-                                            color: UIColor.green.hexColor), at: 0)
-        }
-      }
-    }
   }
   
   func addEvent(text: String, color: UIColor = UIColor.black) {
@@ -70,7 +55,7 @@ class SlackHelper: NSObject {
     #endif
     
     let timePassed = CACurrentMediaTime() - self.startTime
-    if timePassed < 30 || self.userEvents.count < 4 {
+    if timePassed < 15 || self.userEvents.count < 3 {
       return
     }
     if !DataStore.shared.remoteConfig.configValue(forKey: "slack_stores_enabled").boolValue {
@@ -88,7 +73,16 @@ class SlackHelper: NSObject {
     
     let sessionNumber = UserDefaults.standard.integer(forKey: UserDefaultKeys.userSessionNumber.rawValue)
     UserDefaults.standard.set(sessionNumber + 1, forKey: UserDefaultKeys.userSessionNumber.rawValue)
-    self.userEvents.insert(SlackEvent(text: "Session Duration: \(Int(timePassed))s, Session Number: \(sessionNumber), Events: \(self.userEvents.count)", color: UIColor.purple.hexColor), at: 0)
+    var lastSessionString: String?
+    if let lastSessionTime = DataStore.shared.fetchDateFromDefaults(flag: .userLastSlackStoryDate) {
+      let hoursPassed = Date().timeIntervalSince(lastSessionTime) / 3600.0
+      lastSessionString = "Last Slack Story: \(Double(Int(hoursPassed * 100)) / 100.0) hours ago"
+    }
+    if let user = DataStore.shared.currentPearUser {
+      self.userEvents.insert(SlackEvent(text: user.toSlackStorySummary(profileStats: true, currentUserStats: true),
+                                        color: UIColor.green.hexColor), at: 0)
+    }
+    self.userEvents.insert(SlackEvent(text: "______________________________________________\nSession Duration: \(Int(timePassed))s, Session Number: \(sessionNumber), Events: \(self.userEvents.count) \(lastSessionString != nil ? "\n\(lastSessionString!)" : "")", color: UIColor.purple.hexColor), at: 0)
     let urlString = "https://hooks.slack.com/services/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"
     let url = URL(string: urlString)
     let rawData: [String: Any] = [

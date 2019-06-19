@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAnalytics
+import SDWebImage
 
 extension Notification.Name {
   static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
@@ -118,6 +119,14 @@ extension DiscoveryDecisionViewController {
             if oldProfilesToShow.count != self.profilesToShow.count {
               SlackHelper.shared.addEvent(text: "Fetched \(self.profilesToShow.count) profiles, Showing \(self.profilesToShow.count) profiles", color: UIColor.orange)
             }
+            var imagesToPrefetch: [URL] = []
+            self.profilesToShow.map({ $0.imageContainers }).forEach({ $0.forEach {
+              let imageString = $0.large.imageURL
+              if let imageURL = URL(string: imageString) {
+                imagesToPrefetch.append(imageURL)
+              }
+              }})
+            SDWebImagePrefetcher.shared.prefetchURLs(imagesToPrefetch)
             DispatchQueue.main.async {
               self.activityIndicator.stopAnimating()
               self.messageLabel.text = ""

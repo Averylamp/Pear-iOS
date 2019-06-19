@@ -284,7 +284,7 @@ extension FullChatViewController {
       self.view.layoutIfNeeded()
       
       acceptButton.stylizeChatAccept()
-      declineButton.stylizeLight()
+      declineButton.stylizeDescructive()
 
     } else {
       if let inputContainerHeightConstraint = self.inputContainerViewHeightConstraint, inputContainerHeightConstraint.isActive {
