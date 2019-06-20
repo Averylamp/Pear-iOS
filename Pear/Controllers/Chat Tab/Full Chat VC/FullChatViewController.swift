@@ -28,6 +28,9 @@ class FullChatViewController: UIViewController {
   let placeholderText: String = "Say something..."
   var sendingMessage = false
   var respondingToMatch = false
+  var lastKeyboardHeight: CGFloat = 0.0
+  var keyboardIsHiding: Bool = false
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -116,7 +119,7 @@ extension FullChatViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)    
+    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
   }
   
   func stylize() {
@@ -459,43 +462,6 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
   
 }
 
-// MARK: - Keybaord Size Notifications
-extension FullChatViewController {
-  
-  func addKeyboardSizeNotifications() {
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(FullChatViewController.keyboardWillChange(notification:)),
-                   name: UIWindow.keyboardWillChangeFrameNotification,
-                   object: nil)
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(FullChatViewController.keyboardWillHide(notification:)),
-                   name: UIWindow.keyboardWillHideNotification,
-                   object: nil)
-  }
-  
-  @objc func keyboardWillChange(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let targetFrame = targetFrameNSValue.cgRectValue
-      self.inputContainerViewBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  @objc func keyboardWillHide(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      self.inputContainerViewBottomConstraint.constant = 0
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  
-}
-
 // MARK: - UITextViewDelegate
 extension FullChatViewController: UITextViewDelegate {
   
@@ -539,18 +505,6 @@ extension FullChatViewController: UITextViewDelegate {
     self.recalculateTextViewHeight()
   }
   
-}
-
-// MARK: - Dismiss First Responder on Click
-extension FullChatViewController {
-  func addDismissKeyboardOnViewClick() {
-    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FullChatViewController.dismissKeyboard)))
-  }
-  
-  @objc func dismissKeyboard() {
-    Analytics.logEvent("CHAT_thread_EV_dismissKeyboard", parameters: nil)
-    self.view.endEditing(true)
-  }
 }
 
 // MARK: - ChatDelegate
