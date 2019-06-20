@@ -109,8 +109,7 @@ extension ApproveProfileViewController {
     self.addDemographcsVC(firstName: DataStore.shared.currentPearUser?.firstName,
                           age: DataStore.shared.currentPearUser?.age,
                           schoolName: DataStore.shared.currentPearUser?.school,
-                          locationName: DataStore.shared.currentPearUser?.matchingDemographics.location?.locationName,
-                          vibes: self.profileData.vibes)
+                          locationName: DataStore.shared.currentPearUser?.matchingDemographics.location?.locationName)
     
     let sectionItems = FullProfileStackViewController.sectionItemsFromProfile(profile: self.profileData)
     for sectionItem in sectionItems {
@@ -127,14 +126,12 @@ extension ApproveProfileViewController {
   func addDemographcsVC(firstName: String?,
                         age: Int?,
                         schoolName: String?,
-                        locationName: String?,
-                        vibes: [VibeItem]) {
+                        locationName: String?) {
     // TODO(@averylamp): Fix DemographicsVC addition
     guard let demographicsVC = ProfileDemographicsViewController.instantiate(firstName: firstName,
                                                                              age: age,
                                                                              schoolName: schoolName,
-                                                                             locationName: locationName,
-                                                                             vibes: vibes) else {
+                                                                             locationName: locationName) else {
                                                                               print("Failed to create Demographics VC")
                                                                               return
     }

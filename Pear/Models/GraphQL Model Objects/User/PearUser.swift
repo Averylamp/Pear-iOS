@@ -13,10 +13,10 @@ import SwiftyJSON
 class PearUser: CustomStringConvertible, GraphQLDecodable, Codable {
   
   static func graphQLCurrentUserFields() -> String {
-    return "{ _id deactivated firebaseAuthID email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate bios \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLAllFields()) bankImages \(ImageContainer.graphQLAllFields()) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) }"  }
+    return "{ _id deactivated firebaseAuthID email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate questionResponses \(QuestionResponseItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLAllFields()) bankImages \(ImageContainer.graphQLAllFields()) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) }"  }
   
   static func graphQLAllFields() -> String {
-    return "{ _id deactivated firebaseAuthID email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate bios \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLAllFields()) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) }"
+    return "{ _id deactivated firebaseAuthID email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate questionResponses \(QuestionResponseItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLAllFields()) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) }"
     
   }
   
@@ -51,11 +51,7 @@ class PearUser: CustomStringConvertible, GraphQLDecodable, Codable {
   var age: Int?
   var birthdate: Date?
   
-  var bios: [BioItem] = []
-  var boasts: [BoastItem] = []
-  var roasts: [RoastItem] = []
   var questionResponses: [QuestionResponseItem] = []
-  var vibes: [VibeItem] = []
   
   var school: String?
   var schoolYear: String?
@@ -98,11 +94,7 @@ class PearUser: CustomStringConvertible, GraphQLDecodable, Codable {
     schoolEmailVerified: \(String(describing: schoolEmailVerified)),
     birthdate: \(String(describing: birthdate)),
     age: \(String(describing: age)),
-    bios: \(String(describing: self.bios))
-    boasts: \(String(describing: self.boasts))
-    roasts: \(String(describing: self.roasts))
     questionResponses: \(String(describing: self.questionResponses))
-    vibes: \(String(describing: self.vibes))
     
     """
   }
@@ -164,12 +156,8 @@ class PearUser: CustomStringConvertible, GraphQLDecodable, Codable {
     }
     self.age = try? values.decode(Int.self, forKey: .age)
     
-    self.boasts = try values.decode([BoastItem].self, forKey: .boasts)
-    self.roasts = try values.decode([RoastItem].self, forKey: .roasts)
     self.questionResponses = try values.decode([QuestionResponseItem].self, forKey: .questionResponses)
-    self.vibes = try values.decode([VibeItem].self, forKey: .vibes)
-    self.bios = try values.decode([BioItem].self, forKey: .bios)
-    
+
     self.school = try? values.decode(String.self, forKey: .school)
     self.schoolYear = try? values.decode(String.self, forKey: .schoolYear)
     self.schoolEmail = try? values.decode(String.self, forKey: .schoolEmail)
@@ -214,11 +202,7 @@ extension PearUser {
       try container.encode(birthdayValue * 1000.0, forKey: .birthdate)
     }
     try container.encode(self.age, forKey: .age)
-    try container.encode(self.boasts, forKey: .boasts)
-    try container.encode(self.roasts, forKey: .roasts)
     try container.encode(self.questionResponses, forKey: .questionResponses)
-    try container.encode(self.vibes, forKey: . vibes)
-    try container.encode(self.bios, forKey: .bios)
     try container.encode(self.school, forKey: .school)
     try container.encode(self.schoolYear, forKey: .schoolYear)
     try container.encode(self.schoolEmail, forKey: .schoolEmail)

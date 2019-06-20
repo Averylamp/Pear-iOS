@@ -26,11 +26,7 @@ enum PearUserKeys: String, CodingKey {
   case age
   case birthdate
 
-  case bios
-  case boasts
-  case roasts
   case questionResponses
-  case vibes
   
   case school
   case schoolYear

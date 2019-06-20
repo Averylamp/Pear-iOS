@@ -407,10 +407,8 @@ extension PearProfileAPI {
       "firstName": profileData.firstName,
       "lastName": profileData.lastName,
       "phoneNumber": profileData.phoneNumber,
-      "boasts": profileData.boasts.map({ $0.toGraphQLInput() }),
-      "roasts": profileData.roasts.map({ $0.toGraphQLInput() }),
-      "questionResponses": profileData.questionResponses.map({ $0.toGraphQLInput() }),
-      "vibes": profileData.vibes.map({ $0.toGraphQLInput() })
+      "questionResponses": profileData.questionResponses.map({ $0.toGraphQLInput() })
+
     ]
     
     if let gender = profileData.gender {
@@ -428,10 +426,7 @@ extension PearProfileAPI {
       "user_id": userID,
       "detachedProfile_id": detachedProfile.documentID as Any,
       "creatorUser_id": detachedProfile.creatorUserID as Any,
-      "boasts": detachedProfile.boasts.map({ $0.toGraphQLInput() }),
-      "roasts": detachedProfile.roasts.map({ $0.toGraphQLInput() }),
-      "questionResponses": detachedProfile.questionResponses.map({ $0.toGraphQLInput() }),
-      "vibes": detachedProfile.vibes.map({ $0.toGraphQLInput() })
+      "questionResponses": detachedProfile.questionResponses.map({ $0.toGraphQLInput() })
     ]
     return variablesDictionary
   }

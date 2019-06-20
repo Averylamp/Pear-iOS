@@ -10,6 +10,7 @@ import Foundation
 import FirebasePerformance
 import Crashlytics
 import Sentry
+import SwiftyJSON
 
 // MARK: - User Functions
 extension DataStore {
@@ -28,6 +29,20 @@ extension DataStore {
                                     switch result {
                                     case .success(let pearUser):
                                       DataStore.shared.currentPearUser = pearUser
+                                      do {
+                                        if let userData = UserDefaults.standard.data(forKey: UserDefaultKeys.cachedPearUser.rawValue) {
+                                          if let json = try? JSON(data: userData) {
+                                             print(json)
+                                          }
+                                          let cachedUser = try JSONDecoder().decode(PearUser.self, from: userData)
+                                          print(cachedUser)
+                                        }
+                                        let encodedUser = try JSONEncoder().encode(pearUser)
+                                        UserDefaults.standard.set(encodedUser, forKey: UserDefaultKeys.cachedPearUser.rawValue)
+                                        
+                                      } catch {
+                                        print("Error: \(error)")
+                                      }
                                       DataStore.shared.reloadAllUserData {
                                         print("reloaded all user data")
                                         Crashlytics.sharedInstance().setUserEmail(pearUser.email)
