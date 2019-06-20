@@ -108,13 +108,15 @@ extension FullChatViewController {
     self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.recalculateTextViewHeight(animated: false)
     self.tableView.reloadData()
-    self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: false)
+    DispatchQueue.main.async {
+      self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: false)
+    }
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
-    self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
+    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)    
   }
   
   func stylize() {
@@ -147,7 +149,7 @@ extension FullChatViewController {
   @objc func acceptRequestButtonClicked() {
     Analytics.logEvent("accept_match_request", parameters: [
       "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown" ])
-//    SlackHelper.shared.addEvent(text: "User Accepted Match Request! other: \()", color: <#T##UIColor#>)
+    SlackHelper.shared.addEvent(text: "User Accepted Match Request!", color: UIColor.green)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
   }
@@ -155,6 +157,7 @@ extension FullChatViewController {
   @objc func declineRequestButtonClicked() {
     Analytics.logEvent("decline_match_request", parameters: [
       "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown" ])
+    SlackHelper.shared.addEvent(text: "User Rejected Match Request!", color: UIColor.red)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
   }
