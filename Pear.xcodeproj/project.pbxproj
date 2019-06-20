@@ -94,6 +94,7 @@
 		BB3F0284227189D5004855E8 /* ProfileBoastRoastViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */; };
 		BB3F30A7228C9CBD001947EF /* KeyboardEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */; };
 		BB3F4AE122326BE400F99C8E /* PearDetachedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */; };
+		BB3FA79C22BC342800555FCA /* FullChatViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FA79B22BC342800555FCA /* FullChatViewController+Keyboard.swift */; };
 		BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */; };
 		BB4C8A47225152EC00F7BA1A /* DoDontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4C8A46225152EC00F7BA1A /* DoDontView.swift */; };
 		BB515249228BE2C80094670A /* UserEmailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB515248228BE2C70094670A /* UserEmailInfoViewController.swift */; };
@@ -430,6 +431,7 @@
 		BB3F0283227189D5004855E8 /* ProfileBoastRoastViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileBoastRoastViewController.storyboard; sourceTree = "<group>"; };
 		BB3F30A6228C9CBD001947EF /* KeyboardEventsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEventsProtocol.swift; sourceTree = "<group>"; };
 		BB3F4AE022326BE400F99C8E /* PearDetachedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearDetachedProfile.swift; sourceTree = "<group>"; };
+		BB3FA79B22BC342800555FCA /* FullChatViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullChatViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		BB42C76C2210055600505C03 /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
 		BB4C8A46225152EC00F7BA1A /* DoDontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoDontView.swift; sourceTree = "<group>"; };
 		BB515248228BE2C70094670A /* UserEmailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmailInfoViewController.swift; sourceTree = "<group>"; };
@@ -1157,6 +1159,7 @@
 			isa = PBXGroup;
 			children = (
 				BB178935225DFCA00033ACC6 /* FullChatViewController.swift */,
+				BB3FA79B22BC342800555FCA /* FullChatViewController+Keyboard.swift */,
 				BB178937225DFCAA0033ACC6 /* FullChatViewController.storyboard */,
 				BB17893E225E064F0033ACC6 /* ChatRequestTableViewCell.swift */,
 				BB17893C225E06010033ACC6 /* ChatMatchmakerRequestTableViewCell.swift */,
@@ -2664,6 +2667,7 @@
 				913E3B07229F4869000B70A8 /* PearEvent.swift in Sources */,
 				BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,
+				BB3FA79C22BC342800555FCA /* FullChatViewController+Keyboard.swift in Sources */,
 				BBB71B6A22947934002CDDD1 /* UserGenderInputViewController.swift in Sources */,
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
 				60C131E121D345630093ECBA /* Result.swift in Sources */,
