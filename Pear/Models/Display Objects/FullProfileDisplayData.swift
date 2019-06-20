@@ -27,11 +27,7 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
     firstName: \(String(describing: self.firstName))
     age: \(String(describing: self.age))
     gender: \(String(describing: self.gender))
-    bios: \(String(describing: self.bios))
-    boasts: \(String(describing: self.boasts))
-    roasts: \(String(describing: self.roasts))
     questionResponses: \(String(describing: self.questionResponses))
-    vibes: \(String(describing: self.vibes))
     Image Count: \(String(describing: self.imageContainers.count))
     profileOrigin: \(String(describing: self.profileOrigin))
     locationName: \(String(describing: self.locationName))
@@ -51,11 +47,7 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
   var firstName: String?
   var age: Int?
   var gender: GenderEnum?
-  var bios: [BioItem] = []
-  var boasts: [BoastItem] = []
-  var roasts: [RoastItem] = []
   var questionResponses: [QuestionResponseItem] = []
-  var vibes: [VibeItem] = []
   var imageContainers: [ImageContainer] = []
   var profileOrigin: FullProfileOrigin?
   var originObject: Any?
@@ -74,11 +66,7 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
     self.firstName = user.firstName
     self.age = user.age
     self.gender = user.gender
-    self.bios = user.bios
-    self.boasts = user.boasts
-    self.roasts = user.roasts
     self.questionResponses = user.questionResponses
-    self.vibes = user.vibes
     self.imageContainers = user.displayedImages
     self.profileOrigin = .pearUser
     self.originObject = user
@@ -98,13 +86,7 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
     self.firstName = detachedProfile.firstName
     self.age = detachedProfile.age
     self.gender = detachedProfile.gender
-    if let bio = detachedProfile.bio {
-      self.bios = [bio]
-    }
-    self.boasts = detachedProfile.boasts
-    self.roasts = detachedProfile.roasts
     self.questionResponses = detachedProfile.questionResponses
-    self.vibes = detachedProfile.vibes
     self.imageContainers = detachedProfile.images
     self.profileOrigin = .detachedProfile
     self.originObject = detachedProfile
@@ -124,11 +106,7 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
            lhs.firstName == rhs.firstName &&
            lhs.age == rhs.age &&
            lhs.gender == rhs.gender &&
-           lhs.bios == rhs.bios &&
-           lhs.boasts == rhs.boasts &&
-           lhs.roasts == rhs.roasts &&
            lhs.questionResponses == rhs.questionResponses &&
-           lhs.vibes == rhs.vibes &&
            lhs.imageContainers == rhs.imageContainers &&
            lhs.profileOrigin == rhs.profileOrigin &&
            lhs.locationName == rhs.locationName &&

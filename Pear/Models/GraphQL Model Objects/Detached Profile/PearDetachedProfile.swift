@@ -9,7 +9,7 @@
 import Foundation
 class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable {
   static func graphQLAllFields() -> String {
-    return "{ _id creatorUser_id creatorFirstName creatorThumbnailURL firstName lastName phoneNumber age gender bio \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) images \(ImageContainer.graphQLAllFields()) matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) school schoolYear }"
+    return "{ _id creatorUser_id creatorFirstName creatorThumbnailURL firstName lastName phoneNumber age gender questionResponses \(QuestionResponseItem.graphQLAllFields()) images \(ImageContainer.graphQLAllFields()) matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) school schoolYear }"
   }
   
   var documentID: String!
@@ -22,11 +22,7 @@ class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable 
   var age: Int?
   var gender: GenderEnum?
   
-  var bio: BioItem?
-  var boasts: [BoastItem] = []
-  var roasts: [RoastItem] = []
   var questionResponses: [QuestionResponseItem] = []
-  var vibes: [VibeItem] = []
   
   var images: [ImageContainer]
   
@@ -46,11 +42,7 @@ class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable 
     phoneNumber: \(String(describing: phoneNumber)),
     age: \(String(describing: age)),
     gender: \(String(describing: gender)),
-    bio: \(String(describing: self.bio))
-    boasts: \(String(describing: self.boasts))
-    roasts: \(String(describing: self.roasts))
     questionResponses: \(String(describing: self.questionResponses))
-    vibes: \(String(describing: self.vibes))
     school: \(String(describing: school)),
     schoolYear: \(String(describing: schoolYear)),
     images: \(images.count) found,
@@ -77,11 +69,7 @@ class PearDetachedProfile: Decodable, CustomStringConvertible, GraphQLDecodable 
       self.gender = gender
     }
     
-    self.boasts = try values.decode([BoastItem].self, forKey: .boasts)
-    self.roasts = try values.decode([RoastItem].self, forKey: .roasts)
     self.questionResponses = try values.decode([QuestionResponseItem].self, forKey: .questionResponses)
-    self.vibes = try values.decode([VibeItem].self, forKey: .vibes)
-    self.bio = try? values.decode(BioItem.self, forKey: .bio)
     
     let images = try values.decode([ImageContainer].self, forKey: .images)
     self.images = images

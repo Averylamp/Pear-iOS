@@ -18,38 +18,20 @@ enum UpdateProfileType {
 }
 
 enum UpdateProfileKeys: String {
-  case boasts
-  case roasts
-  case bio
   case questionResponses
 }
 
 class UpdateProfileData: GraphQLInput {
   
   var documentID: String
-  let initialBio: BioItem?
-  var updatedBio: BioItem?
-  let initialRoasts: [RoastItem]
-  var updatedRoasts: [RoastItem]
-  let initialBoasts: [BoastItem]
-  var updatedBoasts: [BoastItem]
   let initialQuestionResponses: [QuestionResponseItem]
   var updatedQuestionResponses: [QuestionResponseItem]
   let updateProfileType: UpdateProfileType
   
   init(documentID: String,
-       bio: BioItem?,
-       roasts: [RoastItem],
-       boasts: [BoastItem],
        questionResponses: [QuestionResponseItem],
        type: UpdateProfileType) {
     self.documentID = documentID
-    self.initialBio = bio
-    self.updatedBio = bio
-    self.initialRoasts = roasts
-    self.updatedRoasts = roasts
-    self.initialBoasts = boasts
-    self.updatedBoasts = boasts
     self.initialQuestionResponses = questionResponses
     self.updatedQuestionResponses = questionResponses
     self.updateProfileType = type
@@ -61,13 +43,6 @@ class UpdateProfileData: GraphQLInput {
       throw UpdateProfileError.userNotLoggedIn
     }
     self.documentID = pearUser.documentID
-    let filteredBios = pearUser.bios.filter({ $0.authorID == userID })
-    self.initialBio = filteredBios.first?.copy() as? BioItem
-    self.updatedBio = filteredBios.first?.copy() as? BioItem
-    self.initialRoasts = pearUser.roasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? RoastItem})
-    self.updatedRoasts = pearUser.roasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? RoastItem})
-    self.initialBoasts = pearUser.boasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? BoastItem})
-    self.updatedBoasts = pearUser.boasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? BoastItem})
     self.initialQuestionResponses = pearUser.questionResponses.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? QuestionResponseItem})
     self.updatedQuestionResponses = pearUser.questionResponses.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? QuestionResponseItem})
     self.updateProfileType = .userProfile
@@ -79,37 +54,12 @@ class UpdateProfileData: GraphQLInput {
       throw UpdateProfileError.userNotLoggedIn
     }
     self.documentID = detachedProfile.documentID
-    self.initialBio = detachedProfile.bio?.copy() as? BioItem
-    self.updatedBio = detachedProfile.bio?.copy() as? BioItem
-    self.initialRoasts = detachedProfile.roasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? RoastItem})
-    self.updatedRoasts = detachedProfile.roasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? RoastItem})
-    self.initialBoasts = detachedProfile.boasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? BoastItem})
-    self.updatedBoasts = detachedProfile.boasts.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? BoastItem})
     self.initialQuestionResponses = detachedProfile.questionResponses.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? QuestionResponseItem})
     self.updatedQuestionResponses = detachedProfile.questionResponses.filter({ $0.authorID == userID }).compactMap({ $0.copy() as? QuestionResponseItem})
     self.updateProfileType = .detachedProfile
   }
   
   func checkForChanges() -> Bool {
-    if self.initialBio != self.updatedBio {
-      return true
-    }
-    
-    if self.initialRoasts.count != self.updatedRoasts.count {
-      return true
-    } else {
-      for index in 0..<self.initialRoasts.count where self.initialRoasts[index] != self.updatedRoasts[index] {
-        return true
-      }
-    }
-    
-    if self.initialBoasts.count != self.updatedBoasts.count {
-      return true
-    } else {
-      for index in 0..<self.initialBoasts.count where self.initialBoasts[index] != self.updatedBoasts[index] {
-        return true
-      }
-    }
     
     if self.initialQuestionResponses.count != self.updatedQuestionResponses.count {
       return true
@@ -165,14 +115,9 @@ class UpdateProfileData: GraphQLInput {
   }
   
   func toGraphQLInput() -> [String: Any] {
-    var input: [String: Any] = [
-      UpdateProfileKeys.boasts.rawValue: self.updatedBoasts.map({ $0.toGraphQLInput() }),
-      UpdateProfileKeys.roasts.rawValue: self.updatedRoasts.map({ $0.toGraphQLInput() }),
+    let input: [String: Any] = [
       UpdateProfileKeys.questionResponses.rawValue: self.updatedQuestionResponses.map({ $0.toGraphQLInput() })
     ]
-    if let bio = updatedBio {
-      input[UpdateProfileKeys.bio.rawValue] = bio.toGraphQLInput()
-    }
     return input
   }
   

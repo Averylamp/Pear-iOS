@@ -81,7 +81,7 @@ class QuestionItem: Codable, GraphQLInput, GraphQLDecodable, CustomStringConvert
     self.questionTextWithName = try? values.decode(String.self, forKey: .questionTextWithName)
     guard let questionTypeString = try? values.decode(String.self, forKey: .questionType),
       let questionType = QuestionType(rawValue: questionTypeString) else {
-        throw ContentItemError.decodingEnumError
+        throw QuestionItemError.missingEssentialInformation
     }
     self.questionType = questionType
     self.tags = try values.decode([String].self, forKey: .tags)
