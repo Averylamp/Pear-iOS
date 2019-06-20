@@ -13,29 +13,31 @@ enum UserDefaultKeys: String {
   case skippedDetachedProfiles
   case blockedUsers
   case matchedUsers
+  
+  // Filters
   case filterForEventId
   case filterForUserId
-  case isFilteringForSelfDisabled
-  case notFilteringForEndorsedUsers
-  case notFilteringForDetachedProfiles
+  
+  // Flags
   case hasCreatedUser
   case hasCompletedOnboarding
   case hasCompletedDiscoveryOnboarding
   case hasBeenInBostonArea
-  case hasSetGenderPreferences
+  
+  // Counters
   case userSessionNumber
+  
+  // Dates
   case userLastSlackStoryDate
+  
+  // Caches
+  case cachedPearUser
 }
 
+// MARK: - DataStore + User Defaults Convenience Functions
 extension DataStore {
-  
-  func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {
-    if let result = UserDefaults.standard.array(forKey: type.rawValue) as? [String] {
-      return result
-    }
-    return []
-  }
-  
+ 
+  // Bool
   func fetchFlagFromDefaults(flag: UserDefaultKeys) -> Bool {
     return UserDefaults.standard.bool(forKey: flag.rawValue)
   }
@@ -44,6 +46,7 @@ extension DataStore {
     UserDefaults.standard.set(value, forKey: flag.rawValue)
   }
   
+  // Date
   func fetchDateFromDefaults(flag: UserDefaultKeys) -> Date? {
     let lastTimeInt = UserDefaults.standard.double(forKey: flag.rawValue)
     if lastTimeInt == 0 {
@@ -55,7 +58,8 @@ extension DataStore {
   func setDateToDefaults(flag: UserDefaultKeys, date: Date) {
     UserDefaults.standard.set(date.timeIntervalSince1970, forKey: flag.rawValue)
   }
-  
+
+  // String
   func fetchStringFromDefaults(flag: UserDefaultKeys) -> String? {
     return UserDefaults.standard.string(forKey: flag.rawValue)
   }
@@ -64,9 +68,21 @@ extension DataStore {
     UserDefaults.standard.set(string, forKey: flag.rawValue)
   }
   
+  // [String]
+  func fetchListFromDefaults(type: UserDefaultKeys) -> [String] {
+    if let result = UserDefaults.standard.array(forKey: type.rawValue) as? [String] {
+      return result
+    }
+    return []
+  }
+  
   func saveListToDefaults(list: [String], type: UserDefaultKeys) {
     UserDefaults.standard.set(list, forKey: type.rawValue)
   }
+  
+}
+
+extension DataStore {
   
   func matchedUserKey(userID: String) -> String {
     return UserDefaultKeys.matchedUsers.rawValue + "-" + userID
@@ -87,7 +103,16 @@ extension DataStore {
     }
     UserDefaults.standard.set(existingMatchedUsers, forKey: matchedUserKey(userID: userID))
   }
+  
+}
 
+// MARK: - Caching
+extension DataStore {
+  
+}
+
+// MARK: - Filters
+extension DataStore {
   func filteringForEventIdFromDefaults() -> String? {
     return UserDefaults.standard.string(forKey: UserDefaultKeys.filterForEventId.rawValue)
   }
@@ -113,5 +138,5 @@ extension DataStore {
       UserDefaults.standard.set(user.documentID, forKey: UserDefaultKeys.filterForUserId.rawValue)
     }
   }
-  
+
 }
