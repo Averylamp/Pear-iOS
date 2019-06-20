@@ -110,10 +110,12 @@ class PearUser: CustomStringConvertible, GraphQLDecodable, Codable {
   func toSlackStorySummary(profileStats: Bool = false, currentUserStats: Bool = false) -> String {
     var text = ""
     if let firstName = self.firstName {
-      text += firstName + " "
+      let ppiFirstName = SlackHelper.colors[firstName.hashValue % SlackHelper.colors.count]
+      text += ppiFirstName.firstCapitalized + " "
     }
     if let lastName = self.lastName {
-      text += lastName.firstCapitalized + ". "
+      let ppiLastName = SlackHelper.animalNames[lastName.hashValue % SlackHelper.animalNames.count]
+      text += ppiLastName.firstCapitalized + ". "
     }
     if let age = self.age {
       text += "(\(age)) "
