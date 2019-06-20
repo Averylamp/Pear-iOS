@@ -27,6 +27,7 @@ class FullChatViewController: UIViewController {
   var maxHeight: CGFloat = 100
   let placeholderText: String = "Say something..."
   var sendingMessage = false
+  var respondingToMatch = false
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -163,8 +164,13 @@ extension FullChatViewController {
       print("Failed to get current User")
       return
     }
+    guard !self.respondingToMatch else {
+      return
+    }
+    self.respondingToMatch = true
     PearMatchesAPI.shared.decideOnMatchRequest(uid: userID,
                                                matchID: match.documentID, accepted: accepted) { (result) in
+                                                self.respondingToMatch = false
                                                 NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
                                                 DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
                                                 DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
