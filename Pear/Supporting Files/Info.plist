@@ -95,7 +95,7 @@
 	<key>NSContactsUsageDescription</key>
 	<string>This allows you to matchmake and be matchmade for by your friends!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Without location, we can't show you people nearby!</string>
+	<string>This is used to show you people nearby.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This allows you to upload photos to your profile.</string>
 	<key>UIAppFonts</key>

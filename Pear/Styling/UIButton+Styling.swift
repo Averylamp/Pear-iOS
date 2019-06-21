@@ -40,13 +40,14 @@ extension UIButton {
   }
   
   func stylizeDark() {
-    self.addButtonShadow()
     self.backgroundColor = R.color.primaryBrandColor()!
-    self.layer.cornerRadius = self.frame.height / 2.0
+    self.layer.cornerRadius = 12.0
     self.layer.borderWidth = 2
     self.layer.borderColor = R.color.primaryBrandColor()!.cgColor
     self.setTitleColor(UIColor.white, for: .normal)
-    self.titleLabel?.font = UIFont(name: StylingConfig.textFontExtraBold, size: 17)
+    if let font = R.font.openSansBold(size: 17) {
+      self.titleLabel?.font = font
+    }
   }
   
   func stylizeChatAccept() {
