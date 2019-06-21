@@ -32,6 +32,7 @@ enum UserDefaultKeys: String {
   
   // Caches
   case cachedPearUser
+  case cachedMatches
 }
 
 // MARK: - DataStore + User Defaults Convenience Functions
