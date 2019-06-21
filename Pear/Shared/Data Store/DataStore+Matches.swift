@@ -60,6 +60,13 @@ extension DataStore {
                                                 completion: { (result) in
                                                   switch result {
                                                   case .success(let matches):
+                                                    do {
+                                                      let encodedMatches = try JSONEncoder().encode(matches)
+                                                      UserDefaults.standard.set(encodedMatches, forKey: UserDefaultKeys.cachedMatches.rawValue)
+                                                    } catch {
+                                                      print("Error: \(error)")
+                                                    }
+
                                                     self.matchRequests = matches
                                                     print("Match Requests:\(self.matchRequests.count)")
                                                     NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
