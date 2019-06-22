@@ -14,7 +14,7 @@ enum DemographicsItemKey: String, CodingKey {
   case userHasResponded
 }
 
-class DemographicsItem<E: RawRepresentable>: Decodable, Equatable, GraphQLDecodable, GraphQLInput where E.RawValue == String {
+class DemographicsItem<E: RawRepresentable>: Codable, Equatable, GraphQLDecodable, GraphQLInput where E.RawValue == String {
   
   var responses: [E]
   var visible: Bool
@@ -49,6 +49,13 @@ class DemographicsItem<E: RawRepresentable>: Decodable, Equatable, GraphQLDecoda
     return InfoTableViewItem(type: type,
                       subtitleText: response != nil ? response! : (type.requiredItem() ? "Required": "Optional"),
                       visibility: self.visible, filledOut: response != nil, requiredFilledOut: type.requiredItem())
+  }
+  
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: DemographicsItemKey.self)
+    try container.encode(self.visible, forKey: .visible)
+    try container.encode(self.userHasResponded, forKey: .userHasResponded)
+    try container.encode(self.responses.map({ $0.rawValue }), forKey: .response)
   }
   
   required init(from decoder: Decoder) throws {

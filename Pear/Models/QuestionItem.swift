@@ -28,13 +28,13 @@ enum QuestionItemKey: String, CodingKey {
   case hiddenInProfile
 }
 
-enum QuestionType: String {
+enum QuestionType: String, Codable {
   case multipleChoice
   case multipleChoiceWithOther
   case freeResponse
 }
 
-class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable, CustomStringConvertible, Equatable {
+class QuestionItem: Codable, GraphQLInput, GraphQLDecodable, CustomStringConvertible, Equatable {
   
   static func == (lhs: QuestionItem, rhs: QuestionItem) -> Bool {
     return  lhs.documentID == rhs.documentID &&
@@ -81,7 +81,7 @@ class QuestionItem: Decodable, GraphQLInput, GraphQLDecodable, CustomStringConve
     self.questionTextWithName = try? values.decode(String.self, forKey: .questionTextWithName)
     guard let questionTypeString = try? values.decode(String.self, forKey: .questionType),
       let questionType = QuestionType(rawValue: questionTypeString) else {
-        throw ContentItemError.decodingEnumError
+        throw QuestionItemError.missingEssentialInformation
     }
     self.questionType = questionType
     self.tags = try values.decode([String].self, forKey: .tags)
@@ -229,9 +229,10 @@ class Color: Codable, GraphQLInput, GraphQLDecodable, Equatable {
 enum IconAssetKey: String, CodingKey {
   case assetString
   case assetURL
+  case cachedImage
 }
 
-class IconAsset: Decodable, GraphQLInput, GraphQLDecodable, Equatable {
+class IconAsset: Codable, GraphQLInput, GraphQLDecodable, Equatable {
   static func == (lhs: IconAsset, rhs: IconAsset) -> Bool {
     return lhs.assetString == rhs.assetString &&
            lhs.assetURL == rhs.assetURL
@@ -252,6 +253,15 @@ class IconAsset: Decodable, GraphQLInput, GraphQLDecodable, Equatable {
     return "{ assetString assetURL }"
   }
   
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: IconAssetKey.self)
+    try container.encode(self.assetString, forKey: .assetString)
+    try container.encode(self.assetURL, forKey: .assetURL)
+    if let image = self.cachedImage {
+      try container.encode(image.pngData(), forKey: .cachedImage)
+    }
+  }
+  
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: IconAssetKey.self)
     self.assetString = try? values.decode(String.self, forKey: .assetString)
@@ -262,7 +272,9 @@ class IconAsset: Decodable, GraphQLInput, GraphQLDecodable, Equatable {
       self.assetURL = nil
     }
     self.cachedImage = self.syncUIImageFetch()
-    if self.cachedImage == nil {
+    if let imageData = try? values.decode(Data.self, forKey: .cachedImage) {
+      self.cachedImage = UIImage(data: imageData)
+    } else if self.cachedImage == nil {
       self.asyncUIImageFetch { (image) in
         if let image = image {
           self.cachedImage = image

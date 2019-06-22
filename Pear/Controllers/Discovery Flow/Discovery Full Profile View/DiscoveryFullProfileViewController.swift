@@ -145,9 +145,10 @@ class DiscoveryFullProfileViewController: UIViewController {
       profileCount ==  0 && Int.random(in: 0..<5) == 0 {
       self.promptProfileRequest()
     } else {
-      self.displayPersonalRequestVC(personalUserID: personalUserID,
-                                    thumbnailImageURL: requestedThumbnailURL,
-                                    requestPersonName: self.fullProfileData.firstName ?? "")
+//      self.displayPersonalRequestVC(personalUserID: personalUserID,
+//                                    thumbnailImageURL: requestedThumbnailURL,
+//                                    requestPersonName: self.fullProfileData.firstName ?? "")
+      self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
     }
   }
   
@@ -181,9 +182,10 @@ class DiscoveryFullProfileViewController: UIViewController {
     case .personalUser:
       if matchObject.buttonEnabled {
         self.removeMatchButtons()
-        self.displayPersonalRequestVC(personalUserID: personalUserID,
-                                      thumbnailImageURL: requestedThumbnailURL,
-                                      requestPersonName: self.fullProfileData.firstName ?? "")
+        self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
+//        self.displayPersonalRequestVC(personalUserID: personalUserID,
+//                                      thumbnailImageURL: requestedThumbnailURL,
+//                                      requestPersonName: self.fullProfileData.firstName ?? "")
       } else {
         if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(personalUserID) {
           self.presentSimpleMessageAlert(title: "You have already Peared!",

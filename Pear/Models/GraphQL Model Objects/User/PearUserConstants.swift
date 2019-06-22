@@ -26,11 +26,7 @@ enum PearUserKeys: String, CodingKey {
   case age
   case birthdate
 
-  case bios
-  case boasts
-  case roasts
   case questionResponses
-  case vibes
   
   case school
   case schoolYear
@@ -44,7 +40,7 @@ enum PearUserKeys: String, CodingKey {
   case pearPoints
   
   case endorsedUserIDs = "endorsedUser_ids"
-  case endorserUserIDs = "endorser_ids"
+  case endorserIDs = "endorser_ids"
   case detachedProfileIDs = "detachedProfile_ids"
   
   case matchingDemographics

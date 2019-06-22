@@ -13,7 +13,7 @@ extension DiscoveryFullProfileViewController {
   
   func slackHelperDetails() -> String {
     let percentProfileSeen = min(100, round((self.maxContentOffset + self.view.frame.height) / self.scrollView.contentSize.height * 100))
-    let result = " Profile seen: \(percentProfileSeen)%, Scroll Distance: \(round(self.totalScrollDistance / self.scrollView.contentSize.height * 100) / 100)X in \(round((CACurrentMediaTime() - initializationTime) * 100) / 100)s"
+    let result = "\nProfile seen: \(percentProfileSeen)%, Scroll Distance: \(round(self.totalScrollDistance / self.scrollView.contentSize.height * 100) / 100)X in \(round((CACurrentMediaTime() - initializationTime) * 100) / 100)s"
     return result
   }
   

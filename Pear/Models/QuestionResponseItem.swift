@@ -21,7 +21,7 @@ enum QuestionResponseItemKey: String, CodingKey {
   case hidden
 }
 
-class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable, NSCopying {
+class QuestionResponseItem: Codable, GraphQLInput, AuthorGraphQLInput, GraphQLDecodable, Equatable, NSCopying {
   
   func copy(with zone: NSZone? = nil) -> Any {
     if let copyItem = try? QuestionResponseItem(documentID: documentID,
@@ -37,7 +37,7 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
     }
     fatalError("Can't Copy The Question Response")
   }
-  
+
   static func == (lhs: QuestionResponseItem, rhs: QuestionResponseItem) -> Bool {
     return  lhs.documentID == rhs.documentID &&
             lhs.authorID == rhs.authorID &&
@@ -92,9 +92,24 @@ class QuestionResponseItem: Decodable, GraphQLInput, AuthorGraphQLInput, GraphQL
     self.hidden = false
   }
   
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: QuestionResponseItemKey.self)
+    try container.encode(self.documentID, forKey: .documentID)
+    try container.encode(self.authorID, forKey: .authorID)
+    try container.encode(self.authorFirstName, forKey: .authorFirstName)
+    try container.encode(self.authorThumbnailURL, forKey: .authorThumbnailURL)
+    try container.encode(self.questionID, forKey: .questionID)
+    try container.encode(self.question, forKey: .question)
+    try container.encode(self.responseBody, forKey: .responseBody)
+    try container.encode(self.responseTitle, forKey: .responseTitle)
+    try container.encode(self.color, forKey: .color)
+    try container.encode(self.icon, forKey: .icon)
+    try container.encode(self.hidden, forKey: .hidden)
+  }
+  
   required init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: QuestionResponseItemKey.self)
-    self.documentID = try values.decode(String.self, forKey: .documentID)
+    self.documentID = try? values.decode(String.self, forKey: .documentID)
     self.authorID = try values.decode(String.self, forKey: .authorID)
     self.authorFirstName = try values.decode(String.self, forKey: .authorFirstName)
     self.authorThumbnailURL = try? values.decode(String.self, forKey: .authorThumbnailURL)

@@ -26,12 +26,9 @@ enum ProfileCreationKey: String {
   var firstName: String
   var lastName: String
   var gender: GenderEnum?
-  var boasts: [BoastItem] = []
-  var roasts: [RoastItem] = []
   var questionResponses: [QuestionResponseItem] = []
   var skipCount: Int = 0
-  var vibes: [VibeItem] = []
-    
+  
   init(contact: CNContact, phoneNumber: String? = nil) {
     if phoneNumber == nil,
       var contactPhoneNumber = contact.phoneNumbers.first?.value.stringValue.filter("0123456789".contains) {
@@ -47,10 +44,7 @@ enum ProfileCreationKey: String {
   }
   
   func updateAuthor(authorID: String, authorFirstName: String) {
-    self.boasts.forEach({ $0.updateAuthor(authorID: authorID, authorFirstName: authorFirstName) })
-    self.roasts.forEach({ $0.updateAuthor(authorID: authorID, authorFirstName: authorFirstName) })
     self.questionResponses.forEach({ $0.updateAuthor(authorID: authorID, authorFirstName: authorFirstName) })
-    self.vibes.forEach({ $0.updateAuthor(authorID: authorID, authorFirstName: authorFirstName) })
   }
   
   func toGraphQLInput() -> [String: Any] {
@@ -58,10 +52,7 @@ enum ProfileCreationKey: String {
       ProfileCreationKey.phoneNumber.rawValue: self.phoneNumber as Any,
       ProfileCreationKey.firstName.rawValue: self.firstName as Any,
       ProfileCreationKey.lastName.rawValue: self.lastName as Any,
-      ProfileCreationKey.boasts.rawValue: self.boasts.map({ $0.toGraphQLInput() }),
-      ProfileCreationKey.roasts.rawValue: self.roasts.map({ $0.toGraphQLInput() }),
-      ProfileCreationKey.questionResponses.rawValue: self.questionResponses.map({ $0.toGraphQLInput() }),
-      ProfileCreationKey.vibes.rawValue: self.vibes.map({ $0.toGraphQLInput() })
+      ProfileCreationKey.questionResponses.rawValue: self.questionResponses.map({ $0.toGraphQLInput() })
     ]
     return input
   }

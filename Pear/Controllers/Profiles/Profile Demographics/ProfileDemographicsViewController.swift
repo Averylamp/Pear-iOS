@@ -18,19 +18,17 @@ class ProfileDemographicsViewController: UIViewController {
   var age: Int?
   var locationName: String?
   var schoolName: String?
-  var vibes: [VibeItem] = []
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(firstName: String?, age: Int?, schoolName: String? = nil, locationName: String? = nil, vibes: [VibeItem] = []) -> ProfileDemographicsViewController? {
+  class func instantiate(firstName: String?, age: Int?, schoolName: String? = nil, locationName: String? = nil) -> ProfileDemographicsViewController? {
     let storyboard = UIStoryboard(name: String(describing: ProfileDemographicsViewController.self), bundle: nil)
     guard let demograpicsVC = storyboard.instantiateInitialViewController() as? ProfileDemographicsViewController else { return nil }
     demograpicsVC.firstName = firstName
     demograpicsVC.age = age
     demograpicsVC.schoolName = schoolName
     demograpicsVC.locationName = locationName
-    demograpicsVC.vibes = vibes
     return demograpicsVC
   }
   
@@ -53,23 +51,6 @@ extension ProfileDemographicsViewController {
       }
     } else {
       self.nameLabel.text = "Name Hidden"
-    }
-    
-    for vibe in self.vibes {
-      let vibeImageView = UIImageView()
-      vibeImageView.translatesAutoresizingMaskIntoConstraints = false
-      vibeImageView.contentMode = .scaleAspectFit
-      vibeImageView.addConstraint(NSLayoutConstraint(item: vibeImageView, attribute: .width, relatedBy: .equal,
-                                                     toItem: vibeImageView, attribute: .height, multiplier: 1.0, constant: 0.0))
-      if let image = vibe.icon?.syncUIImageFetch() {
-        vibeImageView.image = image
-      } else if let assetURL = vibe.icon?.assetURL {
-        vibeImageView.sd_setImage(with: assetURL, completed: nil)
-      } else {
-        continue
-      }
-      self.vibesStackView.addArrangedSubview(vibeImageView)
-      
     }
     
     if let locationName = self.locationName {
