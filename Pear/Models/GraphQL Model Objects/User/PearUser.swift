@@ -10,21 +10,19 @@ import Foundation
 import Firebase
 import SwiftyJSON
 
-class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
+class PearUser: CustomStringConvertible, GraphQLDecodable, Codable {
   
   static func graphQLCurrentUserFields() -> String {
-    return "{ _id deactivated firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate bios \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLAllFields()) bankImages \(ImageContainer.graphQLAllFields()) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) }"  }
+    return "{ _id deactivated firebaseAuthID email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate questionResponses \(QuestionResponseItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLAllFields()) bankImages \(ImageContainer.graphQLAllFields()) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) }"  }
   
   static func graphQLAllFields() -> String {
-    return "{ _id deactivated firebaseAuthID facebookId facebookAccessToken email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate bios \(BioItem.graphQLAllFields()) boasts \(BoastItem.graphQLAllFields()) roasts \(RoastItem.graphQLAllFields()) questionResponses \(QuestionResponseItem.graphQLAllFields()) vibes \(VibeItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLAllFields()) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) }"
+    return "{ _id deactivated firebaseAuthID email emailVerified phoneNumber phoneNumberVerified firstName lastName fullName thumbnailURL gender age birthdate questionResponses \(QuestionResponseItem.graphQLAllFields()) school schoolYear schoolEmail schoolEmailVerified displayedImages \(ImageContainer.graphQLAllFields()) isSeeking pearPoints endorsedUser_ids endorser_ids detachedProfile_ids matchingPreferences \(MatchingPreferences.graphQLAllFields()) matchingDemographics \(MatchingDemographics.graphQLAllFields()) }"
     
   }
   
   var documentID: String!
   var deactivated: Bool!
   var firebaseAuthID: String!
-  var facebookId: String?
-  var facebookAccessToken: String?
   var email: String?
   var emailVerified: Bool?
   var phoneNumber: String!
@@ -53,11 +51,7 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
   var age: Int?
   var birthdate: Date?
   
-  var bios: [BioItem] = []
-  var boasts: [BoastItem] = []
-  var roasts: [RoastItem] = []
   var questionResponses: [QuestionResponseItem] = []
-  var vibes: [VibeItem] = []
   
   var school: String?
   var schoolYear: String?
@@ -81,65 +75,11 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
     fatalError("Should never be called to generate")
   }
   
-  required init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: PearUserKeys.self)
-    self.documentID = try values.decode(String.self, forKey: .documentID)
-    self.deactivated = try values.decode(Bool.self, forKey: .deactivated)
-    self.firebaseAuthID = try values.decode(String.self, forKey: .firebaseAuthID)
-    self.facebookId = try? values.decode(String.self, forKey: .facebookId)
-    self.facebookAccessToken = try? values.decode(String.self, forKey: .facebookAccessToken)
-    self.email = try? values.decode(String.self, forKey: .email)
-    self.emailVerified = try? values.decode(Bool.self, forKey: .emailVerified)
-    self.phoneNumber = try values.decode(String.self, forKey: .phoneNumber)
-    self.phoneNumberVerified = try values.decode(Bool.self, forKey: .phoneNumberVerified)
-    self.firstName = try? values.decode(String.self, forKey: .firstName)
-    self.lastName = try? values.decode(String.self, forKey: .lastName)
-    self.thumbnailURL = try? values.decode(String.self, forKey: .thumbnailURL)
-    if let genderString = try? values.decode(String.self, forKey: .gender),
-      let gender = GenderEnum.init(rawValue: genderString) {
-      self.gender = gender
-    }
-    let birthdateValue = try? values.decode(String.self, forKey: .birthdate)
-    if let birthdateValue = birthdateValue, let birthdateNumberValue = Double(birthdateValue) {
-      self.birthdate = Date(timeIntervalSince1970: birthdateNumberValue / 1000)
-    }
-    self.age = try? values.decode(Int.self, forKey: .age)
-    
-    self.boasts = try values.decode([BoastItem].self, forKey: .boasts)
-    self.roasts = try values.decode([RoastItem].self, forKey: .roasts)
-    self.questionResponses = try values.decode([QuestionResponseItem].self, forKey: .questionResponses)
-    self.vibes = try values.decode([VibeItem].self, forKey: .vibes)
-    self.bios = try values.decode([BioItem].self, forKey: .bios)
-    
-    self.school = try? values.decode(String.self, forKey: .school)
-    self.schoolYear = try? values.decode(String.self, forKey: .schoolYear)
-    self.schoolEmail = try? values.decode(String.self, forKey: .schoolEmail)
-    self.schoolEmailVerified = try? values.decode(String.self, forKey: .schoolEmailVerified)
-    
-    self.isSeeking = try values.decode(Bool.self, forKey: .isSeeking)
-    self.pearPoints = try values.decode(Int.self, forKey: .pearPoints)
-    
-    self.endorsedUserIDs = try values.decode([String].self, forKey: .endorsedUserIDs)
-    self.endorserIDs = try values.decode([String].self, forKey: .endorserUserIDs)
-    self.detachedProfileIDs = try values.decode([String].self, forKey: .detachedProfileIDs)
-    
-    self.displayedImages = try values.decode([ImageContainer].self, forKey: .displayedImages)
-    if let bankImages = try? values.decode([ImageContainer].self, forKey: .bankImages) {
-      self.bankImages = bankImages
-    }
-
-    self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
-    self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)
-    
-  }
-  
   var description: String {
     return "**** Pear User **** \n" + """
     documentID: \(String(describing: documentID)),
     deactivated: \(String(describing: deactivated)),
     firebaseAuthID: \(String(describing: firebaseAuthID)),
-    facebookId: \(String(describing: facebookId)),
-    facebookAccessToken: \(String(describing: facebookAccessToken)),
     email: \(String(describing: email)),
     emailVerified: \(String(describing: emailVerified)),
     phoneNumber: \(String(describing: phoneNumber)),
@@ -154,11 +94,7 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
     schoolEmailVerified: \(String(describing: schoolEmailVerified)),
     birthdate: \(String(describing: birthdate)),
     age: \(String(describing: age)),
-    bios: \(String(describing: self.bios))
-    boasts: \(String(describing: self.boasts))
-    roasts: \(String(describing: self.roasts))
     questionResponses: \(String(describing: self.questionResponses))
-    vibes: \(String(describing: self.vibes))
     
     """
   }
@@ -166,10 +102,12 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
   func toSlackStorySummary(profileStats: Bool = false, currentUserStats: Bool = false) -> String {
     var text = ""
     if let firstName = self.firstName {
-      text += firstName + " "
+      let ppiFirstName = SlackHelper.colors[firstName.hashValue % SlackHelper.colors.count]
+      text += ppiFirstName.firstCapitalized + " "
     }
     if let lastName = self.lastName {
-      text += lastName.firstCapitalized + ". "
+      let ppiLastName = SlackHelper.animalNames[lastName.hashValue % SlackHelper.animalNames.count]
+      text += ppiLastName.firstCapitalized + ". "
     }
     if let age = self.age {
       text += "(\(age)) "
@@ -198,4 +136,86 @@ class PearUser: Decodable, CustomStringConvertible, GraphQLDecodable {
     }
     return text
   }
+  
+  required init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: PearUserKeys.self)
+    self.documentID = try values.decode(String.self, forKey: .documentID)
+    self.deactivated = try values.decode(Bool.self, forKey: .deactivated)
+    self.firebaseAuthID = try values.decode(String.self, forKey: .firebaseAuthID)
+    self.email = try? values.decode(String.self, forKey: .email)
+    self.emailVerified = try? values.decode(Bool.self, forKey: .emailVerified)
+    self.phoneNumber = try values.decode(String.self, forKey: .phoneNumber)
+    self.phoneNumberVerified = try values.decode(Bool.self, forKey: .phoneNumberVerified)
+    self.firstName = try? values.decode(String.self, forKey: .firstName)
+    self.lastName = try? values.decode(String.self, forKey: .lastName)
+    self.thumbnailURL = try? values.decode(String.self, forKey: .thumbnailURL)
+    self.gender = try? values.decode(GenderEnum.self, forKey: .gender)
+    let birthdateValue = try? values.decode(String.self, forKey: .birthdate)
+    if let birthdateValue = birthdateValue, let birthdateNumberValue = Double(birthdateValue) {
+      self.birthdate = Date(timeIntervalSince1970: birthdateNumberValue / 1000)
+    }
+    self.age = try? values.decode(Int.self, forKey: .age)
+    
+    self.questionResponses = try values.decode([QuestionResponseItem].self, forKey: .questionResponses)
+
+    self.school = try? values.decode(String.self, forKey: .school)
+    self.schoolYear = try? values.decode(String.self, forKey: .schoolYear)
+    self.schoolEmail = try? values.decode(String.self, forKey: .schoolEmail)
+    self.schoolEmailVerified = try? values.decode(String.self, forKey: .schoolEmailVerified)
+    
+    self.isSeeking = try values.decode(Bool.self, forKey: .isSeeking)
+    self.pearPoints = try values.decode(Int.self, forKey: .pearPoints)
+    
+    self.endorsedUserIDs = try values.decode([String].self, forKey: .endorsedUserIDs)
+    self.endorserIDs = try values.decode([String].self, forKey: .endorserIDs)
+    self.detachedProfileIDs = try values.decode([String].self, forKey: .detachedProfileIDs)
+    
+    self.displayedImages = try values.decode([ImageContainer].self, forKey: .displayedImages)
+    if let bankImages = try? values.decode([ImageContainer].self, forKey: .bankImages) {
+      self.bankImages = bankImages
+    }
+    
+    self.matchingDemographics = try values.decode(MatchingDemographics.self, forKey: .matchingDemographics)
+    self.matchingPreferences = try values.decode(MatchingPreferences.self, forKey: .matchingPreferences)
+    
+  }
+
+}
+
+// MARK: - Encoding
+extension PearUser {
+ 
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: PearUserKeys.self)
+    try container.encode(self.documentID, forKey: .documentID)
+    try container.encode(self.deactivated, forKey: .deactivated)
+    try container.encode(self.firebaseAuthID, forKey: .firebaseAuthID)
+    try container.encode(self.email, forKey: .email)
+    try container.encode(self.emailVerified, forKey: .emailVerified)
+    try container.encode(self.phoneNumber, forKey: .phoneNumber)
+    try container.encode(self.phoneNumberVerified, forKey: .phoneNumberVerified)
+    try container.encode(self.firstName, forKey: .firstName)
+    try container.encode(self.lastName, forKey: .lastName)
+    try container.encode(self.thumbnailURL, forKey: .thumbnailURL)
+    try container.encode(self.gender, forKey: .gender)
+    if let birthdayValue = self.birthdate?.timeIntervalSince1970 {
+      try container.encode(birthdayValue * 1000.0, forKey: .birthdate)
+    }
+    try container.encode(self.age, forKey: .age)
+    try container.encode(self.questionResponses, forKey: .questionResponses)
+    try container.encode(self.school, forKey: .school)
+    try container.encode(self.schoolYear, forKey: .schoolYear)
+    try container.encode(self.schoolEmail, forKey: .schoolEmail)
+    try container.encode(self.schoolEmailVerified, forKey: .schoolEmailVerified)
+    try container.encode(self.isSeeking, forKey: .isSeeking)
+    try container.encode(self.pearPoints, forKey: .pearPoints)
+    try container.encode(self.endorsedUserIDs, forKey: .endorsedUserIDs)
+    try container.encode(self.endorserIDs, forKey: .endorserIDs)
+    try container.encode(self.detachedProfileIDs, forKey: .detachedProfileIDs)
+    try container.encode(self.displayedImages, forKey: .displayedImages)
+    try container.encode(self.bankImages, forKey: .bankImages)
+    try container.encode(self.matchingDemographics, forKey: .matchingDemographics)
+    try container.encode(self.matchingPreferences, forKey: .matchingPreferences)
+  }
+
 }

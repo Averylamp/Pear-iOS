@@ -33,7 +33,6 @@ class FullProfileStackViewController: UIViewController {
 enum SectionType {
   case image
   case demographics
-  case bio
   case question
 }
 
@@ -41,7 +40,6 @@ struct SectionItem {
   let sectionType: SectionType
   let image: ImageContainer?
   let demographics: FullProfileDisplayData?
-  let bio: BioItem?
   let question: QuestionResponseItem?
 }
 
@@ -55,7 +53,6 @@ extension FullProfileStackViewController {
   
   static func sectionItemsFromProfile(profile: FullProfileDisplayData) -> [SectionItem] {
     var images = profile.imageContainers
-    var bioItems: [BioItem] = profile.bios.filter({ !$0.hidden}).compactMap({ $0.copy() as? BioItem })
     var questionResponses: [QuestionResponseItem] = profile.questionResponses.filter({ !$0.hidden && $0.question.questionType == .freeResponse})
       .compactMap({ $0.copy() as? QuestionResponseItem })
     var demographics: [FullProfileDisplayData] = [profile]
@@ -65,23 +62,18 @@ extension FullProfileStackViewController {
       var addedItems = false
       if images.count > 0 {
         let image = images.removeFirst()
-        sectionItems.append(SectionItem(sectionType: .image, image: image, demographics: nil, bio: nil, question: nil))
+        sectionItems.append(SectionItem(sectionType: .image, image: image, demographics: nil, question: nil))
         addedItems = true
       }
       if demographics.count > 0 {
         let demographic = demographics.removeFirst()
-        sectionItems.append(SectionItem(sectionType: .demographics, image: nil, demographics: demographic, bio: nil, question: nil))
+        sectionItems.append(SectionItem(sectionType: .demographics, image: nil, demographics: demographic, question: nil))
         addedItems = true
       }
-      if bioItems.count > 0 && questionResponseCount < 5 {
-        questionResponseCount += 1
-        let bioItem = bioItems.removeFirst()
-        sectionItems.append(SectionItem(sectionType: .bio, image: nil, demographics: nil, bio: bioItem, question: nil))
-        addedItems = true
-      } else if questionResponses.count > 0 && questionResponseCount < 5 {
+     if questionResponses.count > 0 && questionResponseCount < 5 {
         questionResponseCount += 1
         let questionResponse = questionResponses.removeFirst()
-        sectionItems.append(SectionItem(sectionType: .question, image: nil, demographics: nil, bio: nil, question: questionResponse))
+        sectionItems.append(SectionItem(sectionType: .question, image: nil, demographics: nil, question: questionResponse))
         addedItems = true
       }
       if !addedItems {
@@ -114,10 +106,6 @@ extension FullProfileStackViewController {
           self.addDemographicsVC(locationName: displayData.locationName,
                                  schoolName: displayData.school,
                                  schoolYear: displayData.schoolYear)
-        }
-      case .bio:
-        if let bioItem = sectionItem.bio {
-          self.addBioItem(bioItem: bioItem)
         }
       case .question:
         if let questionItem = sectionItem.question {
@@ -235,19 +223,7 @@ extension FullProfileStackViewController {
     self.addVCToCard(view: demographicsVC.view)
     demographicsVC.didMove(toParent: self)
   }
-  
-  func addBioItem(bioItem: BioItem) {
-    guard let bioItemVC = NewProfileBioViewController.instantiate(bioItem: bioItem) else {
-      print("Failed to instantiate Bio ItemVC")
-      return
-    }
-    self.addChild(bioItemVC)
-    bioItemVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.addVCToCard(view: bioItemVC.view)
-    bioItemVC.didMove(toParent: self)
-  }
-  
-  func addQuestionResponseItem(responseItem: QuestionResponseItem) {
+    func addQuestionResponseItem(responseItem: QuestionResponseItem) {
     guard let questionItemVC = ProfileQuestionResponseViewController.instantiate(questionItem: responseItem) else {
       print("Failed to instantiate Question Response ItemVC")
       return
@@ -271,16 +247,6 @@ extension FullProfileStackViewController {
     } else {
       interestsVC.view.isHidden = false
     }
-  }
-  
-  func addDoDontVC(doDontType: DoDontType, doDontContent: [DoDontContent]) {
-    guard let doDontVC = ProfileDoDontViewController.instantiate(doDontType: doDontType, doDontContent: doDontContent) else {
-      print("Failed to instantiate Do Dont VC")
-      return
-    }
-    self.addChild(doDontVC)
-    self.stackView.addArrangedSubview(doDontVC.view)
-    doDontVC.didMove(toParent: self)
   }
   
 }

@@ -13,7 +13,7 @@ import UIKit
 extension UILabel {
   func stylizeUserSignupTitleLabel() {
     self.textColor = R.color.primaryTextColor()
-    if let font = R.font.openSansExtraBold(size: 16) {
+    if let font = R.font.openSansBold(size: 16) {
       self.font = font
     }
   }

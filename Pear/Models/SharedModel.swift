@@ -14,7 +14,7 @@ enum DecodingError: Error {
   case enumError
 }
 
-enum GenderEnum: String {
+enum GenderEnum: String, Codable {
   case male
   case female
   case nonbinary
@@ -39,9 +39,11 @@ enum GenderEnum: String {
 enum LocationKeys: String, CodingKey {
   case coords
   case locationName
+  case coordLatitude
+  case coordLongitude
 }
 
-class LocationObject: Decodable, Equatable, GraphQLDecodable {
+class LocationObject: Codable, Equatable, GraphQLDecodable {
   
   static func graphQLAllFields() -> String {
     return "{ coords locationName }"
@@ -67,6 +69,10 @@ class LocationObject: Decodable, Equatable, GraphQLDecodable {
     } else {
       self.locationCoordinate = nil
     }
+  }
+  
+  func encode(to encoder: Encoder) throws {
+    
   }
   
 }

@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.21</string>
+	<string>1.1.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -46,7 +46,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>135</string>
+	<string>137</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -95,7 +95,7 @@
 	<key>NSContactsUsageDescription</key>
 	<string>This allows you to matchmake and be matchmade for by your friends!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Without location, we can't show you people nearby!</string>
+	<string>This is used to show you people nearby.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This allows you to upload photos to your profile.</string>
 	<key>UIAppFonts</key>

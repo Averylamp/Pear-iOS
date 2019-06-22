@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import ContactsUI
+import SDWebImage
 
 extension Notification.Name {
   static let refreshFriendTab = Notification.Name("refreshFriendTab")
@@ -58,6 +59,9 @@ extension FriendsTabViewController {
     var fullList: [FullProfileDisplayData] = []
     fullList.append(contentsOf: newEndorsedProfiles)
     fullList.append(contentsOf: newDetachedProfiles)
+    let friendImageURLsToPrefetch: [URL] = fullList.compactMap({ $0.imageContainers.first}).compactMap({ URL(string: $0.medium.imageURL) })
+    SDWebImagePrefetcher.shared.prefetchURLs(friendImageURLsToPrefetch)
+    
     if FullProfileDisplayData.compareListsForNewItems(oldList: self.userProfiles, newList: fullList) {
       self.userProfiles = fullList
       DispatchQueue.main.async {

@@ -9,12 +9,7 @@
 import UIKit
 
 class FriendEditProfileViewController: UIViewController {
-  
-  struct BoastRoastUpdateItem {
-    let controller: ExpandingBoastRoastInputViewController
-    let item: BoastRoastItem
-  }
-  
+    
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var cancelButton: UIButton!

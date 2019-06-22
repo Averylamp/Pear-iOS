@@ -27,6 +27,10 @@ class FullChatViewController: UIViewController {
   var maxHeight: CGFloat = 100
   let placeholderText: String = "Say something..."
   var sendingMessage = false
+  var respondingToMatch = false
+  var lastKeyboardHeight: CGFloat = 0.0
+  var keyboardIsHiding: Bool = false
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -107,13 +111,15 @@ extension FullChatViewController {
     self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     self.recalculateTextViewHeight(animated: false)
     self.tableView.reloadData()
-    self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: false)
+    DispatchQueue.main.async {
+      self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: false)
+    }
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
-    self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
   }
   
   func stylize() {
@@ -146,7 +152,7 @@ extension FullChatViewController {
   @objc func acceptRequestButtonClicked() {
     Analytics.logEvent("accept_match_request", parameters: [
       "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown" ])
-//    SlackHelper.shared.addEvent(text: "User Accepted Match Request! other: \()", color: <#T##UIColor#>)
+    SlackHelper.shared.addEvent(text: "User Accepted Match Request!", color: UIColor.green)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
   }
@@ -154,6 +160,7 @@ extension FullChatViewController {
   @objc func declineRequestButtonClicked() {
     Analytics.logEvent("decline_match_request", parameters: [
       "currentUserGender": DataStore.shared.currentPearUser?.gender ?? "unknown" ])
+    SlackHelper.shared.addEvent(text: "User Rejected Match Request!", color: UIColor.red)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
   }
@@ -163,8 +170,13 @@ extension FullChatViewController {
       print("Failed to get current User")
       return
     }
+    guard !self.respondingToMatch else {
+      return
+    }
+    self.respondingToMatch = true
     PearMatchesAPI.shared.decideOnMatchRequest(uid: userID,
                                                matchID: match.documentID, accepted: accepted) { (result) in
+                                                self.respondingToMatch = false
                                                 NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
                                                 DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
                                                 DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
@@ -450,43 +462,6 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
   
 }
 
-// MARK: - Keybaord Size Notifications
-extension FullChatViewController {
-  
-  func addKeyboardSizeNotifications() {
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(FullChatViewController.keyboardWillChange(notification:)),
-                   name: UIWindow.keyboardWillChangeFrameNotification,
-                   object: nil)
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(FullChatViewController.keyboardWillHide(notification:)),
-                   name: UIWindow.keyboardWillHideNotification,
-                   object: nil)
-  }
-  
-  @objc func keyboardWillChange(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let targetFrame = targetFrameNSValue.cgRectValue
-      self.inputContainerViewBottomConstraint.constant = targetFrame.height - self.view.safeAreaInsets.bottom
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  @objc func keyboardWillHide(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      self.inputContainerViewBottomConstraint.constant = 0
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  
-}
-
 // MARK: - UITextViewDelegate
 extension FullChatViewController: UITextViewDelegate {
   
@@ -530,18 +505,6 @@ extension FullChatViewController: UITextViewDelegate {
     self.recalculateTextViewHeight()
   }
   
-}
-
-// MARK: - Dismiss First Responder on Click
-extension FullChatViewController {
-  func addDismissKeyboardOnViewClick() {
-    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FullChatViewController.dismissKeyboard)))
-  }
-  
-  @objc func dismissKeyboard() {
-    Analytics.logEvent("CHAT_thread_EV_dismissKeyboard", parameters: nil)
-    self.view.endEditing(true)
-  }
 }
 
 // MARK: - ChatDelegate
