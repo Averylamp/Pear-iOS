@@ -77,6 +77,8 @@
 		BB1C67102237205700D75848 /* Coding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C670F2237205700D75848 /* Coding.swift */; };
 		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
 		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
+		BB1D8A1022C179EF001D12A0 /* MainLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1D8A0F22C179EF001D12A0 /* MainLikesViewController.swift */; };
+		BB1D8A1322C17A0C001D12A0 /* MailLikesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1D8A1222C17A0C001D12A0 /* MailLikesViewController.storyboard */; };
 		BB20118B228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */; };
 		BB20118D228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */; };
 		BB20118F228EAB4100BC85C0 /* InfoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */; };
@@ -398,6 +400,8 @@
 		BB1C670F2237205700D75848 /* Coding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coding.swift; sourceTree = "<group>"; };
 		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
+		BB1D8A0F22C179EF001D12A0 /* MainLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLikesViewController.swift; sourceTree = "<group>"; };
+		BB1D8A1222C17A0C001D12A0 /* MailLikesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MailLikesViewController.storyboard; sourceTree = "<group>"; };
 		BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFieldInputViewController.swift; sourceTree = "<group>"; };
 		BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimpleFieldInputViewController.storyboard; sourceTree = "<group>"; };
 		BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -740,6 +744,7 @@
 				BB9D1B1A2255CFFA0074C099 /* Request Profile Flow */,
 				BBECBEC32237E67D008E8E91 /* Approve Profile Flow */,
 				BB0AE4E422536F75005DD315 /* Update User */,
+				BB1D8A1122C179FC001D12A0 /* Likes Tab */,
 				BB178928225BFFD40033ACC6 /* Chat Tab */,
 				BB18788E21E2B1D900964F26 /* Discovery Flow */,
 				BB5F1DA0225318040042D443 /* Me Tab */,
@@ -1148,6 +1153,15 @@
 				BBCA2D6F229DF1150057491A /* QR Scanner */,
 			);
 			path = "Discovery Flow";
+			sourceTree = "<group>";
+		};
+		BB1D8A1122C179FC001D12A0 /* Likes Tab */ = {
+			isa = PBXGroup;
+			children = (
+				BB1D8A0F22C179EF001D12A0 /* MainLikesViewController.swift */,
+				BB1D8A1222C17A0C001D12A0 /* MailLikesViewController.storyboard */,
+			);
+			path = "Likes Tab";
 			sourceTree = "<group>";
 		};
 		BB201189228DFAD700BC85C0 /* Shared Components */ = {
@@ -2337,6 +2351,7 @@
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
 				BB178930225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard in Resources */,
 				BBBE7B9322721E1200C32EBE /* ApproveProfileViewController.storyboard in Resources */,
+				BB1D8A1322C17A0C001D12A0 /* MailLikesViewController.storyboard in Resources */,
 				BB9CB6A72259FAA700605A98 /* UpdateTextFieldController.storyboard in Resources */,
 				BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */,
 				BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */,
@@ -2554,6 +2569,7 @@
 				BB201191228F1CA300BC85C0 /* UserBasicInfoTableViewController.swift in Sources */,
 				BBA8AE9A2297D731003F1D79 /* PromptInputTableViewCell.swift in Sources */,
 				BBEA6363225BB22E00A50422 /* UpdateUIViewController.swift in Sources */,
+				BB1D8A1022C179EF001D12A0 /* MainLikesViewController.swift in Sources */,
 				BB20119B228F2B4A00BC85C0 /* MatchingPreferences.swift in Sources */,
 				BB17893F225E064F0033ACC6 /* ChatRequestTableViewCell.swift in Sources */,
 				BB20118B228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift in Sources */,
