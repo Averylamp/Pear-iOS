@@ -30,6 +30,10 @@ class SlackHelper: NSObject {
   func startNewSession() {
     self.userEvents = []
     self.startTime = CACurrentMediaTime()
+    if let user = DataStore.shared.currentPearUser {
+      self.userEvents.append(SlackEvent(text: user.toSlackStorySummary(profileStats: true, currentUserStats: true),
+                                        color: UIColor.green.hexColor))
+    }
   }
   
   func addEvent(text: String, color: UIColor = UIColor.black) {
@@ -80,8 +84,13 @@ class SlackHelper: NSObject {
       DataStore.shared.setDateToDefaults(flag: .userLastSlackStoryDate, date: Date())
     }
     if let user = DataStore.shared.currentPearUser {
-      self.userEvents.insert(SlackEvent(text: user.toSlackStorySummary(profileStats: true, currentUserStats: true),
-                                        color: UIColor.green.hexColor), at: 0)
+      if self.userEvents.count > 0 {
+        self.userEvents.insert(SlackEvent(text: "End Session: " + user.toSlackStorySummary(profileStats: true, currentUserStats: true),
+                                          color: UIColor.green.hexColor), at: 0)
+      } else {
+        self.userEvents.append(SlackEvent(text: user.toSlackStorySummary(profileStats: true, currentUserStats: true),
+                                          color: UIColor.green.hexColor))
+      }
     }
     self.userEvents.insert(SlackEvent(text: "_______________________________________\nSession Duration: \(Int(timePassed))s, Session Number: \(sessionNumber), Events: \(self.userEvents.count) \(lastSessionString != nil ? "\n\(lastSessionString!)" : "")", color: UIColor.purple.hexColor), at: 0)
     let urlString = "https://hooks.slack.com/services/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"
