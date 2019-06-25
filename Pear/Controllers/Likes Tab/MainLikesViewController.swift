@@ -8,22 +8,44 @@
 
 import UIKit
 
+extension Notification.Name {
+  static let refreshLikesTab = Notification.Name("refreshLikesTab")
+}
+
 class MainLikesViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  @IBOutlet weak var scrollView: UIScrollView!
+  var requestsTVC: ChatRequestsTableViewController?
+  private var messageRefreshTimer: Timer = Timer()
 
-        // Do any additional setup after loading the view.
-    }
+  /// Factory method for creating this view controller.
+  ///
+  /// - Returns: Returns an instance of this view controller.
+  class func instantiate() -> MainLikesViewController? {
+    guard let mainLikesVC = R.storyboard.mainLikesViewController
+      .instantiateInitialViewController() else { return nil }
+    return mainLikesVC
+  }
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+// MARK: - Life Cycle
+extension MainLikesViewController {
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.setup()
+    self.stylize()
+  }
+  
+  /// Setup should only be called once
+  func setup() {
+    
+  }
+  
+  /// Stylize can be called more than once
+  func stylize() {
+    
+  }
+  
 }

@@ -31,6 +31,15 @@ class MainTabBarViewController: UITabBarController {
       mainTabVC.addChild(discoverVC)
     }
     
+    //      Likes
+    if let likesVC = MainLikesViewController.instantiate(),
+      let regularImage = R.image.tabIconDiscovery(),
+      let selectedImage = R.image.tabIconDiscoverySelected() {
+      likesVC.tabBarItem = UITabBarItem(title: nil,
+                                        image: regularImage,
+                                        selectedImage: selectedImage)
+      mainTabVC.addChild(likesVC)
+    }
     //      Chat
     if let chatTabVC = ChatMainViewController.instantiate(),
       let regularImage = R.image.tabIconChat(),
@@ -90,7 +99,7 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
       // NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
-      index == 1 {
+      index == 2 {
       DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
@@ -100,11 +109,13 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController) {
       switch index {
       case 0:
-        SlackHelper.shared.addEvent(text: "User switched to Discovery", color: UIColor.orange)
+        SlackHelper.shared.addEvent(text: "User switched to Discovery Tab", color: UIColor.orange)
       case 1:
-        SlackHelper.shared.addEvent(text: "User switched to Chat", color: UIColor.orange)
+        SlackHelper.shared.addEvent(text: "User switched to Likes Tab", color: UIColor.orange)
       case 2:
-        SlackHelper.shared.addEvent(text: "User switched to Profile", color: UIColor.orange)
+        SlackHelper.shared.addEvent(text: "User switched to Chat Tab", color: UIColor.orange)
+      case 3:
+        SlackHelper.shared.addEvent(text: "User switched to Profile Tab", color: UIColor.orange)
       default:
         break        
       }
