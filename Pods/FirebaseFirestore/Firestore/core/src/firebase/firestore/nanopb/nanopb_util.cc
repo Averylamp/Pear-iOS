@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2019 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,23 @@
  * limitations under the License.
  */
 
-#include "Firestore/core/src/firebase/firestore/nanopb/nanopb_string.h"
+#include "Firestore/core/src/firebase/firestore/nanopb/nanopb_util.h"
 
 #include <cstdlib>
-#include <utility>
-
-#include "Firestore/core/src/firebase/firestore/nanopb/nanopb_util.h"
 
 namespace firebase {
 namespace firestore {
 namespace nanopb {
 
-String::~String() {
-  std::free(bytes_);
+pb_bytes_array_t* CopyBytesArray(const pb_bytes_array_t* buffer) {
+  if (buffer == nullptr) return nullptr;
+  return MakeBytesArray(buffer->bytes, buffer->size);
 }
 
-/* static */ pb_bytes_array_t* String::MakeBytesArray(absl::string_view value) {
-  pb_size_t size = CheckedSize(value.size());
+pb_bytes_array_t* MakeBytesArray(const void* data, size_t size) {
+  if (size == 0) return nullptr;
+
+  pb_size_t pb_size = CheckedSize(size);
 
   // Allocate one extra byte for the null terminator that's not necessarily
   // there in a string_view. As long as we're making a copy, might as well
@@ -39,36 +39,25 @@ String::~String() {
   // embedded nulls so we shouldn't be using this as a C string under normal
   // circumstances.
   auto result = static_cast<pb_bytes_array_t*>(
-      malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(size) + 1));
-  result->size = size;
-  memcpy(result->bytes, value.data(), size);
-  result->bytes[size] = '\0';
+      std::malloc(PB_BYTES_ARRAY_T_ALLOCSIZE(pb_size + 1)));
+  result->size = pb_size;
+  std::memcpy(result->bytes, data, pb_size);
+  result->bytes[pb_size] = '\0';
 
   return result;
 }
 
-pb_bytes_array_t* String::release() {
-  pb_bytes_array_t* result = bytes_;
-  bytes_ = nullptr;
-  return result;
+std::string MakeString(const pb_bytes_array_t* str) {
+  if (str == nullptr) return "";
+
+  auto bytes = reinterpret_cast<const char*>(str->bytes);
+  auto size = static_cast<size_t>(str->size);
+  return std::string{bytes, size};
 }
 
-void swap(String& lhs, String& rhs) noexcept {
-  using std::swap;
-  swap(lhs.bytes_, rhs.bytes_);
-}
-
-util::ComparisonResult String::CompareTo(const String& rhs) const {
-  return util::Compare(absl::string_view{*this}, absl::string_view{rhs});
-}
-
-/* static */ String String::Wrap(pb_bytes_array_t* bytes) {
-  return String{bytes};
-}
-
-/* static */ absl::string_view String::ToStringView(pb_bytes_array_t* bytes) {
-  const char* str = reinterpret_cast<const char*>(bytes->bytes);
-  return absl::string_view{str, bytes->size};
+absl::string_view MakeStringView(const ByteString& bytes) {
+  const char* str = reinterpret_cast<const char*>(bytes.data());
+  return absl::string_view{str, bytes.size()};
 }
 
 }  // namespace nanopb
