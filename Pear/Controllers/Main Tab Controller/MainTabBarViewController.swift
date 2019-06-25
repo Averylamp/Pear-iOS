@@ -32,13 +32,18 @@ class MainTabBarViewController: UITabBarController {
     }
     
     //      Likes
-    if let likesVC = MainLikesViewController.instantiate(),
-      let regularImage = R.image.tabIconDiscovery(),
-      let selectedImage = R.image.tabIconDiscoverySelected() {
-      likesVC.tabBarItem = UITabBarItem(title: nil,
-                                        image: regularImage,
-                                        selectedImage: selectedImage)
-      mainTabVC.addChild(likesVC)
+    if let likesTabVC = MainLikesViewController.instantiate(),
+      let regularImage = R.image.tabIconChat(),
+      let selectedImage = R.image.tabIconChatSelected() {
+      likesTabVC.tabBarItem = UITabBarItem(title: nil,
+                                        image: regularImage.imageWith(newSize:
+                                          CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+                                          .withRenderingMode(.alwaysOriginal),
+                                        selectedImage: selectedImage.imageWith(newSize:
+                                          CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+                                          .withRenderingMode(.alwaysOriginal))
+      likesTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+      mainTabVC.addChild(likesTabVC)
     }
     //      Chat
     if let chatTabVC = ChatMainViewController.instantiate(),
