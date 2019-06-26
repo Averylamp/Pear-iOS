@@ -36,6 +36,8 @@
 		91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */; };
 		91BEE2AC225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */; };
 		91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */; };
+		BB00578522C4256E00AE4465 /* LikeFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00578422C4256E00AE4465 /* LikeFullProfileViewController.swift */; };
+		BB00578722C4257900AE4465 /* LikeFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB00578622C4257900AE4465 /* LikeFullProfileViewController.storyboard */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
@@ -357,6 +359,8 @@
 		91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterTableViewCell.swift; sourceTree = "<group>"; };
 		91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFilterViewController.storyboard; sourceTree = "<group>"; };
 		91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterViewController.swift; sourceTree = "<group>"; };
+		BB00578422C4256E00AE4465 /* LikeFullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeFullProfileViewController.swift; sourceTree = "<group>"; };
+		BB00578622C4257900AE4465 /* LikeFullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LikeFullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
@@ -1160,6 +1164,8 @@
 			children = (
 				BB1D8A0F22C179EF001D12A0 /* MainLikesViewController.swift */,
 				BB1D8A1222C17A0C001D12A0 /* MainLikesViewController.storyboard */,
+				BB00578422C4256E00AE4465 /* LikeFullProfileViewController.swift */,
+				BB00578622C4257900AE4465 /* LikeFullProfileViewController.storyboard */,
 			);
 			path = "Likes Tab";
 			sourceTree = "<group>";
@@ -2358,6 +2364,7 @@
 				BB687E83228D828E00F45C9D /* OnboardingPreferencesViewController.storyboard in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				BB687E5E228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard in Resources */,
+				BB00578722C4257900AE4465 /* LikeFullProfileViewController.storyboard in Resources */,
 				BB139F01229A9AB200D7955A /* AccountSettingsViewController.storyboard in Resources */,
 				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
 				BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */,
@@ -2663,6 +2670,7 @@
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */,
 				BB9D1B242255E1310074C099 /* PearMatchesAPI.swift in Sources */,
+				BB00578522C4256E00AE4465 /* LikeFullProfileViewController.swift in Sources */,
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */,
