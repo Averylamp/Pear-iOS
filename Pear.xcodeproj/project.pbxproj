@@ -36,6 +36,7 @@
 		91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */; };
 		91BEE2AC225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */; };
 		91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */; };
+		91F6306A22C3193E00FAC38C /* MatchRequestCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6306922C3193E00FAC38C /* MatchRequestCreationData.swift */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
@@ -357,6 +358,7 @@
 		91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterTableViewCell.swift; sourceTree = "<group>"; };
 		91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFilterViewController.storyboard; sourceTree = "<group>"; };
 		91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterViewController.swift; sourceTree = "<group>"; };
+		91F6306922C3193E00FAC38C /* MatchRequestCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRequestCreationData.swift; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
@@ -1500,6 +1502,7 @@
 				BB20186D227B9EAE0070F0B3 /* UpdateProfileData.swift */,
 				BB986A42220F76BF00759A14 /* UserProfileCreationData.swift */,
 				BBE91C832268D24800D285E3 /* UserCreationData.swift */,
+				91F6306922C3193E00FAC38C /* MatchRequestCreationData.swift */,
 			);
 			path = "Creation Models";
 			sourceTree = "<group>";
@@ -2599,6 +2602,7 @@
 				913E3B07229F4869000B70A8 /* PearEvent.swift in Sources */,
 				BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,
+				91F6306A22C3193E00FAC38C /* MatchRequestCreationData.swift in Sources */,
 				BB3FA79C22BC342800555FCA /* FullChatViewController+Keyboard.swift in Sources */,
 				BBB71B6A22947934002CDDD1 /* UserGenderInputViewController.swift in Sources */,
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
