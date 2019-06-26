@@ -60,7 +60,7 @@ extension PearMatchesAPI {
     let fullDictionary: [String: Any] = [
       "query": PearMatchesAPI.createMatchRequestQuery,
       "variables": [
-        "requestInput": matchCreationData
+        "requestInput": matchCreationData.toGraphQLInput()
       ]
     ]
     
