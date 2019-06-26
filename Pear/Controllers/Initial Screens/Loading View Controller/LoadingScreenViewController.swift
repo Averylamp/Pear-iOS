@@ -138,10 +138,12 @@ extension LoadingScreenViewController {
   }
   
   func testCreateMatchRequests() {
-    PearMatchesAPI.shared.createMatchRequest(sentByUserID: "5c82162afec46c84e924a336",
-                                             sentForUserID: "5c82162afec46c84e924a332",
-                                             receivedByUserID: "5c82162afec46c84e924a334",
-                                             requestText: nil) { (result) in
+    let averyID = "5c82162afec46c84e924a332"
+    let joshID = "5c82162afec46c84e924a334"
+    let madeID = "5c82162afec46c84e924a336"
+    let joelID = "5c82162afec46c84e924a339"
+    let matchCreationData1 = MatchRequestCreationData(sentByUserID: madeID, sentForUserID: averyID, receivedByUserID: joshID)
+    PearMatchesAPI.shared.createMatchRequest(matchCreationData: matchCreationData1) { (result) in
                                               switch result {
                                               case .success(let successful):
                                                 if successful {
@@ -154,11 +156,8 @@ extension LoadingScreenViewController {
                                                 print("Create Match Request 1 failure: \(error)")
                                               }
     }
-    
-    PearMatchesAPI.shared.createMatchRequest(sentByUserID: "5c82162afec46c84e924a332",
-                                             sentForUserID: "5c82162afec46c84e924a332",
-                                             receivedByUserID: "5c82162afec46c84e924a339",
-                                             requestText: nil) { (result) in
+    let matchCreationData2 = MatchRequestCreationData(sentByUserID: averyID, sentForUserID: averyID, receivedByUserID: joelID)
+    PearMatchesAPI.shared.createMatchRequest(matchCreationData: matchCreationData2) { (result) in
                                               switch result {
                                               case .success(let successful):
                                                 if successful {

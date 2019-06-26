@@ -189,10 +189,8 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
       self.fullProfileData.decisionMade = true
       delegate.decisionMade()
     }
-    PearMatchesAPI.shared.createMatchRequest(sentByUserID: sentByUserID,
-                                             sentForUserID: sentForUserID,
-                                             receivedByUserID: self.profileID,
-                                             requestText: requestText) { (result) in
+    let matchCreationData = MatchRequestCreationData(sentByUserID: sentByUserID, sentForUserID: sentForUserID, receivedByUserID: self.profileID)
+    PearMatchesAPI.shared.createMatchRequest(matchCreationData: matchCreationData) { (result) in
                                               DispatchQueue.main.async {
                                                 SlackHelper.shared.addEvent(text: "User Sent \(sentByUserID == sentForUserID ? "Personal" : "Matchmaker") Request. to profile: \(self.fullProfileData.firstName ?? "") (\(self.fullProfileData.age ?? 0)) \(self.fullProfileData.gender?.toString() ?? "Unknown Gender"), Images: \(self.fullProfileData.imageContainers.count), prompts: \(self.fullProfileData.questionResponses.count)\(requestText != nil ? "\nRequest Text: \(requestText!)" : "")) \(self.slackHelperDetails())",
                                                   color: UIColor.green)
