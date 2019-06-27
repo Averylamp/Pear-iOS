@@ -48,22 +48,48 @@
                                     <constraint firstItem="Wbx-An-DIk" firstAttribute="centerY" secondItem="Ash-Bi-N4U" secondAttribute="centerY" id="zj9-9m-rzS"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R4-RO-wDN">
+                                <rect key="frame" x="338" y="772" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="HsN-60-a5E"/>
+                                    <constraint firstAttribute="width" constant="60" id="gcL-0b-XmS"/>
+                                </constraints>
+                                <state key="normal" image="discovery-icon-like"/>
+                                <connections>
+                                    <action selector="acceptRequestButton:" destination="zFS-To-qhf" eventType="touchUpInside" id="ddc-bo-AgD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHN-Pl-Gch">
+                                <rect key="frame" x="16" y="769" width="66.5" height="66.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="discovery-icon-skip"/>
+                                <connections>
+                                    <action selector="rejectRequestButton:" destination="zFS-To-qhf" eventType="touchUpInside" id="jyw-Ln-Wvx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vHN-Pl-Gch" firstAttribute="centerY" secondItem="2R4-RO-wDN" secondAttribute="centerY" id="2ci-jH-81i"/>
                             <constraint firstItem="nwy-2L-NuK" firstAttribute="top" secondItem="Ash-Bi-N4U" secondAttribute="bottom" id="5B2-nX-ZoK"/>
                             <constraint firstItem="Ash-Bi-N4U" firstAttribute="trailing" secondItem="XZ3-UL-OL9" secondAttribute="trailing" id="6f6-S6-eXt"/>
+                            <constraint firstItem="XZ3-UL-OL9" firstAttribute="bottom" secondItem="2R4-RO-wDN" secondAttribute="bottom" constant="30" id="89g-bh-Ib4"/>
                             <constraint firstItem="Ash-Bi-N4U" firstAttribute="top" secondItem="XZ3-UL-OL9" secondAttribute="top" id="E8Q-UK-NdS"/>
+                            <constraint firstItem="vHN-Pl-Gch" firstAttribute="leading" secondItem="XZ3-UL-OL9" secondAttribute="leading" constant="16" id="GV2-Ri-F3H"/>
                             <constraint firstItem="XZ3-UL-OL9" firstAttribute="bottom" secondItem="nwy-2L-NuK" secondAttribute="bottom" id="SU7-SL-brl"/>
                             <constraint firstItem="XZ3-UL-OL9" firstAttribute="trailing" secondItem="nwy-2L-NuK" secondAttribute="trailing" id="WCV-lG-Ecz"/>
                             <constraint firstItem="Ash-Bi-N4U" firstAttribute="leading" secondItem="XZ3-UL-OL9" secondAttribute="leading" id="hia-4F-jN1"/>
                             <constraint firstItem="nwy-2L-NuK" firstAttribute="leading" secondItem="XZ3-UL-OL9" secondAttribute="leading" id="nB2-1l-96b"/>
+                            <constraint firstItem="XZ3-UL-OL9" firstAttribute="trailing" secondItem="2R4-RO-wDN" secondAttribute="trailing" constant="16" id="pq3-gK-gzf"/>
                             <constraint firstItem="nwy-2L-NuK" firstAttribute="centerX" secondItem="XZ3-UL-OL9" secondAttribute="centerX" id="sNd-3K-fwa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XZ3-UL-OL9"/>
                     </view>
                     <connections>
+                        <outlet property="acceptProfileButton" destination="2R4-RO-wDN" id="v52-op-Cbn"/>
                         <outlet property="profileNameLabel" destination="Wbx-An-DIk" id="FWT-ch-6mL"/>
+                        <outlet property="rejectProfileButton" destination="vHN-Pl-Gch" id="WPL-rP-fmR"/>
                         <outlet property="scrollView" destination="nwy-2L-NuK" id="rCS-ua-8E3"/>
                     </connections>
                 </viewController>
@@ -72,4 +98,8 @@
             <point key="canvasLocation" x="253.59999999999999" y="81.409295352323838"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="discovery-icon-like" width="73.333335876464844" height="73.333335876464844"/>
+        <image name="discovery-icon-skip" width="66.666664123535156" height="66.666664123535156"/>
+    </resources>
 </document>
