@@ -12,6 +12,9 @@ class LikeFullProfileViewController: UIViewController {
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var profileNameLabel: UILabel!
+  @IBOutlet weak var rejectProfileButton: UIButton!
+  @IBOutlet weak var acceptProfileButton: UIButton!
+  
   var match: Match!
   
   /// Factory method for creating this view controller.
@@ -24,6 +27,15 @@ class LikeFullProfileViewController: UIViewController {
     return likeFullProfileVC
   }
 
+  @IBAction func acceptRequestButton(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+  }
+  
+  @IBAction func rejectRequestButton(_ sender: Any) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+
+  }
+  
 }
 
 // MARK: - Life Cycle
@@ -102,16 +114,17 @@ extension LikeFullProfileViewController {
         if let font = R.font.openSansSemiBold(size: 14) {
           requestMatchmakerMessageLabel.font = font
         }
+        requestMatchmakerMessageLabel.textColor = R.color.secondaryTextColor()
         requestMatchmakerMessageLabel.text = matchmakerRequestMessage
         requestMatchmakerMessageLabel.numberOfLines = 0
         requestCardView.addSubview(requestMatchmakerMessageLabel)
         requestCardView.addConstraints([
           NSLayoutConstraint(item: requestMatchmakerMessageLabel, attribute: .left, relatedBy: .equal,
-                             toItem: requestCardView, attribute: .left, multiplier: 1.0, constant: 15.0),
+                             toItem: requestMessageLabel, attribute: .left, multiplier: 1.0, constant: 0.0),
           NSLayoutConstraint(item: requestMatchmakerMessageLabel, attribute: .top, relatedBy: .equal,
-                             toItem: requestMessageLabel, attribute: .bottom, multiplier: 1.0, constant: -15.0),
+                             toItem: requestMessageLabel, attribute: .bottom, multiplier: 1.0, constant: 8.0),
           NSLayoutConstraint(item: requestMatchmakerMessageLabel, attribute: .right, relatedBy: .equal,
-                             toItem: requestCardView, attribute: .right, multiplier: 1.0, constant: -15.0),
+                             toItem: requestMessageLabel, attribute: .right, multiplier: 1.0, constant: 0.0),
           NSLayoutConstraint(item: requestMatchmakerMessageLabel, attribute: .bottom, relatedBy: .equal,
                              toItem: requestCardView, attribute: .bottom, multiplier: 1.0, constant: -15.0)
           ])
@@ -158,7 +171,16 @@ extension LikeFullProfileViewController {
   
   /// Stylize can be called more than once
   func stylize() {
-    
+    self.stylizeActionButton(button: self.acceptProfileButton)
+    self.stylizeActionButton(button: self.rejectProfileButton)
+  }
+  
+  func stylizeActionButton(button: UIButton) {
+    button.layer.cornerRadius = button.frame.height / 2.0
+    button.layer.shadowOpacity = 0.2
+    button.layer.shadowColor = UIColor.black.cgColor
+    button.layer.shadowRadius = 6
+    button.layer.shadowOffset = CGSize(width: 2, height: 2)
   }
   
 }
