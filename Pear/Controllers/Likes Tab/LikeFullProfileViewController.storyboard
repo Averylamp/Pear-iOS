@@ -63,9 +63,8 @@
                         <viewLayoutGuide key="safeArea" id="XZ3-UL-OL9"/>
                     </view>
                     <connections>
-                        <outlet property="headerHeightConstraint" destination="LyB-ez-1P7" id="uLh-tV-FZz"/>
-                        <outlet property="profileNameLabel" destination="Wbx-An-DIk" id="zv0-KT-R6x"/>
-                        <outlet property="scrollView" destination="nwy-2L-NuK" id="wRv-PN-WDD"/>
+                        <outlet property="profileNameLabel" destination="Wbx-An-DIk" id="FWT-ch-6mL"/>
+                        <outlet property="scrollView" destination="nwy-2L-NuK" id="rCS-ua-8E3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQa-0R-lMl" userLabel="First Responder" sceneMemberID="firstResponder"/>

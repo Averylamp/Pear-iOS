@@ -102,11 +102,11 @@ extension MainLikesViewController: ChatRequestTableViewControllerDelegate {
     
     DispatchQueue.main.async {
       HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-      guard let fullChatVC = FullChatViewController.instantiate(match: match, chat: chat) else {
+      guard let fullRequestVC = LikeFullProfileViewController.instantiate(match: match) else {
         print("Failed to instantiate full chat VC")
         return
       }
-      self.navigationController?.pushViewController(fullChatVC, animated: true)
+      self.navigationController?.pushViewController(fullRequestVC, animated: true)
       
     }
   }
