@@ -16,21 +16,21 @@ class MatchRequestCreationData: GraphQLInput {
   var sentForUserID: String
   var receivedByUserID: String
   var requestText: String?
-  var photo: ImageContainer?
-  var prompt: QuestionResponseItem?
+  var likedPhoto: ImageContainer?
+  var likedPrompt: QuestionResponseItem?
   
   init(sentByUserID: String,
        sentForUserID: String,
        receivedByUserID: String,
        requestText: String? = nil,
-       photo: ImageContainer? = nil,
-       prompt: QuestionResponseItem? = nil) {
+       likedPhoto: ImageContainer? = nil,
+       likedPrompt: QuestionResponseItem? = nil) {
     self.sentByUserID = sentByUserID
     self.sentForUserID = sentForUserID
     self.receivedByUserID = receivedByUserID
     self.requestText = requestText
-    self.photo = photo
-    self.prompt = prompt
+    self.likedPhoto = likedPhoto
+    self.likedPrompt = likedPrompt
   }
   
   func toGraphQLInput() -> [String: Any] {
@@ -42,9 +42,9 @@ class MatchRequestCreationData: GraphQLInput {
     if let requestText = self.requestText {
       requestInput["requestText"] = requestText
     }
-    if let photo = self.photo {
+    if let photo = self.likedPhoto {
       requestInput["likedPhoto"] = photo.dictionary
-    } else if let prompt = self.prompt {
+    } else if let prompt = self.likedPrompt {
       requestInput["likedPrompt"] = prompt.toGraphQLInput()
     }
     return requestInput

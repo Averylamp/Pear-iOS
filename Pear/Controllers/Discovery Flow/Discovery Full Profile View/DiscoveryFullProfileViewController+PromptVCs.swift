@@ -18,7 +18,7 @@ extension DiscoveryFullProfileViewController {
       blockingButton.removeFromSuperview()
     }
     let blockingButton = UIButton()
-    blockingButton.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
+    blockingButton.backgroundColor = UIColor(white: 0.0, alpha: 0.6)
     blockingButton.translatesAutoresizingMaskIntoConstraints = false
     blockingButton.addTarget(self,
                              action: #selector(DiscoveryFullProfileViewController.fullPageBlockerClicked(sender:)),
@@ -70,12 +70,18 @@ extension DiscoveryFullProfileViewController {
     })
   }
   
-  func displayPersonalRequestVC(personalUserID: String, thumbnailImageURL: URL, requestPersonName: String) {
+  func displayPersonalRequestVC(personalUserID: String,
+                                thumbnailImageURL: URL,
+                                requestPersonName: String,
+                                likedPhoto: ImageContainer? = nil,
+                                ikedPrompt: QuestionResponseItem? = nil) {
     
-    guard let personalRequestVC = ChatRequestPersonalViewController
+    guard let personalRequestVC = PersonalLikeViewController
       .instantiate(personalUserID: personalUserID,
                    thumbnailImageURL: thumbnailImageURL,
-                   requestPersonName: requestPersonName) else {
+                   requestPersonName: requestPersonName,
+                   likedPhoto: likedPhoto,
+                   likedPrompt: likedPrompt) else {
                     print("Failed to create Personal Request VC")
                     return
     }
@@ -87,7 +93,7 @@ extension DiscoveryFullProfileViewController {
     personalRequestVC.view.translatesAutoresizingMaskIntoConstraints = false
     let centerYConstraint = NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .centerY, relatedBy: .equal,
                                                toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 40)
-    centerYConstraint.priority = .defaultHigh
+    centerYConstraint.priority = UILayoutPriority(120)
     let requestBottomConstraint = NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .bottom, relatedBy: .lessThanOrEqual,
                                                      toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: -20)
     self.chatRequestVCBottomConstraint = requestBottomConstraint
@@ -97,9 +103,9 @@ extension DiscoveryFullProfileViewController {
       centerYConstraint,
       requestBottomConstraint,
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .left, relatedBy: .equal,
-                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 30.0),
+                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 20.0),
       NSLayoutConstraint(item: personalRequestVC.view as Any, attribute: .right, relatedBy: .equal,
-                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: -30.0)
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: -20.0)
       ])
     personalRequestVC.didMove(toParent: self)
     self.view.layoutIfNeeded()
@@ -179,7 +185,7 @@ extension DiscoveryFullProfileViewController {
 
 extension DiscoveryFullProfileViewController: PearModalDelegate {
   
-  func createPearRequest(sentByUserID: String, sentForUserID: String, requestText: String?) {
+  func createPearRequest(sentByUserID: String, sentForUserID: String, requestText: String?, likedPhoto: ImageContainer?, likedPrompt: QuestionResponseItem?) {
     guard !isSendingRequest else {
       print("Is already sending request")
       return
@@ -189,7 +195,11 @@ extension DiscoveryFullProfileViewController: PearModalDelegate {
       self.fullProfileData.decisionMade = true
       delegate.decisionMade()
     }
-    let matchCreationData = MatchRequestCreationData(sentByUserID: sentByUserID, sentForUserID: sentForUserID, receivedByUserID: self.profileID)
+    let matchCreationData = MatchRequestCreationData(sentByUserID: sentByUserID,
+                                                     sentForUserID: sentForUserID,
+                                                     receivedByUserID: self.profileID,
+                                                     likedPhoto: likedPhoto,
+                                                     likedPrompt: likedPrompt)
     PearMatchesAPI.shared.createMatchRequest(matchCreationData: matchCreationData) { (result) in
                                               DispatchQueue.main.async {
                                                 SlackHelper.shared.addEvent(text: "User Sent \(sentByUserID == sentForUserID ? "Personal" : "Matchmaker") Request. to profile: \(self.fullProfileData.firstName ?? "") (\(self.fullProfileData.age ?? 0)) \(self.fullProfileData.gender?.toString() ?? "Unknown Gender"), Images: \(self.fullProfileData.imageContainers.count), prompts: \(self.fullProfileData.questionResponses.count)\(requestText != nil ? "\nRequest Text: \(requestText!)" : "")) \(self.slackHelperDetails())",

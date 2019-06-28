@@ -37,6 +37,8 @@
 		91BEE2AC225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */; };
 		91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */; };
 		91F6306A22C3193E00FAC38C /* MatchRequestCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6306922C3193E00FAC38C /* MatchRequestCreationData.swift */; };
+		91F6306D22C564EE00FAC38C /* PersonalLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6306C22C564EE00FAC38C /* PersonalLikeViewController.swift */; };
+		91F6306F22C564FE00FAC38C /* PersonalLikeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F6306E22C564FE00FAC38C /* PersonalLikeViewController.storyboard */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
@@ -359,6 +361,8 @@
 		91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFilterViewController.storyboard; sourceTree = "<group>"; };
 		91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterViewController.swift; sourceTree = "<group>"; };
 		91F6306922C3193E00FAC38C /* MatchRequestCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRequestCreationData.swift; sourceTree = "<group>"; };
+		91F6306C22C564EE00FAC38C /* PersonalLikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalLikeViewController.swift; sourceTree = "<group>"; };
+		91F6306E22C564FE00FAC38C /* PersonalLikeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalLikeViewController.storyboard; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
@@ -931,6 +935,15 @@
 			path = Filters;
 			sourceTree = "<group>";
 		};
+		91F6306B22C564AA00FAC38C /* Personal Like */ = {
+			isa = PBXGroup;
+			children = (
+				91F6306C22C564EE00FAC38C /* PersonalLikeViewController.swift */,
+				91F6306E22C564FE00FAC38C /* PersonalLikeViewController.storyboard */,
+			);
+			path = "Personal Like";
+			sourceTree = "<group>";
+		};
 		BB0628C0224634A4000D9B12 /* ChatAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1147,6 +1160,7 @@
 		BB18788E21E2B1D900964F26 /* Discovery Flow */ = {
 			isa = PBXGroup;
 			children = (
+				91F6306B22C564AA00FAC38C /* Personal Like */,
 				BB633D3422862D76005E120F /* Decision Discovery */,
 				BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */,
 				91BEE2A3225C3C8000A53171 /* Filters */,
@@ -2302,6 +2316,7 @@
 				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
 				BBF93E8B2267CF7A002841EE /* OpenSans-SemiBold.ttf in Resources */,
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
+				91F6306F22C564FE00FAC38C /* PersonalLikeViewController.storyboard in Resources */,
 				BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */,
 				BB855B1722A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard in Resources */,
 				BB855B1322A2FDB100F54EA4 /* EditPreviewViewController.storyboard in Resources */,
@@ -2660,6 +2675,7 @@
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB687E55228D535700F45C9D /* LocationBlockedViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
+				91F6306D22C564EE00FAC38C /* PersonalLikeViewController.swift in Sources */,
 				BBB71B7F2295273A002CDDD1 /* UserReligionInputViewController.swift in Sources */,
 				BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */,
 				BB687E85228D829900F45C9D /* OnboardingPicturesViewController.swift in Sources */,

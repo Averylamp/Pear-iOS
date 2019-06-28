@@ -82,7 +82,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHQ-uN-Sys">
                                 <rect key="frame" x="26" y="195.5" width="323" height="52"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Sent them both a message..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fVl-4c-Chp">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Send them both a message..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fVl-4c-Chp">
                                         <rect key="frame" x="8" y="8" width="307" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
