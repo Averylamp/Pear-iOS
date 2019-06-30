@@ -19,6 +19,8 @@
 		71423908976D3BB575907A0C /* Pods_Pear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DCB87639F1C89BC581B001 /* Pods_Pear.framework */; };
 		9101E0C9224DD3A7009646AB /* VersionBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */; };
 		9101E0CB224DD51F009646AB /* VersionBlockViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */; };
+		9104D5B422C7F789004BFE9D /* RelationshipStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9104D5B322C7F789004BFE9D /* RelationshipStatusViewController.swift */; };
+		9104D5B622C7F798004BFE9D /* RelationshipStatusViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9104D5B522C7F798004BFE9D /* RelationshipStatusViewController.storyboard */; };
 		911AD0F122619FDD00A743C2 /* AllowNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AD0F022619FDD00A743C2 /* AllowNotificationsViewController.swift */; };
 		911AD0F322619FED00A743C2 /* AllowNotificationsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */; };
 		911AD0F62261AE6900A743C2 /* AllowLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */; };
@@ -340,6 +342,8 @@
 		89DCB87639F1C89BC581B001 /* Pods_Pear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9101E0C8224DD3A7009646AB /* VersionBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionBlockViewController.swift; sourceTree = "<group>"; };
 		9101E0CA224DD51F009646AB /* VersionBlockViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionBlockViewController.storyboard; sourceTree = "<group>"; };
+		9104D5B322C7F789004BFE9D /* RelationshipStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipStatusViewController.swift; sourceTree = "<group>"; };
+		9104D5B522C7F798004BFE9D /* RelationshipStatusViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RelationshipStatusViewController.storyboard; sourceTree = "<group>"; };
 		911AD0F022619FDD00A743C2 /* AllowNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowNotificationsViewController.swift; sourceTree = "<group>"; };
 		911AD0F222619FED00A743C2 /* AllowNotificationsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllowNotificationsViewController.storyboard; sourceTree = "<group>"; };
 		911AD0F52261AE6900A743C2 /* AllowLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowLocationViewController.swift; sourceTree = "<group>"; };
@@ -855,6 +859,15 @@
 			path = "Version Block Screen";
 			sourceTree = "<group>";
 		};
+		9104D5B222C7F771004BFE9D /* Relationship Status */ = {
+			isa = PBXGroup;
+			children = (
+				9104D5B322C7F789004BFE9D /* RelationshipStatusViewController.swift */,
+				9104D5B522C7F798004BFE9D /* RelationshipStatusViewController.storyboard */,
+			);
+			path = "Relationship Status";
+			sourceTree = "<group>";
+		};
 		911AD0EF22619E3200A743C2 /* Allow Notifications Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1335,6 +1348,7 @@
 				BB139F09229AB66600D7955A /* Page 2 */,
 				BB139F0A229AB66F00D7955A /* Page 3 */,
 				BB139F0B229AB67500D7955A /* Page 4 */,
+				9104D5B222C7F771004BFE9D /* Relationship Status */,
 			);
 			path = "Onboarding Explaination Pages";
 			sourceTree = "<group>";
@@ -2350,6 +2364,7 @@
 				BBA8AE972297D646003F1D79 /* PromptInputViewController.storyboard in Resources */,
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
 				BB178930225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard in Resources */,
+				9104D5B622C7F798004BFE9D /* RelationshipStatusViewController.storyboard in Resources */,
 				BBBE7B9322721E1200C32EBE /* ApproveProfileViewController.storyboard in Resources */,
 				BB1D8A1322C17A0C001D12A0 /* MailLikesViewController.storyboard in Resources */,
 				BB9CB6A72259FAA700605A98 /* UpdateTextFieldController.storyboard in Resources */,
@@ -2648,6 +2663,7 @@
 				91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */,
 				BB687E6B228D6D1100F45C9D /* OnboardingExplainationPage2ViewController.swift in Sources */,
 				911AD0F122619FDD00A743C2 /* AllowNotificationsViewController.swift in Sources */,
+				9104D5B422C7F789004BFE9D /* RelationshipStatusViewController.swift in Sources */,
 				BBCF41902227E137009CEC4A /* UIView+Styling.swift in Sources */,
 				BBBA5739226D9377000BCD5F /* ProfileCreationData.swift in Sources */,
 				BBFFBBDB222118B1002E1B54 /* ImageRepresentation.swift in Sources */,

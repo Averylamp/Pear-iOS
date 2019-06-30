@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fUP-yi-nYk">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Relationship Status View Controller-->
+        <scene sceneID="6Mg-kP-fQ1">
+            <objects>
+                <viewController id="fUP-yi-nYk" customClass="RelationshipStatusViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X6h-j6-Fms"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pjs-O0-yBR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8aw-xn-28n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8j-U8-8cu">
+                                <rect key="frame" x="20" y="90.5" width="335" height="104.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dR-E8-tl7">
+                                <rect key="frame" x="20" y="64" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFW-ZV-aW1">
+                                <rect key="frame" x="20" y="205" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AVt-dr-UGc"/>
+                                </constraints>
+                                <state key="normal" title="I'm Single"/>
+                                <connections>
+                                    <action selector="singleButtonClicked:" destination="fUP-yi-nYk" eventType="touchUpInside" id="7RN-GN-7dD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsn-Z8-opL">
+                                <rect key="frame" x="20" y="275" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="u7s-uy-JhL"/>
+                                </constraints>
+                                <state key="normal" title="I'm in a relationship"/>
+                                <connections>
+                                    <action selector="relationshipButtonClicked:" destination="fUP-yi-nYk" eventType="touchUpInside" id="6OL-UH-gT2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rsn-Z8-opL" firstAttribute="leading" secondItem="Tw9-JS-XnC" secondAttribute="leading" constant="20" id="5b2-OR-fTP"/>
+                            <constraint firstItem="1dR-E8-tl7" firstAttribute="centerX" secondItem="8aw-xn-28n" secondAttribute="centerX" id="7P4-Va-Mwe"/>
+                            <constraint firstItem="X8j-U8-8cu" firstAttribute="centerX" secondItem="8aw-xn-28n" secondAttribute="centerX" id="7TP-UV-gJB"/>
+                            <constraint firstItem="Tw9-JS-XnC" firstAttribute="bottom" secondItem="Rsn-Z8-opL" secondAttribute="bottom" constant="41" id="IRv-jU-ZSk"/>
+                            <constraint firstAttribute="trailing" secondItem="QFW-ZV-aW1" secondAttribute="trailing" constant="20" id="NY6-y6-a0p"/>
+                            <constraint firstItem="Rsn-Z8-opL" firstAttribute="top" secondItem="QFW-ZV-aW1" secondAttribute="bottom" constant="20" id="Tyj-VI-00Y"/>
+                            <constraint firstAttribute="trailing" secondItem="1dR-E8-tl7" secondAttribute="trailing" constant="20" id="VXy-gm-2ni"/>
+                            <constraint firstItem="QFW-ZV-aW1" firstAttribute="leading" secondItem="8aw-xn-28n" secondAttribute="leading" constant="20" id="iM0-ZU-fLC"/>
+                            <constraint firstItem="Tw9-JS-XnC" firstAttribute="trailing" secondItem="Rsn-Z8-opL" secondAttribute="trailing" constant="20" id="nMm-mT-XRW"/>
+                            <constraint firstItem="1dR-E8-tl7" firstAttribute="leading" secondItem="8aw-xn-28n" secondAttribute="leading" constant="20" id="nsg-3z-AG8"/>
+                            <constraint firstItem="1dR-E8-tl7" firstAttribute="top" secondItem="Tw9-JS-XnC" secondAttribute="top" constant="20" id="qMK-Cf-bnw"/>
+                            <constraint firstItem="X8j-U8-8cu" firstAttribute="leading" secondItem="8aw-xn-28n" secondAttribute="leading" constant="20" id="uv4-wf-hg7"/>
+                            <constraint firstItem="X8j-U8-8cu" firstAttribute="top" secondItem="1dR-E8-tl7" secondAttribute="bottom" constant="6" id="vbS-at-4yA"/>
+                            <constraint firstAttribute="trailing" secondItem="X8j-U8-8cu" secondAttribute="trailing" constant="20" id="x0s-gf-VOs"/>
+                            <constraint firstItem="QFW-ZV-aW1" firstAttribute="top" secondItem="X8j-U8-8cu" secondAttribute="bottom" constant="10" id="zNh-N1-0GT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tw9-JS-XnC"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="400"/>
+                    <connections>
+                        <outlet property="relationshipButton" destination="Rsn-Z8-opL" id="sZD-w6-h30"/>
+                        <outlet property="singleButton" destination="QFW-ZV-aW1" id="tBg-5o-ry2"/>
+                        <outlet property="subtitleLabel" destination="1dR-E8-tl7" id="aGz-E6-Gg8"/>
+                        <outlet property="titleLabel" destination="X8j-U8-8cu" id="hqz-5p-yea"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="liJ-Q5-akV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="137.6311844077961"/>
+        </scene>
+    </scenes>
+</document>
