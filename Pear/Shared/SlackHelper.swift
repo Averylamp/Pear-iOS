@@ -36,6 +36,10 @@ class SlackHelper: NSObject {
     }
   }
   
+  func addEvent(uniquePrefix: String, text: String, color: UIColor) {
+    
+  }
+  
   func addEvent(text: String, color: UIColor = UIColor.black) {
     self.userEvents.append(SlackEvent(text: text, color: color.hexColor))
     if self.userEvents.count == 98 {
