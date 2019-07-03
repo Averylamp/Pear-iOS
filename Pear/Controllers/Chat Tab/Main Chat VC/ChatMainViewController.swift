@@ -66,6 +66,7 @@ extension ChatMainViewController {
         }
       })
     }
+    SlackHelper.shared.addEvent(uniquePrefix: "Matches Loaded: ", text: "\(DataStore.shared.currentMatches.count) matches found\nUnread Messages: \(iconNumber)", color: iconNumber > 0 ? UIColor.green : UIColor.orange)
     DispatchQueue.main.async {
       if iconNumber > 0 {
         self.tabBarItem.badgeValue = "\(iconNumber)"
