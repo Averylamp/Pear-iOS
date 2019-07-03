@@ -29,8 +29,30 @@ class MainTabBarViewController: UITabBarController {
                                             .withRenderingMode(.alwaysOriginal))
       discoverVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(discoverVC)
+      print(discoverVC.view.frame)
     }
     
+    //      Likes
+    if let likesTabVC = MainLikesViewController.instantiate(),
+      let regularImage = R.image.tabIconLikes(),
+      let selectedImage = R.image.tabIconLikesSelected() {
+      likesTabVC.tabBarItem = UITabBarItem(title: nil,
+                                        image: regularImage.imageWith(newSize:
+                                          CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+                                          .withRenderingMode(.alwaysOriginal),
+                                        selectedImage: selectedImage.imageWith(newSize:
+                                          CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
+                                          .withRenderingMode(.alwaysOriginal))
+      likesTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+      likesTabVC.tabBarItem.badgeColor = UIColor(red: 1, green: 0.81, blue: 0.32, alpha: 1)
+      mainTabVC.addChild(likesTabVC)
+      // Delays preloading of VC
+      mainTabVC.delay(delay: 0.5) {
+        DispatchQueue.main.async {
+          print(likesTabVC.view.frame)
+        }
+      }
+    }
     //      Chat
     if let chatTabVC = ChatMainViewController.instantiate(),
       let regularImage = R.image.tabIconChat(),
@@ -43,7 +65,14 @@ class MainTabBarViewController: UITabBarController {
                                               CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                               .withRenderingMode(.alwaysOriginal))
       chatTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+      chatTabVC.tabBarItem.badgeColor = UIColor(red: 1, green: 0.81, blue: 0.32, alpha: 1)
       mainTabVC.addChild(chatTabVC)
+      // Delays preloading of VC
+      mainTabVC.delay(delay: 0.5) {
+        DispatchQueue.main.async {
+          print(chatTabVC.view.frame)
+        }
+      }
     }
     
     //      You
@@ -59,6 +88,12 @@ class MainTabBarViewController: UITabBarController {
                                           .withRenderingMode(.alwaysOriginal))
       meTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
       mainTabVC.addChild(meTabVC)
+      // Delays preloading of VC
+      mainTabVC.delay(delay: 0.5) {
+        DispatchQueue.main.async {
+          print(meTabVC.view.frame)
+        }
+      }
     }
     
     return mainTabVC
@@ -76,7 +111,17 @@ extension MainTabBarViewController {
   }
   
   func stylize() {
-    self.tabBar.barTintColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
+    self.tabBar.barTintColor = UIColor.white
+    self.tabBar.layer.borderWidth = 0
+    self.tabBar.layer.shadowOpacity = 1
+    self.tabBar.layer.shadowRadius = 8
+    self.tabBar.layer.shadowColor = UIColor(white: 0.90, alpha: 0.5).cgColor
+    self.tabBar.layer.shadowOffset = CGSize(width: 0, height: -2)
+    self.tabBar.layer.borderColor = UIColor.white.cgColor
+    self.tabBar.barStyle = .black
+//    self.tabBar.clipsToBounds = true
+//    self.tabBar.barStyle = .blackTranslucent
+//    self.tabBar.isTranslucent = true
   }
   
 }
@@ -90,7 +135,7 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
       // NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
-      index == 1 {
+      index == 2 {
       DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
@@ -100,11 +145,13 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController) {
       switch index {
       case 0:
-        SlackHelper.shared.addEvent(text: "User switched to Discovery", color: UIColor.orange)
+        SlackHelper.shared.addEvent(text: "User switched to Discovery Tab", color: UIColor.orange)
       case 1:
-        SlackHelper.shared.addEvent(text: "User switched to Chat", color: UIColor.orange)
+        SlackHelper.shared.addEvent(text: "User switched to Likes Tab", color: UIColor.orange)
       case 2:
-        SlackHelper.shared.addEvent(text: "User switched to Profile", color: UIColor.orange)
+        SlackHelper.shared.addEvent(text: "User switched to Chat Tab", color: UIColor.orange)
+      case 3:
+        SlackHelper.shared.addEvent(text: "User switched to Profile Tab", color: UIColor.orange)
       default:
         break        
       }

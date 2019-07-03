@@ -15,13 +15,8 @@ extension Notification.Name {
 
 class ChatMainViewController: UIViewController {
   
-  @IBOutlet weak var scrollView: UIScrollView!
-  @IBOutlet weak var inboxButton: UIButton!
-  @IBOutlet weak var requestsButton: UIButton!
+  @IBOutlet weak var headerContainer: UIView!
   private let currentChatsRefreshControl = UIRefreshControl()
-  private let requestsRefreshControl = UIRefreshControl()
-
-  var requestsTVC: ChatRequestsTableViewController?
   var matchesTVC: ChatRequestsTableViewController?
   private var messageRefreshTimer: Timer = Timer()
 
@@ -34,20 +29,6 @@ class ChatMainViewController: UIViewController {
     return chatMainVC
   }
   
-  @IBAction func inboxButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CHAT_nav_TAP_inboxTab", parameters: nil)
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    self.scrollView.scrollRectToVisible(CGRect(x: 0, y: 0,
-                                               width: self.scrollView.frame.width, height: self.scrollView.frame.height), animated: true)
-  }
-  
-  @IBAction func requestsButtonClicked(_ sender: Any) {
-    Analytics.logEvent("CHAT_nav_TAP_requestsTab", parameters: nil)
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    self.scrollView.scrollRectToVisible(CGRect(x: self.scrollView.frame.width, y: 0,
-                                               width: self.scrollView.frame.width, height: self.scrollView.frame.height), animated: true)
-  }
-  
 }
 
 // MARK: - Life Cycle
@@ -58,14 +39,11 @@ extension ChatMainViewController {
     
     self.setup()
     self.stylize()
-    self.setupRequestTVCs()
     NotificationCenter.default
       .addObserver(self,
                    selector: #selector(ChatMainViewController.reloadChatVCData),
                    name: .refreshChatsTab, object: nil)
-
     self.reloadChatVCData()
-
   }
   
   @objc func refreshControlChanged(sender: UIRefreshControl) {
@@ -75,23 +53,20 @@ extension ChatMainViewController {
   
   @objc func reloadChatVCData() {
     var iconNumber = 0
-    if let requestVC = self.requestsTVC {
-      print("Updating RequestTVC with :\(DataStore.shared.matchRequests.count) requests")
-      requestVC.updateMatches(matches: DataStore.shared.matchRequests)
-      DispatchQueue.main.async {
-        self.requestsButton.setTitle("Requests (\(DataStore.shared.matchRequests.count))", for: .normal)
-      }
-      iconNumber += DataStore.shared.matchRequests.count
-    }
+
     if let matchesVC = self.matchesTVC {
       print("Updating currentMatchesTVC with :\(DataStore.shared.currentMatches.count) matches")
       matchesVC.updateMatches(matches: DataStore.shared.currentMatches)
+      print("Count \(DataStore.shared.currentMatches.compactMap({$0.chat}).compactMap({ $0.messages.last }).count)")
       DataStore.shared.currentMatches.compactMap({$0.chat}).forEach({
-        if let lastMessageTimestamp = $0.messages.last?.timestamp, $0.lastActivity.compare(lastMessageTimestamp) == .orderedDescending {
+        if let lastMessageTimestamp = $0.messages.last?.timestamp,
+          $0.lastOpenedDate.compare(lastMessageTimestamp) == .orderedAscending {
+          print("Unread")
           iconNumber += 1
         }
       })
     }
+    SlackHelper.shared.addEvent(uniquePrefix: "Matches Loaded: ", text: "\(DataStore.shared.currentMatches.count) matches found\nUnread Messages: \(iconNumber)", color: iconNumber > 0 ? UIColor.green : UIColor.orange)
     DispatchQueue.main.async {
       if iconNumber > 0 {
         self.tabBarItem.badgeValue = "\(iconNumber)"
@@ -110,70 +85,33 @@ extension ChatMainViewController {
         }
       }
     }
-    if let requestVC = self.requestsTVC {
-      DataStore.shared.refreshMatchRequests { (matchRequests) in
-        DispatchQueue.main.async {
-          requestVC.updateMatches(matches: matchRequests)
-          self.requestsButton.setTitle("Requests (\(matchRequests.count))", for: .normal)
-          self.requestsRefreshControl.endRefreshing()
-        }
-      }
-    }
-
   }
   
   func setup() {
-    self.scrollView.delegate = self
     self.messageRefreshTimer = Timer.scheduledTimer(timeInterval: 15,
                                              target: self,
                                              selector: #selector(ChatMainViewController.reloadChatVCData),
                                              userInfo: nil,
                                              repeats: true)
+    self.setupRequestTVCs()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.scrollView.layoutIfNeeded()
-    self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * 2, height: self.scrollView.frame.height)
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * 2, height: self.scrollView.frame.height)
   }
   
   func stylize() {
     if let refreshFont = R.font.openSansRegular(size: 14) {
-      
+    
       self.currentChatsRefreshControl
         .attributedTitle = NSAttributedString(string: "Refreshing Your Chats...",
                                               attributes: [NSAttributedString.Key.font: refreshFont,
                                                            NSAttributedString.Key.foregroundColor: UIColor(white: 0.7, alpha: 1.0)])
-      self.requestsRefreshControl
-        .attributedTitle = NSAttributedString(string: "Refreshing Your Requests...",
-                                              attributes: [NSAttributedString.Key.font: refreshFont,
-                                                           NSAttributedString.Key.foregroundColor: UIColor(white: 0.7, alpha: 1.0)])
     }
-    
-    self.scrollView.isPagingEnabled = true
-    if let buttonFont = R.font.openSansExtraBold(size: 17) {
-      self.inboxButton.titleLabel?.font = buttonFont
-      self.requestsButton.titleLabel?.font = buttonFont
-    }
-    self.inboxButton.setBackgroundImage(nil, for: .selected)
-    self.inboxButton.setTitleColor(R.color.secondaryTextColor(), for: .normal)
-    self.inboxButton.setTitleColor(R.color.primaryTextColor(), for: .selected)
-    self.inboxButton.isSelected = true
-    self.requestsButton.setTitleColor(R.color.secondaryTextColor(), for: .normal)
-    self.requestsButton.setTitleColor(R.color.primaryTextColor(), for: .selected)
   }
   
   func setupRequestTVCs() {
     self.currentChatsRefreshControl
-      .addTarget(self,
-                 action: #selector(ChatMainViewController.refreshControlChanged(sender:)),
-                 for: .valueChanged)
-    self.requestsRefreshControl
       .addTarget(self,
                  action: #selector(ChatMainViewController.refreshControlChanged(sender:)),
                  for: .valueChanged)
@@ -185,63 +123,23 @@ extension ChatMainViewController {
     self.matchesTVC = matchesTVC
     matchesTVC.delegate = self
     self.addChild(matchesTVC)
-    self.scrollView.addSubview(matchesTVC.view)
+    self.view.addSubview(matchesTVC.view)
     matchesTVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.scrollView.addConstraints([
-      NSLayoutConstraint(item: matchesTVC.view as Any, attribute: .width, relatedBy: .equal,
-                         toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: matchesTVC.view as Any, attribute: .height, relatedBy: .equal,
-                         toItem: self.scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: matchesTVC.view as Any, attribute: .centerX, relatedBy: .equal,
-                         toItem: self.scrollView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: matchesTVC.view as Any, attribute: .centerY, relatedBy: .equal,
-                         toItem: self.scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: matchesTVC.view as Any, attribute: .left, relatedBy: .equal,
+                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: matchesTVC.view as Any, attribute: .right, relatedBy: .equal,
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: matchesTVC.view as Any, attribute: .top, relatedBy: .equal,
+                         toItem: self.headerContainer, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: matchesTVC.view as Any, attribute: .bottom, relatedBy: .equal,
+                         toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
       ])
     matchesTVC.didMove(toParent: self)
     matchesTVC.updateMatches(matches: DataStore.shared.currentMatches)
     
-    guard let requestsTVC = ChatRequestsTableViewController.instantiate(tableViewType: .requests) else {
-      print("Failed to instantiate requests TVC")
-      return
-    }
-    self.requestsTVC = requestsTVC
-    requestsTVC.delegate = self
-    self.addChild(requestsTVC)
-    self.scrollView.addSubview(requestsTVC.view)
-    requestsTVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.scrollView.addConstraints([
-      NSLayoutConstraint(item: requestsTVC.view as Any, attribute: .width, relatedBy: .equal,
-                         toItem: self.scrollView, attribute: .width, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: requestsTVC.view as Any, attribute: .height, relatedBy: .equal,
-                         toItem: self.scrollView, attribute: .height, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: requestsTVC.view as Any, attribute: .centerX, relatedBy: .equal,
-                         toItem: self.scrollView, attribute: .centerX, multiplier: 3.0, constant: 0.0),
-      NSLayoutConstraint(item: requestsTVC.view as Any, attribute: .centerY, relatedBy: .equal,
-                       toItem: self.scrollView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
-      ])
-    requestsTVC.didMove(toParent: self)
-    requestsTVC.updateMatches(matches: DataStore.shared.matchRequests)
-    
     self.view.layoutIfNeeded()
     matchesTVC.tableView.refreshControl = self.currentChatsRefreshControl
-    requestsTVC.tableView.refreshControl = self.requestsRefreshControl
-    self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * 2, height: self.scrollView.frame.height)
-  }
-  
-}
-
-// MARK: - UIScrollViewDelegate
-extension ChatMainViewController: UIScrollViewDelegate {
-  
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let pageIndex = round(scrollView.contentOffset.x / scrollView.frame.width)
-    if pageIndex == 0 {
-      self.inboxButton.isSelected = true
-      self.requestsButton.isSelected = false
-    } else {
-      self.inboxButton.isSelected = false
-      self.requestsButton.isSelected = true
-    }
   }
   
 }
