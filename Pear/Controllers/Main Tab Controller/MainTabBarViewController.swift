@@ -44,6 +44,7 @@ class MainTabBarViewController: UITabBarController {
                                           CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                           .withRenderingMode(.alwaysOriginal))
       likesTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+      likesTabVC.tabBarItem.badgeColor = UIColor(red: 1, green: 0.81, blue: 0.32, alpha: 1)
       mainTabVC.addChild(likesTabVC)
       // Delays preloading of VC
       mainTabVC.delay(delay: 0.5) {
@@ -64,6 +65,7 @@ class MainTabBarViewController: UITabBarController {
                                               CGSize(width: MainTabBarViewController.iconSize, height: MainTabBarViewController.iconSize))
                                               .withRenderingMode(.alwaysOriginal))
       chatTabVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+      chatTabVC.tabBarItem.badgeColor = UIColor(red: 1, green: 0.81, blue: 0.32, alpha: 1)
       mainTabVC.addChild(chatTabVC)
       // Delays preloading of VC
       mainTabVC.delay(delay: 0.5) {

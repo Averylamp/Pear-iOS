@@ -63,7 +63,6 @@ extension MainLikesViewController {
         print("Updating with \(matchRequests.count) match requests")
         if matchRequests.count > 0 {
           self.tabBarItem.badgeValue = "\(matchRequests.count)"
-          self.tabBarItem.badgeColor = UIColor(red: 1.00, green: 0.72, blue: 0.29, alpha: 1.00)
         } else {
           self.tabBarItem.badgeValue = nil
         }

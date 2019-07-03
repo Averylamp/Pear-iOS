@@ -36,24 +36,17 @@
                                     <constraint firstItem="nRR-1g-7D1" firstAttribute="height" secondItem="P0j-nz-OnO" secondAttribute="height" constant="-10" id="tq7-z5-wEw"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qc-zU-5Si">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8hD-yB-jro" firstAttribute="bottom" secondItem="0qc-zU-5Si" secondAttribute="bottom" id="5L9-yW-Dly"/>
                             <constraint firstItem="P0j-nz-OnO" firstAttribute="leading" secondItem="8hD-yB-jro" secondAttribute="leading" id="BJM-aJ-oDp"/>
-                            <constraint firstItem="0qc-zU-5Si" firstAttribute="leading" secondItem="b8N-ju-GVb" secondAttribute="leading" id="LQa-Ue-L4Y"/>
-                            <constraint firstItem="0qc-zU-5Si" firstAttribute="top" secondItem="P0j-nz-OnO" secondAttribute="bottom" id="Nik-RY-2NN"/>
                             <constraint firstItem="P0j-nz-OnO" firstAttribute="trailing" secondItem="8hD-yB-jro" secondAttribute="trailing" id="bHi-rq-KOZ"/>
-                            <constraint firstItem="8hD-yB-jro" firstAttribute="trailing" secondItem="0qc-zU-5Si" secondAttribute="trailing" id="hip-mR-xAO"/>
                             <constraint firstItem="P0j-nz-OnO" firstAttribute="top" secondItem="8hD-yB-jro" secondAttribute="top" id="zUB-xF-jTG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8hD-yB-jro"/>
                     </view>
                     <connections>
-                        <outlet property="scrollView" destination="0qc-zU-5Si" id="Le6-HX-d5E"/>
+                        <outlet property="headerContainer" destination="P0j-nz-OnO" id="f9c-1c-4kD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WJN-gN-xHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -62,6 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tab-icon-chat-selected" width="66.666664123535156" height="66.666664123535156"/>
+        <image name="tab-icon-chat-selected" width="40" height="40"/>
     </resources>
 </document>
