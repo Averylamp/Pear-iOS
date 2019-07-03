@@ -11,11 +11,10 @@ import Foundation
 class NetworkingConfig {
   
   // swiftlint : disable: next line
-  static let secureHTTPs = "http"
+  static let secureHTTPs = "https"
   
   #if DEVMODE
-//  static let host: String = "sloths.mit.edu"
-  static let host: String = "66.31.16.203:1234"
+  static let host: String = "sloths.mit.edu"
   #endif
   #if PROD
   static let host: String = "koala.mit.edu"

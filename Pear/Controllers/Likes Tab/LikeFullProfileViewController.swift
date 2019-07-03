@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import FirebaseAnalytics
+
+protocol LikeFullProfileDelegate: class {
+  func decisionMade(accepted: Bool)
+}
 
 class LikeFullProfileViewController: UIViewController {
+  
+  weak var delegate: LikeFullProfileDelegate?
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var profileNameLabel: UILabel!
@@ -16,6 +23,7 @@ class LikeFullProfileViewController: UIViewController {
   @IBOutlet weak var acceptProfileButton: UIButton!
   
   var match: Match!
+  var respondingToMatch: Bool = false
   
   /// Factory method for creating this view controller.
   ///
@@ -29,13 +37,68 @@ class LikeFullProfileViewController: UIViewController {
 
   @IBAction func acceptRequestButton(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    self.respondToRequest(accepted: true)
+    if let delegate = self.delegate {
+      delegate.decisionMade(accepted: true)
+    }
   }
   
   @IBAction func rejectRequestButton(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-
+    self.respondToRequest(accepted: false)
+    if let delegate = self.delegate {
+      delegate.decisionMade(accepted: false)
+    }
   }
   
+  func respondToRequest(accepted: Bool) {
+    guard let userID = DataStore.shared.currentPearUser?.documentID else {
+      print("Failed to get current User")
+      return
+    }
+    guard !self.respondingToMatch else {
+      return
+    }
+    self.respondingToMatch = true
+    PearMatchesAPI.shared.decideOnMatchRequest(uid: userID,
+                                               matchID: match.documentID,
+                                               accepted: accepted) { (result) in
+                                                self.respondingToMatch = false
+                                                DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
+                                                NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
+                                                switch result {
+                                                case .success(let match):
+                                                  self.match = match
+                                                  match.fetchFirebaseChatObject(completion: { (match) in
+                                                    if let match = match {
+                                                      if match.otherUserStatus == .accepted && match.currentUserStatus == .accepted {
+                                                        let isMatchmakerMade = match.sentByUser.documentID == match.sentForUser.documentID
+                                                        let matchmakerGender = match.sentByUser.gender?.toString() ?? "unknown"
+                                                        Analytics.logEvent("new_chat_start", parameters: [
+                                                          "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown",
+                                                          "isMatchmakerMade": isMatchmakerMade,
+                                                          "matchmakerGender": isMatchmakerMade ? matchmakerGender : "na"
+                                                          ])
+                                                        DispatchQueue.main.async {
+                                                          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+                                                        }
+                                                      } else {
+                                                        DispatchQueue.main.async {
+                                                          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+                                                          self.navigationController?.popViewController(animated: true)
+                                                        }
+                                                      }
+                                                    }
+                                                  })
+                                                case .failure(let error):
+                                                  DispatchQueue.main.async {
+                                                    HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)
+                                                  }
+                                                  print("Failed to respond to request: \(error)")
+                                                }
+    }
+  }
+
 }
 
 // MARK: - Life Cycle
