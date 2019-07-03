@@ -23,6 +23,7 @@ class DiscoveryDecisionViewController: UIViewController {
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
