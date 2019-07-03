@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-GI-3sM" userLabel="Header Container">
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-icon-chat-selected" translatesAutoresizingMaskIntoConstraints="NO" id="K1K-al-l76" userLabel="Center Icon">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-icon-likes-selected" translatesAutoresizingMaskIntoConstraints="NO" id="K1K-al-l76" userLabel="Center Icon">
                                         <rect key="frame" x="187" y="5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="K1K-al-l76" secondAttribute="height" multiplier="1:1" id="pCY-yf-8wV"/>
@@ -36,24 +36,17 @@
                                     <constraint firstItem="K1K-al-l76" firstAttribute="height" secondItem="5eV-GI-3sM" secondAttribute="height" constant="-10" id="qAD-sL-7bU"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqs-jE-uJC">
-                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5eV-GI-3sM" firstAttribute="top" secondItem="bRT-Wk-P6Y" secondAttribute="top" id="aSg-6c-DkW"/>
-                            <constraint firstItem="bRT-Wk-P6Y" firstAttribute="bottom" secondItem="hqs-jE-uJC" secondAttribute="bottom" id="alr-2K-CO8"/>
                             <constraint firstItem="5eV-GI-3sM" firstAttribute="leading" secondItem="bRT-Wk-P6Y" secondAttribute="leading" id="g0g-us-NKe"/>
-                            <constraint firstItem="hqs-jE-uJC" firstAttribute="top" secondItem="5eV-GI-3sM" secondAttribute="bottom" id="hm5-yd-72o"/>
                             <constraint firstItem="5eV-GI-3sM" firstAttribute="trailing" secondItem="bRT-Wk-P6Y" secondAttribute="trailing" id="m6K-Qu-Wuk"/>
-                            <constraint firstItem="hqs-jE-uJC" firstAttribute="leading" secondItem="qHr-yX-nLV" secondAttribute="leading" id="nx0-rF-V31"/>
-                            <constraint firstItem="bRT-Wk-P6Y" firstAttribute="trailing" secondItem="hqs-jE-uJC" secondAttribute="trailing" id="p8x-Ys-xo6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bRT-Wk-P6Y"/>
                     </view>
                     <connections>
-                        <outlet property="scrollView" destination="hqs-jE-uJC" id="fAH-41-Jto"/>
+                        <outlet property="headerContainerView" destination="5eV-GI-3sM" id="VFF-V6-9bA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKU-3Q-zB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -62,6 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tab-icon-chat-selected" width="66.666664123535156" height="66.666664123535156"/>
+        <image name="tab-icon-likes-selected" width="40" height="40"/>
     </resources>
 </document>

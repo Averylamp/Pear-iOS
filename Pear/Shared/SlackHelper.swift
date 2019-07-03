@@ -37,7 +37,9 @@ class SlackHelper: NSObject {
   }
   
   func addEvent(uniquePrefix: String, text: String, color: UIColor) {
-    
+    if !self.userEvents.contains(where: { $0.text.contains(uniquePrefix)}) {
+      self.userEvents.append(SlackEvent(text: "\(uniquePrefix) \(text)", color: color.hexColor))
+    }
   }
   
   func addEvent(text: String, color: UIColor = UIColor.black) {
