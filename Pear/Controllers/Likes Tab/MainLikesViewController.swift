@@ -107,6 +107,11 @@ extension MainLikesViewController {
   }
   
   func displayNextRequest() {
+    if self.requestsToShow.count > 0 {
+      self.tabBarItem.badgeValue = "\(self.requestsToShow.count)"
+    } else {
+      self.tabBarItem.badgeValue = nil
+    }
     self.view.subviews.forEach({
       if $0 != self.headerContainerView {
         $0.removeFromSuperview()
@@ -130,7 +135,7 @@ extension MainLikesViewController {
       likeFullProfile.delegate = self
       likeFullProfile.didMove(toParent: self)
     } else {
-      self.displayNoRequests()
+      self.refreshRequests()
     }
   }
   
