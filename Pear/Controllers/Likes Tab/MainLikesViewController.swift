@@ -52,6 +52,9 @@ extension MainLikesViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    if self.requestsState == .initalState || self.requestsState == .noRequests {
+      self.refreshRequests()
+    }
   }
   
   /// Setup should only be called once
@@ -95,14 +98,83 @@ extension MainLikesViewController {
         }
         }})
       SDWebImagePrefetcher.shared.prefetchURLs(imagesToPrefetch)
-
       self.requestsState = .requestsAvailable
+      self.displayNextRequest()
     } else {
       self.requestsState = .noRequests
+      self.displayNoRequests()
+    }
+  }
+  
+  func displayNextRequest() {
+    self.view.subviews.forEach({
+      if $0 != self.headerContainerView {
+        $0.removeFromSuperview()
+      }
+    })
+    if let firstRequest = self.requestsToShow.popLast(),
+      let likeFullProfile = LikeFullProfileViewController.instantiate(match: firstRequest) {
+      self.addChild(likeFullProfile)
+      self.view.addSubview(likeFullProfile.view)
+      likeFullProfile.view.translatesAutoresizingMaskIntoConstraints = false
+      self.view.addConstraints([
+        NSLayoutConstraint(item: likeFullProfile.view as Any, attribute: .top, relatedBy: .equal,
+                           toItem: self.headerContainerView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: likeFullProfile.view as Any, attribute: .right, relatedBy: .equal,
+                           toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: likeFullProfile.view as Any, attribute: .left, relatedBy: .equal,
+                           toItem: self.view, attribute: .left, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint(item: likeFullProfile.view as Any, attribute: .bottom, relatedBy: .equal,
+                           toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        ])
+      likeFullProfile.delegate = self
+      likeFullProfile.didMove(toParent: self)
+    } else {
+      self.displayNoRequests()
     }
   }
   
   func displayNoRequests() {
+    self.view.subviews.forEach({
+      if $0 != self.headerContainerView {
+        $0.removeFromSuperview()
+      }
+    })
+    let noRequestsImageView = UIImageView()
+    noRequestsImageView.translatesAutoresizingMaskIntoConstraints = false
+    noRequestsImageView.contentMode = .scaleAspectFit
+    noRequestsImageView.image = R.image.noRequestsIcon()
+    noRequestsImageView.addConstraints([
+        NSLayoutConstraint(item: noRequestsImageView, attribute: .width, relatedBy: .equal,
+                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100.0),
+        NSLayoutConstraint(item: noRequestsImageView, attribute: .height, relatedBy: .equal,
+                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100.0)
+      ])
+    self.view.addSubview(noRequestsImageView)
+    let noRequestsLabel = UILabel()
+    noRequestsLabel.translatesAutoresizingMaskIntoConstraints = false
+    noRequestsLabel.textAlignment = .center
+    noRequestsLabel.numberOfLines = 0
+    noRequestsLabel.text = "You have no requests.\nCheck back later"
+    noRequestsLabel.textColor = UIColor(white: 0.0, alpha: 0.3)
+    if let font = R.font.openSansRegular(size: 18) {
+      noRequestsLabel.font = font
+    }
+    self.view.addSubview(noRequestsLabel)
+    self.view.addConstraints([
+      NSLayoutConstraint(item: noRequestsLabel, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: noRequestsLabel, attribute: .centerY, relatedBy: .equal,
+                         toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: noRequestsLabel, attribute: .left, relatedBy: .equal,
+                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 40.0),
+      NSLayoutConstraint(item: noRequestsLabel, attribute: .right, relatedBy: .equal,
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: -40.0),
+      NSLayoutConstraint(item: noRequestsImageView, attribute: .centerX, relatedBy: .equal,
+                         toItem: noRequestsLabel, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: noRequestsImageView, attribute: .bottom, relatedBy: .equal,
+                         toItem: noRequestsLabel, attribute: .top, multiplier: 1.0, constant: -20.0)
+      ])
     
   }
  
@@ -119,13 +191,13 @@ extension MainLikesViewController {
     if let font = R.font.openSansRegular(size: 18.0) {
       loadingLabel.font = font
     }
-    loadingLabel.textColor = R.color.primaryTextColor()
+    loadingLabel.textColor = UIColor(white: 0.0, alpha: 0.3)
     loadingLabel.text = "Loading your match requests..."
     let loadingIndicator = UIActivityIndicatorView()
     loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
     loadingIndicator.style = .whiteLarge
     loadingIndicator.startAnimating()
-    loadingIndicator.color = R.color.primaryTextColor()
+    loadingIndicator.color = UIColor(white: 0.0, alpha: 0.3)
     loadingIndicator.hidesWhenStopped = true
     self.view.addSubview(loadingLabel)
     self.view.addSubview(loadingIndicator)
@@ -147,4 +219,18 @@ extension MainLikesViewController {
     
   }
   
+}
+
+// MARK: - Like Full Profile Delegate
+extension MainLikesViewController: LikeFullProfileDelegate {
+  func decisionMade(accepted: Bool) {
+    if accepted {
+      SlackHelper.shared.addEvent(text: "Match Request Accepted!", color: UIColor.green)
+    } else {
+      SlackHelper.shared.addEvent(text: "Match Request Rejected!", color: UIColor.red)
+    }
+    DispatchQueue.main.async {
+      self.displayNextRequest()
+    }
+  }
 }
