@@ -9,6 +9,10 @@
 import UIKit
 import CoreLocation
 
+extension Notification.Name {
+  static let updateAppIconNumber = Notification.Name("updateAppIcontNumber")
+}
+
 class MainTabBarViewController: UITabBarController {
   
   static let iconSize: CGFloat = 40
@@ -108,6 +112,10 @@ extension MainTabBarViewController {
     super.viewDidLoad()
     self.delegate = self
     self.stylize()
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(MainTabBarViewController.updateAppIconNumber),
+                                           name: .updateAppIconNumber,
+                                           object: nil)
   }
   
   func stylize() {
@@ -119,9 +127,23 @@ extension MainTabBarViewController {
     self.tabBar.layer.shadowOffset = CGSize(width: 0, height: -2)
     self.tabBar.layer.borderColor = UIColor.white.cgColor
     self.tabBar.barStyle = .black
-//    self.tabBar.clipsToBounds = true
-//    self.tabBar.barStyle = .blackTranslucent
-//    self.tabBar.isTranslucent = true
+  }
+  
+  @objc func updateAppIconNumber() {
+    var appIconNumber = 0
+    appIconNumber += DataStore.shared.matchRequests.count
+    print("Match Requests Count: \(appIconNumber)")
+    DataStore.shared.currentMatches.compactMap({$0.chat}).forEach({
+      if let lastMessageTimestamp = $0.messages.last?.timestamp,
+        $0.lastOpenedDate.compare(lastMessageTimestamp) == .orderedAscending {
+        appIconNumber += 1
+        print("Chat Unread")
+      }
+    })
+    
+    DispatchQueue.main.async {
+      UIApplication.shared.applicationIconBadgeNumber = appIconNumber
+    }
   }
   
 }

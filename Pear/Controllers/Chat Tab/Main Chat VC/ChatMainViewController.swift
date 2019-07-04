@@ -53,7 +53,6 @@ extension ChatMainViewController {
   
   @objc func reloadChatVCData() {
     var iconNumber = 0
-
     if let matchesVC = self.matchesTVC {
       print("Updating currentMatchesTVC with :\(DataStore.shared.currentMatches.count) matches")
       matchesVC.updateMatches(matches: DataStore.shared.currentMatches)
@@ -73,14 +72,15 @@ extension ChatMainViewController {
       } else {
         self.tabBarItem.badgeValue = nil
       }
+      NotificationCenter.default.post(name: .updateAppIconNumber, object: nil)
     }
   }
   
   func refreshMatchesObjects() {
     if let matchesVC = self.matchesTVC {
-      DataStore.shared.refreshCurrentMatches { (currentMatches) in
+      DataStore.shared.refreshCurrentMatches { (_) in
         DispatchQueue.main.async {
-          matchesVC.updateMatches(matches: currentMatches)
+          self.reloadChatVCData()
           self.currentChatsRefreshControl.endRefreshing()
         }
       }
@@ -88,7 +88,7 @@ extension ChatMainViewController {
   }
   
   func setup() {
-    self.messageRefreshTimer = Timer.scheduledTimer(timeInterval: 15,
+    self.messageRefreshTimer = Timer.scheduledTimer(timeInterval: 30,
                                              target: self,
                                              selector: #selector(ChatMainViewController.reloadChatVCData),
                                              userInfo: nil,
