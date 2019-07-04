@@ -132,12 +132,10 @@ extension MainTabBarViewController {
   @objc func updateAppIconNumber() {
     var appIconNumber = 0
     appIconNumber += DataStore.shared.matchRequests.count
-    print("Match Requests Count: \(appIconNumber)")
     DataStore.shared.currentMatches.compactMap({$0.chat}).forEach({
       if let lastMessageTimestamp = $0.messages.last?.timestamp,
         $0.lastOpenedDate.compare(lastMessageTimestamp) == .orderedAscending {
         appIconNumber += 1
-        print("Chat Unread")
       }
     })
     
