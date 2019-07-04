@@ -111,6 +111,7 @@ extension MainLikesViewController {
   }
   
   func displayNextRequest() {
+    print("\(DataStore.shared.matchRequests.count) Match requests to show")
     if DataStore.shared.matchRequests.count > 0 {
       self.tabBarItem.badgeValue = "\(DataStore.shared.matchRequests.count)"
     } else {

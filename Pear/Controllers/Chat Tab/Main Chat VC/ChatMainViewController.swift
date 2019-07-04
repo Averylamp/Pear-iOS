@@ -77,7 +77,7 @@ extension ChatMainViewController {
   }
   
   func refreshMatchesObjects() {
-    if let matchesVC = self.matchesTVC {
+    if self.matchesTVC != nil {
       DataStore.shared.refreshCurrentMatches { (_) in
         DispatchQueue.main.async {
           self.reloadChatVCData()

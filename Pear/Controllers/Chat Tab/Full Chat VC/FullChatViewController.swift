@@ -77,7 +77,9 @@ class FullChatViewController: UIViewController {
           print("Error unmatching: \(error)")
         }
         DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
-        DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
+        DataStore.shared.refreshCurrentMatches(matchesFound: { (_) in
+          NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
+        })
       
         DispatchQueue.main.async {
           self.navigationController?.popViewController(animated: true)
@@ -179,7 +181,7 @@ extension FullChatViewController {
                                                 self.respondingToMatch = false
                                                 NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
                                                 DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
-                                                DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
+                                                DataStore.shared.refreshCurrentMatches(matchesFound: nil)
                                                 switch result {
                                                 case .success(let match):
                                                   self.match = match
