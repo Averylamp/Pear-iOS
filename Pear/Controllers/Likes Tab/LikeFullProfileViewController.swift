@@ -39,6 +39,7 @@ class LikeFullProfileViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: true)
     if let delegate = self.delegate {
+      print("Delegate Decision Made")
       delegate.decisionMade(accepted: true)
     }
   }
@@ -47,6 +48,7 @@ class LikeFullProfileViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
     if let delegate = self.delegate {
+      print("Delegate Decision Made")
       delegate.decisionMade(accepted: false)
     }
   }
@@ -64,32 +66,28 @@ class LikeFullProfileViewController: UIViewController {
                                                matchID: match.documentID,
                                                accepted: accepted) { (result) in
                                                 self.respondingToMatch = false
-                                                DataStore.shared.refreshCurrentMatches(matchRequestsFound: nil)
-                                                NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
+                                                DataStore.shared.refreshCurrentMatches(matchesFound: { (_) in
+                                                  NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
+                                                })
                                                 switch result {
                                                 case .success(let match):
                                                   self.match = match
-                                                  match.fetchFirebaseChatObject(completion: { (match) in
-                                                    if let match = match {
-                                                      if match.otherUserStatus == .accepted && match.currentUserStatus == .accepted {
-                                                        let isMatchmakerMade = match.sentByUser.documentID == match.sentForUser.documentID
-                                                        let matchmakerGender = match.sentByUser.gender?.toString() ?? "unknown"
-                                                        Analytics.logEvent("new_chat_start", parameters: [
-                                                          "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown",
-                                                          "isMatchmakerMade": isMatchmakerMade,
-                                                          "matchmakerGender": isMatchmakerMade ? matchmakerGender : "na"
-                                                          ])
-                                                        DispatchQueue.main.async {
-                                                          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-                                                        }
-                                                      } else {
-                                                        DispatchQueue.main.async {
-                                                          HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
-                                                          self.navigationController?.popViewController(animated: true)
-                                                        }
-                                                      }
+                                                  if match.otherUserStatus == .accepted && match.currentUserStatus == .accepted {
+                                                    let isMatchmakerMade = match.sentByUser.documentID == match.sentForUser.documentID
+                                                    let matchmakerGender = match.sentByUser.gender?.toString() ?? "unknown"
+                                                    Analytics.logEvent("new_chat_start", parameters: [
+                                                      "currentUserGender": DataStore.shared.currentPearUser?.gender?.toString() ?? "unknown",
+                                                      "isMatchmakerMade": isMatchmakerMade,
+                                                      "matchmakerGender": isMatchmakerMade ? matchmakerGender : "na"
+                                                      ])
+                                                    DispatchQueue.main.async {
+                                                      HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
                                                     }
-                                                  })
+                                                  } else {
+                                                    DispatchQueue.main.async {
+                                                      HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .success)
+                                                    }
+                                                  }
                                                 case .failure(let error):
                                                   DispatchQueue.main.async {
                                                     HapticFeedbackGenerator.generateHapticFeedbackNotification(style: .error)

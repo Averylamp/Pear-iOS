@@ -49,7 +49,7 @@ extension ChatRequestsTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.stylize()
-    self.setup()t
+    self.setup()
   }
   
   func stylize() {
