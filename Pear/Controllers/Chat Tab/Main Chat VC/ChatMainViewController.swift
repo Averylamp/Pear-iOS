@@ -56,11 +56,9 @@ extension ChatMainViewController {
     if let matchesVC = self.matchesTVC {
       print("Updating currentMatchesTVC with :\(DataStore.shared.currentMatches.count) matches")
       matchesVC.updateMatches(matches: DataStore.shared.currentMatches)
-      print("Count \(DataStore.shared.currentMatches.compactMap({$0.chat}).compactMap({ $0.messages.last }).count)")
       DataStore.shared.currentMatches.compactMap({$0.chat}).forEach({
         if let lastMessageTimestamp = $0.messages.last?.timestamp,
           $0.lastOpenedDate.compare(lastMessageTimestamp) == .orderedAscending {
-          print("Unread")
           iconNumber += 1
         }
       })
