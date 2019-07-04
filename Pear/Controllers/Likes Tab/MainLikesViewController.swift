@@ -26,7 +26,6 @@ class MainLikesViewController: UIViewController {
   
   private var messageRefreshTimer: Timer = Timer()
 
-  var requestsToShow: [Match] = []
   var requestsState: MatchRequestState = .initalState
   
   /// Factory method for creating this view controller.
@@ -48,6 +47,11 @@ extension MainLikesViewController {
     self.setup()
     self.stylize()
     self.refreshRequests()
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(MainLikesViewController.refreshRequests),
+                                           name: .refreshLikesTab,
+                                           object: nil)
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +71,7 @@ extension MainLikesViewController {
     
   }
 
-  func refreshRequests() {
+  @objc func refreshRequests() {
     guard self.requestsState != .loading else {
       return
     }
@@ -82,16 +86,16 @@ extension MainLikesViewController {
         } else {
           self.tabBarItem.badgeValue = nil
         }
-        self.updateMatchRequestsToShow(matchRequests: matchRequests)
+        NotificationCenter.default.post(name: .updateAppIconNumber, object: nil)
+        self.updateMatchRequestsToShow(matchRequests: DataStore.shared.matchRequests)
       }
     }
   }
   
   func updateMatchRequestsToShow(matchRequests: [Match]) {
-    self.requestsToShow = matchRequests
-    if self.requestsToShow.count > 0 {
+    if DataStore.shared.matchRequests.count > 0 {
       var imagesToPrefetch: [URL] = []
-      self.requestsToShow.map({ $0.otherUser.displayedImages }).forEach({ $0.forEach {
+      DataStore.shared.matchRequests.map({ $0.otherUser.displayedImages }).forEach({ $0.forEach {
         let imageString = $0.large.imageURL
         if let imageURL = URL(string: imageString) {
           imagesToPrefetch.append(imageURL)
@@ -107,17 +111,18 @@ extension MainLikesViewController {
   }
   
   func displayNextRequest() {
-    if self.requestsToShow.count > 0 {
-      self.tabBarItem.badgeValue = "\(self.requestsToShow.count)"
+    if DataStore.shared.matchRequests.count > 0 {
+      self.tabBarItem.badgeValue = "\(DataStore.shared.matchRequests.count)"
     } else {
       self.tabBarItem.badgeValue = nil
     }
+    NotificationCenter.default.post(name: .updateAppIconNumber, object: nil)
     self.view.subviews.forEach({
       if $0 != self.headerContainerView {
         $0.removeFromSuperview()
       }
     })
-    if let firstRequest = self.requestsToShow.popLast(),
+    if let firstRequest = DataStore.shared.matchRequests.popLast(),
       let likeFullProfile = LikeFullProfileViewController.instantiate(match: firstRequest) {
       self.addChild(likeFullProfile)
       self.view.addSubview(likeFullProfile.view)
@@ -145,17 +150,6 @@ extension MainLikesViewController {
         $0.removeFromSuperview()
       }
     })
-    let noRequestsImageView = UIImageView()
-    noRequestsImageView.translatesAutoresizingMaskIntoConstraints = false
-    noRequestsImageView.contentMode = .scaleAspectFit
-    noRequestsImageView.image = R.image.noRequestsIcon()
-    noRequestsImageView.addConstraints([
-        NSLayoutConstraint(item: noRequestsImageView, attribute: .width, relatedBy: .equal,
-                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100.0),
-        NSLayoutConstraint(item: noRequestsImageView, attribute: .height, relatedBy: .equal,
-                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100.0)
-      ])
-    self.view.addSubview(noRequestsImageView)
     let noRequestsLabel = UILabel()
     noRequestsLabel.translatesAutoresizingMaskIntoConstraints = false
     noRequestsLabel.textAlignment = .center
@@ -174,11 +168,7 @@ extension MainLikesViewController {
       NSLayoutConstraint(item: noRequestsLabel, attribute: .left, relatedBy: .equal,
                          toItem: self.view, attribute: .left, multiplier: 1.0, constant: 40.0),
       NSLayoutConstraint(item: noRequestsLabel, attribute: .right, relatedBy: .equal,
-                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: -40.0),
-      NSLayoutConstraint(item: noRequestsImageView, attribute: .centerX, relatedBy: .equal,
-                         toItem: noRequestsLabel, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: noRequestsImageView, attribute: .bottom, relatedBy: .equal,
-                         toItem: noRequestsLabel, attribute: .top, multiplier: 1.0, constant: -20.0)
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: -40.0)
       ])
     
   }

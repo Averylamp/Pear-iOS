@@ -26,7 +26,6 @@ extension DataStore {
                                                   case .success(let matches):
                                                     self.currentMatches = matches
                                                     print("Current Matches:\(self.matchRequests.count)")
-                                                    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
                                                     if let matchCompletion = matchRequestsFound {
                                                       matchCompletion(matches)
                                                     }

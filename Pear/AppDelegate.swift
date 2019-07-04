@@ -78,10 +78,6 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
                        annotation: "")
   }
   
-  func applicationWillEnterForeground(_ application: UIApplication) {
-    UIApplication.shared.applicationIconBadgeNumber = 0
-  }
-  
   func applicationWillResignActive(_ application: UIApplication) {
     print("Application will resign active")
     SlackHelper.shared.sendStory()
