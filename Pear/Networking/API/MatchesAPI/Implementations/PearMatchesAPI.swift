@@ -57,9 +57,7 @@ extension PearMatchesAPI {
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 15.0)
     request.httpMethod = "POST"
-    
     request.allHTTPHeaderFields = defaultHeaders
-    
     let fullDictionary: [String: Any] = [
       "query": PearMatchesAPI.createMatchRequestQuery,
       "variables": [
@@ -74,9 +72,7 @@ extension PearMatchesAPI {
     
     do {
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
       request.httpBody = data
-      
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
         if let error = error {
           print(error as Any)
@@ -110,11 +106,11 @@ extension PearMatchesAPI {
                                              payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
-//            if sentByUserID == sentForUserID {
-//              Analytics.logEvent("sent_personal_request", parameters: nil)
-//            } else {
-//              Analytics.logEvent("sent_matchmaker_request", parameters: nil)
-//            }
+            if sentByUserID == sentForUserID {
+              Analytics.logEvent("sent_personal_request", parameters: nil)
+            } else {
+              Analytics.logEvent("sent_matchmaker_request", parameters: nil)
+            }
             print("Successfully Create Match Request: \(String(describing: message))")
             completion(.success(true))
           }
@@ -333,12 +329,9 @@ extension PearMatchesAPI {
                                       cachePolicy: .useProtocolCachePolicy,
                                       timeoutInterval: 25.0)
     request.httpMethod = "POST"
-    
     request.allHTTPHeaderFields = defaultHeaders
-    
     let requestFunction = accepted ? "acceptRequest" : "rejectRequest"
     do {
-      
       let fullDictionary: [String: Any] = [
         "query": PearMatchesAPI.getMatchDecisionRequest(accepted: accepted),
         "variables": [
@@ -347,7 +340,6 @@ extension PearMatchesAPI {
         ]
       ]
       let data: Data = try JSONSerialization.data(withJSONObject: fullDictionary, options: .prettyPrinted)
-      
       request.httpBody = data
       
       let dataTask = URLSession.shared.dataTask(with: request as URLRequest) { (data, _, error) in
@@ -356,10 +348,6 @@ extension PearMatchesAPI {
           completion(.failure(MatchesAPIError.unknownError(error: error)))
           return
         } else {
-          if let data = data,
-            let json = try? JSON(data: data) {
-            print(json)
-          }
           let helperResult = APIHelpers.interpretGraphQLResponseObjectData(data: data, functionName: requestFunction, objectName: "match")
           switch helperResult {
           case .dataNotFound, .notJsonSerializable, .couldNotFindSuccessOrMessage, .didNotFindObjectData:
@@ -404,7 +392,6 @@ extension PearMatchesAPI {
               completion(.failure(MatchesAPIError.failedDeserialization))
             }
           }
-          
         }
       }
       dataTask.resume()

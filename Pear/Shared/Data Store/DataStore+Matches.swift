@@ -14,7 +14,7 @@ extension DataStore {
   /// Refreshes the current matches that the current user has received
   ///
   /// - Parameter matchRequestsFound: Runs a completion when the matches have completed fetching
-  func refreshCurrentMatches(matchRequestsFound: (([Match]) -> Void)?) {
+  func refreshCurrentMatches(matchesFound: (([Match]) -> Void)?) {
     self.fetchUIDToken { (result) in
       switch result {
       case .success(let authTokens):
@@ -26,20 +26,19 @@ extension DataStore {
                                                   case .success(let matches):
                                                     self.currentMatches = matches
                                                     print("Current Matches:\(self.matchRequests.count)")
-                                                    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
-                                                    if let matchCompletion = matchRequestsFound {
+                                                    if let matchCompletion = matchesFound {
                                                       matchCompletion(matches)
                                                     }
                                                   case .failure(let error):
                                                     print("Failure getting error: \(error)")
-                                                    if let matchCompletion = matchRequestsFound {
+                                                    if let matchCompletion = matchesFound {
                                                       matchCompletion([])
                                                     }
                                                   }
         })
       case .failure(let error):
         print("Failure getting Tokens: \(error)")
-        if let matchCompletion = matchRequestsFound {
+        if let matchCompletion = matchesFound {
           matchCompletion([])
         }
         return
@@ -66,10 +65,8 @@ extension DataStore {
                                                     } catch {
                                                       print("Error: \(error)")
                                                     }
-
                                                     self.matchRequests = matches
                                                     print("Match Requests:\(self.matchRequests.count)")
-                                                    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
                                                     if let matchCompletion = matchRequestsFound {
                                                       matchCompletion(matches)
                                                     }
