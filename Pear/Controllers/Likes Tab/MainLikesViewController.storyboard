@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="equ-Ui-5HN">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Likes View Controller-->
+        <scene sceneID="IiW-vg-Tnn">
+            <objects>
+                <viewController id="equ-Ui-5HN" customClass="MainLikesViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qHr-yX-nLV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eV-GI-3sM" userLabel="Header Container">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-icon-likes-selected" translatesAutoresizingMaskIntoConstraints="NO" id="K1K-al-l76" userLabel="Center Icon">
+                                        <rect key="frame" x="187" y="5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="K1K-al-l76" secondAttribute="height" multiplier="1:1" id="pCY-yf-8wV"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="29C-iJ-phU"/>
+                                    <constraint firstItem="K1K-al-l76" firstAttribute="centerY" secondItem="5eV-GI-3sM" secondAttribute="centerY" id="ELX-p2-4Vt"/>
+                                    <constraint firstItem="K1K-al-l76" firstAttribute="centerX" secondItem="5eV-GI-3sM" secondAttribute="centerX" id="ElD-9P-YFr"/>
+                                    <constraint firstItem="K1K-al-l76" firstAttribute="height" secondItem="5eV-GI-3sM" secondAttribute="height" constant="-10" id="qAD-sL-7bU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5eV-GI-3sM" firstAttribute="top" secondItem="bRT-Wk-P6Y" secondAttribute="top" id="aSg-6c-DkW"/>
+                            <constraint firstItem="5eV-GI-3sM" firstAttribute="leading" secondItem="bRT-Wk-P6Y" secondAttribute="leading" id="g0g-us-NKe"/>
+                            <constraint firstItem="5eV-GI-3sM" firstAttribute="trailing" secondItem="bRT-Wk-P6Y" secondAttribute="trailing" id="m6K-Qu-Wuk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bRT-Wk-P6Y"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerContainerView" destination="5eV-GI-3sM" id="VFF-V6-9bA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EKU-3Q-zB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab-icon-likes-selected" width="40" height="40"/>
+    </resources>
+</document>

@@ -36,9 +36,8 @@
 		91BEE2A9225D746800A53171 /* DiscoveryFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */; };
 		91BEE2AC225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */; };
 		91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */; };
-		91F6306A22C3193E00FAC38C /* MatchRequestCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6306922C3193E00FAC38C /* MatchRequestCreationData.swift */; };
-		91F6306D22C564EE00FAC38C /* PersonalLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6306C22C564EE00FAC38C /* PersonalLikeViewController.swift */; };
-		91F6306F22C564FE00FAC38C /* PersonalLikeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F6306E22C564FE00FAC38C /* PersonalLikeViewController.storyboard */; };
+		BB00578522C4256E00AE4465 /* LikeFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB00578422C4256E00AE4465 /* LikeFullProfileViewController.swift */; };
+		BB00578722C4257900AE4465 /* LikeFullProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB00578622C4257900AE4465 /* LikeFullProfileViewController.storyboard */; };
 		BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */; };
 		BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C1224634B9000D9B12 /* ChatAPI.swift */; };
 		BB0628C42246352B000D9B12 /* PearChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0628C32246352B000D9B12 /* PearChatAPI.swift */; };
@@ -81,7 +80,7 @@
 		BB1C67162237901500D75848 /* ProfileInterestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */; };
 		BB1C67182237902100D75848 /* ProfileInterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */; };
 		BB1D8A1022C179EF001D12A0 /* MainLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1D8A0F22C179EF001D12A0 /* MainLikesViewController.swift */; };
-		BB1D8A1322C17A0C001D12A0 /* MailLikesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1D8A1222C17A0C001D12A0 /* MailLikesViewController.storyboard */; };
+		BB1D8A1322C17A0C001D12A0 /* MainLikesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB1D8A1222C17A0C001D12A0 /* MainLikesViewController.storyboard */; };
 		BB20118B228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */; };
 		BB20118D228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */; };
 		BB20118F228EAB4100BC85C0 /* InfoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */; };
@@ -143,6 +142,9 @@
 		BB687E89228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */; };
 		BB687E8B228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */; };
 		BB68EB2722A31D2A00CDB114 /* UITextViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB68EB2622A31D2900CDB114 /* UITextViewItemViewController.swift */; };
+		BB6D0EA422CFD536003750DA /* PersonalLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA222CFD535003750DA /* PersonalLikeViewController.swift */; };
+		BB6D0EA522CFD536003750DA /* PersonalLikeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6D0EA322CFD536003750DA /* PersonalLikeViewController.storyboard */; };
+		BB6D0EA722CFDF7D003750DA /* MatchRequestCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */; };
 		BB70B034229F418600EB2BD9 /* PromptPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */; };
 		BB70B036229F419000EB2BD9 /* PromptPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */; };
 		BB70B038229F543400EB2BD9 /* PromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */; };
@@ -360,9 +362,8 @@
 		91BEE2A8225D746800A53171 /* DiscoveryFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterTableViewCell.swift; sourceTree = "<group>"; };
 		91BEE2AA225D8EFD00A53171 /* DiscoveryFilterViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DiscoveryFilterViewController.storyboard; sourceTree = "<group>"; };
 		91BEE2AB225D8EFD00A53171 /* DiscoveryFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterViewController.swift; sourceTree = "<group>"; };
-		91F6306922C3193E00FAC38C /* MatchRequestCreationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRequestCreationData.swift; sourceTree = "<group>"; };
-		91F6306C22C564EE00FAC38C /* PersonalLikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalLikeViewController.swift; sourceTree = "<group>"; };
-		91F6306E22C564FE00FAC38C /* PersonalLikeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalLikeViewController.storyboard; sourceTree = "<group>"; };
+		BB00578422C4256E00AE4465 /* LikeFullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeFullProfileViewController.swift; sourceTree = "<group>"; };
+		BB00578622C4257900AE4465 /* LikeFullProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LikeFullProfileViewController.storyboard; sourceTree = "<group>"; };
 		BB03156D221022D1009C74A6 /* MotionEffectGroupGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEffectGroupGenerator.swift; sourceTree = "<group>"; };
 		BB0628C1224634B9000D9B12 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BB0628C32246352B000D9B12 /* PearChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PearChatAPI.swift; sourceTree = "<group>"; };
@@ -407,7 +408,7 @@
 		BB1C67152237901500D75848 /* ProfileInterestsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInterestsViewController.storyboard; sourceTree = "<group>"; };
 		BB1C67172237902100D75848 /* ProfileInterestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsViewController.swift; sourceTree = "<group>"; };
 		BB1D8A0F22C179EF001D12A0 /* MainLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLikesViewController.swift; sourceTree = "<group>"; };
-		BB1D8A1222C17A0C001D12A0 /* MailLikesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MailLikesViewController.storyboard; sourceTree = "<group>"; };
+		BB1D8A1222C17A0C001D12A0 /* MainLikesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainLikesViewController.storyboard; sourceTree = "<group>"; };
 		BB20118A228DFAFB00BC85C0 /* SimpleFieldInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFieldInputViewController.swift; sourceTree = "<group>"; };
 		BB20118C228DFB0400BC85C0 /* SimpleFieldInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimpleFieldInputViewController.storyboard; sourceTree = "<group>"; };
 		BB20118E228EAB4100BC85C0 /* InfoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -471,6 +472,9 @@
 		BB687E88228D838C00F45C9D /* OnboardingMoreDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingMoreDetailsViewController.storyboard; sourceTree = "<group>"; };
 		BB687E8A228D839B00F45C9D /* OnboardingMoreDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMoreDetailsViewController.swift; sourceTree = "<group>"; };
 		BB68EB2622A31D2900CDB114 /* UITextViewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextViewItemViewController.swift; path = "Pear/Controllers/Profiles/Question Response Item/UITextViewItemViewController.swift"; sourceTree = SOURCE_ROOT; };
+		BB6D0EA222CFD535003750DA /* PersonalLikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalLikeViewController.swift; sourceTree = "<group>"; };
+		BB6D0EA322CFD536003750DA /* PersonalLikeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonalLikeViewController.storyboard; sourceTree = "<group>"; };
+		BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRequestCreationData.swift; sourceTree = "<group>"; };
 		BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptPickerViewController.swift; sourceTree = "<group>"; };
 		BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptPickerViewController.storyboard; sourceTree = "<group>"; };
 		BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTableViewCell.swift; sourceTree = "<group>"; };
@@ -938,8 +942,8 @@
 		91F6306B22C564AA00FAC38C /* Personal Like */ = {
 			isa = PBXGroup;
 			children = (
-				91F6306C22C564EE00FAC38C /* PersonalLikeViewController.swift */,
-				91F6306E22C564FE00FAC38C /* PersonalLikeViewController.storyboard */,
+				BB6D0EA322CFD536003750DA /* PersonalLikeViewController.storyboard */,
+				BB6D0EA222CFD535003750DA /* PersonalLikeViewController.swift */,
 			);
 			path = "Personal Like";
 			sourceTree = "<group>";
@@ -1175,7 +1179,9 @@
 			isa = PBXGroup;
 			children = (
 				BB1D8A0F22C179EF001D12A0 /* MainLikesViewController.swift */,
-				BB1D8A1222C17A0C001D12A0 /* MailLikesViewController.storyboard */,
+				BB1D8A1222C17A0C001D12A0 /* MainLikesViewController.storyboard */,
+				BB00578422C4256E00AE4465 /* LikeFullProfileViewController.swift */,
+				BB00578622C4257900AE4465 /* LikeFullProfileViewController.storyboard */,
 			);
 			path = "Likes Tab";
 			sourceTree = "<group>";
@@ -1512,11 +1518,11 @@
 		BB94C11D22437BDC001320B0 /* Creation Models */ = {
 			isa = PBXGroup;
 			children = (
+				BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */,
 				BBBA5738226D9377000BCD5F /* ProfileCreationData.swift */,
 				BB20186D227B9EAE0070F0B3 /* UpdateProfileData.swift */,
 				BB986A42220F76BF00759A14 /* UserProfileCreationData.swift */,
 				BBE91C832268D24800D285E3 /* UserCreationData.swift */,
-				91F6306922C3193E00FAC38C /* MatchRequestCreationData.swift */,
 			);
 			path = "Creation Models";
 			sourceTree = "<group>";
@@ -2316,7 +2322,6 @@
 				BB541B42223B5AA0002239C8 /* RemoteConfig.plist in Resources */,
 				BBF93E8B2267CF7A002841EE /* OpenSans-SemiBold.ttf in Resources */,
 				BB17892C225D96E20033ACC6 /* ChatMainViewController.storyboard in Resources */,
-				91F6306F22C564FE00FAC38C /* PersonalLikeViewController.storyboard in Resources */,
 				BBBE7B892272171700C32EBE /* ProfileQuestionResponseViewController.storyboard in Resources */,
 				BB855B1722A30DA800F54EA4 /* MeEditUserInfoStackViewController.storyboard in Resources */,
 				BB855B1322A2FDB100F54EA4 /* EditPreviewViewController.storyboard in Resources */,
@@ -2342,6 +2347,7 @@
 				BBB71B6522946CB4002CDDD1 /* UserAgeInputViewController.storyboard in Resources */,
 				BB9AE0B32250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard in Resources */,
 				BB687E75228D717000F45C9D /* OnboardingFriendNameViewController.storyboard in Resources */,
+				BB6D0EA522CFD536003750DA /* PersonalLikeViewController.storyboard in Resources */,
 				BBBB38AC229F207E00DEFF5E /* UpdateUserPromptsStackViewController.storyboard in Resources */,
 				BBA8AE9E2297F986003F1D79 /* PromptInputResponseViewController.storyboard in Resources */,
 				BBB71B7E2295273A002CDDD1 /* UserReligionInputViewController.storyboard in Resources */,
@@ -2369,13 +2375,14 @@
 				BB94C12F2243C687001320B0 /* Colors.xcassets in Resources */,
 				BB178930225DE27A0033ACC6 /* ChatRequestsTableViewController.storyboard in Resources */,
 				BBBE7B9322721E1200C32EBE /* ApproveProfileViewController.storyboard in Resources */,
-				BB1D8A1322C17A0C001D12A0 /* MailLikesViewController.storyboard in Resources */,
+				BB1D8A1322C17A0C001D12A0 /* MainLikesViewController.storyboard in Resources */,
 				BB9CB6A72259FAA700605A98 /* UpdateTextFieldController.storyboard in Resources */,
 				BBECBEC22237D9CD008E8E91 /* ApproveDetachedProfileViewController.storyboard in Resources */,
 				BB0AE4ED22536FD0005DD315 /* UserGenderPreferencesViewController.storyboard in Resources */,
 				BB687E83228D828E00F45C9D /* OnboardingPreferencesViewController.storyboard in Resources */,
 				BBDF1FED21E2B62D00520881 /* MainTabBarViewController.storyboard in Resources */,
 				BB687E5E228D5A3E00F45C9D /* OnboardingExplainationPage1ViewController.storyboard in Resources */,
+				BB00578722C4257900AE4465 /* LikeFullProfileViewController.storyboard in Resources */,
 				BB139F01229A9AB200D7955A /* AccountSettingsViewController.storyboard in Resources */,
 				91BEE298225A7B8600A53171 /* ApproveProfileAllowNotificationsViewController.storyboard in Resources */,
 				BBF93E912267CF7A002841EE /* OpenSans-Bold.ttf in Resources */,
@@ -2617,7 +2624,6 @@
 				913E3B07229F4869000B70A8 /* PearEvent.swift in Sources */,
 				BBBA5753226E8BA5000BCD5F /* UIColor+Helpers.swift in Sources */,
 				60C131DF21D344F80093ECBA /* AuthAPI.swift in Sources */,
-				91F6306A22C3193E00FAC38C /* MatchRequestCreationData.swift in Sources */,
 				BB3FA79C22BC342800555FCA /* FullChatViewController+Keyboard.swift in Sources */,
 				BBB71B6A22947934002CDDD1 /* UserGenderInputViewController.swift in Sources */,
 				BB1C67102237205700D75848 /* Coding.swift in Sources */,
@@ -2675,14 +2681,15 @@
 				BB03156E221022D1009C74A6 /* MotionEffectGroupGenerator.swift in Sources */,
 				BB687E55228D535700F45C9D /* LocationBlockedViewController.swift in Sources */,
 				BB42C76D2210055600505C03 /* HapticFeedbackGenerator.swift in Sources */,
-				91F6306D22C564EE00FAC38C /* PersonalLikeViewController.swift in Sources */,
 				BBB71B7F2295273A002CDDD1 /* UserReligionInputViewController.swift in Sources */,
+				BB6D0EA422CFD536003750DA /* PersonalLikeViewController.swift in Sources */,
 				BB9D1B212255E0D00074C099 /* MatchesAPI.swift in Sources */,
 				BB687E85228D829900F45C9D /* OnboardingPicturesViewController.swift in Sources */,
 				911E2C4D229A993500E11860 /* JoinEventViewController.swift in Sources */,
 				BBB0E011221381E5009C1517 /* ImageUploadCollectionViewCell.swift in Sources */,
 				BB9CB69F2259E55D00605A98 /* UITextView+Styling.swift in Sources */,
 				BB9D1B242255E1310074C099 /* PearMatchesAPI.swift in Sources */,
+				BB00578522C4256E00AE4465 /* LikeFullProfileViewController.swift in Sources */,
 				BB0C701522347D0E00F6F153 /* PearDetachedProfileConstants.swift in Sources */,
 				BBFFBBD922211855002E1B54 /* ImageAPI.swift in Sources */,
 				BB633D39228632BA005E120F /* PearDiscoveryAPI.swift in Sources */,
@@ -2702,6 +2709,7 @@
 				BB0628C2224634B9000D9B12 /* ChatAPI.swift in Sources */,
 				BBA2B4242234F0E600D8C27B /* DataStore+Helpers.swift in Sources */,
 				BB61B7B7229D131F004FA81C /* QRCodeScannerViewController.swift in Sources */,
+				BB6D0EA722CFDF7D003750DA /* MatchRequestCreationData.swift in Sources */,
 				BBC4A0822257F624009D9867 /* SentryHelper.swift in Sources */,
 				BBA8AE9C2297F97E003F1D79 /* PromptInputResponseViewController.swift in Sources */,
 				BB0F16BC222EE7D500915C1C /* NetworkingConfig.swift in Sources */,
@@ -2901,7 +2909,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 138;
+				CURRENT_PROJECT_VERSION = 140;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -2926,7 +2934,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 138;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3125,7 +3133,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 138;
+				CURRENT_PROJECT_VERSION = 140;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
@@ -3321,7 +3329,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pear/Pear.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 138;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = 9ST4X5576Q;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Pear/Supporting Files/Info.plist";
