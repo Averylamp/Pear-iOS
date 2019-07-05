@@ -50,7 +50,6 @@ extension UpdateUserPromptsStackViewController {
     let questionResponses = user.questionResponses.filter({ $0.question.questionType == .freeResponse})
     var index: Int = 0
     if questionResponses.count > 0 {
-      print("Count: \(questionResponses.count)")
       for response in questionResponses.filter({ $0.hidden == false}) {
         self.addPromptCard(response: response, index: index)
         index += 1
