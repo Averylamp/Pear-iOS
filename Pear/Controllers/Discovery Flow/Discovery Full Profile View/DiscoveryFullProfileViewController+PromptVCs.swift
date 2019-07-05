@@ -74,7 +74,7 @@ extension DiscoveryFullProfileViewController {
                                 thumbnailImageURL: URL,
                                 requestPersonName: String,
                                 likedPhoto: ImageContainer? = nil,
-                                ikedPrompt: QuestionResponseItem? = nil) {
+                                likedPrompt: QuestionResponseItem? = nil) {
     
     guard let personalRequestVC = PersonalLikeViewController
       .instantiate(personalUserID: personalUserID,

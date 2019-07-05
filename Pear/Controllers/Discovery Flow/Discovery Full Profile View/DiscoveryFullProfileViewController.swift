@@ -427,6 +427,7 @@ extension DiscoveryFullProfileViewController {
         self.displayPersonalRequestVC(personalUserID: personalUserID,
                                       thumbnailImageURL: requestedThumbnailURL,
                                       requestPersonName: self.fullProfileData.firstName ?? "",
+                                      likedPhoto: nil,
                                       likedPrompt: questionResponse)
       }
     }
