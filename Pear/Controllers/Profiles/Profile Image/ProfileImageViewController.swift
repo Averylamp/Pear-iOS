@@ -58,6 +58,7 @@ extension ProfileImageViewController {
     self.imageView.contentMode = .scaleAspectFill
     self.imageView.clipsToBounds = true
     self.scrollView.maximumZoomScale = 2.0
+    self.scrollView.minimumZoomScale = 1.0
     self.scrollView.delegate = self
   }
   
@@ -84,6 +85,10 @@ extension ProfileImageViewController: UIScrollViewDelegate {
     UIView.animate(withDuration: 0.3) {
       self.scrollView.zoomScale = 1.0
     }
+  }
+  
+  func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    self.scrollView.zoomScale = max(self.scrollView.zoomScale, 1.0)
   }
   
 }
