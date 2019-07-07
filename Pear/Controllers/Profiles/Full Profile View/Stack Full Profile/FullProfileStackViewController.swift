@@ -167,11 +167,11 @@ extension FullProfileStackViewController {
     self.stackView.addArrangedSubview(spacer)
   }
   
-  static func addVCToContainer(view: UIView) -> UIView {
+  static func addVCToContainer(view: UIView, imageView: Bool = false) -> UIView {
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false
     containerView.backgroundColor = FullProfileStackViewController.backgroundColor
-    let cardView = addVCToCard(view: view)
+    let cardView = addVCToCard(view: view, imageView: imageView)
     let cardShadowView = UIView()
     cardShadowView.translatesAutoresizingMaskIntoConstraints = false
     cardShadowView.layer.cornerRadius = 12
@@ -194,7 +194,7 @@ extension FullProfileStackViewController {
     return containerView
   }
   
-  static func addVCToCard(view: UIView) -> UIView {
+  static func addVCToCard(view: UIView, imageView: Bool = false) -> UIView {
     let cardView = UIView()
     cardView.backgroundColor = UIColor.white
     cardView.layer.cornerRadius = 12
@@ -211,6 +211,10 @@ extension FullProfileStackViewController {
       NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal,
                          toItem: cardView, attribute: .right, multiplier: 1.0, constant: 0.0)
       ])
+    if imageView {
+      cardView.addConstraint(NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal,
+                                                toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0))
+    }
     return cardView
   }
   
@@ -221,7 +225,7 @@ extension FullProfileStackViewController {
     }
     self.addChild(imageVC)
     imageVC.view.translatesAutoresizingMaskIntoConstraints = false
-    let containerView = FullProfileStackViewController.addVCToContainer(view: imageVC.view)
+    let containerView = FullProfileStackViewController.addVCToContainer(view: imageVC.view, imageView: true)
     self.stackView.addArrangedSubview(containerView)
     imageVC.didMove(toParent: self)
     return imageVC

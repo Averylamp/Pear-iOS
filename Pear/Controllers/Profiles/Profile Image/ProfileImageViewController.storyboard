@@ -25,27 +25,37 @@
                                 <rect key="frame" x="169" y="169" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qAi-Cg-doH">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIT-Wt-S4W">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qAi-Cg-doH">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="qAi-Cg-doH" secondAttribute="height" multiplier="1:1" id="cyr-mX-3tZ"/>
+                                    <constraint firstItem="qAi-Cg-doH" firstAttribute="centerX" secondItem="DIT-Wt-S4W" secondAttribute="centerX" id="88U-XQ-ckE"/>
+                                    <constraint firstAttribute="bottom" secondItem="qAi-Cg-doH" secondAttribute="bottom" id="9rW-jr-qNB"/>
+                                    <constraint firstItem="qAi-Cg-doH" firstAttribute="centerY" secondItem="DIT-Wt-S4W" secondAttribute="centerY" id="Jxx-2b-IUa"/>
+                                    <constraint firstItem="qAi-Cg-doH" firstAttribute="leading" secondItem="DIT-Wt-S4W" secondAttribute="leading" id="egH-IN-Q6P"/>
+                                    <constraint firstAttribute="trailing" secondItem="qAi-Cg-doH" secondAttribute="trailing" id="etT-Fz-I3E"/>
+                                    <constraint firstItem="qAi-Cg-doH" firstAttribute="top" secondItem="DIT-Wt-S4W" secondAttribute="top" id="iOl-oZ-4iO"/>
                                 </constraints>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="31Q-7w-aTe" firstAttribute="centerX" secondItem="xyO-cf-16v" secondAttribute="centerX" id="2eg-hx-p9t"/>
+                            <constraint firstItem="DIT-Wt-S4W" firstAttribute="centerY" secondItem="xyO-cf-16v" secondAttribute="centerY" id="Eku-w1-xmh"/>
                             <constraint firstItem="31Q-7w-aTe" firstAttribute="centerY" secondItem="xyO-cf-16v" secondAttribute="centerY" id="Eu8-Ix-fFe"/>
-                            <constraint firstItem="qAi-Cg-doH" firstAttribute="centerY" secondItem="xyO-cf-16v" secondAttribute="centerY" id="SlH-2W-M9A"/>
-                            <constraint firstItem="qAi-Cg-doH" firstAttribute="centerX" secondItem="xyO-cf-16v" secondAttribute="centerX" id="Sve-Hn-wXp"/>
-                            <constraint firstItem="qAi-Cg-doH" firstAttribute="width" secondItem="xyO-cf-16v" secondAttribute="width" id="dEk-n7-Lvi"/>
-                            <constraint firstItem="qAi-Cg-doH" firstAttribute="height" secondItem="xyO-cf-16v" secondAttribute="height" priority="999" id="fc1-bG-QoL"/>
+                            <constraint firstItem="DIT-Wt-S4W" firstAttribute="width" secondItem="xyO-cf-16v" secondAttribute="width" id="ioy-z1-rg1"/>
+                            <constraint firstItem="DIT-Wt-S4W" firstAttribute="centerX" secondItem="xyO-cf-16v" secondAttribute="centerX" id="lzz-Gz-8ll"/>
+                            <constraint firstItem="DIT-Wt-S4W" firstAttribute="height" secondItem="xyO-cf-16v" secondAttribute="height" id="waC-nP-XJ8"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="375"/>
                     <connections>
                         <outlet property="imageView" destination="qAi-Cg-doH" id="CNj-o7-R8U"/>
-                        <outlet property="imageViewAspectConstraint" destination="cyr-mX-3tZ" id="VHM-d1-VWq"/>
+                        <outlet property="scrollView" destination="DIT-Wt-S4W" id="jvw-zo-N39"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fk6-RJ-dJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
