@@ -31,9 +31,6 @@ extension DataStore {
                                       DataStore.shared.currentPearUser = pearUser
                                       do {
                                         if let userData = UserDefaults.standard.data(forKey: UserDefaultKeys.cachedPearUser.rawValue) {
-                                          if let json = try? JSON(data: userData) {
-                                             print(json)
-                                          }
                                           let cachedUser = try JSONDecoder().decode(PearUser.self, from: userData)
                                           print(cachedUser)
                                         }
