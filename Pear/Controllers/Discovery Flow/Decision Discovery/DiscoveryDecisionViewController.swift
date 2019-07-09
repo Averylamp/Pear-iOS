@@ -291,7 +291,7 @@ extension DiscoveryDecisionViewController {
       let topConstraint = NSLayoutConstraint(item: profileVC.view as Any, attribute: .top, relatedBy: .equal,
                                              toItem: self.headerContainerView, attribute: .bottom, multiplier: 1.0, constant: -40)
       let bottomConstraint = NSLayoutConstraint(item: profileVC.view as Any, attribute: .bottom, relatedBy: .equal,
-                                                ttoItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 40)
+                                                toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 40)
       self.view.addConstraints([
         topConstraint,
         bottomConstraint,
