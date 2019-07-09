@@ -48,10 +48,7 @@ class PearMatchesAPI: MatchesAPI {
 // MARK: - Routes
 extension PearMatchesAPI {
   
-  func createMatchRequest(sentByUserID: String,
-                          sentForUserID: String,
-                          receivedByUserID: String,
-                          requestText: String?,
+  func createMatchRequest(matchCreationData: MatchRequestCreationData,
                           completion: @escaping(Result<Bool, MatchesAPIError>) -> Void) {
     let request = NSMutableURLRequest(url: NSURL(string: "\(NetworkingConfig.graphQLHost)")! as URL,
                                       cachePolicy: .useProtocolCachePolicy,
@@ -61,12 +58,7 @@ extension PearMatchesAPI {
     let fullDictionary: [String: Any] = [
       "query": PearMatchesAPI.createMatchRequestQuery,
       "variables": [
-        "requestInput": [
-          "sentByUser_id": sentByUserID,
-          "sentForUser_id": sentForUserID,
-          "receivedByUser_id": receivedByUserID,
-          "requestText": requestText as Any
-        ]
+        "requestInput": matchCreationData.toGraphQLInput()
       ]
     ]
     
@@ -100,13 +92,13 @@ extension PearMatchesAPI {
             SentryHelper.generateSentryEvent(level: .error,
                                              apiName: "PearMatchAPI",
                                              functionName: "createMatchRequest",
-                                             message: message ?? "Failed to Approve Detached Profile",
+                                             message: message ?? "Failed to Create Match Request",
                                              responseData: data,
                                              tags: [:],
                                              payload: fullDictionary)
             completion(.failure(MatchesAPIError.graphQLError(message: message ?? "")))
           case .success(let message):
-            if sentByUserID == sentForUserID {
+            if matchCreationData.sentByUserID == matchCreationData.sentForUserID {
               Analytics.logEvent("sent_personal_request", parameters: nil)
             } else {
               Analytics.logEvent("sent_matchmaker_request", parameters: nil)

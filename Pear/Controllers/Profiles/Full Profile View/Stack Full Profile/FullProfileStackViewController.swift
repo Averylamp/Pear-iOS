@@ -14,9 +14,10 @@ class FullProfileStackViewController: UIViewController {
   
   @IBOutlet var stackView: UIStackView!
   
-  let backgroundColor: UIColor? = R.color.cardBackgroundColor()
-  let cardEdgeSpacing: CGFloat = 12.0
-  let cardBetweenSpacing: CGFloat = 12.0
+  static let backgroundColor: UIColor? = R.color.cardBackgroundColor()
+  static let cardEdgeSpacing: CGFloat = 12.0
+  static let cardBetweenSpacing: CGFloat = 12.0
+  var sectionItemsWithVCs: [SectionItemWithVC] = []
   
   /// Factory method for creating this view controller.
   ///
@@ -41,6 +42,11 @@ struct SectionItem {
   let image: ImageContainer?
   let demographics: FullProfileDisplayData?
   let question: QuestionResponseItem?
+}
+
+struct SectionItemWithVC {
+  let sectionItem: SectionItem
+  let viewController: UIViewController
 }
 
 // MARK: - Life Cycle
@@ -84,8 +90,8 @@ extension FullProfileStackViewController {
   }
   
   func stylize() {
-    self.view.backgroundColor = self.backgroundColor
-    self.stackView.backgroundColor = self.backgroundColor
+    self.view.backgroundColor = FullProfileStackViewController.backgroundColor
+    self.stackView.backgroundColor = FullProfileStackViewController.backgroundColor
   }
   
   func setup() {
@@ -99,7 +105,10 @@ extension FullProfileStackViewController {
       switch sectionItem.sectionType {
       case .image:
         if let image = sectionItem.image {
-          self.addImageVC(imageContainer: image)
+          let imageVC = self.addImageVC(imageContainer: image)
+          if let imageVC = imageVC {
+            self.sectionItemsWithVCs.append(SectionItemWithVC(sectionItem: sectionItem, viewController: imageVC))
+          }
         }
       case .demographics:
         if let displayData = sectionItem.demographics {
@@ -109,7 +118,10 @@ extension FullProfileStackViewController {
         }
       case .question:
         if let questionItem = sectionItem.question {
-          self.addQuestionResponseItem(responseItem: questionItem)
+          let questionResponseVC = self.addQuestionResponseItem(responseItem: questionItem)
+          if let questionResponseVC = questionResponseVC {
+            self.sectionItemsWithVCs.append(SectionItemWithVC(sectionItem: sectionItem, viewController: questionResponseVC))
+          }
         }
       }
     }
@@ -119,7 +131,7 @@ extension FullProfileStackViewController {
   func addNameAge(name: String, age: Int?) {
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false
-    containerView.backgroundColor = self.backgroundColor
+    containerView.backgroundColor = FullProfileStackViewController.backgroundColor
     let nameLabel = UILabel()
     nameLabel.translatesAutoresizingMaskIntoConstraints = false
     if let font = R.font.openSansExtraBold(size: 24) {
@@ -149,26 +161,41 @@ extension FullProfileStackViewController {
   func addSpacerView(height: CGFloat) {
     let spacer = UIView()
     spacer.translatesAutoresizingMaskIntoConstraints = false
-    spacer.backgroundColor = self.backgroundColor
+    spacer.backgroundColor = FullProfileStackViewController.backgroundColor
     spacer.addConstraint(NSLayoutConstraint(item: spacer, attribute: .height, relatedBy: .equal,
                                             toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
     self.stackView.addArrangedSubview(spacer)
   }
   
-  func addVCToCard(view: UIView) {
+  static func addVCToContainer(view: UIView, imageView: Bool = false) -> UIView {
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false
-    containerView.backgroundColor = self.backgroundColor
+    containerView.backgroundColor = FullProfileStackViewController.backgroundColor
+    let cardView = addVCToCard(view: view, imageView: imageView)
     let cardShadowView = UIView()
-    let cardView = UIView()
-    containerView.addSubview(cardShadowView)
-    containerView.addSubview(cardView)
     cardShadowView.translatesAutoresizingMaskIntoConstraints = false
     cardShadowView.layer.cornerRadius = 12
     cardShadowView.layer.shadowOffset = CGSize(width: 0, height: 2.0)
     cardShadowView.layer.shadowColor = UIColor(white: 0.2, alpha: 0.05).cgColor
     cardShadowView.layer.shadowOpacity = 1.0
     cardShadowView.layer.shadowRadius = 8.0
+    containerView.addSubview(cardShadowView)
+    containerView.addSubview(cardView)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: cardBetweenSpacing / 2.0),
+      NSLayoutConstraint(item: cardView, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -cardBetweenSpacing / 2.0),
+      NSLayoutConstraint(item: cardView, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: cardEdgeSpacing),
+      NSLayoutConstraint(item: cardView, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -cardEdgeSpacing)
+      ])
+    return containerView
+  }
+  
+  static func addVCToCard(view: UIView, imageView: Bool = false) -> UIView {
+    let cardView = UIView()
     cardView.backgroundColor = UIColor.white
     cardView.layer.cornerRadius = 12
     cardView.clipsToBounds = true
@@ -184,29 +211,24 @@ extension FullProfileStackViewController {
       NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal,
                          toItem: cardView, attribute: .right, multiplier: 1.0, constant: 0.0)
       ])
-    containerView.addConstraints([
-      NSLayoutConstraint(item: cardView, attribute: .top, relatedBy: .equal,
-                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: self.cardBetweenSpacing / 2.0),
-      NSLayoutConstraint(item: cardView, attribute: .bottom, relatedBy: .equal,
-                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -self.cardBetweenSpacing / 2.0),
-      NSLayoutConstraint(item: cardView, attribute: .left, relatedBy: .equal,
-                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: self.cardEdgeSpacing),
-      NSLayoutConstraint(item: cardView, attribute: .right, relatedBy: .equal,
-                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -self.cardEdgeSpacing)
-      ])
-    
-    self.stackView.addArrangedSubview(containerView)
+    if imageView {
+      cardView.addConstraint(NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal,
+                                                toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0))
+    }
+    return cardView
   }
   
-  func addImageVC(imageContainer: ImageContainer) {
+  @discardableResult func addImageVC(imageContainer: ImageContainer) -> ProfileImageViewController? {
     guard let imageVC = ProfileImageViewController.instantiate(imageContainer: imageContainer) else {
       print("Failed to create Image VC")
-      return
+      return nil
     }
     self.addChild(imageVC)
     imageVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.addVCToCard(view: imageVC.view)
+    let containerView = FullProfileStackViewController.addVCToContainer(view: imageVC.view, imageView: true)
+    self.stackView.addArrangedSubview(containerView)
     imageVC.didMove(toParent: self)
+    return imageVC
   }
   
   func addDemographicsVC(locationName: String?,
@@ -220,18 +242,22 @@ extension FullProfileStackViewController {
     }
     self.addChild(demographicsVC)
     demographicsVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.addVCToCard(view: demographicsVC.view)
+    let containerView = FullProfileStackViewController.addVCToContainer(view: demographicsVC.view)
+    self.stackView.addArrangedSubview(containerView)
     demographicsVC.didMove(toParent: self)
   }
-    func addQuestionResponseItem(responseItem: QuestionResponseItem) {
+  
+  @discardableResult func addQuestionResponseItem(responseItem: QuestionResponseItem) -> ProfileQuestionResponseViewController? {
     guard let questionItemVC = ProfileQuestionResponseViewController.instantiate(questionItem: responseItem) else {
       print("Failed to instantiate Question Response ItemVC")
-      return
+      return nil
     }
     self.addChild(questionItemVC)
     questionItemVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.addVCToCard(view: questionItemVC.view)
+    let containerView = FullProfileStackViewController.addVCToContainer(view: questionItemVC.view)
+    self.stackView.addArrangedSubview(containerView)
     questionItemVC.didMove(toParent: self)
+    return questionItemVC
   }
   
   func addInterestsVC(interests: [String]) {
