@@ -96,6 +96,7 @@ extension DiscoveryDecisionViewController {
   }
   
   @objc func refreshDiscovery() {
+    self.updateFilterName()
     self.allFetchedProfiles = []
     self.profilesToShow = []
     self.hideProfileVC {
@@ -356,7 +357,15 @@ extension DiscoveryDecisionViewController {
   }
   
   func updateFilterName() {
-    self.filterNameLabel.text = "You"
+    DispatchQueue.main.async {
+      let filters = DataStore.shared.getCurrentFilters()
+      if let currentPearUser = DataStore.shared.currentPearUser,
+        filters.userID == currentPearUser.documentID {
+        self.filterNameLabel.text = "You"
+      } else {
+        self.filterNameLabel.text = filters.userName
+      }
+    }
   }
   
   @objc func hideFiltersHeader() {

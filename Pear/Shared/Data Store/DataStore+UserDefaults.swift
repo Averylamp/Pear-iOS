@@ -18,6 +18,7 @@ enum UserDefaultKeys: String {
   case filterMatchingDemographics
   case filterMatchingPreferences
   case filterUserID
+  case filterUserName
   
   // Flags
   case hasCreatedUser
@@ -125,10 +126,12 @@ extension DataStore {
     UserDefaults.standard.set(encodedMatchingDemographics, forKey: UserDefaultKeys.filterMatchingDemographics.rawValue)
     UserDefaults.standard.set(encodedMatchingPreferences, forKey: UserDefaultKeys.filterMatchingPreferences.rawValue)
     UserDefaults.standard.set(user.documentID, forKey: UserDefaultKeys.filterUserID.rawValue)
+    UserDefaults.standard.set(user.firstName ?? "Your friend", forKey: UserDefaultKeys.filterUserName.rawValue)
   }
   
   // swiftlint:disable:next large_tuple
   func getCurrentFilters() -> (userID: String,
+    userName: String,
     userMatchingDemographics: MatchingDemographics,
     userMatchingPreferences: MatchingPreferences) {
       guard let filterUserID = UserDefaults.standard.string(forKey: UserDefaultKeys.filterUserID.rawValue) else {
@@ -140,6 +143,9 @@ extension DataStore {
           fatalError("Failed to deserialize Current Pear User")
         }
       }
+      guard let filterUserName = UserDefaults.standard.string(forKey: UserDefaultKeys.filterUserName.rawValue) else {
+        fatalError("Failed to deserialize filter user name")
+      }
       guard let matchingDemographicsData = UserDefaults.standard.data(forKey: UserDefaultKeys.filterMatchingDemographics.rawValue),
         let matchingDemographics = try? JSONDecoder().decode(MatchingDemographics.self, from: matchingDemographicsData),
         let matchingPreferencesData = UserDefaults.standard.data(forKey: UserDefaultKeys.filterMatchingPreferences.rawValue),
@@ -148,6 +154,7 @@ extension DataStore {
           fatalError("Failed to deserialize Current Pear User")
       }
       return (userID: filterUserID,
+              userName: filterUserName,
               userMatchingDemographics: matchingDemographics,
               userMatchingPreferences: matchingPreferences)
   }
