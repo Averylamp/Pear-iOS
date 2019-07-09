@@ -523,13 +523,18 @@ extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
     if self.scrollView.contentOffset.y > self.maxContentOffset {
       self.maxContentOffset = self.scrollView.contentOffset.y
     }
-    if self.scrollView.contentOffset.y > self.lastContentOffset + 5.0 {
+    self.updateTabBar(scrollContentOffset: self.scrollView.contentOffset.y)
+    self.updateProfileNameHeader(scrollContentOffset: self.scrollView.contentOffset.y)
+  }
+  
+  func updateTabBar(scrollContentOffset: CGFloat) {
+    if scrollContentOffset > self.lastContentOffset + 5.0 {
       if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
         tabBarVisible == self.lastTabBarVisible {
         self.tabBarController?.setTabBarVisible(visible: false, duration: 0.4, animated: true)
         self.lastTabBarVisible = false
       }
-    } else if self.scrollView.contentOffset.y < self.lastContentOffset - 5.0 {
+    } else if scrollContentOffset < self.lastContentOffset - 5.0 {
       if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
         tabBarVisible == self.lastTabBarVisible {
         self.tabBarController?.setTabBarVisible(visible: true, duration: 0.4, animated: true)
@@ -537,15 +542,20 @@ extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
       }
     }
     self.lastContentOffset = self.scrollView.contentOffset.y
-    if scrollView.contentOffset.y > 50 {
+  }
+  
+  func updateProfileNameHeader(scrollContentOffset: CGFloat) {
+    if scrollContentOffset > 50 {
       if headerHeightConstraint.constant != 50 {
         headerHeightConstraint.constant = 50
+        NotificationCenter.default.post(name: .hideFiltersHeader, object: nil)
         UIView.animate(withDuration: 0.5) {
           self.view.layoutIfNeeded()
         }
       }
     } else {
       if headerHeightConstraint.constant != 0 {
+        NotificationCenter.default.post(name: .showFiltersHeader, object: nil)
         headerHeightConstraint.constant = 0
         UIView.animate(withDuration: 0.5) {
           self.view.layoutIfNeeded()
