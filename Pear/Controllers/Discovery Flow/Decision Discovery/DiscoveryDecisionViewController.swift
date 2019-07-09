@@ -12,6 +12,8 @@ import SDWebImage
 
 extension Notification.Name {
   static let refreshDiscoveryFeed = Notification.Name("refreshDiscoveryFeed")
+  static let showFiltersHeader = Notification.Name("showFilterHeader")
+  static let hideFiltersHeader = Notification.Name("hideFilterHeader")
 }
 
 class DiscoveryDecisionViewController: UIViewController {
@@ -63,7 +65,6 @@ extension DiscoveryDecisionViewController {
     super.viewDidLoad()
     self.setup()
     self.refreshDiscovery()
-    self.checkForDetachedProfiles()
   }
   
   func setup() {
@@ -71,105 +72,27 @@ extension DiscoveryDecisionViewController {
     self.setupFilterView()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.checkForDetachedProfiles()
+  }
+  
   func registerNotifications() {
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(DiscoveryDecisionViewController.refreshDiscovery),
-                                           name: .refreshDiscoveryFeed,
-                                           object: nil)
-  }
-  
-  func setupFilterView() {
-    self.headerHeightConstraint.constant = self.headerHeightConstant
-    self.headerContainerView.addSubview(self.filterContainerButton)
-    self.filterContainerButton.translatesAutoresizingMaskIntoConstraints = false
-    self.headerContainerView.addConstraints([
-      NSLayoutConstraint(item: self.filterContainerButton, attribute: .centerY, relatedBy: .equal,
-                         toItem: self.headerContainerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: self.filterContainerButton, attribute: .centerX, relatedBy: .equal,
-                         toItem: self.headerContainerView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: self.filterContainerButton, attribute: .height, relatedBy: .equal,
-                         toItem: self.headerContainerView, attribute: .height, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: self.filterContainerButton, attribute: .left, relatedBy: .equal,
-                         toItem: self.scanButton, attribute: .right, multiplier: 1.0, constant: 0.0)
-      ])
-    
-    let filterInfoLabel = UILabel()
-    self.filterContainerButton.addSubview(filterInfoLabel)
-    filterInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-    filterInfoLabel.text = "Matching for"
-    filterInfoLabel.textAlignment = .center
-    filterInfoLabel.textColor = R.color.secondaryTextColor()
-    if let font = R.font.openSansBold(size: 12) {
-      filterInfoLabel.font = font
-    }
-    
-    self.filterContainerButton.addConstraints([
-      NSLayoutConstraint(item: filterInfoLabel, attribute: .top, relatedBy: .equal,
-                         toItem: self.filterContainerButton, attribute: .top, multiplier: 1.0, constant: 8.0),
-      NSLayoutConstraint(item: filterInfoLabel, attribute: .centerX, relatedBy: .equal,
-                         toItem: self.filterContainerButton, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: filterInfoLabel, attribute: .width, relatedBy: .equal,
-                         toItem: self.filterContainerButton, attribute: .width, multiplier: 1.0, constant: 0.0)
-      ])
-    
-    self.filterContainerButton.addSubview(self.filterNameLabel)
-    self.filterNameLabel.translatesAutoresizingMaskIntoConstraints = false
-    self.filterNameLabel.textAlignment = .center
-    self.filterNameLabel.textColor = R.color.primaryTextColor()
-    if let font = R.font.openSansBold(size: 17) {
-      self.filterNameLabel.font = font
-    }
-    self.filterNameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
-    self.updateFilterName()
-    
-    self.filterContainerButton.addConstraints([
-      NSLayoutConstraint(item: self.filterNameLabel, attribute: .top, relatedBy: .equal,
-                         toItem: filterInfoLabel, attribute: .bottom, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: self.filterNameLabel, attribute: .centerX, relatedBy: .equal,
-                         toItem: self.filterContainerButton, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: self.filterNameLabel, attribute: .bottom, relatedBy: .equal,
-                         toItem: self.filterContainerButton, attribute: .bottom, multiplier: 1.0, constant: -6)
-      ])
-    
-    let downIconImageView = UIImageView()
-    self.filterContainerButton.addSubview(downIconImageView)
-    downIconImageView.translatesAutoresizingMaskIntoConstraints = false
-    downIconImageView.contentMode = .scaleAspectFit
-    downIconImageView.image = R.image.discoveryFilterIconDown()
-    downIconImageView.addConstraints([
-      NSLayoutConstraint(item: downIconImageView, attribute: .width, relatedBy: .equal,
-                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 16),
-      NSLayoutConstraint(item: downIconImageView, attribute: .width, relatedBy: .equal,
-                         toItem: downIconImageView, attribute: .height, multiplier: 1.0, constant: 0.0)
-      ])
-    self.filterContainerButton.addConstraints([
-      NSLayoutConstraint(item: downIconImageView, attribute: .lastBaseline, relatedBy: .equal,
-                         toItem: self.filterNameLabel, attribute: .lastBaseline, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: downIconImageView, attribute: .left, relatedBy: .equal,
-                         toItem: self.filterNameLabel, attribute: .right, multiplier: 1.0, constant: 10.0)
-      ])
-    
-  }
-  
-  func updateFilterName() {
-    self.filterNameLabel.text = "You"
-  }
-  
-  func checkForDetachedProfiles() {
-    DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
-      print("\(detachedProfiles.count) Detached Profiles Found")
-      for detachedProfile in detachedProfiles {
-        DispatchQueue.main.async {
-          guard let detachedProfileApprovalVC = ApproveDetachedProfileNavigationViewController
-            .instantiate(detachedProfile: detachedProfile) else {
-              print("Failed to create detached profile navigation vc")
-              return
-          }
-          self.present(detachedProfileApprovalVC, animated: true, completion: nil)
-          return
-        }
-      }
-    })
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(DiscoveryDecisionViewController.refreshDiscovery),
+                   name: .refreshDiscoveryFeed,
+                   object: nil)
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(DiscoveryDecisionViewController.showFiltersHeader),
+                   name: .showFiltersHeader,
+                   object: nil)
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(DiscoveryDecisionViewController.hideFiltersHeader),
+                   name: .hideFiltersHeader,
+                   object: nil)
   }
   
   @objc func refreshDiscovery() {
@@ -259,10 +182,6 @@ extension DiscoveryDecisionViewController {
     }
   }
   
-  func changeFiltersHeader(show: Bool) {
-    
-  }
-  
   func hideProfileVC(completion: @escaping() -> Void) {
     DispatchQueue.main.async {
       if let profileVC = self.currentDiscoveryProfileVC {
@@ -338,4 +257,129 @@ extension DiscoveryDecisionViewController: DiscoveryFullProfileDelegate {
     self.showNextProfile()
   }
   
+}
+
+// MARK: - Discovery Detached Profiles
+extension DiscoveryDecisionViewController {
+  
+  func checkForDetachedProfiles() {
+    DataStore.shared.checkForDetachedProfiles(detachedProfilesFound: { (detachedProfiles) in
+      print("\(detachedProfiles.count) Detached Profiles Found")
+      for detachedProfile in detachedProfiles {
+        DispatchQueue.main.async {
+          guard let detachedProfileApprovalVC = ApproveDetachedProfileNavigationViewController
+            .instantiate(detachedProfile: detachedProfile) else {
+              print("Failed to create detached profile navigation vc")
+              return
+          }
+          self.present(detachedProfileApprovalVC, animated: true, completion: nil)
+          return
+        }
+      }
+    })
+  }
+
+}
+
+// MARK: - Discovery Filter Header
+extension DiscoveryDecisionViewController {
+  
+  func setupFilterView() {
+    self.headerHeightConstraint.constant = self.headerHeightConstant
+    self.headerContainerView.addSubview(self.filterContainerButton)
+    self.filterContainerButton.translatesAutoresizingMaskIntoConstraints = false
+    self.headerContainerView.addConstraints([
+      NSLayoutConstraint(item: self.filterContainerButton, attribute: .centerY, relatedBy: .equal,
+                         toItem: self.headerContainerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: self.filterContainerButton, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.headerContainerView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: self.filterContainerButton, attribute: .height, relatedBy: .equal,
+                         toItem: self.headerContainerView, attribute: .height, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: self.filterContainerButton, attribute: .left, relatedBy: .equal,
+                         toItem: self.scanButton, attribute: .right, multiplier: 1.0, constant: 0.0)
+      ])
+    
+    let filterInfoLabel = UILabel()
+    self.filterContainerButton.addSubview(filterInfoLabel)
+    filterInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+    filterInfoLabel.text = "Matching for"
+    filterInfoLabel.textAlignment = .center
+    filterInfoLabel.textColor = R.color.secondaryTextColor()
+    if let font = R.font.openSansBold(size: 12) {
+      filterInfoLabel.font = font
+    }
+    
+    self.filterContainerButton.addConstraints([
+      NSLayoutConstraint(item: filterInfoLabel, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.filterContainerButton, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: filterInfoLabel, attribute: .width, relatedBy: .equal,
+                         toItem: self.filterContainerButton, attribute: .width, multiplier: 1.0, constant: 0.0)
+      ])
+    
+    self.filterContainerButton.addSubview(self.filterNameLabel)
+    self.filterNameLabel.translatesAutoresizingMaskIntoConstraints = false
+    self.filterNameLabel.textAlignment = .center
+    self.filterNameLabel.textColor = R.color.primaryTextColor()
+    if let font = R.font.openSansBold(size: 17) {
+      self.filterNameLabel.font = font
+    }
+    self.filterNameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    self.updateFilterName()
+    
+    self.filterContainerButton.addConstraints([
+      NSLayoutConstraint(item: self.filterNameLabel, attribute: .top, relatedBy: .equal,
+                         toItem: filterInfoLabel, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: self.filterNameLabel, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.filterContainerButton, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: self.filterNameLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: self.filterContainerButton, attribute: .bottom, multiplier: 1.0, constant: -6)
+      ])
+    
+    let downIconImageView = UIImageView()
+    self.filterContainerButton.addSubview(downIconImageView)
+    downIconImageView.translatesAutoresizingMaskIntoConstraints = false
+    downIconImageView.contentMode = .scaleAspectFit
+    downIconImageView.image = R.image.discoveryFilterIconDown()
+    downIconImageView.addConstraints([
+      NSLayoutConstraint(item: downIconImageView, attribute: .width, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 16),
+      NSLayoutConstraint(item: downIconImageView, attribute: .width, relatedBy: .equal,
+                         toItem: downIconImageView, attribute: .height, multiplier: 1.0, constant: 0.0)
+      ])
+    self.filterContainerButton.addConstraints([
+      NSLayoutConstraint(item: downIconImageView, attribute: .lastBaseline, relatedBy: .equal,
+                         toItem: self.filterNameLabel, attribute: .lastBaseline, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: downIconImageView, attribute: .left, relatedBy: .equal,
+                         toItem: self.filterNameLabel, attribute: .right, multiplier: 1.0, constant: 10.0)
+      ])
+    
+  }
+  
+  func updateFilterName() {
+    self.filterNameLabel.text = "You"
+  }
+  
+  @objc func hideFiltersHeader() {
+    self.changeFiltersHeader(show: false)
+  }
+  
+  @objc func showFiltersHeader() {
+    self.changeFiltersHeader(show: true)
+  }
+  
+  func changeFiltersHeader(show: Bool) {
+    DispatchQueue.main.async {
+      UIView.animate(withDuration: 0.4, animations: {
+        if show {
+          self.filterContainerButton.alpha = 1.0
+          self.headerHeightConstraint.constant = self.headerHeightConstant
+        } else {
+          self.filterContainerButton.alpha = 0.0
+          self.headerHeightConstraint.constant = 0.0
+        }
+        self.view.layoutIfNeeded()
+      })
+    }
+  }
+
 }
