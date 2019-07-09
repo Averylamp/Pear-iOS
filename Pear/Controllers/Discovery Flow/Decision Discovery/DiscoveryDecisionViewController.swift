@@ -20,6 +20,7 @@ class DiscoveryDecisionViewController: UIViewController {
   var profilesToShow: [FullProfileDisplayData] = []
   var currentDiscoveryProfileVC: DiscoveryFullProfileViewController?
   
+  @IBOutlet weak var headerContainerView: UIView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
@@ -34,16 +35,6 @@ class DiscoveryDecisionViewController: UIViewController {
         return nil
     }
     return decisionDiscoveryVC
-  }
-  
-  @IBAction func filterButtonClicked(_ sender: Any) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    print("filter button clicked from decision VC")
-    guard let filtersVC = DiscoveryFilterViewController.instantiate() else {
-      print("Failed to create Filters VC")
-      return
-    }
-    self.navigationController?.pushViewController(filtersVC, animated: true)
   }
   
   @IBAction func qrCodeButtonClicked(_ sender: Any) {
@@ -200,31 +191,28 @@ extension DiscoveryDecisionViewController {
   func showProfileVC(profileVC: DiscoveryFullProfileViewController, completion: @escaping() -> Void) {
     DispatchQueue.main.async {
       self.currentDiscoveryProfileVC = profileVC
-      //    self.present(profileVC, animated: true, completion: completion)
       self.addChild(profileVC)
       self.view.addSubview(profileVC.view)
       profileVC.view.translatesAutoresizingMaskIntoConstraints = false
-      let yConstraint = NSLayoutConstraint(item: profileVC.view as Any, attribute: .centerY, relatedBy: .equal,
-                                           toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: -40)
-      self.view.addConstraints([
-        yConstraint,
-        NSLayoutConstraint(item: profileVC.view as Any, attribute: .centerX, relatedBy: .equal,
-                           toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: profileVC.view as Any, attribute: .width, relatedBy: .equal,
-                           toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint(item: profileVC.view as Any, attribute: .height, relatedBy: .equal,
-                           toItem: self.view, attribute: .height, multiplier: 1.0, constant: 0.0)
-        ])
-      self.view.layoutIfNeeded()
-      profileVC.didMove(toParent: self)
-      profileVC.view.alpha = 0.0
-      UIView.animate(withDuration: 0.7, animations: {
-        profileVC.view.alpha = 1.0
-        yConstraint.constant = 0.0
-        self.view.layoutIfNeeded()
-      }, completion: { (_) in
-        completion()
-      })
+//      let topConstraint = NSLayoutConstraint(item: profileVC.view as Any, attribute: .top, relatedBy: .equal,
+//                                             toItem: self.headercon, attribute: <#T##NSLayoutConstraint.Attribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>)
+//      self.view.addConstraints([
+//        yConstraint,
+//        NSLayoutConstraint(item: profileVC.view as Any, attribute: .centerX, relatedBy: .equal,
+//                           toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+//        NSLayoutConstraint(item: profileVC.view as Any, attribute: .width, relatedBy: .equal,
+//                           toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0.0),
+//        ])
+//      self.view.layoutIfNeeded()
+//      profileVC.didMove(toParent: self)
+//      profileVC.view.alpha = 0.0
+//      UIView.animate(withDuration: 0.7, animations: {
+//        profileVC.view.alpha = 1.0
+//        yConstraint.constant = 0.0
+//        self.view.layoutIfNeeded()
+//      }, completion: { (_) in
+//        completion()
+//      })
       
       if !DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedDiscoveryOnboarding) {
         Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: nil)
