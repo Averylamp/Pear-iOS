@@ -57,6 +57,8 @@ extension ProfileImageViewController {
   func setup() {
     self.imageView.contentMode = .scaleAspectFill
     self.imageView.clipsToBounds = true
+    self.scrollView.showsHorizontalScrollIndicator = false
+    self.scrollView.showsVerticalScrollIndicator = false
     self.scrollView.maximumZoomScale = 2.0
     self.scrollView.minimumZoomScale = 1.0
     self.scrollView.delegate = self

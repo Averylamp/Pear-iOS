@@ -17,7 +17,7 @@ protocol DiscoveryFullProfileDelegate: class {
 }
 
 class DiscoveryFullProfileViewController: UIViewController {
-  
+  static var requestHorizontalPadding = 20
   weak var delegate: DiscoveryFullProfileDelegate?
   var fullProfileData: FullProfileDisplayData!
   var fullProfileStackVC: FullProfileStackViewController?
@@ -26,8 +26,6 @@ class DiscoveryFullProfileViewController: UIViewController {
   var exactLastContentOffset: CGFloat = 0
   var totalScrollDistance: CGFloat = 0
   var maxContentOffset: CGFloat = 0
-  static var requestHorizontalPadding = 20
-
   let initializationTime: Double = CACurrentMediaTime()
 
   @IBOutlet weak var profileNameLabel: UILabel!
@@ -45,6 +43,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   var chatRequestVC: UIViewController?
   var chatRequestVCBottomConstraint: NSLayoutConstraint?
   var isSendingRequest = false
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.

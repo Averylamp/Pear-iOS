@@ -145,6 +145,9 @@
 		BB6D0EA422CFD536003750DA /* PersonalLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA222CFD535003750DA /* PersonalLikeViewController.swift */; };
 		BB6D0EA522CFD536003750DA /* PersonalLikeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6D0EA322CFD536003750DA /* PersonalLikeViewController.storyboard */; };
 		BB6D0EA722CFDF7D003750DA /* MatchRequestCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */; };
+		BB6D0EA922D2B98F003750DA /* DiscoveryPersonalFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA822D2B98F003750DA /* DiscoveryPersonalFullProfileViewController.swift */; };
+		BB6D0EAB22D2B99F003750DA /* DiscoveryMatchmakerFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EAA22D2B99F003750DA /* DiscoveryMatchmakerFullProfileViewController.swift */; };
+		BB6D0EB222D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EB122D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift */; };
 		BB70B034229F418600EB2BD9 /* PromptPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */; };
 		BB70B036229F419000EB2BD9 /* PromptPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */; };
 		BB70B038229F543400EB2BD9 /* PromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */; };
@@ -475,6 +478,9 @@
 		BB6D0EA222CFD535003750DA /* PersonalLikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalLikeViewController.swift; sourceTree = "<group>"; };
 		BB6D0EA322CFD536003750DA /* PersonalLikeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonalLikeViewController.storyboard; sourceTree = "<group>"; };
 		BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRequestCreationData.swift; sourceTree = "<group>"; };
+		BB6D0EA822D2B98F003750DA /* DiscoveryPersonalFullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryPersonalFullProfileViewController.swift; sourceTree = "<group>"; };
+		BB6D0EAA22D2B99F003750DA /* DiscoveryMatchmakerFullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryMatchmakerFullProfileViewController.swift; sourceTree = "<group>"; };
+		BB6D0EB122D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFullProfileContainerViewController.swift; sourceTree = "<group>"; };
 		BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptPickerViewController.swift; sourceTree = "<group>"; };
 		BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptPickerViewController.storyboard; sourceTree = "<group>"; };
 		BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTableViewCell.swift; sourceTree = "<group>"; };
@@ -1445,6 +1451,36 @@
 			path = "Edit Preview Page";
 			sourceTree = "<group>";
 		};
+		BB6D0EAC22D2BA29003750DA /* Personal Full Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BB6D0EA822D2B98F003750DA /* DiscoveryPersonalFullProfileViewController.swift */,
+			);
+			path = "Personal Full Profile";
+			sourceTree = "<group>";
+		};
+		BB6D0EAD22D2BA31003750DA /* Matchmaker Full Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BB6D0EAA22D2B99F003750DA /* DiscoveryMatchmakerFullProfileViewController.swift */,
+			);
+			path = "Matchmaker Full Profile";
+			sourceTree = "<group>";
+		};
+		BB6D0EB022D2BA52003750DA /* Discovery Full Profile View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */,
+				BB662AB822B9D7EA003EDE4B /* DiscoveryFullProfileViewController+Analytics.swift */,
+				BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */,
+				BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */,
+				BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */,
+				BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */,
+				BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */,
+			);
+			path = "Discovery Full Profile View Controller";
+			sourceTree = "<group>";
+		};
 		BB714121228B4F5100129C93 /* Cera Pro */ = {
 			isa = PBXGroup;
 			children = (
@@ -1578,13 +1614,10 @@
 		BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */ = {
 			isa = PBXGroup;
 			children = (
-				BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */,
-				BB662AB822B9D7EA003EDE4B /* DiscoveryFullProfileViewController+Analytics.swift */,
-				BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */,
-				BBCA2D72229DF31D0057491A /* DiscoveryFullProfileViewController+MatchingButtons.swift */,
-				BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */,
-				BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */,
-				BB9AE0B12250CF6B004EAEC2 /* DiscoveryFullProfileViewController.storyboard */,
+				BB6D0EB122D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift */,
+				BB6D0EB022D2BA52003750DA /* Discovery Full Profile View Controller */,
+				BB6D0EAC22D2BA29003750DA /* Personal Full Profile */,
+				BB6D0EAD22D2BA31003750DA /* Matchmaker Full Profile */,
 			);
 			path = "Discovery Full Profile View";
 			sourceTree = "<group>";
@@ -2568,6 +2601,7 @@
 				BB70B038229F543400EB2BD9 /* PromptTableViewCell.swift in Sources */,
 				BBB70AEC2223C0CD006B75A0 /* UILabel+Styling.swift in Sources */,
 				60C131F221D350330093ECBA /* SAMAuthAPI.swift in Sources */,
+				BB6D0EA922D2B98F003750DA /* DiscoveryPersonalFullProfileViewController.swift in Sources */,
 				BB20118F228EAB4100BC85C0 /* InfoItemTableViewCell.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */,
@@ -2605,6 +2639,7 @@
 				BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */,
 				BB17892E225DE26F0033ACC6 /* ChatRequestsTableViewController.swift in Sources */,
 				BB687E81228D828700F45C9D /* OnboardingPreferencesViewController.swift in Sources */,
+				BB6D0EB222D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift in Sources */,
 				BB719A43228D3FDE00007D69 /* CoreLocation+Helpers.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
@@ -2663,6 +2698,7 @@
 				BBCA2D79229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift in Sources */,
 				BBB71B6622946CB4002CDDD1 /* UserAgeInputViewController.swift in Sources */,
 				BB9CB6A82259FAA700605A98 /* UpdateTextFieldController.swift in Sources */,
+				BB6D0EAB22D2B99F003750DA /* DiscoveryMatchmakerFullProfileViewController.swift in Sources */,
 				BBBA573D226D9741000BCD5F /* QuestionItem.swift in Sources */,
 				913E3AFA229E3823000B70A8 /* AddEventTableViewCell.swift in Sources */,
 				913E3B02229F4474000B70A8 /* EventAPI.swift in Sources */,
