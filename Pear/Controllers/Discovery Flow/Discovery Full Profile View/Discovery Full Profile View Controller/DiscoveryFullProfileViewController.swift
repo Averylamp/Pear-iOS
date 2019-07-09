@@ -17,15 +17,15 @@ protocol DiscoveryFullProfileDelegate: class {
 }
 
 class DiscoveryFullProfileViewController: UIViewController {
-  
+  static var requestHorizontalPadding = 20
   weak var delegate: DiscoveryFullProfileDelegate?
   var fullProfileData: FullProfileDisplayData!
+  var fullProfileStackVC: FullProfileStackViewController?
   var profileID: String!
   var lastContentOffset: CGFloat = 0
   var exactLastContentOffset: CGFloat = 0
   var totalScrollDistance: CGFloat = 0
   var maxContentOffset: CGFloat = 0
-
   let initializationTime: Double = CACurrentMediaTime()
 
   @IBOutlet weak var profileNameLabel: UILabel!
@@ -43,6 +43,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   var chatRequestVC: UIViewController?
   var chatRequestVCBottomConstraint: NSLayoutConstraint?
   var isSendingRequest = false
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -148,7 +149,7 @@ class DiscoveryFullProfileViewController: UIViewController {
 //      self.displayPersonalRequestVC(personalUserID: personalUserID,
 //                                    thumbnailImageURL: requestedThumbnailURL,
 //                                    requestPersonName: self.fullProfileData.firstName ?? "")
-      self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
+      // self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
     }
   }
   
@@ -182,7 +183,7 @@ class DiscoveryFullProfileViewController: UIViewController {
     case .personalUser:
       if matchObject.buttonEnabled {
         self.removeMatchButtons()
-        self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
+        // self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
 //        self.displayPersonalRequestVC(personalUserID: personalUserID,
 //                                      thumbnailImageURL: requestedThumbnailURL,
 //                                      requestPersonName: self.fullProfileData.firstName ?? "")
@@ -295,6 +296,8 @@ extension DiscoveryFullProfileViewController {
   }
   
   func stylize() {
+    self.pearButton.isHidden = true
+    self.likeButton.isHidden = true
     self.scrollView.backgroundColor = R.color.cardBackgroundColor()
     self.profileNameLabel.stylizeSubtitleLabelSmall()
     self.profileNameLabel.text = self.fullProfileData.firstName
@@ -352,6 +355,81 @@ extension DiscoveryFullProfileViewController {
                          toItem: self.scrollView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
       ])
     fullProfileStackVC.didMove(toParent: self)
+    self.fullProfileStackVC = fullProfileStackVC
+    for index in 0..<fullProfileStackVC.sectionItemsWithVCs.count {
+      let sectionItemWithVC = fullProfileStackVC.sectionItemsWithVCs[index]
+      let sectionView = sectionItemWithVC.viewController.view
+      let likeButton = UIButton()
+      likeButton.tag = index
+      likeButton.addTarget(self, action: #selector(DiscoveryFullProfileViewController.likeButtonClicked), for: .touchUpInside)
+      likeButton.translatesAutoresizingMaskIntoConstraints = false
+      likeButton.setImage(R.image.discoveryIconLike(), for: .normal)
+      likeButton.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+      likeButton.layer.cornerRadius = 24
+      likeButton.clipsToBounds = true
+      fullProfileStackVC.view.addSubview(likeButton)
+      let shadowView = UIView()
+      shadowView.translatesAutoresizingMaskIntoConstraints = false
+      shadowView.layer.cornerRadius = 24
+      shadowView.backgroundColor = UIColor.white
+      shadowView.layer.shadowOpacity = 0.15
+      shadowView.layer.shadowColor = UIColor.black.cgColor
+      shadowView.layer.shadowRadius = 6
+      shadowView.layer.shadowOffset = CGSize(width: 3, height: 3 )
+      fullProfileStackVC.view.insertSubview(shadowView, belowSubview: likeButton)
+      likeButton.addConstraints([
+        NSLayoutConstraint(item: likeButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 48),
+        NSLayoutConstraint(item: likeButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 48)
+        ])
+      fullProfileStackVC.view.addConstraints([
+        NSLayoutConstraint(item: likeButton, attribute: .bottom, relatedBy: .equal,
+                           toItem: sectionView, attribute: .bottom, multiplier: 1.0, constant: -12.0),
+        NSLayoutConstraint(item: likeButton, attribute: .right, relatedBy: .equal,
+                           toItem: sectionView, attribute: .right, multiplier: 1.0, constant: -12.0),
+        NSLayoutConstraint(item: shadowView, attribute: .height, relatedBy: .equal,
+                           toItem: likeButton, attribute: .height, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: shadowView, attribute: .width, relatedBy: .equal,
+                           toItem: likeButton, attribute: .width, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: shadowView, attribute: .centerX, relatedBy: .equal,
+                           toItem: likeButton, attribute: .centerX, multiplier: 1.0, constant: 0),
+        NSLayoutConstraint(item: shadowView, attribute: .centerY, relatedBy: .equal,
+                           toItem: likeButton, attribute: .centerY, multiplier: 1.0, constant: 0)
+        ])
+    }
+  }
+  
+  @objc func likeButtonClicked(sender: UIButton) {
+    print("like button clicked")
+    if sender.tag >= (self.fullProfileStackVC?.sectionItemsWithVCs.count ?? 0) {
+      print("couldnt get section item")
+      return
+    }
+    if let sectionItem = self.fullProfileStackVC?.sectionItemsWithVCs[sender.tag].sectionItem {
+      guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
+        let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
+          print("Failed to pull relavant discover user fields")
+          return
+      }
+      guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
+        print("Failed to get personal User ID")
+        return
+      }
+      if let image = sectionItem.image, sectionItem.sectionType == .image {
+        print("liked image \(image.imageID)")
+        self.displayPersonalRequestVC(personalUserID: personalUserID,
+                                      thumbnailImageURL: requestedThumbnailURL,
+                                      requestPersonName: self.fullProfileData.firstName ?? "",
+                                      likedPhoto: image)
+        
+      } else if let questionResponse = sectionItem.question, sectionItem.sectionType == .question {
+        print("liked questionResponse \(questionResponse.question.questionText)")
+        self.displayPersonalRequestVC(personalUserID: personalUserID,
+                                      thumbnailImageURL: requestedThumbnailURL,
+                                      requestPersonName: self.fullProfileData.firstName ?? "",
+                                      likedPhoto: nil,
+                                      likedPrompt: questionResponse)
+      }
+    }
   }
 }
 
@@ -445,13 +523,18 @@ extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
     if self.scrollView.contentOffset.y > self.maxContentOffset {
       self.maxContentOffset = self.scrollView.contentOffset.y
     }
-    if self.scrollView.contentOffset.y > self.lastContentOffset + 5.0 {
+    self.updateTabBar(scrollContentOffset: self.scrollView.contentOffset.y)
+    self.updateProfileNameHeader(scrollContentOffset: self.scrollView.contentOffset.y)
+  }
+  
+  func updateTabBar(scrollContentOffset: CGFloat) {
+    if scrollContentOffset > self.lastContentOffset + 5.0 {
       if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
         tabBarVisible == self.lastTabBarVisible {
         self.tabBarController?.setTabBarVisible(visible: false, duration: 0.4, animated: true)
         self.lastTabBarVisible = false
       }
-    } else if self.scrollView.contentOffset.y < self.lastContentOffset - 5.0 {
+    } else if scrollContentOffset < self.lastContentOffset - 5.0 {
       if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
         tabBarVisible == self.lastTabBarVisible {
         self.tabBarController?.setTabBarVisible(visible: true, duration: 0.4, animated: true)
@@ -459,15 +542,20 @@ extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
       }
     }
     self.lastContentOffset = self.scrollView.contentOffset.y
-    if scrollView.contentOffset.y > 50 {
+  }
+  
+  func updateProfileNameHeader(scrollContentOffset: CGFloat) {
+    if scrollContentOffset > 50 {
       if headerHeightConstraint.constant != 50 {
         headerHeightConstraint.constant = 50
+        NotificationCenter.default.post(name: .hideFiltersHeader, object: nil)
         UIView.animate(withDuration: 0.5) {
           self.view.layoutIfNeeded()
         }
       }
     } else {
       if headerHeightConstraint.constant != 0 {
+        NotificationCenter.default.post(name: .showFiltersHeader, object: nil)
         headerHeightConstraint.constant = 0
         UIView.animate(withDuration: 0.5) {
           self.view.layoutIfNeeded()

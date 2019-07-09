@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FuM-UC-gNb">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYb-Vk-EV8">
                                 <rect key="frame" x="228" y="577" width="60" height="60"/>
@@ -50,44 +50,23 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lb2-5H-MMS" userLabel="Header Container">
-                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="0.0"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jst-Tn-iZQ" userLabel="Progress View">
-                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="-1" width="375" height="1"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="w9x-mf-lH6"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVo-UZ-U0x">
-                                        <rect key="frame" x="187.5" y="25" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="187.5" y="0.0" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tn-cC-aMG">
-                                        <rect key="frame" x="12" y="12" width="26" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="26" id="T70-9q-ILQ"/>
-                                            <constraint firstAttribute="width" secondItem="6tn-cC-aMG" secondAttribute="height" multiplier="1:1" id="tG6-oH-kKK"/>
-                                        </constraints>
-                                        <state key="normal" image="discovery-icon-filters"/>
-                                        <connections>
-                                            <action selector="filterButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="acx-57-MqV"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0Z-6W-wFm">
-                                        <rect key="frame" x="46" y="12" width="26" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="26" id="K2b-u4-GI4"/>
-                                        </constraints>
-                                        <state key="normal" image="discovery-icon-scan"/>
-                                        <connections>
-                                            <action selector="qrScannerButtonClicked:" destination="b6J-YY-w86" eventType="touchUpInside" id="4mb-6r-OiP"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LlZ-cY-x1G">
-                                        <rect key="frame" x="337" y="12" width="26" height="26"/>
+                                        <rect key="frame" x="337" y="-13" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="26" id="r0A-PU-nSK"/>
                                         </constraints>
@@ -99,20 +78,15 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="LlZ-cY-x1G" firstAttribute="centerY" secondItem="K0Z-6W-wFm" secondAttribute="centerY" id="6Ko-xt-qt1"/>
                                     <constraint firstItem="Jst-Tn-iZQ" firstAttribute="leading" secondItem="lb2-5H-MMS" secondAttribute="leading" id="8sG-uV-Aj5"/>
-                                    <constraint firstItem="K0Z-6W-wFm" firstAttribute="leading" secondItem="6tn-cC-aMG" secondAttribute="trailing" constant="8" id="MPM-6e-L3x"/>
-                                    <constraint firstAttribute="height" constant="50" id="MYw-Fe-fYx"/>
+                                    <constraint firstAttribute="height" id="MYw-Fe-fYx"/>
                                     <constraint firstItem="YVo-UZ-U0x" firstAttribute="centerX" secondItem="lb2-5H-MMS" secondAttribute="centerX" id="U20-El-KLV"/>
                                     <constraint firstItem="Jst-Tn-iZQ" firstAttribute="width" secondItem="lb2-5H-MMS" secondAttribute="width" id="WFM-nM-gj8"/>
-                                    <constraint firstItem="6tn-cC-aMG" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="ZlZ-hC-ruo"/>
                                     <constraint firstAttribute="trailing" secondItem="LlZ-cY-x1G" secondAttribute="trailing" constant="12" id="Zqj-IC-IW2"/>
-                                    <constraint firstItem="K0Z-6W-wFm" firstAttribute="centerY" secondItem="6tn-cC-aMG" secondAttribute="centerY" id="bNf-k0-b0m"/>
                                     <constraint firstItem="YVo-UZ-U0x" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="dvJ-O5-ucl"/>
-                                    <constraint firstItem="6tn-cC-aMG" firstAttribute="leading" secondItem="lb2-5H-MMS" secondAttribute="leading" constant="12" id="hHk-zP-sgo"/>
                                     <constraint firstAttribute="bottom" secondItem="Jst-Tn-iZQ" secondAttribute="bottom" id="iIU-eZ-hbX"/>
                                     <constraint firstItem="LlZ-cY-x1G" firstAttribute="width" secondItem="LlZ-cY-x1G" secondAttribute="height" multiplier="1:1" id="kGW-fJ-OjU"/>
-                                    <constraint firstItem="K0Z-6W-wFm" firstAttribute="width" secondItem="K0Z-6W-wFm" secondAttribute="height" multiplier="1:1" id="o36-3K-wFK"/>
+                                    <constraint firstItem="LlZ-cY-x1G" firstAttribute="centerY" secondItem="lb2-5H-MMS" secondAttribute="centerY" id="qaM-eZ-PU6"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -154,11 +128,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="discovery-icon-filters" width="96" height="96"/>
         <image name="discovery-icon-like" width="73.333335876464844" height="73.333335876464844"/>
         <image name="discovery-icon-more" width="170.66667175292969" height="170.66667175292969"/>
         <image name="discovery-icon-pear" width="73.333335876464844" height="73.333335876464844"/>
-        <image name="discovery-icon-scan" width="96" height="96"/>
         <image name="discovery-icon-skip" width="66.666664123535156" height="66.666664123535156"/>
     </resources>
 </document>

@@ -13,10 +13,13 @@ class ProfileImageViewController: UIViewController {
   
   var image: UIImage?
   var imageContainer: ImageContainer?
+  
+  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet var imageView: UIImageView!
+  
   var timestampString: String?
   var writtenByName: String?
-  @IBOutlet weak var imageViewAspectConstraint: NSLayoutConstraint!
+
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -46,23 +49,48 @@ extension ProfileImageViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.setup()
     self.stylize()
   }
   
-  func stylize() {
-    
+  /// Setup should only be called once
+  func setup() {
     self.imageView.contentMode = .scaleAspectFill
     self.imageView.clipsToBounds = true
-    self.view.layoutIfNeeded()
+    self.scrollView.showsHorizontalScrollIndicator = false
+    self.scrollView.showsVerticalScrollIndicator = false
+    self.scrollView.maximumZoomScale = 2.0
+    self.scrollView.minimumZoomScale = 1.0
+    self.scrollView.delegate = self
+  }
+  
+  /// Stylize can be called more than once
+  func stylize() {
     if let image = self.image {
       self.imageView.image = image
     } else if let imageContainer = self.imageContainer,
       let imageURL = URL(string: imageContainer.large.imageURL) {
       self.imageView.sd_setImage(with: imageURL, completed: nil)
     }
-//    self.imageViewAspectConstraint.isActive = false
-//    self.imageView.addConstraint(NSLayoutConstraint(item: self.imageView!, attribute: .height, relatedBy: .equal,
-//                                                    toItem: self.imageView, attribute: .width, multiplier: aspectRatio, constant: 0.0))
   }
+  
+}
+
+// MARK: Scroll View Delegate
+extension ProfileImageViewController: UIScrollViewDelegate {
+  
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return self.imageView
+  }
+  
+  func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+    UIView.animate(withDuration: 0.3) {
+      self.scrollView.zoomScale = 1.0
+    }
+  }
+  
+  func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    self.scrollView.zoomScale = max(self.scrollView.zoomScale, 1.0)
+  }
+  
 }

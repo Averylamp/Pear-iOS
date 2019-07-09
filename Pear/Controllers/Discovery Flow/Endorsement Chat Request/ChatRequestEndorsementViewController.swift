@@ -18,7 +18,7 @@ class ChatRequestEndorsementViewController: UIViewController {
   var requestPersonName: String!
   var userPersonName: String!
   
-  let placeholderText: String = "Sent them both a message..."
+  let placeholderText: String = "Send them both a message..."
   
   @IBOutlet weak var inputTextViewContainer: UIView!
   @IBOutlet weak var inputTextView: UITextView!
@@ -61,7 +61,7 @@ class ChatRequestEndorsementViewController: UIViewController {
       if self.inputTextView.text != "" && self.inputTextView.text != self.placeholderText && self.inputTextView.text.count > 0 {
         requestText = self.inputTextView.text
       }
-      delegate.createPearRequest(sentByUserID: self.userID, sentForUserID: self.endorsedUserID, requestText: requestText)
+      delegate.createPearRequest(sentByUserID: self.userID, sentForUserID: self.endorsedUserID, requestText: requestText, likedPhoto: nil, likedPrompt: nil)
     }
   }
   
