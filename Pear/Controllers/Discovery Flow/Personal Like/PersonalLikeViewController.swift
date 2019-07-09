@@ -93,13 +93,13 @@ extension PersonalLikeViewController {
     cardView.translatesAutoresizingMaskIntoConstraints = false
     cardView.addSubview(imageVC.view)
     cardView.addConstraints([
-      NSLayoutConstraint(item: imageVC.view, attribute: .top, relatedBy: .equal,
+      NSLayoutConstraint(item: imageVC.view as Any, attribute: .top, relatedBy: .equal,
                          toItem: cardView, attribute: .top, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: imageVC.view, attribute: .bottom, relatedBy: .equal,
+      NSLayoutConstraint(item: imageVC.view as Any, attribute: .bottom, relatedBy: .equal,
                          toItem: cardView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: imageVC.view, attribute: .left, relatedBy: .equal,
+      NSLayoutConstraint(item: imageVC.view as Any, attribute: .left, relatedBy: .equal,
                          toItem: cardView, attribute: .left, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: imageVC.view, attribute: .right, relatedBy: .equal,
+      NSLayoutConstraint(item: imageVC.view as Any, attribute: .right, relatedBy: .equal,
                          toItem: cardView, attribute: .right, multiplier: 1.0, constant: 0.0)
       ])
     self.addChild(imageVC)
@@ -119,13 +119,13 @@ extension PersonalLikeViewController {
     cardView.translatesAutoresizingMaskIntoConstraints = false
     cardView.addSubview(promptVC.view)
     cardView.addConstraints([
-      NSLayoutConstraint(item: promptVC.view, attribute: .top, relatedBy: .equal,
+      NSLayoutConstraint(item: promptVC.view as Any, attribute: .top, relatedBy: .equal,
                          toItem: cardView, attribute: .top, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: promptVC.view, attribute: .bottom, relatedBy: .equal,
+      NSLayoutConstraint(item: promptVC.view as Any, attribute: .bottom, relatedBy: .equal,
                          toItem: cardView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: promptVC.view, attribute: .left, relatedBy: .equal,
+      NSLayoutConstraint(item: promptVC.view as Any, attribute: .left, relatedBy: .equal,
                          toItem: cardView, attribute: .left, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint(item: promptVC.view, attribute: .right, relatedBy: .equal,
+      NSLayoutConstraint(item: promptVC.view as Any, attribute: .right, relatedBy: .equal,
                          toItem: cardView, attribute: .right, multiplier: 1.0, constant: 0.0)
       ])
     
@@ -136,7 +136,7 @@ extension PersonalLikeViewController {
     scrollView.clipsToBounds = true
     scrollView.addSubview(cardView)
     scrollView.contentSize = cardView.frame.size
-    var scrollViewHeightConstraint = NSLayoutConstraint(item: cardView, attribute: .height, relatedBy: .equal,
+    var scrollViewHeightConstraint = NSLayoutConstraint(item: cardView as Any, attribute: .height, relatedBy: .equal,
                                                         toItem: scrollView, attribute: .height, multiplier: 1.0, constant: 0.0)
     scrollViewHeightConstraint.priority = .defaultLow
     scrollView.addConstraints([
