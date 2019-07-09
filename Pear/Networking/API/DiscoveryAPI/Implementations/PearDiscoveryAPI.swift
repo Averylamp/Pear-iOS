@@ -35,43 +35,20 @@ extension PearDiscoveryAPI {
       return
     }
     
-    var filteringForUserID: String = user.documentID
-    if let userID = DataStore.shared.filteringForUserIdFromDefaults() {
-      filteringForUserID = userID
-    }
-    var filteringForEventID: String?
-    if let eventID = DataStore.shared.filteringForEventIdFromDefaults() {
-      let now = Date()
-      for event in DataStore.shared.userEvents where event.documentID == eventID {
-        if now > event.startTime && now < event.endTime {
-          filteringForEventID = eventID
-        }
-      }
-    }
-    if filteringForEventID == nil {
-      DataStore.shared.unsetFilterForEventId()
-    }
-    var filteringForUser = user
-    for endorsedUser in DataStore.shared.endorsedUsers where endorsedUser.documentID == filteringForUserID {
-      filteringForUser = endorsedUser
-    }
-    
+    let currentFilterItems = DataStore.shared.getCurrentFilters()
     var filters: [String: Any] = [
-      "seekingGender": filteringForUser.matchingPreferences.seekingGender.map({ $0.rawValue }),
-      "minAgeRange": filteringForUser.matchingPreferences.minAgeRange,
-      "maxAgeRange": filteringForUser.matchingPreferences.maxAgeRange
+      "seekingGender": currentFilterItems.userMatchingPreferences.seekingGender.map({ $0.rawValue }),
+      "minAgeRange": currentFilterItems.userMatchingPreferences.minAgeRange,
+      "maxAgeRange": currentFilterItems.userMatchingPreferences.maxAgeRange
     ]
-    if let myGender = filteringForUser.gender {
+    if let myGender = currentFilterItems.userMatchingDemographics.gender {
       filters["myGender"] = myGender.rawValue
     }
-    if let coords = filteringForUser.matchingPreferences.location?.locationCoordinate {
+    if let coords = currentFilterItems.userMatchingPreferences.location?.locationCoordinate {
       filters["locationCoords"] = [coords.longitude, coords.latitude]
     }
-    if let eventID = filteringForEventID {
-      filters["event_id"] = eventID
-    }
     let variables: [String: Any] = [
-      "user_id": user.documentID,
+      "user_id": user.documentID as Any,
       "filters": filters
     ]
     do {
