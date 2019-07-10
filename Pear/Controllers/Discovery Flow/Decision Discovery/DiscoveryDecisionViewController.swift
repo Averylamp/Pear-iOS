@@ -40,6 +40,7 @@ class DiscoveryDecisionViewController: UIViewController {
   let headerHeightConstant: CGFloat = 66
   static let headerAnimationDuration: Double = 0.4
   var personalDiscovery: Bool = true
+  var discoveryFilterOverlayVC: DiscoveryFilterOverlayViewController?
   
   /// Factory method for creating this view controller.
   ///
@@ -285,7 +286,7 @@ extension DiscoveryDecisionViewController {
 }
 
 // MARK: - Discovery Filter Header
-extension DiscoveryDecisionViewController {
+extension DiscoveryDecisionViewController: DiscoveryFilterOverlayDelegate {
   
   func setupFilterView() {
     self.headerHeightConstraint.constant = self.headerHeightConstant
@@ -399,6 +400,9 @@ extension DiscoveryDecisionViewController {
   }
   
   @objc func filterButtonClicked(sender: UIButton) {
+    guard self.discoveryFilterOverlayVC == nil else {
+      return
+    }
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     guard let filterOverlayVC = DiscoveryFilterOverlayViewController.instantiate(topOffset: 100) else {
       print("Unable to create discovery filter overlay vc")
@@ -406,7 +410,8 @@ extension DiscoveryDecisionViewController {
     }
     self.addChild(filterOverlayVC)
     self.view.addSubview(filterOverlayVC.view)
-    
+    self.discoveryFilterOverlayVC = filterOverlayVC
+    filterOverlayVC.delegate = self
     filterOverlayVC.view.translatesAutoresizingMaskIntoConstraints  = false
     self.view.addConstraints([
       NSLayoutConstraint(item: filterOverlayVC.view as Any, attribute: .top, relatedBy: .equal,
@@ -418,9 +423,29 @@ extension DiscoveryDecisionViewController {
       NSLayoutConstraint(item: filterOverlayVC.view as Any, attribute: .bottom, relatedBy: .equal,
                          toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
       ])
-    
+
     filterOverlayVC.didMove(toParent: self)
-    
+    filterOverlayVC.view.alpha = 0.0
+    UIView.animate(withDuration: 0.2, animations: {
+      filterOverlayVC.view.alpha = 1.0
+    }) { (_) in
+      filterOverlayVC.animateFilterPopup(presenting: true)
+    }
+  }
+  
+  func dismissFilterOverlay() {
+    DispatchQueue.main.async {
+      guard let overlayVC = self.discoveryFilterOverlayVC else {
+        return
+      }
+      UIView.animate(withDuration: 0.2, animations: {
+        overlayVC.view.alpha = 0.0
+      }, completion: { (_) in
+        overlayVC.view.removeFromSuperview()
+        overlayVC.removeFromParent()
+        self.discoveryFilterOverlayVC = nil
+      })
+    }
   }
 
 }
