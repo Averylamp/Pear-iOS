@@ -144,6 +144,7 @@
 		BB68EB2722A31D2A00CDB114 /* UITextViewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB68EB2622A31D2900CDB114 /* UITextViewItemViewController.swift */; };
 		BB6B3A6422D672C20026F5E2 /* DiscoveryFilterOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6B3A6322D672C20026F5E2 /* DiscoveryFilterOverlayViewController.swift */; };
 		BB6B3A6622D672D70026F5E2 /* DiscoveryFilterOverlayViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6B3A6522D672D70026F5E2 /* DiscoveryFilterOverlayViewController.storyboard */; };
+		BB6B3A6922D690350026F5E2 /* DiscoveryFilterItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6B3A6822D690350026F5E2 /* DiscoveryFilterItemTableViewCell.swift */; };
 		BB6D0EA422CFD536003750DA /* PersonalLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA222CFD535003750DA /* PersonalLikeViewController.swift */; };
 		BB6D0EA522CFD536003750DA /* PersonalLikeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB6D0EA322CFD536003750DA /* PersonalLikeViewController.storyboard */; };
 		BB6D0EA722CFDF7D003750DA /* MatchRequestCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */; };
@@ -478,6 +479,7 @@
 		BB68EB2622A31D2900CDB114 /* UITextViewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITextViewItemViewController.swift; path = "Pear/Controllers/Profiles/Question Response Item/UITextViewItemViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BB6B3A6322D672C20026F5E2 /* DiscoveryFilterOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterOverlayViewController.swift; sourceTree = "<group>"; };
 		BB6B3A6522D672D70026F5E2 /* DiscoveryFilterOverlayViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoveryFilterOverlayViewController.storyboard; sourceTree = "<group>"; };
+		BB6B3A6822D690350026F5E2 /* DiscoveryFilterItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFilterItemTableViewCell.swift; sourceTree = "<group>"; };
 		BB6D0EA222CFD535003750DA /* PersonalLikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalLikeViewController.swift; sourceTree = "<group>"; };
 		BB6D0EA322CFD536003750DA /* PersonalLikeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonalLikeViewController.storyboard; sourceTree = "<group>"; };
 		BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRequestCreationData.swift; sourceTree = "<group>"; };
@@ -1459,6 +1461,7 @@
 			children = (
 				BB6B3A6322D672C20026F5E2 /* DiscoveryFilterOverlayViewController.swift */,
 				BB6B3A6522D672D70026F5E2 /* DiscoveryFilterOverlayViewController.storyboard */,
+				BB6B3A6822D690350026F5E2 /* DiscoveryFilterItemTableViewCell.swift */,
 			);
 			path = "Discovery Filter Overlay";
 			sourceTree = "<group>";
@@ -2797,6 +2800,7 @@
 				BBA2B4262235038000D8C27B /* FullProfileStackViewController.swift in Sources */,
 				BB9D1B1C2255D0110074C099 /* RequestProfileViewController.swift in Sources */,
 				BB20119D228F3FAE00BC85C0 /* DemographicsItems.swift in Sources */,
+				BB6B3A6922D690350026F5E2 /* DiscoveryFilterItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
