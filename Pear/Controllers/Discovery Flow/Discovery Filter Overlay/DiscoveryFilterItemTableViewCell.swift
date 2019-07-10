@@ -82,7 +82,7 @@ class DiscoveryFilterItemTableViewCell: UITableViewCell {
     self.thumbnailImageView.layer.cornerRadius = self.thumbnailImageView.frame.height / 2.0
     self.thumbnailImageView.sd_setImage(with: url, completed: nil)
     self.nameLabel.text = firstName
-    self.selectedImageView.alpha = selected ? 1.0 : 0.0t
+    self.selectedImageView.alpha = selected ? 1.0 : 0.0
   }
   
   
