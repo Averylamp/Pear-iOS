@@ -32,7 +32,7 @@ class DiscoveryFilterOverlayViewController: UIViewController {
   var filterCardViewHeightConstraint: NSLayoutConstraint?
   let filterItemsTableView = UITableView()
   static let cardSideOffset: CGFloat = 30.0
-  static let filterItemHeight: CGFloat = 46.0
+  static let filterItemHeight: CGFloat = 60.0
   static let discoveryFilterItemCellIdentifier: String = "DiscoveryFilterItemTVC"
   
   /// Factory method for creating this view controller.
@@ -107,6 +107,7 @@ extension DiscoveryFilterOverlayViewController {
     super.viewDidLoad()
     self.setup()
     self.stylize()
+    self.filterItemsTableView.reloadData()
   }
   
   /// Setup should only be called once
@@ -136,10 +137,12 @@ extension DiscoveryFilterOverlayViewController {
       ])
     
     self.filterItemsTableView.translatesAutoresizingMaskIntoConstraints = false
+    self.filterItemsTableView.estimatedRowHeight = DiscoveryFilterOverlayViewController.filterItemHeight
     self.filterItemsTableView.register(DiscoveryFilterItemTableViewCell.self,
                                        forCellReuseIdentifier: DiscoveryFilterOverlayViewController.discoveryFilterItemCellIdentifier)
     self.filterItemsTableView.delegate = self
     self.filterItemsTableView.dataSource = self
+    self.filterItemsTableView.separatorStyle = .none
     self.filterCardView.addSubview(self.filterItemsTableView)
     self.filterCardView.addConstraints([
       NSLayoutConstraint(item: self.filterItemsTableView, attribute: .centerX, relatedBy: .equal,
@@ -178,7 +181,9 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
       print("Unable to dequeue DFITVCs")
       return UITableViewCell()
     }
+    self.view.layoutIfNeeded()
     let item = self.filterItems[indexPath.row]
+    print(item)
     cell.stylize(url: item.thumbnailURL,
                  firstName: item.firstName,
                  selected: item.selected)
