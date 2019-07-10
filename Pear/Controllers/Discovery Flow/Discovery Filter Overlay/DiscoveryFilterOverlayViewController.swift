@@ -32,7 +32,7 @@ class DiscoveryFilterOverlayViewController: UIViewController {
   var filterCardViewHeightConstraint: NSLayoutConstraint?
   let filterItemsTableView = UITableView()
   static let cardSideOffset: CGFloat = 30.0
-  static let filterItemHeight: CGFloat = 36.0
+  static let filterItemHeight: CGFloat = 46.0
   static let discoveryFilterItemCellIdentifier: String = "DiscoveryFilterItemTVC"
   
   /// Factory method for creating this view controller.
@@ -84,7 +84,7 @@ class DiscoveryFilterOverlayViewController: UIViewController {
       let thumbnailURLString =  currentPearUser.displayedImages.first?.thumbnail.imageURL,
       let thumbnailURL = URL(string: thumbnailURLString) {
       items.append(DiscoveryFilterItem(thumbnailURL: thumbnailURL,
-                                       firstName: currentPearUser.firstName ?? "No Name",
+                                       firstName: "You",
                                        selected: currentPearUser.documentID == selectedFilterID))
     }
     DataStore.shared.endorsedUsers.forEach({
@@ -115,7 +115,7 @@ extension DiscoveryFilterOverlayViewController {
     self.filterCardView.backgroundColor = UIColor.white
     self.filterCardView.layer.cornerRadius = 12.0
     self.filterCardView.layer.shadowRadius = 8
-    self.filterCardView.layer.shadowOpacity = 0.15
+    self.filterCardView.layer.shadowOpacity = 0.25
     self.filterCardView.clipsToBounds = true
     self.filterCardView.layer.shadowOffset = CGSize(width: 1, height: 1)
     self.filterCardView.layer.shadowColor = UIColor(white: 0.0, alpha: 0.0).cgColor
@@ -168,13 +168,20 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
     return self.filterItems.count
   }
   
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return DiscoveryFilterOverlayViewController.filterItemHeight
+  }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: DiscoveryFilterOverlayViewController.discoveryFilterItemCellIdentifier,
                                                    for: indexPath) as? DiscoveryFilterItemTableViewCell else {
       print("Unable to dequeue DFITVCs")
       return UITableViewCell()
     }
-    
+    let item = self.filterItems[indexPath.row]
+    cell.stylize(url: item.thumbnailURL,
+                 firstName: item.firstName,
+                 selected: item.selected)
     return cell
   }
   
