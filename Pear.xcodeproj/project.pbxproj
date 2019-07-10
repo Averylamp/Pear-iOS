@@ -147,7 +147,6 @@
 		BB6D0EA722CFDF7D003750DA /* MatchRequestCreationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */; };
 		BB6D0EA922D2B98F003750DA /* DiscoveryPersonalFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EA822D2B98F003750DA /* DiscoveryPersonalFullProfileViewController.swift */; };
 		BB6D0EAB22D2B99F003750DA /* DiscoveryMatchmakerFullProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EAA22D2B99F003750DA /* DiscoveryMatchmakerFullProfileViewController.swift */; };
-		BB6D0EB222D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D0EB122D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift */; };
 		BB70B034229F418600EB2BD9 /* PromptPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */; };
 		BB70B036229F419000EB2BD9 /* PromptPickerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */; };
 		BB70B038229F543400EB2BD9 /* PromptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */; };
@@ -480,7 +479,6 @@
 		BB6D0EA622CFDF7D003750DA /* MatchRequestCreationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRequestCreationData.swift; sourceTree = "<group>"; };
 		BB6D0EA822D2B98F003750DA /* DiscoveryPersonalFullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryPersonalFullProfileViewController.swift; sourceTree = "<group>"; };
 		BB6D0EAA22D2B99F003750DA /* DiscoveryMatchmakerFullProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryMatchmakerFullProfileViewController.swift; sourceTree = "<group>"; };
-		BB6D0EB122D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryFullProfileContainerViewController.swift; sourceTree = "<group>"; };
 		BB70B033229F418600EB2BD9 /* PromptPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptPickerViewController.swift; sourceTree = "<group>"; };
 		BB70B035229F419000EB2BD9 /* PromptPickerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromptPickerViewController.storyboard; sourceTree = "<group>"; };
 		BB70B037229F543400EB2BD9 /* PromptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptTableViewCell.swift; sourceTree = "<group>"; };
@@ -1614,7 +1612,6 @@
 		BB9AE0B42250CF79004EAEC2 /* Discovery Full Profile View */ = {
 			isa = PBXGroup;
 			children = (
-				BB6D0EB122D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift */,
 				BB6D0EB022D2BA52003750DA /* Discovery Full Profile View Controller */,
 				BB6D0EAC22D2BA29003750DA /* Personal Full Profile */,
 				BB6D0EAD22D2BA31003750DA /* Matchmaker Full Profile */,
@@ -2639,7 +2636,6 @@
 				BB0AE4E0225364D0005DD315 /* UpdateUserPreferencesViewController.swift in Sources */,
 				BB17892E225DE26F0033ACC6 /* ChatRequestsTableViewController.swift in Sources */,
 				BB687E81228D828700F45C9D /* OnboardingPreferencesViewController.swift in Sources */,
-				BB6D0EB222D2BAF3003750DA /* DiscoveryFullProfileContainerViewController.swift in Sources */,
 				BB719A43228D3FDE00007D69 /* CoreLocation+Helpers.swift in Sources */,
 				BBB0E013221386DD009C1517 /* ImageUploadAddCollectionViewCell.swift in Sources */,
 				BB9AE0B22250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift in Sources */,
