@@ -404,7 +404,8 @@ extension DiscoveryDecisionViewController: DiscoveryFilterOverlayDelegate {
       return
     }
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let filterOverlayVC = DiscoveryFilterOverlayViewController.instantiate(topOffset: 100) else {
+    let topOffset = self.headerContainerView.frame.origin.y + self.headerContainerView.frame.height
+    guard let filterOverlayVC = DiscoveryFilterOverlayViewController.instantiate(topOffset: topOffset) else {
       print("Unable to create discovery filter overlay vc")
       return
     }
@@ -426,11 +427,12 @@ extension DiscoveryDecisionViewController: DiscoveryFilterOverlayDelegate {
 
     filterOverlayVC.didMove(toParent: self)
     filterOverlayVC.view.alpha = 0.0
+    
     UIView.animate(withDuration: 0.2, animations: {
       filterOverlayVC.view.alpha = 1.0
-    }) { (_) in
+    }, completion: { (_) in
       filterOverlayVC.animateFilterPopup(presenting: true)
-    }
+    })
   }
   
   func dismissFilterOverlay() {
