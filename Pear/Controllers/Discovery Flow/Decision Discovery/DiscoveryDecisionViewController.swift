@@ -38,6 +38,8 @@ class DiscoveryDecisionViewController: UIViewController {
   let filterContainerButton = UIButton()
   let filterNameLabel = UILabel()
   let headerHeightConstant: CGFloat = 66
+  static let headerAnimationDuration: Double = 0.4
+  var personalDiscovery: Bool = true
   
   /// Factory method for creating this view controller.
   ///
@@ -232,11 +234,11 @@ extension DiscoveryDecisionViewController {
         completion()
       })
       
-      if !DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedDiscoveryOnboarding) {
-        Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: nil)
-        print("showing onboarding overlays")
-        self.onboardingOverlay1()
-      }
+//      if !DataStore.shared.fetchFlagFromDefaults(flag: .hasCompletedDiscoveryOnboarding) {
+//        Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: nil)
+//        print("showing onboarding overlays")
+//        self.onboardingOverlay1()
+//      }
     }
     
   }
@@ -361,8 +363,10 @@ extension DiscoveryDecisionViewController {
       let filters = DataStore.shared.getCurrentFilters()
       if let currentPearUser = DataStore.shared.currentPearUser,
         filters.userID == currentPearUser.documentID {
+        self.personalDiscovery = true
         self.filterNameLabel.text = "You"
       } else {
+        self.personalDiscovery = false
         self.filterNameLabel.text = filters.userName
       }
     }
@@ -378,7 +382,7 @@ extension DiscoveryDecisionViewController {
   
   func changeFiltersHeader(show: Bool) {
     DispatchQueue.main.async {
-      UIView.animate(withDuration: 0.4, animations: {
+      UIView.animate(withDuration: DiscoveryDecisionViewController.headerAnimationDuration, animations: {
         if show {
           self.filterContainerButton.alpha = 1.0
           self.headerHeightConstraint.constant = self.headerHeightConstant

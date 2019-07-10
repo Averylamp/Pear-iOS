@@ -183,10 +183,6 @@ class DiscoveryFullProfileViewController: UIViewController {
     case .personalUser:
       if matchObject.buttonEnabled {
         self.removeMatchButtons()
-        // self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
-//        self.displayPersonalRequestVC(personalUserID: personalUserID,
-//                                      thumbnailImageURL: requestedThumbnailURL,
-//                                      requestPersonName: self.fullProfileData.firstName ?? "")
       } else {
         if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(personalUserID) {
           self.presentSimpleMessageAlert(title: "You have already Peared!",
@@ -531,13 +527,13 @@ extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
     if scrollContentOffset > self.lastContentOffset + 5.0 {
       if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
         tabBarVisible == self.lastTabBarVisible {
-        self.tabBarController?.setTabBarVisible(visible: false, duration: 0.4, animated: true)
+        self.tabBarController?.setTabBarVisible(visible: false, duration: DiscoveryDecisionViewController.headerAnimationDuration, animated: true)
         self.lastTabBarVisible = false
       }
     } else if scrollContentOffset < self.lastContentOffset - 5.0 {
       if let tabBarVisible = self.tabBarController?.tabBarIsVisible(),
         tabBarVisible == self.lastTabBarVisible {
-        self.tabBarController?.setTabBarVisible(visible: true, duration: 0.4, animated: true)
+        self.tabBarController?.setTabBarVisible(visible: true, duration: DiscoveryDecisionViewController.headerAnimationDuration, animated: true)
         self.lastTabBarVisible = true
       }
     }
@@ -549,7 +545,7 @@ extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
       if headerHeightConstraint.constant != 50 {
         headerHeightConstraint.constant = 50
         NotificationCenter.default.post(name: .hideFiltersHeader, object: nil)
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: DiscoveryDecisionViewController.headerAnimationDuration) {
           self.view.layoutIfNeeded()
         }
       }
@@ -557,7 +553,7 @@ extension DiscoveryFullProfileViewController: UIScrollViewDelegate {
       if headerHeightConstraint.constant != 0 {
         NotificationCenter.default.post(name: .showFiltersHeader, object: nil)
         headerHeightConstraint.constant = 0
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: DiscoveryDecisionViewController.headerAnimationDuration) {
           self.view.layoutIfNeeded()
         }
       }
