@@ -291,6 +291,9 @@ extension DiscoveryDecisionViewController {
     self.headerHeightConstraint.constant = self.headerHeightConstant
     self.headerContainerView.addSubview(self.filterContainerButton)
     self.filterContainerButton.translatesAutoresizingMaskIntoConstraints = false
+    self.filterContainerButton.addTarget(self,
+                                         action: #selector(DiscoveryDecisionViewController.filterButtonClicked(sender:)),
+                                         for: .touchUpInside)
     self.headerContainerView.addConstraints([
       NSLayoutConstraint(item: self.filterContainerButton, attribute: .centerY, relatedBy: .equal,
                          toItem: self.headerContainerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
@@ -393,6 +396,31 @@ extension DiscoveryDecisionViewController {
         self.view.layoutIfNeeded()
       })
     }
+  }
+  
+  @objc func filterButtonClicked(sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    guard let filterOverlayVC = DiscoveryFilterOverlayViewController.instantiate(topOffset: 100) else {
+      print("Unable to create discovery filter overlay vc")
+      return
+    }
+    self.addChild(filterOverlayVC)
+    self.view.addSubview(filterOverlayVC.view)
+    
+    filterOverlayVC.view.translatesAutoresizingMaskIntoConstraints  = false
+    self.view.addConstraints([
+      NSLayoutConstraint(item: filterOverlayVC.view as Any, attribute: .top, relatedBy: .equal,
+                         toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: filterOverlayVC.view as Any, attribute: .left, relatedBy: .equal,
+                         toItem: self.view, attribute: .left, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: filterOverlayVC.view as Any, attribute: .right, relatedBy: .equal,
+                         toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: filterOverlayVC.view as Any, attribute: .bottom, relatedBy: .equal,
+                         toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+      ])
+    
+    filterOverlayVC.didMove(toParent: self)
+    
   }
 
 }
