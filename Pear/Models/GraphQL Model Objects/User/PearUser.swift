@@ -215,3 +215,20 @@ extension PearUser {
   }
 
 }
+
+// MARK: - Helpers
+extension PearUser {
+  
+  func getThumbnailURL() -> URL? {
+    if let urlString = self.thumbnailURL,
+      let url = URL(string: urlString) {
+      return url
+    }
+    if let urlString = self.displayedImages.first?.thumbnail.imageURL,
+      let url = URL(string: urlString) {
+      return url
+    }
+    return nil
+  }
+  
+}

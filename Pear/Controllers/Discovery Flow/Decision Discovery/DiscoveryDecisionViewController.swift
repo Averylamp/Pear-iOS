@@ -170,8 +170,8 @@ extension DiscoveryDecisionViewController {
       self.refreshDiscovery()
     }
     self.hideProfileVC {
-      if self.profilesToShow.count > 0 {
-        let nextProfile = self.profilesToShow.popLast()
+      if self.profilesToShow.count > 0,
+        let nextProfile = self.profilesToShow.popLast() {
         if self.personalDiscovery {
           guard let nextProfileVC = DiscoveryPersonalFullProfileViewController.instantiate(fullProfileData: nextProfile) else {
             print("Failed to instantiate Discovery Full Profile")
@@ -182,7 +182,10 @@ extension DiscoveryDecisionViewController {
             
           })
         } else {
-          guard let nextProfileVC = DiscoveryMatchmakerFullProfileViewController.instantiate(fullProfileData: nextProfile) else {
+          let matchmakingForID = DataStore.shared.getCurrentFilters().userID
+          guard let nextProfileVC = DiscoveryMatchmakerFullProfileViewController
+            .instantiate(fullProfileData: nextProfile,
+                         matchmakingForID: matchmakingForID) else {
             print("Failed to instantiate Discovery Full Profile")
             return
           }
@@ -191,9 +194,9 @@ extension DiscoveryDecisionViewController {
             
           })
         }
-        
       } else {
         self.currentDiscoveryProfileVC = nil
+        self.refreshDiscovery()
       }
     }
   }
