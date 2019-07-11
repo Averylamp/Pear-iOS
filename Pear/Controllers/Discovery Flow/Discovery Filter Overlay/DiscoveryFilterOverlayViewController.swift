@@ -18,6 +18,7 @@ class DiscoveryFilterOverlayViewController: UIViewController {
   struct DiscoveryFilterItem {
     let thumbnailURL: URL
     let firstName: String
+    let documentID: String
     var selected: Bool
   }
   
@@ -61,6 +62,11 @@ class DiscoveryFilterOverlayViewController: UIViewController {
     }
   }
   
+  @objc func addFriendClicked(sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+    
+  }
+  
   func animateFilterPopup(presenting: Bool, completion: (() -> Void)? = nil) {
     DispatchQueue.main.async {
       let newHeight = presenting ? CGFloat(self.filterItems.count + 1) * DiscoveryFilterOverlayViewController.filterItemHeight : 0.0
@@ -69,6 +75,7 @@ class DiscoveryFilterOverlayViewController: UIViewController {
       }
       UIView.animate(withDuration: 0.4, animations: {
         self.view.layoutIfNeeded()
+        self.filterCardView.alpha = presenting ? 1.0 : 0.0
       }, completion: { (_) in
         if let completion = completion {
           completion()
@@ -85,6 +92,7 @@ class DiscoveryFilterOverlayViewController: UIViewController {
       let thumbnailURL = URL(string: thumbnailURLString) {
       items.append(DiscoveryFilterItem(thumbnailURL: thumbnailURL,
                                        firstName: "You",
+                                       documentID: currentPearUser.documentID,
                                        selected: currentPearUser.documentID == selectedFilterID))
     }
     DataStore.shared.endorsedUsers.forEach({
@@ -92,6 +100,7 @@ class DiscoveryFilterOverlayViewController: UIViewController {
         let thumbnailURL = URL(string: thumbnailURLString) {
         items.append(DiscoveryFilterItem(thumbnailURL: thumbnailURL,
                                          firstName: $0.firstName ?? "No name",
+                                         documentID: $0.documentID,
                                          selected: $0.documentID == selectedFilterID))
       }
     })
@@ -112,7 +121,9 @@ extension DiscoveryFilterOverlayViewController {
   
   /// Setup should only be called once
   func setup() {
+    
     self.view.addSubview(self.filterCardView)
+    self.filterCardView.alpha = 0.0
     self.filterCardView.backgroundColor = UIColor.white
     self.filterCardView.layer.cornerRadius = 12.0
     self.filterCardView.layer.shadowRadius = 8
@@ -155,6 +166,48 @@ extension DiscoveryFilterOverlayViewController {
                          toItem: self.filterCardView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
       ])
     
+    self.view.layoutIfNeeded()
+  }
+  
+  func getTableFooterView() -> UIView {
+    let containerView = UIButton()
+    containerView.addTarget(self,
+                            action: #selector(DiscoveryFilterOverlayViewController.addFriendClicked(sender:)),
+                            for: .touchUpInside)
+    let plusImageView = UIImageView()
+    plusImageView.translatesAutoresizingMaskIntoConstraints = false
+    plusImageView.contentMode = .scaleAspectFill
+    plusImageView.image = R.image.discoveryFilterIconPlus()
+    containerView.addSubview(plusImageView)
+    containerView.addConstraints([
+     NSLayoutConstraint(item: plusImageView, attribute: .width, relatedBy: .equal,
+                        toItem: plusImageView, attribute: .height, multiplier: 1.0, constant: 0.0),
+     NSLayoutConstraint(item: plusImageView, attribute: .height, relatedBy: .equal,
+                        toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 38.0),
+     NSLayoutConstraint(item: plusImageView, attribute: .centerY, relatedBy: .equal,
+                        toItem: containerView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+     NSLayoutConstraint(item: plusImageView, attribute: .left, relatedBy: .equal,
+                        toItem: containerView, attribute: .left, multiplier: 1.0, constant: 12.0)
+    ])
+    
+    let addFriendLabel = UILabel()
+    addFriendLabel.translatesAutoresizingMaskIntoConstraints = false
+    addFriendLabel.text = "ADD A FRIEND"
+    addFriendLabel.textColor = UIColor(red: 0.22, green: 0.81, blue: 0.45, alpha: 1.00)
+    if let font = R.font.openSansExtraBold(size: 16) {
+      addFriendLabel.font = font
+    }
+    containerView.addSubview(addFriendLabel)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: addFriendLabel, attribute: .left, relatedBy: .equal,
+                         toItem: plusImageView, attribute: .right, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: addFriendLabel, attribute: .centerY, relatedBy: .equal,
+                         toItem: plusImageView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: addFriendLabel, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -12.0)
+     ])
+    containerView.backgroundColor = UIColor.white
+    return containerView
   }
   
   /// Stylize can be called more than once
@@ -175,6 +228,14 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
     return DiscoveryFilterOverlayViewController.filterItemHeight
   }
   
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return self.getTableFooterView()
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return DiscoveryFilterOverlayViewController.filterItemHeight
+  }
+  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: DiscoveryFilterOverlayViewController.discoveryFilterItemCellIdentifier,
                                                    for: indexPath) as? DiscoveryFilterItemTableViewCell else {
@@ -187,7 +248,15 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
     cell.stylize(url: item.thumbnailURL,
                  firstName: item.firstName,
                  selected: item.selected)
+    cell.selectionStyle = .none
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let selectedItem = self.filterItems[indexPath.row]
+    if !selectedItem.selected {
+      
+    }
   }
   
 }

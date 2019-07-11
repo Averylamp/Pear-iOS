@@ -31,7 +31,7 @@ class DiscoveryFilterItemTableViewCell: UITableViewCell {
       NSLayoutConstraint(item: self.thumbnailImageView, attribute: .centerY, relatedBy: .equal,
                          toItem: self.contentView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: self.thumbnailImageView, attribute: .height, relatedBy: .equal,
-                         toItem: self.contentView, attribute: .height, multiplier: 1.0, constant: -20.0),
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: DiscoveryFilterOverlayViewController.filterItemHeight - 16.0),
       NSLayoutConstraint(item: self.thumbnailImageView, attribute: .height, relatedBy: .equal,
                          toItem: self.thumbnailImageView, attribute: .width, multiplier: 1.0, constant: 0.0)
       ])
@@ -51,12 +51,28 @@ class DiscoveryFilterItemTableViewCell: UITableViewCell {
       NSLayoutConstraint(item: self.selectedImageView, attribute: .centerY, relatedBy: .equal,
                          toItem: self.thumbnailImageView, attribute: .centerY, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: self.selectedImageView, attribute: .height, relatedBy: .equal,
-                         toItem: self.contentView, attribute: .height, multiplier: 1.0, constant: -20),
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 26.0),
       NSLayoutConstraint(item: self.selectedImageView, attribute: .height, relatedBy: .equal,
                          toItem: self.selectedImageView, attribute: .width, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint(item: self.nameLabel, attribute: .right, relatedBy: .equal,
                          toItem: self.selectedImageView, attribute: .left, multiplier: 1.0, constant: -8.0)
       ])
+    
+    // Separator
+    let seperatorView = UIView()
+    seperatorView.translatesAutoresizingMaskIntoConstraints = false
+    self.contentView.addSubview(seperatorView)
+    self.contentView.addConstraints([
+      NSLayoutConstraint(item: seperatorView, attribute: .centerX, relatedBy: .equal,
+                         toItem: self.contentView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: seperatorView, attribute: .width, relatedBy: .equal,
+                         toItem: self.contentView, attribute: .width, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: seperatorView, attribute: .height, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0),
+      NSLayoutConstraint(item: seperatorView, attribute: .bottom, relatedBy: .equal,
+                         toItem: self.contentView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+      ])
+    seperatorView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
     
     // Stylizes Thumbnail
     self.thumbnailImageView.contentMode = .scaleAspectFill
@@ -70,8 +86,10 @@ class DiscoveryFilterItemTableViewCell: UITableViewCell {
     
     // Stylizes Selected Image
     self.selectedImageView.contentMode = .scaleAspectFit
-    self.selectedImageView.backgroundColor = UIColor.green
+    self.selectedImageView.image = R.image.discoveryFilterIconSelected()
+    self.selectedImageView.alpha = 0.0
     
+    self.layoutIfNeeded()
   }
   
   required init?(coder aDecoder: NSCoder) {

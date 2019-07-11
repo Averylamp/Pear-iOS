@@ -404,7 +404,7 @@ extension DiscoveryDecisionViewController: DiscoveryFilterOverlayDelegate {
       return
     }
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    let topOffset = self.headerContainerView.frame.origin.y + self.headerContainerView.frame.height
+    let topOffset = self.headerContainerView.frame.origin.y + self.headerContainerView.frame.height + 12.0
     guard let filterOverlayVC = DiscoveryFilterOverlayViewController.instantiate(topOffset: topOffset) else {
       print("Unable to create discovery filter overlay vc")
       return
