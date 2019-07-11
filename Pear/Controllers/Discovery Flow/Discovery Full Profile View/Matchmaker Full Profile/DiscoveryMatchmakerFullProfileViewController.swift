@@ -14,6 +14,21 @@ class DiscoveryMatchmakerFullProfileViewController: DiscoveryFullProfileViewCont
   var chatRequestVC: UIViewController?
   var chatRequestVCBottomConstraint: NSLayoutConstraint?
   
+  /// Factory method for creating this view controller.
+  ///
+  /// - Returns: Returns an instance of this view controller.
+  class func instantiate(fullProfileData: FullProfileDisplayData!) -> DiscoveryMatchmakerFullProfileViewController? {
+    guard let fullDiscoveryVC = R.storyboard.discoveryMatchmakerFullProfileViewController
+      .instantiateInitialViewController() else { return nil }
+    fullDiscoveryVC.fullProfileData = fullProfileData
+    guard let matchingUserObject = fullProfileData.originObject as? PearUser else {
+      print("Failed to get matching user object from full profile")
+      return nil
+    }
+    fullDiscoveryVC.profileID = matchingUserObject.documentID
+    return fullDiscoveryVC
+  }
+  
 }
 
 // MARK: - Keybaord Size Notifications

@@ -9,14 +9,13 @@
 import Foundation
 import UIKit
 
-class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewController{
-  
+class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewController {
   
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
   class func instantiate(fullProfileData: FullProfileDisplayData!) -> DiscoveryPersonalFullProfileViewController? {
-    guard let fullDiscoveryVC = R.storyboard.discoveryPersonalFullProfileViewControllert
+    guard let fullDiscoveryVC = R.storyboard.discoveryPersonalFullProfileViewController
       .instantiateInitialViewController() else { return nil }
     fullDiscoveryVC.fullProfileData = fullProfileData
     guard let matchingUserObject = fullProfileData.originObject as? PearUser else {
@@ -26,13 +25,11 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
     fullDiscoveryVC.profileID = matchingUserObject.documentID
     return fullDiscoveryVC
   }
-
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
   }
-  
   
   @objc func personalRequestButtonClicked(_ sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
@@ -56,7 +53,7 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
     }
   }
   
-  func addLikesButtons(){
+  func addLikesButtons() {
     guard let fullProfileStackVC = self.fullProfileStackVC else {
       print("Unable to find full Profile Stack VC")
       return
