@@ -270,7 +270,6 @@
 		BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */; };
 		BBCA2D6C229DCFA00057491A /* PearUserAPI+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */; };
 		BBCA2D6E229DD00D0057491A /* PearUserAPI+Updates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */; };
-		BBCA2D75229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */; };
 		BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */; };
 		BBCA2D79229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */; };
 		BBCD0AAD222CBF5100FE5456 /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */; };
@@ -605,7 +604,6 @@
 		BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Events.swift"; sourceTree = "<group>"; };
 		BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Helpers.swift"; sourceTree = "<group>"; };
 		BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Updates.swift"; sourceTree = "<group>"; };
-		BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+PromptVCs.swift"; sourceTree = "<group>"; };
 		BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+ProfileCreation.swift"; sourceTree = "<group>"; };
 		BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryDecisionViewController+Scanner.swift"; sourceTree = "<group>"; };
 		BBCD0AAC222CBF5100FE5456 /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
@@ -1488,7 +1486,6 @@
 				BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */,
 				BB662AB822B9D7EA003EDE4B /* DiscoveryFullProfileViewController+Analytics.swift */,
 				BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */,
-				BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */,
 			);
 			path = "Discovery Full Profile View Controller";
 			sourceTree = "<group>";
@@ -2682,7 +2679,6 @@
 				91BEE2AD225D8EFD00A53171 /* DiscoveryFilterViewController.swift in Sources */,
 				BB687E5C228D5A3600F45C9D /* OnboardingExplainationPage1ViewController.swift in Sources */,
 				BBA2E1FA224B3AA60088A7A7 /* ApproveDetachedProfilePhotosViewController.swift in Sources */,
-				BBCA2D75229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift in Sources */,
 				BBB71B742294E871002CDDD1 /* UserEthnicityInputViewController.swift in Sources */,
 				BBB71B7A2295272E002CDDD1 /* UserEducationLevelInputViewController.swift in Sources */,
 				BB551D8D2279E1A200CD2C88 /* PromptSMSProtocol.swift in Sources */,
