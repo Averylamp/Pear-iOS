@@ -212,6 +212,7 @@ extension DiscoveryMatchmakerFullProfileViewController: MatchmakerRequestDelegat
       print("Is already sending request")
       return
     }
+    self.isSendingRequest = true
     self.dismissPearRequest()
     if let delegate = self.delegate {
       self.fullProfileData.decisionMade = true

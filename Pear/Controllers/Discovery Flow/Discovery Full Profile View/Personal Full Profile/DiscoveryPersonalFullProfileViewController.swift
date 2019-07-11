@@ -11,6 +11,8 @@ import UIKit
 
 class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewController {
   
+  static let likeButtonSize: CGFloat = 50.0
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -28,29 +30,12 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.addLikesButtons()
   }
   
   @objc func personalRequestButtonClicked(_ sender: UIButton) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
-      let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
-        print("Failed to pull relavant discover user fields")
-        return
-    }
-    guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
-      print("Failed to get personal User ID")
-      return
-    }
-    if let profileCount = DataStore.shared.currentPearUser?.endorserIDs.count,
-      profileCount ==  0 && Int.random(in: 0..<5) == 0 {
-      self.promptProfileRequest()
-    } else {
-      //      self.displayPersonalRequestVC(personalUserID: personalUserID,
-      //                                    thumbnailImageURL: requestedThumbnailURL,
-      //                                    requestPersonName: self.fullProfileData.firstName ?? "")
-      // self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
-    }
+    self.sendLike(likeButtonIndex: sender.tag)
   }
   
   func addLikesButtons() {
@@ -66,39 +51,78 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
       likeButton.addTarget(self, action: #selector(DiscoveryPersonalFullProfileViewController.personalRequestButtonClicked(_:)), for: .touchUpInside)
       likeButton.translatesAutoresizingMaskIntoConstraints = false
       likeButton.setImage(R.image.discoveryIconLike(), for: .normal)
-      likeButton.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-      likeButton.layer.cornerRadius = 24
-      likeButton.clipsToBounds = true
+      likeButton.setImage(R.image.discoveryIconLike(), for: .selected)
+      self.stylizeActionButton(button: likeButton)
+      likeButton.layer.cornerRadius = DiscoveryPersonalFullProfileViewController.likeButtonSize / 2.0
       fullProfileStackVC.view.addSubview(likeButton)
-      let shadowView = UIView()
-      shadowView.translatesAutoresizingMaskIntoConstraints = false
-      shadowView.layer.cornerRadius = 24
-      shadowView.backgroundColor = UIColor.white
-      shadowView.layer.shadowOpacity = 0.15
-      shadowView.layer.shadowColor = UIColor.black.cgColor
-      shadowView.layer.shadowRadius = 6
-      shadowView.layer.shadowOffset = CGSize(width: 3, height: 3 )
-      fullProfileStackVC.view.insertSubview(shadowView, belowSubview: likeButton)
+      
       likeButton.addConstraints([
-        NSLayoutConstraint(item: likeButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 48),
-        NSLayoutConstraint(item: likeButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 48)
+        NSLayoutConstraint(item: likeButton, attribute: .width, relatedBy: .equal,
+                           toItem: nil, attribute: .notAnAttribute, multiplier: 1.0,
+                           constant: DiscoveryPersonalFullProfileViewController.likeButtonSize),
+        NSLayoutConstraint(item: likeButton, attribute: .height, relatedBy: .equal,
+                           toItem: likeButton, attribute: .width, multiplier: 1.0, constant: 0.0)
         ])
       fullProfileStackVC.view.addConstraints([
         NSLayoutConstraint(item: likeButton, attribute: .bottom, relatedBy: .equal,
                            toItem: sectionView, attribute: .bottom, multiplier: 1.0, constant: -12.0),
         NSLayoutConstraint(item: likeButton, attribute: .right, relatedBy: .equal,
-                           toItem: sectionView, attribute: .right, multiplier: 1.0, constant: -12.0),
-        NSLayoutConstraint(item: shadowView, attribute: .height, relatedBy: .equal,
-                           toItem: likeButton, attribute: .height, multiplier: 1.0, constant: 0),
-        NSLayoutConstraint(item: shadowView, attribute: .width, relatedBy: .equal,
-                           toItem: likeButton, attribute: .width, multiplier: 1.0, constant: 0),
-        NSLayoutConstraint(item: shadowView, attribute: .centerX, relatedBy: .equal,
-                           toItem: likeButton, attribute: .centerX, multiplier: 1.0, constant: 0),
-        NSLayoutConstraint(item: shadowView, attribute: .centerY, relatedBy: .equal,
-                           toItem: likeButton, attribute: .centerY, multiplier: 1.0, constant: 0)
+                           toItem: sectionView, attribute: .right, multiplier: 1.0, constant: -12.0)
         ])
     }
 
+  }
+  
+}
+
+// MARK: - Send Like
+extension DiscoveryPersonalFullProfileViewController {
+  
+  func sendLike(likeButtonIndex: Int) {
+    guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
+      print("Unable to get current user")
+      return
+    }
+    let matchRequestData = MatchRequestCreationData(sentByUserID: personalUserID,
+                                                    sentForUserID: personalUserID,
+                                                    receivedByUserID: self.profileID,
+                                                    requestText: nil,
+                                                    likedPhoto: nil,
+                                                    likedPrompt: nil)
+    if let fullProfileSectionVCs = fullProfileStackVC?.sectionItemsWithVCs,
+      likeButtonIndex < fullProfileSectionVCs.count {
+      let fullProfileSection = fullProfileSectionVCs[likeButtonIndex]
+      matchRequestData.likedPhoto = fullProfileSection.sectionItem.image
+      matchRequestData.likedPrompt = fullProfileSection.sectionItem.question
+    }
+    
+    guard !isSendingRequest else {
+      print("Is already sending request")
+      return
+    }
+    self.isSendingRequest = true
+    if let delegate = self.delegate {
+      self.fullProfileData.decisionMade = true
+      delegate.decisionMade()
+    }
+    SlackHelper.shared.addEvent(text: "User Sent Personal Request. to profile: \(self.fullProfileData.slackHelperSummary()), Liked Index \(likeButtonIndex), Liked Part: \(matchRequestData.likedPhoto != nil ? "Photo" : "Prompt") \(self.slackHelperDetails())", color: UIColor.green)
+    PearMatchesAPI.shared.createMatchRequest(matchCreationData: matchRequestData) { (result) in
+      switch result {
+      case .success:
+        break
+      case .failure(let error):
+        print("Error creating Request: \(error)")
+        SentryHelper.generateSentryEvent(message: "Failed to send match request from:\(personalUserID) to:\(self.profileID!)")
+        switch error {
+        case .graphQLError(let message):
+          break
+        default:
+          break
+        }
+        
+      }
+    }
+    
   }
   
 }
