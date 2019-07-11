@@ -69,7 +69,8 @@ class DiscoveryFilterOverlayViewController: UIViewController {
   
   func animateFilterPopup(presenting: Bool, completion: (() -> Void)? = nil) {
     DispatchQueue.main.async {
-      let newHeight = presenting ? CGFloat(self.filterItems.count + 1) * DiscoveryFilterOverlayViewController.filterItemHeight : 0.0
+//      let newHeight = presenting ? CGFloat(self.filterItems.count + 1) * DiscoveryFilterOverlayViewController.filterItemHeight : 0.0
+      let newHeight = presenting ? CGFloat(self.filterItems.count) * DiscoveryFilterOverlayViewController.filterItemHeight : 0.0
       if let heightConstraint = self.filterCardViewHeightConstraint {
         heightConstraint.constant = newHeight
       }
@@ -174,6 +175,8 @@ extension DiscoveryFilterOverlayViewController {
     containerView.addTarget(self,
                             action: #selector(DiscoveryFilterOverlayViewController.addFriendClicked(sender:)),
                             for: .touchUpInside)
+    
+    // Plus Icon Image View
     let plusImageView = UIImageView()
     plusImageView.translatesAutoresizingMaskIntoConstraints = false
     plusImageView.contentMode = .scaleAspectFill
@@ -190,6 +193,7 @@ extension DiscoveryFilterOverlayViewController {
                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 12.0)
     ])
     
+    // Add Friends Label
     let addFriendLabel = UILabel()
     addFriendLabel.translatesAutoresizingMaskIntoConstraints = false
     addFriendLabel.text = "ADD A FRIEND"
@@ -206,6 +210,23 @@ extension DiscoveryFilterOverlayViewController {
       NSLayoutConstraint(item: addFriendLabel, attribute: .right, relatedBy: .equal,
                          toItem: containerView, attribute: .right, multiplier: 1.0, constant: -12.0)
      ])
+
+    // Separator
+    let seperatorView = UIView()
+    seperatorView.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubview(seperatorView)
+    containerView.addConstraints([
+      NSLayoutConstraint(item: seperatorView, attribute: .centerX, relatedBy: .equal,
+                         toItem: containerView, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: seperatorView, attribute: .width, relatedBy: .equal,
+                         toItem: containerView, attribute: .width, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: seperatorView, attribute: .height, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1.0),
+      NSLayoutConstraint(item: seperatorView, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 0.0)
+      ])
+    seperatorView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+
     containerView.backgroundColor = UIColor.white
     return containerView
   }
@@ -228,13 +249,13 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
     return DiscoveryFilterOverlayViewController.filterItemHeight
   }
   
-  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    return self.getTableFooterView()
-  }
-  
-  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return DiscoveryFilterOverlayViewController.filterItemHeight
-  }
+//  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//    return self.getTableFooterView()
+//  }
+//
+//  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//    return DiscoveryFilterOverlayViewController.filterItemHeight
+//  }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: DiscoveryFilterOverlayViewController.discoveryFilterItemCellIdentifier,
@@ -244,7 +265,6 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
     }
     self.view.layoutIfNeeded()
     let item = self.filterItems[indexPath.row]
-    print(item)
     cell.stylize(url: item.thumbnailURL,
                  firstName: item.firstName,
                  selected: item.selected)
