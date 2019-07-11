@@ -17,11 +17,19 @@ protocol DiscoveryFullProfileDelegate: class {
 }
 
 class DiscoveryFullProfileViewController: UIViewController {
-  static var requestHorizontalPadding = 20
+
   weak var delegate: DiscoveryFullProfileDelegate?
+  
+  static var requestHorizontalPadding = 20
+  let requestAnimationTime: Double = 0.4
+
   var fullProfileData: FullProfileDisplayData!
   var fullProfileStackVC: FullProfileStackViewController?
   var profileID: String!
+  var isSendingRequest = false
+  var lastTabBarVisible: Bool = true
+  
+  // Analytics variables
   var lastContentOffset: CGFloat = 0
   var exactLastContentOffset: CGFloat = 0
   var totalScrollDistance: CGFloat = 0
@@ -30,34 +38,9 @@ class DiscoveryFullProfileViewController: UIViewController {
 
   @IBOutlet weak var profileNameLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
-  @IBOutlet weak var pearButton: UIButton!
-  @IBOutlet weak var likeButton: UIButton!
   @IBOutlet weak var skipButton: UIButton!
   @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
   
-  var lastTabBarVisible: Bool = true
-  let requestAnimationTime: Double = 0.4
-  var matchButtons: [MatchButton] = []
-  var matchButtonShadows: [UIView] = []
-  var fullPageBlocker: UIButton?
-  var chatRequestVC: UIViewController?
-  var chatRequestVCBottomConstraint: NSLayoutConstraint?
-  var isSendingRequest = false
-  
-  /// Factory method for creating this view controller.
-  ///
-  /// - Returns: Returns an instance of this view controller.
-  class func instantiate(fullProfileData: FullProfileDisplayData!) -> DiscoveryFullProfileViewController? {
-    let storyboard = UIStoryboard(name: String(describing: DiscoveryFullProfileViewController.self), bundle: nil)
-    guard let fullDiscoveryVC = storyboard.instantiateInitialViewController() as? DiscoveryFullProfileViewController else { return nil }
-    fullDiscoveryVC.fullProfileData = fullProfileData
-    guard let matchingUserObject = fullProfileData.originObject as? PearUser else {
-      print("Failed to get matching user object from full profile")
-      return nil
-    }
-    fullDiscoveryVC.profileID = matchingUserObject.documentID
-    return fullDiscoveryVC
-  }
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
@@ -131,123 +114,92 @@ class DiscoveryFullProfileViewController: UIViewController {
     }
   }
   
-  @IBAction func personalRequestButtonClicked(_ sender: Any) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
-      let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
-        print("Failed to pull relavant discover user fields")
-        return
-    }
-    guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
-      print("Failed to get personal User ID")
-      return
-    }
-    if let profileCount = DataStore.shared.currentPearUser?.endorserIDs.count,
-      profileCount ==  0 && Int.random(in: 0..<5) == 0 {
-      self.promptProfileRequest()
-    } else {
-//      self.displayPersonalRequestVC(personalUserID: personalUserID,
+//  @objc func matchOptionClicked(sender: UIButton) {
+//    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
+//    print("Match object clicked")
+//    var foundMatchObject: MatchButton?
+//    self.matchButtons.forEach({
+//      if $0.button == sender {
+//        foundMatchObject = $0
+//      }
+//    })
+//    guard let matchObject = foundMatchObject else {
+//      print("No Match Object Found")
+//      return
+//    }
+//
+//    guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
+//      let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
+//        print("Failed to pull relavant discover user fields")
+//        return
+//    }
+//    guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
+//      print("Failed to get personal User ID")
+//      return
+//    }
+//
+//    switch matchObject.type {
+//    case .placeholderEndorsed:
+//      self.promptEndorsedProfileCreation()
+//    case .personalUser:
+//      if matchObject.buttonEnabled {
+//        self.removeMatchButtons()
+//      } else {
+//        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(personalUserID) {
+//          self.presentSimpleMessageAlert(title: "You have already Peared!",
+//                                         message: "If \(self.fullProfileData.firstName ?? "they") pears back you will be dropped into a chat",
+//                                         acceptAction: "Okay")
+//        } else if let userProfileCount = matchObject.user?.endorserIDs.count, userProfileCount > 0 {
+//          self.presentSimpleMessageAlert(title: "Preference mismatch",
+//                                         message: "Either \(self.fullProfileData.firstName ?? "this person") or You indicated preferences that are not compatible",
+//                                          acceptAction: "Okay")
+//        } else {
+//          self.promptProfileRequest()
+//        }
+//      }
+//    case .detachedProfile:
+//      if let firstName = matchObject.detachedProfile?.firstName {
+//        self.presentSimpleMessageAlert(title: "\(firstName) has not yet accepted their profile",
+//                                       message: "They must have approved their profile first",
+//                                       acceptAction: "Okay")
+//      } else {
+//        self.presentSimpleMessageAlert(title: "Your friend has not yet accepted their profile",
+//                                       message: "They must have approved their profile first",
+//                                       acceptAction: "Okay")
+//      }
+//    case .endorsedUser:
+//      guard let endorsedUserObject = matchObject.endorsedUser else {
+//        print("Failed to get endorsed User Object")
+//        return
+//      }
+//      if matchObject.buttonEnabled {
+//      guard  let endorsedUserThumbnailString = endorsedUserObject.displayedImages.first?.thumbnail.imageURL,
+//        let endorsedUserThumbnailURL = URL(string: endorsedUserThumbnailString) else {
+//          print("Failed to get required endorsed user fields")
+//          return
+//      }
+//      self.removeMatchButtons()
+//      self.displayEndorsedRequestVC(personalUserID: personalUserID,
+//                                    endorsedUserID: endorsedUserObject.documentID,
 //                                    thumbnailImageURL: requestedThumbnailURL,
-//                                    requestPersonName: self.fullProfileData.firstName ?? "")
-      // self.createPearRequest(sentByUserID: personalUserID, sentForUserID: personalUserID, requestText: nil)
-    }
-  }
-  
-  @objc func matchOptionClicked(sender: UIButton) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    print("Match object clicked")
-    var foundMatchObject: MatchButton?
-    self.matchButtons.forEach({
-      if $0.button == sender {
-        foundMatchObject = $0
-      }
-    })
-    guard let matchObject = foundMatchObject else {
-      print("No Match Object Found")
-      return
-    }
-    
-    guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
-      let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
-        print("Failed to pull relavant discover user fields")
-        return
-    }
-    guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
-      print("Failed to get personal User ID")
-      return
-    }
-    
-    switch matchObject.type {
-    case .placeholderEndorsed:
-      self.promptEndorsedProfileCreation()
-    case .personalUser:
-      if matchObject.buttonEnabled {
-        self.removeMatchButtons()
-      } else {
-        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(personalUserID) {
-          self.presentSimpleMessageAlert(title: "You have already Peared!",
-                                         message: "If \(self.fullProfileData.firstName ?? "they") pears back you will be dropped into a chat",
-                                         acceptAction: "Okay")
-        } else if let userProfileCount = matchObject.user?.endorserIDs.count, userProfileCount > 0 {
-          self.presentSimpleMessageAlert(title: "Preference mismatch",
-                                         message: "Either \(self.fullProfileData.firstName ?? "this person") or You indicated preferences that are not compatible",
-                                          acceptAction: "Okay")
-        } else {
-          self.promptProfileRequest()
-        }
-      }
-    case .detachedProfile:
-      if let firstName = matchObject.detachedProfile?.firstName {
-        self.presentSimpleMessageAlert(title: "\(firstName) has not yet accepted their profile",
-                                       message: "They must have approved their profile first",
-                                       acceptAction: "Okay")
-      } else {
-        self.presentSimpleMessageAlert(title: "Your friend has not yet accepted their profile",
-                                       message: "They must have approved their profile first",
-                                       acceptAction: "Okay")
-      }
-    case .endorsedUser:
-      guard let endorsedUserObject = matchObject.endorsedUser else {
-        print("Failed to get endorsed User Object")
-        return
-      }
-      if matchObject.buttonEnabled {
-      guard  let endorsedUserThumbnailString = endorsedUserObject.displayedImages.first?.thumbnail.imageURL,
-        let endorsedUserThumbnailURL = URL(string: endorsedUserThumbnailString) else {
-          print("Failed to get required endorsed user fields")
-          return
-      }
-      self.removeMatchButtons()
-      self.displayEndorsedRequestVC(personalUserID: personalUserID,
-                                    endorsedUserID: endorsedUserObject.documentID,
-                                    thumbnailImageURL: requestedThumbnailURL,
-                                    requestPersonName: self.fullProfileData.firstName ?? "",
-                                    userPersonName: endorsedUserObject.firstName  ?? "",
-                                    userPersonThumbnailURL: endorsedUserThumbnailURL)
-      } else {
-        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(endorsedUserObject.documentID) {
-          self.presentSimpleMessageAlert(title: "You have already Peared \(self.fullProfileData.firstName  ?? "this person") and \(endorsedUserObject.firstName ?? "your friend")!",
-            message: "If they both accept, they will be dropped into a chat",
-            acceptAction: "Okay")
-        } else {
-          self.presentSimpleMessageAlert(title: "Preference mismatch",
-            message: "Either \(self.fullProfileData.firstName ?? "this person") or \(endorsedUserObject.firstName ?? "your friend") indicated preferences that are not compatible",
-            acceptAction: "Okay")
-        }
-      }
-      
-    }
-    
-  }
-  
-  @IBAction func filterButtonClicked(_ sender: Any) {
-    print("filter button clicked")
-    guard let filtersVC = DiscoveryFilterViewController.instantiate() else {
-      print("Failed to create Filters VC")
-      return
-    }
-    self.navigationController?.pushViewController(filtersVC, animated: true)
-  }
+//                                    requestPersonName: self.fullProfileData.firstName ?? "",
+//                                    userPersonName: endorsedUserObject.firstName  ?? "",
+//                                    userPersonThumbnailURL: endorsedUserThumbnailURL)
+//      } else {
+//        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(endorsedUserObject.documentID) {
+//          self.presentSimpleMessageAlert(title: "You have already Peared \(self.fullProfileData.firstName  ?? "this person") and \(endorsedUserObject.firstName ?? "your friend")!",
+//            message: "If they both accept, they will be dropped into a chat",
+//            acceptAction: "Okay")
+//        } else {
+//          self.presentSimpleMessageAlert(title: "Preference mismatch",
+//            message: "Either \(self.fullProfileData.firstName ?? "this person") or \(endorsedUserObject.firstName ?? "your friend") indicated preferences that are not compatible",
+//            acceptAction: "Okay")
+//        }
+//      }
+//
+//    }
+//
+//  }
   
   @IBAction func qrScannerButtonClicked(_ sender: Any) {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
@@ -256,58 +208,16 @@ class DiscoveryFullProfileViewController: UIViewController {
   
 }
 
-// MARK: - Presentation Helpers
-extension DiscoveryFullProfileViewController {
-  
-  func presentSimpleMessageAlert(title: String, message: String?, acceptAction: String) {
-    let alertController = UIAlertController(title: title,
-                                            message: message,
-                                            preferredStyle: .alert)
-    let okayAction = UIAlertAction(title: acceptAction, style: .default, handler: nil)
-    alertController.addAction(okayAction)
-    self.present(alertController, animated: true, completion: nil)
-  }
-  
-  @IBAction func pearButtonClicked(_ sender: Any) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    if !pearButton.isSelected {
-      self.matchButtons = self.createMatchButtons()
-      self.addMatchButtonsAnimated(matchButtons: self.matchButtons)
-    } else {
-      self.removeMatchButtons()
-    }
-
-  }
-}
-
 // MARK: - Life Cycle
 extension DiscoveryFullProfileViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.stylize()
     self.setup()
+    self.stylize()
     self.addFullStackVC()
-    self.addKeyboardSizeNotifications()
     self.caching()
   }
-  
-  func stylize() {
-    self.pearButton.isHidden = true
-    self.likeButton.isHidden = true
-    self.scrollView.backgroundColor = R.color.cardBackgroundColor()
-    self.profileNameLabel.stylizeSubtitleLabelSmall()
-    self.profileNameLabel.text = self.fullProfileData.firstName
-    if let firstName = self.fullProfileData.firstName,
-      let age = self.fullProfileData.age {
-      self.profileNameLabel.text = "\(firstName), \(age)"
-    }
-    
-    self.pearButton.setImage(R.image.discoveryIconPearSelected(), for: .selected)
-    self.stylizeActionButton(button: self.pearButton)
-    self.stylizeActionButton(button: self.likeButton)
-    self.stylizeActionButton(button: self.skipButton)
-  }
-  
+
   func setup() {
     self.scrollView.delegate = self
     if let visible = self.tabBarController?.tabBarIsVisible() {
@@ -315,10 +225,13 @@ extension DiscoveryFullProfileViewController {
     }
   }
   
-  func caching() {
-    if let requestImageURLString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
-      let requestURL = URL(string: requestImageURLString) {
-      SDWebImagePrefetcher.shared.prefetchURLs([requestURL])
+  func stylize() {
+    self.scrollView.backgroundColor = R.color.cardBackgroundColor()
+    self.profileNameLabel.stylizeSubtitleLabelSmall()
+    self.profileNameLabel.text = self.fullProfileData.firstName
+    if let firstName = self.fullProfileData.firstName,
+      let age = self.fullProfileData.age {
+      self.profileNameLabel.text = "\(firstName), \(age)"
     }
   }
   
@@ -328,6 +241,13 @@ extension DiscoveryFullProfileViewController {
     button.layer.shadowColor = UIColor.black.cgColor
     button.layer.shadowRadius = 6
     button.layer.shadowOffset = CGSize(width: 2, height: 2)
+  }
+  
+  func caching() {
+    if let requestImageURLString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
+      let requestURL = URL(string: requestImageURLString) {
+      SDWebImagePrefetcher.shared.prefetchURLs([requestURL])
+    }
   }
   
   func addFullStackVC() {
@@ -352,160 +272,48 @@ extension DiscoveryFullProfileViewController {
       ])
     fullProfileStackVC.didMove(toParent: self)
     self.fullProfileStackVC = fullProfileStackVC
-    for index in 0..<fullProfileStackVC.sectionItemsWithVCs.count {
-      let sectionItemWithVC = fullProfileStackVC.sectionItemsWithVCs[index]
-      let sectionView = sectionItemWithVC.viewController.view
-      let likeButton = UIButton()
-      likeButton.tag = index
-      likeButton.addTarget(self, action: #selector(DiscoveryFullProfileViewController.likeButtonClicked), for: .touchUpInside)
-      likeButton.translatesAutoresizingMaskIntoConstraints = false
-      likeButton.setImage(R.image.discoveryIconLike(), for: .normal)
-      likeButton.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-      likeButton.layer.cornerRadius = 24
-      likeButton.clipsToBounds = true
-      fullProfileStackVC.view.addSubview(likeButton)
-      let shadowView = UIView()
-      shadowView.translatesAutoresizingMaskIntoConstraints = false
-      shadowView.layer.cornerRadius = 24
-      shadowView.backgroundColor = UIColor.white
-      shadowView.layer.shadowOpacity = 0.15
-      shadowView.layer.shadowColor = UIColor.black.cgColor
-      shadowView.layer.shadowRadius = 6
-      shadowView.layer.shadowOffset = CGSize(width: 3, height: 3 )
-      fullProfileStackVC.view.insertSubview(shadowView, belowSubview: likeButton)
-      likeButton.addConstraints([
-        NSLayoutConstraint(item: likeButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 48),
-        NSLayoutConstraint(item: likeButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 48)
-        ])
-      fullProfileStackVC.view.addConstraints([
-        NSLayoutConstraint(item: likeButton, attribute: .bottom, relatedBy: .equal,
-                           toItem: sectionView, attribute: .bottom, multiplier: 1.0, constant: -12.0),
-        NSLayoutConstraint(item: likeButton, attribute: .right, relatedBy: .equal,
-                           toItem: sectionView, attribute: .right, multiplier: 1.0, constant: -12.0),
-        NSLayoutConstraint(item: shadowView, attribute: .height, relatedBy: .equal,
-                           toItem: likeButton, attribute: .height, multiplier: 1.0, constant: 0),
-        NSLayoutConstraint(item: shadowView, attribute: .width, relatedBy: .equal,
-                           toItem: likeButton, attribute: .width, multiplier: 1.0, constant: 0),
-        NSLayoutConstraint(item: shadowView, attribute: .centerX, relatedBy: .equal,
-                           toItem: likeButton, attribute: .centerX, multiplier: 1.0, constant: 0),
-        NSLayoutConstraint(item: shadowView, attribute: .centerY, relatedBy: .equal,
-                           toItem: likeButton, attribute: .centerY, multiplier: 1.0, constant: 0)
-        ])
-    }
   }
   
-  @objc func likeButtonClicked(sender: UIButton) {
-    print("like button clicked")
-    if sender.tag >= (self.fullProfileStackVC?.sectionItemsWithVCs.count ?? 0) {
-      print("couldnt get section item")
-      return
-    }
-    if let sectionItem = self.fullProfileStackVC?.sectionItemsWithVCs[sender.tag].sectionItem {
-      guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
-        let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
-          print("Failed to pull relavant discover user fields")
-          return
-      }
-      guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
-        print("Failed to get personal User ID")
-        return
-      }
-      if let image = sectionItem.image, sectionItem.sectionType == .image {
-        print("liked image \(image.imageID)")
-        self.displayPersonalRequestVC(personalUserID: personalUserID,
-                                      thumbnailImageURL: requestedThumbnailURL,
-                                      requestPersonName: self.fullProfileData.firstName ?? "",
-                                      likedPhoto: image)
-        
-      } else if let questionResponse = sectionItem.question, sectionItem.sectionType == .question {
-        print("liked questionResponse \(questionResponse.question.questionText)")
-        self.displayPersonalRequestVC(personalUserID: personalUserID,
-                                      thumbnailImageURL: requestedThumbnailURL,
-                                      requestPersonName: self.fullProfileData.firstName ?? "",
-                                      likedPhoto: nil,
-                                      likedPrompt: questionResponse)
-      }
-    }
-  }
+//  @objc func likeButtonClicked(sender: UIButton) {
+//    print("like button clicked")
+//    if sender.tag >= (self.fullProfileStackVC?.sectionItemsWithVCs.count ?? 0) {
+//      print("couldnt get section item")
+//      return
+//    }
+//    if let sectionItem = self.fullProfileStackVC?.sectionItemsWithVCs[sender.tag].sectionItem {
+//      guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
+//        let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
+//          print("Failed to pull relavant discover user fields")
+//          return
+//      }
+//      guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
+//        print("Failed to get personal User ID")
+//        return
+//      }
+//      if let image = sectionItem.image, sectionItem.sectionType == .image {
+//        print("liked image \(image.imageID)")
+//        self.displayPersonalRequestVC(personalUserID: personalUserID,
+//                                      thumbnailImageURL: requestedThumbnailURL,
+//                                      requestPersonName: self.fullProfileData.firstName ?? "",
+//                                      likedPhoto: image)
+//
+//      } else if let questionResponse = sectionItem.question, sectionItem.sectionType == .question {
+//        print("liked questionResponse \(questionResponse.question.questionText)")
+//        self.displayPersonalRequestVC(personalUserID: personalUserID,
+//                                      thumbnailImageURL: requestedThumbnailURL,
+//                                      requestPersonName: self.fullProfileData.firstName ?? "",
+//                                      likedPhoto: nil,
+//                                      likedPrompt: questionResponse)
+//      }
+//    }
+//  }
 }
 
-// MARK: - Matching Helpers
-extension DiscoveryFullProfileViewController {
-  func compareMatchingSet(set1: (preferences: MatchingPreferences, demographics: MatchingDemographics),
-                          set2: (preferences: MatchingPreferences, demographics: MatchingDemographics)) -> Bool {
-    return set1.preferences.matchesDemographics(demographics: set2.demographics) &&
-      set2.preferences.matchesDemographics(demographics: set1.demographics)
-  }
-  
-  func getMatchingPrefDemoFromMatchButton(matchButton: MatchButton) -> (preferences: MatchingPreferences, demographics: MatchingDemographics)? {
-    switch matchButton.type {
-    case .detachedProfile:
-      guard let detachedProfile = matchButton.detachedProfile else {
-        return nil
-      }
-      return (detachedProfile.matchingPreferences, detachedProfile.matchingDemographics)
-    case .endorsedUser:
-      guard let endorsedProfile = matchButton.endorsedUser else {
-        return nil
-      }
-      return (endorsedProfile.matchingPreferences, endorsedProfile.matchingDemographics)
-    case .personalUser:
-      guard let user = matchButton.user else {
-        return nil
-      }
-      return (user.matchingPreferences, user.matchingDemographics)
-    case .placeholderEndorsed:
-      return nil
-    }
-  }
-}
-
+// MARK: - UIGestureRecognizerDelegate
 extension DiscoveryFullProfileViewController: UIGestureRecognizerDelegate {
   
   func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     return true
-  }
-  
-}
-
-// MARK: - Keybaord Size Notifications
-extension DiscoveryFullProfileViewController {
-  
-  func addKeyboardSizeNotifications() {
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(DiscoveryFullProfileViewController.keyboardWillChange(notification:)),
-                   name: UIWindow.keyboardWillChangeFrameNotification,
-                   object: nil)
-    NotificationCenter.default
-      .addObserver(self,
-                   selector: #selector(DiscoveryFullProfileViewController.keyboardWillHide(notification:)),
-                   name: UIWindow.keyboardWillHideNotification,
-                   object: nil)
-  }
-  
-  @objc func keyboardWillChange(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-      let targetFrameNSValue = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let targetFrame = targetFrameNSValue.cgRectValue
-      if let requestBottomConstraint = self.chatRequestVCBottomConstraint {
-        requestBottomConstraint.constant = -(targetFrame.height - self.view.safeAreaInsets.bottom + 20)
-        print("Constraint Value: \(requestBottomConstraint.constant)")
-      }
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
-  }
-  @objc func keyboardWillHide(notification: Notification) {
-    if let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
-      if let requestBottomConstraint = self.chatRequestVCBottomConstraint {
-        requestBottomConstraint.constant =  20
-      }
-      UIView.animate(withDuration: duration) {
-        self.view.layoutIfNeeded()
-      }
-    }
   }
   
 }

@@ -290,7 +290,9 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
           }
         })
       }
-      NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
+      self.delay(delay: 0.4) {
+        NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)        
+      }
       if let previouslySelectedIndex = self.filterItems.firstIndex(where: { $0.selected }) {
         self.filterItems[Int(previouslySelectedIndex)].selected = false
         self.filterItemsTableView.cellForRow(at: IndexPath(row: Int(previouslySelectedIndex), section: 0))?.setSelected(false, animated: true)
