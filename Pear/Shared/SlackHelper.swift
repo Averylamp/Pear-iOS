@@ -63,10 +63,6 @@ class SlackHelper: NSObject {
   }
   
   func sendStory() {
-    #if DEVMODE
-    return
-    #endif
-    
     let timePassed = CACurrentMediaTime() - self.startTime
     if timePassed < 15 || self.userEvents.count < 3 {
       return
@@ -79,7 +75,9 @@ class SlackHelper: NSObject {
       if let skippedPhoneNumberArray = try? JSON(data: skippedStoresData).array {
         let skippedPhoneNumbers = skippedPhoneNumberArray.compactMap({ $0.string })
         if skippedPhoneNumbers.contains(phoneNumber) {
+          #if PROD
           return
+          #endif
         }
       }
     }
@@ -91,6 +89,8 @@ class SlackHelper: NSObject {
       let hoursPassed = Date().timeIntervalSince(lastSessionTime) / 3600.0
       lastSessionString = "Last Slack Story: \(Double(Int(hoursPassed * 100)) / 100.0) hours ago"
       DataStore.shared.setDateToDefaults(flag: .userLastSlackStoryDate, date: Date())
+    } else {
+      DataStore.shared.setDateToDefaults(flag: .userLastSlackStoryDate, date: Date())
     }
     if let user = DataStore.shared.currentPearUser {
       if self.userEvents.count > 0 {
@@ -101,12 +101,17 @@ class SlackHelper: NSObject {
                                           color: UIColor.green.hexColor))
       }
     }
+    
     self.userEvents.insert(SlackEvent(text: "_______________________________________\nSession Duration: \(Int(timePassed))s, Session Number: \(sessionNumber), Events: \(self.userEvents.count) \(lastSessionString != nil ? "\n\(lastSessionString!)" : "")", color: UIColor.purple.hexColor), at: 0)
     let urlString = "https://hooks.slack.com/services/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"
     let url = URL(string: urlString)
     let rawData: [String: Any] = [
       "attachments": self.getAttachmentsFromEvents()
     ]
+    #if DEVMODE
+    return
+    #endif
+
     if let url = url,
       let data = try? JSONSerialization.data(withJSONObject: rawData, options: .prettyPrinted) {
       var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 20)
