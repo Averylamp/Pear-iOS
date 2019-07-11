@@ -20,8 +20,9 @@ class DiscoveryFullProfileViewController: UIViewController {
 
   weak var delegate: DiscoveryFullProfileDelegate?
   
-  static var requestHorizontalPadding = 20
-  let requestAnimationTime: Double = 0.4
+  static let requestHorizontalPadding = 20
+  static let requestAnimationTime: Double = 0.4
+  static let actionButtonSize: CGFloat = 60.0
 
   var fullProfileData: FullProfileDisplayData!
   var fullProfileStackVC: FullProfileStackViewController?
@@ -36,14 +37,13 @@ class DiscoveryFullProfileViewController: UIViewController {
   var maxContentOffset: CGFloat = 0
   let initializationTime: Double = CACurrentMediaTime()
 
+  // MARK: - IBOutlets
   @IBOutlet weak var profileNameLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var skipButton: UIButton!
   @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
   
-  @IBAction func backButtonClicked(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
-  }
+  // MARK: - IBActions
   
   @IBAction func moreButtonClicked(_ sender: Any) {
     print("More Clicked")
@@ -232,10 +232,11 @@ extension DiscoveryFullProfileViewController {
       let age = self.fullProfileData.age {
       self.profileNameLabel.text = "\(firstName), \(age)"
     }
+    self.stylizeActionButton(button: self.skipButton)
   }
   
   func stylizeActionButton(button: UIButton) {
-    button.layer.cornerRadius = button.frame.height / 2.0
+    button.layer.cornerRadius = DiscoveryFullProfileViewController.actionButtonSize / 2.0
     button.layer.shadowOpacity = 0.2
     button.layer.shadowColor = UIColor.black.cgColor
     button.layer.shadowRadius = 6

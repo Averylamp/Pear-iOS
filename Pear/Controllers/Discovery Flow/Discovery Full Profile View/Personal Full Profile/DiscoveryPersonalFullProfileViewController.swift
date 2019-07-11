@@ -14,7 +14,7 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(fullProfileData: FullProfileDisplayData!) -> DiscoveryPersonalFullProfileViewController? {
+  class func instantiate(fullProfileData: FullProfileDisplayData) -> DiscoveryPersonalFullProfileViewController? {
     guard let fullDiscoveryVC = R.storyboard.discoveryPersonalFullProfileViewController
       .instantiateInitialViewController() else { return nil }
     fullDiscoveryVC.fullProfileData = fullProfileData
