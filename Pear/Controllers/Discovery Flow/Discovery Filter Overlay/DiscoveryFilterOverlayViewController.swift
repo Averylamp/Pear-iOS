@@ -152,6 +152,8 @@ extension DiscoveryFilterOverlayViewController {
     self.filterItemsTableView.estimatedRowHeight = DiscoveryFilterOverlayViewController.filterItemHeight
     self.filterItemsTableView.register(DiscoveryFilterItemTableViewCell.self,
                                        forCellReuseIdentifier: DiscoveryFilterOverlayViewController.discoveryFilterItemCellIdentifier)
+    self.filterItemsTableView.allowsSelection = true
+    self.filterItemsTableView.allowsMultipleSelection = false
     self.filterItemsTableView.delegate = self
     self.filterItemsTableView.dataSource = self
     self.filterItemsTableView.separatorStyle = .none
@@ -272,10 +274,30 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
     return cell
   }
   
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    cell.setSelected(self.filterItems[indexPath.row].selected, animated: false)
+  }
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let selectedItem = self.filterItems[indexPath.row]
     if !selectedItem.selected {
-      
+      if selectedItem.documentID == DataStore.shared.currentPearUser?.documentID {
+        DataStore.shared.setFiltersToUser(user: DataStore.shared.currentPearUser!)
+      } else {
+        DataStore.shared.endorsedUsers.forEach({
+          if $0.documentID == selectedItem.documentID {
+            DataStore.shared.setFiltersToUser(user: $0)
+          }
+        })
+      }
+      NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
+      if let previouslySelectedIndex = self.filterItems.firstIndex(where: { $0.selected }) {
+        self.filterItems[Int(previouslySelectedIndex)].selected = false
+        self.filterItemsTableView.cellForRow(at: IndexPath(row: Int(previouslySelectedIndex), section: 0))?.setSelected(false, animated: true)
+      }
+      self.delay(delay: 0.2) {
+        self.overlayButtonClicked(self.overlayButton as Any)
+      }
     }
   }
   

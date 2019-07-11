@@ -98,6 +98,13 @@ class DiscoveryFilterItemTableViewCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+    if animated {
+      UIView.animate(withDuration: 0.1) {
+        self.selectedImageView.alpha = selected ? 1.0 : 0.0
+      }
+    } else {
+      self.selectedImageView.alpha = selected ? 1.0 : 0.0
+    }
   }
   
   func stylize(url: URL, firstName: String, selected: Bool) {
@@ -105,7 +112,6 @@ class DiscoveryFilterItemTableViewCell: UITableViewCell {
     self.thumbnailImageView.layer.cornerRadius = self.thumbnailImageView.frame.height / 2.0
     self.thumbnailImageView.sd_setImage(with: url, completed: nil)
     self.nameLabel.text = firstName
-    self.selectedImageView.alpha = selected ? 1.0 : 0.0
   }
   
 }
