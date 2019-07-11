@@ -95,7 +95,7 @@ class SlackHelper: NSObject {
     if let user = DataStore.shared.currentPearUser {
       if self.userEvents.count > 0 {
         self.userEvents.insert(SlackEvent(text: "End Session: " + user.toSlackStorySummary(profileStats: true, currentUserStats: true),
-                                          color: UIColor.green.hexColor), at: 0)
+                                          color: UIColor.green.hexColor), at: 1)
       } else {
         self.userEvents.append(SlackEvent(text: user.toSlackStorySummary(profileStats: true, currentUserStats: true),
                                           color: UIColor.green.hexColor))
