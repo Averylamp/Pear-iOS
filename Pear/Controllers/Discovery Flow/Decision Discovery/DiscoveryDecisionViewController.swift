@@ -172,14 +172,26 @@ extension DiscoveryDecisionViewController {
     self.hideProfileVC {
       if self.profilesToShow.count > 0 {
         let nextProfile = self.profilesToShow.popLast()
-        guard let nextProfileVC = DiscoveryFullProfileViewController.instantiate(fullProfileData: nextProfile) else {
-          print("Failed to instantiate Discovery Full Profile")
-          return
+        if self.personalDiscovery {
+          guard let nextProfileVC = DiscoveryPersonalFullProfileViewController.instantiate(fullProfileData: nextProfile) else {
+            print("Failed to instantiate Discovery Full Profile")
+            return
+          }
+          nextProfileVC.delegate = self
+          self.showProfileVC(profileVC: nextProfileVC, completion: {
+            
+          })
+        } else {
+          guard let nextProfileVC = DiscoveryMatchmakerFullProfileViewController.instantiate(fullProfileData: nextProfile) else {
+            print("Failed to instantiate Discovery Full Profile")
+            return
+          }
+          nextProfileVC.delegate = self
+          self.showProfileVC(profileVC: nextProfileVC, completion: {
+            
+          })
         }
-        nextProfileVC.delegate = self
-        self.showProfileVC(profileVC: nextProfileVC, completion: {
-          
-        })
+        
       } else {
         self.currentDiscoveryProfileVC = nil
       }

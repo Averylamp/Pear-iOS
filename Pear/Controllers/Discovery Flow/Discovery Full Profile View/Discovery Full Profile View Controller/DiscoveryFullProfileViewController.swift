@@ -41,7 +41,6 @@ class DiscoveryFullProfileViewController: UIViewController {
   @IBOutlet weak var skipButton: UIButton!
   @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
   
-  
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }

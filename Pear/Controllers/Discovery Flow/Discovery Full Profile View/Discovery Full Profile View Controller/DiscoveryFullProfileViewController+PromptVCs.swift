@@ -202,6 +202,7 @@ import FirebaseAnalytics
 //                                                     likedPrompt: likedPrompt)
 //    PearMatchesAPI.shared.createMatchRequest(matchCreationData: matchCreationData) { (result) in
 //                                              DispatchQueue.main.async {
+// swiftlint:disable:next line_length
 //                                                SlackHelper.shared.addEvent(text: "User Sent \(sentByUserID == sentForUserID ? "Personal" : "Matchmaker") Request. to profile: \(self.fullProfileData.firstName ?? "") (\(self.fullProfileData.age ?? 0)) \(self.fullProfileData.gender?.toString() ?? "Unknown Gender"), Images: \(self.fullProfileData.imageContainers.count), prompts: \(self.fullProfileData.questionResponses.count)\(requestText != nil ? "\nRequest Text: \(requestText!)" : "")) \(self.slackHelperDetails())",
 //                                                  color: UIColor.green)
 //                                                DataStore.shared.addMatchedUserToDefaults(userID: self.profileID, matchedUserID: sentForUserID)
