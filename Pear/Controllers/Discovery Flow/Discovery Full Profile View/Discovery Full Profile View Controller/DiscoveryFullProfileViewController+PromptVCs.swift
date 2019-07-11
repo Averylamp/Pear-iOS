@@ -13,34 +13,6 @@ import FirebaseAnalytics
 //// MARK: - Request View
 //extension DiscoveryFullProfileViewController {
 //
-//  func deployFullPageBlocker() {
-//    if let blockingButton = self.fullPageBlocker {
-//      blockingButton.removeFromSuperview()
-//    }
-//    let blockingButton = UIButton()
-//    blockingButton.backgroundColor = UIColor(white: 0.0, alpha: 0.6)
-//    blockingButton.translatesAutoresizingMaskIntoConstraints = false
-//    blockingButton.addTarget(self,
-//                             action: #selector(DiscoveryFullProfileViewController.fullPageBlockerClicked(sender:)),
-//                             for: .touchUpInside)
-//    self.view.addSubview(blockingButton)
-//    self.view.addConstraints([
-//      NSLayoutConstraint(item: blockingButton, attribute: .centerX, relatedBy: .equal,
-//                         toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-//      NSLayoutConstraint(item: blockingButton, attribute: .centerY, relatedBy: .equal,
-//                         toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-//      NSLayoutConstraint(item: blockingButton, attribute: .width, relatedBy: .equal,
-//                         toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0.0),
-//      NSLayoutConstraint(item: blockingButton, attribute: .height, relatedBy: .equal,
-//                         toItem: self.view, attribute: .height, multiplier: 1.0, constant: 0.0)
-//      ])
-//    self.fullPageBlocker = blockingButton
-//    blockingButton.alpha = 0.0
-//    UIView.animate(withDuration: self.requestAnimationTime) {
-//      blockingButton.alpha = 1.0
-//    }
-//  }
-//
 //  @objc func fullPageBlockerClicked(sender: UIButton) {
 //    self.dismissRequestModal()
 //  }

@@ -270,7 +270,6 @@
 		BBCA2D6A229DCF640057491A /* PearUserAPI+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */; };
 		BBCA2D6C229DCFA00057491A /* PearUserAPI+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */; };
 		BBCA2D6E229DD00D0057491A /* PearUserAPI+Updates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */; };
-		BBCA2D71229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */; };
 		BBCA2D75229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */; };
 		BBCA2D77229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */; };
 		BBCA2D79229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */; };
@@ -606,7 +605,6 @@
 		BBCA2D69229DCF640057491A /* PearUserAPI+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Events.swift"; sourceTree = "<group>"; };
 		BBCA2D6B229DCFA00057491A /* PearUserAPI+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Helpers.swift"; sourceTree = "<group>"; };
 		BBCA2D6D229DD00D0057491A /* PearUserAPI+Updates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PearUserAPI+Updates.swift"; sourceTree = "<group>"; };
-		BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+Scanner.swift"; sourceTree = "<group>"; };
 		BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+PromptVCs.swift"; sourceTree = "<group>"; };
 		BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryFullProfileViewController+ProfileCreation.swift"; sourceTree = "<group>"; };
 		BBCA2D78229DFE9C0057491A /* DiscoveryDecisionViewController+Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiscoveryDecisionViewController+Scanner.swift"; sourceTree = "<group>"; };
@@ -1489,7 +1487,6 @@
 			children = (
 				BB9AE0B02250CF6B004EAEC2 /* DiscoveryFullProfileViewController.swift */,
 				BB662AB822B9D7EA003EDE4B /* DiscoveryFullProfileViewController+Analytics.swift */,
-				BBCA2D70229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift */,
 				BBCA2D76229DF39F0057491A /* DiscoveryFullProfileViewController+ProfileCreation.swift */,
 				BBCA2D74229DF3410057491A /* DiscoveryFullProfileViewController+PromptVCs.swift */,
 			);
@@ -2621,7 +2618,6 @@
 				BB20118F228EAB4100BC85C0 /* InfoItemTableViewCell.swift in Sources */,
 				BBE91C842268D24800D285E3 /* UserCreationData.swift in Sources */,
 				BB633D3122862D50005E120F /* DiscoveryDecisionViewController.swift in Sources */,
-				BBCA2D71229DF2800057491A /* DiscoveryFullProfileViewController+Scanner.swift in Sources */,
 				BBBE7B872272170800C32EBE /* ProfileQuestionResponseViewController.swift in Sources */,
 				BBEF2269226F8F9F0021B021 /* QuestionResponseItem.swift in Sources */,
 				BBBE7B9122721E0100C32EBE /* ApproveProfileViewController.swift in Sources */,
