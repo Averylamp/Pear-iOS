@@ -10,13 +10,12 @@ import UIKit
 
 class ChatRequestEndorsementViewController: UIViewController {
  
-  weak var delegate: PearModalDelegate?
-  var userID: String!
-  var endorsedUserID: String!
-  var thumbnailImageURL: URL!
-  var userPersonthumbnailImageURL: URL!
-  var requestPersonName: String!
-  var userPersonName: String!
+  weak var delegate: MatchmakerRequestDelegate?
+  
+  var endorsedImageURL: URL?
+  var endorsedUserName: String!
+  var otherUserName: String!
+  var otherUserThumbnailURL: URL?
   
   let placeholderText: String = "Send them both a message..."
   
@@ -32,23 +31,18 @@ class ChatRequestEndorsementViewController: UIViewController {
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  // swiftlint:disable:next function_parameter_count
-  class func instantiate(personalUserID: String,
-                         endorsedUserID: String,
-                         thumbnailImageURL: URL,
-                         requestPersonName: String,
-                         userPersonName: String,
-                         userPersonThumbnailURL: URL) -> ChatRequestEndorsementViewController? {
+  class func instantiate(endorsedUser: PearUser,
+                         otherUserName: String,
+                         otherUserThumbnailURL: URL?) -> ChatRequestEndorsementViewController? {
     let storyboard = UIStoryboard(name: String(describing: ChatRequestEndorsementViewController.self), bundle: nil)
     guard let chatRequestEndorsedVC = storyboard.instantiateInitialViewController() as? ChatRequestEndorsementViewController else { return nil }
-    chatRequestEndorsedVC.userID = personalUserID
-    chatRequestEndorsedVC.endorsedUserID = endorsedUserID
-    chatRequestEndorsedVC.thumbnailImageURL = thumbnailImageURL
-    chatRequestEndorsedVC.userPersonthumbnailImageURL = userPersonThumbnailURL
-    chatRequestEndorsedVC.requestPersonName = requestPersonName
-    chatRequestEndorsedVC.userPersonName = userPersonName
+    chatRequestEndorsedVC.endorsedImageURL = endorsedUser.getThumbnailURL()
+    chatRequestEndorsedVC.endorsedUserName = endorsedUser.firstName ?? "No Name"
+    chatRequestEndorsedVC.otherUserName = otherUserName
+    chatRequestEndorsedVC.otherUserThumbnailURL = otherUserThumbnailURL
     return chatRequestEndorsedVC
   }
+  
   @IBAction func dismissButtonClicked(_ sender: Any) {
     if let delegate = self.delegate {
       delegate.dismissPearRequest()
@@ -61,7 +55,7 @@ class ChatRequestEndorsementViewController: UIViewController {
       if self.inputTextView.text != "" && self.inputTextView.text != self.placeholderText && self.inputTextView.text.count > 0 {
         requestText = self.inputTextView.text
       }
-      delegate.createPearRequest(sentByUserID: self.userID, sentForUserID: self.endorsedUserID, requestText: requestText, likedPhoto: nil, likedPrompt: nil)
+      delegate.createPearRequest(requestText: requestText)
     }
   }
   
@@ -72,8 +66,8 @@ extension ChatRequestEndorsementViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.thumbnailImageView.sd_setImage(with: self.thumbnailImageURL, completed: nil)
-    self.endorsedThumbnailImageView.sd_setImage(with: self.userPersonthumbnailImageURL, completed: nil)
+    self.thumbnailImageView.sd_setImage(with: self.endorsedImageURL, completed: nil)
+    self.endorsedThumbnailImageView.sd_setImage(with: self.otherUserThumbnailURL, completed: nil)
     self.stylize()
   }
   
@@ -92,7 +86,7 @@ extension ChatRequestEndorsementViewController {
     
     self.titleLabel.stylizeRequestTitleLabel()
     self.subtitleLabel.stylizeRequestSubtitleLabel()
-    self.titleLabel.text = "Pair \(self.userPersonName!) and \(self.requestPersonName!)"
+    self.titleLabel.text = "Pair \(self.otherUserName!) and \(self.endorsedUserName!)"
     self.subtitleLabel.text = "Get the conversation started"
     self.sendRequestButton.stylizeDark()
     

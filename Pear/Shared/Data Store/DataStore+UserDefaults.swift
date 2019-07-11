@@ -159,4 +159,19 @@ extension DataStore {
               userMatchingPreferences: matchingPreferences)
   }
   
+  func getCurrentFilterUser() -> PearUser? {
+    let userID = self.getCurrentFilters().userID
+    if DataStore.shared.currentPearUser?.documentID == userID {
+      return DataStore.shared.currentPearUser
+    }
+    
+    var foundUser: PearUser?
+    DataStore.shared.endorsedUsers.forEach({
+      if $0.documentID == userID {
+        foundUser = $0
+      }
+    })
+    return foundUser
+  }
+  
 }

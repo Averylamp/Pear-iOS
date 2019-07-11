@@ -29,6 +29,7 @@ class DiscoveryFullProfileViewController: UIViewController {
   var profileID: String!
   var isSendingRequest = false
   var lastTabBarVisible: Bool = true
+  var otherUserThumbnailURL: URL?
   
   // Analytics variables
   var lastContentOffset: CGFloat = 0
@@ -200,11 +201,6 @@ class DiscoveryFullProfileViewController: UIViewController {
 //
 //  }
   
-  @IBAction func qrScannerButtonClicked(_ sender: Any) {
-    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-    self.presentScanner()
-  }
-  
 }
 
 // MARK: - Life Cycle
@@ -246,6 +242,7 @@ extension DiscoveryFullProfileViewController {
   func caching() {
     if let requestImageURLString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
       let requestURL = URL(string: requestImageURLString) {
+      self.otherUserThumbnailURL = requestURL
       SDWebImagePrefetcher.shared.prefetchURLs([requestURL])
     }
   }

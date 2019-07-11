@@ -134,4 +134,8 @@ class FullProfileDisplayData: Equatable, CustomStringConvertible {
     return newItems
   }
   
+  func slackHelperSummary() -> String {
+    return "\(self.firstName ?? "") (\(self.age ?? 0)) \(self.gender?.toString() ?? "Unknown Gender"), Images: \(self.imageContainers.count), prompts: \(self.questionResponses.count)"
+  }
+  
 }
