@@ -43,6 +43,9 @@ class SlackHelper: NSObject {
   }
   
   func addEvent(text: String, color: UIColor = UIColor.black) {
+    #if DEVMODE
+    print(text)
+    #endif
     self.userEvents.append(SlackEvent(text: text, color: color.hexColor))
     if self.userEvents.count == 98 {
       self.userEvents.append(SlackEvent(text: "Too many events, continuing with a new session", color: UIColor.purple.hexColor))

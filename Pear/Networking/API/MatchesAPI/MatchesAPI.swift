@@ -16,10 +16,7 @@ enum MatchesAPIError: Error {
 }
 
 protocol MatchesAPI {
-  func createMatchRequest(sentByUserID: String,
-                          sentForUserID: String,
-                          receivedByUserID: String,
-                          requestText: String?,
+  func createMatchRequest(matchCreationData: MatchRequestCreationData,
                           completion: @escaping(Result<Bool, MatchesAPIError>) -> Void)
   func getMatchesForUser(uid: String,
                          token: String,

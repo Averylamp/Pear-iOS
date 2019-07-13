@@ -34,56 +34,43 @@
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4TR-zY-OpF" userLabel="Header Container">
-                                <rect key="frame" x="0.0" y="20" width="375" height="0.0"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chY-h1-cIF" userLabel="Progress View">
-                                        <rect key="frame" x="0.0" y="-1" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="59" width="375" height="1"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="dTX-DC-kbi"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vth-JE-3I5">
-                                        <rect key="frame" x="187.5" y="0.0" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="187.5" y="30" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQy-u5-VPp">
-                                        <rect key="frame" x="12" y="-13" width="26" height="26"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASj-3U-9VH">
+                                        <rect key="frame" x="12" y="17" width="26" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="pQy-u5-VPp" secondAttribute="height" multiplier="1:1" id="5Za-JR-G0h"/>
-                                            <constraint firstAttribute="width" constant="26" id="Bsv-vl-7wI"/>
-                                        </constraints>
-                                        <state key="normal" image="discovery-icon-filters"/>
-                                        <connections>
-                                            <action selector="filterButtonClicked:" destination="Nm1-IY-Q9N" eventType="touchUpInside" id="BIR-Ub-dkL"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2P-mf-9TT">
-                                        <rect key="frame" x="46" y="-13" width="26" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="26" id="1Ki-EM-ubo"/>
+                                            <constraint firstAttribute="width" constant="26" id="Hsd-WQ-kKo"/>
                                         </constraints>
                                         <state key="normal" image="discovery-icon-scan"/>
                                         <connections>
-                                            <action selector="qrCodeButtonClicked:" destination="Nm1-IY-Q9N" eventType="touchUpInside" id="uAV-0L-uiT"/>
+                                            <action selector="qrCodeButtonClicked:" destination="Nm1-IY-Q9N" eventType="touchUpInside" id="1wy-yu-AU3"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="ASj-3U-9VH" firstAttribute="width" secondItem="ASj-3U-9VH" secondAttribute="height" multiplier="1:1" id="4rs-ZF-pqp"/>
                                     <constraint firstItem="chY-h1-cIF" firstAttribute="width" secondItem="4TR-zY-OpF" secondAttribute="width" id="IDz-Ad-yZZ"/>
-                                    <constraint firstItem="Z2P-mf-9TT" firstAttribute="centerY" secondItem="pQy-u5-VPp" secondAttribute="centerY" id="KV6-aq-Bwl"/>
                                     <constraint firstItem="Vth-JE-3I5" firstAttribute="centerX" secondItem="4TR-zY-OpF" secondAttribute="centerX" id="Qae-DP-t4u"/>
-                                    <constraint firstAttribute="height" id="fLI-93-ptg"/>
-                                    <constraint firstItem="pQy-u5-VPp" firstAttribute="leading" secondItem="4TR-zY-OpF" secondAttribute="leading" constant="12" id="fXf-wf-Em5"/>
-                                    <constraint firstItem="pQy-u5-VPp" firstAttribute="centerY" secondItem="4TR-zY-OpF" secondAttribute="centerY" id="fgo-jZ-U9y"/>
+                                    <constraint firstItem="ASj-3U-9VH" firstAttribute="centerY" secondItem="4TR-zY-OpF" secondAttribute="centerY" id="eJg-bM-heN"/>
+                                    <constraint firstItem="ASj-3U-9VH" firstAttribute="leading" secondItem="4TR-zY-OpF" secondAttribute="leading" constant="12" id="fBv-3G-9wO"/>
+                                    <constraint firstAttribute="height" constant="60" id="fLI-93-ptg"/>
                                     <constraint firstItem="chY-h1-cIF" firstAttribute="leading" secondItem="4TR-zY-OpF" secondAttribute="leading" id="hrG-xV-d8J"/>
                                     <constraint firstAttribute="bottom" secondItem="chY-h1-cIF" secondAttribute="bottom" id="jhe-iY-pR5"/>
                                     <constraint firstItem="Vth-JE-3I5" firstAttribute="centerY" secondItem="4TR-zY-OpF" secondAttribute="centerY" id="jwd-PP-xud"/>
-                                    <constraint firstItem="Z2P-mf-9TT" firstAttribute="width" secondItem="Z2P-mf-9TT" secondAttribute="height" multiplier="1:1" id="o2H-Vr-dfX"/>
-                                    <constraint firstItem="Z2P-mf-9TT" firstAttribute="leading" secondItem="pQy-u5-VPp" secondAttribute="trailing" constant="8" id="u9A-nI-qf2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -103,17 +90,19 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="wbs-JX-9qf" id="kTG-8f-zqq"/>
+                        <outlet property="headerContainerView" destination="4TR-zY-OpF" id="fZw-DK-z5c"/>
                         <outlet property="headerHeightConstraint" destination="fLI-93-ptg" id="5a9-DH-SPV"/>
+                        <outlet property="headerLabel" destination="Vth-JE-3I5" id="bGN-vF-BPb"/>
                         <outlet property="messageLabel" destination="daT-l3-Kc3" id="Sn5-9q-IDp"/>
+                        <outlet property="scanButton" destination="ASj-3U-9VH" id="Dnt-hq-3pI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZX-jJ-RcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="330" y="-253"/>
+            <point key="canvasLocation" x="328.80000000000001" y="-253.2233883058471"/>
         </scene>
     </scenes>
     <resources>
-        <image name="discovery-icon-filters" width="96" height="96"/>
         <image name="discovery-icon-scan" width="96" height="96"/>
     </resources>
 </document>
