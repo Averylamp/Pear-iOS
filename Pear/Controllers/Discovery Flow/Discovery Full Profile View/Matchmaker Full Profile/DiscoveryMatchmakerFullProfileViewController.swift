@@ -193,7 +193,6 @@ extension DiscoveryMatchmakerFullProfileViewController: MatchmakerRequestDelegat
         self.chatRequestVC = nil
         self.chatRequestVCBottomConstraint = nil
       })
-      
     }
   }
   
