@@ -231,15 +231,7 @@ extension DiscoveryMatchmakerFullProfileViewController: MatchmakerRequestDelegat
       case .success:
         break
       case .failure(let error):
-        print("Error creating Request: \(error)")
-        SentryHelper.generateSentryEvent(message: "Failed to send match request from:\(sentByID) for:\(self.matchmakingForID) to:\(self.profileID!)")
-        switch error {
-        case .graphQLError(let message):
-          break
-        default:
-          break
-        }
-        
+        print("Error creating Request: \(error)")        
       }
     }
   }

@@ -240,14 +240,6 @@ extension DiscoveryPersonalFullProfileViewController {
         break
       case .failure(let error):
         print("Error creating Request: \(error)")
-        SentryHelper.generateSentryEvent(message: "Failed to send match request from:\(personalUserID) to:\(self.profileID!)")
-        switch error {
-        case .graphQLError(let message):
-          break
-        default:
-          break
-        }
-        
       }
     }
     
