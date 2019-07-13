@@ -187,12 +187,12 @@ class DiscoveryFullProfileViewController: UIViewController {
 //                                    userPersonThumbnailURL: endorsedUserThumbnailURL)
 //      } else {
 //        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(endorsedUserObject.documentID) {
-//          self.presentSimpleMessageAlert(title: "You have already Peared \(self.fullProfileData.firstName  ?? "this person") and \(endorsedUserObject.firstName ?? "your friend")!",
+//        self.presentSimpleMessageAlert(title: "You have already Peared \(self.fullProfileData.firstName  ?? "this person") and \(endorsedUserObject.firstName ?? "your friend")!",
 //            message: "If they both accept, they will be dropped into a chat",
 //            acceptAction: "Okay")
 //        } else {
 //          self.presentSimpleMessageAlert(title: "Preference mismatch",
-//            message: "Either \(self.fullProfileData.firstName ?? "this person") or \(endorsedUserObject.firstName ?? "your friend") indicated preferences that are not compatible",
+//          message: "Either \(self.fullProfileData.firstName ?? "this person") or \(endorsedUserObject.firstName ?? "your friend") indicated preferences that are not compatible",
 //            acceptAction: "Okay")
 //        }
 //      }
