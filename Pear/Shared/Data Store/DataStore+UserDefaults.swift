@@ -15,8 +15,10 @@ enum UserDefaultKeys: String {
   case matchedUsers
   
   // Filters
-  case filterForEventId
-  case filterForUserId
+  case filterMatchingDemographics
+  case filterMatchingPreferences
+  case filterUserID
+  case filterUserName
   
   // Flags
   case hasCreatedUser
@@ -37,7 +39,7 @@ enum UserDefaultKeys: String {
 
 // MARK: - DataStore + User Defaults Convenience Functions
 extension DataStore {
- 
+  
   // Bool
   func fetchFlagFromDefaults(flag: UserDefaultKeys) -> Bool {
     return UserDefaults.standard.bool(forKey: flag.rawValue)
@@ -59,7 +61,7 @@ extension DataStore {
   func setDateToDefaults(flag: UserDefaultKeys, date: Date) {
     UserDefaults.standard.set(date.timeIntervalSince1970, forKey: flag.rawValue)
   }
-
+  
   // String
   func fetchStringFromDefaults(flag: UserDefaultKeys) -> String? {
     return UserDefaults.standard.string(forKey: flag.rawValue)
@@ -114,30 +116,62 @@ extension DataStore {
 
 // MARK: - Filters
 extension DataStore {
-  func filteringForEventIdFromDefaults() -> String? {
-    return UserDefaults.standard.string(forKey: UserDefaultKeys.filterForEventId.rawValue)
-  }
   
-  func filteringForUserIdFromDefaults() -> String? {
-    return UserDefaults.standard.string(forKey: UserDefaultKeys.filterForUserId.rawValue)
-  }
-  
-  func updateFilterForEventId(eventID: String) {
-    UserDefaults.standard.set(eventID, forKey: UserDefaultKeys.filterForEventId.rawValue)
-  }
-  
-  func unsetFilterForEventId() {
-    UserDefaults.standard.removeObject(forKey: UserDefaultKeys.filterForEventId.rawValue)
-  }
-  
-  func updateFilterForUserId(userID: String) {
-    UserDefaults.standard.set(userID, forKey: UserDefaultKeys.filterForUserId.rawValue)
-  }
-  
-  func updateFilterForMeUserId() {
-    if let user = DataStore.shared.currentPearUser {
-      UserDefaults.standard.set(user.documentID, forKey: UserDefaultKeys.filterForUserId.rawValue)
+  func setFiltersToUser(user: PearUser) {
+    guard let encodedMatchingDemographics = try? JSONEncoder().encode(user.matchingDemographics),
+      let encodedMatchingPreferences = try? JSONEncoder().encode(user.matchingPreferences) else {
+        print("Failed to encode matching Demographics/Preferences")
+        return
     }
+    UserDefaults.standard.set(encodedMatchingDemographics, forKey: UserDefaultKeys.filterMatchingDemographics.rawValue)
+    UserDefaults.standard.set(encodedMatchingPreferences, forKey: UserDefaultKeys.filterMatchingPreferences.rawValue)
+    UserDefaults.standard.set(user.documentID, forKey: UserDefaultKeys.filterUserID.rawValue)
+    UserDefaults.standard.set(user.firstName ?? "Your friend", forKey: UserDefaultKeys.filterUserName.rawValue)
   }
-
+  
+  // swiftlint:disable:next large_tuple
+  func getCurrentFilters() -> (userID: String,
+    userName: String,
+    userMatchingDemographics: MatchingDemographics,
+    userMatchingPreferences: MatchingPreferences) {
+      guard let filterUserID = UserDefaults.standard.string(forKey: UserDefaultKeys.filterUserID.rawValue) else {
+        print("No User fount in current Filters")
+        if let currentUser = DataStore.shared.currentPearUser {
+          self.setFiltersToUser(user: currentUser)
+          return self.getCurrentFilters()
+        } else {
+          fatalError("Failed to deserialize Current Pear User")
+        }
+      }
+      guard let filterUserName = UserDefaults.standard.string(forKey: UserDefaultKeys.filterUserName.rawValue) else {
+        fatalError("Failed to deserialize filter user name")
+      }
+      guard let matchingDemographicsData = UserDefaults.standard.data(forKey: UserDefaultKeys.filterMatchingDemographics.rawValue),
+        let matchingDemographics = try? JSONDecoder().decode(MatchingDemographics.self, from: matchingDemographicsData),
+        let matchingPreferencesData = UserDefaults.standard.data(forKey: UserDefaultKeys.filterMatchingPreferences.rawValue),
+        let matchingPreferences = try? JSONDecoder().decode(MatchingPreferences.self, from: matchingPreferencesData)
+        else {
+          fatalError("Failed to deserialize Current Pear User")
+      }
+      return (userID: filterUserID,
+              userName: filterUserName,
+              userMatchingDemographics: matchingDemographics,
+              userMatchingPreferences: matchingPreferences)
+  }
+  
+  func getCurrentFilterUser() -> PearUser? {
+    let userID = self.getCurrentFilters().userID
+    if DataStore.shared.currentPearUser?.documentID == userID {
+      return DataStore.shared.currentPearUser
+    }
+    
+    var foundUser: PearUser?
+    DataStore.shared.endorsedUsers.forEach({
+      if $0.documentID == userID {
+        foundUser = $0
+      }
+    })
+    return foundUser
+  }
+  
 }

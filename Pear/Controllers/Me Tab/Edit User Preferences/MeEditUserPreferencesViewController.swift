@@ -87,10 +87,8 @@ class MeEditUserPreferencesViewController: UIViewController {
                                                                 print("Successfully update user preferences")
                                                                 // refresh discovery feed if browsing for self and preferences updated
                                                                 if let user = DataStore.shared.currentPearUser {
-                                                                  if DataStore.shared.filteringForUserIdFromDefaults() == nil {
-                                                                    NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
-                                                                  } else if let filteringForID = DataStore.shared.filteringForUserIdFromDefaults(),
-                                                                    filteringForID == user.documentID {
+                                                                  // TODO(@averylamp): Fix Discovery Refresh on Pref changes
+                                                                  if DataStore.shared.getCurrentFilters().userID == user.documentID {
                                                                     NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
                                                                   }
                                                                 }

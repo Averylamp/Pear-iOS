@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tEA-sR-VgR">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Discovery Personal Full Profile View Controller-->
+        <scene sceneID="typ-S0-QIH">
+            <objects>
+                <viewController id="tEA-sR-VgR" customClass="DiscoveryPersonalFullProfileViewController" customModule="Pear" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CEf-fW-2ei">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waP-0X-kkE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKO-oX-CoF">
+                                <rect key="frame" x="15" y="772" width="60" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Pdu-oa-X3v"/>
+                                    <constraint firstAttribute="width" secondItem="cKO-oX-CoF" secondAttribute="height" multiplier="1:1" id="x2E-vE-kck"/>
+                                </constraints>
+                                <state key="normal" image="discovery-icon-skip"/>
+                                <connections>
+                                    <action selector="skipProfileButtonClicked:" destination="tEA-sR-VgR" eventType="touchUpInside" id="ndc-7v-3Q9"/>
+                                </connections>
+                            </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVv-gC-saa" userLabel="Header Container">
+                                <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUS-oj-LTs" userLabel="Progress View">
+                                        <rect key="frame" x="0.0" y="-1" width="414" height="1"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="ode-xm-7pW"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjg-bP-SI1">
+                                        <rect key="frame" x="207" y="0.0" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDr-ik-L8B">
+                                        <rect key="frame" x="376" y="-13" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="26" id="7b9-Qd-XLo"/>
+                                        </constraints>
+                                        <state key="normal" image="discovery-icon-more"/>
+                                        <connections>
+                                            <action selector="moreButtonClicked:" destination="tEA-sR-VgR" eventType="touchUpInside" id="q0J-XJ-Gag"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gjg-bP-SI1" firstAttribute="centerX" secondItem="uVv-gC-saa" secondAttribute="centerX" id="7A0-O5-SEs"/>
+                                    <constraint firstAttribute="bottom" secondItem="eUS-oj-LTs" secondAttribute="bottom" id="BLQ-VH-gkK"/>
+                                    <constraint firstItem="gjg-bP-SI1" firstAttribute="centerY" secondItem="uVv-gC-saa" secondAttribute="centerY" id="BNh-ra-V0M"/>
+                                    <constraint firstItem="iDr-ik-L8B" firstAttribute="width" secondItem="iDr-ik-L8B" secondAttribute="height" multiplier="1:1" id="EAl-4B-PeX"/>
+                                    <constraint firstItem="eUS-oj-LTs" firstAttribute="width" secondItem="uVv-gC-saa" secondAttribute="width" id="KqK-dd-ZIP"/>
+                                    <constraint firstItem="iDr-ik-L8B" firstAttribute="centerY" secondItem="uVv-gC-saa" secondAttribute="centerY" id="V5g-3k-I3U"/>
+                                    <constraint firstItem="eUS-oj-LTs" firstAttribute="leading" secondItem="uVv-gC-saa" secondAttribute="leading" id="XiU-zV-VpB"/>
+                                    <constraint firstAttribute="height" id="azn-KP-Yg4"/>
+                                    <constraint firstAttribute="trailing" secondItem="iDr-ik-L8B" secondAttribute="trailing" constant="12" id="t3Y-vW-HY4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1cx-8r-7Nb" firstAttribute="trailing" secondItem="waP-0X-kkE" secondAttribute="trailing" id="2wd-HF-toz"/>
+                            <constraint firstItem="waP-0X-kkE" firstAttribute="centerX" secondItem="1cx-8r-7Nb" secondAttribute="centerX" id="3qN-Wp-Lu4"/>
+                            <constraint firstItem="uVv-gC-saa" firstAttribute="top" secondItem="1cx-8r-7Nb" secondAttribute="top" id="74c-a8-aeh"/>
+                            <constraint firstItem="waP-0X-kkE" firstAttribute="leading" secondItem="1cx-8r-7Nb" secondAttribute="leading" id="8nP-NY-CCY"/>
+                            <constraint firstItem="uVv-gC-saa" firstAttribute="leading" secondItem="1cx-8r-7Nb" secondAttribute="leading" id="CJN-Zq-yHG"/>
+                            <constraint firstItem="1cx-8r-7Nb" firstAttribute="bottom" secondItem="waP-0X-kkE" secondAttribute="bottom" id="TE3-pd-MEp"/>
+                            <constraint firstItem="uVv-gC-saa" firstAttribute="trailing" secondItem="1cx-8r-7Nb" secondAttribute="trailing" id="mIs-Bm-KLy"/>
+                            <constraint firstItem="waP-0X-kkE" firstAttribute="top" secondItem="uVv-gC-saa" secondAttribute="bottom" id="qMs-x9-oqK"/>
+                            <constraint firstItem="cKO-oX-CoF" firstAttribute="leading" secondItem="1cx-8r-7Nb" secondAttribute="leading" constant="15" id="rA2-3F-aDI"/>
+                            <constraint firstItem="1cx-8r-7Nb" firstAttribute="bottom" secondItem="cKO-oX-CoF" secondAttribute="bottom" constant="30" id="vF7-hC-i3G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1cx-8r-7Nb"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerHeightConstraint" destination="azn-KP-Yg4" id="K93-KL-B3Z"/>
+                        <outlet property="profileNameLabel" destination="gjg-bP-SI1" id="4j6-Kh-dRk"/>
+                        <outlet property="scrollView" destination="waP-0X-kkE" id="2Mn-c0-fXA"/>
+                        <outlet property="skipButton" destination="cKO-oX-CoF" id="yTx-qn-5mN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="084-e1-sft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1575" y="81"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="discovery-icon-more" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="discovery-icon-skip" width="66.666664123535156" height="66.666664123535156"/>
+    </resources>
+</document>

@@ -144,21 +144,21 @@ extension DiscoveryFilterViewController {
         filterForUserID = endorsedUser.documentID
       }
     }
-    if let userID = filterForUserID {
-      DataStore.shared.updateFilterForUserId(userID: userID)
-    } else {
-      DataStore.shared.updateFilterForMeUserId()
-    }
+//    if let userID = filterForUserID {
+//      DataStore.shared.updateFilterForUserId(userID: userID)
+//    } else {
+//      DataStore.shared.updateFilterForMeUserId()
+//    }
     var filterForEventID: String?
     for eventFilterItem in self.eventFilterItems where eventFilterItem.checked {
       filterForEventID = eventFilterItem.event.documentID
     }
-    if let eventID = filterForEventID {
-      DataStore.shared.updateFilterForEventId(eventID: eventID)
-      print("event filter updated")
-    } else {
-      DataStore.shared.unsetFilterForEventId()
-    }
+//    if let eventID = filterForEventID {
+//      DataStore.shared.updateFilterForEventId(eventID: eventID)
+//      print("event filter updated")
+//    } else {
+//      DataStore.shared.unsetFilterForEventId()
+//    }
     
   }
   
@@ -173,9 +173,9 @@ extension DiscoveryFilterViewController {
           continue
         }
         var eventEnabled = false
-        if let filteringForEventId = DataStore.shared.filteringForEventIdFromDefaults() {
-          eventEnabled = event.documentID == filteringForEventId
-        }
+//        if let filteringForEventId = DataStore.shared.filteringForEventIdFromDefaults() {
+//          eventEnabled = event.documentID == filteringForEventId
+//        }
         let eventFilterItem = EventFilterItem(event: event, checked: eventEnabled)
         allEventFilterItems.append(eventFilterItem)
       }
@@ -194,12 +194,12 @@ extension DiscoveryFilterViewController {
       
       for endorsedUser in DataStore.shared.endorsedUsers {
         var enabled = false
-        if let filterForUserID = DataStore.shared.filteringForUserIdFromDefaults() {
-          if filterForUserID == endorsedUser.documentID {
-            enabled = true
-            userFilterSet = true
-          }
-        }
+//        if let filterForUserID = DataStore.shared.filteringForUserIdFromDefaults() {
+//          if filterForUserID == endorsedUser.documentID {
+//            enabled = true
+//            userFilterSet = true
+//          }
+//        }
         let endorsedUserDiscoveryFilterItem = DiscoveryFilterItem(type: .endorsedUser,
                                                                   endorsedUser: endorsedUser,
                                                                   user: nil,
