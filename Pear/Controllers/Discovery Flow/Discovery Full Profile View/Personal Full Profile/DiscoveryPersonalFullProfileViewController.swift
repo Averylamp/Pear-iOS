@@ -75,13 +75,17 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
   }
   
   func addIncompleteProfileIfNeeded() {
-    let numberPrompts = self.fullProfileData.questionResponses.count
-    if numberPrompts == 0 {
-      self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
-    } else if numberPrompts < 3 {
-      self.addIncompleteProfileHeader(ctaText: "People with 3+ questions answered get 2-3x more matches")
+    if let numberPrompts = DataStore.shared.getCurrentFilterUser()?.questionResponses.count {
+      if numberPrompts == 0 {
+        self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
+      } else if numberPrompts < 3 {
+        self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
+      }      
     }
-    self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
+  }
+  
+  @objc func completeProfileBannerClicked(sender: UIButton) {
+    SlackHelper.shared.addEvent(text: "Incomplete Profile Banner Clicked (no-op for now)", color: UIColor.green)
   }
   
   func addIncompleteProfileHeader(ctaText: String) {
@@ -89,6 +93,9 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
     containerView.translatesAutoresizingMaskIntoConstraints = false
     
     let headerButton = UIButton()
+    headerButton.addTarget(self,
+                           action: #selector(DiscoveryPersonalFullProfileViewController.completeProfileBannerClicked(sender:)),
+                           for: .touchUpInside)
     headerButton.translatesAutoresizingMaskIntoConstraints = false
     headerButton.setImage(R.image.discoveryIncompleteProfileHeaderBackground(), for: .normal)
     headerButton.layer.cornerRadius = 12.0
