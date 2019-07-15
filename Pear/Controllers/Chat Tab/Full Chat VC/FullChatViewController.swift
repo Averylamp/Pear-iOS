@@ -522,7 +522,7 @@ extension FullChatViewController: ChatDelegate {
     DispatchQueue.main.async {
       HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
       self.tableView.reloadData()
-//      self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
+      self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
       self.chat.updateLastSeenTime(completion: nil)
       NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
     }
