@@ -414,11 +414,17 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
         print("No sender found")
         return UITableViewCell()
       }
+      var showThumbnail: Bool = true
       if messageSender == .receiver {
         initialChatCell = tableView.dequeueReusableCell(withIdentifier: "ChatMessageTVCReceiver", for: indexPath) as? ChatMessageTableViewCell
         if let thumbnailURLString = match.otherUser.displayedImages.first?.thumbnail.imageURL,
           let thumbnailURL = URL(string: thumbnailURLString) {
           message.thumbnailImage = thumbnailURL
+        }
+        if indexPath.row + 1 < self.chat.messages.count,
+          self.chat.messages[indexPath.row + 1].type == .userMessage &&
+            self.chat.messages[indexPath.row + 1].senderType == .receiver {
+          showThumbnail = false
         }
       } else {
         initialChatCell = tableView.dequeueReusableCell(withIdentifier: "ChatMessageTVCSender", for: indexPath) as? ChatMessageTableViewCell
@@ -431,7 +437,7 @@ extension FullChatViewController: UITableViewDelegate, UITableViewDataSource {
       chatCell.selectionStyle = .default
       chatCell.selectionStyle = .none
       chatCell.backgroundColor = nil
-      chatCell.configure(message: message)
+      chatCell.configure(message: message, showThumbnailImage: showThumbnail)
       chatCell.layoutIfNeeded()
       chatCell.chatBubbleButton.tag = indexPath.row
       chatCell.chatBubbleButton.addTarget(self, action: #selector(FullChatViewController.chatBubbleClicked(sender:)), for: .touchUpInside)
@@ -516,9 +522,9 @@ extension FullChatViewController: ChatDelegate {
     DispatchQueue.main.async {
       HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
       self.tableView.reloadData()
-      self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
-      NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
+//      self.tableView.scrollToRow(at: IndexPath(row: self.chat.messages.count - 1, section: 0), at: .bottom, animated: true)
       self.chat.updateLastSeenTime(completion: nil)
+      NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
     }
   }
 }
