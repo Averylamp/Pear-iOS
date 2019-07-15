@@ -60,6 +60,7 @@ extension DiscoveryMatchmakerFullProfileViewController {
     self.setupMatchmakerVC()
     self.stylizeMatchmakerVC()
     self.addKeyboardSizeNotifications()
+    self.addIncompleteProfileIfNeeded()
   }
   
   /// Setup should only be called once
@@ -117,9 +118,9 @@ extension DiscoveryMatchmakerFullProfileViewController {
   func deployFullPageBlocker() {
     UIView.animate(withDuration: 0.3, animations: {
       self.fullPageBlocker.alpha = 1.0
-    }) { (_) in
+    }, completion: { (_) in
       self.fullPageBlocker.isUserInteractionEnabled = true
-    }
+    })
   }
   
   func displayEndorsedRequestVC(endorsedUser: PearUser,
@@ -192,7 +193,6 @@ extension DiscoveryMatchmakerFullProfileViewController: MatchmakerRequestDelegat
         self.chatRequestVC = nil
         self.chatRequestVCBottomConstraint = nil
       })
-      
     }
   }
   
@@ -230,15 +230,7 @@ extension DiscoveryMatchmakerFullProfileViewController: MatchmakerRequestDelegat
       case .success:
         break
       case .failure(let error):
-        print("Error creating Request: \(error)")
-        SentryHelper.generateSentryEvent(message: "Failed to send match request from:\(sentByID) for:\(self.matchmakingForID) to:\(self.profileID!)")
-        switch error {
-        case .graphQLError(let message):
-          break
-        default:
-          break
-        }
-        
+        print("Error creating Request: \(error)")        
       }
     }
   }
@@ -284,4 +276,136 @@ extension DiscoveryMatchmakerFullProfileViewController {
     }
   }
   
+}
+
+// MARK: - Incomplete Profile Banner
+extension DiscoveryMatchmakerFullProfileViewController {
+  
+  func addIncompleteProfileIfNeeded() {
+    if let numberPrompts = DataStore.shared.getCurrentFilterUser()?.questionResponses.count {
+      if numberPrompts == 0 {
+        self.addIncompleteProfileHeader(ctaText: "Your friend could use more prompts to complete their profile.  Help them out!")
+      } else if numberPrompts < 3 {
+        self.addIncompleteProfileHeader(ctaText: "Your friend could use more prompts to complete their profile.  Help them out!")
+      }
+    }
+  }
+  
+  @objc func completeProfileBannerClicked(sender: UIButton) {
+    SlackHelper.shared.addEvent(text: "Matchmaker Incomplete Profile Banner Clicked (no-op for now)", color: UIColor.green)
+  }
+  
+  func addIncompleteProfileHeader(ctaText: String) {
+    let containerView = UIView()
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    
+    let headerButton = UIButton()
+    headerButton.addTarget(self,
+                           action: #selector(DiscoveryMatchmakerFullProfileViewController.completeProfileBannerClicked(sender:)),
+                           for: .touchUpInside)
+    headerButton.translatesAutoresizingMaskIntoConstraints = false
+    headerButton.setImage(R.image.discoveryIncompleteProfileHeaderBackground(), for: .normal)
+    headerButton.layer.cornerRadius = 12.0
+    headerButton.clipsToBounds = true
+    let headerShadowView = UIView()
+    headerShadowView.translatesAutoresizingMaskIntoConstraints = false
+    headerShadowView.backgroundColor = UIColor.white
+    headerShadowView.layer.cornerRadius = 12.0
+    headerShadowView.layer.shadowRadius = 12.0
+    headerShadowView.layer.shadowOffset = CGSize(width: 0, height: 4)
+    headerShadowView.layer.shadowColor = UIColor(red: 0.90, green: 0.89, blue: 0.86, alpha: 1.00).cgColor
+    headerShadowView.layer.shadowOpacity = 1.0
+    containerView.addSubview(headerShadowView)
+    containerView.addSubview(headerButton)
+    
+    // Header View Constraints
+    containerView.addConstraints([
+      NSLayoutConstraint(item: headerButton, attribute: .left, relatedBy: .equal,
+                         toItem: containerView, attribute: .left, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: headerButton, attribute: .right, relatedBy: .equal,
+                         toItem: containerView, attribute: .right, multiplier: 1.0, constant: -12.0),
+      NSLayoutConstraint(item: headerButton, attribute: .top, relatedBy: .equal,
+                         toItem: containerView, attribute: .top, multiplier: 1.0, constant: 10.0),
+      NSLayoutConstraint(item: headerButton, attribute: .bottom, relatedBy: .equal,
+                         toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -10.0)
+      //      NSLayoutConstraint(item: headerButton, attribute: .height, relatedBy: .equal,
+      //                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60.0)
+      ])
+    
+    // Header Shadow Constraints
+    containerView.addConstraints([
+      NSLayoutConstraint(item: headerShadowView, attribute: .centerX, relatedBy: .equal,
+                         toItem: headerButton, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: headerShadowView, attribute: .centerY, relatedBy: .equal,
+                         toItem: headerButton, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: headerShadowView, attribute: .height, relatedBy: .equal,
+                         toItem: headerButton, attribute: .height, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: headerShadowView, attribute: .width, relatedBy: .equal,
+                         toItem: headerButton, attribute: .width, multiplier: 1.0, constant: 0.0)
+      ])
+    
+    // Header Icon
+    let headerIcon = UIImageView()
+    headerIcon.translatesAutoresizingMaskIntoConstraints = false
+    headerIcon.contentMode = .scaleAspectFill
+    headerIcon.image = R.image.discoveryIncompleteProfileHeaderIcon()
+    headerButton.addSubview(headerIcon)
+    
+    // Header Constraints
+    headerIcon.addConstraints([
+      NSLayoutConstraint(item: headerIcon, attribute: .width, relatedBy: .equal,
+                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 32.0),
+      NSLayoutConstraint(item: headerIcon, attribute: .width, relatedBy: .equal,
+                         toItem: headerIcon, attribute: .height, multiplier: 1.0, constant: 0.0)
+      ])
+    headerButton.addConstraints([
+      NSLayoutConstraint(item: headerIcon, attribute: .left, relatedBy: .equal,
+                         toItem: headerButton, attribute: .left, multiplier: 1.0, constant: 16.0),
+      NSLayoutConstraint(item: headerIcon, attribute: .top, relatedBy: .equal,
+                         toItem: headerButton, attribute: .top, multiplier: 1.0, constant: 16.0)
+      ])
+    
+    let headerCTALabel = UILabel()
+    headerCTALabel.translatesAutoresizingMaskIntoConstraints = false
+    headerCTALabel.text = ctaText
+    headerCTALabel.textColor = R.color.primaryTextColor()
+    headerCTALabel.numberOfLines = 0
+    if let font = R.font.openSansSemiBold(size: 14) {
+      headerCTALabel.font = font
+    }
+    headerCTALabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    headerButton.addSubview(headerCTALabel)
+    headerButton.addConstraints([
+      NSLayoutConstraint(item: headerCTALabel, attribute: .top, relatedBy: .equal,
+                         toItem: headerIcon, attribute: .top, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: headerCTALabel, attribute: .left, relatedBy: .equal,
+                         toItem: headerIcon, attribute: .right, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: headerCTALabel, attribute: .right, relatedBy: .equal,
+                         toItem: headerButton, attribute: .right, multiplier: 1.0, constant: -12.0)
+      ])
+    
+    let headerCTASubtitleLabel = UILabel()
+    headerCTASubtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+    headerCTASubtitleLabel.text = "ADD TO THEIR PROFILE"
+    headerCTASubtitleLabel.textColor = UIColor(red: 0.95, green: 0.62, blue: 0.26, alpha: 1.00)
+    headerCTASubtitleLabel.numberOfLines = 1
+    if let font = R.font.openSansExtraBold(size: 12) {
+      headerCTASubtitleLabel.font = font
+    }
+    headerCTASubtitleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    headerButton.addSubview(headerCTASubtitleLabel)
+    headerButton.addConstraints([
+      NSLayoutConstraint(item: headerCTASubtitleLabel, attribute: .top, relatedBy: .equal,
+                         toItem: headerCTALabel, attribute: .bottom, multiplier: 1.0, constant: 12.0),
+      NSLayoutConstraint(item: headerCTASubtitleLabel, attribute: .left, relatedBy: .equal,
+                         toItem: headerCTALabel, attribute: .left, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: headerCTASubtitleLabel, attribute: .right, relatedBy: .equal,
+                         toItem: headerCTALabel, attribute: .right, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint(item: headerCTASubtitleLabel, attribute: .bottom, relatedBy: .equal,
+                         toItem: headerButton, attribute: .bottom, multiplier: 1.0, constant: -16.0)
+      ])
+    
+    self.fullProfileStackVC?.stackView.insertArrangedSubview(containerView, at: 0)
+  }
+
 }
