@@ -26,15 +26,20 @@ class UpdateImagesViewController: UpdateUIViewController {
   var justMovedIndexPath: IndexPath?
   var imageReplacementIndexPath: IndexPath?
   var allowsDelete: Bool = true
+  var highlightsMissing: Bool = false
+  
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
-  class func instantiate(images: [LoadedImageContainer], allowsDelete: Bool = false) -> UpdateImagesViewController? {
+  class func instantiate(images: [LoadedImageContainer],
+                         allowsDelete: Bool = false,
+                         highlightsMissing: Bool = false) -> UpdateImagesViewController? {
     let storyboard = UIStoryboard(name: String(describing: UpdateImagesViewController.self), bundle: nil)
     guard let photoInputVC = storyboard.instantiateInitialViewController() as? UpdateImagesViewController else { return nil }
     photoInputVC.images = images
     photoInputVC.originalImages = images
     photoInputVC.allowsDelete = allowsDelete
+    photoInputVC.highlightsMissing = highlightsMissing
     return photoInputVC
   }
   

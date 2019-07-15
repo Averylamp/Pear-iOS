@@ -114,93 +114,6 @@ class DiscoveryFullProfileViewController: UIViewController {
     }
   }
   
-//  @objc func matchOptionClicked(sender: UIButton) {
-//    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
-//    print("Match object clicked")
-//    var foundMatchObject: MatchButton?
-//    self.matchButtons.forEach({
-//      if $0.button == sender {
-//        foundMatchObject = $0
-//      }
-//    })
-//    guard let matchObject = foundMatchObject else {
-//      print("No Match Object Found")
-//      return
-//    }
-//
-//    guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
-//      let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
-//        print("Failed to pull relavant discover user fields")
-//        return
-//    }
-//    guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
-//      print("Failed to get personal User ID")
-//      return
-//    }
-//
-//    switch matchObject.type {
-//    case .placeholderEndorsed:
-//      self.promptEndorsedProfileCreation()
-//    case .personalUser:
-//      if matchObject.buttonEnabled {
-//        self.removeMatchButtons()
-//      } else {
-//        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(personalUserID) {
-//          self.presentSimpleMessageAlert(title: "You have already Peared!",
-//                                         message: "If \(self.fullProfileData.firstName ?? "they") pears back you will be dropped into a chat",
-//                                         acceptAction: "Okay")
-//        } else if let userProfileCount = matchObject.user?.endorserIDs.count, userProfileCount > 0 {
-//          self.presentSimpleMessageAlert(title: "Preference mismatch",
-//                                         message: "Either \(self.fullProfileData.firstName ?? "this person") or You indicated preferences that are not compatible",
-//                                          acceptAction: "Okay")
-//        } else {
-//          self.promptProfileRequest()
-//        }
-//      }
-//    case .detachedProfile:
-//      if let firstName = matchObject.detachedProfile?.firstName {
-//        self.presentSimpleMessageAlert(title: "\(firstName) has not yet accepted their profile",
-//                                       message: "They must have approved their profile first",
-//                                       acceptAction: "Okay")
-//      } else {
-//        self.presentSimpleMessageAlert(title: "Your friend has not yet accepted their profile",
-//                                       message: "They must have approved their profile first",
-//                                       acceptAction: "Okay")
-//      }
-//    case .endorsedUser:
-//      guard let endorsedUserObject = matchObject.endorsedUser else {
-//        print("Failed to get endorsed User Object")
-//        return
-//      }
-//      if matchObject.buttonEnabled {
-//      guard  let endorsedUserThumbnailString = endorsedUserObject.displayedImages.first?.thumbnail.imageURL,
-//        let endorsedUserThumbnailURL = URL(string: endorsedUserThumbnailString) else {
-//          print("Failed to get required endorsed user fields")
-//          return
-//      }
-//      self.removeMatchButtons()
-//      self.displayEndorsedRequestVC(personalUserID: personalUserID,
-//                                    endorsedUserID: endorsedUserObject.documentID,
-//                                    thumbnailImageURL: requestedThumbnailURL,
-//                                    requestPersonName: self.fullProfileData.firstName ?? "",
-//                                    userPersonName: endorsedUserObject.firstName  ?? "",
-//                                    userPersonThumbnailURL: endorsedUserThumbnailURL)
-//      } else {
-//        if DataStore.shared.matchedUsersFromDefaults(userID: self.profileID).contains(endorsedUserObject.documentID) {
-//          self.presentSimpleMessageAlert(title: "You have already Peared \(self.fullProfileData.firstName  ?? "this person") and \(endorsedUserObject.firstName ?? "your friend")!",
-//            message: "If they both accept, they will be dropped into a chat",
-//            acceptAction: "Okay")
-//        } else {
-//          self.presentSimpleMessageAlert(title: "Preference mismatch",
-//            message: "Either \(self.fullProfileData.firstName ?? "this person") or \(endorsedUserObject.firstName ?? "your friend") indicated preferences that are not compatible",
-//            acceptAction: "Okay")
-//        }
-//      }
-//
-//    }
-//
-//  }
-  
 }
 
 // MARK: - Life Cycle
@@ -270,40 +183,6 @@ extension DiscoveryFullProfileViewController {
     fullProfileStackVC.didMove(toParent: self)
     self.fullProfileStackVC = fullProfileStackVC
   }
-  
-//  @objc func likeButtonClicked(sender: UIButton) {
-//    print("like button clicked")
-//    if sender.tag >= (self.fullProfileStackVC?.sectionItemsWithVCs.count ?? 0) {
-//      print("couldnt get section item")
-//      return
-//    }
-//    if let sectionItem = self.fullProfileStackVC?.sectionItemsWithVCs[sender.tag].sectionItem {
-//      guard let requestedThumbnailString = self.fullProfileData.imageContainers.first?.thumbnail.imageURL,
-//        let requestedThumbnailURL = URL(string: requestedThumbnailString) else {
-//          print("Failed to pull relavant discover user fields")
-//          return
-//      }
-//      guard let personalUserID = DataStore.shared.currentPearUser?.documentID else {
-//        print("Failed to get personal User ID")
-//        return
-//      }
-//      if let image = sectionItem.image, sectionItem.sectionType == .image {
-//        print("liked image \(image.imageID)")
-//        self.displayPersonalRequestVC(personalUserID: personalUserID,
-//                                      thumbnailImageURL: requestedThumbnailURL,
-//                                      requestPersonName: self.fullProfileData.firstName ?? "",
-//                                      likedPhoto: image)
-//
-//      } else if let questionResponse = sectionItem.question, sectionItem.sectionType == .question {
-//        print("liked questionResponse \(questionResponse.question.questionText)")
-//        self.displayPersonalRequestVC(personalUserID: personalUserID,
-//                                      thumbnailImageURL: requestedThumbnailURL,
-//                                      requestPersonName: self.fullProfileData.firstName ?? "",
-//                                      likedPhoto: nil,
-//                                      likedPrompt: questionResponse)
-//      }
-//    }
-//  }
 }
 
 // MARK: - UIGestureRecognizerDelegate
