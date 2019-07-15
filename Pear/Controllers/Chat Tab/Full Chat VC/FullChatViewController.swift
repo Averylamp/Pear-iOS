@@ -139,6 +139,7 @@ extension FullChatViewController {
     self.chat.delegate = self
     self.chat.subscribeToMessages()
     self.chat.updateLastSeenTime(completion: nil)
+    NotificationCenter.default.post(name: .refreshChatsTab, object: nil)
   }
   
   func goToFullProfile() {
