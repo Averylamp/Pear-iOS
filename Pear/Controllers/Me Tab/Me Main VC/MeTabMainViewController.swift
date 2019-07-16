@@ -163,6 +163,20 @@ extension MeTabMainViewController {
     self.navigationController?.pushViewController(accountSettingsVC, animated: true)
   }
   
+  func goToFriendFullProfileVC(fullProfile: FullProfileDisplayData) {
+    SlackHelper.shared.addEvent(text: "User redirected to `Friend Full Profile`", color: UIColor.orange)
+    guard let friendMainVC = FriendsTabViewController.instantiate() else {
+      print("Unable to instantiate friends tab VC")
+      return
+    }
+    self.navigationController?.pushViewController(friendMainVC, animated: false)
+    guard let friendFullProfileVC = FriendFullProfileViewController.instantiate(fullProfileData: fullProfile) else {
+      print("Unbale to instantiate friend full profile VC")
+      return
+    }
+    self.navigationController?.pushViewController(friendFullProfileVC, animated: true)
+  }
+  
   func dispatchEmailComposer(subject: String, messageBody: String) {
     let mailComposer = MFMailComposeViewController()
     mailComposer.setSubject(subject)
@@ -193,7 +207,14 @@ extension MeTabMainViewController {
   @objc func goToEditFriendsProfileNotification(notification: NSNotification) {
     DispatchQueue.main.async {
       self.popToRootIfNeeded()
-      self.goToMyFriendsVC()
+      if let notificationUserInfo =  notification.userInfo,
+        let friendUserID = notificationUserInfo[NotificationUserInfoKey.friendUserID.rawValue] as? String,
+        let friendPearUser = DataStore.shared.endorsedUsers.first(where: { $0.documentID == friendUserID }) {
+        let fullProfileData = FullProfileDisplayData(user: friendPearUser)
+        self.goToFriendFullProfileVC(fullProfile: fullProfileData)
+      } else {
+        self.goToMyFriendsVC()
+      }
     }
   }
   

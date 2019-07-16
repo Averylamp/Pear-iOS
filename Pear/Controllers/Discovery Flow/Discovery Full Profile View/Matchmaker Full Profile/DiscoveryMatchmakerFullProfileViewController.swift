@@ -300,7 +300,7 @@ extension DiscoveryMatchmakerFullProfileViewController {
       NotificationUserInfoKey.friendUserID.rawValue: self.matchmakingForID
     ]
     NotificationCenter.default
-      .post(name: .goToFriendsTab, object: userInfo)
+      .post(name: .goToFriendsTab, object: nil, userInfo: userInfo)
   }
   
   func addIncompleteProfileHeader(ctaText: String) {
