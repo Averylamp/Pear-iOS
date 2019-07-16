@@ -68,7 +68,7 @@
                                     <constraint firstAttribute="height" constant="40" id="SFn-Ts-CWo"/>
                                     <constraint firstAttribute="width" constant="40" id="udo-Vh-CcI"/>
                                 </constraints>
-                                <state key="normal" image="onboarding-close-button"/>
+                                <state key="normal" image="discovery-icon-close"/>
                                 <connections>
                                     <action selector="dismissButtonClicked:" destination="C9V-aj-VkA" eventType="touchUpInside" id="zPa-kJ-JlQ"/>
                                 </connections>
@@ -150,6 +150,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onboarding-close-button" width="120" height="120"/>
+        <image name="discovery-icon-close" width="72" height="72"/>
     </resources>
 </document>
