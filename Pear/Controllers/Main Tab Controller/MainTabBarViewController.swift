@@ -11,6 +11,12 @@ import CoreLocation
 
 extension Notification.Name {
   static let updateAppIconNumber = Notification.Name("updateAppIcontNumber")
+  static let goToFriendsTab = Notification.Name("goToFriendsTab")
+  static let goToEditProfile = Notification.Name("goToEditPersonalProfile")
+}
+
+enum NotificationUserInfoKey: String {
+  case friendUserID
 }
 
 class MainTabBarViewController: UITabBarController {
@@ -110,14 +116,39 @@ extension MainTabBarViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.delegate = self
+    self.setup()
     self.stylize()
-    NotificationCenter.default.addObserver(self,
+  }
+  
+  /// Setup should only be called once
+  func setup() {
+    self.delegate = self
+    self.addNotificationSubscriptions()
+  }
+  
+  func addNotificationSubscriptions() {
+    NotificationCenter
+      .default
+      .addObserver(self,
                                            selector: #selector(MainTabBarViewController.updateAppIconNumber),
                                            name: .updateAppIconNumber,
                                            object: nil)
+    NotificationCenter
+      .default
+    .addObserver(self,
+                 selector: #selector(MainTabBarViewController.goToFriendsTab(notification:)),
+                 name: .goToFriendsTab,
+                 object: nil)
+    NotificationCenter
+      .default
+      .addObserver(self,
+                   selector: #selector(MainTabBarViewController.goToEditProfile(notification:)),
+                   name: .goToEditProfile,
+                   object: nil)
+
   }
   
+  /// Stylize can be called more than once
   func stylize() {
     self.tabBar.barTintColor = UIColor.white
     self.tabBar.layer.borderWidth = 0
@@ -129,6 +160,11 @@ extension MainTabBarViewController {
     self.tabBar.barStyle = .black
   }
   
+}
+
+// MARK: - Shared Notification Functions
+extension MainTabBarViewController {
+
   @objc func updateAppIconNumber() {
     var appIconNumber = 0
     appIconNumber += DataStore.shared.matchRequests.count
@@ -146,6 +182,23 @@ extension MainTabBarViewController {
   
 }
 
+// MARK: - Redirect Notificaions
+extension MainTabBarViewController {
+  
+  @objc func goToEditProfile(notification: NSNotification) {
+    DispatchQueue.main.async {
+      self.selectedIndex = 3
+    }
+  }
+  
+  @objc func goToFriendsTab(notification: NSNotification) {
+    DispatchQueue.main.async {
+      self.selectedIndex = 3      
+    }
+  }
+  
+}
+
 extension MainTabBarViewController: UITabBarControllerDelegate {
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
@@ -155,7 +208,7 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
       // NotificationCenter.default.post(name: .refreshDiscoveryFeed, object: nil)
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),
-      index == 2 {
+      index == 1 {
       DataStore.shared.refreshMatchRequests(matchRequestsFound: nil)
     }
     if let index = tabBarController.viewControllers?.firstIndex(of: viewController),

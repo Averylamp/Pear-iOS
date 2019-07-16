@@ -80,12 +80,17 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
         self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
       } else if numberPrompts < 3 {
         self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
-      }      
+      }
+      #if DEVMODE
+      self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
+      #endif
     }
   }
   
   @objc func completeProfileBannerClicked(sender: UIButton) {
     SlackHelper.shared.addEvent(text: "Incomplete Profile Banner Clicked (no-op for now)", color: UIColor.green)
+    NotificationCenter.default
+      .post(name: .goToEditProfile, object: nil)
   }
   
   func addIncompleteProfileHeader(ctaText: String) {
