@@ -88,6 +88,7 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
   }
   
   @objc func completeProfileBannerClicked(sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     SlackHelper.shared.addEvent(text: "Incomplete Profile Banner Clicked (no-op for now)", color: UIColor.green)
     NotificationCenter.default
       .post(name: .goToEditProfile, object: nil)

@@ -295,6 +295,7 @@ extension DiscoveryMatchmakerFullProfileViewController {
   }
   
   @objc func completeProfileBannerClicked(sender: UIButton) {
+    HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     SlackHelper.shared.addEvent(text: "Matchmaker Incomplete Profile Banner Clicked (no-op for now)", color: UIColor.green)
     let userInfo: [String: String] = [
       NotificationUserInfoKey.friendUserID.rawValue: self.matchmakingForID
