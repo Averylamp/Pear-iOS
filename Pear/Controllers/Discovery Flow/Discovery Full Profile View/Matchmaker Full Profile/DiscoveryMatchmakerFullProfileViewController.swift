@@ -288,11 +288,19 @@ extension DiscoveryMatchmakerFullProfileViewController {
       } else if numberPrompts < 3 {
         self.addIncompleteProfileHeader(ctaText: "Your friend could use more prompts to complete their profile.  Help them out!")
       }
+      #if DEVMODE
+      self.addIncompleteProfileHeader(ctaText: "Your friend could use more prompts to complete their profile.  Help them out!")
+      #endif
     }
   }
   
   @objc func completeProfileBannerClicked(sender: UIButton) {
     SlackHelper.shared.addEvent(text: "Matchmaker Incomplete Profile Banner Clicked (no-op for now)", color: UIColor.green)
+    let userInfo: [String: String] = [
+      NotificationUserInfoKey.friendUserID.rawValue: self.matchmakingForID
+    ]
+    NotificationCenter.default
+      .post(name: .goToFriendsTab, object: userInfo)
   }
   
   func addIncompleteProfileHeader(ctaText: String) {
@@ -328,8 +336,6 @@ extension DiscoveryMatchmakerFullProfileViewController {
                          toItem: containerView, attribute: .top, multiplier: 1.0, constant: 10.0),
       NSLayoutConstraint(item: headerButton, attribute: .bottom, relatedBy: .equal,
                          toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: -10.0)
-      //      NSLayoutConstraint(item: headerButton, attribute: .height, relatedBy: .equal,
-      //                         toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 60.0)
       ])
     
     // Header Shadow Constraints
