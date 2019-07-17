@@ -11,6 +11,7 @@ import FirebasePerformance
 import Crashlytics
 import Sentry
 import SwiftyJSON
+import SDWebImage
 
 // MARK: - User Functions
 extension DataStore {
@@ -29,6 +30,7 @@ extension DataStore {
                                     switch result {
                                     case .success(let pearUser):
                                       DataStore.shared.currentPearUser = pearUser
+                                      self.prefetchCurrentUserURLs(user: pearUser, imageTypes: [.thumbnail, .small, .large])
 //                                      do {
 //                                        if let userData = UserDefaults.standard.data(forKey: UserDefaultKeys.cachedPearUser.rawValue) {
 //                                          let cachedUser = try JSONDecoder().decode(PearUser.self, from: userData)
@@ -78,6 +80,34 @@ extension DataStore {
         return
       }
     }
+  }
+  
+  func prefetchCurrentUserURLs(user: PearUser, imageTypes: [ImageType]) {
+    var urlsToPrefetch: [URL] = []
+    imageTypes.forEach { (imageType) in
+      user.displayedImages.forEach({ (imageContainer) in
+        var sizedImageRepresentation: ImageRepresentation?
+        switch imageType {
+        case .thumbnail:
+          sizedImageRepresentation = imageContainer.thumbnail
+        case .small:
+          sizedImageRepresentation = imageContainer.small
+        case .medium:
+          sizedImageRepresentation = imageContainer.medium
+        case .large:
+          sizedImageRepresentation = imageContainer.large
+        case .original:
+          sizedImageRepresentation = imageContainer.original
+        default:
+          break
+        }
+        if let imageRep = sizedImageRepresentation,
+          let imageRepURL = URL(string: imageRep.imageURL) {
+          urlsToPrefetch.append(imageRepURL)
+        }
+      })
+    }
+    SDWebImagePrefetcher.shared.prefetchURLs(urlsToPrefetch)
   }
   
   /// Updates the User's location and Notification Token in the database if fetchable
