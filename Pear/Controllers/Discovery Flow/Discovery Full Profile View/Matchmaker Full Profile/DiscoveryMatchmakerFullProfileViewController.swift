@@ -288,9 +288,6 @@ extension DiscoveryMatchmakerFullProfileViewController {
       } else if numberPrompts < 3 {
         self.addIncompleteProfileHeader(ctaText: "Your friend could use more prompts to complete their profile.  Help them out!")
       }
-      #if DEVMODE
-      self.addIncompleteProfileHeader(ctaText: "Your friend could use more prompts to complete their profile.  Help them out!")
-      #endif
     }
   }
   

@@ -81,9 +81,6 @@ class DiscoveryPersonalFullProfileViewController: DiscoveryFullProfileViewContro
       } else if numberPrompts < 3 {
         self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
       }
-      #if DEVMODE
-      self.addIncompleteProfileHeader(ctaText: "People with complete profiles get 3-5x more matches")
-      #endif
     }
   }
   
