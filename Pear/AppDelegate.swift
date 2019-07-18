@@ -41,7 +41,11 @@ extension AppDelegate: UIApplicationDelegate, MessagingDelegate {
     if CommandLine.arguments.contains("--uitesting") {
       resetState()
     }
+    Analytics.setAnalyticsCollectionEnabled(false)
 //    resetState()
+    #endif
+    #if PROD
+    Analytics.setAnalyticsCollectionEnabled(true)
     #endif
 
     self.stylize()

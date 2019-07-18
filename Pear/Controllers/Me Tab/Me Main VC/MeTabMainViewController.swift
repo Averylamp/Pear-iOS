@@ -78,10 +78,27 @@ extension MeTabMainViewController {
   func setup() {
     self.meTabItemTableView.delegate = self
     self.meTabItemTableView.dataSource = self
-    NotificationCenter.default
+    self.addNotifications()
+  }
+  
+  func addNotifications() {
+    NotificationCenter
+      .default
       .addObserver(self,
                    selector: #selector(MeTabMainViewController.updateWithCurrentUser),
                    name: .refreshMeTab, object: nil)
+    NotificationCenter
+      .default
+      .addObserver(self,
+                   selector: #selector(MeTabMainViewController.goToEditProfileNotification(notification:)),
+                   name: .goToEditProfile,
+                   object: nil)
+    NotificationCenter
+      .default
+      .addObserver(self,
+                   selector: #selector(MeTabMainViewController.goToEditFriendsProfileNotification(notification:)),
+                   name: .goToFriendsTab,
+                   object: nil)
   }
   
   func stylize() {
@@ -102,6 +119,102 @@ extension MeTabMainViewController {
   @objc func updateWithCurrentUser() {
     DispatchQueue.main.async {
       self.stylize()
+    }
+  }
+  
+}
+
+// MARK: - Redirect Functions
+extension MeTabMainViewController {
+  
+  func goToMyFriendsVC() {
+    SlackHelper.shared.addEvent(text: "User clicked on `My Friends` option", color: UIColor.orange)
+    guard let friendMainVC = FriendsTabViewController.instantiate() else {
+      print("Unable to instantiate friends tab VC")
+      return
+    }
+    self.navigationController?.pushViewController(friendMainVC, animated: true)
+  }
+  
+  func goToEditProfileVC() {
+    SlackHelper.shared.addEvent(text: "User clicked on `Edit Profile` option", color: UIColor.orange)
+    guard let editPreviewVC = EditPreviewViewController.instantiate() else {
+      print("Unable to create edit preview VC")
+      return
+    }
+    self.navigationController?.pushViewController(editPreviewVC, animated: true)
+  }
+  
+  func goToEditPreferencesVC() {
+    SlackHelper.shared.addEvent(text: "User clicked on `Edit Preferences` option", color: UIColor.orange)
+    guard let editUserPreferencesVC = MeEditUserPreferencesViewController.instantiate() else {
+      print("Unable to instantiate edit user preferences")
+      return
+    }
+    self.navigationController?.pushViewController(editUserPreferencesVC, animated: true)
+  }
+  
+  func goToAccountSettingsVC() {
+    SlackHelper.shared.addEvent(text: "User clicked on `Account Settings` option", color: UIColor.orange)
+    guard let accountSettingsVC = AccountSettingsViewController.instantiate() else {
+      print("Unable to instantiate Account settings preferences")
+      return
+    }
+    self.navigationController?.pushViewController(accountSettingsVC, animated: true)
+  }
+  
+  func goToFriendFullProfileVC(fullProfile: FullProfileDisplayData) {
+    SlackHelper.shared.addEvent(text: "User redirected to `Friend Full Profile`", color: UIColor.orange)
+    guard let friendMainVC = FriendsTabViewController.instantiate() else {
+      print("Unable to instantiate friends tab VC")
+      return
+    }
+    self.navigationController?.pushViewController(friendMainVC, animated: false)
+    guard let friendFullProfileVC = FriendFullProfileViewController.instantiate(fullProfileData: fullProfile) else {
+      print("Unbale to instantiate friend full profile VC")
+      return
+    }
+    self.navigationController?.pushViewController(friendFullProfileVC, animated: true)
+  }
+  
+  func dispatchEmailComposer(subject: String, messageBody: String) {
+    let mailComposer = MFMailComposeViewController()
+    mailComposer.setSubject(subject)
+    mailComposer.setToRecipients(["support@getpear.com"])
+    mailComposer.setMessageBody(messageBody, isHTML: false)
+    mailComposer.mailComposeDelegate = self
+    self.present(mailComposer, animated: true, completion: nil)
+  }
+}
+
+// MARK: - Notification Redirect
+extension MeTabMainViewController {
+  
+  func popToRootIfNeeded() {
+    if let controllerCount = self.navigationController?.viewControllers.count,
+      controllerCount > 1 {
+      self.navigationController?.popToRootViewController(animated: true)
+    }
+  }
+  
+  @objc func goToEditProfileNotification(notification: NSNotification) {
+    DispatchQueue.main.async {
+      self.popToRootIfNeeded()
+      self.goToEditProfileVC()
+    }
+  }
+  
+  @objc func goToEditFriendsProfileNotification(notification: NSNotification) {
+    DispatchQueue.main.async {
+      self.popToRootIfNeeded()
+      if let notificationUserInfo =  notification.userInfo,
+        let friendUserID = notificationUserInfo[NotificationUserInfoKey.friendUserID.rawValue] as? String,
+        let friendPearUser = DataStore.shared.endorsedUsers.first(where: { $0.documentID == friendUserID }) {
+        let fullProfileData = FullProfileDisplayData(user: friendPearUser)
+        self.goToFriendFullProfileVC(fullProfile: fullProfileData)
+      } else {
+        self.goToMyFriendsVC()
+      }
     }
   }
   
@@ -148,78 +261,36 @@ extension MeTabMainViewController: UITableViewDelegate, UITableViewDataSource {
     let item = self.meTabItems[indexPath.row]
     switch item.type {
     case .myFriends:
-      SlackHelper.shared.addEvent(text: "User clicked on `My Friends` option", color: UIColor.orange)
-      guard let friendMainVC = FriendsTabViewController.instantiate() else {
-        print("Unable to instantiate friends tab VC")
-        return
-      }
-      self.navigationController?.pushViewController(friendMainVC, animated: true)
+      self.goToMyFriendsVC()
     case .editProfile:
-      SlackHelper.shared.addEvent(text: "User clicked on `Edit Profile` option", color: UIColor.orange)
-      guard let editPreviewVC = EditPreviewViewController.instantiate() else {
-        print("Unable to create edit preview VC")
-        return
-      }
-      self.navigationController?.pushViewController(editPreviewVC, animated: true)
-//      guard let user = DataStore.shared.currentPearUser else {
-//        print("Unable to get pear user")
-//        return
-//      }
-//      let fullProfileDisplay = FullProfileDisplayData(user: user)
-//      guard let editMeVC = MeEditUserInfoViewController.instantiate(profile: fullProfileDisplay, pearUser: user) else {
-//        print("Unable to instantiate edit user info VC")
-//        return
-//      }
-//      self.navigationController?.pushViewController(editMeVC, animated: true)
+      self.goToEditProfileVC()
     case .myPreferences:
-      SlackHelper.shared.addEvent(text: "User clicked on `Edit Preferences` option", color: UIColor.orange)
-      guard let editUserPreferencesVC = MeEditUserPreferencesViewController.instantiate() else {
-        print("Unable to instantiate edit user preferences")
-        return
-      }
-      self.navigationController?.pushViewController(editUserPreferencesVC, animated: true)
+      self.goToEditPreferencesVC()
     case .accountSettings:
-      SlackHelper.shared.addEvent(text: "User clicked on `Account Settings` option", color: UIColor.orange)
-      guard let accountSettingsVC = AccountSettingsViewController.instantiate() else {
-        print("Unable to instantiate Account settings preferences")
-        return
-      }
-      self.navigationController?.pushViewController(accountSettingsVC, animated: true)
+      self.goToAccountSettingsVC()
     case .needHelp:
       SlackHelper.shared.addEvent(text: "User clicked on `Need Help` option", color: UIColor.orange)
-      let mailComposer = MFMailComposeViewController()
-      mailComposer.setSubject("[Help] Hey I need some help!")
-      mailComposer.setToRecipients(["support@getpear.com"])
-      let messageBody = """
-      Hey,
-      
-      
-      
-      
-      App Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown")
-      Name: \(DataStore.shared.currentPearUser?.firstName ?? "") \(DataStore.shared.currentPearUser?.lastName ?? "")
-      Phone Number: \(DataStore.shared.currentPearUser?.phoneNumber ?? "")
-      """
-      mailComposer.setMessageBody(messageBody, isHTML: false)
-      mailComposer.mailComposeDelegate = self
-      self.present(mailComposer, animated: true, completion: nil)
+      self.dispatchEmailComposer(subject: "[Help] Hey I need some help!", messageBody: """
+        Hey,
+        
+        
+        
+        
+        App Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown")
+        Name: \(DataStore.shared.currentPearUser?.firstName ?? "") \(DataStore.shared.currentPearUser?.lastName ?? "")
+        Phone Number: \(DataStore.shared.currentPearUser?.phoneNumber ?? "")
+        """)
     case .feedback:
       SlackHelper.shared.addEvent(text: "User clicked on `Feedback` option", color: UIColor.orange)
-      let mailComposer = MFMailComposeViewController()
-      mailComposer.setSubject("[Feedback] Hey I've got some Feedback!")
-      mailComposer.setToRecipients(["support@getpear.com"])
-      let messageBody = """
-      
-      
-      
-      
-      App Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown")
-      Name: \(DataStore.shared.currentPearUser?.firstName ?? "") \(DataStore.shared.currentPearUser?.lastName ?? "")
-      Phone Number: \(DataStore.shared.currentPearUser?.phoneNumber ?? "")
-      """
-      mailComposer.setMessageBody(messageBody, isHTML: false)
-      mailComposer.mailComposeDelegate = self
-      self.present(mailComposer, animated: true, completion: nil)
+      self.dispatchEmailComposer(subject: "[Feedback] Hey I've got some Feedback!", messageBody: """
+        
+        
+        
+        
+        App Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown")
+        Name: \(DataStore.shared.currentPearUser?.firstName ?? "") \(DataStore.shared.currentPearUser?.lastName ?? "")
+        Phone Number: \(DataStore.shared.currentPearUser?.phoneNumber ?? "")
+        """)
     }
   }
 }

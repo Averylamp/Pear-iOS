@@ -127,7 +127,7 @@ class PearUser: CustomStringConvertible, GraphQLDecodable, Codable {
         }
         return false
       }).count
-      let userStats = "App Version: \(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String), \(DataStore.shared.detachedProfiles.count > 0 ? "Detached Profiles: \(DataStore.shared.detachedProfiles.count)" : "") "
+      let userStats = "App Version: \((Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String) ?? ""), \(DataStore.shared.detachedProfiles.count > 0 ? "Detached Profiles: \(DataStore.shared.detachedProfiles.count)" : "") "
       text += userStats
     }
     return text
