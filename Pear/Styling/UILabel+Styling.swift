@@ -145,7 +145,7 @@ extension UILabel {
     if let font = R.font.openSansRegular(size: 17) {
       self.font = font
     }
-    self.textColor = UIColor.black
+    self.textColor = R.color.secondaryTextColor()
   }
   
   func stylizeEditTitleLabel() {

@@ -32,10 +32,13 @@ class DiscoveryFilterOverlayViewController: UIViewController {
   let filterCardView: UIView = UIView()
   var filterCardViewHeightConstraint: NSLayoutConstraint?
   let filterItemsTableView = UITableView()
+  
+  // MARK: - Constants
   static let cardSideOffset: CGFloat = 30.0
   static let filterItemHeight: CGFloat = 60.0
   static let discoveryFilterItemCellIdentifier: String = "DiscoveryFilterItemTVC"
   
+  // MARK: - Instantiation
   /// Factory method for creating this view controller.
   ///
   /// - Returns: Returns an instance of this view controller.
@@ -44,6 +47,8 @@ class DiscoveryFilterOverlayViewController: UIViewController {
       .instantiateInitialViewController() else { return nil }
     filterOverlayVC.topOffset = topOffset
     filterOverlayVC.filterItems = DiscoveryFilterOverlayViewController.generateDiscoveryFilterItems()
+    SlackHelper.shared.addEvent(text: "Showing \(filterOverlayVC.filterItems.count) filter items",
+                                color: filterOverlayVC.filterItems.count > 1 ? .green : .orange)
     let prefetchURLs = filterOverlayVC.filterItems.map({ $0.thumbnailURL })
     SDWebImagePrefetcher.shared.prefetchURLs(prefetchURLs)
     return filterOverlayVC
@@ -85,6 +90,9 @@ class DiscoveryFilterOverlayViewController: UIViewController {
     }
   }
   
+  /// Generates the available people to filter for
+  ///
+  /// - Returns: Returns a list of people that you are able to discover for
   static func generateDiscoveryFilterItems() -> [DiscoveryFilterItem] {
     var items: [DiscoveryFilterItem] = []
     let selectedFilterID = DataStore.shared.getCurrentFilters().userID
@@ -107,7 +115,7 @@ class DiscoveryFilterOverlayViewController: UIViewController {
     })
     return items
   }
-  
+
 }
 
 // MARK: - Life Cycle
@@ -282,10 +290,12 @@ extension DiscoveryFilterOverlayViewController: UITableViewDelegate, UITableView
     let selectedItem = self.filterItems[indexPath.row]
     if !selectedItem.selected {
       if selectedItem.documentID == DataStore.shared.currentPearUser?.documentID {
+        SlackHelper.shared.addEvent(text: "Set Matching For to Personal User", color: .green)
         DataStore.shared.setFiltersToUser(user: DataStore.shared.currentPearUser!)
       } else {
         DataStore.shared.endorsedUsers.forEach({
           if $0.documentID == selectedItem.documentID {
+            SlackHelper.shared.addEvent(text: "Set Matching For to Matchmaker User", color: .green)
             DataStore.shared.setFiltersToUser(user: $0)
           }
         })

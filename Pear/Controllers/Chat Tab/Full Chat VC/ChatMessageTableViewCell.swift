@@ -19,10 +19,8 @@ class ChatMessageTableViewCell: UITableViewCell {
   @IBOutlet weak var chatMessageLabel: UILabel!
   @IBOutlet weak var chatTimestampLabel: UILabel!
   @IBOutlet weak var chatThumbnailImageView: UIImageView?
-  @IBOutlet weak var chatBackgroundImageView: UIImageView!
   
   weak var delegate: ChatMessageCellDelegate?
-  var gradientLayer: CAGradientLayer?
   var timestamp: Date?
 
   override func awakeFromNib() {
@@ -55,16 +53,13 @@ class ChatMessageTableViewCell: UITableViewCell {
       }
     }
   
-  func configure(message: Message) {
+  func configure(message: Message, showThumbnailImage: Bool = true) {
     guard message.type == .userMessage else {
       print("Not user message type")
       return
     }
     self.setNeedsLayout()
     self.layoutIfNeeded()
-    if let existingGradientLayer = self.gradientLayer {
-      existingGradientLayer.removeFromSuperlayer()
-    }
     self.timestamp = message.timestamp
     chatMessageLabel.text = message.content
 
@@ -74,7 +69,6 @@ class ChatMessageTableViewCell: UITableViewCell {
       if let chatThumbnailImageView = self.chatThumbnailImageView {
         chatThumbnailImageView.image = nil
       }
-
       self.chatContainerView.backgroundColor = R.color.chatAccentColor()
     } else {
       if let chatThumbnailImageView = self.chatThumbnailImageView {
@@ -82,6 +76,11 @@ class ChatMessageTableViewCell: UITableViewCell {
           chatThumbnailImageView.sd_setImage(with: thumbnailURL, completed: nil)
         } else {
           chatThumbnailImageView.image = nil
+        }
+        if showThumbnailImage {
+          chatThumbnailImageView.alpha = 1.0
+        } else {
+          chatThumbnailImageView.alpha = 0.0
         }
       }
       self.chatContainerView.backgroundColor = R.color.chatGradientReceiverEnd()

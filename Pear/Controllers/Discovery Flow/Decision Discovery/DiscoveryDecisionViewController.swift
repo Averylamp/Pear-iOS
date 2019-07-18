@@ -418,6 +418,7 @@ extension DiscoveryDecisionViewController: DiscoveryFilterOverlayDelegate {
     guard self.discoveryFilterOverlayVC == nil else {
       return
     }
+    SlackHelper.shared.addEvent(text: "Matching for Button Clicked", color: .green)
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     let topOffset = self.headerContainerView.frame.origin.y + self.headerContainerView.frame.height + 12.0
     guard let filterOverlayVC = DiscoveryFilterOverlayViewController.instantiate(topOffset: topOffset) else {
