@@ -40,6 +40,8 @@ class LikeFullProfileViewController: UIViewController {
     self.respondToRequest(accepted: true)
     if let delegate = self.delegate {
       print("Delegate Decision Made")
+      let isMatchmakerMade = match.sentByUser.documentID == match.sentForUser.documentID
+      SlackHelper.shared.addEvent(text: "\(isMatchmakerMade ? "Matchmaker" : "Personal") Match Request Accepted!", color: UIColor.green)
       delegate.decisionMade(accepted: true)
     }
   }
@@ -48,6 +50,8 @@ class LikeFullProfileViewController: UIViewController {
     HapticFeedbackGenerator.generateHapticFeedbackImpact(style: .light)
     self.respondToRequest(accepted: false)
     if let delegate = self.delegate {
+      let isMatchmakerMade = match.sentByUser.documentID == match.sentForUser.documentID
+      SlackHelper.shared.addEvent(text: "\(isMatchmakerMade ? "Matchmaker" : "Personal") Match Request Rejected!", color: UIColor.red)
       print("Delegate Decision Made")
       delegate.decisionMade(accepted: false)
     }
