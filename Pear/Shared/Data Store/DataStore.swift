@@ -97,6 +97,14 @@ class DataStore: NSObject {
       }
       
       if let completion = completion {
+        if let graphQLURLString = self.remoteConfig.configValue(forKey: "graphql_url").stringValue,
+          graphQLURLString != NetworkingConfig.graphQLURLString {
+          NetworkingConfig.graphQLHost = URL(string: graphQLURLString)!
+        }
+        if let graphQLURLString = self.remoteConfig.configValue(forKey: "dev_graphql_url").stringValue,
+          graphQLURLString != NetworkingConfig.devGraphQLURLString {
+          NetworkingConfig.devGraphQLHost = URL(string: graphQLURLString)!
+        }
         completion(status == .success)
       }
     }
