@@ -14,18 +14,27 @@
  * limitations under the License.
  */
 
-#include "Firestore/core/src/firebase/firestore/model/field_value.h"
+#ifndef FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_UTIL_EQUALITY_H_
+#define FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_UTIL_EQUALITY_H_
 
-#import "Firestore/Source/Model/FSTFieldValue.h"
+#include <memory>
+#include <utility>
 
 namespace firebase {
 namespace firestore {
-namespace model {
+namespace util {
 
-FSTFieldValue* FieldValue::Wrap() && {
-  return [FSTDelegateValue delegateWithValue:std::move(*this)];
+/**
+ * Checks if the values pointed to by two C++ pointers are equal. Two null
+ * pointers are also considered equal.
+ */
+template <typename T>
+bool Equals(const T& lhs, const T& rhs) {
+  return lhs == nullptr ? rhs == nullptr : rhs != nullptr && *lhs == *rhs;
 }
 
-}  // namespace model
+}  // namespace util
 }  // namespace firestore
 }  // namespace firebase
+
+#endif  // FIRESTORE_CORE_SRC_FIREBASE_FIRESTORE_UTIL_EQUALITY_H_

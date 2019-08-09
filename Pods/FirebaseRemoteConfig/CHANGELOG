@@ -1,3 +1,11 @@
+Version 5.2.0
+==================================
+- Bug fix for a crash seen by some users. (#3344)
+
+Version 5.1.0
+==================================
+- Improved shared instance initialization sequence during 'FirebaseApp.configure()'.
+
 Version 4.1.0
 ==================================
 - Async initialization with new API for ensuring initialization completed with completion handler.
