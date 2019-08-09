@@ -220,11 +220,6 @@ extension MainLikesViewController {
 // MARK: - Like Full Profile Delegate
 extension MainLikesViewController: LikeFullProfileDelegate {
   func decisionMade(accepted: Bool) {
-    if accepted {
-      SlackHelper.shared.addEvent(text: "Match Request Accepted!", color: UIColor.green)
-    } else {
-      SlackHelper.shared.addEvent(text: "Match Request Rejected!", color: UIColor.red)
-    }
     DispatchQueue.main.async {
       self.displayNextRequest()
     }
