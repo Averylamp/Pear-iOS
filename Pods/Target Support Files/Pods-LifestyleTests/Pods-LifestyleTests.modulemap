@@ -1,0 +1,6 @@
+framework module Pods_LifestyleTests {
+  umbrella header "Pods-LifestyleTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -28,8 +28,6 @@
 #include "Firestore/core/src/firebase/firestore/model/precondition.h"
 
 @class FIRTimestamp;
-@class FSTObjectValue;
-@class FSTMutation;
 
 namespace core = firebase::firestore::core;
 namespace model = firebase::firestore::model;
@@ -83,6 +81,14 @@ typedef id _Nullable (^FSTPreConverterBlock)(id _Nullable);
 
 /** Parse a "query value" (e.g. value in a where filter or a value in a cursor bound). */
 - (model::FieldValue)parsedQueryValue:(id)input;
+
+/**
+ * Parse a "query value" (e.g. value in a where filter or a value in a cursor bound).
+ *
+ * @param allowArrays Whether the query value is an array that may directly contain additional
+ * arrays (e.g.) the operand of an `in` query).
+ */
+- (model::FieldValue)parsedQueryValue:(id)input allowArrays:(bool)allowArrays;
 
 @end
 

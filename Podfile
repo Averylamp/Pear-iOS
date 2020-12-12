@@ -1,4 +1,4 @@
-target 'Pear' do
+target 'Lifestyle' do
   platform :ios, '11.0'
   use_frameworks!
   inhibit_all_warnings!
@@ -20,7 +20,7 @@ target 'Pear' do
   pod 'Sentry' 
   pod 'BSImagePicker'
 
-  target 'PearTests' do
+  target 'LifestyleTests' do
     inherit! :search_paths
   end
 

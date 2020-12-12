@@ -21,6 +21,7 @@
 #include <memory>
 #include <string>
 
+#include "Firestore/core/src/firebase/firestore/immutable/append_only_list.h"
 #include "Firestore/core/src/firebase/firestore/model/document.h"
 #include "Firestore/core/src/firebase/firestore/model/field_path.h"
 #include "Firestore/core/src/firebase/firestore/model/field_value.h"
@@ -44,60 +45,115 @@ class Filter {
     GreaterThanOrEqual,
     GreaterThan,
     ArrayContains,
+    In,
+    ArrayContainsAny,
   };
 
   // For lack of RTTI, all subclasses must identify themselves so that
   // comparisons properly take type into account.
   enum class Type {
-    kRelationFilter,
-    kNanFilter,
-    kNullFilter,
+    kArrayContainsAnyFilter,
+    kArrayContainsFilter,
+    kFieldFilter,
+    kInFilter,
+    kKeyFieldFilter,
+    kKeyFieldInFilter,
   };
 
-  /**
-   * Creates a Filter instance for the provided path, operator, and value.
-   *
-   * Note that if the relational operator is Equal and the value is NullValue or
-   * NaN, then this will return the appropriate NullFilter or NanFilter class
-   * instead of a RelationFilter.
-   */
-  static std::shared_ptr<Filter> Create(model::FieldPath path,
-                                        Operator op,
-                                        model::FieldValue value_rhs);
-
-  virtual ~Filter() = default;
-
-  virtual Type type() const = 0;
-
-  /** Returns the field the Filter operates over. */
-  virtual const model::FieldPath& field() const = 0;
-
-  /** Returns true if a document matches the filter. */
-  virtual bool Matches(const model::Document& doc) const = 0;
-
-  /** A unique ID identifying the filter; used when serializing queries. */
-  virtual std::string CanonicalId() const = 0;
-
-  /** A debug description of the Filter. */
-  virtual std::string ToString() const = 0;
-
-  virtual size_t Hash() const = 0;
-
-  virtual bool IsInequality() const {
-    return false;
+  Type type() const {
+    return rep_->type();
   }
 
-  friend bool operator==(const Filter& lhs, const Filter& rhs) {
-    return lhs.Equals(rhs);
+  /**
+   * Returns true if this instance is FieldFilter or any derived class.
+   * Equivalent to `instanceof FieldFilter` on other platforms.
+   *
+   * Note this is different than checking `type() == Type::kFieldFilter` which
+   * is only true if the type is exactly FieldFilter.
+   */
+  bool IsAFieldFilter() const {
+    return rep_->IsAFieldFilter();
+  }
+
+  bool IsInequality() const {
+    return rep_->IsInequality();
+  }
+
+  /** Returns the field the Filter operates over. */
+  const model::FieldPath& field() const {
+    return rep_->field();
+  }
+
+  /** Returns true if a document matches the filter. */
+  bool Matches(const model::Document& doc) const {
+    return rep_->Matches(doc);
+  }
+
+  /** A unique ID identifying the filter; used when serializing queries. */
+  std::string CanonicalId() const {
+    return rep_->CanonicalId();
+  }
+
+  /** A debug description of the Filter. */
+  std::string ToString() const {
+    return rep_->ToString();
+  }
+
+  size_t Hash() const {
+    return rep_->Hash();
+  }
+
+  friend bool operator==(const Filter& lhs, const Filter& rhs);
+
+ protected:
+  class Rep {
+   public:
+    virtual ~Rep() = default;
+
+    virtual Type type() const = 0;
+
+    virtual bool IsAFieldFilter() const {
+      return false;
+    }
+
+    virtual bool IsInequality() const {
+      return false;
+    }
+
+    /** Returns the field the Filter operates over. */
+    virtual const model::FieldPath& field() const = 0;
+
+    /** Returns true if a document matches the filter. */
+    virtual bool Matches(const model::Document& doc) const = 0;
+
+    /** A unique ID identifying the filter; used when serializing queries. */
+    virtual std::string CanonicalId() const = 0;
+
+    virtual bool Equals(const Rep& other) const = 0;
+
+    virtual size_t Hash() const = 0;
+
+    /** A debug description of the Filter. */
+    virtual std::string ToString() const = 0;
+  };
+
+  explicit Filter(std::shared_ptr<const Rep> rep) : rep_(rep) {
+  }
+
+  const Rep& rep() const {
+    return *rep_;
   }
 
  private:
-  virtual bool Equals(const Filter& other) const = 0;
+  std::shared_ptr<const Rep> rep_;
 };
 
 inline bool operator!=(const Filter& lhs, const Filter& rhs) {
   return !(lhs == rhs);
 }
+
+/** A list of Filters, as used in Queries and elsewhere. */
+using FilterList = immutable::AppendOnlyList<Filter>;
 
 std::ostream& operator<<(std::ostream& os, const Filter& filter);
 

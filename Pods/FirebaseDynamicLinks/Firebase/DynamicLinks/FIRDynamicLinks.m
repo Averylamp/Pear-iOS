@@ -129,34 +129,34 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
                                                            isRequired:NO];
   FIRComponentCreationBlock creationBlock =
       ^id _Nullable(FIRComponentContainer *container, BOOL *isCacheable) {
+    // Don't return an instance when it's not the default app.
+    if (!container.app.isDefaultApp) {
+      // Only configure for the default FIRApp.
+      FDLLog(FDLLogLevelInfo, FDLLogIdentifierSetupNonDefaultApp,
+             @"Firebase Dynamic Links only "
+              "works with the default app.");
+      return nil;
+    }
+
     // Ensure it's cached so it returns the same instance every time dynamicLinks is called.
     *isCacheable = YES;
     id<FIRAnalyticsInterop> analytics = FIR_COMPONENT(FIRAnalyticsInterop, container);
-    return [[FIRDynamicLinks alloc] initWithAnalytics:analytics];
+    FIRDynamicLinks *dynamicLinks = [[FIRDynamicLinks alloc] initWithAnalytics:analytics];
+    [dynamicLinks configureDynamicLinks:container.app];
+    // Check for pending Dynamic Link automatically if enabled, otherwise we expect the developer to
+    // call strong match FDL API to retrieve a pending link.
+    if ([FIRDynamicLinks isAutomaticRetrievalEnabled]) {
+      [dynamicLinks checkForPendingDynamicLink];
+    }
+    return dynamicLinks;
   };
   FIRComponent *dynamicLinksProvider =
       [FIRComponent componentWithProtocol:@protocol(FIRDynamicLinksInstanceProvider)
-                      instantiationTiming:FIRInstantiationTimingLazy
+                      instantiationTiming:FIRInstantiationTimingEagerInDefaultApp
                              dependencies:@[ analyticsDep ]
                             creationBlock:creationBlock];
 
   return @[ dynamicLinksProvider ];
-}
-
-+ (void)configureWithApp:(FIRApp *)app {
-  if (!app.isDefaultApp) {
-    // Only configure for the default FIRApp.
-    FDLLog(FDLLogLevelInfo, FDLLogIdentifierSetupNonDefaultApp,
-           @"Firebase Dynamic Links only "
-            "works with the default app.");
-    return;
-  }
-  [[FIRDynamicLinks dynamicLinks] configureDynamicLinks:app];
-  // check for pending Dynamic Link automatically if enabled
-  // otherwise we expect developer to call strong match FDL API to retrieve link
-  if ([FIRDynamicLinks isAutomaticRetrievalEnabled]) {
-    [[FIRDynamicLinks dynamicLinks] checkForPendingDynamicLink];
-  }
 }
 
 - (void)configureDynamicLinks:(FIRApp *)app {
@@ -181,16 +181,16 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
   if (!errorDescription) {
     // setup FDL if no error detected
     urlScheme = options.deepLinkURLScheme ?: [NSBundle mainBundle].bundleIdentifier;
-    [[FIRDynamicLinks dynamicLinks] setUpWithLaunchOptions:nil
-                                                    apiKey:options.APIKey
-                                                  clientID:options.clientID
-                                                 urlScheme:urlScheme
-                                              userDefaults:nil];
+    [self setUpWithLaunchOptions:nil
+                          apiKey:options.APIKey
+                        clientID:options.clientID
+                       urlScheme:urlScheme
+                    userDefaults:nil];
   } else {
     error =
         [FIRApp errorForSubspecConfigurationFailureWithDomain:kFirebaseDurableDeepLinkErrorDomain
                                                     errorCode:FIRErrorCodeDurableDeepLinkFailed
-                                                      service:kFIRServiceDynamicLinks
+                                                      service:@"DynamicLinks"
                                                        reason:errorDescription];
   }
   if (error) {
@@ -220,12 +220,7 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
     }
     [NSException raise:kFirebaseDurableDeepLinkErrorDomain format:@"%@", message];
   }
-  // Check to see if FirebaseDynamicLinksCustomDomains array is present.
-  NSDictionary *infoDictionary = [NSBundle mainBundle].infoDictionary;
-  NSArray *customDomains = infoDictionary[kInfoPlistCustomDomainsKey];
-  if (customDomains) {
-    FIRDLAddToAllowListForCustomDomainsArray(customDomains);
-  }
+  [self checkForCustomDomainEntriesInInfoPlist];
 }
 
 - (instancetype)initWithAnalytics:(nullable id<FIRAnalyticsInterop>)analytics {
@@ -253,6 +248,26 @@ static const NSInteger FIRErrorCodeDurableDeepLinkFailed = -119;
   return dynamicLinks;
 }
 #endif
+
+#pragma mark - Custom domains
+
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    [self checkForCustomDomainEntriesInInfoPlist];
+  }
+  return self;
+}
+
+// Check for custom domains entry in PLIST file.
+- (void)checkForCustomDomainEntriesInInfoPlist {
+  // Check to see if FirebaseDynamicLinksCustomDomains array is present.
+  NSDictionary *infoDictionary = [NSBundle mainBundle].infoDictionary;
+  NSArray *customDomains = infoDictionary[kInfoPlistCustomDomainsKey];
+  if (customDomains) {
+    FIRDLAddToAllowListForCustomDomainsArray(customDomains);
+  }
+}
 
 #pragma mark - First party interface
 

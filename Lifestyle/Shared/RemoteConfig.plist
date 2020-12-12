@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>graphql_url</key>
+	<string>https://lifestyle.averylamp.me/graphql</string>
+	<key>dev_graphql_url</key>
+	<string>https://dev.lifestyle.averylamp.me/graphql</string>
+	<key>whitelisted_phone_numbers</key>
+	<array/>
+	<key>distance_from_boston</key>
+	<integer>200</integer>
+	<key>location_blocking_enabled</key>
+	<true/>
+	<key>pear_button_string</key>
+	<string>You&apos;ll be notified if someone pears you with them.</string>
+	<key>pear_button_enabled</key>
+	<false/>
+	<key>waitlist_enabled</key>
+	<true/>
+	<key>version_blocking_enabled</key>
+	<true/>
+</dict>
+</plist>

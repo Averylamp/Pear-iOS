@@ -29,6 +29,7 @@
 #include "Firestore/core/src/firebase/firestore/util/filesystem.h"
 #include "Firestore/core/src/firebase/firestore/util/hard_assert.h"
 #include "Firestore/core/src/firebase/firestore/util/log.h"
+#include "Firestore/core/src/firebase/firestore/util/statusor.h"
 #include "Firestore/core/src/firebase/firestore/util/string_format.h"
 #include "absl/memory/memory.h"
 #include "grpcpp/create_channel.h"
@@ -199,7 +200,7 @@ std::shared_ptr<grpc::Channel> GrpcConnection::CreateChannel() const {
         host, CreateSslCredentials(root_certificate), args);
   }
 
-  // For the case when `Settings.sslEnabled == false`.
+  // For the case when `Settings.set_ssl_enabled(false)`.
   if (host_config->use_insecure_channel) {
     return grpc::CreateCustomChannel(host, grpc::InsecureChannelCredentials(),
                                      args);
@@ -264,8 +265,8 @@ void GrpcConnection::RegisterConnectivityMonitor() {
         auto calls = active_calls_;
         for (GrpcCall* call : calls) {
           // This will trigger the observers.
-          call->FinishAndNotify(Status{FirestoreErrorCode::Unavailable,
-                                       "Network connectivity changed"});
+          call->FinishAndNotify(
+              Status{Error::Unavailable, "Network connectivity changed"});
         }
         // The old channel may hang for a long time trying to reestablish
         // connection before eventually failing. Note that gRPC Objective-C
